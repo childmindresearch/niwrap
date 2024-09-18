@@ -27,6 +27,7 @@
       "optional": false,
       "description": "Image pair (may be repeated)",
       "type": {
+        "id": "input_images",
         "command-line": "[FIXED] [MOVING]",
         "inputs": [
           {
@@ -102,6 +103,7 @@
       "optional": true,
       "description": "Invert previously computed warp",
       "type": {
+        "id": "invert",
         "command-line": "[INWARP] [OUTWARP]",
         "inputs": [
           {
@@ -137,6 +139,7 @@
       "optional": true,
       "description": "Convert 2^N-th root of a warp",
       "type": {
+        "id": "root",
         "command-line": "[INWARP] [OUTWARP] [N]",
         "inputs": [
           {
@@ -180,6 +183,7 @@
       "optional": true,
       "description": "Compute the Jacobian determinant of the warp",
       "type": {
+        "id": "jacobian",
         "command-line": "[INWARP] [OUTJAC]",
         "inputs": [
           {
@@ -242,6 +246,7 @@
       "optional": true,
       "description": "Metric for the entire registration",
       "type": {
+        "id": "metric",
         "command-line": "[METRIC_TYPE] [METRIC_PARAM]",
         "inputs": [
           {
@@ -480,6 +485,7 @@
       "optional": true,
       "description": "Apply a regularization penalty based on the Jacobian of a tetrahedral mesh",
       "type": {
+        "id": "tjr",
         "command-line": "[MESH] [WEIGHT]",
         "inputs": [
           {
@@ -592,6 +598,7 @@
       "optional": true,
       "description": "Random search over rigid transforms before starting optimization",
       "type": {
+        "id": "search",
         "command-line": "[N] [ROT] [TRAN]",
         "inputs": [
           {
@@ -655,6 +662,7 @@
       "optional": true,
       "description": "Moving/output image pair for reslicing",
       "type": {
+        "id": "reslice_moving_image",
         "command-line": "[MOVING] [OUTPUT]",
         "inputs": [
           {
@@ -690,6 +698,7 @@
       "optional": true,
       "description": "Fixed/output surface pair (vertices are warped from fixed space to moving)",
       "type": {
+        "id": "reslice_surface",
         "command-line": "[INMESH] [OUTMESH]",
         "inputs": [
           {
@@ -782,6 +791,7 @@
       "optional": true,
       "description": "Compute Jacobian determinant for a simplex mesh in fixed space",
       "type": {
+        "id": "reslice_simplex_jacobian",
         "command-line": "[INMESH] [OUTMESH]",
         "inputs": [
           {
