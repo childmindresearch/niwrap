@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_REGISTRATION_SYN_SH_METADATA = Metadata(
-    id="5b04a385a189dd578b48a9b81f177c398fc3e1fd.boutiques",
+    id="2869670dcfe1ada190c1850a93d98fc5801188de.boutiques",
     name="ants_registration_syn_sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -20,8 +20,12 @@ class AntsRegistrationSynShOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_transform: OutputPathType
-    """The output transform files."""
+    affine_transform: OutputPathType
+    """Affine transformation matrix for registration"""
+    inverse_warp: OutputPathType
+    """Inverse warp field for registration"""
+    forward_warp: OutputPathType
+    """Forward warp field for registration"""
 
 
 def ants_registration_syn_sh(
@@ -187,7 +191,9 @@ def ants_registration_syn_sh(
         ])
     ret = AntsRegistrationSynShOutputs(
         root=execution.output_file("."),
-        output_transform=execution.output_file(output_prefix + "*"),
+        affine_transform=execution.output_file(output_prefix + "0GenericAffine.mat"),
+        inverse_warp=execution.output_file(output_prefix + "1InverseWarp.nii.gz"),
+        forward_warp=execution.output_file(output_prefix + "1Warp.nii.gz"),
     )
     execution.run(cargs)
     return ret
