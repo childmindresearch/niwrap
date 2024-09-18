@@ -105,7 +105,7 @@ def patch_section(file, replacement, token):
     TOKEN_START = f'<!-- START_{token} -->'
     TOKEN_END = f'<!-- END_{token} -->'
 
-    with open(file, 'r') as f:
+    with open(file, 'r', encoding="utf-8") as f:
         readme = f.read()
         start = readme.find(TOKEN_START) + len(TOKEN_START)
         end = readme.find(TOKEN_END)
