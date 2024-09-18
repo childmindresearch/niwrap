@@ -248,13 +248,7 @@
             "id": "metric_type",
             "name": "Metric Type",
             "type": "String",
-            "value-choices": [
-              "SSD",
-              "MI",
-              "NMI",
-              "NCC",
-              "MAHAL"
-            ],
+            "value-choices": ["SSD", "MI", "NMI", "NCC", "MAHAL"],
             "description": "Type of metric to use",
             "value-key": "[METRIC_TYPE]"
           },
