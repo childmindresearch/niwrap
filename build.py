@@ -20,7 +20,7 @@ def iter_packages():
 
 def iter_descriptors(package):
     for filename_descriptor in sorted((PATH_DESCRIPTORS / package["id"]).glob("**/*.json")):
-        with open(filename_descriptor) as filehandle_descriptor:
+        with open(filename_descriptor, "r", encoding="utf-8") as filehandle_descriptor:
             yield filename_descriptor, json.load(filehandle_descriptor)
 
 
@@ -71,7 +71,7 @@ def update_styxdefs_version():
     import re
     file_path = PATH_OUTPUT / "../../pyproject.toml"
     new_version = styxdefs_compat()
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
     pattern = r'(styxdefs\s*=\s*")[^"]+"'
     updated_content = re.sub(pattern, f'\\1{new_version}"', content)
