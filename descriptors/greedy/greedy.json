@@ -33,13 +33,15 @@
             "id": "fixed",
             "name": "Fixed Image",
             "type": "File",
-            "description": "The fixed image"
+            "description": "The fixed image",
+            "value-key": "[FIXED]"
           },
           {
             "id": "moving",
             "name": "Moving Image",
             "type": "File",
-            "description": "The moving image"
+            "description": "The moving image",
+            "value-key": "[MOVING]"
           }
         ]
       }
@@ -109,13 +111,15 @@
             "id": "inwarp",
             "name": "Input Warp",
             "type": "File",
-            "description": "The input warp to be inverted"
+            "description": "The input warp to be inverted",
+            "value-key": "[INWARP]"
           },
           {
             "id": "outwarp",
             "name": "Output Warp",
             "type": "String",
-            "description": "The filename for the inverted warp output"
+            "description": "The filename for the inverted warp output",
+            "value-key": "[OUTWARP]"
           }
         ],
         "output-files": [
@@ -142,20 +146,23 @@
             "id": "inwarp",
             "name": "Input Warp",
             "type": "File",
-            "description": "The input warp"
+            "description": "The input warp",
+            "value-key": "[INWARP]"
           },
           {
             "id": "outwarp",
             "name": "Output Warp",
             "type": "String",
-            "description": "The filename for the root warp output"
+            "description": "The filename for the root warp output",
+            "value-key": "[OUTWARP]"
           },
           {
             "id": "n",
             "name": "N",
             "type": "Number",
             "integer": true,
-            "description": "The value of N for 2^N-th root"
+            "description": "The value of N for 2^N-th root",
+            "value-key": "[N]"
           }
         ],
         "output-files": [
@@ -182,13 +189,15 @@
             "id": "inwarp",
             "name": "Input Warp",
             "type": "File",
-            "description": "The input warp"
+            "description": "The input warp",
+            "value-key": "[INWARP]"
           },
           {
             "id": "outjac",
             "name": "Output Jacobian",
             "type": "String",
-            "description": "The filename for the Jacobian determinant output"
+            "description": "The filename for the Jacobian determinant output",
+            "value-key": "[OUTJAC]"
           }
         ],
         "output-files": [
@@ -249,14 +258,16 @@
               "NCC",
               "MAHAL"
             ],
-            "description": "Type of metric to use"
+            "description": "Type of metric to use",
+            "value-key": "[METRIC_TYPE]"
           },
           {
             "id": "metric_param",
             "name": "Metric Parameter",
             "type": "Number",
             "optional": true,
-            "description": "Parameter for the metric (e.g., radius for NCC)"
+            "description": "Parameter for the metric (e.g., radius for NCC)",
+            "value-key": "[METRIC_PARAM]"
           }
         ]
       }
@@ -488,13 +499,15 @@
             "id": "mesh",
             "name": "Mesh",
             "type": "File",
-            "description": "The tetrahedral mesh file"
+            "description": "The tetrahedral mesh file",
+            "value-key": "[MESH]"
           },
           {
             "id": "weight",
             "name": "Weight",
             "type": "Number",
-            "description": "The weight of the penalty term"
+            "description": "The weight of the penalty term",
+            "value-key": "[WEIGHT]"
           }
         ]
       }
@@ -606,19 +619,22 @@
             "name": "Number of Iterations",
             "type": "Number",
             "integer": true,
-            "description": "Number of iterations for random search"
+            "description": "Number of iterations for random search",
+            "value-key": "[N]"
           },
           {
             "id": "rot",
             "name": "Rotation",
             "type": "String",
-            "description": "Standard deviation of random rotation angle (degrees) or 'any' or 'flip'"
+            "description": "Standard deviation of random rotation angle (degrees) or 'any' or 'flip'",
+            "value-key": "[ROT]"
           },
           {
             "id": "tran",
             "name": "Translation",
             "type": "Number",
-            "description": "Standard deviation of random offset in physical units"
+            "description": "Standard deviation of random offset in physical units",
+            "value-key": "[TRAN]"
           }
         ]
       }
@@ -668,13 +684,15 @@
             "id": "moving",
             "name": "Moving Image",
             "type": "File",
-            "description": "The moving image to be resliced"
+            "description": "The moving image to be resliced",
+            "value-key": "[MOVING]"
           },
           {
             "id": "output",
             "name": "Output Image",
             "type": "String",
-            "description": "The filename for the resliced output image"
+            "description": "The filename for the resliced output image",
+            "value-key": "[OUTPUT]"
           }
         ],
         "output-files": [
@@ -701,13 +719,15 @@
             "id": "inmesh",
             "name": "Input Mesh",
             "type": "File",
-            "description": "The input mesh file"
+            "description": "The input mesh file",
+            "value-key": "[INMESH]"
           },
           {
             "id": "outmesh",
             "name": "Output Mesh",
             "type": "String",
-            "description": "The filename for the output warped mesh"
+            "description": "The filename for the output warped mesh",
+            "value-key": "[OUTMESH]"
           }
         ],
         "output-files": [
@@ -795,13 +815,15 @@
             "id": "inmesh",
             "name": "Input Mesh",
             "type": "File",
-            "description": "The input simplex mesh file"
+            "description": "The input simplex mesh file",
+            "value-key": "[INMESH]"
           },
           {
             "id": "outmesh",
             "name": "Output Mesh",
             "type": "String",
-            "description": "The filename for the output mesh with Jacobian determinants"
+            "description": "The filename for the output mesh with Jacobian determinants",
+            "value-key": "[OUTMESH]"
           }
         ],
         "output-files": [
