@@ -473,6 +473,132 @@
       "description": "Output file containing the corrected images",
       "path-template": "[OUT].nii.gz",
       "optional": false
+    },
+    {
+      "id": "eddy_parameters",
+      "name": "eddy_parameters",
+      "description": "Text file containing subject movement and EC-induced field parameters for each volume",
+      "path-template": "[OUT].eddy_parameters",
+      "optional": false
+    },
+    {
+      "id": "rotated_bvecs",
+      "name": "eddy_rotated_bvecs",
+      "description": "File containing the reoriented b-vectors for diffusion analysis",
+      "path-template": "[OUT].eddy_rotated_bvecs",
+      "optional": false
+    },
+    {
+      "id": "rotated_bvecs_slr",
+      "name": "eddy_rotated_bvecs_for_SLR",
+      "description": "File with rotated b-vectors for least-squares reconstruction",
+      "path-template": "[OUT].eddy_rotated_bvecs_for_SLR",
+      "optional": true
+    },
+    {
+      "id": "command_txt",
+      "name": "eddy_command_txt",
+      "description": "Text file documenting the command line used to run eddy",
+      "path-template": "[OUT].eddy_command_txt",
+      "optional": false
+    },
+    {
+      "id": "input_parameters",
+      "name": "eddy_values_of_all_input_parameters",
+      "description": "List of all parameters used by eddy",
+      "path-template": "[OUT].eddy_values_of_all_input_parameters",
+      "optional": false
+    },
+    {
+      "id": "movement_rms",
+      "name": "eddy_movement_rms",
+      "description": "Summary of total movement for each volume",
+      "path-template": "[OUT].eddy_movement_rms",
+      "optional": false
+    },
+    {
+      "id": "restricted_movement_rms",
+      "name": "eddy_restricted_movement_rms",
+      "description": "Estimates movement RMS while disregarding translation in the PE direction",
+      "path-template": "[OUT].eddy_restricted_movement_rms",
+      "optional": false
+    },
+    {
+      "id": "shell_alignment_parameters",
+      "name": "eddy_post_eddy_shell_alignment_parameters",
+      "description": "Text file with rigid body movement parameters between different shells",
+      "path-template": "[OUT].eddy_post_eddy_shell_alignment_parameters",
+      "optional": false
+    },
+    {
+      "id": "shell_PE_translation_parameters",
+      "name": "eddy_post_eddy_shell_PE_translation_parameters",
+      "description": "Translation parameters along the PE direction between different shells",
+      "path-template": "[OUT].eddy_post_eddy_shell_PE_translation_parameters",
+      "optional": false
+    },
+    {
+      "id": "outlier_report",
+      "name": "eddy_outlier_report",
+      "description": "Report of detected outlier slices",
+      "path-template": "[OUT].eddy_outlier_report",
+      "optional": false
+    },
+    {
+      "id": "outlier_map",
+      "name": "eddy_outlier_map",
+      "description": "Numeric matrix indicating outlier slices",
+      "path-template": "[OUT].eddy_outlier_map",
+      "optional": false
+    },
+    {
+      "id": "outlier_n_stdev_map",
+      "name": "eddy_outlier_n_stdev_map",
+      "description": "Map of the number of standard deviations for outliers",
+      "path-template": "[OUT].eddy_outlier_n_stdev_map",
+      "optional": false
+    },
+    {
+      "id": "outlier_n_sqr_stdev_map",
+      "name": "eddy_outlier_n_sqr_stdev_map",
+      "description": "Map of the number of squared standard deviations for outliers",
+      "path-template": "[OUT].eddy_outlier_n_sqr_stdev_map",
+      "optional": false
+    },
+    {
+      "id": "outlier_free_data",
+      "name": "eddy_outlier_free_data",
+      "description": "Original data with outlier slices replaced, only if --repol was set",
+      "path-template": "[OUT].eddy_outlier_free_data.nii.gz",
+      "optional": true
+    },
+    {
+      "id": "movement_over_time",
+      "name": "eddy_movement_over_time",
+      "description": "Text file with movement parameters over time, only if --mporder > 0",
+      "path-template": "[OUT].eddy_movement_over_time",
+      "optional": true
+    },
+    {
+      "id": "mbs_first_order_fields",
+      "name": "eddy_mbs_first_order_fields",
+      "description": "4D image file of partial derivative fields, only if --estimate_move_by_susceptibility is set",
+      "path-template": "[OUT].eddy_mbs_first_order_fields.nii.gz",
+      "optional": true
+    },
+    {
+      "id": "cnr_maps",
+      "name": "eddy_cnr_maps",
+      "description": "4D image file with SNR and CNR maps, only if --cnr_maps is set",
+      "path-template": "[OUT].eddy_cnr_maps",
+      "optional": true
+    },
+    {
+      "id": "residuals",
+      "name": "eddy_residuals",
+      "description": "4D image file of residuals, only if --residuals is set",
+      "path-template": "[OUT].eddy_residuals",
+      "optional": true
     }
   ]
 }
