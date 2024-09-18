@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWIBIASCORRECT_METADATA = Metadata(
-    id="a41dd6564a5ed99b11770e8281efcabfda76fbca.boutiques",
+    id="6dc96b65d8c0c8005c3fe4ec42e19966b7db95f7.boutiques",
     name="dwibiascorrect",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -31,7 +31,6 @@ def dwibiascorrect(
     input_image: InputPathType,
     output_image: str,
     grad: InputPathType | None = None,
-    fslgrad_bvecs: list[InputPathType] | None = None,
     mask_image: InputPathType | None = None,
     bias_image: InputPathType | None = None,
     nocleanup: bool = False,
@@ -64,7 +63,6 @@ def dwibiascorrect(
         input_image: The input image series to be corrected.
         output_image: The output corrected image series.
         grad: Provide the diffusion gradient table in MRtrix format.
-        fslgrad_bvecs: Provide the diffusion gradient table in FSL bvecs format.
         mask_image: Manually provide a mask image for bias field estimation.
         bias_image: Output the estimated bias field.
         nocleanup: Do not delete intermediate files during script execution,\
@@ -92,8 +90,6 @@ def dwibiascorrect(
     Returns:
         NamedTuple of outputs (described in `DwibiascorrectOutputs`).
     """
-    if fslgrad_bvecs is not None and (len(fslgrad_bvecs) != 2): 
-        raise ValueError(f"Length of 'fslgrad_bvecs' must be 2 but was {len(fslgrad_bvecs)}")
     if continue_scratch_dir is not None and (len(continue_scratch_dir) != 2): 
         raise ValueError(f"Length of 'continue_scratch_dir' must be 2 but was {len(continue_scratch_dir)}")
     runner = runner or get_global_runner()
@@ -108,11 +104,7 @@ def dwibiascorrect(
             "-grad",
             execution.input_file(grad)
         ])
-    if fslgrad_bvecs is not None:
-        cargs.extend([
-            "-fslgrad",
-            *[execution.input_file(f) for f in fslgrad_bvecs]
-        ])
+    cargs.append("[FSLGRAD_BVECS]")
     if mask_image is not None:
         cargs.extend([
             "-mask",
