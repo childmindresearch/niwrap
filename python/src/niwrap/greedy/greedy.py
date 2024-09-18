@@ -482,7 +482,7 @@ class GreedyOutputs(typing.NamedTuple):
     """Resliced output image"""
     invert: GreedyInvertOutputs | None
     """Outputs from `GreedyInvert`."""
-    root: GreedyRootOutputs | None
+    root_: GreedyRootOutputs | None
     """Outputs from `GreedyRoot`."""
     jacobian: GreedyJacobianOutputs | None
     """Outputs from `GreedyJacobian`."""
@@ -990,7 +990,7 @@ def greedy_(
         output_file=execution.output_file(output),
         reslice_output_file=execution.output_file("[RESLICE_OUTPUT_IMAGE]"),
         invert=invert.outputs(execution) if invert else None,
-        root=root.outputs(execution) if root else None,
+        root_=root.outputs(execution) if root else None,
         jacobian=jacobian.outputs(execution) if jacobian else None,
         reslice_moving_image=reslice_moving_image.outputs(execution) if reslice_moving_image else None,
         reslice_surface=reslice_surface.outputs(execution) if reslice_surface else None,
