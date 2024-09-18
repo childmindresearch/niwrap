@@ -94,7 +94,34 @@ function make_descriptor(obj) {
             boutiques_input.type = 'String';
             return true;
         } else if (argument.type == 'various') {
-            boutiques_input.type = 'String';
+            // can be anything but lets do "String | File" so files will be mounted if it is one.  
+            boutiques_input.type = [{
+                "id": "VariousString",
+                "command-line": "[OBJ]",
+                "inputs": [
+                    {
+                        "id": "obj",
+                        "name": "Object",
+                        "value-key": "[OBJ]",
+                        "description": "String object.",
+                        "type": "String",
+                        "optional": false
+                    }
+                ]
+            },{
+                "id": "VariousFile",
+                "command-line": "[OBJ]",
+                "inputs": [
+                    {
+                        "id": "obj",
+                        "name": "Object",
+                        "value-key": "[OBJ]",
+                        "description": "File object.",
+                        "type": "File",
+                        "optional": false
+                    }
+                ]
+            }];
             return false;
         } else if (argument.type == 'undefined') {
             // E.g. dcmedit tag elements have this type - not sure what it is
@@ -257,8 +284,8 @@ function make_descriptor(obj) {
 }
 
 // read all json files in "json_docs\reference\commands\*.json"
-const jsonPath = "json_docs/reference/commands";
-const outputPath = "C:/Users/floru/Projects/cmi/nopype/descriptors/mrtrix";
+const jsonPath = "extraction/mrtrix/json_docs/reference/commands";
+const outputPath = "descriptors/mrtrix";
 
 // create the output directory if it does not exist
 if (!fs.existsSync(outputPath)) {

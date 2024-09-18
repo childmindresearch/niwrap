@@ -287,7 +287,36 @@
       "command-line-flag": "-strides",
       "value-key": "[STRIDE_OPTIONS_STRIDES]",
       "description": "specify the strides of the output data in memory; either as a comma-separated list of (signed) integers, or as a template image from which the strides shall be extracted and used. The actual strides produced will depend on whether the output image format can support it.",
-      "type": "String",
+      "type": [
+        {
+          "id": "VariousString",
+          "command-line": "[OBJ]",
+          "inputs": [
+            {
+              "id": "obj",
+              "name": "Object",
+              "value-key": "[OBJ]",
+              "description": "String object.",
+              "type": "String",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "id": "VariousFile",
+          "command-line": "[OBJ]",
+          "inputs": [
+            {
+              "id": "obj",
+              "name": "Object",
+              "value-key": "[OBJ]",
+              "description": "File object.",
+              "type": "File",
+              "optional": false
+            }
+          ]
+        }
+      ],
       "optional": true
     },
     {

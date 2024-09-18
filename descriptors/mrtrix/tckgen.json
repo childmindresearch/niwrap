@@ -398,7 +398,36 @@
             "name": "spec",
             "value-key": "[SPEC]",
             "description": "specify an inclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines must traverse ALL inclusion regions to be accepted.",
-            "type": "String",
+            "type": [
+              {
+                "id": "VariousString",
+                "command-line": "[OBJ]",
+                "inputs": [
+                  {
+                    "id": "obj",
+                    "name": "Object",
+                    "value-key": "[OBJ]",
+                    "description": "String object.",
+                    "type": "String",
+                    "optional": false
+                  }
+                ]
+              },
+              {
+                "id": "VariousFile",
+                "command-line": "[OBJ]",
+                "inputs": [
+                  {
+                    "id": "obj",
+                    "name": "Object",
+                    "value-key": "[OBJ]",
+                    "description": "File object.",
+                    "type": "File",
+                    "optional": false
+                  }
+                ]
+              }
+            ],
             "optional": false
           }
         ],
@@ -448,7 +477,36 @@
             "name": "spec",
             "value-key": "[SPEC]",
             "description": "specify an exclusion region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). Streamlines that enter ANY exclude region will be discarded.",
-            "type": "String",
+            "type": [
+              {
+                "id": "VariousString",
+                "command-line": "[OBJ]",
+                "inputs": [
+                  {
+                    "id": "obj",
+                    "name": "Object",
+                    "value-key": "[OBJ]",
+                    "description": "String object.",
+                    "type": "String",
+                    "optional": false
+                  }
+                ]
+              },
+              {
+                "id": "VariousFile",
+                "command-line": "[OBJ]",
+                "inputs": [
+                  {
+                    "id": "obj",
+                    "name": "Object",
+                    "value-key": "[OBJ]",
+                    "description": "File object.",
+                    "type": "File",
+                    "optional": false
+                  }
+                ]
+              }
+            ],
             "optional": false
           }
         ],
@@ -473,7 +531,36 @@
             "name": "spec",
             "value-key": "[SPEC]",
             "description": "specify a masking region of interest, as either a binary mask image, or as a sphere using 4 comma-separared values (x,y,z,radius). If defined, streamlines exiting the mask will be truncated.",
-            "type": "String",
+            "type": [
+              {
+                "id": "VariousString",
+                "command-line": "[OBJ]",
+                "inputs": [
+                  {
+                    "id": "obj",
+                    "name": "Object",
+                    "value-key": "[OBJ]",
+                    "description": "String object.",
+                    "type": "String",
+                    "optional": false
+                  }
+                ]
+              },
+              {
+                "id": "VariousFile",
+                "command-line": "[OBJ]",
+                "inputs": [
+                  {
+                    "id": "obj",
+                    "name": "Object",
+                    "value-key": "[OBJ]",
+                    "description": "File object.",
+                    "type": "File",
+                    "optional": false
+                  }
+                ]
+              }
+            ],
             "optional": false
           }
         ],
