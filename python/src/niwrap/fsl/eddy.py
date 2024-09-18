@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_METADATA = Metadata(
-    id="f2dd23d70ac60a5fd678ef452b8ec840c1f43303.boutiques",
+    id="4dc02e8989829e6c92552d32263456bd7c5b24d7.boutiques",
     name="eddy",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -22,6 +22,45 @@ class EddyOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out: OutputPathType
     """Output file containing the corrected images"""
+    eddy_parameters: OutputPathType
+    """Text file containing subject movement and EC-induced field parameters for
+    each volume"""
+    rotated_bvecs: OutputPathType
+    """File containing the reoriented b-vectors for diffusion analysis"""
+    rotated_bvecs_slr: OutputPathType
+    """File with rotated b-vectors for least-squares reconstruction"""
+    command_txt: OutputPathType
+    """Text file documenting the command line used to run eddy"""
+    input_parameters: OutputPathType
+    """List of all parameters used by eddy"""
+    movement_rms: OutputPathType
+    """Summary of total movement for each volume"""
+    restricted_movement_rms: OutputPathType
+    """Estimates movement RMS while disregarding translation in the PE
+    direction"""
+    shell_alignment_parameters: OutputPathType
+    """Text file with rigid body movement parameters between different shells"""
+    shell_pe_translation_parameters: OutputPathType
+    """Translation parameters along the PE direction between different shells"""
+    outlier_report: OutputPathType
+    """Report of detected outlier slices"""
+    outlier_map: OutputPathType
+    """Numeric matrix indicating outlier slices"""
+    outlier_n_stdev_map: OutputPathType
+    """Map of the number of standard deviations for outliers"""
+    outlier_n_sqr_stdev_map: OutputPathType
+    """Map of the number of squared standard deviations for outliers"""
+    outlier_free_data: OutputPathType
+    """Original data with outlier slices replaced, only if --repol was set"""
+    movement_over_time: OutputPathType
+    """Text file with movement parameters over time, only if --mporder > 0"""
+    mbs_first_order_fields: OutputPathType
+    """4D image file of partial derivative fields, only if
+    --estimate_move_by_susceptibility is set"""
+    cnr_maps: OutputPathType
+    """4D image file with SNR and CNR maps, only if --cnr_maps is set"""
+    residuals: OutputPathType
+    """4D image file of residuals, only if --residuals is set"""
 
 
 def eddy(
@@ -236,6 +275,24 @@ def eddy(
     ret = EddyOutputs(
         root=execution.output_file("."),
         out=execution.output_file(out + ".nii.gz"),
+        eddy_parameters=execution.output_file(out + ".eddy_parameters"),
+        rotated_bvecs=execution.output_file(out + ".eddy_rotated_bvecs"),
+        rotated_bvecs_slr=execution.output_file(out + ".eddy_rotated_bvecs_for_SLR"),
+        command_txt=execution.output_file(out + ".eddy_command_txt"),
+        input_parameters=execution.output_file(out + ".eddy_values_of_all_input_parameters"),
+        movement_rms=execution.output_file(out + ".eddy_movement_rms"),
+        restricted_movement_rms=execution.output_file(out + ".eddy_restricted_movement_rms"),
+        shell_alignment_parameters=execution.output_file(out + ".eddy_post_eddy_shell_alignment_parameters"),
+        shell_pe_translation_parameters=execution.output_file(out + ".eddy_post_eddy_shell_PE_translation_parameters"),
+        outlier_report=execution.output_file(out + ".eddy_outlier_report"),
+        outlier_map=execution.output_file(out + ".eddy_outlier_map"),
+        outlier_n_stdev_map=execution.output_file(out + ".eddy_outlier_n_stdev_map"),
+        outlier_n_sqr_stdev_map=execution.output_file(out + ".eddy_outlier_n_sqr_stdev_map"),
+        outlier_free_data=execution.output_file(out + ".eddy_outlier_free_data.nii.gz"),
+        movement_over_time=execution.output_file(out + ".eddy_movement_over_time"),
+        mbs_first_order_fields=execution.output_file(out + ".eddy_mbs_first_order_fields.nii.gz"),
+        cnr_maps=execution.output_file(out + ".eddy_cnr_maps"),
+        residuals=execution.output_file(out + ".eddy_residuals"),
     )
     execution.run(cargs)
     return ret
