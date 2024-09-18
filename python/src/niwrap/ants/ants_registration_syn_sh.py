@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_REGISTRATION_SYN_SH_METADATA = Metadata(
-    id="dab67389ce8a101714c61c8bbd8770409f883d8e.boutiques",
+    id="197c09937f69508eac9d817a879d611013393972.boutiques",
     name="ants_registration_syn_sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -135,7 +135,10 @@ def ants_registration_syn_sh(
             str(threads)
         ])
     if initial_transform is not None:
-        cargs.append("[" + "-i," + " ".join(initial_transform) + "]")
+        cargs.extend([
+            "-i",
+            "[" + ",".join(initial_transform) + "]"
+        ])
     if transform_type is not None:
         cargs.extend([
             "-t",
