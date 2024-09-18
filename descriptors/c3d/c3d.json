@@ -1665,6 +1665,14 @@
               "optional": false,
               "description": "-o: Output (write) last image on the stack to image file    \n\nSyntax: `-o filename`\n\nWrite image, overriding an existing image. Without the **-o** option, **convert3d** will write an image only if it does not exist. The **-o** options protects input images from being accidentally deleted. Here we copy an image, changing format:\n\n    c3d image1.mha -o image2.nii\n\nThe **-o** option can also be used to save an intermediate image in the stack: \n\n    c3d image1.img -threshold 1 10 1 0 -o thresh.img -resample 50% -o final.img"
             }
+          ],
+          "output-files": [
+            {
+              "id": "output",
+              "name": "Output",
+              "description": "The output",
+              "path-template": "[x]"
+            }
           ]
         },
         {
