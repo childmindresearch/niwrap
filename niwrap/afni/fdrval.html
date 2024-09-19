@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">FDRVAL_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d7b752bd6acda76625f2e0880f59f3c2a7a453be.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;7e0ff4e3a6270239c390c70809a6691b7b206058.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fdrval&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -102,44 +102,65 @@
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="n">dset</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="n">sub</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="n">val_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FdrvalOutputs</span><span class="p">:</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">    Computes q-values from FDR curve data stored in dataset headers.</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    </span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    Author: AFNI Team</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    </span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/fdrval.html</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    Args:</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        dset: Input dataset.</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        sub: Sub-brick number.</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        val_list: List of threshold values.</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">    Returns:</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        NamedTuple of outputs (described in `FdrvalOutputs`).</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FDRVAL_METADATA</span><span class="p">)</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fdrval&quot;</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dset</span><span class="p">))</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sub</span><span class="p">))</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">val_list</span><span class="p">))</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FdrvalOutputs</span><span class="p">(</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;stdout.txt&quot;</span><span class="p">),</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="s2">&quot;FDRVAL_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="s2">&quot;FdrvalOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="s2">&quot;fdrval&quot;</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a><span class="p">]</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">pval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="n">ponly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="n">qonly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="n">qinput</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="n">inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FdrvalOutputs</span><span class="p">:</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Computes q-values from FDR curve data stored in dataset headers.</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/fdrval.html</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    </span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">    Args:</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        dset: Input dataset.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        sub: Sub-brick number.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        val_list: List of threshold values.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        pval: Output the p-value (on the same line, after q).</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        ponly: Don&#39;t output q-values, just p-values.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        qonly: Don&#39;t output p-values, just q-values.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        qinput: The &#39;val&#39; inputs are taken to be q-values and then the outputs\</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">            are the corresponding statistical thresholds.</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        inverse: Inverse of the usual operation. &#39;Val&#39; inputs must be between 0\</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">            and 1 (exclusive). Cannot be used with &#39;-ponly&#39; or &#39;-pval&#39;.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">    Returns:</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">        NamedTuple of outputs (described in `FdrvalOutputs`).</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FDRVAL_METADATA</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fdrval&quot;</span><span class="p">)</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dset</span><span class="p">))</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sub</span><span class="p">))</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">val_list</span><span class="p">))</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="k">if</span> <span class="n">pval</span><span class="p">:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-pval&quot;</span><span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">ponly</span><span class="p">:</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ponly&quot;</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">qonly</span><span class="p">:</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-qonly&quot;</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">qinput</span><span class="p">:</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-qinput&quot;</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="k">if</span> <span class="n">inverse</span><span class="p">:</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-inverse&quot;</span><span class="p">)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FdrvalOutputs</span><span class="p">(</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;stdout.txt&quot;</span><span class="p">),</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="p">)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="s2">&quot;FDRVAL_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="s2">&quot;FdrvalOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>    <span class="s2">&quot;fdrval&quot;</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -148,7 +169,7 @@
                     <div class="attr variable">
             <span class="name">FDRVAL_METADATA</span>        =
 <input id="FDRVAL_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FDRVAL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d7b752bd6acda76625f2e0880f59f3c2a7a453be.boutiques&#39;, name=&#39;fdrval&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FDRVAL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;7e0ff4e3a6270239c390c70809a6691b7b206058.boutiques&#39;, name=&#39;fdrval&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -239,7 +260,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">fdrval</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sub</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">val_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FdrvalOutputs">FdrvalOutputs</a></span>:</span></span>
+        <span class="name">fdrval</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">dset</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">sub</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">val_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>,</span><span class="param">	<span class="n">pval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">ponly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">qonly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">qinput</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FdrvalOutputs">FdrvalOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="fdrval-view-source"><span>View Source</span></label>
 
@@ -249,37 +270,58 @@
 </span><span id="fdrval-29"><a href="#fdrval-29"><span class="linenos">29</span></a>    <span class="n">dset</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="fdrval-30"><a href="#fdrval-30"><span class="linenos">30</span></a>    <span class="n">sub</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="fdrval-31"><a href="#fdrval-31"><span class="linenos">31</span></a>    <span class="n">val_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
-</span><span id="fdrval-32"><a href="#fdrval-32"><span class="linenos">32</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fdrval-33"><a href="#fdrval-33"><span class="linenos">33</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FdrvalOutputs</span><span class="p">:</span>
-</span><span id="fdrval-34"><a href="#fdrval-34"><span class="linenos">34</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="fdrval-35"><a href="#fdrval-35"><span class="linenos">35</span></a><span class="sd">    Computes q-values from FDR curve data stored in dataset headers.</span>
-</span><span id="fdrval-36"><a href="#fdrval-36"><span class="linenos">36</span></a><span class="sd">    </span>
-</span><span id="fdrval-37"><a href="#fdrval-37"><span class="linenos">37</span></a><span class="sd">    Author: AFNI Team</span>
-</span><span id="fdrval-38"><a href="#fdrval-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="fdrval-39"><a href="#fdrval-39"><span class="linenos">39</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/fdrval.html</span>
-</span><span id="fdrval-40"><a href="#fdrval-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="fdrval-41"><a href="#fdrval-41"><span class="linenos">41</span></a><span class="sd">    Args:</span>
-</span><span id="fdrval-42"><a href="#fdrval-42"><span class="linenos">42</span></a><span class="sd">        dset: Input dataset.</span>
-</span><span id="fdrval-43"><a href="#fdrval-43"><span class="linenos">43</span></a><span class="sd">        sub: Sub-brick number.</span>
-</span><span id="fdrval-44"><a href="#fdrval-44"><span class="linenos">44</span></a><span class="sd">        val_list: List of threshold values.</span>
-</span><span id="fdrval-45"><a href="#fdrval-45"><span class="linenos">45</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fdrval-46"><a href="#fdrval-46"><span class="linenos">46</span></a><span class="sd">    Returns:</span>
-</span><span id="fdrval-47"><a href="#fdrval-47"><span class="linenos">47</span></a><span class="sd">        NamedTuple of outputs (described in `FdrvalOutputs`).</span>
-</span><span id="fdrval-48"><a href="#fdrval-48"><span class="linenos">48</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fdrval-49"><a href="#fdrval-49"><span class="linenos">49</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fdrval-50"><a href="#fdrval-50"><span class="linenos">50</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FDRVAL_METADATA</span><span class="p">)</span>
-</span><span id="fdrval-51"><a href="#fdrval-51"><span class="linenos">51</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fdrval-52"><a href="#fdrval-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fdrval&quot;</span><span class="p">)</span>
-</span><span id="fdrval-53"><a href="#fdrval-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="fdrval-54"><a href="#fdrval-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dset</span><span class="p">))</span>
-</span><span id="fdrval-55"><a href="#fdrval-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sub</span><span class="p">))</span>
-</span><span id="fdrval-56"><a href="#fdrval-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">val_list</span><span class="p">))</span>
-</span><span id="fdrval-57"><a href="#fdrval-57"><span class="linenos">57</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FdrvalOutputs</span><span class="p">(</span>
-</span><span id="fdrval-58"><a href="#fdrval-58"><span class="linenos">58</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fdrval-59"><a href="#fdrval-59"><span class="linenos">59</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;stdout.txt&quot;</span><span class="p">),</span>
-</span><span id="fdrval-60"><a href="#fdrval-60"><span class="linenos">60</span></a>    <span class="p">)</span>
-</span><span id="fdrval-61"><a href="#fdrval-61"><span class="linenos">61</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fdrval-62"><a href="#fdrval-62"><span class="linenos">62</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fdrval-32"><a href="#fdrval-32"><span class="linenos">32</span></a>    <span class="n">pval</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fdrval-33"><a href="#fdrval-33"><span class="linenos">33</span></a>    <span class="n">ponly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fdrval-34"><a href="#fdrval-34"><span class="linenos">34</span></a>    <span class="n">qonly</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fdrval-35"><a href="#fdrval-35"><span class="linenos">35</span></a>    <span class="n">qinput</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fdrval-36"><a href="#fdrval-36"><span class="linenos">36</span></a>    <span class="n">inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="fdrval-37"><a href="#fdrval-37"><span class="linenos">37</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fdrval-38"><a href="#fdrval-38"><span class="linenos">38</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FdrvalOutputs</span><span class="p">:</span>
+</span><span id="fdrval-39"><a href="#fdrval-39"><span class="linenos">39</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="fdrval-40"><a href="#fdrval-40"><span class="linenos">40</span></a><span class="sd">    Computes q-values from FDR curve data stored in dataset headers.</span>
+</span><span id="fdrval-41"><a href="#fdrval-41"><span class="linenos">41</span></a><span class="sd">    </span>
+</span><span id="fdrval-42"><a href="#fdrval-42"><span class="linenos">42</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="fdrval-43"><a href="#fdrval-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="fdrval-44"><a href="#fdrval-44"><span class="linenos">44</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/fdrval.html</span>
+</span><span id="fdrval-45"><a href="#fdrval-45"><span class="linenos">45</span></a><span class="sd">    </span>
+</span><span id="fdrval-46"><a href="#fdrval-46"><span class="linenos">46</span></a><span class="sd">    Args:</span>
+</span><span id="fdrval-47"><a href="#fdrval-47"><span class="linenos">47</span></a><span class="sd">        dset: Input dataset.</span>
+</span><span id="fdrval-48"><a href="#fdrval-48"><span class="linenos">48</span></a><span class="sd">        sub: Sub-brick number.</span>
+</span><span id="fdrval-49"><a href="#fdrval-49"><span class="linenos">49</span></a><span class="sd">        val_list: List of threshold values.</span>
+</span><span id="fdrval-50"><a href="#fdrval-50"><span class="linenos">50</span></a><span class="sd">        pval: Output the p-value (on the same line, after q).</span>
+</span><span id="fdrval-51"><a href="#fdrval-51"><span class="linenos">51</span></a><span class="sd">        ponly: Don&#39;t output q-values, just p-values.</span>
+</span><span id="fdrval-52"><a href="#fdrval-52"><span class="linenos">52</span></a><span class="sd">        qonly: Don&#39;t output p-values, just q-values.</span>
+</span><span id="fdrval-53"><a href="#fdrval-53"><span class="linenos">53</span></a><span class="sd">        qinput: The &#39;val&#39; inputs are taken to be q-values and then the outputs\</span>
+</span><span id="fdrval-54"><a href="#fdrval-54"><span class="linenos">54</span></a><span class="sd">            are the corresponding statistical thresholds.</span>
+</span><span id="fdrval-55"><a href="#fdrval-55"><span class="linenos">55</span></a><span class="sd">        inverse: Inverse of the usual operation. &#39;Val&#39; inputs must be between 0\</span>
+</span><span id="fdrval-56"><a href="#fdrval-56"><span class="linenos">56</span></a><span class="sd">            and 1 (exclusive). Cannot be used with &#39;-ponly&#39; or &#39;-pval&#39;.</span>
+</span><span id="fdrval-57"><a href="#fdrval-57"><span class="linenos">57</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fdrval-58"><a href="#fdrval-58"><span class="linenos">58</span></a><span class="sd">    Returns:</span>
+</span><span id="fdrval-59"><a href="#fdrval-59"><span class="linenos">59</span></a><span class="sd">        NamedTuple of outputs (described in `FdrvalOutputs`).</span>
+</span><span id="fdrval-60"><a href="#fdrval-60"><span class="linenos">60</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fdrval-61"><a href="#fdrval-61"><span class="linenos">61</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fdrval-62"><a href="#fdrval-62"><span class="linenos">62</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FDRVAL_METADATA</span><span class="p">)</span>
+</span><span id="fdrval-63"><a href="#fdrval-63"><span class="linenos">63</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fdrval-64"><a href="#fdrval-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fdrval&quot;</span><span class="p">)</span>
+</span><span id="fdrval-65"><a href="#fdrval-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">dset</span><span class="p">))</span>
+</span><span id="fdrval-66"><a href="#fdrval-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sub</span><span class="p">))</span>
+</span><span id="fdrval-67"><a href="#fdrval-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">val_list</span><span class="p">))</span>
+</span><span id="fdrval-68"><a href="#fdrval-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">pval</span><span class="p">:</span>
+</span><span id="fdrval-69"><a href="#fdrval-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-pval&quot;</span><span class="p">)</span>
+</span><span id="fdrval-70"><a href="#fdrval-70"><span class="linenos">70</span></a>    <span class="k">if</span> <span class="n">ponly</span><span class="p">:</span>
+</span><span id="fdrval-71"><a href="#fdrval-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ponly&quot;</span><span class="p">)</span>
+</span><span id="fdrval-72"><a href="#fdrval-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">qonly</span><span class="p">:</span>
+</span><span id="fdrval-73"><a href="#fdrval-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-qonly&quot;</span><span class="p">)</span>
+</span><span id="fdrval-74"><a href="#fdrval-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">qinput</span><span class="p">:</span>
+</span><span id="fdrval-75"><a href="#fdrval-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-qinput&quot;</span><span class="p">)</span>
+</span><span id="fdrval-76"><a href="#fdrval-76"><span class="linenos">76</span></a>    <span class="k">if</span> <span class="n">inverse</span><span class="p">:</span>
+</span><span id="fdrval-77"><a href="#fdrval-77"><span class="linenos">77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-inverse&quot;</span><span class="p">)</span>
+</span><span id="fdrval-78"><a href="#fdrval-78"><span class="linenos">78</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FdrvalOutputs</span><span class="p">(</span>
+</span><span id="fdrval-79"><a href="#fdrval-79"><span class="linenos">79</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fdrval-80"><a href="#fdrval-80"><span class="linenos">80</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;stdout.txt&quot;</span><span class="p">),</span>
+</span><span id="fdrval-81"><a href="#fdrval-81"><span class="linenos">81</span></a>    <span class="p">)</span>
+</span><span id="fdrval-82"><a href="#fdrval-82"><span class="linenos">82</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fdrval-83"><a href="#fdrval-83"><span class="linenos">83</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -295,6 +337,11 @@
 <li><strong>dset:</strong>  Input dataset.</li>
 <li><strong>sub:</strong>  Sub-brick number.</li>
 <li><strong>val_list:</strong>  List of threshold values.</li>
+<li><strong>pval:</strong>  Output the p-value (on the same line, after q).</li>
+<li><strong>ponly:</strong>  Don't output q-values, just p-values.</li>
+<li><strong>qonly:</strong>  Don't output p-values, just q-values.</li>
+<li><strong>qinput:</strong>  The 'val' inputs are taken to be q-values and then the outputs            are the corresponding statistical thresholds.</li>
+<li><strong>inverse:</strong>  Inverse of the usual operation. 'Val' inputs must be between 0            and 1 (exclusive). Cannot be used with '-ponly' or '-pval'.</li>
 <li><strong>runner:</strong>  Command runner.</li>
 </ul>
 

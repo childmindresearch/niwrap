@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V_3D_ACOST_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a26f72fc3f30ed24d5404341c23d8a193b525fda.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1737f9d56187aa62310ebc3c2f7a7a8e89596299.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dAcost&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -107,53 +107,54 @@
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="n">infile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">basefile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAcostOutputs</span><span class="p">:</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    Allineate dataset to a base dataset.</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    </span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    Author: AFNI Team</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAcost.html</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    </span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    Args:</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        infile: Input dataset for allineation.</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        basefile: Base dataset for allineation.</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        outfile: Prefix for the output dataset.</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">    Returns:</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        NamedTuple of outputs (described in `V3dAcostOutputs`).</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_ACOST_METADATA</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dAllineate&quot;</span><span class="p">)</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">))</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-base&quot;</span><span class="p">)</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="s2">&quot;-base&quot;</span><span class="p">,</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">basefile</span><span class="p">)</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="p">])</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="n">all_cost</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAcostOutputs</span><span class="p">:</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    Allineate dataset to a base dataset.</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAcost.html</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        infile: Input dataset for allineation.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        basefile: Base dataset for allineation.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        outfile: Prefix for the output dataset.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        all_cost: Prints all alignment cost metrics.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">    Returns:</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        NamedTuple of outputs (described in `V3dAcostOutputs`).</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_ACOST_METADATA</span><span class="p">)</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dAllineate&quot;</span><span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">))</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="s2">&quot;-base&quot;</span><span class="p">,</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">basefile</span><span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="p">])</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="n">outfile</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="p">])</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OTHER_OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dAcostOutputs</span><span class="p">(</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="n">output_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">output_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="p">)</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">all_cost</span><span class="p">:</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-allcostX&quot;</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dAcostOutputs</span><span class="p">(</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">output_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">output_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="s2">&quot;V3dAcostOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="s2">&quot;V_3D_ACOST_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="s2">&quot;v_3d_acost&quot;</span><span class="p">,</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a><span class="p">]</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="s2">&quot;V3dAcostOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="s2">&quot;V_3D_ACOST_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="s2">&quot;v_3d_acost&quot;</span><span class="p">,</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -254,7 +255,7 @@
                     <div class="attr variable">
             <span class="name">V_3D_ACOST_METADATA</span>        =
 <input id="V_3D_ACOST_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V_3D_ACOST_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a26f72fc3f30ed24d5404341c23d8a193b525fda.boutiques&#39;, name=&#39;3dAcost&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V_3D_ACOST_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1737f9d56187aa62310ebc3c2f7a7a8e89596299.boutiques&#39;, name=&#39;3dAcost&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -268,7 +269,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">v_3d_acost</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">basefile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dAcostOutputs">V3dAcostOutputs</a></span>:</span></span>
+        <span class="name">v_3d_acost</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">infile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">basefile</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">all_cost</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#V3dAcostOutputs">V3dAcostOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="v_3d_acost-view-source"><span>View Source</span></label>
 
@@ -278,46 +279,47 @@
 </span><span id="v_3d_acost-31"><a href="#v_3d_acost-31"><span class="linenos">31</span></a>    <span class="n">infile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="v_3d_acost-32"><a href="#v_3d_acost-32"><span class="linenos">32</span></a>    <span class="n">basefile</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
 </span><span id="v_3d_acost-33"><a href="#v_3d_acost-33"><span class="linenos">33</span></a>    <span class="n">outfile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="v_3d_acost-34"><a href="#v_3d_acost-34"><span class="linenos">34</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v_3d_acost-35"><a href="#v_3d_acost-35"><span class="linenos">35</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAcostOutputs</span><span class="p">:</span>
-</span><span id="v_3d_acost-36"><a href="#v_3d_acost-36"><span class="linenos">36</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="v_3d_acost-37"><a href="#v_3d_acost-37"><span class="linenos">37</span></a><span class="sd">    Allineate dataset to a base dataset.</span>
-</span><span id="v_3d_acost-38"><a href="#v_3d_acost-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="v_3d_acost-39"><a href="#v_3d_acost-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Team</span>
-</span><span id="v_3d_acost-40"><a href="#v_3d_acost-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="v_3d_acost-41"><a href="#v_3d_acost-41"><span class="linenos">41</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAcost.html</span>
-</span><span id="v_3d_acost-42"><a href="#v_3d_acost-42"><span class="linenos">42</span></a><span class="sd">    </span>
-</span><span id="v_3d_acost-43"><a href="#v_3d_acost-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
-</span><span id="v_3d_acost-44"><a href="#v_3d_acost-44"><span class="linenos">44</span></a><span class="sd">        infile: Input dataset for allineation.</span>
-</span><span id="v_3d_acost-45"><a href="#v_3d_acost-45"><span class="linenos">45</span></a><span class="sd">        basefile: Base dataset for allineation.</span>
-</span><span id="v_3d_acost-46"><a href="#v_3d_acost-46"><span class="linenos">46</span></a><span class="sd">        outfile: Prefix for the output dataset.</span>
-</span><span id="v_3d_acost-47"><a href="#v_3d_acost-47"><span class="linenos">47</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v_3d_acost-48"><a href="#v_3d_acost-48"><span class="linenos">48</span></a><span class="sd">    Returns:</span>
-</span><span id="v_3d_acost-49"><a href="#v_3d_acost-49"><span class="linenos">49</span></a><span class="sd">        NamedTuple of outputs (described in `V3dAcostOutputs`).</span>
-</span><span id="v_3d_acost-50"><a href="#v_3d_acost-50"><span class="linenos">50</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v_3d_acost-51"><a href="#v_3d_acost-51"><span class="linenos">51</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v_3d_acost-52"><a href="#v_3d_acost-52"><span class="linenos">52</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_ACOST_METADATA</span><span class="p">)</span>
-</span><span id="v_3d_acost-53"><a href="#v_3d_acost-53"><span class="linenos">53</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="v_3d_acost-54"><a href="#v_3d_acost-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dAllineate&quot;</span><span class="p">)</span>
-</span><span id="v_3d_acost-55"><a href="#v_3d_acost-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">))</span>
-</span><span id="v_3d_acost-56"><a href="#v_3d_acost-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-base&quot;</span><span class="p">)</span>
-</span><span id="v_3d_acost-57"><a href="#v_3d_acost-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_acost-58"><a href="#v_3d_acost-58"><span class="linenos">58</span></a>        <span class="s2">&quot;-base&quot;</span><span class="p">,</span>
-</span><span id="v_3d_acost-59"><a href="#v_3d_acost-59"><span class="linenos">59</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">basefile</span><span class="p">)</span>
-</span><span id="v_3d_acost-60"><a href="#v_3d_acost-60"><span class="linenos">60</span></a>    <span class="p">])</span>
-</span><span id="v_3d_acost-61"><a href="#v_3d_acost-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
+</span><span id="v_3d_acost-34"><a href="#v_3d_acost-34"><span class="linenos">34</span></a>    <span class="n">all_cost</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="v_3d_acost-35"><a href="#v_3d_acost-35"><span class="linenos">35</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v_3d_acost-36"><a href="#v_3d_acost-36"><span class="linenos">36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dAcostOutputs</span><span class="p">:</span>
+</span><span id="v_3d_acost-37"><a href="#v_3d_acost-37"><span class="linenos">37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="v_3d_acost-38"><a href="#v_3d_acost-38"><span class="linenos">38</span></a><span class="sd">    Allineate dataset to a base dataset.</span>
+</span><span id="v_3d_acost-39"><a href="#v_3d_acost-39"><span class="linenos">39</span></a><span class="sd">    </span>
+</span><span id="v_3d_acost-40"><a href="#v_3d_acost-40"><span class="linenos">40</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="v_3d_acost-41"><a href="#v_3d_acost-41"><span class="linenos">41</span></a><span class="sd">    </span>
+</span><span id="v_3d_acost-42"><a href="#v_3d_acost-42"><span class="linenos">42</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAcost.html</span>
+</span><span id="v_3d_acost-43"><a href="#v_3d_acost-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="v_3d_acost-44"><a href="#v_3d_acost-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
+</span><span id="v_3d_acost-45"><a href="#v_3d_acost-45"><span class="linenos">45</span></a><span class="sd">        infile: Input dataset for allineation.</span>
+</span><span id="v_3d_acost-46"><a href="#v_3d_acost-46"><span class="linenos">46</span></a><span class="sd">        basefile: Base dataset for allineation.</span>
+</span><span id="v_3d_acost-47"><a href="#v_3d_acost-47"><span class="linenos">47</span></a><span class="sd">        outfile: Prefix for the output dataset.</span>
+</span><span id="v_3d_acost-48"><a href="#v_3d_acost-48"><span class="linenos">48</span></a><span class="sd">        all_cost: Prints all alignment cost metrics.</span>
+</span><span id="v_3d_acost-49"><a href="#v_3d_acost-49"><span class="linenos">49</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v_3d_acost-50"><a href="#v_3d_acost-50"><span class="linenos">50</span></a><span class="sd">    Returns:</span>
+</span><span id="v_3d_acost-51"><a href="#v_3d_acost-51"><span class="linenos">51</span></a><span class="sd">        NamedTuple of outputs (described in `V3dAcostOutputs`).</span>
+</span><span id="v_3d_acost-52"><a href="#v_3d_acost-52"><span class="linenos">52</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v_3d_acost-53"><a href="#v_3d_acost-53"><span class="linenos">53</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v_3d_acost-54"><a href="#v_3d_acost-54"><span class="linenos">54</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_ACOST_METADATA</span><span class="p">)</span>
+</span><span id="v_3d_acost-55"><a href="#v_3d_acost-55"><span class="linenos">55</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="v_3d_acost-56"><a href="#v_3d_acost-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dAllineate&quot;</span><span class="p">)</span>
+</span><span id="v_3d_acost-57"><a href="#v_3d_acost-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">))</span>
+</span><span id="v_3d_acost-58"><a href="#v_3d_acost-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_acost-59"><a href="#v_3d_acost-59"><span class="linenos">59</span></a>        <span class="s2">&quot;-base&quot;</span><span class="p">,</span>
+</span><span id="v_3d_acost-60"><a href="#v_3d_acost-60"><span class="linenos">60</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">basefile</span><span class="p">)</span>
+</span><span id="v_3d_acost-61"><a href="#v_3d_acost-61"><span class="linenos">61</span></a>    <span class="p">])</span>
 </span><span id="v_3d_acost-62"><a href="#v_3d_acost-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="v_3d_acost-63"><a href="#v_3d_acost-63"><span class="linenos">63</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
 </span><span id="v_3d_acost-64"><a href="#v_3d_acost-64"><span class="linenos">64</span></a>        <span class="n">outfile</span>
 </span><span id="v_3d_acost-65"><a href="#v_3d_acost-65"><span class="linenos">65</span></a>    <span class="p">])</span>
-</span><span id="v_3d_acost-66"><a href="#v_3d_acost-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OTHER_OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="v_3d_acost-67"><a href="#v_3d_acost-67"><span class="linenos">67</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dAcostOutputs</span><span class="p">(</span>
-</span><span id="v_3d_acost-68"><a href="#v_3d_acost-68"><span class="linenos">68</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v_3d_acost-69"><a href="#v_3d_acost-69"><span class="linenos">69</span></a>        <span class="n">output_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
-</span><span id="v_3d_acost-70"><a href="#v_3d_acost-70"><span class="linenos">70</span></a>        <span class="n">output_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
-</span><span id="v_3d_acost-71"><a href="#v_3d_acost-71"><span class="linenos">71</span></a>    <span class="p">)</span>
-</span><span id="v_3d_acost-72"><a href="#v_3d_acost-72"><span class="linenos">72</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v_3d_acost-73"><a href="#v_3d_acost-73"><span class="linenos">73</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v_3d_acost-66"><a href="#v_3d_acost-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">all_cost</span><span class="p">:</span>
+</span><span id="v_3d_acost-67"><a href="#v_3d_acost-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-allcostX&quot;</span><span class="p">)</span>
+</span><span id="v_3d_acost-68"><a href="#v_3d_acost-68"><span class="linenos">68</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dAcostOutputs</span><span class="p">(</span>
+</span><span id="v_3d_acost-69"><a href="#v_3d_acost-69"><span class="linenos">69</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v_3d_acost-70"><a href="#v_3d_acost-70"><span class="linenos">70</span></a>        <span class="n">output_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
+</span><span id="v_3d_acost-71"><a href="#v_3d_acost-71"><span class="linenos">71</span></a>        <span class="n">output_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outfile</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
+</span><span id="v_3d_acost-72"><a href="#v_3d_acost-72"><span class="linenos">72</span></a>    <span class="p">)</span>
+</span><span id="v_3d_acost-73"><a href="#v_3d_acost-73"><span class="linenos">73</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v_3d_acost-74"><a href="#v_3d_acost-74"><span class="linenos">74</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -333,6 +335,7 @@
 <li><strong>infile:</strong>  Input dataset for allineation.</li>
 <li><strong>basefile:</strong>  Base dataset for allineation.</li>
 <li><strong>outfile:</strong>  Prefix for the output dataset.</li>
+<li><strong>all_cost:</strong>  Prints all alignment cost metrics.</li>
 <li><strong>runner:</strong>  Command runner.</li>
 </ul>
 

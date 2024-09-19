@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">FIRDESIGN_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f49bb30a7acca5ca76111edd30083bdff49133e5.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;58685f4256348e8cd595afc832ef014b8d4fab18.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;FIRdesign&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -97,53 +97,75 @@
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="n">fbot</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="n">ftop</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="n">ntap</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FirdesignOutputs</span><span class="p">:</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">    Uses the Remez algorithm to calculate the FIR filter weights for a bandpass</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">    filter; results are written to stdout in an unadorned (no header) column of</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">    numbers.</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    </span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    Author: AFNI Team</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    </span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/FIRdesign.html</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    Args:</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        fbot: Lowest frequency in the pass band.</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        ftop: Highest frequency in the pass band, must be higher than fbot and\</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">            &lt;= 0.5/TR.</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        ntap: Number of filter weights (AKA &#39;taps&#39;) to use, must be in the\</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">            range 8..2000 (inclusive).</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">    Returns:</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        NamedTuple of outputs (described in `FirdesignOutputs`).</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">fbot</span><span class="p">):</span> 
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;fbot&#39; must be greater than 0 &lt;= x but was </span><span class="si">{</span><span class="n">fbot</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">ftop</span><span class="p">):</span> 
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;ftop&#39; must be greater than 0 &lt;= x but was </span><span class="si">{</span><span class="n">ftop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">8</span> <span class="o">&lt;=</span> <span class="n">ntap</span> <span class="o">&lt;=</span> <span class="mi">2000</span><span class="p">):</span> 
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;ntap&#39; must be between 8 &lt;= x &lt;= 2000 but was </span><span class="si">{</span><span class="n">ntap</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIRDESIGN_METADATA</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;FIRdesign&quot;</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fbot</span><span class="p">))</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ftop</span><span class="p">))</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ntap</span><span class="p">))</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FirdesignOutputs</span><span class="p">(</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="s2">&quot;FIRDESIGN_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="s2">&quot;FirdesignOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="s2">&quot;firdesign&quot;</span><span class="p">,</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a><span class="p">]</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="n">tr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="n">alternative_band</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">alternative_ntap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FirdesignOutputs</span><span class="p">:</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    Uses the Remez algorithm to calculate the FIR filter weights for a bandpass</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    filter; results are written to stdout in an unadorned (no header) column of</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    numbers.</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/FIRdesign.html</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        fbot: Lowest frequency in the pass band.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        ftop: Highest frequency in the pass band, must be higher than fbot and\</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">            &lt;= 0.5/TR.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        ntap: Number of filter weights (AKA &#39;taps&#39;) to use, must be in the\</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">            range 8..2000 (inclusive).</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        tr: Set time grid spacing to &#39;dd&#39; [default is 1.0].</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        alternative_band: Alternative way to specify the passband.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        alternative_ntap: Alternative way to specify the number of taps.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">    Returns:</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        NamedTuple of outputs (described in `FirdesignOutputs`).</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">fbot</span><span class="p">):</span> 
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;fbot&#39; must be greater than 0 &lt;= x but was </span><span class="si">{</span><span class="n">fbot</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">ftop</span><span class="p">):</span> 
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;ftop&#39; must be greater than 0 &lt;= x but was </span><span class="si">{</span><span class="n">ftop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">8</span> <span class="o">&lt;=</span> <span class="n">ntap</span> <span class="o">&lt;=</span> <span class="mi">2000</span><span class="p">):</span> 
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;ntap&#39; must be between 8 &lt;= x &lt;= 2000 but was </span><span class="si">{</span><span class="n">ntap</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="k">if</span> <span class="n">alternative_ntap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">8</span> <span class="o">&lt;=</span> <span class="n">alternative_ntap</span> <span class="o">&lt;=</span> <span class="mi">2000</span><span class="p">):</span> 
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;alternative_ntap&#39; must be between 8 &lt;= x &lt;= 2000 but was </span><span class="si">{</span><span class="n">alternative_ntap</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIRDESIGN_METADATA</span><span class="p">)</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;FIRdesign&quot;</span><span class="p">)</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fbot</span><span class="p">))</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ftop</span><span class="p">))</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ntap</span><span class="p">))</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">tr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>            <span class="s2">&quot;-TR&quot;</span><span class="p">,</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="p">])</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="k">if</span> <span class="n">alternative_band</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>            <span class="s2">&quot;-band&quot;</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">alternative_band</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="p">])</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">if</span> <span class="n">alternative_ntap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>            <span class="s2">&quot;-ntap&quot;</span><span class="p">,</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">alternative_ntap</span><span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>        <span class="p">])</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FirdesignOutputs</span><span class="p">(</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>    <span class="p">)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>
+</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>
+</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a>    <span class="s2">&quot;FIRDESIGN_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos">95</span></a>    <span class="s2">&quot;FirdesignOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos">96</span></a>    <span class="s2">&quot;firdesign&quot;</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos">97</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -152,7 +174,7 @@
                     <div class="attr variable">
             <span class="name">FIRDESIGN_METADATA</span>        =
 <input id="FIRDESIGN_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FIRDESIGN_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f49bb30a7acca5ca76111edd30083bdff49133e5.boutiques&#39;, name=&#39;FIRdesign&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FIRDESIGN_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;58685f4256348e8cd595afc832ef014b8d4fab18.boutiques&#39;, name=&#39;FIRdesign&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -228,7 +250,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">firdesign</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fbot</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">ftop</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">ntap</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FirdesignOutputs">FirdesignOutputs</a></span>:</span></span>
+        <span class="name">firdesign</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">fbot</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">ftop</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">ntap</span><span class="p">:</span> <span class="nb">float</span>,</span><span class="param">	<span class="n">tr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">alternative_band</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">alternative_ntap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#FirdesignOutputs">FirdesignOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="firdesign-view-source"><span>View Source</span></label>
 
@@ -238,46 +260,68 @@
 </span><span id="firdesign-27"><a href="#firdesign-27"><span class="linenos">27</span></a>    <span class="n">fbot</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="firdesign-28"><a href="#firdesign-28"><span class="linenos">28</span></a>    <span class="n">ftop</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="firdesign-29"><a href="#firdesign-29"><span class="linenos">29</span></a>    <span class="n">ntap</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="firdesign-30"><a href="#firdesign-30"><span class="linenos">30</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="firdesign-31"><a href="#firdesign-31"><span class="linenos">31</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FirdesignOutputs</span><span class="p">:</span>
-</span><span id="firdesign-32"><a href="#firdesign-32"><span class="linenos">32</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="firdesign-33"><a href="#firdesign-33"><span class="linenos">33</span></a><span class="sd">    Uses the Remez algorithm to calculate the FIR filter weights for a bandpass</span>
-</span><span id="firdesign-34"><a href="#firdesign-34"><span class="linenos">34</span></a><span class="sd">    filter; results are written to stdout in an unadorned (no header) column of</span>
-</span><span id="firdesign-35"><a href="#firdesign-35"><span class="linenos">35</span></a><span class="sd">    numbers.</span>
-</span><span id="firdesign-36"><a href="#firdesign-36"><span class="linenos">36</span></a><span class="sd">    </span>
-</span><span id="firdesign-37"><a href="#firdesign-37"><span class="linenos">37</span></a><span class="sd">    Author: AFNI Team</span>
-</span><span id="firdesign-38"><a href="#firdesign-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="firdesign-39"><a href="#firdesign-39"><span class="linenos">39</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/FIRdesign.html</span>
-</span><span id="firdesign-40"><a href="#firdesign-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="firdesign-41"><a href="#firdesign-41"><span class="linenos">41</span></a><span class="sd">    Args:</span>
-</span><span id="firdesign-42"><a href="#firdesign-42"><span class="linenos">42</span></a><span class="sd">        fbot: Lowest frequency in the pass band.</span>
-</span><span id="firdesign-43"><a href="#firdesign-43"><span class="linenos">43</span></a><span class="sd">        ftop: Highest frequency in the pass band, must be higher than fbot and\</span>
-</span><span id="firdesign-44"><a href="#firdesign-44"><span class="linenos">44</span></a><span class="sd">            &lt;= 0.5/TR.</span>
-</span><span id="firdesign-45"><a href="#firdesign-45"><span class="linenos">45</span></a><span class="sd">        ntap: Number of filter weights (AKA &#39;taps&#39;) to use, must be in the\</span>
-</span><span id="firdesign-46"><a href="#firdesign-46"><span class="linenos">46</span></a><span class="sd">            range 8..2000 (inclusive).</span>
-</span><span id="firdesign-47"><a href="#firdesign-47"><span class="linenos">47</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="firdesign-48"><a href="#firdesign-48"><span class="linenos">48</span></a><span class="sd">    Returns:</span>
-</span><span id="firdesign-49"><a href="#firdesign-49"><span class="linenos">49</span></a><span class="sd">        NamedTuple of outputs (described in `FirdesignOutputs`).</span>
-</span><span id="firdesign-50"><a href="#firdesign-50"><span class="linenos">50</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="firdesign-51"><a href="#firdesign-51"><span class="linenos">51</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">fbot</span><span class="p">):</span> 
-</span><span id="firdesign-52"><a href="#firdesign-52"><span class="linenos">52</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;fbot&#39; must be greater than 0 &lt;= x but was </span><span class="si">{</span><span class="n">fbot</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="firdesign-53"><a href="#firdesign-53"><span class="linenos">53</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">ftop</span><span class="p">):</span> 
-</span><span id="firdesign-54"><a href="#firdesign-54"><span class="linenos">54</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;ftop&#39; must be greater than 0 &lt;= x but was </span><span class="si">{</span><span class="n">ftop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="firdesign-55"><a href="#firdesign-55"><span class="linenos">55</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">8</span> <span class="o">&lt;=</span> <span class="n">ntap</span> <span class="o">&lt;=</span> <span class="mi">2000</span><span class="p">):</span> 
-</span><span id="firdesign-56"><a href="#firdesign-56"><span class="linenos">56</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;ntap&#39; must be between 8 &lt;= x &lt;= 2000 but was </span><span class="si">{</span><span class="n">ntap</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="firdesign-57"><a href="#firdesign-57"><span class="linenos">57</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="firdesign-58"><a href="#firdesign-58"><span class="linenos">58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIRDESIGN_METADATA</span><span class="p">)</span>
-</span><span id="firdesign-59"><a href="#firdesign-59"><span class="linenos">59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="firdesign-60"><a href="#firdesign-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;FIRdesign&quot;</span><span class="p">)</span>
-</span><span id="firdesign-61"><a href="#firdesign-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[OPTIONS]&quot;</span><span class="p">)</span>
-</span><span id="firdesign-62"><a href="#firdesign-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fbot</span><span class="p">))</span>
-</span><span id="firdesign-63"><a href="#firdesign-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ftop</span><span class="p">))</span>
-</span><span id="firdesign-64"><a href="#firdesign-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ntap</span><span class="p">))</span>
-</span><span id="firdesign-65"><a href="#firdesign-65"><span class="linenos">65</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FirdesignOutputs</span><span class="p">(</span>
-</span><span id="firdesign-66"><a href="#firdesign-66"><span class="linenos">66</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="firdesign-67"><a href="#firdesign-67"><span class="linenos">67</span></a>    <span class="p">)</span>
-</span><span id="firdesign-68"><a href="#firdesign-68"><span class="linenos">68</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="firdesign-69"><a href="#firdesign-69"><span class="linenos">69</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="firdesign-30"><a href="#firdesign-30"><span class="linenos">30</span></a>    <span class="n">tr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="firdesign-31"><a href="#firdesign-31"><span class="linenos">31</span></a>    <span class="n">alternative_band</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="firdesign-32"><a href="#firdesign-32"><span class="linenos">32</span></a>    <span class="n">alternative_ntap</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="firdesign-33"><a href="#firdesign-33"><span class="linenos">33</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="firdesign-34"><a href="#firdesign-34"><span class="linenos">34</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FirdesignOutputs</span><span class="p">:</span>
+</span><span id="firdesign-35"><a href="#firdesign-35"><span class="linenos">35</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="firdesign-36"><a href="#firdesign-36"><span class="linenos">36</span></a><span class="sd">    Uses the Remez algorithm to calculate the FIR filter weights for a bandpass</span>
+</span><span id="firdesign-37"><a href="#firdesign-37"><span class="linenos">37</span></a><span class="sd">    filter; results are written to stdout in an unadorned (no header) column of</span>
+</span><span id="firdesign-38"><a href="#firdesign-38"><span class="linenos">38</span></a><span class="sd">    numbers.</span>
+</span><span id="firdesign-39"><a href="#firdesign-39"><span class="linenos">39</span></a><span class="sd">    </span>
+</span><span id="firdesign-40"><a href="#firdesign-40"><span class="linenos">40</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="firdesign-41"><a href="#firdesign-41"><span class="linenos">41</span></a><span class="sd">    </span>
+</span><span id="firdesign-42"><a href="#firdesign-42"><span class="linenos">42</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/FIRdesign.html</span>
+</span><span id="firdesign-43"><a href="#firdesign-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="firdesign-44"><a href="#firdesign-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
+</span><span id="firdesign-45"><a href="#firdesign-45"><span class="linenos">45</span></a><span class="sd">        fbot: Lowest frequency in the pass band.</span>
+</span><span id="firdesign-46"><a href="#firdesign-46"><span class="linenos">46</span></a><span class="sd">        ftop: Highest frequency in the pass band, must be higher than fbot and\</span>
+</span><span id="firdesign-47"><a href="#firdesign-47"><span class="linenos">47</span></a><span class="sd">            &lt;= 0.5/TR.</span>
+</span><span id="firdesign-48"><a href="#firdesign-48"><span class="linenos">48</span></a><span class="sd">        ntap: Number of filter weights (AKA &#39;taps&#39;) to use, must be in the\</span>
+</span><span id="firdesign-49"><a href="#firdesign-49"><span class="linenos">49</span></a><span class="sd">            range 8..2000 (inclusive).</span>
+</span><span id="firdesign-50"><a href="#firdesign-50"><span class="linenos">50</span></a><span class="sd">        tr: Set time grid spacing to &#39;dd&#39; [default is 1.0].</span>
+</span><span id="firdesign-51"><a href="#firdesign-51"><span class="linenos">51</span></a><span class="sd">        alternative_band: Alternative way to specify the passband.</span>
+</span><span id="firdesign-52"><a href="#firdesign-52"><span class="linenos">52</span></a><span class="sd">        alternative_ntap: Alternative way to specify the number of taps.</span>
+</span><span id="firdesign-53"><a href="#firdesign-53"><span class="linenos">53</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="firdesign-54"><a href="#firdesign-54"><span class="linenos">54</span></a><span class="sd">    Returns:</span>
+</span><span id="firdesign-55"><a href="#firdesign-55"><span class="linenos">55</span></a><span class="sd">        NamedTuple of outputs (described in `FirdesignOutputs`).</span>
+</span><span id="firdesign-56"><a href="#firdesign-56"><span class="linenos">56</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="firdesign-57"><a href="#firdesign-57"><span class="linenos">57</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">fbot</span><span class="p">):</span> 
+</span><span id="firdesign-58"><a href="#firdesign-58"><span class="linenos">58</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;fbot&#39; must be greater than 0 &lt;= x but was </span><span class="si">{</span><span class="n">fbot</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="firdesign-59"><a href="#firdesign-59"><span class="linenos">59</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">ftop</span><span class="p">):</span> 
+</span><span id="firdesign-60"><a href="#firdesign-60"><span class="linenos">60</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;ftop&#39; must be greater than 0 &lt;= x but was </span><span class="si">{</span><span class="n">ftop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="firdesign-61"><a href="#firdesign-61"><span class="linenos">61</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">8</span> <span class="o">&lt;=</span> <span class="n">ntap</span> <span class="o">&lt;=</span> <span class="mi">2000</span><span class="p">):</span> 
+</span><span id="firdesign-62"><a href="#firdesign-62"><span class="linenos">62</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;ntap&#39; must be between 8 &lt;= x &lt;= 2000 but was </span><span class="si">{</span><span class="n">ntap</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="firdesign-63"><a href="#firdesign-63"><span class="linenos">63</span></a>    <span class="k">if</span> <span class="n">alternative_ntap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">8</span> <span class="o">&lt;=</span> <span class="n">alternative_ntap</span> <span class="o">&lt;=</span> <span class="mi">2000</span><span class="p">):</span> 
+</span><span id="firdesign-64"><a href="#firdesign-64"><span class="linenos">64</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;alternative_ntap&#39; must be between 8 &lt;= x &lt;= 2000 but was </span><span class="si">{</span><span class="n">alternative_ntap</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="firdesign-65"><a href="#firdesign-65"><span class="linenos">65</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="firdesign-66"><a href="#firdesign-66"><span class="linenos">66</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIRDESIGN_METADATA</span><span class="p">)</span>
+</span><span id="firdesign-67"><a href="#firdesign-67"><span class="linenos">67</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="firdesign-68"><a href="#firdesign-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;FIRdesign&quot;</span><span class="p">)</span>
+</span><span id="firdesign-69"><a href="#firdesign-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fbot</span><span class="p">))</span>
+</span><span id="firdesign-70"><a href="#firdesign-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ftop</span><span class="p">))</span>
+</span><span id="firdesign-71"><a href="#firdesign-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ntap</span><span class="p">))</span>
+</span><span id="firdesign-72"><a href="#firdesign-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">tr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="firdesign-73"><a href="#firdesign-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="firdesign-74"><a href="#firdesign-74"><span class="linenos">74</span></a>            <span class="s2">&quot;-TR&quot;</span><span class="p">,</span>
+</span><span id="firdesign-75"><a href="#firdesign-75"><span class="linenos">75</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
+</span><span id="firdesign-76"><a href="#firdesign-76"><span class="linenos">76</span></a>        <span class="p">])</span>
+</span><span id="firdesign-77"><a href="#firdesign-77"><span class="linenos">77</span></a>    <span class="k">if</span> <span class="n">alternative_band</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="firdesign-78"><a href="#firdesign-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="firdesign-79"><a href="#firdesign-79"><span class="linenos">79</span></a>            <span class="s2">&quot;-band&quot;</span><span class="p">,</span>
+</span><span id="firdesign-80"><a href="#firdesign-80"><span class="linenos">80</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">alternative_band</span><span class="p">)</span>
+</span><span id="firdesign-81"><a href="#firdesign-81"><span class="linenos">81</span></a>        <span class="p">])</span>
+</span><span id="firdesign-82"><a href="#firdesign-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">alternative_ntap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="firdesign-83"><a href="#firdesign-83"><span class="linenos">83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="firdesign-84"><a href="#firdesign-84"><span class="linenos">84</span></a>            <span class="s2">&quot;-ntap&quot;</span><span class="p">,</span>
+</span><span id="firdesign-85"><a href="#firdesign-85"><span class="linenos">85</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">alternative_ntap</span><span class="p">)</span>
+</span><span id="firdesign-86"><a href="#firdesign-86"><span class="linenos">86</span></a>        <span class="p">])</span>
+</span><span id="firdesign-87"><a href="#firdesign-87"><span class="linenos">87</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FirdesignOutputs</span><span class="p">(</span>
+</span><span id="firdesign-88"><a href="#firdesign-88"><span class="linenos">88</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="firdesign-89"><a href="#firdesign-89"><span class="linenos">89</span></a>    <span class="p">)</span>
+</span><span id="firdesign-90"><a href="#firdesign-90"><span class="linenos">90</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="firdesign-91"><a href="#firdesign-91"><span class="linenos">91</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -295,6 +339,9 @@ numbers.</p>
 <li><strong>fbot:</strong>  Lowest frequency in the pass band.</li>
 <li><strong>ftop:</strong>  Highest frequency in the pass band, must be higher than fbot and            &lt;= 0.5/TR.</li>
 <li><strong>ntap:</strong>  Number of filter weights (AKA 'taps') to use, must be in the            range 8..2000 (inclusive).</li>
+<li><strong>tr:</strong>  Set time grid spacing to 'dd' [default is 1.0].</li>
+<li><strong>alternative_band:</strong>  Alternative way to specify the passband.</li>
+<li><strong>alternative_ntap:</strong>  Alternative way to specify the number of taps.</li>
 <li><strong>runner:</strong>  Command runner.</li>
 </ul>
 
