@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLREORIENT2STD_METADATA = Metadata(
-    id="111a2d3413d8ad09c994fd1edf0fb83b0242e096.boutiques",
+    id="0ab323644b24b7a80ded7cca60e0bc892bf71509.boutiques",
     name="fslreorient2std",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -28,8 +28,8 @@ class Fslreorient2stdOutputs(typing.NamedTuple):
 
 def fslreorient2std(
     input_image: InputPathType,
-    output_image: InputPathType | None = None,
-    matrix_file: InputPathType | None = None,
+    output_image: str | None = "output",
+    matrix_file: str | None = None,
     runner: Runner | None = None,
 ) -> Fslreorient2stdOutputs:
     """
@@ -57,16 +57,16 @@ def fslreorient2std(
     cargs.append("fslreorient2std")
     cargs.append(execution.input_file(input_image))
     if output_image is not None:
-        cargs.append(execution.input_file(output_image))
+        cargs.append(output_image)
     if matrix_file is not None:
         cargs.extend([
             "-m",
-            execution.input_file(matrix_file)
+            matrix_file
         ])
     ret = Fslreorient2stdOutputs(
         root=execution.output_file("."),
-        output_image=execution.output_file(pathlib.Path(output_image).name) if (output_image is not None) else None,
-        matrix_output=execution.output_file(pathlib.Path(matrix_file).name) if (matrix_file is not None) else None,
+        output_image=execution.output_file(output_image.removesuffix(".nii.gz") + ".nii.gz") if (output_image is not None) else None,
+        matrix_output=execution.output_file(matrix_file) if (matrix_file is not None) else None,
     )
     execution.run(cargs)
     return ret

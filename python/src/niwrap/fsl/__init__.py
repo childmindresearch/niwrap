@@ -239,7 +239,6 @@ from .pvmfit import *
 from .qboot import *
 from .randomise import *
 from .rmsdiff import *
-from .robust_fov import *
 from .robustfov import *
 from .roi import *
 from .run_first import *

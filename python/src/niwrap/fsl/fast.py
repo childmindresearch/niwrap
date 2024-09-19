@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAST_METADATA = Metadata(
-    id="d94fbd811651e9f62d28694534e7db875d113d45.boutiques",
+    id="ea3782de983ce088a9fbd87043027a7111fd16cd.boutiques",
     name="fast",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -23,8 +23,6 @@ class FastOutputs(typing.NamedTuple):
     mixeltype: OutputPathType | None
     """Path/name of mixeltype volume file _mixeltype."""
     bias_field: OutputPathType | None
-    """No description provided."""
-    partial_volume_files: OutputPathType | None
     """No description provided."""
     partial_volume_map: OutputPathType | None
     """Path/name of partial volume file _pveseg."""
@@ -212,7 +210,6 @@ def fast(
         root=execution.output_file("."),
         mixeltype=execution.output_file(out_basename + "_mixeltype.nii.gz") if (out_basename is not None) else None,
         bias_field=execution.output_file(out_basename + "_bias.nii.gz") if (out_basename is not None) else None,
-        partial_volume_files=execution.output_file(out_basename + "_pve_*.nii.gz") if (out_basename is not None) else None,
         partial_volume_map=execution.output_file(out_basename + "_pveseg.nii.gz") if (out_basename is not None) else None,
         restored_image=execution.output_file(out_basename + "_restore.nii.gz") if (out_basename is not None) else None,
         tissue_class_map=execution.output_file(out_basename + "_seg.nii.gz") if (out_basename is not None) else None,

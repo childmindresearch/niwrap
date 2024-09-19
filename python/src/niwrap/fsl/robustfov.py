@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROBUSTFOV_METADATA = Metadata(
-    id="f0859328905103a6cc4cc54519c975ca102ba333.boutiques",
+    id="d1582227b9334f6ff311ef46e9a3dd8da13c98bd.boutiques",
     name="robustfov",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -28,7 +28,7 @@ class RobustfovOutputs(typing.NamedTuple):
 
 def robustfov(
     input_file: InputPathType,
-    output_image: InputPathType | None = None,
+    output_image: str | None = "output",
     brain_size: float | None = None,
     matrix_output: str | None = None,
     debug_flag: bool = False,
@@ -64,7 +64,7 @@ def robustfov(
     if output_image is not None:
         cargs.extend([
             "-r",
-            execution.input_file(output_image)
+            output_image
         ])
     if brain_size is not None:
         cargs.extend([
@@ -82,7 +82,7 @@ def robustfov(
         cargs.append("--verbose")
     ret = RobustfovOutputs(
         root=execution.output_file("."),
-        output_roi_volume=execution.output_file(pathlib.Path(output_image).name + ".nii.gz") if (output_image is not None) else None,
+        output_roi_volume=execution.output_file(output_image.removesuffix(".nii.gz") + ".nii.gz") if (output_image is not None) else None,
         output_matrix_file=execution.output_file(matrix_output + ".txt") if (matrix_output is not None) else None,
     )
     execution.run(cargs)
