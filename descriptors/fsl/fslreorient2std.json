@@ -21,16 +21,17 @@
     {
       "description": "Output image with the reoriented result (NIfTI format, e.g. reoriented_img.nii.gz). If not provided, transformation matrix is output to standard output.",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_image",
-      "name": "Output image"
+      "name": "Output image",
+      "default-value": "output"
     },
     {
       "command-line-flag": "-m",
       "description": "File to save the transformation matrix",
       "value-key": "[MATRIX_FILE]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "matrix_file",
       "name": "Matrix file"
@@ -39,11 +40,12 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_IMAGE]",
+      "path-template": "[OUTPUT_IMAGE].nii.gz",
       "description": "Reoriented output image (NIfTI format)",
       "optional": true,
       "id": "output_image",
-      "name": "Output image"
+      "name": "Output image",
+      "path-template-stripped-extensions": [".nii.gz"]
     },
     {
       "path-template": "[MATRIX_FILE]",

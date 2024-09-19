@@ -238,14 +238,6 @@
       "list": true
     },
     {
-      "name": "Partial volume files",
-      "id": "partial_volume_files",
-      "path-template": "[OUT_BASENAME]_pve_*.nii.gz",
-      "optional": true,
-      "description": "No description provided.",
-      "list": true
-    },
-    {
       "name": "Partial volume map",
       "id": "partial_volume_map",
       "path-template": "[OUT_BASENAME]_pveseg.nii.gz",

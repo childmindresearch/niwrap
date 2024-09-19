@@ -23,11 +23,12 @@
     {
       "description": "ROI volume output name",
       "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
+      "type": "String",
       "optional": true,
       "id": "output_image",
       "name": "Output image",
-      "command-line-flag": "-r"
+      "command-line-flag": "-r",
+      "default-value": "output"
     },
     {
       "description": "Size of the brain in z-dimension (default 170mm)",
@@ -88,7 +89,8 @@
       "description": "ROI volume output",
       "optional": true,
       "id": "output_roi_volume",
-      "name": "Output ROI volume"
+      "name": "Output ROI volume",
+      "path-template-stripped-extensions": [".nii.gz"]
     },
     {
       "path-template": "[MATRIX_OUTPUT].txt",
