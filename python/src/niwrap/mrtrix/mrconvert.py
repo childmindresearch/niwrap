@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCONVERT_METADATA = Metadata(
-    id="852b1bbfb4bbbdaacefbe39fd16e3b09b7b9dd6c.boutiques",
+    id="aca2c666cc4ffd4fb2a7efd487bb2e8c05b585e7.boutiques",
     name="mrconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
