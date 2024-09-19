@@ -4,7 +4,7 @@
   "author": "FMRIB (Oxford University)",
   "description": "FSL cluster submission tool",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslSub",
-  "command-line": "fsl_sub [OPTIONS]",
+  "command-line": "fsl_sub [ARCH] [COPROCESSOR] [COPROCESSOR_MULTI] [COPROCESSOR_CLASS] [COPROCESSOR_CLASS_STRICT] [COPROCESSOR_TOOLKIT] [USESCRIPT] [JOBHOLD] [NOT_REQUEUEABLE] [ARRAY_HOLD] [LOGDIR] [MAILOPTIONS] [MAILTO] [NOVALIDATION] [NAME] [PRIORITY] [QUEUE] [RESOURCE] [DELETE_JOB] [JOBRAM] [PARALLELENV_THREADS] [ARRAY_TASK] [ARRAY_NATIVE] [ARRAY_LIMIT] [KEEP_JOBSCRIPT] [PROJECT] [NORAMSPLIT] [JOBTIME] [HAS_COPROCESSOR] [HAS_QUEUES] [SHOW_CONFIG] [VERBOSE] [VERSION] [FILEISIMAGE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -66,7 +66,7 @@
     },
     {
       "command-line-flag": "-F",
-      "value-key": "[SCRIPT]",
+      "value-key": "[USESCRIPT]",
       "description": "Use flags embedded in scripts to set queuing options - not supported",
       "type": "Flag",
       "optional": true,
@@ -185,7 +185,7 @@
     {
       "command-line-flag": "-R",
       "description": "Max total RAM required for job (integer in GB).",
-      "value-key": "[GB]",
+      "value-key": "[JOBRAM]",
       "type": "Number",
       "optional": true,
       "id": "jobram",
@@ -194,7 +194,7 @@
     {
       "command-line-flag": "-s",
       "description": "No parallel environments configured.",
-      "value-key": "[PARALLELENV,THREADS]",
+      "value-key": "[PARALLELENV_THREADS]",
       "type": "String",
       "optional": true,
       "id": "parallelenv_threads",
@@ -221,7 +221,7 @@
     {
       "command-line-flag": "-x",
       "description": "Specify the maximum number of parallel job sub-tasks to run concurrently.",
-      "value-key": "[NUMBER]",
+      "value-key": "[ARRAY_LIMIT]",
       "type": "Number",
       "optional": true,
       "id": "array_limit",
@@ -247,7 +247,7 @@
     },
     {
       "command-line-flag": "-S",
-      "value-key": "[FILE]",
+      "value-key": "[NORAMSPLIT]",
       "description": "Disable RAM splitting (not relevant when not running in a cluster environment).",
       "type": "Flag",
       "optional": true,
@@ -257,7 +257,7 @@
     {
       "command-line-flag": "-T",
       "description": "Estimated job length in minutes, used to automatically choose the queue name.",
-      "value-key": "[MINUTES]",
+      "value-key": "[JOBTIME]",
       "type": "Number",
       "optional": true,
       "id": "jobtime",
@@ -266,7 +266,7 @@
     {
       "command-line-flag": "--has_coprocessor",
       "description": "fsl_sub returns with exit code of 0 if specified coprocessor is configured.",
-      "value-key": "[COPROCESSOR_NAME]",
+      "value-key": "[HAS_COPROCESSOR]",
       "type": "String",
       "optional": true,
       "id": "has_coprocessor",
@@ -370,19 +370,30 @@
     {
       "description": "Options for checking on fsl_sub capabilities.",
       "id": "query_configuration",
-      "members": ["has_coprocessor", "has_queues", "show_config"],
+      "members": [
+        "has_coprocessor",
+        "has_queues",
+        "show_config"
+      ],
       "name": "Query configuration"
     },
     {
       "description": "Email notification options.",
       "id": "email_notification",
-      "members": ["mailoptions", "mailto"],
+      "members": [
+        "mailoptions",
+        "mailto"
+      ],
       "name": "Emailing"
     },
     {
       "description": "Miscellaneous options.",
       "id": "miscellaneous",
-      "members": ["verbose", "version", "fileisimage"],
+      "members": [
+        "verbose",
+        "version",
+        "fileisimage"
+      ],
       "name": "Miscellaneous"
     }
   ]

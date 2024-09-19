@@ -154,14 +154,6 @@
       "description": "File containing intensity modulated --ref."
     },
     {
-      "name": "Out intensitymap file",
-      "id": "out_intensitymap_file_outfile",
-      "path-template": "[OUT_INTENSITYMAP_FILE]",
-      "optional": true,
-      "description": "Files containing info pertaining to intensity mapping.",
-      "list": true
-    },
-    {
       "name": "Warped file",
       "id": "warped_file_outfile",
       "path-template": "[WARPED_FILE].nii.gz",

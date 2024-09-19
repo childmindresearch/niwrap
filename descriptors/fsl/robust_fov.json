@@ -1,6 +1,6 @@
 {
   "name": "RobustFOV",
-  "command-line": "RobustFOV [IN_FILE] [BRAINSIZE] [OUT_ROI] [OUT_TRANSFORM] [OUTPUT_TYPE]",
+  "command-line": "RobustFOV [BRAINSIZE] [IN_FILE] [OUTPUT_TYPE]",
   "author": "Nipype (interface)",
   "description": "Automatically crops an image removing lower head and neck.\nInterface is stable 5.0.0 to 5.0.9, but default brainsize changed from 150mm to 170mm.",
   "inputs": [
@@ -30,7 +30,12 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "NIFTI_PAIR",
+        "NIFTI_GZ",
+        "NIFTI_PAIR_GZ"
+      ]
     }
   ],
   "output-files": [

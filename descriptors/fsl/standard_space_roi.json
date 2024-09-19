@@ -3,7 +3,7 @@
   "name": "standard_space_roi",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Masks input and/or reduces its FOV based on a standard space image or mask, transformed into the space of the input image.",
-  "command-line": "standard_space_roi [INPUT_FILE] [OUTPUT_FILE] [MASK_FOV_FLAG] [MASK_MASK] [MASK_NONE_FLAG] [ROI_FOV_FLAG] [ROI_MASK] [ROI_NONE_FLAG] [SS_REF] [ALT_INPUT] [DEBUG_FLAG] [BET_PREMASK_FLAG] [FLIRT_OPTIONS]",
+  "command-line": "standard_space_roi [INFILE] [OUTFILE] [MASK_FOV_FLAG] [MASK_MASK] [MASK_NONE_FLAG] [ROI_FOV_FLAG] [ROI_MASK] [ROI_NONE_FLAG] [SS_REF] [ALT_INPUT] [DEBUG_FLAG] [BET_PREMASK_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input image",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -19,7 +19,7 @@
     },
     {
       "description": "Output image",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",
@@ -121,25 +121,38 @@
     {
       "description": "Masking options applied before FOV-reduction",
       "id": "masking_options",
-      "members": ["mask_fov_flag", "mask_mask", "mask_none_flag"],
+      "members": [
+        "mask_fov_flag",
+        "mask_mask",
+        "mask_none_flag"
+      ],
       "name": "Masking Options"
     },
     {
       "description": "FOV-reduction options",
       "id": "fov_reduction_options",
-      "members": ["roi_fov_flag", "roi_mask", "roi_none_flag"],
+      "members": [
+        "roi_fov_flag",
+        "roi_mask",
+        "roi_none_flag"
+      ],
       "name": "FOV-reduction Options"
     },
     {
       "description": "Other miscellaneous options",
       "id": "miscellaneous_options",
-      "members": ["ss_ref", "alt_input", "debug_flag", "bet_premask_flag"],
+      "members": [
+        "ss_ref",
+        "alt_input",
+        "debug_flag",
+        "bet_premask_flag"
+      ],
       "name": "Other Options"
     }
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTFILE]",
       "description": "Output image after masking and/or FOV reduction",
       "optional": false,
       "id": "out_image",

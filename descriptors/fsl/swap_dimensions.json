@@ -1,6 +1,6 @@
 {
   "name": "SwapDimensions",
-  "command-line": "fslswapdim [IN_FILE] [A_CART] [A_RAS] [B_CART] [B_RAS] [C_CART] [C_RAS] [OUT_FILE]",
+  "command-line": "SwapDimensions [IN_FILE] [X_DIMS_CART] [Y_DIMS_CART] [Z_DIMS_CART] [X_DIMS_RAS] [Y_DIMS_RAS] [Z_DIMS_RAS] [OUT_FILE]",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "this is an advanced tool that re-orders the data storage to permit changes between axial, sagittal and coronal slicing. When used in this mode the same left-right convention (also called coordinate handedness or radiological/neurological convention) will be maintained as long as no warning is printed.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
@@ -17,61 +17,127 @@
       "id": "x_dims_cart",
       "name": "New X dimension",
       "type": "String",
-      "value-key": "[A_CART]",
+      "value-key": "[X_DIMS_CART]",
       "description": "Representation of new x axes in terms of old cartesian axes.",
       "optional": true,
-      "value-choices": ["x", "-x", "y", "-y", "z", "-z"],
-      "disables-inputs": ["x_dims_ras", "y_dims_ras", "z_dims_ras"]
+      "value-choices": [
+        "x",
+        "-x",
+        "y",
+        "-y",
+        "z",
+        "-z"
+      ],
+      "disables-inputs": [
+        "x_dims_ras",
+        "y_dims_ras",
+        "z_dims_ras"
+      ]
     },
     {
       "id": "y_dims_cart",
       "name": "New y dimension",
       "type": "String",
-      "value-key": "[B_CART]",
+      "value-key": "[Y_DIMS_CART]",
       "description": "Representation of new y axes in terms of old cartesian axes.",
       "optional": true,
-      "value-choices": ["x", "-x", "y", "-y", "z", "-z"],
-      "disables-inputs": ["x_dims_ras", "y_dims_ras", "z_dims_ras"]
+      "value-choices": [
+        "x",
+        "-x",
+        "y",
+        "-y",
+        "z",
+        "-z"
+      ],
+      "disables-inputs": [
+        "x_dims_ras",
+        "y_dims_ras",
+        "z_dims_ras"
+      ]
     },
     {
       "id": "z_dims_cart",
       "name": "New Z dimension",
       "type": "String",
-      "value-key": "[C_CART]",
+      "value-key": "[Z_DIMS_CART]",
       "description": "Representation of new z axes in terms of old cartesian axes.",
       "optional": true,
-      "value-choices": ["x", "-x", "y", "-y", "z", "-z"],
-      "disables-inputs": ["x_dims_ras", "y_dims_ras", "z_dims_ras"]
+      "value-choices": [
+        "x",
+        "-x",
+        "y",
+        "-y",
+        "z",
+        "-z"
+      ],
+      "disables-inputs": [
+        "x_dims_ras",
+        "y_dims_ras",
+        "z_dims_ras"
+      ]
     },
     {
       "id": "x_dims_ras",
       "name": "New X dimension",
       "type": "String",
-      "value-key": "[A_RAS]",
+      "value-key": "[X_DIMS_RAS]",
       "description": "Representation of new x axes in terms of old anatomical axes.",
       "optional": true,
-      "value-choices": ["LR", "RL", "AP", "PA", "SI", "IS"],
-      "disables-inputs": ["x_dims_cart", "y_dims_cart", "z_dims_cart"]
+      "value-choices": [
+        "LR",
+        "RL",
+        "AP",
+        "PA",
+        "SI",
+        "IS"
+      ],
+      "disables-inputs": [
+        "x_dims_cart",
+        "y_dims_cart",
+        "z_dims_cart"
+      ]
     },
     {
       "id": "y_dims_ras",
       "name": "New y dimension",
       "type": "String",
-      "value-key": "[B_CART]",
+      "value-key": "[Y_DIMS_RAS]",
       "description": "Representation of new y axes in terms of old anatomical axes.",
       "optional": true,
-      "value-choices": ["LR", "RL", "AP", "PA", "SI", "IS"],
-      "disables-inputs": ["x_dims_cart", "y_dims_cart", "z_dims_cart"]
+      "value-choices": [
+        "LR",
+        "RL",
+        "AP",
+        "PA",
+        "SI",
+        "IS"
+      ],
+      "disables-inputs": [
+        "x_dims_cart",
+        "y_dims_cart",
+        "z_dims_cart"
+      ]
     },
     {
       "id": "z_dims_ras",
       "name": "New Z dimension",
       "type": "String",
-      "value-key": "[C_RAS]",
+      "value-key": "[Z_DIMS_RAS]",
       "description": "Representation of new z axes in terms of old anatomical axes.",
       "optional": true,
-      "value-choices": ["LR", "RL", "AP", "PA", "SI", "IS"],
-      "disables-inputs": ["x_dims_cart", "y_dims_cart", "z_dims_cart"]
+      "value-choices": [
+        "LR",
+        "RL",
+        "AP",
+        "PA",
+        "SI",
+        "IS"
+      ],
+      "disables-inputs": [
+        "x_dims_cart",
+        "y_dims_cart",
+        "z_dims_cart"
+      ]
     },
     {
       "id": "out_file",
@@ -95,7 +161,10 @@
     {
       "id": "x_dim_group",
       "name": "X dimension group",
-      "members": ["x_dims_cart", "x_dims_ras"],
+      "members": [
+        "x_dims_cart",
+        "x_dims_ras"
+      ],
       "description": "New x dimension",
       "mutually-exclusive": true,
       "one-is-required": true
@@ -103,7 +172,10 @@
     {
       "id": "y_dim_group",
       "name": "Y dimension group",
-      "members": ["y_dims_cart", "y_dims_ras"],
+      "members": [
+        "y_dims_cart",
+        "y_dims_ras"
+      ],
       "description": "New y dimension",
       "mutually-exclusive": true,
       "one-is-required": true
@@ -111,7 +183,10 @@
     {
       "id": "z_dim_group",
       "name": "Z dimension group",
-      "members": ["z_dims_cart", "z_dims_ras"],
+      "members": [
+        "z_dims_cart",
+        "z_dims_ras"
+      ],
       "description": "New z dimension",
       "mutually-exclusive": true,
       "one-is-required": true

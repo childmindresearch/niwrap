@@ -1,6 +1,6 @@
 {
   "name": "Overlay",
-  "command-line": "Overlay [TRANSPARENCY] [OUT_TYPE] [USE_CHECKERBOARD] [BACKGROUND_IMAGE] [FULL_BG_RANGE] [STAT_IMAGE] [STAT_THRESH] [SHOW_NEGATIVE_STATS] [STAT_IMAGE2] [STAT_THRESH2] [OUT_FILE] [OUTPUT_TYPE]",
+  "command-line": "Overlay [AUTO_THRESH_BG] [BACKGROUND_IMAGE] [BG_THRESH] [FULL_BG_RANGE] [OUT_FILE] [OUT_TYPE] [OUTPUT_TYPE] [STAT_IMAGE] [STAT_IMAGE2] [STAT_THRESH] [STAT_THRESH2] [USE_CHECKERBOARD]",
   "author": "Nipype (interface)",
   "description": "Use FSL's overlay command to combine background and statistical images into one volume",
   "inputs": [
@@ -57,7 +57,10 @@
       "description": "'float' or 'int'. Write output with float or int.",
       "optional": true,
       "default-value": "float",
-      "value-choices": ["float", "int"]
+      "value-choices": [
+        "float",
+        "int"
+      ]
     },
     {
       "id": "output_type",
@@ -66,7 +69,12 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "NIFTI_PAIR",
+        "NIFTI_GZ",
+        "NIFTI_PAIR_GZ"
+      ]
     },
     {
       "id": "stat_image",
@@ -129,13 +137,19 @@
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": ["bg_thresh", "full_bg_range", "auto_thresh_bg"],
+      "members": [
+        "bg_thresh",
+        "full_bg_range",
+        "auto_thresh_bg"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_2",
       "name": "Mutex group 2",
-      "members": ["stat_image2"],
+      "members": [
+        "stat_image2"
+      ],
       "mutually-exclusive": true
     }
   ],

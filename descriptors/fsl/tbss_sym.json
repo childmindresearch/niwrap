@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/fsl/fsl/blob/master/doc/fsl/tbss_skeleton.txt",
   "description": "TBSS Skeletonization tool from FSL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide#Step_4:_tbss_skeleton",
-  "command-line": "tbss_skeleton [INPUT_IMAGE] [SKEL_THRESHOLD] [DISTANCE_MAP] [SEARCH_RULE_MASK] [4DDATA] [PROJECTED_4DDATA] [ALT_4DDATA] [ALT_SKELETON] [OUTPUT_IMAGE] [HELP_FLAG] [DEBUG_FLAG] [SKELPOINTS]",
+  "command-line": "tbss_skeleton [INPUT_IMAGE] [OUTPUT_IMAGE] [SKELETON_PARAMS] [ALTERNATIVE_4DDATA] [ALTERNATIVE_SKELETON] [HELP_FLAG] [DEBUG_FLAG] [DEBUG2_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-p",
       "description": "Skeleton threshold, distance map, search rule mask, 4D data and projected 4D data in that order",
-      "value-key": "[SKEL_THRESHOLD] [DISTANCE_MAP] [SEARCH_RULE_MASK] [4DDATA] [PROJECTED_4DDATA]",
+      "value-key": "[SKELETON_PARAMS]",
       "type": "String",
       "list": true,
       "max-list-entries": 5,
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-a",
       "description": "Alternative 4D data (e.g., L1)",
-      "value-key": "[ALT_4DDATA]",
+      "value-key": "[ALTERNATIVE_4DDATA]",
       "type": "File",
       "optional": true,
       "id": "alternative_4ddata",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-s",
       "description": "Alternative skeleton",
-      "value-key": "[ALT_SKELETON]",
+      "value-key": "[ALTERNATIVE_SKELETON]",
       "type": "File",
       "optional": true,
       "id": "alternative_skeleton",
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-D",
       "description": "De-project skelpoints points on skeleton back to all_FA space",
-      "value-key": "[SKELPOINTS]",
+      "value-key": "[DEBUG2_FLAG]",
       "type": "File",
       "optional": true,
       "id": "debug2_flag",
@@ -102,7 +102,11 @@
     {
       "description": "Miscellaneous options for tbss_skeleton",
       "id": "miscellaneous_params_group",
-      "members": ["help_flag", "debug_flag", "debug2_flag"],
+      "members": [
+        "help_flag",
+        "debug_flag",
+        "debug2_flag"
+      ],
       "name": "Miscellaneous Parameters"
     }
   ],

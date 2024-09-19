@@ -3,7 +3,7 @@
   "name": "slices",
   "author": "Unknown",
   "description": "Generate a set of slices from an image, possibly with some scaling and intensity range options, and save as a GIF.",
-  "command-line": "slices [INPUT_FILE] [SECONDARY_INPUT_FILE] -s [SCALE] -i [INTMIN] [INTMAX] -o [OUTPUT_GIF]",
+  "command-line": "slices [PRIMARY_INPUT] [SECONDARY_INPUT] [SCALE_FACTOR] [INTENSITY_RANGE] [OUTPUT_GIF]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Primary input image file (e.g. img1.nii.gz)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[PRIMARY_INPUT]",
       "type": "File",
       "optional": false,
       "id": "primary_input",
@@ -19,7 +19,7 @@
     },
     {
       "description": "Secondary input image file (e.g. img2.nii.gz)",
-      "value-key": "[SECONDARY_INPUT_FILE]",
+      "value-key": "[SECONDARY_INPUT]",
       "type": "File",
       "optional": true,
       "id": "secondary_input",
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-s",
       "description": "Scale factor to apply to images.",
-      "value-key": "[SCALE]",
+      "value-key": "[SCALE_FACTOR]",
       "type": "Number",
       "optional": true,
       "id": "scale_factor",
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "-i",
       "description": "Intensity range to consider (minimum and maximum values).",
-      "value-key": "[INTMIN] [INTMAX]",
+      "value-key": "[INTENSITY_RANGE]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,

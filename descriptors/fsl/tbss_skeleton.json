@@ -5,7 +5,7 @@
   "descriptor-url": "https://www.fmrib.ox.ac.uk/fsl",
   "description": "A tool for defining a 'skeleton' of white matter tracts in the brain to help compare them across subjects.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS",
-  "command-line": "tbss_skeleton [INPUT_IMAGE] [OUTPUT_IMAGE] [SKEL_THRESH] [DISTANCEMAP] [SEARCH_RULE_MASK] [DATA_4D] [PROJECTED_4D] [ALT_4D] [ALT_SKELETON] [DEBUG_FLAG] [SKEL_POINTS]",
+  "command-line": "tbss_skeleton [INPUT_IMAGE] [OUTPUT_IMAGE] [SKELETON_PARAMS] [ALT_4D] [ALT_SKELETON] [DEBUG_FLAG] [DEBUG2_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-p",
       "description": "Skeletonization parameters: <skel_thresh> <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata>",
-      "value-key": "[SKEL_PARAMS]",
+      "value-key": "[SKELETON_PARAMS]",
       "type": "String",
       "list": true,
       "min-list-entries": 5,
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-D",
       "description": "De-project skelpoints points on skeleton back to all_FA space",
-      "value-key": "[SKEL_POINTS]",
+      "value-key": "[DEBUG2_FLAG]",
       "type": "File",
       "optional": true,
       "id": "debug2_flag",
@@ -83,7 +83,9 @@
     {
       "description": "Compulsory arguments for tbss_skeleton",
       "id": "compulsory_arguments",
-      "members": ["input_image"],
+      "members": [
+        "input_image"
+      ],
       "name": "Compulsory Arguments"
     },
     {
@@ -130,7 +132,7 @@
       "name": "Alternative Skeleton Image"
     },
     {
-      "path-template": "[SKEL_POINTS]",
+      "path-template": "[DEBUG2_FLAG]",
       "description": "De-projected skelpoints points on skeleton back to all_FA space",
       "optional": true,
       "id": "debug2_image_outputs",

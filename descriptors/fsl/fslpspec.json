@@ -4,7 +4,7 @@
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Estimate the power spectrum of 4D fMRI time series data",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL",
-  "command-line": "fslpspec [INPUT_FILE] [OUTPUT_FILE] [OPTIONS]",
+  "command-line": "fslpspec [INFILE] [OUTFILE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input 4D fMRI time series image (e.g. fMRI_data.nii.gz)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Output power spectrum image (e.g. pspec_data.nii.gz)",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": true,
       "id": "outfile",
@@ -30,7 +30,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTFILE]",
       "description": "Output power spectrum image",
       "optional": true,
       "id": "output_pspec",

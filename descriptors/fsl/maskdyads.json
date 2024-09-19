@@ -3,7 +3,7 @@
   "name": "maskdyads",
   "author": "Author Name",
   "description": "Tool to mask dyads with threshold",
-  "command-line": "maskdyads [DYADS] [FSAMPLES] [THR]",
+  "command-line": "maskdyads [DYADS] [FSAMPLES] [THRESHOLD]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "[THR]",
       "description": "Threshold (default is 0.05)",
-      "value-key": "[THR]",
+      "value-key": "[THRESHOLD]",
       "type": "Number",
       "default-value": 0.05,
       "optional": true,

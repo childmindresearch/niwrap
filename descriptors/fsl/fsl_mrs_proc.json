@@ -4,7 +4,7 @@
   "author": "FMRIB Centre, University of Oxford",
   "description": "FSL Magnetic Resonance Spectroscopy - Preprocessing",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
-  "command-line": "fsl_mrs_proc [GLOBAL_OPTIONS] <subcommand> [SUBCOMMAND_OPTIONS]",
+  "command-line": "fsl_mrs_proc [VERSION_FLAG] [CONFIG_FILE] [SUBCOMMAND]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -57,7 +57,10 @@
     {
       "id": "global_options",
       "name": "Global Options",
-      "members": ["version_flag", "config_file"],
+      "members": [
+        "version_flag",
+        "config_file"
+      ],
       "description": "Global options for FSL MRS Processing"
     }
   ]

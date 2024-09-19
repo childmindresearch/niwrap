@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, Oxford University, UK",
   "description": "Tool for manipulating complex-valued MR data",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
-  "command-line": "fslcomplex <outputtype> <input> <output> [startvol [endvol]]",
+  "command-line": "fslcomplex [INPUT_FILE] [OUTPUT_FILE] [OUTPUT_TYPE] [START_VOL] [END_VOL]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input volume (e.g. complexvol.nii.gz)",
-      "value-key": "[INPUT]",
+      "value-key": "[INPUT_FILE]",
       "type": "File",
       "optional": false,
       "id": "input_file",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Output volume (e.g. absvol.nii.gz)",
-      "value-key": "[OUTPUT]",
+      "value-key": "[OUTPUT_FILE]",
       "type": "File",
       "optional": false,
       "id": "output_file",
@@ -28,7 +28,7 @@
     },
     {
       "description": "Output type (determines the operation to perform)",
-      "value-key": "[OUTPUTTYPE]",
+      "value-key": "[OUTPUT_TYPE]",
       "type": "String",
       "optional": false,
       "id": "output_type",
@@ -47,7 +47,7 @@
     },
     {
       "description": "Start volume (optional)",
-      "value-key": "[STARTVOL]",
+      "value-key": "[START_VOL]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -56,7 +56,7 @@
     },
     {
       "description": "End volume (optional)",
-      "value-key": "[ENDVOL]",
+      "value-key": "[END_VOL]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -69,19 +69,26 @@
     {
       "description": "Specify the specific operation for FSL Complex",
       "id": "operations_group",
-      "members": ["input_file", "output_file", "output_type"],
+      "members": [
+        "input_file",
+        "output_file",
+        "output_type"
+      ],
       "name": "Main Operations Parameters"
     },
     {
       "description": "Optional parameters",
       "id": "optional_params_group",
-      "members": ["start_vol", "end_vol"],
+      "members": [
+        "start_vol",
+        "end_vol"
+      ],
       "name": "Optional Parameters"
     }
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT]",
+      "path-template": "[OUTPUT_FILE]",
       "description": "The resulting output file from the specified operation.",
       "optional": false,
       "id": "result_output_file",

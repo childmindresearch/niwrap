@@ -4,7 +4,7 @@
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Tool for transforming coordinates between images",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
-  "command-line": "img2imgcoord [OPTIONS] [COORDINATES_FILE]",
+  "command-line": "img2imgcoord [COORDINATES_FILE] [SOURCE_IMAGE] [DEST_IMAGE] [AFFINE_TRANSFORM] [WARP_FIELD] [PRE_WARP_AFFINE] [COORDS_IN_VOXELS] [COORDS_IN_MM] [VERBOSE] [HELP]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -105,7 +105,11 @@
     {
       "description": "Source, destination, and transform parameters",
       "id": "compulsory_params",
-      "members": ["source_image", "dest_image", "affine_transform"],
+      "members": [
+        "source_image",
+        "dest_image",
+        "affine_transform"
+      ],
       "name": "Compulsory Parameters"
     },
     {

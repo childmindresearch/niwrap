@@ -3,7 +3,7 @@
   "name": "wpng",
   "author": "Unknown",
   "description": "Simple PGM/PPM/PAM to PNG Converter",
-  "command-line": "wpng [GAMMA] [BGCOLOR] [TEXT_FLAG] [TIME_FLAG] [INTERLACE_FLAG] [INPUT_FILE]",
+  "command-line": "wpng [INPUT_FILE] [GAMMA] [BGCOLOR] [TEXT_FLAG] [TIME_FLAG] [INTERLACE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

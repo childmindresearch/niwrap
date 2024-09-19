@@ -4,7 +4,7 @@
   "author": "Release Team",
   "description": "Fabber diffusion-weighted imaging tool for model-based analysis using forward models and different inference methods.",
   "url": "https://www.fmrib.ox.ac.uk/fabber_dwi",
-  "command-line": "fabber [PARAMS]",
+  "command-line": "fabber_dwi [OUTPUT_DIR] [METHOD] [MODEL] [DATA_FILE] [HELP_FLAG] [LISTMETHODS_FLAG] [LISTMODELS_FLAG] [LISTPARAMS_FLAG] [DESCPARAMS_FLAG] [LISTOUTPUTS_FLAG] [EVALUATE] [EVALUATE_PARAMS] [EVALUATE_NT] [SIMPLE_OUTPUT_FLAG] [OVERWRITE_FLAG] [LINK_TO_LATEST_FLAG] [LOADMODELS] [MULTIPLE_DATA_FILES] [DATA_ORDER] [MASK_FILE] [MASKED_TIMEPOINTS] [SUPP_DATA] [DUMP_PARAM_NAMES_FLAG] [SAVE_MODEL_FIT_FLAG] [SAVE_RESIDUALS_FLAG] [SAVE_MODEL_EXTRAS_FLAG] [SAVE_MVN_FLAG] [SAVE_MEAN_FLAG] [SAVE_STD_FLAG] [SAVE_VAR_FLAG] [SAVE_ZSTAT_FLAG] [SAVE_NOISE_MEAN_FLAG] [SAVE_NOISE_STD_FLAG] [SAVE_FREE_ENERGY_FLAG] [OPTFILE] [DEBUG_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "--data<n>",
       "description": "Specify multiple data files for n=1, 2, 3...",
-      "value-key": "[DATAFILE_<N>]",
+      "value-key": "[MULTIPLE_DATA_FILES]",
       "type": "File",
       "optional": true,
       "id": "multiple_data_files",
@@ -194,7 +194,7 @@
     {
       "command-line-flag": "--mt<n>",
       "description": "List of masked time points, indexed from 1. These will be ignored in the parameter updates",
-      "value-key": "[MT_<N>]",
+      "value-key": "[MASKED_TIMEPOINTS]",
       "type": "Number",
       "integer": true,
       "optional": true,

@@ -2,7 +2,7 @@
   "tool-version": "6.0.5",
   "name": "make_bianca_mask",
   "description": "A script for generating BIANCA masks",
-  "command-line": "/usr/local/fsl/bin/make_bianca_mask <Usage:> <Main bet2 options> <Variations on default bet2 functionality (mutually exclusive options):> <Miscellaneous options:>",
+  "command-line": "make_bianca_mask [INPUT_IMAGE] [OUTPUT_IMAGE] [OVERLAY_FLAG] [BINARY_MASK_FLAG] [APPROX_SKULL_FLAG] [NO_SEG_OUTPUT_FLAG] [FRACTIONAL_INTENSITY] [VG_FRACTIONAL_INTENSITY] [HEAD_RADIUS] [CENTER_OF_GRAVITY] [THRESHOLDING_FLAG] [VTK_MESH] [ROBUST_ITERS_FLAG] [RESIDUAL_OPTIC_CLEANUP_FLAG] [REDUCE_BIAS_FLAG] [SLICE_PADDING_FLAG] [WHOLE_SET_MASK_FLAG] [ADDITIONAL_SURFACES_FLAG] [ADDITIONAL_SURFACES_T2] [VERBOSE_FLAG] [DEBUG_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-g",
       "description": "Vertical gradient in fractional intensity threshold (-1->1); default=0; positive values give larger brain outline at bottom, smaller at top",
-      "value-key": "[VERTICAL_GRADIENT]",
+      "value-key": "[VG_FRACTIONAL_INTENSITY]",
       "type": "Number",
       "maximum": 1,
       "minimum": -1,
@@ -114,7 +114,7 @@
     {
       "command-line-flag": "-e",
       "description": "Generates brain surface as mesh in .vtk format",
-      "value-key": "[VTK_VIEW_FLAG]",
+      "value-key": "[VTK_MESH]",
       "type": "Flag",
       "optional": true,
       "id": "vtk_mesh",
@@ -132,7 +132,7 @@
     {
       "command-line-flag": "-S",
       "description": "Eye & optic nerve cleanup (can be useful in SIENA - disables -o option)",
-      "value-key": "[RES_OPTIC_CLEANUP_FLAG]",
+      "value-key": "[RESIDUAL_OPTIC_CLEANUP_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "residual_optic_cleanup_flag",
@@ -159,7 +159,7 @@
     {
       "command-line-flag": "-F",
       "description": "Apply to 4D FMRI data (uses -f 0.3 and dilates brain mask slightly)",
-      "value-key": "[MASK_WHOLE_SET_FLAG]",
+      "value-key": "[WHOLE_SET_MASK_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "whole_set_mask_flag",
@@ -168,7 +168,7 @@
     {
       "command-line-flag": "-A",
       "description": "Run bet2 and then betsurf to get additional skull and scalp surfaces (includes registrations)",
-      "value-key": "[ADD_SURFACES_FLAG]",
+      "value-key": "[ADDITIONAL_SURFACES_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "additional_surfaces_flag",
@@ -177,7 +177,7 @@
     {
       "command-line-flag": "-A2",
       "description": "As with -A, when also feeding in non-brain-extracted T2 (includes registrations)",
-      "value-key": "[ADD_SURFACES_T2]",
+      "value-key": "[ADDITIONAL_SURFACES_T2]",
       "type": "File",
       "optional": true,
       "id": "additional_surfaces_t2",
@@ -248,7 +248,10 @@
     {
       "description": "Optional miscellaneous parameters when running make_bianca_mask",
       "id": "miscellaneous_params_group",
-      "members": ["verbose_flag", "debug_flag"],
+      "members": [
+        "verbose_flag",
+        "debug_flag"
+      ],
       "name": "Miscellaneous Parameters"
     }
   ]

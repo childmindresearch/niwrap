@@ -3,7 +3,7 @@
   "name": "img2stdcoord",
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Transforms image coordinates using standard space transformations.",
-  "command-line": "img2stdcoord [OPTIONS] <FILENAME>",
+  "command-line": "img2stdcoord [COORDINATE_FILE] [INPUT_IMAGE] [STANDARD_IMAGE] [AFFINE_TRANSFORM] [WARP_FIELD] [PREWARP_AFFINE_TRANSFORM] [VOXEL_FLAG] [MM_FLAG] [VERBOSE_FLAG_1] [VERBOSE_FLAG_2] [HELP_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Filename containing coordinates. If '-' is used, coordinates are read from standard input.",
-      "value-key": "<FILENAME>",
+      "value-key": "[COORDINATE_FILE]",
       "type": "String",
       "optional": false,
       "id": "coordinate_file",
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-img",
       "description": "Filename of input image.",
-      "value-key": "<INPUT_IMAGE>",
+      "value-key": "[INPUT_IMAGE]",
       "type": "File",
       "optional": false,
       "id": "input_image",
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-std",
       "description": "Filename of standard image.",
-      "value-key": "<STD_IMAGE>",
+      "value-key": "[STANDARD_IMAGE]",
       "type": "File",
       "optional": true,
       "id": "standard_image",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-xfm",
       "description": "Filename of affine transform (e.g., example_func2standard.mat).",
-      "value-key": "<AFFINE_TRANSFORM>",
+      "value-key": "[AFFINE_TRANSFORM]",
       "type": "File",
       "optional": true,
       "id": "affine_transform",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-warp",
       "description": "Filename of warp field (e.g., highres2standard_warp.nii.gz).",
-      "value-key": "<WARP_FIELD>",
+      "value-key": "[WARP_FIELD]",
       "type": "File",
       "optional": true,
       "id": "warp_field",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-premat",
       "description": "Filename of pre-warp affine transform (e.g., example_func2highres.mat). Default is identity.",
-      "value-key": "<PREWARP_AFFINE_TRANSFORM>",
+      "value-key": "[PREWARP_AFFINE_TRANSFORM]",
       "type": "File",
       "optional": true,
       "id": "prewarp_affine_transform",

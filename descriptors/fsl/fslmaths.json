@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
   "description": "General command for mathematical manipulation of image intensities and generation of statistical data from given images.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
-  "command-line": "fslmaths [INPUT_FILE] [OPERATIONS] [OUTPUT_FILE]",
+  "command-line": "fslmaths [INFILE] [DATATYPE] [OUTPUT_DATATYPE] [ADD_OPERATION] [SUB_OPERATION] [MUL_OPERATION] [DIV_OPERATION] [REM_OPERATION] [MAS_OPERATION] [THR_OPERATION] [THRP_OPERATION] [UTHR_OPERATION] [UTHRP_OPERATION] [MAX_OPERATION] [MIN_OPERATION] [EXP_OPERATION] [LOG_OPERATION] [SIN_OPERATION] [COS_OPERATION] [TAN_OPERATION] [SQR_OPERATION] [SQRT_OPERATION]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input image",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-add",
       "description": "Add following input to current image",
-      "value-key": "[ADD_VALUE]",
+      "value-key": "[ADD_OPERATION]",
       "type": "String",
       "optional": true,
       "id": "add_operation",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-sub",
       "description": "Subtract following input from current image",
-      "value-key": "[SUB_VALUE]",
+      "value-key": "[SUB_OPERATION]",
       "type": "String",
       "optional": true,
       "id": "sub_operation",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-mul",
       "description": "Multiply current image by following input",
-      "value-key": "[MUL_VALUE]",
+      "value-key": "[MUL_OPERATION]",
       "type": "String",
       "optional": true,
       "id": "mul_operation",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-div",
       "description": "Divide current image by following input",
-      "value-key": "[DIV_VALUE]",
+      "value-key": "[DIV_OPERATION]",
       "type": "String",
       "optional": true,
       "id": "div_operation",
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "-rem",
       "description": "Modulus remainder - divide current image by following input and take remainder",
-      "value-key": "[REM_VALUE]",
+      "value-key": "[REM_OPERATION]",
       "type": "String",
       "optional": true,
       "id": "rem_operation",
@@ -85,7 +85,7 @@
     {
       "command-line-flag": "-mas",
       "description": "Use (following image>0) to mask current image",
-      "value-key": "[MAS_VALUE]",
+      "value-key": "[MAS_OPERATION]",
       "type": "File",
       "optional": true,
       "id": "mas_operation",
@@ -94,7 +94,7 @@
     {
       "command-line-flag": "-thr",
       "description": "Use following number to threshold current image (zero anything below the number)",
-      "value-key": "[THR_VALUE]",
+      "value-key": "[THR_OPERATION]",
       "type": "Number",
       "optional": true,
       "id": "thr_operation",
@@ -103,7 +103,7 @@
     {
       "command-line-flag": "-thrp",
       "description": "Use following percentage (0-100) of ROBUST RANGE to threshold current image (zero anything below the number)",
-      "value-key": "[THRP_VALUE]",
+      "value-key": "[THRP_OPERATION]",
       "type": "Number",
       "maximum": 100,
       "minimum": 0,
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "-uthr",
       "description": "Use following number to upper-threshold current image (zero anything above the number)",
-      "value-key": "[UTHR_VALUE]",
+      "value-key": "[UTHR_OPERATION]",
       "type": "Number",
       "optional": true,
       "id": "uthr_operation",
@@ -124,7 +124,7 @@
     {
       "command-line-flag": "-uthrp",
       "description": "Use following percentage (0-100) of ROBUST RANGE to upper-threshold current image (zero anything above the number)",
-      "value-key": "[UTHRP_VALUE]",
+      "value-key": "[UTHRP_OPERATION]",
       "type": "Number",
       "maximum": 100,
       "minimum": 0,
@@ -136,7 +136,7 @@
     {
       "command-line-flag": "-max",
       "description": "Take maximum of following input and current image",
-      "value-key": "[MAX_VALUE]",
+      "value-key": "[MAX_OPERATION]",
       "type": "String",
       "optional": true,
       "id": "max_operation",
@@ -145,7 +145,7 @@
     {
       "command-line-flag": "-min",
       "description": "Take minimum of following input and current image",
-      "value-key": "[MIN_VALUE]",
+      "value-key": "[MIN_OPERATION]",
       "type": "String",
       "optional": true,
       "id": "min_operation",
@@ -154,7 +154,7 @@
     {
       "command-line-flag": "-exp",
       "description": "Exponential",
-      "value-key": "[EXP_FLAG]",
+      "value-key": "[EXP_OPERATION]",
       "type": "Flag",
       "optional": true,
       "id": "exp_operation",
@@ -163,7 +163,7 @@
     {
       "command-line-flag": "-log",
       "description": "Natural logarithm",
-      "value-key": "[LOG_FLAG]",
+      "value-key": "[LOG_OPERATION]",
       "type": "Flag",
       "optional": true,
       "id": "log_operation",
@@ -172,7 +172,7 @@
     {
       "command-line-flag": "-sin",
       "description": "Sine function",
-      "value-key": "[SIN_FLAG]",
+      "value-key": "[SIN_OPERATION]",
       "type": "Flag",
       "optional": true,
       "id": "sin_operation",
@@ -181,7 +181,7 @@
     {
       "command-line-flag": "-cos",
       "description": "Cosine function",
-      "value-key": "[COS_FLAG]",
+      "value-key": "[COS_OPERATION]",
       "type": "Flag",
       "optional": true,
       "id": "cos_operation",
@@ -190,7 +190,7 @@
     {
       "command-line-flag": "-tan",
       "description": "Tangent function",
-      "value-key": "[TAN_FLAG]",
+      "value-key": "[TAN_OPERATION]",
       "type": "Flag",
       "optional": true,
       "id": "tan_operation",
@@ -199,7 +199,7 @@
     {
       "command-line-flag": "-sqr",
       "description": "Square",
-      "value-key": "[SQR_FLAG]",
+      "value-key": "[SQR_OPERATION]",
       "type": "Flag",
       "optional": true,
       "id": "sqr_operation",
@@ -208,7 +208,7 @@
     {
       "command-line-flag": "-sqrt",
       "description": "Square root",
-      "value-key": "[SQRT_FLAG]",
+      "value-key": "[SQRT_OPERATION]",
       "type": "Flag",
       "optional": true,
       "id": "sqrt_operation",

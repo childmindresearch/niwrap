@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/descriptors/systemnoise.json",
   "description": "Tool for adding system noise to a given signal using FSL's utilities",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SystemNoise",
-  "command-line": "systemnoise [OPTIONS]",
+  "command-line": "systemnoise [INPUT_SIGNAL] [OUTPUT_SIGNAL] [NOISE_STANDARD_DEVIATION] [SEED] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -71,13 +71,21 @@
     {
       "description": "Specify compulsory arguments",
       "id": "compulsory_args_group",
-      "members": ["input_signal", "output_signal", "noise_standard_deviation"],
+      "members": [
+        "input_signal",
+        "output_signal",
+        "noise_standard_deviation"
+      ],
       "name": "Compulsory Arguments"
     },
     {
       "description": "Optional arguments",
       "id": "optional_args_group",
-      "members": ["seed", "verbose_flag", "help_flag"],
+      "members": [
+        "seed",
+        "verbose_flag",
+        "help_flag"
+      ],
       "name": "Optional Arguments"
     }
   ],

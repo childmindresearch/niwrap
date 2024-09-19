@@ -4,7 +4,7 @@
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Blueprint extraction tool using XTRACT and bedpostx folders",
   "url": "https://fsl.fmrib.ox.ac.uk",
-  "command-line": "xtract_blueprint -bpx [BEDPOSTX] -out [OUTPUT_FOLDER] -xtract [XTRACT_FOLDER] -seeds [SEEDS] -warps [REF] [XTRACT2DIFF] [DIFF2XTRACT] [STAGE] [GPU_FLAG] [SAVETXT_FLAG] [PREFIX] [ROIS] [STOPS] [WTSTOPS] [TRACT_LIST] [THR] [NSAMPLES] [RES] [PTX_OPTIONS]",
+  "command-line": "xtract_blueprint [BPX_FOLDER] [OUT_FOLDER] [XTRACT_FOLDER] [SEEDS_LIST] [WARPS] [STAGE] [GPU_FLAG] [SAVE_TXT_FLAG] [PREFIX] [ROIS_LIST] [STOPS_FILE] [WTSTOPS_FILE] [TRACT_LIST] [THRESHOLD] [NSAMPLES] [RES] [PTX_OPTIONS]",
   "schema-version": "0.5",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Path to bedpostx folder",
-      "value-key": "[BEDPOSTX]",
+      "value-key": "[BPX_FOLDER]",
       "type": "String",
       "optional": false,
       "id": "bpx_folder",
@@ -21,7 +21,7 @@
     },
     {
       "description": "Path to output folder",
-      "value-key": "[OUTPUT_FOLDER]",
+      "value-key": "[OUT_FOLDER]",
       "type": "String",
       "optional": false,
       "id": "out_folder",
@@ -37,7 +37,7 @@
     },
     {
       "description": "Comma separated list of seeds for which a blueprint is requested",
-      "value-key": "[SEEDS]",
+      "value-key": "[SEEDS_LIST]",
       "type": "String",
       "optional": false,
       "id": "seeds_list",
@@ -45,7 +45,7 @@
     },
     {
       "description": "Standard space reference image and transforms between xtract space and diffusion space",
-      "value-key": "[REF] [XTRACT2DIFF] [DIFF2XTRACT]",
+      "value-key": "[WARPS]",
       "type": "String",
       "optional": false,
       "id": "warps",
@@ -72,7 +72,7 @@
     {
       "command-line-flag": "-savetxt",
       "description": "Save blueprint as txt file (nseed by ntracts) instead of CIFTI",
-      "value-key": "[SAVETXT_FLAG]",
+      "value-key": "[SAVE_TXT_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "save_txt_flag",
@@ -90,7 +90,7 @@
     {
       "command-line-flag": "-rois",
       "description": "Comma separated list of ROIs (gifti) to restrict seeding (e.g. medial wall masks)",
-      "value-key": "[ROIS]",
+      "value-key": "[ROIS_LIST]",
       "type": "String",
       "optional": true,
       "id": "rois_list",
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "-stops",
       "description": "Text file containing line separated list",
-      "value-key": "[STOPS]",
+      "value-key": "[STOPS_FILE]",
       "type": "File",
       "optional": true,
       "id": "stops_file",
@@ -108,7 +108,7 @@
     {
       "command-line-flag": "-wtstops",
       "description": "Text file containing line separated list",
-      "value-key": "[WTSTOPS]",
+      "value-key": "[WTSTOPS_FILE]",
       "type": "File",
       "optional": true,
       "id": "wtstops_file",
@@ -126,7 +126,7 @@
     {
       "command-line-flag": "-thr",
       "description": "Threshold applied to XTRACT tracts prior to blueprint calculation (default = 0.001, i.e. 0.1% probability)",
-      "value-key": "[THR]",
+      "value-key": "[THRESHOLD]",
       "type": "Number",
       "optional": true,
       "id": "threshold",
@@ -165,7 +165,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FOLDER]/*",
+      "path-template": "[OUT_FOLDER]/*",
       "description": "Output files generated in the specified output folder",
       "optional": true,
       "id": "output_files",

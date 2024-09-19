@@ -1,6 +1,6 @@
 {
   "name": "GLM",
-  "command-line": "GLM [IN_FILE] [DESIGN] [OUT_FILE] [CONTRASTS] [DAT_NORM] [DEMEAN] [DES_NORM] [DOF] [MASK] [OUT_COPE] [OUT_DATA_NAME] [OUT_F_NAME] [OUT_P_NAME] [OUT_PF_NAME] [OUT_RES_NAME] [OUT_SIGSQ_NAME] [OUT_T_NAME] [OUT_VARCB_NAME] [OUT_VNSCALES_NAME] [OUT_Z_NAME] [OUTPUT_TYPE] [VAR_NORM]",
+  "command-line": "GLM [CONTRASTS] [DAT_NORM] [DEMEAN] [DES_NORM] [DESIGN] [DOF] [IN_FILE] [MASK] [OUT_COPE] [OUT_DATA_NAME] [OUT_F_NAME] [OUT_P_NAME] [OUT_PF_NAME] [OUT_RES_NAME] [OUT_SIGSQ_NAME] [OUT_T_NAME] [OUT_VARCB_NAME] [OUT_VNSCALES_NAME] [OUT_Z_NAME] [OUTPUT_TYPE] [VAR_NORM]",
   "author": "Nipype (interface)",
   "description": "FSL GLM",
   "inputs": [
@@ -195,7 +195,12 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "NIFTI_PAIR",
+        "NIFTI_GZ",
+        "NIFTI_PAIR_GZ"
+      ]
     },
     {
       "id": "var_norm",

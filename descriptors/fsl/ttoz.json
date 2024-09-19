@@ -2,7 +2,7 @@
   "tool-version": "6.0.5",
   "name": "ttoz",
   "description": "Tool to convert a T-statistic image to a Z-statistic image",
-  "command-line": "ttoz [OPTIONS] <varsfile> <cbsfile> <dof>",
+  "command-line": "ttoz [VARSFILE] [CBSFILE] [DOF] [OUTPUTVOL] [HELP_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

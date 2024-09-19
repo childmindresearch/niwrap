@@ -3,7 +3,7 @@
   "name": "ttologp",
   "author": "Unknown",
   "description": "Tool for computing logp",
-  "command-line": "ttologp [OPTIONS] [VARSFILE] [CBSFILE] [DOF]",
+  "command-line": "ttologp [VARSFILE] [CBSFILE] [DOF] [OUTPUTVOL] [HELP_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/fsl_popp.json",
   "description": "Physiological data preprocessing for FSL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PNM#The_popp_program",
-  "command-line": "popp [INPUT_FILE] [OUTPUT_BASENAME] [OPTIONAL_ARGUMENTS]",
+  "command-line": "popp [INFILE] [OUT_BASENAME] [SAMPLING_RATE] [TR_VALUE] [RESP_COL] [CARDIAC_COL] [TRIGGER_COL] [RVT_FLAG] [HEARTRATE_FLAG] [PULSEOX_TRIGGER_FLAG] [SMOOTH_CARD] [SMOOTH_RESP] [HIGH_FREQ_CUTOFF] [LOW_FREQ_CUTOFF] [INIT_THRESH_C] [N_THRESH_C] [INIT_THRESH_R] [N_THRESH_R] [INVERT_RESP_FLAG] [INVERT_CARDIAC_FLAG] [NOCLEAN1_FLAG] [NOCLEAN2_FLAG] [LOAD_CARD_PHASE] [LOAD_RESP_PHASE] [VOL_FILE] [START_SAMPLE] [RESP_ADD] [RESP_DEL] [CARD_ADD] [CARD_DEL] [VERBOSE_FLAG] [DEBUG_FLAG] [HELP_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -14,7 +14,7 @@
     {
       "command-line-flag": "-i",
       "description": "Input physiological data filename (text format)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "-o",
       "description": "Output basename for physiological data and timing/triggers (no extensions)",
-      "value-key": "[OUTPUT_BASENAME]",
+      "value-key": "[OUT_BASENAME]",
       "type": "String",
       "optional": false,
       "id": "out_basename",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "--tr",
       "description": "TR value in seconds",
-      "value-key": "[TR]",
+      "value-key": "[TR_VALUE]",
       "type": "Number",
       "optional": true,
       "id": "tr_value",
@@ -321,7 +321,10 @@
     {
       "description": "Compulsory arguments",
       "id": "compulsory_args_group",
-      "members": ["infile", "out_basename"],
+      "members": [
+        "infile",
+        "out_basename"
+      ],
       "name": "Compulsory Arguments"
     },
     {
@@ -365,7 +368,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_BASENAME]_output.txt",
+      "path-template": "[OUT_BASENAME]_output.txt",
       "description": "Output physiological data file",
       "optional": true,
       "id": "outfile",

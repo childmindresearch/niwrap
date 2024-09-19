@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/anatomicalaverage.json",
   "description": "Tool to create an anatomical average of input brain images",
   "url": "https://example.com/anatomicalaverage",
-  "command-line": "AnatomicalAverage [OPTIONAL_ARGS] -o [OUTPUT_BASENAME] [IMAGES]",
+  "command-line": "AnatomicalAverage [OUTPUT_BASENAME] [INPUT_IMAGES] [STANDARD_IMAGE] [STANDARD_BRAIN_MASK] [NO_CROP_FLAG] [WORK_DIR] [BRAINSIZE] [NOCLEAN_FLAG] [VERBOSE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -22,7 +22,7 @@
     },
     {
       "description": "List of input images",
-      "value-key": "[IMAGES]",
+      "value-key": "[INPUT_IMAGES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--noclean",
       "description": "Do not run the cleanup",
-      "value-key": "[NO_CLEAN_FLAG]",
+      "value-key": "[NOCLEAN_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "noclean_flag",

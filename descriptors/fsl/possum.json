@@ -1,5 +1,5 @@
 {
-  "command-line": "possum -i <input phantom volume> -x <MR parameters matrix> -p <pulse> -f <RF slice profile> -m <motion file> -o <output signal matrix> [additional options]",
+  "command-line": "possum [INPUT_VOLUME] [MR_PARAMETERS] [MOTION_MATRIX] [PULSE_SEQUENCE] [RF_SLICE_PROFILE] [OUTPUT_SIGNAL] [EVENT_MATRIX] [VERBOSE] [HELP] [KCOORD] [B0_INHOMOGENEITIES] [EXTRA_B0_INHOMOGENEITIES] [B0_INHOMOGENEITIES_TIMECOURSE] [RF_INHOMOGENEITY_RECEIVE] [RF_INHOMOGENEITY_TRANSMIT] [ACTIVATION_VOLUME] [ACTIVATION_TIMECOURSE] [ACTIVATION_4D_VOLUME] [ACTIVATION_4D_TIMECOURSE] [LEVEL] [NUM_PROCS] [PROC_ID] [NO_SPEEDUP] [RF_AVERAGE]",
   "name": "possum",
   "description": "Positron emission tomography (PET) simulation tool as part of FSL suite",
   "schema-version": "0.5",
@@ -16,7 +16,7 @@
       "id": "input_volume",
       "name": "Input Object",
       "type": "File",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_VOLUME]",
       "command-line-flag": "--inp",
       "optional": false,
       "description": "Input 4D volume filename"
@@ -70,7 +70,7 @@
       "id": "event_matrix",
       "name": "Main Event Matrix",
       "type": "File",
-      "value-key": "[MAIN_EVENT_MATRIX]",
+      "value-key": "[EVENT_MATRIX]",
       "command-line-flag": "--mainmatx",
       "optional": false,
       "description": "Main event matrix file [(t(s), rf_ang(rad), rf_freq_band(Hz), rf_cent_freq(Hz), ...)]"
@@ -115,7 +115,7 @@
       "id": "extra_b0_inhomogeneities",
       "name": "Extra B0 Inhomogeneities",
       "type": "File",
-      "value-key": "[EXTRA_B0]",
+      "value-key": "[EXTRA_B0_INHOMOGENEITIES]",
       "command-line-flag": "--b0extra",
       "optional": true,
       "description": "B0 inhomogeneities due to an extra field"
@@ -124,7 +124,7 @@
       "id": "b0_inhomogeneities_timecourse",
       "name": "B0 Inhomogeneities Time Course",
       "type": "File",
-      "value-key": "[B0_TIMING]",
+      "value-key": "[B0_INHOMOGENEITIES_TIMECOURSE]",
       "command-line-flag": "--b0time",
       "optional": true,
       "description": "B0 inhomogeneities timecourse file"
@@ -160,7 +160,7 @@
       "id": "activation_timecourse",
       "name": "Activation Time Course",
       "type": "File",
-      "value-key": "[ACTIVATION_TIME_COURSE]",
+      "value-key": "[ACTIVATION_TIMECOURSE]",
       "command-line-flag": "--activt",
       "optional": true,
       "description": "Activation time course file"
@@ -178,7 +178,7 @@
       "id": "activation_4d_timecourse",
       "name": "Activation 4D Time Course",
       "type": "File",
-      "value-key": "[ACTIVATION_4D_TIME_COURSE]",
+      "value-key": "[ACTIVATION_4D_TIMECOURSE]",
       "command-line-flag": "--activt4D",
       "optional": true,
       "description": "Activation 4D time course file"

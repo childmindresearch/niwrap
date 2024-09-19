@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/ibme-qubic/fabber-core",
   "description": "A flexible model fitting and Bayesian inference tool for fMRI data.",
   "url": "https://fabber.readthedocs.io/",
-  "command-line": "fabber [OPTIONS]",
+  "command-line": "fabber [HELP] [LIST_METHODS] [LIST_MODELS] [LIST_PARAMS] [DESC_PARAMS] [LIST_OUTPUTS] [EVALUATE] [EVALUATE_PARAMS] [EVALUATE_NT] [SIMPLE_OUTPUT] [OUTPUT] [OVERWRITE] [LINK_TO_LATEST] [METHOD] [MODEL] [LOAD_MODELS] [DATA] [DATA_N] [DATA_ORDER] [MASK] [MT_N] [SUPP_DATA] [DUMP_PARAM_NAMES] [SAVE_MODEL_FIT] [SAVE_RESIDUALS] [SAVE_MODEL_EXTRAS] [SAVE_MVN] [SAVE_MEAN] [SAVE_STD] [SAVE_VAR] [SAVE_ZSTAT] [SAVE_NOISE_MEAN] [SAVE_NOISE_STD] [SAVE_FREE_ENERGY] [OPTFILE] [DEBUG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

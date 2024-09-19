@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/fabber_dce_descriptor.json",
   "description": "Fabber DCE analysis tool for model-based analysis of dynamic contrast-enhanced imaging data.",
   "url": "https://fabber-core.readthedocs.io/",
-  "command-line": "fabber [MODEL] [METHOD] [DATA] --output [OUTPUT_DIR] [OPTIONS]",
+  "command-line": "Fabber DCE [OUTPUT_DIRECTORY] [INFERENCE_METHOD] [FORWARD_MODEL] [INPUT_DATA] [HELP_FLAG] [LIST_METHODS] [LIST_MODELS] [LIST_PARAMS] [DESCRIBE_PARAMS] [LIST_OUTPUTS] [EVALUATE_MODEL] [EVALUATE_PARAMS] [EVALUATE_NT] [SIMPLE_OUTPUT] [OVERWRITE] [LINK_TO_LATEST] [LOAD_MODELS] [MULTIPLE_DATA] [DATA_ORDER] [MASK] [MASKED_TIME_POINTS] [SUPPLEMENTAL_DATA] [DUMP_PARAM_NAMES] [SAVE_MODEL_FIT] [SAVE_RESIDUALS] [SAVE_MODEL_EXTRAS] [SAVE_MVN] [SAVE_MEAN] [SAVE_STD] [SAVE_VARIANCES] [SAVE_ZSTAT] [SAVE_NOISE_MEAN] [SAVE_NOISE_STD] [SAVE_FREE_ENERGY] [OPTION_FILE] [DEBUG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -14,7 +14,7 @@
     {
       "command-line-flag": "--output",
       "description": "Directory for output files (including logfile)",
-      "value-key": "[OUTPUT_DIR]",
+      "value-key": "[OUTPUT_DIRECTORY]",
       "type": "String",
       "optional": false,
       "id": "output_directory",
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "--method",
       "description": "Inference method to use",
-      "value-key": "[METHOD]",
+      "value-key": "[INFERENCE_METHOD]",
       "type": "String",
       "optional": false,
       "id": "inference_method",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "--model",
       "description": "Forward model to use",
-      "value-key": "[MODEL]",
+      "value-key": "[FORWARD_MODEL]",
       "type": "String",
       "optional": false,
       "id": "forward_model",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "--data",
       "description": "Single input data file",
-      "value-key": "[DATA]",
+      "value-key": "[INPUT_DATA]",
       "type": "File",
       "optional": false,
       "id": "input_data",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--help",
       "description": "Print this usage message",
-      "value-key": "[HELP]",
+      "value-key": "[HELP_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "help_flag",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "--listmethods",
       "description": "List all known inference methods",
-      "value-key": "[LISTMETHODS]",
+      "value-key": "[LIST_METHODS]",
       "type": "Flag",
       "optional": true,
       "id": "list_methods",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "--listmodels",
       "description": "List all known forward models",
-      "value-key": "[LISTMODELS]",
+      "value-key": "[LIST_MODELS]",
       "type": "Flag",
       "optional": true,
       "id": "list_models",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "--listparams",
       "description": "List model parameters (requires model configuration options to be given)",
-      "value-key": "[LISTPARAMS]",
+      "value-key": "[LIST_PARAMS]",
       "type": "Flag",
       "optional": true,
       "id": "list_params",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "--descparams",
       "description": "Describe model parameters (name, description, units) - requires model configuration options to be given",
-      "value-key": "[DESCPARAMS]",
+      "value-key": "[DESCRIBE_PARAMS]",
       "type": "Flag",
       "optional": true,
       "id": "describe_params",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "--listoutputs",
       "description": "List additional model outputs (requires model configuration options to be given)",
-      "value-key": "[LISTOUTPUTS]",
+      "value-key": "[LIST_OUTPUTS]",
       "type": "Flag",
       "optional": true,
       "id": "list_outputs",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "--evaluate",
       "description": "Evaluate model. Set to name of output required or blank for default output. Requires model configuration options, --evaluate-params and --evaluate-nt",
-      "value-key": "[EVALUATE]",
+      "value-key": "[EVALUATE_MODEL]",
       "type": "String",
       "optional": true,
       "id": "evaluate_model",
@@ -159,7 +159,7 @@
     {
       "command-line-flag": "--loadmodels",
       "description": "Load models dynamically from the specified filename, which should be a DLL/shared library",
-      "value-key": "[LOADMODELS]",
+      "value-key": "[LOAD_MODELS]",
       "type": "File",
       "optional": true,
       "id": "load_models",
@@ -168,7 +168,7 @@
     {
       "command-line-flag": "--data<n>",
       "description": "Specify multiple data files for n=1, 2, 3...",
-      "value-key": "[DATA<n>]",
+      "value-key": "[MULTIPLE_DATA]",
       "type": "File",
       "list": true,
       "optional": true,
@@ -197,7 +197,7 @@
     {
       "command-line-flag": "--mt<n>",
       "description": "List of masked time points, indexed from 1. These will be ignored in the parameter updates",
-      "value-key": "[MT<n>]",
+      "value-key": "[MASKED_TIME_POINTS]",
       "type": "Number",
       "list": true,
       "optional": true,
@@ -207,7 +207,7 @@
     {
       "command-line-flag": "--suppdata",
       "description": "'Supplemental' timeseries data, required for some models",
-      "value-key": "[SUPPDATA]",
+      "value-key": "[SUPPLEMENTAL_DATA]",
       "type": "File",
       "optional": true,
       "id": "supplemental_data",
@@ -279,7 +279,7 @@
     {
       "command-line-flag": "--save-var",
       "description": "Output the parameter variances.",
-      "value-key": "[SAVE_VAR]",
+      "value-key": "[SAVE_VARIANCES]",
       "type": "Flag",
       "optional": true,
       "id": "save_variances",
@@ -324,7 +324,7 @@
     {
       "command-line-flag": "--optfile",
       "description": "File containing additional options, one per line, in the same form as specified on the command line",
-      "value-key": "[OPTFILE]",
+      "value-key": "[OPTION_FILE]",
       "type": "File",
       "optional": true,
       "id": "option_file",
@@ -388,7 +388,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_DIR]/*",
+      "path-template": "[OUTPUT_DIRECTORY]/*",
       "description": "Files generated by Fabber DCE",
       "optional": false,
       "id": "output_files",

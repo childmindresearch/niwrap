@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, Oxford",
   "description": "BET Surface Finder to extract brain surfaces using T1 and T2 images",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET",
-  "command-line": "betsurf [OPTIONS] <t1> [<t2>] <bet_mesh.vtk> <t1_to_standard.mat> <output>",
+  "command-line": "betsurf [T1_IMAGE] [T2_IMAGE] [BET_MESH] [T1_TO_STANDARD_MAT] [OUTPUT_PREFIX] [HELP_FLAG] [VERBOSE_FLAG] [T1ONLY_FLAG] [OUTLINE_FLAG] [MASK_FLAG] [SKULL_MASK_FLAG] [INCREASED_PRECISION]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-h",
       "description": "Displays help message and exits",
-      "value-key": "--help",
+      "value-key": "[HELP_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "help_flag",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-v",
       "description": "Switch on diagnostic messages",
-      "value-key": "--verbose",
+      "value-key": "[VERBOSE_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "verbose_flag",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-1",
       "description": "Extraction with T1 only",
-      "value-key": "--t1only",
+      "value-key": "[T1ONLY_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "t1only_flag",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "-o",
       "description": "Generates all surface outlines",
-      "value-key": "--outline",
+      "value-key": "[OUTLINE_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "outline_flag",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-m",
       "description": "Generates binary masks from the meshes",
-      "value-key": "--mask",
+      "value-key": "[MASK_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "mask_flag",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "-s",
       "description": "Generates skull binary mask",
-      "value-key": "--skullmask",
+      "value-key": "[SKULL_MASK_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "skull_mask_flag",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "-p",
       "description": "Retessellates the meshes the indicated number of times (int)",
-      "value-key": "--increased_precision",
+      "value-key": "[INCREASED_PRECISION]",
       "type": "Number",
       "optional": true,
       "id": "increased_precision",

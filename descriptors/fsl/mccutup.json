@@ -4,7 +4,7 @@
   "author": "FSL",
   "description": "FSL mccutup tool",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
-  "command-line": "/usr/local/fsl/bin/mccutup [OPTIONS] <input>",
+  "command-line": "mccutup [INPUT] [OUTPUT_FILE] [PARAM1] [PARAM2]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input file",
-      "value-key": "<input>",
+      "value-key": "[INPUT]",
       "type": "File",
       "optional": false,
       "id": "input",
@@ -51,7 +51,11 @@
     {
       "description": "Main options for mccutup",
       "id": "main_options",
-      "members": ["output_file", "param1", "param2"],
+      "members": [
+        "output_file",
+        "param1",
+        "param2"
+      ],
       "name": "Main Options"
     }
   ],

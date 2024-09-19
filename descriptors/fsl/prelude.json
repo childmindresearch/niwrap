@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PRELUDE",
   "description": "Phase Region Expanding Labeller for Unwrapping Discrete Estimates",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PRELUDE",
-  "command-line": "prelude [1 or more] [OPTIONS]",
+  "command-line": "prelude [OUTPUT_UNWRAP] [OUTPUT_UNWRAP_ALIAS] [COMPLEX_PHASE] [COMPLEX_PHASE_ALIAS] [ABSOLUTE_VOLUME] [ABSOLUTE_VOLUME_ALIAS] [PHASE_VOLUME] [PHASE_VOLUME_ALIAS] [NUM_PHASE_SPLIT] [LABEL_SLICES] [SLICE_PROCESSING] [SLICE_PROCESSING_ALIAS] [FORCE_3D] [FORCE_3D_ALIAS] [THRESHOLD] [THRESHOLD_ALIAS] [MASK_VOLUME] [MASK_VOLUME_ALIAS] [START_IMAGE] [END_IMAGE] [SAVE_MASK] [SAVE_RAW_PHASE] [SAVE_RAW_PHASE_ALIAS] [SAVE_LABELS] [SAVE_LABELS_ALIAS] [REMOVE_RAMPS] [VERBOSE] [VERBOSE_ALIAS] [HELP] [HELP_ALIAS]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "--labelslices",
       "description": "Does label processing in 2D (slice at a time)",
-      "value-key": "[LABEL_SLICES_FLAG]",
+      "value-key": "[LABEL_SLICES]",
       "type": "Flag",
       "optional": true,
       "id": "label_slices",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "-s",
       "description": "Does all processing in 2D (slice at a time)",
-      "value-key": "[SLICE_FLAG]",
+      "value-key": "[SLICE_PROCESSING]",
       "type": "Flag",
       "optional": true,
       "id": "slice_processing",
@@ -113,7 +113,7 @@
     {
       "command-line-flag": "--slices",
       "description": "Does all processing in 2D (slice at a time)",
-      "value-key": "[SLICE_FLAG_ALIAS]",
+      "value-key": "[SLICE_PROCESSING_ALIAS]",
       "type": "Flag",
       "optional": true,
       "id": "slice_processing_alias",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "-f",
       "description": "Forces all processing to be full 3D",
-      "value-key": "[FORCE_3D_FLAG]",
+      "value-key": "[FORCE_3D]",
       "type": "Flag",
       "optional": true,
       "id": "force_3d",
@@ -131,7 +131,7 @@
     {
       "command-line-flag": "--force3D",
       "description": "Forces all processing to be full 3D",
-      "value-key": "[FORCE_3D_FLAG_ALIAS]",
+      "value-key": "[FORCE_3D_ALIAS]",
       "type": "Flag",
       "optional": true,
       "id": "force_3d_alias",
@@ -239,7 +239,7 @@
     {
       "command-line-flag": "--removeramps",
       "description": "Remove phase ramps during unwrapping",
-      "value-key": "[REMOVE_RAMPS_FLAG]",
+      "value-key": "[REMOVE_RAMPS]",
       "type": "Flag",
       "optional": true,
       "id": "remove_ramps",
@@ -248,7 +248,7 @@
     {
       "command-line-flag": "-v",
       "description": "Switch on diagnostic messages",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -257,7 +257,7 @@
     {
       "command-line-flag": "--verbose",
       "description": "Switch on diagnostic messages",
-      "value-key": "[VERBOSE_FLAG_ALIAS]",
+      "value-key": "[VERBOSE_ALIAS]",
       "type": "Flag",
       "optional": true,
       "id": "verbose_alias",
@@ -266,7 +266,7 @@
     {
       "command-line-flag": "-h",
       "description": "Display help message",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -275,7 +275,7 @@
     {
       "command-line-flag": "--help",
       "description": "Display help message",
-      "value-key": "[HELP_FLAG_ALIAS]",
+      "value-key": "[HELP_ALIAS]",
       "type": "Flag",
       "optional": true,
       "id": "help_alias",
@@ -287,7 +287,10 @@
     {
       "description": "One or more compulsory arguments",
       "id": "compulsory_arguments",
-      "members": ["output_unwrap", "output_unwrap_alias"],
+      "members": [
+        "output_unwrap",
+        "output_unwrap_alias"
+      ],
       "name": "Compulsory Arguments"
     },
     {

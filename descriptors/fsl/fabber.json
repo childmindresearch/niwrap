@@ -4,7 +4,7 @@
   "author": "FSL Community",
   "description": "Fabber is a tool for model-based Bayesian analysis of time-series data",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fabber",
-  "command-line": "fabber [OPTIONS]",
+  "command-line": "fabber [OUTPUT] [METHOD] [MODEL] [DATA_FILE] [DATA_FILES] [DATA_ORDER] [MASK_FILE] [MT_N] [SUPP_DATA] [EVALUATE_OUTPUT] [EVALUATE_PARAMS] [EVALUATE_NT] [SIMPLE_OUTPUT] [OVERWRITE] [LINK_TO_LATEST] [LOAD_MODELS] [DEBUG] [OPTFILE] [SAVE_MODEL_FIT] [SAVE_RESIDUALS] [SAVE_MODEL_EXTRAS] [SAVE_MVN] [SAVE_MEAN] [SAVE_STD] [SAVE_VAR] [SAVE_ZSTAT] [SAVE_NOISE_MEAN] [SAVE_NOISE_STD] [SAVE_FREE_ENERGY] [HELP] [LIST_METHODS] [LIST_MODELS] [LIST_PARAMS] [DESC_PARAMS] [LIST_OUTPUTS] [OPTFILE] [OLD_OPTFILE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -14,7 +14,7 @@
     {
       "command-line-flag": "--output",
       "description": "Directory for output files (including logfile)",
-      "value-key": "[OUTPUT_DIRECTORY]",
+      "value-key": "[OUTPUT]",
       "type": "String",
       "optional": false,
       "id": "output",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "--data<n>",
       "description": "Specify multiple data files for n=1, 2, 3...",
-      "value-key": "[DATA_FILE_N]",
+      "value-key": "[DATA_FILES]",
       "type": "File",
       "optional": true,
       "id": "data_files",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "--suppdata",
       "description": "'Supplemental' timeseries data, required for some models",
-      "value-key": "[SUPP_DATA_FILE]",
+      "value-key": "[SUPP_DATA]",
       "type": "File",
       "optional": true,
       "id": "supp_data",
@@ -285,7 +285,7 @@
     {
       "command-line-flag": "--listmethods",
       "description": "List all known inference methods",
-      "value-key": "[LISTMETHODS]",
+      "value-key": "[LIST_METHODS]",
       "type": "Flag",
       "optional": true,
       "id": "list_methods",
@@ -294,7 +294,7 @@
     {
       "command-line-flag": "--listmodels",
       "description": "List all known forward models",
-      "value-key": "[LISTMODELS]",
+      "value-key": "[LIST_MODELS]",
       "type": "Flag",
       "optional": true,
       "id": "list_models",
@@ -303,7 +303,7 @@
     {
       "command-line-flag": "--listparams",
       "description": "List model parameters (requires model configuration options to be given)",
-      "value-key": "[LISTPARAMS]",
+      "value-key": "[LIST_PARAMS]",
       "type": "Flag",
       "optional": true,
       "id": "list_params",
@@ -312,7 +312,7 @@
     {
       "command-line-flag": "--descparams",
       "description": "Describe model parameters (name, description, units) - requires model configuration options to be given. Note that not all models provide parameter descriptions",
-      "value-key": "[DESCPARAMS]",
+      "value-key": "[DESC_PARAMS]",
       "type": "Flag",
       "optional": true,
       "id": "desc_params",
@@ -321,7 +321,7 @@
     {
       "command-line-flag": "--listoutputs",
       "description": "List additional model outputs (requires model configuration options to be given)",
-      "value-key": "[LISTOUTPUTS]",
+      "value-key": "[LIST_OUTPUTS]",
       "type": "Flag",
       "optional": true,
       "id": "list_outputs",
@@ -348,84 +348,84 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_DIRECTORY]/paramnames.txt",
+      "path-template": "[OUTPUT]/paramnames.txt",
       "description": "File containing the names of the model parameters",
       "optional": true,
       "id": "paramnames_file",
       "name": "Parameter Names File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/model_fit.nii.gz",
+      "path-template": "[OUTPUT]/model_fit.nii.gz",
       "description": "The model fit output file",
       "optional": true,
       "id": "model_fit_file",
       "name": "Model Fit File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/residuals.nii.gz",
+      "path-template": "[OUTPUT]/residuals.nii.gz",
       "description": "The residuals output file",
       "optional": true,
       "id": "residuals_file",
       "name": "Residuals File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/model_extras.nii.gz",
+      "path-template": "[OUTPUT]/model_extras.nii.gz",
       "description": "The model extras output file",
       "optional": true,
       "id": "model_extras_file",
       "name": "Model Extras File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/mvn.nii.gz",
+      "path-template": "[OUTPUT]/mvn.nii.gz",
       "description": "The MVN distributions output file",
       "optional": true,
       "id": "mvn_file",
       "name": "MVN File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/mean.nii.gz",
+      "path-template": "[OUTPUT]/mean.nii.gz",
       "description": "The parameter means output file",
       "optional": true,
       "id": "mean_file",
       "name": "Mean File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/std.nii.gz",
+      "path-template": "[OUTPUT]/std.nii.gz",
       "description": "The parameter standard deviations output file",
       "optional": true,
       "id": "std_file",
       "name": "Standard Deviations File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/var.nii.gz",
+      "path-template": "[OUTPUT]/var.nii.gz",
       "description": "The parameter variances output file",
       "optional": true,
       "id": "var_file",
       "name": "Variances File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/zstat.nii.gz",
+      "path-template": "[OUTPUT]/zstat.nii.gz",
       "description": "The parameter Zstats output file",
       "optional": true,
       "id": "zstat_file",
       "name": "Z-Stats File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/noise_mean.nii.gz",
+      "path-template": "[OUTPUT]/noise_mean.nii.gz",
       "description": "The noise means output file",
       "optional": true,
       "id": "noise_mean_file",
       "name": "Noise Means File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/noise_std.nii.gz",
+      "path-template": "[OUTPUT]/noise_std.nii.gz",
       "description": "The noise standard deviations output file",
       "optional": true,
       "id": "noise_std_file",
       "name": "Noise Standard Deviations File"
     },
     {
-      "path-template": "[OUTPUT_DIRECTORY]/free_energy.nii.gz",
+      "path-template": "[OUTPUT]/free_energy.nii.gz",
       "description": "The free energy output file",
       "optional": true,
       "id": "free_energy_file",
