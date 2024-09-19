@@ -82,7 +82,8 @@
       "type": "Number",
       "optional": true,
       "integer": true,
-      "list": true
+      "list": true,
+      "list-seperator": ","
     },
     {
       "id": "scaling",
