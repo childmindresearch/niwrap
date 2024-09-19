@@ -947,13 +947,6 @@
       "path-template": "[OUTPUT]",
       "optional": true,
       "description": "Output file from affine or deformable registration"
-    },
-    {
-      "id": "reslice_output_file",
-      "name": "Resliced Output Image",
-      "path-template": "[RESLICE_OUTPUT_IMAGE]",
-      "optional": true,
-      "description": "Resliced output image"
     }
   ]
 }
