@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMASKAVE_METADATA = Metadata(
-    id="446e73c657f36ef33a56f578da18151dd5c0f61b.boutiques",
+    id="3c2914d74af3e5b2bab84e631296c02efdeda1ec.boutiques",
     name="3dmaskave",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,8 +29,9 @@ class V3dmaskaveOutputs(typing.NamedTuple):
 def v_3dmaskave(
     in_file: InputPathType,
     mask: InputPathType | None = None,
-    quiet: bool = False,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
+    quiet: bool = False,
     runner: Runner | None = None,
 ) -> V3dmaskaveOutputs:
     """
@@ -44,8 +45,9 @@ def v_3dmaskave(
     Args:
         in_file: Input file to 3dmaskave.
         mask: Matrix to align input file.
-        quiet: Matrix to align input file.
+        num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
+        quiet: Matrix to align input file.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dmaskaveOutputs`).
@@ -60,11 +62,12 @@ def v_3dmaskave(
             "-mask",
             execution.input_file(mask)
         ])
-    if quiet:
-        cargs.append("-quiet")
-    cargs.append("[OUT_FILE]")
+    if num_threads is not None:
+        cargs.append(str(num_threads))
     if outputtype is not None:
         cargs.append(outputtype)
+    if quiet:
+        cargs.append("-quiet")
     ret = V3dmaskaveOutputs(
         root=execution.output_file("."),
         out_file=execution.output_file(pathlib.Path(in_file).name + "_maskave.1D"),

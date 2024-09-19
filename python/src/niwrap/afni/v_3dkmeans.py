@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DKMEANS_METADATA = Metadata(
-    id="3a4bcacba0796e3087ac57c6df380dbd644dc61d.boutiques",
+    id="8026f5899ec290d8f584097432ba2b09c27322b1.boutiques",
     name="3dkmeans",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,9 +20,9 @@ class V3dkmeansOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    cluster_membership: OutputPathType
+    cluster_membership: OutputPathType | None
     """Output volume for the cluster membership."""
-    cluster_distance: OutputPathType
+    cluster_distance: OutputPathType | None
     """Output volume for the cluster distance measures."""
     distances_text_file: OutputPathType
     """Output text file containing distances between clusters."""
@@ -37,6 +37,25 @@ class V3dkmeansOutputs(typing.NamedTuple):
 
 
 def v_3dkmeans(
+    input_: list[InputPathType],
+    version: bool = False,
+    mask: InputPathType | None = None,
+    mask_range: list[float] | None = None,
+    cmask: str | None = None,
+    jobname: str | None = None,
+    prefix: str | None = None,
+    distance_measure: float | None = None,
+    num_clusters: float | None = None,
+    remap_method: str | None = None,
+    labeltable: InputPathType | None = None,
+    clabels: list[str] | None = None,
+    clust_init: InputPathType | None = None,
+    num_repeats: float | None = None,
+    rsigs: InputPathType | None = None,
+    verbose: bool = False,
+    write_dists: bool = False,
+    voxdbg: list[float] | None = None,
+    seed: float | None = None,
     runner: Runner | None = None,
 ) -> V3dkmeansOutputs:
     """
@@ -47,6 +66,40 @@ def v_3dkmeans(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dkmeans.html
     
     Args:
+        input_: Input data to be clustered. You can specify multiple filenames\
+            in sequence and they will be concatenated internally.
+        version:.
+        mask: Dataset to be used as a mask; only voxels with nonzero values in\
+            'mset' will be used.
+        mask_range: Restrict the voxels from 'mset' to only those mask values\
+            between 'a' and 'b' (inclusive).
+        cmask: Execute the options enclosed in single quotes as a 3dcalc-like\
+            program to produce a mask from the resulting 3D brick.
+        jobname: Specify a different name for the output files. Default is\
+            derived from the input file name.
+        prefix: Specify a prefix for the output volumes. Default is the same as\
+            jobname.
+        distance_measure: Specifies distance measure for clustering. Supported\
+            values: 0 (No clustering), 1 (Uncentered correlation distance), 2\
+            (Pearson distance), 3 (Uncentered correlation distance, absolute\
+            value), 4 (Pearson distance, absolute value), 5 (Spearman's rank\
+            distance), 6 (Kendall's distance), 7 (Euclidean distance), 8\
+            (City-block distance).
+        num_clusters: Specify number of clusters.
+        remap_method: Reassign clusters numbers based on METHOD: NONE\
+            (default), COUNT, iCOUNT, MAG, iMAG.
+        labeltable: Attach labeltable to clustering output.
+        clabels: Provide a label for each cluster. Labels cannot start with\
+            '-'.
+        clust_init: Specify a dataset to initialize clustering. If provided,\
+            sets -r 0.
+        num_repeats: Number of times the k-means clustering algorithm is run.
+        rsigs: Calculate distances from each voxel's signature to the\
+            signatures in this multi-column file. No clustering done.
+        verbose: Enable verbose mode.
+        write_dists: Output text files containing various distance measures.
+        voxdbg: Output debugging info for specified voxel (I J K).
+        seed: Seed for the random number generator. Default is 1234567.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dkmeansOutputs`).
@@ -55,11 +108,95 @@ def v_3dkmeans(
     execution = runner.start_execution(V_3DKMEANS_METADATA)
     cargs = []
     cargs.append("3dkmeans")
-    cargs.append("[OPTIONS]")
+    if version:
+        cargs.append("--version")
+    cargs.extend([
+        "-f",
+        *[execution.input_file(f) for f in input_]
+    ])
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
+    if mask_range is not None:
+        cargs.extend([
+            "-mrange",
+            *map(str, mask_range)
+        ])
+    if cmask is not None:
+        cargs.extend([
+            "-cmask",
+            cmask
+        ])
+    if jobname is not None:
+        cargs.extend([
+            "-u",
+            jobname
+        ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if distance_measure is not None:
+        cargs.extend([
+            "-g",
+            str(distance_measure)
+        ])
+    if num_clusters is not None:
+        cargs.extend([
+            "-k",
+            str(num_clusters)
+        ])
+    if remap_method is not None:
+        cargs.extend([
+            "-remap",
+            remap_method
+        ])
+    if labeltable is not None:
+        cargs.extend([
+            "-labeltable",
+            execution.input_file(labeltable)
+        ])
+    if clabels is not None:
+        cargs.extend([
+            "-clabels",
+            *clabels
+        ])
+    if clust_init is not None:
+        cargs.extend([
+            "-clust_init",
+            execution.input_file(clust_init)
+        ])
+    if num_repeats is not None:
+        cargs.extend([
+            "-r",
+            str(num_repeats)
+        ])
+    if rsigs is not None:
+        cargs.extend([
+            "-rsigs",
+            execution.input_file(rsigs)
+        ])
+    if verbose:
+        cargs.append("-verb")
+    if write_dists:
+        cargs.append("-write_dists")
+    if voxdbg is not None:
+        cargs.extend([
+            "-voxdbg",
+            *map(str, voxdbg)
+        ])
+    if seed is not None:
+        cargs.extend([
+            "-seed",
+            str(seed)
+        ])
     ret = V3dkmeansOutputs(
         root=execution.output_file("."),
-        cluster_membership=execution.output_file("[JOBNAME]_membership.nii.gz"),
-        cluster_distance=execution.output_file("[JOBNAME]_distance.nii.gz"),
+        cluster_membership=execution.output_file(jobname + "_membership.nii.gz") if (jobname is not None) else None,
+        cluster_distance=execution.output_file(jobname + "_distance.nii.gz") if (jobname is not None) else None,
         distances_text_file=execution.output_file("FILE.dis.1D"),
         centroids_text_file=execution.output_file("FILE.cen.1D"),
         within_cluster_sum_text_file=execution.output_file("FILE.info1.1D"),

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__2DWARPER_ALLIN_METADATA = Metadata(
-    id="1186f25edac5de25b0b8ece18c7371b9a97b6abb.boutiques",
+    id="59f85590207146a4fd772e0ae6253a445bb7a49c.boutiques",
     name="@2dwarper.Allin",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,14 +20,16 @@ class V2dwarperAllinOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    reg_output: OutputPathType
+    reg_output: OutputPathType | None
     """Output registered dataset"""
-    param_files: OutputPathType
+    param_files: OutputPathType | None
     """Output registration parameter files"""
 
 
 def v__2dwarper_allin(
     input_prefix: str,
+    mask_prefix: str | None = None,
+    output_prefix: str | None = None,
     runner: Runner | None = None,
 ) -> V2dwarperAllinOutputs:
     """
@@ -41,6 +43,8 @@ def v__2dwarper_allin(
     
     Args:
         input_prefix: Prefix for the input 3D+time dataset.
+        mask_prefix: Prefix of an existing mask dataset.
+        output_prefix: Prefix for output datasets.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V2dwarperAllinOutputs`).
@@ -49,12 +53,21 @@ def v__2dwarper_allin(
     execution = runner.start_execution(V__2DWARPER_ALLIN_METADATA)
     cargs = []
     cargs.append("@2dwarper.Allin")
-    cargs.append("[OPTIONS]")
     cargs.append(input_prefix)
+    if mask_prefix is not None:
+        cargs.extend([
+            "-mask",
+            mask_prefix
+        ])
+    if output_prefix is not None:
+        cargs.extend([
+            "-prefix",
+            output_prefix
+        ])
     ret = V2dwarperAllinOutputs(
         root=execution.output_file("."),
-        reg_output=execution.output_file("[OUTPUT_PREFIX]_reg+orig.HEAD"),
-        param_files=execution.output_file("[OUTPUT_PREFIX]_param_*.1D"),
+        reg_output=execution.output_file(output_prefix + "_reg+orig.HEAD") if (output_prefix is not None) else None,
+        param_files=execution.output_file(output_prefix + "_param_*.1D") if (output_prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MOVE_TO_SERIES_DIRS_METADATA = Metadata(
-    id="8517e78bc427c837d03316920c32177dfecc5fe3.boutiques",
+    id="dc6ff1a770cb3786d342b15d28d86433f73ffb87.boutiques",
     name="@move.to.series.dirs",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,14 @@ class VMoveToSeriesDirsOutputs(typing.NamedTuple):
 
 
 def v__move_to_series_dirs(
+    dicom_files: list[InputPathType],
+    action: typing.Literal["copy", "move"] | None = None,
+    dprefix: str | None = None,
+    tag: str | None = None,
+    test: bool = False,
+    help_: bool = False,
+    hist: bool = False,
+    ver: bool = False,
     runner: Runner | None = None,
 ) -> VMoveToSeriesDirsOutputs:
     """
@@ -35,6 +43,17 @@ def v__move_to_series_dirs(
     https://afni.nimh.nih.gov/pub/dist/doc/program_help/@move.to.series.dirs.html
     
     Args:
+        dicom_files: Specify input DICOM files (e.g., IMG*).
+        action: Specify action to perform: copy or move. Default is copy.
+        dprefix: Specify directory root for output series directories. Default\
+            is current directory.
+        tag: Specify the DICOM tag to use for partitioning. Default is\
+            0020,0011 (REL Series Number).
+        test: Run in test mode, only show what would be done without actually\
+            moving any files.
+        help_: Show help information.
+        hist: Show modification history.
+        ver: Show version number.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VMoveToSeriesDirsOutputs`).
@@ -43,8 +62,30 @@ def v__move_to_series_dirs(
     execution = runner.start_execution(V__MOVE_TO_SERIES_DIRS_METADATA)
     cargs = []
     cargs.append("@move.to.series.dirs")
-    cargs.append("[OPTIONS]")
-    cargs.append("DICOM_FILES")
+    if action is not None:
+        cargs.extend([
+            "-action",
+            action
+        ])
+    if dprefix is not None:
+        cargs.extend([
+            "-dprefix",
+            dprefix
+        ])
+    if tag is not None:
+        cargs.extend([
+            "-tag",
+            tag
+        ])
+    if test:
+        cargs.append("-test")
+    if help_:
+        cargs.append("-help")
+    if hist:
+        cargs.append("-hist")
+    if ver:
+        cargs.append("-ver")
+    cargs.extend([execution.input_file(f) for f in dicom_files])
     ret = VMoveToSeriesDirsOutputs(
         root=execution.output_file("."),
     )

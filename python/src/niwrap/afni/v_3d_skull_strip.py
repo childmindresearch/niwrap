@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SKULL_STRIP_METADATA = Metadata(
-    id="ec73db12e1aeab296dd6c197f0ccc31ced0d7f27.boutiques",
+    id="46b24c514a7b2ea417731ff7f0aefe836541a429.boutiques",
     name="3dSkullStrip",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -28,6 +28,7 @@ class V3dSkullStripOutputs(typing.NamedTuple):
 
 def v_3d_skull_strip(
     in_file: InputPathType,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     runner: Runner | None = None,
 ) -> V3dSkullStripOutputs:
@@ -41,6 +42,7 @@ def v_3d_skull_strip(
     
     Args:
         in_file: Input file to 3dskullstrip.
+        num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         runner: Command runner.
     Returns:
@@ -54,7 +56,8 @@ def v_3d_skull_strip(
         "-input",
         execution.input_file(in_file)
     ])
-    cargs.append("[OUT_FILE]")
+    if num_threads is not None:
+        cargs.append(str(num_threads))
     if outputtype is not None:
         cargs.append(outputtype)
     ret = V3dSkullStripOutputs(

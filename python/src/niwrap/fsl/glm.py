@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GLM_METADATA = Metadata(
-    id="cc6bf673df5819d6a362ac568217c6f4e0faf99a.boutiques",
+    id="c7483a852a91dc6a841c5383a7889d60f465ab53.boutiques",
     name="glm",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -50,8 +50,8 @@ class GlmOutputs(typing.NamedTuple):
 
 
 def glm(
-    in_file: InputPathType,
     design: InputPathType,
+    in_file: InputPathType,
     contrasts: InputPathType | None = None,
     dat_norm: bool = False,
     demean: bool = False,
@@ -79,9 +79,9 @@ def glm(
     Author: Nipype (interface)
     
     Args:
-        in_file: Input file name (text matrix or 3d/4d image file).
         design: File name of the glm design matrix (text time courses for\
             temporal regression or an image file for spatial regression).
+        in_file: Input file name (text matrix or 3d/4d image file).
         contrasts: Matrix of t-statics contrasts.
         dat_norm: Switch on normalization of the data time series to unit std\
             deviation.
@@ -115,15 +115,6 @@ def glm(
     execution = runner.start_execution(GLM_METADATA)
     cargs = []
     cargs.append("GLM")
-    cargs.extend([
-        "-i",
-        execution.input_file(in_file)
-    ])
-    cargs.extend([
-        "-d",
-        execution.input_file(design)
-    ])
-    cargs.append("[OUT_FILE]")
     if contrasts is not None:
         cargs.extend([
             "-c",
@@ -135,8 +126,16 @@ def glm(
         cargs.append("--demean")
     if des_norm:
         cargs.append("--des_norm")
+    cargs.extend([
+        "-d",
+        execution.input_file(design)
+    ])
     if dof is not None:
         cargs.append("--dof=" + str(dof))
+    cargs.extend([
+        "-i",
+        execution.input_file(in_file)
+    ])
     if mask is not None:
         cargs.extend([
             "-m",

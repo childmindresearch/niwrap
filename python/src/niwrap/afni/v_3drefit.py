@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DREFIT_METADATA = Metadata(
-    id="42d78141a8201ea0512b64bbbe12f75204ab2092.boutiques",
+    id="ef9ef2bed10173b1aebbc37c287b931f5e6fdb8c.boutiques",
     name="3drefit",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -102,7 +102,6 @@ def v_3drefit(
     execution = runner.start_execution(V_3DREFIT_METADATA)
     cargs = []
     cargs.append("3drefit")
-    cargs.append(execution.input_file(in_file))
     if atrcopy is not None:
         cargs.extend([
             "-atrcopy",
@@ -130,6 +129,7 @@ def v_3drefit(
             "-duporigin",
             execution.input_file(duporigin_file)
         ])
+    cargs.append(execution.input_file(in_file))
     if nosaveatr:
         cargs.append("-nosaveatr")
     if saveatr:

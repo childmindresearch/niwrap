@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_ASTRIP_METADATA = Metadata(
-    id="9068ca7039fa3defb693625b26ce4071a91d5347.boutiques",
+    id="0bda90c457a2e2721725b1986736e0f298f1aa67.boutiques",
     name="1dAstrip",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,8 +45,7 @@ def v_1d_astrip(
     execution = runner.start_execution(V_1D_ASTRIP_METADATA)
     cargs = []
     cargs.append("1dAstrip")
-    cargs.append("<" + "< " + execution.input_file(infile) + ">")
-    cargs.append("[OUTPUT_FILE]")
+    cargs.append("< " + execution.input_file(infile))
     ret = V1dAstripOutputs(
         root=execution.output_file("."),
         outfile=execution.output_file("[OUTPUT_FILE]"),

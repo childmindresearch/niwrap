@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_2_REG_METADATA = Metadata(
-    id="bc70ea875b4f3176bc68c67f7dd2ed5045d3e370.boutiques",
+    id="78d677674458a188108b543b5cb2786a37f4a911.boutiques",
     name="tbss_2_reg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -23,6 +23,9 @@ class Tbss2RegOutputs(typing.NamedTuple):
 
 
 def tbss_2_reg(
+    use_fmrib58_fa_1mm: bool = False,
+    target_image: InputPathType | None = None,
+    find_best_target: bool = False,
     runner: Runner | None = None,
 ) -> Tbss2RegOutputs:
     """
@@ -34,6 +37,11 @@ def tbss_2_reg(
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide
     
     Args:
+        use_fmrib58_fa_1mm: Use FMRIB58_FA_1mm as the target for nonlinear\
+            registrations (recommended).
+        target_image: Use the specified image as the target for nonlinear\
+            registrations.
+        find_best_target: Find the best target from all images in the FA.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Tbss2RegOutputs`).
@@ -42,7 +50,15 @@ def tbss_2_reg(
     execution = runner.start_execution(TBSS_2_REG_METADATA)
     cargs = []
     cargs.append("tbss_2_reg")
-    cargs.append("[TARGET_SELECTION_OPTION]")
+    if use_fmrib58_fa_1mm:
+        cargs.append("-T")
+    if target_image is not None:
+        cargs.extend([
+            "-t",
+            execution.input_file(target_image)
+        ])
+    if find_best_target:
+        cargs.append("-n")
     ret = Tbss2RegOutputs(
         root=execution.output_file("."),
     )

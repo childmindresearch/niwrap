@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XTRACT_BLUEPRINT_METADATA = Metadata(
-    id="ba39ba249f8c307b2d42d56510e04db2a384a01f.boutiques",
+    id="12c9da2a50607aa30a35175ee2d6a342e25c7048.boutiques",
     name="xtract_blueprint",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -29,6 +29,7 @@ def xtract_blueprint(
     out_folder: str,
     xtract_folder: str,
     seeds_list: str,
+    warps: str,
     stage: str | None = None,
     gpu_flag: bool = False,
     save_txt_flag: bool = False,
@@ -56,6 +57,8 @@ def xtract_blueprint(
         xtract_folder: Path to xtract folder.
         seeds_list: Comma separated list of seeds for which a blueprint is\
             requested.
+        warps: Standard space reference image and transforms between xtract\
+            space and diffusion space.
         stage: What to run. 1:matrix2, 2:blueprint, all:everything (default).
         gpu_flag: Use GPU version.
         save_txt_flag: Save blueprint as txt file (nseed by ntracts) instead of\
@@ -82,18 +85,11 @@ def xtract_blueprint(
     execution = runner.start_execution(XTRACT_BLUEPRINT_METADATA)
     cargs = []
     cargs.append("xtract_blueprint")
-    cargs.append("-bpx")
     cargs.append(bpx_folder)
-    cargs.append("-out")
     cargs.append(out_folder)
-    cargs.append("-xtract")
     cargs.append(xtract_folder)
-    cargs.append("-seeds")
     cargs.append(seeds_list)
-    cargs.append("-warps")
-    cargs.append("[REF]")
-    cargs.append("[XTRACT2DIFF]")
-    cargs.append("[DIFF2XTRACT]")
+    cargs.append(warps)
     if stage is not None:
         cargs.extend([
             "-stage",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROBUST_FOV_METADATA = Metadata(
-    id="8d3542da3aec86d33d2ee9f3b412262f8f042a11.boutiques",
+    id="df40dfd34b3a6d22b0986a97e442c714c86acc72.boutiques",
     name="robust_fov",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -56,17 +56,15 @@ def robust_fov(
     execution = runner.start_execution(ROBUST_FOV_METADATA)
     cargs = []
     cargs.append("RobustFOV")
-    cargs.extend([
-        "-i",
-        execution.input_file(in_file)
-    ])
     if brainsize is not None:
         cargs.extend([
             "-b",
             str(brainsize)
         ])
-    cargs.append("[OUT_ROI]")
-    cargs.append("[OUT_TRANSFORM]")
+    cargs.extend([
+        "-i",
+        execution.input_file(in_file)
+    ])
     if output_type is not None:
         cargs.append(output_type)
     ret = RobustFovOutputs(

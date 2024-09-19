@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GRAYPLOT_METADATA = Metadata(
-    id="0102c26004dffd6977ae2aa8c8afc67268e4069e.boutiques",
+    id="e6df087d202a81513d4e360d45cd0ccda58ae7f2.boutiques",
     name="3dGrayplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,6 +32,9 @@ def v_3d_grayplot(
     resample_old: bool = False,
     polort: float | None = None,
     fwhm: float | None = None,
+    pvorder: bool = False,
+    ljorder: bool = False,
+    peelorder: bool = False,
     ijkorder: bool = False,
     range_: float | None = None,
     percent: bool = False,
@@ -58,6 +61,12 @@ def v_3d_grayplot(
             data is already detrended and de-meaned.
         fwhm: FWHM of blurring radius to use in the dataset before making the\
             image. Default is 0 mm.
+        pvorder: Order the voxels by how well they match the two leading\
+            principal components of their partition.
+        ljorder: Order the voxels by their Ljung-Box statistics, a measure of\
+            temporal correlation.
+        peelorder: Order the voxels by how many 'peel' steps are needed to get\
+            from the partition boundary to the voxel.
         ijkorder: Default intra-partition ordering by dataset 3D index ('ijk').
         range_: Set the range of the data to be plotted. Value of 0 is\
             middle-gray, +X is white, -X is black.
@@ -73,7 +82,6 @@ def v_3d_grayplot(
     execution = runner.start_execution(V_3D_GRAYPLOT_METADATA)
     cargs = []
     cargs.append("3dGrayplot")
-    cargs.append("[OVERLAY_FLAG]")
     cargs.append(execution.input_file(input_))
     if mask is not None:
         cargs.extend([
@@ -102,6 +110,12 @@ def v_3d_grayplot(
             "-fwhm",
             str(fwhm)
         ])
+    if pvorder:
+        cargs.append("-pvorder")
+    if ljorder:
+        cargs.append("-LJorder")
+    if peelorder:
+        cargs.append("-peelorder")
     if ijkorder:
         cargs.append("-ijkorder")
     if range_ is not None:

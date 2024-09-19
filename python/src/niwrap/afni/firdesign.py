@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIRDESIGN_METADATA = Metadata(
-    id="f49bb30a7acca5ca76111edd30083bdff49133e5.boutiques",
+    id="58685f4256348e8cd595afc832ef014b8d4fab18.boutiques",
     name="FIRdesign",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,6 +26,9 @@ def firdesign(
     fbot: float,
     ftop: float,
     ntap: float,
+    tr: float | None = None,
+    alternative_band: list[float] | None = None,
+    alternative_ntap: float | None = None,
     runner: Runner | None = None,
 ) -> FirdesignOutputs:
     """
@@ -43,6 +46,9 @@ def firdesign(
             <= 0.5/TR.
         ntap: Number of filter weights (AKA 'taps') to use, must be in the\
             range 8..2000 (inclusive).
+        tr: Set time grid spacing to 'dd' [default is 1.0].
+        alternative_band: Alternative way to specify the passband.
+        alternative_ntap: Alternative way to specify the number of taps.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FirdesignOutputs`).
@@ -53,14 +59,30 @@ def firdesign(
         raise ValueError(f"'ftop' must be greater than 0 <= x but was {ftop}")
     if not (8 <= ntap <= 2000): 
         raise ValueError(f"'ntap' must be between 8 <= x <= 2000 but was {ntap}")
+    if alternative_ntap is not None and not (8 <= alternative_ntap <= 2000): 
+        raise ValueError(f"'alternative_ntap' must be between 8 <= x <= 2000 but was {alternative_ntap}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIRDESIGN_METADATA)
     cargs = []
     cargs.append("FIRdesign")
-    cargs.append("[OPTIONS]")
     cargs.append(str(fbot))
     cargs.append(str(ftop))
     cargs.append(str(ntap))
+    if tr is not None:
+        cargs.extend([
+            "-TR",
+            str(tr)
+        ])
+    if alternative_band is not None:
+        cargs.extend([
+            "-band",
+            *map(str, alternative_band)
+        ])
+    if alternative_ntap is not None:
+        cargs.extend([
+            "-ntap",
+            str(alternative_ntap)
+        ])
     ret = FirdesignOutputs(
         root=execution.output_file("."),
     )

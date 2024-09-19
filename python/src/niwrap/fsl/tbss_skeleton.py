@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_SKELETON_METADATA = Metadata(
-    id="15a2c71f7d86be0b9eb7f69c42411fb634e08f02.boutiques",
+    id="b3536192ee277c4ed0da9bf4ac02fb1dc6ca0192.boutiques",
     name="tbss_skeleton",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,6 +35,7 @@ class TbssSkeletonOutputs(typing.NamedTuple):
 def tbss_skeleton(
     input_image: InputPathType,
     output_image: str | None = None,
+    skeleton_params: list[str] | None = None,
     alt_4d: InputPathType | None = None,
     alt_skeleton: InputPathType | None = None,
     debug_flag: bool = False,
@@ -52,6 +53,8 @@ def tbss_skeleton(
     Args:
         input_image: Input image.
         output_image: Output skeleton image.
+        skeleton_params: Skeletonization parameters: <skel_thresh>\
+            <distancemap> <search_rule_mask> <4Ddata> <projected_4Ddata>.
         alt_4d: Alternative 4D data (e.g., L1).
         alt_skeleton: Alternative skeleton.
         debug_flag: Switch on debugging image outputs.
@@ -61,6 +64,8 @@ def tbss_skeleton(
     Returns:
         NamedTuple of outputs (described in `TbssSkeletonOutputs`).
     """
+    if skeleton_params is not None and (len(skeleton_params) != 5): 
+        raise ValueError(f"Length of 'skeleton_params' must be 5 but was {len(skeleton_params)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_SKELETON_METADATA)
     cargs = []
@@ -74,11 +79,11 @@ def tbss_skeleton(
             "-o",
             output_image
         ])
-    cargs.append("[SKEL_THRESH]")
-    cargs.append("[DISTANCEMAP]")
-    cargs.append("[SEARCH_RULE_MASK]")
-    cargs.append("[DATA_4D]")
-    cargs.append("[PROJECTED_4D]")
+    if skeleton_params is not None:
+        cargs.extend([
+            "-p",
+            *skeleton_params
+        ])
     if alt_4d is not None:
         cargs.extend([
             "-a",

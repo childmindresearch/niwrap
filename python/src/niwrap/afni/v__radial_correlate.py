@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__RADIAL_CORRELATE_METADATA = Metadata(
-    id="b1a552cc3d34915cce72bfbd9edfd04ef85c61b5.boutiques",
+    id="74d27aaff9d6afe1498873e5bf33128e594a606f.boutiques",
     name="@radial_correlate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,12 +20,31 @@ class VRadialCorrelateOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    corr_volumes: OutputPathType
+    corr_volumes: OutputPathType | None
     """Directory containing correlation volumes"""
 
 
 def v__radial_correlate(
     input_files: list[InputPathType],
+    results_dir: str | None = None,
+    do_corr: str | None = None,
+    do_clust: str | None = None,
+    mask_dset: InputPathType | None = None,
+    cthresh: float | None = None,
+    frac_limit: float | None = None,
+    sphere_rad: float | None = None,
+    use_3dmerge: str | None = None,
+    percentile: float | None = None,
+    min_thr: float | None = None,
+    nfirst: float | None = None,
+    ver: bool = False,
+    verbose: bool = False,
+    help_: bool = False,
+    hist: bool = False,
+    corr_mask: str | None = None,
+    do_clean: str | None = None,
+    polort: float | None = None,
+    merge_frad: float | None = None,
     runner: Runner | None = None,
 ) -> VRadialCorrelateOutputs:
     """
@@ -38,6 +57,25 @@ def v__radial_correlate(
     
     Args:
         input_files: A list of EPI datasets.
+        results_dir: Results directory for correlations.
+        do_corr: Create correlation volumes (yes/no).
+        do_clust: Cluster correlation volumes (yes/no).
+        mask_dset: Specify a mask dataset to replace automask.
+        cthresh: Threshold on correlation values.
+        frac_limit: Minimum mask fraction surviving cluster.
+        sphere_rad: Generate correlations within voxel spheres.
+        use_3dmerge: Use 3dmerge rather than 3dLocalstat (yes/no).
+        percentile: Percentile to use as threshold.
+        min_thr: Minimum percentile threshold to be considered.
+        nfirst: Number of initial TRs to remove.
+        ver: Show version number.
+        verbose: Make verbose: set echo.
+        help_: Show help.
+        hist: Show modification history.
+        corr_mask: Mask time series before correlation blurring (yes/no).
+        do_clean: Clean up at end, leaving only correlations (yes/no).
+        polort: Detrend time series with given polynomial degree.
+        merge_frad: Specify a radius fraction for 3dmerge blurring.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VRadialCorrelateOutputs`).
@@ -47,10 +85,92 @@ def v__radial_correlate(
     cargs = []
     cargs.append("@radial_correlate")
     cargs.extend([execution.input_file(f) for f in input_files])
-    cargs.append("[OPTIONS]")
+    if results_dir is not None:
+        cargs.extend([
+            "-rdir",
+            results_dir
+        ])
+    if do_corr is not None:
+        cargs.extend([
+            "-do_corr",
+            do_corr
+        ])
+    if do_clust is not None:
+        cargs.extend([
+            "-do_clust",
+            do_clust
+        ])
+    if mask_dset is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask_dset)
+        ])
+    if cthresh is not None:
+        cargs.extend([
+            "-cthresh",
+            str(cthresh)
+        ])
+    if frac_limit is not None:
+        cargs.extend([
+            "-frac_limit",
+            str(frac_limit)
+        ])
+    if sphere_rad is not None:
+        cargs.extend([
+            "-sphere_rad",
+            str(sphere_rad)
+        ])
+    if use_3dmerge is not None:
+        cargs.extend([
+            "-use_3dmerge",
+            use_3dmerge
+        ])
+    if percentile is not None:
+        cargs.extend([
+            "-percentile",
+            str(percentile)
+        ])
+    if min_thr is not None:
+        cargs.extend([
+            "-min_thr",
+            str(min_thr)
+        ])
+    if nfirst is not None:
+        cargs.extend([
+            "-nfirst",
+            str(nfirst)
+        ])
+    if ver:
+        cargs.append("-ver")
+    if verbose:
+        cargs.append("-verb")
+    if help_:
+        cargs.append("-help")
+    if hist:
+        cargs.append("-hist")
+    if corr_mask is not None:
+        cargs.extend([
+            "-corr_mask",
+            corr_mask
+        ])
+    if do_clean is not None:
+        cargs.extend([
+            "-do_clean",
+            do_clean
+        ])
+    if polort is not None:
+        cargs.extend([
+            "-polort",
+            str(polort)
+        ])
+    if merge_frad is not None:
+        cargs.extend([
+            "-merge_frad",
+            str(merge_frad)
+        ])
     ret = VRadialCorrelateOutputs(
         root=execution.output_file("."),
-        corr_volumes=execution.output_file("[RESULTS_DIR]/correlation_volumes"),
+        corr_volumes=execution.output_file(results_dir + "/correlation_volumes") if (results_dir is not None) else None,
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSHIFT_METADATA = Metadata(
-    id="d6d42b9573d502c11aac28110cfde9d96f82477d.boutiques",
+    id="e6daf7fd1d369d984a73a62978b1a2876a62d221.boutiques",
     name="3dTshift",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,11 +32,14 @@ def v_3d_tshift(
     in_file: InputPathType,
     ignore: int | None = None,
     interp: typing.Literal["Fourier", "linear", "cubic", "quintic", "heptic"] | None = None,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     rlt: bool = False,
     rltplus: bool = False,
     slice_encoding_direction: typing.Literal["k", "k-"] | None = None,
+    slice_timing: InputPathType | None = None,
     slice_timing_2: list[float] | None = None,
+    tpattern: typing.Literal["alt+z", "altplus", "alt+z2", "alt-z", "altminus", "alt-z2", "seq+z", "seqplus", "seq-z", "seqminus"] | None = None,
     tpattern_2: str | None = None,
     tr: str | None = None,
     tslice: int | None = None,
@@ -57,6 +60,7 @@ def v_3d_tshift(
         interp: 'fourier' or 'linear' or 'cubic' or 'quintic' or 'heptic'.\
             Different interpolation methods (see 3dtshift for details) default =\
             fourier.
+        num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         rlt: Before shifting, remove the mean and linear trend.
         rltplus: Before shifting, remove the mean and linear trend and later\
@@ -67,8 +71,13 @@ def v_3d_tshift(
             the largest index, and the final entry corresponds to slice index zero.\
             only in effect when slice_timing is passed as list, not when it is\
             passed as file.
+        slice_timing: file or string or a list of items which are a float. Time\
+            offsets from the volume acquisition onset for each slice.
         slice_timing_2: file or string or a list of items which are a float.\
             Time offsets from the volume acquisition onset for each slice.
+        tpattern: 'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or\
+            'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string.\
+            Use specified slice time pattern rather than one in header.
         tpattern_2: 'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus'\
             or 'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a\
             string. Use specified slice time pattern rather than one in header.
@@ -84,18 +93,19 @@ def v_3d_tshift(
     execution = runner.start_execution(V_3D_TSHIFT_METADATA)
     cargs = []
     cargs.append("3dTshift")
-    cargs.append(execution.input_file(in_file))
     if ignore is not None:
         cargs.extend([
             "-ignore",
             str(ignore)
         ])
+    cargs.append(execution.input_file(in_file))
     if interp is not None:
         cargs.extend([
             "-",
             interp
         ])
-    cargs.append("[OUT_FILE]")
+    if num_threads is not None:
+        cargs.append(str(num_threads))
     if outputtype is not None:
         cargs.append(outputtype)
     if rlt:
@@ -104,10 +114,20 @@ def v_3d_tshift(
         cargs.append("-rlt+")
     if slice_encoding_direction is not None:
         cargs.append(slice_encoding_direction)
+    if slice_timing is not None:
+        cargs.extend([
+            "-tpattern @",
+            execution.input_file(slice_timing)
+        ])
     if slice_timing_2 is not None:
         cargs.extend([
             "-tpattern @",
             *map(str, slice_timing_2)
+        ])
+    if tpattern is not None:
+        cargs.extend([
+            "-tpattern",
+            tpattern
         ])
     if tpattern_2 is not None:
         cargs.extend([

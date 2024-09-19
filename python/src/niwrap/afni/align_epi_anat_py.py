@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ALIGN_EPI_ANAT_PY_METADATA = Metadata(
-    id="cbd28c0cb9cd06edf98debca6a2d69094dae119d.boutiques",
+    id="599fb3c4ddbae83f1ee1138f006cbfed8cfd6693.boutiques",
     name="align_epi_anat.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,6 +30,20 @@ def align_epi_anat_py(
     epi: InputPathType,
     anat: InputPathType,
     epi_base: str,
+    anat2epi: bool = False,
+    epi2anat: bool = False,
+    suffix: str | None = None,
+    add_edge: bool = False,
+    big_move: bool = False,
+    giant_move: bool = False,
+    ginormous_move: bool = False,
+    keep_rm_files: bool = False,
+    prep_only: bool = False,
+    ana_has_skull: typing.Literal["yes", "no"] | None = None,
+    epi_strip: typing.Literal["3dSkullStrip", "3dAutomask", "None"] | None = None,
+    volreg_method: typing.Literal["3dvolreg", "3dWarpDrive", "3dAllineate"] | None = None,
+    ex_mode: typing.Literal["quiet", "echo", "dry_run", "script"] | None = None,
+    overwrite: bool = False,
     runner: Runner | None = None,
 ) -> AlignEpiAnatPyOutputs:
     """
@@ -45,6 +59,22 @@ def align_epi_anat_py(
         anat: Anatomical dataset to align or to which to align.
         epi_base: Base sub-brick to use for alignment\
             (0/mean/median/max/subbrick#).
+        anat2epi: Align anatomical to EPI dataset (default).
+        epi2anat: Align EPI to anatomical dataset.
+        suffix: Append suffix to the original anat/epi dataset to use in the\
+            resulting dataset names.
+        add_edge: Run @AddEdge script to create composite edge images.
+        big_move: Large displacement is needed to align the two volumes.
+        giant_move: Even larger movement required, uses cmass, two passes and\
+            very large angles and shifts.
+        ginormous_move: Adds align_centers to giant_move.
+        keep_rm_files: Don't delete any of the temporary files created.
+        prep_only: Do preprocessing steps only without alignment.
+        ana_has_skull: Do not skullstrip anat dataset.
+        epi_strip: Method to remove skull for EPI data.
+        volreg_method: Time series volume registration method.
+        ex_mode: Command execution mode.
+        overwrite: Overwrite existing files.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AlignEpiAnatPyOutputs`).
@@ -52,7 +82,7 @@ def align_epi_anat_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(ALIGN_EPI_ANAT_PY_METADATA)
     cargs = []
-    cargs.append("align_epi_anat.py")
+    cargs.append("align_epi_anat")
     cargs.extend([
         "-epi",
         execution.input_file(epi)
@@ -65,13 +95,53 @@ def align_epi_anat_py(
         "-epi_base",
         epi_base
     ])
-    cargs.append("[OUTPUT_OPTIONS]")
-    cargs.append("[ALIGNMENT_OPTIONS]")
-    cargs.append("[PREPROCESSING_OPTIONS]")
+    if anat2epi:
+        cargs.append("-anat2epi")
+    if epi2anat:
+        cargs.append("-epi2anat")
+    if suffix is not None:
+        cargs.extend([
+            "-suffix",
+            suffix
+        ])
+    if add_edge:
+        cargs.append("-AddEdge")
+    if big_move:
+        cargs.append("-big_move")
+    if giant_move:
+        cargs.append("-giant_move")
+    if ginormous_move:
+        cargs.append("-ginormous_move")
+    if keep_rm_files:
+        cargs.append("-keep_rm_files")
+    if prep_only:
+        cargs.append("-prep_only")
+    if ana_has_skull is not None:
+        cargs.extend([
+            "-anat_has_skull",
+            ana_has_skull
+        ])
+    if epi_strip is not None:
+        cargs.extend([
+            "-epi_strip",
+            epi_strip
+        ])
+    if volreg_method is not None:
+        cargs.extend([
+            "-volreg_method",
+            volreg_method
+        ])
+    if ex_mode is not None:
+        cargs.extend([
+            "-ex_mode",
+            ex_mode
+        ])
+    if overwrite:
+        cargs.append("-overwrite")
     ret = AlignEpiAnatPyOutputs(
         root=execution.output_file("."),
-        anat_aligned=execution.output_file("[ANAT]+orig"),
-        epi_aligned=execution.output_file("[EPI]+orig"),
+        anat_aligned=execution.output_file(pathlib.Path(anat).name + "+orig"),
+        epi_aligned=execution.output_file(pathlib.Path(epi).name + "+orig"),
     )
     execution.run(cargs)
     return ret

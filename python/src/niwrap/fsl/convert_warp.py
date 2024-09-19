@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_WARP_METADATA = Metadata(
-    id="dcb95ab31b5a8cf64bd63932cd11816238137b57.boutiques",
+    id="7655cc2f76db065e7d0737278e57adccfba4827f.boutiques",
     name="convert_warp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -107,8 +107,6 @@ def convert_warp(
     execution = runner.start_execution(CONVERT_WARP_METADATA)
     cargs = []
     cargs.append("convertwarp")
-    cargs.append("--ref=" + execution.input_file(reference))
-    cargs.append("[OUT_FILE]")
     if abswarp:
         cargs.append("--abs")
     if cons_jacobian:
@@ -129,6 +127,7 @@ def convert_warp(
         cargs.append("--postmat=" + execution.input_file(postmat))
     if premat is not None:
         cargs.append("--premat=" + execution.input_file(premat))
+    cargs.append("--ref=" + execution.input_file(reference))
     if relwarp:
         cargs.append("--rel")
     if shift_direction is not None:

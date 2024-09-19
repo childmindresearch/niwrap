@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_3_POSTREG_METADATA = Metadata(
-    id="c19a16710795ec146e134573826a707599f9e887.boutiques",
+    id="0ed8f15e58535abcb1bc048d461360a1a1b59351.boutiques",
     name="tbss_3_postreg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -23,6 +23,8 @@ class Tbss3PostregOutputs(typing.NamedTuple):
 
 
 def tbss_3_postreg(
+    derive_mean_from_study: bool = False,
+    use_fmrib58: bool = False,
     runner: Runner | None = None,
 ) -> Tbss3PostregOutputs:
     """
@@ -33,6 +35,10 @@ def tbss_3_postreg(
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide#tbss_3_postreg
     
     Args:
+        derive_mean_from_study: Derive mean_FA and mean_FA_skeleton from mean\
+            of all subjects in study (recommended).
+        use_fmrib58: Use FMRIB58_FA and its skeleton instead of study-derived\
+            mean and skeleton.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Tbss3PostregOutputs`).
@@ -41,7 +47,10 @@ def tbss_3_postreg(
     execution = runner.start_execution(TBSS_3_POSTREG_METADATA)
     cargs = []
     cargs.append("tbss_3_postreg")
-    cargs.append("[OPTIONS]")
+    if derive_mean_from_study:
+        cargs.append("-S")
+    if use_fmrib58:
+        cargs.append("-T")
     ret = Tbss3PostregOutputs(
         root=execution.output_file("."),
     )

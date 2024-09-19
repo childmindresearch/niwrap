@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_QUAL_METADATA = Metadata(
-    id="c927abddc75e51fcc598c15db923bc25092fa884.boutiques",
+    id="44a6751267f223ef409d44998132ca463821a0d8.boutiques",
     name="SurfQual",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,20 +20,20 @@ class SurfQualOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    dist_output: OutputPathType
+    dist_output: OutputPathType | None
     """File containing distances of nodes from the surface's center."""
-    dist_color_output: OutputPathType
+    dist_color_output: OutputPathType | None
     """Colorized file containing distances of nodes from the surface's
     center."""
-    bad_nodes_output: OutputPathType
+    bad_nodes_output: OutputPathType | None
     """File containing nodes with bad dot product values."""
-    bad_nodes_color_output: OutputPathType
+    bad_nodes_color_output: OutputPathType | None
     """Colorized file containing nodes with bad dot product values."""
-    dotprod_output: OutputPathType
+    dotprod_output: OutputPathType | None
     """File containing dot product values for all nodes."""
-    dotprod_color_output: OutputPathType
+    dotprod_color_output: OutputPathType | None
     """Colorized file containing dot product values for all nodes."""
-    intersect_nodes_output: OutputPathType
+    intersect_nodes_output: OutputPathType | None
     """File containing indices of nodes forming segments that intersect the
     surface."""
 
@@ -41,6 +41,10 @@ class SurfQualOutputs(typing.NamedTuple):
 def surf_qual(
     spec_file: InputPathType,
     surface_a: list[InputPathType],
+    sphere_flag: bool = False,
+    summary_flag: bool = False,
+    self_intersect_flag: bool = False,
+    output_prefix: str | None = None,
     runner: Runner | None = None,
 ) -> SurfQualOutputs:
     """
@@ -53,6 +57,10 @@ def surf_qual(
     Args:
         spec_file: Spec file containing input surfaces.
         surface_a: Name of input surface A.
+        sphere_flag: Indicates that surfaces read are spherical.
+        summary_flag: Provide summary of results to stdout.
+        self_intersect_flag: Check if surface is self intersecting.
+        output_prefix: Prefix of output files. Default is the surface's label.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfQualOutputs`).
@@ -61,7 +69,6 @@ def surf_qual(
     execution = runner.start_execution(SURF_QUAL_METADATA)
     cargs = []
     cargs.append("SurfQual")
-    cargs.append("-spec")
     cargs.extend([
         "-spec",
         execution.input_file(spec_file)
@@ -70,17 +77,26 @@ def surf_qual(
         "-surf_A",
         *[execution.input_file(f) for f in surface_a]
     ])
-    cargs.append("-sphere")
-    cargs.append("[OPTIONS]")
+    if sphere_flag:
+        cargs.append("-sphere")
+    if summary_flag:
+        cargs.append("-summary")
+    if self_intersect_flag:
+        cargs.append("-self_intersect")
+    if output_prefix is not None:
+        cargs.extend([
+            "-prefix",
+            output_prefix
+        ])
     ret = SurfQualOutputs(
         root=execution.output_file("."),
-        dist_output=execution.output_file("[OUTPREF]_Dist.1D.dset"),
-        dist_color_output=execution.output_file("[OUTPREF]_Dist.1D.col"),
-        bad_nodes_output=execution.output_file("[OUTPREF]_BadNodes.1D.dset"),
-        bad_nodes_color_output=execution.output_file("[OUTPREF]_BadNodes.1D.col"),
-        dotprod_output=execution.output_file("[OUTPREF]_dotprod.1D.dset"),
-        dotprod_color_output=execution.output_file("[OUTPREF]_dotprod.1D.col"),
-        intersect_nodes_output=execution.output_file("[OUTPREF]_IntersNodes.1D.dset"),
+        dist_output=execution.output_file(output_prefix + "_Dist.1D.dset") if (output_prefix is not None) else None,
+        dist_color_output=execution.output_file(output_prefix + "_Dist.1D.col") if (output_prefix is not None) else None,
+        bad_nodes_output=execution.output_file(output_prefix + "_BadNodes.1D.dset") if (output_prefix is not None) else None,
+        bad_nodes_color_output=execution.output_file(output_prefix + "_BadNodes.1D.col") if (output_prefix is not None) else None,
+        dotprod_output=execution.output_file(output_prefix + "_dotprod.1D.dset") if (output_prefix is not None) else None,
+        dotprod_color_output=execution.output_file(output_prefix + "_dotprod.1D.col") if (output_prefix is not None) else None,
+        intersect_nodes_output=execution.output_file(output_prefix + "_IntersNodes.1D.dset") if (output_prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

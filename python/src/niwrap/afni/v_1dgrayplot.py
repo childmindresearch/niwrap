@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DGRAYPLOT_METADATA = Metadata(
-    id="89e4649907a2a1854a7fce55508f9096cc0c7563.boutiques",
+    id="935e3e616df7a8e0e270575bc8ae078cc75a53bc.boutiques",
     name="1dgrayplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -24,6 +24,12 @@ class V1dgrayplotOutputs(typing.NamedTuple):
 
 def v_1dgrayplot(
     tsfile: InputPathType,
+    install: bool = False,
+    ignore: float | None = None,
+    flip: bool = False,
+    sep: bool = False,
+    use: float | None = None,
+    ps: bool = False,
     runner: Runner | None = None,
 ) -> V1dgrayplotOutputs:
     """
@@ -35,6 +41,14 @@ def v_1dgrayplot(
     
     Args:
         tsfile: Input time series file (*.1D format).
+        install: Install a new X11 colormap (for X11 PseudoColor).
+        ignore: Skip first 'nn' rows in the input file [default = 0].
+        flip: Plot x and y axes interchanged [default: data columns plotted\
+            DOWN the screen].
+        sep: Separate scales for each column.
+        use: Plot 'mm' points [default: all of them].
+        ps: Don't draw plot in a window; write it to stdout in PostScript\
+            format.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V1dgrayplotOutputs`).
@@ -43,8 +57,25 @@ def v_1dgrayplot(
     execution = runner.start_execution(V_1DGRAYPLOT_METADATA)
     cargs = []
     cargs.append("1dgrayplot")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(tsfile))
+    if install:
+        cargs.append("-install")
+    if ignore is not None:
+        cargs.extend([
+            "-ignore",
+            str(ignore)
+        ])
+    if flip:
+        cargs.append("-flip")
+    if sep:
+        cargs.append("-sep")
+    if use is not None:
+        cargs.extend([
+            "-use",
+            str(use)
+        ])
+    if ps:
+        cargs.append("-ps")
     ret = V1dgrayplotOutputs(
         root=execution.output_file("."),
     )

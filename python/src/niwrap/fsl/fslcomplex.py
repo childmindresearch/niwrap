@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLCOMPLEX_METADATA = Metadata(
-    id="04bdecac3ae0becd85cc68c90704b37e0ef54666.boutiques",
+    id="d0abd5c90beb6b4521e36e45a88d9bccbc714d09.boutiques",
     name="fslcomplex",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -25,6 +25,11 @@ class FslcomplexOutputs(typing.NamedTuple):
 
 
 def fslcomplex(
+    input_file: InputPathType,
+    output_file: InputPathType,
+    output_type: typing.Literal["-realabs", "-realphase", "-realpolar", "-realcartesian", "-complex", "-complexpolar", "-complexsplit", "-complexmerge", "-copyonly"],
+    start_vol: int | None = None,
+    end_vol: int | None = None,
     runner: Runner | None = None,
 ) -> FslcomplexOutputs:
     """
@@ -35,6 +40,11 @@ def fslcomplex(
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
+        input_file: Input volume (e.g. complexvol.nii.gz).
+        output_file: Output volume (e.g. absvol.nii.gz).
+        output_type: Output type (determines the operation to perform).
+        start_vol: Start volume (optional).
+        end_vol: End volume (optional).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslcomplexOutputs`).
@@ -43,14 +53,16 @@ def fslcomplex(
     execution = runner.start_execution(FSLCOMPLEX_METADATA)
     cargs = []
     cargs.append("fslcomplex")
-    cargs.append("<outputtype>")
-    cargs.append("<input>")
-    cargs.append("<output>")
-    cargs.append("[startvol")
-    cargs.append("[endvol]]")
+    cargs.append(execution.input_file(input_file))
+    cargs.append(execution.input_file(output_file))
+    cargs.append(output_type)
+    if start_vol is not None:
+        cargs.append(str(start_vol))
+    if end_vol is not None:
+        cargs.append(str(end_vol))
     ret = FslcomplexOutputs(
         root=execution.output_file("."),
-        result_output_file=execution.output_file("[OUTPUT]"),
+        result_output_file=execution.output_file(pathlib.Path(output_file).name),
     )
     execution.run(cargs)
     return ret

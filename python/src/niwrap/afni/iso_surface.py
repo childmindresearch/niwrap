@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ISO_SURFACE_METADATA = Metadata(
-    id="963f593b2c76bfdce6ea0f5187e403a695b0e643.boutiques",
+    id="1b4fab1def9b59b93f9ee7bf2f6b2a0dcbd0cf95.boutiques",
     name="IsoSurface",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,11 +29,20 @@ class IsoSurfaceOutputs(typing.NamedTuple):
 
 
 def iso_surface(
+    input_vol: InputPathType | None = None,
     shape_spec: list[str] | None = None,
+    isorois: bool = False,
+    isoval: str | None = None,
+    isorange: list[str] | None = None,
     isocmask: str | None = None,
-    noxform: bool = False,
+    output_prefix: str | None = None,
     tsmooth: list[str] | None = None,
     debug: str | None = None,
+    autocrop: bool = False,
+    remesh: str | None = None,
+    xform: str | None = None,
+    novolreg: bool = False,
+    noxform: bool = False,
     runner: Runner | None = None,
 ) -> IsoSurfaceOutputs:
     """
@@ -44,12 +53,22 @@ def iso_surface(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/IsoSurface.html
     
     Args:
+        input_vol: Input volume file.
         shape_spec: Built-in shape specification.
+        isorois: Create isosurface for each unique value in the input volume.
+        isoval: Create isosurface where volume = V.
+        isorange: Create isosurface where V0 <= volume < V1.
         isocmask: Create isosurface where MASK_COM != 0.
-        noxform: Same as -novolreg.
+        output_prefix: Prefix of output surface file.
         tsmooth: Smooth resultant surface using Taubin smoothing with\
             parameters KPB and NITER.
         debug: Debug levels of 0 (default), 1, 2, 3.
+        autocrop: Crop input volume before extraction.
+        remesh: Remesh the surface(s).
+        xform: Transform to apply to volume values before extracting.
+        novolreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\
+            transformations.
+        noxform: Same as -novolreg.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `IsoSurfaceOutputs`).
@@ -58,18 +77,38 @@ def iso_surface(
     execution = runner.start_execution(ISO_SURFACE_METADATA)
     cargs = []
     cargs.append("IsoSurface")
+    if input_vol is not None:
+        cargs.extend([
+            "-input",
+            execution.input_file(input_vol)
+        ])
     if shape_spec is not None:
         cargs.extend([
             "-shape",
             *shape_spec
+        ])
+    if isorois:
+        cargs.append("-isorois")
+    if isoval is not None:
+        cargs.extend([
+            "-isoval",
+            isoval
+        ])
+    if isorange is not None:
+        cargs.extend([
+            "-isorange",
+            *isorange
         ])
     if isocmask is not None:
         cargs.extend([
             "-isocmask",
             isocmask
         ])
-    if noxform:
-        cargs.append("-noxform")
+    if output_prefix is not None:
+        cargs.extend([
+            "-o_TYPE",
+            output_prefix
+        ])
     if tsmooth is not None:
         cargs.extend([
             "-Tsmooth",
@@ -80,6 +119,22 @@ def iso_surface(
             "-debug",
             debug
         ])
+    if autocrop:
+        cargs.append("-autocrop")
+    if remesh is not None:
+        cargs.extend([
+            "-remesh",
+            remesh
+        ])
+    if xform is not None:
+        cargs.extend([
+            "-xform",
+            xform
+        ])
+    if novolreg:
+        cargs.append("-novolreg")
+    if noxform:
+        cargs.append("-noxform")
     ret = IsoSurfaceOutputs(
         root=execution.output_file("."),
         output_surface_ply=execution.output_file("[MASK]_surf.ply"),

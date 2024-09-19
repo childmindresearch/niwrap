@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_CLUST_METADATA = Metadata(
-    id="7af342fb99cac6939cdfd3e99fef85850723e4f0.boutiques",
+    id="8297e35c9a1d6de4b062799badc996e66b5ab1e8.boutiques",
     name="SurfClust",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,6 +40,8 @@ def surf_clust(
     out_clusterdset: bool = False,
     out_roidset: bool = False,
     out_fulllist: bool = False,
+    sort_none: bool = False,
+    sort_n_nodes: bool = False,
     sort_area: bool = False,
     thresh_col: float | None = None,
     thresh: float | None = None,
@@ -57,6 +59,14 @@ def surf_clust(
     trace_extreme: bool = False,
     no_memory_trace: bool = False,
     yes_memory_trace: bool = False,
+    mini_help: bool = False,
+    help_: bool = False,
+    extreme_help: bool = False,
+    view_help: bool = False,
+    web_help: bool = False,
+    find_help: str | None = None,
+    raw_help: bool = False,
+    spx_help: bool = False,
     aspx_help: bool = False,
     runner: Runner | None = None,
 ) -> SurfClustOutputs:
@@ -81,6 +91,8 @@ def surf_clust(
         out_clusterdset: Output a clustered version of input dataset.
         out_roidset: Output an ROI dataset with the rank of its cluster.
         out_fulllist: Output a value for all nodes of input surface.
+        sort_none: No sorting of ROI clusters.
+        sort_n_nodes: Sorting based on number of nodes in cluster.
         sort_area: Sorting based on area of clusters (default).
         thresh_col: Index of thresholding column. Default is column 0.
         thresh: Apply thresholding prior to clustering.
@@ -104,6 +116,19 @@ def surf_clust(
         trace_extreme: Turns on extreme tracing.
         no_memory_trace: Turn off memory tracing.
         yes_memory_trace: Turn on memory tracing (default).
+        mini_help: Mini help, same as -help in many cases.
+        help_: The entire help output.
+        extreme_help: Extreme help, same as -help in majority of cases.
+        view_help: Open help in text editor. AFNI will try to find a GUI editor\
+            on your machine. You can control which it should use by setting\
+            environment variable AFNI_GUI_EDITOR.
+        web_help: Open help in web browser. AFNI will try to find a browser.\
+            You can control which it should use by setting environment variable\
+            AFNI_GUI_EDITOR.
+        find_help: Look for lines in this program's -help output that match\
+            (approximately) the given word.
+        raw_help: Help string unedited.
+        spx_help: Help string in sphinx format, but do not try to autoformat.
         aspx_help: Help string in sphinx format with autoformatting of options.
         runner: Command runner.
     Returns:
@@ -115,7 +140,6 @@ def surf_clust(
     execution = runner.start_execution(SURF_CLUST_METADATA)
     cargs = []
     cargs.append("SurfClust")
-    cargs.append("[SPEC_SURF]")
     if specfile is not None:
         cargs.extend([
             "-spec",
@@ -135,7 +159,6 @@ def surf_clust(
         "-input",
         *[execution.input_file(f) for f in input_dataset]
     ])
-    cargs.append("[DATA_COL_INDEX]")
     cargs.extend([
         "-rmm",
         str(rmm)
@@ -161,6 +184,10 @@ def surf_clust(
         cargs.append("-out_roidset")
     if out_fulllist:
         cargs.append("-out_fulllist")
+    if sort_none:
+        cargs.append("-sort_none")
+    if sort_n_nodes:
+        cargs.append("-sort_n_nodes")
     if sort_area:
         cargs.append("-sort_area")
     if thresh_col is not None:
@@ -216,6 +243,25 @@ def surf_clust(
         cargs.append("-nomall")
     if yes_memory_trace:
         cargs.append("-yesmall")
+    if mini_help:
+        cargs.append("-h")
+    if help_:
+        cargs.append("-help")
+    if extreme_help:
+        cargs.append("-HELP")
+    if view_help:
+        cargs.append("-h_view")
+    if web_help:
+        cargs.append("-h_web")
+    if find_help is not None:
+        cargs.extend([
+            "-h_find",
+            find_help
+        ])
+    if raw_help:
+        cargs.append("-h_raw")
+    if spx_help:
+        cargs.append("-h_spx")
     if aspx_help:
         cargs.append("-h_aspx")
     ret = SurfClustOutputs(

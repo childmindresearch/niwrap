@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WAVER_METADATA = Metadata(
-    id="96b50e0c8292a4fbc3bac32ca89083846b0e7918.boutiques",
+    id="ed524dad0a84a2c19dac4c318e2d5f4dcea055ce.boutiques",
     name="waver",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,7 +25,28 @@ class WaverOutputs(typing.NamedTuple):
 
 
 def waver(
+    wav: bool = False,
     gam: bool = False,
+    expr: str | None = None,
+    file_opt: str | None = None,
+    delay_time: float | None = None,
+    rise_time: float | None = None,
+    fall_time: float | None = None,
+    undershoot: float | None = None,
+    restore_time: float | None = None,
+    gamb: float | None = None,
+    gamc: float | None = None,
+    gamd: float | None = None,
+    peak: float | None = None,
+    dt: float | None = None,
+    tr: float | None = None,
+    xyout: bool = False,
+    input_file: InputPathType | None = None,
+    inline_data: str | None = None,
+    tstim_data: str | None = None,
+    when_data: str | None = None,
+    numout: int | None = None,
+    ver_flag: bool = False,
     runner: Runner | None = None,
 ) -> WaverOutputs:
     """
@@ -36,7 +57,38 @@ def waver(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/waver.html
     
     Args:
+        wav: Sets waveform to Cox special [default].
         gam: Sets waveform to form t^b * exp(-t/c) (cf. Mark Cohen).
+        expr: Sets waveform to the expression given, which should depend on the\
+            variable 't'.
+        file_opt: Sets waveform to the values read from the file wname, which\
+            should be a single column .1D file. The dt value is the time step (in\
+            seconds) between lines in wname.
+        delay_time: Sets delay time to # seconds [2].
+        rise_time: Sets rise time to # seconds [4].
+        fall_time: Sets fall time to # seconds [6].
+        undershoot: Sets undershoot to # times the peak [0.2].
+        restore_time: Sets time to restore from undershoot [2].
+        gamb: Sets the parameter 'b' to # [8.6].
+        gamc: Sets the parameter 'c' to # [0.547].
+        gamd: Sets the delay time to # seconds [0.0].
+        peak: Sets peak value to # [100].
+        dt: Sets time step of output AND input [0.1].
+        tr: '-TR' is equivalent to '-dt'.
+        xyout: Output data in 2 columns: 1=time 2=waveform (useful for\
+            graphing) [default is 1 column=waveform].
+        input_file: Read timeseries from *.1D formatted 'infile'; convolve with\
+            waveform to produce output.
+        inline_data: Read timeseries from command line DATA; convolve with\
+            waveform to produce output.
+        tstim_data: Read discrete stimulation times from the command line and\
+            convolve the waveform with delta-functions at those times.
+        when_data: Read time blocks when stimulus is 'on' (=1) from the command\
+            line and convolve the waveform with with a zero-one input.
+        numout: Output a timeseries with NN points; if this option is not\
+            given, then enough points are output to let the result tail back down\
+            to zero.
+        ver_flag: Output version information and exit.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `WaverOutputs`).
@@ -45,11 +97,104 @@ def waver(
     execution = runner.start_execution(WAVER_METADATA)
     cargs = []
     cargs.append("waver")
+    if wav:
+        cargs.append("-WAV")
     if gam:
         cargs.append("-GAM")
-    cargs.append("[OPTIONS]")
-    cargs.append(">")
-    cargs.append("[OUTPUT_FILENAME]")
+    if expr is not None:
+        cargs.extend([
+            "-EXPR",
+            expr
+        ])
+    if file_opt is not None:
+        cargs.extend([
+            "-FILE",
+            file_opt
+        ])
+    if delay_time is not None:
+        cargs.extend([
+            "-delaytime",
+            str(delay_time)
+        ])
+    if rise_time is not None:
+        cargs.extend([
+            "-risetime",
+            str(rise_time)
+        ])
+    if fall_time is not None:
+        cargs.extend([
+            "-falltime",
+            str(fall_time)
+        ])
+    if undershoot is not None:
+        cargs.extend([
+            "-undershoot",
+            str(undershoot)
+        ])
+    if restore_time is not None:
+        cargs.extend([
+            "-restoretime",
+            str(restore_time)
+        ])
+    if gamb is not None:
+        cargs.extend([
+            "-gamb",
+            str(gamb)
+        ])
+    if gamc is not None:
+        cargs.extend([
+            "-gamc",
+            str(gamc)
+        ])
+    if gamd is not None:
+        cargs.extend([
+            "-gamd",
+            str(gamd)
+        ])
+    if peak is not None:
+        cargs.extend([
+            "-peak",
+            str(peak)
+        ])
+    if dt is not None:
+        cargs.extend([
+            "-dt",
+            str(dt)
+        ])
+    if tr is not None:
+        cargs.extend([
+            "-TR",
+            str(tr)
+        ])
+    if xyout:
+        cargs.append("-xyout")
+    if input_file is not None:
+        cargs.extend([
+            "-input",
+            execution.input_file(input_file)
+        ])
+    if inline_data is not None:
+        cargs.extend([
+            "-inline",
+            inline_data
+        ])
+    if tstim_data is not None:
+        cargs.extend([
+            "-tstim",
+            tstim_data
+        ])
+    if when_data is not None:
+        cargs.extend([
+            "-when",
+            when_data
+        ])
+    if numout is not None:
+        cargs.extend([
+            "-numout",
+            str(numout)
+        ])
+    if ver_flag:
+        cargs.append("-ver")
     ret = WaverOutputs(
         root=execution.output_file("."),
         output_filename=execution.output_file("output_filename"),

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RANKIZER_METADATA = Metadata(
-    id="1526787c6fe081182b67655916ab181312ed5958.boutiques",
+    id="513896b35d5b88f645a731146b7a584e7bff7b3f.boutiques",
     name="3dRankizer",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,6 +26,11 @@ class V3dRankizerOutputs(typing.NamedTuple):
 
 def v_3d_rankizer(
     dataset: InputPathType,
+    prefix: str,
+    base_rank: float | None = None,
+    mask: InputPathType | None = None,
+    percentize: bool = False,
+    percentize_mask: bool = False,
     runner: Runner | None = None,
 ) -> V3dRankizerOutputs:
     """
@@ -38,6 +43,15 @@ def v_3d_rankizer(
     
     Args:
         dataset: Input MRI dataset.
+        prefix: Write results into float-format output dataset.
+        base_rank: Set the 'base' rank instead of 1.
+        mask: Use the specified dataset as a mask. Only voxels with nonzero\
+            values in this mask will be used from the input dataset. Voxels outside\
+            the mask will get rank 0.
+        percentize: Divide rank by the number of voxels in the dataset and\
+            multiply by 100.0.
+        percentize_mask: Divide rank by the number of voxels in the mask and\
+            multiply by 100.0.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dRankizerOutputs`).
@@ -46,11 +60,28 @@ def v_3d_rankizer(
     execution = runner.start_execution(V_3D_RANKIZER_METADATA)
     cargs = []
     cargs.append("3dRankizer")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(dataset))
+    if base_rank is not None:
+        cargs.extend([
+            "-brank",
+            str(base_rank)
+        ])
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
+    if percentize:
+        cargs.append("-percentize")
+    if percentize_mask:
+        cargs.append("-percentize_mask")
     ret = V3dRankizerOutputs(
         root=execution.output_file("."),
-        output_dataset=execution.output_file("[PPP]+tlrc.HEAD"),
+        output_dataset=execution.output_file(prefix + "+tlrc.HEAD"),
     )
     execution.run(cargs)
     return ret

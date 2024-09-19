@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PLUGOUT_IJK_METADATA = Metadata(
-    id="c25d669b8dde195841464a671bfb4b0ce72d2647.boutiques",
+    id="80af6135dfbf8a4f2607f20e73f5dc9f0efe6e66.boutiques",
     name="plugout_ijk",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -104,7 +104,6 @@ def plugout_ijk(
             "-npb",
             str(port_bloc_offset)
         ])
-    cargs.append("[PORT_BLOC_OFFSET_QUIET]")
     if max_bloc:
         cargs.append("-max_port_bloc")
     if max_bloc_quiet:

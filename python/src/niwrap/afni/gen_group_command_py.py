@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GEN_GROUP_COMMAND_PY_METADATA = Metadata(
-    id="51c3095191f9344439630ab4bd49fe90d933b15f.boutiques",
+    id="73ff1d610cc7283b8bcb17ced6d5c50b88c0b84f.boutiques",
     name="gen_group_command.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -69,7 +69,7 @@ def gen_group_command_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(GEN_GROUP_COMMAND_PY_METADATA)
     cargs = []
-    cargs.append("gen_group_command.py")
+    cargs.append("gen_group_command")
     cargs.extend([
         "-command",
         command_name
@@ -78,7 +78,6 @@ def gen_group_command_py(
         "-dsets",
         *datasets
     ])
-    cargs.append("[OPTIONS]")
     if prefix is not None:
         cargs.extend([
             "-prefix",

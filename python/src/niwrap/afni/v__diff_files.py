@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DIFF_FILES_METADATA = Metadata(
-    id="06448df7b458fee6cb35a742b2693373b6f580ad.boutiques",
+    id="86b01c9b099264803ec45d4a6fb7bec5b0a8c1d8.boutiques",
     name="@diff.files",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,15 @@ class VDiffFilesOutputs(typing.NamedTuple):
 def v__diff_files(
     files: list[str],
     old_dir: str,
+    diff_opts: str | None = None,
+    diff_prog: str | None = None,
+    ignore_missing: bool = False,
+    longlist: bool = False,
+    save: bool = False,
+    show: bool = False,
+    xxdiff: bool = False,
+    x_flag: bool = False,
+    verbosity: float | None = None,
     runner: Runner | None = None,
 ) -> VDiffFilesOutputs:
     """
@@ -37,17 +46,54 @@ def v__diff_files(
     Args:
         files: List of files to compare.
         old_dir: Directory containing the files to compare against.
+        diff_opts: Add options to diff command (e.g., -w).
+        diff_prog: Display diffs using a specified program (e.g., meld, xxdiff).
+        ignore_missing: Continue even if files are missing.
+        longlist: Run 'ls -l' on both directories instead of listing files.
+        save: Create PDFs of diffs.
+        show: Show diffs using 'diff'.
+        xxdiff: Show diffs using 'xxdiff'.
+        x_flag: Implies -xxdiff and -ignore_missing.
+        verbosity: Set verbosity level (2 or 3).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VDiffFilesOutputs`).
     """
+    if verbosity is not None and not (1 <= verbosity <= 3): 
+        raise ValueError(f"'verbosity' must be between 1 <= x <= 3 but was {verbosity}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DIFF_FILES_METADATA)
     cargs = []
     cargs.append("@diff.files")
-    cargs.append("[OPTIONS]")
     cargs.extend(files)
     cargs.append(old_dir)
+    if diff_opts is not None:
+        cargs.extend([
+            "-diff_opts",
+            diff_opts
+        ])
+    if diff_prog is not None:
+        cargs.extend([
+            "-diff_prog",
+            diff_prog
+        ])
+    if ignore_missing:
+        cargs.append("-ignore_missing")
+    if longlist:
+        cargs.append("-longlist")
+    if save:
+        cargs.append("-save")
+    if show:
+        cargs.append("-show")
+    if xxdiff:
+        cargs.append("-xxdiff")
+    if x_flag:
+        cargs.append("-X")
+    if verbosity is not None:
+        cargs.extend([
+            "-verb",
+            str(verbosity)
+        ])
     ret = VDiffFilesOutputs(
         root=execution.output_file("."),
     )

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAGES_EQUAL_METADATA = Metadata(
-    id="79bd56ea3f5405b6efff3fd5ab5c2970489568a6.boutiques",
+    id="e6efd23a2cb77ec28fc6536e6778852525b7e0c8.boutiques",
     name="images_equal",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -27,6 +27,7 @@ class ImagesEqualOutputs(typing.NamedTuple):
 def images_equal(
     file_a: InputPathType,
     file_b: InputPathType,
+    all_flag: bool = False,
     runner: Runner | None = None,
 ) -> ImagesEqualOutputs:
     """
@@ -39,6 +40,8 @@ def images_equal(
     Args:
         file_a: First image file to compare.
         file_b: Second image file to compare.
+        all_flag: Compare all images in the files; all must be equal for exit\
+            status to be 1.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ImagesEqualOutputs`).
@@ -47,9 +50,10 @@ def images_equal(
     execution = runner.start_execution(IMAGES_EQUAL_METADATA)
     cargs = []
     cargs.append("images_equal")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(file_a))
     cargs.append(execution.input_file(file_b))
+    if all_flag:
+        cargs.append("-all")
     ret = ImagesEqualOutputs(
         root=execution.output_file("."),
         comparison_result=execution.output_file("comparison_result.txt"),

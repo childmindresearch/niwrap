@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DIMON_METADATA = Metadata(
-    id="5ef8a3022999b10db220d5116b141d4d78108df6.boutiques",
+    id="e9b06cbb339b9122dc473bf602c4d150560f4746.boutiques",
     name="Dimon",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -63,55 +63,45 @@ def dimon(
     execution = runner.start_execution(DIMON_METADATA)
     cargs = []
     cargs.append("Dimon")
-    cargs.append("[OPTIONS]")
-    cargs.append("-infile_prefix")
     cargs.extend([
         "-infile_prefix",
         infile_prefix
     ])
-    cargs.append("-infile_pattern")
     if infile_pattern is not None:
         cargs.extend([
             "-infile_pattern",
             infile_pattern
         ])
-    cargs.append("-infile_list")
     if infile_list is not None:
         cargs.extend([
             "-infile_list",
             execution.input_file(infile_list)
         ])
-    cargs.append("-rt_cmd")
     if rt_cmd is not None:
         cargs.extend([
             "-rt_cmd",
             rt_cmd
         ])
-    cargs.append("-host")
     if host is not None:
         cargs.extend([
             "-host",
             host
         ])
-    cargs.append("-drive_afni")
     if drive_afni is not None:
         cargs.extend([
             "-drive_afni",
             drive_afni
         ])
-    cargs.append("-drive_wait")
     if drive_wait is not None:
         cargs.extend([
             "-drive_wait",
             drive_wait
         ])
-    cargs.append("-te_list")
     if te_list is not None:
         cargs.extend([
             "-te_list",
             te_list
         ])
-    cargs.append("-sort_method")
     if sort_method is not None:
         cargs.extend([
             "-sort_method",

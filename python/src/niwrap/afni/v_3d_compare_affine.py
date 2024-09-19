@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_COMPARE_AFFINE_METADATA = Metadata(
-    id="7cfd722adbb4499de1713f354b48d813f3064d41.boutiques",
+    id="6f92cb7cc1ea0e741ad430c32fc673e77fa97bc6.boutiques",
     name="3dCompareAffine",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,9 @@ class V3dCompareAffineOutputs(typing.NamedTuple):
 
 
 def v_3d_compare_affine(
+    mask: str | None = None,
+    dset: InputPathType | None = None,
+    affine: list[str] | None = None,
     runner: Runner | None = None,
 ) -> V3dCompareAffineOutputs:
     """
@@ -37,6 +40,12 @@ def v_3d_compare_affine(
     https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCompareAffine.html
     
     Args:
+        mask: Dataset containing non-zero voxels used as the region over which\
+            to compare the affine transformations.
+        dset: Dataset to compute an automask from it and use that mask as the\
+            spatial region for comparison.
+        affine: Input an affine transformation (file or 'MATRIX'). Multiple\
+            '-affine' options can be used to input multiple files.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dCompareAffineOutputs`).
@@ -45,7 +54,21 @@ def v_3d_compare_affine(
     execution = runner.start_execution(V_3D_COMPARE_AFFINE_METADATA)
     cargs = []
     cargs.append("3dCompareAffine")
-    cargs.append("[OPTIONS]")
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            mask
+        ])
+    if dset is not None:
+        cargs.extend([
+            "-dset",
+            execution.input_file(dset)
+        ])
+    if affine is not None:
+        cargs.extend([
+            "-affine",
+            *affine
+        ])
     ret = V3dCompareAffineOutputs(
         root=execution.output_file("."),
         outfile=execution.output_file("[OUTPUT_PREFIX]_comparison.txt"),

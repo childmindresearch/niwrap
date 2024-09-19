@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DSOUND_METADATA = Metadata(
-    id="f44e57b50ed08b06652bace730d6a8f1c13f54cd.boutiques",
+    id="f27567816bb64cb79e092571f9328714ebfc27bc.boutiques",
     name="1dsound",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,16 +20,20 @@ class V1dsoundOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_file: OutputPathType
+    output_file: OutputPathType | None
     """The output audio file."""
 
 
 def v_1dsound(
     tsfile: InputPathType,
     prefix: str | None = None,
+    encoding_16_pcm: bool = False,
+    encoding_8_pcm: bool = False,
     encoding_8ulaw: bool = False,
     tper_option: float | None = None,
+    fm_option: bool = False,
     notes_option: bool = False,
+    notewave_option: str | None = None,
     despike_option: bool = False,
     play_option: bool = False,
     runner: Runner | None = None,
@@ -46,11 +50,17 @@ def v_1dsound(
             into sound.
         prefix: Prefix for the output filename, which will have '.au'\
             extension.
+        encoding_16_pcm: Output in 16-bit linear PCM encoding (uncompressed).
+        encoding_8_pcm: Output in 8-bit linear PCM encoding.
         encoding_8ulaw: Output in 8-bit mu-law encoding.
         tper_option: Time in seconds per time point in 'tsfile'. Allowed range\
             is 0.01 to 1.0 (inclusive). [default is 0.2s].
+        fm_option: Output sound is frequency modulated between 110 and 1760 Hz\
+            from min to max in the input 1D file.
         notes_option: Output sound is a sequence of notes, low to high pitch\
             based on min to max in the input 1D file. Uses pentatonic scale.
+        notewave_option: Shape of the notes used. Select from [sine, sqsine,\
+            square, triangle].
         despike_option: Apply a simple despiking algorithm to avoid artifacts\
             from large/small values in the input.
         play_option: Plays the sound file after it is written.
@@ -64,11 +74,16 @@ def v_1dsound(
     execution = runner.start_execution(V_1DSOUND_METADATA)
     cargs = []
     cargs.append("1dsound")
+    cargs.append(execution.input_file(tsfile))
     if prefix is not None:
         cargs.extend([
             "-prefix",
             prefix
         ])
+    if encoding_16_pcm:
+        cargs.append("-16PCM")
+    if encoding_8_pcm:
+        cargs.append("-8PCM")
     if encoding_8ulaw:
         cargs.append("-8ulaw")
     if tper_option is not None:
@@ -76,16 +91,22 @@ def v_1dsound(
             "-tper",
             str(tper_option)
         ])
+    if fm_option:
+        cargs.append("-FM")
     if notes_option:
         cargs.append("-notes")
+    if notewave_option is not None:
+        cargs.extend([
+            "-notewave",
+            notewave_option
+        ])
     if despike_option:
         cargs.append("-despike")
     if play_option:
         cargs.append("-play")
-    cargs.append(execution.input_file(tsfile))
     ret = V1dsoundOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[PREFIX].au"),
+        output_file=execution.output_file(prefix + ".au") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

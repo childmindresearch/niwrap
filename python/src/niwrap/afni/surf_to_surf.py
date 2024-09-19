@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_TO_SURF_METADATA = Metadata(
-    id="6b2cd55fafe712416f2f72d25f8e8c236eaf75c1.boutiques",
+    id="d7883d4a13357cfd0fed7ad1d5beb66474b05d0e.boutiques",
     name="SurfToSurf",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,12 +20,24 @@ class SurfToSurfOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_file: OutputPathType
+    output_file: OutputPathType | None
     """Output file in 1D format"""
 
 
 def surf_to_surf(
+    input_surface_1: InputPathType,
+    input_surface_2: InputPathType,
+    surface_volume: InputPathType | None = None,
+    prefix: str | None = None,
+    output_params: str | None = None,
+    node_indices: InputPathType | None = None,
+    proj_dir: InputPathType | None = None,
+    data: InputPathType | None = None,
+    node_debug: float | None = None,
+    debug_level: float | None = None,
     make_consistent: bool = False,
+    dset: InputPathType | None = None,
+    mapfile: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> SurfToSurfOutputs:
     """
@@ -36,8 +48,21 @@ def surf_to_surf(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfToSurf.html
     
     Args:
+        input_surface_1: First input surface file (S1).
+        input_surface_2: Second input surface file (S2).
+        surface_volume: Specify the surface volume (SV1).
+        prefix: Specify prefix for the output file.
+        output_params: List of mapping parameters to include in output.
+        node_indices: 1D file containing node indices of S1 to consider.
+        proj_dir: 1D file containing projection directions.
+        data: 1D file containing data to be interpolated.
+        node_debug: Node index for debugging purposes.
+        debug_level: Debugging level.
         make_consistent: Force a consistency check and correct triangle\
             orientation.
+        dset: Dataset file for data interpolation; mutually exclusive with\
+            -data.
+        mapfile: File containing mapping parameters between surfaces S2 and S1.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfToSurfOutputs`).
@@ -46,37 +71,63 @@ def surf_to_surf(
     execution = runner.start_execution(SURF_TO_SURF_METADATA)
     cargs = []
     cargs.append("SurfToSurf")
-    cargs.append("<-i_TYPE")
-    cargs.append("S1>")
-    cargs.append("[<-sv")
-    cargs.append("SV1>]")
-    cargs.append("<-i_TYPE")
-    cargs.append("S2>")
-    cargs.append("[<-sv")
-    cargs.append("SV1>]")
-    cargs.append("[<-prefix")
-    cargs.append("PREFIX>]")
-    cargs.append("[<-output_params")
-    cargs.append("PARAM_LIST>]")
-    cargs.append("[<-node_indices")
-    cargs.append("NODE_INDICES>]")
-    cargs.append("[<-proj_dir")
-    cargs.append("PROJ_DIR>]")
-    cargs.append("[<-data")
-    cargs.append("DATA>]")
-    cargs.append("[<-node_debug")
-    cargs.append("NODE>]")
-    cargs.append("[<-debug")
-    cargs.append("DBG_LEVEL>]")
+    cargs.append(execution.input_file(input_surface_1))
+    cargs.append(execution.input_file(input_surface_2))
+    if surface_volume is not None:
+        cargs.extend([
+            "-sv",
+            execution.input_file(surface_volume)
+        ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if output_params is not None:
+        cargs.extend([
+            "-output_params",
+            output_params
+        ])
+    if node_indices is not None:
+        cargs.extend([
+            "-node_indices",
+            execution.input_file(node_indices)
+        ])
+    if proj_dir is not None:
+        cargs.extend([
+            "-proj_dir",
+            execution.input_file(proj_dir)
+        ])
+    if data is not None:
+        cargs.extend([
+            "-data",
+            execution.input_file(data)
+        ])
+    if node_debug is not None:
+        cargs.extend([
+            "-node_debug",
+            str(node_debug)
+        ])
+    if debug_level is not None:
+        cargs.extend([
+            "-debug",
+            str(debug_level)
+        ])
     if make_consistent:
         cargs.append("-make_consistent")
-    cargs.append("[<-dset")
-    cargs.append("DSET>]")
-    cargs.append("[<-mapfile")
-    cargs.append("MAP_INFO>]")
+    if dset is not None:
+        cargs.extend([
+            "-dset",
+            execution.input_file(dset)
+        ])
+    if mapfile is not None:
+        cargs.extend([
+            "-mapfile",
+            execution.input_file(mapfile)
+        ])
     ret = SurfToSurfOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[PREFIX].1D"),
+        output_file=execution.output_file(prefix + ".1D") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

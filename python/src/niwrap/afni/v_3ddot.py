@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DDOT_METADATA = Metadata(
-    id="18ec3a73314a3e5065dbea40cf4a86cbe46d9ca8.boutiques",
+    id="7091346555bb298f2153a316f7217d0565546321.boutiques",
     name="3ddot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,6 +26,20 @@ class V3ddotOutputs(typing.NamedTuple):
 
 def v_3ddot(
     input_datasets: list[InputPathType],
+    mask: InputPathType | None = None,
+    mrange: list[float] | None = None,
+    demean: bool = False,
+    docor: bool = False,
+    dodot: bool = False,
+    docoef: bool = False,
+    dosums: bool = False,
+    doeta2: bool = False,
+    dodice: bool = False,
+    show_labels: bool = False,
+    upper: bool = False,
+    full: bool = False,
+    v_1_d: bool = False,
+    niml: bool = False,
     runner: Runner | None = None,
 ) -> V3ddotOutputs:
     """
@@ -38,6 +52,25 @@ def v_3ddot(
     Args:
         input_datasets: List of input datasets to be used (e.g. img1+orig,\
             img2+orig).
+        mask: Dataset to be used as a mask; only voxels with nonzero values\
+            will be averaged.
+        mrange: Restrict mask values to those between a and b (inclusive) for\
+            masking purposes.
+        demean: Remove the mean from each volume prior to computing the\
+            correlation.
+        docor: Return the correlation coefficient (default).
+        dodot: Return the dot product (unscaled).
+        docoef: Return the least square fit coefficients {a,b}.
+        dosums: Return xbar, ybar, variance, covariance, and correlation\
+            coefficient.
+        doeta2: Return eta-squared (Cohen, NeuroImage 2008).
+        dodice: Return the Dice coefficient (the Sorensen-Dice index).
+        show_labels: Print sub-brick labels to help identify what is being\
+            correlated.
+        upper: Compute upper triangular matrix.
+        full: Compute the whole matrix.
+        v_1_d: Add comment headings for the 1D format.
+        niml: Write output in NIML 1D format.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3ddotOutputs`).
@@ -46,8 +79,41 @@ def v_3ddot(
     execution = runner.start_execution(V_3DDOT_METADATA)
     cargs = []
     cargs.append("3ddot")
-    cargs.append("[OPTIONS]")
     cargs.extend([execution.input_file(f) for f in input_datasets])
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
+    if mrange is not None:
+        cargs.extend([
+            "-mrange",
+            *map(str, mrange)
+        ])
+    if demean:
+        cargs.append("-demean")
+    if docor:
+        cargs.append("-docor")
+    if dodot:
+        cargs.append("-dodot")
+    if docoef:
+        cargs.append("-docoef")
+    if dosums:
+        cargs.append("-dosums")
+    if doeta2:
+        cargs.append("-doeta2")
+    if dodice:
+        cargs.append("-dodice")
+    if show_labels:
+        cargs.append("-show_labels")
+    if upper:
+        cargs.append("-upper")
+    if full:
+        cargs.append("-full")
+    if v_1_d:
+        cargs.append("-1D")
+    if niml:
+        cargs.append("-NIML")
     ret = V3ddotOutputs(
         root=execution.output_file("."),
         result=execution.output_file("stdout"),

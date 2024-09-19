@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BRAIN_SYNC_METADATA = Metadata(
-    id="ba6e60b063ee8001bca1b94f5e8ff01809cb325a.boutiques",
+    id="34c16d0296c24d255230514a3531f5fb753d9005.boutiques",
     name="3dBrainSync",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,19 +20,26 @@ class V3dBrainSyncOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    qprefix_output: OutputPathType
+    qprefix_output: OutputPathType | None
     """Output dataset after orthogonal matrix transformation"""
-    pprefix_output: OutputPathType
+    pprefix_output: OutputPathType | None
     """Output dataset after permutation transformation"""
-    qprefix_sval: OutputPathType
+    qprefix_sval: OutputPathType | None
     """Singular values from the BC' decomposition"""
-    qprefix_qmat: OutputPathType
+    qprefix_qmat: OutputPathType | None
     """Q matrix"""
-    pprefix_perm: OutputPathType
+    pprefix_perm: OutputPathType | None
     """Permutation indexes p(i)"""
 
 
 def v_3d_brain_sync(
+    inset1: InputPathType,
+    inset2: InputPathType,
+    qprefix: str | None = None,
+    pprefix: str | None = None,
+    normalize: bool = False,
+    mask: InputPathType | None = None,
+    verb: bool = False,
     runner: Runner | None = None,
 ) -> V3dBrainSyncOutputs:
     """
@@ -44,6 +51,16 @@ def v_3d_brain_sync(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBrainSync.html
     
     Args:
+        inset1: Reference dataset.
+        inset2: Dataset to be matched to the reference dataset.
+        qprefix: Specifies the output dataset to be used for the orthogonal\
+            matrix transformation.
+        pprefix: Specifies the output dataset to be used for the permutation\
+            transformation.
+        normalize: Normalize the output dataset(s) so that each time series has\
+            sum-of-squares = 1.
+        mask: Only operate on nonzero voxels in the mask dataset.
+        verb: Print some progress reports and auxiliary information.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dBrainSyncOutputs`).
@@ -52,14 +69,40 @@ def v_3d_brain_sync(
     execution = runner.start_execution(V_3D_BRAIN_SYNC_METADATA)
     cargs = []
     cargs.append("3dBrainSync")
-    cargs.append("[OPTIONS]")
+    cargs.extend([
+        "-inset1",
+        execution.input_file(inset1)
+    ])
+    cargs.extend([
+        "-inset2",
+        execution.input_file(inset2)
+    ])
+    if qprefix is not None:
+        cargs.extend([
+            "-Qprefix",
+            qprefix
+        ])
+    if pprefix is not None:
+        cargs.extend([
+            "-Pprefix",
+            pprefix
+        ])
+    if normalize:
+        cargs.append("-normalize")
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
+    if verb:
+        cargs.append("-verb")
     ret = V3dBrainSyncOutputs(
         root=execution.output_file("."),
-        qprefix_output=execution.output_file("[QPREFIX].nii"),
-        pprefix_output=execution.output_file("[PPREFIX].nii"),
-        qprefix_sval=execution.output_file("[QPREFIX].sval.1D"),
-        qprefix_qmat=execution.output_file("[QPREFIX].qmat.1D"),
-        pprefix_perm=execution.output_file("[PPREFIX].perm.1D"),
+        qprefix_output=execution.output_file(qprefix + ".nii") if (qprefix is not None) else None,
+        pprefix_output=execution.output_file(pprefix + ".nii") if (pprefix is not None) else None,
+        qprefix_sval=execution.output_file(qprefix + ".sval.1D") if (qprefix is not None) else None,
+        qprefix_qmat=execution.output_file(qprefix + ".qmat.1D") if (qprefix is not None) else None,
+        pprefix_perm=execution.output_file(pprefix + ".perm.1D") if (pprefix is not None) else None,
     )
     execution.run(cargs)
     return ret

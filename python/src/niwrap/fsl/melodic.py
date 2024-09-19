@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MELODIC_METADATA = Metadata(
-    id="2c68a935ac51b21b711ab7051890886497749b64.boutiques",
+    id="4b6dda2312045e92c10db2c5f386f803e67ebcf9.boutiques",
     name="melodic",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -37,9 +37,9 @@ def melodic(
     output_directory: str | None = None,
     mask_file: InputPathType | None = None,
     dimensionality_reduction: float | None = None,
-    variance_normalization: bool = False,
     generate_report: bool = False,
     cifti_io: bool = False,
+    variance_normalization: bool = False,
     no_masking: bool = False,
     update_masking: bool = False,
     no_bet: bool = False,
@@ -53,8 +53,8 @@ def melodic(
     num_ics: float | None = None,
     nonlinearity: str | None = None,
     covar_weights: InputPathType | None = None,
-    eps_rank1_error: float | None = None,
     eps_error: float | None = None,
+    eps_rank1_error: float | None = None,
     max_iters: float | None = None,
     max_restarts: float | None = None,
     mm_threshold: float | None = None,
@@ -78,6 +78,7 @@ def melodic(
     output_mean_volume: bool = False,
     version: bool = False,
     copyright_: bool = False,
+    help_: bool = False,
     debug: bool = False,
     report_maps: str | None = None,
     keep_meanvol: bool = False,
@@ -98,10 +99,10 @@ def melodic(
         mask_file: File name of mask for thresholding.
         dimensionality_reduction: Dimensionality reduction into specified\
             number of dimensions (default is automatic estimation).
-        variance_normalization: Switch off variance normalization.
         generate_report: Generate Melodic web report.
         cifti_io: Input/output as CIFTI (warning: auto-dimensionality\
             estimation for CIFTI data is currently inaccurate).
+        variance_normalization: Switch off variance normalization.
         no_masking: Switch off masking.
         update_masking: Switch off mask updating.
         no_bet: Switch off BET.
@@ -120,8 +121,8 @@ def melodic(
         nonlinearity: Nonlinearity: gauss, tanh, pow3 (default), pow4.
         covar_weights: Voxel-wise weights for the covariance matrix (e.g.\
             segmentation information).
-        eps_rank1_error: Minimum error change for rank-1 approximation in TICA.
         eps_error: Minimum error change.
+        eps_rank1_error: Minimum error change for rank-1 approximation in TICA.
         max_iters: Maximum number of iterations before restart.
         max_restarts: Maximum number of restarts.
         mm_threshold: Threshold for Mixture Model based inference.
@@ -150,6 +151,7 @@ def melodic(
         output_mean_volume: Output mean volume.
         version: Prints version information.
         copyright_: Prints copyright information.
+        help_: Prints this help message.
         debug: Switch on debug messages.
         report_maps: Control string for spatial map images (see slicer).
         keep_meanvol: Do not subtract mean volume.
@@ -180,13 +182,12 @@ def melodic(
             "-d",
             str(dimensionality_reduction)
         ])
-    cargs.append("[APPROACH]")
-    if variance_normalization:
-        cargs.append("--vn")
     if generate_report:
         cargs.append("--report")
     if cifti_io:
         cargs.append("--CIFTI")
+    if variance_normalization:
+        cargs.append("--vn")
     if no_masking:
         cargs.append("--nomask")
     if update_masking:
@@ -234,15 +235,15 @@ def melodic(
             "--covarweight",
             execution.input_file(covar_weights)
         ])
-    if eps_rank1_error is not None:
-        cargs.extend([
-            "--epsS",
-            str(eps_rank1_error)
-        ])
     if eps_error is not None:
         cargs.extend([
             "--eps",
             str(eps_error)
+        ])
+    if eps_rank1_error is not None:
+        cargs.extend([
+            "--epsS",
+            str(eps_rank1_error)
         ])
     if max_iters is not None:
         cargs.extend([
@@ -329,6 +330,8 @@ def melodic(
         cargs.append("-V")
     if copyright_:
         cargs.append("--copyright")
+    if help_:
+        cargs.append("-h")
     if debug:
         cargs.append("--debug")
     if report_maps is not None:

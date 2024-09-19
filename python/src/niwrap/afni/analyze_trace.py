@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANALYZE_TRACE_METADATA = Metadata(
-    id="5a0be7a1c9bbf28c16fb460bf4438ddbf2b839e8.boutiques",
+    id="dc7fb2ce882654510768cdfb05715c9277593f22.boutiques",
     name="AnalyzeTrace",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,17 @@ class AnalyzeTraceOutputs(typing.NamedTuple):
 
 
 def analyze_trace(
+    tracefile: InputPathType,
+    max_func_lines: int | None = None,
+    suma_c: InputPathType | None = None,
+    max_err: int | None = None,
+    novolreg: bool = False,
+    noxform: bool = False,
+    setenv: str | None = None,
+    trace_: bool = False,
+    extreme_trace: bool = False,
+    nomall: bool = False,
+    yesmall: bool = False,
     runner: Runner | None = None,
 ) -> AnalyzeTraceOutputs:
     """
@@ -34,6 +45,23 @@ def analyze_trace(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/AnalyzeTrace.html
     
     Args:
+        tracefile: Trace output file obtained by redirecting the program’s\
+            trace output.
+        max_func_lines: Set the maximum number of code lines before a function\
+            returns. Default is no limit.
+        suma_c: FILE is a SUMA_*.c file. It is analyzed for functions that use\
+            SUMA_RETURN without ENTRY.
+        max_err: Stop after encountering MAX_ERR errors reported in log.\
+            Default is 5. Error key terms are: 'Error', 'error', 'corruption'.
+        novolreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\
+            transformations present in the Surface Volume.
+        noxform: Same as -novolreg.
+        setenv: Set environment variable ENVname to be ENVvalue. Quotes are\
+            necessary.
+        trace_: Turns on In/Out debug and Memory tracing.
+        extreme_trace: Turns on extreme tracing.
+        nomall: Turn off memory tracing.
+        yesmall: Turn on memory tracing (default).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AnalyzeTraceOutputs`).
@@ -42,8 +70,39 @@ def analyze_trace(
     execution = runner.start_execution(ANALYZE_TRACE_METADATA)
     cargs = []
     cargs.append("AnalyzeTrace")
-    cargs.append("[OPTIONAL_PARAMETERS]")
-    cargs.append("FILE")
+    cargs.append(execution.input_file(tracefile))
+    if max_func_lines is not None:
+        cargs.extend([
+            "-max_func_lines",
+            str(max_func_lines)
+        ])
+    if suma_c is not None:
+        cargs.extend([
+            "-suma_c",
+            execution.input_file(suma_c)
+        ])
+    if max_err is not None:
+        cargs.extend([
+            "-max_err",
+            str(max_err)
+        ])
+    if novolreg:
+        cargs.append("-novolreg")
+    if noxform:
+        cargs.append("-noxform")
+    if setenv is not None:
+        cargs.extend([
+            "-setenv",
+            setenv
+        ])
+    if trace_:
+        cargs.append("-trace")
+    if extreme_trace:
+        cargs.append("-TRACE")
+    if nomall:
+        cargs.append("-nomall")
+    if yesmall:
+        cargs.append("-yesmall")
     ret = AnalyzeTraceOutputs(
         root=execution.output_file("."),
     )

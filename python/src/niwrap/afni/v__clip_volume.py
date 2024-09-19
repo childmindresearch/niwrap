@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__CLIP_VOLUME_METADATA = Metadata(
-    id="34b4f197f772d15d186d100183958d1eb07e4783.boutiques",
+    id="6ba77dc4a1bceaa39f6d55c41a3d535d78a48fa6.boutiques",
     name="@clip_volume",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -28,7 +28,23 @@ class VClipVolumeOutputs(typing.NamedTuple):
 
 def v__clip_volume(
     input_volume: InputPathType,
+    below_zmm: float | None = None,
+    above_zmm: float | None = None,
+    left_xmm: float | None = None,
+    right_xmm: float | None = None,
+    anterior_ymm: float | None = None,
+    posterior_ymm: float | None = None,
+    box: list[float] | None = None,
+    mask_box: list[float] | None = None,
+    and_logic: bool = False,
+    or_logic: bool = False,
+    verbosity: bool = False,
+    crop_allzero: bool = False,
+    crop_greedy: bool = False,
+    crop: bool = False,
+    crop_npad: float | None = None,
     output_prefix: str | None = None,
+    followers: list[InputPathType] | None = None,
     runner: Runner | None = None,
 ) -> VClipVolumeOutputs:
     """
@@ -41,8 +57,28 @@ def v__clip_volume(
     
     Args:
         input_volume: Volume to clip.
+        below_zmm: Set to 0 slices below Zmm.
+        above_zmm: Set to 0 slices above Zmm.
+        left_xmm: Set to 0 slices left of Xmm.
+        right_xmm: Set to 0 slices right of Xmm.
+        anterior_ymm: Set to 0 slices anterior to Ymm.
+        posterior_ymm: Set to 0 slices posterior to Ymm.
+        box: Clip the volume to a box centered at Cx, Cy, Cz (RAI mm), and of\
+            dimensions Dx Dy Dz (RAI mm).
+        mask_box: Set all values inside the box to 1. Box centered at Cx, Cy,\
+            Cz (RAI mm), and of dimensions Dx Dy Dz (RAI mm).
+        and_logic: Combine with next clipping planes using 'and'.
+        or_logic: Combine with next clipping planes using 'or'.
+        verbosity: Show command details (verbose output).
+        crop_allzero: Crop the output volume with 3dAutobox -noclust.
+        crop_greedy: Crop the output volume with 3dAutobox.
+        crop: Same as -crop_greedy, kept for backward compatibility.
+        crop_npad: Set 3dAutobox's -npad option to NPAD. NPAD fattens the\
+            volume a little after cropping.
         output_prefix: Output prefix for the resultant volume. Default is the\
             input prefix with _clp suffixed to it.
+        followers: Apply the same clipping or cropping treatment to the\
+            follower datasets.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VClipVolumeOutputs`).
@@ -50,17 +86,74 @@ def v__clip_volume(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__CLIP_VOLUME_METADATA)
     cargs = []
-    cargs.append("@clip_volume")
-    cargs.append("-input")
+    cargs.append("clip_volume")
     cargs.append(execution.input_file(input_volume))
-    cargs.append("[CLIPPING_OPTIONS]")
-    cargs.append("[LOGIC_OPTIONS]")
-    cargs.append("[CROP_OPTIONS]")
-    cargs.append("-prefix")
+    if below_zmm is not None:
+        cargs.extend([
+            "-below",
+            str(below_zmm)
+        ])
+    if above_zmm is not None:
+        cargs.extend([
+            "-above",
+            str(above_zmm)
+        ])
+    if left_xmm is not None:
+        cargs.extend([
+            "-left",
+            str(left_xmm)
+        ])
+    if right_xmm is not None:
+        cargs.extend([
+            "-right",
+            str(right_xmm)
+        ])
+    if anterior_ymm is not None:
+        cargs.extend([
+            "-anterior",
+            str(anterior_ymm)
+        ])
+    if posterior_ymm is not None:
+        cargs.extend([
+            "-posterior",
+            str(posterior_ymm)
+        ])
+    if box is not None:
+        cargs.extend([
+            "-box",
+            *map(str, box)
+        ])
+    if mask_box is not None:
+        cargs.extend([
+            "-mask_box",
+            *map(str, mask_box)
+        ])
+    if and_logic:
+        cargs.append("-and")
+    if or_logic:
+        cargs.append("-or")
+    if verbosity:
+        cargs.append("-verb")
+    if crop_allzero:
+        cargs.append("-crop_allzero")
+    if crop_greedy:
+        cargs.append("-crop_greedy")
+    if crop:
+        cargs.append("-crop")
+    if crop_npad is not None:
+        cargs.extend([
+            "-crop_npad",
+            str(crop_npad)
+        ])
     if output_prefix is not None:
         cargs.extend([
             "-prefix",
             output_prefix
+        ])
+    if followers is not None:
+        cargs.extend([
+            "-followers",
+            *[execution.input_file(f) for f in followers]
         ])
     ret = VClipVolumeOutputs(
         root=execution.output_file("."),

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_PV_METADATA = Metadata(
-    id="5df8cc09196eb6e730189ac4f20e1ba919667117.boutiques",
+    id="5a4dd17581bf7f9db5f05e1dee49e9447f190886.boutiques",
     name="3dLocalPV",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,16 +20,26 @@ class V3dLocalPvOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    svd_vector_result: OutputPathType
+    svd_vector_result: OutputPathType | None
     """SVD vector result dataset"""
-    second_principal_vector: OutputPathType
+    second_principal_vector: OutputPathType | None
     """Second principal vector dataset"""
-    singular_value: OutputPathType
+    singular_value: OutputPathType | None
     """Singular value at each voxel dataset"""
 
 
 def v_3d_local_pv(
     input_dataset: InputPathType,
+    mask: InputPathType | None = None,
+    automask: bool = False,
+    prefix: str | None = None,
+    prefix2: str | None = None,
+    evprefix: str | None = None,
+    neighborhood: str | None = None,
+    despike: bool = False,
+    polort: float | None = None,
+    vnorm: bool = False,
+    vproj: str | None = None,
     runner: Runner | None = None,
 ) -> V3dLocalPvOutputs:
     """
@@ -43,6 +53,23 @@ def v_3d_local_pv(
     
     Args:
         input_dataset: Input time series dataset.
+        mask: Restrict operations to this mask.
+        automask: Create a mask from the time series dataset.
+        prefix: Save SVD vector result into this new dataset [default =\
+            'LocalPV'].
+        prefix2: Save second principal vector into this new dataset [default =\
+            don't save it].
+        evprefix: Save singular value at each voxel into this dataset [default\
+            = don't save].
+        neighborhood: Neighborhood definition (e.g., 'SPHERE(5)', 'TOHD(7)',\
+            etc.).
+        despike: Remove time series spikes from input dataset.
+        polort: Detrending.
+        vnorm: Normalize data vectors [strongly recommended].
+        vproj: Project central data time series onto local SVD vector; if\
+            followed by '2', then the central data time series will be projected on\
+            the 2-dimensional subspace spanned by the first 2 principal SVD\
+            vectors. [default: just output principal singular vector].
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dLocalPvOutputs`).
@@ -51,13 +78,53 @@ def v_3d_local_pv(
     execution = runner.start_execution(V_3D_LOCAL_PV_METADATA)
     cargs = []
     cargs.append("3dLocalPV")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(input_dataset))
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
+    if automask:
+        cargs.append("-automask")
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if prefix2 is not None:
+        cargs.extend([
+            "-prefix2",
+            prefix2
+        ])
+    if evprefix is not None:
+        cargs.extend([
+            "-evprefix",
+            evprefix
+        ])
+    if neighborhood is not None:
+        cargs.extend([
+            "-nbhd",
+            neighborhood
+        ])
+    if despike:
+        cargs.append("-despike")
+    if polort is not None:
+        cargs.extend([
+            "-polort",
+            str(polort)
+        ])
+    if vnorm:
+        cargs.append("-vnorm")
+    if vproj is not None:
+        cargs.extend([
+            "-vproj",
+            vproj
+        ])
     ret = V3dLocalPvOutputs(
         root=execution.output_file("."),
-        svd_vector_result=execution.output_file("[PREFIX].nii.gz"),
-        second_principal_vector=execution.output_file("[PREFIX2].nii.gz"),
-        singular_value=execution.output_file("[EVPREFIX].nii.gz"),
+        svd_vector_result=execution.output_file(prefix + ".nii.gz") if (prefix is not None) else None,
+        second_principal_vector=execution.output_file(prefix2 + ".nii.gz") if (prefix2 is not None) else None,
+        singular_value=execution.output_file(evprefix + ".nii.gz") if (evprefix is not None) else None,
     )
     execution.run(cargs)
     return ret

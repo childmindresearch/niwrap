@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FIX_FSSPHERE_METADATA = Metadata(
-    id="c8f38636ede92f2d0bdae37f2700ebff3881774e.boutiques",
+    id="54feb594544c3c39e172eb57620da5307e519517.boutiques",
     name="@fix_FSsphere",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

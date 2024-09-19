@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DSVM_METADATA = Metadata(
-    id="0f6c752a6ae915fa2d5ee354357ef3df203df0d6.boutiques",
+    id="4ea91c6c2d4f770f46c5ddaf534d18dae6ba5758.boutiques",
     name="3dsvm",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,6 +31,33 @@ class V3dsvmOutputs(typing.NamedTuple):
 
 
 def v_3dsvm(
+    model: str,
+    train_vol: InputPathType | None = None,
+    train_labels: InputPathType | None = None,
+    mask: InputPathType | None = None,
+    no_model_mask: bool = False,
+    alpha: str | None = None,
+    bucket: str | None = None,
+    type_: typing.Literal["classification", "regression"] | None = None,
+    c_value: float | None = None,
+    epsilon: float | None = None,
+    kernel: typing.Literal["linear", "polynomial", "rbf", "sigmoid"] | None = None,
+    d_value: float | None = None,
+    gamma: float | None = None,
+    s_value: float | None = None,
+    r_value: float | None = None,
+    max_iterations: float | None = None,
+    wout: bool = False,
+    test_vol: InputPathType | None = None,
+    predictions: str | None = None,
+    classout: bool = False,
+    nopred_censored: bool = False,
+    nodetrend: bool = False,
+    nopred_scale: bool = False,
+    test_labels: InputPathType | None = None,
+    multiclass: typing.Literal["DAG", "vote"] | None = None,
+    help_: bool = False,
+    version: bool = False,
     runner: Runner | None = None,
 ) -> V3dsvmOutputs:
     """
@@ -41,6 +68,45 @@ def v_3dsvm(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dsvm.html
     
     Args:
+        model: The basename for the model brik containing the SVM model during\
+            training or testing.
+        train_vol: A 3D+t AFNI brik dataset to be used for training.
+        train_labels: Filename of class category .1D labels corresponding to\
+            the stimulus paradigm for the training data set.
+        mask: Specify a mask dataset to only perform the analysis on non-zero\
+            mask voxels.
+        no_model_mask: Flag to enable the omission of a mask file. Required if\
+            '-mask' is not used.
+        alpha: Write the alphas to a specified .1D file.
+        bucket: Outputs the sum of weighted linear support vectors written out\
+            to a functional (fim) brik file.
+        type_: Specify type: classification (default) or regression.
+        c_value: Control SVM model complexity (C value).
+        epsilon: Specify epsilon for regression.
+        kernel: Specify type of kernel function.
+        d_value: D parameter in polynomial kernel.
+        gamma: Gamma parameter in rbf kernel.
+        s_value: S parameter in sigmoid/poly kernel.
+        r_value: R parameter in sigmoid/poly kernel.
+        max_iterations: Specify the maximum number of iterations for the\
+            optimization. Default is 1 million.
+        wout: Flag to output sum of weighted linear support vectors to the\
+            bucket file.
+        test_vol: A 3D or 3D+t AFNI brik dataset to be used for testing.
+        predictions: Basename for .1D prediction files.
+        classout: Flag to specify that prediction files should be\
+            integer-valued, corresponding to class category decisions.
+        nopred_censored: Do not write predicted values for censored time-points\
+            to predictions file.
+        nodetrend: Flag to specify that prediction files should NOT be linearly\
+            detrended.
+        nopred_scale: Do not scale predictions. Values below 0.0 correspond to\
+            (class A) and values above 0.0 to (class B).
+        test_labels: Filename of 'true' class category .1D labels for the test\
+            dataset.
+        multiclass: Specify the multiclass algorithm for classification.
+        help_: Print help message.
+        version: Print version history.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dsvmOutputs`).
@@ -49,7 +115,116 @@ def v_3dsvm(
     execution = runner.start_execution(V_3DSVM_METADATA)
     cargs = []
     cargs.append("3dsvm")
-    cargs.append("[OPTIONS]")
+    if train_vol is not None:
+        cargs.extend([
+            "-trainvol",
+            execution.input_file(train_vol)
+        ])
+    if train_labels is not None:
+        cargs.extend([
+            "-trainlabels",
+            execution.input_file(train_labels)
+        ])
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
+    if no_model_mask:
+        cargs.append("-nomodelmask")
+    cargs.extend([
+        "-model",
+        model
+    ])
+    if alpha is not None:
+        cargs.extend([
+            "-alpha",
+            alpha
+        ])
+    if bucket is not None:
+        cargs.extend([
+            "-bucket",
+            bucket
+        ])
+    if type_ is not None:
+        cargs.extend([
+            "-type",
+            type_
+        ])
+    if c_value is not None:
+        cargs.extend([
+            "-c",
+            str(c_value)
+        ])
+    if epsilon is not None:
+        cargs.extend([
+            "-e",
+            str(epsilon)
+        ])
+    if kernel is not None:
+        cargs.extend([
+            "-kernel",
+            kernel
+        ])
+    if d_value is not None:
+        cargs.extend([
+            "-d",
+            str(d_value)
+        ])
+    if gamma is not None:
+        cargs.extend([
+            "-g",
+            str(gamma)
+        ])
+    if s_value is not None:
+        cargs.extend([
+            "-s",
+            str(s_value)
+        ])
+    if r_value is not None:
+        cargs.extend([
+            "-r",
+            str(r_value)
+        ])
+    if max_iterations is not None:
+        cargs.extend([
+            "-max_iterations",
+            str(max_iterations)
+        ])
+    if wout:
+        cargs.append("-wout")
+    if test_vol is not None:
+        cargs.extend([
+            "-testvol",
+            execution.input_file(test_vol)
+        ])
+    if predictions is not None:
+        cargs.extend([
+            "-predictions",
+            predictions
+        ])
+    if classout:
+        cargs.append("-classout")
+    if nopred_censored:
+        cargs.append("-nopredcensored")
+    if nodetrend:
+        cargs.append("-nodetrend")
+    if nopred_scale:
+        cargs.append("-nopredscale")
+    if test_labels is not None:
+        cargs.extend([
+            "-testlabels",
+            execution.input_file(test_labels)
+        ])
+    if multiclass is not None:
+        cargs.extend([
+            "-multiclass",
+            multiclass
+        ])
+    if help_:
+        cargs.append("-help")
+    if version:
+        cargs.append("-version")
     ret = V3dsvmOutputs(
         root=execution.output_file("."),
         out_model=execution.output_file("model_{output}.1D"),

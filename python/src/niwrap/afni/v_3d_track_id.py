@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TRACK_ID_METADATA = Metadata(
-    id="c068f5e1d98a8b27b5e0160adf46079d9d5304f8.boutiques",
+    id="fb441399648279316e788fa41baa9aba71a3e4bb.boutiques",
     name="3dTrackID",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,6 +41,50 @@ class V3dTrackIdOutputs(typing.NamedTuple):
 
 
 def v_3d_track_id(
+    mode: typing.Literal["DET", "MINIP", "PROB"],
+    netrois: InputPathType,
+    prefix: str,
+    logic: typing.Literal["OR", "AND"],
+    dti_in: str | None = None,
+    dti_list: InputPathType | None = None,
+    dti_extra: str | None = None,
+    dti_search_no: bool = False,
+    hardi_gfa: InputPathType | None = None,
+    hardi_dirs: InputPathType | None = None,
+    hardi_pars: str | None = None,
+    mask: InputPathType | None = None,
+    thru_mask: InputPathType | None = None,
+    targ_surf_stop: bool = False,
+    targ_surf_twixt: bool = False,
+    mini_num: float | None = None,
+    uncert: InputPathType | None = None,
+    unc_min_fa: float | None = None,
+    unc_min_v: float | None = None,
+    algopt: InputPathType | None = None,
+    alg_thresh_fa: float | None = None,
+    alg_thresh_ang: float | None = None,
+    alg_thresh_len: float | None = None,
+    alg_nseed_x: float | None = None,
+    alg_nseed_y: float | None = None,
+    alg_nseed_z: float | None = None,
+    alg_thresh_frac: float | None = None,
+    alg_nseed_vox: float | None = None,
+    alg_nmonte: float | None = None,
+    extra_tr_par: bool = False,
+    uncut_at_rois: bool = False,
+    dump_rois: typing.Literal["DUMP", "AFNI", "BOTH", "AFNI_MAP"] | None = None,
+    dump_no_labtab: bool = False,
+    dump_lab_consec: bool = False,
+    posteriori: bool = False,
+    rec_orig: bool = False,
+    do_trk_out: bool = False,
+    trk_opp_orient: bool = False,
+    nifti: bool = False,
+    no_indipair_out: bool = False,
+    write_rois: bool = False,
+    write_opts: bool = False,
+    pair_out_power: bool = False,
+    verb: float | None = None,
     runner: Runner | None = None,
 ) -> V3dTrackIdOutputs:
     """
@@ -51,6 +95,60 @@ def v_3d_track_id(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTrackID.html
     
     Args:
+        mode: The mode of tracking: DET, MINIP, or PROB.
+        netrois: Network ROI mask(s).
+        prefix: Prefix for output files.
+        logic: Control logic connections among target ROIs per network.
+        dti_in: Input DTI volumes basename.
+        dti_list: Alternative way to specify DTI input files, a NIML-formatted\
+            text file.
+        dti_extra: Option for extra scalar for WM skeleton thresholding.
+        dti_search_no: Turn off automatic search for additional scalar files to\
+            include in output.
+        hardi_gfa: Single brik dataset with generalized FA (GFA) info.
+        hardi_dirs: Directions file for HARDI data containing directions\
+            components.
+        hardi_pars: Prefix to search for scalar files naming format.
+        mask: Mask within which tracking is done. Optional but highly\
+            recommended.
+        thru_mask: Extra restrictor mask through which paths are strictly\
+            required to pass.
+        targ_surf_stop: Make tracts stop at outer surfaces of the target ROIs.
+        targ_surf_twixt: Make tracts stop just before entering target surfaces.
+        mini_num: Number of whole brain Monte Carlo iterations for\
+            mini-probabilistic tracking.
+        uncert: Uncertainty values file.
+        unc_min_fa: Minimum stdev for perturbing FA.
+        unc_min_v: Minimum stdev for perturbing direction-vectors.
+        algopt: Specify tracking parameter quantities file in ASCII.
+        alg_thresh_fa: Set threshold for FA map or other WM proxy.
+        alg_thresh_ang: Set maximum angle for turning during propagation.
+        alg_thresh_len: Set minimum physical length of tracts to keep.
+        alg_nseed_x: Number of seeds per voxel in x-direction.
+        alg_nseed_y: Number of seeds per voxel in y-direction.
+        alg_nseed_z: Number of seeds per voxel in z-direction.
+        alg_thresh_frac: Value for thresholding the fraction of tracks through\
+            a voxel for a given connection.
+        alg_nseed_vox: Number of seeds per voxel per Monte Carlo iteration.
+        alg_nmonte: Number of Monte Carlo iterations.
+        extra_tr_par: Run three extra track parameter scalings for each\
+            connection.
+        uncut_at_rois: Keep entire track even if overshoots a target.
+        dump_rois: Output individual masks of ROI connections.
+        dump_no_labtab: Turn off label table use in ROI dump output.
+        dump_lab_consec: DON'T apply numerical labels of original ROIs in dump\
+            output.
+        posteriori: Output individual files with number of tracks per voxel per\
+            pair.
+        rec_orig: Record dataset origin in header of *.trk file.
+        do_trk_out: Output *.trk files for viewing in TrackVis.
+        trk_opp_orient: Oppositize voxel_order for TRK files.
+        nifti: Output files in *.nii.gz format.
+        no_indipair_out: Do not output INDIMAP and PAIRMAP volumes.
+        write_rois: Write out ROI labels.
+        write_opts: Write out all option values.
+        pair_out_power: Switch to use powers of two labelling for PAIRMAP.
+        verb: Set verbosity level.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dTrackIdOutputs`).
@@ -59,27 +157,101 @@ def v_3d_track_id(
     execution = runner.start_execution(V_3D_TRACK_ID_METADATA)
     cargs = []
     cargs.append("3dTrackID")
-    cargs.append("-mode")
-    cargs.append("{DET")
-    cargs.append("|")
-    cargs.append("MINIP")
-    cargs.append("|")
-    cargs.append("PROB}")
-    cargs.append("[ALL_REQUIRED_OPTIONS]")
-    cargs.append("[MODEL_SPECIFIC_OPTIONS]")
-    cargs.append("[MODE_SPECIFIC_OPTIONS]")
-    cargs.append("[OTHER_OPTIONS]")
+    cargs.append(mode)
+    cargs.append(execution.input_file(netrois))
+    cargs.append(prefix)
+    if dti_in is not None:
+        cargs.append(dti_in)
+    if dti_list is not None:
+        cargs.append(execution.input_file(dti_list))
+    if dti_extra is not None:
+        cargs.append(dti_extra)
+    if dti_search_no:
+        cargs.append("-dti_search_NO")
+    if hardi_gfa is not None:
+        cargs.append(execution.input_file(hardi_gfa))
+    if hardi_dirs is not None:
+        cargs.append(execution.input_file(hardi_dirs))
+    if hardi_pars is not None:
+        cargs.append(hardi_pars)
+    if mask is not None:
+        cargs.append(execution.input_file(mask))
+    if thru_mask is not None:
+        cargs.append(execution.input_file(thru_mask))
+    if targ_surf_stop:
+        cargs.append("-targ_surf_stop")
+    if targ_surf_twixt:
+        cargs.append("-targ_surf_twixt")
+    cargs.append(logic)
+    if mini_num is not None:
+        cargs.append(str(mini_num))
+    if uncert is not None:
+        cargs.append(execution.input_file(uncert))
+    if unc_min_fa is not None:
+        cargs.append(str(unc_min_fa))
+    if unc_min_v is not None:
+        cargs.append(str(unc_min_v))
+    if algopt is not None:
+        cargs.append(execution.input_file(algopt))
+    if alg_thresh_fa is not None:
+        cargs.append(str(alg_thresh_fa))
+    if alg_thresh_ang is not None:
+        cargs.append(str(alg_thresh_ang))
+    if alg_thresh_len is not None:
+        cargs.append(str(alg_thresh_len))
+    if alg_nseed_x is not None:
+        cargs.append(str(alg_nseed_x))
+    if alg_nseed_y is not None:
+        cargs.append(str(alg_nseed_y))
+    if alg_nseed_z is not None:
+        cargs.append(str(alg_nseed_z))
+    if alg_thresh_frac is not None:
+        cargs.append(str(alg_thresh_frac))
+    if alg_nseed_vox is not None:
+        cargs.append(str(alg_nseed_vox))
+    if alg_nmonte is not None:
+        cargs.append(str(alg_nmonte))
+    if extra_tr_par:
+        cargs.append("-extra_tr_par")
+    if uncut_at_rois:
+        cargs.append("-uncut_at_rois")
+    if dump_rois is not None:
+        cargs.append(dump_rois)
+    if dump_no_labtab:
+        cargs.append("-dump_no_labtab")
+    if dump_lab_consec:
+        cargs.append("-dump_lab_consec")
+    if posteriori:
+        cargs.append("-posteriori")
+    if rec_orig:
+        cargs.append("-rec_orig")
+    if do_trk_out:
+        cargs.append("-do_trk_out")
+    if trk_opp_orient:
+        cargs.append("-trk_opp_orient")
+    if nifti:
+        cargs.append("-nifti")
+    if no_indipair_out:
+        cargs.append("-no_indipair_out")
+    if write_rois:
+        cargs.append("-write_rois")
+    if write_opts:
+        cargs.append("-write_opts")
+    if pair_out_power:
+        cargs.append("-pair_out_power")
+    if verb is not None:
+        cargs.append(str(verb))
     ret = V3dTrackIdOutputs(
         root=execution.output_file("."),
-        indimap=execution.output_file("[PREFIX]_INDIMAP.nii.gz"),
-        pairmap=execution.output_file("[PREFIX]_PAIRMAP.nii.gz"),
-        grid=execution.output_file("[PREFIX].grid"),
-        niml_tract=execution.output_file("[PREFIX].niml.tract"),
-        niml_dset=execution.output_file("[PREFIX].niml.dset"),
-        trk=execution.output_file("[PREFIX].trk"),
-        pairmap_labeltable=execution.output_file("[PREFIX]_PAIRS.niml.lt"),
-        roi_labels=execution.output_file("[PREFIX]_roi.labs"),
-        option_values=execution.output_file("[PREFIX].niml.opts"),
+        indimap=execution.output_file(prefix + "_INDIMAP.nii.gz"),
+        pairmap=execution.output_file(prefix + "_PAIRMAP.nii.gz"),
+        grid=execution.output_file(prefix + ".grid"),
+        niml_tract=execution.output_file(prefix + ".niml.tract"),
+        niml_dset=execution.output_file(prefix + ".niml.dset"),
+        trk=execution.output_file(prefix + ".trk"),
+        pairmap_labeltable=execution.output_file(prefix + "_PAIRS.niml.lt"),
+        roi_labels=execution.output_file(prefix + "_roi.labs"),
+        option_values=execution.output_file(prefix + ".niml.opts"),
     )
     execution.run(cargs)
     return ret

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RTFEEDME_METADATA = Metadata(
-    id="8ce4b7e02ec3a8cc807004a99f95d7b3f104ab5c.boutiques",
+    id="9d6db57915f39f4a3a1277e650c6c7bc72fb2728.boutiques",
     name="rtfeedme",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -24,6 +24,16 @@ class RtfeedmeOutputs(typing.NamedTuple):
 
 def rtfeedme(
     datasets: list[InputPathType],
+    host: str | None = None,
+    interval_ms: float | None = None,
+    send_3d: bool = False,
+    buffer_mb: float | None = None,
+    verbose: bool = False,
+    swap_bytes: bool = False,
+    nz_fake: float | None = None,
+    drive_cmd: list[str] | None = None,
+    note: list[str] | None = None,
+    yrange: float | None = None,
     runner: Runner | None = None,
 ) -> RtfeedmeOutputs:
     """
@@ -36,6 +46,24 @@ def rtfeedme(
     Args:
         datasets: List of datasets to send to AFNI, specified as paths to\
             dataset files. Multiple datasets can be specified.
+        host: Send data via TCP/IP to AFNI running on the specified computer\
+            system 'sname'. Default is the current system using shared memory. Use\
+            'localhost' to send on the current system using TCP/IP.
+        interval_ms: Inter-transmit interval in milliseconds. Default is to\
+            send data as fast as possible.
+        send_3d: Send data in 3D bricks. Default is 2D slices.
+        buffer_mb: Set the interprocess communications buffer size in megabytes\
+            when using shared memory. Has no effect if using TCP/IP. Default is 1\
+            MB; if set to 0, a 50 KB buffer is used.
+        verbose: Be talkative about actions.
+        swap_bytes: Swap byte pairs before sending data.
+        nz_fake: Send 'nz' as the value of nzz for debugging purposes.
+        drive_cmd: Send 'cmd' as a DRIVE_AFNI command. If 'cmd' contains\
+            spaces, it must be quoted. Multiple -drive options can be used.
+        note: Send 'sss' as a NOTE to the realtime plugin. Multiple -note\
+            options can be used.
+        yrange: Send value 'v' as the y-range for realtime motion estimation\
+            graphing.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `RtfeedmeOutputs`).
@@ -44,10 +72,48 @@ def rtfeedme(
     execution = runner.start_execution(RTFEEDME_METADATA)
     cargs = []
     cargs.append("rtfeedme")
-    cargs.append("[OPTIONS]")
     cargs.extend([execution.input_file(f) for f in datasets])
-    cargs.append("[DATASETS")
-    cargs.append("...]")
+    if host is not None:
+        cargs.extend([
+            "-host",
+            host
+        ])
+    if interval_ms is not None:
+        cargs.extend([
+            "-dt",
+            str(interval_ms)
+        ])
+    if send_3d:
+        cargs.append("-3D")
+    if buffer_mb is not None:
+        cargs.extend([
+            "-buf",
+            str(buffer_mb)
+        ])
+    if verbose:
+        cargs.append("-verbose")
+    if swap_bytes:
+        cargs.append("-swap2")
+    if nz_fake is not None:
+        cargs.extend([
+            "-nzfake",
+            str(nz_fake)
+        ])
+    if drive_cmd is not None:
+        cargs.extend([
+            "-drive",
+            *drive_cmd
+        ])
+    if note is not None:
+        cargs.extend([
+            "-note",
+            *note
+        ])
+    if yrange is not None:
+        cargs.extend([
+            "-gyr",
+            str(yrange)
+        ])
     ret = RtfeedmeOutputs(
         root=execution.output_file("."),
     )

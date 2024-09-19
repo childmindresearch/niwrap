@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_SUB_REPORT_METADATA = Metadata(
-    id="ce23ba4c898e3d66ad396a3b3d4a8c8a30299bd7.boutiques",
+    id="eb8510c3b806ac58765c03007c0d81c141d06c5f.boutiques",
     name="fsl_sub_report",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -46,7 +46,6 @@ def fsl_sub_report(
     cargs = []
     cargs.append("fsl_sub_report")
     cargs.append(job_id)
-    cargs.append("[SUBJOB_ID_FLAG]")
     if subjob_id is not None:
         cargs.extend([
             "--subjob_id",

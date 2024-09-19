@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMG2IMGCOORD_METADATA = Metadata(
-    id="e2592d4318b2febffcef765126849541c054b328.boutiques",
+    id="b43b593aecc1dad3d9dfbc66bf4a782d771b0dae.boutiques",
     name="img2imgcoord",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -24,6 +24,15 @@ class Img2imgcoordOutputs(typing.NamedTuple):
 
 def img2imgcoord(
     coordinates_file: str,
+    source_image: InputPathType,
+    dest_image: InputPathType,
+    affine_transform: InputPathType,
+    warp_field: InputPathType | None = None,
+    pre_warp_affine: InputPathType | None = None,
+    coords_in_voxels: bool = False,
+    coords_in_mm: bool = False,
+    verbose: bool = False,
+    help_: bool = False,
     runner: Runner | None = None,
 ) -> Img2imgcoordOutputs:
     """
@@ -35,6 +44,16 @@ def img2imgcoord(
     
     Args:
         coordinates_file: Filename containing coordinates.
+        source_image: Filename of source image.
+        dest_image: Filename of destination image.
+        affine_transform: Filename of affine transform (e.g. source2dest.mat).
+        warp_field: Filename of warpfield (e.g. intermediate2dest_warp.nii.gz).
+        pre_warp_affine: Filename of pre-warp affine transform\
+            (default=identity).
+        coords_in_voxels: All coordinates in voxels (default).
+        coords_in_mm: All coordinates in mm.
+        verbose: Verbose mode.
+        help_: Display help message.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Img2imgcoordOutputs`).
@@ -43,8 +62,37 @@ def img2imgcoord(
     execution = runner.start_execution(IMG2IMGCOORD_METADATA)
     cargs = []
     cargs.append("img2imgcoord")
-    cargs.append("[OPTIONS]")
     cargs.append(coordinates_file)
+    cargs.extend([
+        "-src",
+        execution.input_file(source_image)
+    ])
+    cargs.extend([
+        "-dest",
+        execution.input_file(dest_image)
+    ])
+    cargs.extend([
+        "-xfm",
+        execution.input_file(affine_transform)
+    ])
+    if warp_field is not None:
+        cargs.extend([
+            "-warp",
+            execution.input_file(warp_field)
+        ])
+    if pre_warp_affine is not None:
+        cargs.extend([
+            "-premat",
+            execution.input_file(pre_warp_affine)
+        ])
+    if coords_in_voxels:
+        cargs.append("-vox")
+    if coords_in_mm:
+        cargs.append("-mm")
+    if verbose:
+        cargs.append("-v")
+    if help_:
+        cargs.append("-help")
     ret = Img2imgcoordOutputs(
         root=execution.output_file("."),
     )

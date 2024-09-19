@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MIDTRANS_METADATA = Metadata(
-    id="b39eff2ab1a7b0607739374c3b6c7f807e455f79.boutiques",
+    id="da0102c2272d79e33cb048e46a2cf9e6780a8cdd.boutiques",
     name="midtrans",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -24,6 +24,11 @@ class MidtransOutputs(typing.NamedTuple):
 
 def midtrans(
     transforms: list[InputPathType],
+    output_matrix: str | None = None,
+    template_image: InputPathType | None = None,
+    separate_basename: str | None = None,
+    debug_flag: bool = False,
+    verbose_flag: bool = False,
     runner: Runner | None = None,
 ) -> MidtransOutputs:
     """
@@ -36,6 +41,13 @@ def midtrans(
     Args:
         transforms: List of input transform files (e.g. transform1.mat\
             transform2.mat ... transformN.mat).
+        output_matrix: Output filename for the resulting matrix.
+        template_image: Input filename for template image (needed for fix\
+            origin).
+        separate_basename: Basename for the output of separate matrices (final\
+            name includes a number; e.g. img2mid0001.mat).
+        debug_flag: Switch on debugging output.
+        verbose_flag: Switch on diagnostic messages.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MidtransOutputs`).
@@ -44,11 +56,26 @@ def midtrans(
     execution = runner.start_execution(MIDTRANS_METADATA)
     cargs = []
     cargs.append("midtrans")
-    cargs.append("[OPTIONS]")
     cargs.extend([execution.input_file(f) for f in transforms])
-    cargs.append("[TRANSFORM2]")
-    cargs.append("...")
-    cargs.append("[TRANSFORMN]")
+    if output_matrix is not None:
+        cargs.extend([
+            "-o",
+            output_matrix
+        ])
+    if template_image is not None:
+        cargs.extend([
+            "--template",
+            execution.input_file(template_image)
+        ])
+    if separate_basename is not None:
+        cargs.extend([
+            "--separate",
+            separate_basename
+        ])
+    if debug_flag:
+        cargs.append("--debug")
+    if verbose_flag:
+        cargs.append("-v, --verbose")
     ret = MidtransOutputs(
         root=execution.output_file("."),
     )

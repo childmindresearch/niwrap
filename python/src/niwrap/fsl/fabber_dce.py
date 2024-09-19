@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_DCE_METADATA = Metadata(
-    id="86a1dfb3ab7189eb7050b42d679d660cf3289061.boutiques",
+    id="bee5cfc0626389cbaafd1107342203d7f6e8391b.boutiques",
     name="fabber_dce",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -25,10 +25,42 @@ class FabberDceOutputs(typing.NamedTuple):
 
 
 def fabber_dce(
-    forward_model: str,
-    inference_method: str,
-    input_data: InputPathType,
     output_directory: str,
+    inference_method: str,
+    forward_model: str,
+    input_data: InputPathType,
+    help_flag: bool = False,
+    list_methods: bool = False,
+    list_models: bool = False,
+    list_params: bool = False,
+    describe_params: bool = False,
+    list_outputs: bool = False,
+    evaluate_model: str | None = None,
+    evaluate_params: list[float] | None = None,
+    evaluate_nt: float | None = None,
+    simple_output: bool = False,
+    overwrite: bool = False,
+    link_to_latest: bool = False,
+    load_models: InputPathType | None = None,
+    multiple_data: list[InputPathType] | None = None,
+    data_order: str | None = "interleave",
+    mask: InputPathType | None = None,
+    masked_time_points: list[float] | None = None,
+    supplemental_data: InputPathType | None = None,
+    dump_param_names: bool = False,
+    save_model_fit: bool = False,
+    save_residuals: bool = False,
+    save_model_extras: bool = False,
+    save_mvn: bool = False,
+    save_mean: bool = False,
+    save_std: bool = False,
+    save_variances: bool = False,
+    save_zstat: bool = False,
+    save_noise_mean: bool = False,
+    save_noise_std: bool = False,
+    save_free_energy: bool = False,
+    option_file: InputPathType | None = None,
+    debug: bool = False,
     runner: Runner | None = None,
 ) -> FabberDceOutputs:
     """
@@ -40,10 +72,62 @@ def fabber_dce(
     URL: https://fabber-core.readthedocs.io/
     
     Args:
-        forward_model: Forward model to use.
-        inference_method: Inference method to use.
-        input_data: Single input data file.
         output_directory: Directory for output files (including logfile).
+        inference_method: Inference method to use.
+        forward_model: Forward model to use.
+        input_data: Single input data file.
+        help_flag: Print this usage message.
+        list_methods: List all known inference methods.
+        list_models: List all known forward models.
+        list_params: List model parameters (requires model configuration\
+            options to be given).
+        describe_params: Describe model parameters (name, description, units) -\
+            requires model configuration options to be given.
+        list_outputs: List additional model outputs (requires model\
+            configuration options to be given).
+        evaluate_model: Evaluate model. Set to name of output required or blank\
+            for default output. Requires model configuration options,\
+            --evaluate-params and --evaluate-nt.
+        evaluate_params: List of parameter values for evaluation.
+        evaluate_nt: Number of time points for evaluation - must be consistent\
+            with model options where appropriate.
+        simple_output: Instead of usual output, simply output series of lines\
+            each giving progress as percentage.
+        overwrite: If set will overwrite existing output. If not set, new\
+            output directories will be created by appending '+' to the directory\
+            name.
+        link_to_latest: Try to create a link to the most recent output\
+            directory with the prefix _latest.
+        load_models: Load models dynamically from the specified filename, which\
+            should be a DLL/shared library.
+        multiple_data: Specify multiple data files for n=1, 2, 3...
+        data_order: If multiple data files are specified, how they will be\
+            handled: concatenate = one after the other, interleave = first record\
+            from each file, then second, etc.
+        mask: Mask file. Inference will only be performed where mask value > 0.
+        masked_time_points: List of masked time points, indexed from 1. These\
+            will be ignored in the parameter updates.
+        supplemental_data: 'Supplemental' timeseries data, required for some\
+            models.
+        dump_param_names: Write the file paramnames.txt containing the names of\
+            the model parameters.
+        save_model_fit: Output the model prediction as a 4D volume.
+        save_residuals: Output the residuals (difference between the data and\
+            the model prediction).
+        save_model_extras: Output any additional model-specific timeseries data.
+        save_mvn: Output the final MVN distributions.
+        save_mean: Output the parameter means.
+        save_std: Output the parameter standard deviations.
+        save_variances: Output the parameter variances.
+        save_zstat: Output the parameter Z-stats.
+        save_noise_mean: Output the noise means. The noise distribution\
+            inferred is the precision of a Gaussian noise source.
+        save_noise_std: Output the noise standard deviations.
+        save_free_energy: Output the free energy, if calculated.
+        option_file: File containing additional options, one per line, in the\
+            same form as specified on the command line.
+        debug: Output large amounts of debug information. ONLY USE WITH VERY\
+            SMALL NUMBERS OF VOXELS.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FabberDceOutputs`).
@@ -51,25 +135,118 @@ def fabber_dce(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_DCE_METADATA)
     cargs = []
-    cargs.append("fabber")
+    cargs.append("Fabber")
+    cargs.append("DCE")
     cargs.extend([
-        "--model",
-        forward_model
+        "--output",
+        output_directory
     ])
     cargs.extend([
         "--method",
         inference_method
     ])
     cargs.extend([
+        "--model",
+        forward_model
+    ])
+    cargs.extend([
         "--data",
         execution.input_file(input_data)
     ])
-    cargs.append("--output")
-    cargs.extend([
-        "--output",
-        output_directory
-    ])
-    cargs.append("[OPTIONS]")
+    if help_flag:
+        cargs.append("--help")
+    if list_methods:
+        cargs.append("--listmethods")
+    if list_models:
+        cargs.append("--listmodels")
+    if list_params:
+        cargs.append("--listparams")
+    if describe_params:
+        cargs.append("--descparams")
+    if list_outputs:
+        cargs.append("--listoutputs")
+    if evaluate_model is not None:
+        cargs.extend([
+            "--evaluate",
+            evaluate_model
+        ])
+    if evaluate_params is not None:
+        cargs.extend([
+            "--evaluate-params",
+            *map(str, evaluate_params)
+        ])
+    if evaluate_nt is not None:
+        cargs.extend([
+            "--evaluate-nt",
+            str(evaluate_nt)
+        ])
+    if simple_output:
+        cargs.append("--simple-output")
+    if overwrite:
+        cargs.append("--overwrite")
+    if link_to_latest:
+        cargs.append("--link-to-latest")
+    if load_models is not None:
+        cargs.extend([
+            "--loadmodels",
+            execution.input_file(load_models)
+        ])
+    if multiple_data is not None:
+        cargs.extend([
+            "--data<n>",
+            *[execution.input_file(f) for f in multiple_data]
+        ])
+    if data_order is not None:
+        cargs.extend([
+            "--data-order",
+            data_order
+        ])
+    if mask is not None:
+        cargs.extend([
+            "--mask",
+            execution.input_file(mask)
+        ])
+    if masked_time_points is not None:
+        cargs.extend([
+            "--mt<n>",
+            *map(str, masked_time_points)
+        ])
+    if supplemental_data is not None:
+        cargs.extend([
+            "--suppdata",
+            execution.input_file(supplemental_data)
+        ])
+    if dump_param_names:
+        cargs.append("--dump-param-names")
+    if save_model_fit:
+        cargs.append("--save-model-fit")
+    if save_residuals:
+        cargs.append("--save-residuals")
+    if save_model_extras:
+        cargs.append("--save-model-extras")
+    if save_mvn:
+        cargs.append("--save-mvn")
+    if save_mean:
+        cargs.append("--save-mean")
+    if save_std:
+        cargs.append("--save-std")
+    if save_variances:
+        cargs.append("--save-var")
+    if save_zstat:
+        cargs.append("--save-zstat")
+    if save_noise_mean:
+        cargs.append("--save-noise-mean")
+    if save_noise_std:
+        cargs.append("--save-noise-std")
+    if save_free_energy:
+        cargs.append("--save-free-energy")
+    if option_file is not None:
+        cargs.extend([
+            "--optfile",
+            execution.input_file(option_file)
+        ])
+    if debug:
+        cargs.append("--debug")
     ret = FabberDceOutputs(
         root=execution.output_file("."),
         output_files=execution.output_file(output_directory + "/*"),

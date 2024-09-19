@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GEN_SS_REVIEW_SCRIPTS_PY_METADATA = Metadata(
-    id="80b9c54f813723060d1c958720d386d625adb79a.boutiques",
+    id="fb82c8eda0921bec070e5c1a1e8b4c85433f80da.boutiques",
     name="gen_ss_review_scripts.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,6 +29,25 @@ class GenSsReviewScriptsPyOutputs(typing.NamedTuple):
 
 
 def gen_ss_review_scripts_py(
+    subject_id: str | None = None,
+    rm_trs: float | None = None,
+    num_stim: float | None = None,
+    mb_level: float | None = None,
+    slice_pattern: str | None = None,
+    motion_dset: InputPathType | None = None,
+    outlier_dset: InputPathType | None = None,
+    enorm_dset: InputPathType | None = None,
+    mot_limit: float | None = None,
+    out_limit: float | None = None,
+    xmat_regress: InputPathType | None = None,
+    xmat_uncensored: InputPathType | None = None,
+    stats_dset: InputPathType | None = None,
+    final_anat: InputPathType | None = None,
+    final_view: str | None = None,
+    prefix: str | None = None,
+    verbosity: float | None = None,
+    uvars_json: InputPathType | None = None,
+    init_uvars_json: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> GenSsReviewScriptsPyOutputs:
     """
@@ -40,6 +59,25 @@ def gen_ss_review_scripts_py(
     https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_ss_review_scripts.py.html
     
     Args:
+        subject_id: Subject ID.
+        rm_trs: Number of TRs removed per run.
+        num_stim: Number of main stimulus classes.
+        mb_level: Multiband slice acquisition level (>= 1).
+        slice_pattern: Slice timing pattern.
+        motion_dset: Motion parameters dataset.
+        outlier_dset: Outlier fraction time series dataset.
+        enorm_dset: Euclidean norm of motion parameters dataset.
+        mot_limit: Motion limit.
+        out_limit: Outlier fraction limit.
+        xmat_regress: X-matrix file used in regression.
+        xmat_uncensored: Un-censored X-matrix file.
+        stats_dset: Output from 3dDeconvolve.
+        final_anat: Final anatomical dataset.
+        final_view: Final view of data (e.g. 'orig' or 'tlrc').
+        prefix: Set the prefix for script names.
+        verbosity: Set the verbosity level.
+        uvars_json: Write JSON file of user variables dict.
+        init_uvars_json: Initialize user variables from the given JSON file.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `GenSsReviewScriptsPyOutputs`).
@@ -47,9 +85,102 @@ def gen_ss_review_scripts_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(GEN_SS_REVIEW_SCRIPTS_PY_METADATA)
     cargs = []
-    cargs.append("gen_ss_review_scripts.py")
-    cargs.append("[INPUT_FILES]")
-    cargs.append("[OPTIONS]")
+    cargs.append("gen_ss_review_scripts")
+    if subject_id is not None:
+        cargs.extend([
+            "-subj",
+            subject_id
+        ])
+    if rm_trs is not None:
+        cargs.extend([
+            "-rm_trs",
+            str(rm_trs)
+        ])
+    if num_stim is not None:
+        cargs.extend([
+            "-num_stim",
+            str(num_stim)
+        ])
+    if mb_level is not None:
+        cargs.extend([
+            "-mb_level",
+            str(mb_level)
+        ])
+    if slice_pattern is not None:
+        cargs.extend([
+            "-slice_pattern",
+            slice_pattern
+        ])
+    if motion_dset is not None:
+        cargs.extend([
+            "-motion_dset",
+            execution.input_file(motion_dset)
+        ])
+    if outlier_dset is not None:
+        cargs.extend([
+            "-outlier_dset",
+            execution.input_file(outlier_dset)
+        ])
+    if enorm_dset is not None:
+        cargs.extend([
+            "-enorm_dset",
+            execution.input_file(enorm_dset)
+        ])
+    if mot_limit is not None:
+        cargs.extend([
+            "-mot_limit",
+            str(mot_limit)
+        ])
+    if out_limit is not None:
+        cargs.extend([
+            "-out_limit",
+            str(out_limit)
+        ])
+    if xmat_regress is not None:
+        cargs.extend([
+            "-xmat_regress",
+            execution.input_file(xmat_regress)
+        ])
+    if xmat_uncensored is not None:
+        cargs.extend([
+            "-xmat_uncensored",
+            execution.input_file(xmat_uncensored)
+        ])
+    if stats_dset is not None:
+        cargs.extend([
+            "-stats_dset",
+            execution.input_file(stats_dset)
+        ])
+    if final_anat is not None:
+        cargs.extend([
+            "-final_anat",
+            execution.input_file(final_anat)
+        ])
+    if final_view is not None:
+        cargs.extend([
+            "-final_view",
+            final_view
+        ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if verbosity is not None:
+        cargs.extend([
+            "-verb",
+            str(verbosity)
+        ])
+    if uvars_json is not None:
+        cargs.extend([
+            "-write_uvars_json",
+            execution.input_file(uvars_json)
+        ])
+    if init_uvars_json is not None:
+        cargs.extend([
+            "-init_uvars_json",
+            execution.input_file(init_uvars_json)
+        ])
     ret = GenSsReviewScriptsPyOutputs(
         root=execution.output_file("."),
         basic_review=execution.output_file("./@ss_review_basic"),

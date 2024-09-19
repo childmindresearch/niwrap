@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IM2NIML_METADATA = Metadata(
-    id="9aec6e5f13d575d160f3f2349dd1282b7d91249b.boutiques",
+    id="9364e714dd8ceb0f4963c1355441d90a0ee17f46.boutiques",
     name="im2niml",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,7 +47,6 @@ def im2niml(
     cargs = []
     cargs.append("im2niml")
     cargs.extend([execution.input_file(f) for f in input_files])
-    cargs.append("[MORE_INPUT_FILES]")
     ret = Im2nimlOutputs(
         root=execution.output_file("."),
         niml_output=execution.output_file("stdout"),

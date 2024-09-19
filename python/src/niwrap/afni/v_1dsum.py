@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DSUM_METADATA = Metadata(
-    id="b7285695a2ae3b620b57d991f8488c79f4e12c53.boutiques",
+    id="094c4ab4df94b01aa474f31b45c9f63a0a1ab91f.boutiques",
     name="1dsum",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,6 +26,11 @@ class V1dsumOutputs(typing.NamedTuple):
 
 def v_1dsum(
     input_files: list[InputPathType],
+    ignore_rows: float | None = None,
+    use_rows: float | None = None,
+    mean_flag: bool = False,
+    nocomment_flag: bool = False,
+    okempty_flag: bool = False,
     runner: Runner | None = None,
 ) -> V1dsumOutputs:
     """
@@ -38,6 +43,13 @@ def v_1dsum(
     Args:
         input_files: Input ASCII files with numbers arranged in rows and\
             columns.
+        ignore_rows: Skip the first nn rows of each file.
+        use_rows: Use only mm rows from each file.
+        mean_flag: Compute the average instead of the sum.
+        nocomment_flag: Do not reproduce comments from the header of the first\
+            input file to the output.
+        okempty_flag: If encountering an empty 1D file, print 0 and exit\
+            quietly instead of exiting with an error message.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V1dsumOutputs`).
@@ -46,8 +58,23 @@ def v_1dsum(
     execution = runner.start_execution(V_1DSUM_METADATA)
     cargs = []
     cargs.append("1dsum")
-    cargs.append("[OPTIONS]")
     cargs.extend([execution.input_file(f) for f in input_files])
+    if ignore_rows is not None:
+        cargs.extend([
+            "-ignore",
+            str(ignore_rows)
+        ])
+    if use_rows is not None:
+        cargs.extend([
+            "-use",
+            str(use_rows)
+        ])
+    if mean_flag:
+        cargs.append("-mean")
+    if nocomment_flag:
+        cargs.append("-nocomment")
+    if okempty_flag:
+        cargs.append("-OKempty")
     ret = V1dsumOutputs(
         root=execution.output_file("."),
         output_file=execution.output_file("output.txt"),

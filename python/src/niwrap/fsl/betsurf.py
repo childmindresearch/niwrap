@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BETSURF_METADATA = Metadata(
-    id="8c8def8d6fc4d834cdaf615cbec87b9e20bcd394.boutiques",
+    id="b1da5e0b3c30d8559e0471373ff118e1c9906ed8.boutiques",
     name="betsurf",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -29,6 +29,18 @@ class BetsurfOutputs(typing.NamedTuple):
 
 
 def betsurf(
+    t1_image: InputPathType,
+    bet_mesh: InputPathType,
+    t1_to_standard_mat: InputPathType,
+    output_prefix: str,
+    t2_image: InputPathType | None = None,
+    help_flag: bool = False,
+    verbose_flag: bool = False,
+    t1only_flag: bool = False,
+    outline_flag: bool = False,
+    mask_flag: bool = False,
+    skull_mask_flag: bool = False,
+    increased_precision: int | None = None,
     runner: Runner | None = None,
 ) -> BetsurfOutputs:
     """
@@ -39,6 +51,20 @@ def betsurf(
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET
     
     Args:
+        t1_image: T1-weighted MRI image.
+        bet_mesh: BET Mesh File (.vtk).
+        t1_to_standard_mat: Transformation matrix file from T1 to standard\
+            space.
+        output_prefix: Output prefix for generated files.
+        t2_image: T2-weighted MRI image (optional if using --t1only flag).
+        help_flag: Displays help message and exits.
+        verbose_flag: Switch on diagnostic messages.
+        t1only_flag: Extraction with T1 only.
+        outline_flag: Generates all surface outlines.
+        mask_flag: Generates binary masks from the meshes.
+        skull_mask_flag: Generates skull binary mask.
+        increased_precision: Retessellates the meshes the indicated number of\
+            times (int).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `BetsurfOutputs`).
@@ -47,17 +73,34 @@ def betsurf(
     execution = runner.start_execution(BETSURF_METADATA)
     cargs = []
     cargs.append("betsurf")
-    cargs.append("[OPTIONS]")
-    cargs.append("<t1>")
-    cargs.append("[<t2>]")
-    cargs.append("<bet_mesh.vtk>")
-    cargs.append("<t1_to_standard.mat>")
-    cargs.append("<output>")
+    cargs.append(execution.input_file(t1_image))
+    if t2_image is not None:
+        cargs.append(execution.input_file(t2_image))
+    cargs.append(execution.input_file(bet_mesh))
+    cargs.append(execution.input_file(t1_to_standard_mat))
+    cargs.append(output_prefix)
+    if help_flag:
+        cargs.append("-h")
+    if verbose_flag:
+        cargs.append("-v")
+    if t1only_flag:
+        cargs.append("-1")
+    if outline_flag:
+        cargs.append("-o")
+    if mask_flag:
+        cargs.append("-m")
+    if skull_mask_flag:
+        cargs.append("-s")
+    if increased_precision is not None:
+        cargs.extend([
+            "-p",
+            str(increased_precision)
+        ])
     ret = BetsurfOutputs(
         root=execution.output_file("."),
-        output_mask=execution.output_file("[OUTPUT_PREFIX]_mask.nii.gz"),
-        output_outline=execution.output_file("[OUTPUT_PREFIX]_outline.nii.gz"),
-        output_skull=execution.output_file("[OUTPUT_PREFIX]_skull.nii.gz"),
+        output_mask=execution.output_file(output_prefix + "_mask.nii.gz"),
+        output_outline=execution.output_file(output_prefix + "_outline.nii.gz"),
+        output_skull=execution.output_file(output_prefix + "_skull.nii.gz"),
     )
     execution.run(cargs)
     return ret

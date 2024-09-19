@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_COLOR_MAP_METADATA = Metadata(
-    id="5b3d8115e0e545706bcf37b8ac3fc6319d6fe5d0.boutiques",
+    id="e98ace893d421d148c9b3f4085c363b1351eb95e.boutiques",
     name="MakeColorMap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,13 +20,33 @@ class MakeColorMapOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    afni_hex_output_prefix: OutputPathType
+    afni_hex_output_prefix: OutputPathType | None
     """Prefix for individual color values in AFNI Hex format."""
     palette_file_output: OutputPathType
     """Example palette file output."""
 
 
 def make_color_map(
+    fiducials_ncol: InputPathType | None = None,
+    fiducials: InputPathType | None = None,
+    num_colors: float | None = None,
+    std_mapname: str | None = None,
+    palette_file: InputPathType | None = None,
+    cmap_name: str | None = None,
+    fscolut_labels: list[float] | None = None,
+    fscolut_file: InputPathType | None = None,
+    afni_hex: str | None = None,
+    afni_hex_complete: str | None = None,
+    suma_colormap: str | None = None,
+    user_colut_file: InputPathType | None = None,
+    sdset: InputPathType | None = None,
+    sdset_prefix: str | None = None,
+    flipupdown: bool = False,
+    skip_last: bool = False,
+    show_fscolut: bool = False,
+    help_flag: bool = False,
+    help_full_flag: bool = False,
+    flip_map_updside_down: bool = False,
     runner: Runner | None = None,
 ) -> MakeColorMapOutputs:
     """
@@ -38,6 +58,30 @@ def make_color_map(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/MakeColorMap.html
     
     Args:
+        fiducials_ncol: Fiducial colors and their indices in the color map are\
+            listed in file Fiducials_Ncol.
+        fiducials: Fiducial colors are listed in an ascii file Fiducials.
+        num_colors: Total number of colors in the color map.
+        std_mapname: Returns one of SUMA's standard colormaps.
+        palette_file: Specify the palette file for colormap.
+        cmap_name: Specify the colormap name.
+        fscolut_labels: Get AFNI/SUMA colormaps of FreeSurfer colors indexed\
+            between lbl0 and lbl1.
+        fscolut_file: Use color LUT file FS_COL_LUT.
+        afni_hex: Afni Hex format. Use this option if you want a color map\
+            formatted to fit in AFNI's .afnirc file.
+        afni_hex_complete: Afni Hex format, ready to go into pbardefs.h.
+        suma_colormap: Write colormap in SUMA's format.
+        user_colut_file: Provide a user's own color lookup file.
+        sdset: Add colormap to surface-based dataset DSET, making it a labeled\
+            dataset.
+        sdset_prefix: Prefix of dset for writing labeled version of DSET.
+        flipupdown: Flip the map upside down.
+        skip_last: If used, the last color in the Fiducial list is omitted.
+        show_fscolut: Show all of the FreeSurfer LUT.
+        help_flag: Displays the help message.
+        help_full_flag: Displays the help message.
+        flip_map_updside_down: Flip the map upside down.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MakeColorMapOutputs`).
@@ -46,10 +90,91 @@ def make_color_map(
     execution = runner.start_execution(MAKE_COLOR_MAP_METADATA)
     cargs = []
     cargs.append("MakeColorMap")
-    cargs.append("[OPTIONS]")
+    if fiducials_ncol is not None:
+        cargs.extend([
+            "-fn",
+            execution.input_file(fiducials_ncol)
+        ])
+    if fiducials is not None:
+        cargs.extend([
+            "-f",
+            execution.input_file(fiducials)
+        ])
+    if num_colors is not None:
+        cargs.extend([
+            "-nc",
+            str(num_colors)
+        ])
+    if std_mapname is not None:
+        cargs.extend([
+            "-std",
+            std_mapname
+        ])
+    if palette_file is not None:
+        cargs.extend([
+            "-cmapdb",
+            execution.input_file(palette_file)
+        ])
+    if cmap_name is not None:
+        cargs.extend([
+            "-cmap",
+            cmap_name
+        ])
+    if fscolut_labels is not None:
+        cargs.extend([
+            "-fscolut",
+            *map(str, fscolut_labels)
+        ])
+    if fscolut_file is not None:
+        cargs.extend([
+            "-fscolutfile",
+            execution.input_file(fscolut_file)
+        ])
+    if afni_hex is not None:
+        cargs.extend([
+            "-ah",
+            afni_hex
+        ])
+    if afni_hex_complete is not None:
+        cargs.extend([
+            "-ahc",
+            afni_hex_complete
+        ])
+    if suma_colormap is not None:
+        cargs.extend([
+            "-suma_cmap",
+            suma_colormap
+        ])
+    if user_colut_file is not None:
+        cargs.extend([
+            "-usercolutfile",
+            execution.input_file(user_colut_file)
+        ])
+    if sdset is not None:
+        cargs.extend([
+            "-sdset",
+            execution.input_file(sdset)
+        ])
+    if sdset_prefix is not None:
+        cargs.extend([
+            "-sdset_prefix",
+            sdset_prefix
+        ])
+    if flipupdown:
+        cargs.append("-flipud")
+    if skip_last:
+        cargs.append("-sl")
+    if show_fscolut:
+        cargs.append("-show_fscolut")
+    if help_flag:
+        cargs.append("-h")
+    if help_full_flag:
+        cargs.append("-help")
+    if flip_map_updside_down:
+        cargs.append("-flipud")
     ret = MakeColorMapOutputs(
         root=execution.output_file("."),
-        afni_hex_output_prefix=execution.output_file("[PREFIX]_01"),
+        afni_hex_output_prefix=execution.output_file(afni_hex + "_01") if (afni_hex is not None) else None,
         palette_file_output=execution.output_file("TestPalette.pal"),
     )
     execution.run(cargs)

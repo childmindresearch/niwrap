@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MYGET_METADATA = Metadata(
-    id="d5f031775f5d1ca0a0787b1ee69ac5daafd730c8.boutiques",
+    id="e8a29e400e9b37502f7bf7a702dd9ec2cf21565a.boutiques",
     name="myget",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,8 +51,6 @@ def myget(
     if protocol_version is not None:
         cargs.append(protocol_version)
     cargs.append(url)
-    cargs.append(">")
-    cargs.append("[OUTPUT_FILE]")
     ret = MygetOutputs(
         root=execution.output_file("."),
         output_file=execution.output_file("[OUTPUT_FILE]"),

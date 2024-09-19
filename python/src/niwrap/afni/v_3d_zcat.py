@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZCAT_METADATA = Metadata(
-    id="5a8abd78aa9efb4d4321a916d41abd9d3a68a8da.boutiques",
+    id="e6d777c9d55e0fc3f1c3e73512bc351a33d970e1.boutiques",
     name="3dZcat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -27,6 +27,7 @@ class V3dZcatOutputs(typing.NamedTuple):
 
 
 def v_3d_zcat(
+    input_files: list[InputPathType],
     prefix: str | None = None,
     datum: typing.Literal["byte", "short", "float"] | None = None,
     fscale: bool = False,
@@ -43,6 +44,7 @@ def v_3d_zcat(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZcat.html
     
     Args:
+        input_files: Input datasets.
         prefix: Use 'pname' for the output dataset prefix name.\
             [default='zcat'].
         datum: Coerce the output data to be stored as the given type, which may\
@@ -84,7 +86,7 @@ def v_3d_zcat(
         cargs.append("-verb")
     if frugal:
         cargs.append("-frugal")
-    cargs.append("[INPUT_FILES...]")
+    cargs.extend([execution.input_file(f) for f in input_files])
     ret = V3dZcatOutputs(
         root=execution.output_file("."),
         out_head=execution.output_file(prefix + "+orig.HEAD") if (prefix is not None) else None,

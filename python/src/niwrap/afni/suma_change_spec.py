@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUMA_CHANGE_SPEC_METADATA = Metadata(
-    id="2f1f46eccd2cdbc80832dbdd7c28c2bc7b4896ca.boutiques",
+    id="68f77383092cc1d2b7a1e285a0e6c96d95a74202.boutiques",
     name="suma_change_spec",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,14 +58,10 @@ def suma_change_spec(
     execution = runner.start_execution(SUMA_CHANGE_SPEC_METADATA)
     cargs = []
     cargs.append("suma_change_spec")
-    cargs.append("-input")
     cargs.append(execution.input_file(input_))
-    cargs.append("-state")
     cargs.append(state)
-    cargs.append("-domainparent")
     if domainparent is not None:
         cargs.append(domainparent)
-    cargs.append("-output")
     if output is not None:
         cargs.append(output)
     if remove:

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_CONVERT_DCM_DWIS_METADATA = Metadata(
-    id="ee4b7dde4672e484d7c87cfda4720853b57ab16f.boutiques",
+    id="2a067d01b93bba5c4c51c11313a480d82f694625.boutiques",
     name="fat_proc_convert_dcm_dwis",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,6 +46,7 @@ def fat_proc_convert_dcm_dwis(
     bval_files: list[InputPathType] | None = None,
     work_dir: str | None = None,
     orientation: str | None = None,
+    origin_xyz: list[float] | None = None,
     flip_x: bool = False,
     flip_y: bool = False,
     flip_z: bool = False,
@@ -79,6 +80,7 @@ def fat_proc_convert_dcm_dwis(
         work_dir: Optional working directory for intermediate files.
         orientation: Optional chance to reset orientation of the volume files\
             (default is currently 'RAI').
+        origin_xyz: Explicit origin coordinates (X, Y, Z).
         flip_x: Flip gradients along the X-axis.
         flip_y: Flip gradients along the Y-axis.
         flip_z: Flip gradients along the Z-axis.
@@ -100,57 +102,38 @@ def fat_proc_convert_dcm_dwis(
     execution = runner.start_execution(FAT_PROC_CONVERT_DCM_DWIS_METADATA)
     cargs = []
     cargs.append("fat_proc_convert_dcm_dwis")
-    cargs.append("-indir")
     cargs.append(dicom_dir)
-    cargs.append("-prefix")
     cargs.append(output_prefix)
-    cargs.append("-innii")
     if nifti_files is not None:
         cargs.extend([execution.input_file(f) for f in nifti_files])
-    cargs.append("-inbvec")
     if bvec_files is not None:
         cargs.extend([execution.input_file(f) for f in bvec_files])
-    cargs.append("-inbval")
     if bval_files is not None:
         cargs.extend([execution.input_file(f) for f in bval_files])
-    cargs.append("-workdir")
     if work_dir is not None:
         cargs.append(work_dir)
-    cargs.append("-orient")
     if orientation is not None:
         cargs.append(orientation)
-    cargs.append("-origin_xyz")
-    cargs.append("[ORIGIN_X]")
-    cargs.append("[ORIGIN_Y]")
-    cargs.append("[ORIGIN_Z]")
-    cargs.append("-flip_x")
+    if origin_xyz is not None:
+        cargs.extend(map(str, origin_xyz))
     if flip_x:
         cargs.append("-flip_x")
-    cargs.append("-flip_y")
     if flip_y:
         cargs.append("-flip_y")
-    cargs.append("-flip_z")
     if flip_z:
         cargs.append("-flip_z")
-    cargs.append("-no_flip")
     if no_flip:
         cargs.append("-no_flip")
-    cargs.append("-qc_prefix")
     if qc_prefix is not None:
         cargs.append(qc_prefix)
-    cargs.append("-reorig_reorient_off")
     if reorient_off:
         cargs.append("-reorig_reorient_off")
-    cargs.append("-no_clean")
     if no_clean:
         cargs.append("-no_clean")
-    cargs.append("-no_cmd_out")
     if no_cmd_out:
         cargs.append("-no_cmd_out")
-    cargs.append("-no_qc_view")
     if no_qc_view:
         cargs.append("-no_qc_view")
-    cargs.append("-do_movie")
     if do_movie is not None:
         cargs.extend([
             "-do_movie",

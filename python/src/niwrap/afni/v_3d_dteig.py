@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DTEIG_METADATA = Metadata(
-    id="9bdc110c1aa425f5867b362872318f6ae6a347db.boutiques",
+    id="9d65af6b89493c3e3ad9a7df287cf8119c11fc9f.boutiques",
     name="3dDTeig",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,20 +20,24 @@ class V3dDteigOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_dataset: OutputPathType
+    output_dataset: OutputPathType | None
     """Output dataset with computed eigenvalues, eigenvectors, FA, and MD"""
-    output_lambda: OutputPathType
+    output_lambda: OutputPathType | None
     """Output dataset for eigenvalues"""
-    output_eigvec: OutputPathType
+    output_eigvec: OutputPathType | None
     """Output dataset for eigenvectors"""
-    output_fa: OutputPathType
+    output_fa: OutputPathType | None
     """Output dataset for fractional anisotropy"""
-    output_md: OutputPathType
+    output_md: OutputPathType | None
     """Output dataset for mean diffusivity"""
 
 
 def v_3d_dteig(
     input_dataset: str,
+    prefix: str | None = None,
+    datum: typing.Literal["byte", "short", "float"] | None = None,
+    sep_dsets: bool = False,
+    uddata: bool = False,
     runner: Runner | None = None,
 ) -> V3dDteigOutputs:
     """
@@ -45,6 +49,12 @@ def v_3d_dteig(
     
     Args:
         input_dataset: Input dataset of Dxx, Dxy, Dyy, Dxz, Dyz, Dzz sub-bricks.
+        prefix: Use the given prefix for the output dataset.
+        datum: Coerce the output data to be stored as the given type (byte,\
+            short, or float).
+        sep_dsets: Save eigenvalues, vectors, FA, and MD in separate datasets.
+        uddata: Tensor data is stored as upper diagonal instead of lower\
+            diagonal.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dDteigOutputs`).
@@ -53,15 +63,28 @@ def v_3d_dteig(
     execution = runner.start_execution(V_3D_DTEIG_METADATA)
     cargs = []
     cargs.append("3dDTeig")
-    cargs.append("[OPTIONS]")
     cargs.append(input_dataset)
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if datum is not None:
+        cargs.extend([
+            "-datum",
+            datum
+        ])
+    if sep_dsets:
+        cargs.append("-sep_dsets")
+    if uddata:
+        cargs.append("-uddata")
     ret = V3dDteigOutputs(
         root=execution.output_file("."),
-        output_dataset=execution.output_file("[PREFIX].nii.gz"),
-        output_lambda=execution.output_file("[PREFIX]_lambda.nii.gz"),
-        output_eigvec=execution.output_file("[PREFIX]_eigvec.nii.gz"),
-        output_fa=execution.output_file("[PREFIX]_FA.nii.gz"),
-        output_md=execution.output_file("[PREFIX]_MD.nii.gz"),
+        output_dataset=execution.output_file(prefix + ".nii.gz") if (prefix is not None) else None,
+        output_lambda=execution.output_file(prefix + "_lambda.nii.gz") if (prefix is not None) else None,
+        output_eigvec=execution.output_file(prefix + "_eigvec.nii.gz") if (prefix is not None) else None,
+        output_fa=execution.output_file(prefix + "_FA.nii.gz") if (prefix is not None) else None,
+        output_md=execution.output_file(prefix + "_MD.nii.gz") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

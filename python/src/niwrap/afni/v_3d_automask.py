@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AUTOMASK_METADATA = Metadata(
-    id="4c4dea39415d0dfa3511b858d1bcbcf03ec341e6.boutiques",
+    id="9ca5b0d76c62816d4beeca149e7b86fd6591865b.boutiques",
     name="3dAutomask",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -60,8 +60,6 @@ def v_3d_automask(
     execution = runner.start_execution(V_3D_AUTOMASK_METADATA)
     cargs = []
     cargs.append("3dAutomask")
-    cargs.append(execution.input_file(in_file))
-    cargs.append("[BRAIN_FILE]")
     if clfrac is not None:
         cargs.extend([
             "-clfrac",
@@ -77,7 +75,7 @@ def v_3d_automask(
             "-erode",
             str(erode)
         ])
-    cargs.append("[OUT_FILE]")
+    cargs.append(execution.input_file(in_file))
     if outputtype is not None:
         cargs.append(outputtype)
     ret = V3dAutomaskOutputs(

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DETREND_METADATA = Metadata(
-    id="e8d1ecd8c814b6b6e0eda0b851b75ccef6231a0f.boutiques",
+    id="2d48d85baca7dde3b260dd05abe42486cb369e4e.boutiques",
     name="3dDetrend",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,7 +51,6 @@ def v_3d_detrend(
     cargs = []
     cargs.append("3dDetrend")
     cargs.append(execution.input_file(in_file))
-    cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)
     ret = V3dDetrendOutputs(

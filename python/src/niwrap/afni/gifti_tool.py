@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GIFTI_TOOL_METADATA = Metadata(
-    id="91ee7bba9d5abb27f280ff9aec49c977815a1d13.boutiques",
+    id="9b1d31e795e8536d906743811a53fef66c1b76eb.boutiques",
     name="gifti_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,28 @@ class GiftiToolOutputs(typing.NamedTuple):
 
 
 def gifti_tool(
+    infile: InputPathType,
+    write_gifti: str,
+    new_numda: float | None = None,
+    new_dtype: str | None = None,
+    new_intent: str | None = None,
+    new_ndim: float | None = None,
+    new_dims: list[float] | None = None,
+    set_extern_filelist: list[str] | None = None,
+    mod_add_data: bool = False,
+    verb: float | None = None,
+    show_gifti: bool = False,
+    read_das: list[float] | None = None,
+    mod_gim_atr: list[str] | None = None,
+    mod_gim_meta: list[str] | None = None,
+    mod_da_atr: list[str] | None = None,
+    mod_da_meta: list[str] | None = None,
+    mod_das: list[float] | None = None,
+    new_dset: bool = False,
+    compare_gifti: bool = False,
+    compare_data: bool = False,
+    compare_verb: float | None = None,
+    approx_gifti: bool = False,
     runner: Runner | None = None,
 ) -> GiftiToolOutputs:
     """
@@ -35,6 +57,28 @@ def gifti_tool(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/gifti_tool.html
     
     Args:
+        infile: Specify one or more GIFTI datasets as input.
+        write_gifti: Write out dataset as gifti image.
+        new_numda: New dataset will have NUMDA DataArray elements.
+        new_dtype: Set data type to TYPE.
+        new_intent: DA elements will have intent INTENT.
+        new_ndim: Set Dimensionality to NUMDIMS.
+        new_dims: Set dims[] to these 6 values.
+        set_extern_filelist: Store data in external files.
+        mod_add_data: Add data to empty DataArray elements.
+        verb: Set verbose level.
+        show_gifti: Show final gifti image.
+        read_das: Read DataArray list indices.
+        mod_gim_atr: Set the GIFTI NAME=VALUE attribute pair at GIFTI level.
+        mod_gim_meta: Add this pair to the GIFTI MetaData.
+        mod_da_atr: Set the DataArray NAME=VALUE attribute pair.
+        mod_da_meta: Set the DataArray NAME=VALUE pair in DA's MetaData.
+        mod_das: Specify the set of DataArrays to modify.
+        new_dset: Create a new GIFTI dataset.
+        compare_gifti: Compare two GIFTI datasets.
+        compare_data: Flag to request comparison of the data.
+        compare_verb: Set the verbose level of comparisons.
+        approx_gifti: Approximate comparison of GIFTI datasets.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `GiftiToolOutputs`).
@@ -43,10 +87,99 @@ def gifti_tool(
     execution = runner.start_execution(GIFTI_TOOL_METADATA)
     cargs = []
     cargs.append("gifti_tool")
-    cargs.append("[ARGS]")
+    cargs.extend([
+        "-infile",
+        execution.input_file(infile)
+    ])
+    if new_numda is not None:
+        cargs.extend([
+            "-new_numDA",
+            str(new_numda)
+        ])
+    if new_dtype is not None:
+        cargs.extend([
+            "-new_dtype",
+            new_dtype
+        ])
+    if new_intent is not None:
+        cargs.extend([
+            "-new_intent",
+            new_intent
+        ])
+    if new_ndim is not None:
+        cargs.extend([
+            "-new_ndim",
+            str(new_ndim)
+        ])
+    if new_dims is not None:
+        cargs.extend([
+            "-new_dims",
+            *map(str, new_dims)
+        ])
+    cargs.extend([
+        "-write_gifti",
+        write_gifti
+    ])
+    if set_extern_filelist is not None:
+        cargs.extend([
+            "-set_extern_filelist",
+            *set_extern_filelist
+        ])
+    if mod_add_data:
+        cargs.append("-mod_add_data")
+    if verb is not None:
+        cargs.extend([
+            "-verb",
+            str(verb)
+        ])
+    if show_gifti:
+        cargs.append("-show_gifti")
+    if read_das is not None:
+        cargs.extend([
+            "-read_DAs",
+            *map(str, read_das)
+        ])
+    if mod_gim_atr is not None:
+        cargs.extend([
+            "-mod_gim_atr",
+            *mod_gim_atr
+        ])
+    if mod_gim_meta is not None:
+        cargs.extend([
+            "-mod_gim_meta",
+            *mod_gim_meta
+        ])
+    if mod_da_atr is not None:
+        cargs.extend([
+            "-mod_DA_atr",
+            *mod_da_atr
+        ])
+    if mod_da_meta is not None:
+        cargs.extend([
+            "-mod_DA_meta",
+            *mod_da_meta
+        ])
+    if mod_das is not None:
+        cargs.extend([
+            "-mod_DAs",
+            *map(str, mod_das)
+        ])
+    if new_dset:
+        cargs.append("-new_dset")
+    if compare_gifti:
+        cargs.append("-compare_gifti")
+    if compare_data:
+        cargs.append("-compare_data")
+    if compare_verb is not None:
+        cargs.extend([
+            "-compare_verb",
+            str(compare_verb)
+        ])
+    if approx_gifti:
+        cargs.append("-approx_gifti")
     ret = GiftiToolOutputs(
         root=execution.output_file("."),
-        output_gifti=execution.output_file("[OUTPUT_FILE]"),
+        output_gifti=execution.output_file(write_gifti),
     )
     execution.run(cargs)
     return ret

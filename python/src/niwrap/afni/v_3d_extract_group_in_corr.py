@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EXTRACT_GROUP_IN_CORR_METADATA = Metadata(
-    id="b8b23d33ef8a1a71fb2a203bde388bdc12a7bbe9.boutiques",
+    id="cfdb60d4e19cfd7030757b3ccd1491a0216bfebe.boutiques",
     name="3dExtractGroupInCorr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,12 +20,13 @@ class V3dExtractGroupInCorrOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_dataset: OutputPathType
+    output_dataset: OutputPathType | None
     """Output dataset reconstructed from GroupInCorr data"""
 
 
 def v_3d_extract_group_in_corr(
     group_in_corr_file: InputPathType,
+    prefix: str | None = None,
     runner: Runner | None = None,
 ) -> V3dExtractGroupInCorrOutputs:
     """
@@ -40,6 +41,8 @@ def v_3d_extract_group_in_corr(
     Args:
         group_in_corr_file: GroupInCorr file to extract datasets from (e.g.\
             AAA.grpincorr.niml).
+        prefix: Prefix to prepend to dataset labels. Use 'NULL' to skip the use\
+            of the prefix.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dExtractGroupInCorrOutputs`).
@@ -48,11 +51,15 @@ def v_3d_extract_group_in_corr(
     execution = runner.start_execution(V_3D_EXTRACT_GROUP_IN_CORR_METADATA)
     cargs = []
     cargs.append("3dExtractGroupInCorr")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(group_in_corr_file))
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
     ret = V3dExtractGroupInCorrOutputs(
         root=execution.output_file("."),
-        output_dataset=execution.output_file("[PREFIX]_[DATASET_LABEL].nii"),
+        output_dataset=execution.output_file(prefix + "_[DATASET_LABEL].nii") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

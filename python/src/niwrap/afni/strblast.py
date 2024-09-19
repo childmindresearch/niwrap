@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 STRBLAST_METADATA = Metadata(
-    id="5d0ef9b106739ab35046cccfe77a8538e51aeb84.boutiques",
+    id="8767ef40044074fc92c6bfae61216e489dd7c549.boutiques",
     name="strblast",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,13 @@ class StrblastOutputs(typing.NamedTuple):
 
 
 def strblast(
+    targetstring: str,
+    input_files: list[InputPathType],
+    new_char: str | None = None,
+    new_string: str | None = None,
+    unescape: bool = False,
+    quiet: bool = False,
+    help_: bool = False,
     runner: Runner | None = None,
 ) -> StrblastOutputs:
     """
@@ -34,6 +41,15 @@ def strblast(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/strblast.html
     
     Args:
+        targetstring: Target string to search for in the input files.
+        input_files: Input files to search for the target string.
+        new_char: Replace TARGETSTRING with CHAR (repeated).
+        new_string: Replace TARGETSTRING with STRING.
+        unescape: Parse TARGETSTRING for escaped characters (includes '\t',\
+            '\n', '\r').
+        quiet: Do not report files with no strings found. Use -quiet -quiet to\
+            avoid any reporting.
+        help_: Show help message and exit.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `StrblastOutputs`).
@@ -42,9 +58,24 @@ def strblast(
     execution = runner.start_execution(STRBLAST_METADATA)
     cargs = []
     cargs.append("strblast")
-    cargs.append("[OPTIONS]")
-    cargs.append("TARGETSTRING")
-    cargs.append("[INPUT_FILES...]")
+    cargs.append(targetstring)
+    cargs.extend([execution.input_file(f) for f in input_files])
+    if new_char is not None:
+        cargs.extend([
+            "-new_char",
+            new_char
+        ])
+    if new_string is not None:
+        cargs.extend([
+            "-new_string",
+            new_string
+        ])
+    if unescape:
+        cargs.append("-unescape")
+    if quiet:
+        cargs.append("-quiet")
+    if help_:
+        cargs.append("-help")
     ret = StrblastOutputs(
         root=execution.output_file("."),
     )

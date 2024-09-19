@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DPC_METADATA = Metadata(
-    id="2ca991097ca258f9139795385db58ddbb0bb2f3e.boutiques",
+    id="1762699b4a6d14d740951c3bbbb3de44d61d81fc.boutiques",
     name="3dpc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,19 +20,34 @@ class V3dpcOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_dataset: OutputPathType
+    output_dataset: OutputPathType | None
     """Output dataset file"""
-    output_header: OutputPathType
+    output_header: OutputPathType | None
     """Output dataset header file"""
-    output_eig: OutputPathType
+    output_eig: OutputPathType | None
     """File with computed eigenvalues"""
-    output_vec: OutputPathType
+    output_vec: OutputPathType | None
     """File with all eigen-timeseries"""
-    output_individual_vec: OutputPathType
+    output_individual_vec: OutputPathType | None
     """File with individual eigenvalue timeseries"""
 
 
 def v_3dpc(
+    datasets: list[InputPathType],
+    dmean: bool = False,
+    vmean: bool = False,
+    vnorm: bool = False,
+    normalize: bool = False,
+    nscale: bool = False,
+    pcsave: str | None = None,
+    reduce: list[str] | None = None,
+    prefix: str | None = None,
+    dummy_lines: int | None = None,
+    verbose: bool = False,
+    quiet: bool = False,
+    eigonly: bool = False,
+    float_: bool = False,
+    mask: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> V3dpcOutputs:
     """
@@ -43,23 +58,85 @@ def v_3dpc(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dpc.html
     
     Args:
+        datasets: Input dataset(s) with sub-brick selector list support.
+        dmean: Remove the mean from each input brick (across space).
+        vmean: Remove the mean from each input voxel (across bricks).
+        vnorm: L2 normalize each input voxel time series.
+        normalize: L2 normalize each input brick (after mean subtraction).
+        nscale: Scale the covariance matrix by the number of samples.
+        pcsave: 'sss' is the number of components to save in the output.
+        reduce: Compute a dimensionally reduced dataset with top 'r'\
+            eigenvalues and write to disk in dataset 'pp'.
+        prefix: Name for the output dataset.
+        dummy_lines: Add 'ddd' dummy lines to the top of each *.1D file.
+        verbose: Print progress reports during the computations.
+        quiet: Don't print progress reports.
+        eigonly: Only compute eigenvalues, write them to 'pname'_eig.1D, then\
+            stop.
+        float_: Save eigen-bricks as floats (default = shorts).
+        mask: Use the 0 sub-brick of dataset 'mset' as a mask indicating which\
+            voxels to analyze.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dpcOutputs`).
     """
+    if reduce is not None and (len(reduce) != 2): 
+        raise ValueError(f"Length of 'reduce' must be 2 but was {len(reduce)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DPC_METADATA)
     cargs = []
     cargs.append("3dpc")
-    cargs.append("[OPTIONS]")
-    cargs.append("[INPUT_DATASETS...]")
+    cargs.extend([execution.input_file(f) for f in datasets])
+    if dmean:
+        cargs.append("-dmean")
+    if vmean:
+        cargs.append("-vmean")
+    if vnorm:
+        cargs.append("-vnorm")
+    if normalize:
+        cargs.append("-normalize")
+    if nscale:
+        cargs.append("-nscale")
+    if pcsave is not None:
+        cargs.extend([
+            "-pcsave",
+            pcsave
+        ])
+    if reduce is not None:
+        cargs.extend([
+            "-reduce",
+            *reduce
+        ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if dummy_lines is not None:
+        cargs.extend([
+            "-1ddum",
+            str(dummy_lines)
+        ])
+    if verbose:
+        cargs.append("-verbose")
+    if quiet:
+        cargs.append("-quiet")
+    if eigonly:
+        cargs.append("-eigonly")
+    if float_:
+        cargs.append("-float")
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
     ret = V3dpcOutputs(
         root=execution.output_file("."),
-        output_dataset=execution.output_file("[PREFIX]+orig.BRIK"),
-        output_header=execution.output_file("[PREFIX]+orig.HEAD"),
-        output_eig=execution.output_file("[PREFIX]_eig.1D"),
-        output_vec=execution.output_file("[PREFIX]_vec.1D"),
-        output_individual_vec=execution.output_file("[PREFIX][NN].1D"),
+        output_dataset=execution.output_file(prefix + "+orig.BRIK") if (prefix is not None) else None,
+        output_header=execution.output_file(prefix + "+orig.HEAD") if (prefix is not None) else None,
+        output_eig=execution.output_file(prefix + "_eig.1D") if (prefix is not None) else None,
+        output_vec=execution.output_file(prefix + "_vec.1D") if (prefix is not None) else None,
+        output_individual_vec=execution.output_file(prefix + "[NN].1D") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

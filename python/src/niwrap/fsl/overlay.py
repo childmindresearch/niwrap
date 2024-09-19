@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OVERLAY_METADATA = Metadata(
-    id="1b2de06d3c3c55476b10678cfb33eedfc35927e0.boutiques",
+    id="c7eea25dcf5ccd3e04310fbb1d8abed5676a5a2d.boutiques",
     name="overlay",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -26,15 +26,17 @@ class OverlayOutputs(typing.NamedTuple):
 
 def overlay(
     background_image: InputPathType,
+    bg_thresh: list[float],
     stat_image: InputPathType,
     stat_thresh: list[float],
-    out_type: typing.Literal["float", "int"] | None = "float",
-    use_checkerboard: bool = False,
+    auto_thresh_bg: bool = False,
     full_bg_range: bool = False,
+    out_file: InputPathType | None = None,
+    out_type: typing.Literal["float", "int"] | None = "float",
+    output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
     stat_image2: InputPathType | None = None,
     stat_thresh2: list[float] | None = None,
-    out_file: InputPathType | None = None,
-    output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
+    use_checkerboard: bool = False,
     runner: Runner | None = None,
 ) -> OverlayOutputs:
     """
@@ -45,18 +47,21 @@ def overlay(
     
     Args:
         background_image: Image to use as background.
+        bg_thresh: (a float, a float). Min and max values for background\
+            intensity.
         stat_image: Statistical image to overlay in color.
         stat_thresh: (a float, a float). Min and max values for the statistical\
             overlay.
-        out_type: 'float' or 'int'. Write output with float or int.
-        use_checkerboard: Use checkerboard mask for overlay.
+        auto_thresh_bg: Automatically threshold the background image.
         full_bg_range: Use full range of background image.
+        out_file: Combined image volume.
+        out_type: 'float' or 'int'. Write output with float or int.
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
+            Fsl output type.
         stat_image2: Second statistical image to overlay in color.
         stat_thresh2: (a float, a float). Min and max values for second\
             statistical overlay.
-        out_file: Combined image volume.
-        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
-            Fsl output type.
+        use_checkerboard: Use checkerboard mask for overlay.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `OverlayOutputs`).
@@ -65,25 +70,26 @@ def overlay(
     execution = runner.start_execution(OVERLAY_METADATA)
     cargs = []
     cargs.append("Overlay")
-    cargs.append("[TRANSPARENCY]")
-    if out_type is not None:
-        cargs.append(out_type)
-    if use_checkerboard:
-        cargs.append("-c")
+    if auto_thresh_bg:
+        cargs.append("-a")
     cargs.append(execution.input_file(background_image))
+    cargs.extend(map(str, bg_thresh))
     if full_bg_range:
         cargs.append("-A")
-    cargs.append(execution.input_file(stat_image))
-    cargs.extend(map(str, stat_thresh))
-    cargs.append("[SHOW_NEGATIVE_STATS]")
-    if stat_image2 is not None:
-        cargs.append(execution.input_file(stat_image2))
-    if stat_thresh2 is not None:
-        cargs.extend(map(str, stat_thresh2))
     if out_file is not None:
         cargs.append(execution.input_file(out_file))
+    if out_type is not None:
+        cargs.append(out_type)
     if output_type is not None:
         cargs.append(output_type)
+    cargs.append(execution.input_file(stat_image))
+    if stat_image2 is not None:
+        cargs.append(execution.input_file(stat_image2))
+    cargs.extend(map(str, stat_thresh))
+    if stat_thresh2 is not None:
+        cargs.extend(map(str, stat_thresh2))
+    if use_checkerboard:
+        cargs.append("-c")
     ret = OverlayOutputs(
         root=execution.output_file("."),
         out_file_outfile=execution.output_file(pathlib.Path(out_file).name) if (out_file is not None) else None,

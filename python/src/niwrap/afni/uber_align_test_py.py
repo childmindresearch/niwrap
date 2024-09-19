@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UBER_ALIGN_TEST_PY_METADATA = Metadata(
-    id="ae56a4b4e64a9fd681065c6aac82cf43606fd468.boutiques",
+    id="c3ac6b6878bd377b29b2324d4b4ba248e5bd6c7c.boutiques",
     name="uber_align_test.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,16 @@ class UberAlignTestPyOutputs(typing.NamedTuple):
 
 
 def uber_align_test_py(
+    no_gui: bool = False,
+    print_script: bool = False,
+    save_script: str | None = None,
+    user_variable: list[str] | None = None,
+    qt_opts: str | None = None,
+    help_: bool = False,
+    help_gui: bool = False,
+    history: bool = False,
+    show_valid_opts: bool = False,
+    version: bool = False,
     runner: Runner | None = None,
 ) -> UberAlignTestPyOutputs:
     """
@@ -34,6 +44,16 @@ def uber_align_test_py(
     https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_align_test.py.html
     
     Args:
+        no_gui: Run without the graphical user interface (GUI).
+        print_script: Print the generated script to standard output.
+        save_script: Save the generated script to the specified file.
+        user_variable: Specify user variables for alignment.
+        qt_opts: Pass PyQt4 options directly to the GUI.
+        help_: Show help information.
+        help_gui: Show help information for the GUI.
+        history: Show command history.
+        show_valid_opts: Show valid options.
+        version: Show version information.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `UberAlignTestPyOutputs`).
@@ -42,8 +62,35 @@ def uber_align_test_py(
     execution = runner.start_execution(UBER_ALIGN_TEST_PY_METADATA)
     cargs = []
     cargs.append("uber_align_test.py")
-    cargs.append("[COMMANDS]")
-    cargs.append("[OPTIONS]")
+    if no_gui:
+        cargs.append("-no_gui")
+    if print_script:
+        cargs.append("-print_script")
+    if save_script is not None:
+        cargs.extend([
+            "-save_script",
+            save_script
+        ])
+    if user_variable is not None:
+        cargs.extend([
+            "-uvar",
+            *user_variable
+        ])
+    if qt_opts is not None:
+        cargs.extend([
+            "-qt_opts",
+            qt_opts
+        ])
+    if help_:
+        cargs.append("-help")
+    if help_gui:
+        cargs.append("-help_gui")
+    if history:
+        cargs.append("-hist")
+    if show_valid_opts:
+        cargs.append("-show_valid_opts")
+    if version:
+        cargs.append("-ver")
     ret = UberAlignTestPyOutputs(
         root=execution.output_file("."),
     )

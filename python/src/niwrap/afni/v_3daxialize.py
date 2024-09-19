@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DAXIALIZE_METADATA = Metadata(
-    id="4a31bcf01d5f3abdd670e6d35ef8f5e3b5aec53c.boutiques",
+    id="c2a1cdfdabbd834e50d57ce4a3eb2d55f0e41421.boutiques",
     name="3daxialize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -62,7 +62,6 @@ def v_3daxialize(
     execution = runner.start_execution(V_3DAXIALIZE_METADATA)
     cargs = []
     cargs.append("3daxialize")
-    cargs.append("[OUTPUT_FILE]")
     cargs.append(execution.input_file(infile))
     if prefix is not None:
         cargs.extend([

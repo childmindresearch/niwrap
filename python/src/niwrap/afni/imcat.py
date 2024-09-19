@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMCAT_METADATA = Metadata(
-    id="06c193024d85eb1fc0a4565a8c2621e9cd4661df.boutiques",
+    id="a8839645803abd5da112dc9b7ab306fe767f6e96.boutiques",
     name="imcat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,9 +25,11 @@ class ImcatOutputs(typing.NamedTuple):
 
 
 def imcat(
+    input_files: list[InputPathType],
     scale_image: InputPathType | None = None,
     scale_pixels: InputPathType | None = None,
     scale_intensity: bool = False,
+    gscale: float | None = None,
     rgb_out: bool = False,
     res_in: list[float] | None = None,
     respad_in: list[float] | None = None,
@@ -58,6 +60,7 @@ def imcat(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcat.html
     
     Args:
+        input_files: Input image files.
         scale_image: Multiply each image IM(i,j) in output image matrix IM by\
             the color or intensity of the pixel (i,j) in SCALE_IMG.
         scale_pixels: Multiply each pixel (i,j) in output image by the color or\
@@ -65,6 +68,7 @@ def imcat(
             resized to the resolution of the output image.
         scale_intensity: Instead of multiplying by the color of pixel (i,j),\
             use its intensity (average color).
+        gscale: Apply FAC in addition to scaling of -scale_* options.
         rgb_out: Force output to be in RGB, even if input is bytes. This option\
             is turned on automatically in certain cases.
         res_in: Set resolution of all input images to RX by RY pixels. Default\
@@ -114,6 +118,7 @@ def imcat(
     execution = runner.start_execution(IMCAT_METADATA)
     cargs = []
     cargs.append("2dcat")
+    cargs.extend([execution.input_file(f) for f in input_files])
     if scale_image is not None:
         cargs.extend([
             "-scale_image",
@@ -126,7 +131,11 @@ def imcat(
         ])
     if scale_intensity:
         cargs.append("-scale_intensity")
-    cargs.append("[GSCLAE]")
+    if gscale is not None:
+        cargs.extend([
+            "-gscale",
+            str(gscale)
+        ])
     if rgb_out:
         cargs.append("-rgb_out")
     if res_in is not None:
@@ -206,7 +215,6 @@ def imcat(
             "-gap_col",
             *map(str, gap_col)
         ])
-    cargs.append("[INPUT_FILES...]")
     ret = ImcatOutputs(
         root=execution.output_file("."),
         output_image_file=execution.output_file(prefix + "output_image.[EXT]") if (prefix is not None) else None,

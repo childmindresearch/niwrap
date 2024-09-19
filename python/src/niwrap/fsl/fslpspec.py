@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLPSPEC_METADATA = Metadata(
-    id="034df51dc010372ef67f2310d915e1175d89e8c6.boutiques",
+    id="4b4cc225281182b5c12fd765ae91de54dedb1cb2.boutiques",
     name="fslpspec",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -50,7 +50,6 @@ def fslpspec(
     cargs.append(execution.input_file(infile))
     if outfile is not None:
         cargs.append(outfile)
-    cargs.append("[OPTIONS]")
     ret = FslpspecOutputs(
         root=execution.output_file("."),
         output_pspec=execution.output_file(outfile) if (outfile is not None) else None,

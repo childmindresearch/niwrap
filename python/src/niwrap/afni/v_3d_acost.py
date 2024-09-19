@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ACOST_METADATA = Metadata(
-    id="a26f72fc3f30ed24d5404341c23d8a193b525fda.boutiques",
+    id="1737f9d56187aa62310ebc3c2f7a7a8e89596299.boutiques",
     name="3dAcost",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,6 +30,7 @@ def v_3d_acost(
     infile: InputPathType,
     basefile: InputPathType,
     outfile: str,
+    all_cost: bool = False,
     runner: Runner | None = None,
 ) -> V3dAcostOutputs:
     """
@@ -43,6 +44,7 @@ def v_3d_acost(
         infile: Input dataset for allineation.
         basefile: Base dataset for allineation.
         outfile: Prefix for the output dataset.
+        all_cost: Prints all alignment cost metrics.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dAcostOutputs`).
@@ -52,17 +54,16 @@ def v_3d_acost(
     cargs = []
     cargs.append("3dAllineate")
     cargs.append(execution.input_file(infile))
-    cargs.append("-base")
     cargs.extend([
         "-base",
         execution.input_file(basefile)
     ])
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         outfile
     ])
-    cargs.append("[OTHER_OPTIONS]")
+    if all_cost:
+        cargs.append("-allcostX")
     ret = V3dAcostOutputs(
         root=execution.output_file("."),
         output_head=execution.output_file(outfile + "+orig.HEAD"),

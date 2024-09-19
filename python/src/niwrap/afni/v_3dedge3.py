@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DEDGE3_METADATA = Metadata(
-    id="9db60bfb5c26a62877afdc35578a2c2b8a065792.boutiques",
+    id="48cb8e7efc676464570990fd48f699c59072f3dd.boutiques",
     name="3dedge3",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,9 +26,14 @@ class V3dedge3Outputs(typing.NamedTuple):
 
 def v_3dedge3(
     input_file: InputPathType,
+    verbose: bool = False,
     prefix: str | None = None,
     datum: str | None = None,
+    fscale: bool = False,
+    gscale: bool = False,
+    nscale: bool = False,
     scale_floats: float | None = None,
+    automask: bool = False,
     runner: Runner | None = None,
 ) -> V3dedge3Outputs:
     """
@@ -40,10 +45,17 @@ def v_3dedge3(
     
     Args:
         input_file: Input dataset.
+        verbose: Print out some information along the way.
         prefix: Sets the prefix of the output dataset.
         datum: Sets the datum of the output dataset.
+        fscale: Force scaling of the output to the maximum integer range.
+        gscale: Same as '-fscale', but also forces each output sub-brick to get\
+            the same scaling factor.
+        nscale: Don't do any scaling on output to byte or short datasets.
         scale_floats: Multiply input by VAL, but only if the input datum is\
             float.
+        automask: For automatic internal calculation of a mask in the usual\
+            AFNI way.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dedge3Outputs`).
@@ -56,7 +68,8 @@ def v_3dedge3(
         "-input",
         execution.input_file(input_file)
     ])
-    cargs.append("[VERBOSE_FLAG]")
+    if verbose:
+        cargs.append("-verbose")
     if prefix is not None:
         cargs.extend([
             "-prefix",
@@ -67,15 +80,19 @@ def v_3dedge3(
             "-datum",
             datum
         ])
-    cargs.append("[FSCALE_FLAG]")
-    cargs.append("[GSCALE_FLAG]")
-    cargs.append("[NSCALE_FLAG]")
+    if fscale:
+        cargs.append("-fscale")
+    if gscale:
+        cargs.append("-gscale")
+    if nscale:
+        cargs.append("-nscale")
     if scale_floats is not None:
         cargs.extend([
             "-scale_floats",
             str(scale_floats)
         ])
-    cargs.append("[AUTOMASK_FLAG]")
+    if automask:
+        cargs.append("-automask")
     ret = V3dedge3Outputs(
         root=execution.output_file("."),
         output_file=execution.output_file(prefix + ".nii.gz") if (prefix is not None) else None,

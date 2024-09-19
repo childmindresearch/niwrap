@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DNEWID_METADATA = Metadata(
-    id="fb47f04bbba1d0ec5b466c75abcfaaab60b92527.boutiques",
+    id="9480e9aa85e871aa4073be8542ee367beae41a16.boutiques",
     name="3dnewid",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -59,7 +59,6 @@ def v_3dnewid(
     cargs = []
     cargs.append("3dnewid")
     cargs.extend([execution.input_file(f) for f in datasets])
-    cargs.append("[FUN_OPTION]")
     if fun is not None:
         cargs.extend([
             "-fun",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_PET_METADATA = Metadata(
-    id="46f5abb89eb6fa6d38c0da06d9a7cd2f69e1cd75.boutiques",
+    id="198dff3b635a25f1b3eef008d20a21dccaa73cb6.boutiques",
     name="fabber_pet",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -54,6 +54,42 @@ class FabberPetOutputs(typing.NamedTuple):
 
 
 def fabber_pet(
+    output: str,
+    method: str,
+    model: str,
+    data: InputPathType,
+    help_flag: bool = False,
+    list_methods_flag: bool = False,
+    list_models_flag: bool = False,
+    list_params_flag: bool = False,
+    desc_params_flag: bool = False,
+    list_outputs_flag: bool = False,
+    evaluate: str | None = None,
+    evaluate_params: str | None = None,
+    evaluate_nt: float | None = None,
+    simple_output_flag: bool = False,
+    overwrite_flag: bool = False,
+    link_to_latest_flag: bool = False,
+    loadmodels_file: InputPathType | None = None,
+    data_n: InputPathType | None = None,
+    data_order: str | None = "interleave",
+    mask: InputPathType | None = None,
+    mt_n: str | None = None,
+    supp_data: InputPathType | None = None,
+    dump_param_names_flag: bool = False,
+    save_model_fit_flag: bool = False,
+    save_residuals_flag: bool = False,
+    save_model_extras_flag: bool = False,
+    save_mvn_flag: bool = False,
+    save_mean_flag: bool = False,
+    save_std_flag: bool = False,
+    save_var_flag: bool = False,
+    save_zstat_flag: bool = False,
+    save_noise_mean_flag: bool = False,
+    save_noise_std_flag: bool = False,
+    save_free_energy_flag: bool = False,
+    optfile_flag: bool = False,
+    debug_flag: bool = False,
     runner: Runner | None = None,
 ) -> FabberPetOutputs:
     """
@@ -64,6 +100,61 @@ def fabber_pet(
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fabber
     
     Args:
+        output: Directory for output files (including logfile).
+        method: Use this inference method.
+        model: Use this forward model.
+        data: Specify a single input data file.
+        help_flag: Print this help message.
+        list_methods_flag: List all known inference methods.
+        list_models_flag: List all known forward models.
+        list_params_flag: List model parameters (requires model configuration\
+            options to be given).
+        desc_params_flag: Describe model parameters (name, description, units)\
+            - requires model configuration options.
+        list_outputs_flag: List additional model outputs (requires model\
+            configuration options to be given).
+        evaluate: Evaluate model. Set to name of output required or blank for\
+            default output. Requires model configuration options, --evaluate-params\
+            and --evaluate-nt.
+        evaluate_params: List of parameter values for evaluation.
+        evaluate_nt: Number of time points for evaluation - must be consistent\
+            with model options where appropriate.
+        simple_output_flag: Simply output series of lines each giving progress\
+            as percentage.
+        overwrite_flag: Overwrite existing output. If not set, new output\
+            directories will be created by appending '+' to the directory name.
+        link_to_latest_flag: Create a link to the most recent output directory\
+            with the prefix _latest.
+        loadmodels_file: Load models dynamically from the specified filename,\
+            which should be a DLL/shared library.
+        data_n: Specify multiple data files for n=1, 2, 3...
+        data_order: If multiple data files are specified, how they will be\
+            handled: concatenate = one after the other, interleave = first record\
+            from each file, then second, etc.
+        mask: Mask file. Inference will only be performed where mask value > 0.
+        mt_n: List of masked time points, indexed from 1. These will be ignored\
+            in the parameter updates.
+        supp_data: 'Supplemental' timeseries data, required for some models.
+        dump_param_names_flag: Write the file paramnames.txt containing the\
+            names of the model parameters.
+        save_model_fit_flag: Output the model prediction as a 4d volume.
+        save_residuals_flag: Output the residuals (difference between the data\
+            and the model prediction).
+        save_model_extras_flag: Output any additional model-specific timeseries\
+            data.
+        save_mvn_flag: Output the final MVN distributions.
+        save_mean_flag: Output the parameter means.
+        save_std_flag: Output the parameter standard deviations.
+        save_var_flag: Output the parameter variances.
+        save_zstat_flag: Output the parameter Zstats.
+        save_noise_mean_flag: Output the noise means. The noise distribution\
+            inferred is the precision of a Gaussian noise source.
+        save_noise_std_flag: Output the noise standard deviations.
+        save_free_energy_flag: Output the free energy, if calculated.
+        optfile_flag: File containing additional options, one per line, in the\
+            same form as specified on the command line.
+        debug_flag: Output large amounts of debug information. ONLY USE WITH\
+            VERY SMALL NUMBERS OF VOXELS.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FabberPetOutputs`).
@@ -71,23 +162,129 @@ def fabber_pet(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_PET_METADATA)
     cargs = []
-    cargs.append("fabber")
-    cargs.append("[OPTIONS]")
+    cargs.append("fabber_pet")
+    if help_flag:
+        cargs.append("--help")
+    if list_methods_flag:
+        cargs.append("--listmethods")
+    if list_models_flag:
+        cargs.append("--listmodels")
+    if list_params_flag:
+        cargs.append("--listparams")
+    if desc_params_flag:
+        cargs.append("--descparams")
+    if list_outputs_flag:
+        cargs.append("--listoutputs")
+    if evaluate is not None:
+        cargs.extend([
+            "--evaluate",
+            evaluate
+        ])
+    if evaluate_params is not None:
+        cargs.extend([
+            "--evaluate-params",
+            evaluate_params
+        ])
+    if evaluate_nt is not None:
+        cargs.extend([
+            "--evaluate-nt",
+            str(evaluate_nt)
+        ])
+    if simple_output_flag:
+        cargs.append("--simple-output")
+    cargs.extend([
+        "--output",
+        output
+    ])
+    if overwrite_flag:
+        cargs.append("--overwrite")
+    if link_to_latest_flag:
+        cargs.append("--link-to-latest")
+    cargs.extend([
+        "--method",
+        method
+    ])
+    cargs.extend([
+        "--model",
+        model
+    ])
+    if loadmodels_file is not None:
+        cargs.extend([
+            "--loadmodels",
+            execution.input_file(loadmodels_file)
+        ])
+    cargs.extend([
+        "--data",
+        execution.input_file(data)
+    ])
+    if data_n is not None:
+        cargs.extend([
+            "--data[1-999]",
+            execution.input_file(data_n)
+        ])
+    if data_order is not None:
+        cargs.extend([
+            "--data-order",
+            data_order
+        ])
+    if mask is not None:
+        cargs.extend([
+            "--mask",
+            execution.input_file(mask)
+        ])
+    if mt_n is not None:
+        cargs.extend([
+            "--mt[1-999]",
+            mt_n
+        ])
+    if supp_data is not None:
+        cargs.extend([
+            "--suppdata",
+            execution.input_file(supp_data)
+        ])
+    if dump_param_names_flag:
+        cargs.append("--dump-param-names")
+    if save_model_fit_flag:
+        cargs.append("--save-model-fit")
+    if save_residuals_flag:
+        cargs.append("--save-residuals")
+    if save_model_extras_flag:
+        cargs.append("--save-model-extras")
+    if save_mvn_flag:
+        cargs.append("--save-mvn")
+    if save_mean_flag:
+        cargs.append("--save-mean")
+    if save_std_flag:
+        cargs.append("--save-std")
+    if save_var_flag:
+        cargs.append("--save-var")
+    if save_zstat_flag:
+        cargs.append("--save-zstat")
+    if save_noise_mean_flag:
+        cargs.append("--save-noise-mean")
+    if save_noise_std_flag:
+        cargs.append("--save-noise-std")
+    if save_free_energy_flag:
+        cargs.append("--save-free-energy")
+    if optfile_flag:
+        cargs.append("--optfile")
+    if debug_flag:
+        cargs.append("--debug")
     ret = FabberPetOutputs(
         root=execution.output_file("."),
-        output_files=execution.output_file("[OUTPUT]/*"),
-        param_names_file=execution.output_file("[OUTPUT]/paramnames.txt"),
-        model_fit_file=execution.output_file("[OUTPUT]/*_modelfit.nii.gz"),
-        residuals_file=execution.output_file("[OUTPUT]/*_residuals.nii.gz"),
-        model_extras_file=execution.output_file("[OUTPUT]/*_modextras.nii.gz"),
-        mvn_file=execution.output_file("[OUTPUT]/*_mvn.nii.gz"),
-        mean_file=execution.output_file("[OUTPUT]/*_mean.nii.gz"),
-        std_file=execution.output_file("[OUTPUT]/*_std.nii.gz"),
-        var_file=execution.output_file("[OUTPUT]/*_var.nii.gz"),
-        zstat_file=execution.output_file("[OUTPUT]/*_zstat.nii.gz"),
-        noise_mean_file=execution.output_file("[OUTPUT]/*_noisemean.nii.gz"),
-        noise_std_file=execution.output_file("[OUTPUT]/*_noisestd.nii.gz"),
-        free_energy_file=execution.output_file("[OUTPUT]/*_freeenergy.nii.gz"),
+        output_files=execution.output_file(output + "/*"),
+        param_names_file=execution.output_file(output + "/paramnames.txt"),
+        model_fit_file=execution.output_file(output + "/*_modelfit.nii.gz"),
+        residuals_file=execution.output_file(output + "/*_residuals.nii.gz"),
+        model_extras_file=execution.output_file(output + "/*_modextras.nii.gz"),
+        mvn_file=execution.output_file(output + "/*_mvn.nii.gz"),
+        mean_file=execution.output_file(output + "/*_mean.nii.gz"),
+        std_file=execution.output_file(output + "/*_std.nii.gz"),
+        var_file=execution.output_file(output + "/*_var.nii.gz"),
+        zstat_file=execution.output_file(output + "/*_zstat.nii.gz"),
+        noise_mean_file=execution.output_file(output + "/*_noisemean.nii.gz"),
+        noise_std_file=execution.output_file(output + "/*_noisestd.nii.gz"),
+        free_energy_file=execution.output_file(output + "/*_freeenergy.nii.gz"),
     )
     execution.run(cargs)
     return ret

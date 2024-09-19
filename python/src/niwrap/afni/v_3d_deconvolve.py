@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DECONVOLVE_METADATA = Metadata(
-    id="5e4431741fecb6d1d8debcf228eba178f6aa57f6.boutiques",
+    id="d5c9a2dbc50b2016f9d050d445fc372aa381e111.boutiques",
     name="3dDeconvolve",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,21 +20,34 @@ class V3dDeconvolveOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    bucket_output: OutputPathType
+    bucket_output: OutputPathType | None
     """Main output bucket dataset in AFNI format."""
-    cbucket_output: OutputPathType
+    cbucket_output: OutputPathType | None
     """Regression coefficients stored in a dataset."""
-    iresp_output: OutputPathType
+    iresp_output: OutputPathType | None
     """Estimated Impulse Response dataset."""
-    fitts_output: OutputPathType
+    fitts_output: OutputPathType | None
     """Fitted Time Series dataset in AFNI format."""
-    x1d_file: OutputPathType
+    x1d_file: OutputPathType | None
     """X-matrix output file in .1D format."""
 
 
 def v_3d_deconvolve(
     input_dataset: InputPathType,
     mask_dataset: InputPathType | None = None,
+    num_stimts: int | None = None,
+    stim_file: str | None = None,
+    stim_label: str | None = None,
+    stim_base: bool = False,
+    stim_times: str | None = None,
+    iresp: str | None = None,
+    fitts: str | None = None,
+    fout: bool = False,
+    tout: bool = False,
+    bucket: str | None = None,
+    cbucket: str | None = None,
+    x1_d: str | None = None,
+    jobs: int | None = None,
     runner: Runner | None = None,
 ) -> V3dDeconvolveOutputs:
     """
@@ -48,6 +61,23 @@ def v_3d_deconvolve(
     Args:
         input_dataset: Filename of 3D+time input dataset.
         mask_dataset: Filename of 3D mask dataset.
+        num_stimts: Number of input stimulus time series.
+        stim_file: Filename of kth time series input stimulus.
+        stim_label: Label for kth input stimulus.
+        stim_base: Kth input stimulus is part of the baseline model.
+        stim_times: Deconvolution response model for kth stimulus.
+        iresp: Prefix for 3D+time output dataset which will contain the kth\
+            estimated impulse response.
+        fitts: Prefix for 3D+time output dataset which will contain the (full\
+            model) time series fit to the input data.
+        fout: Flag to output the F-statistics for each stimulus.
+        tout: Flag to output the t-statistics.
+        bucket: Create one AFNI 'bucket' dataset containing various parameters\
+            of interest.
+        cbucket: Save the regression coefficients (no statistics) into a\
+            dataset.
+        x1_d: Save X matrix to a .xmat.1D (ASCII) file.
+        jobs: Run the program with multiple jobs (sub-processes).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dDeconvolveOutputs`).
@@ -65,14 +95,69 @@ def v_3d_deconvolve(
             "-mask",
             execution.input_file(mask_dataset)
         ])
-    cargs.append("[OPTIONS...]")
+    if num_stimts is not None:
+        cargs.extend([
+            "-num_stimts",
+            str(num_stimts)
+        ])
+    if stim_file is not None:
+        cargs.extend([
+            "-stim_file",
+            stim_file
+        ])
+    if stim_label is not None:
+        cargs.extend([
+            "-stim_label",
+            stim_label
+        ])
+    if stim_base:
+        cargs.append("-stim_base")
+    if stim_times is not None:
+        cargs.extend([
+            "-stim_times",
+            stim_times
+        ])
+    if iresp is not None:
+        cargs.extend([
+            "-iresp",
+            iresp
+        ])
+    if fitts is not None:
+        cargs.extend([
+            "-fitts",
+            fitts
+        ])
+    if fout:
+        cargs.append("-fout")
+    if tout:
+        cargs.append("-tout")
+    if bucket is not None:
+        cargs.extend([
+            "-bucket",
+            bucket
+        ])
+    if cbucket is not None:
+        cargs.extend([
+            "-cbucket",
+            cbucket
+        ])
+    if x1_d is not None:
+        cargs.extend([
+            "-x1D",
+            x1_d
+        ])
+    if jobs is not None:
+        cargs.extend([
+            "-jobs",
+            str(jobs)
+        ])
     ret = V3dDeconvolveOutputs(
         root=execution.output_file("."),
-        bucket_output=execution.output_file("[BUCKET].HEAD"),
-        cbucket_output=execution.output_file("[CBUCKET].HEAD"),
-        iresp_output=execution.output_file("[IRESP].HEAD"),
-        fitts_output=execution.output_file("[FITTS].HEAD"),
-        x1d_file=execution.output_file("[X1D].1D"),
+        bucket_output=execution.output_file(bucket + ".HEAD") if (bucket is not None) else None,
+        cbucket_output=execution.output_file(cbucket + ".HEAD") if (cbucket is not None) else None,
+        iresp_output=execution.output_file(iresp + ".HEAD") if (iresp is not None) else None,
+        fitts_output=execution.output_file(fitts + ".HEAD") if (fitts is not None) else None,
+        x1d_file=execution.output_file(x1_d + ".1D") if (x1_d is not None) else None,
     )
     execution.run(cargs)
     return ret

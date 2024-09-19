@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIRST_UTILS_METADATA = Metadata(
-    id="ddadf7ecb37493fd4432721f51af29a24ce03807.boutiques",
+    id="581a0d2d1ee7929f557412b2515e2661498843b7.boutiques",
     name="first_utils",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -25,6 +25,36 @@ class FirstUtilsOutputs(typing.NamedTuple):
 def first_utils(
     input_file: InputPathType,
     output_name: str,
+    norm_factors: InputPathType | None = None,
+    reference_image: InputPathType | None = None,
+    extra_path: InputPathType | None = None,
+    flirt_matrices: InputPathType | None = None,
+    use_scale: bool = False,
+    dice_overlap: bool = False,
+    input_mesh: InputPathType | None = None,
+    use_norm: bool = False,
+    surface_out: bool = False,
+    threshold: float | None = None,
+    mesh_label: str | None = None,
+    use_bvars: bool = False,
+    use_recon_mni: bool = False,
+    vertex_analysis: bool = False,
+    use_recon_native: bool = False,
+    use_rigid_align: bool = False,
+    design_matrix: InputPathType | None = None,
+    recon_mesh_from_bvars: bool = False,
+    read_bvars: bool = False,
+    mesh_to_vol: bool = False,
+    centre_origin: bool = False,
+    save_vertices: InputPathType | None = None,
+    verbose: bool = False,
+    use_pca_filter: bool = False,
+    num_modes: float | None = None,
+    single_boundary_corr: bool = False,
+    do_mvglm: bool = False,
+    concat_bvars: bool = False,
+    debug_mode: bool = False,
+    help_: bool = False,
     runner: Runner | None = None,
 ) -> FirstUtilsOutputs:
     """
@@ -35,25 +65,148 @@ def first_utils(
     Args:
         input_file: Filename of input image/mesh/bvars.
         output_name: Output name.
+        norm_factors: Filename of normalization factors.
+        reference_image: Filename of reference image.
+        extra_path: Specifies extra path to image in .bvars file.
+        flirt_matrices: Text file containing filenames of flirt matrices.
+        use_scale: Do stats.
+        dice_overlap: Calculates Dice overlap.
+        input_mesh: Filename of input mesh.
+        use_norm: Normalize volumes measurements.
+        surface_out: Output vertex analysis on the surface.
+        threshold: Threshold for clean up.
+        mesh_label: Specifies the label used to fill the mesh.
+        use_bvars: Operate using the mode parameters output from FIRST.
+        use_recon_mni: Reconstruct meshes in MNI space.
+        vertex_analysis: Perform vertex-wise stats from bvars.
+        use_recon_native: Reconstruct meshes in native space.
+        use_rigid_align: Register meshes using 6 degree of freedom (7 if\
+            useScale is used).
+        design_matrix: Filename of fsl design matrix.
+        recon_mesh_from_bvars: Convert bvars to mesh.
+        read_bvars: Read bvars from binary format.
+        mesh_to_vol: Convert mesh to an image.
+        centre_origin: Places origin of mesh at the centre of the image.
+        save_vertices: Filename for saving matrix of vertex coords: (all x,\
+            then all y, then all z) by Nsubjects.
+        verbose: Output F-stats to standard out.
+        use_pca_filter: Smooths the surface by truncating the mode parameters.
+        num_modes: Number of modes to retain per structure.
+        single_boundary_corr: Correct boundary voxels of a single structure.
+        do_mvglm: Perform multivariate general linear model analysis.
+        concat_bvars: Concat bvars from binary format.
+        debug_mode: Turn on debugging mode.
+        help_: Display help message.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FirstUtilsOutputs`).
     """
+    if threshold is not None and not (0 <= threshold): 
+        raise ValueError(f"'threshold' must be greater than 0 <= x but was {threshold}")
+    if num_modes is not None and not (0 <= num_modes): 
+        raise ValueError(f"'num_modes' must be greater than 0 <= x but was {num_modes}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIRST_UTILS_METADATA)
     cargs = []
-    cargs.append("first_utils")
-    cargs.append("[OPTIONAL_ARGS]")
-    cargs.append("-i")
+    cargs.append("firt_utils")
     cargs.extend([
         "-i",
         execution.input_file(input_file)
     ])
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_name
     ])
+    if norm_factors is not None:
+        cargs.extend([
+            "-g",
+            execution.input_file(norm_factors)
+        ])
+    if reference_image is not None:
+        cargs.extend([
+            "-r",
+            execution.input_file(reference_image)
+        ])
+    if extra_path is not None:
+        cargs.extend([
+            "-a",
+            execution.input_file(extra_path)
+        ])
+    if flirt_matrices is not None:
+        cargs.extend([
+            "-f",
+            execution.input_file(flirt_matrices)
+        ])
+    if use_scale:
+        cargs.append("--useScale")
+    if dice_overlap:
+        cargs.append("--overlap")
+    if input_mesh is not None:
+        cargs.extend([
+            "-m",
+            execution.input_file(input_mesh)
+        ])
+    if use_norm:
+        cargs.append("--useNorm")
+    if surface_out:
+        cargs.append("--surfaceout")
+    if threshold is not None:
+        cargs.extend([
+            "-p",
+            str(threshold)
+        ])
+    if mesh_label is not None:
+        cargs.extend([
+            "-l",
+            mesh_label
+        ])
+    if use_bvars:
+        cargs.append("--usebvars")
+    if use_recon_mni:
+        cargs.append("--useReconMNI")
+    if vertex_analysis:
+        cargs.append("--vertexAnalysis")
+    if use_recon_native:
+        cargs.append("--useReconNative")
+    if use_rigid_align:
+        cargs.append("--useRigidAlign")
+    if design_matrix is not None:
+        cargs.extend([
+            "-d",
+            execution.input_file(design_matrix)
+        ])
+    if recon_mesh_from_bvars:
+        cargs.append("--reconMeshFromBvars")
+    if read_bvars:
+        cargs.append("--readBvars")
+    if mesh_to_vol:
+        cargs.append("--meshToVol")
+    if centre_origin:
+        cargs.append("--centreOrigin")
+    if save_vertices is not None:
+        cargs.extend([
+            "--saveVertices",
+            execution.input_file(save_vertices)
+        ])
+    if verbose:
+        cargs.append("-v")
+    if use_pca_filter:
+        cargs.append("--usePCAfilter")
+    if num_modes is not None:
+        cargs.extend([
+            "-n",
+            str(num_modes)
+        ])
+    if single_boundary_corr:
+        cargs.append("--singleBoundaryCorr")
+    if do_mvglm:
+        cargs.append("--doMVGLM")
+    if concat_bvars:
+        cargs.append("--concatBvars")
+    if debug_mode:
+        cargs.append("--debug")
+    if help_:
+        cargs.append("-h")
     ret = FirstUtilsOutputs(
         root=execution.output_file("."),
     )

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_PATCH_METADATA = Metadata(
-    id="bf694ee441e47bf6b816bf09ad6bc2d315d5f013.boutiques",
+    id="566d4472c66f5c20b703ca66b695510f18a20c4b.boutiques",
     name="SurfPatch",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,12 +30,26 @@ class SurfPatchOutputs(typing.NamedTuple):
 
 def surf_patch(
     spec_file: InputPathType,
+    surf_a: InputPathType,
     surf_b: InputPathType,
-    surf_b_: InputPathType,
     nodefile: InputPathType,
     inode: float,
     ilabel: float,
     prefix: str,
+    hits: float | None = None,
+    masklabel: str | None = None,
+    vol: bool = False,
+    vol_only: bool = False,
+    patch2surf: bool = False,
+    coord_gain: float | None = None,
+    check_bowtie: bool = False,
+    fix_bowtie: bool = False,
+    ok_bowtie: bool = False,
+    adjust_contour: bool = False,
+    do_not_adjust_contour: bool = False,
+    stitched_surface: InputPathType | None = None,
+    flip_orientation: bool = False,
+    verbosity: float | None = None,
     runner: Runner | None = None,
 ) -> SurfPatchOutputs:
     """
@@ -48,13 +62,37 @@ def surf_patch(
     
     Args:
         spec_file: Spec file containing input surfaces.
+        surf_a: Input surface A.
         surf_b: Input surface B.
-        surf_b_: Input surface B.
         nodefile: File containing nodes defining the patch.
         inode: Index of the column containing the nodes.
         ilabel: Index of the column containing labels of the nodes in column\
             inode.
         prefix: Prefix of output patch.
+        hits: Minimum number of nodes specified for a triangle to be made a\
+            part of the patch (1 <= min_hits <= 3); default is 2.
+        masklabel: Only nodes that are labeled with this label are considered\
+            for the patch.
+        vol: Calculate the volume formed by the patch on surf_A and surf_B.\
+            Requires only two surfaces specified with surf_A and surf_B.
+        vol_only: Only calculate the volume, don't write out patches.
+        patch2surf: Turn surface patch into a surface where only nodes used in\
+            forming the mesh are preserved.
+        coord_gain: Multiply node coordinates by a gain. Useful for enlarging\
+            tiny patches for easier viewing in SUMA.
+        check_bowtie: Check if the patch has a section hanging by one node to\
+            the rest of the mesh. Default when -vol or -vol_only are used.
+        fix_bowtie: Modify patch to eliminate bowties.
+        ok_bowtie: Do not check for, or fix bowties. Default when -vol* are not\
+            used.
+        adjust_contour: Shrink patch contours at nodes that were not in\
+            nodefile.
+        do_not_adjust_contour: Do not adjust contours. This is the default.
+        stitched_surface: Write out the stitched surface used to calculate the\
+            volume.
+        flip_orientation: Change orientation of triangles before writing\
+            surfaces.
+        verbosity: Set verbosity level, 1 is the default.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfPatchOutputs`).
@@ -63,31 +101,68 @@ def surf_patch(
     execution = runner.start_execution(SURF_PATCH_METADATA)
     cargs = []
     cargs.append("SurfPatch")
-    cargs.append("-spec")
     cargs.append(execution.input_file(spec_file))
-    cargs.append("-surf_A")
+    cargs.extend([
+        "-surf_A",
+        execution.input_file(surf_a)
+    ])
     cargs.extend([
         "-surf_B",
         execution.input_file(surf_b)
     ])
-    cargs.append("-surf_B")
-    cargs.extend([
-        "-surf_B",
-        execution.input_file(surf_b_)
-    ])
-    cargs.append("-input")
     cargs.extend([
         "-input",
         execution.input_file(nodefile)
     ])
     cargs.append(str(inode))
     cargs.append(str(ilabel))
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix
     ])
-    cargs.append("[OPTIONS]")
+    if hits is not None:
+        cargs.extend([
+            "-hits",
+            str(hits)
+        ])
+    if masklabel is not None:
+        cargs.extend([
+            "-masklabel",
+            masklabel
+        ])
+    if vol:
+        cargs.append("-vol")
+    if vol_only:
+        cargs.append("-vol_only")
+    if patch2surf:
+        cargs.append("-patch2surf")
+    if coord_gain is not None:
+        cargs.extend([
+            "-coord_gain",
+            str(coord_gain)
+        ])
+    if check_bowtie:
+        cargs.append("-check_bowtie")
+    if fix_bowtie:
+        cargs.append("-fix_bowtie")
+    if ok_bowtie:
+        cargs.append("-ok_bowtie")
+    if adjust_contour:
+        cargs.append("-adjust_contour")
+    if do_not_adjust_contour:
+        cargs.append("-do-not-adjust_contour")
+    if stitched_surface is not None:
+        cargs.extend([
+            "-stitched_surface",
+            execution.input_file(stitched_surface)
+        ])
+    if flip_orientation:
+        cargs.append("-flip_orientation")
+    if verbosity is not None:
+        cargs.extend([
+            "-verb",
+            str(verbosity)
+        ])
     ret = SurfPatchOutputs(
         root=execution.output_file("."),
         outpatch_a=execution.output_file(prefix + "_A"),

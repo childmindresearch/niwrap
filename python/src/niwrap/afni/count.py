@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 COUNT_METADATA = Metadata(
-    id="3836250f08dfeed6fcad0e888310644533ee13db.boutiques",
+    id="bdf98b2e74fd41200d8349408e13afe54ff61c2a.boutiques",
     name="count",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,6 +26,17 @@ def count(
     bot: str,
     top: str,
     step: str | None = None,
+    seed: float | None = None,
+    sseed: str | None = None,
+    column: bool = False,
+    digits: float | None = None,
+    form: str | None = None,
+    root: str | None = None,
+    sep: str | None = None,
+    suffix: str | None = None,
+    scale: float | None = None,
+    comma: bool = False,
+    skipnmodm: str | None = None,
     runner: Runner | None = None,
 ) -> CountOutputs:
     """
@@ -40,6 +51,17 @@ def count(
         bot: Starting number or character.
         top: Ending number or character.
         step: Stride step or mode (integer step size, R#, S# or S).
+        seed: Seed number for random number generator.
+        sseed: Seed string for random number generator.
+        column: Write output, one number per line.
+        digits: Number of digits to print.
+        form: Custom format string for printing the numbers.
+        root: String to print before the number.
+        sep: Separator character between the numbers.
+        suffix: String to print after the number.
+        scale: Scale factor to multiply each number.
+        comma: Put commas between the outputs.
+        skipnmodm: Skip numbers with modulus.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CountOutputs`).
@@ -48,11 +70,59 @@ def count(
     execution = runner.start_execution(COUNT_METADATA)
     cargs = []
     cargs.append("count")
-    cargs.append("[OPTIONS]")
     cargs.append(bot)
     cargs.append(top)
     if step is not None:
         cargs.append(step)
+    if seed is not None:
+        cargs.extend([
+            "-seed",
+            str(seed)
+        ])
+    if sseed is not None:
+        cargs.extend([
+            "-sseed",
+            sseed
+        ])
+    if column:
+        cargs.append("-column")
+    if digits is not None:
+        cargs.extend([
+            "-digits",
+            str(digits)
+        ])
+    if form is not None:
+        cargs.extend([
+            "-form",
+            form
+        ])
+    if root is not None:
+        cargs.extend([
+            "-root",
+            root
+        ])
+    if sep is not None:
+        cargs.extend([
+            "-sep",
+            sep
+        ])
+    if suffix is not None:
+        cargs.extend([
+            "-suffix",
+            suffix
+        ])
+    if scale is not None:
+        cargs.extend([
+            "-scale",
+            str(scale)
+        ])
+    if comma:
+        cargs.append("-comma")
+    if skipnmodm is not None:
+        cargs.extend([
+            "-skipnmodm",
+            skipnmodm
+        ])
     ret = CountOutputs(
         root=execution.output_file("."),
     )

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSMOOTH_METADATA = Metadata(
-    id="13bf91f18e7446955f1c082671ec122a2283b13e.boutiques",
+    id="651ac825a63303df58038dd0e5e23199bf6814bb.boutiques",
     name="3dTsmooth",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,12 +20,25 @@ class V3dTsmoothOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_dataset: OutputPathType
+    output_dataset: OutputPathType | None
     """Smoothed 3D+time dataset"""
 
 
 def v_3d_tsmooth(
     input_dataset: InputPathType,
+    prefix: str | None = None,
+    datum_type: str | None = None,
+    lin_filter: bool = False,
+    med_filter: bool = False,
+    osf_filter: bool = False,
+    lin_filter_custom: float | None = None,
+    hamming: int | None = None,
+    blackman: int | None = None,
+    custom_filter: InputPathType | None = None,
+    extend: bool = False,
+    zero: bool = False,
+    trend: bool = False,
+    adaptive: int | None = None,
     runner: Runner | None = None,
 ) -> V3dTsmoothOutputs:
     """
@@ -38,19 +51,84 @@ def v_3d_tsmooth(
     
     Args:
         input_dataset: The input 3D+time dataset.
+        prefix: Sets the prefix of the output dataset.
+        datum_type: Coerce output dataset to be stored as the given type.
+        lin_filter: 3 point linear filter: 0.15*a + 0.70*b + 0.15*c.
+        med_filter: 3 point median filter: median(a,b,c).
+        osf_filter: 3 point order statistics filter: 0.15*min(a,b,c) +\
+            0.70*median(a,b,c) + 0.15*max(a,b,c).
+        lin_filter_custom: 3 point linear filter with custom weight:\
+            0.5*(1-m)*a + m*b + 0.5*(1-m)*c.
+        hamming: Use N point Hamming window filter.
+        blackman: Use N point Blackman window filter.
+        custom_filter: Use custom filter with coefficients from a specified\
+            file.
+        extend: BEFORE: use the first value; AFTER: use the last value.
+        zero: BEFORE and AFTER: use zero.
+        trend: Compute a linear trend, and extrapolate BEFORE and AFTER.
+        adaptive: Use adaptive mean filtering of width N (N must be odd and\
+            bigger than 3).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dTsmoothOutputs`).
     """
+    if lin_filter_custom is not None and not (0 <= lin_filter_custom <= 1): 
+        raise ValueError(f"'lin_filter_custom' must be between 0 <= x <= 1 but was {lin_filter_custom}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TSMOOTH_METADATA)
     cargs = []
     cargs.append("3dTsmooth")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(input_dataset))
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if datum_type is not None:
+        cargs.extend([
+            "-datum",
+            datum_type
+        ])
+    if lin_filter:
+        cargs.append("-lin")
+    if med_filter:
+        cargs.append("-med")
+    if osf_filter:
+        cargs.append("-osf")
+    if lin_filter_custom is not None:
+        cargs.extend([
+            "-3lin",
+            str(lin_filter_custom)
+        ])
+    if hamming is not None:
+        cargs.extend([
+            "-hamming",
+            str(hamming)
+        ])
+    if blackman is not None:
+        cargs.extend([
+            "-blackman",
+            str(blackman)
+        ])
+    if custom_filter is not None:
+        cargs.extend([
+            "-custom",
+            execution.input_file(custom_filter)
+        ])
+    if extend:
+        cargs.append("-EXTEND")
+    if zero:
+        cargs.append("-ZERO")
+    if trend:
+        cargs.append("-TREND")
+    if adaptive is not None:
+        cargs.extend([
+            "-adaptive",
+            str(adaptive)
+        ])
     ret = V3dTsmoothOutputs(
         root=execution.output_file("."),
-        output_dataset=execution.output_file("[PREFIX].nii.gz"),
+        output_dataset=execution.output_file(prefix + ".nii.gz") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

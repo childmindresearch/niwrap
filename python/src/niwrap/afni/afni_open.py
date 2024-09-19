@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_OPEN_METADATA = Metadata(
-    id="bc26cd888725fb54434b468b3ff940475336e2f9.boutiques",
+    id="0c5da29bcfc814a8360f5d2204c5ccde38104b0b.boutiques",
     name="afni_open",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -24,6 +24,20 @@ class AfniOpenOutputs(typing.NamedTuple):
 
 def afni_open(
     files: list[InputPathType],
+    method: str | None = None,
+    editor: bool = False,
+    downloader: bool = False,
+    examinexmat: bool = False,
+    browser: bool = False,
+    readme: bool = False,
+    afniweb: bool = False,
+    global_help: bool = False,
+    gopts_help: bool = False,
+    help_: bool = False,
+    mini_help: bool = False,
+    extreme_help: bool = False,
+    h_view: bool = False,
+    h_web: bool = False,
     runner: Runner | None = None,
 ) -> AfniOpenOutputs:
     """
@@ -35,6 +49,21 @@ def afni_open(
     
     Args:
         files: Input file(s) to be opened.
+        method: Method to open files (editor, downloader, browser, afni, suma,\
+            1dplot, ExamineXmat, iviewer, afniweb, readme).
+        editor: Same as -w editor.
+        downloader: Same as -w downloader.
+        examinexmat: Same as -w ExamineXmat.
+        browser: Same as -w browser.
+        readme: Same as -w readme.
+        afniweb: Same as -w afniweb.
+        global_help: Show help for global options.
+        gopts_help: Show help for global options.
+        help_: The entire help output.
+        mini_help: Mini help.
+        extreme_help: Extreme help.
+        h_view: Open help in text editor.
+        h_web: Open help in web browser.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AfniOpenOutputs`).
@@ -43,10 +72,38 @@ def afni_open(
     execution = runner.start_execution(AFNI_OPEN_METADATA)
     cargs = []
     cargs.append("afni_open")
-    cargs.append("[OPTIONS]")
     cargs.extend([execution.input_file(f) for f in files])
-    cargs.append("[FILE2")
-    cargs.append("...]")
+    if method is not None:
+        cargs.extend([
+            "-w",
+            method
+        ])
+    if editor:
+        cargs.append("-e")
+    if downloader:
+        cargs.append("-d")
+    if examinexmat:
+        cargs.append("-x")
+    if browser:
+        cargs.append("-b")
+    if readme:
+        cargs.append("-r")
+    if afniweb:
+        cargs.append("-aw")
+    if global_help:
+        cargs.append("-global_help")
+    if gopts_help:
+        cargs.append("-gopts_help")
+    if help_:
+        cargs.append("-help")
+    if mini_help:
+        cargs.append("-h")
+    if extreme_help:
+        cargs.append("-HELP")
+    if h_view:
+        cargs.append("-h_view")
+    if h_web:
+        cargs.append("-h_web")
     ret = AfniOpenOutputs(
         root=execution.output_file("."),
     )

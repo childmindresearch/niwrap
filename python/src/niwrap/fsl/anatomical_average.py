@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANATOMICAL_AVERAGE_METADATA = Metadata(
-    id="4d1ca27f9d946d87c62899d1b8d9e62d2557220d.boutiques",
+    id="2b908ef64c2c0b72cb4df499007558d7ee24bc8a.boutiques",
     name="AnatomicalAverage",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -27,6 +27,13 @@ class AnatomicalAverageOutputs(typing.NamedTuple):
 def anatomical_average(
     output_basename: str,
     input_images: list[InputPathType],
+    standard_image: InputPathType | None = None,
+    standard_brain_mask: InputPathType | None = None,
+    no_crop_flag: bool = False,
+    work_dir: str | None = None,
+    brainsize: float | None = None,
+    noclean_flag: bool = False,
+    verbose_flag: bool = False,
     runner: Runner | None = None,
 ) -> AnatomicalAverageOutputs:
     """
@@ -39,6 +46,15 @@ def anatomical_average(
     Args:
         output_basename: Output basename.
         input_images: List of input images.
+        standard_image: Standard image (default is MNI152_T1_2mm).
+        standard_brain_mask: Standard brain mask (default is\
+            MNI152_T1_2mm_brain_mask_dil).
+        no_crop_flag: Do not crop images.
+        work_dir: Local, temporary working directory (to be cleaned up - i.e.\
+            deleted).
+        brainsize: Specify brainsize in mm for internal ROI (via robustfov).
+        noclean_flag: Do not run the cleanup.
+        verbose_flag: Verbose output.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AnatomicalAverageOutputs`).
@@ -47,13 +63,37 @@ def anatomical_average(
     execution = runner.start_execution(ANATOMICAL_AVERAGE_METADATA)
     cargs = []
     cargs.append("AnatomicalAverage")
-    cargs.append("[OPTIONAL_ARGS]")
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_basename
     ])
     cargs.extend([execution.input_file(f) for f in input_images])
+    if standard_image is not None:
+        cargs.extend([
+            "-s",
+            execution.input_file(standard_image)
+        ])
+    if standard_brain_mask is not None:
+        cargs.extend([
+            "-m",
+            execution.input_file(standard_brain_mask)
+        ])
+    if no_crop_flag:
+        cargs.append("-n")
+    if work_dir is not None:
+        cargs.extend([
+            "-w",
+            work_dir
+        ])
+    if brainsize is not None:
+        cargs.extend([
+            "-b",
+            str(brainsize)
+        ])
+    if noclean_flag:
+        cargs.append("--noclean")
+    if verbose_flag:
+        cargs.append("-v")
     ret = AnatomicalAverageOutputs(
         root=execution.output_file("."),
         avg_output=execution.output_file(output_basename + "_avg.nii.gz"),

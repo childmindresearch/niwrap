@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ABOVERLAP_METADATA = Metadata(
-    id="6175363576e79b72e146afb18751c0b4daed0799.boutiques",
+    id="d5433909c1e76c4f0433d35de6c3434c53d46b1f.boutiques",
     name="3dABoverlap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,9 @@ class V3dAboverlapOutputs(typing.NamedTuple):
 def v_3d_aboverlap(
     dataset_a: InputPathType,
     dataset_b: InputPathType,
+    no_automask: bool = False,
+    quiet: bool = False,
+    verbose: bool = False,
     runner: Runner | None = None,
 ) -> V3dAboverlapOutputs:
     """
@@ -38,6 +41,10 @@ def v_3d_aboverlap(
     Args:
         dataset_a: First input dataset.
         dataset_b: Second input dataset.
+        no_automask: Consider input datasets as masks (automask does not work\
+            on mask datasets).
+        quiet: Be as quiet as possible (without being entirely mute).
+        verbose: Print out some progress reports (to stderr).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dAboverlapOutputs`).
@@ -46,9 +53,14 @@ def v_3d_aboverlap(
     execution = runner.start_execution(V_3D_ABOVERLAP_METADATA)
     cargs = []
     cargs.append("3dABoverlap")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(dataset_a))
     cargs.append(execution.input_file(dataset_b))
+    if no_automask:
+        cargs.append("-no_automask")
+    if quiet:
+        cargs.append("-quiet")
+    if verbose:
+        cargs.append("-verb")
     ret = V3dAboverlapOutputs(
         root=execution.output_file("."),
     )

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_BANDPASS_METADATA = Metadata(
-    id="dd436b4694a0664161f11f202915cbaa7d51c07a.boutiques",
+    id="370f2f8e5f4775e0e4f482227ed0d8806886b342.boutiques",
     name="1dBandpass",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,6 +26,10 @@ def v_1d_bandpass(
     fbot: float,
     ftop: float,
     infile: InputPathType,
+    timestep: float | None = None,
+    ortfile: InputPathType | None = None,
+    nodetrend: bool = False,
+    norm: bool = False,
     runner: Runner | None = None,
 ) -> V1dBandpassOutputs:
     """
@@ -41,6 +45,11 @@ def v_1d_bandpass(
         ftop: Highest frequency in the passband, in Hz (must be greater than\
             FBOT).
         infile: Input AFNI *.1D file; each column is processed.
+        timestep: Set time step to 'dd' sec (default is 1.0).
+        ortfile: Also orthogonalize input to columns in specified *.1D file\
+            (only one '-ort' option is allowed).
+        nodetrend: Skip the quadratic detrending of the input.
+        norm: Make output time series have L2 norm = 1.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V1dBandpassOutputs`).
@@ -51,10 +60,23 @@ def v_1d_bandpass(
     execution = runner.start_execution(V_1D_BANDPASS_METADATA)
     cargs = []
     cargs.append("1dBandpass")
-    cargs.append("[OPTIONS]")
     cargs.append(str(fbot))
     cargs.append(str(ftop))
     cargs.append(execution.input_file(infile))
+    if timestep is not None:
+        cargs.extend([
+            "-dt",
+            str(timestep)
+        ])
+    if ortfile is not None:
+        cargs.extend([
+            "-ort",
+            execution.input_file(ortfile)
+        ])
+    if nodetrend:
+        cargs.append("-nodetrend")
+    if norm:
+        cargs.append("-norm")
     ret = V1dBandpassOutputs(
         root=execution.output_file("."),
     )

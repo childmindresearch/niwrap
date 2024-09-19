@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BRAIN_VOYAGERTO_AFNI_METADATA = Metadata(
-    id="5d5cc8a86b7568d260e0630ce59dd774a116e190.boutiques",
+    id="d851f4492ffa3dbe3f101c2727427dd0686e2fdb.boutiques",
     name="3dBRAIN_VOYAGERtoAFNI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -77,7 +77,6 @@ def v_3d_brain_voyagerto_afni(
     execution = runner.start_execution(V_3D_BRAIN_VOYAGERTO_AFNI_METADATA)
     cargs = []
     cargs.append("3dBRAIN_VOYAGERtoAFNI")
-    cargs.append("--input")
     cargs.extend([
         "--input",
         execution.input_file(input_file)
@@ -114,16 +113,6 @@ def v_3d_brain_voyagerto_afni(
         cargs.append("-nomall")
     if turn_on_memory_tracing:
         cargs.append("-yesmall")
-    cargs.append("[HELP_FLAG]")
-    cargs.append("[HELP_EXTREME_FLAG]")
-    cargs.append("[HELP_MINI_FLAG]")
-    cargs.append("[H_VIEW_FLAG]")
-    cargs.append("[H_WEB_FLAG]")
-    cargs.append("[H_FIND]")
-    cargs.append("[H_RAW_FLAG]")
-    cargs.append("[H_SPHINX_FLAG]")
-    cargs.append("[H_ASPHINX_FLAG]")
-    cargs.append("[ALL_OPTS_FLAG]")
     ret = V3dBrainVoyagertoAfniOutputs(
         root=execution.output_file("."),
         output_brik_file=execution.output_file("output.BRIK"),

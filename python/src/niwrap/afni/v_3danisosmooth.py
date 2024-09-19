@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DANISOSMOOTH_METADATA = Metadata(
-    id="f9ebe5fa3b013bdcb909e178c9093254c20aada2.boutiques",
+    id="a49065ad5dc64c8a866655e246bc8f0f55c20c7f.boutiques",
     name="3danisosmooth",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,7 +20,7 @@ class V3danisosmoothOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_dataset: OutputPathType
+    output_dataset: OutputPathType | None
     """Output dataset after anisotropic smoothing"""
     gradient_data: OutputPathType
     """Gradient dataset saved at each iteration"""
@@ -43,6 +43,27 @@ class V3danisosmoothOutputs(typing.NamedTuple):
 
 def v_3danisosmooth(
     input_dataset: InputPathType,
+    prefix: str | None = None,
+    iterations: float | None = None,
+    v_2d_flag: bool = False,
+    v_3d_flag: bool = False,
+    mask_dataset: InputPathType | None = None,
+    automask_flag: bool = False,
+    viewer_flag: bool = False,
+    nosmooth_flag: bool = False,
+    sigma1: float | None = None,
+    sigma2: float | None = None,
+    deltat: float | None = None,
+    savetempdata_flag: bool = False,
+    save_temp_with_diff_measures_flag: bool = False,
+    phiding_flag: bool = False,
+    phiexp_flag: bool = False,
+    noneg_flag: bool = False,
+    setneg_value: float | None = None,
+    edgefraction: float | None = None,
+    datum_type: str | None = None,
+    matchorig_flag: bool = False,
+    help_flag: bool = False,
     runner: Runner | None = None,
 ) -> V3danisosmoothOutputs:
     """
@@ -54,19 +75,115 @@ def v_3danisosmooth(
     
     Args:
         input_dataset: Input dataset to be smoothed.
+        prefix: Output dataset prefix name.
+        iterations: Number of iterations (default=10).
+        v_2d_flag: Smooth a slice at a time (default).
+        v_3d_flag: Smooth through slices.
+        mask_dataset: Use specified dataset as mask to include/exclude voxels.
+        automask_flag: Automatically compute mask for dataset.
+        viewer_flag: Show central axial slice image every iteration.
+        nosmooth_flag: Do not do intermediate smoothing of gradients.
+        sigma1: Gaussian smoothing sigma before gradient computation\
+            (default=0.5).
+        sigma2: Gaussian smoothing sigma after gradient computation\
+            (default=1.0).
+        deltat: Pseudo-time step (default=0.25).
+        savetempdata_flag: Save temporary datasets each iteration.
+        save_temp_with_diff_measures_flag: Save temporary datasets with\
+            different measures in a dataset.
+        phiding_flag: Use Ding method for computing phi (default).
+        phiexp_flag: Use exponential method for computing phi.
+        noneg_flag: Set negative voxels to 0.
+        setneg_value: Set negative voxels to specified value.
+        edgefraction: Adjust the fraction of the anisotropic component added (0\
+            to 1, default=0.5).
+        datum_type: Specify type for output data (byte, short, float)\
+            [default=float].
+        matchorig_flag: Match datum type and clip min/max to input data.
+        help_flag: Print help message.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3danisosmoothOutputs`).
     """
+    if edgefraction is not None and not (0 <= edgefraction <= 1): 
+        raise ValueError(f"'edgefraction' must be between 0 <= x <= 1 but was {edgefraction}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DANISOSMOOTH_METADATA)
     cargs = []
     cargs.append("3danisosmooth")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(input_dataset))
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if iterations is not None:
+        cargs.extend([
+            "-iters",
+            str(iterations)
+        ])
+    if v_2d_flag:
+        cargs.append("-2D")
+    if v_3d_flag:
+        cargs.append("-3D")
+    if mask_dataset is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask_dataset)
+        ])
+    if automask_flag:
+        cargs.append("-automask")
+    if viewer_flag:
+        cargs.append("-viewer")
+    if nosmooth_flag:
+        cargs.append("-nosmooth")
+    if sigma1 is not None:
+        cargs.extend([
+            "-sigma1",
+            str(sigma1)
+        ])
+    if sigma2 is not None:
+        cargs.extend([
+            "-sigma2",
+            str(sigma2)
+        ])
+    if deltat is not None:
+        cargs.extend([
+            "-deltat",
+            str(deltat)
+        ])
+    if savetempdata_flag:
+        cargs.append("-savetempdata")
+    if save_temp_with_diff_measures_flag:
+        cargs.append("-save_temp_with_diff_measures")
+    if phiding_flag:
+        cargs.append("-phiding")
+    if phiexp_flag:
+        cargs.append("-phiexp")
+    if noneg_flag:
+        cargs.append("-noneg")
+    if setneg_value is not None:
+        cargs.extend([
+            "-setneg",
+            str(setneg_value)
+        ])
+    if edgefraction is not None:
+        cargs.extend([
+            "-edgefraction",
+            str(edgefraction)
+        ])
+    if datum_type is not None:
+        cargs.extend([
+            "-datum",
+            datum_type
+        ])
+    if matchorig_flag:
+        cargs.append("-matchorig")
+    if help_flag:
+        cargs.append("-help")
     ret = V3danisosmoothOutputs(
         root=execution.output_file("."),
-        output_dataset=execution.output_file("[PREFIX]+smooth"),
+        output_dataset=execution.output_file(prefix + "+smooth") if (prefix is not None) else None,
         gradient_data=execution.output_file("Gradient.ITER"),
         eigens_data=execution.output_file("Eigens.ITER"),
         phi_data=execution.output_file("phi.ITER"),

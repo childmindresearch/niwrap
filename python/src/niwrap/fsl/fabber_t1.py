@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_T1_METADATA = Metadata(
-    id="ffe620ce939d326df00477689e030d74be31e73f.boutiques",
+    id="58748eb014c601b9c7d55f9500da099115359f91.boutiques",
     name="fabber_t1",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -51,9 +51,11 @@ def fabber_t1(
     output: str,
     method: str,
     model: str,
+    data: InputPathType,
     data_mult: list[InputPathType] | None = None,
     data_order: str | None = "interleave",
     mask: InputPathType | None = None,
+    masked_time_points: list[float] | None = None,
     supp_data: InputPathType | None = None,
     overwrite: bool = False,
     link_to_latest: bool = False,
@@ -88,10 +90,13 @@ def fabber_t1(
         output: Directory for output files (including logfile).
         method: Inference method to use.
         model: Forward model to use.
+        data: Specify a single input data file.
         data_mult: Specify multiple data files for n=1, 2, 3...
         data_order: How multiple data files are handled: concatenate or\
             interleave.
         mask: Mask file. Inference will only be performed where mask value > 0.
+        masked_time_points: List of masked time points, indexed from 1. These\
+            will be ignored in the parameter updates.
         supp_data: Supplemental timeseries data, required for some models.
         overwrite: Overwrite existing output. If not set, new output\
             directories will be created by appending '+' to the directory name.
@@ -130,7 +135,7 @@ def fabber_t1(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_T1_METADATA)
     cargs = []
-    cargs.append("fabber")
+    cargs.append("fabber_t1")
     cargs.extend([
         "--output",
         output
@@ -142,6 +147,10 @@ def fabber_t1(
     cargs.extend([
         "--model",
         model
+    ])
+    cargs.extend([
+        "--data",
+        execution.input_file(data)
     ])
     if data_mult is not None:
         cargs.extend([
@@ -158,7 +167,11 @@ def fabber_t1(
             "--mask",
             execution.input_file(mask)
         ])
-    cargs.append("[MASKED_TIME_POINTS]")
+    if masked_time_points is not None:
+        cargs.extend([
+            "--mt<n>",
+            *map(str, masked_time_points)
+        ])
     if supp_data is not None:
         cargs.extend([
             "--suppdata",

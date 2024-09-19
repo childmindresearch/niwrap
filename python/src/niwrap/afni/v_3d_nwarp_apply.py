@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NWARP_APPLY_METADATA = Metadata(
-    id="302efea392d797dfd8b780375733a817c0908c40.boutiques",
+    id="d6ed27b236dba6fea4084d113f6cb6e0d3525ce1.boutiques",
     name="3dNwarpApply",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,13 +20,27 @@ class V3dNwarpApplyOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    warped_output: OutputPathType
+    warped_output: OutputPathType | None
     """Warped output dataset"""
-    generated_warp: OutputPathType
+    generated_warp: OutputPathType | None
     """Warp dataset generated during application"""
 
 
 def v_3d_nwarp_apply(
+    nwarp: str,
+    source: str,
+    iwarp: bool = False,
+    master: str | None = None,
+    newgrid: str | None = None,
+    dxyz: str | None = None,
+    interp: str | None = None,
+    ainterp: str | None = None,
+    prefix: str | None = None,
+    suffix: str | None = None,
+    short: bool = False,
+    wprefix: str | None = None,
+    quiet: bool = False,
+    verb: bool = False,
     runner: Runner | None = None,
 ) -> V3dNwarpApplyOutputs:
     """
@@ -38,6 +52,27 @@ def v_3d_nwarp_apply(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpApply.html
     
     Args:
+        nwarp: The name of the 3D warp dataset. Multiple warps can be\
+            catenated.
+        source: The name of the source dataset to be warped. Multiple datasets\
+            can be supplied.
+        iwarp: Invert the warp specified in '-nwarp'.
+        master: The name of the master dataset which defines the output grid.
+        newgrid: The new grid spacing (cubical voxels, in mm).
+        dxyz: Specify a different grid spacing (cubical voxels, in mm).
+        interp: The interpolation mode ('NN', 'linear', 'cubic', 'quintic',\
+            'wsinc5').
+        ainterp: Specify a different interpolation mode for the data than the\
+            warp.
+        prefix: The name of the new output dataset. Multiple names can be\
+            supplied if more than one source dataset is input.
+        suffix: Change the default suffix '_Nwarp' to a user-defined suffix.
+        short: Write output dataset using 16-bit short integers rather than the\
+            usual 32-bit floats.
+        wprefix: Save every warp generated in the process to a separate\
+            dataset.
+        quiet: Don't be verbose.
+        verb: Be extra verbose.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dNwarpApplyOutputs`).
@@ -46,11 +81,66 @@ def v_3d_nwarp_apply(
     execution = runner.start_execution(V_3D_NWARP_APPLY_METADATA)
     cargs = []
     cargs.append("3dNwarpApply")
-    cargs.append("[OPTIONS]")
+    cargs.extend([
+        "-nwarp",
+        nwarp
+    ])
+    if iwarp:
+        cargs.append("-iwarp")
+    cargs.extend([
+        "-source",
+        source
+    ])
+    if master is not None:
+        cargs.extend([
+            "-master",
+            master
+        ])
+    if newgrid is not None:
+        cargs.extend([
+            "-newgrid",
+            newgrid
+        ])
+    if dxyz is not None:
+        cargs.extend([
+            "-dxyz",
+            dxyz
+        ])
+    if interp is not None:
+        cargs.extend([
+            "-interp",
+            interp
+        ])
+    if ainterp is not None:
+        cargs.extend([
+            "-ainterp",
+            ainterp
+        ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if suffix is not None:
+        cargs.extend([
+            "-suffix",
+            suffix
+        ])
+    if short:
+        cargs.append("-short")
+    if wprefix is not None:
+        cargs.extend([
+            "-wprefix",
+            wprefix
+        ])
+    if quiet:
+        cargs.append("-quiet")
+    if verb:
+        cargs.append("-verb")
     ret = V3dNwarpApplyOutputs(
         root=execution.output_file("."),
-        warped_output=execution.output_file("[PREFIX]_[SOURCE]_warped.nii.gz"),
-        generated_warp=execution.output_file("[WPREFIX]_warp_????.nii.gz"),
+        warped_output=execution.output_file(prefix + "_" + source + "_warped.nii.gz") if (prefix is not None) else None,
+        generated_warp=execution.output_file(wprefix + "_warp_????.nii.gz") if (wprefix is not None) else None,
     )
     execution.run(cargs)
     return ret

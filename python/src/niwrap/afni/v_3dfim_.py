@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DFIM__METADATA = Metadata(
-    id="ed6c39905af4f754185b395fbb536977b06338b9.boutiques",
+    id="8a412bf901dbbd97f8f0abe1f8ec327a5068e873.boutiques",
     name="3dfim+",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -89,7 +89,6 @@ def v_3dfim_(
     execution = runner.start_execution(V_3DFIM__METADATA)
     cargs = []
     cargs.append("3dfim+")
-    cargs.append("-input")
     cargs.append(execution.input_file(infile))
     if input1dfile is not None:
         cargs.extend([
@@ -131,7 +130,6 @@ def v_3dfim_(
             "-ort_file",
             execution.input_file(ort_file)
         ])
-    cargs.append("-ideal_file")
     cargs.extend([
         "-ideal_file",
         execution.input_file(ideal_file)
@@ -141,7 +139,6 @@ def v_3dfim_(
             "-out",
             *output_params
         ])
-    cargs.append("-bucket")
     if output_bucket is not None:
         cargs.extend([
             "-bucket",

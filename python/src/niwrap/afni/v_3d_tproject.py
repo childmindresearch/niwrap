@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TPROJECT_METADATA = Metadata(
-    id="502ad8401b7fb078cc07321c449820baf4cd172b.boutiques",
+    id="80e7d33c9d974c9bcdca5fb76c12aefdb8c4718f.boutiques",
     name="3dTproject",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -126,11 +126,6 @@ def v_3d_tproject(
     execution = runner.start_execution(V_3D_TPROJECT_METADATA)
     cargs = []
     cargs.append("3dTproject")
-    cargs.extend([
-        "-input",
-        execution.input_file(in_file)
-    ])
-    cargs.append("[OUT_FILE]")
     if tr is not None:
         cargs.extend([
             "-TR",
@@ -173,6 +168,10 @@ def v_3d_tproject(
             "-dsort",
             *[execution.input_file(f) for f in dsort]
         ])
+    cargs.extend([
+        "-input",
+        execution.input_file(in_file)
+    ])
     if mask is not None:
         cargs.extend([
             "-mask",

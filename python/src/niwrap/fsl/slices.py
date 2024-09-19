@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICES_METADATA = Metadata(
-    id="d7686727236e96e34bd6ab2accde7439c67d1b81.boutiques",
+    id="b0ae9062166812e83e354ab105fc69d1012c011a.boutiques",
     name="slices",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -26,6 +26,7 @@ def slices(
     primary_input: InputPathType,
     secondary_input: InputPathType | None = None,
     scale_factor: float | None = None,
+    intensity_range: list[float] | None = None,
     output_gif: str | None = None,
     runner: Runner | None = None,
 ) -> SlicesOutputs:
@@ -39,6 +40,8 @@ def slices(
         primary_input: Primary input image file (e.g. img1.nii.gz).
         secondary_input: Secondary input image file (e.g. img2.nii.gz).
         scale_factor: Scale factor to apply to images.
+        intensity_range: Intensity range to consider (minimum and maximum\
+            values).
         output_gif: Output GIF file.
         runner: Command runner.
     Returns:
@@ -51,16 +54,16 @@ def slices(
     cargs.append(execution.input_file(primary_input))
     if secondary_input is not None:
         cargs.append(execution.input_file(secondary_input))
-    cargs.append("-s")
     if scale_factor is not None:
         cargs.extend([
             "-s",
             str(scale_factor)
         ])
-    cargs.append("-i")
-    cargs.append("[INTMIN]")
-    cargs.append("[INTMAX]")
-    cargs.append("-o")
+    if intensity_range is not None:
+        cargs.extend([
+            "-i",
+            *map(str, intensity_range)
+        ])
     if output_gif is not None:
         cargs.extend([
             "-o",

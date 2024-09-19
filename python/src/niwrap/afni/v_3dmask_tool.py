@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMASK_TOOL_METADATA = Metadata(
-    id="662daec4bd8060186ee58b8de5a4ad81455bbaf8.boutiques",
+    id="1bc307eefd31b0449ff4b0c5b372b0fdec869dfa.boutiques",
     name="3dmask_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,6 +36,7 @@ def v_3dmask_tool(
     fill_holes: bool = False,
     frac: float | None = None,
     inter: bool = False,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     union: bool = False,
     verbose: int | None = None,
@@ -67,6 +68,7 @@ def v_3dmask_tool(
             option to restrict the result to a certain fraction of the set of\
             volumes.
         inter: Intersection, this means -frac 1.0.
+        num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         union: Union, this means -frac 0.
         verbose: Specify verbosity level, for 0 to 3.
@@ -80,10 +82,6 @@ def v_3dmask_tool(
     cargs.append("3dmask_tool")
     if count:
         cargs.append("-count")
-    cargs.extend([
-        "-input",
-        execution.input_file(in_file)
-    ])
     if datum is not None:
         cargs.extend([
             "-datum",
@@ -111,9 +109,14 @@ def v_3dmask_tool(
             "-frac",
             str(frac)
         ])
+    cargs.extend([
+        "-input",
+        execution.input_file(in_file)
+    ])
     if inter:
         cargs.append("-inter")
-    cargs.append("[OUT_FILE]")
+    if num_threads is not None:
+        cargs.append(str(num_threads))
     if outputtype is not None:
         cargs.append(outputtype)
     if union:

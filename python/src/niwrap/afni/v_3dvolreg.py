@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DVOLREG_METADATA = Metadata(
-    id="5cc2663dc96c9972a79c75185488f6362ed7420f.boutiques",
+    id="259956354a40c61b125725baa7c7c29e2ae9b6a3.boutiques",
     name="3dvolreg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,13 +41,15 @@ class V3dvolregOutputs(typing.NamedTuple):
 def v_3dvolreg(
     in_file: InputPathType,
     basefile: InputPathType | None = None,
-    zpad: int | None = None,
     copyorigin: bool = False,
+    in_weight_volume: list[str] | None = None,
     in_weight_volume_2: InputPathType | None = None,
     interp: typing.Literal["Fourier", "cubic", "heptic", "quintic", "linear"] | None = None,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     timeshift: bool = False,
     verbose: bool = False,
+    zpad: int | None = None,
     runner: Runner | None = None,
 ) -> V3dvolregOutputs:
     """
@@ -60,16 +62,20 @@ def v_3dvolreg(
     Args:
         in_file: Input file to 3dvolreg.
         basefile: Base file for registration.
-        zpad: Zeropad around the edges by 'n' voxels during rotations.
         copyorigin: Copy base file origin coords to output.
+        in_weight_volume: (file or string, an integer) or file or string.\
+            Weights for each voxel specified by a file with an optional volume\
+            number (defaults to 0).
         in_weight_volume_2: (file or string, an integer) or file or string.\
             Weights for each voxel specified by a file with an optional volume\
             number (defaults to 0).
         interp: 'fourier' or 'cubic' or 'heptic' or 'quintic' or 'linear'.\
             Spatial interpolation methods [default = heptic].
+        num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         timeshift: Time shift to mean slice time offset.
         verbose: More detailed description of the process.
+        zpad: Zeropad around the edges by 'n' voxels during rotations.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dvolregOutputs`).
@@ -83,15 +89,14 @@ def v_3dvolreg(
             "-base",
             execution.input_file(basefile)
         ])
-    if zpad is not None:
-        cargs.extend([
-            "-zpad",
-            str(zpad)
-        ])
-    cargs.append("[MD1D_FILE]")
-    cargs.append(execution.input_file(in_file))
     if copyorigin:
         cargs.append("-twodup")
+    cargs.append(execution.input_file(in_file))
+    if in_weight_volume is not None:
+        cargs.extend([
+            "-weight '",
+            *in_weight_volume
+        ])
     if in_weight_volume_2 is not None:
         cargs.extend([
             "-weight '",
@@ -102,15 +107,19 @@ def v_3dvolreg(
             "-",
             interp
         ])
-    cargs.append("[ONED_FILE]")
-    cargs.append("[ONED_MATRIX_SAVE]")
-    cargs.append("[OUT_FILE]")
+    if num_threads is not None:
+        cargs.append(str(num_threads))
     if outputtype is not None:
         cargs.append(outputtype)
     if timeshift:
         cargs.append("-tshift 0")
     if verbose:
         cargs.append("-verbose")
+    if zpad is not None:
+        cargs.extend([
+            "-zpad",
+            str(zpad)
+        ])
     ret = V3dvolregOutputs(
         root=execution.output_file("."),
         md1d_file=execution.output_file(pathlib.Path(in_file).name + "_md.1D"),

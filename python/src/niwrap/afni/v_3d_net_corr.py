@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NET_CORR_METADATA = Metadata(
-    id="4e843c9d25d6dd2740cb3fb713219ba61ca439c5.boutiques",
+    id="5990317130f7d840690ce681e6279ce513c9b810.boutiques",
     name="3dNetCorr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,6 +41,7 @@ def v_3d_net_corr(
     prefix: str,
     inset: InputPathType,
     in_rois: InputPathType,
+    mask: InputPathType | None = None,
     fish_z: bool = False,
     part_corr: bool = False,
     ts_out: bool = False,
@@ -72,6 +73,7 @@ def v_3d_net_corr(
         in_rois: Input a set of ROIs each labelled with distinct integers.\
             Multiple subbricks can be input, each will be treated as a separate\
             network.
+        mask: Whole brain mask within which to calculate correlation.
         fish_z: Output Fisher Z-transform matrix along with correlation matrix.
         part_corr: Output the partial correlation matrix.
         ts_out: Output the mean time series of the ROIs.
@@ -105,13 +107,14 @@ def v_3d_net_corr(
     execution = runner.start_execution(V_3D_NET_CORR_METADATA)
     cargs = []
     cargs.append("3dNetCorr")
-    cargs.append("-prefix")
     cargs.append(prefix)
-    cargs.append("-inset")
     cargs.append(execution.input_file(inset))
-    cargs.append("-in_rois")
     cargs.append(execution.input_file(in_rois))
-    cargs.append("[MASK_OPTION]")
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
     if fish_z:
         cargs.append("-fish_z")
     if part_corr:

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TTOLOGP_METADATA = Metadata(
-    id="ec7bd326f37ef20eb7460f2d41957799c29390d3.boutiques",
+    id="d56b4f759499ab9e273cfd6dcdecd2230c338c62.boutiques",
     name="ttologp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -20,7 +20,7 @@ class TtologpOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_logpvol: OutputPathType
+    output_logpvol: OutputPathType | None
     """Output volume for logp value"""
 
 
@@ -28,6 +28,8 @@ def ttologp(
     varsfile: InputPathType,
     cbsfile: InputPathType,
     dof: str,
+    outputvol: str | None = "logps",
+    help_flag: bool = False,
     runner: Runner | None = None,
 ) -> TtologpOutputs:
     """
@@ -39,6 +41,8 @@ def ttologp(
         varsfile: Path to the vars file.
         cbsfile: Path to the cbs file.
         dof: Degree of freedom.
+        outputvol: Output volume for logp value (default is logps).
+        help_flag: Display help information and exit.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `TtologpOutputs`).
@@ -47,13 +51,19 @@ def ttologp(
     execution = runner.start_execution(TTOLOGP_METADATA)
     cargs = []
     cargs.append("ttologp")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(varsfile))
     cargs.append(execution.input_file(cbsfile))
     cargs.append(dof)
+    if outputvol is not None:
+        cargs.extend([
+            "-logpout",
+            outputvol
+        ])
+    if help_flag:
+        cargs.append("-help")
     ret = TtologpOutputs(
         root=execution.output_file("."),
-        output_logpvol=execution.output_file("[OUTPUTVOL].nii.gz"),
+        output_logpvol=execution.output_file(outputvol + ".nii.gz") if (outputvol is not None) else None,
     )
     execution.run(cargs)
     return ret

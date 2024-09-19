@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_OVERLAP_CHECK_METADATA = Metadata(
-    id="5a3ff9825a771bbe02b810c67a43c3b36c9999ab.boutiques",
+    id="31d0ff98f05bcbcb5c574dfa5f7b499cb51c8722.boutiques",
     name="@djunct_overlap_check",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,6 +32,9 @@ def v__djunct_overlap_check(
     cbar: str | None = None,
     opacity: float | None = None,
     zerocolor: str | None = None,
+    set_dicom_xyz: list[float] | None = None,
+    ulay_range: list[float] | None = None,
+    ulay_range_nz: list[float] | None = None,
     montx: float | None = None,
     monty: float | None = None,
     montx_cat: float | None = None,
@@ -64,6 +67,9 @@ def v__djunct_overlap_check(
         cbar: Colorbar for the overlay.
         opacity: Opacity of the overlay.
         zerocolor: Color for zero values.
+        set_dicom_xyz: Set DICOM coordinates for slice location.
+        ulay_range: Range for underlay values.
+        ulay_range_nz: Range for non-zero underlay values.
         montx: Number of panels in X direction in montage.
         monty: Number of panels in Y direction in montage.
         montx_cat: Number of X panes per image in montage.
@@ -114,11 +120,21 @@ def v__djunct_overlap_check(
             "-zerocolor",
             zerocolor
         ])
-    cargs.append("[XX]")
-    cargs.append("[YY]")
-    cargs.append("[ZZ]")
-    cargs.append("[umin]")
-    cargs.append("[umax]")
+    if set_dicom_xyz is not None:
+        cargs.extend([
+            "-set_dicom_xyz",
+            *map(str, set_dicom_xyz)
+        ])
+    if ulay_range is not None:
+        cargs.extend([
+            "-ulay_range",
+            *map(str, ulay_range)
+        ])
+    if ulay_range_nz is not None:
+        cargs.extend([
+            "-ulay_range_nz",
+            *map(str, ulay_range_nz)
+        ])
     if montx is not None:
         cargs.extend([
             "-montx",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_FILTER_DWIS_METADATA = Metadata(
-    id="357671a27361138fb75b7f697cceebf0bdad33a5.boutiques",
+    id="86718d3428b86f0362c6c1cec00292a683a411f2.boutiques",
     name="fat_proc_filter_dwis",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,6 +33,13 @@ def fat_proc_filter_dwis(
     input_gradient: InputPathType,
     select_string: str,
     output_prefix: str,
+    select_file: InputPathType | None = None,
+    input_bvals: InputPathType | None = None,
+    unit_mag_out: bool = False,
+    qc_prefix: str | None = None,
+    no_qc_view: bool = False,
+    no_cmd_out: bool = False,
+    do_movie: typing.Literal["AGIF", "MPEG"] | None = None,
     runner: Runner | None = None,
 ) -> FatProcFilterDwisOutputs:
     """
@@ -54,6 +61,19 @@ def fat_proc_filter_dwis(
             required.
         output_prefix: Output prefix for all the volumes and text files.\
             Required.
+        select_file: A file containing a string of indices and index ranges for\
+            selecting which volumes/grads/bvals to keep. This string gets applied\
+            to the volume, bval|bvec|bmat files for an input set. Either this or\
+            -select is required.
+        input_bvals: If the bvec/bmat is a file of unit-magnitude values, then\
+            the bvalues can be input.
+        unit_mag_out: Ensure that the output grad information is unit\
+            magnitude.
+        qc_prefix: Set the prefix of the QC image files separately.
+        no_qc_view: Turn off generating QC image files.
+        no_cmd_out: Don't save the command line call of this program and the\
+            location where it was run.
+        do_movie: Output a movie of the newly created dataset (AGIF or MPEG).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FatProcFilterDwisOutputs`).
@@ -62,7 +82,6 @@ def fat_proc_filter_dwis(
     execution = runner.start_execution(FAT_PROC_FILTER_DWIS_METADATA)
     cargs = []
     cargs.append("fat_proc_filter_dwis")
-    cargs.append("-in_dwi")
     cargs.extend([
         "-in_dwi",
         execution.input_file(input_dwi)
@@ -71,17 +90,40 @@ def fat_proc_filter_dwis(
         "-in_col_matA|-in_col_matT|-in_col_vec|-in_row_vec",
         execution.input_file(input_gradient)
     ])
-    cargs.append("-select")
     cargs.extend([
         "-select",
         select_string
     ])
-    cargs.append("-prefix")
+    if select_file is not None:
+        cargs.extend([
+            "-select_file",
+            execution.input_file(select_file)
+        ])
     cargs.extend([
         "-prefix",
         output_prefix
     ])
-    cargs.append("[OPTIONAL_PARAMS]")
+    if input_bvals is not None:
+        cargs.extend([
+            "-in_bvals",
+            execution.input_file(input_bvals)
+        ])
+    if unit_mag_out:
+        cargs.append("-unit_mag_out")
+    if qc_prefix is not None:
+        cargs.extend([
+            "-qc_prefix",
+            qc_prefix
+        ])
+    if no_qc_view:
+        cargs.append("-no_qc_view")
+    if no_cmd_out:
+        cargs.append("-no_cmd_out")
+    if do_movie is not None:
+        cargs.extend([
+            "-do_movie",
+            do_movie
+        ])
     ret = FatProcFilterDwisOutputs(
         root=execution.output_file("."),
         filtered_dwi=execution.output_file(output_prefix + "_filtered.nii.gz"),

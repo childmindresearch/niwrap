@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ALIGN_CENTERS_METADATA = Metadata(
-    id="107a4388ae669c9160b87353ef679d93c527c325.boutiques",
+    id="d5e025b526c5550c43cc62b76dfb21381e4ebd71.boutiques",
     name="@Align_Centers",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -22,13 +22,15 @@ class VAlignCentersOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     transform_matrix: OutputPathType
     """Transform matrix needed for the shift applied to DSET."""
-    shifted_dset: OutputPathType
+    shifted_dset: OutputPathType | None
     """Shifted Dataset aligned with the base volume."""
-    shifted_child_dsets: OutputPathType
+    shifted_child_dsets: OutputPathType | None
     """Shifted child datasets aligned with the base volume."""
 
 
 def v__align_centers(
+    base: InputPathType,
+    dset: InputPathType,
     children: list[InputPathType] | None = None,
     echo: bool = False,
     overwrite: bool = False,
@@ -52,6 +54,9 @@ def v__align_centers(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Align_Centers.html
     
     Args:
+        base: Base volume, typically a template. Can also specify RAI\
+            coordinates for center alignment.
+        dset: Dataset to be aligned to BASE.
         children: Additional datasets (originally in register with DSET) that\
             should be shifted in the same way.
         echo: Echo all commands to terminal for debugging.
@@ -75,10 +80,8 @@ def v__align_centers(
     execution = runner.start_execution(V__ALIGN_CENTERS_METADATA)
     cargs = []
     cargs.append("@Align_Centers")
-    cargs.append("<-base")
-    cargs.append("BASE>")
-    cargs.append("<-dset")
-    cargs.append("DSET>")
+    cargs.append(execution.input_file(base))
+    cargs.append(execution.input_file(dset))
     if children is not None:
         cargs.extend([
             "-child",
@@ -117,9 +120,9 @@ def v__align_centers(
         ])
     ret = VAlignCentersOutputs(
         root=execution.output_file("."),
-        transform_matrix=execution.output_file("[DSET]_shft.1D"),
-        shifted_dset=execution.output_file("[PREFIX]_shft+orig.BRIK"),
-        shifted_child_dsets=execution.output_file("[PREFIX]_child_shft+orig.BRIK"),
+        transform_matrix=execution.output_file(pathlib.Path(dset).name + "_shft.1D"),
+        shifted_dset=execution.output_file(prefix + "_shft+orig.BRIK") if (prefix is not None) else None,
+        shifted_child_dsets=execution.output_file(prefix + "_child_shft+orig.BRIK") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

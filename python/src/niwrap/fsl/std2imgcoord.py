@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 STD2IMGCOORD_METADATA = Metadata(
-    id="688ec9ae6fa7e109f9dc1fbdb79eff77f4309cdf.boutiques",
+    id="5b6418036f4339cb2ab82b1c41afc0e7f54c7651.boutiques",
     name="std2imgcoord",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -23,6 +23,16 @@ class Std2imgcoordOutputs(typing.NamedTuple):
 
 
 def std2imgcoord(
+    filename_coordinates: InputPathType,
+    input_image: InputPathType,
+    standard_image: InputPathType | None = None,
+    affine_transform: InputPathType | None = None,
+    warp_field: InputPathType | None = None,
+    prewarp_affine_transform: InputPathType | None = None,
+    output_mm: bool = False,
+    output_vox: bool = False,
+    verbose: bool = False,
+    more_verbose: bool = False,
     runner: Runner | None = None,
 ) -> Std2imgcoordOutputs:
     """
@@ -33,6 +43,19 @@ def std2imgcoord(
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
     
     Args:
+        filename_coordinates: Path to the filename containing coordinates or\
+            '-' to read from standard input.
+        input_image: Filename of input image.
+        standard_image: Filename of standard image.
+        affine_transform: Filename of affine transform (e.g.\
+            example_func2standard.mat).
+        warp_field: Filename of warpfield (e.g. highres2standard_warp.nii.gz).
+        prewarp_affine_transform: Filename of pre-warp affine transform (e.g.\
+            example_func2highres.mat). Defaults to identity matrix.
+        output_mm: Outputs coordinates in mm (default).
+        output_vox: Outputs coordinates in voxels.
+        verbose: Verbose output.
+        more_verbose: More verbose output.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `Std2imgcoordOutputs`).
@@ -41,8 +64,39 @@ def std2imgcoord(
     execution = runner.start_execution(STD2IMGCOORD_METADATA)
     cargs = []
     cargs.append("std2imgcoord")
-    cargs.append("[OPTIONS]")
-    cargs.append("<FILENAME_COORDINATES>")
+    cargs.append(execution.input_file(filename_coordinates))
+    if standard_image is not None:
+        cargs.extend([
+            "-std",
+            execution.input_file(standard_image)
+        ])
+    cargs.extend([
+        "-img",
+        execution.input_file(input_image)
+    ])
+    if affine_transform is not None:
+        cargs.extend([
+            "-xfm",
+            execution.input_file(affine_transform)
+        ])
+    if warp_field is not None:
+        cargs.extend([
+            "-warp",
+            execution.input_file(warp_field)
+        ])
+    if prewarp_affine_transform is not None:
+        cargs.extend([
+            "-premat",
+            execution.input_file(prewarp_affine_transform)
+        ])
+    if output_mm:
+        cargs.append("-mm")
+    if output_vox:
+        cargs.append("-vox")
+    if verbose:
+        cargs.append("-v")
+    if more_verbose:
+        cargs.append("-verbose")
     ret = Std2imgcoordOutputs(
         root=execution.output_file("."),
     )

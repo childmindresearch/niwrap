@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MRS_PROC_METADATA = Metadata(
-    id="fb3a400f171c0088382986998ebb6b0485571ba6.boutiques",
+    id="e62daa9beaa26a320312c7a121d8f5ba8e43b85e.boutiques",
     name="fsl_mrs_proc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -23,6 +23,9 @@ class FslMrsProcOutputs(typing.NamedTuple):
 
 
 def fsl_mrs_proc(
+    subcommand: typing.Literal["coilcombine", "average", "align", "align-diff", "ecc", "remove", "model", "tshift", "truncate", "apodize", "fshift", "unlike", "phase", "fixed_phase", "subtract", "add", "conj"],
+    version_flag: bool = False,
+    config_file: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> FslMrsProcOutputs:
     """
@@ -33,6 +36,9 @@ def fsl_mrs_proc(
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
     
     Args:
+        subcommand: The subcommand to run.
+        version_flag: Show program's version number and exit.
+        config_file: Configuration file.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslMrsProcOutputs`).
@@ -41,9 +47,14 @@ def fsl_mrs_proc(
     execution = runner.start_execution(FSL_MRS_PROC_METADATA)
     cargs = []
     cargs.append("fsl_mrs_proc")
-    cargs.append("[GLOBAL_OPTIONS]")
-    cargs.append("<subcommand>")
-    cargs.append("[SUBCOMMAND_OPTIONS]")
+    if version_flag:
+        cargs.append("-v")
+    if config_file is not None:
+        cargs.extend([
+            "--config",
+            execution.input_file(config_file)
+        ])
+    cargs.append(subcommand)
     ret = FslMrsProcOutputs(
         root=execution.output_file("."),
     )

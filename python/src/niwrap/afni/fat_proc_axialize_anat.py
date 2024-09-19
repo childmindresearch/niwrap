@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_AXIALIZE_ANAT_METADATA = Metadata(
-    id="a48c3b651a436a8583174469aa922aea5343ea2f.boutiques",
+    id="b86a6a48e22e26b80edb4f392c2ab3237c9be3cb.boutiques",
     name="fat_proc_axialize_anat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,6 +47,7 @@ def fat_proc_axialize_anat(
     post_lr_symm: bool = False,
     no_pre_lr_symm: bool = False,
     no_clean: bool = False,
+    qc_ulay_range: list[float] | None = None,
     no_qc_view: bool = False,
     qc_prefix: str | None = None,
     runner: Runner | None = None,
@@ -85,6 +86,8 @@ def fat_proc_axialize_anat(
         post_lr_symm: Apply post-alignment left-right symmetrization.
         no_pre_lr_symm: Turn off pre-alignment left-right symmetrization.
         no_clean: Do not remove working directory '__WORKING_axialize_anat'.
+        qc_ulay_range: Provide a min (UMIN) and max (UMAX) range for underlay\
+            grayscale bar.
         no_qc_view: Turn off default QC image saving/viewing.
         qc_prefix: Provide a prefix for QC outputs separate from the main\
             prefix.
@@ -96,16 +99,13 @@ def fat_proc_axialize_anat(
     execution = runner.start_execution(FAT_PROC_AXIALIZE_ANAT_METADATA)
     cargs = []
     cargs.append("fat_proc_axialize_anat")
-    cargs.append("-inset")
     cargs.append(execution.input_file(in_file))
-    cargs.append("-refset")
     cargs.append(execution.input_file(ref_file))
+    cargs.append(prefix)
     if mode_t2w:
         cargs.append("-mode_t2w")
     if mode_t1w:
         cargs.append("-mode_t1w")
-    cargs.append("-prefix")
-    cargs.append(prefix)
     if workdir is not None:
         cargs.extend([
             "-workdir",
@@ -152,8 +152,11 @@ def fat_proc_axialize_anat(
         cargs.append("-no_pre_lr_symm")
     if no_clean:
         cargs.append("-no_clean")
-    cargs.append("[QC_ULAY_RANGE_MIN]")
-    cargs.append("[QC_ULAY_RANGE_MAX]")
+    if qc_ulay_range is not None:
+        cargs.extend([
+            "-qc1_ulay_range",
+            *map(str, qc_ulay_range)
+        ])
     if no_qc_view:
         cargs.append("-no_qc_view")
     if qc_prefix is not None:

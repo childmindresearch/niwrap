@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TAGALIGN_METADATA = Metadata(
-    id="3a36837ea87f9f5e5e1558ec63e13590efe2e614.boutiques",
+    id="1b5da928e7b84ee537b6b95fcd1994bb00ddc6dc.boutiques",
     name="3dTagalign",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,8 +29,8 @@ class V3dTagalignOutputs(typing.NamedTuple):
 
 
 def v_3d_tagalign(
-    master_dataset: InputPathType,
     input_dataset: InputPathType,
+    master_dataset: InputPathType,
     tagset_file: InputPathType | None = None,
     no_keep_tags: bool = False,
     matvec_file: str | None = None,
@@ -40,6 +40,10 @@ def v_3d_tagalign(
     prefix: str | None = None,
     verbose: bool = False,
     dummy: bool = False,
+    linear_interpolation: bool = False,
+    cubic_interpolation: bool = False,
+    nearest_neighbor_interpolation: bool = False,
+    quintic_interpolation: bool = False,
     runner: Runner | None = None,
 ) -> V3dTagalignOutputs:
     """
@@ -51,9 +55,9 @@ def v_3d_tagalign(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTagalign.html
     
     Args:
+        input_dataset: Input dataset to align.
         master_dataset: Use dataset 'mset' as the master dataset. This option\
             is mandatory.
-        input_dataset: Input dataset to align.
         tagset_file: Use the tagset in the .tag file instead of dset.
         no_keep_tags: Don't put transformed locations of dset's tags into the\
             output dataset [default = keep tags].
@@ -70,6 +74,11 @@ def v_3d_tagalign(
         dummy: Don't actually rotate the dataset, just compute the\
             transformation matrix and vector. If '-matvec' is used, the mfile will\
             be written.
+        linear_interpolation: Use linear interpolation method.
+        cubic_interpolation: Use cubic interpolation method (default).
+        nearest_neighbor_interpolation: Use nearest neighbour interpolation\
+            method.
+        quintic_interpolation: Use quintic interpolation method.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dTagalignOutputs`).
@@ -78,6 +87,7 @@ def v_3d_tagalign(
     execution = runner.start_execution(V_3D_TAGALIGN_METADATA)
     cargs = []
     cargs.append("3dTagalign")
+    cargs.append(execution.input_file(input_dataset))
     cargs.extend([
         "-master",
         execution.input_file(master_dataset)
@@ -109,8 +119,14 @@ def v_3d_tagalign(
         cargs.append("-verb")
     if dummy:
         cargs.append("-dummy")
-    cargs.append("[INTERPOLATION_METHOD]")
-    cargs.append(execution.input_file(input_dataset))
+    if linear_interpolation:
+        cargs.append("-linear")
+    if cubic_interpolation:
+        cargs.append("-cubic")
+    if nearest_neighbor_interpolation:
+        cargs.append("-NN")
+    if quintic_interpolation:
+        cargs.append("-quintic")
     ret = V3dTagalignOutputs(
         root=execution.output_file("."),
         output_dataset_head=execution.output_file(prefix + "+orig.HEAD") if (prefix is not None) else None,

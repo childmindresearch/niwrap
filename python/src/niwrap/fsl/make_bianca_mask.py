@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_BIANCA_MASK_METADATA = Metadata(
-    id="5197c8d961d270d79b99c4f3dfe3006dbc6c90ae.boutiques",
+    id="55e552f300d1bc0ca46b262d842a09ae80e55c31.boutiques",
     name="make_bianca_mask",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -25,37 +25,136 @@ class MakeBiancaMaskOutputs(typing.NamedTuple):
 
 
 def make_bianca_mask(
+    input_image: InputPathType,
+    output_image: InputPathType,
+    overlay_flag: bool = False,
+    binary_mask_flag: bool = False,
+    approx_skull_flag: bool = False,
+    no_seg_output_flag: bool = False,
+    fractional_intensity: float | None = None,
+    vg_fractional_intensity: float | None = None,
+    head_radius: float | None = None,
+    center_of_gravity: str | None = None,
+    thresholding_flag: bool = False,
+    vtk_mesh: bool = False,
+    robust_iters_flag: bool = False,
+    residual_optic_cleanup_flag: bool = False,
+    reduce_bias_flag: bool = False,
+    slice_padding_flag: bool = False,
+    whole_set_mask_flag: bool = False,
+    additional_surfaces_flag: bool = False,
+    additional_surfaces_t2: InputPathType | None = None,
+    verbose_flag: bool = False,
+    debug_flag: bool = False,
     runner: Runner | None = None,
 ) -> MakeBiancaMaskOutputs:
     """
     A script for generating BIANCA masks.
     
     Args:
+        input_image: Input image.
+        output_image: Output image.
+        overlay_flag: Generate brain surface outline overlaid onto original\
+            image.
+        binary_mask_flag: Generate binary brain mask.
+        approx_skull_flag: Generate approximate skull image.
+        no_seg_output_flag: Don't generate segmented brain image output.
+        fractional_intensity: Fractional intensity threshold (0->1);\
+            default=0.5; smaller values give larger brain outline estimates.
+        vg_fractional_intensity: Vertical gradient in fractional intensity\
+            threshold (-1->1); default=0; positive values give larger brain outline\
+            at bottom, smaller at top.
+        head_radius: Head radius (mm not voxels); initial surface sphere is set\
+            to half of this.
+        center_of_gravity: Centre-of-gravity (voxels not mm) of initial mesh\
+            surface.
+        thresholding_flag: Apply thresholding to segmented brain image and mask.
+        vtk_mesh: Generates brain surface as mesh in .vtk format.
+        robust_iters_flag: Robust brain center estimation (iterates BET several\
+            times).
+        residual_optic_cleanup_flag: Eye & optic nerve cleanup (can be useful\
+            in SIENA - disables -o option).
+        reduce_bias_flag: Bias field & neck cleanup (can be useful in SIENA).
+        slice_padding_flag: Improve BET if FOV is very small in Z (by\
+            temporarily padding end slices).
+        whole_set_mask_flag: Apply to 4D FMRI data (uses -f 0.3 and dilates\
+            brain mask slightly).
+        additional_surfaces_flag: Run bet2 and then betsurf to get additional\
+            skull and scalp surfaces (includes registrations).
+        additional_surfaces_t2: As with -A, when also feeding in\
+            non-brain-extracted T2 (includes registrations).
+        verbose_flag: Verbose (switch on diagnostic messages).
+        debug_flag: Debug (don't delete temporary intermediate images).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MakeBiancaMaskOutputs`).
     """
+    if fractional_intensity is not None and not (0 <= fractional_intensity <= 1): 
+        raise ValueError(f"'fractional_intensity' must be between 0 <= x <= 1 but was {fractional_intensity}")
+    if vg_fractional_intensity is not None and not (-1 <= vg_fractional_intensity <= 1): 
+        raise ValueError(f"'vg_fractional_intensity' must be between -1 <= x <= 1 but was {vg_fractional_intensity}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(MAKE_BIANCA_MASK_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/make_bianca_mask")
-    cargs.append("<Usage:>")
-    cargs.append("<Main")
-    cargs.append("bet2")
-    cargs.append("options>")
-    cargs.append("<Variations")
-    cargs.append("on")
-    cargs.append("default")
-    cargs.append("bet2")
-    cargs.append("functionality")
-    cargs.append("(mutually")
-    cargs.append("exclusive")
-    cargs.append("options):>")
-    cargs.append("<Miscellaneous")
-    cargs.append("options:>")
+    cargs.append("make_bianca_mask")
+    cargs.append(execution.input_file(input_image))
+    cargs.append(execution.input_file(output_image))
+    if overlay_flag:
+        cargs.append("-o")
+    if binary_mask_flag:
+        cargs.append("-m")
+    if approx_skull_flag:
+        cargs.append("-s")
+    if no_seg_output_flag:
+        cargs.append("-n")
+    if fractional_intensity is not None:
+        cargs.extend([
+            "-f",
+            str(fractional_intensity)
+        ])
+    if vg_fractional_intensity is not None:
+        cargs.extend([
+            "-g",
+            str(vg_fractional_intensity)
+        ])
+    if head_radius is not None:
+        cargs.extend([
+            "-r",
+            str(head_radius)
+        ])
+    if center_of_gravity is not None:
+        cargs.extend([
+            "-c",
+            center_of_gravity
+        ])
+    if thresholding_flag:
+        cargs.append("-t")
+    if vtk_mesh:
+        cargs.append("-e")
+    if robust_iters_flag:
+        cargs.append("-R")
+    if residual_optic_cleanup_flag:
+        cargs.append("-S")
+    if reduce_bias_flag:
+        cargs.append("-B")
+    if slice_padding_flag:
+        cargs.append("-Z")
+    if whole_set_mask_flag:
+        cargs.append("-F")
+    if additional_surfaces_flag:
+        cargs.append("-A")
+    if additional_surfaces_t2 is not None:
+        cargs.extend([
+            "-A2",
+            execution.input_file(additional_surfaces_t2)
+        ])
+    if verbose_flag:
+        cargs.append("-v")
+    if debug_flag:
+        cargs.append("-d")
     ret = MakeBiancaMaskOutputs(
         root=execution.output_file("."),
-        output_image=execution.output_file("[OUTPUT_IMAGE]"),
+        output_image=execution.output_file(pathlib.Path(output_image).name),
     )
     execution.run(cargs)
     return ret

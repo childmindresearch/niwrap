@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DCAT_METADATA = Metadata(
-    id="5e596db6798d3b0d404e1685c84fe374efa6a71b.boutiques",
+    id="fccc1c7d5fbfcf69218c3e7e018a8b4b14239221.boutiques",
     name="1dcat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,6 +26,14 @@ class V1dcatOutputs(typing.NamedTuple):
 
 def v_1dcat(
     input_files: list[InputPathType],
+    tsv_output: bool = False,
+    csv_output: bool = False,
+    nonconst_output: bool = False,
+    nonfixed_output: bool = False,
+    number_format: str | None = None,
+    stack_output: bool = False,
+    column_row_selection: str | None = None,
+    ok_empty: bool = False,
     runner: Runner | None = None,
 ) -> V1dcatOutputs:
     """
@@ -37,6 +45,19 @@ def v_1dcat(
     
     Args:
         input_files: Input 1D or TSV/CSV files to concatenate.
+        tsv_output: Output in TSV format with tabs as separators and a header\
+            line.
+        csv_output: Output in CSV format with commas as separators and a header\
+            line.
+        nonconst_output: Omit columns that are identically constant from the\
+            output.
+        nonfixed_output: Keep only columns marked as 'free' in the 3dAllineate\
+            header.
+        number_format: Specify the format of the numbers to be output.
+        stack_output: Stack the columns of the resulting matrix in the output.
+        column_row_selection: Apply the same column/row selection string to all\
+            filenames on the command line.
+        ok_empty: Exit quietly when encountering an empty file on disk.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V1dcatOutputs`).
@@ -45,8 +66,29 @@ def v_1dcat(
     execution = runner.start_execution(V_1DCAT_METADATA)
     cargs = []
     cargs.append("1dcat")
-    cargs.append("[OPTIONS]")
     cargs.extend([execution.input_file(f) for f in input_files])
+    if tsv_output:
+        cargs.append("-tsvout")
+    if csv_output:
+        cargs.append("-csvout")
+    if nonconst_output:
+        cargs.append("-nonconst")
+    if nonfixed_output:
+        cargs.append("-nonfixed")
+    if number_format is not None:
+        cargs.extend([
+            "-form",
+            number_format
+        ])
+    if stack_output:
+        cargs.append("-stack")
+    if column_row_selection is not None:
+        cargs.extend([
+            "-sel",
+            column_row_selection
+        ])
+    if ok_empty:
+        cargs.append("-OKempty")
     ret = V1dcatOutputs(
         root=execution.output_file("."),
         concatenated_output=execution.output_file("stdout"),

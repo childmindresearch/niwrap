@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MCCUTUP_METADATA = Metadata(
-    id="38f27698b0fd81106186cbbb3524e89f2b2da116.boutiques",
+    id="067357f05344c17e6464cefd08598714222304ec.boutiques",
     name="mccutup",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -20,12 +20,15 @@ class MccutupOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output: OutputPathType
+    output: OutputPathType | None
     """Output file"""
 
 
 def mccutup(
     input_: InputPathType,
+    output_file: str | None = None,
+    param1: str | None = None,
+    param2: str | None = None,
     runner: Runner | None = None,
 ) -> MccutupOutputs:
     """
@@ -37,6 +40,9 @@ def mccutup(
     
     Args:
         input_: Input file.
+        output_file: Specify output file name.
+        param1: Parameter 1 description.
+        param2: Parameter 2 description.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MccutupOutputs`).
@@ -44,12 +50,26 @@ def mccutup(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MCCUTUP_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/mccutup")
-    cargs.append("[OPTIONS]")
+    cargs.append("mccutup")
     cargs.append(execution.input_file(input_))
+    if output_file is not None:
+        cargs.extend([
+            "--output",
+            output_file
+        ])
+    if param1 is not None:
+        cargs.extend([
+            "--param1",
+            param1
+        ])
+    if param2 is not None:
+        cargs.extend([
+            "--param2",
+            param2
+        ])
     ret = MccutupOutputs(
         root=execution.output_file("."),
-        output=execution.output_file("[OUTPUT_FILE]"),
+        output=execution.output_file(output_file) if (output_file is not None) else None,
     )
     execution.run(cargs)
     return ret

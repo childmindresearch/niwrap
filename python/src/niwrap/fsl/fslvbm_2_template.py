@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLVBM_2_TEMPLATE_METADATA = Metadata(
-    id="07d5c99b1fc70d604c474ae66a112235c4703c8a.boutiques",
+    id="8a40fdf48fb3338ede75e045234244bb059fadea.boutiques",
     name="fslvbm_2_template",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -39,6 +39,7 @@ def fslvbm_2_template(
     resource_: str | None = None,
     delete_job: str | None = None,
     memory_gb: float | None = None,
+    parallel_env: str | None = None,
     array_task: str | None = None,
     array_native: str | None = None,
     num_tasks: float | None = None,
@@ -72,6 +73,7 @@ def fslvbm_2_template(
         resource_: Specify resources.
         delete_job: Delete specified job.
         memory_gb: Specify memory in GB.
+        parallel_env: Specify parallel environment and threads.
         array_task: Specify array task.
         array_native: Specify array native task.
         num_tasks: Specify number of tasks.
@@ -167,8 +169,11 @@ def fslvbm_2_template(
             "-R",
             str(memory_gb)
         ])
-    cargs.append("[PARALLELENV]")
-    cargs.append("[THREADS]")
+    if parallel_env is not None:
+        cargs.extend([
+            "-s",
+            parallel_env
+        ])
     if array_task is not None:
         cargs.extend([
             "-t",

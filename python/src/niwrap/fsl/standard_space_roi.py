@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 STANDARD_SPACE_ROI_METADATA = Metadata(
-    id="0e4bc0475c3d908f6485b3e846641167457b47e3.boutiques",
+    id="9e35445d93826b3dede29dbe499d382d5e6dae42.boutiques",
     name="standard_space_roi",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -105,7 +105,6 @@ def standard_space_roi(
         cargs.append("-d")
     if bet_premask_flag:
         cargs.append("-b")
-    cargs.append("[FLIRT_OPTIONS]")
     ret = StandardSpaceRoiOutputs(
         root=execution.output_file("."),
         out_image=execution.output_file(outfile),

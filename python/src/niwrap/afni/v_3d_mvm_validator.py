@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MVM_VALIDATOR_METADATA = Metadata(
-    id="363acd1c4d041e492d2ad96e8d901ff72270d361.boutiques",
+    id="0601b05e81ffa9f9f3ce50fb67a24c92b62aeba3.boutiques",
     name="3dMVM_validator",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

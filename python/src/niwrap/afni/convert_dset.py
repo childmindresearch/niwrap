@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_DSET_METADATA = Metadata(
-    id="c8a3a3600863809bdcfbd75d710a1a9b340b7a80.boutiques",
+    id="6bd1deb568ef762ac56d38696eaf539412de3cda.boutiques",
     name="ConvertDset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,6 +29,23 @@ def convert_dset(
     input_dataset: InputPathType,
     input_type: typing.Literal["niml", "1D", "dx"] | None = None,
     output_prefix: str | None = None,
+    dset_labels: str | None = None,
+    add_node_index: bool = False,
+    node_index_file: InputPathType | None = None,
+    node_select_file: InputPathType | None = None,
+    prepend_node_index: bool = False,
+    pad_to_node: str | None = None,
+    labelize: InputPathType | None = None,
+    graphize: bool = False,
+    graph_nodelist: str | None = None,
+    graph_full_nodelist: InputPathType | None = None,
+    graph_named_nodelist: str | None = None,
+    graph_xyz_lpi: bool = False,
+    graph_edgelist: InputPathType | None = None,
+    onegraph: bool = False,
+    multigraph: bool = False,
+    split: int | None = None,
+    no_history: bool = False,
     runner: Runner | None = None,
 ) -> ConvertDsetOutputs:
     """
@@ -43,6 +60,29 @@ def convert_dset(
         input_dataset: Input dataset to be converted.
         input_type: Type of input datasets.
         output_prefix: Output prefix for dataset.
+        dset_labels: Label the columns (sub-bricks) of the output dataset.
+        add_node_index: Add a node index element if one does not exist in the\
+            input dataset.
+        node_index_file: File containing node indices.
+        node_select_file: File specifying the nodes to keep in the output.
+        prepend_node_index: Add a node index column to the data.
+        pad_to_node: Output a full dataset from node 0 to MAX_INDEX.
+        labelize: Turn the dataset into a labeled set per the colormap in CMAP.
+        graphize: Turn the dataset into a SUMA graph dataset.
+        graph_nodelist: Two files specifying the indices and the coordinates of\
+            the graph's nodes.
+        graph_full_nodelist: Similar to -graph_nodelist_1D but without need for\
+            NODEINDLIST.1D.
+        graph_named_nodelist: Two files specifying graph node indices, string\
+            labels, and their coordinates.
+        graph_xyz_lpi: Coordinates in NodeList.1D are in LPI instead of RAI.
+        graph_edgelist: Indices of graph nodes defining edge.
+        onegraph: Expect input dataset to be one square matrix defining the\
+            graph (default).
+        multigraph: Expect each column in input dataset to define an entire\
+            graph.
+        split: Split a multi-column dataset into about N output datasets.
+        no_history: Do not include a history element in the output.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ConvertDsetOutputs`).
@@ -55,7 +95,6 @@ def convert_dset(
         "-o_",
         *output_type
     ])
-    cargs.append("-input")
     cargs.extend([
         "-input",
         execution.input_file(input_dataset)
@@ -70,8 +109,70 @@ def convert_dset(
             "-prefix",
             output_prefix
         ])
-    cargs.append("[MANDATORY_PARAMS]")
-    cargs.append("[OPTIONAL_PARAMS]")
+    if dset_labels is not None:
+        cargs.extend([
+            "-dset_labels",
+            dset_labels
+        ])
+    if add_node_index:
+        cargs.append("-add_node_index")
+    if node_index_file is not None:
+        cargs.extend([
+            "-node_index_1D",
+            execution.input_file(node_index_file)
+        ])
+    if node_select_file is not None:
+        cargs.extend([
+            "-node_select_1D",
+            execution.input_file(node_select_file)
+        ])
+    if prepend_node_index:
+        cargs.append("-prepend_node_index_1D")
+    if pad_to_node is not None:
+        cargs.extend([
+            "-pad_to_node",
+            pad_to_node
+        ])
+    if labelize is not None:
+        cargs.extend([
+            "-labelize",
+            execution.input_file(labelize)
+        ])
+    if graphize:
+        cargs.append("-graphize")
+    if graph_nodelist is not None:
+        cargs.extend([
+            "-graph_nodelist_1D",
+            graph_nodelist
+        ])
+    if graph_full_nodelist is not None:
+        cargs.extend([
+            "-graph_full_nodelist_1D",
+            execution.input_file(graph_full_nodelist)
+        ])
+    if graph_named_nodelist is not None:
+        cargs.extend([
+            "-graph_named_nodelist_txt",
+            graph_named_nodelist
+        ])
+    if graph_xyz_lpi:
+        cargs.append("-graph_XYZ_LPI")
+    if graph_edgelist is not None:
+        cargs.extend([
+            "-graph_edgelist_1D",
+            execution.input_file(graph_edgelist)
+        ])
+    if onegraph:
+        cargs.append("-onegraph")
+    if multigraph:
+        cargs.append("-multigraph")
+    if split is not None:
+        cargs.extend([
+            "-split",
+            str(split)
+        ])
+    if no_history:
+        cargs.append("-no_history")
     ret = ConvertDsetOutputs(
         root=execution.output_file("."),
         converted_dataset=execution.output_file(output_prefix) if (output_prefix is not None) else None,

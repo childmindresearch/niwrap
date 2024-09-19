@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__PARSE_NAME_METADATA = Metadata(
-    id="dc595da5a1d86ec673a1a5f7595c19d7c38fd4ad.boutiques",
+    id="2f4af88eaa2f1d1949689504341ce39f9f683651.boutiques",
     name="@parse_name",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,7 +48,7 @@ def v__parse_name(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__PARSE_NAME_METADATA)
     cargs = []
-    cargs.append("@parse_name")
+    cargs.append("parse_name")
     cargs.append(name)
     ret = VParseNameOutputs(
         root=execution.output_file("."),

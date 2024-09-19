@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BANDPASS_METADATA = Metadata(
-    id="1ead95475e438c9cee52f9260b62b33c11f2d0ac.boutiques",
+    id="360f073bdccce90b97d79e61b67ac476260d7564.boutiques",
     name="3dBandpass",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -28,13 +28,13 @@ class V3dBandpassOutputs(typing.NamedTuple):
 
 def v_3d_bandpass(
     highpass: float,
-    lowpass: float,
     in_file: InputPathType,
-    mask: InputPathType | None = None,
+    lowpass: float,
     automask: bool = False,
     blur: float | None = None,
     despike: bool = False,
     local_pv: float | None = None,
+    mask: InputPathType | None = None,
     nfft: int | None = None,
     no_detrend: bool = False,
     normalize: bool = False,
@@ -55,9 +55,8 @@ def v_3d_bandpass(
     
     Args:
         highpass: Highpass.
-        lowpass: Lowpass.
         in_file: Input file to 3dbandpass.
-        mask: Mask file.
+        lowpass: Lowpass.
         automask: Create a mask from the input dataset.
         blur: Blur (inside the mask only) with a filter width (fwhm) of 'fff'\
             millimeters.
@@ -67,6 +66,7 @@ def v_3d_bandpass(
             singular vector) from a neighborhood of radius 'rrr' millimeters. note\
             that the pv time series is l2 normalized. this option is mostly for bob\
             cox to have fun with.
+        mask: Mask file.
         nfft: Set the fft length [must be a legal value].
         no_detrend: Skip the quadratic detrending of the input that occurs\
             before the fft-based bandpassing. you would only want to do this if the\
@@ -92,15 +92,6 @@ def v_3d_bandpass(
     execution = runner.start_execution(V_3D_BANDPASS_METADATA)
     cargs = []
     cargs.append("3dBandpass")
-    cargs.append(str(highpass))
-    cargs.append(str(lowpass))
-    cargs.append("[OUT_FILE]")
-    if mask is not None:
-        cargs.extend([
-            "-mask",
-            execution.input_file(mask)
-        ])
-    cargs.append(execution.input_file(in_file))
     if automask:
         cargs.append("-automask")
     if blur is not None:
@@ -110,10 +101,18 @@ def v_3d_bandpass(
         ])
     if despike:
         cargs.append("-despike")
+    cargs.append(str(highpass))
+    cargs.append(execution.input_file(in_file))
     if local_pv is not None:
         cargs.extend([
             "-localPV",
             str(local_pv)
+        ])
+    cargs.append(str(lowpass))
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
         ])
     if nfft is not None:
         cargs.extend([

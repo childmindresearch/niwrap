@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_MEASURES_METADATA = Metadata(
-    id="456801b092370c4bee5c9cdefbc1662333250216.boutiques",
+    id="a1253dede6f867929a16d0d073fa44d6e86d8dc4.boutiques",
     name="SurfMeasures",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,13 +20,31 @@ class SurfMeasuresOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_1_d: OutputPathType
+    output_1_d: OutputPathType | None
     """Output in 1D format"""
     output_dset: OutputPathType
     """Output in specified dataset format"""
 
 
 def surf_measures(
+    spec_file: InputPathType,
+    surf_a: str,
+    out_dset: str,
+    surf_b: str | None = None,
+    out_1_d: str | None = None,
+    func: list[str] | None = None,
+    surf_volume: InputPathType | None = None,
+    cmask: str | None = None,
+    debug: int | None = None,
+    dnode: float | None = None,
+    nodes_1_d: InputPathType | None = None,
+    info_all: bool = False,
+    info_area: bool = False,
+    info_norms: bool = False,
+    info_thick: bool = False,
+    info_vol: bool = False,
+    info_volg: bool = False,
+    ver: bool = False,
     runner: Runner | None = None,
 ) -> SurfMeasuresOutputs:
     """
@@ -37,23 +55,105 @@ def surf_measures(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfMeasures.html
     
     Args:
+        spec_file: SUMA spec file containing a list of related surfaces.
+        surf_a: Surface name (in spec file) for the first surface.
+        out_dset: Output filename with dataset format.
+        surf_b: Surface name (in spec file) for the second surface.
+        out_1_d: Output filename in 1D format.
+        func: Measure function to be applied.
+        surf_volume: AFNI volume dataset associated with the surface.
+        cmask: Restrict nodes with a mask.
+        debug: Display extra run-time information with specified debug level\
+            (0-5).
+        dnode: Display extra information for specified node.
+        nodes_1_d: Restrict output to specific nodes listed in a file.
+        info_all: Display all final info.
+        info_area: Display total area of each triangulated surface.
+        info_norms: Display info about the normals.
+        info_thick: Display minimum and maximum thickness between surfaces.
+        info_vol: Display total computed volume between surfaces.
+        info_volg: Display total computed volume estimated via Gauss' theorem.
+        ver: Show program version and compile date.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfMeasuresOutputs`).
     """
+    if debug is not None and not (0 <= debug <= 5): 
+        raise ValueError(f"'debug' must be between 0 <= x <= 5 but was {debug}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(SURF_MEASURES_METADATA)
     cargs = []
     cargs.append("SurfMeasures")
-    cargs.append("[OPTIONS]")
-    cargs.append("-spec")
-    cargs.append("SPEC_FILE")
-    cargs.append("-out")
-    cargs.append("OUTFILE")
+    cargs.extend([
+        "-spec",
+        execution.input_file(spec_file)
+    ])
+    cargs.extend([
+        "-surf_A",
+        surf_a
+    ])
+    if surf_b is not None:
+        cargs.extend([
+            "-surf_B",
+            surf_b
+        ])
+    if out_1_d is not None:
+        cargs.extend([
+            "-out_1D",
+            out_1_d
+        ])
+    cargs.extend([
+        "-out",
+        out_dset
+    ])
+    if func is not None:
+        cargs.extend([
+            "-func",
+            *func
+        ])
+    if surf_volume is not None:
+        cargs.extend([
+            "-sv",
+            execution.input_file(surf_volume)
+        ])
+    if cmask is not None:
+        cargs.extend([
+            "-cmask",
+            cmask
+        ])
+    if debug is not None:
+        cargs.extend([
+            "-debug",
+            str(debug)
+        ])
+    if dnode is not None:
+        cargs.extend([
+            "-dnode",
+            str(dnode)
+        ])
+    if nodes_1_d is not None:
+        cargs.extend([
+            "-nodes_1D",
+            execution.input_file(nodes_1_d)
+        ])
+    if info_all:
+        cargs.append("-info_all")
+    if info_area:
+        cargs.append("-info_area")
+    if info_norms:
+        cargs.append("-info_norms")
+    if info_thick:
+        cargs.append("-info_thick")
+    if info_vol:
+        cargs.append("-info_vol")
+    if info_volg:
+        cargs.append("-info_volg")
+    if ver:
+        cargs.append("-ver")
     ret = SurfMeasuresOutputs(
         root=execution.output_file("."),
-        output_1_d=execution.output_file("[OUTFILE_1D].1D"),
-        output_dset=execution.output_file("[OUTFILE]"),
+        output_1_d=execution.output_file(out_1_d + ".1D") if (out_1_d is not None) else None,
+        output_dset=execution.output_file(out_dset),
     )
     execution.run(cargs)
     return ret

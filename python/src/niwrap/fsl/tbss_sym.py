@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_SYM_METADATA = Metadata(
-    id="e4be653286686df6b0a14dfb1d8ad1dfbc341908.boutiques",
+    id="aaae299c5c6bc7cc4b847891813e9a2e20649976.boutiques",
     name="tbss_sym",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -26,9 +26,10 @@ class TbssSymOutputs(typing.NamedTuple):
 
 def tbss_sym(
     input_image: InputPathType,
+    output_image: InputPathType | None = None,
+    skeleton_params: list[str] | None = None,
     alternative_4ddata: InputPathType | None = None,
     alternative_skeleton: InputPathType | None = None,
-    output_image: InputPathType | None = None,
     help_flag: bool = False,
     debug_flag: bool = False,
     debug2_flag: InputPathType | None = None,
@@ -44,9 +45,11 @@ def tbss_sym(
     
     Args:
         input_image: Input image.
+        output_image: Output skeleton image.
+        skeleton_params: Skeleton threshold, distance map, search rule mask, 4D\
+            data and projected 4D data in that order.
         alternative_4ddata: Alternative 4D data (e.g., L1).
         alternative_skeleton: Alternative skeleton.
-        output_image: Output skeleton image.
         help_flag: Display help message.
         debug_flag: Enable debugging image outputs.
         debug2_flag: De-project skelpoints points on skeleton back to all_FA\
@@ -55,6 +58,8 @@ def tbss_sym(
     Returns:
         NamedTuple of outputs (described in `TbssSymOutputs`).
     """
+    if skeleton_params is not None and not (len(skeleton_params) <= 5): 
+        raise ValueError(f"Length of 'skeleton_params' must be less than 5 but was {len(skeleton_params)}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_SYM_METADATA)
     cargs = []
@@ -63,11 +68,16 @@ def tbss_sym(
         "-i",
         execution.input_file(input_image)
     ])
-    cargs.append("[SKEL_THRESHOLD]")
-    cargs.append("[DISTANCE_MAP]")
-    cargs.append("[SEARCH_RULE_MASK]")
-    cargs.append("[4DDATA]")
-    cargs.append("[PROJECTED_4DDATA]")
+    if output_image is not None:
+        cargs.extend([
+            "-o",
+            execution.input_file(output_image)
+        ])
+    if skeleton_params is not None:
+        cargs.extend([
+            "-p",
+            *skeleton_params
+        ])
     if alternative_4ddata is not None:
         cargs.extend([
             "-a",
@@ -77,11 +87,6 @@ def tbss_sym(
         cargs.extend([
             "-s",
             execution.input_file(alternative_skeleton)
-        ])
-    if output_image is not None:
-        cargs.extend([
-            "-o",
-            execution.input_file(output_image)
         ])
     if help_flag:
         cargs.append("-h")

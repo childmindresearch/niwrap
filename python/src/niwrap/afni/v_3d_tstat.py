@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSTAT_METADATA = Metadata(
-    id="a37fc104f95cef6830f8819a559beddc088d9c89.boutiques",
+    id="e4d4cccd7df4f11cabc21e0c81b0c3d5903a017f.boutiques",
     name="3dTstat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,6 +29,7 @@ class V3dTstatOutputs(typing.NamedTuple):
 def v_3d_tstat(
     in_file: InputPathType,
     mask: InputPathType | None = None,
+    num_threads: int | None = None,
     options: str | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     runner: Runner | None = None,
@@ -43,6 +44,7 @@ def v_3d_tstat(
     Args:
         in_file: Input file to 3dtstat.
         mask: Mask file.
+        num_threads: Set number of threads.
         options: Selected statistical output.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         runner: Command runner.
@@ -59,9 +61,10 @@ def v_3d_tstat(
             "-mask",
             execution.input_file(mask)
         ])
+    if num_threads is not None:
+        cargs.append(str(num_threads))
     if options is not None:
         cargs.append(options)
-    cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)
     ret = V3dTstatOutputs(

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FDRVAL_METADATA = Metadata(
-    id="d7b752bd6acda76625f2e0880f59f3c2a7a453be.boutiques",
+    id="7e0ff4e3a6270239c390c70809a6691b7b206058.boutiques",
     name="fdrval",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -28,6 +28,11 @@ def fdrval(
     dset: InputPathType,
     sub: float,
     val_list: list[float],
+    pval: bool = False,
+    ponly: bool = False,
+    qonly: bool = False,
+    qinput: bool = False,
+    inverse: bool = False,
     runner: Runner | None = None,
 ) -> FdrvalOutputs:
     """
@@ -41,6 +46,13 @@ def fdrval(
         dset: Input dataset.
         sub: Sub-brick number.
         val_list: List of threshold values.
+        pval: Output the p-value (on the same line, after q).
+        ponly: Don't output q-values, just p-values.
+        qonly: Don't output p-values, just q-values.
+        qinput: The 'val' inputs are taken to be q-values and then the outputs\
+            are the corresponding statistical thresholds.
+        inverse: Inverse of the usual operation. 'Val' inputs must be between 0\
+            and 1 (exclusive). Cannot be used with '-ponly' or '-pval'.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FdrvalOutputs`).
@@ -49,10 +61,19 @@ def fdrval(
     execution = runner.start_execution(FDRVAL_METADATA)
     cargs = []
     cargs.append("fdrval")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(dset))
     cargs.append(str(sub))
     cargs.extend(map(str, val_list))
+    if pval:
+        cargs.append("-pval")
+    if ponly:
+        cargs.append("-ponly")
+    if qonly:
+        cargs.append("-qonly")
+    if qinput:
+        cargs.append("-qinput")
+    if inverse:
+        cargs.append("-inverse")
     ret = FdrvalOutputs(
         root=execution.output_file("."),
         output=execution.output_file("stdout.txt"),

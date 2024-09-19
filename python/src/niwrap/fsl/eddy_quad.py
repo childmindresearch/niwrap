@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_QUAD_METADATA = Metadata(
-    id="55c16aa046b6af53dd6839c56b18fd79a0c73855.boutiques",
+    id="07bf0cd817acb0fca02346f67b74c2d11ff9d717.boutiques",
     name="eddy_quad",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -20,7 +20,7 @@ class EddyQuadOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_dir_qc: OutputPathType
+    output_dir_qc: OutputPathType | None
     """Quality control data outputs"""
 
 
@@ -30,6 +30,11 @@ def eddy_quad(
     eddy_params: InputPathType,
     mask: InputPathType,
     bvals: InputPathType,
+    bvecs: InputPathType | None = None,
+    output_dir: str | None = None,
+    field: InputPathType | None = None,
+    slspec: InputPathType | None = None,
+    verbose: bool = False,
     runner: Runner | None = None,
 ) -> EddyQuadOutputs:
     """
@@ -44,6 +49,12 @@ def eddy_quad(
         eddy_params: File containing acquisition parameters.
         mask: Binary mask file.
         bvals: b-values file.
+        bvecs: b-vectors file - only used when <eddyBase>.eddy_residuals file\
+            is present.
+        output_dir: Output directory - default = '<eddyBase>.qc'.
+        field: TOPUP estimated field (in Hz).
+        slspec: Text file specifying slice/group acquisition.
+        verbose: Display debug messages.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `EddyQuadOutputs`).
@@ -53,30 +64,47 @@ def eddy_quad(
     cargs = []
     cargs.append("eddy_quad")
     cargs.append(eddy_base)
-    cargs.append("--eddyIdx")
     cargs.extend([
         "--eddyIdx",
         execution.input_file(eddy_index)
     ])
-    cargs.append("--eddyParams")
     cargs.extend([
         "--eddyParams",
         execution.input_file(eddy_params)
     ])
-    cargs.append("--mask")
     cargs.extend([
         "--mask",
         execution.input_file(mask)
     ])
-    cargs.append("--bvals")
     cargs.extend([
         "--bvals",
         execution.input_file(bvals)
     ])
-    cargs.append("[OPTIONS]")
+    if bvecs is not None:
+        cargs.extend([
+            "--bvecs",
+            execution.input_file(bvecs)
+        ])
+    if output_dir is not None:
+        cargs.extend([
+            "--output-dir",
+            output_dir
+        ])
+    if field is not None:
+        cargs.extend([
+            "--field",
+            execution.input_file(field)
+        ])
+    if slspec is not None:
+        cargs.extend([
+            "--slspec",
+            execution.input_file(slspec)
+        ])
+    if verbose:
+        cargs.append("--verbose")
     ret = EddyQuadOutputs(
         root=execution.output_file("."),
-        output_dir_qc=execution.output_file("<output-dir>"),
+        output_dir_qc=execution.output_file(output_dir) if (output_dir is not None) else None,
     )
     execution.run(cargs)
     return ret

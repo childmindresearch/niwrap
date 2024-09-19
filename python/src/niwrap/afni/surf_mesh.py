@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_MESH_METADATA = Metadata(
-    id="8f6010c715df3fc7c13389fed6af4e1cefaf90a2.boutiques",
+    id="c1c2ac544cf83af0c22e7e11b93ff2bf6adf9fd9.boutiques",
     name="SurfMesh",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,6 +32,7 @@ def surf_mesh(
     one_state: bool = False,
     anatomical_label: bool = False,
     no_volume_registration: bool = False,
+    set_env: str | None = None,
     runner: Runner | None = None,
 ) -> SurfMeshOutputs:
     """
@@ -50,6 +51,7 @@ def surf_mesh(
         anatomical_label: Label all input surfaces as anatomically correct.
         no_volume_registration: Ignore any Rotate, Volreg, Tagalign, or\
             WarpDrive transformations present in the Surface Volume.
+        set_env: Set environment variable.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfMeshOutputs`).
@@ -83,7 +85,11 @@ def surf_mesh(
         cargs.append("-anatomical")
     if no_volume_registration:
         cargs.append("-novolreg")
-    cargs.append("[ENVname=ENVvalue]")
+    if set_env is not None:
+        cargs.extend([
+            "-setenv",
+            set_env
+        ])
     ret = SurfMeshOutputs(
         root=execution.output_file("."),
         output_surface_file=execution.output_file(output_surface + ".surface"),

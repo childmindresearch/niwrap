@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 READ_MATLAB_FILES_PY_METADATA = Metadata(
-    id="ddcdb0b217d706ebc659ce07ee0299b8f1e75ec8.boutiques",
+    id="d5eead2f2619eb7dff6f98607b865946af6fc29c.boutiques",
     name="read_matlab_files.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UBER_SKEL_PY_METADATA = Metadata(
-    id="072808117e1f9ebcb9f514ee1fafce9b67b7215b.boutiques",
+    id="8ad130247772c036c3ef53f310adc7d00fcd5bba.boutiques",
     name="uber_skel.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,17 @@ class UberSkelPyOutputs(typing.NamedTuple):
 
 
 def uber_skel_py(
+    qt_options: str | None = None,
+    no_gui_flag: bool = False,
+    print_script: bool = False,
+    save_script: str | None = None,
+    user_var: list[str] | None = None,
+    help_howto_program: bool = False,
+    help_: bool = False,
+    help_gui: bool = False,
+    history: bool = False,
+    show_valid_opts: bool = False,
+    version: bool = False,
     runner: Runner | None = None,
 ) -> UberSkelPyOutputs:
     """
@@ -34,6 +45,17 @@ def uber_skel_py(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_skel.py.html
     
     Args:
+        qt_options: Pass PyQt4 options directly to the GUI.
+        no_gui_flag: Run without the GUI.
+        print_script: Print the script.
+        save_script: Save the script.
+        user_var: Initialize user variables. Usage: -uvar <name> <value>.
+        help_howto_program: Show programming comments.
+        help_: Show help.
+        help_gui: Show help for the GUI.
+        history: Show history.
+        show_valid_opts: Show valid options.
+        version: Show version.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `UberSkelPyOutputs`).
@@ -41,8 +63,38 @@ def uber_skel_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(UBER_SKEL_PY_METADATA)
     cargs = []
-    cargs.append("uber_skel.py")
-    cargs.append("[OPTIONS]")
+    cargs.append("uber_skel")
+    if qt_options is not None:
+        cargs.extend([
+            "-qt_opts",
+            qt_options
+        ])
+    if no_gui_flag:
+        cargs.append("-no_gui")
+    if print_script:
+        cargs.append("-print_script")
+    if save_script is not None:
+        cargs.extend([
+            "-save_script",
+            save_script
+        ])
+    if user_var is not None:
+        cargs.extend([
+            "-uvar",
+            *user_var
+        ])
+    if help_howto_program:
+        cargs.append("-help_howto_program")
+    if help_:
+        cargs.append("-help")
+    if help_gui:
+        cargs.append("-help_gui")
+    if history:
+        cargs.append("-hist")
+    if show_valid_opts:
+        cargs.append("-show_valid_opts")
+    if version:
+        cargs.append("-ver")
     ret = UberSkelPyOutputs(
         root=execution.output_file("."),
     )

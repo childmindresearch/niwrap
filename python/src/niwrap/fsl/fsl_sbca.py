@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_SBCA_METADATA = Metadata(
-    id="9a0539cce0afbdc0ad35f76430d92a4e08805154.boutiques",
+    id="25d92c66964ffe4d07c075bac3fdbeb9bc5af9b6.boutiques",
     name="fsl_sbca",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,6 +35,19 @@ def fsl_sbca(
     seed: InputPathType,
     target: InputPathType,
     out: str,
+    reg_flag: bool = False,
+    conf_files: list[InputPathType] | None = None,
+    seed_data: InputPathType | None = None,
+    binarise_flag: bool = False,
+    mean_flag: bool = False,
+    abs_cc_flag: bool = False,
+    order: float | None = None,
+    out_seeds_flag: bool = False,
+    out_seedmask_flag: bool = False,
+    out_ttcs_flag: bool = False,
+    out_conf_flag: bool = False,
+    verbose_flag: bool = False,
+    help_flag: bool = False,
     runner: Runner | None = None,
 ) -> FslSbcaOutputs:
     """
@@ -50,6 +63,24 @@ def fsl_sbca(
         seed: Seed voxel coordinate or file name of seed mask (3D/4D file).
         target: File name of target mask(s) (3D or 4D file).
         out: Output file base name.
+        reg_flag: Perform time series regression rather than classification to\
+            targets.
+        conf_files: File name (or comma-separated list of file names) for\
+            confound ASCII text files.
+        seed_data: File name of 4D data file for the seed.
+        binarise_flag: Binarise spatial maps prior to calculation of time\
+            courses.
+        mean_flag: Use mean instead of Eigenvariates for calculation of time\
+            courses.
+        abs_cc_flag: Use maximum absolute value instead of maximum value of the\
+            cross-correlations.
+        order: Number of Eigenvariates (default 1).
+        out_seeds_flag: Output seed mask image as <basename>_seeds.
+        out_seedmask_flag: Output seed mask image as <basename>_seedmask.
+        out_ttcs_flag: Output target time courses as <basename>_ttc<X>.txt.
+        out_conf_flag: Output confound time courses as <basename>_confounds.txt.
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help text.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslSbcaOutputs`).
@@ -58,27 +89,57 @@ def fsl_sbca(
     execution = runner.start_execution(FSL_SBCA_METADATA)
     cargs = []
     cargs.append("fsl_sbca")
-    cargs.append("-i")
     cargs.extend([
         "--in",
         execution.input_file(infile)
     ])
-    cargs.append("-s")
     cargs.extend([
         "--seed",
         execution.input_file(seed)
     ])
-    cargs.append("-t")
     cargs.extend([
         "--target",
         execution.input_file(target)
     ])
-    cargs.append("-o")
     cargs.extend([
         "--out",
         out
     ])
-    cargs.append("[OPTIONS]")
+    if reg_flag:
+        cargs.append("--reg")
+    if conf_files is not None:
+        cargs.extend([
+            "--conf",
+            *[execution.input_file(f) for f in conf_files]
+        ])
+    if seed_data is not None:
+        cargs.extend([
+            "--seeddata",
+            execution.input_file(seed_data)
+        ])
+    if binarise_flag:
+        cargs.append("--bin")
+    if mean_flag:
+        cargs.append("--mean")
+    if abs_cc_flag:
+        cargs.append("--abscc")
+    if order is not None:
+        cargs.extend([
+            "--order",
+            str(order)
+        ])
+    if out_seeds_flag:
+        cargs.append("--out_seeds")
+    if out_seedmask_flag:
+        cargs.append("--out_seedmask")
+    if out_ttcs_flag:
+        cargs.append("--out_ttcs")
+    if out_conf_flag:
+        cargs.append("--out_conf")
+    if verbose_flag:
+        cargs.append("-v")
+    if help_flag:
+        cargs.append("-h")
     ret = FslSbcaOutputs(
         root=execution.output_file("."),
         output_seed_mask_image=execution.output_file(out + "_seeds"),

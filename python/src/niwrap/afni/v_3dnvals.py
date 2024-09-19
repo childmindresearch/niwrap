@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DNVALS_METADATA = Metadata(
-    id="8ec0706f3826d832e218505b96d0a0ca1e44519c.boutiques",
+    id="3edd0f8ad710e604d6ab66b3c34f8c322da85538.boutiques",
     name="3dnvals",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,11 +47,11 @@ def v_3dnvals(
     execution = runner.start_execution(V_3DNVALS_METADATA)
     cargs = []
     cargs.append("3dnvals")
+    cargs.extend([execution.input_file(f) for f in datasets])
     if all_flag:
         cargs.append("-all")
     if verbose_flag:
         cargs.append("-verbose")
-    cargs.extend([execution.input_file(f) for f in datasets])
     ret = V3dnvalsOutputs(
         root=execution.output_file("."),
     )

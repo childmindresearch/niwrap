@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SWAP_DIMENSIONS_METADATA = Metadata(
-    id="6dc09ff3a2acdd106bfb6f85c7da49be2484d100.boutiques",
+    id="5074336f62d998f92810467aec377bad67fd3b99.boutiques",
     name="swap_dimensions",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -27,9 +27,10 @@ class SwapDimensionsOutputs(typing.NamedTuple):
 def swap_dimensions(
     in_file: InputPathType,
     x_dims_cart: typing.Literal["x", "-x", "y", "-y", "z", "-z"] | None = None,
+    y_dims_cart: typing.Literal["x", "-x", "y", "-y", "z", "-z"] | None = None,
+    z_dims_cart: typing.Literal["x", "-x", "y", "-y", "z", "-z"] | None = None,
     x_dims_ras: typing.Literal["LR", "RL", "AP", "PA", "SI", "IS"] | None = None,
     y_dims_ras: typing.Literal["LR", "RL", "AP", "PA", "SI", "IS"] | None = None,
-    z_dims_cart: typing.Literal["x", "-x", "y", "-y", "z", "-z"] | None = None,
     z_dims_ras: typing.Literal["LR", "RL", "AP", "PA", "SI", "IS"] | None = None,
     out_file: str | None = None,
     runner: Runner | None = None,
@@ -49,11 +50,13 @@ def swap_dimensions(
         in_file: Input image to swap dimensions of.
         x_dims_cart: Representation of new x axes in terms of old cartesian\
             axes.
+        y_dims_cart: Representation of new y axes in terms of old cartesian\
+            axes.
+        z_dims_cart: Representation of new z axes in terms of old cartesian\
+            axes.
         x_dims_ras: Representation of new x axes in terms of old anatomical\
             axes.
         y_dims_ras: Representation of new y axes in terms of old anatomical\
-            axes.
-        z_dims_cart: Representation of new z axes in terms of old cartesian\
             axes.
         z_dims_ras: Representation of new z axes in terms of old anatomical\
             axes.
@@ -66,17 +69,18 @@ def swap_dimensions(
     runner = runner or get_global_runner()
     execution = runner.start_execution(SWAP_DIMENSIONS_METADATA)
     cargs = []
-    cargs.append("fslswapdim")
+    cargs.append("SwapDimensions")
     cargs.append(execution.input_file(in_file))
     if x_dims_cart is not None:
         cargs.append(x_dims_cart)
+    if y_dims_cart is not None:
+        cargs.append(y_dims_cart)
+    if z_dims_cart is not None:
+        cargs.append(z_dims_cart)
     if x_dims_ras is not None:
         cargs.append(x_dims_ras)
     if y_dims_ras is not None:
         cargs.append(y_dims_ras)
-    cargs.append("[B_RAS]")
-    if z_dims_cart is not None:
-        cargs.append(z_dims_cart)
     if z_dims_ras is not None:
         cargs.append(z_dims_ras)
     if out_file is not None:

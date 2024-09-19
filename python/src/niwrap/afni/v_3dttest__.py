@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DTTEST___METADATA = Metadata(
-    id="7677b966a0ac3126ffb377f3e909b0bf5a1cbd37.boutiques",
+    id="57807f7b4e9fe795f6de3e29ea366f62016e09c1.boutiques",
     name="3dttest++",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,14 +20,34 @@ class V3dttestOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType
+    out_file: OutputPathType | None
     """Main output dataset"""
-    residuals: OutputPathType
+    residuals: OutputPathType | None
     """Output residuals dataset"""
 
 
 def v_3dttest__(
+    set_a: list[str],
     set_b: list[str] | None = None,
+    set_a_long: list[str] | None = None,
+    set_b_long: list[str] | None = None,
+    covariates: InputPathType | None = None,
+    label_a: str | None = None,
+    label_b: str | None = None,
+    setweight_a: InputPathType | None = None,
+    setweight_b: InputPathType | None = None,
+    prefix: str | None = None,
+    resid: str | None = None,
+    paired: bool = False,
+    unpooled: bool = False,
+    mask: InputPathType | None = None,
+    exblur: int | None = None,
+    randomsign: bool = False,
+    permute: bool = False,
+    etac: bool = False,
+    etac_blur: list[float] | None = None,
+    etac_opt: list[str] | None = None,
+    seed: float | None = None,
     runner: Runner | None = None,
 ) -> V3dttestOutputs:
     """
@@ -38,28 +58,141 @@ def v_3dttest__(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dttest++.html
     
     Args:
+        set_a: Set A in short form, e.g., 'a+tlrc[3]' b+tlrc[3] ...'.
         set_b: Set B in short form, e.g., 'x+tlrc[3]' y+tlrc[3] ...'.
+        set_a_long: Specify an overall name for the set of datasets (Long\
+            form). Example: -setA Green sub001 a+tlrc[3] sub002 b+tlrc[3] ...
+        set_b_long: Specify an overall name for the set of datasets (Long\
+            form). Example: -setB Blue sub001 x+tlrc[3] sub002 y+tlrc[3] ...
+        covariates: File containing covariates.
+        label_a: Label for the set (for Set A). Limited to 12 characters.
+        label_b: Label for the set (for Set B). Limited to 12 characters.
+        setweight_a: File with voxel-wise weights for -setA datasets.
+        setweight_b: File with voxel-wise weights for -setB datasets.
+        prefix: Output the prefix name of the dataset result. For surface-based\
+            datasets, use -prefix p.niml.dset or -prefix p.gii.dset.
+        resid: Residuals will be output into a dataset with the given prefix.
+        paired: Specify to use a paired-sample t-test to compare setA and setB.\
+            Both sets must have the same cardinality.
+        unpooled: Specify separate variance estimates for setA and setB (not\
+            pooled together).
+        mask: Set mask for dataset analysis.
+        exblur: Add extra Gaussian blurring kernel FWHM (mm). Example: -exblur\
+            6.
+        randomsign: Randomize signs of datasets. Used with output from -resid\
+            to generate null hypothesis statistics.
+        permute: With -randomsign, adds inter-set permutation to randomization\
+            when both sets are used.
+        etac: Apply the Equitable Thresholding And Clustering (ETAC) method for\
+            thresholding results.
+        etac_blur: List of multiple levels of spatial blurring for ETAC.\
+            Example: -ETAC_blur 4 6.
+        etac_opt: Specify options for ETAC. Example: -ETAC_opt\
+            NN=2:sid=2:hpow=0,2:pthr=0.01,0.005,0.002,0.01:name=Fred.
+        seed: Random number seed for -randomsign and -permute/ETAC.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dttestOutputs`).
     """
+    if exblur is not None and not (0 <= exblur <= 100): 
+        raise ValueError(f"'exblur' must be between 0 <= x <= 100 but was {exblur}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DTTEST___METADATA)
     cargs = []
     cargs.append("3dttest++")
+    cargs.extend([
+        "-setA",
+        *set_a
+    ])
     if set_b is not None:
         cargs.extend([
             "-setB",
             *set_b
         ])
-    cargs.append("[OPTIONS]")
-    cargs.append("[MASK_OPTIONS]")
-    cargs.append("[ETAC_OPTIONS]")
-    cargs.append("[OTHER_OPTIONS]")
+    if set_a_long is not None:
+        cargs.extend([
+            "-setA",
+            *set_a_long
+        ])
+    if set_b_long is not None:
+        cargs.extend([
+            "-setB",
+            *set_b_long
+        ])
+    if covariates is not None:
+        cargs.extend([
+            "-covariates",
+            execution.input_file(covariates)
+        ])
+    if label_a is not None:
+        cargs.extend([
+            "-labelA",
+            label_a
+        ])
+    if label_b is not None:
+        cargs.extend([
+            "-labelB",
+            label_b
+        ])
+    if setweight_a is not None:
+        cargs.extend([
+            "-setweightA",
+            execution.input_file(setweight_a)
+        ])
+    if setweight_b is not None:
+        cargs.extend([
+            "-setweightB",
+            execution.input_file(setweight_b)
+        ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if resid is not None:
+        cargs.extend([
+            "-resid",
+            resid
+        ])
+    if paired:
+        cargs.append("-paired")
+    if unpooled:
+        cargs.append("-unpooled")
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
+    if exblur is not None:
+        cargs.extend([
+            "-exblur",
+            str(exblur)
+        ])
+    if randomsign:
+        cargs.append("-randomsign")
+    if permute:
+        cargs.append("-permute")
+    if etac:
+        cargs.append("-ETAC")
+    if etac_blur is not None:
+        cargs.extend([
+            "-ETAC_blur",
+            *map(str, etac_blur)
+        ])
+    if etac_opt is not None:
+        cargs.extend([
+            "-ETAC_opt",
+            *etac_opt
+        ])
+    if seed is not None:
+        cargs.extend([
+            "-seed",
+            str(seed)
+        ])
     ret = V3dttestOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file("[PREFIX].nii.gz"),
-        residuals=execution.output_file("[PREFIX_RESID].nii.gz"),
+        out_file=execution.output_file(prefix + ".nii.gz") if (prefix is not None) else None,
+        residuals=execution.output_file(resid + ".nii.gz") if (resid is not None) else None,
     )
     execution.run(cargs)
     return ret

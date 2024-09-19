@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NIFTI_TOOL_METADATA = Metadata(
-    id="d9f2616434f053b6e238d0eace87c16ce9d36fe0.boutiques",
+    id="a0155d8ed61bef27efd10999555ea0606dd5ae10.boutiques",
     name="nifti_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,13 +20,23 @@ class NiftiToolOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_file: OutputPathType
+    output_file: OutputPathType | None
     """The nifti file generated as output."""
 
 
 def nifti_tool(
     action: str,
     input_files: list[InputPathType] | None = None,
+    field: str | None = None,
+    mod_field: str | None = None,
+    prefix: str | None = None,
+    debug: float | None = None,
+    overwrite: bool = False,
+    convert2dtype: str | None = None,
+    convert_fail_choice: str | None = None,
+    convert_verify: bool = False,
+    add_comment_ext: str | None = None,
+    rm_ext: str | None = None,
     runner: Runner | None = None,
 ) -> NiftiToolOutputs:
     """
@@ -39,6 +49,16 @@ def nifti_tool(
     Args:
         action: Action type that defines what nifti_tool will do.
         input_files: One or more input nifti files.
+        field: Field name to display, modify, or compare.
+        mod_field: Field name and new value to modify.
+        prefix: Prefix for the output file.
+        debug: Debugging level (0-3).
+        overwrite: Overwrite input files with modifications.
+        convert2dtype: Convert data to a new datatype.
+        convert_fail_choice: Action on conversion failure (ignore, warn, fail).
+        convert_verify: Verify datatype conversion exactness.
+        add_comment_ext: Add COMMENT-type extension to dataset.
+        rm_ext: Remove extension by index or ALL.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `NiftiToolOutputs`).
@@ -53,10 +73,53 @@ def nifti_tool(
             "-infiles",
             *[execution.input_file(f) for f in input_files]
         ])
-    cargs.append("[OPTIONS]")
+    if field is not None:
+        cargs.extend([
+            "-field",
+            field
+        ])
+    if mod_field is not None:
+        cargs.extend([
+            "-mod_field",
+            mod_field
+        ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if debug is not None:
+        cargs.extend([
+            "-debug",
+            str(debug)
+        ])
+    if overwrite:
+        cargs.append("-overwrite")
+    if convert2dtype is not None:
+        cargs.extend([
+            "-convert2dtype",
+            convert2dtype
+        ])
+    if convert_fail_choice is not None:
+        cargs.extend([
+            "-convert_fail_choice",
+            convert_fail_choice
+        ])
+    if convert_verify:
+        cargs.append("-convert_verify")
+    if add_comment_ext is not None:
+        cargs.extend([
+            "-add_comment_ext",
+            add_comment_ext
+        ])
+    if rm_ext is not None:
+        cargs.extend([
+            "-rm_ext",
+            rm_ext
+        ])
     ret = NiftiToolOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file("[PREFIX].nii"),
+        output_file=execution.output_file(prefix + ".nii") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

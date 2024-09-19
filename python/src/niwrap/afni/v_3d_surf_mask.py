@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SURF_MASK_METADATA = Metadata(
-    id="b8441ef0584a7bf83b118f6db3b81eb258eacb78.boutiques",
+    id="ce1f43c2918a7269881b6d701bf6be490c4d97d3.boutiques",
     name="3dSurfMask",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -27,6 +27,15 @@ class V3dSurfMaskOutputs(typing.NamedTuple):
 
 
 def v_3d_surf_mask(
+    surface_type: str,
+    surface_file: InputPathType,
+    prefix: str,
+    grid_parent: InputPathType,
+    fill_method: str | None = None,
+    surface_volume: InputPathType | None = None,
+    mask_only: bool = False,
+    flip_orientation: bool = False,
+    no_distance: bool = False,
     runner: Runner | None = None,
 ) -> V3dSurfMaskOutputs:
     """
@@ -38,6 +47,17 @@ def v_3d_surf_mask(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSurfMask.html
     
     Args:
+        surface_type: Specify input surface.
+        surface_file: Specify input surface filename.
+        prefix: Prefix of output dataset.
+        grid_parent: Specifies the grid for the output volume.
+        fill_method: Fill method: SLOW or FAST (default: FAST).
+        surface_volume: Specify the surface volume.
+        mask_only: Produce an output dataset where voxels are 1 inside the\
+            surface and 0 outside.
+        flip_orientation: Flip triangle winding of surface mesh.
+        no_distance: Do not compute the distances, just the mask from the first\
+            step.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dSurfMaskOutputs`).
@@ -46,21 +66,30 @@ def v_3d_surf_mask(
     execution = runner.start_execution(V_3D_SURF_MASK_METADATA)
     cargs = []
     cargs.append("3dSurfMask")
-    cargs.append("<-i_TYPE")
-    cargs.append("SURFACE>")
-    cargs.append("<-prefix")
-    cargs.append("PREFIX>")
-    cargs.append("<-grid_parent")
-    cargs.append("GRID_VOL>")
-    cargs.append("[<fill_method>")
-    cargs.append("<SURF_VOL>")
-    cargs.append("<mask_only>")
-    cargs.append("<flip_orientation>")
-    cargs.append("<no_dist>]")
+    cargs.append(surface_type)
+    cargs.append(execution.input_file(surface_file))
+    cargs.append(prefix)
+    cargs.append(execution.input_file(grid_parent))
+    if fill_method is not None:
+        cargs.extend([
+            "-fill_method",
+            fill_method
+        ])
+    if surface_volume is not None:
+        cargs.extend([
+            "-sv",
+            execution.input_file(surface_volume)
+        ])
+    if mask_only:
+        cargs.append("-mask_only")
+    if flip_orientation:
+        cargs.append("-flip_orientation")
+    if no_distance:
+        cargs.append("-no_dist")
     ret = V3dSurfMaskOutputs(
         root=execution.output_file("."),
-        output_mask=execution.output_file("[PREFIX].m+orig.BRIK"),
-        distance_dataset=execution.output_file("[PREFIX].d+orig.BRIK"),
+        output_mask=execution.output_file(prefix + ".m+orig.BRIK"),
+        distance_dataset=execution.output_file(prefix + ".d+orig.BRIK"),
     )
     execution.run(cargs)
     return ret

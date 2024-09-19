@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_METADATA = Metadata(
-    id="833115a38119437ac7f8970c044577f2cf37bc68.boutiques",
+    id="a507ee408166c36b6618885ff2bc905e203f70b3.boutiques",
     name="possum",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -25,6 +25,30 @@ class PossumOutputs(typing.NamedTuple):
 
 
 def possum(
+    input_volume: InputPathType,
+    mr_parameters: InputPathType,
+    motion_matrix: InputPathType,
+    pulse_sequence: str,
+    rf_slice_profile: InputPathType,
+    output_signal: str,
+    event_matrix: InputPathType,
+    verbose: bool = False,
+    help_: bool = False,
+    kcoord: bool = False,
+    b0_inhomogeneities: str | None = None,
+    extra_b0_inhomogeneities: InputPathType | None = None,
+    b0_inhomogeneities_timecourse: InputPathType | None = None,
+    rf_inhomogeneity_receive: InputPathType | None = None,
+    rf_inhomogeneity_transmit: InputPathType | None = None,
+    activation_volume: InputPathType | None = None,
+    activation_timecourse: InputPathType | None = None,
+    activation_4d_volume: InputPathType | None = None,
+    activation_4d_timecourse: InputPathType | None = None,
+    level: str | None = None,
+    num_procs: float | None = None,
+    proc_id: float | None = None,
+    no_speedup: bool = False,
+    rf_average: bool = False,
     runner: Runner | None = None,
 ) -> PossumOutputs:
     """
@@ -35,6 +59,36 @@ def possum(
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM
     
     Args:
+        input_volume: Input 4D volume filename.
+        mr_parameters: Input matrix filename containing MR parameters.
+        motion_matrix: Input motion matrix filename (time(s) Tx(m) Ty(m) Tz(m)\
+            Rx(rad) Ry(rad) Rz(rad)).
+        pulse_sequence: Input matrix basename for pulse sequence files (.posx,\
+            .posy, etc.).
+        rf_slice_profile: Input matrix filename containing RF slice profile.
+        output_signal: Output matrix filename for the signal.
+        event_matrix: Main event matrix file [(t(s), rf_ang(rad),\
+            rf_freq_band(Hz), rf_cent_freq(Hz), ...)].
+        verbose: Switch on diagnostic messages.
+        help_: Display help message.
+        kcoord: Save the k-space coordinates.
+        b0_inhomogeneities: B0 inhomogeneities due to susceptibility\
+            differences (basename).
+        extra_b0_inhomogeneities: B0 inhomogeneities due to an extra field.
+        b0_inhomogeneities_timecourse: B0 inhomogeneities timecourse file.
+        rf_inhomogeneity_receive: RF inhomogeneity - receive.
+        rf_inhomogeneity_transmit: RF inhomogeneity - transmit.
+        activation_volume: Activation volume file.
+        activation_timecourse: Activation time course file.
+        activation_4d_volume: Activation 4D volume file.
+        activation_4d_timecourse: Activation 4D time course file.
+        level: Level of processing: 1.no motion//basic B0, 2.motion//basic B0,\
+            3.motion//full B0, 4.no motion//time changing B0.
+        num_procs: Number of processors available for parallelisation.
+        proc_id: ID of the processor.
+        no_speedup: If ON, will not do the speedup but perform signal\
+            calculation for all slices for each voxel.
+        rf_average: If ON, it will use RF angle averaging.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `PossumOutputs`).
@@ -43,29 +97,104 @@ def possum(
     execution = runner.start_execution(POSSUM_METADATA)
     cargs = []
     cargs.append("possum")
-    cargs.append("-i")
-    cargs.append("<input")
-    cargs.append("phantom")
-    cargs.append("volume>")
-    cargs.append("-x")
-    cargs.append("<MR")
-    cargs.append("parameters")
-    cargs.append("matrix>")
-    cargs.append("-p")
-    cargs.append("<pulse>")
-    cargs.append("-f")
-    cargs.append("<RF")
-    cargs.append("slice")
-    cargs.append("profile>")
-    cargs.append("-m")
-    cargs.append("<motion")
-    cargs.append("file>")
-    cargs.append("-o")
-    cargs.append("<output")
-    cargs.append("signal")
-    cargs.append("matrix>")
-    cargs.append("[additional")
-    cargs.append("options]")
+    cargs.extend([
+        "--inp",
+        execution.input_file(input_volume)
+    ])
+    cargs.extend([
+        "--mrpar",
+        execution.input_file(mr_parameters)
+    ])
+    cargs.extend([
+        "--motion",
+        execution.input_file(motion_matrix)
+    ])
+    cargs.extend([
+        "--pulse",
+        pulse_sequence
+    ])
+    cargs.extend([
+        "--slcprof",
+        execution.input_file(rf_slice_profile)
+    ])
+    cargs.extend([
+        "--out",
+        output_signal
+    ])
+    cargs.extend([
+        "--mainmatx",
+        execution.input_file(event_matrix)
+    ])
+    if verbose:
+        cargs.append("--verbose")
+    if help_:
+        cargs.append("--help")
+    if kcoord:
+        cargs.append("--kcoord")
+    if b0_inhomogeneities is not None:
+        cargs.extend([
+            "--b0p",
+            b0_inhomogeneities
+        ])
+    if extra_b0_inhomogeneities is not None:
+        cargs.extend([
+            "--b0extra",
+            execution.input_file(extra_b0_inhomogeneities)
+        ])
+    if b0_inhomogeneities_timecourse is not None:
+        cargs.extend([
+            "--b0time",
+            execution.input_file(b0_inhomogeneities_timecourse)
+        ])
+    if rf_inhomogeneity_receive is not None:
+        cargs.extend([
+            "--rfr",
+            execution.input_file(rf_inhomogeneity_receive)
+        ])
+    if rf_inhomogeneity_transmit is not None:
+        cargs.extend([
+            "--rft",
+            execution.input_file(rf_inhomogeneity_transmit)
+        ])
+    if activation_volume is not None:
+        cargs.extend([
+            "--activ",
+            execution.input_file(activation_volume)
+        ])
+    if activation_timecourse is not None:
+        cargs.extend([
+            "--activt",
+            execution.input_file(activation_timecourse)
+        ])
+    if activation_4d_volume is not None:
+        cargs.extend([
+            "--activ4D",
+            execution.input_file(activation_4d_volume)
+        ])
+    if activation_4d_timecourse is not None:
+        cargs.extend([
+            "--activt4D",
+            execution.input_file(activation_4d_timecourse)
+        ])
+    if level is not None:
+        cargs.extend([
+            "--lev",
+            level
+        ])
+    if num_procs is not None:
+        cargs.extend([
+            "--nproc",
+            str(num_procs)
+        ])
+    if proc_id is not None:
+        cargs.extend([
+            "--procid",
+            str(proc_id)
+        ])
+    if no_speedup:
+        cargs.append("--nospeedup")
+    if rf_average:
+        cargs.append("--rfavg")
     ret = PossumOutputs(
         root=execution.output_file("."),
         output_matrix=execution.output_file("[OUTPUT_MATRIX].mat"),

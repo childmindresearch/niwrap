@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DNORM_METADATA = Metadata(
-    id="ca9071bf1196c49108dfaa8149e0784b241bd37a.boutiques",
+    id="85ac78d3087d1fc1190e45816d231afdc13d8612.boutiques",
     name="1dnorm",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -27,6 +27,10 @@ class V1dnormOutputs(typing.NamedTuple):
 def v_1dnorm(
     infile: InputPathType,
     outfile: str,
+    norm1: bool = False,
+    normx: bool = False,
+    demean: bool = False,
+    demed: bool = False,
     runner: Runner | None = None,
 ) -> V1dnormOutputs:
     """
@@ -41,6 +45,10 @@ def v_1dnorm(
             columns); if '-' input will be read from stdin.
         outfile: Output AFNI *.1D file (normalized); if '-' output will be\
             written to stdout.
+        norm1: Normalize so sum of absolute values is 1 (L_1 norm).
+        normx: Normalize so that max absolute value is 1 (L_infinity norm).
+        demean: Subtract each column's mean before normalizing.
+        demed: Subtract each column's median before normalizing.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V1dnormOutputs`).
@@ -49,9 +57,16 @@ def v_1dnorm(
     execution = runner.start_execution(V_1DNORM_METADATA)
     cargs = []
     cargs.append("1dnorm")
-    cargs.append("[OPTION]")
     cargs.append(execution.input_file(infile))
     cargs.append(outfile)
+    if norm1:
+        cargs.append("-norm1")
+    if normx:
+        cargs.append("-normx")
+    if demean:
+        cargs.append("-demean")
+    if demed:
+        cargs.append("-demed")
     ret = V1dnormOutputs(
         root=execution.output_file("."),
         normalized_output=execution.output_file(outfile),

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLMATHS_METADATA = Metadata(
-    id="1a225d72bab397cfbf6f9e8837981a20bb223bbd.boutiques",
+    id="d7128ab67d2146832d102dcd9790c4e7596ea68b.boutiques",
     name="fslmaths",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -26,6 +26,27 @@ class FslmathsOutputs(typing.NamedTuple):
 
 def fslmaths(
     infile: InputPathType,
+    datatype: str | None = None,
+    output_datatype: str | None = None,
+    add_operation: str | None = None,
+    sub_operation: str | None = None,
+    mul_operation: str | None = None,
+    div_operation: str | None = None,
+    rem_operation: str | None = None,
+    mas_operation: InputPathType | None = None,
+    thr_operation: float | None = None,
+    thrp_operation: float | None = None,
+    uthr_operation: float | None = None,
+    uthrp_operation: float | None = None,
+    max_operation: str | None = None,
+    min_operation: str | None = None,
+    exp_operation: bool = False,
+    log_operation: bool = False,
+    sin_operation: bool = False,
+    cos_operation: bool = False,
+    tan_operation: bool = False,
+    sqr_operation: bool = False,
+    sqrt_operation: bool = False,
     runner: Runner | None = None,
 ) -> FslmathsOutputs:
     """
@@ -38,17 +59,130 @@ def fslmaths(
     
     Args:
         infile: Input image.
+        datatype: Set the datatype used internally for calculations (default\
+            float for all except double images).
+        output_datatype: Set the output datatype (default is float).
+        add_operation: Add following input to current image.
+        sub_operation: Subtract following input from current image.
+        mul_operation: Multiply current image by following input.
+        div_operation: Divide current image by following input.
+        rem_operation: Modulus remainder - divide current image by following\
+            input and take remainder.
+        mas_operation: Use (following image>0) to mask current image.
+        thr_operation: Use following number to threshold current image (zero\
+            anything below the number).
+        thrp_operation: Use following percentage (0-100) of ROBUST RANGE to\
+            threshold current image (zero anything below the number).
+        uthr_operation: Use following number to upper-threshold current image\
+            (zero anything above the number).
+        uthrp_operation: Use following percentage (0-100) of ROBUST RANGE to\
+            upper-threshold current image (zero anything above the number).
+        max_operation: Take maximum of following input and current image.
+        min_operation: Take minimum of following input and current image.
+        exp_operation: Exponential.
+        log_operation: Natural logarithm.
+        sin_operation: Sine function.
+        cos_operation: Cosine function.
+        tan_operation: Tangent function.
+        sqr_operation: Square.
+        sqrt_operation: Square root.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `FslmathsOutputs`).
     """
+    if thrp_operation is not None and not (0 <= thrp_operation <= 100): 
+        raise ValueError(f"'thrp_operation' must be between 0 <= x <= 100 but was {thrp_operation}")
+    if uthrp_operation is not None and not (0 <= uthrp_operation <= 100): 
+        raise ValueError(f"'uthrp_operation' must be between 0 <= x <= 100 but was {uthrp_operation}")
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLMATHS_METADATA)
     cargs = []
     cargs.append("fslmaths")
     cargs.append(execution.input_file(infile))
-    cargs.append("[OPERATIONS]")
-    cargs.append("[OUTPUT_FILE]")
+    if datatype is not None:
+        cargs.extend([
+            "-dt",
+            datatype
+        ])
+    if output_datatype is not None:
+        cargs.extend([
+            "-odt",
+            output_datatype
+        ])
+    if add_operation is not None:
+        cargs.extend([
+            "-add",
+            add_operation
+        ])
+    if sub_operation is not None:
+        cargs.extend([
+            "-sub",
+            sub_operation
+        ])
+    if mul_operation is not None:
+        cargs.extend([
+            "-mul",
+            mul_operation
+        ])
+    if div_operation is not None:
+        cargs.extend([
+            "-div",
+            div_operation
+        ])
+    if rem_operation is not None:
+        cargs.extend([
+            "-rem",
+            rem_operation
+        ])
+    if mas_operation is not None:
+        cargs.extend([
+            "-mas",
+            execution.input_file(mas_operation)
+        ])
+    if thr_operation is not None:
+        cargs.extend([
+            "-thr",
+            str(thr_operation)
+        ])
+    if thrp_operation is not None:
+        cargs.extend([
+            "-thrp",
+            str(thrp_operation)
+        ])
+    if uthr_operation is not None:
+        cargs.extend([
+            "-uthr",
+            str(uthr_operation)
+        ])
+    if uthrp_operation is not None:
+        cargs.extend([
+            "-uthrp",
+            str(uthrp_operation)
+        ])
+    if max_operation is not None:
+        cargs.extend([
+            "-max",
+            max_operation
+        ])
+    if min_operation is not None:
+        cargs.extend([
+            "-min",
+            min_operation
+        ])
+    if exp_operation:
+        cargs.append("-exp")
+    if log_operation:
+        cargs.append("-log")
+    if sin_operation:
+        cargs.append("-sin")
+    if cos_operation:
+        cargs.append("-cos")
+    if tan_operation:
+        cargs.append("-tan")
+    if sqr_operation:
+        cargs.append("-sqr")
+    if sqrt_operation:
+        cargs.append("-sqrt")
     ret = FslmathsOutputs(
         root=execution.output_file("."),
         outfile=execution.output_file("[OUTPUT_FILE]"),

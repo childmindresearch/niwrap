@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_UNIFIZE_METADATA = Metadata(
-    id="259ba307ec72b60b5a71967c5fecb810a7081943.boutiques",
+    id="2afa37bdd9128d321f1baf7a4a3f5a791022e86f.boutiques",
     name="3dUnifize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,6 +34,7 @@ def v_3d_unifize(
     epi: bool = False,
     gm: bool = False,
     no_duplo: bool = False,
+    num_threads: int | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     quiet: bool = False,
     rbt: list[float] | None = None,
@@ -82,6 +83,7 @@ def v_3d_unifize(
             aid in registering images from different scanners).
         no_duplo: Do not use the 'duplo down' step; this can be useful for\
             lower resolution datasets.
+        num_threads: Set number of threads.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         quiet: Don't print the progress messages.
         rbt: (a float, a float, a float). Option for afni experts only.specify\
@@ -110,10 +112,6 @@ def v_3d_unifize(
     execution = runner.start_execution(V_3D_UNIFIZE_METADATA)
     cargs = []
     cargs.append("3dUnifize")
-    cargs.extend([
-        "-input",
-        execution.input_file(in_file)
-    ])
     if cl_frac is not None:
         cargs.extend([
             "-clfrac",
@@ -123,9 +121,14 @@ def v_3d_unifize(
         cargs.append("-EPI")
     if gm:
         cargs.append("-GM")
+    cargs.extend([
+        "-input",
+        execution.input_file(in_file)
+    ])
     if no_duplo:
         cargs.append("-noduplo")
-    cargs.append("[OUT_FILE]")
+    if num_threads is not None:
+        cargs.append(str(num_threads))
     if outputtype is not None:
         cargs.append(outputtype)
     if quiet:

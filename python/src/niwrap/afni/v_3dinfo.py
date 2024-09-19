@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DINFO_METADATA = Metadata(
-    id="7079ec8db29fc5abd9efaff614f2daa00228ff5e.boutiques",
+    id="2753a9995d91a2778c589ac025428caeac0dcc1e.boutiques",
     name="3dinfo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,24 @@ class V3dinfoOutputs(typing.NamedTuple):
 
 
 def v_3dinfo(
+    dataset: list[InputPathType],
+    verb: bool = False,
+    very_verbose: bool = False,
+    short: bool = False,
+    no_hist: bool = False,
+    h: bool = False,
+    help_: bool = False,
+    extreme_help: bool = False,
+    h_view: bool = False,
+    h_web: bool = False,
+    h_find: str | None = None,
+    h_raw: bool = False,
+    h_spx: bool = False,
+    h_aspx: bool = False,
+    all_opts: bool = False,
+    label2index: str | None = None,
+    niml_hdr: bool = False,
+    subbrick_info: bool = False,
     runner: Runner | None = None,
 ) -> V3dinfoOutputs:
     """
@@ -33,6 +51,26 @@ def v_3dinfo(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dinfo.html
     
     Args:
+        dataset: Datasets to retrieve information from.
+        verb: Print out lots of information.
+        very_verbose: Print out even more information including slice time\
+            offsets.
+        short: Print out less information (default).
+        no_hist: Omit the HISTORY text.
+        h: Mini help.
+        help_: Display entire help output.
+        extreme_help: Extreme help.
+        h_view: Open help in text editor.
+        h_web: Open help in web browser.
+        h_find: Look for lines in help output that match WORD.
+        h_raw: Display unedited help string.
+        h_spx: Help string in sphinx format without autoformatting options.
+        h_aspx: Help string in sphinx format with autoformatting options.
+        all_opts: Try to identify all options for the program from the help\
+            output.
+        label2index: Output index corresponding to label.
+        niml_hdr: Output entire NIML-formatted header.
+        subbrick_info: Output only sub-brick part of information.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dinfoOutputs`).
@@ -41,9 +79,47 @@ def v_3dinfo(
     execution = runner.start_execution(V_3DINFO_METADATA)
     cargs = []
     cargs.append("3dinfo")
-    cargs.append("[OPTIONS]")
-    cargs.append("DATASET")
-    cargs.append("[DATASET...]")
+    cargs.extend([execution.input_file(f) for f in dataset])
+    if verb:
+        cargs.append("-verb")
+    if very_verbose:
+        cargs.append("-VERB")
+    if short:
+        cargs.append("-short")
+    if no_hist:
+        cargs.append("-no_hist")
+    if h:
+        cargs.append("-h")
+    if help_:
+        cargs.append("-help")
+    if extreme_help:
+        cargs.append("-HELP")
+    if h_view:
+        cargs.append("-h_view")
+    if h_web:
+        cargs.append("-h_web")
+    if h_find is not None:
+        cargs.extend([
+            "-h_find",
+            h_find
+        ])
+    if h_raw:
+        cargs.append("-h_raw")
+    if h_spx:
+        cargs.append("-h_spx")
+    if h_aspx:
+        cargs.append("-h_aspx")
+    if all_opts:
+        cargs.append("-all_opts")
+    if label2index is not None:
+        cargs.extend([
+            "-label2index",
+            label2index
+        ])
+    if niml_hdr:
+        cargs.append("-niml_hdr")
+    if subbrick_info:
+        cargs.append("-subbrick_info")
     ret = V3dinfoOutputs(
         root=execution.output_file("."),
     )

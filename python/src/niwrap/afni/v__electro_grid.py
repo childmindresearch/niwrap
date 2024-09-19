@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ELECTRO_GRID_METADATA = Metadata(
-    id="bf09a24f5704598a36346c756e33aa0bf726eea6.boutiques",
+    id="e96e56b5c35e6ba78f495a1428af3488a7379b68.boutiques",
     name="@ElectroGrid",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,6 +26,7 @@ class VElectroGridOutputs(typing.NamedTuple):
 
 def v__electro_grid(
     strip: int | None = None,
+    grid: list[int] | None = None,
     prefix: str | None = None,
     coords: InputPathType | None = None,
     with_markers: bool = False,
@@ -41,6 +42,8 @@ def v__electro_grid(
     
     Args:
         strip: Make an Nx strip (array) of electrodes.
+        grid: Make an Nx by Ny grid of electrodes. A node at (i,j) has a node\
+            ID = i+Nx*j with 0<=i<Nx and 0<=j<=Ny.
         prefix: Use PREFIX for the output surface.
         coords: Specify the coordinates of the nodes on the grid, or the array.\
             XYZ.1D should have three columns, with each row specifying the\
@@ -60,8 +63,11 @@ def v__electro_grid(
             "-strip",
             str(strip)
         ])
-    cargs.append("[GRID_NX]")
-    cargs.append("[GRID_NY]")
+    if grid is not None:
+        cargs.extend([
+            "-grid",
+            *map(str, grid)
+        ])
     if prefix is not None:
         cargs.extend([
             "-prefix",

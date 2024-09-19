@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLVBM_3_PROC_METADATA = Metadata(
-    id="48820f2eebc66c6451591595cc9dbdb604be9448.boutiques",
+    id="4cb5537fa85014828cc336ad97bf5529986236a4.boutiques",
     name="fslvbm_3_proc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -28,8 +28,10 @@ def fslvbm_3_proc(
     arch: str | None = None,
     coprocessor: str | None = None,
     coprocessor_multi: str | None = None,
+    coprocessor_class: str | None = None,
     coprocessor_class_strict: bool = False,
     coprocessor_toolkit: str | None = None,
+    not_requeueable: bool = False,
     jobhold: str | None = None,
     array_hold: str | None = None,
     logdir: str | None = None,
@@ -41,12 +43,19 @@ def fslvbm_3_proc(
     resource_: str | None = None,
     delete_job: str | None = None,
     memory_gb: float | None = None,
+    parallel_env_threads: str | None = None,
     array_task: str | None = None,
     array_native: str | None = None,
     number_jobscripts: float | None = None,
+    keep_jobscript: bool = False,
     coprocessor_name: str | None = None,
+    has_queues: bool = False,
     project: str | None = None,
+    submit_scheduler: bool = False,
     runtime_limit: float | None = None,
+    show_config: bool = False,
+    verbose: bool = False,
+    version: bool = False,
     config_file: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> Fslvbm3ProcOutputs:
@@ -59,8 +68,10 @@ def fslvbm_3_proc(
         arch: Specify architecture.
         coprocessor: Specify coprocessor.
         coprocessor_multi: Specify multiple coprocessors.
+        coprocessor_class: Specify coprocessor class.
         coprocessor_class_strict: Use strict class matching for coprocessor.
         coprocessor_toolkit: Specify coprocessor toolkit.
+        not_requeueable: Do not requeue the job.
         jobhold: Job to hold.
         array_hold: Array hold.
         logdir: Specify log directory.
@@ -72,12 +83,19 @@ def fslvbm_3_proc(
         resource_: Resource identifier.
         delete_job: Delete specified job.
         memory_gb: Memory (GB).
+        parallel_env_threads: Parallel environment and threads.
         array_task: Array task file.
         array_native: Array native specification.
         number_jobscripts: Keep number of job scripts.
+        keep_jobscript: Keep job script.
         coprocessor_name: Specify coprocessor name.
+        has_queues: Specify queues.
         project: Specify project name.
+        submit_scheduler: Submit to Scheduler.
         runtime_limit: Specify runtime limit in minutes.
+        show_config: Show configuration.
+        verbose: Verbose output.
+        version: Version information.
         config_file: Specify configuration file.
         runner: Command runner.
     Returns:
@@ -86,7 +104,7 @@ def fslvbm_3_proc(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLVBM_3_PROC_METADATA)
     cargs = []
-    cargs.append("fsl_sub")
+    cargs.append("fslvbm_3_proc")
     if arch is not None:
         cargs.extend([
             "-a",
@@ -102,6 +120,11 @@ def fslvbm_3_proc(
             "--coprocessor_multi",
             coprocessor_multi
         ])
+    if coprocessor_class is not None:
+        cargs.extend([
+            "--coprocessor_class",
+            coprocessor_class
+        ])
     if coprocessor_class_strict:
         cargs.append("--coprocessor_class_strict")
     if coprocessor_toolkit is not None:
@@ -109,6 +132,8 @@ def fslvbm_3_proc(
             "--coprocessor_toolkit",
             coprocessor_toolkit
         ])
+    if not_requeueable:
+        cargs.append("-F")
     if jobhold is not None:
         cargs.extend([
             "-j",
@@ -164,8 +189,11 @@ def fslvbm_3_proc(
             "-R",
             str(memory_gb)
         ])
-    cargs.append("[PARALLELENV]")
-    cargs.append("[THREADS]")
+    if parallel_env_threads is not None:
+        cargs.extend([
+            "-s",
+            parallel_env_threads
+        ])
     if array_task is not None:
         cargs.extend([
             "-t",
@@ -181,27 +209,38 @@ def fslvbm_3_proc(
             "-x",
             str(number_jobscripts)
         ])
+    if keep_jobscript:
+        cargs.append("--keep_jobscript")
     if coprocessor_name is not None:
         cargs.extend([
             "--has_coprocessor",
             coprocessor_name
         ])
+    if has_queues:
+        cargs.append("--has_queues")
     if project is not None:
         cargs.extend([
             "--project",
             project
         ])
+    if submit_scheduler:
+        cargs.append("-S")
     if runtime_limit is not None:
         cargs.extend([
             "-T",
             str(runtime_limit)
         ])
+    if show_config:
+        cargs.append("--show_config")
+    if verbose:
+        cargs.append("-v")
+    if version:
+        cargs.append("-V")
     if config_file is not None:
         cargs.extend([
             "-z",
             execution.input_file(config_file)
         ])
-    cargs.append("[COMMAND]")
     ret = Fslvbm3ProcOutputs(
         root=execution.output_file("."),
         output_directory=execution.output_file("fslvbm3a"),

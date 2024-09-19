@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SCRIPT_CHECK_METADATA = Metadata(
-    id="5545e4317d4b1d759b3e8c38e387264935f82b0f.boutiques",
+    id="b8ce07041cb39cf994398d404341c159d672fb17.boutiques",
     name="@ScriptCheck",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,10 +50,9 @@ def v__script_check(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__SCRIPT_CHECK_METADATA)
     cargs = []
-    cargs.append("@ScriptCheck")
+    cargs.append("ScriptChecker")
     if clean:
         cargs.append("-clean")
-    cargs.append("[SUFFIX_FLAG]")
     if suffix is not None:
         cargs.extend([
             "-suffix",

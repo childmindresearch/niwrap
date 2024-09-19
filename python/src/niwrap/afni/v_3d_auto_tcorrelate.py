@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AUTO_TCORRELATE_METADATA = Metadata(
-    id="b8f27abcfc527642a9e359df2a44024f6a072cb5.boutiques",
+    id="a0c1dd4e9b6592b13c3f8c83f41e4cfcb83baebb.boutiques",
     name="3dAutoTcorrelate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,16 +20,28 @@ class V3dAutoTcorrelateOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_brick: OutputPathType
+    output_brick: OutputPathType | None
     """Main output dataset"""
-    output_head: OutputPathType
+    output_head: OutputPathType | None
     """Header information for main output dataset"""
-    out1d_file: OutputPathType
+    out1d_file: OutputPathType | None
     """Output in 1D text format"""
 
 
 def v_3d_auto_tcorrelate(
     input_dataset: InputPathType,
+    pearson: bool = False,
+    eta2: bool = False,
+    polort: int | None = None,
+    autoclip: bool = False,
+    automask: bool = False,
+    mask: InputPathType | None = None,
+    mask_only_targets: bool = False,
+    mask_source: InputPathType | None = None,
+    prefix: str | None = None,
+    out1d: str | None = None,
+    time_: bool = False,
+    mmap_: bool = False,
     runner: Runner | None = None,
 ) -> V3dAutoTcorrelateOutputs:
     """
@@ -43,6 +55,19 @@ def v_3d_auto_tcorrelate(
     
     Args:
         input_dataset: Input dataset.
+        pearson: Correlation is the normal Pearson (product moment) correlation\
+            coefficient [default].
+        eta2: Output is eta^2 measure from Cohen et al., NeuroImage, 2008.
+        polort: Remove polynomial trend of order 'm', for m=-1..3.
+        autoclip: Clip off low-intensity regions in the dataset.
+        automask: Apply automask to the dataset.
+        mask: Mask of both 'source' and 'target' voxels.
+        mask_only_targets: Provide output for all voxels.
+        mask_source: Provide output for voxels only in specified mask.
+        prefix: Save output into dataset with specified prefix.
+        out1d: Save output in a text file in 1D format.
+        time_: Mark output as a 3D+time dataset.
+        mmap_: Write .BRIK results to disk directly using Unix mmap().
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dAutoTcorrelateOutputs`).
@@ -51,13 +76,51 @@ def v_3d_auto_tcorrelate(
     execution = runner.start_execution(V_3D_AUTO_TCORRELATE_METADATA)
     cargs = []
     cargs.append("3dAutoTcorrelate")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(input_dataset))
+    if pearson:
+        cargs.append("-pearson")
+    if eta2:
+        cargs.append("-eta2")
+    if polort is not None:
+        cargs.extend([
+            "-polort",
+            str(polort)
+        ])
+    if autoclip:
+        cargs.append("-autoclip")
+    if automask:
+        cargs.append("-automask")
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
+    if mask_only_targets:
+        cargs.append("-mask_only_targets")
+    if mask_source is not None:
+        cargs.extend([
+            "-mask_source",
+            execution.input_file(mask_source)
+        ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if out1d is not None:
+        cargs.extend([
+            "-out1D",
+            out1d
+        ])
+    if time_:
+        cargs.append("-time")
+    if mmap_:
+        cargs.append("-mmap")
     ret = V3dAutoTcorrelateOutputs(
         root=execution.output_file("."),
-        output_brick=execution.output_file("[PREFIX].BRIK"),
-        output_head=execution.output_file("[PREFIX].HEAD"),
-        out1d_file=execution.output_file("[OUT1D_FILE]"),
+        output_brick=execution.output_file(prefix + ".BRIK") if (prefix is not None) else None,
+        output_head=execution.output_file(prefix + ".HEAD") if (prefix is not None) else None,
+        out1d_file=execution.output_file(out1d) if (out1d is not None) else None,
     )
     execution.run(cargs)
     return ret

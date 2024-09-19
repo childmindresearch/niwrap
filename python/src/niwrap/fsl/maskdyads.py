@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MASKDYADS_METADATA = Metadata(
-    id="70afa57ee8266eb294a4d388bcf8ef82305bc603.boutiques",
+    id="ea58a17c33524012fe4bc13adefad07c0f3a7e06.boutiques",
     name="maskdyads",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",

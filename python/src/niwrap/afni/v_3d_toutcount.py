@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TOUTCOUNT_METADATA = Metadata(
-    id="b4e60ee92acd0c76d330ffc95d108384ce516923.boutiques",
+    id="f245780f5a83aba3ba5e5257f1ac866e424d9e1d.boutiques",
     name="3dToutcount",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -76,7 +76,6 @@ def v_3d_toutcount(
     cargs.append(input_dataset)
     if output_prefix is not None:
         cargs.append(output_prefix)
-    cargs.append("[MASK_FLAG]")
     if mask_dataset is not None:
         cargs.extend([
             "-mask",

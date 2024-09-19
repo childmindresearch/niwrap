@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DISTANCEMAP_METADATA = Metadata(
-    id="dba579c3fbd3d6218ecbc9a45322438109192f08.boutiques",
+    id="c04424531085e48a92e6cfe17b7b71f11e148497.boutiques",
     name="distancemap",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -22,13 +22,23 @@ class DistancemapOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     output_distancemap: OutputPathType
     """Output distance map image"""
-    output_local_maxima: OutputPathType
+    output_local_maxima: OutputPathType | None
     """Output local maxima image"""
-    output_segmented_image: OutputPathType
+    output_segmented_image: OutputPathType | None
     """Output segmented distance map image"""
 
 
 def distancemap(
+    input_image: InputPathType,
+    output_image: InputPathType,
+    mask_image: InputPathType | None = None,
+    second_image: InputPathType | None = None,
+    local_maxima_image: InputPathType | None = None,
+    segmented_image: InputPathType | None = None,
+    invert_flag: bool = False,
+    interpolate_values: InputPathType | None = None,
+    verbose_flag: bool = False,
+    help_flag: bool = False,
     runner: Runner | None = None,
 ) -> DistancemapOutputs:
     """
@@ -39,6 +49,20 @@ def distancemap(
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
     
     Args:
+        input_image: Input image filename (calc distance to non-zero voxels).
+        output_image: Output image filename.
+        mask_image: Mask image filename (only calc values at these voxels).
+        second_image: Second image filename (calc closest distance of this and\
+            primary input image, using non-zero voxels, negative distances mean\
+            this secondary image is the closer one).
+        local_maxima_image: Local maxima output image filename.
+        segmented_image: Segmented output image filename (unique value per\
+            segment is local maxima label).
+        invert_flag: Invert input image.
+        interpolate_values: Filename for values to interpolate (sparse sampling\
+            interpolation).
+        verbose_flag: Switch on diagnostic messages.
+        help_flag: Display help message.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DistancemapOutputs`).
@@ -47,12 +71,50 @@ def distancemap(
     execution = runner.start_execution(DISTANCEMAP_METADATA)
     cargs = []
     cargs.append("distancemap")
-    cargs.append("[OPTIONS]")
+    cargs.extend([
+        "-i",
+        execution.input_file(input_image)
+    ])
+    cargs.extend([
+        "-o",
+        execution.input_file(output_image)
+    ])
+    if mask_image is not None:
+        cargs.extend([
+            "-m",
+            execution.input_file(mask_image)
+        ])
+    if second_image is not None:
+        cargs.extend([
+            "--secondim",
+            execution.input_file(second_image)
+        ])
+    if local_maxima_image is not None:
+        cargs.extend([
+            "-l",
+            execution.input_file(local_maxima_image)
+        ])
+    if segmented_image is not None:
+        cargs.extend([
+            "-s",
+            execution.input_file(segmented_image)
+        ])
+    if invert_flag:
+        cargs.append("--invert")
+    if interpolate_values is not None:
+        cargs.extend([
+            "--interp",
+            execution.input_file(interpolate_values)
+        ])
+    if verbose_flag:
+        cargs.append("-v")
+    if help_flag:
+        cargs.append("-h")
     ret = DistancemapOutputs(
         root=execution.output_file("."),
-        output_distancemap=execution.output_file("[OUTPUT_IMAGE]"),
-        output_local_maxima=execution.output_file("[LOCAL_MAXIMA_IMAGE]"),
-        output_segmented_image=execution.output_file("[SEGMENTED_IMAGE]"),
+        output_distancemap=execution.output_file(pathlib.Path(output_image).name),
+        output_local_maxima=execution.output_file(pathlib.Path(local_maxima_image).name) if (local_maxima_image is not None) else None,
+        output_segmented_image=execution.output_file(pathlib.Path(segmented_image).name) if (segmented_image is not None) else None,
     )
     execution.run(cargs)
     return ret

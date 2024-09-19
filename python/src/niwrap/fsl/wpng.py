@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WPNG_METADATA = Metadata(
-    id="e13f41c54e797426555b18e8ee2168e2d22fafd2.boutiques",
+    id="ee9dea3a500047fdb3f87be5f712f960d7183717.boutiques",
     name="wpng",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -25,12 +25,12 @@ class WpngOutputs(typing.NamedTuple):
 
 
 def wpng(
+    input_file: InputPathType | None = None,
     gamma: float | None = None,
     bgcolor: str | None = None,
     text_flag: bool = False,
     time_flag: bool = False,
     interlace_flag: bool = False,
-    input_file: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> WpngOutputs:
     """
@@ -39,6 +39,7 @@ def wpng(
     Author: Unknown
     
     Args:
+        input_file: Input PNM file (binary PGM 'P5', PPM 'P6' or PAM 'P8').
         gamma: Transfer-function exponent (``gamma'') of the image in\
             floating-point format (e.g., ``0.45455''). If image looks correct on\
             given display system, image gamma is equal to inverse of display-system\
@@ -51,7 +52,6 @@ def wpng(
         text_flag: Prompt interactively for text info (tEXt chunks).
         time_flag: Include a tIME chunk (last modification time).
         interlace_flag: Write interlaced PNG image.
-        input_file: Input PNM file (binary PGM 'P5', PPM 'P6' or PAM 'P8').
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `WpngOutputs`).
@@ -60,6 +60,8 @@ def wpng(
     execution = runner.start_execution(WPNG_METADATA)
     cargs = []
     cargs.append("wpng")
+    if input_file is not None:
+        cargs.append(execution.input_file(input_file))
     if gamma is not None:
         cargs.extend([
             "-gamma",
@@ -76,8 +78,6 @@ def wpng(
         cargs.append("-time")
     if interlace_flag:
         cargs.append("-interlace")
-    if input_file is not None:
-        cargs.append(execution.input_file(input_file))
     ret = WpngOutputs(
         root=execution.output_file("."),
         output_file=execution.output_file("[INPUT_FILE_BASE_NAME].png"),

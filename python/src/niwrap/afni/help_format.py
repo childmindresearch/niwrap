@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 HELP_FORMAT_METADATA = Metadata(
-    id="f2876c9c6e57454575ec781f8f9f74ddd1ae5b21.boutiques",
+    id="764aeb23d87c0e64d32e52e8042c9227256ea584.boutiques",
     name="help_format",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,7 @@ class HelpFormatOutputs(typing.NamedTuple):
 
 
 def help_format(
+    stdin: str,
     runner: Runner | None = None,
 ) -> HelpFormatOutputs:
     """
@@ -35,6 +36,7 @@ def help_format(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/help_format.html
     
     Args:
+        stdin: Standard input text to be formatted.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `HelpFormatOutputs`).
@@ -43,6 +45,7 @@ def help_format(
     execution = runner.start_execution(HELP_FORMAT_METADATA)
     cargs = []
     cargs.append("help_format")
+    cargs.append(stdin)
     ret = HelpFormatOutputs(
         root=execution.output_file("."),
         formatted_output=execution.output_file("formatted_output.html"),

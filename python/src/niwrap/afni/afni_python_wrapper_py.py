@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_PYTHON_WRAPPER_PY_METADATA = Metadata(
-    id="6e37d281f01fec906968b21057c716629cd8edc8.boutiques",
+    id="4b43a5b100869183ab1440181215b9751144486c.boutiques",
     name="afni_python_wrapper.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,15 @@ class AfniPythonWrapperPyOutputs(typing.NamedTuple):
 
 
 def afni_python_wrapper_py(
+    module: str | None = None,
+    module_dir: bool = False,
+    eval_: str | None = None,
+    exec_: str | None = None,
+    funchelp: str | None = None,
+    print_: str | None = None,
+    lprint: str | None = None,
+    listfunc: str | None = None,
+    help_: bool = False,
     runner: Runner | None = None,
 ) -> AfniPythonWrapperPyOutputs:
     """
@@ -34,6 +43,15 @@ def afni_python_wrapper_py(
     https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_python_wrapper.py.html
     
     Args:
+        module: Specify the python module to import.
+        module_dir: Show the elements returned by dir().
+        eval_: Evaluate STRING in context of MODULE.
+        exec_: Execute STRING in context of MODULE.
+        funchelp: Print the help for module function FUNC.
+        print_: Print the result of executing STRING.
+        lprint: Line print: print result list, one element per line.
+        listfunc: Execute FUNC(LIST) with sub-options.
+        help_: Show this help text.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AfniPythonWrapperPyOutputs`).
@@ -41,9 +59,46 @@ def afni_python_wrapper_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_PYTHON_WRAPPER_PY_METADATA)
     cargs = []
-    cargs.append("afni_python_wrapper.py")
-    cargs.append("[FLAGS]")
-    cargs.append("[ARGUMENTS]")
+    cargs.append("afni_python_wrapper")
+    if module is not None:
+        cargs.extend([
+            "-module",
+            module
+        ])
+    if module_dir:
+        cargs.append("-module_dir")
+    if eval_ is not None:
+        cargs.extend([
+            "-eval",
+            eval_
+        ])
+    if exec_ is not None:
+        cargs.extend([
+            "-exec",
+            exec_
+        ])
+    if funchelp is not None:
+        cargs.extend([
+            "-funchelp",
+            funchelp
+        ])
+    if print_ is not None:
+        cargs.extend([
+            "-print",
+            print_
+        ])
+    if lprint is not None:
+        cargs.extend([
+            "-lprint",
+            lprint
+        ])
+    if listfunc is not None:
+        cargs.extend([
+            "-listfunc",
+            listfunc
+        ])
+    if help_:
+        cargs.append("-help")
     ret = AfniPythonWrapperPyOutputs(
         root=execution.output_file("."),
     )

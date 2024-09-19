@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CRUISETO_AFNI_METADATA = Metadata(
-    id="30ca8cfe85e8258e99a5ba8533cbbc9b94f1d687.boutiques",
+    id="266ddc4425a874ee1c8771e0619754766c96120c.boutiques",
     name="3dCRUISEtoAFNI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -64,8 +64,10 @@ def v_3d_cruiseto_afni(
     execution = runner.start_execution(V_3D_CRUISETO_AFNI_METADATA)
     cargs = []
     cargs.append("3dCRUISEtoAFNI")
-    cargs.append("-input")
-    cargs.append(execution.input_file(input_))
+    cargs.extend([
+        "-input",
+        execution.input_file(input_)
+    ])
     if novolreg:
         cargs.append("-novolreg")
     if noxform:

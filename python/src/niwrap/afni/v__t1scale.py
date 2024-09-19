@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__T1SCALE_METADATA = Metadata(
-    id="6742db233e7f7fe985fd582e9532fb9d1711e98a.boutiques",
+    id="495c025d71726eb8b837a13998b91fee75416b06.boutiques",
     name="@T1scale",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,7 +29,11 @@ class VT1scaleOutputs(typing.NamedTuple):
 
 
 def v__t1scale(
+    t1_volume: InputPathType,
+    pd_volume: InputPathType | None = None,
+    output_directory: str | None = None,
     align: bool = False,
+    mask: InputPathType | None = None,
     head_mask: bool = False,
     unmasked_uni: bool = False,
     masked_uni: bool = False,
@@ -50,8 +54,14 @@ def v__t1scale(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@T1scale.html
     
     Args:
+        t1_volume: The T1 volume.
+        pd_volume: The PD volume (aligned to T1).
+        output_directory: Directory where output gets dumped. Default is\
+            T1scale/.
         align: Align PD volume to T1. Without this option, PDvol is assumed in\
             alignment with T1vol.
+        mask: Create mask for the output. If not specified, the script will\
+            generate one with 3dAutomask on fattened PDvol.
         head_mask: Create mask using 3dSkullStrip's -head option.
         unmasked_uni: Do not apply masking to uniformized volume (default).
         masked_uni: Apply masking to uniformized volume.
@@ -69,15 +79,28 @@ def v__t1scale(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__T1SCALE_METADATA)
     cargs = []
-    cargs.append("@T1scale")
-    cargs.append("<-T1")
-    cargs.append("T1vol>")
-    cargs.append("<-PD")
-    cargs.append("PDvol>")
-    cargs.append("[OUTPUT_DIR]")
+    cargs.append("T1scale")
+    cargs.extend([
+        "-T1",
+        execution.input_file(t1_volume)
+    ])
+    if pd_volume is not None:
+        cargs.extend([
+            "-PD",
+            execution.input_file(pd_volume)
+        ])
+    if output_directory is not None:
+        cargs.extend([
+            "-odir",
+            output_directory
+        ])
     if align:
         cargs.append("-align")
-    cargs.append("[MASK_FILE]")
+    if mask is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask)
+        ])
     if head_mask:
         cargs.append("-head_mask")
     if unmasked_uni:

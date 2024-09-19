@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CLUST_COUNT_METADATA = Metadata(
-    id="0c61eab7e3dd1ba960105baacb7691a7039c8be4.boutiques",
+    id="e8b2820f68919f26d73b5dcf571b7b8f9a4e84a9.boutiques",
     name="3dClustCount",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,15 +20,19 @@ class V3dClustCountOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    clustcount_niml: OutputPathType
+    clustcount_niml: OutputPathType | None
     """Summed results file in NIML format."""
-    clustcount_1_d: OutputPathType
+    clustcount_1_d: OutputPathType | None
     """Summed results file in 1D format (when '-final' is used)."""
-    final_clustcount_niml: OutputPathType
+    final_clustcount_niml: OutputPathType | None
     """Summed results file in NIML format (when '-final' is used)."""
 
 
 def v_3d_clust_count(
+    datasets: list[InputPathType],
+    prefix: str | None = None,
+    final: bool = False,
+    quiet: bool = False,
     runner: Runner | None = None,
 ) -> V3dClustCountOutputs:
     """
@@ -40,6 +44,17 @@ def v_3d_clust_count(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClustCount.html
     
     Args:
+        datasets: Input datasets to be processed.
+        prefix: Prefix of the filename into which results will be summed.\
+            Actual filename will be 'sss.clustcount.niml'. If this file already\
+            exists, results from the current run will be summed into the existing\
+            results and the file then re-written.
+        final: Output results in a format similar to 3dClustSim -- as 1D and\
+            NIML formatted files with probabilities of various cluster sizes. This\
+            option can be used without any input datasets to create final output\
+            files from saved '.clustcount.niml' output file from earlier runs.
+        quiet: Suppresses progress reports and other informational messages.\
+            Should be placed first in the command line to quiet most messages.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dClustCountOutputs`).
@@ -48,13 +63,21 @@ def v_3d_clust_count(
     execution = runner.start_execution(V_3D_CLUST_COUNT_METADATA)
     cargs = []
     cargs.append("3dClustCount")
-    cargs.append("[OPTIONS]")
-    cargs.append("DATASETS")
+    cargs.extend([execution.input_file(f) for f in datasets])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if final:
+        cargs.append("-final")
+    if quiet:
+        cargs.append("-quiet")
     ret = V3dClustCountOutputs(
         root=execution.output_file("."),
-        clustcount_niml=execution.output_file("[PREFIX].clustcount.niml"),
-        clustcount_1_d=execution.output_file("[PREFIX].1D"),
-        final_clustcount_niml=execution.output_file("[PREFIX].niml"),
+        clustcount_niml=execution.output_file(prefix + ".clustcount.niml") if (prefix is not None) else None,
+        clustcount_1_d=execution.output_file(prefix + ".1D") if (prefix is not None) else None,
+        final_clustcount_niml=execution.output_file(prefix + ".niml") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

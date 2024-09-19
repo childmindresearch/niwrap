@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DICOM_HDR_METADATA = Metadata(
-    id="761c97ea8d89c4844c459d04c4ca44b9f1f1e25e.boutiques",
+    id="9aa37a8d41ffaded60413eca2ef1e81ddf44069b.boutiques",
     name="dicom_hdr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -24,6 +24,15 @@ class DicomHdrOutputs(typing.NamedTuple):
 
 def dicom_hdr(
     files: list[InputPathType],
+    hex_: bool = False,
+    noname: bool = False,
+    sexinfo: bool = False,
+    mulfram: bool = False,
+    v_dump: float | None = None,
+    no_length: bool = False,
+    slice_times: bool = False,
+    slice_times_verb: bool = False,
+    siemens_csa_data: bool = False,
     runner: Runner | None = None,
 ) -> DicomHdrOutputs:
     """
@@ -35,6 +44,18 @@ def dicom_hdr(
     
     Args:
         files: DICOM file(s) to read.
+        hex_: Include hexadecimal printout for integer values.
+        noname: Don't include element names in the printout.
+        sexinfo: Dump Siemens EXtra INFO text (0029 1020), if present (can be\
+            VERY lengthy).
+        mulfram: Dump multi-frame information, if present (1 line per frame,\
+            plus an XML-style header/footer). This option also implies -noname.
+        v_dump: Dump n words of binary data also.
+        no_length: Skip lengths and offsets (helps diffs).
+        slice_times: Show slice times from Siemens mosaic images.
+        slice_times_verb: Show slice times from Siemens mosaic images\
+            verbosely. (multiple uses increase verbosity, can dump CSA data).
+        siemens_csa_data: Same as 3 -slice_times_verb opts.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `DicomHdrOutputs`).
@@ -43,8 +64,28 @@ def dicom_hdr(
     execution = runner.start_execution(DICOM_HDR_METADATA)
     cargs = []
     cargs.append("dicom_hdr")
-    cargs.append("[OPTIONS]")
     cargs.extend([execution.input_file(f) for f in files])
+    if hex_:
+        cargs.append("-hex")
+    if noname:
+        cargs.append("-noname")
+    if sexinfo:
+        cargs.append("-sexinfo")
+    if mulfram:
+        cargs.append("-mulfram")
+    if v_dump is not None:
+        cargs.extend([
+            "-v",
+            str(v_dump)
+        ])
+    if no_length:
+        cargs.append("-no_length")
+    if slice_times:
+        cargs.append("-slice_times")
+    if slice_times_verb:
+        cargs.append("-slice_times_verb")
+    if siemens_csa_data:
+        cargs.append("-siemens_csa_data")
     ret = DicomHdrOutputs(
         root=execution.output_file("."),
     )

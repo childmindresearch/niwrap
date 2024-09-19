@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FNIRT_METADATA = Metadata(
-    id="7ec7fbf4a7475816c652cbd66bc1bba77609c146.boutiques",
+    id="8e9c1e6bdd8ca4e5a389d0c82f26708e8c3c3aab.boutiques",
     name="fnirt",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,8 +30,6 @@ class FnirtOutputs(typing.NamedTuple):
     """Name of log-file."""
     modulatedref_file_outfile: OutputPathType | None
     """File containing intensity modulated --ref."""
-    out_intensitymap_file_outfile: OutputPathType
-    """Files containing info pertaining to intensity mapping."""
     warped_file_outfile: OutputPathType | None
     """Warped image."""
 
@@ -109,7 +107,6 @@ def fnirt(
         jacobian_file_outfile=execution.output_file(pathlib.Path(jacobian_file).name + ".mat") if (jacobian_file is not None) else None,
         log_file_outfile=execution.output_file(pathlib.Path(log_file).name + ".txt") if (log_file is not None) else None,
         modulatedref_file_outfile=execution.output_file(modulatedref_file + ".nii.gz") if (modulatedref_file is not None) else None,
-        out_intensitymap_file_outfile=execution.output_file("[OUT_INTENSITYMAP_FILE]"),
         warped_file_outfile=execution.output_file(pathlib.Path(warped_file).name + ".nii.gz") if (warped_file is not None) else None,
     )
     execution.run(cargs)

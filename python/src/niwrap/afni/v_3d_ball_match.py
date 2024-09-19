@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BALL_MATCH_METADATA = Metadata(
-    id="ec86e9d0ff8252e6076f6e6033b6c38607b33cd2.boutiques",
+    id="394e22f98c4aaf8e3565031b19591d6521a408fe.boutiques",
     name="3dBallMatch",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -27,6 +27,9 @@ class V3dBallMatchOutputs(typing.NamedTuple):
 def v_3d_ball_match(
     input_dataset: InputPathType,
     radius: float | None = None,
+    dataset_option: str | None = None,
+    ball_radius: float | None = None,
+    spheroid_axes: list[float] | None = None,
     runner: Runner | None = None,
 ) -> V3dBallMatchOutputs:
     """
@@ -40,6 +43,10 @@ def v_3d_ball_match(
     Args:
         input_dataset: Input dataset (e.g., Fred.nii).
         radius: Radius of the 3D ball to match (in mm).
+        dataset_option: Specifies the input dataset.
+        ball_radius: Set the radius of the 3D ball to match (mm).
+        spheroid_axes: Match with a spheroid of revolution, with principal axis\
+            radius 'a' and secondary axes radii 'b'.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dBallMatchOutputs`).
@@ -48,10 +55,24 @@ def v_3d_ball_match(
     execution = runner.start_execution(V_3D_BALL_MATCH_METADATA)
     cargs = []
     cargs.append("3dBallMatch")
-    cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(input_dataset))
     if radius is not None:
         cargs.append(str(radius))
+    if dataset_option is not None:
+        cargs.extend([
+            "-input",
+            dataset_option
+        ])
+    if ball_radius is not None:
+        cargs.extend([
+            "-ball",
+            str(ball_radius)
+        ])
+    if spheroid_axes is not None:
+        cargs.extend([
+            "-spheroid",
+            *map(str, spheroid_axes)
+        ])
     ret = V3dBallMatchOutputs(
         root=execution.output_file("."),
         output_stdout=execution.output_file("stdout"),

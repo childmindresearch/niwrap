@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DCALC_METADATA = Metadata(
-    id="dcccd0bd8b013fd4d58815a538c1d07ba5d9c31d.boutiques",
+    id="6d107ea547d33891e84b9aa91504ccf23d38dc2d.boutiques",
     name="3dcalc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,8 +25,8 @@ class V3dcalcOutputs(typing.NamedTuple):
 
 
 def v_3dcalc(
-    in_file_a: InputPathType,
     expr: str,
+    in_file_a: InputPathType,
     in_file_b: InputPathType | None = None,
     in_file_c: InputPathType | None = None,
     other: InputPathType | None = None,
@@ -44,8 +44,8 @@ def v_3dcalc(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html
     
     Args:
-        in_file_a: Input file to 3dcalc.
         expr: Expr.
+        in_file_a: Input file to 3dcalc.
         in_file_b: Operand file to 3dcalc.
         in_file_c: Operand file to 3dcalc.
         other: Other options.
@@ -61,6 +61,7 @@ def v_3dcalc(
     execution = runner.start_execution(V_3DCALC_METADATA)
     cargs = []
     cargs.append("3dcalc")
+    cargs.append(expr)
     cargs.extend([
         "-a",
         execution.input_file(in_file_a)
@@ -75,11 +76,8 @@ def v_3dcalc(
             "-c",
             execution.input_file(in_file_c)
         ])
-    cargs.append("-expr")
-    cargs.append(expr)
     if other is not None:
         cargs.append(execution.input_file(other))
-    cargs.append("[OUT_FILE]")
     if overwrite:
         cargs.append("-overwrite")
     if single_idx is not None:

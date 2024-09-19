@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DESPIKE_METADATA = Metadata(
-    id="3963b4a51ef25ad42794c6077f4c3e3027cc9721.boutiques",
+    id="b61fc39b031e2b6a8702631e821ddf4c58fa8f21.boutiques",
     name="3dDespike",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,7 +47,6 @@ def v_3d_despike(
     cargs = []
     cargs.append("3dDespike")
     cargs.append(execution.input_file(in_file))
-    cargs.append("[OUT_FILE]")
     ret = V3dDespikeOutputs(
         root=execution.output_file("."),
         out_file=execution.output_file(pathlib.Path(in_file).name),

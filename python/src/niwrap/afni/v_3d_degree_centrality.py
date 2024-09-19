@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DEGREE_CENTRALITY_METADATA = Metadata(
-    id="22f490673264fd97dadfc685c6bb6b55f1751d3c.boutiques",
+    id="736d442b69d1db6d290086fa95aa30515ed19148.boutiques",
     name="3dDegreeCentrality",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -67,11 +67,11 @@ def v_3d_degree_centrality(
     execution = runner.start_execution(V_3D_DEGREE_CENTRALITY_METADATA)
     cargs = []
     cargs.append("3dDegreeCentrality")
-    cargs.append(execution.input_file(in_file))
     if autoclip:
         cargs.append("-autoclip")
     if automask:
         cargs.append("-automask")
+    cargs.append(execution.input_file(in_file))
     if mask is not None:
         cargs.extend([
             "-mask",
@@ -82,7 +82,6 @@ def v_3d_degree_centrality(
             "-out1D",
             oned_file
         ])
-    cargs.append("[OUT_FILE]")
     if polort is not None:
         cargs.extend([
             "-polort",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SIMULATE_MOTION_METADATA = Metadata(
-    id="29610b1a1e2e528bee711b23ea7ec7ab12c28c38.boutiques",
+    id="9c3855ae88b531191bb5b009bfc9249f141f5d80.boutiques",
     name="@simulate_motion",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,13 +20,27 @@ class VSimulateMotionOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    simulated_motion_output: OutputPathType
+    simulated_motion_output: OutputPathType | None
     """Motion simulated EPI time series"""
 
 
 def v__simulate_motion(
     epi: InputPathType,
     motion_file: InputPathType,
+    epi_timing: InputPathType | None = None,
+    prefix: str | None = None,
+    save_workdir: bool = False,
+    test: bool = False,
+    verb_level: float | None = None,
+    vr_base: float | None = None,
+    warp_method: str | None = None,
+    warp_1_d: InputPathType | None = None,
+    warp_master: InputPathType | None = None,
+    wsinc5: bool = False,
+    help_: bool = False,
+    hist: bool = False,
+    todo: bool = False,
+    ver: bool = False,
     runner: Runner | None = None,
 ) -> VSimulateMotionOutputs:
     """
@@ -42,6 +56,21 @@ def v__simulate_motion(
         epi: Input EPI volume or time series (only a volreg base is needed,\
             though more is okay).
         motion_file: Motion parameter file (as output by 3dvolreg).
+        epi_timing: Provide EPI dataset with slice timing.
+        prefix: Prefix for data results (default = motion_sim.NUM_TRS).
+        save_workdir: Do not remove the 'work' directory.
+        test: Only test running the program, do not create a simulated motion\
+            dataset.
+        verb_level: Specify a verbose level (default = 1).
+        vr_base: 0-based index of volreg base in EPI dataset.
+        warp_method: Specify a method for forward alignment/transform.
+        warp_1_d: Specify a 12 parameter affine transformation.
+        warp_master: Specify a grid master dataset for the -warp_1D transform.
+        wsinc5: Use wsinc5 interpolation in 3dAllineate.
+        help_: Show help message.
+        hist: Show program modification history.
+        todo: Show current todo list.
+        ver: Show program version.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VSimulateMotionOutputs`).
@@ -50,20 +79,66 @@ def v__simulate_motion(
     execution = runner.start_execution(V__SIMULATE_MOTION_METADATA)
     cargs = []
     cargs.append("@simulate_motion")
-    cargs.append("[options]")
-    cargs.append("-epi")
     cargs.extend([
         "-epi",
         execution.input_file(epi)
     ])
-    cargs.append("-motion_file")
     cargs.extend([
         "-motion_file",
         execution.input_file(motion_file)
     ])
+    if epi_timing is not None:
+        cargs.extend([
+            "-epi_timing",
+            execution.input_file(epi_timing)
+        ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if save_workdir:
+        cargs.append("-save_workdir")
+    if test:
+        cargs.append("-test")
+    if verb_level is not None:
+        cargs.extend([
+            "-verb",
+            str(verb_level)
+        ])
+    if vr_base is not None:
+        cargs.extend([
+            "-vr_base",
+            str(vr_base)
+        ])
+    if warp_method is not None:
+        cargs.extend([
+            "-warp_method",
+            warp_method
+        ])
+    if warp_1_d is not None:
+        cargs.extend([
+            "-warp_1D",
+            execution.input_file(warp_1_d)
+        ])
+    if warp_master is not None:
+        cargs.extend([
+            "-warp_master",
+            execution.input_file(warp_master)
+        ])
+    if wsinc5:
+        cargs.append("-wsinc5")
+    if help_:
+        cargs.append("-help")
+    if hist:
+        cargs.append("-hist")
+    if todo:
+        cargs.append("-todo")
+    if ver:
+        cargs.append("-ver")
     ret = VSimulateMotionOutputs(
         root=execution.output_file("."),
-        simulated_motion_output=execution.output_file("[PREFIX]_simulated_motion.nii.gz"),
+        simulated_motion_output=execution.output_file(prefix + "_simulated_motion.nii.gz") if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

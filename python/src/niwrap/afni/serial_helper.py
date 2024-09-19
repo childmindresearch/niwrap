@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SERIAL_HELPER_METADATA = Metadata(
-    id="74624be5b2d9de440d18ab39c983e9f94542342d.boutiques",
+    id="037aa5cc9aba30145b7d295e5dad7fbd7b41f600.boutiques",
     name="serial_helper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,18 @@ class SerialHelperOutputs(typing.NamedTuple):
 
 
 def serial_helper(
+    serial_port: str,
+    sock_num: float | None = None,
+    mp_max: float | None = None,
+    mp_min: float | None = None,
+    num_extra: float | None = None,
+    disp_all: float | None = None,
+    debug: float | None = None,
+    show_times: bool = False,
+    help_: bool = False,
+    hist: bool = False,
+    no_serial: bool = False,
+    version: bool = False,
     runner: Runner | None = None,
 ) -> SerialHelperOutputs:
     """
@@ -33,6 +45,18 @@ def serial_helper(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/serial_helper.html
     
     Args:
+        serial_port: Output serial port filename.
+        sock_num: Specify socket number to serve.
+        mp_max: Limit the maximum value of the MP data.
+        mp_min: Limit the minimum value of the MP data.
+        num_extra: Receive additional floats per TR.
+        disp_all: Receive NVOX*8 extra floats per TR.
+        debug: Set the debugging level (0-3).
+        show_times: Show communication times.
+        help_: Display this help information.
+        hist: Show the module history.
+        no_serial: Turn off serial port output.
+        version: Show the current version number.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SerialHelperOutputs`).
@@ -41,7 +65,50 @@ def serial_helper(
     execution = runner.start_execution(SERIAL_HELPER_METADATA)
     cargs = []
     cargs.append("serial_helper")
-    cargs.append("[OPTIONS]")
+    cargs.extend([
+        "-serial_port",
+        serial_port
+    ])
+    if sock_num is not None:
+        cargs.extend([
+            "-sock_num",
+            str(sock_num)
+        ])
+    if mp_max is not None:
+        cargs.extend([
+            "-mp_max",
+            str(mp_max)
+        ])
+    if mp_min is not None:
+        cargs.extend([
+            "-mp_min",
+            str(mp_min)
+        ])
+    if num_extra is not None:
+        cargs.extend([
+            "-num_extra",
+            str(num_extra)
+        ])
+    if disp_all is not None:
+        cargs.extend([
+            "-disp_all",
+            str(disp_all)
+        ])
+    if debug is not None:
+        cargs.extend([
+            "-debug",
+            str(debug)
+        ])
+    if show_times:
+        cargs.append("-show_times")
+    if help_:
+        cargs.append("-help")
+    if hist:
+        cargs.append("-hist")
+    if no_serial:
+        cargs.append("-no_serial")
+    if version:
+        cargs.append("-version")
     ret = SerialHelperOutputs(
         root=execution.output_file("."),
     )

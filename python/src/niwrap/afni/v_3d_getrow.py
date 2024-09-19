@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GETROW_METADATA = Metadata(
-    id="d8d7567b5d985de78a1fd73e1344abdc1903d6f4.boutiques",
+    id="a77775fc37289c2c570d66e31819c1456ad4a367.boutiques",
     name="3dGetrow",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -25,6 +25,9 @@ class V3dGetrowOutputs(typing.NamedTuple):
 
 
 def v_3d_getrow(
+    xrow: list[int] | None = None,
+    yrow: list[int] | None = None,
+    zrow: list[int] | None = None,
     input_file: InputPathType | None = None,
     output_file: str | None = None,
     runner: Runner | None = None,
@@ -37,6 +40,12 @@ def v_3d_getrow(
     URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGetrow.html
     
     Args:
+        xrow: Extract row along the x-direction at fixed y-index of j and fixed\
+            z-index of k.
+        yrow: Extract row along the y-direction at fixed x-index of i and fixed\
+            z-index of k.
+        zrow: Extract row along the z-direction at fixed x-index of i and fixed\
+            y-index of j.
         input_file: Read input from dataset 'ddd' (instead of putting dataset\
             name at end of command line).
         output_file: Filename for output .1D ASCII file will be 'ff' (if 'ff'\
@@ -49,7 +58,21 @@ def v_3d_getrow(
     execution = runner.start_execution(V_3D_GETROW_METADATA)
     cargs = []
     cargs.append("3dGetrow")
-    cargs.append("[DIRECTION_FLAG]")
+    if xrow is not None:
+        cargs.extend([
+            "-xrow",
+            *map(str, xrow)
+        ])
+    if yrow is not None:
+        cargs.extend([
+            "-yrow",
+            *map(str, yrow)
+        ])
+    if zrow is not None:
+        cargs.extend([
+            "-zrow",
+            *map(str, zrow)
+        ])
     if input_file is not None:
         cargs.extend([
             "-input",

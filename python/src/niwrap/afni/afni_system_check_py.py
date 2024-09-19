@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_SYSTEM_CHECK_PY_METADATA = Metadata(
-    id="561605c39b2a296b2c61c5f34bc02b377a92937a.boutiques",
+    id="71028244373f1158e23080eb94656a703bc50f0a.boutiques",
     name="afni_system_check.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -23,6 +23,16 @@ class AfniSystemCheckPyOutputs(typing.NamedTuple):
 
 
 def afni_system_check_py(
+    check_all: bool = False,
+    find_prog: str | None = None,
+    exact: str | None = None,
+    disp_num_cpu: bool = False,
+    disp_ver_matplotlib: bool = False,
+    dot_file_list: bool = False,
+    dot_file_show: bool = False,
+    dot_file_pack: str | None = None,
+    casematch: str | None = None,
+    data_root: str | None = None,
     runner: Runner | None = None,
 ) -> AfniSystemCheckPyOutputs:
     """
@@ -34,6 +44,16 @@ def afni_system_check_py(
     https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_system_check.py.html
     
     Args:
+        check_all: Perform all system checks.
+        find_prog: Search PATH for PROG.
+        exact: Search for PROG without wildcards in -find_prog.
+        disp_num_cpu: Display number of CPUs available.
+        disp_ver_matplotlib: Display matplotlib version (else 'None').
+        dot_file_list: List all found dot files (startup files).
+        dot_file_show: Display contents of all found dot files.
+        dot_file_pack: Create a NAME.tgz package containing dot files.
+        casematch: Match case in -find_prog.
+        data_root: Search for class data under DDIR.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `AfniSystemCheckPyOutputs`).
@@ -42,9 +62,41 @@ def afni_system_check_py(
     execution = runner.start_execution(AFNI_SYSTEM_CHECK_PY_METADATA)
     cargs = []
     cargs.append("afni_system_check.py")
-    cargs.append("[TERMINAL_OPTS]")
-    cargs.append("[ACTION_OPTS]")
-    cargs.append("[OTHER_OPTS]")
+    if check_all:
+        cargs.append("-check_all")
+    if find_prog is not None:
+        cargs.extend([
+            "-find_prog",
+            find_prog
+        ])
+    if exact is not None:
+        cargs.extend([
+            "-exact",
+            exact
+        ])
+    if disp_num_cpu:
+        cargs.append("-disp_num_cpu")
+    if disp_ver_matplotlib:
+        cargs.append("-disp_ver_matplotlib")
+    if dot_file_list:
+        cargs.append("-dot_file_list")
+    if dot_file_show:
+        cargs.append("-dot_file_show")
+    if dot_file_pack is not None:
+        cargs.extend([
+            "-dot_file_pack",
+            dot_file_pack
+        ])
+    if casematch is not None:
+        cargs.extend([
+            "-casematch",
+            casematch
+        ])
+    if data_root is not None:
+        cargs.extend([
+            "-data_root",
+            data_root
+        ])
     ret = AfniSystemCheckPyOutputs(
         root=execution.output_file("."),
     )
