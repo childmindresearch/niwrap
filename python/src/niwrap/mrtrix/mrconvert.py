@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCONVERT_METADATA = Metadata(
-    id="aca2c666cc4ffd4fb2a7efd487bb2e8c05b585e7.boutiques",
+    id="da7602335ef567974f12a1be6aff2b4aa020d52c.boutiques",
     name="mrconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -650,7 +650,7 @@ def mrconvert(
     if axes is not None:
         cargs.extend([
             "-axes",
-            *map(str, axes)
+            ",".join(map(str, axes))
         ])
     if scaling is not None:
         cargs.extend([
