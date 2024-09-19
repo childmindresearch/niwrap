@@ -24,7 +24,7 @@
       "name": "Input Images",
       "command-line-flag": "-i",
       "value-key": "[INPUTS]",
-      "optional": false,
+      "optional": true,
       "description": "Image pair (may be repeated)",
       "type": {
         "id": "input_images",
@@ -53,7 +53,7 @@
       "type": "String",
       "command-line-flag": "-o",
       "value-key": "[OUTPUT]",
-      "optional": false,
+      "optional": true,
       "description": "Output file (matrix in affine mode; image in deformable mode, metric computation mode; ignored in reslicing mode)"
     },
     {
