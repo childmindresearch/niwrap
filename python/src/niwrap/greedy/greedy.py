@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GREEDY_METADATA = Metadata(
-    id="53f701ee93aa79d209732f1463b06a3cae7c3a02.boutiques",
+    id="63a7aec17a1a9f0603c38446d0808ed9f4d63dd0.boutiques",
     name="greedy",
     package="greedy",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
@@ -476,7 +476,7 @@ class GreedyOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output_file: OutputPathType
+    output_file: OutputPathType | None
     """Output file from affine or deformable registration"""
     reslice_output_file: OutputPathType
     """Resliced output image"""
@@ -496,8 +496,8 @@ class GreedyOutputs(typing.NamedTuple):
 
 def greedy_(
     dimensions: int,
-    input_images: GreedyInputImages,
-    output: str,
+    input_images: GreedyInputImages | None = None,
+    output: str | None = None,
     affine: bool = False,
     brute: str | None = None,
     moments: typing.Literal[1, 2] | None = None,
@@ -689,14 +689,16 @@ def greedy_(
         "-d",
         str(dimensions)
     ])
-    cargs.extend([
-        "-i",
-        *input_images.run(execution)
-    ])
-    cargs.extend([
-        "-o",
-        output
-    ])
+    if input_images is not None:
+        cargs.extend([
+            "-i",
+            *input_images.run(execution)
+        ])
+    if output is not None:
+        cargs.extend([
+            "-o",
+            output
+        ])
     if affine:
         cargs.append("-a")
     if brute is not None:
@@ -987,7 +989,7 @@ def greedy_(
         ])
     ret = GreedyOutputs(
         root=execution.output_file("."),
-        output_file=execution.output_file(output),
+        output_file=execution.output_file(output) if (output is not None) else None,
         reslice_output_file=execution.output_file("[RESLICE_OUTPUT_IMAGE]"),
         invert=invert.outputs(execution) if invert else None,
         root_=root.outputs(execution) if root else None,
