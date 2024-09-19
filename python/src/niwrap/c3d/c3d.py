@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 C3D_METADATA = Metadata(
-    id="67101ed80d02d789566ea3f6b68e9b7d66d04728.boutiques",
+    id="58e07723e7477ee290e9447fb17235326c45f8c8.boutiques",
     name="c3d",
     package="c3d",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
@@ -8790,13 +8790,14 @@ class C3dOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    operations: typing.Union[C3dOutputOutputs]
-    """Outputs from `C3dOutput`."""
+    operations: typing.List[typing.Union[C3dOutputOutputs]]
+    """Outputs from `C3dOutput`.This is a list of outputs with the same length
+    and order as the inputs."""
 
 
 def c3d_(
     input_: list[InputPathType],
-    operations: typing.Union[C3dAccum, C3dAcos, C3dAdd, C3dAlignLandmarks, C3dAnisotropicDiffusion, C3dAntialias, C3dSet, C3dAsin, C3dAtan2, C3dBackground, C3dN4BiasCorrection, C3dBinarize, C3dCanny, C3dCeil, C3dCentroid, C3dCentroidMark, C3dConnectedComponents, C3dClear, C3dClip, C3dColorMap, C3dCompress, C3dNoCompress, C3dConv, C3dCoordinateMapVoxel, C3dCoordinateMapPhysical, C3dCopyTransform, C3dCos, C3dCreate, C3dDicomSeriesList, C3dDicomSeriesRead, C3dDilate, C3dDivide, C3dDuplicate, C3dEndaccum, C3dEndfor, C3dErode, C3dErf, C3dExp, C3dExportPatches, C3dExportPatchesAug, C3dExtrudeSeg, C3dFillBackgroundWithNoise, C3dFft, C3dFlip, C3dFloor, C3dForeach, C3dForeachComp, C3dGlm, C3dGradient, C3dHelp, C3dHolefill, C3dHessianEigenvalues, C3dHessianObjectness, C3dHistogramMatch, C3dInfo, C3dInfoFull, C3dInsert, C3dInterpolation, C3dIterations, C3dLabelOverlap, C3dLabelStatistics, C3dLandmarksToSpheres, C3dLaplacian, C3dLevelset, C3dLevelsetCurvature, C3dLevelsetAdvection, C3dLog, C3dLog10, C3dManual, C3dMatchBoundingBox, C3dMaximum, C3dMulticomponentSplit, C3dMean, C3dMedianFilter, C3dMerge, C3dMeanFilter, C3dMutualInfo, C3dMinimum, C3dMixtureModel, C3dMoments, C3dMattesMutualInfo, C3dMeanSquare, C3dMultiply, C3dNormalizedCrossCorrelation, C3dNormalizedCorrelation, C3dNormalizedMutualInfo, C3dNoiseGaussian, C3dNoisePoisson, C3dNoiseSpeckle, C3dNoiseSaltPepper, C3dNoMulticomponentSplit, C3dNormalizeLocalWindow, C3dNormpdf, C3dNoround, C3dNospm, C3dOutput, C3dOutputMulticomponent, C3dOutputMultipleMulticomponent, C3dOrient, C3dOutputMultiple, C3dOrient_, C3dOrigin, C3dOriginVoxel, C3dOriginVoxelCoord, C3dOverlap, C3dOverlayLabelImage, C3dPad, C3dPadTo, C3dPca, C3dPercentIntensityMode, C3dPixel, C3dPop, C3dPopas, C3dProbe, C3dPush, C3dRank, C3dReciprocal, C3dRegion, C3dReorder, C3dRetainLabels, C3dRfApply, C3dRfTrain, C3dRfParamPatch, C3dRfParamUsexyz, C3dRfParamNousexyz, C3dRfParamNtrees, C3dRfParamTreedepth, C3dSetSform, C3dReplace, C3dResample, C3dResampleIso, C3dResampleMm, C3dResliceItk, C3dResliceMatrix, C3dResliceIdentity, C3dRgb2hsv, C3dRms, C3dRound, C3dScale, C3dSetSform_, C3dSin, C3dSlice, C3dSliceAll, C3dSharpen, C3dShift, C3dSignedDistanceTransform, C3dSmooth, C3dSmoothFast, C3dSpacing, C3dSplit, C3dSqrt, C3dStaple, C3dStructureTensorEigenvalues, C3dSpm, C3dSubtract, C3dSupervoxel, C3dStretch, C3dSwapdim, C3dTestImage, C3dTestProbe, C3dThreshold, C3dTile, C3dTrim, C3dTrimToSize, C3dType, C3dVerbose, C3dNoverbose, C3dVersion, C3dVote, C3dVoteMrf, C3dVoteLabel, C3dVoxelSum, C3dVoxelIntegral, C3dVoxelwiseRegression, C3dWarp, C3dWarpLabel, C3dWrap, C3dWeightedSum, C3dWeightedSumVoxelwise],
+    operations: list[typing.Union[C3dAccum, C3dAcos, C3dAdd, C3dAlignLandmarks, C3dAnisotropicDiffusion, C3dAntialias, C3dSet, C3dAsin, C3dAtan2, C3dBackground, C3dN4BiasCorrection, C3dBinarize, C3dCanny, C3dCeil, C3dCentroid, C3dCentroidMark, C3dConnectedComponents, C3dClear, C3dClip, C3dColorMap, C3dCompress, C3dNoCompress, C3dConv, C3dCoordinateMapVoxel, C3dCoordinateMapPhysical, C3dCopyTransform, C3dCos, C3dCreate, C3dDicomSeriesList, C3dDicomSeriesRead, C3dDilate, C3dDivide, C3dDuplicate, C3dEndaccum, C3dEndfor, C3dErode, C3dErf, C3dExp, C3dExportPatches, C3dExportPatchesAug, C3dExtrudeSeg, C3dFillBackgroundWithNoise, C3dFft, C3dFlip, C3dFloor, C3dForeach, C3dForeachComp, C3dGlm, C3dGradient, C3dHelp, C3dHolefill, C3dHessianEigenvalues, C3dHessianObjectness, C3dHistogramMatch, C3dInfo, C3dInfoFull, C3dInsert, C3dInterpolation, C3dIterations, C3dLabelOverlap, C3dLabelStatistics, C3dLandmarksToSpheres, C3dLaplacian, C3dLevelset, C3dLevelsetCurvature, C3dLevelsetAdvection, C3dLog, C3dLog10, C3dManual, C3dMatchBoundingBox, C3dMaximum, C3dMulticomponentSplit, C3dMean, C3dMedianFilter, C3dMerge, C3dMeanFilter, C3dMutualInfo, C3dMinimum, C3dMixtureModel, C3dMoments, C3dMattesMutualInfo, C3dMeanSquare, C3dMultiply, C3dNormalizedCrossCorrelation, C3dNormalizedCorrelation, C3dNormalizedMutualInfo, C3dNoiseGaussian, C3dNoisePoisson, C3dNoiseSpeckle, C3dNoiseSaltPepper, C3dNoMulticomponentSplit, C3dNormalizeLocalWindow, C3dNormpdf, C3dNoround, C3dNospm, C3dOutput, C3dOutputMulticomponent, C3dOutputMultipleMulticomponent, C3dOrient, C3dOutputMultiple, C3dOrient_, C3dOrigin, C3dOriginVoxel, C3dOriginVoxelCoord, C3dOverlap, C3dOverlayLabelImage, C3dPad, C3dPadTo, C3dPca, C3dPercentIntensityMode, C3dPixel, C3dPop, C3dPopas, C3dProbe, C3dPush, C3dRank, C3dReciprocal, C3dRegion, C3dReorder, C3dRetainLabels, C3dRfApply, C3dRfTrain, C3dRfParamPatch, C3dRfParamUsexyz, C3dRfParamNousexyz, C3dRfParamNtrees, C3dRfParamTreedepth, C3dSetSform, C3dReplace, C3dResample, C3dResampleIso, C3dResampleMm, C3dResliceItk, C3dResliceMatrix, C3dResliceIdentity, C3dRgb2hsv, C3dRms, C3dRound, C3dScale, C3dSetSform_, C3dSin, C3dSlice, C3dSliceAll, C3dSharpen, C3dShift, C3dSignedDistanceTransform, C3dSmooth, C3dSmoothFast, C3dSpacing, C3dSplit, C3dSqrt, C3dStaple, C3dStructureTensorEigenvalues, C3dSpm, C3dSubtract, C3dSupervoxel, C3dStretch, C3dSwapdim, C3dTestImage, C3dTestProbe, C3dThreshold, C3dTile, C3dTrim, C3dTrimToSize, C3dType, C3dVerbose, C3dNoverbose, C3dVersion, C3dVote, C3dVoteMrf, C3dVoteLabel, C3dVoxelSum, C3dVoxelIntegral, C3dVoxelwiseRegression, C3dWarp, C3dWarpLabel, C3dWrap, C3dWeightedSum, C3dWeightedSumVoxelwise]],
     output: str,
     runner: Runner | None = None,
 ) -> C3dOutputs:
@@ -8818,14 +8819,14 @@ def c3d_(
     cargs = []
     cargs.append("c3d")
     cargs.append(" ".join([execution.input_file(f) for f in input_]))
-    cargs.extend(operations.run(execution))
+    cargs.extend([a for c in [s.run(execution) for s in operations] for a in c])
     cargs.extend([
         "-o",
         output
     ])
     ret = C3dOutputs(
         root=execution.output_file("."),
-        operations=operations.outputs(execution),
+        operations=[i.outputs(execution) if hasattr(i, "outputs") else None for i in operations],
     )
     execution.run(cargs)
     return ret

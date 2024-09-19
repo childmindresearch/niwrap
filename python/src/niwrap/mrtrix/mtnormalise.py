@@ -286,7 +286,7 @@ def mtnormalise(
         check_norm=execution.output_file(check_norm) if (check_norm is not None) else None,
         check_mask=execution.output_file(check_mask) if (check_mask is not None) else None,
         check_factors=execution.output_file(check_factors) if (check_factors is not None) else None,
-        input_output=[i.outputs(execution) for i in input_output],
+        input_output=[i.outputs(execution) if hasattr(i, "outputs") else None for i in input_output],
     )
     execution.run(cargs)
     return ret

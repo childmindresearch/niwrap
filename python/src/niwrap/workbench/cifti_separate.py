@@ -406,9 +406,9 @@ def cifti_separate(
     ret = CiftiSeparateOutputs(
         root=execution.output_file("."),
         volume_all=volume_all.outputs(execution) if volume_all else None,
-        label=[i.outputs(execution) for i in label] if label else None,
-        metric=[i.outputs(execution) for i in metric] if metric else None,
-        volume=[i.outputs(execution) for i in volume] if volume else None,
+        label=[i.outputs(execution) if hasattr(i, "outputs") else None for i in label] if label else None,
+        metric=[i.outputs(execution) if hasattr(i, "outputs") else None for i in metric] if metric else None,
+        volume=[i.outputs(execution) if hasattr(i, "outputs") else None for i in volume] if volume else None,
     )
     execution.run(cargs)
     return ret

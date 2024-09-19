@@ -430,7 +430,7 @@ def dwi2fod(
     ret = Dwi2fodOutputs(
         root=execution.output_file("."),
         predicted_signal=execution.output_file(predicted_signal) if (predicted_signal is not None) else None,
-        response_odf=[i.outputs(execution) for i in response_odf],
+        response_odf=[i.outputs(execution) if hasattr(i, "outputs") else None for i in response_odf],
     )
     execution.run(cargs)
     return ret
