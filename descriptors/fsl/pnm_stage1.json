@@ -321,10 +321,7 @@
     {
       "description": "Compulsory arguments",
       "id": "compulsory_args_group",
-      "members": [
-        "infile",
-        "out_basename"
-      ],
+      "members": ["infile", "out_basename"],
       "name": "Compulsory Arguments"
     },
     {

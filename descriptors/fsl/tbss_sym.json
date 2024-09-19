@@ -102,11 +102,7 @@
     {
       "description": "Miscellaneous options for tbss_skeleton",
       "id": "miscellaneous_params_group",
-      "members": [
-        "help_flag",
-        "debug_flag",
-        "debug2_flag"
-      ],
+      "members": ["help_flag", "debug_flag", "debug2_flag"],
       "name": "Miscellaneous Parameters"
     }
   ],

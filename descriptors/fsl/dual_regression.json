@@ -96,9 +96,7 @@
     {
       "description": "Optional parameters for dual regression",
       "id": "optional_params_group",
-      "members": [
-        "thr_flag"
-      ],
+      "members": ["thr_flag"],
       "name": "Optional Parameters"
     }
   ],

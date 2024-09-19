@@ -102,10 +102,7 @@
       "description": "Output a movie of the newly created dataset (AGIF or MPEG).",
       "command-line-flag": "-do_movie",
       "optional": true,
-      "value-choices": [
-        "AGIF",
-        "MPEG"
-      ],
+      "value-choices": ["AGIF", "MPEG"],
       "value-key": "[DO_MOVIE]"
     }
   ],

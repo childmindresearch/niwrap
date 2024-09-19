@@ -57,10 +57,7 @@
       "description": "'float' or 'int'. Write output with float or int.",
       "optional": true,
       "default-value": "float",
-      "value-choices": [
-        "float",
-        "int"
-      ]
+      "value-choices": ["float", "int"]
     },
     {
       "id": "output_type",
@@ -69,12 +66,7 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": [
-        "NIFTI",
-        "NIFTI_PAIR",
-        "NIFTI_GZ",
-        "NIFTI_PAIR_GZ"
-      ]
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     },
     {
       "id": "stat_image",
@@ -137,19 +129,13 @@
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": [
-        "bg_thresh",
-        "full_bg_range",
-        "auto_thresh_bg"
-      ],
+      "members": ["bg_thresh", "full_bg_range", "auto_thresh_bg"],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_2",
       "name": "Mutex group 2",
-      "members": [
-        "stat_image2"
-      ],
+      "members": ["stat_image2"],
       "mutually-exclusive": true
     }
   ],
