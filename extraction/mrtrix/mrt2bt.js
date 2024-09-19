@@ -373,6 +373,9 @@ for (const file of fs.readdirSync(jsonPath)) {
             ]
           };
     }
+    else if (descriptor.name == 'mrconvert') {
+        descriptor.inputs[4]["list-seperator"] = ",";
+    }
 
     console.log(" done");
 

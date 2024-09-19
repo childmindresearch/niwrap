@@ -83,7 +83,7 @@
       "optional": true,
       "integer": true,
       "list": true,
-      "list-separator": ","
+      "list-seperator": ","
     },
     {
       "id": "scaling",
