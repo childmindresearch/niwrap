@@ -4,7 +4,7 @@
   "description": "Align EPI to anatomical datasets or vice versa",
   "author": "AFNI Team",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/align_epi_anat.py.html",
-  "command-line": "align_epi_anat.py [EPIDATASET] [ANATDATASET] [EPIBASE] [OUTPUT_OPTIONS] [ALIGNMENT_OPTIONS] [PREPROCESSING_OPTIONS]",
+  "command-line": "align_epi_anat [EPI] [ANAT] [EPI_BASE] [ANAT2EPI] [EPI2ANAT] [SUFFIX] [ADDEDGE] [BIG_MOVE] [GIANT_MOVE] [GINORMOUS_MOVE] [KEEP_RM_FILES] [PREP_ONLY] [ANA_HAS_SKULL] [EPI_STRIP] [VOLREG_METHOD] [EX_MODE] [OVERWRITE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -13,7 +13,7 @@
       "description": "EPI dataset to align or to which to align",
       "type": "File",
       "command-line-flag": "-epi",
-      "value-key": "[EPIDATASET]",
+      "value-key": "[EPI]",
       "optional": false
     },
     {
@@ -22,7 +22,7 @@
       "description": "Anatomical dataset to align or to which to align",
       "type": "File",
       "command-line-flag": "-anat",
-      "value-key": "[ANATDATASET]",
+      "value-key": "[ANAT]",
       "optional": false
     },
     {
@@ -31,7 +31,7 @@
       "description": "Base sub-brick to use for alignment (0/mean/median/max/subbrick#)",
       "type": "String",
       "command-line-flag": "-epi_base",
-      "value-key": "[EPIBASE]",
+      "value-key": "[EPI_BASE]",
       "optional": false
     },
     {
@@ -121,9 +121,12 @@
       "description": "Do not skullstrip anat dataset",
       "type": "String",
       "command-line-flag": "-anat_has_skull",
-      "value-key": "[ANAT_HAS_SKULL]",
+      "value-key": "[ANA_HAS_SKULL]",
       "optional": true,
-      "value-choices": ["yes", "no"]
+      "value-choices": [
+        "yes",
+        "no"
+      ]
     },
     {
       "id": "epi_strip",
@@ -133,7 +136,11 @@
       "command-line-flag": "-epi_strip",
       "value-key": "[EPI_STRIP]",
       "optional": true,
-      "value-choices": ["3dSkullStrip", "3dAutomask", "None"]
+      "value-choices": [
+        "3dSkullStrip",
+        "3dAutomask",
+        "None"
+      ]
     },
     {
       "id": "volreg_method",
@@ -143,7 +150,11 @@
       "command-line-flag": "-volreg_method",
       "value-key": "[VOLREG_METHOD]",
       "optional": true,
-      "value-choices": ["3dvolreg", "3dWarpDrive", "3dAllineate"]
+      "value-choices": [
+        "3dvolreg",
+        "3dWarpDrive",
+        "3dAllineate"
+      ]
     },
     {
       "id": "ex_mode",
@@ -153,7 +164,12 @@
       "command-line-flag": "-ex_mode",
       "value-key": "[EX_MODE]",
       "optional": true,
-      "value-choices": ["quiet", "echo", "dry_run", "script"]
+      "value-choices": [
+        "quiet",
+        "echo",
+        "dry_run",
+        "script"
+      ]
     },
     {
       "id": "overwrite",

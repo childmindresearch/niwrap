@@ -4,12 +4,12 @@
   "author": "AFNI Team",
   "description": "A program to find the convex hull, or perform a Delaunay triangulation of a set of points.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvexHull.html",
-  "command-line": "<main_flags> <volume_flags> <surface_flags> <triangulation_flags> <output_flags> <debug_flags> <global_flags>",
+  "command-line": "ConvexHullTriangulation [VOL] [ISOVAL] [ISORANGE] [ISOCMASK] [XFORM] [SURFACE_INPUT] [SURF_VOL] [INPUT_1D] [Q_OPT] [PROJ_XY] [ORIG_COORD] [THESE_COORDS] [OUTPUT_PREFIX] [DEBUG] [NOVOLREG] [SETENV]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "Input AFNI (or AFNI readable) volume.",
-      "value-key": "[VOLUME]",
+      "value-key": "[VOL]",
       "type": "File",
       "optional": true,
       "id": "vol",
@@ -75,7 +75,7 @@
     },
     {
       "description": "Construct the triangulation of the points contained in 1D file XYZ. Use AFNI's [] selectors to specify the XYZ columns.",
-      "value-key": "[XYZ]",
+      "value-key": "[INPUT_1D]",
       "type": "File",
       "optional": true,
       "id": "input_1d",
@@ -111,7 +111,7 @@
     },
     {
       "description": "Use coordinates in COORDS.1D when writing surface.",
-      "value-key": "[COORDS]",
+      "value-key": "[THESE_COORDS]",
       "type": "File",
       "optional": true,
       "id": "these_coords",
@@ -120,7 +120,7 @@
     },
     {
       "description": "Prefix of output surface. Specifies the format and prefix of the surface.",
-      "value-key": "[O_PREFIX]",
+      "value-key": "[OUTPUT_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "output_prefix",
@@ -157,7 +157,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[O_PREFIX]",
+      "path-template": "[OUTPUT_PREFIX]",
       "description": "Output surface file",
       "optional": true,
       "id": "out_surf",

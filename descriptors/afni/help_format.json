@@ -3,7 +3,7 @@
   "name": "help_format",
   "author": "AFNI Team",
   "description": "Formats text by converting URLs into HTML hyperlinks",
-  "command-line": "help_format",
+  "command-line": "help_format [STDIN]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

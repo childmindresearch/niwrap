@@ -3,7 +3,7 @@
   "name": "fat_proc_filter_dwis",
   "author": "AFNI Team",
   "description": "Filter out user-found and user-defined bad volumes from DWI data sets.",
-  "command-line": "fat_proc_filter_dwis -in_dwi [INPUT_DWI] [INPUT_GRADIENT] -select '[SELECT_STRING]' -prefix [OUTPUT_PREFIX] [OPTIONAL_PARAMS]",
+  "command-line": "fat_proc_filter_dwis [INPUT_DWI] [INPUT_GRADIENT] [SELECT_STRING] [SELECT_FILE] [OUTPUT_PREFIX] [INPUT_BVALS] [UNIT_MAG_OUT] [QC_PREFIX] [NO_QC_VIEW] [NO_CMD_OUT] [DO_MOVIE]",
   "inputs": [
     {
       "id": "input_dwi",
@@ -102,7 +102,10 @@
       "description": "Output a movie of the newly created dataset (AGIF or MPEG).",
       "command-line-flag": "-do_movie",
       "optional": true,
-      "value-choices": ["AGIF", "MPEG"],
+      "value-choices": [
+        "AGIF",
+        "MPEG"
+      ],
       "value-key": "[DO_MOVIE]"
     }
   ],

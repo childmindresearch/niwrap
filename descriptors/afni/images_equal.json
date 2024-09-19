@@ -3,7 +3,7 @@
   "name": "images_equal",
   "author": "AFNI Team",
   "description": "A simple program to test if two 2D images are identical.",
-  "command-line": "images_equal [OPTIONS] [FILE_A] [FILE_B]",
+  "command-line": "images_equal [FILE_A] [FILE_B] [ALL_FLAG]",
   "inputs": [
     {
       "description": "First image file to compare.",
@@ -24,7 +24,7 @@
     {
       "command-line-flag": "-all",
       "description": "Compare all images in the files; all must be equal for exit status to be 1.",
-      "value-key": "[ALL]",
+      "value-key": "[ALL_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "all_flag",

@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "A script to transform an anatomical dataset to align with some standard space template and to apply the same TLRC transform obtained with @auto_tlrc in Usage 1 mode to other datasets.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@auto_tlrc.html",
-  "command-line": "@auto_tlrc [OPTIONS] <-base template> <-input anat>",
+  "command-line": "@auto_tlrc [BASE_TEMPLATE] [INPUT_ANAT] [NO_SS] [WARP_ORIG_VOL] [DXYZ] [DX] [DY] [DZ] [PAD_BASE] [KEEP_TMP] [CLEAN] [XFORM] [NO_AVOID_EYES] [NCR] [ONEPASS] [TWOPASS] [MAXITE] [NOT_OK_MAXITE] [INWEIGHT] [RIGID_EQUIV] [INIT_XFORM] [NO_PRE] [OUT_SPACE] [3DALLINEATE] [3DALCOST] [OVERWRITE] [APAR] [INPUT_DATASET] [PAD_INPUT] [ONEWARP] [TWOWARP] [RMODE] [PREFIX] [SUFFIX] [KEEP_VIEW] [BASE_COPY] [BASE_LIST] [USE_GZ] [VERB]",
   "inputs": [
     {
       "id": "base_template",
@@ -220,7 +220,7 @@
       "command-line-flag": "-3dAllineate",
       "optional": true,
       "type": "Flag",
-      "value-key": "[THREEDALLINEATE]"
+      "value-key": "[3DALLINEATE]"
     },
     {
       "id": "3dAlcost",
@@ -229,7 +229,7 @@
       "command-line-flag": "-3dAlcost",
       "optional": true,
       "type": "String",
-      "value-key": "[THREEDALCOST]"
+      "value-key": "[3DALCOST]"
     },
     {
       "id": "overwrite",
@@ -355,7 +355,7 @@
       "command-line-flag": "-verb",
       "optional": true,
       "type": "Flag",
-      "value-key": "[VERBOSE]"
+      "value-key": "[VERB]"
     }
   ],
   "schema-version": "0.5",

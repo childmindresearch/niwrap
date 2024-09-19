@@ -3,7 +3,7 @@
   "name": "@Align_Centers",
   "author": "AFNI Team",
   "description": "Moves the center of a dataset (DSET) to the center of a base volume (BASE) and optionally creates a transform matrix.",
-  "command-line": "@Align_Centers <-base BASE> <-dset DSET> [ADD_CHILDREN] [ECHO_FLAG] [OVERWRITE_FLAG] [PREFIX_PARAM] [MATRIX_ONLY_FLAG] [MATRIX_ONLY_NO_DSET_FLAG] [NO_CP_FLAG] [CENTER_GRID_FLAG] [CENTER_CM_FLAG] [CENTER_CM_NO_AMASK_FLAG] [SHIFT_XFORM_PARAM] [SHIFT_XFORM_INV_PARAM]",
+  "command-line": "@Align_Centers [BASE] [DSET] [CHILDREN] [ECHO] [OVERWRITE] [PREFIX] [MATRIX_ONLY] [MATRIX_ONLY_NO_DSET] [NO_CP] [CENTER_GRID] [CENTER_CM] [CENTER_CM_NO_AMASK] [SHIFT_XFORM] [SHIFT_XFORM_INV]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-child",
       "description": "Additional datasets (originally in register with DSET) that should be shifted in the same way.",
-      "value-key": "[ADD_CHILDREN]",
+      "value-key": "[CHILDREN]",
       "type": "File",
       "list": true,
       "optional": true,
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-echo",
       "description": "Echo all commands to terminal for debugging.",
-      "value-key": "[ECHO_FLAG]",
+      "value-key": "[ECHO]",
       "type": "Flag",
       "optional": true,
       "id": "echo",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-overwrite",
       "description": "Overwrite existing output files.",
-      "value-key": "[OVERWRITE_FLAG]",
+      "value-key": "[OVERWRITE]",
       "type": "Flag",
       "optional": true,
       "id": "overwrite",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Custom prefix for the result files.",
-      "value-key": "[PREFIX_PARAM]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": true,
       "id": "prefix",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "-1Dmat_only",
       "description": "Only output the transform needed to align the centers without shifting any child volumes.",
-      "value-key": "[MATRIX_ONLY_FLAG]",
+      "value-key": "[MATRIX_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "matrix_only",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "-1Dmat_only_nodset",
       "description": "Like -1Dmat_only, but no datasets are created or changed.",
-      "value-key": "[MATRIX_ONLY_NO_DSET_FLAG]",
+      "value-key": "[MATRIX_ONLY_NO_DSET]",
       "type": "Flag",
       "optional": true,
       "id": "matrix_only_no_dset",
@@ -83,7 +83,7 @@
     {
       "command-line-flag": "-no_cp",
       "description": "Do not create new data; shift existing ones. Use with caution.",
-      "value-key": "[NO_CP_FLAG]",
+      "value-key": "[NO_CP]",
       "type": "Flag",
       "optional": true,
       "id": "no_cp",
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "-grid",
       "description": "Center is that of the volume's grid (default).",
-      "value-key": "[CENTER_GRID_FLAG]",
+      "value-key": "[CENTER_GRID]",
       "type": "Flag",
       "optional": true,
       "id": "center_grid",
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "-cm",
       "description": "Center is the center of mass of the volume.",
-      "value-key": "[CENTER_CM_FLAG]",
+      "value-key": "[CENTER_CM]",
       "type": "Flag",
       "optional": true,
       "id": "center_cm",
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "-cm_no_amask",
       "description": "Like -cm, but with no automask.",
-      "value-key": "[CENTER_CM_NO_AMASK_FLAG]",
+      "value-key": "[CENTER_CM_NO_AMASK]",
       "type": "Flag",
       "optional": true,
       "id": "center_cm_no_amask",
@@ -119,7 +119,7 @@
     {
       "command-line-flag": "-shift_xform",
       "description": "Apply shift translation from a 1D file.",
-      "value-key": "[SHIFT_XFORM_PARAM]",
+      "value-key": "[SHIFT_XFORM]",
       "type": "File",
       "optional": true,
       "id": "shift_xform",
@@ -128,7 +128,7 @@
     {
       "command-line-flag": "-shift_xform_inv",
       "description": "Apply inverse of shift translation from a 1D file.",
-      "value-key": "[SHIFT_XFORM_INV_PARAM]",
+      "value-key": "[SHIFT_XFORM_INV]",
       "type": "File",
       "optional": true,
       "id": "shift_xform_inv",

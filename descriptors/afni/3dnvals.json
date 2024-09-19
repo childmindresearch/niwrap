@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Tool to print the number of sub-bricks in a 3D dataset",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dnvals.html",
-  "command-line": "3dnvals [ALL_FLAG] [VERBOSE_FLAG] [DATASETS]",
+  "command-line": "3dnvals [DATASETS] [ALL_FLAG] [VERBOSE_FLAG]",
   "inputs": [
     {
       "description": "Input 3D dataset(s)",

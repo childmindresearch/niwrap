@@ -4,12 +4,12 @@
   "author": "AFNI Team",
   "description": "This program changes SUMA's surface specification (Spec) files.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/suma_change_spec.html",
-  "command-line": "suma_change_spec -input [INPUT_FILE] -state [STATE] -domainparent [DOMAIN_PARENT] -output [OUTPUT_FILE] [REMOVE_FLAG] [ANATOMICAL_FLAG]",
+  "command-line": "suma_change_spec [INPUT] [STATE] [DOMAINPARENT] [OUTPUT] [REMOVE] [ANATOMICAL]",
   "schema-version": "0.5",
   "inputs": [
     {
       "description": "SUMA Spec file to change",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT]",
       "type": "File",
       "optional": false,
       "id": "input",
@@ -25,7 +25,7 @@
     },
     {
       "description": "New Domain Parent for the state within the Spec file",
-      "value-key": "[DOMAIN_PARENT]",
+      "value-key": "[DOMAINPARENT]",
       "type": "String",
       "optional": true,
       "id": "domainparent",
@@ -33,7 +33,7 @@
     },
     {
       "description": "Name to which the new Spec file will be temporarily written",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTPUT]",
       "type": "String",
       "optional": true,
       "id": "output",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-remove",
       "description": "Remove the automatically created backup",
-      "value-key": "[REMOVE_FLAG]",
+      "value-key": "[REMOVE]",
       "type": "Flag",
       "optional": true,
       "id": "remove",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "-anatomical",
       "description": "Add 'Anatomical = Y' to the selected SurfaceState",
-      "value-key": "[ANATOMICAL_FLAG]",
+      "value-key": "[ANATOMICAL]",
       "type": "Flag",
       "optional": true,
       "id": "anatomical",
@@ -60,14 +60,14 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTPUT]",
       "description": "New Spec file",
       "optional": true,
       "id": "output_spec",
       "name": "Output Spec file"
     },
     {
-      "path-template": "[INPUT_FILE].bkp",
+      "path-template": "[INPUT].bkp",
       "description": "Backup of the original Spec file",
       "optional": true,
       "id": "backup_spec",

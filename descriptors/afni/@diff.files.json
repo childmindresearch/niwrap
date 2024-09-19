@@ -3,7 +3,7 @@
   "name": "@diff.files",
   "author": "AFNI Team",
   "description": "Show file differences (between specified files and those in another directory)",
-  "command-line": "@diff.files [OPTIONS] [FILES] [OLD_DIR]",
+  "command-line": "@diff.files [FILES] [OLD_DIR] [DIFF_OPTS] [DIFF_PROG] [IGNORE_MISSING] [LONGLIST] [SAVE] [SHOW] [XXDIFF] [X_FLAG] [VERBOSITY]",
   "inputs": [
     {
       "description": "List of files to compare",
@@ -43,7 +43,7 @@
     {
       "command-line-flag": "-ignore_missing",
       "description": "Continue even if files are missing",
-      "value-key": "[IGNORE_MISSING_FLAG]",
+      "value-key": "[IGNORE_MISSING]",
       "type": "Flag",
       "optional": true,
       "id": "ignore_missing",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-longlist",
       "description": "Run 'ls -l' on both directories instead of listing files",
-      "value-key": "[LONGLIST_FLAG]",
+      "value-key": "[LONGLIST]",
       "type": "Flag",
       "optional": true,
       "id": "longlist",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-save",
       "description": "Create PDFs of diffs",
-      "value-key": "[SAVE_FLAG]",
+      "value-key": "[SAVE]",
       "type": "Flag",
       "optional": true,
       "id": "save",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-show",
       "description": "Show diffs using 'diff'",
-      "value-key": "[SHOW_FLAG]",
+      "value-key": "[SHOW]",
       "type": "Flag",
       "optional": true,
       "id": "show",
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-xxdiff",
       "description": "Show diffs using 'xxdiff'",
-      "value-key": "[XXDIFF_FLAG]",
+      "value-key": "[XXDIFF]",
       "type": "Flag",
       "optional": true,
       "id": "xxdiff",
@@ -97,7 +97,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Set verbosity level (2 or 3)",
-      "value-key": "[VERB_LEVEL]",
+      "value-key": "[VERBOSITY]",
       "type": "Number",
       "optional": true,
       "id": "verbosity",

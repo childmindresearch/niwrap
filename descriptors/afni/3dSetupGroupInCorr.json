@@ -3,7 +3,7 @@
   "name": "3dSetupGroupInCorr",
   "author": "AFNI Team",
   "description": "Pre-process a collection of AFNI 3D+time datasets for use with Group InstaCorr.",
-  "command-line": "3dSetupGroupInCorr [OPTIONS] [DATASETS...]",
+  "command-line": "3dSetupGroupInCorr [DATASETS] [MASK_DATASET] [PREFIX] [SHORT_FLAG] [BYTE_FLAG] [LABELS_FILE] [DELETE_FLAG] [PREP_METHOD] [LR_PAIRS]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "AFNI 3D+time datasets to be processed.",
-      "value-key": "[DATASETS...]",
+      "value-key": "[DATASETS]",
       "type": "File",
       "optional": false,
       "list": true,
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-LRpairs",
       "description": "Set the domains for left and right hemisphere surfaces and indicate that the datasets are arranged in (Left, Right) pairs.",
-      "value-key": "[L_SURF R_SURF]",
+      "value-key": "[LR_PAIRS]",
       "type": "String",
       "list": true,
       "max-list-entries": 2,

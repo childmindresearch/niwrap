@@ -4,13 +4,13 @@
   "author": "AFNI Team",
   "description": "Creates a mesh representation of an electrode grid for use with SUMA",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ElectroGrid.html",
-  "command-line": "@ElectroGrid [STRIP_NX] [GRID_NX] [GRID_NY] [PREFIX] [XYZ_COORDS] [WITH_MARKERS] [ECHO]",
+  "command-line": "@ElectroGrid [STRIP] [GRID] [PREFIX] [COORDS] [WITH_MARKERS] [ECHO]",
   "schema-version": "0.5",
   "inputs": [
     {
       "command-line-flag": "-strip",
       "description": "Make an Nx strip (array) of electrodes.",
-      "value-key": "[STRIP_NX]",
+      "value-key": "[STRIP]",
       "type": "Number",
       "optional": true,
       "id": "strip",
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-grid",
       "description": "Make an Nx by Ny grid of electrodes. A node at (i,j) has a node ID = i+Nx*j with 0<=i<Nx and 0<=j<=Ny",
-      "value-key": "[GRID_NX] [GRID_NY]",
+      "value-key": "[GRID]",
       "type": "Number",
       "optional": true,
       "id": "grid",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-coords",
       "description": "Specify the coordinates of the nodes on the grid, or the array. XYZ.1D should have three columns, with each row specifying the coordinates of one node.",
-      "value-key": "[XYZ_COORDS]",
+      "value-key": "[COORDS]",
       "type": "File",
       "optional": true,
       "id": "coords",

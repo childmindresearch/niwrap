@@ -3,7 +3,7 @@
   "name": "gen_ss_review_scripts",
   "author": "AFNI Team",
   "description": "Generate single subject analysis review scripts",
-  "command-line": "gen_ss_review_scripts.py [INPUT_FILES] [OPTIONS]",
+  "command-line": "gen_ss_review_scripts [SUBJECT_ID] [RM_TRS] [NUM_STIM] [MB_LEVEL] [SLICE_PATTERN] [MOTION_DSET] [OUTLIER_DSET] [ENORM_DSET] [MOT_LIMIT] [OUT_LIMIT] [XMAT_REGRESS] [XMAT_UNCENSORED] [STATS_DSET] [FINAL_ANAT] [FINAL_VIEW] [PREFIX] [VERBOSITY] [UVARS_JSON] [INIT_UVARS_JSON]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -146,7 +146,7 @@
     },
     {
       "description": "Set the prefix for script names",
-      "value-key": "[OUT_PREFIX]",
+      "value-key": "[PREFIX]",
       "command-line-flag": "-prefix",
       "type": "String",
       "optional": true,
@@ -155,7 +155,7 @@
     },
     {
       "description": "Set the verbosity level",
-      "value-key": "[VERBOSITY_LEVEL]",
+      "value-key": "[VERBOSITY]",
       "command-line-flag": "-verb",
       "type": "Number",
       "optional": true,

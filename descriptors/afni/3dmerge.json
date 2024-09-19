@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "3dmerge edits and merges 3D datasets by applying various operations like thresholding, blurring, clustering, and more.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmerge.html",
-  "command-line": "3dmerge [INPUT_FILES] [EDITING_OPTIONS] [MERGING_OPTIONS] -prefix [OUTPUT_FILE]",
+  "command-line": "3dmerge [INPUT_FILES] [OUTPUT_FILE] [BLUR_FWHM] [THRESHOLD] [CLUST] [DINDEX] [TINDEX] [ABSOLUTE] [DXYZ] [GMEAN] [GMAX] [QUIET]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-1thresh",
       "description": "Threshold data to censor the intensities; only valid for 'fith', 'fico', or 'fitt' datasets",
-      "value-key": "[THRESH]",
+      "value-key": "[THRESHOLD]",
       "type": "Number",
       "optional": true,
       "id": "threshold",
@@ -52,7 +52,7 @@
       "list": true,
       "min-list-entries": 2,
       "max-list-entries": 2,
-      "value-key": "[CLUST_PARAMS]",
+      "value-key": "[CLUST]",
       "type": "Number",
       "optional": true,
       "id": "clust",
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-1abs",
       "description": "Take absolute values of intensities",
-      "value-key": "[ABS_FLAG]",
+      "value-key": "[ABSOLUTE]",
       "type": "Flag",
       "optional": true,
       "id": "absolute",
@@ -88,7 +88,7 @@
     {
       "command-line-flag": "-dxyz=1",
       "description": "Force cluster editing to behave as if all voxel dimensions were set to 1 mm",
-      "value-key": "[DXYZ_FLAG]",
+      "value-key": "[DXYZ]",
       "type": "Flag",
       "optional": true,
       "id": "dxyz",
@@ -97,7 +97,7 @@
     {
       "command-line-flag": "-gmean",
       "description": "Combine datasets by averaging intensities (default)",
-      "value-key": "[GMEAN_FLAG]",
+      "value-key": "[GMEAN]",
       "type": "Flag",
       "optional": true,
       "id": "gmean",
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "-gmax",
       "description": "Combine datasets by taking max intensity",
-      "value-key": "[GMAX_FLAG]",
+      "value-key": "[GMAX]",
       "type": "Flag",
       "optional": true,
       "id": "gmax",
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "-quiet",
       "description": "Reduce the number of messages shown",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",

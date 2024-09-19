@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Computes size of a box that fits around the volume. Can also be used to crop the volume to that box.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutobox.html",
-  "command-line": "3dAutobox [OPTIONS] [INPUT_FILE]",
+  "command-line": "3dAutobox [INPUT] [PREFIX] [ALT_INPUT] [NOCLUST] [EXTENT] [EXTENT_IJK] [EXTENT_IJK_TO_FILE] [EXTENT_IJK_MIDSLICE] [EXTENT_IJKORD] [EXTENT_IJKORD_TO_FILE] [EXTENT_XYZ_TO_FILE] [EXTENT_XYZ_MIDSLICE] [NPAD] [NPAD_SAFETY_ON]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input dataset",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT]",
       "type": "File",
       "optional": false,
       "id": "input",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-input",
       "description": "An alternate way to specify the input dataset.",
-      "value-key": "[DATASET]",
+      "value-key": "[ALT_INPUT]",
       "type": "File",
       "optional": true,
       "id": "alt_input",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-noclust",
       "description": "Don't do any clustering to find the box. Any non-zero voxel will be preserved in the cropped volume.",
-      "value-key": "[NOCLUST_FLAG]",
+      "value-key": "[NOCLUST]",
       "type": "Flag",
       "optional": true,
       "id": "noclust",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-extent",
       "description": "Write to standard out the spatial extent of the box.",
-      "value-key": "[EXTENT_FLAG]",
+      "value-key": "[EXTENT]",
       "type": "Flag",
       "optional": true,
       "id": "extent",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-extent_ijk",
       "description": "Write out the 6 auto bbox ijk slice numbers to screen: imin imax jmin jmax kmin kmax.",
-      "value-key": "[EXTENT_IJK_FLAG]",
+      "value-key": "[EXTENT_IJK]",
       "type": "Flag",
       "optional": true,
       "id": "extent_ijk",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-extent_ijk_to_file",
       "description": "Write out the 6 auto bbox ijk slice numbers to a simple-formatted text file FF: imin imax jmin jmax kmin kmax.",
-      "value-key": "[FF]",
+      "value-key": "[EXTENT_IJK_TO_FILE]",
       "type": "String",
       "optional": true,
       "id": "extent_ijk_to_file",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-extent_ijk_midslice",
       "description": "Write out the 3 ijk midslices of the autobox to the screen: imid jmid kmid.",
-      "value-key": "[EXTENT_IJK_MIDSLICE_FLAG]",
+      "value-key": "[EXTENT_IJK_MIDSLICE]",
       "type": "Flag",
       "optional": true,
       "id": "extent_ijk_midslice",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-extent_ijkord",
       "description": "Write out the 6 auto bbox ijk slice numbers to screen in a particular order and format. Useful for scripting.",
-      "value-key": "[EXTENT_IJKORD_FLAG]",
+      "value-key": "[EXTENT_IJKORD]",
       "type": "Flag",
       "optional": true,
       "id": "extent_ijkord",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-extent_ijkord_to_file",
       "description": "Write out the 6 auto bbox ijk slice numbers to a file in a particular order and format. Useful for 3dcalc expressions.",
-      "value-key": "[FFORRD]",
+      "value-key": "[EXTENT_IJKORD_TO_FILE]",
       "type": "String",
       "optional": true,
       "id": "extent_ijkord_to_file",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-extent_xyz_to_file",
       "description": "Write out the 6 auto bbox xyz coordinates to a simple-formatted text file GG: xmin xmax ymin ymax zmin zmax.",
-      "value-key": "[GG]",
+      "value-key": "[EXTENT_XYZ_TO_FILE]",
       "type": "String",
       "optional": true,
       "id": "extent_xyz_to_file",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-extent_xyz_midslice",
       "description": "Write out the 3 xyz midslices of the autobox to the screen: xmid ymid zmid.",
-      "value-key": "[EXTENT_XYZ_MIDSLICE_FLAG]",
+      "value-key": "[EXTENT_XYZ_MIDSLICE]",
       "type": "Flag",
       "optional": true,
       "id": "extent_xyz_midslice",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-npad",
       "description": "Number of extra voxels to pad on each side of box.",
-      "value-key": "[NNN]",
+      "value-key": "[NPAD]",
       "type": "Number",
       "optional": true,
       "id": "npad",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-npad_safety_on",
       "description": "Constrain npad-ded extents to be within dataset.",
-      "value-key": "[NPAD_SAFETY_ON_FLAG]",
+      "value-key": "[NPAD_SAFETY_ON]",
       "type": "Flag",
       "optional": true,
       "id": "npad_safety_on",

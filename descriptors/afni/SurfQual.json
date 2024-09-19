@@ -3,7 +3,7 @@
   "name": "SurfQual",
   "author": "AFNI Team",
   "description": "A program to check the quality of surfaces.",
-  "command-line": "SurfQual -spec [SpecFile] [SURFACES] -sphere [OPTIONS]",
+  "command-line": "SurfQual [SPEC_FILE] [SURFACE_A] [SPHERE_FLAG] [SUMMARY_FLAG] [SELF_INTERSECT_FLAG] [OUTPUT_PREFIX]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-spec",
       "description": "Spec file containing input surfaces.",
-      "value-key": "[SpecFile]",
+      "value-key": "[SPEC_FILE]",
       "type": "File",
       "optional": false,
       "id": "spec_file",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-surf_A",
       "description": "Name of input surface A.",
-      "value-key": "[SURFACES]",
+      "value-key": "[SURFACE_A]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-sphere",
       "description": "Indicates that surfaces read are spherical.",
-      "value-key": "[-sphere]",
+      "value-key": "[SPHERE_FLAG]",
       "type": "Flag",
       "optional": false,
       "id": "sphere_flag",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-summary",
       "description": "Provide summary of results to stdout.",
-      "value-key": "[SUMMARY]",
+      "value-key": "[SUMMARY_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "summary_flag",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-self_intersect",
       "description": "Check if surface is self intersecting.",
-      "value-key": "[SELF_INTERSECT]",
+      "value-key": "[SELF_INTERSECT_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "self_intersect_flag",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Prefix of output files. Default is the surface's label.",
-      "value-key": "[OUTPREF]",
+      "value-key": "[OUTPUT_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "output_prefix",
@@ -68,49 +68,49 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPREF]_Dist.1D.dset",
+      "path-template": "[OUTPUT_PREFIX]_Dist.1D.dset",
       "description": "File containing distances of nodes from the surface's center.",
       "optional": true,
       "id": "dist_output",
       "name": "Distance Output File"
     },
     {
-      "path-template": "[OUTPREF]_Dist.1D.col",
+      "path-template": "[OUTPUT_PREFIX]_Dist.1D.col",
       "description": "Colorized file containing distances of nodes from the surface's center.",
       "optional": true,
       "id": "dist_color_output",
       "name": "Distance Color Output File"
     },
     {
-      "path-template": "[OUTPREF]_BadNodes.1D.dset",
+      "path-template": "[OUTPUT_PREFIX]_BadNodes.1D.dset",
       "description": "File containing nodes with bad dot product values.",
       "optional": true,
       "id": "bad_nodes_output",
       "name": "Bad Nodes Output File"
     },
     {
-      "path-template": "[OUTPREF]_BadNodes.1D.col",
+      "path-template": "[OUTPUT_PREFIX]_BadNodes.1D.col",
       "description": "Colorized file containing nodes with bad dot product values.",
       "optional": true,
       "id": "bad_nodes_color_output",
       "name": "Bad Nodes Color Output File"
     },
     {
-      "path-template": "[OUTPREF]_dotprod.1D.dset",
+      "path-template": "[OUTPUT_PREFIX]_dotprod.1D.dset",
       "description": "File containing dot product values for all nodes.",
       "optional": true,
       "id": "dotprod_output",
       "name": "Dot Product Output File"
     },
     {
-      "path-template": "[OUTPREF]_dotprod.1D.col",
+      "path-template": "[OUTPUT_PREFIX]_dotprod.1D.col",
       "description": "Colorized file containing dot product values for all nodes.",
       "optional": true,
       "id": "dotprod_color_output",
       "name": "Dot Product Color Output File"
     },
     {
-      "path-template": "[OUTPREF]_IntersNodes.1D.dset",
+      "path-template": "[OUTPUT_PREFIX]_IntersNodes.1D.dset",
       "description": "File containing indices of nodes forming segments that intersect the surface.",
       "optional": true,
       "id": "intersect_nodes_output",

@@ -3,7 +3,7 @@
   "name": "1dBandpass",
   "author": "AFNI Team",
   "description": "Bandpass filtering of time series data in AFNI *.1D files",
-  "command-line": "1dBandpass [OPTIONS] [FBOT] [FTOP] [INFILE]",
+  "command-line": "1dBandpass [FBOT] [FTOP] [INFILE] [TIMESTEP] [ORTFILE] [NODETREND] [NORM]",
   "inputs": [
     {
       "description": "Lowest frequency in the passband, in Hz (must be greater than or equal to 0)",
@@ -51,7 +51,7 @@
     {
       "command-line-flag": "-nodetrend",
       "description": "Skip the quadratic detrending of the input",
-      "value-key": "[NODETREND_FLAG]",
+      "value-key": "[NODETREND]",
       "type": "Flag",
       "optional": true,
       "id": "nodetrend",
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "-norm",
       "description": "Make output time series have L2 norm = 1",
-      "value-key": "[NORM_FLAG]",
+      "value-key": "[NORM]",
       "type": "Flag",
       "optional": true,
       "id": "norm",

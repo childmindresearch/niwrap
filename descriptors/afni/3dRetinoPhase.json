@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/tgz/AfniRetinoDemo.tgz",
   "description": "Process time series from retinotopy stimuli to create phase datasets and visual field angle datasets",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRetinoPhase.html",
-  "command-line": "3dRetinoPhase [PRE] [DATASET] [OPTIONS]",
+  "command-line": "3dRetinoPhase [PREFIX] [DATASET] [EXP] [CON] [CLW] [CCW] [SPECTRA] [TSTIM] [NRINGS] [NWEDGES] [ORT_ADJUST] [PRE_STIM] [SUM_ADJUST] [PHASE_ESTIMATE] [REF_TS] [MULTI_REF_TS]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Prefix of output datasets.",
-      "value-key": "[PRE]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": false,
       "id": "prefix",

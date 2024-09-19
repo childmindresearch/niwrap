@@ -3,7 +3,7 @@
   "name": "serial_helper",
   "author": "AFNI Team",
   "description": "Passes motion parameters from socket to serial port",
-  "command-line": "serial_helper [OPTIONS]",
+  "command-line": "serial_helper [SERIAL_PORT] [SOCK_NUM] [MP_MAX] [MP_MIN] [NUM_EXTRA] [DISP_ALL] [DEBUG] [SHOW_TIMES] [HELP] [HIST] [NO_SERIAL] [VERSION]",
   "inputs": [
     {
       "description": "Output serial port filename",
@@ -66,7 +66,7 @@
       "type": "Number",
       "optional": true,
       "command-line-flag": "-debug",
-      "value-key": "[DEBUG_LEVEL]"
+      "value-key": "[DEBUG]"
     },
     {
       "description": "Show communication times",

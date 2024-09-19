@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Computes the correlation matrix corresponding to the residual (or error) time series in 'dset'.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dErrtsCormat.html",
-  "command-line": "3dErrtsCormat [OPTIONS] [DSET]",
+  "command-line": "3dErrtsCormat [DSET] [CONCAT] [INPUT] [MASK] [MAXLAG] [POLORT]",
   "inputs": [
     {
       "id": "dset",
@@ -19,7 +19,7 @@
       "name": "Concatenation re-run name",
       "description": "As used in 3dDeconvolve.",
       "command-line-flag": "-concat",
-      "value-key": "[RNAME]",
+      "value-key": "[CONCAT]",
       "type": "String",
       "optional": true
     },
@@ -28,7 +28,7 @@
       "name": "Alternate input dataset",
       "description": "Alternate way of specifying the dataset to read.",
       "command-line-flag": "-input",
-      "value-key": "[ALT_DSET]",
+      "value-key": "[INPUT]",
       "type": "File",
       "optional": true
     },
@@ -37,7 +37,7 @@
       "name": "Mask dataset",
       "description": "Mask dataset to apply.",
       "command-line-flag": "-mask",
-      "value-key": "[MSET]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": true
     },
@@ -46,7 +46,7 @@
       "name": "Maximum lag",
       "description": "Set maximum lag.",
       "command-line-flag": "-maxlag",
-      "value-key": "[MM]",
+      "value-key": "[MAXLAG]",
       "type": "Number",
       "optional": true
     },
@@ -55,7 +55,7 @@
       "name": "Polort level",
       "description": "Set polort level. Default is 0.",
       "command-line-flag": "-polort",
-      "value-key": "[PP]",
+      "value-key": "[POLORT]",
       "type": "Number",
       "optional": true
     }

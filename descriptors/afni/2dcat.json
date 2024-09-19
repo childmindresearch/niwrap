@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Puts a set of images into an image matrix montage of NX by NY images.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/2dcat.html",
-  "command-line": "2dcat [OPTIONS] [FILENAMES]",
+  "command-line": "2dcat [FILENAMES] [SCALE_IMAGE] [SCALE_PIXELS] [SCALE_INTENSITY] [GSCALE] [RGB_OUT] [RES_IN] [RESPAD_IN] [PAD_VAL] [CROP] [AUTOCROP_CTOL] [AUTOCROP_ATOL] [AUTOCROP] [ZERO_WRAP] [WHITE_WRAP] [GRAY_WRAP] [IMAGE_WRAP] [RAND_WRAP] [PREFIX] [MATRIX] [NX] [NY] [MATRIX_FROM_SCALE] [GAP] [GAP_COL]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -19,7 +19,7 @@
     {
       "command-line-flag": "-scale_image",
       "description": "Multiply each image in the output image matrix by the color or intensity of the pixel in the scale image.",
-      "value-key": "[SCALE_IMG]",
+      "value-key": "[SCALE_IMAGE]",
       "type": "File",
       "optional": true,
       "id": "scale_image",
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-scale_pixels",
       "description": "Multiply each pixel in the output image by the color or intensity of the pixel in the scale image. The scale image is resized to the output image's resolution.",
-      "value-key": "[SCALE_PIX]",
+      "value-key": "[SCALE_PIXELS]",
       "type": "File",
       "optional": true,
       "id": "scale_pixels",
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "-scale_intensity",
       "description": "Use the intensity (average color) of the pixel instead of its color.",
-      "value-key": "[SCALE_INTENSITY_FLAG]",
+      "value-key": "[SCALE_INTENSITY]",
       "type": "Flag",
       "optional": true,
       "id": "scale_intensity",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-gscale",
       "description": "Apply additional scaling factor.",
-      "value-key": "[GSC]",
+      "value-key": "[GSCALE]",
       "type": "Number",
       "optional": true,
       "id": "gscale",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-rgb_out",
       "description": "Force output to be in RGB, even if input is bytes.",
-      "value-key": "[RGB_OUT_FLAG]",
+      "value-key": "[RGB_OUT]",
       "type": "Flag",
       "optional": true,
       "id": "rgb_out",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "-res_in",
       "description": "Set resolution of all input images.",
-      "value-key": "[RES_IN RX RY]",
+      "value-key": "[RES_IN]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,
@@ -76,7 +76,7 @@
     {
       "command-line-flag": "-respad_in",
       "description": "Resample to max while respecting the aspect ratio, then pad to desired pixel count.",
-      "value-key": "[RESPAD_IN RPX RPY]",
+      "value-key": "[RESPAD_IN]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,
@@ -99,7 +99,7 @@
     {
       "command-line-flag": "-crop",
       "description": "Crop images by specified number of pixels from the left, right, top, and bottom.",
-      "value-key": "[CROP L R T B]",
+      "value-key": "[CROP]",
       "type": "Number",
       "list": true,
       "max-list-entries": 4,
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-autocrop_ctol",
       "description": "Automatically crop lines where RGB values differ by less than the specified percentage from the corner pixel values.",
-      "value-key": "[CTOL]",
+      "value-key": "[AUTOCROP_CTOL]",
       "type": "Number",
       "optional": true,
       "id": "autocrop_ctol",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-autocrop_atol",
       "description": "Automatically crop lines where RGB values differ by less than the specified percentage from the line average.",
-      "value-key": "[ATOL]",
+      "value-key": "[AUTOCROP_ATOL]",
       "type": "Number",
       "optional": true,
       "id": "autocrop_atol",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-autocrop",
       "description": "Automatically crop lines with default tolerances using both autocrop_atol and autocrop_ctol set to 20.",
-      "value-key": "[AUTOCROP_FLAG]",
+      "value-key": "[AUTOCROP]",
       "type": "Flag",
       "optional": true,
       "id": "autocrop",
@@ -138,7 +138,7 @@
     {
       "command-line-flag": "-zero_wrap",
       "description": "Use solid black images if not enough images are provided to fill the matrix.",
-      "value-key": "[ZERO_WRAP_FLAG]",
+      "value-key": "[ZERO_WRAP]",
       "type": "Flag",
       "optional": true,
       "id": "zero_wrap",
@@ -147,7 +147,7 @@
     {
       "command-line-flag": "-white_wrap",
       "description": "Use solid white images if not enough images are provided to fill the matrix.",
-      "value-key": "[WHITE_WRAP_FLAG]",
+      "value-key": "[WHITE_WRAP]",
       "type": "Flag",
       "optional": true,
       "id": "white_wrap",
@@ -156,7 +156,7 @@
     {
       "command-line-flag": "-gray_wrap",
       "description": "Use solid gray images if not enough images are provided to fill the matrix. The gray value must be between 0 and 1.0.",
-      "value-key": "[GRAY]",
+      "value-key": "[GRAY_WRAP]",
       "type": "Number",
       "minimum": 0,
       "maximum": 1,
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "-image_wrap",
       "description": "Reuse images to fill the matrix. This is the default behavior.",
-      "value-key": "[IMAGE_WRAP_FLAG]",
+      "value-key": "[IMAGE_WRAP]",
       "type": "Flag",
       "optional": true,
       "id": "image_wrap",
@@ -176,7 +176,7 @@
     {
       "command-line-flag": "-rand_wrap",
       "description": "Randomize the order of images when reusing to fill the matrix.",
-      "value-key": "[RAND_WRAP_FLAG]",
+      "value-key": "[RAND_WRAP]",
       "type": "Flag",
       "optional": true,
       "id": "rand_wrap",
@@ -194,7 +194,7 @@
     {
       "command-line-flag": "-matrix",
       "description": "Specify the number of images in each row (NX) and column (NY) of the image matrix.",
-      "value-key": "[MATRIX NX NY]",
+      "value-key": "[MATRIX]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,
@@ -224,7 +224,7 @@
     {
       "command-line-flag": "-matrix_from_scale",
       "description": "Set matrix dimensions NX and NY to be the same as the SCALE_IMG's dimensions. Requires the -scale_image option.",
-      "value-key": "[MATRIX_FROM_SCALE_FLAG]",
+      "value-key": "[MATRIX_FROM_SCALE]",
       "type": "Flag",
       "optional": true,
       "id": "matrix_from_scale",
@@ -242,7 +242,7 @@
     {
       "command-line-flag": "-gap_col",
       "description": "Set color of the gap line to specified R, G, B values. Values range from 0 to 255.",
-      "value-key": "[GAP_COL R G B]",
+      "value-key": "[GAP_COL]",
       "type": "Number",
       "list": true,
       "max-list-entries": 3,

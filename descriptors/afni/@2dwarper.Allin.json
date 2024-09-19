@@ -3,7 +3,7 @@
   "name": "@2dwarper.Allin",
   "author": "AFNI Team",
   "description": "Perform 2D registration on each slice of a 3D+time dataset, and combine the results.",
-  "command-line": "@2dwarper.Allin [OPTIONS] [INPUT_PREFIX]",
+  "command-line": "@2dwarper.Allin [INPUT_PREFIX] [MASK_PREFIX] [OUTPUT_PREFIX]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "A script to process retinotopic FMRI data, using AFNI's 3dRetinoPhase and SurfRetinMap.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@RetinoProc.html",
-  "command-line": "@RetinoProc [INPUT_FILES] [OPTIONS]",
+  "command-line": "@RetinoProc [CCW] [CLW] [EXP] [CON] [EPI_REF] [EPI_ANAT_REF] [ANAT_VOL] [ANAT_VOL_EPI] [SURF_VOL] [SURF_VOL_EPI] [PHASE] [DELAY] [TR] [PERIOD_ECC] [PERIOD_POL] [PRE_ECC] [PRE_POL] [ON_ECC] [ON_POL] [VAR_ON_ECC] [VAR_ON_POL] [NWEDGES] [NRINGS] [FWHM_POL] [FWHM_ECC] [IGNORE] [NO_TSHIFT] [SPEC_LEFT] [SPEC_RIGHT] [DORTS] [CCW_ORTS] [CLW_ORTS] [EXP_ORTS] [CON_ORTS] [SID] [OUT_DIR] [ECHO] [ECHO_EDU] [A2E_OPTS] [AEA_OPTS]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input time series dataset for counterclockwise stimulus",
-      "value-key": "[CCW_1]",
+      "value-key": "[CCW]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -22,7 +22,7 @@
     },
     {
       "description": "Input time series dataset for clockwise stimulus",
-      "value-key": "[CLW_1]",
+      "value-key": "[CLW]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -32,7 +32,7 @@
     },
     {
       "description": "Input time series dataset for expanding stimulus",
-      "value-key": "[EXP_1]",
+      "value-key": "[EXP]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -42,7 +42,7 @@
     },
     {
       "description": "Input time series dataset for contracting stimulus",
-      "value-key": "[CON_1]",
+      "value-key": "[CON]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -52,7 +52,7 @@
     },
     {
       "description": "Specify a volume from the EPI time series to which all EPI volumes are aligned",
-      "value-key": "[EpiRef]",
+      "value-key": "[EPI_REF]",
       "type": "File",
       "optional": true,
       "id": "epi_ref",
@@ -61,7 +61,7 @@
     },
     {
       "description": "Specify a volume from the EPI time series that is better suited for aligning the T1 to it than EpiRef might be",
-      "value-key": "[EpiAnatRef]",
+      "value-key": "[EPI_ANAT_REF]",
       "type": "File",
       "optional": true,
       "id": "epi_anat_ref",
@@ -70,7 +70,7 @@
     },
     {
       "description": "T1 volume acquired during the same session as the retinotopic scans",
-      "value-key": "[AVol]",
+      "value-key": "[ANAT_VOL]",
       "type": "File",
       "optional": true,
       "id": "anat_vol",
@@ -79,7 +79,7 @@
     },
     {
       "description": "Anatomical volume aligned to EPI reference",
-      "value-key": "[AVol@Epi]",
+      "value-key": "[ANAT_VOL_EPI]",
       "type": "File",
       "optional": true,
       "id": "anat_vol_epi",
@@ -88,7 +88,7 @@
     },
     {
       "description": "Surface Volume for the cortical surfaces",
-      "value-key": "[SVol]",
+      "value-key": "[SURF_VOL]",
       "type": "File",
       "optional": true,
       "id": "surf_vol",
@@ -97,7 +97,7 @@
     },
     {
       "description": "Surface volume aligned to experiment's EPI data",
-      "value-key": "[SVol@Epi]",
+      "value-key": "[SURF_VOL_EPI]",
       "type": "File",
       "optional": true,
       "id": "surf_vol_epi",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "-phase",
       "description": "Use phase of fundamental frequency to estimate latency",
-      "value-key": "[PHASE_FLAG]",
+      "value-key": "[PHASE]",
       "type": "Flag",
       "optional": true,
       "id": "phase",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "-delay",
       "description": "Use delay relative to reference time series to estimate latency",
-      "value-key": "[DELAY_FLAG]",
+      "value-key": "[DELAY]",
       "type": "Flag",
       "optional": true,
       "id": "delay",
@@ -152,7 +152,7 @@
     {
       "command-line-flag": "-pre_ecc",
       "description": "Duration, in seconds, before eccentricity stimulus",
-      "value-key": "[PREECC]",
+      "value-key": "[PRE_ECC]",
       "type": "Number",
       "optional": true,
       "id": "pre_ecc",
@@ -161,7 +161,7 @@
     {
       "command-line-flag": "-pre_pol",
       "description": "Duration, in seconds, before polar angle stimulus",
-      "value-key": "[PREPOL]",
+      "value-key": "[PRE_POL]",
       "type": "Number",
       "optional": true,
       "id": "pre_pol",
@@ -206,7 +206,7 @@
     {
       "command-line-flag": "-nwedges",
       "description": "Number of wedges in polar stimulus",
-      "value-key": "[NWED]",
+      "value-key": "[NWEDGES]",
       "type": "Number",
       "optional": true,
       "id": "nwedges",
@@ -215,7 +215,7 @@
     {
       "command-line-flag": "-nrings",
       "description": "Number of rings in eccentricity stimulus",
-      "value-key": "[NRING]",
+      "value-key": "[NRINGS]",
       "type": "Number",
       "optional": true,
       "id": "nrings",
@@ -224,7 +224,7 @@
     {
       "command-line-flag": "-fwhm_pol",
       "description": "Target smoothness for polar stimulus",
-      "value-key": "[FWPOL]",
+      "value-key": "[FWHM_POL]",
       "type": "Number",
       "optional": true,
       "id": "fwhm_pol",
@@ -233,7 +233,7 @@
     {
       "command-line-flag": "-fwhm_ecc",
       "description": "Target smoothness for eccentricity stimulus",
-      "value-key": "[FWECC]",
+      "value-key": "[FWHM_ECC]",
       "type": "Number",
       "optional": true,
       "id": "fwhm_ecc",
@@ -242,7 +242,7 @@
     {
       "command-line-flag": "-ignore",
       "description": "Ignore volumes from the beginning of each time series",
-      "value-key": "[IGN]",
+      "value-key": "[IGNORE]",
       "type": "Number",
       "optional": true,
       "id": "ignore",
@@ -251,7 +251,7 @@
     {
       "command-line-flag": "-no_tshift",
       "description": "Do not correct for slice timing",
-      "value-key": "[NO_TSHIFT_FLAG]",
+      "value-key": "[NO_TSHIFT]",
       "type": "Flag",
       "optional": true,
       "id": "no_tshift",
@@ -260,7 +260,7 @@
     {
       "command-line-flag": "-spec_left",
       "description": "Spec file for left hemisphere",
-      "value-key": "[SPL]",
+      "value-key": "[SPEC_LEFT]",
       "type": "File",
       "optional": true,
       "id": "spec_left",
@@ -269,7 +269,7 @@
     {
       "command-line-flag": "-spec_right",
       "description": "Spec file for right hemisphere",
-      "value-key": "[SPR]",
+      "value-key": "[SPEC_RIGHT]",
       "type": "File",
       "optional": true,
       "id": "spec_right",
@@ -278,7 +278,7 @@
     {
       "command-line-flag": "-dorts",
       "description": "Detrend time series using columns in ORT1D file",
-      "value-key": "[ORT1D]",
+      "value-key": "[DORTS]",
       "type": "File",
       "optional": true,
       "id": "dorts",
@@ -287,7 +287,7 @@
     {
       "command-line-flag": "-ccw_orts",
       "description": "Detrend time series for counterclockwise stimulus",
-      "value-key": "[CCW_1_ORT]",
+      "value-key": "[CCW_ORTS]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -297,7 +297,7 @@
     {
       "command-line-flag": "-clw_orts",
       "description": "Detrend time series for clockwise stimulus",
-      "value-key": "[CLW_1_ORT]",
+      "value-key": "[CLW_ORTS]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -307,7 +307,7 @@
     {
       "command-line-flag": "-exp_orts",
       "description": "Detrend time series for expanding stimulus",
-      "value-key": "[EXP_1_ORT]",
+      "value-key": "[EXP_ORTS]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -317,7 +317,7 @@
     {
       "command-line-flag": "-con_orts",
       "description": "Detrend time series for contracting stimulus",
-      "value-key": "[CON_1_ORT]",
+      "value-key": "[CON_ORTS]",
       "type": "File",
       "optional": true,
       "list": true,
@@ -336,7 +336,7 @@
     {
       "command-line-flag": "-out_dir",
       "description": "Directory where processing results are to be stored",
-      "value-key": "[DIR]",
+      "value-key": "[OUT_DIR]",
       "type": "String",
       "optional": true,
       "id": "out_dir",
@@ -345,7 +345,7 @@
     {
       "command-line-flag": "-echo",
       "description": "Turn on the command echoing to help with debugging script failure",
-      "value-key": "[ECHO_FLAG]",
+      "value-key": "[ECHO]",
       "type": "Flag",
       "optional": true,
       "id": "echo",
@@ -354,7 +354,7 @@
     {
       "command-line-flag": "-echo_edu",
       "description": "Turn on command echoing for certain programs only",
-      "value-key": "[ECHO_EDU_FLAG]",
+      "value-key": "[ECHO_EDU]",
       "type": "Flag",
       "optional": true,
       "id": "echo_edu",

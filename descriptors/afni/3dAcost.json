@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Allineate dataset to a base dataset",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAcost.html",
-  "command-line": "3dAllineate [INPUT_FILE] -base [BASE_FILE] -prefix [OUTPUT_ALIGN] [OTHER_OPTIONS]",
+  "command-line": "3dAllineate [INFILE] [BASEFILE] [OUTFILE] [ALL_COST]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input dataset for allineation",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-base",
       "description": "Base dataset for allineation",
-      "value-key": "[BASE_FILE]",
+      "value-key": "[BASEFILE]",
       "type": "File",
       "optional": false,
       "id": "basefile",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Prefix for the output dataset",
-      "value-key": "[OUTPUT_ALIGN]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",
@@ -49,14 +49,14 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_ALIGN]+orig.HEAD",
+      "path-template": "[OUTFILE]+orig.HEAD",
       "description": "Output aligned dataset (HEAD file)",
       "optional": false,
       "id": "output_head",
       "name": "Output HEAD file"
     },
     {
-      "path-template": "[OUTPUT_ALIGN]+orig.BRIK",
+      "path-template": "[OUTFILE]+orig.BRIK",
       "description": "Output aligned dataset (BRIK file)",
       "optional": false,
       "id": "output_brik",

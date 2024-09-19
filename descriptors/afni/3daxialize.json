@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Read and write dataset as new dataset with data brick oriented as axial slices.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3daxialize.html",
-  "command-line": "3daxialize [OUTPUT_FILE] [INPUT_FILE] [PREFIX] [VERB_FLAG] [SAGITTAL_FLAG] [CORONAL_FLAG] [AXIAL_FLAG] [ORIENT_CODE] [FRUGAL_FLAG]",
+  "command-line": "3daxialize [INFILE] [PREFIX] [VERB] [SAGITTAL] [CORONAL] [AXIAL] [ORIENT_CODE] [FRUGAL]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Dataset to be axially oriented",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Print out a progress report.",
-      "value-key": "[VERB_FLAG]",
+      "value-key": "[VERB]",
       "type": "Flag",
       "optional": true,
       "id": "verb",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-sagittal",
       "description": "Write dataset in sagittal slice order.",
-      "value-key": "[SAGITTAL_FLAG]",
+      "value-key": "[SAGITTAL]",
       "type": "Flag",
       "optional": true,
       "id": "sagittal",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-coronal",
       "description": "Write dataset in coronal slice order.",
-      "value-key": "[CORONAL_FLAG]",
+      "value-key": "[CORONAL]",
       "type": "Flag",
       "optional": true,
       "id": "coronal",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-axial",
       "description": "Write dataset in axial slice order, the default orientation.",
-      "value-key": "[AXIAL_FLAG]",
+      "value-key": "[AXIAL]",
       "type": "Flag",
       "optional": true,
       "id": "axial",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-frugal",
       "description": "Write data as it is rotated, saving memory. Not available with NIFTI datasets.",
-      "value-key": "[FRUGAL_FLAG]",
+      "value-key": "[FRUGAL]",
       "type": "Flag",
       "optional": true,
       "id": "frugal",

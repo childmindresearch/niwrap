@@ -3,7 +3,7 @@
   "name": "count",
   "author": "AFNI Team",
   "description": "Numbered copies generator with custom format support and random sequence options",
-  "command-line": "count [OPTIONS] [BOT] [TOP] [STEP]",
+  "command-line": "count [BOT] [TOP] [STEP] [SEED] [SSEED] [COLUMN] [DIGITS] [FORM] [ROOT] [SEP] [SUFFIX] [SCALE] [COMMA] [SKIPNMODM]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

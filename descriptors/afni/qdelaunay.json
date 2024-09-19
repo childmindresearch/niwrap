@@ -5,7 +5,7 @@
   "descriptor-url": "http://www.qhull.org",
   "description": "Compute the Delaunay triangulation using Qhull.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/qdelaunay.html",
-  "command-line": "qdelaunay [OPTION_FLAGS] < [INPUT_FILE]",
+  "command-line": "qdelaunay [INPUT_FILE] [FURTHEST_SITE] [TRIANGULATED_OUTPUT] [JOGGLED_INPUT] [JOGGLE_RANGE] [SEARCH_SIMPLEX] [POINT_INFINITY] [DELAUNAY_VISIBLE] [DELAUNAY_REGIONS] [TRACE_LEVEL] [CHECK] [STATISTICS] [VERIFY] [OUTPUT_STDOUT] [FACETS_SUMMARY] [INPUT_FILE_OPTION] [OUTPUT_FILE_OPTION] [TRACE_POINT] [TRACE_MERGE] [TRACE_MERGE_WIDTH] [STOP_POINT] [STOP_CONE_POINT] [CENTRUM_RADIUS] [MAX_ANGLE_COSINE] [PERTURB_FACTOR] [MIN_FACET_WIDTH] [FACET_DUMP] [GEOMVIEW] [VERTICES_INCIDENT] [MATHEMATICA] [OFF_FORMAT] [POINT_COORDINATES] [SUMMARY]",
   "inputs": [
     {
       "description": "Input file containing point coordinates.",
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "Qu",
       "description": "Compute furthest-site Delaunay triangulation",
-      "value-key": "[FURTHEST_SITE_FLAG]",
+      "value-key": "[FURTHEST_SITE]",
       "type": "Flag",
       "optional": true,
       "id": "furthest_site",
@@ -27,7 +27,7 @@
     {
       "command-line-flag": "Qt",
       "description": "Triangulated output",
-      "value-key": "[TRIANGULATED_OUTPUT_FLAG]",
+      "value-key": "[TRIANGULATED_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "triangulated_output",
@@ -36,7 +36,7 @@
     {
       "command-line-flag": "QJ",
       "description": "Joggled input instead of merged facets",
-      "value-key": "[JOGGLED_INPUT_FLAG]",
+      "value-key": "[JOGGLED_INPUT]",
       "type": "Flag",
       "optional": true,
       "id": "joggled_input",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "Qs",
       "description": "Search all points for the initial simplex",
-      "value-key": "[SEARCH_SIMPLEX_FLAG]",
+      "value-key": "[SEARCH_SIMPLEX]",
       "type": "Flag",
       "optional": true,
       "id": "search_simplex",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "Qz",
       "description": "Add point-at-infinity to Delaunay triangulation",
-      "value-key": "[POINT_INFINITY_FLAG]",
+      "value-key": "[POINT_INFINITY]",
       "type": "Flag",
       "optional": true,
       "id": "point_infinity",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "QGn",
       "description": "Print Delaunay region if visible from point n, -n if not",
-      "value-key": "[DELAUNAY_VISIBLE_FLAG]",
+      "value-key": "[DELAUNAY_VISIBLE]",
       "type": "String",
       "optional": true,
       "id": "delaunay_visible",
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "QVn",
       "description": "Print Delaunay regions that include point n, -n if not",
-      "value-key": "[DELAUNAY_REGIONS_FLAG]",
+      "value-key": "[DELAUNAY_REGIONS]",
       "type": "String",
       "optional": true,
       "id": "delaunay_regions",
@@ -100,7 +100,7 @@
     {
       "command-line-flag": "Tc",
       "description": "Check frequently during execution",
-      "value-key": "[CHECK_FLAG]",
+      "value-key": "[CHECK]",
       "type": "Flag",
       "optional": true,
       "id": "check",
@@ -109,7 +109,7 @@
     {
       "command-line-flag": "Ts",
       "description": "Print statistics",
-      "value-key": "[STATISTICS_FLAG]",
+      "value-key": "[STATISTICS]",
       "type": "Flag",
       "optional": true,
       "id": "statistics",
@@ -118,7 +118,7 @@
     {
       "command-line-flag": "Tv",
       "description": "Verify result: structure, convexity, and in-circle test",
-      "value-key": "[VERIFY_FLAG]",
+      "value-key": "[VERIFY]",
       "type": "Flag",
       "optional": true,
       "id": "verify",
@@ -127,7 +127,7 @@
     {
       "command-line-flag": "Tz",
       "description": "Send all output to stdout",
-      "value-key": "[OUTPUT_STDOUT_FLAG]",
+      "value-key": "[OUTPUT_STDOUT]",
       "type": "Flag",
       "optional": true,
       "id": "output_stdout",
@@ -244,7 +244,7 @@
     {
       "command-line-flag": "f",
       "description": "Facet dump",
-      "value-key": "[FACET_DUMP_FLAG]",
+      "value-key": "[FACET_DUMP]",
       "type": "Flag",
       "optional": true,
       "id": "facet_dump",
@@ -253,7 +253,7 @@
     {
       "command-line-flag": "G",
       "description": "Geomview output",
-      "value-key": "[GEOMVIEW_FLAG]",
+      "value-key": "[GEOMVIEW]",
       "type": "Flag",
       "optional": true,
       "id": "geomview",
@@ -262,7 +262,7 @@
     {
       "command-line-flag": "i",
       "description": "Vertices incident to each Delaunay region",
-      "value-key": "[VERTICES_INCIDENT_FLAG]",
+      "value-key": "[VERTICES_INCIDENT]",
       "type": "Flag",
       "optional": true,
       "id": "vertices_incident",
@@ -271,7 +271,7 @@
     {
       "command-line-flag": "m",
       "description": "Mathematica output (2-d only, lifted to a paraboloid)",
-      "value-key": "[MATHEMATICA_FLAG]",
+      "value-key": "[MATHEMATICA]",
       "type": "Flag",
       "optional": true,
       "id": "mathematica",
@@ -280,7 +280,7 @@
     {
       "command-line-flag": "o",
       "description": "OFF format (dim, points, and facets as a paraboloid)",
-      "value-key": "[OFF_FORMAT_FLAG]",
+      "value-key": "[OFF_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "off_format",
@@ -289,7 +289,7 @@
     {
       "command-line-flag": "p",
       "description": "Point coordinates (lifted to a paraboloid)",
-      "value-key": "[POINT_COORDINATES_FLAG]",
+      "value-key": "[POINT_COORDINATES]",
       "type": "Flag",
       "optional": true,
       "id": "point_coordinates",
@@ -298,7 +298,7 @@
     {
       "command-line-flag": "s",
       "description": "Summary (stderr)",
-      "value-key": "[SUMMARY_FLAG]",
+      "value-key": "[SUMMARY]",
       "type": "Flag",
       "optional": true,
       "id": "summary",

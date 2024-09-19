@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/afni",
   "description": "Program to calculate the cross-correlation of an ideal reference waveform with the measured FMRI time series for each voxel.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dfim+.html",
-  "command-line": "3dfim+ -input [INPUT_FILE] [INPUT1D_FILE] [MASK_FILE] [FIRST_IMAGE] [LAST_IMAGE] [BASELINE_POLYNOMIAL] [THRESHOLD] [CDISP_VALUE] [ORT_FILE] -ideal_file [IDEAL_FILE] [OUTPUT_PARAMS] -bucket [OUTPUT_BUCKET]",
+  "command-line": "3dfim+ [INFILE] [INPUT1DFILE] [MASKFILE] [FIRST_IMAGE] [LAST_IMAGE] [BASELINE_POLYNOMIAL] [THRESHOLD] [CDISP_VALUE] [ORT_FILE] [IDEAL_FILE] [OUTPUT_PARAMS] [OUTPUT_BUCKET]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Filename of input 3d+time dataset",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-input1D",
       "description": "Filename of single (fMRI) .1D time series",
-      "value-key": "[INPUT1D_FILE]",
+      "value-key": "[INPUT1DFILE]",
       "type": "File",
       "optional": true,
       "id": "input1dfile",
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Filename of 3d mask dataset",
-      "value-key": "[MASK_FILE]",
+      "value-key": "[MASKFILE]",
       "type": "File",
       "optional": true,
       "id": "maskfile",

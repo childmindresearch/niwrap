@@ -3,7 +3,7 @@
   "name": "1dsound",
   "author": "AFNI Team",
   "description": "Program to create a sound file from a 1D file (column of numbers).",
-  "command-line": "1dsound [PREFIXX_OPTION] [ENCODING_OPTION] [TIME_OPTION] [SOUND_OPTION] [NOTES_OPTION] [PLAY_OPTION] [TSFILE]",
+  "command-line": "1dsound [TSFILE] [PREFIX] [ENCODING_16PCM] [ENCODING_8PCM] [ENCODING_8ULAW] [TPER_OPTION] [FM_OPTION] [NOTES_OPTION] [NOTEWAVE_OPTION] [DESPIKE_OPTION] [PLAY_OPTION]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -23,7 +23,7 @@
       "description": "Prefix for the output filename, which will have '.au' extension.",
       "type": "String",
       "command-line-flag": "-prefix",
-      "value-key": "[PREFIXX_OPTION]",
+      "value-key": "[PREFIX]",
       "optional": true
     },
     {
@@ -32,7 +32,7 @@
       "description": "Output in 16-bit linear PCM encoding (uncompressed).",
       "type": "Flag",
       "command-line-flag": "-16PCM",
-      "value-key": "[ENCODING_OPTION]",
+      "value-key": "[ENCODING_16PCM]",
       "optional": true
     },
     {
@@ -41,7 +41,7 @@
       "description": "Output in 8-bit linear PCM encoding.",
       "type": "Flag",
       "command-line-flag": "-8PCM",
-      "value-key": "[ENCODING_OPTION]",
+      "value-key": "[ENCODING_8PCM]",
       "optional": true
     },
     {
@@ -50,7 +50,7 @@
       "description": "Output in 8-bit mu-law encoding.",
       "type": "Flag",
       "command-line-flag": "-8ulaw",
-      "value-key": "[ENCODING_OPTION]",
+      "value-key": "[ENCODING_8ULAW]",
       "optional": true
     },
     {
@@ -59,7 +59,7 @@
       "description": "Time in seconds per time point in 'tsfile'. Allowed range is 0.01 to 1.0 (inclusive). [default is 0.2s]",
       "type": "Number",
       "command-line-flag": "-tper",
-      "value-key": "[TIME_OPTION]",
+      "value-key": "[TPER_OPTION]",
       "optional": true,
       "minimum": 0.01,
       "maximum": 1.0
@@ -70,7 +70,7 @@
       "description": "Output sound is frequency modulated between 110 and 1760 Hz from min to max in the input 1D file.",
       "type": "Flag",
       "command-line-flag": "-FM",
-      "value-key": "[SOUND_OPTION]",
+      "value-key": "[FM_OPTION]",
       "optional": true
     },
     {
@@ -79,7 +79,7 @@
       "description": "Output sound is a sequence of notes, low to high pitch based on min to max in the input 1D file. Uses pentatonic scale.",
       "type": "Flag",
       "command-line-flag": "-notes",
-      "value-key": "[SOUND_OPTION]",
+      "value-key": "[NOTES_OPTION]",
       "optional": true
     },
     {
@@ -88,7 +88,7 @@
       "description": "Shape of the notes used. Select from [sine, sqsine, square, triangle].",
       "type": "String",
       "command-line-flag": "-notewave",
-      "value-key": "[NOTES_OPTION]",
+      "value-key": "[NOTEWAVE_OPTION]",
       "optional": true
     },
     {
@@ -97,7 +97,7 @@
       "description": "Apply a simple despiking algorithm to avoid artifacts from large/small values in the input.",
       "type": "Flag",
       "command-line-flag": "-despike",
-      "value-key": "[NOTES_OPTION]",
+      "value-key": "[DESPIKE_OPTION]",
       "optional": true
     },
     {

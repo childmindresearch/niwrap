@@ -1,7 +1,7 @@
 {
   "name": "ROI decluster",
   "description": "Script to remove small clusters or standalone voxels from an ROI/atlas dataset",
-  "command-line": "@ROI_decluster -input <input> -outdir <outdir> -prefix <prefix> -nvox_thresh <nvox_thresh> -frac_thresh <frac_thresh> -NN <NN>",
+  "command-line": "ROI decluster [INPUT_DSET] [OUTPUT_DIR] [NVOX_THRESH] [FRAC_THRESH] [PREFIX] [NEIGHBORHOOD_TYPE]",
   "tool-version": "1.0",
   "schema-version": "0.5",
   "inputs": [
@@ -11,7 +11,7 @@
       "type": "File",
       "description": "Required input dataset. This dataset should be set of integer values. The program mostly assumes approximate isotropic voxels.",
       "command-line-flag": "-input",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_DSET]",
       "optional": false
     },
     {
@@ -20,7 +20,7 @@
       "type": "String",
       "description": "Directory name for output. All output goes to this directory.",
       "command-line-flag": "-outdir",
-      "value-key": "[OUTDIR]",
+      "value-key": "[OUTPUT_DIR]",
       "optional": true
     },
     {
@@ -56,7 +56,7 @@
       "type": "Number",
       "description": "Neighborhood type using in finding mode: 1 - facing neighbors, 2 - edges, 3 - corners",
       "command-line-flag": "-NN",
-      "value-key": "[NN]",
+      "value-key": "[NEIGHBORHOOD_TYPE]",
       "optional": true,
       "minimum": 1,
       "maximum": 3,

@@ -3,7 +3,7 @@
   "name": "3dpc",
   "author": "AFNI Team",
   "description": "Principal Component Analysis of 3D Datasets",
-  "command-line": "3dpc [OPTIONS] [INPUT_DATASETS...]",
+  "command-line": "3dpc [DATASETS] [DMEAN] [VMEAN] [VNORM] [NORMALIZE] [NSCALE] [PCSAVE] [REDUCE] [PREFIX] [DUMMY_LINES] [VERBOSE] [QUIET] [EIGONLY] [FLOAT] [MASK]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input dataset(s) with sub-brick selector list support",
-      "value-key": "[INPUT_DATASETS]",
+      "value-key": "[DATASETS]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-dmean",
       "description": "Remove the mean from each input brick (across space)",
-      "value-key": "[DMEAN_FLAG]",
+      "value-key": "[DMEAN]",
       "type": "Flag",
       "optional": true,
       "id": "dmean",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-vmean",
       "description": "Remove the mean from each input voxel (across bricks)",
-      "value-key": "[VMEAN_FLAG]",
+      "value-key": "[VMEAN]",
       "type": "Flag",
       "optional": true,
       "id": "vmean",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-vnorm",
       "description": "L2 normalize each input voxel time series",
-      "value-key": "[VNORM_FLAG]",
+      "value-key": "[VNORM]",
       "type": "Flag",
       "optional": true,
       "id": "vnorm",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-normalize",
       "description": "L2 normalize each input brick (after mean subtraction)",
-      "value-key": "[NORMALIZE_FLAG]",
+      "value-key": "[NORMALIZE]",
       "type": "Flag",
       "optional": true,
       "id": "normalize",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-nscale",
       "description": "Scale the covariance matrix by the number of samples",
-      "value-key": "[NSCALE_FLAG]",
+      "value-key": "[NSCALE]",
       "type": "Flag",
       "optional": true,
       "id": "nscale",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-reduce",
       "description": "Compute a dimensionally reduced dataset with top 'r' eigenvalues and write to disk in dataset 'pp'",
-      "value-key": "[REDUCE_ARP_FILE]",
+      "value-key": "[REDUCE]",
       "type": "String",
       "list": true,
       "min-list-entries": 2,
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "-verbose",
       "description": "Print progress reports during the computations",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "-quiet",
       "description": "Don't print progress reports",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",
@@ -124,7 +124,7 @@
     {
       "command-line-flag": "-eigonly",
       "description": "Only compute eigenvalues, write them to 'pname'_eig.1D, then stop",
-      "value-key": "[EIGONLY_FLAG]",
+      "value-key": "[EIGONLY]",
       "type": "Flag",
       "optional": true,
       "id": "eigonly",
@@ -133,7 +133,7 @@
     {
       "command-line-flag": "-float",
       "description": "Save eigen-bricks as floats (default = shorts)",
-      "value-key": "[FLOAT_FLAG]",
+      "value-key": "[FLOAT]",
       "type": "Flag",
       "optional": true,
       "id": "float",
@@ -142,7 +142,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Use the 0 sub-brick of dataset 'mset' as a mask indicating which voxels to analyze",
-      "value-key": "[MASK_FILE]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": true,
       "id": "mask",

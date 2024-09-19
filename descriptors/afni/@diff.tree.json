@@ -3,11 +3,11 @@
   "name": "@diff.tree",
   "author": "AFNI Team",
   "description": "Show file differences between 2 directories",
-  "command-line": "@diff.tree [OPTIONS] new_dir old_dir",
+  "command-line": "@diff.tree [NEW_DIR] [OLD_DIR] [DIFF_OPTS] [IGNORE_APPEND] [IA] [IGNORE_LIST] [IL] [IGNORE_MISSING] [NO_DIFFS] [QUIET] [SAVE] [SHOW] [SHOW_LIST_COMP] [SKIP_DATA] [VERB] [DIFF_PROG] [XXDIFF] [X_OPTION]",
   "inputs": [
     {
       "description": "New directory to compare",
-      "value-key": "[new_dir]",
+      "value-key": "[NEW_DIR]",
       "type": "String",
       "optional": false,
       "id": "new_dir",
@@ -15,7 +15,7 @@
     },
     {
       "description": "Old directory to compare",
-      "value-key": "[old_dir]",
+      "value-key": "[OLD_DIR]",
       "type": "String",
       "optional": false,
       "id": "old_dir",
@@ -42,7 +42,7 @@
     {
       "command-line-flag": "-ia",
       "description": "Short for -ignore_append",
-      "value-key": "[IGNORE_APPEND]",
+      "value-key": "[IA]",
       "type": "String",
       "optional": true,
       "id": "ia",
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "-il",
       "description": "Short for -ignore_list",
-      "value-key": "[IGNORE_LIST]",
+      "value-key": "[IL]",
       "type": "String",
       "optional": true,
       "id": "il",
@@ -132,7 +132,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Set verbosity level (0,1,2) (default 1)",
-      "value-key": "[VERB_LEVEL]",
+      "value-key": "[VERB]",
       "type": "String",
       "optional": true,
       "id": "verb",
@@ -159,7 +159,7 @@
     {
       "command-line-flag": "-X",
       "description": "Implies -xxdiff -ignore_missing",
-      "value-key": "[X_FLAG]",
+      "value-key": "[X_OPTION]",
       "type": "Flag",
       "optional": true,
       "id": "X_option",

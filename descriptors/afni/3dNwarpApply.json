@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Program to apply a nonlinear 3D warp saved from 3dQwarp (or 3dNwarpCat, etc.) to a 3D dataset, to produce a warped version of the source dataset.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpApply.html",
-  "command-line": "3dNwarpApply [OPTIONS]",
+  "command-line": "3dNwarpApply [NWARP] [IWARP] [SOURCE] [MASTER] [NEWGRID] [DXYZ] [INTERP] [AINTERP] [PREFIX] [SUFFIX] [SHORT] [WPREFIX] [QUIET] [VERB]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "The name of the 3D warp dataset. Multiple warps can be catenated.",
-      "value-key": "[WARP]",
+      "value-key": "[NWARP]",
       "command-line-flag": "-nwarp",
       "type": "String",
       "optional": false,
@@ -22,7 +22,7 @@
     {
       "description": "Invert the warp specified in '-nwarp'.",
       "command-line-flag": "-iwarp",
-      "value-key": "[INVERT_WARP_FLAG]",
+      "value-key": "[IWARP]",
       "type": "Flag",
       "optional": true,
       "id": "iwarp",
@@ -48,7 +48,7 @@
     },
     {
       "description": "The new grid spacing (cubical voxels, in mm).",
-      "value-key": "[NEW_GRID]",
+      "value-key": "[NEWGRID]",
       "command-line-flag": "-newgrid",
       "type": "String",
       "optional": true,
@@ -103,7 +103,7 @@
     {
       "description": "Write output dataset using 16-bit short integers rather than the usual 32-bit floats.",
       "command-line-flag": "-short",
-      "value-key": "[SHORT_FLAG]",
+      "value-key": "[SHORT]",
       "type": "Flag",
       "optional": true,
       "id": "short",
@@ -121,7 +121,7 @@
     {
       "description": "Don't be verbose.",
       "command-line-flag": "-quiet",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",
@@ -130,7 +130,7 @@
     {
       "description": "Be extra verbose.",
       "command-line-flag": "-verb",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERB]",
       "type": "Flag",
       "optional": true,
       "id": "verb",

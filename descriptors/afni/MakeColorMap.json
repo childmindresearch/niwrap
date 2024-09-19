@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "descriptor-url": "none",
   "description": "Utility for creating and modifying colormaps with various formats and fiducial points",
-  "command-line": "MakeColorMap [OPTIONS]",
+  "command-line": "MakeColorMap [FIDUCIALS_NCOL] [FIDUCIALS] [NUM_COLORS] [STD_MAPNAME] [PALETTE_FILE] [CMAP_NAME] [FSCOLUT_LABELS] [FSCOLUT_FILE] [AFNI_HEX] [AFNI_HEX_COMPLETE] [SUMA_COLORMAP] [USER_COLUT_FILE] [SDSET] [SDSET_PREFIX] [FLIPUPDOWN] [SKIP_LAST] [SHOW_FSCOLUT] [HELP_FLAG] [HELP_FULL_FLAG] [FLIP_MAP_UPDSIDE_DOWN]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-nc",
       "description": "Total number of colors in the color map.",
-      "value-key": "[N]",
+      "value-key": "[NUM_COLORS]",
       "type": "Number",
       "optional": true,
       "id": "num_colors",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-std",
       "description": "Returns one of SUMA's standard colormaps.",
-      "value-key": "[MAPNAME]",
+      "value-key": "[STD_MAPNAME]",
       "type": "String",
       "optional": true,
       "id": "std_mapname",
@@ -49,7 +49,7 @@
     {
       "command-line-flag": "-cmapdb",
       "description": "Specify the palette file for colormap.",
-      "value-key": "[PALFILE]",
+      "value-key": "[PALETTE_FILE]",
       "type": "File",
       "optional": true,
       "id": "palette_file",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-cmap",
       "description": "Specify the colormap name.",
-      "value-key": "[CMAPNAME]",
+      "value-key": "[CMAP_NAME]",
       "type": "String",
       "optional": true,
       "id": "cmap_name",
@@ -67,7 +67,7 @@
     {
       "command-line-flag": "-fscolut",
       "description": "Get AFNI/SUMA colormaps of FreeSurfer colors indexed between lbl0 and lbl1.",
-      "value-key": "[LBL0 LBL1]",
+      "value-key": "[FSCOLUT_LABELS]",
       "type": "Number",
       "list": true,
       "min-list-entries": 2,
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-fscolutfile",
       "description": "Use color LUT file FS_COL_LUT.",
-      "value-key": "[FS_COL_LUT]",
+      "value-key": "[FSCOLUT_FILE]",
       "type": "File",
       "optional": true,
       "id": "fscolut_file",
@@ -88,7 +88,7 @@
     {
       "command-line-flag": "-ah",
       "description": "Afni Hex format. Use this option if you want a color map formatted to fit in AFNI's .afnirc file",
-      "value-key": "[PREFIX]",
+      "value-key": "[AFNI_HEX]",
       "type": "String",
       "optional": true,
       "id": "afni_hex",
@@ -97,7 +97,7 @@
     {
       "command-line-flag": "-ahc",
       "description": "Afni Hex format, ready to go into pbardefs.h.",
-      "value-key": "[PREFIX]",
+      "value-key": "[AFNI_HEX_COMPLETE]",
       "type": "String",
       "optional": true,
       "id": "afni_hex_complete",
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "-suma_cmap",
       "description": "Write colormap in SUMA's format.",
-      "value-key": "[SUMA_CMAP]",
+      "value-key": "[SUMA_COLORMAP]",
       "type": "String",
       "optional": true,
       "id": "suma_colormap",
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "-usercolutfile",
       "description": "Provide a user's own color lookup file.",
-      "value-key": "[USER_COL_LUT]",
+      "value-key": "[USER_COLUT_FILE]",
       "type": "File",
       "optional": true,
       "id": "user_colut_file",
@@ -124,7 +124,7 @@
     {
       "command-line-flag": "-sdset",
       "description": "Add colormap to surface-based dataset DSET, making it a labeled dataset.",
-      "value-key": "[DSET]",
+      "value-key": "[SDSET]",
       "type": "File",
       "optional": true,
       "id": "sdset",
@@ -133,7 +133,7 @@
     {
       "command-line-flag": "-sdset_prefix",
       "description": "Prefix of dset for writing labeled version of DSET.",
-      "value-key": "[DSET_PREF]",
+      "value-key": "[SDSET_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "sdset_prefix",
@@ -142,7 +142,7 @@
     {
       "command-line-flag": "-flipud",
       "description": "Flip the map upside down.",
-      "value-key": "[FLIPUD_FLAG]",
+      "value-key": "[FLIPUPDOWN]",
       "type": "Flag",
       "optional": true,
       "id": "flipupdown",
@@ -151,7 +151,7 @@
     {
       "command-line-flag": "-sl",
       "description": "If used, the last color in the Fiducial list is omitted.",
-      "value-key": "[SL_FLAG]",
+      "value-key": "[SKIP_LAST]",
       "type": "Flag",
       "optional": true,
       "id": "skip_last",
@@ -160,7 +160,7 @@
     {
       "command-line-flag": "-show_fscolut",
       "description": "Show all of the FreeSurfer LUT.",
-      "value-key": "[SHOW_FSCOLUT_FLAG]",
+      "value-key": "[SHOW_FSCOLUT]",
       "type": "Flag",
       "optional": true,
       "id": "show_fscolut",
@@ -178,7 +178,7 @@
     {
       "command-line-flag": "-help",
       "description": "Displays the help message.",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP_FULL_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "help_full_flag",
@@ -187,7 +187,7 @@
     {
       "command-line-flag": "-flipud",
       "description": "Flip the map upside down.",
-      "value-key": "[FLIPUD_FLAG]",
+      "value-key": "[FLIP_MAP_UPDSIDE_DOWN]",
       "type": "Flag",
       "optional": true,
       "id": "flip_map_updside_down",
@@ -197,7 +197,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[PREFIX]_01",
+      "path-template": "[AFNI_HEX]_01",
       "description": "Prefix for individual color values in AFNI Hex format.",
       "optional": true,
       "id": "afni_hex_output_prefix",

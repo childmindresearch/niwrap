@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dnorm.html",
   "description": "Normalize columns of a 1D file (AFNI ASCII list of numbers)",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dnorm.html",
-  "command-line": "1dnorm [OPTION] [INFILE] [OUTFILE]",
+  "command-line": "1dnorm [INFILE] [OUTFILE] [NORM1] [NORMX] [DEMEAN] [DEMED]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-norm1",
       "description": "Normalize so sum of absolute values is 1 (L_1 norm)",
-      "value-key": "[NORM1_FLAG]",
+      "value-key": "[NORM1]",
       "type": "Flag",
       "optional": true,
       "id": "norm1",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-normx",
       "description": "Normalize so that max absolute value is 1 (L_infinity norm)",
-      "value-key": "[NORMX_FLAG]",
+      "value-key": "[NORMX]",
       "type": "Flag",
       "optional": true,
       "id": "normx",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-demean",
       "description": "Subtract each column's mean before normalizing",
-      "value-key": "[DEMEAN_FLAG]",
+      "value-key": "[DEMEAN]",
       "type": "Flag",
       "optional": true,
       "id": "demean",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-demed",
       "description": "Subtract each column's median before normalizing",
-      "value-key": "[DEMED_FLAG]",
+      "value-key": "[DEMED]",
       "type": "Flag",
       "optional": true,
       "id": "demed",

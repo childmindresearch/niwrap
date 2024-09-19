@@ -2,7 +2,7 @@
   "tool-version": "23.1.10",
   "name": "3dAllineate",
   "description": "Program to align one dataset (the 'source') to a 'base' dataset using an affine (matrix) transformation of space.",
-  "command-line": "3dAllineate [INPUT_FILE] [BASE_FILE] [PREFIX] [OPTIONS]",
+  "command-line": "3dAllineate [SOURCE] [BASE] [PREFIX] [PARAM_SAVE] [PARAM_APPLY] [MATRIX_SAVE] [MATRIX_APPLY] [COST] [INTERP] [FINAL] [NMATCH] [NOPAD] [VERBOSE] [QUIET]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -10,7 +10,7 @@
   "inputs": [
     {
       "description": "Source dataset file",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[SOURCE]",
       "type": "File",
       "optional": false,
       "id": "source",
@@ -19,7 +19,7 @@
     {
       "command-line-flag": "-base",
       "description": "Base dataset file",
-      "value-key": "[BASE_FILE]",
+      "value-key": "[BASE]",
       "type": "File",
       "optional": true,
       "id": "base",
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "-1Dparam_save",
       "description": "Save the warp parameters in ASCII (.1D) format into file",
-      "value-key": "[1DPARAM_SAVE]",
+      "value-key": "[PARAM_SAVE]",
       "type": "String",
       "optional": true,
       "id": "param_save",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-1Dparam_apply",
       "description": "Read warp parameters from file and apply them to the source dataset",
-      "value-key": "[1DPARAM_APPLY]",
+      "value-key": "[PARAM_APPLY]",
       "type": "String",
       "optional": true,
       "id": "param_apply",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-1Dmatrix_save",
       "description": "Save the transformation matrix for each sub-brick into file",
-      "value-key": "[1DMATRIX_SAVE]",
+      "value-key": "[MATRIX_SAVE]",
       "type": "String",
       "optional": true,
       "id": "matrix_save",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "-1Dmatrix_apply",
       "description": "Use the matrices in file to define the spatial transformations to be applied",
-      "value-key": "[1DMATRIX_APPLY]",
+      "value-key": "[MATRIX_APPLY]",
       "type": "String",
       "optional": true,
       "id": "matrix_apply",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "-cost",
       "description": "Defines the 'cost' function that defines the matching between the source and the base",
-      "value-key": "[COST_FUNCTION]",
+      "value-key": "[COST]",
       "type": "String",
       "optional": true,
       "id": "cost",
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "-interp",
       "description": "Defines interpolation method to use during matching process",
-      "value-key": "[INTERP_METHOD]",
+      "value-key": "[INTERP]",
       "type": "String",
       "optional": true,
       "id": "interp",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "-final",
       "description": "Defines the interpolation mode used to create the output dataset",
-      "value-key": "[FINAL_INTERP]",
+      "value-key": "[FINAL]",
       "type": "String",
       "optional": true,
       "id": "final",
@@ -118,7 +118,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Print out verbose progress reports",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -127,7 +127,7 @@
     {
       "command-line-flag": "-quiet",
       "description": "Don't print out verbose stuff",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",
@@ -151,14 +151,14 @@
       "name": "Output head file"
     },
     {
-      "path-template": "[1DPARAM_SAVE]",
+      "path-template": "[PARAM_SAVE]",
       "description": "File holding saved warp parameters",
       "optional": true,
       "id": "out_param_save",
       "name": "Saved parameters file"
     },
     {
-      "path-template": "[1DMATRIX_SAVE]",
+      "path-template": "[MATRIX_SAVE]",
       "description": "File holding saved matrix transformations",
       "optional": true,
       "id": "out_matrix_save",

@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dedge3.html",
   "description": "Does 3D Edge detection using the library 3DEdge",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dedge3.html",
-  "command-line": "3dedge3 [INPUT_FILE] [VERBOSE_FLAG] [PREFIX] [DATUM] [FSCALE_FLAG] [GSCALE_FLAG] [NSCALE_FLAG] [SCALE_FLOATS] [AUTOMASK_FLAG]",
+  "command-line": "3dedge3 [INPUT_FILE] [VERBOSE] [PREFIX] [DATUM] [FSCALE] [GSCALE] [NSCALE] [SCALE_FLOATS] [AUTOMASK]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

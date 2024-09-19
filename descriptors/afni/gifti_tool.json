@@ -4,12 +4,12 @@
   "author": "AFNI Team",
   "description": "Tool for creating, displaying, modifying, or comparing GIFTI datasets.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/gifti_tool.html",
-  "command-line": "gifti_tool [ARGS]",
+  "command-line": "gifti_tool [INFILE] [NEW_NUMDA] [NEW_DTYPE] [NEW_INTENT] [NEW_NDIM] [NEW_DIMS] [WRITE_GIFTI] [SET_EXTERN_FILELIST] [MOD_ADD_DATA] [VERB] [SHOW_GIFTI] [READ_DAS] [MOD_GIM_ATR] [MOD_GIM_META] [MOD_DA_ATR] [MOD_DA_META] [MOD_DAS] [NEW_DSET] [COMPARE_GIFTI] [COMPARE_DATA] [COMPARE_VERB] [APPROX_GIFTI]",
   "inputs": [
     {
       "command-line-flag": "-infile",
       "description": "Specify one or more GIFTI datasets as input",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "-write_gifti",
       "description": "Write out dataset as gifti image",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[WRITE_GIFTI]",
       "type": "String",
       "optional": false,
       "id": "write_gifti",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "-set_extern_filelist",
       "description": "Store data in external files",
-      "value-key": "[EXTERN_FILELIST]",
+      "value-key": "[SET_EXTERN_FILELIST]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Set verbose level",
-      "value-key": "[VERBOSE_LEVEL]",
+      "value-key": "[VERB]",
       "type": "Number",
       "optional": true,
       "id": "verb",
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "-read_DAs",
       "description": "Read DataArray list indices",
-      "value-key": "[READ_DA_INDICES]",
+      "value-key": "[READ_DAS]",
       "type": "Number",
       "list": true,
       "optional": true,
@@ -121,7 +121,7 @@
       "command-line-flag": "-mod_gim_atr",
       "description": "Set the GIFTI NAME=VALUE attribute pair at GIFTI level",
       "type": "String",
-      "value-key": "[GIFTI_ATTRIBUTE]",
+      "value-key": "[MOD_GIM_ATR]",
       "list": true,
       "optional": true,
       "id": "mod_gim_atr",
@@ -131,7 +131,7 @@
       "command-line-flag": "-mod_gim_meta",
       "description": "Add this pair to the GIFTI MetaData",
       "type": "String",
-      "value-key": "[GIFTI_META]",
+      "value-key": "[MOD_GIM_META]",
       "list": true,
       "optional": true,
       "id": "mod_gim_meta",
@@ -141,7 +141,7 @@
       "command-line-flag": "-mod_DA_atr",
       "description": "Set the DataArray NAME=VALUE attribute pair",
       "type": "String",
-      "value-key": "[DA_ATTRIBUTE]",
+      "value-key": "[MOD_DA_ATR]",
       "list": true,
       "optional": true,
       "id": "mod_da_atr",
@@ -151,7 +151,7 @@
       "command-line-flag": "-mod_DA_meta",
       "description": "Set the DataArray NAME=VALUE pair in DA's MetaData",
       "type": "String",
-      "value-key": "[DA_META]",
+      "value-key": "[MOD_DA_META]",
       "list": true,
       "optional": true,
       "id": "mod_da_meta",
@@ -160,7 +160,7 @@
     {
       "command-line-flag": "-mod_DAs",
       "description": "Specify the set of DataArrays to modify",
-      "value-key": "[MOD_DA_INDICES]",
+      "value-key": "[MOD_DAS]",
       "type": "Number",
       "list": true,
       "optional": true,
@@ -198,7 +198,7 @@
       "command-line-flag": "-compare_verb",
       "description": "Set the verbose level of comparisons",
       "type": "Number",
-      "value-key": "[COMPARE_VERBOSE_LEVEL]",
+      "value-key": "[COMPARE_VERB]",
       "optional": true,
       "id": "compare_verb",
       "name": "Compare Verbose Level"
@@ -215,7 +215,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[WRITE_GIFTI]",
       "description": "Output GIFTI file",
       "optional": false,
       "id": "output_gifti",

@@ -3,7 +3,7 @@
   "name": "fat_mvm_prep",
   "author": "AFNI Team",
   "description": "Combine FATCAT output with CSV data for statistical modeling.",
-  "command-line": "fat_mvm_prep.py -p [PREFIX] -c [CSV_FILE] [MATRIX_OPTION]",
+  "command-line": "fat_mvm_prep [PREFIX] [CSV_FILE] [MATRIX_FILES] [LIST_MATCH] [UNIONIZE_ROIS] [NA_WARN_OFF] [EXTERN_LABELS_NO]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-l",
       "description": "Text file containing two columns: path to subject matrix file and CSV IDs.",
-      "value-key": "[LIST]",
+      "value-key": "[LIST_MATCH]",
       "type": "File",
       "optional": true,
       "id": "list_match",

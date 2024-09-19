@@ -3,7 +3,7 @@
   "name": "find_variance_lines",
   "author": "AFNI Team",
   "description": "Look for bars of high variance that might suggest scanner interference in EPI datasets.",
-  "command-line": "find_variance_lines.tcsh [INPUT_FILES] [OPTIONS]",
+  "command-line": "find_variance_lines [INPUT_FILES] [MASK] [MIN_CVOX] [MIN_NT] [NERODE] [NFIRST] [PERCENTILE] [POLORT] [OUTPUT_DIR] [DO_CLEAN] [DO_IMG] [ECHO] [HELP] [HIST] [VER]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Mask for computations (default=AUTO)",
-      "value-key": "[MASK_VAL]",
+      "value-key": "[MASK]",
       "type": "String",
       "optional": true,
       "id": "mask",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-min_cvox",
       "description": "Minimum voxels for valid mask column (default=5)",
-      "value-key": "[MIN_CVOX_VAL]",
+      "value-key": "[MIN_CVOX]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-min_nt",
       "description": "Minimum number of time points required (default=10)",
-      "value-key": "[MIN_NT_VAL]",
+      "value-key": "[MIN_NT]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-nerode",
       "description": "How much to erode input or auto-mask (default=0)",
-      "value-key": "[NERODE_VAL]",
+      "value-key": "[NERODE]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "-nfirst",
       "description": "Discard the first VAL time points (default=0)",
-      "value-key": "[NFIRST_VAL]",
+      "value-key": "[NFIRST]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-perc",
       "description": "Percentile of variance values to scale to (default=90)",
-      "value-key": "[PERC_VAL]",
+      "value-key": "[PERCENTILE]",
       "type": "Number",
       "integer": true,
       "maximum": 99,
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "-polort",
       "description": "Polynomial detrending degree (default=A)",
-      "value-key": "[POLORT_VAL]",
+      "value-key": "[POLORT]",
       "type": "String",
       "optional": true,
       "id": "polort",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "-rdir",
       "description": "Name of the output directory (default=vlines.result)",
-      "value-key": "[RDIR_VAL]",
+      "value-key": "[OUTPUT_DIR]",
       "type": "String",
       "optional": true,
       "id": "output_dir",
@@ -100,7 +100,7 @@
     {
       "command-line-flag": "-do_clean",
       "description": "Do we clean up a little? (default=1)",
-      "value-key": "[DO_CLEAN_VAL]",
+      "value-key": "[DO_CLEAN]",
       "type": "Number",
       "integer": true,
       "maximum": 1,
@@ -112,7 +112,7 @@
     {
       "command-line-flag": "-do_img",
       "description": "Make vline images? (default=1)",
-      "value-key": "[DO_IMG_VAL]",
+      "value-key": "[DO_IMG]",
       "type": "Number",
       "integer": true,
       "maximum": 1,
@@ -124,7 +124,7 @@
     {
       "command-line-flag": "-echo",
       "description": "Run script with shell 'echo' set (default=no)",
-      "value-key": "[ECHO_FLAG]",
+      "value-key": "[ECHO]",
       "type": "Flag",
       "optional": true,
       "id": "echo",
@@ -133,7 +133,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show this help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -142,7 +142,7 @@
     {
       "command-line-flag": "-hist",
       "description": "Show the version history",
-      "value-key": "[HIST_FLAG]",
+      "value-key": "[HIST]",
       "type": "Flag",
       "optional": true,
       "id": "hist",
@@ -151,7 +151,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Show the current version",
-      "value-key": "[VER_FLAG]",
+      "value-key": "[VER]",
       "type": "Flag",
       "optional": true,
       "id": "ver",

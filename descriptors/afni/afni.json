@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/index.html",
   "description": "Tool for reading in sessions of 3D datasets and visualizing them",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni.html",
-  "command-line": "afni [OPTIONS] [SESSION_DIRECTORIES]",
+  "command-line": "afni [SESSION_DIRECTORIES] [BYSUB] [ALL_DSETS] [PURGE] [POSFUNC] [RECURSIVE] [NO1D] [NOCSV] [NOTSV] [UNIQUE] [ORIENT] [NOPLUGINS] [SEEHIDDEN] [ALLOW_ALL_PLUGINS] [YESPLUGOUTS] [DEBUG_PLUGOUTS] [NOPLUGOUTS] [SKIP_AFNIRC] [LAYOUT] [NIML] [NP] [NPQ] [NPB] [COM] [COMSEP]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -22,7 +22,7 @@
     {
       "command-line-flag": "-bysub",
       "description": "Gather all datasets corresponding to a single subject identifier",
-      "value-key": "[SUBJECT_IDS_OR_DIRS]",
+      "value-key": "[BYSUB]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "-unique",
       "description": "Create a unique set of colors for each AFNI controller window",
-      "value-key": "[UNIQUE_COLORS]",
+      "value-key": "[UNIQUE]",
       "type": "Flag",
       "optional": true,
       "id": "unique",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "-orient",
       "description": "Orientation code for displaying x-y-z coordinates",
-      "value-key": "[ORIENT_CODE]",
+      "value-key": "[ORIENT]",
       "type": "String",
       "optional": true,
       "id": "orient",
@@ -176,7 +176,7 @@
     {
       "command-line-flag": "-layout",
       "description": "Read initial windows layout from a file",
-      "value-key": "[LAYOUT_FILE]",
+      "value-key": "[LAYOUT]",
       "type": "File",
       "optional": true,
       "id": "layout",
@@ -194,7 +194,7 @@
     {
       "command-line-flag": "-np",
       "description": "Provide a port offset for multiple instances",
-      "value-key": "[PORT_OFFSET]",
+      "value-key": "[NP]",
       "type": "Number",
       "optional": true,
       "id": "np",
@@ -204,7 +204,7 @@
     {
       "command-line-flag": "-npq",
       "description": "Like -np but quieter in case of errors",
-      "value-key": "[PORT_OFFSET]",
+      "value-key": "[NPQ]",
       "type": "Number",
       "optional": true,
       "id": "npq",
@@ -214,7 +214,7 @@
     {
       "command-line-flag": "-npb",
       "description": "Provide a block of port numbers",
-      "value-key": "[PORT_OFFSET_BLOC]",
+      "value-key": "[NPB]",
       "type": "Number",
       "optional": true,
       "id": "npb",
@@ -224,7 +224,7 @@
     {
       "command-line-flag": "-com",
       "description": "Specify command strings to drive AFNI on startup",
-      "value-key": "[COMMAND_STRING]",
+      "value-key": "[COM]",
       "type": "String",
       "optional": true,
       "id": "com",
@@ -233,7 +233,7 @@
     {
       "command-line-flag": "-comsep",
       "description": "Character to use as a separator for commands",
-      "value-key": "[SEPARATOR]",
+      "value-key": "[COMSEP]",
       "type": "String",
       "optional": true,
       "id": "comsep",

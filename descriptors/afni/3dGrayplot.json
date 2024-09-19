@@ -3,7 +3,7 @@
   "name": "3dGrayplot",
   "author": "AFNI Team",
   "description": "Make a grayplot from a 3D+time dataset, like a carpet plot. Result is saved to a PNG image.",
-  "command-line": "3dGrayplot [OVERLAY_FLAG] [INPUT_DATASET] [MASK] [OUTPUT_FILE] [DIMENSIONS] [RESAMPLE_METHOD] [POLORT] [FWHM] [ORDER_METHOD] [RANGE] [PERCENT] [RAW_WITH_BOUNDS]",
+  "command-line": "3dGrayplot [INPUT] [MASK] [PREFIX] [DIMENSIONS] [RESAMPLE_OLD] [POLORT] [FWHM] [PVORDER] [LJORDER] [PEELORDER] [IJKORDER] [RANGE] [PERCENT] [RAW_WITH_BOUNDS]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input dataset",
-      "value-key": "[INPUT_DATASET]",
+      "value-key": "[INPUT]",
       "type": "File",
       "optional": false,
       "id": "input",
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Name for the output file. Default is Grayplot.png",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": true,
       "id": "prefix",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-oldresam",
       "description": "Original resampling method for processed dataset.",
-      "value-key": "[RESAMPLE_METHOD]",
+      "value-key": "[RESAMPLE_OLD]",
       "type": "Flag",
       "optional": true,
       "id": "resample_old",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "-pvorder",
       "description": "Order the voxels by how well they match the two leading principal components of their partition.",
-      "value-key": "[ORDER_METHOD]",
+      "value-key": "[PVORDER]",
       "type": "Flag",
       "optional": true,
       "id": "pvorder",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "-LJorder",
       "description": "Order the voxels by their Ljung-Box statistics, a measure of temporal correlation.",
-      "value-key": "[ORDER_METHOD]",
+      "value-key": "[LJORDER]",
       "type": "Flag",
       "optional": true,
       "id": "LJorder",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "-peelorder",
       "description": "Order the voxels by how many 'peel' steps are needed to get from the partition boundary to the voxel.",
-      "value-key": "[ORDER_METHOD]",
+      "value-key": "[PEELORDER]",
       "type": "Flag",
       "optional": true,
       "id": "peelorder",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "-ijkorder",
       "description": "Default intra-partition ordering by dataset 3D index ('ijk').",
-      "value-key": "[ORDER_METHOD]",
+      "value-key": "[IJKORDER]",
       "type": "Flag",
       "optional": true,
       "id": "ijkorder",
@@ -144,7 +144,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[PREFIX]",
       "description": "Grayplot image file",
       "optional": true,
       "id": "grayplot_img",

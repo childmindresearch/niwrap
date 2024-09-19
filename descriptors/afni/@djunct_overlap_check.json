@@ -3,7 +3,7 @@
   "name": "@djunct_overlap_check",
   "author": "AFNI Team",
   "description": "A helper script for visualizing overlap between datasets in AFNI",
-  "command-line": "@djunct_overlap_check [ULAY] [OLAY] [PREFIX] [DSET_BFS] [MG] [MC] [CBAR] [OPA] [ZC] [XX] [YY] [ZZ] [umin] [umax] [MX] [MY] [MX2] [MY2] [LM] [PBOFF] [EDGY_ULAY] [SET_DICOM_XYZ_OFF] [NO_COR] [NO_AXI] [NO_SAG] [NO_CLEAN]",
+  "command-line": "@djunct_overlap_check [ULAY] [OLAY] [PREFIX] [BOX_FOCUS_SLICES] [MONTGAP] [MONTCOLOR] [CBAR] [OPACITY] [ZEROCOLOR] [SET_DICOM_XYZ] [ULAY_RANGE] [ULAY_RANGE_NZ] [MONTX] [MONTY] [MONTX_CAT] [MONTY_CAT] [LABEL_MODE] [PBAR_POSONLY_OFF] [EDGY_ULAY] [SET_DICOM_XYZ_OFF] [NO_COR] [NO_AXI] [NO_SAG] [NO_CLEAN]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -35,7 +35,7 @@
     },
     {
       "description": "Dataset for box focus slices",
-      "value-key": "[DSET_BFS]",
+      "value-key": "[BOX_FOCUS_SLICES]",
       "type": "File",
       "optional": true,
       "id": "box_focus_slices",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-montgap",
       "description": "Gap between montage slices",
-      "value-key": "[MG]",
+      "value-key": "[MONTGAP]",
       "type": "Number",
       "optional": true,
       "id": "montgap",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-montcolor",
       "description": "Color of the montage gap",
-      "value-key": "[MC]",
+      "value-key": "[MONTCOLOR]",
       "type": "String",
       "optional": true,
       "id": "montcolor",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-opacity",
       "description": "Opacity of the overlay",
-      "value-key": "[OPA]",
+      "value-key": "[OPACITY]",
       "type": "Number",
       "optional": true,
       "id": "opacity",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "-zerocolor",
       "description": "Color for zero values",
-      "value-key": "[ZC]",
+      "value-key": "[ZEROCOLOR]",
       "type": "String",
       "optional": true,
       "id": "zerocolor",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-set_dicom_xyz",
       "description": "Set DICOM coordinates for slice location",
-      "value-key": "[XX] [YY] [ZZ]",
+      "value-key": "[SET_DICOM_XYZ]",
       "type": "Number",
       "optional": true,
       "list": true,
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "-ulay_range",
       "description": "Range for underlay values",
-      "value-key": "[umin] [umax]",
+      "value-key": "[ULAY_RANGE]",
       "type": "Number",
       "optional": true,
       "list": true,
@@ -113,7 +113,7 @@
     {
       "command-line-flag": "-ulay_range_nz",
       "description": "Range for non-zero underlay values",
-      "value-key": "[umin] [umax]",
+      "value-key": "[ULAY_RANGE_NZ]",
       "type": "Number",
       "optional": true,
       "list": true,
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "-montx",
       "description": "Number of panels in X direction in montage",
-      "value-key": "[MX]",
+      "value-key": "[MONTX]",
       "type": "Number",
       "optional": true,
       "id": "montx",
@@ -134,7 +134,7 @@
     {
       "command-line-flag": "-monty",
       "description": "Number of panels in Y direction in montage",
-      "value-key": "[MY]",
+      "value-key": "[MONTY]",
       "type": "Number",
       "optional": true,
       "id": "monty",
@@ -143,7 +143,7 @@
     {
       "command-line-flag": "-montx_cat",
       "description": "Number of X panes per image in montage",
-      "value-key": "[MX2]",
+      "value-key": "[MONTX_CAT]",
       "type": "Number",
       "optional": true,
       "id": "montx_cat",
@@ -152,7 +152,7 @@
     {
       "command-line-flag": "-monty_cat",
       "description": "Number of Y panes per image in montage",
-      "value-key": "[MY2]",
+      "value-key": "[MONTY_CAT]",
       "type": "Number",
       "optional": true,
       "id": "monty_cat",
@@ -161,7 +161,7 @@
     {
       "command-line-flag": "-label_mode",
       "description": "Label mode",
-      "value-key": "[LM]",
+      "value-key": "[LABEL_MODE]",
       "type": "String",
       "optional": true,
       "id": "label_mode",
@@ -170,7 +170,7 @@
     {
       "command-line-flag": "-pbar_posonly_off",
       "description": "Turn off position-only p-bar",
-      "value-key": "[PBOFF]",
+      "value-key": "[PBAR_POSONLY_OFF]",
       "type": "Flag",
       "optional": true,
       "id": "pbar_posonly_off",

@@ -3,7 +3,7 @@
   "name": "3dZeropad",
   "author": "AFNI Team",
   "description": "Adds planes of zeros to a dataset (i.e., pads it out). Negative 'add' count means to cut a dataset down in size.",
-  "command-line": "3dZeropad [OPTIONS] [DATASET]",
+  "command-line": "3dZeropad [DATASET] [I] [S] [A] [P] [L] [R] [Z] [RL] [AP] [IS] [PAD2EVEN] [MM_FLAG] [MASTER_DATASET] [PREFIX]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "-z",
       "description": "Adds 'n' planes of zeros on EACH of the dataset z-axis (slice-direction) faces",
-      "value-key": "[z]",
+      "value-key": "[Z]",
       "type": "Number",
       "optional": true,
       "id": "z",
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "-pad2evens",
       "description": "Add 0 or 1 plane in each of the R/A/S directions, giving each axis an even number of slices",
-      "value-key": "[PAD2EVEN_FLAG]",
+      "value-key": "[PAD2EVEN]",
       "type": "Flag",
       "optional": true,
       "id": "pad2even",

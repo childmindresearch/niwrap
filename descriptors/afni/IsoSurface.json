@@ -3,7 +3,7 @@
   "name": "IsoSurface",
   "author": "AFNI Team",
   "description": "A program to perform isosurface extraction from a volume.",
-  "command-line": "IsoSurface [MANDATORY_PARAMS] [ISO_SURFACE_OPTION] [OPTIONAL_PARAMS] [SMOOTHING_PARAMS] [DEBUG_OPTION]",
+  "command-line": "IsoSurface [INPUT_VOL] [SHAPE_SPEC] [ISOROIS] [ISOVAL] [ISORANGE] [ISOCMASK] [OUTPUT_PREFIX] [TSMOOTH] [DEBUG] [AUTOCROP] [REMESH] [XFORM] [NOVOLREG] [NOXFORM]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input volume file.",
-      "value-key": "[MANDATORY_PARAMS]",
+      "value-key": "[INPUT_VOL]",
       "type": "File",
       "optional": true,
       "id": "input_vol",
@@ -20,7 +20,7 @@
     },
     {
       "description": "Built-in shape specification.",
-      "value-key": "[MANDATORY_PARAMS]",
+      "value-key": "[SHAPE_SPEC]",
       "type": "String",
       "optional": true,
       "id": "shape_spec",
@@ -30,7 +30,7 @@
     },
     {
       "description": "Create isosurface for each unique value in the input volume.",
-      "value-key": "[ISO_SURFACE_OPTION]",
+      "value-key": "[ISOROIS]",
       "type": "Flag",
       "optional": true,
       "id": "isorois",
@@ -39,7 +39,7 @@
     },
     {
       "description": "Create isosurface where volume = V.",
-      "value-key": "[ISO_SURFACE_OPTION]",
+      "value-key": "[ISOVAL]",
       "type": "String",
       "optional": true,
       "id": "isoval",
@@ -48,7 +48,7 @@
     },
     {
       "description": "Create isosurface where V0 <= volume < V1.",
-      "value-key": "[ISO_SURFACE_OPTION]",
+      "value-key": "[ISORANGE]",
       "type": "String",
       "optional": true,
       "id": "isorange",
@@ -58,7 +58,7 @@
     },
     {
       "description": "Create isosurface where MASK_COM != 0.",
-      "value-key": "[ISO_SURFACE_OPTION]",
+      "value-key": "[ISOCMASK]",
       "type": "String",
       "optional": true,
       "id": "isocmask",
@@ -67,7 +67,7 @@
     },
     {
       "description": "Prefix of output surface file.",
-      "value-key": "[OPTIONAL_PARAMS]",
+      "value-key": "[OUTPUT_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "output_prefix",
@@ -76,7 +76,7 @@
     },
     {
       "description": "Smooth resultant surface using Taubin smoothing with parameters KPB and NITER.",
-      "value-key": "[SMOOTHING_PARAMS]",
+      "value-key": "[TSMOOTH]",
       "type": "String",
       "optional": true,
       "id": "tsmooth",
@@ -86,7 +86,7 @@
     },
     {
       "description": "Debug levels of 0 (default), 1, 2, 3.",
-      "value-key": "[DEBUG_OPTION]",
+      "value-key": "[DEBUG]",
       "type": "String",
       "optional": true,
       "id": "debug",
@@ -95,7 +95,7 @@
     },
     {
       "description": "Crop input volume before extraction.",
-      "value-key": "[OPTIONAL_PARAMS]",
+      "value-key": "[AUTOCROP]",
       "type": "Flag",
       "optional": true,
       "id": "autocrop",
@@ -104,7 +104,7 @@
     },
     {
       "description": "Remesh the surface(s).",
-      "value-key": "[OPTIONAL_PARAMS]",
+      "value-key": "[REMESH]",
       "type": "String",
       "optional": true,
       "id": "remesh",
@@ -113,7 +113,7 @@
     },
     {
       "description": "Transform to apply to volume values before extracting.",
-      "value-key": "[OPTIONAL_PARAMS]",
+      "value-key": "[XFORM]",
       "type": "String",
       "optional": true,
       "id": "xform",
@@ -122,7 +122,7 @@
     },
     {
       "description": "Ignore any Rotate, Volreg, Tagalign, or WarpDrive transformations.",
-      "value-key": "[OPTIONAL_PARAMS]",
+      "value-key": "[NOVOLREG]",
       "type": "Flag",
       "optional": true,
       "id": "novolreg",
@@ -131,7 +131,7 @@
     },
     {
       "description": "Same as -novolreg.",
-      "value-key": "[OPTIONAL_PARAMS]",
+      "value-key": "[NOXFORM]",
       "type": "Flag",
       "optional": true,
       "id": "noxform",

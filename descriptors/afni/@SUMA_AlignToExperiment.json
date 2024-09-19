@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Creates a version of Surface Anatomy that is registered to Experiment Anatomy.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_AlignToExperiment.html",
-  "command-line": "@SUMA_AlignToExperiment <-exp_anat $$exp_anat$$> <-surf_anat $$surf_anat$$> $$dxyz$$ $$wd$$ $$prefix$$ $$EA_clip_below$$ $$align_centers$$ $$ok_change_view$$ $$strip_skull$$",
+  "command-line": "SUMA_AlignToExperiment [EXP_ANAT] [SURF_ANAT] [DXYZ] [OUT_DXYZ] [WD] [AL] [AL_OPT] [OK_CHANGE_VIEW] [STRIP_SKULL] [SKULL_STRIP_OPT] [ALIGN_CENTERS] [INIT_XFORM] [EA_CLIP_BELOW] [PREFIX] [SURF_ANAT_FOLLOWERS] [FOLLOWERS_INTERP] [ATLAS_FOLLOWERS] [ECHO] [KEEP_TMP] [OVERWRITE_RESP]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -16,7 +16,7 @@
       "description": "Name of high resolution anatomical data set in register with experimental data.",
       "type": "File",
       "command-line-flag": "-exp_anat",
-      "value-key": "[exp_anat]",
+      "value-key": "[EXP_ANAT]",
       "optional": false
     },
     {
@@ -25,7 +25,7 @@
       "description": "Path and name of high resolution antomical data set used to create the surface.",
       "type": "File",
       "command-line-flag": "-surf_anat",
-      "value-key": "[surf_anat]",
+      "value-key": "[SURF_ANAT]",
       "optional": false
     },
     {
@@ -34,7 +34,7 @@
       "description": "Optional parameter to downsample anatomical volumes to dxyz mm voxel resolution before registration.",
       "type": "Number",
       "command-line-flag": "-dxyz",
-      "value-key": "[dxyz]",
+      "value-key": "[DXYZ]",
       "optional": true
     },
     {
@@ -43,7 +43,7 @@
       "description": "Output the final aligned volume at a cubic voxelsize of DXYZmm.",
       "type": "Number",
       "command-line-flag": "-out_dxyz",
-      "value-key": "[out_dxyz]",
+      "value-key": "[OUT_DXYZ]",
       "optional": true
     },
     {
@@ -52,7 +52,7 @@
       "description": "Use 3dWarpDrive's general affine transform (12 param) instead of 3dvolreg's 6 parameters.",
       "type": "Flag",
       "command-line-flag": "-wd",
-      "value-key": "[wd]",
+      "value-key": "[WD]",
       "optional": true
     },
     {
@@ -61,7 +61,7 @@
       "description": "Use 3dAllineate to do the 12 parameter alignment. Cost function is 'lpa'.",
       "type": "Flag",
       "command-line-flag": "-al",
-      "value-key": "[al]",
+      "value-key": "[AL]",
       "optional": true
     },
     {
@@ -70,7 +70,7 @@
       "description": "Specify set of options to pass to 3dAllineate.",
       "type": "String",
       "command-line-flag": "-al_opt",
-      "value-key": "[al_opt]",
+      "value-key": "[AL_OPT]",
       "optional": true
     },
     {
@@ -79,7 +79,7 @@
       "description": "Be quiet when view of registered volume is changed to match that of the Experiment_Anatomy.",
       "type": "Flag",
       "command-line-flag": "-ok_change_view",
-      "value-key": "[ok_change_view]",
+      "value-key": "[OK_CHANGE_VIEW]",
       "optional": true
     },
     {
@@ -88,7 +88,7 @@
       "description": "Use 3dSkullStrip to remove non-brain tissue.",
       "type": "String",
       "command-line-flag": "-strip_skull",
-      "value-key": "[strip_skull]",
+      "value-key": "[STRIP_SKULL]",
       "optional": true
     },
     {
@@ -97,7 +97,7 @@
       "description": "Pass the options to 3dSkullStrip.",
       "type": "String",
       "command-line-flag": "-skull_strip_opt",
-      "value-key": "[skull_strip_opt]",
+      "value-key": "[SKULL_STRIP_OPT]",
       "optional": true
     },
     {
@@ -106,7 +106,7 @@
       "description": "Add an additional transformation to align the volume centers.",
       "type": "Flag",
       "command-line-flag": "-align_centers",
-      "value-key": "[align_centers]",
+      "value-key": "[ALIGN_CENTERS]",
       "optional": true
     },
     {
@@ -115,7 +115,7 @@
       "description": "Apply affine transform file to Surface_Anatomy before beginning registration.",
       "type": "File",
       "command-line-flag": "-init_xform",
-      "value-key": "[init_xform]",
+      "value-key": "[INIT_XFORM]",
       "optional": true
     },
     {
@@ -124,7 +124,7 @@
       "description": "Set slices below CLPmm in 'Experiment Anatomy' to zero.",
       "type": "Number",
       "command-line-flag": "-EA_clip_below",
-      "value-key": "[EA_clip_below]",
+      "value-key": "[EA_CLIP_BELOW]",
       "optional": true
     },
     {
@@ -133,7 +133,7 @@
       "description": "Prefix for the output volume.",
       "type": "String",
       "command-line-flag": "-prefix",
-      "value-key": "[prefix]",
+      "value-key": "[PREFIX]",
       "optional": true
     },
     {
@@ -142,7 +142,7 @@
       "description": "Apply the same alignment transform to additional datasets.",
       "type": "String",
       "command-line-flag": "-surf_anat_followers",
-      "value-key": "[surf_anat_followers]",
+      "value-key": "[SURF_ANAT_FOLLOWERS]",
       "optional": true
     },
     {
@@ -151,7 +151,7 @@
       "description": "Set the interpolation mode for the follower datasets.",
       "type": "String",
       "command-line-flag": "-followers_interp",
-      "value-key": "[followers_interp]",
+      "value-key": "[FOLLOWERS_INTERP]",
       "optional": true
     },
     {
@@ -160,7 +160,7 @@
       "description": "Automatically set the followers to be atlases in the directory of -surf_anat.",
       "type": "Flag",
       "command-line-flag": "-atlas_followers",
-      "value-key": "[atlas_followers]",
+      "value-key": "[ATLAS_FOLLOWERS]",
       "optional": true
     },
     {
@@ -169,7 +169,7 @@
       "description": "Echo all commands to terminal for debugging.",
       "type": "Flag",
       "command-line-flag": "-echo",
-      "value-key": "[echo]",
+      "value-key": "[ECHO]",
       "optional": true
     },
     {
@@ -178,7 +178,7 @@
       "description": "Keep temporary files for debugging.",
       "type": "Flag",
       "command-line-flag": "-keep_tmp",
-      "value-key": "[keep_tmp]",
+      "value-key": "[KEEP_TMP]",
       "optional": true
     },
     {
@@ -187,7 +187,7 @@
       "description": "Answer 'overwrite' questions automatically.",
       "type": "String",
       "command-line-flag": "-overwrite_resp",
-      "value-key": "[overwrite_resp]",
+      "value-key": "[OVERWRITE_RESP]",
       "optional": true
     }
   ],

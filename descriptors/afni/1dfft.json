@@ -3,11 +3,11 @@
   "name": "1dfft",
   "author": "AFNI Team",
   "description": "Compute the absolute value of the FFT of input columns from an AFNI 1D file.",
-  "command-line": "1dfft [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]",
+  "command-line": "1dfft [INFILE] [OUTFILE] [IGNORE] [USE] [NFFT] [TOCX] [FROMCX] [HILBERT] [NODETREND]",
   "inputs": [
     {
       "description": "Input .1D file containing an ASCII list of numbers arranged in columns.",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",
@@ -15,7 +15,7 @@
     },
     {
       "description": "Output file to store the FFT results.",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[OUTFILE]",
       "type": "String",
       "optional": false,
       "id": "outfile",
@@ -91,7 +91,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[OUTFILE]",
       "description": "Output file with the absolute value of the FFT of the input columns.",
       "optional": true,
       "id": "out_fft",

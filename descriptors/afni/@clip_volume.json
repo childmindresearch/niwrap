@@ -3,7 +3,7 @@
   "name": "clip_volume",
   "author": "AFNI Team",
   "description": "A tool to clip regions of a volume in various ways, such as above/below certain coordinates or within a specified box.",
-  "command-line": "@clip_volume -input [INPUT_VOLUME] [CLIPPING_OPTIONS] [LOGIC_OPTIONS] [CROP_OPTIONS] -prefix [OUTPUT_PREFIX]",
+  "command-line": "clip_volume [INPUT_VOLUME] [BELOW_ZMM] [ABOVE_ZMM] [LEFT_XMM] [RIGHT_XMM] [ANTERIOR_YMM] [POSTERIOR_YMM] [BOX] [MASK_BOX] [AND_LOGIC] [OR_LOGIC] [VERBOSITY] [CROP_ALLZERO] [CROP_GREEDY] [CROP] [CROP_NPAD] [OUTPUT_PREFIX] [FOLLOWERS]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-below",
       "description": "Set to 0 slices below Zmm",
-      "value-key": "[BELOW_Zmm]",
+      "value-key": "[BELOW_ZMM]",
       "type": "Number",
       "optional": true,
       "id": "below_zmm",
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-above",
       "description": "Set to 0 slices above Zmm",
-      "value-key": "[ABOVE_Zmm]",
+      "value-key": "[ABOVE_ZMM]",
       "type": "Number",
       "optional": true,
       "id": "above_zmm",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-left",
       "description": "Set to 0 slices left of Xmm",
-      "value-key": "[LEFT_Xmm]",
+      "value-key": "[LEFT_XMM]",
       "type": "Number",
       "optional": true,
       "id": "left_xmm",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-right",
       "description": "Set to 0 slices right of Xmm",
-      "value-key": "[RIGHT_Xmm]",
+      "value-key": "[RIGHT_XMM]",
       "type": "Number",
       "optional": true,
       "id": "right_xmm",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-anterior",
       "description": "Set to 0 slices anterior to Ymm",
-      "value-key": "[ANTERIOR_Ymm]",
+      "value-key": "[ANTERIOR_YMM]",
       "type": "Number",
       "optional": true,
       "id": "anterior_ymm",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "-posterior",
       "description": "Set to 0 slices posterior to Ymm",
-      "value-key": "[POSTERIOR_Ymm]",
+      "value-key": "[POSTERIOR_YMM]",
       "type": "Number",
       "optional": true,
       "id": "posterior_ymm",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "-and",
       "description": "Combine with next clipping planes using 'and'.",
-      "value-key": "[LOGIC_AND]",
+      "value-key": "[AND_LOGIC]",
       "type": "Flag",
       "optional": true,
       "id": "and_logic",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "-or",
       "description": "Combine with next clipping planes using 'or'.",
-      "value-key": "[LOGIC_OR]",
+      "value-key": "[OR_LOGIC]",
       "type": "Flag",
       "optional": true,
       "id": "or_logic",

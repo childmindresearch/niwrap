@@ -3,7 +3,7 @@
   "name": "SurfMeasures",
   "author": "AFNI Team",
   "description": "Compute measures from surface dataset(s)",
-  "command-line": "SurfMeasures [OPTIONS] -spec SPEC_FILE -out OUTFILE",
+  "command-line": "SurfMeasures [SPEC_FILE] [SURF_A] [SURF_B] [OUT_1D] [OUT_DSET] [FUNC] [SURF_VOLUME] [CMASK] [DEBUG] [DNODE] [NODES_1D] [INFO_ALL] [INFO_AREA] [INFO_NORMS] [INFO_THICK] [INFO_VOL] [INFO_VOLG] [VER]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -38,7 +38,7 @@
     },
     {
       "description": "Output filename in 1D format",
-      "value-key": "[OUTFILE_1D]",
+      "value-key": "[OUT_1D]",
       "type": "String",
       "optional": true,
       "id": "out_1D",
@@ -47,7 +47,7 @@
     },
     {
       "description": "Output filename with dataset format",
-      "value-key": "[OUTFILE]",
+      "value-key": "[OUT_DSET]",
       "type": "String",
       "optional": false,
       "id": "out_dset",
@@ -84,7 +84,7 @@
     },
     {
       "description": "Display extra run-time information with specified debug level (0-5)",
-      "value-key": "[DEBUG_LEVEL]",
+      "value-key": "[DEBUG]",
       "type": "Number",
       "minimum": 0,
       "maximum": 5,
@@ -96,7 +96,7 @@
     },
     {
       "description": "Display extra information for specified node",
-      "value-key": "[NODE]",
+      "value-key": "[DNODE]",
       "type": "Number",
       "optional": true,
       "id": "dnode",
@@ -105,7 +105,7 @@
     },
     {
       "description": "Restrict output to specific nodes listed in a file",
-      "value-key": "[NODELIST]",
+      "value-key": "[NODES_1D]",
       "type": "File",
       "optional": true,
       "id": "nodes_1D",
@@ -132,7 +132,7 @@
     },
     {
       "description": "Display info about the normals",
-      "value-key": "[INFO_NORMALS]",
+      "value-key": "[INFO_NORMS]",
       "type": "Flag",
       "optional": true,
       "id": "info_norms",
@@ -179,14 +179,14 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTFILE_1D].1D",
+      "path-template": "[OUT_1D].1D",
       "description": "Output in 1D format",
       "optional": true,
       "id": "output_1D",
       "name": "Output 1D File"
     },
     {
-      "path-template": "[OUTFILE]",
+      "path-template": "[OUT_DSET]",
       "description": "Output in specified dataset format",
       "optional": false,
       "id": "output_dset",

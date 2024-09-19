@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddot.html",
   "description": "Computes correlation coefficients between sub-brick pairs",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddot.html",
-  "command-line": "3ddot [OPTIONS] [DATASET...]",
+  "command-line": "3ddot [INPUT_DATASETS] [MASK] [MRANGE] [DEMEAN] [DOCOR] [DODOT] [DOCOEF] [DOSUMS] [DOETA2] [DODICE] [SHOW_LABELS] [UPPER] [FULL] [1D] [NIML]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "List of input datasets to be used (e.g. img1+orig, img2+orig)",
-      "value-key": "[DATASET...]",
+      "value-key": "[INPUT_DATASETS]",
       "type": "File",
       "optional": false,
       "id": "input_datasets",
@@ -44,7 +44,7 @@
     {
       "command-line-flag": "-demean",
       "description": "Remove the mean from each volume prior to computing the correlation",
-      "value-key": "[DEMEAN_FLAG]",
+      "value-key": "[DEMEAN]",
       "type": "Flag",
       "optional": true,
       "id": "demean",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-docor",
       "description": "Return the correlation coefficient (default)",
-      "value-key": "[DOCOR_FLAG]",
+      "value-key": "[DOCOR]",
       "type": "Flag",
       "optional": true,
       "id": "docor",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-dodot",
       "description": "Return the dot product (unscaled)",
-      "value-key": "[DODOT_FLAG]",
+      "value-key": "[DODOT]",
       "type": "Flag",
       "optional": true,
       "id": "dodot",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-docoef",
       "description": "Return the least square fit coefficients {a,b}",
-      "value-key": "[DOCOEF_FLAG]",
+      "value-key": "[DOCOEF]",
       "type": "Flag",
       "optional": true,
       "id": "docoef",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "-dosums",
       "description": "Return xbar, ybar, variance, covariance, and correlation coefficient",
-      "value-key": "[DOSUMS_FLAG]",
+      "value-key": "[DOSUMS]",
       "type": "Flag",
       "optional": true,
       "id": "dosums",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-doeta2",
       "description": "Return eta-squared (Cohen, NeuroImage 2008)",
-      "value-key": "[DOETA2_FLAG]",
+      "value-key": "[DOETA2]",
       "type": "Flag",
       "optional": true,
       "id": "doeta2",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "-dodice",
       "description": "Return the Dice coefficient (the Sorensen-Dice index)",
-      "value-key": "[DODICE_FLAG]",
+      "value-key": "[DODICE]",
       "type": "Flag",
       "optional": true,
       "id": "dodice",
@@ -107,7 +107,7 @@
     {
       "command-line-flag": "-show_labels",
       "description": "Print sub-brick labels to help identify what is being correlated",
-      "value-key": "[SHOW_LABELS_FLAG]",
+      "value-key": "[SHOW_LABELS]",
       "type": "Flag",
       "optional": true,
       "id": "show_labels",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "-upper",
       "description": "Compute upper triangular matrix",
-      "value-key": "[UPPER_FLAG]",
+      "value-key": "[UPPER]",
       "type": "Flag",
       "optional": true,
       "id": "upper",
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "-full",
       "description": "Compute the whole matrix",
-      "value-key": "[FULL_FLAG]",
+      "value-key": "[FULL]",
       "type": "Flag",
       "optional": true,
       "id": "full",
@@ -134,7 +134,7 @@
     {
       "command-line-flag": "-1D",
       "description": "Add comment headings for the 1D format",
-      "value-key": "[1D_FLAG]",
+      "value-key": "[1D]",
       "type": "Flag",
       "optional": true,
       "id": "1D",
@@ -143,7 +143,7 @@
     {
       "command-line-flag": "-NIML",
       "description": "Write output in NIML 1D format",
-      "value-key": "[NIML_FLAG]",
+      "value-key": "[NIML]",
       "type": "Flag",
       "optional": true,
       "id": "NIML",

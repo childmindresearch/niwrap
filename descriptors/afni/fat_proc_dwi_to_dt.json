@@ -3,11 +3,11 @@
   "name": "fat_proc_dwi_to_dt",
   "author": "AFNI Team",
   "description": "This program fits tensors and DT parameters, as well as the uncertainty of DT parameters needed for tractography.",
-  "command-line": "fat_proc_dwi_to_dt -in_dwi [INPUT_DWI] [GRADIENT_MATRIX] -prefix [OUTPUT_PREFIX] [OPTIONAL_PARAMETERS]",
+  "command-line": "fat_proc_dwi_to_dt [IN_DWI] [IN_GRADMAT] [PREFIX] [IN_BVALS] [MASK] [MASK_FROM_STRUC] [IN_STRUC_RES] [IN_REF_ORIG] [PREFIX_DTI] [FLIP_X] [FLIP_Y] [FLIP_Z] [NO_FLIP] [NO_SCALE_OUT_1000] [NO_REWEIGHT] [NO_CUMULATIVE_WTS] [QC_FA_THR] [QC_FA_MAX] [QC_FA_UNC_MAX] [QC_V12_UNC_MAX] [QC_PREFIX] [NO_QC_VIEW] [NO_CMD_OUT] [WORKDIR] [NO_CLEAN] [UNCERT_OFF] [UNCERT_ITERS] [UNCERT_EXTRA_CMDS] [CHECK_ABS_MIN]",
   "inputs": [
     {
       "description": "4D volume of N DWIs. Required.",
-      "value-key": "[INPUT_DWI]",
+      "value-key": "[IN_DWI]",
       "type": "File",
       "optional": false,
       "id": "in_dwi",
@@ -16,7 +16,7 @@
     {
       "command-line-flag": "-in_col_matA | -in_col_matT | -in_col_vec | -in_row_vec",
       "description": "Input text file of N gradient vectors or bmatrices.",
-      "value-key": "[GRADIENT_MATRIX]",
+      "value-key": "[IN_GRADMAT]",
       "type": "File",
       "optional": false,
       "id": "in_gradmat",
@@ -25,7 +25,7 @@
     {
       "command-line-flag": "-prefix",
       "description": "Set prefix for output DWI data.",
-      "value-key": "[OUTPUT_PREFIX]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": false,
       "id": "prefix",
@@ -34,7 +34,7 @@
     {
       "command-line-flag": "-in_bvals",
       "description": "Optional, if bvalue information is in a separate file from the b-vectors or matrices.",
-      "value-key": "[BVAL]",
+      "value-key": "[IN_BVALS]",
       "type": "File",
       "optional": true,
       "id": "in_bvals",
@@ -52,7 +52,7 @@
     {
       "command-line-flag": "-mask_from_struc",
       "description": "Flag to make a mask using 3dSkullStrip+3dmask_tool from the structural file.",
-      "value-key": "[--mask_from_struc]",
+      "value-key": "[MASK_FROM_STRUC]",
       "type": "Flag",
       "optional": true,
       "id": "mask_from_struc",
@@ -61,7 +61,7 @@
     {
       "command-line-flag": "-in_struc_res",
       "description": "Alignment of the output DWI to the REF data set via anatomical reference; a version of the anatomical that has been resampled to match the DWI set.",
-      "value-key": "[STRUC]",
+      "value-key": "[IN_STRUC_RES]",
       "type": "File",
       "optional": true,
       "id": "in_struc_res",
@@ -70,7 +70,7 @@
     {
       "command-line-flag": "-in_ref_orig",
       "description": "Use another data set to adjust the DWI and subsequent parameter dsets' orientation and origin.",
-      "value-key": "[REF]",
+      "value-key": "[IN_REF_ORIG]",
       "type": "File",
       "optional": true,
       "id": "in_ref_orig",
@@ -79,7 +79,7 @@
     {
       "command-line-flag": "-prefix_dti",
       "description": "Set prefix for output DTI data; default is 'dt'. Do not include path information here.",
-      "value-key": "[PREFIX_D]",
+      "value-key": "[PREFIX_DTI]",
       "type": "String",
       "optional": true,
       "id": "prefix_dti",
@@ -88,7 +88,7 @@
     {
       "command-line-flag": "-flip_x",
       "description": "Flip the DW gradients in the x-direction.",
-      "value-key": "[--flip_x]",
+      "value-key": "[FLIP_X]",
       "type": "Flag",
       "optional": true,
       "id": "flip_x",
@@ -97,7 +97,7 @@
     {
       "command-line-flag": "-flip_y",
       "description": "Flip the DW gradients in the y-direction.",
-      "value-key": "[--flip_y]",
+      "value-key": "[FLIP_Y]",
       "type": "Flag",
       "optional": true,
       "id": "flip_y",
@@ -106,7 +106,7 @@
     {
       "command-line-flag": "-flip_z",
       "description": "Flip the DW gradients in the z-direction.",
-      "value-key": "[--flip_z]",
+      "value-key": "[FLIP_Z]",
       "type": "Flag",
       "optional": true,
       "id": "flip_z",
@@ -115,7 +115,7 @@
     {
       "command-line-flag": "-no_flip",
       "description": "Do not flip the DW gradients.",
-      "value-key": "[--no_flip]",
+      "value-key": "[NO_FLIP]",
       "type": "Flag",
       "optional": true,
       "id": "no_flip",
@@ -124,7 +124,7 @@
     {
       "command-line-flag": "-no_scale_out_1000",
       "description": "Turn off scaling of physical length units by 1000 for tensor fitting.",
-      "value-key": "[--no_scale_out_1000]",
+      "value-key": "[NO_SCALE_OUT_1000]",
       "type": "Flag",
       "optional": true,
       "id": "no_scale_out_1000",
@@ -133,7 +133,7 @@
     {
       "command-line-flag": "-no_reweight",
       "description": "Turn off reweighting and refitting of tensors during estimation.",
-      "value-key": "[--no_reweight]",
+      "value-key": "[NO_REWEIGHT]",
       "type": "Flag",
       "optional": true,
       "id": "no_reweight",
@@ -142,7 +142,7 @@
     {
       "command-line-flag": "-no_cumulative_wts",
       "description": "Turn off displaying overall weight factors for each gradient.",
-      "value-key": "[--no_cumulative_wts]",
+      "value-key": "[NO_CUMULATIVE_WTS]",
       "type": "Flag",
       "optional": true,
       "id": "no_cumulative_wts",
@@ -151,7 +151,7 @@
     {
       "command-line-flag": "-qc_fa_thr",
       "description": "Set threshold for overlay FA volume in QC image.",
-      "value-key": "[TTT]",
+      "value-key": "[QC_FA_THR]",
       "type": "Number",
       "optional": true,
       "id": "qc_fa_thr",
@@ -160,7 +160,7 @@
     {
       "command-line-flag": "-qc_fa_max",
       "description": "Set cbar max for overlay FA volume in QC image.",
-      "value-key": "[MMM]",
+      "value-key": "[QC_FA_MAX]",
       "type": "Number",
       "optional": true,
       "id": "qc_fa_max",
@@ -169,7 +169,7 @@
     {
       "command-line-flag": "-qc_fa_unc_max",
       "description": "Set cbar max for overlay uncertainty (stdev) of FA in QC image.",
-      "value-key": "[UM]",
+      "value-key": "[QC_FA_UNC_MAX]",
       "type": "Number",
       "optional": true,
       "id": "qc_fa_unc_max",
@@ -178,7 +178,7 @@
     {
       "command-line-flag": "-qc_v12_unc_max",
       "description": "Set cbar max for overlay uncertainty (stdev) of V1 towards V2 direction for DTs in QC image.",
-      "value-key": "[V]",
+      "value-key": "[QC_V12_UNC_MAX]",
       "type": "Number",
       "optional": true,
       "id": "qc_v12_unc_max",
@@ -187,7 +187,7 @@
     {
       "command-line-flag": "-qc_prefix",
       "description": "Set the prefix of the QC image files separately.",
-      "value-key": "[QCPREF]",
+      "value-key": "[QC_PREFIX]",
       "type": "String",
       "optional": true,
       "id": "qc_prefix",
@@ -196,7 +196,7 @@
     {
       "command-line-flag": "-no_qc_view",
       "description": "Turn off generating QC image files.",
-      "value-key": "[--no_qc_view]",
+      "value-key": "[NO_QC_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "no_qc_view",
@@ -205,7 +205,7 @@
     {
       "command-line-flag": "-no_cmd_out",
       "description": "Don't save the command line call of this program and the location where it was run.",
-      "value-key": "[--no_cmd_out]",
+      "value-key": "[NO_CMD_OUT]",
       "type": "Flag",
       "optional": true,
       "id": "no_cmd_out",
@@ -214,7 +214,7 @@
     {
       "command-line-flag": "-workdir",
       "description": "Specify a working directory, which can be removed.",
-      "value-key": "[WWW]",
+      "value-key": "[WORKDIR]",
       "type": "String",
       "optional": true,
       "id": "workdir",
@@ -223,7 +223,7 @@
     {
       "command-line-flag": "-no_clean",
       "description": "Do not remove the working directory.",
-      "value-key": "[--no_clean]",
+      "value-key": "[NO_CLEAN]",
       "type": "Flag",
       "optional": true,
       "id": "no_clean",
@@ -232,7 +232,7 @@
     {
       "command-line-flag": "-uncert_off",
       "description": "Don't perform uncertainty calculation.",
-      "value-key": "[--uncert_off]",
+      "value-key": "[UNCERT_OFF]",
       "type": "Flag",
       "optional": true,
       "id": "uncert_off",
@@ -241,7 +241,7 @@
     {
       "command-line-flag": "-uncert_iters",
       "description": "Set the number of Monte Carlo iterations for the uncertainty calculation (default: 300).",
-      "value-key": "[NN]",
+      "value-key": "[UNCERT_ITERS]",
       "type": "Number",
       "optional": true,
       "id": "uncert_iters",
@@ -250,7 +250,7 @@
     {
       "command-line-flag": "-uncert_extra_cmds",
       "description": "Extra commands for the uncertainty calculations.",
-      "value-key": "[STR]",
+      "value-key": "[UNCERT_EXTRA_CMDS]",
       "type": "String",
       "optional": true,
       "id": "uncert_extra_cmds",
@@ -259,7 +259,7 @@
     {
       "command-line-flag": "-check_abs_min",
       "description": "Help the program push through finding tiny negative values in columns that should contain numbers >=0. Provide a tolerance value VVV.",
-      "value-key": "[VVV]",
+      "value-key": "[CHECK_ABS_MIN]",
       "type": "Number",
       "optional": true,
       "id": "check_abs_min",
@@ -268,7 +268,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_PREFIX]*",
+      "path-template": "[PREFIX]*",
       "description": "Output files generated with the specified prefix.",
       "optional": false,
       "id": "output_files",

@@ -5,7 +5,7 @@
   "description": "A script to demonstrate the usage of spherical harmonics decomposition with SUMA",
   "descriptor-url": "https://github.com/afni/afni",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Spharm.examples.html",
-  "command-line": "@Spharm.examples [GLOBAL_HELP_OPTION]",
+  "command-line": "@Spharm.examples [HELP_WEB] [HELP_WEB_ALIAS] [HELP_VIEW] [HELP_VIEW_ALIAS] [ALL_OPTS] [HELP_FIND]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -14,7 +14,7 @@
     {
       "command-line-flag": "-h_web",
       "description": "Open webpage with help for this program",
-      "value-key": "[HELP_WEB_FLAG]",
+      "value-key": "[HELP_WEB]",
       "type": "Flag",
       "optional": true,
       "id": "help_web",
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "-hweb",
       "description": "Same as -h_web",
-      "value-key": "[HELP_WEB_ALIAS_FLAG]",
+      "value-key": "[HELP_WEB_ALIAS]",
       "type": "Flag",
       "optional": true,
       "id": "help_web_alias",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-h_view",
       "description": "Open -help output in a GUI editor",
-      "value-key": "[HELP_VIEW_FLAG]",
+      "value-key": "[HELP_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "help_view",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-hview",
       "description": "Same as -h_view",
-      "value-key": "[HELP_VIEW_ALIAS_FLAG]",
+      "value-key": "[HELP_VIEW_ALIAS]",
       "type": "Flag",
       "optional": true,
       "id": "help_view_alias",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-all_opts",
       "description": "List all of the options for this script",
-      "value-key": "[ALL_OPTS_FLAG]",
+      "value-key": "[ALL_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "all_opts",

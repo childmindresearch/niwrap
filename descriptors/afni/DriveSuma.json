@@ -3,7 +3,7 @@
   "name": "DriveSuma",
   "author": "AFNI Team",
   "description": "A program to drive suma from the command line.",
-  "command-line": "DriveSuma [INPUT_FILE] -com [COM] [ADDITIONAL_OPTIONS]",
+  "command-line": "DriveSuma [COMMAND] [SURF_LABEL] [SURFACE_FILE] [SURF_STATE] [SURF_WINDING] [COORDINATES] [AUTORECORD] [BACKGROUND_COLOR] [VIEW_FILE] [DO_FILE] [DO_DRAW_MASK] [FIXED_DO] [MOBILE_DO] [KEY_PRESS] [VIEWER] [ANIM_DUP] [SAVE_AS] [SAVE_INDEX] [SAVE_RANGE] [SAVE_LAST] [SAVE_LAST_N] [SAVE_ALL] [ECHO_EDU] [ECHO_NEL_STDOUT] [ECHO_NEL_STDERR] [EXAMPLES] [HELP] [H] [HELP_NIDO] [C_DEMO] [VIEWER_CONT]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Command to be sent to SUMA.",
-      "value-key": "[COM]",
+      "value-key": "[COMMAND]",
       "type": "String",
       "id": "command",
       "name": "Command",
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-i_TYPE",
       "description": "Name of surface file",
-      "value-key": "[SURF]",
+      "value-key": "[SURFACE_FILE]",
       "type": "File",
       "id": "surface_file",
       "name": "Surface File",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-surf_state",
       "description": "Name the state of that surface",
-      "value-key": "[STATE]",
+      "value-key": "[SURF_STATE]",
       "type": "String",
       "id": "surf_state",
       "name": "Surface State",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-surf_winding",
       "description": "Winding of triangles (ccw or cw)",
-      "value-key": "[WIND]",
+      "value-key": "[SURF_WINDING]",
       "type": "String",
       "id": "surf_winding",
       "name": "Surface Winding",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-xyz_1D",
       "description": "A 1D formatted file containing new coordinates for nodes",
-      "value-key": "[COORDS]",
+      "value-key": "[COORDINATES]",
       "type": "File",
       "id": "coordinates",
       "name": "Coordinates File",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "-autorecord",
       "description": "Set the autorecord prefix",
-      "value-key": "[RECORD_PREFIX]",
+      "value-key": "[AUTORECORD]",
       "type": "String",
       "id": "autorecord",
       "name": "Autorecord Prefix",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "-bkg_col",
       "description": "Set the background color (R G B)",
-      "value-key": "[BKG_COLOR]",
+      "value-key": "[BACKGROUND_COLOR]",
       "type": "String",
       "id": "background_color",
       "name": "Background Color",
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "-do_draw_mask",
       "description": "Restrict where DO node-based objects are displayed",
-      "value-key": "[MASKMODE]",
+      "value-key": "[DO_DRAW_MASK]",
       "type": "String",
       "id": "do_draw_mask",
       "name": "DO Draw Mask",
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "-fixed_do",
       "description": "Load a fixed coordinate type NIML DO",
-      "value-key": "[NIML_DO_STRING]",
+      "value-key": "[FIXED_DO]",
       "type": "String",
       "id": "fixed_do",
       "name": "Fixed DO",
@@ -119,7 +119,7 @@
     {
       "command-line-flag": "-mobile_do",
       "description": "Mobile version of fixed_do",
-      "value-key": "[NIML_DO_STRING]",
+      "value-key": "[MOBILE_DO]",
       "type": "String",
       "id": "mobile_do",
       "name": "Mobile DO",
@@ -128,7 +128,7 @@
     {
       "command-line-flag": "-key",
       "description": "Act as if a key press was applied in the viewer",
-      "value-key": "[KEY_STRING]",
+      "value-key": "[KEY_PRESS]",
       "type": "String",
       "id": "key_press",
       "name": "Key Press",
@@ -146,7 +146,7 @@
     {
       "command-line-flag": "-anim_dup",
       "description": "Save DUP copies of each frame into movie",
-      "value-key": "[DUP]",
+      "value-key": "[ANIM_DUP]",
       "type": "Number",
       "id": "anim_dup",
       "name": "Animation Duplication",
@@ -155,7 +155,7 @@
     {
       "command-line-flag": "-save_as",
       "description": "Save image(s) in recorder in specified format",
-      "value-key": "[PREFIX.EXT]",
+      "value-key": "[SAVE_AS]",
       "type": "String",
       "id": "save_as",
       "name": "Save As",
@@ -164,7 +164,7 @@
     {
       "command-line-flag": "-save_index",
       "description": "Save one image indexed IND",
-      "value-key": "[IND]",
+      "value-key": "[SAVE_INDEX]",
       "type": "Number",
       "id": "save_index",
       "name": "Save Index",
@@ -173,7 +173,7 @@
     {
       "command-line-flag": "-save_range",
       "description": "Save images from FROM to TO",
-      "value-key": "[FROM_TO]",
+      "value-key": "[SAVE_RANGE]",
       "type": "String",
       "id": "save_range",
       "name": "Save Range",
@@ -182,7 +182,7 @@
     {
       "command-line-flag": "-save_last",
       "description": "Save last image",
-      "value-key": "[LAST]",
+      "value-key": "[SAVE_LAST]",
       "type": "Flag",
       "id": "save_last",
       "name": "Save Last",
@@ -191,7 +191,7 @@
     {
       "command-line-flag": "-save_last_n",
       "description": "Save last N images",
-      "value-key": "[N]",
+      "value-key": "[SAVE_LAST_N]",
       "type": "Number",
       "id": "save_last_n",
       "name": "Save Last N",
@@ -200,7 +200,7 @@
     {
       "command-line-flag": "-save_all",
       "description": "Save all images",
-      "value-key": "[ALL]",
+      "value-key": "[SAVE_ALL]",
       "type": "Flag",
       "id": "save_all",
       "name": "Save All",
@@ -209,7 +209,7 @@
     {
       "command-line-flag": "-echo_edu",
       "description": "Echoes the entire command line for edification purposes",
-      "value-key": "[EDU]",
+      "value-key": "[ECHO_EDU]",
       "type": "Flag",
       "id": "echo_edu",
       "name": "Echo Edu",

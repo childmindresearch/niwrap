@@ -3,7 +3,7 @@
   "name": "tfim",
   "author": "AFNI Team",
   "description": "MCW TFIM: t-tests on sets of functional images",
-  "command-line": "tfim [OPTIONS] -set1 [SET1_IMAGES] -set2 [SET2_IMAGES] -base1 [BASE1_VALUE]",
+  "command-line": "tfim [PREFIX] [PTHRESH] [EQCORR] [PAIRED] [SET1_IMAGES] [SET2_IMAGES] [BASE1_VALUE]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

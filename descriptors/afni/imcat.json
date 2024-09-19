@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Assembles a set of images into an image matrix (IM) montage of NX by NY images.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcat.html",
-  "command-line": "2dcat [SCALE_IMAGE] [SCALE_PIX] [SCALE_INTENSITY_FLAG] [GSCLAE] [RGB_OUT_FLAG] [RES_IN] [RESPAD_IN] [PAD_VAL] [CROP] [AUTOCROP_CTOL] [AUTOCROP_ATOL] [AUTOCROP_FLAG] [ZERO_WRAP_FLAG] [WHITE_WRAP_FLAG] [GRAY_WRAP] [IMAGE_WRAP_FLAG] [RAND_WRAP_FLAG] [PREFIX] [MATRIX] [NX] [NY] [MATRIX_FROM_SCALE_FLAG] [GAP] [GAP_COL] [INPUT_FILES...]",
+  "command-line": "2dcat [INPUT_FILES] [SCALE_IMAGE] [SCALE_PIXELS] [SCALE_INTENSITY] [GSCALE] [RGB_OUT] [RES_IN] [RESPAD_IN] [PAD_VAL] [CROP] [AUTOCROP_CTOL] [AUTOCROP_ATOL] [AUTOCROP] [ZERO_WRAP] [WHITE_WRAP] [GRAY_WRAP] [IMAGE_WRAP] [RAND_WRAP] [PREFIX] [MATRIX] [NX] [NY] [MATRIX_FROM_SCALE] [GAP] [GAP_COL]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -31,7 +31,7 @@
     {
       "command-line-flag": "-scale_pixels",
       "description": "Multiply each pixel (i,j) in output image by the color or intensity of the pixel (i,j) in SCALE_IMG. SCALE_IMG is automatically resized to the resolution of the output image.",
-      "value-key": "[SCALE_PIX]",
+      "value-key": "[SCALE_PIXELS]",
       "type": "File",
       "optional": true,
       "id": "scale_pixels",
@@ -40,7 +40,7 @@
     {
       "command-line-flag": "-scale_intensity",
       "description": "Instead of multiplying by the color of pixel (i,j), use its intensity (average color).",
-      "value-key": "[SCALE_INTENSITY_FLAG]",
+      "value-key": "[SCALE_INTENSITY]",
       "type": "Flag",
       "optional": true,
       "id": "scale_intensity",
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-rgb_out",
       "description": "Force output to be in RGB, even if input is bytes. This option is turned on automatically in certain cases.",
-      "value-key": "[RGB_OUT_FLAG]",
+      "value-key": "[RGB_OUT]",
       "type": "Flag",
       "optional": true,
       "id": "rgb_out",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-autocrop",
       "description": "This option is the same as using both of -autocrop_atol 20 and -autocrop_ctol 20",
-      "value-key": "[AUTOCROP_FLAG]",
+      "value-key": "[AUTOCROP]",
       "type": "Flag",
       "optional": true,
       "id": "autocrop",
@@ -138,7 +138,7 @@
     {
       "command-line-flag": "-zero_wrap",
       "description": "If number of images is not enough to fill matrix solid black images are used.",
-      "value-key": "[ZERO_WRAP_FLAG]",
+      "value-key": "[ZERO_WRAP]",
       "type": "Flag",
       "optional": true,
       "id": "zero_wrap",
@@ -147,7 +147,7 @@
     {
       "command-line-flag": "-white_wrap",
       "description": "If number of images is not enough to fill matrix solid white images are used.",
-      "value-key": "[WHITE_WRAP_FLAG]",
+      "value-key": "[WHITE_WRAP]",
       "type": "Flag",
       "optional": true,
       "id": "white_wrap",
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "-image_wrap",
       "description": "If number of images is not enough to fill matrix, images on command line are reused (default).",
-      "value-key": "[IMAGE_WRAP_FLAG]",
+      "value-key": "[IMAGE_WRAP]",
       "type": "Flag",
       "optional": true,
       "id": "image_wrap",
@@ -176,7 +176,7 @@
     {
       "command-line-flag": "-rand_wrap",
       "description": "When reusing images to fill matrix, randomize the order in refill section only.",
-      "value-key": "[RAND_WRAP_FLAG]",
+      "value-key": "[RAND_WRAP]",
       "type": "Flag",
       "optional": true,
       "id": "rand_wrap",
@@ -223,7 +223,7 @@
     {
       "command-line-flag": "-matrix_from_scale",
       "description": "Set NX and NY to be the same as the SCALE_IMG's dimensions. (needs -scale_image)",
-      "value-key": "[MATRIX_FROM_SCALE_FLAG]",
+      "value-key": "[MATRIX_FROM_SCALE]",
       "type": "Flag",
       "optional": true,
       "id": "matrix_from_scale",

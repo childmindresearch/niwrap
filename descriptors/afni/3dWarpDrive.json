@@ -3,7 +3,7 @@
   "name": "3dWarpDrive",
   "author": "AFNI Team",
   "description": "Warp a dataset to match another one (the base) using an affine transformation.",
-  "command-line": "3dWarpDrive [TRANSFORM_OPTION] [INTERPOLATION_OPTION] -base [BASE_DATASET] -prefix [PREFIX] [TECHNICAL_OPTIONS] [dataset]",
+  "command-line": "3dWarpDrive [DATASET] [BASE_DATASET] [PREFIX] [SHIFT_ONLY] [SHIFT_ROTATE] [SHIFT_ROTATE_SCALE] [AFFINE_GENERAL] [BILINEAR_GENERAL] [LINEAR] [CUBIC] [NN] [QUINTIC] [INPUT_DATASET] [VERBOSITY_FLAG] [SUMMARY_FILE] [MAX_ITERATIONS] [DELTA] [WEIGHT] [CONVERGENCE_THRESH] [TWOPASS] [FINAL_MODE] [PARFIX] [ONED_FILE] [FLOAT_FORMAT] [COARSEROT_INIT] [ONED_MATRIX_SAVE] [SDU_ORDER] [SUD_ORDER] [DSU_ORDER] [DUS_ORDER] [USD_ORDER] [UDS_ORDER] [SUPPER_S_MATRIX] [SLOWER_S_MATRIX] [ASHIFT] [BSHIFT]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input dataset",
-      "value-key": "[dataset]",
+      "value-key": "[DATASET]",
       "type": "File",
       "optional": false,
       "id": "dataset",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-shift_only",
       "description": "3 parameters (shifts)",
-      "value-key": "[TRANSFORM_OPTION]",
+      "value-key": "[SHIFT_ONLY]",
       "type": "Flag",
       "optional": true,
       "id": "shift_only",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-shift_rotate",
       "description": "6 parameters (shifts + angles)",
-      "value-key": "[TRANSFORM_OPTION]",
+      "value-key": "[SHIFT_ROTATE]",
       "type": "Flag",
       "optional": true,
       "id": "shift_rotate",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-shift_rotate_scale",
       "description": "9 parameters (shifts + angles + scale factors)",
-      "value-key": "[TRANSFORM_OPTION]",
+      "value-key": "[SHIFT_ROTATE_SCALE]",
       "type": "Flag",
       "optional": true,
       "id": "shift_rotate_scale",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "-affine_general",
       "description": "12 parameters (3 shifts + 3x3 matrix)",
-      "value-key": "[TRANSFORM_OPTION]",
+      "value-key": "[AFFINE_GENERAL]",
       "type": "Flag",
       "optional": true,
       "id": "affine_general",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "-bilinear_general",
       "description": "39 parameters (3 + 3x3 + 3x3x3). Not implemented and will never be.",
-      "value-key": "[TRANSFORM_OPTION]",
+      "value-key": "[BILINEAR_GENERAL]",
       "type": "Flag",
       "optional": true,
       "id": "bilinear_general",
@@ -83,7 +83,7 @@
     {
       "command-line-flag": "-linear",
       "description": "Linear interpolation method",
-      "value-key": "[INTERPOLATION_OPTION]",
+      "value-key": "[LINEAR]",
       "type": "Flag",
       "optional": true,
       "id": "linear",
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "-cubic",
       "description": "Cubic interpolation method",
-      "value-key": "[INTERPOLATION_OPTION]",
+      "value-key": "[CUBIC]",
       "type": "Flag",
       "optional": true,
       "id": "cubic",
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "-NN",
       "description": "Nearest neighbor interpolation method [default]",
-      "value-key": "[INTERPOLATION_OPTION]",
+      "value-key": "[NN]",
       "type": "Flag",
       "optional": true,
       "id": "NN",
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "-quintic",
       "description": "Quintic interpolation method",
-      "value-key": "[INTERPOLATION_OPTION]",
+      "value-key": "[QUINTIC]",
       "type": "Flag",
       "optional": true,
       "id": "quintic",
@@ -128,7 +128,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Print out lots of information along the way.",
-      "value-key": "[VERB]",
+      "value-key": "[VERBOSITY_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "verbosity_flag",
@@ -137,7 +137,7 @@
     {
       "command-line-flag": "-summ",
       "description": "Save summary of calculations into text file. If value is '-', summary goes to stdout.",
-      "value-key": "[SUMMARY]",
+      "value-key": "[SUMMARY_FILE]",
       "type": "String",
       "optional": true,
       "id": "summary_file",
@@ -146,7 +146,7 @@
     {
       "command-line-flag": "-maxite",
       "description": "Allow up to 'm' iterations for convergence.",
-      "value-key": "[MAX_ITE]",
+      "value-key": "[MAX_ITERATIONS]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -174,7 +174,7 @@
     {
       "command-line-flag": "-thresh",
       "description": "Set the convergence parameter to be RMS 't' voxels movement between iterations. [Default=0.03]",
-      "value-key": "[THRESH]",
+      "value-key": "[CONVERGENCE_THRESH]",
       "type": "Number",
       "optional": true,
       "id": "convergence_thresh",
@@ -211,7 +211,7 @@
     {
       "command-line-flag": "-1Dfile",
       "description": "Write out the warping parameters to this file.",
-      "value-key": "[1DFILE]",
+      "value-key": "[ONED_FILE]",
       "type": "File",
       "optional": true,
       "id": "oned_file",
@@ -220,7 +220,7 @@
     {
       "command-line-flag": "-float",
       "description": "Write output dataset in float format, even if input dataset is short or byte.",
-      "value-key": "[FLOAT]",
+      "value-key": "[FLOAT_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "float_format",
@@ -229,7 +229,7 @@
     {
       "command-line-flag": "-coarserot",
       "description": "Initialize shift+rotation parameters by a brute force coarse search.",
-      "value-key": "[COARSEROT]",
+      "value-key": "[COARSEROT_INIT]",
       "type": "Flag",
       "optional": true,
       "id": "coarserot_init",
@@ -238,7 +238,7 @@
     {
       "command-line-flag": "-1Dmatrix_save",
       "description": "Save base-to-input transformation matrices in specified file. If the file does not end in '.1D', the program will append '.aff12.1D'.",
-      "value-key": "[1DMATRIX_SAVE]",
+      "value-key": "[ONED_MATRIX_SAVE]",
       "type": "File",
       "optional": true,
       "id": "oned_matrix_save",
@@ -247,7 +247,7 @@
     {
       "command-line-flag": "-SDU",
       "description": "Set the order of the matrix multiplication for the affine transformations (S=triangular shear, D=diagonal scaling matrix, U=rotation matrix).",
-      "value-key": "[MATRIX_ORDER]",
+      "value-key": "[SDU_ORDER]",
       "type": "Flag",
       "optional": true,
       "id": "sdu_order",
@@ -256,7 +256,7 @@
     {
       "command-line-flag": "-SUD",
       "description": "Set the order of the matrix multiplication for the affine transformations (S=triangular shear, U=rotation matrix, D=diagonal scaling matrix).",
-      "value-key": "[MATRIX_ORDER]",
+      "value-key": "[SUD_ORDER]",
       "type": "Flag",
       "optional": true,
       "id": "sud_order",
@@ -265,7 +265,7 @@
     {
       "command-line-flag": "-DSU",
       "description": "Set the order of the matrix multiplication for the affine transformations (D=diagonal scaling matrix, S=triangular shear, U=rotation matrix).",
-      "value-key": "[MATRIX_ORDER]",
+      "value-key": "[DSU_ORDER]",
       "type": "Flag",
       "optional": true,
       "id": "dsu_order",
@@ -274,7 +274,7 @@
     {
       "command-line-flag": "-DUS",
       "description": "Set the order of the matrix multiplication for the affine transformations (D=diagonal scaling matrix, U=rotation matrix, S=triangular shear).",
-      "value-key": "[MATRIX_ORDER]",
+      "value-key": "[DUS_ORDER]",
       "type": "Flag",
       "optional": true,
       "id": "dus_order",
@@ -283,7 +283,7 @@
     {
       "command-line-flag": "-USD",
       "description": "Set the order of the matrix multiplication for the affine transformations (U=rotation matrix, S=triangular shear, D=diagonal scaling matrix).",
-      "value-key": "[MATRIX_ORDER]",
+      "value-key": "[USD_ORDER]",
       "type": "Flag",
       "optional": true,
       "id": "usd_order",
@@ -292,7 +292,7 @@
     {
       "command-line-flag": "-UDS",
       "description": "Set the order of the matrix multiplication for the affine transformations (U=rotation matrix, D=diagonal scaling matrix, S=triangular shear).",
-      "value-key": "[MATRIX_ORDER]",
+      "value-key": "[UDS_ORDER]",
       "type": "Flag",
       "optional": true,
       "id": "uds_order",
@@ -301,7 +301,7 @@
     {
       "command-line-flag": "-Supper",
       "description": "Set the S matrix to be upper triangular.",
-      "value-key": "[S_MATRIX]",
+      "value-key": "[SUPPER_S_MATRIX]",
       "type": "Flag",
       "optional": true,
       "id": "supper_s_matrix",
@@ -310,7 +310,7 @@
     {
       "command-line-flag": "-Slower",
       "description": "Set the S matrix to be lower triangular.",
-      "value-key": "[S_MATRIX]",
+      "value-key": "[SLOWER_S_MATRIX]",
       "type": "Flag",
       "optional": true,
       "id": "slower_s_matrix",
@@ -319,7 +319,7 @@
     {
       "command-line-flag": "-ashift",
       "description": "Apply the shift parameters after the matrix transformation.",
-      "value-key": "[SHIFT_ORDER]",
+      "value-key": "[ASHIFT]",
       "type": "Flag",
       "optional": true,
       "id": "ashift",
@@ -328,7 +328,7 @@
     {
       "command-line-flag": "-bshift",
       "description": "Apply the shift parameters before the matrix transformation.",
-      "value-key": "[SHIFT_ORDER]",
+      "value-key": "[BSHIFT]",
       "type": "Flag",
       "optional": true,
       "id": "bshift",
@@ -344,21 +344,21 @@
       "name": "Output Dataset"
     },
     {
-      "path-template": "[SUMMARY]",
+      "path-template": "[SUMMARY_FILE]",
       "description": "Summary of calculations",
       "optional": true,
       "id": "output_summary",
       "name": "Summary File"
     },
     {
-      "path-template": "[1DFILE]",
+      "path-template": "[ONED_FILE]",
       "description": "File with warping parameters",
       "optional": true,
       "id": "oned_output_file",
       "name": "Warping Parameters File"
     },
     {
-      "path-template": "[1DMATRIX_SAVE]",
+      "path-template": "[ONED_MATRIX_SAVE]",
       "description": "File with transformation matrices",
       "optional": true,
       "id": "matrix_output_file",

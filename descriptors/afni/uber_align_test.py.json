@@ -3,7 +3,7 @@
   "name": "uber_align_test.py",
   "author": "AFNI Team",
   "description": "Generate script to test anatomical/EPI alignment",
-  "command-line": "uber_align_test.py [COMMANDS] [OPTIONS]",
+  "command-line": "uber_align_test.py [NO_GUI] [PRINT_SCRIPT] [SAVE_SCRIPT] [USER_VARIABLE] [QT_OPTS] [HELP] [HELP_GUI] [HISTORY] [SHOW_VALID_OPTS] [VERSION]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-save_script",
       "description": "Save the generated script to the specified file",
-      "value-key": "[SCRIPT_FILE]",
+      "value-key": "[SAVE_SCRIPT]",
       "type": "String",
       "optional": true,
       "id": "save_script",

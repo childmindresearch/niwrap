@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Tool to compute convex hulls and related structures.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/qhull.html",
-  "command-line": "qhull [OPTIONS] [OUTPUT_OPTIONS]",
+  "command-line": "qhull [INPUT_COORDS] [DELAUNAY] [FURTHEST_DELAUNAY] [VORONOI] [FURTHEST_VORONOI] [HALFSPACE_INTERSECTION] [TRIANGULATED_OUTPUT] [JOGGLED_INPUT] [VERIFY] [SUMMARY] [VERTICES_INCIDENT] [NORMALS] [VERTEX_COORDINATES] [HALFSPACE_INTERSECTIONS] [EXTREME_POINTS] [TOTAL_AREA_VOLUME] [OFF_FORMAT] [GEOMVIEW_OUTPUT] [MATHEMATICA_OUTPUT] [PRINT_FACETS] [OUTPUT_FILE]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

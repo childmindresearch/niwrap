@@ -3,7 +3,7 @@
   "name": "3dDepthMap",
   "author": "AFNI Team",
   "description": "Calculates the Euclidean Distance Transform (EDT) for 3D volumes, allowing computation of ROI depth maps and applying various adjustments like masking and rimification.",
-  "command-line": "3dDepthMap [OPTIONS] -prefix [PREFIX] -input [INPUT_DATASET]",
+  "command-line": "3dDepthMap [INPUT_DATASET] [OUTPUT_PREFIX] [MASK] [DIST_SQUARED] [IGNORE_VOXDIMS] [RIMIFY] [ZEROS_ARE_ZERO] [ZEROS_ARE_NEG] [NZ_ARE_NEG] [BOUNDS_ARE_NOT_ZERO] [ONLY2D] [BINARY_ONLY] [VERBOSITY]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -22,7 +22,7 @@
       "type": "String",
       "optional": false,
       "command-line-flag": "-prefix",
-      "value-key": "[PREFIX]"
+      "value-key": "[OUTPUT_PREFIX]"
     },
     {
       "id": "mask",
@@ -58,7 +58,7 @@
       "type": "Number",
       "optional": true,
       "command-line-flag": "-rimify",
-      "value-key": "[RIM]"
+      "value-key": "[RIMIFY]"
     },
     {
       "id": "zeros_are_zero",
@@ -103,7 +103,7 @@
       "type": "String",
       "optional": true,
       "command-line-flag": "-only2D",
-      "value-key": "[SLI]"
+      "value-key": "[ONLY2D]"
     },
     {
       "id": "binary_only",
@@ -121,14 +121,14 @@
       "type": "Number",
       "optional": true,
       "command-line-flag": "-verb",
-      "value-key": "[V]"
+      "value-key": "[VERBOSITY]"
     }
   ],
   "output-files": [
     {
       "id": "output_file",
       "name": "Output File",
-      "path-template": "[PREFIX].nii.gz",
+      "path-template": "[OUTPUT_PREFIX].nii.gz",
       "description": "Main output file"
     }
   ],

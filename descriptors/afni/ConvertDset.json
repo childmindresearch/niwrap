@@ -3,7 +3,7 @@
   "name": "ConvertDset",
   "author": "AFNI Team",
   "description": "Converts a surface dataset from one format to another.",
-  "command-line": "ConvertDset [OUTPUT_TYPE] -input [INPUT_DATASET] [INPUT_TYPE] [OUTPUT_PREFIX] [MANDATORY_PARAMS] [OPTIONAL_PARAMS]",
+  "command-line": "ConvertDset [OUTPUT_TYPE] [INPUT_DATASET] [INPUT_TYPE] [OUTPUT_PREFIX] [DSET_LABELS] [ADD_NODE_INDEX] [NODE_INDEX_FILE] [NODE_SELECT_FILE] [PREPEND_NODE_INDEX] [PAD_TO_NODE] [LABELIZE] [GRAPHIZE] [GRAPH_NODELIST] [GRAPH_FULL_NODELIST] [GRAPH_NAMED_NODELIST] [GRAPH_XYZ_LPI] [GRAPH_EDGELIST] [ONEGRAPH] [MULTIGRAPH] [SPLIT] [NO_HISTORY]",
   "inputs": [
     {
       "id": "output_type",
@@ -49,7 +49,11 @@
       "type": "String",
       "command-line-flag": "-i_",
       "description": "Type of input datasets",
-      "value-choices": ["niml", "1D", "dx"],
+      "value-choices": [
+        "niml",
+        "1D",
+        "dx"
+      ],
       "optional": true,
       "value-key": "[INPUT_TYPE]"
     },

@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Convert sets of DWIs in DICOM format into 'nicer' volume+grad format, reorient volumetric data, and glue together multiple sessions/directories of data.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_convert_dcm_dwis.html",
-  "command-line": "fat_proc_convert_dcm_dwis -indir [DICOM_DIR] -prefix [OUTPUT_PREFIX] -innii [NIFTI_FILES] -inbvec [BVEC_FILES] -inbval [BVAL_FILES] -workdir [WORK_DIR] -orient [ORIENTATION] -origin_xyz [ORIGIN_X] [ORIGIN_Y] [ORIGIN_Z] -flip_x [FLIP_X] -flip_y [FLIP_Y] -flip_z [FLIP_Z] -no_flip [NO_FLIP] -qc_prefix [QC_PREFIX] -reorig_reorient_off [REORIENT_OFF_FLAG] -no_clean [NO_CLEAN_FLAG] -no_cmd_out [NO_CMD_OUT_FLAG] -no_qc_view [NO_QC_VIEW_FLAG] -do_movie [MOVIE_FORMAT]",
+  "command-line": "fat_proc_convert_dcm_dwis [DICOM_DIR] [OUTPUT_PREFIX] [NIFTI_FILES] [BVEC_FILES] [BVAL_FILES] [WORK_DIR] [ORIENTATION] [ORIGIN_XYZ] [FLIP_X] [FLIP_Y] [FLIP_Z] [NO_FLIP] [QC_PREFIX] [REORIENT_OFF] [NO_CLEAN] [NO_CMD_OUT] [NO_QC_VIEW] [DO_MOVIE]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -71,7 +71,7 @@
     },
     {
       "description": "Explicit origin coordinates (X, Y, Z).",
-      "value-key": "[ORIGIN_X] [ORIGIN_Y] [ORIGIN_Z]",
+      "value-key": "[ORIGIN_XYZ]",
       "type": "Number",
       "list": true,
       "max-list-entries": 3,
@@ -126,7 +126,7 @@
     },
     {
       "description": "Turn off reorigin calculation and reorientation.",
-      "value-key": "[REORIENT_OFF_FLAG]",
+      "value-key": "[REORIENT_OFF]",
       "command-line-flag": "-reorig_reorient_off",
       "type": "Flag",
       "optional": true,
@@ -135,7 +135,7 @@
     },
     {
       "description": "Do not remove the working directory of intermediate files (default is to delete it).",
-      "value-key": "[NO_CLEAN_FLAG]",
+      "value-key": "[NO_CLEAN]",
       "command-line-flag": "-no_clean",
       "type": "Flag",
       "optional": true,
@@ -144,7 +144,7 @@
     },
     {
       "description": "Do not save the command line call and location where it was run.",
-      "value-key": "[NO_CMD_OUT_FLAG]",
+      "value-key": "[NO_CMD_OUT]",
       "command-line-flag": "-no_cmd_out",
       "type": "Flag",
       "optional": true,
@@ -153,7 +153,7 @@
     },
     {
       "description": "Do not generate QC image files.",
-      "value-key": "[NO_QC_VIEW_FLAG]",
+      "value-key": "[NO_QC_VIEW]",
       "command-line-flag": "-no_qc_view",
       "type": "Flag",
       "optional": true,
@@ -162,7 +162,7 @@
     },
     {
       "description": "Generate a movie of the newly created dataset (AGIF or MPEG).",
-      "value-key": "[MOVIE_FORMAT]",
+      "value-key": "[DO_MOVIE]",
       "command-line-flag": "-do_movie",
       "type": "String",
       "optional": true,

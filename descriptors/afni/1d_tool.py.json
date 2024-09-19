@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1d_tool.py.html",
   "description": "A tool for manipulating and evaluating 1D files",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1d_tool.py.html",
-  "command-line": "1d_tool.py [OPTIONS]",
+  "command-line": "1d_tool.py [INFILE] [WRITE] [SELECT_COLS] [SELECT_ROWS] [SELECT_GROUPS] [CENSOR_MOTION] [PAD_INTO_MANY_RUNS] [SET_NRUNS] [SET_RUN_LENGTHS] [SHOW_ROWS_COLS] [TRANSPOSE] [REVERSE] [SHOW_MAX_DISPLACE]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -22,7 +22,7 @@
     },
     {
       "description": "Output file to write results",
-      "value-key": "[OUTPUT_FILE]",
+      "value-key": "[WRITE]",
       "command-line-flag": "-write",
       "type": "String",
       "optional": true,
@@ -132,7 +132,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE]",
+      "path-template": "[WRITE]",
       "description": "Resulting 1D file",
       "optional": true,
       "id": "outfile",

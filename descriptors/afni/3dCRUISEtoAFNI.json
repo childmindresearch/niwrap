@@ -3,10 +3,11 @@
   "name": "3dCRUISEtoAFNI",
   "author": "AFNI Team",
   "description": "Converts a CRUISE dataset defined by a header in OpenDX format.",
-  "command-line": "3dCRUISEtoAFNI -input [INPUT_FILE] [IGNORE_VOLREG_FLAG] [NO_XFORM_FLAG] [SETENV] [TRACE_FLAG] [TRACE_EXTREME_FLAG] [NO_MALL_FLAG] [YES_MALL_FLAG] [HELP_FLAG] [MINI_HELP]",
+  "command-line": "3dCRUISEtoAFNI [INPUT_FILE] [IGNORE_VOLREG_FLAG] [NO_XFORM_FLAG] [SETENV] [TRACE_FLAG] [TRACE_EXTREME_FLAG] [NO_MALL_FLAG] [YES_MALL_FLAG] [HELP_FLAG] [MINI_HELP]",
   "inputs": [
     {
       "description": "Input CRUISE header file in OpenDX format",
+      "command-line-flag": "-input",
       "value-key": "[INPUT_FILE]",
       "type": "File",
       "optional": false,

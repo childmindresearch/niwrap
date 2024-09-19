@@ -3,7 +3,7 @@
   "name": "uber_skel",
   "author": "AFNI Team",
   "description": "Sample uber processing program for initializing user and control variables, with options for both GUI and non-GUI modes.",
-  "command-line": "uber_skel.py [OPTIONS]",
+  "command-line": "uber_skel [QT_OPTIONS] [NO_GUI_FLAG] [PRINT_SCRIPT] [SAVE_SCRIPT] [USER_VAR] [HELP_HOWTO_PROGRAM] [HELP] [HELP_GUI] [HISTORY] [SHOW_VALID_OPTS] [VERSION]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-qt_opts",
       "description": "Pass PyQt4 options directly to the GUI",
-      "value-key": "[QT_OPTS]",
+      "value-key": "[QT_OPTIONS]",
       "type": "String",
       "optional": true,
       "id": "qt_options",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-no_gui",
       "description": "Run without the GUI",
-      "value-key": "[NO_GUI]",
+      "value-key": "[NO_GUI_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "no_gui_flag",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-uvar",
       "description": "Initialize user variables. Usage: -uvar <name> <value>",
-      "value-key": "[USER_VAR_NAME] [USER_VAR_VALUE]",
+      "value-key": "[USER_VAR]",
       "type": "String",
       "optional": true,
       "id": "user_var",
@@ -85,7 +85,7 @@
     {
       "command-line-flag": "-hist",
       "description": "Show history",
-      "value-key": "[HIST]",
+      "value-key": "[HISTORY]",
       "type": "Flag",
       "optional": true,
       "id": "history",
@@ -103,7 +103,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Show version",
-      "value-key": "[VER]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

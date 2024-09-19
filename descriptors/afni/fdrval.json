@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/fdrval",
   "description": "Computes q-values from FDR curve data stored in dataset headers",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fdrval.html",
-  "command-line": "fdrval [OPTIONS] [DSET] [SUB] [VAL_LIST]",
+  "command-line": "fdrval [DSET] [SUB] [VAL_LIST] [PVAL] [PONLY] [QONLY] [QINPUT] [INVERSE]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-pval",
       "description": "Output the p-value (on the same line, after q)",
-      "value-key": "[PVAL_FLAG]",
+      "value-key": "[PVAL]",
       "type": "Flag",
       "optional": true,
       "id": "pval",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-ponly",
       "description": "Don't output q-values, just p-values",
-      "value-key": "[PONLY_FLAG]",
+      "value-key": "[PONLY]",
       "type": "Flag",
       "optional": true,
       "id": "ponly",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-qonly",
       "description": "Don't output p-values, just q-values",
-      "value-key": "[QONLY_FLAG]",
+      "value-key": "[QONLY]",
       "type": "Flag",
       "optional": true,
       "id": "qonly",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-qinput",
       "description": "The 'val' inputs are taken to be q-values and then the outputs are the corresponding statistical thresholds.",
-      "value-key": "[QINPUT_FLAG]",
+      "value-key": "[QINPUT]",
       "type": "Flag",
       "optional": true,
       "id": "qinput",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-inverse",
       "description": "Inverse of the usual operation. 'Val' inputs must be between 0 and 1 (exclusive). Cannot be used with '-ponly' or '-pval'.",
-      "value-key": "[INVERSE_FLAG]",
+      "value-key": "[INVERSE]",
       "type": "Flag",
       "optional": true,
       "id": "inverse",

@@ -1,6 +1,6 @@
 {
   "name": "3dTcorr1D",
-  "command-line": "3dTcorr1D [XSET] [SPEARMAN] [Y_1D] [OUT_FILE] [OUTPUTTYPE]",
+  "command-line": "3dTcorr1D [KTAUB] [NUM_THREADS] [OUTPUTTYPE] [PEARSON] [QUADRANT] [SPEARMAN] [XSET] [Y_1D]",
   "author": "AFNI Team",
   "description": "Computes the correlation coefficient between each voxel time series in the input 3D+time dataset.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html",
@@ -30,7 +30,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "pearson",

@@ -3,11 +3,11 @@
   "name": "SurfDsetInfo",
   "author": "AFNI Team",
   "description": "Provides information about surface datasets (DSET).",
-  "command-line": "SurfDsetInfo [OPTIONS] [DATASETS]",
+  "command-line": "SurfDsetInfo [INPUT_DSETS] [DEBUG_LEVEL] [NOVOLREG] [NOXFORM] [SETENV] [TRACE] [EXTREME_TRACE] [NOMALL] [YESMALL] [MINI_HELP] [HELP] [EXTREME_HELP] [HELP_VIEW] [HELP_WEB] [HELP_FIND] [HELP_RAW] [HELP_SPX] [HELP_ASPX] [ALL_OPTS]",
   "inputs": [
     {
       "description": "Input dataset",
-      "value-key": "[DSET]",
+      "value-key": "[INPUT_DSETS]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -18,7 +18,7 @@
     {
       "description": "Debug level. If DBG = 2, show full dataset information in NIML form.",
       "command-line-flag": "-debug",
-      "value-key": "[DBG_LEVEL]",
+      "value-key": "[DEBUG_LEVEL]",
       "type": "Number",
       "optional": true,
       "id": "debug_level",
@@ -29,7 +29,7 @@
     {
       "description": "Ignore any Rotate, Volreg, Tagalign, or WarpDrive transformations",
       "command-line-flag": "-novolreg",
-      "value-key": "[NOVOLREG_FLAG]",
+      "value-key": "[NOVOLREG]",
       "type": "Flag",
       "optional": true,
       "id": "novolreg",
@@ -38,7 +38,7 @@
     {
       "description": "Same as -novolreg",
       "command-line-flag": "-noxform",
-      "value-key": "[NOXFORM_FLAG]",
+      "value-key": "[NOXFORM]",
       "type": "Flag",
       "optional": true,
       "id": "noxform",
@@ -47,7 +47,7 @@
     {
       "description": "Set environment variable",
       "command-line-flag": "-setenv",
-      "value-key": "[ENVIRONMENT_VARIABLE]",
+      "value-key": "[SETENV]",
       "type": "String",
       "optional": true,
       "id": "setenv",
@@ -56,7 +56,7 @@
     {
       "description": "Turns on In/Out debug and Memory tracing",
       "command-line-flag": "-trace",
-      "value-key": "[TRACE_FLAG]",
+      "value-key": "[TRACE]",
       "type": "Flag",
       "optional": true,
       "id": "trace",
@@ -65,7 +65,7 @@
     {
       "description": "Turns on extreme tracing",
       "command-line-flag": "-TRACE",
-      "value-key": "[EXTREME_TRACE_FLAG]",
+      "value-key": "[EXTREME_TRACE]",
       "type": "Flag",
       "optional": true,
       "id": "extreme_trace",
@@ -74,7 +74,7 @@
     {
       "description": "Turn off memory tracing",
       "command-line-flag": "-nomall",
-      "value-key": "[NOMALL_FLAG]",
+      "value-key": "[NOMALL]",
       "type": "Flag",
       "optional": true,
       "id": "nomall",
@@ -83,7 +83,7 @@
     {
       "description": "Turn on memory tracing (default)",
       "command-line-flag": "-yesmall",
-      "value-key": "[YESMALL_FLAG]",
+      "value-key": "[YESMALL]",
       "type": "Flag",
       "optional": true,
       "id": "yesmall",
@@ -92,7 +92,7 @@
     {
       "description": "Mini help",
       "command-line-flag": "-h",
-      "value-key": "[MINI_HELP_FLAG]",
+      "value-key": "[MINI_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "mini_help",
@@ -101,7 +101,7 @@
     {
       "description": "Show entire help output",
       "command-line-flag": "-help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -110,7 +110,7 @@
     {
       "description": "Show extreme help",
       "command-line-flag": "-HELP",
-      "value-key": "[EXTREME_HELP_FLAG]",
+      "value-key": "[EXTREME_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "extreme_help",
@@ -119,7 +119,7 @@
     {
       "description": "Open help in text editor",
       "command-line-flag": "-h_view",
-      "value-key": "[HELP_VIEW_FLAG]",
+      "value-key": "[HELP_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "help_view",
@@ -128,7 +128,7 @@
     {
       "description": "Open help in web browser",
       "command-line-flag": "-h_web",
-      "value-key": "[HELP_WEB_FLAG]",
+      "value-key": "[HELP_WEB]",
       "type": "Flag",
       "optional": true,
       "id": "help_web",
@@ -137,7 +137,7 @@
     {
       "description": "Look for lines in help output that match the specified word",
       "command-line-flag": "-h_find",
-      "value-key": "[HELP_FIND_WORD]",
+      "value-key": "[HELP_FIND]",
       "type": "String",
       "optional": true,
       "id": "help_find",
@@ -146,7 +146,7 @@
     {
       "description": "Show unedited help string",
       "command-line-flag": "-h_raw",
-      "value-key": "[HELP_RAW_FLAG]",
+      "value-key": "[HELP_RAW]",
       "type": "Flag",
       "optional": true,
       "id": "help_raw",
@@ -155,7 +155,7 @@
     {
       "description": "Show help string in sphinx format, but do not autoformat",
       "command-line-flag": "-h_spx",
-      "value-key": "[HELP_SPX_FLAG]",
+      "value-key": "[HELP_SPX]",
       "type": "Flag",
       "optional": true,
       "id": "help_spx",
@@ -164,7 +164,7 @@
     {
       "description": "Show help string in sphinx with autoformatting",
       "command-line-flag": "-h_aspx",
-      "value-key": "[HELP_ASPX_FLAG]",
+      "value-key": "[HELP_ASPX]",
       "type": "Flag",
       "optional": true,
       "id": "help_aspx",
@@ -173,7 +173,7 @@
     {
       "description": "Attempt to identify all options for the program from the help output",
       "command-line-flag": "-all_opts",
-      "value-key": "[ALL_OPTS_FLAG]",
+      "value-key": "[ALL_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "all_opts",

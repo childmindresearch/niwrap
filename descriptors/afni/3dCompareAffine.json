@@ -3,7 +3,7 @@
   "name": "3dCompareAffine",
   "author": "AFNI Team",
   "description": "Compares two (or more) affine spatial transformations on a dataset and outputs measurements of their differences in spatial displacements.",
-  "command-line": "3dCompareAffine [OPTIONS]",
+  "command-line": "3dCompareAffine [MASK] [DSET] [AFFINE]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

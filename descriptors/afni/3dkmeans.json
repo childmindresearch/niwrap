@@ -3,7 +3,7 @@
   "tool-version": "1.0",
   "description": "3d+t Clustering segmentation based on The C clustering library.",
   "author": "AFNI Team",
-  "command-line": "3dkmeans [OPTIONS]",
+  "command-line": "3dkmeans [VERSION] [INPUT] [MASK] [MASK_RANGE] [CMASK] [JOBNAME] [PREFIX] [DISTANCE_MEASURE] [NUM_CLUSTERS] [REMAP_METHOD] [LABELTABLE] [CLABELS] [CLUST_INIT] [NUM_REPEATS] [RSIGS] [VERBOSE] [WRITE_DISTS] [VOXDBG] [SEED]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

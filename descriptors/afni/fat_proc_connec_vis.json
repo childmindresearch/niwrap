@@ -3,7 +3,7 @@
   "name": "fat_proc_connec_vis",
   "author": "AFNI Team",
   "description": "This program is for visualizing the volumetric output of tracking, mainly for the '-dump_rois ...' from 3dTrackID. It creates surface-ized views of the separate white matter connection maps (WMCs) which can be viewed simultaneously in 3D with SUMA.",
-  "command-line": "fat_proc_connec_vis [NETROIS] [PPP] [FFF] [KPB] [NITER] [ISO_OPT] [TRACKID_NO_OR] [OUTPUT_TCAT] [OUTPUT_TSTAT] [WWW] [NO_CLEAN]",
+  "command-line": "fat_proc_connec_vis [IN_ROIS] [PREFIX] [PREFIX_FILE] [TSMOO_KPB] [TSMOO_NITER] [ISO_OPT] [TRACKID_NO_OR] [OUTPUT_TCAT] [OUTPUT_TSTAT] [WDIR] [NO_CLEAN]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "List of separate files, each with a single ROI volume mask; can include wildcards, etc. to specify the list",
-      "value-key": "[NETROIS]",
+      "value-key": "[IN_ROIS]",
       "type": "String",
       "optional": false,
       "id": "in_rois",
@@ -19,7 +19,7 @@
     },
     {
       "description": "Directory to contain the output files: *cmd.txt and surface files such as *.gii and *.niml.dset; the namebase of files within this directory will be the default for the program, 'wmc'. The value PPP can contain parts of a path in it.",
-      "value-key": "[PPP]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "optional": false,
       "id": "prefix",
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-prefix_file",
       "description": "Prefix for the output files: *cmd.txt and surface files such as *.gii and *.niml.dset; can include path steps; and can make one level of a new directory. For example, if FFF were 'A/B', then the program could make a new directory called 'A' if it didn't exist already and populate it with individual files having the same prefix 'B'.",
-      "value-key": "[FFF]",
+      "value-key": "[PREFIX_FILE]",
       "type": "String",
       "optional": true,
       "id": "prefix_file",
@@ -37,7 +37,7 @@
     {
       "command-line-flag": "-tsmoo_kpb",
       "description": "'KPB' parameter in IsoSurface program; default value is 0.01.",
-      "value-key": "[KPB]",
+      "value-key": "[TSMOO_KPB]",
       "type": "Number",
       "optional": true,
       "id": "tsmoo_kpb",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-tsmoo_niter",
       "description": "'NITER' parameter in IsoSurface program; default value is 6.",
-      "value-key": "[NITER]",
+      "value-key": "[TSMOO_NITER]",
       "type": "Number",
       "optional": true,
       "id": "tsmoo_niter",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "-wdir",
       "description": "Working directory prefix. The format is '__WDIR_connec_vis_PPP', where PPP is the input prefix.",
-      "value-key": "[WWW]",
+      "value-key": "[WDIR]",
       "type": "String",
       "optional": true,
       "id": "wdir",
@@ -110,21 +110,21 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[PPP]_cmd.txt",
+      "path-template": "[PREFIX]_cmd.txt",
       "description": "Command text file output",
       "optional": true,
       "id": "cmd_txt",
       "name": "Output Command Text File"
     },
     {
-      "path-template": "[PPP]_tcat.nii.gz",
+      "path-template": "[PREFIX]_tcat.nii.gz",
       "description": "Concatenated ROI masks multibrick file from the -output_tcat flag",
       "optional": true,
       "id": "tcat_file",
       "name": "Output Tcat File"
     },
     {
-      "path-template": "[PPP]_tstat.nii.gz",
+      "path-template": "[PREFIX]_tstat.nii.gz",
       "description": "Single brick file from 3dTstat operation on the tcat dataset, produced by the -output_tstat flag",
       "optional": true,
       "id": "tstat_file",

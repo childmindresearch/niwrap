@@ -3,12 +3,12 @@
   "name": "quickspec",
   "author": "AFNI Team",
   "description": "A quick and dirty way of loading a surface into SUMA or command line programs using a spec file.",
-  "command-line": "quickspec [PARAMS...]",
+  "command-line": "quickspec [TN] [TSN] [TSNAD] [TSNADM] [TSNADL] [SPEC] [HELP]",
   "inputs": [
     {
       "command-line-flag": "-tn",
       "description": "Specify surface type and name.",
-      "value-key": "[TYPE_NAME]",
+      "value-key": "[TN]",
       "type": "String",
       "list": true,
       "optional": false,
@@ -18,7 +18,7 @@
     {
       "command-line-flag": "-tsn",
       "description": "Specify surface type, state, and name.",
-      "value-key": "[TYPE_STATE_NAME]",
+      "value-key": "[TSN]",
       "type": "String",
       "list": true,
       "optional": false,
@@ -28,7 +28,7 @@
     {
       "command-line-flag": "-tsnad",
       "description": "Specify surface type, state, name, anatomical correctness, and Local Domain Parent.",
-      "value-key": "[TYPE_STATE_NAME_ANATFLAG_LDP]",
+      "value-key": "[TSNAD]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-tsnadm",
       "description": "Specify surface type, state, name, anatomical correctness, Local Domain Parent, and node marker file.",
-      "value-key": "[TYPE_STATE_NAME_ANATFLAG_LDP_MARKER]",
+      "value-key": "[TSNADM]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-tsnadl",
       "description": "Specify surface type, state, name, anatomical correctness, Local Domain Parent, and label dataset file.",
-      "value-key": "[TYPE_STATE_NAME_ANATFLAG_LDP_LABELDSET]",
+      "value-key": "[TSNADL]",
       "type": "String",
       "list": true,
       "optional": true,
@@ -58,7 +58,7 @@
     {
       "command-line-flag": "-spec",
       "description": "Name of spec file output. Default is quick.spec.",
-      "value-key": "[SPECFILE]",
+      "value-key": "[SPEC]",
       "type": "String",
       "optional": true,
       "id": "spec",
@@ -77,7 +77,7 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[SPECFILE]",
+      "path-template": "[SPEC]",
       "description": "The spec file output.",
       "optional": true,
       "id": "out_specfile",

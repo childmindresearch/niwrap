@@ -3,7 +3,7 @@
   "name": "SurfMesh",
   "author": "AFNI Team",
   "description": "Surface mesh manipulation tool",
-  "command-line": "SurfMesh [SURFACE] [OUTPUT] [FRAC] [SURF_VOL] [ONE_STATE] [ANATOMICAL_LABEL] [NO_VOLUME_REGISTRATION] ['ENVname=ENVvalue']",
+  "command-line": "SurfMesh [INPUT_SURFACE] [OUTPUT_SURFACE] [EDGE_FRACTION] [SURFACE_VOLUME] [ONE_STATE] [ANATOMICAL_LABEL] [NO_VOLUME_REGISTRATION] [SET_ENV]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -15,7 +15,7 @@
       "name": "Input Surface",
       "type": "String",
       "command-line-flag": "-i_TYPE",
-      "value-key": "[SURFACE]",
+      "value-key": "[INPUT_SURFACE]",
       "optional": false
     },
     {
@@ -24,7 +24,7 @@
       "name": "Output Surface",
       "type": "String",
       "command-line-flag": "-o_TYPE",
-      "value-key": "[OUTPUT]",
+      "value-key": "[OUTPUT_SURFACE]",
       "optional": false
     },
     {
@@ -33,7 +33,7 @@
       "name": "Edge Fraction",
       "type": "Number",
       "command-line-flag": "-edges",
-      "value-key": "[FRAC]",
+      "value-key": "[EDGE_FRACTION]",
       "minimum": 0,
       "maximum": 1,
       "optional": false
@@ -44,7 +44,7 @@
       "name": "Surface Volume",
       "type": "File",
       "command-line-flag": "-sv",
-      "value-key": "[SURF_VOL]",
+      "value-key": "[SURFACE_VOLUME]",
       "optional": true
     },
     {
@@ -80,14 +80,14 @@
       "name": "Set Environment Variable",
       "type": "String",
       "command-line-flag": "-setenv",
-      "value-key": "['ENVname=ENVvalue']",
+      "value-key": "[SET_ENV]",
       "optional": true
     }
   ],
   "output-files": [
     {
       "description": "Output surface file",
-      "path-template": "[OUTPUT].surface",
+      "path-template": "[OUTPUT_SURFACE].surface",
       "id": "output_surface_file",
       "name": "Output Surface File",
       "optional": true

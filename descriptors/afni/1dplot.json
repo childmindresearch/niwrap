@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Graphs the columns of a *.1D time series file to the X11 screen, or to an image file (.jpg or .png).",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dplot.html",
-  "command-line": "1dplot [OPTIONS] [TSFILES]",
+  "command-line": "1dplot [TSFILES] [INSTALL] [SEP] [ONE] [SEPSCL] [NOLINE] [NOLINE] [BOX] [HIST] [NORM2] [NORMX] [NORM1] [DEMEAN] [X] [XL10] [DX] [XZERO] [NOPUSH] [IGNORE] [USE] [XLABEL] [YLABEL] [PLABEL] [TITLE] [WINTITLE] [NAKED] [ASPECT] [STDIN] [PS] [JPG] [JPEG] [PNG] [PNM] [PNGS] [JPGS] [JPEGS] [PNMS] [YTRAN] [XTRAN] [XAXIS] [YAXIS] [YNAMES] [VOLREG] [THICK] [THICK] [DASHED] [SETENV] [CENSOR_RGB] [CENSOR] [CENSORTR] [CONCAT] [RBOX] [RBOX] [LINE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -19,7 +19,7 @@
     {
       "command-line-flag": "-install",
       "description": "Install a new X11 colormap.",
-      "value-key": "[INSTALL_COLORMAP]",
+      "value-key": "[INSTALL]",
       "id": "install",
       "name": "Install Colormap",
       "type": "Flag",
@@ -29,7 +29,7 @@
       "command-line-flag": "-sep",
       "description": "Plot each column in a separate sub-graph.",
       "id": "sep",
-      "value-key": "[SEPARATE_SUBGRAPHS]",
+      "value-key": "[SEP]",
       "name": "Separate Sub-Graphs",
       "type": "Flag",
       "optional": true
@@ -38,7 +38,7 @@
       "command-line-flag": "-one",
       "description": "Plot all columns together in one big graph.",
       "id": "one",
-      "value-key": "[ONE_BIG_GRAPH]",
+      "value-key": "[ONE]",
       "name": "One Big Graph",
       "type": "Flag",
       "optional": true
@@ -47,7 +47,7 @@
       "command-line-flag": "-sepscl",
       "description": "Plot each column in a separate sub-graph and allow each sub-graph to have a different y-scale. This option is meaningless with -one!",
       "id": "sepscl",
-      "value-key": "[SEPARATE_SUBGRAPHS_YSCALE]",
+      "value-key": "[SEPSCL]",
       "name": "Separate Sub-Graphs with different y-scale",
       "type": "Flag",
       "optional": true
@@ -131,7 +131,7 @@
       "name": "X axis data",
       "type": "File",
       "optional": true,
-      "value-key": "[X_AXIS_FILE]"
+      "value-key": "[X]"
     },
     {
       "command-line-flag": "-xl10",
@@ -140,7 +140,7 @@
       "name": "Log10 X axis data",
       "type": "File",
       "optional": true,
-      "value-key": "[X_AXIS_LOG_FILE]"
+      "value-key": "[XL10]"
     },
     {
       "command-line-flag": "-dx",
@@ -149,7 +149,7 @@
       "name": "X-axis spacing",
       "type": "Number",
       "optional": true,
-      "value-key": "[DX_SPACING]"
+      "value-key": "[DX]"
     },
     {
       "command-line-flag": "-xzero",
@@ -158,7 +158,7 @@
       "name": "Initial X coordinate",
       "type": "Number",
       "optional": true,
-      "value-key": "[XZERO_COORD]"
+      "value-key": "[XZERO]"
     },
     {
       "command-line-flag": "-nopush",
@@ -176,7 +176,7 @@
       "name": "Ignore Initial Rows",
       "type": "Number",
       "optional": true,
-      "value-key": "[IGNORE_ROWS]"
+      "value-key": "[IGNORE]"
     },
     {
       "command-line-flag": "-use",
@@ -185,7 +185,7 @@
       "name": "Use Specified Points",
       "type": "Number",
       "optional": true,
-      "value-key": "[USE_POINTS]"
+      "value-key": "[USE]"
     },
     {
       "command-line-flag": "-xlabel",
@@ -230,7 +230,7 @@
       "name": "Window Title",
       "type": "String",
       "optional": true,
-      "value-key": "[WIN_TITLE]"
+      "value-key": "[WINTITLE]"
     },
     {
       "command-line-flag": "-naked",
@@ -248,7 +248,7 @@
       "name": "Aspect Ratio",
       "type": "Number",
       "optional": true,
-      "value-key": "[ASPECT_RATIO]"
+      "value-key": "[ASPECT]"
     },
     {
       "command-line-flag": "-stdin",
@@ -275,7 +275,7 @@
       "name": "JPEG Output",
       "type": "String",
       "optional": true,
-      "value-key": "[JPG_OUTPUT]"
+      "value-key": "[JPG]"
     },
     {
       "command-line-flag": "-jpeg",
@@ -284,7 +284,7 @@
       "name": "JPEG Output",
       "type": "String",
       "optional": true,
-      "value-key": "[JPEG_OUTPUT]"
+      "value-key": "[JPEG]"
     },
     {
       "command-line-flag": "-png",
@@ -293,7 +293,7 @@
       "name": "PNG Output",
       "type": "String",
       "optional": true,
-      "value-key": "[PNG_OUTPUT]"
+      "value-key": "[PNG]"
     },
     {
       "command-line-flag": "-pnm",
@@ -302,7 +302,7 @@
       "name": "PNM Output",
       "type": "String",
       "optional": true,
-      "value-key": "[PNM_OUTPUT]"
+      "value-key": "[PNM]"
     },
     {
       "command-line-flag": "-pngs",
@@ -311,7 +311,7 @@
       "name": "PNG Output with Size",
       "type": "String",
       "optional": true,
-      "value-key": "[PNGS_OUTPUT]"
+      "value-key": "[PNGS]"
     },
     {
       "command-line-flag": "-jpgs",
@@ -320,7 +320,7 @@
       "name": "JPEG Output with Size",
       "type": "String",
       "optional": true,
-      "value-key": "[JPGS_OUTPUT]"
+      "value-key": "[JPGS]"
     },
     {
       "command-line-flag": "-jpegs",
@@ -329,7 +329,7 @@
       "name": "JPEG Output with Size",
       "type": "String",
       "optional": true,
-      "value-key": "[JPEGS_OUTPUT]"
+      "value-key": "[JPEGS]"
     },
     {
       "command-line-flag": "-pnms",
@@ -338,7 +338,7 @@
       "name": "PNM Output with Size",
       "type": "String",
       "optional": true,
-      "value-key": "[PNMS_OUTPUT]"
+      "value-key": "[PNMS]"
     },
     {
       "command-line-flag": "-ytran",
@@ -347,7 +347,7 @@
       "name": "Y-axis Transformation",
       "type": "String",
       "optional": true,
-      "value-key": "[YTRAN_EXPR]"
+      "value-key": "[YTRAN]"
     },
     {
       "command-line-flag": "-xtran",
@@ -356,7 +356,7 @@
       "name": "X-axis Transformation",
       "type": "String",
       "optional": true,
-      "value-key": "[XTRAN_EXPR]"
+      "value-key": "[XTRAN]"
     },
     {
       "command-line-flag": "-xaxis",
@@ -365,7 +365,7 @@
       "name": "X-axis Settings",
       "type": "String",
       "optional": true,
-      "value-key": "[XAXIS_SETTINGS]"
+      "value-key": "[XAXIS]"
     },
     {
       "command-line-flag": "-yaxis",
@@ -374,7 +374,7 @@
       "name": "Y-axis Settings",
       "type": "String",
       "optional": true,
-      "value-key": "[YAXIS_SETTINGS]"
+      "value-key": "[YAXIS]"
     },
     {
       "command-line-flag": "-ynames",
@@ -420,7 +420,7 @@
       "name": "Dashed Lines",
       "type": "String",
       "optional": true,
-      "value-key": "[DASHED_CODES]"
+      "value-key": "[DASHED]"
     },
     {
       "command-line-flag": "-D",
@@ -429,7 +429,7 @@
       "name": "Set Environment Variable",
       "type": "String",
       "optional": true,
-      "value-key": "[ENV_VAR]"
+      "value-key": "[SETENV]"
     },
     {
       "command-line-flag": "-censor_RGB",
@@ -438,7 +438,7 @@
       "name": "Censor Marking Color",
       "type": "String",
       "optional": true,
-      "value-key": "[RGB_COLOR]"
+      "value-key": "[CENSOR_RGB]"
     },
     {
       "command-line-flag": "-censor",
@@ -447,7 +447,7 @@
       "name": "Censor Time Series",
       "type": "File",
       "optional": true,
-      "value-key": "[CENSOR_FILE]"
+      "value-key": "[CENSOR]"
     },
     {
       "command-line-flag": "-CENSORTR",
@@ -457,7 +457,7 @@
       "type": "String",
       "list": true,
       "optional": true,
-      "value-key": "[CENSOR_INDEXES]"
+      "value-key": "[CENSORTR]"
     },
     {
       "command-line-flag": "-concat",
@@ -466,7 +466,7 @@
       "name": "Concatenated Runs",
       "type": "File",
       "optional": true,
-      "value-key": "[CONCAT_FILE]"
+      "value-key": "[CONCAT]"
     },
     {
       "command-line-flag": "-rbox",
@@ -475,7 +475,7 @@
       "name": "Draw Rectangular Box",
       "type": "String",
       "optional": true,
-      "value-key": "[RBOX_OPTIONS]"
+      "value-key": "[RBOX]"
     },
     {
       "command-line-flag": "-Rbox",
@@ -484,7 +484,7 @@
       "name": "Draw Rectangular Box with Line",
       "type": "String",
       "optional": true,
-      "value-key": "[RBOX_OPTIONS_WITH_LINE]"
+      "value-key": "[RBOX]"
     },
     {
       "command-line-flag": "-line",
@@ -493,7 +493,7 @@
       "name": "Draw Line Segment",
       "type": "String",
       "optional": true,
-      "value-key": "[LINE_OPTIONS]"
+      "value-key": "[LINE]"
     }
   ],
   "container-image": {

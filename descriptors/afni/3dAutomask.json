@@ -1,6 +1,6 @@
 {
   "name": "3dAutomask",
-  "command-line": "3dAutomask [IN_FILE] [BRAIN_FILE] [CLFRAC] [DILATE] [ERODE] [OUT_FILE] [OUTPUTTYPE]",
+  "command-line": "3dAutomask [CLFRAC] [DILATE] [ERODE] [IN_FILE] [OUTPUTTYPE]",
   "author": "AFNI Team",
   "description": "Create a brain-only mask of the image using AFNI 3dAutomask command.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html",
@@ -49,7 +49,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     }
   ],
   "output-files": [

@@ -3,7 +3,7 @@
   "name": "@radial_correlate",
   "author": "AFNI Team",
   "description": "Check datasets for correlation artifacts",
-  "command-line": "@radial_correlate [INPUT_FILES] [OPTIONS]",
+  "command-line": "@radial_correlate [INPUT_FILES] [RESULTS_DIR] [DO_CORR] [DO_CLUST] [MASK_DSET] [CTHRESH] [FRAC_LIMIT] [SPHERE_RAD] [USE_3DMERGE] [PERCENTILE] [MIN_THR] [NFIRST] [VER] [VERBOSE] [HELP] [HIST] [CORR_MASK] [DO_CLEAN] [POLORT] [MERGE_FRAD]",
   "inputs": [
     {
       "description": "A list of EPI datasets",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-cthresh",
       "description": "Threshold on correlation values",
-      "value-key": "[THRESH]",
+      "value-key": "[CTHRESH]",
       "type": "Number",
       "optional": true,
       "id": "cthresh",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-frac_limit",
       "description": "Minimum mask fraction surviving cluster",
-      "value-key": "[LIMIT]",
+      "value-key": "[FRAC_LIMIT]",
       "type": "Number",
       "optional": true,
       "id": "frac_limit",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-sphere_rad",
       "description": "Generate correlations within voxel spheres",
-      "value-key": "[RAD]",
+      "value-key": "[SPHERE_RAD]",
       "type": "Number",
       "optional": true,
       "id": "sphere_rad",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-percentile",
       "description": "Percentile to use as threshold",
-      "value-key": "[PERC]",
+      "value-key": "[PERCENTILE]",
       "type": "Number",
       "optional": true,
       "id": "percentile",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "-min_thr",
       "description": "Minimum percentile threshold to be considered",
-      "value-key": "[THR]",
+      "value-key": "[MIN_THR]",
       "type": "Number",
       "optional": true,
       "id": "min_thr",
@@ -116,7 +116,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Show version number",
-      "value-key": "[VER_FLAG]",
+      "value-key": "[VER]",
       "type": "Flag",
       "optional": true,
       "id": "ver",
@@ -125,7 +125,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Make verbose: set echo",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -134,7 +134,7 @@
     {
       "command-line-flag": "-help",
       "description": "Show help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -143,7 +143,7 @@
     {
       "command-line-flag": "-hist",
       "description": "Show modification history",
-      "value-key": "[HIST_FLAG]",
+      "value-key": "[HIST]",
       "type": "Flag",
       "optional": true,
       "id": "hist",
@@ -179,7 +179,7 @@
     {
       "command-line-flag": "-merge_frad",
       "description": "Specify a radius fraction for 3dmerge blurring",
-      "value-key": "[FRAD]",
+      "value-key": "[MERGE_FRAD]",
       "type": "Number",
       "optional": true,
       "id": "merge_frad",

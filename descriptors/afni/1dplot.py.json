@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "This program is for making images to visualize columns of numbers from 1D text files. It uses Python, particularly matplotlib, to create plots.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dplot.py.html",
-  "command-line": "1dplot.py [INPUT_FILES] [PREFIX] [OTHER_OPTIONS]",
+  "command-line": "1dplot.py [INFILES] [PREFIX] [HELP] [BOXPLOT_ON] [BPLOT_VIEW] [MARGIN_OFF] [SCALE] [XFILE] [XVALS] [YAXIS] [YLABELS] [YLABELS_MAXLEN] [LEGEND_ON] [LEGEND_LABELS] [LEGEND_LOCS] [XLABEL] [TITLE] [REVERSE_ORDER] [SEPSCL] [ONE_GRAPH] [DPI] [FIGSIZE] [FONTSIZE] [FONTFAMILY] [FONTSTYLES] [COLORS] [PATCHES] [CENSOR_TRS] [CENSOR_FILES] [CENSOR_HLINE] [CENSOR_RGB] [BKGD_COLOR]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "One or more file names of text files. Each column in this file will be treated as a separate time series for plotting.",
-      "value-key": "[INPUT_FILES]",
+      "value-key": "[INFILES]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -31,7 +31,7 @@
     },
     {
       "description": "See helpfile",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -40,7 +40,7 @@
     },
     {
       "description": "A fun feature to show an additional boxplot adjacent to each time series",
-      "value-key": "[BOXPLOT_FLAG]",
+      "value-key": "[BOXPLOT_ON]",
       "type": "Flag",
       "optional": true,
       "id": "boxplot_on",

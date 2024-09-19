@@ -3,7 +3,7 @@
   "name": "SurfSmooth",
   "author": "AFNI Team",
   "description": "Tool for smoothing data on surfaces using various methods.",
-  "command-line": "SurfSmooth <-SURF_1> <-met method> [PARAMETERS]",
+  "command-line": "SurfSmooth [SURFACE] [METHOD] [INPUT_DATA] [TARGET_FWHM] [FWHM] [NUMBER_ITERATIONS] [OUTPUT_FILE] [BAND_PASS_FREQUENCY] [LAMBDA_MU] [INTERP_WEIGHTS] [NODE_MASK] [SURFACE_OUTPUT] [DBG_NODE] [USE_NEIGHBORS_OUTSIDE_MASK] [TALK_SUMA] [REFRESH_RATE]",
   "inputs": [
     {
       "id": "surface",
@@ -12,7 +12,7 @@
       "description": "Option for specifying the surface to smooth or the domain over which DSET is defined.",
       "command-line-flag": "-SURF_1",
       "optional": false,
-      "value-key": "[SURFACE_FILE]"
+      "value-key": "[SURFACE]"
     },
     {
       "id": "method",
@@ -57,7 +57,7 @@
       "description": "Number of smoothing iterations (default is 100 for LM and NN_geom, -1 for HEAT methods).",
       "command-line-flag": "-Niter",
       "optional": true,
-      "value-key": "[NUM_ITERATIONS]"
+      "value-key": "[NUMBER_ITERATIONS]"
     },
     {
       "id": "output_file",
@@ -120,7 +120,7 @@
       "description": "Output debug information for node 'node'.",
       "command-line-flag": "-dbg_n",
       "optional": true,
-      "value-key": "[DEBUG_NODE]"
+      "value-key": "[DBG_NODE]"
     },
     {
       "id": "use_neighbors_outside_mask",

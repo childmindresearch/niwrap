@@ -3,7 +3,7 @@
   "name": "dicom_hdr",
   "author": "AFNI Team",
   "description": "A tool to print DICOM file information to stdout.",
-  "command-line": "dicom_hdr [OPTIONS] [FILES...]",
+  "command-line": "dicom_hdr [FILES] [HEX] [NONAME] [SEXINFO] [MULFRAM] [V_DUMP] [NO_LENGTH] [SLICE_TIMES] [SLICE_TIMES_VERB] [SIEMENS_CSA_DATA]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "DICOM file(s) to read",
-      "value-key": "[FILES...]",
+      "value-key": "[FILES]",
       "type": "File",
       "list": true,
       "id": "files",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-hex",
       "description": "Include hexadecimal printout for integer values.",
-      "value-key": "[HEX_FLAG]",
+      "value-key": "[HEX]",
       "type": "Flag",
       "optional": true,
       "id": "hex",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-noname",
       "description": "Don't include element names in the printout.",
-      "value-key": "[NONAME_FLAG]",
+      "value-key": "[NONAME]",
       "type": "Flag",
       "optional": true,
       "id": "noname",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-sexinfo",
       "description": "Dump Siemens EXtra INFO text (0029 1020), if present (can be VERY lengthy).",
-      "value-key": "[SEXINFO_FLAG]",
+      "value-key": "[SEXINFO]",
       "type": "Flag",
       "optional": true,
       "id": "sexinfo",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-mulfram",
       "description": "Dump multi-frame information, if present (1 line per frame, plus an XML-style header/footer). This option also implies -noname.",
-      "value-key": "[MULFRAM_FLAG]",
+      "value-key": "[MULFRAM]",
       "type": "Flag",
       "optional": true,
       "id": "mulfram",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-no_length",
       "description": "Skip lengths and offsets (helps diffs).",
-      "value-key": "[NO_LENGTH_FLAG]",
+      "value-key": "[NO_LENGTH]",
       "type": "Flag",
       "optional": true,
       "id": "no_length",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-slice_times",
       "description": "Show slice times from Siemens mosaic images.",
-      "value-key": "[SLICE_TIMES_FLAG]",
+      "value-key": "[SLICE_TIMES]",
       "type": "Flag",
       "optional": true,
       "id": "slice_times",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-slice_times_verb",
       "description": "Show slice times from Siemens mosaic images verbosely. (multiple uses increase verbosity, can dump CSA data)",
-      "value-key": "[SLICE_TIMES_VERB_FLAG]",
+      "value-key": "[SLICE_TIMES_VERB]",
       "type": "Flag",
       "optional": true,
       "id": "slice_times_verb",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-siemens_csa_data",
       "description": "Same as 3 -slice_times_verb opts.",
-      "value-key": "[SIEMENS_CSA_DATA_FLAG]",
+      "value-key": "[SIEMENS_CSA_DATA]",
       "type": "Flag",
       "optional": true,
       "id": "siemens_csa_data",

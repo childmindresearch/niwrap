@@ -3,11 +3,11 @@
   "name": "@simulate_motion",
   "author": "AFNI Team",
   "description": "Create simulated motion time series in an EPI dataset based on the provided motion parameters and an input volume.",
-  "command-line": "@simulate_motion [options] -epi [EPI_DSET] -motion_file [MOTION_PARAMS]",
+  "command-line": "@simulate_motion [EPI] [MOTION_FILE] [EPI_TIMING] [PREFIX] [SAVE_WORKDIR] [TEST] [VERB_LEVEL] [VR_BASE] [WARP_METHOD] [WARP_1D] [WARP_MASTER] [WSINC5] [HELP] [HIST] [TODO] [VER]",
   "inputs": [
     {
       "description": "Input EPI volume or time series (only a volreg base is needed, though more is okay).",
-      "value-key": "[EPI_DSET]",
+      "value-key": "[EPI]",
       "type": "File",
       "optional": false,
       "id": "epi",
@@ -16,7 +16,7 @@
     },
     {
       "description": "Motion parameter file (as output by 3dvolreg).",
-      "value-key": "[MOTION_PARAMS]",
+      "value-key": "[MOTION_FILE]",
       "type": "File",
       "optional": false,
       "id": "motion_file",

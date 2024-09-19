@@ -3,7 +3,7 @@
   "name": "niccc",
   "author": "AFNI Team",
   "description": "A program for conducting certain NIML tests on input from streamspec and write the results to stderr",
-  "command-line": "niccc [OPTIONS] [STREAMSPEC]",
+  "command-line": "niccc [STREAMSPEC] [DUPLICATE] [NODATA] [ATTRIBUTE] [MATCH] [FILE] [STRING] [STDOUT] [HASH] [QUIET] [FIND_ATTR] [SKIP_ATTR]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -17,7 +17,7 @@
     {
       "command-line-flag": "-dup",
       "description": "Duplicate the element before showing it. This is to test NI_duplicate function.",
-      "value-key": "[DUPLICATE_FLAG]",
+      "value-key": "[DUPLICATE]",
       "type": "Flag",
       "optional": true,
       "id": "duplicate",
@@ -26,7 +26,7 @@
     {
       "command-line-flag": "-nodata",
       "description": "Show header parts only in output",
-      "value-key": "[NO_DATA_FLAG]",
+      "value-key": "[NODATA]",
       "type": "Flag",
       "optional": true,
       "id": "nodata",
@@ -53,7 +53,7 @@
     {
       "command-line-flag": "-f",
       "description": "Streamspec is a filename.",
-      "value-key": "[FILE_FLAG]",
+      "value-key": "[FILE]",
       "type": "Flag",
       "optional": true,
       "id": "file",
@@ -62,7 +62,7 @@
     {
       "command-line-flag": "-s",
       "description": "Streamspec is an element string like: '<T font=9 coords=\"2.3 23 2\"/>'",
-      "value-key": "[STRING_FLAG]",
+      "value-key": "[STRING]",
       "type": "Flag",
       "optional": true,
       "id": "string",
@@ -71,7 +71,7 @@
     {
       "command-line-flag": "-stdout",
       "description": "Write elements to stdout, instead of stderr",
-      "value-key": "[STDOUT_FLAG]",
+      "value-key": "[STDOUT]",
       "type": "Flag",
       "optional": true,
       "id": "stdout",
@@ -80,7 +80,7 @@
     {
       "command-line-flag": "-#",
       "description": "Put the # at the beginning of lines with no data",
-      "value-key": "[HASH_FLAG]",
+      "value-key": "[HASH]",
       "type": "Flag",
       "optional": true,
       "id": "hash",
@@ -89,7 +89,7 @@
     {
       "command-line-flag": "-quiet",
       "description": "Quiet stderr messages, and don't echo attribute name with -attribute option",
-      "value-key": "[QUIET_FLAG]",
+      "value-key": "[QUIET]",
       "type": "Flag",
       "optional": true,
       "id": "quiet",

@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/bin/misc_help/1dDW_Grad_o_Mat++.html",
   "description": "Manipulation of diffusion-weighted (DW) gradient vector files, b-value files, and b- or g-matrices with various input and output configurations.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dDW_Grad_o_Mat++.html",
-  "command-line": "1dDW_Grad_o_Mat++ [INPUT_OPTION] INFILE [FLIP_OPTION] [OUTPUT_OPTION] OUTFILE [ADDITIONAL_OPTIONS]",
+  "command-line": "1dDW_Grad_o_Mat++ [IN_ROW_VEC] [IN_COL_VEC] [IN_COL_MATA] [IN_COL_MATT] [FLIP_X] [FLIP_Y] [FLIP_Z] [NO_FLIP] [OUT_ROW_VEC] [OUT_COL_VEC] [OUT_COL_MATA] [OUT_COL_MATT] [IN_BVALS] [OUT_COL_BVAL] [OUT_ROW_BVAL_SEP] [OUT_COL_BVAL_SEP] [UNIT_MAG_OUT] [CHECK_ABS_MIN] [BREF_MEAN_TOP] [PUT_ZEROS_TOP] [BMAX_REF]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -14,7 +14,7 @@
     {
       "command-line-flag": "-in_row_vec",
       "description": "Input file of 3 rows of gradients (e.g., dcm2nii-format output)",
-      "value-key": "[INFILE]",
+      "value-key": "[IN_ROW_VEC]",
       "type": "File",
       "optional": false,
       "id": "in_row_vec",
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "-in_col_vec",
       "description": "Input file of 3 columns of gradients",
-      "value-key": "[INFILE]",
+      "value-key": "[IN_COL_VEC]",
       "type": "File",
       "optional": false,
       "id": "in_col_vec",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-in_col_matA",
       "description": "Input file of 6 columns of b- or g-matrix in 'A(FNI)' diagonal first format",
-      "value-key": "[INFILE]",
+      "value-key": "[IN_COL_MATA]",
       "type": "File",
       "optional": false,
       "id": "in_col_matA",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-in_col_matT",
       "description": "Input file of 6 columns of b- or g-matrix in 'T(ORTOISE)' row first format",
-      "value-key": "[INFILE]",
+      "value-key": "[IN_COL_MATT]",
       "type": "File",
       "optional": false,
       "id": "in_col_matT",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-flip_x",
       "description": "Change sign of first column of gradients (or of the x-component parts of the matrix)",
-      "value-key": "[FLIP_OPTION]",
+      "value-key": "[FLIP_X]",
       "type": "Flag",
       "optional": true,
       "id": "flip_x",
@@ -59,7 +59,7 @@
     {
       "command-line-flag": "-flip_y",
       "description": "Change sign of second column of gradients (or of the y-component parts of the matrix)",
-      "value-key": "[FLIP_OPTION]",
+      "value-key": "[FLIP_Y]",
       "type": "Flag",
       "optional": true,
       "id": "flip_y",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "-flip_z",
       "description": "Change sign of third column of gradients (or of the z-component parts of the matrix)",
-      "value-key": "[FLIP_OPTION]",
+      "value-key": "[FLIP_Z]",
       "type": "Flag",
       "optional": true,
       "id": "flip_z",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "-no_flip",
       "description": "Don't change any gradient/matrix signs (default behavior)",
-      "value-key": "[FLIP_OPTION]",
+      "value-key": "[NO_FLIP]",
       "type": "Flag",
       "optional": true,
       "id": "no_flip",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "-out_row_vec",
       "description": "Output file of 3 rows of gradients",
-      "value-key": "[OUTFILE]",
+      "value-key": "[OUT_ROW_VEC]",
       "type": "String",
       "optional": false,
       "id": "out_row_vec",
@@ -95,7 +95,7 @@
     {
       "command-line-flag": "-out_col_vec",
       "description": "Output file of 3 columns of gradients",
-      "value-key": "[OUTFILE]",
+      "value-key": "[OUT_COL_VEC]",
       "type": "String",
       "optional": false,
       "id": "out_col_vec",
@@ -104,7 +104,7 @@
     {
       "command-line-flag": "-out_col_matA",
       "description": "Output file of 6 columns of b- or g-matrix in 'A(FNI)' diagonal first format",
-      "value-key": "[OUTFILE]",
+      "value-key": "[OUT_COL_MATA]",
       "type": "String",
       "optional": false,
       "id": "out_col_matA",
@@ -113,7 +113,7 @@
     {
       "command-line-flag": "-out_col_matT",
       "description": "Output file of 6 columns of b- or g-matrix in 'T(ORTOISE)' row first format",
-      "value-key": "[OUTFILE]",
+      "value-key": "[OUT_COL_MATT]",
       "type": "String",
       "optional": false,
       "id": "out_col_matT",
@@ -122,7 +122,7 @@
     {
       "command-line-flag": "-in_bvals",
       "description": "BVAL_FILE is a file of b-values either in a single row or a single column",
-      "value-key": "[BVAL_FILE]",
+      "value-key": "[IN_BVALS]",
       "type": "File",
       "optional": true,
       "id": "in_bvals",
@@ -140,7 +140,7 @@
     {
       "command-line-flag": "-out_row_bval_sep",
       "description": "Output a file of bvalues in a single row",
-      "value-key": "[BB]",
+      "value-key": "[OUT_ROW_BVAL_SEP]",
       "type": "String",
       "optional": true,
       "id": "out_row_bval_sep",
@@ -149,7 +149,7 @@
     {
       "command-line-flag": "-out_col_bval_sep",
       "description": "Output a file of bvalues in a single column",
-      "value-key": "[BB]",
+      "value-key": "[OUT_COL_BVAL_SEP]",
       "type": "String",
       "optional": true,
       "id": "out_col_bval_sep",
@@ -167,7 +167,7 @@
     {
       "command-line-flag": "-check_abs_min",
       "description": "Specify the threshold to replace small negative diagonal elements with zero in the input matrix",
-      "value-key": "[VVV]",
+      "value-key": "[CHECK_ABS_MIN]",
       "type": "Number",
       "optional": true,
       "id": "check_abs_min",
@@ -194,7 +194,7 @@
     {
       "command-line-flag": "-bmax_ref",
       "description": "THRESH is a scalar number below which b-values are considered zero or reference",
-      "value-key": "[THRESH]",
+      "value-key": "[BMAX_REF]",
       "type": "Number",
       "optional": true,
       "id": "bmax_ref",
@@ -204,21 +204,21 @@
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTFILE]",
+      "path-template": "[OUT_ROW_VEC]",
       "description": "Output file of gradients or matrices",
       "optional": true,
       "id": "outfile",
       "name": "Output File"
     },
     {
-      "path-template": "[BB]",
+      "path-template": "[OUT_ROW_BVAL_SEP]",
       "description": "Output b-values file in a single row",
       "optional": true,
       "id": "out_row_bval_file",
       "name": "Output Row B-Values File"
     },
     {
-      "path-template": "[BB]",
+      "path-template": "[OUT_ROW_BVAL_SEP]",
       "description": "Output b-values file in a single column",
       "optional": true,
       "id": "out_col_bval_file",

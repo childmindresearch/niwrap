@@ -3,11 +3,11 @@
   "name": "1dAstrip",
   "author": "AFNI Team",
   "description": "Strips non-numeric characters from a file",
-  "command-line": "1dAstrip <[INPUT_FILE]> [OUTPUT_FILE]",
+  "command-line": "1dAstrip [INFILE]",
   "inputs": [
     {
       "description": "Input file from which non-numeric characters will be stripped.",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INFILE]",
       "type": "File",
       "optional": false,
       "id": "infile",

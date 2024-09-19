@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Gosset (Student) t-test of sets of 3D datasets in AFNI",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dttest++.html",
-  "command-line": "3dttest++ [INPUTS] [OPTIONS] [MASK_OPTIONS] [ETAC_OPTIONS] [OTHER_OPTIONS]",
+  "command-line": "3dttest++ [SETA] [SETB] [SETA_LONG] [SETB_LONG] [COVARIATES] [LABELA] [LABELB] [SETWEIGHTA] [SETWEIGHTB] [PREFIX] [RESID] [PAIRED] [UNPOOLED] [MASK] [EXBLUR] [RANDOMSIGN] [PERMUTE] [ETAC] [ETAC_BLUR] [ETAC_OPT] [SEED]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -15,7 +15,7 @@
       "type": "String",
       "list": true,
       "optional": false,
-      "value-key": "[INPUTS]"
+      "value-key": "[SETA]"
     },
     {
       "description": "Set B in short form, e.g., 'x+tlrc[3]' y+tlrc[3] ...'",
@@ -25,7 +25,7 @@
       "type": "String",
       "list": true,
       "optional": true,
-      "value-key": "[INPUTS]"
+      "value-key": "[SETB]"
     },
     {
       "description": "Specify an overall name for the set of datasets (Long form). Example: -setA Green sub001 a+tlrc[3] sub002 b+tlrc[3] ...",
@@ -35,7 +35,7 @@
       "type": "String",
       "list": true,
       "optional": true,
-      "value-key": "[INPUTS_LONG]"
+      "value-key": "[SETA_LONG]"
     },
     {
       "description": "Specify an overall name for the set of datasets (Long form). Example: -setB Blue sub001 x+tlrc[3] sub002 y+tlrc[3] ...",
@@ -45,7 +45,7 @@
       "type": "String",
       "list": true,
       "optional": true,
-      "value-key": "[INPUTS_LONG]"
+      "value-key": "[SETB_LONG]"
     },
     {
       "description": "File containing covariates.",
@@ -55,7 +55,7 @@
       "type": "File",
       "list": false,
       "optional": true,
-      "value-key": "[COVARIATES_FILE]"
+      "value-key": "[COVARIATES]"
     },
     {
       "description": "Label for the set (for Set A). Limited to 12 characters.",
@@ -82,7 +82,7 @@
       "command-line-flag": "-setweightA",
       "type": "File",
       "optional": true,
-      "value-key": "[SETWEIGHTA_FILE]"
+      "value-key": "[SETWEIGHTA]"
     },
     {
       "description": "File with voxel-wise weights for -setB datasets.",
@@ -91,7 +91,7 @@
       "command-line-flag": "-setweightB",
       "type": "File",
       "optional": true,
-      "value-key": "[SETWEIGHTB_FILE]"
+      "value-key": "[SETWEIGHTB]"
     },
     {
       "description": "Output the prefix name of the dataset result. For surface-based datasets, use -prefix p.niml.dset or -prefix p.gii.dset",
@@ -109,7 +109,7 @@
       "command-line-flag": "-resid",
       "type": "String",
       "optional": true,
-      "value-key": "[PREFIX_RESID]"
+      "value-key": "[RESID]"
     },
     {
       "description": "Specify to use a paired-sample t-test to compare setA and setB. Both sets must have the same cardinality.",
@@ -216,7 +216,7 @@
       "name": "Output dataset"
     },
     {
-      "path-template": "[PREFIX_RESID].nii.gz",
+      "path-template": "[RESID].nii.gz",
       "description": "Output residuals dataset",
       "optional": true,
       "id": "residuals",

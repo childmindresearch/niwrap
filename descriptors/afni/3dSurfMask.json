@@ -4,11 +4,11 @@
   "author": "AFNI Team",
   "description": "Creates volumetric datasets marking voxels based on their location relative to a surface",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSurfMask.html",
-  "command-line": "3dSurfMask <-i_TYPE SURFACE> <-prefix PREFIX> <-grid_parent GRID_VOL> [<fill_method> <SURF_VOL> <mask_only> <flip_orientation> <no_dist>]",
+  "command-line": "3dSurfMask [SURFACE_TYPE] [SURFACE_FILE] [PREFIX] [GRID_PARENT] [FILL_METHOD] [SURFACE_VOLUME] [MASK_ONLY] [FLIP_ORIENTATION] [NO_DISTANCE]",
   "inputs": [
     {
       "description": "Specify input surface.",
-      "value-key": "[i_TYPE]",
+      "value-key": "[SURFACE_TYPE]",
       "type": "String",
       "optional": false,
       "id": "surface_type",
@@ -16,7 +16,7 @@
     },
     {
       "description": "Specify input surface filename.",
-      "value-key": "[SURFACE]",
+      "value-key": "[SURFACE_FILE]",
       "type": "File",
       "optional": false,
       "id": "surface_file",
@@ -32,7 +32,7 @@
     },
     {
       "description": "Specifies the grid for the output volume.",
-      "value-key": "[GRID_VOL]",
+      "value-key": "[GRID_PARENT]",
       "type": "File",
       "optional": false,
       "id": "grid_parent",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-fill_method",
       "description": "Fill method: SLOW or FAST (default: FAST).",
-      "value-key": "[METH]",
+      "value-key": "[FILL_METHOD]",
       "type": "String",
       "optional": true,
       "id": "fill_method",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-sv",
       "description": "Specify the surface volume.",
-      "value-key": "[SURF_VOL]",
+      "value-key": "[SURFACE_VOLUME]",
       "type": "File",
       "optional": true,
       "id": "surface_volume",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "-no_dist",
       "description": "Do not compute the distances, just the mask from the first step.",
-      "value-key": "[NO_DIST]",
+      "value-key": "[NO_DISTANCE]",
       "type": "Flag",
       "optional": true,
       "id": "no_distance",

@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Program to display or modify sections of a file",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/file_tool.html",
-  "command-line": "file_tool [OPTIONS] -infiles [INPUT_FILES...]",
+  "command-line": "file_tool [HELP] [VERSION] [HIST] [DEBUG] [INFILES] [GE_ALL] [GE_HEADER] [GE_EXTRAS] [GE_UV17] [GE_RUN] [GE_OFF] [GE4_ALL] [GE4_IMAGE] [GE4_SERIES] [GE4_STUDY] [DEF_ANA_HDR] [DIFF_ANA_HDRS] [DISP_ANA_HDR] [HEX] [MOD_ANA_HDR] [MOD_FIELD] [PREFIX] [OVERWRITE] [SHOW_BAD_ALL] [SHOW_BAD_BACKSLASH] [SHOW_BAD_CHAR] [SHOW_FILE_TYPE] [FIX_RICH_QUOTES] [TEST] [LENGTH] [MOD_DATA] [MOD_TYPE] [OFFSET] [QUIET] [DISP_HEX] [DISP_HEX1] [DISP_HEX2] [DISP_HEX4] [DISP_INT2] [DISP_INT4] [DISP_REAL4] [SWAP_BYTES]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -39,7 +39,7 @@
       "name": "Debug Level",
       "description": "Print extra info along the way, default is 0, max is 2",
       "command-line-flag": "-debug",
-      "value-key": "[DEBUG_LEVEL]",
+      "value-key": "[DEBUG]",
       "type": "Number",
       "optional": true
     },
@@ -48,7 +48,7 @@
       "name": "Input Files",
       "description": "Specify input files to display or modify",
       "command-line-flag": "-infiles",
-      "value-key": "[INPUT_FILES]",
+      "value-key": "[INFILES]",
       "type": "File",
       "list": true,
       "optional": false

@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/3dBallMatch.json",
   "description": "A tool to find a good match between a ball (filled sphere) of the given radius and a dataset to determine a crude approximate center of the brain quickly.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBallMatch.html",
-  "command-line": "3dBallMatch [OPTIONS] [INPUT_DATASET] [RADIUS]",
+  "command-line": "3dBallMatch [INPUT_DATASET] [RADIUS] [DATASET_OPTION] [BALL_RADIUS] [SPHEROID_AXES]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

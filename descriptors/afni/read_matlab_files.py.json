@@ -3,7 +3,7 @@
   "name": "read_matlab_files.py",
   "author": "AFNI Team",
   "description": "Describe or convert MATLAB files (.mat) to 1D format",
-  "command-line": "read_matlab_files.py [INPUT_FILES] [PREFIX] [OVERWRITE] [HELP] [HIST] [VER]",
+  "command-line": "read_matlab_files.py [INFILES] [PREFIX] [OVERWRITE] [HELP] [HISTORY] [VERSION]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input MATLAB files to be processed",
-      "value-key": "[INPUT_FILES]",
+      "value-key": "[INFILES]",
       "type": "String",
       "list": true,
       "optional": false,
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-hist",
       "description": "Show revision history",
-      "value-key": "[HIST]",
+      "value-key": "[HISTORY]",
       "type": "Flag",
       "optional": true,
       "id": "history",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-ver",
       "description": "Show version number",
-      "value-key": "[VER]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

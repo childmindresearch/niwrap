@@ -3,7 +3,7 @@
   "name": "T1scale",
   "author": "AFNI Team",
   "description": "Fix bias field shading in T1 by scaling it with PD image. You can also get a decent result even without the PD volume.",
-  "command-line": "@T1scale <-T1 T1vol> <-PD PDvol> [OUTPUT_DIR] [ALIGN_FLAG] [MASK_FILE] [HEAD_MASK_FLAG] [UNMASKED_UNI_FLAG] [MASKED_UNI_FLAG] [ECHO_FLAG] [HELP_FLAG] [H_WEB_FLAG] [H_VIEW_FLAG] [ALL_OPTS_FLAG] [H_FIND_FLAG]",
+  "command-line": "T1scale [T1_VOLUME] [PD_VOLUME] [OUTPUT_DIRECTORY] [ALIGN] [MASK] [HEAD_MASK] [UNMASKED_UNI] [MASKED_UNI] [ECHO] [HELP] [H_WEB] [H_VIEW] [ALL_OPTS] [H_FIND_WORD]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-T1",
       "description": "The T1 volume",
-      "value-key": "[T1vol]",
+      "value-key": "[T1_VOLUME]",
       "type": "File",
       "optional": false,
       "id": "t1_volume",
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-PD",
       "description": "The PD volume (aligned to T1)",
-      "value-key": "[PDvol]",
+      "value-key": "[PD_VOLUME]",
       "type": "File",
       "optional": true,
       "id": "pd_volume",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-odir",
       "description": "Directory where output gets dumped. Default is T1scale/",
-      "value-key": "[ODIR]",
+      "value-key": "[OUTPUT_DIRECTORY]",
       "type": "String",
       "optional": true,
       "id": "output_directory",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-align",
       "description": "Align PD volume to T1. Without this option, PDvol is assumed in alignment with T1vol.",
-      "value-key": "[ALIGN_FLAG]",
+      "value-key": "[ALIGN]",
       "type": "Flag",
       "optional": true,
       "id": "align",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Create mask for the output. If not specified, the script will generate one with 3dAutomask on fattened PDvol.",
-      "value-key": "[MVOL]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": true,
       "id": "mask",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-head_mask",
       "description": "Create mask using 3dSkullStrip's -head option.",
-      "value-key": "[HEAD_MASK_FLAG]",
+      "value-key": "[HEAD_MASK]",
       "type": "Flag",
       "optional": true,
       "id": "head_mask",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-unmasked_uni",
       "description": "Do not apply masking to uniformized volume (default)",
-      "value-key": "[UNMASKED_UNI_FLAG]",
+      "value-key": "[UNMASKED_UNI]",
       "type": "Flag",
       "optional": true,
       "id": "unmasked_uni",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-masked_uni",
       "description": "Apply masking to uniformized volume",
-      "value-key": "[MASKED_UNI_FLAG]",
+      "value-key": "[MASKED_UNI]",
       "type": "Flag",
       "optional": true,
       "id": "masked_uni",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-echo",
       "description": "Set echo",
-      "value-key": "[ECHO_FLAG]",
+      "value-key": "[ECHO]",
       "type": "Flag",
       "optional": true,
       "id": "echo",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-help",
       "description": "Display this help message and exit",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-h_web",
       "description": "Open webpage with help for this program",
-      "value-key": "[H_WEB_FLAG]",
+      "value-key": "[H_WEB]",
       "type": "Flag",
       "optional": true,
       "id": "h_web",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-hview",
       "description": "Open -help output in a GUI editor",
-      "value-key": "[H_VIEW_FLAG]",
+      "value-key": "[H_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "h_view",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-all_opts",
       "description": "List all of the options for this script",
-      "value-key": "[ALL_OPTS_FLAG]",
+      "value-key": "[ALL_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "all_opts",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-h_find",
       "description": "Search for lines containing WORD in -help output. Search is approximate.",
-      "value-key": "[H_FIND_FLAG]",
+      "value-key": "[H_FIND_WORD]",
       "type": "String",
       "optional": true,
       "id": "h_find_word",

@@ -3,11 +3,11 @@
   "name": "im2niml",
   "author": "AFNI Team",
   "description": "Converts the input image(s) to a text-based NIML element and writes the result to stdout.",
-  "command-line": "im2niml [INPUT_FILE] [MORE_INPUT_FILES]",
+  "command-line": "im2niml [INPUT_FILES]",
   "inputs": [
     {
       "description": "Input image file(s) (e.g. image.jpg)",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_FILES]",
       "type": "File",
       "list": true,
       "optional": false,

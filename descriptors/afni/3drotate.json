@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Rotates and/or translates all bricks from an AFNI dataset.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drotate.html",
-  "command-line": "3drotate [OPTIONS] [DATASET]",
+  "command-line": "3drotate [DATASET] [PREFIX] [VERBOSE] [ASHIFT] [BSHIFT] [ROTATE] [ROTPARENT] [GRIDPARENT] [MATVEC_DICOM] [MATVEC_ORDER] [MATVEC_DSET] [DFILE] [1DFILE] [POINTS] [ORIGIN] [FOURIER] [NN] [LINEAR] [CUBIC] [QUINTIC] [HEPTIC] [FOURIER_NOPAD] [CLIPIT] [NOCLIP] [ZPAD]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -33,7 +33,7 @@
       "id": "verbose",
       "name": "Verbose",
       "type": "Flag",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "optional": true
     },
     {
@@ -141,7 +141,7 @@
       "id": "points",
       "name": "Points",
       "type": "Flag",
-      "value-key": "[POINTS_FLAG]",
+      "value-key": "[POINTS]",
       "optional": true
     },
     {
@@ -162,7 +162,7 @@
       "id": "Fourier",
       "name": "Fourier",
       "type": "Flag",
-      "value-key": "[FOURIER_FLAG]",
+      "value-key": "[FOURIER]",
       "optional": true
     },
     {
@@ -171,7 +171,7 @@
       "id": "NN",
       "name": "Nearest Neighbor",
       "type": "Flag",
-      "value-key": "[NN_FLAG]",
+      "value-key": "[NN]",
       "optional": true
     },
     {
@@ -180,7 +180,7 @@
       "id": "linear",
       "name": "Linear Interpolation",
       "type": "Flag",
-      "value-key": "[LINEAR_FLAG]",
+      "value-key": "[LINEAR]",
       "optional": true
     },
     {
@@ -189,7 +189,7 @@
       "id": "cubic",
       "name": "Cubic Interpolation",
       "type": "Flag",
-      "value-key": "[CUBIC_FLAG]",
+      "value-key": "[CUBIC]",
       "optional": true
     },
     {
@@ -198,7 +198,7 @@
       "id": "quintic",
       "name": "Quintic Interpolation",
       "type": "Flag",
-      "value-key": "[QUINTIC_FLAG]",
+      "value-key": "[QUINTIC]",
       "optional": true
     },
     {
@@ -207,7 +207,7 @@
       "id": "heptic",
       "name": "Heptic Interpolation",
       "type": "Flag",
-      "value-key": "[HEPTIC_FLAG]",
+      "value-key": "[HEPTIC]",
       "optional": true
     },
     {
@@ -216,7 +216,7 @@
       "id": "Fourier_nopad",
       "name": "Fourier without Padding",
       "type": "Flag",
-      "value-key": "[FOURIER_NOPAD_FLAG]",
+      "value-key": "[FOURIER_NOPAD]",
       "optional": true
     },
     {
@@ -225,7 +225,7 @@
       "id": "clipit",
       "name": "Clip Results",
       "type": "Flag",
-      "value-key": "[CLIPIT_FLAG]",
+      "value-key": "[CLIPIT]",
       "optional": true
     },
     {
@@ -234,7 +234,7 @@
       "id": "noclip",
       "name": "No Clipping",
       "type": "Flag",
-      "value-key": "[NOCLIP_FLAG]",
+      "value-key": "[NOCLIP]",
       "optional": true
     },
     {

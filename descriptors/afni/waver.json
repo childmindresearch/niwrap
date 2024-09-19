@@ -3,7 +3,7 @@
   "name": "waver",
   "author": "AFNI Team",
   "description": "Creates an ideal waveform timeseries file.",
-  "command-line": "waver [WAVEFORM_OPTION] [OPTIONS] > [OUTPUT_FILENAME]",
+  "command-line": "waver [WAV] [GAM] [EXPR] [FILE_OPT] [DELAY_TIME] [RISE_TIME] [FALL_TIME] [UNDERSHOOT] [RESTORE_TIME] [GAMB] [GAMC] [GAMD] [PEAK] [DT] [TR] [XYOUT] [INPUT_FILE] [INLINE_DATA] [TSTIM_DATA] [WHEN_DATA] [NUMOUT] [VER_FLAG]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
     {
       "description": "Sets waveform to Cox special [default]",
       "command-line-flag": "-WAV",
-      "value-key": "[WAVEFORM_OPTION]",
+      "value-key": "[WAV]",
       "type": "Flag",
       "optional": true,
       "id": "wav",
@@ -21,7 +21,7 @@
     {
       "description": "Sets waveform to form t^b * exp(-t/c) (cf. Mark Cohen)",
       "command-line-flag": "-GAM",
-      "value-key": "[WAVEFORM_OPTION]",
+      "value-key": "[GAM]",
       "type": "Flag",
       "optional": true,
       "id": "gam",
@@ -148,7 +148,7 @@
     {
       "description": "'-TR' is equivalent to '-dt'",
       "command-line-flag": "-TR",
-      "value-key": "[DT]",
+      "value-key": "[TR]",
       "type": "Number",
       "integer": false,
       "optional": true,
@@ -158,7 +158,7 @@
     {
       "description": "Output data in 2 columns: 1=time 2=waveform (useful for graphing) [default is 1 column=waveform]",
       "command-line-flag": "-xyout",
-      "value-key": "[XYOUT_FLAG]",
+      "value-key": "[XYOUT]",
       "type": "Flag",
       "optional": true,
       "id": "xyout",

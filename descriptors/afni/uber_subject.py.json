@@ -3,7 +3,7 @@
   "name": "uber_subject.py",
   "author": "AFNI Team",
   "description": "Graphical interface to afni_proc.py",
-  "command-line": "uber_subject.py [OPTIONAL_ARGS]",
+  "command-line": "uber_subject.py [QT_OPTS] [SVAR] [CVAR] [NO_GUI] [PRINT_AP_COMMAND] [SAVE_AP_COMMAND] [EXEC_AP_COMMAND] [EXEC_PROC_SCRIPT] [ALIGN_COST] [ALIGN_GIANT_MOVE] [ALIGN_OPTS_AEA] [ANAL_DOMAIN] [ANAL_TYPE] [ANAT] [ANAT_HAS_SKULL] [BLOCKS] [BLUR_SIZE] [EPI] [EPI_WILDCARD] [GID] [GLTSYM] [GLTSYM_LABEL] [MOTION_LIMIT] [OUTLIER_LIMIT] [REGRESS_GOFORIT] [REGRESS_BANDPASS] [REGRESS_JOBS] [REGRESS_MOT_DERIV] [REGRESS_OPTS_3DD] [REML_EXEC] [RUN_CLUSTSIM] [SID] [STIM] [STIM_BASIS] [STIM_LABEL] [STIM_TYPE] [STIM_WILDCARD] [TCAT_NFIRST] [TLRC_BASE] [TLRC_OK_MAXITE] [TLRC_OPTS_AT] [VOLREG_BASE] [VERB]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -39,7 +39,7 @@
     {
       "description": "Do not open graphical interface",
       "command-line-flag": "-no_gui",
-      "value-key": "[NO_GUI_FLAG]",
+      "value-key": "[NO_GUI]",
       "type": "Flag",
       "optional": true,
       "id": "no_gui",
@@ -48,7 +48,7 @@
     {
       "description": "Show afni_proc.py script",
       "command-line-flag": "-print_ap_command",
-      "value-key": "[PRINT_AP_COMMAND_FLAG]",
+      "value-key": "[PRINT_AP_COMMAND]",
       "type": "Flag",
       "optional": true,
       "id": "print_ap_command",
@@ -66,7 +66,7 @@
     {
       "description": "Run afni_proc.py command",
       "command-line-flag": "-exec_ap_command",
-      "value-key": "[EXEC_AP_COMMAND_FLAG]",
+      "value-key": "[EXEC_AP_COMMAND]",
       "type": "Flag",
       "optional": true,
       "id": "exec_ap_command",
@@ -75,7 +75,7 @@
     {
       "description": "Run proc script",
       "command-line-flag": "-exec_proc_script",
-      "value-key": "[EXEC_PROC_SCRIPT_FLAG]",
+      "value-key": "[EXEC_PROC_SCRIPT]",
       "type": "Flag",
       "optional": true,
       "id": "exec_proc_script",

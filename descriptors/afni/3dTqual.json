@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Computes a quality index for each sub-brick in a 3D+time dataset.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTqual.html",
-  "command-line": "3dTqual [OPTIONS] [DATASET]",
+  "command-line": "3dTqual [DATASET] [SPEARMAN] [QUADRANT] [AUTOCLIP] [AUTOMASK] [CLIP] [MASK] [RANGE]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-spearman",
       "description": "Quality index is 1 minus the Spearman (rank) correlation coefficient of each sub-brick with the median sub-brick (default method).",
-      "value-key": "[SPEARMAN_FLAG]",
+      "value-key": "[SPEARMAN]",
       "type": "Flag",
       "optional": true,
       "id": "spearman",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-quadrant",
       "description": "Quality index is 1 minus the quadrant correlation coefficient as the quality index.",
-      "value-key": "[QUADRANT_FLAG]",
+      "value-key": "[QUADRANT]",
       "type": "Flag",
       "optional": true,
       "id": "quadrant",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-autoclip",
       "description": "Clip off low-intensity regions in the median sub-brick, only compute correlation between high-intensity voxels.",
-      "value-key": "[AUTOCLIP_FLAG]",
+      "value-key": "[AUTOCLIP]",
       "type": "Flag",
       "optional": true,
       "id": "autoclip",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Automatically mask and compute correlation only across high-intensity (presumably brain) voxels.",
-      "value-key": "[AUTOMASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "type": "Flag",
       "optional": true,
       "id": "automask",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-clip",
       "description": "Clip off values below given threshold in the median sub-brick.",
-      "value-key": "[CLIP_VALUE]",
+      "value-key": "[CLIP]",
       "type": "Number",
       "optional": true,
       "id": "clip",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-mask",
       "description": "Compute correlation only across masked voxels from the given dataset.",
-      "value-key": "[MASK_DATASET]",
+      "value-key": "[MASK]",
       "type": "File",
       "optional": true,
       "id": "mask",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-range",
       "description": "Print the median-3.5*MAD and median+3.5*MAD values with each quality index for plotting.",
-      "value-key": "[RANGE_FLAG]",
+      "value-key": "[RANGE]",
       "type": "Flag",
       "optional": true,
       "id": "range",

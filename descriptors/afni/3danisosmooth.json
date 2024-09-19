@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Smooths a dataset using an anisotropic smoothing technique.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3danisosmooth.html",
-  "command-line": "3danisosmooth [OPTIONS] [DATASET]",
+  "command-line": "3danisosmooth [INPUT_DATASET] [PREFIX] [ITERATIONS] [2D_FLAG] [3D_FLAG] [MASK_DATASET] [AUTOMASK_FLAG] [VIEWER_FLAG] [NOSMOOTH_FLAG] [SIGMA1] [SIGMA2] [DELTAT] [SAVETEMPDATA_FLAG] [SAVE_TEMP_WITH_DIFF_MEASURES_FLAG] [PHIDING_FLAG] [PHIEXP_FLAG] [NONEG_FLAG] [SETNEG_VALUE] [EDGEFRACTION] [DATUM_TYPE] [MATCHORIG_FLAG] [HELP_FLAG]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "Input dataset to be smoothed",
-      "value-key": "[DATASET]",
+      "value-key": "[INPUT_DATASET]",
       "type": "File",
       "optional": false,
       "id": "input_dataset",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-savetempdata",
       "description": "Save temporary datasets each iteration",
-      "value-key": "[SAVETEMP_FLAG]",
+      "value-key": "[SAVETEMPDATA_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "savetempdata_flag",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-save_temp_with_diff_measures",
       "description": "Save temporary datasets with different measures in a dataset",
-      "value-key": "[SAVE_DIFF_MEASURES_FLAG]",
+      "value-key": "[SAVE_TEMP_WITH_DIFF_MEASURES_FLAG]",
       "type": "Flag",
       "optional": true,
       "id": "save_temp_with_diff_measures_flag",
@@ -165,7 +165,7 @@
     {
       "command-line-flag": "-setneg",
       "description": "Set negative voxels to specified value",
-      "value-key": "[NEGVAL]",
+      "value-key": "[SETNEG_VALUE]",
       "type": "Number",
       "optional": true,
       "id": "setneg_value",
@@ -185,7 +185,7 @@
     {
       "command-line-flag": "-datum",
       "description": "Specify type for output data (byte, short, float) [default=float]",
-      "value-key": "[DATUM]",
+      "value-key": "[DATUM_TYPE]",
       "type": "String",
       "optional": true,
       "id": "datum_type",

@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dcat.html",
   "description": "Concatenates columns of multiple 1D or TSV/CSV files",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dcat.html",
-  "command-line": "1dcat [OPTIONS] [INPUT_FILES]",
+  "command-line": "1dcat [INPUT_FILES] [TSV_OUTPUT] [CSV_OUTPUT] [NONCONST_OUTPUT] [NONFIXED_OUTPUT] [NUMBER_FORMAT] [STACK_OUTPUT] [COLUMN_ROW_SELECTION] [OK_EMPTY]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -23,7 +23,7 @@
     {
       "command-line-flag": "-tsvout",
       "description": "Output in TSV format with tabs as separators and a header line",
-      "value-key": "[TSV_OUTPUT_FLAG]",
+      "value-key": "[TSV_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "tsv_output",
@@ -32,7 +32,7 @@
     {
       "command-line-flag": "-csvout",
       "description": "Output in CSV format with commas as separators and a header line",
-      "value-key": "[CSV_OUTPUT_FLAG]",
+      "value-key": "[CSV_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "csv_output",
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-nonconst",
       "description": "Omit columns that are identically constant from the output",
-      "value-key": "[NONCONST_OUTPUT_FLAG]",
+      "value-key": "[NONCONST_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "nonconst_output",
@@ -50,7 +50,7 @@
     {
       "command-line-flag": "-nonfixed",
       "description": "Keep only columns marked as 'free' in the 3dAllineate header",
-      "value-key": "[NONFIXED_OUTPUT_FLAG]",
+      "value-key": "[NONFIXED_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "nonfixed_output",
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "-stack",
       "description": "Stack the columns of the resulting matrix in the output",
-      "value-key": "[STACK_OUTPUT_FLAG]",
+      "value-key": "[STACK_OUTPUT]",
       "type": "Flag",
       "optional": true,
       "id": "stack_output",
@@ -86,7 +86,7 @@
     {
       "command-line-flag": "-OKempty",
       "description": "Exit quietly when encountering an empty file on disk",
-      "value-key": "[OK_EMPTY_FLAG]",
+      "value-key": "[OK_EMPTY]",
       "type": "Flag",
       "optional": true,
       "id": "ok_empty",

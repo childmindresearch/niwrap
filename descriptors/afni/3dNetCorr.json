@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Compute correlation matrix of a set of ROIs based on mean time series",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNetCorr.html",
-  "command-line": "3dNetCorr -prefix [PREFIX] -inset [FILE] -in_rois [INROIS] [MASK_OPTION] [FISH_Z_FLAG] [PART_CORR_FLAG] [TS_OUT_FLAG] [TS_LABEL_FLAG] [TS_INDIV_FLAG] [TS_WB_CORR_FLAG] [TS_WB_Z_FLAG] [WEIGHT_TS] [WEIGHT_CORR] [TS_WB_STRLABEL_FLAG] [NIFTI_FLAG] [OUTPUT_MASK_NONNULL_FLAG] [PUSH_THRU_MANY_ZEROS_FLAG] [ALLOW_ROI_ZEROS_FLAG] [AUTOMASK_OFF_FLAG] [IGNORE_LT_FLAG]",
+  "command-line": "3dNetCorr [PREFIX] [INSET] [IN_ROIS] [MASK] [FISH_Z] [PART_CORR] [TS_OUT] [TS_LABEL] [TS_INDIV] [TS_WB_CORR] [TS_WB_Z] [WEIGHT_TS] [WEIGHT_CORR] [TS_WB_STRLABEL] [NIFTI] [OUTPUT_MASK_NONNULL] [PUSH_THRU_MANY_ZEROS] [ALLOW_ROI_ZEROS] [AUTOMASK_OFF] [IGNORE_LT]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -20,7 +20,7 @@
     },
     {
       "description": "Time series file (4D data set)",
-      "value-key": "[FILE]",
+      "value-key": "[INSET]",
       "type": "File",
       "optional": false,
       "id": "inset",
@@ -28,7 +28,7 @@
     },
     {
       "description": "Input a set of ROIs each labelled with distinct integers. Multiple subbricks can be input, each will be treated as a separate network.",
-      "value-key": "[INROIS]",
+      "value-key": "[IN_ROIS]",
       "type": "File",
       "optional": false,
       "id": "in_rois",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-fish_z",
       "description": "Output Fisher Z-transform matrix along with correlation matrix.",
-      "value-key": "[FISH_Z_FLAG]",
+      "value-key": "[FISH_Z]",
       "type": "Flag",
       "optional": true,
       "id": "fish_z",
@@ -55,7 +55,7 @@
     {
       "command-line-flag": "-part_corr",
       "description": "Output the partial correlation matrix.",
-      "value-key": "[PART_CORR_FLAG]",
+      "value-key": "[PART_CORR]",
       "type": "Flag",
       "optional": true,
       "id": "part_corr",
@@ -64,7 +64,7 @@
     {
       "command-line-flag": "-ts_out",
       "description": "Output the mean time series of the ROIs.",
-      "value-key": "[TS_OUT_FLAG]",
+      "value-key": "[TS_OUT]",
       "type": "Flag",
       "optional": true,
       "id": "ts_out",
@@ -73,7 +73,7 @@
     {
       "command-line-flag": "-ts_label",
       "description": "Insert the integer ROI label at the start of each line of the *.netts file created.",
-      "value-key": "[TS_LABEL_FLAG]",
+      "value-key": "[TS_LABEL]",
       "type": "Flag",
       "optional": true,
       "id": "ts_label",
@@ -82,7 +82,7 @@
     {
       "command-line-flag": "-ts_indiv",
       "description": "Create a directory for each network that contains the average time series for each ROI in individual files.",
-      "value-key": "[TS_INDIV_FLAG]",
+      "value-key": "[TS_INDIV]",
       "type": "Flag",
       "optional": true,
       "id": "ts_indiv",
@@ -91,7 +91,7 @@
     {
       "command-line-flag": "-ts_wb_corr",
       "description": "Perform whole brain correlation for each ROI's average time series and output as Pearson 'r' values.",
-      "value-key": "[TS_WB_CORR_FLAG]",
+      "value-key": "[TS_WB_CORR]",
       "type": "Flag",
       "optional": true,
       "id": "ts_wb_corr",
@@ -100,7 +100,7 @@
     {
       "command-line-flag": "-ts_wb_Z",
       "description": "Perform whole brain correlation for each ROI's average time series and output as Fisher transformed Z-scores.",
-      "value-key": "[TS_WB_Z_FLAG]",
+      "value-key": "[TS_WB_Z]",
       "type": "Flag",
       "optional": true,
       "id": "ts_wb_Z",
@@ -127,7 +127,7 @@
     {
       "command-line-flag": "-ts_wb_strlabel",
       "description": "Apply string labels to the WB correlation/Z-score output files.",
-      "value-key": "[TS_WB_STRLABEL_FLAG]",
+      "value-key": "[TS_WB_STRLABEL]",
       "type": "Flag",
       "optional": true,
       "id": "ts_wb_strlabel",
@@ -136,7 +136,7 @@
     {
       "command-line-flag": "-nifti",
       "description": "Output any correlation map files as NIFTI files.",
-      "value-key": "[NIFTI_FLAG]",
+      "value-key": "[NIFTI]",
       "type": "Flag",
       "optional": true,
       "id": "nifti",
@@ -145,7 +145,7 @@
     {
       "command-line-flag": "-output_mask_nonnull",
       "description": "Output mask of non-null time series.",
-      "value-key": "[OUTPUT_MASK_NONNULL_FLAG]",
+      "value-key": "[OUTPUT_MASK_NONNULL]",
       "type": "Flag",
       "optional": true,
       "id": "output_mask_nonnull",
@@ -154,7 +154,7 @@
     {
       "command-line-flag": "-push_thru_many_zeros",
       "description": "Push through the calculation even if any ROI contains more than 10 percent of voxels with null time series.",
-      "value-key": "[PUSH_THRU_MANY_ZEROS_FLAG]",
+      "value-key": "[PUSH_THRU_MANY_ZEROS]",
       "type": "Flag",
       "optional": true,
       "id": "push_thru_many_zeros",
@@ -163,7 +163,7 @@
     {
       "command-line-flag": "-allow_roi_zeros",
       "description": "Allow ROIs to have all-zero time series.",
-      "value-key": "[ALLOW_ROI_ZEROS_FLAG]",
+      "value-key": "[ALLOW_ROI_ZEROS]",
       "type": "Flag",
       "optional": true,
       "id": "allow_roi_zeros",
@@ -172,7 +172,7 @@
     {
       "command-line-flag": "-automask_off",
       "description": "Disable internal automasking of where time series are not uniformly zero.",
-      "value-key": "[AUTOMASK_OFF_FLAG]",
+      "value-key": "[AUTOMASK_OFF]",
       "type": "Flag",
       "optional": true,
       "id": "automask_off",
@@ -181,7 +181,7 @@
     {
       "command-line-flag": "-ignore_LT",
       "description": "Ignore any label table labels in the '-in_rois' file.",
-      "value-key": "[IGNORE_LT_FLAG]",
+      "value-key": "[IGNORE_LT]",
       "type": "Flag",
       "optional": true,
       "id": "ignore_LT",

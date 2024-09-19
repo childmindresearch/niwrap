@@ -3,7 +3,7 @@
   "name": "3dclust",
   "author": "AFNI Team",
   "description": "Performs simple-minded cluster detection in 3D datasets",
-  "command-line": "3dclust [EDITING_OPTIONS] [OTHER_OPTIONS] [CLUSTERING_TYPE] [INPUT_DATASETS]",
+  "command-line": "3dclust [RMM] [VMUL] [DATASETS] [NN1] [NN2] [NN3] [NOABS] [SUMMARIZE] [NOSUM] [VERB] [ONED_FORMAT] [NO_ONED_FORMAT] [QUIET] [MNI] [ISOVALUE] [ISOMERGE] [INMASK] [PREFIX] [SAVEMASK] [BINARY]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -27,7 +27,7 @@
     },
     {
       "description": "Input dataset(s). More than one allowed, but only the first sub-brick of the dataset.",
-      "value-key": "[INPUT_DATASETS]",
+      "value-key": "[DATASETS]",
       "type": "File",
       "list": true,
       "optional": false,
@@ -100,7 +100,7 @@
     {
       "command-line-flag": "-1Dformat",
       "description": "Write output in 1D format (default).",
-      "value-key": "[ONE_D_FORMAT]",
+      "value-key": "[ONED_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "oned_format",
@@ -109,7 +109,7 @@
     {
       "command-line-flag": "-no_1Dformat",
       "description": "Do not write output in 1D format.",
-      "value-key": "[NO_ONE_D_FORMAT]",
+      "value-key": "[NO_ONED_FORMAT]",
       "type": "Flag",
       "optional": true,
       "id": "no_oned_format",

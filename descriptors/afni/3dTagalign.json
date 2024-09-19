@@ -3,7 +3,7 @@
   "name": "3dTagalign",
   "author": "AFNI Team",
   "description": "Rotates/translates dataset 'dset' to be aligned with the master using the tagsets embedded in their .HEAD files",
-  "command-line": "3dTagalign [MASTER] [TAGSET] [NO_KEEPTAGS_FLAG] [MATVEC] [ROTATE_FLAG] [AFFINE_FLAG] [ROTSCL_FLAG] [PREFIX] [VERBOSE_FLAG] [DUMMY_FLAG] [INTERPOLATION_METHOD] [INPUT_FILE]",
+  "command-line": "3dTagalign [INPUT_DATASET] [MASTER_DATASET] [TAGSET_FILE] [NO_KEEP_TAGS] [MATVEC_FILE] [ROTATE] [AFFINE] [ROTSCL] [PREFIX] [VERBOSE] [DUMMY] [LINEAR_INTERPOLATION] [CUBIC_INTERPOLATION] [NEAREST_NEIGHBOR_INTERPOLATION] [QUINTIC_INTERPOLATION]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input dataset to align",
-      "value-key": "[INPUT_FILE]",
+      "value-key": "[INPUT_DATASET]",
       "type": "File",
       "optional": false,
       "id": "input_dataset",
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-master",
       "description": "Use dataset 'mset' as the master dataset. This option is mandatory.",
-      "value-key": "[MASTER]",
+      "value-key": "[MASTER_DATASET]",
       "type": "File",
       "optional": false,
       "id": "master_dataset",
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-tagset",
       "description": "Use the tagset in the .tag file instead of dset.",
-      "value-key": "[TAGSET]",
+      "value-key": "[TAGSET_FILE]",
       "type": "File",
       "optional": true,
       "id": "tagset_file",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-nokeeptags",
       "description": "Don't put transformed locations of dset's tags into the output dataset [default = keep tags].",
-      "value-key": "[NO_KEEPTAGS_FLAG]",
+      "value-key": "[NO_KEEP_TAGS]",
       "type": "Flag",
       "optional": true,
       "id": "no_keep_tags",
@@ -47,7 +47,7 @@
     {
       "command-line-flag": "-matvec",
       "description": "Write the matrix+vector transformation to file 'mfile'. This can be used with 3dWarp's '-matvec_in2out' option to align other datasets in the same way (e.g., functional datasets).",
-      "value-key": "[MATVEC]",
+      "value-key": "[MATVEC_FILE]",
       "type": "String",
       "optional": true,
       "id": "matvec_file",
@@ -56,7 +56,7 @@
     {
       "command-line-flag": "-rotate",
       "description": "Compute the transformation as a rotation + shift (default).",
-      "value-key": "[ROTATE_FLAG]",
+      "value-key": "[ROTATE]",
       "type": "Flag",
       "optional": true,
       "id": "rotate",
@@ -65,7 +65,7 @@
     {
       "command-line-flag": "-affine",
       "description": "Compute the transformation as a general affine map, where the matrix is a general 3x3 matrix.",
-      "value-key": "[AFFINE_FLAG]",
+      "value-key": "[AFFINE]",
       "type": "Flag",
       "optional": true,
       "id": "affine",
@@ -74,7 +74,7 @@
     {
       "command-line-flag": "-rotscl",
       "description": "Compute transformation as a rotation times an isotropic scaling; where matrix is an orthogonal matrix times a scalar.",
-      "value-key": "[ROTSCL_FLAG]",
+      "value-key": "[ROTSCL]",
       "type": "Flag",
       "optional": true,
       "id": "rotscl",
@@ -92,7 +92,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Print progress reports.",
-      "value-key": "[VERBOSE_FLAG]",
+      "value-key": "[VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "verbose",
@@ -101,7 +101,7 @@
     {
       "command-line-flag": "-dummy",
       "description": "Don't actually rotate the dataset, just compute the transformation matrix and vector. If '-matvec' is used, the mfile will be written.",
-      "value-key": "[DUMMY_FLAG]",
+      "value-key": "[DUMMY]",
       "type": "Flag",
       "optional": true,
       "id": "dummy",
@@ -110,7 +110,7 @@
     {
       "command-line-flag": "-linear",
       "description": "Use linear interpolation method.",
-      "value-key": "[INTERPOLATION_METHOD_LINEAR]",
+      "value-key": "[LINEAR_INTERPOLATION]",
       "type": "Flag",
       "optional": true,
       "id": "linear_interpolation",
@@ -119,7 +119,7 @@
     {
       "command-line-flag": "-cubic",
       "description": "Use cubic interpolation method (default).",
-      "value-key": "[INTERPOLATION_METHOD_CUBIC]",
+      "value-key": "[CUBIC_INTERPOLATION]",
       "type": "Flag",
       "optional": true,
       "id": "cubic_interpolation",
@@ -128,7 +128,7 @@
     {
       "command-line-flag": "-NN",
       "description": "Use nearest neighbour interpolation method.",
-      "value-key": "[INTERPOLATION_METHOD_NN]",
+      "value-key": "[NEAREST_NEIGHBOR_INTERPOLATION]",
       "type": "Flag",
       "optional": true,
       "id": "nearest_neighbor_interpolation",
@@ -137,7 +137,7 @@
     {
       "command-line-flag": "-quintic",
       "description": "Use quintic interpolation method.",
-      "value-key": "[INTERPOLATION_METHOD_QUINTIC]",
+      "value-key": "[QUINTIC_INTERPOLATION]",
       "type": "Flag",
       "optional": true,
       "id": "quintic_interpolation",
@@ -161,7 +161,7 @@
       "name": "Output dataset BRIK file"
     },
     {
-      "path-template": "[MATVEC]",
+      "path-template": "[MATVEC_FILE]",
       "description": "Output transformation matrix and vector file",
       "optional": true,
       "id": "output_matvec_file",

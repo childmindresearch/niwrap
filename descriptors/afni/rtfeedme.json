@@ -2,7 +2,7 @@
   "tool-version": "1.0",
   "name": "rtfeedme",
   "description": "Test the real-time plugin by sending all the bricks in 'dataset' to AFNI.",
-  "command-line": "rtfeedme [OPTIONS] [DATASETS] [DATASETS ...]",
+  "command-line": "rtfeedme [DATASETS] [HOST] [INTERVAL_MS] [SEND_3D] [BUFFER_MB] [VERBOSE] [SWAP_BYTES] [NZ_FAKE] [DRIVE_CMD] [NOTE] [YRANGE]",
   "inputs": [
     {
       "description": "List of datasets to send to AFNI, specified as paths to dataset files. Multiple datasets can be specified.",

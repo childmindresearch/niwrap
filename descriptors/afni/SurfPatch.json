@@ -3,11 +3,11 @@
   "name": "SurfPatch",
   "author": "AFNI Team",
   "description": "Creates a patch of surface formed by nodes in a nodefile and optionally calculates the volume between the same patch on two isotopic surfaces.",
-  "command-line": "SurfPatch -spec [SpecFile] -surf_A [insurf] -surf_B [insurf] -input [nodefile] [inode] [ilabel] -prefix [outpref] [OPTIONS]",
+  "command-line": "SurfPatch [SPEC_FILE] [SURF_A] [SURF_B] [NODEFILE] [INODE] [ILABEL] [PREFIX] [HITS] [MASKLABEL] [VOL] [VOL_ONLY] [PATCH2SURF] [COORD_GAIN] [CHECK_BOWTIE] [FIX_BOWTIE] [OK_BOWTIE] [ADJUST_CONTOUR] [DO_NOT_ADJUST_CONTOUR] [STITCHED_SURFACE] [FLIP_ORIENTATION] [VERBOSITY]",
   "inputs": [
     {
       "description": "Spec file containing input surfaces",
-      "value-key": "[SpecFile]",
+      "value-key": "[SPEC_FILE]",
       "type": "File",
       "optional": false,
       "id": "spec_file",
@@ -15,7 +15,7 @@
     },
     {
       "description": "Input surface A",
-      "value-key": "[insurf]",
+      "value-key": "[SURF_A]",
       "type": "File",
       "command-line-flag": "-surf_A",
       "optional": false,
@@ -24,7 +24,7 @@
     },
     {
       "description": "Input surface B",
-      "value-key": "[insurf]",
+      "value-key": "[SURF_B]",
       "type": "File",
       "command-line-flag": "-surf_B",
       "optional": false,
@@ -33,7 +33,7 @@
     },
     {
       "description": "File containing nodes defining the patch",
-      "value-key": "[nodefile]",
+      "value-key": "[NODEFILE]",
       "type": "File",
       "command-line-flag": "-input",
       "optional": false,
@@ -42,7 +42,7 @@
     },
     {
       "description": "Index of the column containing the nodes",
-      "value-key": "[inode]",
+      "value-key": "[INODE]",
       "type": "Number",
       "optional": false,
       "id": "inode",
@@ -50,7 +50,7 @@
     },
     {
       "description": "Index of the column containing labels of the nodes in column inode",
-      "value-key": "[ilabel]",
+      "value-key": "[ILABEL]",
       "type": "Number",
       "optional": false,
       "id": "ilabel",
@@ -58,7 +58,7 @@
     },
     {
       "description": "Prefix of output patch",
-      "value-key": "[outpref]",
+      "value-key": "[PREFIX]",
       "type": "String",
       "command-line-flag": "-prefix",
       "optional": false,
@@ -68,7 +68,7 @@
     {
       "command-line-flag": "-hits",
       "description": "Minimum number of nodes specified for a triangle to be made a part of the patch (1 <= min_hits <= 3); default is 2",
-      "value-key": "[min_hits]",
+      "value-key": "[HITS]",
       "type": "Number",
       "optional": true,
       "id": "hits",
@@ -77,7 +77,7 @@
     {
       "command-line-flag": "-masklabel",
       "description": "Only nodes that are labeled with this label are considered for the patch",
-      "value-key": "[msk]",
+      "value-key": "[MASKLABEL]",
       "type": "String",
       "optional": true,
       "id": "masklabel",
@@ -113,7 +113,7 @@
     {
       "description": "Multiply node coordinates by a gain. Useful for enlarging tiny patches for easier viewing in SUMA.",
       "command-line-flag": "-coord_gain",
-      "value-key": "[GAIN]",
+      "value-key": "[COORD_GAIN]",
       "type": "Number",
       "optional": true,
       "id": "coord_gain",
@@ -166,7 +166,7 @@
     },
     {
       "description": "Write out the stitched surface used to calculate the volume.",
-      "value-key": "[STICHED]",
+      "value-key": "[STITCHED_SURFACE]",
       "command-line-flag": "-stitched_surface",
       "type": "File",
       "optional": true,
@@ -184,7 +184,7 @@
     },
     {
       "description": "Set verbosity level, 1 is the default.",
-      "value-key": "[VERB]",
+      "value-key": "[VERBOSITY]",
       "command-line-flag": "-verb",
       "type": "Number",
       "optional": true,
@@ -199,21 +199,21 @@
   },
   "output-files": [
     {
-      "path-template": "[outpref]_A",
+      "path-template": "[PREFIX]_A",
       "description": "Output patch for surface A",
       "optional": true,
       "id": "outpatch_A",
       "name": "Output Patch A"
     },
     {
-      "path-template": "[outpref]_B",
+      "path-template": "[PREFIX]_B",
       "description": "Output patch for surface B",
       "optional": true,
       "id": "outpatch_B",
       "name": "Output Patch B"
     },
     {
-      "path-template": "[outpref]_stitched",
+      "path-template": "[PREFIX]_stitched",
       "description": "Stitched surface file",
       "optional": true,
       "id": "out_stitched_surface",

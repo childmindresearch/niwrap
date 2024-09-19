@@ -1,6 +1,6 @@
 {
   "name": "3dTshift",
-  "command-line": "3dTshift [IN_FILE] [IGNORE] [INTERP] [OUT_FILE] [OUTPUTTYPE] [RLT] [RLTPLUS] [SLICE_ENCODING_DIRECTION] [SLICE_TIMING] [TPATTERN] [TR] [TSLICE] [TZERO]",
+  "command-line": "3dTshift [IGNORE] [IN_FILE] [INTERP] [NUM_THREADS] [OUTPUTTYPE] [RLT] [RLTPLUS] [SLICE_ENCODING_DIRECTION] [SLICE_TIMING] [SLICE_TIMING_2] [TPATTERN] [TPATTERN_2] [TR] [TSLICE] [TZERO]",
   "author": "AFNI Team",
   "description": "Shifts voxel time series from input so that separate slices are aligned to the same temporal origin.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTshift.html",
@@ -31,7 +31,13 @@
       "command-line-flag": "-",
       "description": "'fourier' or 'linear' or 'cubic' or 'quintic' or 'heptic'. Different interpolation methods (see 3dtshift for details) default = fourier.",
       "optional": true,
-      "value-choices": ["Fourier", "linear", "cubic", "quintic", "heptic"]
+      "value-choices": [
+        "Fourier",
+        "linear",
+        "cubic",
+        "quintic",
+        "heptic"
+      ]
     },
     {
       "id": "num_threads",
@@ -49,7 +55,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "rlt",
@@ -76,7 +86,10 @@
       "value-key": "[SLICE_ENCODING_DIRECTION]",
       "description": "'k' or 'k-'. Direction in which slice_timing is specified (default: k). if negative,slice_timing is defined in reverse order, that is, the first entry corresponds to the slice with the largest index, and the final entry corresponds to slice index zero. only in effect when slice_timing is passed as list, not when it is passed as file.",
       "optional": true,
-      "value-choices": ["k", "k-"]
+      "value-choices": [
+        "k",
+        "k-"
+      ]
     },
     {
       "id": "slice_timing",
@@ -92,7 +105,7 @@
       "name": "Slice timing",
       "type": "Number",
       "list": true,
-      "value-key": "[SLICE_TIMING]",
+      "value-key": "[SLICE_TIMING_2]",
       "command-line-flag": "-tpattern @",
       "description": "file or string or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
       "optional": true
@@ -122,7 +135,7 @@
       "id": "tpattern_2",
       "name": "Tpattern",
       "type": "String",
-      "value-key": "[TPATTERN]",
+      "value-key": "[TPATTERN_2]",
       "command-line-flag": "-tpattern",
       "description": "'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or 'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string. Use specified slice time pattern rather than one in header.",
       "optional": true

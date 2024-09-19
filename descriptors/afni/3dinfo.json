@@ -3,7 +3,7 @@
   "name": "3dinfo",
   "author": "AFNI Team",
   "description": "Prints out sort-of-useful information from a 3D dataset's header",
-  "command-line": "3dinfo [OPTIONS] DATASET [DATASET...]",
+  "command-line": "3dinfo [DATASET] [VERB] [VERY_VERBOSE] [SHORT] [NO_HIST] [H] [HELP] [EXTREME_HELP] [H_VIEW] [H_WEB] [H_FIND] [H_RAW] [H_SPX] [H_ASPX] [ALL_OPTS] [LABEL2INDEX] [NIML_HDR] [SUBBRICK_INFO]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -21,7 +21,7 @@
     {
       "command-line-flag": "-verb",
       "description": "Print out lots of information",
-      "value-key": "[VERB_FLAG]",
+      "value-key": "[VERB]",
       "type": "Flag",
       "optional": true,
       "id": "verb",
@@ -30,7 +30,7 @@
     {
       "command-line-flag": "-VERB",
       "description": "Print out even more information including slice time offsets",
-      "value-key": "[VERY_VERBOSE_FLAG]",
+      "value-key": "[VERY_VERBOSE]",
       "type": "Flag",
       "optional": true,
       "id": "very_verbose",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-short",
       "description": "Print out less information (default)",
-      "value-key": "[SHORT_FLAG]",
+      "value-key": "[SHORT]",
       "type": "Flag",
       "optional": true,
       "id": "short",
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-no_hist",
       "description": "Omit the HISTORY text",
-      "value-key": "[NO_HIST_FLAG]",
+      "value-key": "[NO_HIST]",
       "type": "Flag",
       "optional": true,
       "id": "no_hist",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-h",
       "description": "Mini help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[H]",
       "type": "Flag",
       "optional": true,
       "id": "h",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-help",
       "description": "Display entire help output",
-      "value-key": "[FULL_HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-HELP",
       "description": "Extreme help",
-      "value-key": "[EXTREME_HELP_FLAG]",
+      "value-key": "[EXTREME_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "extreme_help",
@@ -84,7 +84,7 @@
     {
       "command-line-flag": "-h_view",
       "description": "Open help in text editor",
-      "value-key": "[HELP_VIEW_FLAG]",
+      "value-key": "[H_VIEW]",
       "type": "Flag",
       "optional": true,
       "id": "h_view",
@@ -93,7 +93,7 @@
     {
       "command-line-flag": "-h_web",
       "description": "Open help in web browser",
-      "value-key": "[HELP_WEB_FLAG]",
+      "value-key": "[H_WEB]",
       "type": "Flag",
       "optional": true,
       "id": "h_web",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-h_find",
       "description": "Look for lines in help output that match WORD",
-      "value-key": "[HELP_FIND_WORD]",
+      "value-key": "[H_FIND]",
       "type": "String",
       "optional": true,
       "id": "h_find",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-h_raw",
       "description": "Display unedited help string",
-      "value-key": "[HELP_RAW_FLAG]",
+      "value-key": "[H_RAW]",
       "type": "Flag",
       "optional": true,
       "id": "h_raw",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-h_spx",
       "description": "Help string in sphinx format without autoformatting options",
-      "value-key": "[HELP_SPX_FLAG]",
+      "value-key": "[H_SPX]",
       "type": "Flag",
       "optional": true,
       "id": "h_spx",
@@ -129,7 +129,7 @@
     {
       "command-line-flag": "-h_aspx",
       "description": "Help string in sphinx format with autoformatting options",
-      "value-key": "[HELP_ASPX_FLAG]",
+      "value-key": "[H_ASPX]",
       "type": "Flag",
       "optional": true,
       "id": "h_aspx",
@@ -138,7 +138,7 @@
     {
       "command-line-flag": "-all_opts",
       "description": "Try to identify all options for the program from the help output",
-      "value-key": "[ALL_OPTS_FLAG]",
+      "value-key": "[ALL_OPTS]",
       "type": "Flag",
       "optional": true,
       "id": "all_opts",
@@ -156,7 +156,7 @@
     {
       "command-line-flag": "-niml_hdr",
       "description": "Output entire NIML-formatted header",
-      "value-key": "[NIML_HDR_FLAG]",
+      "value-key": "[NIML_HDR]",
       "type": "Flag",
       "optional": true,
       "id": "niml_hdr",
@@ -165,7 +165,7 @@
     {
       "command-line-flag": "-subbrick_info",
       "description": "Output only sub-brick part of information",
-      "value-key": "[SUBBRICK_INFO_FLAG]",
+      "value-key": "[SUBBRICK_INFO]",
       "type": "Flag",
       "optional": true,
       "id": "subbrick_info",

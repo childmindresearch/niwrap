@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Display, modify, or compare nifti headers",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/nifti_tool.html",
-  "command-line": "nifti_tool [ACTION] [INPUT_FILES] [OPTIONS]",
+  "command-line": "nifti_tool [ACTION] [INPUT_FILES] [FIELD] [MOD_FIELD] [PREFIX] [DEBUG] [OVERWRITE] [CONVERT2DTYPE] [CONVERT_FAIL_CHOICE] [CONVERT_VERIFY] [ADD_COMMENT_EXT] [RM_EXT]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -60,7 +60,7 @@
       "id": "debug",
       "name": "Debug level",
       "description": "Debugging level (0-3).",
-      "value-key": "[DEBUG_LEVEL]",
+      "value-key": "[DEBUG]",
       "type": "Number",
       "optional": true,
       "command-line-flag": "-debug"
@@ -69,7 +69,7 @@
       "id": "overwrite",
       "name": "Overwrite mode",
       "description": "Overwrite input files with modifications.",
-      "value-key": "[OVERWRITE_FLAG]",
+      "value-key": "[OVERWRITE]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-overwrite"
@@ -78,7 +78,7 @@
       "id": "convert2dtype",
       "name": "Convert to datatype",
       "description": "Convert data to a new datatype.",
-      "value-key": "[DATATYPE]",
+      "value-key": "[CONVERT2DTYPE]",
       "type": "String",
       "optional": true,
       "command-line-flag": "-convert2dtype"
@@ -87,7 +87,7 @@
       "id": "convert_fail_choice",
       "name": "Conversion failure choice",
       "description": "Action on conversion failure (ignore, warn, fail).",
-      "value-key": "[FAIL_CHOICE]",
+      "value-key": "[CONVERT_FAIL_CHOICE]",
       "type": "String",
       "optional": true,
       "command-line-flag": "-convert_fail_choice"
@@ -96,7 +96,7 @@
       "id": "convert_verify",
       "name": "Verify conversion",
       "description": "Verify datatype conversion exactness.",
-      "value-key": "[VERIFY_FLAG]",
+      "value-key": "[CONVERT_VERIFY]",
       "type": "Flag",
       "optional": true,
       "command-line-flag": "-convert_verify"
@@ -105,7 +105,7 @@
       "id": "add_comment_ext",
       "name": "Add comment extension",
       "description": "Add COMMENT-type extension to dataset.",
-      "value-key": "[COMMENT]",
+      "value-key": "[ADD_COMMENT_EXT]",
       "type": "String",
       "optional": true,
       "command-line-flag": "-add_comment_ext"
@@ -114,7 +114,7 @@
       "id": "rm_ext",
       "name": "Remove extension",
       "description": "Remove extension by index or ALL.",
-      "value-key": "[INDEX]",
+      "value-key": "[RM_EXT]",
       "type": "String",
       "optional": true,
       "command-line-flag": "-rm_ext"

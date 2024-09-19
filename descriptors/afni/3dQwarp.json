@@ -3,7 +3,7 @@
   "name": "3dQwarp",
   "author": "AFNI Team",
   "description": "Computes a nonlinearly warped version of source_dataset to match base_dataset.",
-  "command-line": "3dQwarp -base [BASE_DATASET] -source [SOURCE_DATASET] -prefix [PREFIX] [OPTIONS]",
+  "command-line": "3dQwarp [BASE_DATASET] [SOURCE_DATASET] [PREFIX] [NO_WARP] [INVERSE_WARP] [NO_DATASET] [A_WARP] [PCL] [PEAR] [HEL] [MI] [NMI] [LPC] [LPA] [NONEG] [NOPENALTY] [MINPATCH] [MAXLEV] [VERBOSE] [QUIET]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -45,7 +45,7 @@
     {
       "command-line-flag": "-iwarp",
       "description": "Compute and save the _WARPINV file",
-      "value-key": "[IWARP]",
+      "value-key": "[INVERSE_WARP]",
       "type": "Flag",
       "optional": true,
       "id": "inverse_warp",
@@ -54,7 +54,7 @@
     {
       "command-line-flag": "-nodset",
       "description": "Do not save the warped source dataset",
-      "value-key": "[NO_DSET]",
+      "value-key": "[NO_DATASET]",
       "type": "Flag",
       "optional": true,
       "id": "no_dataset",

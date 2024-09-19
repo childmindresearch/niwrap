@@ -3,7 +3,7 @@
   "name": "3dBrainSync",
   "author": "AFNI Team",
   "description": "'Synchronizes' the -inset2 dataset to match the -inset1 dataset, using orthogonal or permutation transformation.",
-  "command-line": "3dBrainSync [OPTIONS]",
+  "command-line": "3dBrainSync [INSET1] [INSET2] [QPREFIX] [PPREFIX] [NORMALIZE] [MASK] [VERB]",
   "inputs": [
     {
       "description": "Reference dataset",

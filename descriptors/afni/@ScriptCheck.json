@@ -3,12 +3,12 @@
   "name": "ScriptChecker",
   "author": "AFNI Team",
   "description": "Checks scripts for improperly terminated lines and optionally cleans them.",
-  "command-line": "@ScriptCheck [CLEAN_FLAG] [SUFFIX_FLAG] [SUFFIX] [SCRIPTS...]",
+  "command-line": "ScriptChecker [CLEAN] [SUFFIX] [SCRIPTS]",
   "inputs": [
     {
       "command-line-flag": "-clean",
       "description": "Clean bad line breaks",
-      "value-key": "[CLEAN_FLAG]",
+      "value-key": "[CLEAN]",
       "type": "Flag",
       "optional": true,
       "id": "clean",
@@ -25,7 +25,7 @@
     },
     {
       "description": "Scripts to be checked for improperly terminated lines",
-      "value-key": "[SCRIPTS...]",
+      "value-key": "[SCRIPTS]",
       "type": "File",
       "optional": false,
       "id": "scripts",

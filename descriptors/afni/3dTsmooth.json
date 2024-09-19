@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Smooths each voxel time series in a 3D+time dataset and produces as output a new 3D+time dataset (e.g., lowpass filter in time).",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTsmooth.html",
-  "command-line": "3dTsmooth [OPTIONS] [DATASET]",
+  "command-line": "3dTsmooth [INPUT_DATASET] [PREFIX] [DATUM_TYPE] [LIN_FILTER] [MED_FILTER] [OSF_FILTER] [LIN_FILTER_CUSTOM] [HAMMING] [BLACKMAN] [CUSTOM_FILTER] [EXTEND] [ZERO] [TREND] [ADAPTIVE]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
   "inputs": [
     {
       "description": "The input 3D+time dataset.",
-      "value-key": "[DATASET]",
+      "value-key": "[INPUT_DATASET]",
       "type": "File",
       "optional": false,
       "id": "input_dataset",
@@ -66,7 +66,7 @@
     {
       "command-line-flag": "-3lin",
       "description": "3 point linear filter with custom weight: 0.5*(1-m)*a + m*b + 0.5*(1-m)*c",
-      "value-key": "[M]",
+      "value-key": "[LIN_FILTER_CUSTOM]",
       "type": "Number",
       "optional": true,
       "id": "lin_filter_custom",
@@ -78,7 +78,7 @@
     {
       "command-line-flag": "-hamming",
       "description": "Use N point Hamming window filter.",
-      "value-key": "[HAMMING_N]",
+      "value-key": "[HAMMING]",
       "type": "Number",
       "optional": true,
       "id": "hamming",
@@ -88,7 +88,7 @@
     {
       "command-line-flag": "-blackman",
       "description": "Use N point Blackman window filter.",
-      "value-key": "[BLACKMAN_N]",
+      "value-key": "[BLACKMAN]",
       "type": "Number",
       "optional": true,
       "id": "blackman",
@@ -98,7 +98,7 @@
     {
       "command-line-flag": "-custom",
       "description": "Use custom filter with coefficients from a specified file.",
-      "value-key": "[COEFF_FILENAME]",
+      "value-key": "[CUSTOM_FILTER]",
       "type": "File",
       "optional": true,
       "id": "custom_filter",
@@ -134,7 +134,7 @@
     {
       "command-line-flag": "-adaptive",
       "description": "Use adaptive mean filtering of width N (N must be odd and bigger than 3).",
-      "value-key": "[ADAPTIVE_N]",
+      "value-key": "[ADAPTIVE]",
       "type": "Number",
       "optional": true,
       "id": "adaptive",

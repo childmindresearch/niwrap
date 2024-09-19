@@ -4,7 +4,7 @@
   "author": "AFNI Team",
   "description": "Uses the Remez algorithm to calculate the FIR filter weights for a bandpass filter; results are written to stdout in an unadorned (no header) column of numbers.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/FIRdesign.html",
-  "command-line": "FIRdesign [OPTIONS] [FBOT] [FTOP] [NTAP]",
+  "command-line": "FIRdesign [FBOT] [FTOP] [NTAP] [TR] [ALTERNATIVE_BAND] [ALTERNATIVE_NTAP]",
   "inputs": [
     {
       "description": "Lowest frequency in the pass band.",
@@ -46,7 +46,7 @@
     {
       "command-line-flag": "-band",
       "description": "Alternative way to specify the passband",
-      "value-key": "[ALTERNATIVE_FBAND]",
+      "value-key": "[ALTERNATIVE_BAND]",
       "type": "Number",
       "list": true,
       "max-list-entries": 2,

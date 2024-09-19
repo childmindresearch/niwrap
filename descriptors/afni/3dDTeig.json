@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/3dDTeig",
   "description": "Computes eigenvalues and eigenvectors for an input dataset of tensors",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDTeig.html",
-  "command-line": "3dDTeig [OPTIONS] [DATASET]",
+  "command-line": "3dDTeig [INPUT_DATASET] [PREFIX] [DATUM] [SEP_DSETS] [UDDATA]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -13,7 +13,7 @@
   "inputs": [
     {
       "description": "Input dataset of Dxx, Dxy, Dyy, Dxz, Dyz, Dzz sub-bricks",
-      "value-key": "[DATASET]",
+      "value-key": "[INPUT_DATASET]",
       "type": "String",
       "optional": false,
       "id": "input_dataset",
@@ -36,12 +36,16 @@
       "optional": true,
       "id": "datum",
       "name": "Output Data Type",
-      "value-choices": ["byte", "short", "float"]
+      "value-choices": [
+        "byte",
+        "short",
+        "float"
+      ]
     },
     {
       "command-line-flag": "-sep_dsets",
       "description": "Save eigenvalues, vectors, FA, and MD in separate datasets",
-      "value-key": "[SEP_DSETS_FLAG]",
+      "value-key": "[SEP_DSETS]",
       "type": "Flag",
       "optional": true,
       "id": "sep_dsets",
@@ -50,7 +54,7 @@
     {
       "command-line-flag": "-uddata",
       "description": "Tensor data is stored as upper diagonal instead of lower diagonal",
-      "value-key": "[UDDATA_FLAG]",
+      "value-key": "[UDDATA]",
       "type": "Flag",
       "optional": true,
       "id": "uddata",

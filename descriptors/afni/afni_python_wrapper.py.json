@@ -3,7 +3,7 @@
   "name": "afni_python_wrapper",
   "author": "AFNI Team",
   "description": "Python wrapper to call AFNI functions from the shell",
-  "command-line": "afni_python_wrapper.py [FLAGS] [ARGUMENTS]",
+  "command-line": "afni_python_wrapper [MODULE] [MODULE_DIR] [EVAL] [EXEC] [FUNCHELP] [PRINT] [LPRINT] [LISTFUNC] [HELP]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -30,7 +30,7 @@
     {
       "description": "Evaluate STRING in context of MODULE",
       "command-line-flag": "-eval",
-      "value-key": "[EVAL_STRING]",
+      "value-key": "[EVAL]",
       "type": "String",
       "optional": true,
       "id": "eval",
@@ -39,7 +39,7 @@
     {
       "description": "Execute STRING in context of MODULE",
       "command-line-flag": "-exec",
-      "value-key": "[EXEC_STRING]",
+      "value-key": "[EXEC]",
       "type": "String",
       "optional": true,
       "id": "exec",
@@ -48,7 +48,7 @@
     {
       "description": "Print the help for module function FUNC",
       "command-line-flag": "-funchelp",
-      "value-key": "[FUNC_HELP]",
+      "value-key": "[FUNCHELP]",
       "type": "String",
       "optional": true,
       "id": "funchelp",
@@ -57,7 +57,7 @@
     {
       "description": "Print the result of executing STRING",
       "command-line-flag": "-print",
-      "value-key": "[PRINT_STRING]",
+      "value-key": "[PRINT]",
       "type": "String",
       "optional": true,
       "id": "print",
@@ -66,7 +66,7 @@
     {
       "description": "Line print: print result list, one element per line",
       "command-line-flag": "-lprint",
-      "value-key": "[LPRINT_STRING]",
+      "value-key": "[LPRINT]",
       "type": "String",
       "optional": true,
       "id": "lprint",
@@ -75,7 +75,7 @@
     {
       "description": "Execute FUNC(LIST) with sub-options",
       "command-line-flag": "-listfunc",
-      "value-key": "[LISTFUNC_STRING]",
+      "value-key": "[LISTFUNC]",
       "type": "String",
       "optional": true,
       "id": "listfunc",
@@ -84,7 +84,7 @@
     {
       "description": "Show this help text",
       "command-line-flag": "-help",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",

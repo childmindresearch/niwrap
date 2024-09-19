@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/afni",
   "description": "Support vector machine analysis of brain data using the SVM-light package",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dsvm.html",
-  "command-line": "3dsvm [OPTIONS]",
+  "command-line": "3dsvm [TRAIN_VOL] [TRAIN_LABELS] [MASK] [NO_MODEL_MASK] [MODEL] [ALPHA] [BUCKET] [TYPE] [C_VALUE] [EPSILON] [KERNEL] [D_VALUE] [GAMMA] [S_VALUE] [R_VALUE] [MAX_ITERATIONS] [WOUT] [TEST_VOL] [PREDICTIONS] [CLASSOUT] [NOPRED_CENSORED] [NODETREND] [NOPRED_SCALE] [TEST_LABELS] [MULTICLASS] [HELP] [VERSION]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -41,7 +41,7 @@
     {
       "command-line-flag": "-nomodelmask",
       "description": "Flag to enable the omission of a mask file. Required if '-mask' is not used.",
-      "value-key": "[NO_MODEL_MASK_FLAG]",
+      "value-key": "[NO_MODEL_MASK]",
       "type": "Flag",
       "optional": true,
       "id": "no_model_mask",
@@ -82,7 +82,10 @@
       "optional": true,
       "id": "type",
       "name": "Type",
-      "value-choices": ["classification", "regression"]
+      "value-choices": [
+        "classification",
+        "regression"
+      ]
     },
     {
       "command-line-flag": "-c",
@@ -110,7 +113,12 @@
       "optional": true,
       "id": "kernel",
       "name": "Kernel function",
-      "value-choices": ["linear", "polynomial", "rbf", "sigmoid"]
+      "value-choices": [
+        "linear",
+        "polynomial",
+        "rbf",
+        "sigmoid"
+      ]
     },
     {
       "command-line-flag": "-d",
@@ -160,7 +168,7 @@
     {
       "command-line-flag": "-wout",
       "description": "Flag to output sum of weighted linear support vectors to the bucket file.",
-      "value-key": "[WOUT_FLAG]",
+      "value-key": "[WOUT]",
       "type": "Flag",
       "optional": true,
       "id": "wout",
@@ -187,7 +195,7 @@
     {
       "command-line-flag": "-classout",
       "description": "Flag to specify that prediction files should be integer-valued, corresponding to class category decisions.",
-      "value-key": "[CLASSOUT_FLAG]",
+      "value-key": "[CLASSOUT]",
       "type": "Flag",
       "optional": true,
       "id": "classout",
@@ -196,7 +204,7 @@
     {
       "command-line-flag": "-nopredcensored",
       "description": "Do not write predicted values for censored time-points to predictions file.",
-      "value-key": "[NOPRED_CENSORED_FLAG]",
+      "value-key": "[NOPRED_CENSORED]",
       "type": "Flag",
       "optional": true,
       "id": "nopred_censored",
@@ -205,7 +213,7 @@
     {
       "command-line-flag": "-nodetrend",
       "description": "Flag to specify that prediction files should NOT be linearly detrended.",
-      "value-key": "[NODETREND_FLAG]",
+      "value-key": "[NODETREND]",
       "type": "Flag",
       "optional": true,
       "id": "nodetrend",
@@ -214,7 +222,7 @@
     {
       "command-line-flag": "-nopredscale",
       "description": "Do not scale predictions. Values below 0.0 correspond to (class A) and values above 0.0 to (class B).",
-      "value-key": "[NOPRED_SCALE_FLAG]",
+      "value-key": "[NOPRED_SCALE]",
       "type": "Flag",
       "optional": true,
       "id": "nopred_scale",
@@ -237,12 +245,15 @@
       "optional": true,
       "id": "multiclass",
       "name": "Multiclass type",
-      "value-choices": ["DAG", "vote"]
+      "value-choices": [
+        "DAG",
+        "vote"
+      ]
     },
     {
       "command-line-flag": "-help",
       "description": "Print help message",
-      "value-key": "[HELP_FLAG]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -251,7 +262,7 @@
     {
       "command-line-flag": "-version",
       "description": "Print version history",
-      "value-key": "[VERSION_FLAG]",
+      "value-key": "[VERSION]",
       "type": "Flag",
       "optional": true,
       "id": "version",

@@ -3,7 +3,7 @@
   "name": "SurfClust",
   "author": "AFNI Team",
   "description": "A program to perform clustering analysis surfaces",
-  "command-line": "SurfClust [SPEC_SURF] [SPEC_FILE] [INPUT_SURFACE] [INPUT_SURF_NAME] [INPUT_DSET] [DATA_COL_INDEX] [RMM] [AMM] [MIN_NODES] [PREFIX] [OUT_CLUST] [OUT_ROI] [OUT_FULL] [SORTING_OPT] [THRESH_COL] [THRESH] [ATHRESH] [IR_RANGE] [EX_RANGE] [PREPEND_NODE] [UPDATE] [NO_CENT] [CENT] [NOVOLREG] [NOXFORM] [SET_ENV] [TRACE] [TRACE_EXTREME] [NO_MEMORY_TRACE] [YES_MEMORY_TRACE] [GLOBAL_HELP]",
+  "command-line": "SurfClust [SPECFILE] [INPUT_SURFACE] [INPUT_SURF_NAME] [INPUT_DATASET] [RMM] [AMM2] [MIN_NODES] [PREFIX] [OUT_CLUSTERDSET] [OUT_ROIDSET] [OUT_FULLLIST] [SORT_NONE] [SORT_N_NODES] [SORT_AREA] [THRESH_COL] [THRESH] [ATHRESH] [IR_RANGE] [EX_RANGE] [PREPEND_NODE_INDEX] [UPDATE] [NO_CENT] [CENT] [NOVOLREG] [NOXFORM] [SET_ENV] [TRACE] [TRACE_EXTREME] [NO_MEMORY_TRACE] [YES_MEMORY_TRACE] [MINI_HELP] [HELP] [EXTREME_HELP] [VIEW_HELP] [WEB_HELP] [FIND_HELP] [RAW_HELP] [SPX_HELP] [ASPX_HELP]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -12,7 +12,7 @@
     {
       "command-line-flag": "-spec",
       "description": "The surface spec file",
-      "value-key": "[SPEC_FILE]",
+      "value-key": "[SPECFILE]",
       "type": "File",
       "optional": true,
       "id": "specfile",
@@ -39,7 +39,7 @@
     {
       "command-line-flag": "-input",
       "description": "The input dataset and the index of the datacolumn to use (index 0 for 1st column). Values of 0 indicate inactive nodes.",
-      "value-key": "[INPUT_DSET]",
+      "value-key": "[INPUT_DATASET]",
       "type": "File",
       "optional": false,
       "id": "input_dataset",
@@ -60,7 +60,7 @@
     {
       "command-line-flag": "-amm2",
       "description": "Minimum area for clusters",
-      "value-key": "[AMM]",
+      "value-key": "[AMM2]",
       "type": "Number",
       "optional": true,
       "id": "amm2",
@@ -87,7 +87,7 @@
     {
       "command-line-flag": "-out_clusterdset",
       "description": "Output a clustered version of input dataset",
-      "value-key": "[OUT_CLUST]",
+      "value-key": "[OUT_CLUSTERDSET]",
       "type": "Flag",
       "optional": true,
       "id": "out_clusterdset",
@@ -96,7 +96,7 @@
     {
       "command-line-flag": "-out_roidset",
       "description": "Output an ROI dataset with the rank of its cluster",
-      "value-key": "[OUT_ROI]",
+      "value-key": "[OUT_ROIDSET]",
       "type": "Flag",
       "optional": true,
       "id": "out_roidset",
@@ -105,7 +105,7 @@
     {
       "command-line-flag": "-out_fulllist",
       "description": "Output a value for all nodes of input surface",
-      "value-key": "[OUT_FULL]",
+      "value-key": "[OUT_FULLLIST]",
       "type": "Flag",
       "optional": true,
       "id": "out_fulllist",
@@ -114,7 +114,7 @@
     {
       "command-line-flag": "-sort_none",
       "description": "No sorting of ROI clusters",
-      "value-key": "[SORTING_OPT]",
+      "value-key": "[SORT_NONE]",
       "type": "Flag",
       "optional": true,
       "id": "sort_none",
@@ -123,7 +123,7 @@
     {
       "command-line-flag": "-sort_n_nodes",
       "description": "Sorting based on number of nodes in cluster",
-      "value-key": "[SORTING_OPT]",
+      "value-key": "[SORT_N_NODES]",
       "type": "Flag",
       "optional": true,
       "id": "sort_n_nodes",
@@ -132,7 +132,7 @@
     {
       "command-line-flag": "-sort_area",
       "description": "Sorting based on area of clusters (default)",
-      "value-key": "[SORTING_OPT]",
+      "value-key": "[SORT_AREA]",
       "type": "Flag",
       "optional": true,
       "id": "sort_area",
@@ -192,7 +192,7 @@
     {
       "command-line-flag": "-prepend_node_index",
       "description": "Force the output dataset to have node indices in column 0 of output.",
-      "value-key": "[PREPEND_NODE]",
+      "value-key": "[PREPEND_NODE_INDEX]",
       "type": "Flag",
       "optional": true,
       "id": "prepend_node_index",
@@ -291,7 +291,7 @@
     {
       "command-line-flag": "-h",
       "description": "Mini help, same as -help in many cases.",
-      "value-key": "[GLOBAL_HELP]",
+      "value-key": "[MINI_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "mini_help",
@@ -300,7 +300,7 @@
     {
       "command-line-flag": "-help",
       "description": "The entire help output.",
-      "value-key": "[GLOBAL_HELP]",
+      "value-key": "[HELP]",
       "type": "Flag",
       "optional": true,
       "id": "help",
@@ -309,7 +309,7 @@
     {
       "command-line-flag": "-HELP",
       "description": "Extreme help, same as -help in majority of cases.",
-      "value-key": "[GLOBAL_HELP]",
+      "value-key": "[EXTREME_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "extreme_help",
@@ -318,7 +318,7 @@
     {
       "command-line-flag": "-h_view",
       "description": "Open help in text editor. AFNI will try to find a GUI editor on your machine. You can control which it should use by setting environment variable AFNI_GUI_EDITOR.",
-      "value-key": "[GLOBAL_HELP]",
+      "value-key": "[VIEW_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "view_help",
@@ -327,7 +327,7 @@
     {
       "command-line-flag": "-h_web",
       "description": "Open help in web browser. AFNI will try to find a browser. You can control which it should use by setting environment variable AFNI_GUI_EDITOR.",
-      "value-key": "[GLOBAL_HELP]",
+      "value-key": "[WEB_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "web_help",
@@ -336,7 +336,7 @@
     {
       "command-line-flag": "-h_find",
       "description": "Look for lines in this program's -help output that match (approximately) the given word.",
-      "value-key": "[GLOBAL_HELP]",
+      "value-key": "[FIND_HELP]",
       "type": "String",
       "optional": true,
       "id": "find_help",
@@ -345,7 +345,7 @@
     {
       "command-line-flag": "-h_raw",
       "description": "Help string unedited.",
-      "value-key": "[GLOBAL_HELP]",
+      "value-key": "[RAW_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "raw_help",
@@ -354,7 +354,7 @@
     {
       "command-line-flag": "-h_spx",
       "description": "Help string in sphinx format, but do not try to autoformat.",
-      "value-key": "[GLOBAL_HELP]",
+      "value-key": "[SPX_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "spx_help",
@@ -363,7 +363,7 @@
     {
       "command-line-flag": "-h_aspx",
       "description": "Help string in sphinx format with autoformatting of options.",
-      "value-key": "[GLOBAL_HELP]",
+      "value-key": "[ASPX_HELP]",
       "type": "Flag",
       "optional": true,
       "id": "aspx_help",

@@ -3,7 +3,7 @@
   "name": "timing_tool.py",
   "author": "AFNI Team",
   "description": "Tool for manipulating and evaluating stimulus timing files",
-  "command-line": "timing_tool.py [COMMANDS]",
+  "command-line": "timing_tool.py [TIMING_FILE] [OUTPUT_FILE] [RUN_LENGTH] [TR] [OFFSET] [EXTEND_FILE] [SORT] [SCALE_DATA] [SHIFT_TO_RUN_OFFSET] [TIMING_TO_1D_FILE] [STIM_DURATION] [MULTI_TIMING_FILES] [MULTI_SHOW_ISI_STATS] [MULTI_SHOW_TIMING] [SHOW_TIMING] [MULTI_STIM_DURATION] [ROUND_TIMES_FRAC] [TRUNCATE_TIMES] [MULTI_TIMING_EVENT_LIST]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -66,7 +66,7 @@
       "name": "Sort Times",
       "description": "Sort the times, per row (run)",
       "command-line-flag": "-sort",
-      "value-key": "[SORT_FLAG]",
+      "value-key": "[SORT]",
       "type": "Flag",
       "optional": true
     },
@@ -75,7 +75,7 @@
       "name": "Scale Data",
       "description": "Multiply every stim time by SCALAR",
       "command-line-flag": "-scale_data",
-      "value-key": "[SCALAR]",
+      "value-key": "[SCALE_DATA]",
       "type": "Number",
       "optional": true
     },
@@ -84,7 +84,7 @@
       "name": "Shift to Run Offset",
       "description": "Shift times so first event is at start of run",
       "command-line-flag": "-shift_to_run_offset",
-      "value-key": "[SHIFT_OFFSET]",
+      "value-key": "[SHIFT_TO_RUN_OFFSET]",
       "type": "Number",
       "optional": true
     },
@@ -121,7 +121,7 @@
       "name": "Show ISI Statistics",
       "description": "Display timing and ISI statistics for the multiple timing files",
       "command-line-flag": "-multi_show_isi_stats",
-      "value-key": "[MULTI_SHOW_ISI_STATS_FLAG]",
+      "value-key": "[MULTI_SHOW_ISI_STATS]",
       "type": "Flag",
       "optional": true
     },
@@ -130,7 +130,7 @@
       "name": "Show Timing for Multiple Elements",
       "description": "Display info on multiple timing elements",
       "command-line-flag": "-multi_show_timing_ele",
-      "value-key": "[MULTI_SHOW_TIMING_FLAG]",
+      "value-key": "[MULTI_SHOW_TIMING]",
       "type": "Flag",
       "optional": true
     },
@@ -139,7 +139,7 @@
       "name": "Show Timing for Single Element",
       "description": "Display info on the main timing element",
       "command-line-flag": "-show_timing_ele",
-      "value-key": "[SHOW_TIMING_FLAG]",
+      "value-key": "[SHOW_TIMING]",
       "type": "Flag",
       "optional": true
     },
@@ -167,7 +167,7 @@
       "name": "Truncate Times",
       "description": "Truncate times to multiples of the TR",
       "command-line-flag": "-truncate_times",
-      "value-key": "[TRUNCATE_TIMES_FLAG]",
+      "value-key": "[TRUNCATE_TIMES]",
       "type": "Flag",
       "optional": true
     },

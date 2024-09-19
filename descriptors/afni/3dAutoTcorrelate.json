@@ -3,7 +3,7 @@
   "name": "3dAutoTcorrelate",
   "author": "AFNI Team",
   "description": "Computes the correlation coefficient between the time series of each pair of voxels in the input dataset",
-  "command-line": "3dAutoTcorrelate [OPTIONS] [DATASET]",
+  "command-line": "3dAutoTcorrelate [INPUT_DATASET] [PEARSON] [ETA2] [POLORT] [AUTOCLIP] [AUTOMASK] [MASK] [MASK_ONLY_TARGETS] [MASK_SOURCE] [PREFIX] [OUT1D] [TIME] [MMAP]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"
@@ -11,7 +11,7 @@
   "inputs": [
     {
       "description": "Input dataset",
-      "value-key": "[DATASET]",
+      "value-key": "[INPUT_DATASET]",
       "type": "File",
       "optional": false,
       "id": "input_dataset",
@@ -20,7 +20,7 @@
     {
       "command-line-flag": "-pearson",
       "description": "Correlation is the normal Pearson (product moment) correlation coefficient [default]",
-      "value-key": "[PEARSON_FLAG]",
+      "value-key": "[PEARSON]",
       "type": "Flag",
       "optional": true,
       "id": "pearson",
@@ -29,7 +29,7 @@
     {
       "command-line-flag": "-eta2",
       "description": "Output is eta^2 measure from Cohen et al., NeuroImage, 2008",
-      "value-key": "[ETA2_FLAG]",
+      "value-key": "[ETA2]",
       "type": "Flag",
       "optional": true,
       "id": "eta2",
@@ -38,7 +38,7 @@
     {
       "command-line-flag": "-polort",
       "description": "Remove polynomial trend of order 'm', for m=-1..3.",
-      "value-key": "[POLORT_M]",
+      "value-key": "[POLORT]",
       "type": "Number",
       "integer": true,
       "optional": true,
@@ -48,7 +48,7 @@
     {
       "command-line-flag": "-autoclip",
       "description": "Clip off low-intensity regions in the dataset",
-      "value-key": "[AUTOCLIP_FLAG]",
+      "value-key": "[AUTOCLIP]",
       "type": "Flag",
       "optional": true,
       "id": "autoclip",
@@ -57,7 +57,7 @@
     {
       "command-line-flag": "-automask",
       "description": "Apply automask to the dataset",
-      "value-key": "[AUTOMASK_FLAG]",
+      "value-key": "[AUTOMASK]",
       "type": "Flag",
       "optional": true,
       "id": "automask",
@@ -75,7 +75,7 @@
     {
       "command-line-flag": "-mask_only_targets",
       "description": "Provide output for all voxels",
-      "value-key": "[MASK_ONLY_TARGETS_FLAG]",
+      "value-key": "[MASK_ONLY_TARGETS]",
       "type": "Flag",
       "optional": true,
       "id": "mask_only_targets",
@@ -102,7 +102,7 @@
     {
       "command-line-flag": "-out1D",
       "description": "Save output in a text file in 1D format",
-      "value-key": "[OUT1D_FILE]",
+      "value-key": "[OUT1D]",
       "type": "String",
       "optional": true,
       "id": "out1d",
@@ -111,7 +111,7 @@
     {
       "command-line-flag": "-time",
       "description": "Mark output as a 3D+time dataset",
-      "value-key": "[TIME_FLAG]",
+      "value-key": "[TIME]",
       "type": "Flag",
       "optional": true,
       "id": "time",
@@ -120,7 +120,7 @@
     {
       "command-line-flag": "-mmap",
       "description": "Write .BRIK results to disk directly using Unix mmap()",
-      "value-key": "[MMAP_FLAG]",
+      "value-key": "[MMAP]",
       "type": "Flag",
       "optional": true,
       "id": "mmap",
@@ -144,7 +144,7 @@
       "name": "Output Dataset HEAD"
     },
     {
-      "path-template": "[OUT1D_FILE]",
+      "path-template": "[OUT1D]",
       "description": "Output in 1D text format",
       "optional": true,
       "id": "out1d_file",
