@@ -34,6 +34,7 @@
       "name": "Operations",
       "value-key": "[OPERATIONS]",
       "description": "The operations to perform.",
+      "list": true,
       "type": [
         {
           "id": "accum",
