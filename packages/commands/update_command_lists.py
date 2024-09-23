@@ -77,6 +77,7 @@ if __name__ == '__main__':
     override_from_command_list('packages/commands/fsl_commands.txt', 'packages/fsl.json')
     override_from_command_list('packages/commands/freesurfer_commands.txt', 'packages/freesurfer.json')
     override_from_command_list('packages/commands/mrtrix_commands.txt', 'packages/mrtrix.json')
+    override_from_command_list('packages/commands/mrtrix3tissue_commands.txt', 'packages/mrtrix3tissue.json')
     override_from_command_list('packages/commands/c3d_commands.txt', 'packages/c3d.json')
     override_from_command_list('extraction/workbench/out_commands.txt', 'packages/workbench.json', prefix='wb_command ')
     override_from_command_list('packages/commands/niftyreg_commands.txt', 'packages/niftyreg.json')
