@@ -35,6 +35,7 @@ from .dwi2tensor import *
 from .dwibiascorrect import *
 from .dwidenoise import *
 from .dwiextract import *
+from .dwigradcheck import *
 from .fixel2peaks import *
 from .fixel2sh import *
 from .fixel2tsf import *
