@@ -77,7 +77,8 @@
       "type": "File",
       "value-key": "[IN_FILE]",
       "description": "Input file to 3drefit.",
-      "optional": false
+      "optional": false,
+      "mutable": true
     },
     {
       "id": "nosaveatr",
