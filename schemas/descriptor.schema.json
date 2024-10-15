@@ -231,6 +231,11 @@
                     "$id": "http://github.com/boutiques/boutiques-schema/input/resolve-parent",
                     "description": "Specifies that the full parent directory of this file needs to be visible to the tool. Only specifiable for File type inputs.",
                     "type": "boolean"
+                },
+                "mutable": {
+                    "$id": "http://github.com/boutiques/boutiques-schema/input/mutable",
+                    "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
+                    "type": "boolean"
                 }
             },
             "required": [
