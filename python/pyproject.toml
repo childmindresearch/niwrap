@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "niwrap"
-version = "0.2.0"
+version = "0.2.1"
 description = "Neuroimaging Python wrappers."
 authors = ["Child Mind Institute <cmi-dair@childmind.org>"]
 license = "LGPL-2.1"
@@ -9,7 +9,7 @@ packages = [{include = "niwrap", from = "src"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10"
-styxdefs = "^0.2.0"
+styxdefs = "^0.3.0"
 
 [tool.poetry.group.docs.dependencies]
 pdoc = "^15.0.0"
