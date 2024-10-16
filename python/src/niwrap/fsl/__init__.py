@@ -196,7 +196,6 @@ from .make_dyadic_vectors import *
 from .makerot import *
 from .maskdyads import *
 from .match_smoothing import *
-from .maths import *
 from .mccutup import *
 from .mcflirt import *
 from .mean import *
