@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DINFO_METADATA = Metadata(
-    id="2753a9995d91a2778c589ac025428caeac0dcc1e.boutiques",
+    id="0a2415c54fafe3e10c69732d33a5be926be0c1dd.boutiques",
     name="3dinfo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -24,6 +24,7 @@ class V3dinfoOutputs(typing.NamedTuple):
 
 def v_3dinfo(
     dataset: list[InputPathType],
+    orient: bool = False,
     verb: bool = False,
     very_verbose: bool = False,
     short: bool = False,
@@ -52,6 +53,7 @@ def v_3dinfo(
     
     Args:
         dataset: Datasets to retrieve information from.
+        orient: Print out orientation information.
         verb: Print out lots of information.
         very_verbose: Print out even more information including slice time\
             offsets.
@@ -79,7 +81,8 @@ def v_3dinfo(
     execution = runner.start_execution(V_3DINFO_METADATA)
     cargs = []
     cargs.append("3dinfo")
-    cargs.extend([execution.input_file(f) for f in dataset])
+    if orient:
+        cargs.append("-orient")
     if verb:
         cargs.append("-verb")
     if very_verbose:
@@ -120,6 +123,7 @@ def v_3dinfo(
         cargs.append("-niml_hdr")
     if subbrick_info:
         cargs.append("-subbrick_info")
+    cargs.extend([execution.input_file(f) for f in dataset])
     ret = V3dinfoOutputs(
         root=execution.output_file("."),
     )
