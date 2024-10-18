@@ -169,8 +169,6 @@
       "value-key": "[OUTPUT]",
       "command-line-flag": "-o",
       "type": "String",
-      "list": true,
-      "list-separator": ",",
       "optional": false,
       "description": "The output is the intensity and/or label fusion image. Additional optional outputs include the label posterior probability images and the atlas voting weight images."
     },
