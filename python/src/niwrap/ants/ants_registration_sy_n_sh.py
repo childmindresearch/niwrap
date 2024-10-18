@@ -6,17 +6,17 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-ANTS_REGISTRATION_SYN_SH_METADATA = Metadata(
-    id="197c09937f69508eac9d817a879d611013393972.boutiques",
-    name="ants_registration_syn_sh",
+ANTS_REGISTRATION_SY_N_SH_METADATA = Metadata(
+    id="aef8d588f8160d69ff15edafcdf192e3cc4b1241.boutiques",
+    name="antsRegistrationSyN.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
 
 
-class AntsRegistrationSynShOutputs(typing.NamedTuple):
+class AntsRegistrationSyNShOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ants_registration_syn_sh(...)`.
+    Output object returned when calling `ants_registration_sy_n_sh(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -28,7 +28,7 @@ class AntsRegistrationSynShOutputs(typing.NamedTuple):
     """Forward warp field for registration"""
 
 
-def ants_registration_syn_sh(
+def ants_registration_sy_n_sh(
     image_dimension: typing.Literal[2, 3],
     fixed_image: InputPathType,
     moving_image: InputPathType,
@@ -46,7 +46,7 @@ def ants_registration_syn_sh(
     collapse_output_transforms: typing.Literal[0, 1] | None = None,
     random_seed: int | None = None,
     runner: Runner | None = None,
-) -> AntsRegistrationSynShOutputs:
+) -> AntsRegistrationSyNShOutputs:
     """
     This script performs image registration using the SyN transform from the ANTs
     suite. The user can specify the dimensionality of the images, the fixed and
@@ -107,10 +107,10 @@ def ants_registration_syn_sh(
         random_seed: Fix random seed to an int value.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `AntsRegistrationSynShOutputs`).
+        NamedTuple of outputs (described in `AntsRegistrationSyNShOutputs`).
     """
     runner = runner or get_global_runner()
-    execution = runner.start_execution(ANTS_REGISTRATION_SYN_SH_METADATA)
+    execution = runner.start_execution(ANTS_REGISTRATION_SY_N_SH_METADATA)
     cargs = []
     cargs.append("antsRegistrationSyN.sh")
     cargs.extend([
@@ -189,7 +189,7 @@ def ants_registration_syn_sh(
             "-e",
             str(random_seed)
         ])
-    ret = AntsRegistrationSynShOutputs(
+    ret = AntsRegistrationSyNShOutputs(
         root=execution.output_file("."),
         affine_transform=execution.output_file(output_prefix + "0GenericAffine.mat"),
         inverse_warp=execution.output_file(output_prefix + "1InverseWarp.nii.gz"),
@@ -200,7 +200,7 @@ def ants_registration_syn_sh(
 
 
 __all__ = [
-    "ANTS_REGISTRATION_SYN_SH_METADATA",
-    "AntsRegistrationSynShOutputs",
-    "ants_registration_syn_sh",
+    "ANTS_REGISTRATION_SY_N_SH_METADATA",
+    "AntsRegistrationSyNShOutputs",
+    "ants_registration_sy_n_sh",
 ]

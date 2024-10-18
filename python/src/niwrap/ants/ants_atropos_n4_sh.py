@@ -6,16 +6,16 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-ATROPOS_N4_METADATA = Metadata(
-    id="1c330b10087a36337c777f005dd1361d70370da2.boutiques",
-    name="atropos_n4",
+ANTS_ATROPOS_N4_SH_METADATA = Metadata(
+    id="e0a917d4895ca884fd4793321914cc8bd03feab3.boutiques",
+    name="antsAtroposN4.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
 
 
 @dataclasses.dataclass
-class AtroposN4SegmentationPriors:
+class AntsAtroposN4ShSegmentationPriors:
     """
     Prior probability images initializing the segmentation. Specified using
     c-style formatting, e.g. -p labelsPriors%02d.nii.gz. If this is not
@@ -46,9 +46,9 @@ class AtroposN4SegmentationPriors:
         return cargs
 
 
-class AtroposN4Outputs(typing.NamedTuple):
+class AntsAtroposN4ShOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `atropos_n4(...)`.
+    Output object returned when calling `ants_atropos_n4_sh(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -60,13 +60,13 @@ class AtroposN4Outputs(typing.NamedTuple):
     """Segmentation posteriors image."""
 
 
-def atropos_n4(
+def ants_atropos_n4_sh(
     image_dimension: typing.Literal[2, 3],
     input_image: InputPathType,
     mask_image: InputPathType,
     number_of_classes: int,
     output_prefix: str,
-    segmentation_priors: AtroposN4SegmentationPriors,
+    segmentation_priors: AntsAtroposN4ShSegmentationPriors,
     max_n4_atropos_iterations: int | None = None,
     max_atropos_iterations: int | None = None,
     mrf: str | None = None,
@@ -85,7 +85,7 @@ def atropos_n4(
     atropos_segmentation_use_euclidean_distance: typing.Literal[0, 1] | None = None,
     test_debug_mode: int | None = None,
     runner: Runner | None = None,
-) -> AtroposN4Outputs:
+) -> AntsAtroposN4ShOutputs:
     """
     Iterates between N4 <-> Atropos to improve segmentation results.
     
@@ -155,14 +155,14 @@ def atropos_n4(
         test_debug_mode: If > 0, attempts to continue after errors.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `AtroposN4Outputs`).
+        NamedTuple of outputs (described in `AntsAtroposN4ShOutputs`).
     """
     if max_n4_atropos_iterations is not None and not (1 <= max_n4_atropos_iterations): 
         raise ValueError(f"'max_n4_atropos_iterations' must be greater than 1 <= x but was {max_n4_atropos_iterations}")
     if max_atropos_iterations is not None and not (1 <= max_atropos_iterations): 
         raise ValueError(f"'max_atropos_iterations' must be greater than 1 <= x but was {max_atropos_iterations}")
     runner = runner or get_global_runner()
-    execution = runner.start_execution(ATROPOS_N4_METADATA)
+    execution = runner.start_execution(ANTS_ATROPOS_N4_SH_METADATA)
     cargs = []
     cargs.append("antsAtroposN4.sh")
     cargs.extend([
@@ -274,7 +274,7 @@ def atropos_n4(
             "-z",
             str(test_debug_mode)
         ])
-    ret = AtroposN4Outputs(
+    ret = AntsAtroposN4ShOutputs(
         root=execution.output_file("."),
         n4_corrected=execution.output_file(output_prefix + "N4Corrected.[OUTPUT_SUFFIX]"),
         segmentation=execution.output_file(output_prefix + "Segmentation.[OUTPUT_SUFFIX]"),
@@ -285,8 +285,8 @@ def atropos_n4(
 
 
 __all__ = [
-    "ATROPOS_N4_METADATA",
-    "AtroposN4Outputs",
-    "AtroposN4SegmentationPriors",
-    "atropos_n4",
+    "ANTS_ATROPOS_N4_SH_METADATA",
+    "AntsAtroposN4ShOutputs",
+    "AntsAtroposN4ShSegmentationPriors",
+    "ants_atropos_n4_sh",
 ]

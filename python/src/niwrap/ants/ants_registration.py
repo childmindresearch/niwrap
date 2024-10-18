@@ -6,16 +6,16 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-REGISTRATION_METADATA = Metadata(
-    id="5f520d7384383baaf15d7e4094d989410172644f.boutiques",
-    name="registration",
+ANTS_REGISTRATION_METADATA = Metadata(
+    id="c36a254569506468345c2cd181126e2439afecde.boutiques",
+    name="antsRegistration",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
 
 
 @dataclasses.dataclass
-class RegistrationInitialMovingTransform:
+class AntsRegistrationInitialMovingTransform:
     initial_moving_transform: InputPathType
     
     def run(
@@ -36,7 +36,7 @@ class RegistrationInitialMovingTransform:
 
 
 @dataclasses.dataclass
-class RegistrationInitialMovingTransformUseInverse:
+class AntsRegistrationInitialMovingTransformUseInverse:
     initial_moving_transform: InputPathType
     use_inverse: typing.Literal[0, 1] | None = None
     """Use the inverse of the initial moving transform."""
@@ -60,7 +60,7 @@ class RegistrationInitialMovingTransformUseInverse:
 
 
 @dataclasses.dataclass
-class RegistrationInitialMovingTransformInitializationFeature:
+class AntsRegistrationInitialMovingTransformInitializationFeature:
     fixed_image: InputPathType
     moving_image: InputPathType
     initialization_feature: typing.Literal[0, 1, 2]
@@ -85,7 +85,7 @@ class RegistrationInitialMovingTransformInitializationFeature:
 
 
 @dataclasses.dataclass
-class RegistrationTransformRigid:
+class AntsRegistrationTransformRigid:
     gradient_step: float
     
     def run(
@@ -106,7 +106,7 @@ class RegistrationTransformRigid:
 
 
 @dataclasses.dataclass
-class RegistrationTransformAffine:
+class AntsRegistrationTransformAffine:
     gradient_step: float
     
     def run(
@@ -127,7 +127,7 @@ class RegistrationTransformAffine:
 
 
 @dataclasses.dataclass
-class RegistrationTransformCompositeAffine:
+class AntsRegistrationTransformCompositeAffine:
     gradient_step: float
     
     def run(
@@ -148,7 +148,7 @@ class RegistrationTransformCompositeAffine:
 
 
 @dataclasses.dataclass
-class RegistrationTransformSimilarity:
+class AntsRegistrationTransformSimilarity:
     gradient_step: float
     
     def run(
@@ -169,7 +169,7 @@ class RegistrationTransformSimilarity:
 
 
 @dataclasses.dataclass
-class RegistrationTransformTranslation:
+class AntsRegistrationTransformTranslation:
     gradient_step: float
     
     def run(
@@ -190,7 +190,7 @@ class RegistrationTransformTranslation:
 
 
 @dataclasses.dataclass
-class RegistrationTransformBspline:
+class AntsRegistrationTransformBspline:
     gradient_step: float
     mesh_size_at_base_level: float
     
@@ -212,7 +212,7 @@ class RegistrationTransformBspline:
 
 
 @dataclasses.dataclass
-class RegistrationTransformGaussianDisplacementField:
+class AntsRegistrationTransformGaussianDisplacementField:
     gradient_step: float
     update_field_variance_in_voxel_space: float
     total_field_variance_in_voxel_space: float
@@ -235,7 +235,7 @@ class RegistrationTransformGaussianDisplacementField:
 
 
 @dataclasses.dataclass
-class RegistrationTransformBsplineDisplacementField:
+class AntsRegistrationTransformBsplineDisplacementField:
     gradient_step: float
     update_field_mesh_size_at_base_level: float
     total_field_mesh_size_at_base_level: float | None = None
@@ -260,7 +260,7 @@ class RegistrationTransformBsplineDisplacementField:
 
 
 @dataclasses.dataclass
-class RegistrationTransformTimeVaryingVelocityField:
+class AntsRegistrationTransformTimeVaryingVelocityField:
     gradient_step: float
     number_of_time_indices: float
     update_field_variance_in_voxel_space: float
@@ -286,7 +286,7 @@ class RegistrationTransformTimeVaryingVelocityField:
 
 
 @dataclasses.dataclass
-class RegistrationTransformTimeVaryingBsplineVelocityField:
+class AntsRegistrationTransformTimeVaryingBsplineVelocityField:
     gradient_step: float
     velocity_field_mesh_size: float
     number_of_time_point_samples: float | None = None
@@ -311,7 +311,7 @@ class RegistrationTransformTimeVaryingBsplineVelocityField:
 
 
 @dataclasses.dataclass
-class RegistrationTransformSyn:
+class AntsRegistrationTransformSyn:
     gradient_step: float
     update_field_variance_in_voxel_space: float
     total_field_variance_in_voxel_space: float
@@ -334,7 +334,7 @@ class RegistrationTransformSyn:
 
 
 @dataclasses.dataclass
-class RegistrationTransformBsplineSyn:
+class AntsRegistrationTransformBsplineSyn:
     gradient_step: float
     update_field_mesh_size_at_base_level: float
     total_field_mesh_size_at_base_level: float | None = None
@@ -359,7 +359,7 @@ class RegistrationTransformBsplineSyn:
 
 
 @dataclasses.dataclass
-class RegistrationTransformExponential:
+class AntsRegistrationTransformExponential:
     gradient_step: float
     update_field_variance_in_voxel_space: float
     velocity_field_variance_in_voxel_space: float
@@ -383,7 +383,7 @@ class RegistrationTransformExponential:
 
 
 @dataclasses.dataclass
-class RegistrationTransformBsplineExponential:
+class AntsRegistrationTransformBsplineExponential:
     gradient_step: float
     update_field_mesh_size_at_base_level: float
     velocity_field_mesh_size_at_base_level: float | None = None
@@ -409,7 +409,7 @@ class RegistrationTransformBsplineExponential:
 
 
 @dataclasses.dataclass
-class RegistrationMetricAntsNeighbourhoodCrossCorrelation:
+class AntsRegistrationMetricAntsNeighbourhoodCrossCorrelation:
     fixed_image: str
     moving_image: str
     metric_weight: float
@@ -439,7 +439,7 @@ class RegistrationMetricAntsNeighbourhoodCrossCorrelation:
 
 
 @dataclasses.dataclass
-class RegistrationMetricMutualInformation:
+class AntsRegistrationMetricMutualInformation:
     fixed_image: str
     moving_image: str
     metric_weight: float
@@ -469,7 +469,7 @@ class RegistrationMetricMutualInformation:
 
 
 @dataclasses.dataclass
-class RegistrationMetricMattes:
+class AntsRegistrationMetricMattes:
     fixed_image: str
     moving_image: str
     metric_weight: float
@@ -499,7 +499,7 @@ class RegistrationMetricMattes:
 
 
 @dataclasses.dataclass
-class RegistrationMetricMeanSquares:
+class AntsRegistrationMetricMeanSquares:
     fixed_image: str
     moving_image: str
     metric_weight: float
@@ -529,7 +529,7 @@ class RegistrationMetricMeanSquares:
 
 
 @dataclasses.dataclass
-class RegistrationMetricDemons:
+class AntsRegistrationMetricDemons:
     fixed_image: str
     moving_image: str
     metric_weight: float
@@ -559,7 +559,7 @@ class RegistrationMetricDemons:
 
 
 @dataclasses.dataclass
-class RegistrationMetricGlobalCorrelation:
+class AntsRegistrationMetricGlobalCorrelation:
     fixed_image: str
     moving_image: str
     metric_weight: float
@@ -589,7 +589,7 @@ class RegistrationMetricGlobalCorrelation:
 
 
 @dataclasses.dataclass
-class RegistrationMetricEuclideanIcp:
+class AntsRegistrationMetricEuclideanIcp:
     fixed_point_set: str
     moving_point_set: str
     metric_weight: float
@@ -617,7 +617,7 @@ class RegistrationMetricEuclideanIcp:
 
 
 @dataclasses.dataclass
-class RegistrationMetricPointSetExpectation:
+class AntsRegistrationMetricPointSetExpectation:
     metric_weight: float
     point_set_sigma: float | None = None
     sampling_percentage: float | None = None
@@ -643,7 +643,7 @@ class RegistrationMetricPointSetExpectation:
 
 
 @dataclasses.dataclass
-class RegistrationMetricJensenHavrdaCharvetTsallis:
+class AntsRegistrationMetricJensenHavrdaCharvetTsallis:
     fixed_point_set: str
     moving_point_set: str
     metric_weight: float
@@ -673,7 +673,7 @@ class RegistrationMetricJensenHavrdaCharvetTsallis:
 
 
 @dataclasses.dataclass
-class RegistrationMetricIgdm:
+class AntsRegistrationMetricIgdm:
     
     def run(
         self,
@@ -693,7 +693,7 @@ class RegistrationMetricIgdm:
 
 
 @dataclasses.dataclass
-class RegistrationConvergence:
+class AntsRegistrationConvergence:
     """
     Convergence is determined from the number of iterations per level and is
     determined by fitting a line to the normalized energy profile of the last N
@@ -722,18 +722,18 @@ class RegistrationConvergence:
 
 
 @dataclasses.dataclass
-class RegistrationStage:
+class AntsRegistrationStage:
     """
     Stages of the registration process.
     """
-    transform: typing.Union[RegistrationTransformRigid, RegistrationTransformAffine, RegistrationTransformCompositeAffine, RegistrationTransformSimilarity, RegistrationTransformTranslation, RegistrationTransformBspline, RegistrationTransformGaussianDisplacementField, RegistrationTransformBsplineDisplacementField, RegistrationTransformTimeVaryingVelocityField, RegistrationTransformTimeVaryingBsplineVelocityField, RegistrationTransformSyn, RegistrationTransformBsplineSyn, RegistrationTransformExponential, RegistrationTransformBsplineExponential]
+    transform: typing.Union[AntsRegistrationTransformRigid, AntsRegistrationTransformAffine, AntsRegistrationTransformCompositeAffine, AntsRegistrationTransformSimilarity, AntsRegistrationTransformTranslation, AntsRegistrationTransformBspline, AntsRegistrationTransformGaussianDisplacementField, AntsRegistrationTransformBsplineDisplacementField, AntsRegistrationTransformTimeVaryingVelocityField, AntsRegistrationTransformTimeVaryingBsplineVelocityField, AntsRegistrationTransformSyn, AntsRegistrationTransformBsplineSyn, AntsRegistrationTransformExponential, AntsRegistrationTransformBsplineExponential]
     """Several transform options are available. The gradientStep or learningRate
     characterizes the gradient descent optimization and is scaled appropriately
     for each transform using the shift scales estimator. Subsequent parameters
     are transform-specific and can be determined from the usage. For the
     B-spline transforms one can also specify the smoothing in terms of spline
     distance (i.e. knot spacing)."""
-    metric: typing.Union[RegistrationMetricAntsNeighbourhoodCrossCorrelation, RegistrationMetricMutualInformation, RegistrationMetricMattes, RegistrationMetricMeanSquares, RegistrationMetricDemons, RegistrationMetricGlobalCorrelation, RegistrationMetricEuclideanIcp, RegistrationMetricPointSetExpectation, RegistrationMetricJensenHavrdaCharvetTsallis, RegistrationMetricIgdm]
+    metric: typing.Union[AntsRegistrationMetricAntsNeighbourhoodCrossCorrelation, AntsRegistrationMetricMutualInformation, AntsRegistrationMetricMattes, AntsRegistrationMetricMeanSquares, AntsRegistrationMetricDemons, AntsRegistrationMetricGlobalCorrelation, AntsRegistrationMetricEuclideanIcp, AntsRegistrationMetricPointSetExpectation, AntsRegistrationMetricJensenHavrdaCharvetTsallis, AntsRegistrationMetricIgdm]
     """These image metrics are available--- CC: ANTS neighborhood cross
     correlation, MI: Mutual information, Demons: (Thirion), MeanSquares, and GC:
     Global Correlation. The "metricWeight" variable is used to modulate the per
@@ -747,7 +747,7 @@ class RegistrationStage:
     smoothingfilter is applied when estimating the metric gradient.In addition,
     three point set metrics are available: Euclidean (ICP), Point-set
     expectation (PSE), and Jensen-Havrda-Charvet-Tsallis (JHCT)."""
-    convergence: RegistrationConvergence
+    convergence: AntsRegistrationConvergence
     """Convergence is determined from the number of iterations per level and is
     determined by fitting a line to the normalized energy profile of the last N
     iterations (where N is specified by the window size) and determining the
@@ -804,7 +804,7 @@ class RegistrationStage:
 
 
 @dataclasses.dataclass
-class RegistrationWinsorizeImageIntensities:
+class AntsRegistrationWinsorizeImageIntensities:
     """
     Winsorize data based on specified quantiles.
     """
@@ -829,7 +829,7 @@ class RegistrationWinsorizeImageIntensities:
 
 
 @dataclasses.dataclass
-class RegistrationMasks:
+class AntsRegistrationMasks:
     """
     Image masks to limit voxels considered by the metric. Two options are
     allowed for mask specification: 1) Either the user specifies a single mask
@@ -860,9 +860,9 @@ class RegistrationMasks:
         return cargs
 
 
-class RegistrationOutputs(typing.NamedTuple):
+class AntsRegistrationOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `registration(...)`.
+    Output object returned when calling `ants_registration(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -878,8 +878,8 @@ class RegistrationOutputs(typing.NamedTuple):
     """The output is the warp field."""
 
 
-def registration(
-    stages: list[RegistrationStage],
+def ants_registration(
+    stages: list[AntsRegistrationStage],
     dimensionality: typing.Literal[2, 3, 4] | None = None,
     output: str | None = None,
     save_state: str | None = None,
@@ -892,14 +892,14 @@ def registration(
     interpolation: typing.Literal["Linear", "NearestNeighbor", "MultiLabel", "Gaussian", "BSpline", "CosineWindowedSinc", "WelchWindowedSinc", "HammingWindowedSinc", "LanczosWindowedSinc", "GenericLabel"] | None = None,
     restrict_deformation: list[typing.Literal[0, 1]] | None = None,
     initial_fixed_transform: str | None = None,
-    initial_moving_transform: typing.Union[RegistrationInitialMovingTransform, RegistrationInitialMovingTransformUseInverse, RegistrationInitialMovingTransformInitializationFeature] | None = None,
-    winsorize_image_intensities: RegistrationWinsorizeImageIntensities | None = None,
-    masks: RegistrationMasks | None = None,
+    initial_moving_transform: typing.Union[AntsRegistrationInitialMovingTransform, AntsRegistrationInitialMovingTransformUseInverse, AntsRegistrationInitialMovingTransformInitializationFeature] | None = None,
+    winsorize_image_intensities: AntsRegistrationWinsorizeImageIntensities | None = None,
+    masks: AntsRegistrationMasks | None = None,
     minc: typing.Literal[0, 1] | None = None,
     random_seed: int | None = None,
     verbose: typing.Literal[0, 1] | None = None,
     runner: Runner | None = None,
-) -> RegistrationOutputs:
+) -> AntsRegistrationOutputs:
     """
     This program is a user-level registration application meant to utilize classes
     in ITK v4.0 and later. The user can specify any number of "stages" where a stage
@@ -1021,14 +1021,14 @@ def registration(
         verbose: Verbose output.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `RegistrationOutputs`).
+        NamedTuple of outputs (described in `AntsRegistrationOutputs`).
     """
     if write_interval_volumes is not None and not (0 <= write_interval_volumes): 
         raise ValueError(f"'write_interval_volumes' must be greater than 0 <= x but was {write_interval_volumes}")
     if random_seed is not None and not (1 <= random_seed): 
         raise ValueError(f"'random_seed' must be greater than 1 <= x but was {random_seed}")
     runner = runner or get_global_runner()
-    execution = runner.start_execution(REGISTRATION_METADATA)
+    execution = runner.start_execution(ANTS_REGISTRATION_METADATA)
     cargs = []
     cargs.append("antsRegistration")
     if dimensionality is not None:
@@ -1122,7 +1122,7 @@ def registration(
             "-v",
             str(verbose)
         ])
-    ret = RegistrationOutputs(
+    ret = AntsRegistrationOutputs(
         root=execution.output_file("."),
         generic_affine=execution.output_file(output + "0GenericAffine.mat") if (output is not None) else None,
         inverse_warped=execution.output_file(output + "InverseWarped.nii.gz") if (output is not None) else None,
@@ -1135,38 +1135,38 @@ def registration(
 
 
 __all__ = [
-    "REGISTRATION_METADATA",
-    "RegistrationConvergence",
-    "RegistrationInitialMovingTransform",
-    "RegistrationInitialMovingTransformInitializationFeature",
-    "RegistrationInitialMovingTransformUseInverse",
-    "RegistrationMasks",
-    "RegistrationMetricAntsNeighbourhoodCrossCorrelation",
-    "RegistrationMetricDemons",
-    "RegistrationMetricEuclideanIcp",
-    "RegistrationMetricGlobalCorrelation",
-    "RegistrationMetricIgdm",
-    "RegistrationMetricJensenHavrdaCharvetTsallis",
-    "RegistrationMetricMattes",
-    "RegistrationMetricMeanSquares",
-    "RegistrationMetricMutualInformation",
-    "RegistrationMetricPointSetExpectation",
-    "RegistrationOutputs",
-    "RegistrationStage",
-    "RegistrationTransformAffine",
-    "RegistrationTransformBspline",
-    "RegistrationTransformBsplineDisplacementField",
-    "RegistrationTransformBsplineExponential",
-    "RegistrationTransformBsplineSyn",
-    "RegistrationTransformCompositeAffine",
-    "RegistrationTransformExponential",
-    "RegistrationTransformGaussianDisplacementField",
-    "RegistrationTransformRigid",
-    "RegistrationTransformSimilarity",
-    "RegistrationTransformSyn",
-    "RegistrationTransformTimeVaryingBsplineVelocityField",
-    "RegistrationTransformTimeVaryingVelocityField",
-    "RegistrationTransformTranslation",
-    "RegistrationWinsorizeImageIntensities",
-    "registration",
+    "ANTS_REGISTRATION_METADATA",
+    "AntsRegistrationConvergence",
+    "AntsRegistrationInitialMovingTransform",
+    "AntsRegistrationInitialMovingTransformInitializationFeature",
+    "AntsRegistrationInitialMovingTransformUseInverse",
+    "AntsRegistrationMasks",
+    "AntsRegistrationMetricAntsNeighbourhoodCrossCorrelation",
+    "AntsRegistrationMetricDemons",
+    "AntsRegistrationMetricEuclideanIcp",
+    "AntsRegistrationMetricGlobalCorrelation",
+    "AntsRegistrationMetricIgdm",
+    "AntsRegistrationMetricJensenHavrdaCharvetTsallis",
+    "AntsRegistrationMetricMattes",
+    "AntsRegistrationMetricMeanSquares",
+    "AntsRegistrationMetricMutualInformation",
+    "AntsRegistrationMetricPointSetExpectation",
+    "AntsRegistrationOutputs",
+    "AntsRegistrationStage",
+    "AntsRegistrationTransformAffine",
+    "AntsRegistrationTransformBspline",
+    "AntsRegistrationTransformBsplineDisplacementField",
+    "AntsRegistrationTransformBsplineExponential",
+    "AntsRegistrationTransformBsplineSyn",
+    "AntsRegistrationTransformCompositeAffine",
+    "AntsRegistrationTransformExponential",
+    "AntsRegistrationTransformGaussianDisplacementField",
+    "AntsRegistrationTransformRigid",
+    "AntsRegistrationTransformSimilarity",
+    "AntsRegistrationTransformSyn",
+    "AntsRegistrationTransformTimeVaryingBsplineVelocityField",
+    "AntsRegistrationTransformTimeVaryingVelocityField",
+    "AntsRegistrationTransformTranslation",
+    "AntsRegistrationWinsorizeImageIntensities",
+    "ants_registration",
 ]

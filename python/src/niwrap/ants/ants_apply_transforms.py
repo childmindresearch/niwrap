@@ -6,17 +6,17 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-APPLY_TRANSFORMS_METADATA = Metadata(
-    id="af0ab7e47649587aa2226c23dbebd40492471a49.boutiques",
-    name="apply_transforms",
+ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
+    id="e40f11fc955191d42a23be225ac2b4c2c3a42561.boutiques",
+    name="antsApplyTransforms",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
 
 
-class ApplyTransformsWarpedOutputOutputs(typing.NamedTuple):
+class AntsApplyTransformsWarpedOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ApplyTransformsWarpedOutput(...)`.
+    Output object returned when calling `AntsApplyTransformsWarpedOutput(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -25,7 +25,7 @@ class ApplyTransformsWarpedOutputOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ApplyTransformsWarpedOutput:
+class AntsApplyTransformsWarpedOutput:
     """
     Output the warped image.
     """
@@ -51,25 +51,25 @@ class ApplyTransformsWarpedOutput:
     def outputs(
         self,
         execution: Execution,
-    ) -> ApplyTransformsWarpedOutputOutputs:
+    ) -> AntsApplyTransformsWarpedOutputOutputs:
         """
         Collect output file paths.
         
         Args:
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ApplyTransformsWarpedOutputOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsWarpedOutputOutputs`).
         """
-        ret = ApplyTransformsWarpedOutputOutputs(
+        ret = AntsApplyTransformsWarpedOutputOutputs(
             root=execution.output_file("."),
             output_image_outfile=execution.output_file(self.warped_output_file_name),
         )
         return ret
 
 
-class ApplyTransformsCompositeDisplacementFieldOutputOutputs(typing.NamedTuple):
+class AntsApplyTransformsCompositeDisplacementFieldOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ApplyTransformsCompositeDisplacementFieldOutput(...)`.
+    Output object returned when calling `AntsApplyTransformsCompositeDisplacementFieldOutput(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -78,7 +78,7 @@ class ApplyTransformsCompositeDisplacementFieldOutputOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ApplyTransformsCompositeDisplacementFieldOutput:
+class AntsApplyTransformsCompositeDisplacementFieldOutput:
     """
     Print out the displacement field based on the composite transform and the
     reference image.
@@ -108,25 +108,25 @@ class ApplyTransformsCompositeDisplacementFieldOutput:
     def outputs(
         self,
         execution: Execution,
-    ) -> ApplyTransformsCompositeDisplacementFieldOutputOutputs:
+    ) -> AntsApplyTransformsCompositeDisplacementFieldOutputOutputs:
         """
         Collect output file paths.
         
         Args:
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ApplyTransformsCompositeDisplacementFieldOutputOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsCompositeDisplacementFieldOutputOutputs`).
         """
-        ret = ApplyTransformsCompositeDisplacementFieldOutputOutputs(
+        ret = AntsApplyTransformsCompositeDisplacementFieldOutputOutputs(
             root=execution.output_file("."),
             output_image_outfile=execution.output_file(self.composite_displacement_field),
         )
         return ret
 
 
-class ApplyTransformsGenericAffineTransformOutputOutputs(typing.NamedTuple):
+class AntsApplyTransformsGenericAffineTransformOutputOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `ApplyTransformsGenericAffineTransformOutput(...)`.
+    Output object returned when calling `AntsApplyTransformsGenericAffineTransformOutput(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -135,7 +135,7 @@ class ApplyTransformsGenericAffineTransformOutputOutputs(typing.NamedTuple):
 
 
 @dataclasses.dataclass
-class ApplyTransformsGenericAffineTransformOutput:
+class AntsApplyTransformsGenericAffineTransformOutput:
     """
     Compose all affine transforms and (if boolean is set) calculate its inverse
     which is then written to an ITK file.
@@ -165,16 +165,16 @@ class ApplyTransformsGenericAffineTransformOutput:
     def outputs(
         self,
         execution: Execution,
-    ) -> ApplyTransformsGenericAffineTransformOutputOutputs:
+    ) -> AntsApplyTransformsGenericAffineTransformOutputOutputs:
         """
         Collect output file paths.
         
         Args:
             execution: The execution object.
         Returns:
-            NamedTuple of outputs (described in `ApplyTransformsGenericAffineTransformOutputOutputs`).
+            NamedTuple of outputs (described in `AntsApplyTransformsGenericAffineTransformOutputOutputs`).
         """
-        ret = ApplyTransformsGenericAffineTransformOutputOutputs(
+        ret = AntsApplyTransformsGenericAffineTransformOutputOutputs(
             root=execution.output_file("."),
             output_image_outfile=execution.output_file(self.generic_affine_transform_file),
         )
@@ -182,7 +182,7 @@ class ApplyTransformsGenericAffineTransformOutput:
 
 
 @dataclasses.dataclass
-class ApplyTransformsLinear:
+class AntsApplyTransformsLinear:
     """
     Linear interpolation.
     """
@@ -205,7 +205,7 @@ class ApplyTransformsLinear:
 
 
 @dataclasses.dataclass
-class ApplyTransformsNearestNeighbor:
+class AntsApplyTransformsNearestNeighbor:
     """
     Nearest neighbor interpolation.
     """
@@ -228,7 +228,7 @@ class ApplyTransformsNearestNeighbor:
 
 
 @dataclasses.dataclass
-class ApplyTransformsMultiLabel:
+class AntsApplyTransformsMultiLabel:
     """
     Multi label interpolation.
     """
@@ -256,7 +256,7 @@ class ApplyTransformsMultiLabel:
 
 
 @dataclasses.dataclass
-class ApplyTransformsGaussian:
+class AntsApplyTransformsGaussian:
     """
     Gaussian interpolation.
     """
@@ -284,7 +284,7 @@ class ApplyTransformsGaussian:
 
 
 @dataclasses.dataclass
-class ApplyTransformsBspline:
+class AntsApplyTransformsBspline:
     """
     BSpline interpolation.
     """
@@ -310,7 +310,7 @@ class ApplyTransformsBspline:
 
 
 @dataclasses.dataclass
-class ApplyTransformsCosineWindowedSinc:
+class AntsApplyTransformsCosineWindowedSinc:
     """
     Cosine windowed sinc interpolation.
     """
@@ -333,7 +333,7 @@ class ApplyTransformsCosineWindowedSinc:
 
 
 @dataclasses.dataclass
-class ApplyTransformsWelchWindowedSinc:
+class AntsApplyTransformsWelchWindowedSinc:
     """
     Welch windowed sinc interpolation.
     """
@@ -356,7 +356,7 @@ class ApplyTransformsWelchWindowedSinc:
 
 
 @dataclasses.dataclass
-class ApplyTransformsHammingWindowedSinc:
+class AntsApplyTransformsHammingWindowedSinc:
     """
     Hamming windowed sinc interpolation.
     """
@@ -379,7 +379,7 @@ class ApplyTransformsHammingWindowedSinc:
 
 
 @dataclasses.dataclass
-class ApplyTransformsLanczosWindowedSinc:
+class AntsApplyTransformsLanczosWindowedSinc:
     """
     Lanczos windowed sinc interpolation.
     """
@@ -402,7 +402,7 @@ class ApplyTransformsLanczosWindowedSinc:
 
 
 @dataclasses.dataclass
-class ApplyTransformsGenericLabel:
+class AntsApplyTransformsGenericLabel:
     """
     Generic label interpolation.
     """
@@ -428,7 +428,7 @@ class ApplyTransformsGenericLabel:
 
 
 @dataclasses.dataclass
-class ApplyTransformsTransformFileName:
+class AntsApplyTransformsTransformFileName:
     """
     Transform file name.
     """
@@ -453,7 +453,7 @@ class ApplyTransformsTransformFileName:
 
 
 @dataclasses.dataclass
-class ApplyTransformsUseInverse:
+class AntsApplyTransformsUseInverse:
     """
     Use inverse.
     """
@@ -477,33 +477,33 @@ class ApplyTransformsUseInverse:
         return cargs
 
 
-class ApplyTransformsOutputs(typing.NamedTuple):
+class AntsApplyTransformsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `apply_transforms(...)`.
+    Output object returned when calling `ants_apply_transforms(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    output: typing.Union[ApplyTransformsWarpedOutputOutputs, ApplyTransformsCompositeDisplacementFieldOutputOutputs, ApplyTransformsGenericAffineTransformOutputOutputs]
-    """Outputs from `ApplyTransformsWarpedOutput` or
-    `ApplyTransformsCompositeDisplacementFieldOutput` or
-    `ApplyTransformsGenericAffineTransformOutput`."""
+    output: typing.Union[AntsApplyTransformsWarpedOutputOutputs, AntsApplyTransformsCompositeDisplacementFieldOutputOutputs, AntsApplyTransformsGenericAffineTransformOutputOutputs]
+    """Outputs from `AntsApplyTransformsWarpedOutput` or
+    `AntsApplyTransformsCompositeDisplacementFieldOutput` or
+    `AntsApplyTransformsGenericAffineTransformOutput`."""
 
 
-def apply_transforms(
+def ants_apply_transforms(
     input_image: InputPathType,
     reference_image: InputPathType,
-    output: typing.Union[ApplyTransformsWarpedOutput, ApplyTransformsCompositeDisplacementFieldOutput, ApplyTransformsGenericAffineTransformOutput],
+    output: typing.Union[AntsApplyTransformsWarpedOutput, AntsApplyTransformsCompositeDisplacementFieldOutput, AntsApplyTransformsGenericAffineTransformOutput],
     dimensionality: typing.Literal[2, 3, 4] | None = None,
     input_image_type: typing.Literal[0, 1, 2, 3, 4, 5] | None = None,
-    interpolation: typing.Union[ApplyTransformsLinear, ApplyTransformsNearestNeighbor, ApplyTransformsMultiLabel, ApplyTransformsGaussian, ApplyTransformsBspline, ApplyTransformsCosineWindowedSinc, ApplyTransformsWelchWindowedSinc, ApplyTransformsHammingWindowedSinc, ApplyTransformsLanczosWindowedSinc, ApplyTransformsGenericLabel] | None = None,
+    interpolation: typing.Union[AntsApplyTransformsLinear, AntsApplyTransformsNearestNeighbor, AntsApplyTransformsMultiLabel, AntsApplyTransformsGaussian, AntsApplyTransformsBspline, AntsApplyTransformsCosineWindowedSinc, AntsApplyTransformsWelchWindowedSinc, AntsApplyTransformsHammingWindowedSinc, AntsApplyTransformsLanczosWindowedSinc, AntsApplyTransformsGenericLabel] | None = None,
     output_data_type: typing.Literal["char", "uchar", "short", "int", "float", "double", "default"] | None = None,
-    transform: list[typing.Union[ApplyTransformsTransformFileName, ApplyTransformsUseInverse]] | None = None,
+    transform: list[typing.Union[AntsApplyTransformsTransformFileName, AntsApplyTransformsUseInverse]] | None = None,
     default_value: float | None = None,
     static_cast_for_r: str | None = None,
     float_: typing.Literal[0, 1] | None = None,
     verbose: typing.Literal[0, 1] | None = None,
     runner: Runner | None = None,
-) -> ApplyTransformsOutputs:
+) -> AntsApplyTransformsOutputs:
     """
     antsApplyTransforms, applied to an input image, transforms it according to a
     reference image and a transform (or a set of transforms).
@@ -558,10 +558,10 @@ def apply_transforms(
         verbose: Verbose output.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `ApplyTransformsOutputs`).
+        NamedTuple of outputs (described in `AntsApplyTransformsOutputs`).
     """
     runner = runner or get_global_runner()
-    execution = runner.start_execution(APPLY_TRANSFORMS_METADATA)
+    execution = runner.start_execution(ANTS_APPLY_TRANSFORMS_METADATA)
     cargs = []
     cargs.append("antsApplyTransforms")
     if dimensionality is not None:
@@ -621,7 +621,7 @@ def apply_transforms(
             "--verbose",
             str(verbose)
         ])
-    ret = ApplyTransformsOutputs(
+    ret = AntsApplyTransformsOutputs(
         root=execution.output_file("."),
         output=output.outputs(execution),
     )
@@ -630,25 +630,25 @@ def apply_transforms(
 
 
 __all__ = [
-    "APPLY_TRANSFORMS_METADATA",
-    "ApplyTransformsBspline",
-    "ApplyTransformsCompositeDisplacementFieldOutput",
-    "ApplyTransformsCompositeDisplacementFieldOutputOutputs",
-    "ApplyTransformsCosineWindowedSinc",
-    "ApplyTransformsGaussian",
-    "ApplyTransformsGenericAffineTransformOutput",
-    "ApplyTransformsGenericAffineTransformOutputOutputs",
-    "ApplyTransformsGenericLabel",
-    "ApplyTransformsHammingWindowedSinc",
-    "ApplyTransformsLanczosWindowedSinc",
-    "ApplyTransformsLinear",
-    "ApplyTransformsMultiLabel",
-    "ApplyTransformsNearestNeighbor",
-    "ApplyTransformsOutputs",
-    "ApplyTransformsTransformFileName",
-    "ApplyTransformsUseInverse",
-    "ApplyTransformsWarpedOutput",
-    "ApplyTransformsWarpedOutputOutputs",
-    "ApplyTransformsWelchWindowedSinc",
-    "apply_transforms",
+    "ANTS_APPLY_TRANSFORMS_METADATA",
+    "AntsApplyTransformsBspline",
+    "AntsApplyTransformsCompositeDisplacementFieldOutput",
+    "AntsApplyTransformsCompositeDisplacementFieldOutputOutputs",
+    "AntsApplyTransformsCosineWindowedSinc",
+    "AntsApplyTransformsGaussian",
+    "AntsApplyTransformsGenericAffineTransformOutput",
+    "AntsApplyTransformsGenericAffineTransformOutputOutputs",
+    "AntsApplyTransformsGenericLabel",
+    "AntsApplyTransformsHammingWindowedSinc",
+    "AntsApplyTransformsLanczosWindowedSinc",
+    "AntsApplyTransformsLinear",
+    "AntsApplyTransformsMultiLabel",
+    "AntsApplyTransformsNearestNeighbor",
+    "AntsApplyTransformsOutputs",
+    "AntsApplyTransformsTransformFileName",
+    "AntsApplyTransformsUseInverse",
+    "AntsApplyTransformsWarpedOutput",
+    "AntsApplyTransformsWarpedOutputOutputs",
+    "AntsApplyTransformsWelchWindowedSinc",
+    "ants_apply_transforms",
 ]

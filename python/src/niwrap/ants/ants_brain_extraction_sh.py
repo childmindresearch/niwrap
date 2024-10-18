@@ -6,17 +6,17 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-BRAIN_EXTRACTION_SH_METADATA = Metadata(
-    id="71f5f53f1bd6af174207b63fb6c2714bd1844de7.boutiques",
-    name="brain_extraction_sh",
+ANTS_BRAIN_EXTRACTION_SH_METADATA = Metadata(
+    id="ca3041d6babf173fade41799bd55fb9cdb79c2aa.boutiques",
+    name="antsBrainExtraction.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
 
 
-class BrainExtractionShOutputs(typing.NamedTuple):
+class AntsBrainExtractionShOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `brain_extraction_sh(...)`.
+    Output object returned when calling `ants_brain_extraction_sh(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -28,7 +28,7 @@ class BrainExtractionShOutputs(typing.NamedTuple):
     """Brain probability mask"""
 
 
-def brain_extraction_sh(
+def ants_brain_extraction_sh(
     anatomical_image: InputPathType,
     template: InputPathType,
     probability_mask: InputPathType,
@@ -45,7 +45,7 @@ def brain_extraction_sh(
     debug_mode: bool = False,
     output_prefix: str | None = "output",
     runner: Runner | None = None,
-) -> BrainExtractionShOutputs:
+) -> AntsBrainExtractionShOutputs:
     """
     antsBrainExtraction.sh is a script from Advanced Normalization Tools (ANTs) for
     template-based brain extraction.
@@ -72,10 +72,10 @@ def brain_extraction_sh(
         output_prefix: Output prefix.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `BrainExtractionShOutputs`).
+        NamedTuple of outputs (described in `AntsBrainExtractionShOutputs`).
     """
     runner = runner or get_global_runner()
-    execution = runner.start_execution(BRAIN_EXTRACTION_SH_METADATA)
+    execution = runner.start_execution(ANTS_BRAIN_EXTRACTION_SH_METADATA)
     cargs = []
     cargs.append("antsBrainExtraction.sh")
     cargs.append("-d")
@@ -127,7 +127,7 @@ def brain_extraction_sh(
     cargs.append("-o")
     if output_prefix is not None:
         cargs.append(output_prefix)
-    ret = BrainExtractionShOutputs(
+    ret = AntsBrainExtractionShOutputs(
         root=execution.output_file("."),
         brain_extracted_image=execution.output_file(output_prefix + "BrainExtractionBrain.nii.gz") if (output_prefix is not None) else None,
         brain_mask=execution.output_file(output_prefix + "BrainExtractionMask.nii.gz") if (output_prefix is not None) else None,
@@ -138,7 +138,7 @@ def brain_extraction_sh(
 
 
 __all__ = [
-    "BRAIN_EXTRACTION_SH_METADATA",
-    "BrainExtractionShOutputs",
-    "brain_extraction_sh",
+    "ANTS_BRAIN_EXTRACTION_SH_METADATA",
+    "AntsBrainExtractionShOutputs",
+    "ants_brain_extraction_sh",
 ]

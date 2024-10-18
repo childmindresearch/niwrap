@@ -18,7 +18,7 @@
 | Package | Status | Version | API Coverage |
 | --- | --- | --- | --- |
 | [AFNI](https://afni.nimh.nih.gov/) | In progress | [`24.2.06`](https://hub.docker.com/r/afni/afni_make_build) | 561/621 (90.3%) |
-| [ANTs](https://github.com/ANTsX/ANTs) | In progress | [`2.5.3`](https://hub.docker.com/r/antsx/ants) | 9/120 (7.5%) |
+| [ANTs](https://github.com/ANTsX/ANTs) | In progress | [`2.5.3`](https://hub.docker.com/r/antsx/ants) | 70/113 (61.9%) |
 | [Connectome Workbench](https://github.com/Washington-University/workbench) | Testing | [`1.5.0`](https://hub.docker.com/r/brainlife/connectome_workbench) | 202/202 (100% 🎉) |
 | [Convert3D](http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D) | In progress | [`1.1.0`](https://hub.docker.com/r/pyushkevich/itksnap) | 2/4 (50.0%) |
 | [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) | In progress | [`6.0.5`](https://hub.docker.com/r/mcin/fsl) | 221/376 (58.8%) |

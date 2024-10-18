@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 N4_BIAS_FIELD_CORRECTION_METADATA = Metadata(
-    id="3bf4b5da732f5f2791d1080d602c06c89ff246e3.boutiques",
-    name="n4_bias_field_correction",
+    id="bead743325d69574c42fd1acfe77effb97b9087b.boutiques",
+    name="N4BiasFieldCorrection",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
 )
