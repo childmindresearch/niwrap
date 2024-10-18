@@ -18,11 +18,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        2,
-        3,
-        4
-      ],
+      "value-choices": [2, 3, 4],
       "command-line-flag": "--image-dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, the program tries to infer the dimensionality from the input image."
     },
@@ -82,10 +78,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--constrain-nonnegative",
       "description": "Constrain solution to non-negative weights."
     },
@@ -105,10 +98,7 @@
       "value-key": "[PATCH_METRIC]",
       "type": "String",
       "optional": true,
-      "value-choices": [
-        "PC",
-        "MSQ"
-      ],
+      "value-choices": ["PC", "MSQ"],
       "default-value": "PC",
       "command-line-flag": "--patch-metric",
       "description": "Metric to be used in determining the most similar neighborhood patch. Options include Pearson's correlation (PC) and mean squares (MSQ). Default = PC (Pearson correlation)."
@@ -157,10 +147,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--verbose",
       "description": "Verbose output."
     }

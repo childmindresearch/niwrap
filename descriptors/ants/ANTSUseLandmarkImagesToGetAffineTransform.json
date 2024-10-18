@@ -26,10 +26,7 @@
       "name": "Transform type",
       "value-key": "[TRANSFORM_TYPE]",
       "type": "String",
-      "value-choices": [
-        "rigid",
-        "affine"
-      ],
+      "value-choices": ["rigid", "affine"],
       "description": "Type of transform to compute: 'rigid' or 'affine'.",
       "optional": false
     },

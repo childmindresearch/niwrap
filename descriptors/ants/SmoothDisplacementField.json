@@ -70,10 +70,7 @@
       "type": "Number",
       "integer": true,
       "default-value": 0,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "optional": true,
       "description": "Estimate the inverse of the displacement field if set to 1."
     },

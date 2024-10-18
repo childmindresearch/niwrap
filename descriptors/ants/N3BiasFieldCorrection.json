@@ -18,11 +18,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        2,
-        3,
-        4
-      ],
+      "value-choices": [2, 3, 4],
       "command-line-flag": "--image-dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, N3 tries to infer the dimensionality from the input image."
     },
@@ -50,10 +46,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--rescale-intensities",
       "description": "This option rescales the intensity range within the user-specified mask to the original [min, max] range."
     },
@@ -119,10 +112,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--verbose",
       "description": "Verbose output."
     }

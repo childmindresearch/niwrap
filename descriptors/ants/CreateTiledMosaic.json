@@ -82,14 +82,7 @@
       "optional": true,
       "command-line-flag": "-d",
       "description": "Specifies the direction of the slices. Can be based on image storage in memory or aligned physical space. Defaults to z-direction if unspecified.",
-      "value-choices": [
-        "0",
-        "1",
-        "2",
-        "x",
-        "y",
-        "z"
-      ]
+      "value-choices": ["0", "1", "2", "x", "y", "z"]
     },
     {
       "id": "pad_or_crop",
@@ -126,10 +119,7 @@
       "integer": true,
       "optional": true,
       "command-line-flag": "-g",
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "description": "Permute (or swap) the axes of the individual slice images."
     }
   ],

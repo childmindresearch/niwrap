@@ -22,13 +22,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
+      "value-choices": [0, 1, 2, 3, 4],
       "description": "Specify the type of information to print: 0 for origin, 1 for spacing, 2 for size, 3 for index, 4 for direction."
     }
   ],
