@@ -1,0 +1,61 @@
+{
+  "name": "simpleSynRegistration",
+  "command-line": "simpleSynRegistration [FIXED_IMAGE], [MOVING_IMAGE], [INITIAL_TRANSFORM], [OUTPUT_PREFIX]",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "fixed_image",
+      "name": "Fixed Image",
+      "value-key": "[FIXED_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "description": "The fixed image for registration."
+    },
+    {
+      "id": "moving_image",
+      "name": "Moving Image",
+      "value-key": "[MOVING_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "description": "The moving image to be registered."
+    },
+    {
+      "id": "initial_transform",
+      "name": "Initial Transform",
+      "value-key": "[INITIAL_TRANSFORM]",
+      "type": "String",
+      "optional": false,
+      "description": "The initial transform for registration."
+    },
+    {
+      "id": "output_prefix",
+      "name": "Output Prefix",
+      "value-key": "[OUTPUT_PREFIX]",
+      "type": "String",
+      "optional": false,
+      "description": "Prefix for the output file name without any extension."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "registered_image",
+      "name": "Registered Image",
+      "description": "The output registered image.",
+      "path-template": "[OUTPUT_PREFIX]Registered.nii.gz"
+    },
+    {
+      "id": "transform_matrix",
+      "name": "Transform Matrix",
+      "description": "The output transformation matrix.",
+      "path-template": "[OUTPUT_PREFIX]Transform.mat"
+    }
+  ],
+  "author": "ANTs developers",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
+}

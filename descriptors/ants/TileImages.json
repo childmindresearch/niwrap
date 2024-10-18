@@ -1,0 +1,54 @@
+{
+  "name": "TileImages",
+  "command-line": "TileImages [IMAGE_DIMENSION] [OUTPUT_IMAGE] [LAYOUT] [INPUT_IMAGES...]",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "schema-version": "0.5",
+  "tool-version": "2.5.3",
+  "inputs": [
+    {
+      "id": "image_dimension",
+      "name": "Image Dimension",
+      "value-key": "[IMAGE_DIMENSION]",
+      "type": "Number",
+      "integer": true,
+      "description": "Dimensionality of the output image."
+    },
+    {
+      "id": "output_image",
+      "name": "Output Image",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "File",
+      "description": "The path for the output tiled image."
+    },
+    {
+      "id": "layout",
+      "name": "Layout",
+      "value-key": "[LAYOUT]",
+      "type": "String",
+      "description": "Defines the structure of the tiled output image. The layout dictates the number and arrangement of input images in the output image."
+    },
+    {
+      "id": "input_images",
+      "name": "Input Images",
+      "value-key": "[INPUT_IMAGES...]",
+      "type": "File",
+      "list": true,
+      "description": "Input images to be tiled into the output image. The number of input images should match the layout specification.",
+      "min-list-entries": 1
+    }
+  ],
+  "output-files": [
+    {
+      "id": "tiled_image",
+      "name": "Tiled Image",
+      "description": "The final tiled output image.",
+      "path-template": "[OUTPUT_IMAGE]"
+    }
+  ],
+  "author": "ANTs developers",
+  "url": "https://github.com/ANTsX/ANTs",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
+}

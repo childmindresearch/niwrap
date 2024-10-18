@@ -1,0 +1,68 @@
+{
+  "name": "antsMotionCorrDiffusionDirection",
+  "command-line": "antsMotionCorrDiffusionDirection [SCHEME] [BVEC] [PHYSICAL] [MOCO] [OUTPUT]",
+  "author": "ANTs developers",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  },
+  "inputs": [
+    {
+      "id": "scheme",
+      "name": "Scheme file",
+      "value-key": "[SCHEME]",
+      "type": "File",
+      "optional": false,
+      "command-line-flag": "-s",
+      "description": "Camino scheme file specify acquisition parameters."
+    },
+    {
+      "id": "bvec",
+      "name": "Bvec file",
+      "value-key": "[BVEC]",
+      "type": "File",
+      "optional": false,
+      "command-line-flag": "-b",
+      "description": "bvec image specifying diffusion directions."
+    },
+    {
+      "id": "physical",
+      "name": "Physical reference image",
+      "value-key": "[PHYSICAL]",
+      "type": "File",
+      "optional": false,
+      "command-line-flag": "-p",
+      "description": "3D image in dwi space."
+    },
+    {
+      "id": "moco",
+      "name": "Motion correction parameters",
+      "value-key": "[MOCO]",
+      "type": "File",
+      "optional": false,
+      "command-line-flag": "-m",
+      "description": "Motion correction parameters from antsMotionCorr."
+    },
+    {
+      "id": "output",
+      "name": "Output corrected directions file",
+      "value-key": "[OUTPUT]",
+      "type": "String",
+      "optional": false,
+      "command-line-flag": "-o",
+      "description": "Specify the output file for corrected directions."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "corrected_scheme",
+      "name": "Corrected scheme",
+      "description": "The output file for corrected diffusion directions.",
+      "path-template": "[OUTPUT]"
+    }
+  ]
+}

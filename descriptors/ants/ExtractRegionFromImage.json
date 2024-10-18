@@ -1,0 +1,123 @@
+{
+  "name": "ExtractRegionFromImage",
+  "command-line": "ExtractRegionFromImage [IMAGE_DIMENSION] [INPUT_IMAGE] [OUTPUT_IMAGE] [REGION_SPECIFICATION]",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "author": "ANTs developers",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "image_dimension",
+      "name": "Image Dimension",
+      "value-key": "[IMAGE_DIMENSION]",
+      "type": "Number",
+      "integer": true,
+      "description": "The dimensionality of the image."
+    },
+    {
+      "id": "input_image",
+      "name": "Input Image",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "description": "Path to the input image from which the region will be extracted."
+    },
+    {
+      "id": "output_image",
+      "name": "Output Image",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "String",
+      "description": "Path to the output image where the extracted region will be saved."
+    },
+    {
+      "id": "region_specification",
+      "name": "Region Specification",
+      "value-key": "[REGION_SPECIFICATION]",
+      "description": "Specify the region to extract using indices, label, domain image, or label with label image.",
+      "type": [
+        {
+          "id": "region_min_max_index",
+          "name": "Region by Min/Max Index",
+          "command-line": "[MIN_INDEX] [MAX_INDEX]",
+          "inputs": [
+            {
+              "id": "min_index",
+              "name": "Minimum Index",
+              "value-key": "[MIN_INDEX]",
+              "type": "String",
+              "description": "Minimum index to define the starting point of the region."
+            },
+            {
+              "id": "max_index",
+              "name": "Maximum Index",
+              "value-key": "[MAX_INDEX]",
+              "type": "String",
+              "description": "Maximum index to define the endpoint of the region."
+            }
+          ]
+        },
+        {
+          "id": "region_label",
+          "name": "Region by Label",
+          "command-line": "[LABEL]",
+          "inputs": [
+            {
+              "id": "label",
+              "name": "Label",
+              "value-key": "[LABEL]",
+              "type": "String",
+              "description": "Label value to extract the region corresponding to the specified label."
+            }
+          ]
+        },
+        {
+          "id": "region_domain_image",
+          "name": "Region by Domain Image",
+          "command-line": "[DOMAIN_IMAGE]",
+          "inputs": [
+            {
+              "id": "domain_image",
+              "name": "Domain Image",
+              "value-key": "[DOMAIN_IMAGE]",
+              "type": "File",
+              "description": "Image defining the domain from which to extract the region."
+            }
+          ]
+        },
+        {
+          "id": "region_label_with_image",
+          "name": "Region by Label with Label Image",
+          "command-line": "[LABEL] [LABEL_IMAGE] 1",
+          "inputs": [
+            {
+              "id": "label",
+              "name": "Label",
+              "value-key": "[LABEL]",
+              "type": "String",
+              "description": "Label value used for the region extraction."
+            },
+            {
+              "id": "label_image",
+              "name": "Label Image",
+              "value-key": "[LABEL_IMAGE]",
+              "type": "File",
+              "description": "Image containing label information."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_image_file",
+      "name": "Output Image",
+      "path-template": "[OUTPUT_IMAGE]",
+      "description": "File containing the extracted region."
+    }
+  ],
+  "url": "https://github.com/ANTsX/ANTs",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
+}

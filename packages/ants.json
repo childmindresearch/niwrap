@@ -15,7 +15,8 @@
       },
       {
         "target": "ANTSIntegrateVectorField",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ANTSIntegrateVectorField.json"
       },
       {
         "target": "ANTSIntegrateVelocityField",
@@ -23,19 +24,23 @@
       },
       {
         "target": "ANTSJacobian",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ANTSJacobian.json"
       },
       {
         "target": "ANTSUseDeformationFieldToGetAffineTransform",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ANTSUseDeformationFieldToGetAffineTransform.json"
       },
       {
         "target": "ANTSUseLandmarkImagesToGetAffineTransform",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ANTSUseLandmarkImagesToGetAffineTransform.json"
       },
       {
         "target": "ANTSUseLandmarkImagesToGetBSplineDisplacementField",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ANTSUseLandmarkImagesToGetBSplineDisplacementField.json"
       },
       {
         "target": "ANTSpexec.sh",
@@ -43,12 +48,13 @@
       },
       {
         "target": "AddNoiseToImage",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/AddNoiseToImage.json"
       },
       {
         "target": "Atropos",
         "status": "done",
-        "descriptor": "descriptors/ants/atropos.json"
+        "descriptor": "descriptors/ants/Atropos.json"
       },
       {
         "target": "AverageAffineTransform",
@@ -92,15 +98,18 @@
       },
       {
         "target": "ConvertScalarImageToRGB",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ConvertScalarImageToRGB.json"
       },
       {
         "target": "ConvertToJpg",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ConvertToJpg.json"
       },
       {
         "target": "ConvertTransformFile",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ConvertTransformFile.json"
       },
       {
         "target": "CopyImageHeaderInformation",
@@ -108,11 +117,13 @@
       },
       {
         "target": "CreateDTICohort",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/CreateDTICohort.json"
       },
       {
         "target": "CreateDisplacementField",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/CreateDisplacementField.json"
       },
       {
         "target": "CreateImage",
@@ -124,11 +135,13 @@
       },
       {
         "target": "CreateTiledMosaic",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/CreateTiledMosaic.json"
       },
       {
         "target": "CreateWarpedGridImage",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/CreateWarpedGridImage.json"
       },
       {
         "target": "DeNrrd",
@@ -137,15 +150,17 @@
       {
         "target": "DenoiseImage",
         "status": "done",
-        "descriptor": "descriptors/ants/denoise_image.json"
+        "descriptor": "descriptors/ants/DenoiseImage.json"
       },
       {
         "target": "ExtractRegionFromImage",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ExtractRegionFromImage.json"
       },
       {
         "target": "ExtractRegionFromImageByMask",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ExtractRegionFromImageByMask.json"
       },
       {
         "target": "ExtractSliceFromImage",
@@ -165,19 +180,23 @@
       },
       {
         "target": "ImageIntensityStatistics",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ImageIntensityStatistics.json"
       },
       {
         "target": "ImageMath",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ImageMath.json"
       },
       {
         "target": "ImageSetStatistics",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ImageSetStatistics.json"
       },
       {
         "target": "KellyKapowski",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/KellyKapowski.json"
       },
       {
         "target": "KellySlater",
@@ -189,7 +208,8 @@
       },
       {
         "target": "LabelGeometryMeasures",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/LabelGeometryMeasures.json"
       },
       {
         "target": "LabelOverlapMeasures",
@@ -201,7 +221,8 @@
       },
       {
         "target": "LesionFilling",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/LesionFilling.json"
       },
       {
         "target": "MeasureImageSimilarity",
@@ -217,25 +238,27 @@
       },
       {
         "target": "MultiplyImages",
-        "status": "done",
-        "descriptor": "descriptors/ants/multiply_images.json"
+        "status": "missing"
       },
       {
         "target": "N3BiasFieldCorrection",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/N3BiasFieldCorrection.json"
       },
       {
         "target": "N4BiasFieldCorrection",
         "status": "done",
-        "descriptor": "descriptors/ants/n4_bias_field_correction.json"
+        "descriptor": "descriptors/ants/N4BiasFieldCorrection.json"
       },
       {
         "target": "NonLocalSuperResolution",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/NonLocalSuperResolution.json"
       },
       {
         "target": "PasteImageIntoImage",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/PasteImageIntoImage.json"
       },
       {
         "target": "PermuteFlipImageOrientationAxes",
@@ -243,11 +266,13 @@
       },
       {
         "target": "PrintHeader",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/PrintHeader.json"
       },
       {
         "target": "RebaseTensorImage",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/RebaseTensorImage.json"
       },
       {
         "target": "ReorientTensorImage",
@@ -255,7 +280,8 @@
       },
       {
         "target": "ResampleImage",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ResampleImage.json"
       },
       {
         "target": "ResampleImageBySpacing",
@@ -275,19 +301,23 @@
       },
       {
         "target": "SetSpacing",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/SetSpacing.json"
       },
       {
         "target": "SimulateDisplacementField",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/SimulateDisplacementField.json"
       },
       {
         "target": "SmoothDisplacementField",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/SmoothDisplacementField.json"
       },
       {
         "target": "SmoothImage",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/SmoothImage.json"
       },
       {
         "target": "StackSlices",
@@ -295,35 +325,43 @@
       },
       {
         "target": "SuperResolution",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/SuperResolution.json"
       },
       {
         "target": "SurfaceBasedSmoothing",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/SurfaceBasedSmoothing.json"
       },
       {
         "target": "SurfaceCurvature",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/SurfaceCurvature.json"
       },
       {
         "target": "TextureCooccurrenceFeatures",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/TextureCooccurrenceFeatures.json"
       },
       {
         "target": "TextureRunLengthFeatures",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/TextureRunLengthFeatures.json"
       },
       {
         "target": "ThresholdImage",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/ThresholdImage.json"
       },
       {
         "target": "TileImages",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/TileImages.json"
       },
       {
         "target": "TimeSCCAN",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/TimeSCCAN.json"
       },
       {
         "target": "WarpImageMultiTransform",
@@ -331,15 +369,18 @@
       },
       {
         "target": "WarpTensorImageMultiTransform",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/WarpTensorImageMultiTransform.json"
       },
       {
         "target": "WarpTimeSeriesImageMultiTransform",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/WarpTimeSeriesImageMultiTransform.json"
       },
       {
         "target": "antsAI",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsAI.json"
       },
       {
         "target": "antsASLProcessing.sh",
@@ -351,62 +392,71 @@
       },
       {
         "target": "antsAlignOrigin",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsAlignOrigin.json"
       },
       {
         "target": "antsApplyTransforms",
         "status": "done",
-        "descriptor": "descriptors/ants/apply_transforms.json"
+        "descriptor": "descriptors/ants/antsApplyTransforms.json"
       },
       {
         "target": "antsApplyTransformsToPoints",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsApplyTransformsToPoints.json"
       },
       {
         "target": "antsAtroposN4.sh",
         "status": "done",
-        "descriptor": "descriptors/ants/atropos_n4.json"
+        "descriptor": "descriptors/ants/antsAtroposN4.sh.json"
       },
       {
         "target": "antsBOLDNetworkAnalysis.R",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "antsBrainExtraction.sh",
         "status": "done",
-        "descriptor": "descriptors/ants/brain_extraction_sh.json"
+        "descriptor": "descriptors/ants/antsBrainExtraction.sh.json"
       },
       {
         "target": "antsCorticalThickness.sh",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsCorticalThickness.sh.json"
       },
       {
         "target": "antsIntermodalityIntrasubject.sh",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsIntermodalityIntrasubject.sh.json"
       },
       {
         "target": "antsIntroduction.sh",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsIntroduction.sh.json"
       },
       {
         "target": "antsJointFusion",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsJointFusion.json"
       },
       {
         "target": "antsJointLabelFusion.sh",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsJointLabelFusion.sh.json"
       },
       {
         "target": "antsJointTensorFusion",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsJointTensorFusion.json"
       },
       {
         "target": "antsLandmarkBasedTransformInitializer",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsLandmarkBasedTransformInitializer.json"
       },
       {
         "target": "antsLaplacianBoundaryCondition.R",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "antsLongitudinalCorticalThickness.sh",
@@ -414,15 +464,18 @@
       },
       {
         "target": "antsMotionCorr",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsMotionCorr.json"
       },
       {
         "target": "antsMotionCorrDiffusionDirection",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsMotionCorrDiffusionDirection.json"
       },
       {
         "target": "antsMotionCorrStats",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsMotionCorrStats.json"
       },
       {
         "target": "antsMultivariateTemplateConstruction.sh",
@@ -430,37 +483,42 @@
       },
       {
         "target": "antsMultivariateTemplateConstruction2.sh",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsMultivariateTemplateConstruction2.sh.json"
       },
       {
         "target": "antsNetworkAnalysis.R",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "antsNeuroimagingBattery",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsNeuroimagingBattery.json"
       },
       {
         "target": "antsRegistration",
         "status": "done",
-        "descriptor": "descriptors/ants/registration.json"
+        "descriptor": "descriptors/ants/antsRegistration.json"
       },
       {
         "target": "antsRegistrationSyN.sh",
         "status": "done",
-        "descriptor": "descriptors/ants/ants_registration_syn_sh.json"
+        "descriptor": "descriptors/ants/antsRegistrationSyN.sh.json"
       },
       {
         "target": "antsRegistrationSyNQuick.sh",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsRegistrationSyNQuick.sh.json"
       },
       {
         "target": "antsSliceRegularizedRegistration",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsSliceRegularizedRegistration.json"
       },
       {
         "target": "antsTransformInfo",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/antsTransformInfo.json"
       },
       {
         "target": "antsUtilitiesTesting",
@@ -472,31 +530,34 @@
       },
       {
         "target": "iMath",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/iMath.json"
       },
       {
         "target": "sccan",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/sccan.json"
       },
       {
         "target": "simpleSynRegistration",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/simpleSynRegistration.json"
       },
       {
         "target": "waitForPBSQJobs.pl",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "waitForSGEQJobs.pl",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "waitForSlurmJobs.pl",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "waitForXGridJobs.pl",
-        "status": "missing"
+        "status": "ignore"
       }
     ]
   }

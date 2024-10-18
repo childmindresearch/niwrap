@@ -1,0 +1,76 @@
+{
+  "name": "ConvertTransformFile",
+  "command-line": "ConvertTransformFile [DIMENSIONS] [INPUT_TRANSFORM_FILE] [OUTPUT_TRANSFORM_FILE] [OPTIONS]",
+  "author": "ANTs developers",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "dimensions",
+      "name": "Dimensions",
+      "value-key": "[DIMENSIONS]",
+      "type": "Number",
+      "integer": true,
+      "description": "Dimensionality of the transform file.",
+      "optional": false
+    },
+    {
+      "id": "input_transform_file",
+      "name": "Input Transform File",
+      "value-key": "[INPUT_TRANSFORM_FILE]",
+      "type": "File",
+      "description": "Path to the input transform file.",
+      "optional": false
+    },
+    {
+      "id": "output_transform_file",
+      "name": "Output Transform File",
+      "value-key": "[OUTPUT_TRANSFORM_FILE]",
+      "type": "String",
+      "description": "Path for the output transform file.",
+      "optional": false
+    },
+    {
+      "id": "matrix",
+      "name": "Matrix",
+      "value-key": "[MATRIX]",
+      "type": "Flag",
+      "command-line-flag": "--matrix",
+      "description": "Output only the transform matrix to a text file, one row per line with space-delimited values. Only works for specific transform types.",
+      "optional": true
+    },
+    {
+      "id": "homogeneous_matrix",
+      "name": "Homogeneous Matrix",
+      "value-key": "[HOMOGENEOUS_MATRIX]",
+      "type": "Flag",
+      "command-line-flag": "--homogeneousMatrix",
+      "description": "Output an N+1 square homogeneous matrix from the transform matrix and offset. Only works for specific transform types.",
+      "optional": true
+    },
+    {
+      "id": "RAS",
+      "name": "RAS Coordinate System",
+      "value-key": "[RAS]",
+      "type": "Flag",
+      "command-line-flag": "--RAS",
+      "description": "Convert the output into the RAS coordinate system if combined with 'matrix' or 'homogeneousMatrix'.",
+      "optional": true
+    },
+    {
+      "id": "convert_to_affine_type",
+      "name": "Convert to Affine Type",
+      "value-key": "[CONVERT_TO_AFFINE_TYPE]",
+      "type": "Flag",
+      "command-line-flag": "--convertToAffineType",
+      "description": "Convert the input transform type to AffineTransform and output again as a binary transform file.",
+      "optional": true
+    }
+  ],
+  "url": "https://github.com/ANTsX/ANTs",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "name": "iMath",
+  "command-line": "iMath [IMAGEDIMENSION] [OUTPUT_IMAGE] [OPERATIONS] [IMAGE1] [IMAGE2]",
+  "author": "ANTs developers",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "image_dimension",
+      "name": "Image Dimension",
+      "value-key": "[IMAGEDIMENSION]",
+      "type": "Number",
+      "integer": true,
+      "description": "Dimensionality of the image, either 2, 3, or 4.",
+      "value-choices": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "output_image",
+      "name": "Output Image",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "String",
+      "description": "Path for the output image file."
+    },
+    {
+      "id": "operations",
+      "name": "Operations",
+      "value-key": "[OPERATIONS]",
+      "type": "String",
+      "description": "Operations to be performed along with parameters, e.g., GetLargestComponent, MC for Closing, etc."
+    },
+    {
+      "id": "image1",
+      "name": "Input Image 1",
+      "value-key": "[IMAGE1]",
+      "type": "File",
+      "description": "First input image file."
+    },
+    {
+      "id": "image2",
+      "name": "Input Image 2",
+      "value-key": "[IMAGE2]",
+      "type": "File",
+      "optional": true,
+      "description": "Second input image file, if required by operation."
+    }
+  ],
+  "groups": [
+    {
+      "id": "largest_component_group",
+      "name": "Get Largest Component",
+      "description": "Get the single largest labeled object in an image.",
+      "members": [
+        "operations"
+      ],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "morphological_operations_group",
+      "name": "Morphological Operations",
+      "description": "Perform morphological operations such as closing, dilation, etc.",
+      "members": [
+        "operations"
+      ],
+      "mutually-exclusive": true
+    }
+  ],
+  "output-files": [
+    {
+      "id": "resulting_image",
+      "name": "Resulting Image",
+      "description": "The output image resulting from the operation.",
+      "path-template": "[OUTPUT_IMAGE]"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
+}

@@ -1,8 +1,8 @@
 {
   "name": "Atropos",
   "command-line": "Atropos [IMAGE_DIMENSIONALITY] [INTENSITY_IMAGE] [BSPLINE] [INITIALIZATION] [PARTIAL_VOLUME_LABEL_SET] [USE_PARTIAL_VOLUME_LIKELIHOODS] [POSTERIOR_FORMULATION] [MASK_IMAGE] [CONVERGENCE] [LIKELIHOOD_MODEL] [MRF] [ICM] [USE_RANDOM_SEED] [OUTPUT] [MINIMIZE_MEMORY_USAGE] [WINSORIZE_OUTLIERS] [USE_EUCLIDEAN_DISTANCE] [LABEL_PROPAGATION] [VERBOSE]",
-  "author": "Advanced Normalization Tools (ANTs) Contributors",
-  "description": "A finite mixture modeling (FMM) segmentation approach with possibilities for specifying prior constraints. These prior constraints include the specification of a prior label image, prior probability images (one for each class), and/or an MRF prior to enforce spatial smoothing of the labels. All segmentation images including priors and masks must be in the same voxel and physical space. Similar algorithms include FAST and SPM.",
+  "author": "ANTs developers",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
   "schema-version": "0.5",
@@ -13,83 +13,86 @@
   "inputs": [
     {
       "id": "image_dimensionality",
-      "name": "Image dimensionality",
+      "name": "Image Dimensionality",
       "value-key": "[IMAGE_DIMENSIONALITY]",
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [2, 3, 4],
+      "value-choices": [
+        2,
+        3,
+        4
+      ],
       "command-line-flag": "--image-dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, Atropos tries to infer the dimensionality from the first input image."
     },
     {
       "id": "intensity_image",
-      "name": "Intensity image",
+      "name": "Intensity Image",
       "value-key": "[INTENSITY_IMAGE]",
       "type": "String",
       "optional": false,
-      "list": true,
-      "command-line-flag": "--intensity-image",
-      "description": "One or more scalar images is specified for segmentation. For segmentation scenarios with no prior information, the first scalar image encountered on the command line is used to order labelings such that the class with the smallest intensity signature is class '1' through class 'N' which represents the voxels with the largest intensity values. The optional adaptive smoothing weight parameter is applicable only when using prior label or probability images. This scalar parameter is to be specified between [0,1] which smooths each labeled region separately and modulates the intensity measurement at each voxel in each intensity image between the original intensity and its smoothed counterpart. The smoothness parameters are governed by the -b/--bspline option."
+      "command-line-flag": "-a",
+      "description": "One or more scalar images is specified for segmentation. For scenarios with no prior information, the first scalar image is used to order labelings by intensity. The optional adaptive smoothing weight is applicable with prior images, specified between [0,1]."
     },
     {
       "id": "bspline",
-      "name": "BSpline",
+      "name": "B-Spline Parameters",
       "value-key": "[BSPLINE]",
-      "command-line-flag": "--bspline",
       "type": "String",
       "optional": true,
-      "description": "If the adaptive smoothing weights are > 0, the intensity images are smoothed in calculating the likelihood values. This is to account for subtle intensity differences across the same tissue regions.",
-      "default-value": "6,1x1x...,3"
+      "command-line-flag": "-b",
+      "description": "Parameters for B-Spline. Adaptive smoothing is applied to intensity images if smoothing weights > 0."
     },
     {
       "id": "initialization",
       "name": "Initialization",
       "value-key": "[INITIALIZATION]",
-      "command-line-flag": "--initialization",
       "type": "String",
       "optional": false,
-      "description": "To initialize the FMM parameters, one of the specified options (Random, Otsu, KMeans, PriorProbabilityImages, or PriorLabelImage) must be used."
+      "command-line-flag": "-i",
+      "description": "Initialize the FMM parameters. options include Random, Otsu, KMeans, PriorProbabilityImages, and PriorLabelImage."
     },
     {
       "id": "partial_volume_label_set",
-      "name": "Partial volume label set",
+      "name": "Partial Volume Label Set",
       "value-key": "[PARTIAL_VOLUME_LABEL_SET]",
       "type": "String",
-      "list": true,
-      "command-line-flag": "--partial-volume-label-set",
-      "min-list-entries": 1,
       "optional": true,
-      "description": "The partial volume estimation option allows one to model mixtures of classes within single voxels."
+      "command-line-flag": "-s",
+      "description": "Model mixtures of classes within single voxels. Specify labels for each partial volume class."
     },
     {
       "id": "use_partial_volume_likelihoods",
-      "name": "Use partial volume likelihoods",
+      "name": "Use Partial Volume Likelihoods",
       "value-key": "[USE_PARTIAL_VOLUME_LIKELIHOODS]",
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "--use-partial-volume-likelihoods",
-      "description": "The user can specify whether or not to use the partial volume likelihoods."
+      "description": "Whether to use partial volume likelihoods. A value of 1 considers the partial volume class separate from tissue classes."
     },
     {
       "id": "posterior_formulation",
-      "name": "Posterior formulation",
+      "name": "Posterior Formulation",
       "value-key": "[POSTERIOR_FORMULATION]",
       "type": "String",
       "optional": true,
-      "command-line-flag": "--posterior-formulation",
-      "description": "Different posterior probability formulations are possible as are different update options."
+      "command-line-flag": "-p",
+      "description": "Specify posterior probability formulation. Options are Socrates, Plato, Aristotle, or Sigmoid."
     },
     {
       "id": "mask_image",
-      "name": "Mask image",
+      "name": "Mask Image",
       "value-key": "[MASK_IMAGE]",
-      "type": "String",
+      "type": "File",
       "optional": false,
       "command-line-flag": "-x",
-      "description": "The image mask (which is required) defines the region which is to be labeled by the Atropos algorithm."
+      "description": "The required image mask defines the region to be labeled by Atropos."
     },
     {
       "id": "convergence",
@@ -97,98 +100,104 @@
       "value-key": "[CONVERGENCE]",
       "type": "String",
       "optional": false,
-      "command-line-flag": "--convergence",
-      "description": "Convergence is determined by calculating the mean maximum posterior probability over the region of interest at each iteration. When this value decreases or increases less than the specified threshold from the previous iteration or the maximum number of iterations is exceeded the program terminates.",
-      "default-value": "[5,0.001]"
+      "command-line-flag": "-c",
+      "description": "Determine convergence based on mean maximum posterior probability over region of interest."
     },
     {
       "id": "likelihood_model",
-      "name": "Likelihood model",
+      "name": "Likelihood Model",
       "value-key": "[LIKELIHOOD_MODEL]",
       "type": "String",
       "optional": false,
-      "command-line-flag": "--likelihood-model",
-      "description": "Both parametric and non-parametric options exist in Atropos."
+      "command-line-flag": "-k",
+      "description": "Specify parametric or non-parametric likelihood model. Options include Gaussian, HistogramParzenWindows, ManifoldParzenWindows, among others."
     },
     {
       "id": "mrf",
-      "name": "MRF",
+      "name": "MRF Parameters",
       "value-key": "[MRF]",
-      "command-line-flag": "-m",
       "type": "String",
       "optional": true,
-      "description": "Markov random field (MRF) theory provides a general framework for enforcing spatially contextual constraints on the segmentation solution.",
-      "default-value": "0.3,1x1x..."
+      "command-line-flag": "-m",
+      "description": "Markov Random Field parameters to enforce spatial constraints on segmentation."
     },
     {
       "id": "icm",
-      "name": "ICM",
+      "name": "ICM Parameters",
       "value-key": "[ICM]",
       "type": "String",
       "optional": true,
-      "command-line-flag": "--icm",
-      "description": "Asynchronous updating requires the construction of an ICM code image which is a label image (with labels in the range {1,..,MaximumICMCode}) constructed such that no MRF neighborhood has duplicate ICM code labels.",
-      "default-value": "1,1,''"
+      "command-line-flag": "-g",
+      "description": "ICM (Iterated Conditional Modes) parameters for asynchronous updating."
     },
     {
       "id": "use_random_seed",
-      "name": "Use random seed",
+      "name": "Use Random Seed",
       "value-key": "[USE_RANDOM_SEED]",
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
-      "command-line-flag": "--use-random-seed",
-      "description": "Initialize internal random number generator with a random seed."
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-r",
+      "description": "Initialize with a random seed or a constant seed number."
     },
     {
       "id": "output",
       "name": "Output",
       "value-key": "[OUTPUT]",
-      "command-line-flag": "-o",
       "type": "String",
       "optional": false,
-      "description": "The output consists of a labeled image where each voxel in the masked region is assigned a label from 1, 2, ..., N. Optionally, one can also output the posterior probability images specified in the same format as the prior probability images, e.g. posterior%02d.nii.gz (C-style file name formatting)."
+      "command-line-flag": "-o",
+      "description": "Output labeled image and optionally posterior probability images."
     },
     {
       "id": "minimize_memory_usage",
-      "name": "Minimize memory usage",
+      "name": "Minimize Memory Usage",
       "value-key": "[MINIMIZE_MEMORY_USAGE]",
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
-      "command-line-flag": "--minimize-memory-usage",
-      "description": "By default, memory usage is not minimized, however, if this is needed, the various probability and distance images are calculated on the fly instead of being stored in memory at each iteration. Also, if prior probability images are used, only the non-negligible pixel values are stored in memory."
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-u",
+      "description": "Minimize memory usage by calculating images on the fly and storing only non-negligible pixel values."
     },
     {
       "id": "winsorize_outliers",
-      "name": "Winsorize outliers",
+      "name": "Winsorize Outliers",
       "value-key": "[WINSORIZE_OUTLIERS]",
-      "command-line-flag": "--winsorize-outliers",
       "type": "String",
       "optional": true,
-      "description": "To remove the effects of outliers in calculating the weighted mean and weighted covariance, the user can opt to remove the outliers through the options specified below."
+      "command-line-flag": "-w",
+      "description": "Options to remove effects of outliers in calculations using methods like BoxPlot or GrubbsRosner."
     },
     {
       "id": "use_euclidean_distance",
-      "name": "Use Euclidean distance",
+      "name": "Use Euclidean Distance",
       "value-key": "[USE_EUCLIDEAN_DISTANCE]",
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
-      "command-line-flag": "--use-euclidean-distance",
-      "description": "Given prior label or probability images, the labels are propagated throughout the masked region so that every voxel in the mask is labeled."
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-e",
+      "description": "Propagate labels throughout the mask using a distance transform."
     },
     {
       "id": "label_propagation",
-      "name": "Label propagation",
+      "name": "Label Propagation",
       "value-key": "[LABEL_PROPAGATION]",
       "type": "String",
-      "command-line-flag": "--label-propagation",
       "optional": true,
-      "description": "The propagation of each prior label can be controlled by the lambda and boundary probability parameters."
+      "command-line-flag": "-l",
+      "description": "Control propagation of each prior label by specified lambda and boundary probability."
     },
     {
       "id": "verbose",
@@ -197,8 +206,11 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
-      "command-line-flag": "--verbose",
+      "value-choices": [
+        0,
+        1
+      ],
+      "command-line-flag": "-v",
       "description": "Verbose output."
     }
   ],
@@ -206,14 +218,15 @@
     {
       "id": "classified_image",
       "name": "Classified Image",
-      "description": "The classified image output file.",
-      "path-template": "[CLASSIFIED_IMAGE]"
+      "description": "The output labeled image with assigned labels for each voxel in the masked region.",
+      "path-template": "[OUTPUT]_classified.nii.gz"
     },
     {
       "id": "posterior_probability_images",
       "name": "Posterior Probability Images",
-      "description": "Optional posterior probability images output files.",
-      "path-template": "[POSTERIOR_PROBABILITY_IMAGE_FILE_FORMAT]"
+      "description": "Output posterior probability images in specified format.",
+      "path-template": "[POSTERIOR_PROBABILITY_IMAGE_FILE_NAME_FORMAT]",
+      "optional": true
     }
   ]
 }

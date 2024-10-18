@@ -1,0 +1,65 @@
+{
+  "name": "SurfaceCurvature",
+  "command-line": "SurfaceCurvature [FILENAMEIN] [FILENAMEOUT] [SIGMA] [OPTION]",
+  "author": "ANTs developers",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "filename_in",
+      "name": "Input Image",
+      "value-key": "[FILENAMEIN]",
+      "type": "File",
+      "optional": false,
+      "description": "The input image file in .nii format.",
+      "command-line-flag": ""
+    },
+    {
+      "id": "filename_out",
+      "name": "Output Image",
+      "value-key": "[FILENAMEOUT]",
+      "type": "File",
+      "optional": false,
+      "description": "The output image file in .nii format.",
+      "command-line-flag": ""
+    },
+    {
+      "id": "sigma",
+      "name": "Sigma",
+      "value-key": "[SIGMA]",
+      "type": "Number",
+      "optional": false,
+      "description": "The sigma value for analysis.",
+      "command-line-flag": ""
+    },
+    {
+      "id": "option",
+      "name": "Operation Option",
+      "value-key": "[OPTION]",
+      "type": "Number",
+      "optional": false,
+      "value-choices": [
+        0,
+        5,
+        6,
+        7
+      ],
+      "description": "The operation mode: 0 for mean curvature, 5 for surface characterization, 6 for Gaussian curvature, and 7 for surface area.",
+      "command-line-flag": ""
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_image",
+      "name": "Processed image",
+      "description": "The processed image file.",
+      "path-template": "[FILENAMEOUT]"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
+}

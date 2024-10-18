@@ -1,0 +1,82 @@
+{
+  "name": "WarpTimeSeriesImageMultiTransform",
+  "command-line": "WarpTimeSeriesImageMultiTransform [IMAGE_DIMENSION] [MOVING_IMAGE] [OUTPUT_IMAGE] -R [REFERENCE_IMAGE] [TRANSFORMS] [INTERPOLATION]",
+  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "image_dimension",
+      "name": "Image Dimension",
+      "value-key": "[IMAGE_DIMENSION]",
+      "type": "Number",
+      "integer": true,
+      "optional": false,
+      "value-choices": [
+        3,
+        4
+      ],
+      "description": "The dimensionality of the input images (3D or 4D)."
+    },
+    {
+      "id": "moving_image",
+      "name": "Moving Image",
+      "value-key": "[MOVING_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "description": "The image to which the transformation will be applied. It can be a 3D image with vector voxels or a 4D image with scalar voxels."
+    },
+    {
+      "id": "output_image",
+      "name": "Output Image",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "description": "The output image after transformation. It is resampled based on the reference image domain."
+    },
+    {
+      "id": "reference_image",
+      "name": "Reference Image",
+      "value-key": "[REFERENCE_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "command-line-flag": "-R",
+      "description": "The reference image that defines the space into which the input image will be warped."
+    },
+    {
+      "id": "transforms",
+      "name": "Transforms",
+      "value-key": "[TRANSFORMS]",
+      "type": "String",
+      "list": true,
+      "optional": false,
+      "description": "A list of transformation files, such as affine transformation matrices and warps, applied in sequence."
+    },
+    {
+      "id": "interpolation",
+      "name": "Interpolation",
+      "value-key": "[INTERPOLATION]",
+      "type": "String",
+      "optional": true,
+      "value-choices": [
+        "NearestNeighbor",
+        "BSpline"
+      ],
+      "description": "Specifies the type of interpolation to use: Nearest Neighbor or 3rd order B-Spline."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_image_result",
+      "name": "Output Image",
+      "path-template": "[OUTPUT_IMAGE]",
+      "description": "The transformed image that is saved as output."
+    }
+  ],
+  "author": "ANTs developers",
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
+}
