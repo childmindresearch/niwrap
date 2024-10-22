@@ -116,8 +116,8 @@
 </span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        input_files: Input files to search for the target string.</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        new_char: Replace TARGETSTRING with CHAR (repeated).</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        new_string: Replace TARGETSTRING with STRING.</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        unescape: Parse TARGETSTRING for escaped characters (includes &#39;\t&#39;,\</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">            &#39;\n&#39;, &#39;\r&#39;).</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        unescape: Parse TARGETSTRING for escaped characters (includes &#39;\\t&#39;,\</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">            &#39;\\n&#39;, &#39;\\r&#39;).</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        quiet: Do not report files with no strings found. Use -quiet -quiet to\</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">            avoid any reporting.</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        help_: Show help message and exit.</span>
@@ -262,8 +262,8 @@
 </span><span id="strblast-46"><a href="#strblast-46"><span class="linenos">46</span></a><span class="sd">        input_files: Input files to search for the target string.</span>
 </span><span id="strblast-47"><a href="#strblast-47"><span class="linenos">47</span></a><span class="sd">        new_char: Replace TARGETSTRING with CHAR (repeated).</span>
 </span><span id="strblast-48"><a href="#strblast-48"><span class="linenos">48</span></a><span class="sd">        new_string: Replace TARGETSTRING with STRING.</span>
-</span><span id="strblast-49"><a href="#strblast-49"><span class="linenos">49</span></a><span class="sd">        unescape: Parse TARGETSTRING for escaped characters (includes &#39;\t&#39;,\</span>
-</span><span id="strblast-50"><a href="#strblast-50"><span class="linenos">50</span></a><span class="sd">            &#39;\n&#39;, &#39;\r&#39;).</span>
+</span><span id="strblast-49"><a href="#strblast-49"><span class="linenos">49</span></a><span class="sd">        unescape: Parse TARGETSTRING for escaped characters (includes &#39;\\t&#39;,\</span>
+</span><span id="strblast-50"><a href="#strblast-50"><span class="linenos">50</span></a><span class="sd">            &#39;\\n&#39;, &#39;\\r&#39;).</span>
 </span><span id="strblast-51"><a href="#strblast-51"><span class="linenos">51</span></a><span class="sd">        quiet: Do not report files with no strings found. Use -quiet -quiet to\</span>
 </span><span id="strblast-52"><a href="#strblast-52"><span class="linenos">52</span></a><span class="sd">            avoid any reporting.</span>
 </span><span id="strblast-53"><a href="#strblast-53"><span class="linenos">53</span></a><span class="sd">        help_: Show help message and exit.</span>
@@ -302,27 +302,30 @@
 
 
             <div class="docstring"><p>Finds exact copies of the target string in each of the input files, and replaces
-    all characters with some junk string.</p>
+all characters with some junk string.</p>
 
-<pre><code>Author: AFNI Developers
+<p>Author: AFNI Developers</p>
 
-URL: https://afni.nimh.nih.gov/
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
-Args:
-    targetstring: Target string to search for in the input files.
-    input_files: Input files to search for the target string.
-    new_char: Replace TARGETSTRING with CHAR (repeated).
-    new_string: Replace TARGETSTRING with STRING.
-    unescape: Parse TARGETSTRING for escaped characters (includes ' ',            '
-</code></pre>
+<h6 id="arguments">Arguments:</h6>
 
-<p>', '
-').
-        quiet: Do not report files with no strings found. Use -quiet -quiet to            avoid any reporting.
-        help_: Show help message and exit.
-        runner: Command runner.
-    Returns:
-        NamedTuple of outputs (described in <code><a href="#StrblastOutputs">StrblastOutputs</a></code>).</p>
+<ul>
+<li><strong>targetstring:</strong>  Target string to search for in the input files.</li>
+<li><strong>input_files:</strong>  Input files to search for the target string.</li>
+<li><strong>new_char:</strong>  Replace TARGETSTRING with CHAR (repeated).</li>
+<li><strong>new_string:</strong>  Replace TARGETSTRING with STRING.</li>
+<li><strong>unescape:</strong>  Parse TARGETSTRING for escaped characters (includes '\t',            '\n', '\r').</li>
+<li><strong>quiet:</strong>  Do not report files with no strings found. Use -quiet -quiet to            avoid any reporting.</li>
+<li><strong>help_:</strong>  Show help message and exit.</li>
+<li><strong>runner:</strong>  Command runner.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>NamedTuple of outputs (described in <code><a href="#StrblastOutputs">StrblastOutputs</a></code>).</p>
+</blockquote>
 </div>
 
 

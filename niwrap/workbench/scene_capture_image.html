@@ -344,12 +344,12 @@
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">    per inch. The resulting width is 1800 pixels. The resulting height of the</span>
 </span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">    image is a function of the width and the aspect ratio (height divided by</span>
 </span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">    width) of the window size saved in the scene.</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">    wb_command -scene-capture-image myscene.scene 2 image21.jpg \</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">    wb_command -scene-capture-image myscene.scene 2 image21.jpg \\</span>
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">    -size-width 6 -units INCHES -resolution 300 PIXELS_PER_INCH</span>
 </span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    </span>
 </span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    Print information about the size of the output image for the second scene</span>
 </span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    (no image file is created) using a width of 4.5 centimeters.</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    wb_command -scene-capture-image myscene.scene 2 test.jpg \</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    wb_command -scene-capture-image myscene.scene 2 test.jpg \\</span>
 </span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    -size-width 4.5 -units CENTIMETERS -print-image-info</span>
 </span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    </span>
 </span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    </span>
@@ -1170,12 +1170,12 @@ VII, VIII, IX, X)</p>
 </span><span id="scene_capture_image-202"><a href="#scene_capture_image-202"><span class="linenos">202</span></a><span class="sd">    per inch. The resulting width is 1800 pixels. The resulting height of the</span>
 </span><span id="scene_capture_image-203"><a href="#scene_capture_image-203"><span class="linenos">203</span></a><span class="sd">    image is a function of the width and the aspect ratio (height divided by</span>
 </span><span id="scene_capture_image-204"><a href="#scene_capture_image-204"><span class="linenos">204</span></a><span class="sd">    width) of the window size saved in the scene.</span>
-</span><span id="scene_capture_image-205"><a href="#scene_capture_image-205"><span class="linenos">205</span></a><span class="sd">    wb_command -scene-capture-image myscene.scene 2 image21.jpg \</span>
+</span><span id="scene_capture_image-205"><a href="#scene_capture_image-205"><span class="linenos">205</span></a><span class="sd">    wb_command -scene-capture-image myscene.scene 2 image21.jpg \\</span>
 </span><span id="scene_capture_image-206"><a href="#scene_capture_image-206"><span class="linenos">206</span></a><span class="sd">    -size-width 6 -units INCHES -resolution 300 PIXELS_PER_INCH</span>
 </span><span id="scene_capture_image-207"><a href="#scene_capture_image-207"><span class="linenos">207</span></a><span class="sd">    </span>
 </span><span id="scene_capture_image-208"><a href="#scene_capture_image-208"><span class="linenos">208</span></a><span class="sd">    Print information about the size of the output image for the second scene</span>
 </span><span id="scene_capture_image-209"><a href="#scene_capture_image-209"><span class="linenos">209</span></a><span class="sd">    (no image file is created) using a width of 4.5 centimeters.</span>
-</span><span id="scene_capture_image-210"><a href="#scene_capture_image-210"><span class="linenos">210</span></a><span class="sd">    wb_command -scene-capture-image myscene.scene 2 test.jpg \</span>
+</span><span id="scene_capture_image-210"><a href="#scene_capture_image-210"><span class="linenos">210</span></a><span class="sd">    wb_command -scene-capture-image myscene.scene 2 test.jpg \\</span>
 </span><span id="scene_capture_image-211"><a href="#scene_capture_image-211"><span class="linenos">211</span></a><span class="sd">    -size-width 4.5 -units CENTIMETERS -print-image-info</span>
 </span><span id="scene_capture_image-212"><a href="#scene_capture_image-212"><span class="linenos">212</span></a><span class="sd">    </span>
 </span><span id="scene_capture_image-213"><a href="#scene_capture_image-213"><span class="linenos">213</span></a><span class="sd">    </span>
@@ -1340,11 +1340,13 @@ wb_command -scene-capture-image myscene.scene 2 image2.jpg -margin 10</p>
 per inch. The resulting width is 1800 pixels. The resulting height of the
 image is a function of the width and the aspect ratio (height divided by
 width) of the window size saved in the scene.
-wb_command -scene-capture-image myscene.scene 2 image21.jpg     -size-width 6 -units INCHES -resolution 300 PIXELS_PER_INCH</p>
+wb_command -scene-capture-image myscene.scene 2 image21.jpg \
+-size-width 6 -units INCHES -resolution 300 PIXELS_PER_INCH</p>
 
 <p>Print information about the size of the output image for the second scene
 (no image file is created) using a width of 4.5 centimeters.
-wb_command -scene-capture-image myscene.scene 2 test.jpg     -size-width 4.5 -units CENTIMETERS -print-image-info</p>
+wb_command -scene-capture-image myscene.scene 2 test.jpg \
+-size-width 4.5 -units CENTIMETERS -print-image-info</p>
 
 <p>NO OFF SCREEN RENDERERS AVAILABLE ON THIS SYSTEM. COMMAND WILL FAIL !!!!</p>
 
