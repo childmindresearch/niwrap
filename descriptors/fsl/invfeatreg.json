@@ -5,68 +5,20 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT/Examples",
   "description": "Inverse warp image using FNIRT",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "invwarp -w [WARP_FILE] -r [REFERENCE] -o [OUTPUT_FILE] [VERBOSE_FLAG]",
+  "command-line": "invfeatreg [FEAT_DIRECTORY]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [
     {
-      "description": "Input warp file (e.g., highres2standard_warp)",
-      "value-key": "[WARP_FILE]",
-      "type": "File",
-      "optional": false,
-      "id": "warp_file",
-      "name": "Warp file"
-    },
-    {
-      "description": "Reference image (e.g., highres.nii.gz)",
-      "value-key": "[REFERENCE]",
-      "type": "File",
-      "optional": false,
-      "id": "reference",
-      "name": "Reference image"
-    },
-    {
-      "description": "Output filename for the inverted warp file (e.g., standard2highres_warp)",
-      "value-key": "[OUTPUT_FILE]",
+      "description": "FEAT Directory",
+      "value-key": "[FEAT_DIRECTORY]",
       "type": "String",
       "optional": false,
-      "id": "output_file",
-      "name": "Output file"
-    },
-    {
-      "command-line-flag": "-v",
-      "description": "Verbose (switch on diagnostic messages)",
-      "value-key": "[VERBOSE_FLAG]",
-      "type": "Flag",
-      "optional": true,
-      "id": "verbose_flag",
-      "name": "Verbose flag"
+      "id": "feat_directory",
+      "name": "FEAT Directory"
     }
   ],
-  "schema-version": "0.5",
-  "groups": [
-    {
-      "description": "Main parameters for invwarp",
-      "id": "main_params_group",
-      "members": ["warp_file", "reference", "output_file"],
-      "name": "Main Parameters"
-    },
-    {
-      "description": "Optional parameters for verbose output",
-      "id": "optional_params_group",
-      "members": ["verbose_flag"],
-      "name": "Optional Parameters"
-    }
-  ],
-  "output-files": [
-    {
-      "path-template": "[OUTPUT_FILE]",
-      "description": "Inverted warp file",
-      "optional": false,
-      "id": "inverted_warp_file",
-      "name": "Output inverted warp file"
-    }
-  ]
+  "schema-version": "0.5"
 }
