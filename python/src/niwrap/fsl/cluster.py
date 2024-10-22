@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 CLUSTER_METADATA = Metadata(
-    id="7d0594e61a3900265006afa04e140182c2d16173.boutiques",
-    name="cluster",
+    id="754261b5c945cd88813dd579c569c921a134590d.boutiques",
+    name="Cluster",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

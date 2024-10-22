@@ -6,17 +6,17 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-SURF_LOCALSTAT_METADATA = Metadata(
-    id="baa16607fbe0c1d83732372c1e6260c9ed3563e2.boutiques",
-    name="SurfLocalstat",
+SURF_LOCAL_STAT_METADATA = Metadata(
+    id="bcf894a0b33f90b64b034eb56e175e5167eb56af.boutiques",
+    name="SurfLocalStat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
 
 
-class SurfLocalstatOutputs(typing.NamedTuple):
+class SurfLocalStatOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `surf_localstat(...)`.
+    Output object returned when calling `surf_local_stat(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -24,7 +24,7 @@ class SurfLocalstatOutputs(typing.NamedTuple):
     """Computed local statistics dataset"""
 
 
-def surf_localstat(
+def surf_local_stat(
     prefix: str,
     stat_: typing.Literal["mean", "mode", "num", "FWHM", "ALL"],
     input_dataset: InputPathType,
@@ -32,7 +32,7 @@ def surf_localstat(
     hood: float | None = None,
     nbhd_rad: float | None = None,
     runner: Runner | None = None,
-) -> SurfLocalstatOutputs:
+) -> SurfLocalStatOutputs:
     """
     Compute local statistics on a surface mesh.
     
@@ -51,10 +51,10 @@ def surf_localstat(
             along the mesh.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `SurfLocalstatOutputs`).
+        NamedTuple of outputs (described in `SurfLocalStatOutputs`).
     """
     runner = runner or get_global_runner()
-    execution = runner.start_execution(SURF_LOCALSTAT_METADATA)
+    execution = runner.start_execution(SURF_LOCAL_STAT_METADATA)
     cargs = []
     cargs.append("SurfLocalstat")
     if hood is not None:
@@ -83,7 +83,7 @@ def surf_localstat(
         "-i_gii",
         execution.input_file(surface)
     ])
-    ret = SurfLocalstatOutputs(
+    ret = SurfLocalStatOutputs(
         root=execution.output_file("."),
         output_file=execution.output_file(prefix + ".niml.dset"),
     )
@@ -92,7 +92,7 @@ def surf_localstat(
 
 
 __all__ = [
-    "SURF_LOCALSTAT_METADATA",
-    "SurfLocalstatOutputs",
-    "surf_localstat",
+    "SURF_LOCAL_STAT_METADATA",
+    "SurfLocalStatOutputs",
+    "surf_local_stat",
 ]

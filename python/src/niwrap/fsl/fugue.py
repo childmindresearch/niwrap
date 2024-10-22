@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 FUGUE_METADATA = Metadata(
-    id="8bb010f7071a4c177c3c339c359c982de16bdbbe.boutiques",
-    name="fugue",
+    id="43b69a2bab9418241dbdb1a364bc32119a800495.boutiques",
+    name="FUGUE",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

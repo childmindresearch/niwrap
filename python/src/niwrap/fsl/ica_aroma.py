@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 ICA_AROMA_METADATA = Metadata(
-    id="2224ad27ba5a247f92986cba9c81a3a71f1d137d.boutiques",
-    name="ica_aroma",
+    id="f5d8206ce8e4ffeacbd030baed96b3ff03221baa.boutiques",
+    name="ICA_AROMA",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 OVERLAY_METADATA = Metadata(
-    id="c7eea25dcf5ccd3e04310fbb1d8abed5676a5a2d.boutiques",
-    name="overlay",
+    id="3fca46e12ea6d49606719aa3e117622f94b69e1d.boutiques",
+    name="Overlay",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

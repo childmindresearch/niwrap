@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 SLICER_METADATA = Metadata(
-    id="2fba31dc8e090525647917f23065bf2945a080fb.boutiques",
-    name="slicer",
+    id="f271d4a101ecc58a66bc771b7e382dfeb187365e.boutiques",
+    name="Slicer",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

@@ -239,7 +239,7 @@ from .surf_extrema import *
 from .surf_fwhm import *
 from .surf_info import *
 from .surf_layers import *
-from .surf_localstat import *
+from .surf_local_stat import *
 from .surf_measures import *
 from .surf_mesh import *
 from .surf_patch import *

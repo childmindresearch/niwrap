@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 FLAMEO_METADATA = Metadata(
-    id="9745eb3554f097df3abe6c51ae3c2812def42029.boutiques",
-    name="flameo",
+    id="3aa190083717981ae59a72b24eb07fc29346770e.boutiques",
+    name="FLAMEO",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

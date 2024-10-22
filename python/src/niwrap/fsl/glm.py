@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 GLM_METADATA = Metadata(
-    id="c7483a852a91dc6a841c5383a7889d60f465ab53.boutiques",
-    name="glm",
+    id="7e848f30c89b09af2c0612c7a02e83992295889b.boutiques",
+    name="GLM",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

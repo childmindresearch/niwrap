@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 SPLIT_METADATA = Metadata(
-    id="c85abecb56c7b01609f60d0813416382f2f08e43.boutiques",
-    name="split",
+    id="2ec178f81b0b24045f415bcb92c5d398ac335c3d.boutiques",
+    name="Split",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

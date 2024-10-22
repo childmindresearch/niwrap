@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 MERGE_METADATA = Metadata(
-    id="cbb6884a58b75dfd14525a8a1395536bd76c6bd8.boutiques",
-    name="merge",
+    id="a3d578d60d0ba6605cbb203ead006c07e9103a74.boutiques",
+    name="Merge",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )
