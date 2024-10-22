@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TKREGISTER2_CMDL_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;fc4f92e6893bc6065deea81a7c1e60eb7faa5bbe.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a084019981b8c19c88bf65a10695c9febf690ada.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tkregister2_cmdl&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -237,7 +237,7 @@
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TKREGISTER2_CMDL_METADATA</span><span class="p">)</span>
 </span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/tkregister2_cmdl&quot;</span><span class="p">)</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tkregister2_cmdl&quot;</span><span class="p">)</span>
 </span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="s2">&quot;--mov&quot;</span><span class="p">,</span>
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">movable_volume</span><span class="p">)</span>
@@ -493,7 +493,7 @@
                     <div class="attr variable">
             <span class="name">TKREGISTER2_CMDL_METADATA</span>        =
 <input id="TKREGISTER2_CMDL_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TKREGISTER2_CMDL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;fc4f92e6893bc6065deea81a7c1e60eb7faa5bbe.boutiques&#39;, name=&#39;tkregister2_cmdl&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TKREGISTER2_CMDL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a084019981b8c19c88bf65a10695c9febf690ada.boutiques&#39;, name=&#39;tkregister2_cmdl&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -709,7 +709,7 @@
 </span><span id="tkregister2_cmdl-167"><a href="#tkregister2_cmdl-167"><span class="linenos">167</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="tkregister2_cmdl-168"><a href="#tkregister2_cmdl-168"><span class="linenos">168</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TKREGISTER2_CMDL_METADATA</span><span class="p">)</span>
 </span><span id="tkregister2_cmdl-169"><a href="#tkregister2_cmdl-169"><span class="linenos">169</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="tkregister2_cmdl-170"><a href="#tkregister2_cmdl-170"><span class="linenos">170</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/tkregister2_cmdl&quot;</span><span class="p">)</span>
+</span><span id="tkregister2_cmdl-170"><a href="#tkregister2_cmdl-170"><span class="linenos">170</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tkregister2_cmdl&quot;</span><span class="p">)</span>
 </span><span id="tkregister2_cmdl-171"><a href="#tkregister2_cmdl-171"><span class="linenos">171</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="tkregister2_cmdl-172"><a href="#tkregister2_cmdl-172"><span class="linenos">172</span></a>        <span class="s2">&quot;--mov&quot;</span><span class="p">,</span>
 </span><span id="tkregister2_cmdl-173"><a href="#tkregister2_cmdl-173"><span class="linenos">173</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">movable_volume</span><span class="p">)</span>

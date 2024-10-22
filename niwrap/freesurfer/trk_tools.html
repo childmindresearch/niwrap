@@ -87,7 +87,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TRK_TOOLS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;749c7f15d408cda823554cd95cf56047887a53dc.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;12b9e887db3a9de8e1d42d67b5b8940fee9cc306.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;trk_tools&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -138,7 +138,7 @@
 </span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TRK_TOOLS_METADATA</span><span class="p">)</span>
 </span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/trk_tools&quot;</span><span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;trk_tools&quot;</span><span class="p">)</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
@@ -189,7 +189,7 @@
                     <div class="attr variable">
             <span class="name">TRK_TOOLS_METADATA</span>        =
 <input id="TRK_TOOLS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TRK_TOOLS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;749c7f15d408cda823554cd95cf56047887a53dc.boutiques&#39;, name=&#39;trk_tools&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TRK_TOOLS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;12b9e887db3a9de8e1d42d67b5b8940fee9cc306.boutiques&#39;, name=&#39;trk_tools&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -336,7 +336,7 @@
 </span><span id="trk_tools-59"><a href="#trk_tools-59"><span class="linenos">59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="trk_tools-60"><a href="#trk_tools-60"><span class="linenos">60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TRK_TOOLS_METADATA</span><span class="p">)</span>
 </span><span id="trk_tools-61"><a href="#trk_tools-61"><span class="linenos">61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="trk_tools-62"><a href="#trk_tools-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/trk_tools&quot;</span><span class="p">)</span>
+</span><span id="trk_tools-62"><a href="#trk_tools-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;trk_tools&quot;</span><span class="p">)</span>
 </span><span id="trk_tools-63"><a href="#trk_tools-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
 </span><span id="trk_tools-64"><a href="#trk_tools-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="trk_tools-65"><a href="#trk_tools-65"><span class="linenos">65</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>

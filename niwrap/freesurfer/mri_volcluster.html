@@ -90,7 +90,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRI_VOLCLUSTER_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;0c938964bc3e0657a9cbcc38cec91cc851bc39e8.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5e770e63f43f8b5f3bb2cef7aae10f248937d902.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mri_volcluster&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -228,7 +228,7 @@
 </span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_VOLCLUSTER_METADATA</span><span class="p">)</span>
 </span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/mri_volcluster&quot;</span><span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mri_volcluster&quot;</span><span class="p">)</span>
 </span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="s2">&quot;--in&quot;</span><span class="p">,</span>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
@@ -465,7 +465,7 @@
                     <div class="attr variable">
             <span class="name">MRI_VOLCLUSTER_METADATA</span>        =
 <input id="MRI_VOLCLUSTER_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRI_VOLCLUSTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;0c938964bc3e0657a9cbcc38cec91cc851bc39e8.boutiques&#39;, name=&#39;mri_volcluster&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRI_VOLCLUSTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5e770e63f43f8b5f3bb2cef7aae10f248937d902.boutiques&#39;, name=&#39;mri_volcluster&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -712,7 +712,7 @@
 </span><span id="mri_volcluster-146"><a href="#mri_volcluster-146"><span class="linenos">146</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="mri_volcluster-147"><a href="#mri_volcluster-147"><span class="linenos">147</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_VOLCLUSTER_METADATA</span><span class="p">)</span>
 </span><span id="mri_volcluster-148"><a href="#mri_volcluster-148"><span class="linenos">148</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="mri_volcluster-149"><a href="#mri_volcluster-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/mri_volcluster&quot;</span><span class="p">)</span>
+</span><span id="mri_volcluster-149"><a href="#mri_volcluster-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mri_volcluster&quot;</span><span class="p">)</span>
 </span><span id="mri_volcluster-150"><a href="#mri_volcluster-150"><span class="linenos">150</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="mri_volcluster-151"><a href="#mri_volcluster-151"><span class="linenos">151</span></a>        <span class="s2">&quot;--in&quot;</span><span class="p">,</span>
 </span><span id="mri_volcluster-152"><a href="#mri_volcluster-152"><span class="linenos">152</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>

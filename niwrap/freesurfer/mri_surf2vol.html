@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRI_SURF2VOL_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2ba5f1064cee1731baf3ff783d19cd7904a478ab.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b536f4224339f33b063ca9bc15eb59e4bb464334.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mri_surf2vol&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -180,7 +180,7 @@
 </span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_SURF2VOL_METADATA</span><span class="p">)</span>
 </span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/mri_surf2vol&quot;</span><span class="p">)</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mri_surf2vol&quot;</span><span class="p">)</span>
 </span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">surface_overlay</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="s2">&quot;--so&quot;</span><span class="p">,</span>
@@ -329,7 +329,7 @@
                     <div class="attr variable">
             <span class="name">MRI_SURF2VOL_METADATA</span>        =
 <input id="MRI_SURF2VOL_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRI_SURF2VOL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2ba5f1064cee1731baf3ff783d19cd7904a478ab.boutiques&#39;, name=&#39;mri_surf2vol&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRI_SURF2VOL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;b536f4224339f33b063ca9bc15eb59e4bb464334.boutiques&#39;, name=&#39;mri_surf2vol&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -508,7 +508,7 @@
 </span><span id="mri_surf2vol-104"><a href="#mri_surf2vol-104"><span class="linenos">104</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="mri_surf2vol-105"><a href="#mri_surf2vol-105"><span class="linenos">105</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_SURF2VOL_METADATA</span><span class="p">)</span>
 </span><span id="mri_surf2vol-106"><a href="#mri_surf2vol-106"><span class="linenos">106</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="mri_surf2vol-107"><a href="#mri_surf2vol-107"><span class="linenos">107</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/mri_surf2vol&quot;</span><span class="p">)</span>
+</span><span id="mri_surf2vol-107"><a href="#mri_surf2vol-107"><span class="linenos">107</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mri_surf2vol&quot;</span><span class="p">)</span>
 </span><span id="mri_surf2vol-108"><a href="#mri_surf2vol-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">surface_overlay</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="mri_surf2vol-109"><a href="#mri_surf2vol-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="mri_surf2vol-110"><a href="#mri_surf2vol-110"><span class="linenos">110</span></a>            <span class="s2">&quot;--so&quot;</span><span class="p">,</span>

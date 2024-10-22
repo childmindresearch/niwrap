@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">DMRI_PROJECT_END_POINTS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a3189a92694fbd59b5f1dc24e8356c9d129cfa7e.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;821333d9d36610f0777858cc1db5121bb1eccb7d.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dmri_projectEndPoints&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -136,7 +136,7 @@
 </span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DMRI_PROJECT_END_POINTS_METADATA</span><span class="p">)</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/dmri_projectEndPoints&quot;</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dmri_projectEndPoints&quot;</span><span class="p">)</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
@@ -189,7 +189,7 @@
                     <div class="attr variable">
             <span class="name">DMRI_PROJECT_END_POINTS_METADATA</span>        =
 <input id="DMRI_PROJECT_END_POINTS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="DMRI_PROJECT_END_POINTS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a3189a92694fbd59b5f1dc24e8356c9d129cfa7e.boutiques&#39;, name=&#39;dmri_projectEndPoints&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="DMRI_PROJECT_END_POINTS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;821333d9d36610f0777858cc1db5121bb1eccb7d.boutiques&#39;, name=&#39;dmri_projectEndPoints&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -324,7 +324,7 @@
 </span><span id="dmri_project_end_points-60"><a href="#dmri_project_end_points-60"><span class="linenos"> 60</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="dmri_project_end_points-61"><a href="#dmri_project_end_points-61"><span class="linenos"> 61</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DMRI_PROJECT_END_POINTS_METADATA</span><span class="p">)</span>
 </span><span id="dmri_project_end_points-62"><a href="#dmri_project_end_points-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="dmri_project_end_points-63"><a href="#dmri_project_end_points-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/dmri_projectEndPoints&quot;</span><span class="p">)</span>
+</span><span id="dmri_project_end_points-63"><a href="#dmri_project_end_points-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dmri_projectEndPoints&quot;</span><span class="p">)</span>
 </span><span id="dmri_project_end_points-64"><a href="#dmri_project_end_points-64"><span class="linenos"> 64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
 </span><span id="dmri_project_end_points-65"><a href="#dmri_project_end_points-65"><span class="linenos"> 65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="dmri_project_end_points-66"><a href="#dmri_project_end_points-66"><span class="linenos"> 66</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>

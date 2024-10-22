@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">DMRI_PATHS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;01719516cee96b791dd3af20cfe4bfc912c69233.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;74db8fa4455da035e0f2e7fd073f2984b980d7ec.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dmri_paths&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -191,7 +191,7 @@
 </span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DMRI_PATHS_METADATA</span><span class="p">)</span>
 </span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/dmri_paths&quot;</span><span class="p">)</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dmri_paths&quot;</span><span class="p">)</span>
 </span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">indir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="s2">&quot;--indir&quot;</span><span class="p">,</span>
@@ -383,7 +383,7 @@
                     <div class="attr variable">
             <span class="name">DMRI_PATHS_METADATA</span>        =
 <input id="DMRI_PATHS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="DMRI_PATHS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;01719516cee96b791dd3af20cfe4bfc912c69233.boutiques&#39;, name=&#39;dmri_paths&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="DMRI_PATHS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;74db8fa4455da035e0f2e7fd073f2984b980d7ec.boutiques&#39;, name=&#39;dmri_paths&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -553,7 +553,7 @@
 </span><span id="dmri_paths-121"><a href="#dmri_paths-121"><span class="linenos">121</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="dmri_paths-122"><a href="#dmri_paths-122"><span class="linenos">122</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DMRI_PATHS_METADATA</span><span class="p">)</span>
 </span><span id="dmri_paths-123"><a href="#dmri_paths-123"><span class="linenos">123</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="dmri_paths-124"><a href="#dmri_paths-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/usr/local/freesurfer/bin/dmri_paths&quot;</span><span class="p">)</span>
+</span><span id="dmri_paths-124"><a href="#dmri_paths-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dmri_paths&quot;</span><span class="p">)</span>
 </span><span id="dmri_paths-125"><a href="#dmri_paths-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">indir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="dmri_paths-126"><a href="#dmri_paths-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="dmri_paths-127"><a href="#dmri_paths-127"><span class="linenos">127</span></a>            <span class="s2">&quot;--indir&quot;</span><span class="p">,</span>
