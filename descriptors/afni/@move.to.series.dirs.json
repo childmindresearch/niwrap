@@ -13,10 +13,7 @@
       "optional": true,
       "id": "action",
       "name": "Action",
-      "value-choices": [
-        "copy",
-        "move"
-      ]
+      "value-choices": ["copy", "move"]
     },
     {
       "description": "Specify directory root for output series directories. Default is current directory.",

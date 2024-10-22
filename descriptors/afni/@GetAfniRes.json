@@ -18,11 +18,7 @@
       "id": "output_type",
       "name": "Output Type",
       "command-line-flag": "",
-      "value-choices": [
-        "-min",
-        "-max",
-        "-mean"
-      ]
+      "value-choices": ["-min", "-max", "-mean"]
     },
     {
       "description": "Input dataset",

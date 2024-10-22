@@ -168,11 +168,7 @@
     {
       "description": "Specify main inputs and outputs",
       "id": "mandatory_params_group",
-      "members": [
-        "infile",
-        "outfile",
-        "designfile"
-      ],
+      "members": ["infile", "outfile", "designfile"],
       "name": "Main Inputs and Outputs"
     },
     {

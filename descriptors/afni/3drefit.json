@@ -106,11 +106,7 @@
       "command-line-flag": "-space",
       "description": "'tlrc' or 'mni' or 'orig'. Associates the dataset with a specific template type, e.g. tlrc, mni, orig.",
       "optional": true,
-      "value-choices": [
-        "TLRC",
-        "MNI",
-        "ORIG"
-      ]
+      "value-choices": ["TLRC", "MNI", "ORIG"]
     },
     {
       "id": "xdel",

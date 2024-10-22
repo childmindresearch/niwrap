@@ -111,11 +111,7 @@
     {
       "description": "Parameters for processing timepoint list",
       "id": "processing_params_group",
-      "members": [
-        "pictures_sum_second",
-        "output_png",
-        "timepoints"
-      ],
+      "members": ["pictures_sum_second", "output_png", "timepoints"],
       "name": "Processing Parameters"
     }
   ],

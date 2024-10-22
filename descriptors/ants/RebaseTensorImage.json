@@ -32,10 +32,7 @@
       "name": "Method",
       "type": "String",
       "value-key": "[METHOD]",
-      "value-choices": [
-        "PHYSICAL",
-        "LOCAL"
-      ],
+      "value-choices": ["PHYSICAL", "LOCAL"],
       "description": "Method of rebasing the tensor image."
     },
     {

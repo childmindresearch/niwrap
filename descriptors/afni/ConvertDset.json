@@ -49,11 +49,7 @@
       "type": "String",
       "command-line-flag": "-i_",
       "description": "Type of input datasets",
-      "value-choices": [
-        "niml",
-        "1D",
-        "dx"
-      ],
+      "value-choices": ["niml", "1D", "dx"],
       "optional": true,
       "value-key": "[INPUT_TYPE]"
     },

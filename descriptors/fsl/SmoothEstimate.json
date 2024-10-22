@@ -66,20 +66,14 @@
     {
       "id": "mutex_group",
       "name": "Mutually exclusive arguments",
-      "members": [
-        "zstat_file",
-        "dof"
-      ],
+      "members": ["zstat_file", "dof"],
       "one-is-required": true,
       "mutually-exclusive": true
     },
     {
       "id": "grouped_args",
       "name": "Grouped arguments",
-      "members": [
-        "dof",
-        "residual_fit_file"
-      ],
+      "members": ["dof", "residual_fit_file"],
       "all-or-none": true
     }
   ],

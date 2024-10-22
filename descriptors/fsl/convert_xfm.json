@@ -63,11 +63,7 @@
     {
       "id": "operation_group",
       "name": "operation group",
-      "members": [
-        "invert_xfm",
-        "fix_scale_skew",
-        "concat_xfm"
-      ],
+      "members": ["invert_xfm", "fix_scale_skew", "concat_xfm"],
       "mutually-exclusive": true
     }
   ],

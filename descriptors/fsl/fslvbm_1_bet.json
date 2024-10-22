@@ -43,10 +43,7 @@
       "description": "Mutually exclusive options for BET brain extraction",
       "mutually-exclusive": true,
       "id": "bet_option_group",
-      "members": [
-        "default_bet",
-        "increased_robustness"
-      ],
+      "members": ["default_bet", "increased_robustness"],
       "name": "BET Options"
     }
   ]

@@ -97,11 +97,7 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": [
-        "NIFTI",
-        "AFNI",
-        "NIFTI_GZ"
-      ]
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
     },
     {
       "id": "resample_mode",
@@ -111,12 +107,7 @@
       "command-line-flag": "-rmode",
       "description": "'nn' or 'li' or 'cu' or 'bk'. Resampling method from set {\"nn\", \"li\", \"cu\", \"bk\"}. these are for \"nearest neighbor\", \"linear\", \"cubic\" and \"blocky\"interpolation, respectively. default is nn.",
       "optional": true,
-      "value-choices": [
-        "NN",
-        "Li",
-        "Cu",
-        "Bk"
-      ]
+      "value-choices": ["NN", "Li", "Cu", "Bk"]
     },
     {
       "id": "voxel_size",

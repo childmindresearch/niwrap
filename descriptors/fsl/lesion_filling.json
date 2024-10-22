@@ -79,12 +79,7 @@
     {
       "description": "Optional arguments for lesion filling tool",
       "id": "optional_params_group",
-      "members": [
-        "wmmask",
-        "verbose_flag",
-        "components_flag",
-        "help_flag"
-      ],
+      "members": ["wmmask", "verbose_flag", "components_flag", "help_flag"],
       "name": "Optional Parameters"
     }
   ],

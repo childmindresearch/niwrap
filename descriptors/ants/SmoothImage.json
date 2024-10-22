@@ -41,10 +41,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "description": "Determines if sigma is in spacing units (1) or not (0). Default is 0."
     },
     {
@@ -54,10 +51,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "description": "Whether to use median filter. Default is 0. If using median filter, sigma represents the radius in voxels."
     }
   ],

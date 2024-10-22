@@ -166,10 +166,6 @@
     }
   ],
   "tags": {
-    "domain": [
-      "neuroinformatics",
-      "mri",
-      "brain extraction"
-    ]
+    "domain": ["neuroinformatics", "mri", "brain extraction"]
   }
 }

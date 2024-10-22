@@ -16,14 +16,7 @@
       "type": "String",
       "optional": true,
       "description": "Datatype used internally for calculations",
-      "value-choices": [
-        "char",
-        "short",
-        "int",
-        "float",
-        "double",
-        "input"
-      ],
+      "value-choices": ["char", "short", "int", "float", "double", "input"],
       "value-key": "[DATATYPE_INTERNAL]",
       "command-line-flag": "-dt",
       "default-value": "float"
@@ -1118,14 +1111,7 @@
       "type": "String",
       "optional": true,
       "description": "Datatype used for the output image",
-      "value-choices": [
-        "char",
-        "short",
-        "int",
-        "float",
-        "double",
-        "input"
-      ],
+      "value-choices": ["char", "short", "int", "float", "double", "input"],
       "value-key": "[OUTPUT_DATATYPE]",
       "command-line-flag": "-odt"
     }

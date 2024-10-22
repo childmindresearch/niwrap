@@ -22,10 +22,7 @@
       "command-line-flag": "-EPI",
       "description": "Assume the input dataset is a t2 (or t2\\*) weighted epi time series. after computing the scaling, apply it to all volumes (trs) in the input dataset. that is, a given voxel will be scaled by the same factor at each tr. this option also implies '-noduplo' and '-t2'.this option turns off '-gm' if you turned it on.",
       "optional": true,
-      "requires-inputs": [
-        "no_duplo",
-        "t2"
-      ]
+      "requires-inputs": ["no_duplo", "t2"]
     },
     {
       "id": "gm",
@@ -70,11 +67,7 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": [
-        "NIFTI",
-        "AFNI",
-        "NIFTI_GZ"
-      ]
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
     },
     {
       "id": "quiet",

@@ -170,12 +170,7 @@
     {
       "description": "Compulsory arguments that must be provided",
       "id": "compulsory_arguments",
-      "members": [
-        "infile",
-        "seed",
-        "target",
-        "out"
-      ],
+      "members": ["infile", "seed", "target", "out"],
       "name": "Compulsory Arguments"
     },
     {

@@ -107,9 +107,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0
-      ],
+      "value-choices": [0],
       "command-line-flag": "-v",
       "description": "Verbose option."
     }

@@ -18,11 +18,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        2,
-        3,
-        4
-      ],
+      "value-choices": [2, 3, 4],
       "command-line-flag": "--image-dimensionality",
       "description": "-d, --image-dimensionality 2/3/4. This option forces the image to be treated as a specified-dimensional image. If not specified, N4 tries to infer the dimensionality from the input image."
     },
@@ -51,14 +47,9 @@
       "value-key": "[RESCALE_INTENSITIES]",
       "type": "Number",
       "integer": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "optional": true,
-      "requires-inputs": [
-        "mask_image"
-      ],
+      "requires-inputs": ["mask_image"],
       "command-line-flag": "--rescale-intensities",
       "description": "-r, --rescale-intensities 0/(1). At each iteration, a new intensity mapping is calculated and applied but there is nothing which constrains the new intensity range to be within certain values.  The result is that the range can \"drift\" from the original at each iteration.  This option rescales to the [min,max] range of the original image intensities within the user-specified mask. A mask is required to perform rescaling."
     },
@@ -187,10 +178,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--verbose",
       "description": "Verbose output."
     },

@@ -54,12 +54,7 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": [
-        "NIFTI",
-        "NIFTI_PAIR",
-        "NIFTI_GZ",
-        "NIFTI_PAIR_GZ"
-      ]
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     },
     {
       "id": "scanner",

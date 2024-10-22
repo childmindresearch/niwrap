@@ -43,16 +43,7 @@
       "integer": true,
       "command-line-flag": "[WHICH_STAT]",
       "description": "Choice of statistic to compute: 0 for median, 1 for max probability appearance, 2 for weighted mean appearance, 3 for trimmed mean, 4 for max value, 5 for similarity-weighted (requires imagelist2), 6 for best local match label, 7 for max value from ROI.",
-      "value-choices": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ]
+      "value-choices": [0, 1, 2, 3, 4, 5, 6, 7]
     },
     {
       "id": "roi",

@@ -17,10 +17,7 @@
       "value-key": "[IMAGE_DIMENSION]",
       "type": "Number",
       "integer": true,
-      "value-choices": [
-        2,
-        3
-      ],
+      "value-choices": [2, 3],
       "command-line-flag": "-d",
       "description": "Image dimension for registration: 2 or 3."
     },
@@ -47,10 +44,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "default-value": 1,
       "command-line-flag": "-f",
       "description": "Force script to proceed even if headers may be incompatible."
@@ -81,10 +75,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "default-value": 0,
       "command-line-flag": "-n",
       "description": "N4 Bias Field Correction of moving image: 0 for off, 1 for on."
@@ -105,10 +96,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "default-value": 0,
       "command-line-flag": "-q",
       "description": "Perform a Quality Check (QC) of the result: 0 for off, 1 for on."
