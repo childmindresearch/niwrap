@@ -14,11 +14,7 @@
       "optional": false,
       "id": "scanner",
       "name": "Scanner name",
-      "value-choices": [
-        "ge",
-        "siemens",
-        "philips"
-      ]
+      "value-choices": ["ge", "siemens", "philips"]
     },
     {
       "command-line-flag": "--ge_file",

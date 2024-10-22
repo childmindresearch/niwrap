@@ -51,12 +51,7 @@
       "optional": true,
       "id": "byvoxel_measure",
       "name": "Byvoxel measure",
-      "value-choices": [
-        "AD",
-        "RD",
-        "MD",
-        "FA"
-      ]
+      "value-choices": ["AD", "RD", "MD", "FA"]
     },
     {
       "command-line-flag": "-t",
@@ -76,12 +71,7 @@
       "id": "delimiter",
       "name": "Delimiter",
       "default-value": "tab",
-      "value-choices": [
-        "tab",
-        "comma",
-        "space",
-        "semicolon"
-      ]
+      "value-choices": ["tab", "comma", "space", "semicolon"]
     },
     {
       "command-line-flag": "--transpose",

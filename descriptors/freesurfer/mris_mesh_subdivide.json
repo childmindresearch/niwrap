@@ -33,11 +33,7 @@
       "id": "subdivision_method",
       "name": "Subdivision Method",
       "command-line-flag": "--method",
-      "value-choices": [
-        "butterfly",
-        "loop",
-        "linear"
-      ]
+      "value-choices": ["butterfly", "loop", "linear"]
     },
     {
       "description": "Number of subdivision iterations",

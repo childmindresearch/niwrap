@@ -32,13 +32,7 @@
       "type": "String",
       "optional": false,
       "command-line-flag": "--order",
-      "value-choices": [
-        "up",
-        "down",
-        "odd",
-        "even",
-        "siemens"
-      ]
+      "value-choices": ["up", "down", "odd", "even", "siemens"]
     },
     {
       "id": "ngroups",

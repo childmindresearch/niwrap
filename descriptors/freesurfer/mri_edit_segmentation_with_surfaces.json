@@ -53,10 +53,7 @@
       "value-key": "[HYPO_FLAG]",
       "description": "Turn hypointensity editing on/off (1=on, 0=off)",
       "optional": true,
-      "value-choices": [
-        "1",
-        "0"
-      ]
+      "value-choices": ["1", "0"]
     },
     {
       "command-line-flag": "-cerebellum",
@@ -66,10 +63,7 @@
       "value-key": "[CEREBELLUM_FLAG]",
       "description": "Turn cerebellum editing on/off (1=on, 0=off)",
       "optional": true,
-      "value-choices": [
-        "1",
-        "0"
-      ]
+      "value-choices": ["1", "0"]
     },
     {
       "command-line-flag": "-cortex",
@@ -79,10 +73,7 @@
       "value-key": "[CORTEX_FLAG]",
       "description": "Turn cortex editing on/off (1=on, 0=off)",
       "optional": true,
-      "value-choices": [
-        "1",
-        "0"
-      ]
+      "value-choices": ["1", "0"]
     },
     {
       "command-line-flag": "-a",

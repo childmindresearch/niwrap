@@ -1,41 +1,41 @@
 {
-    "name": "ConvertToJpg",
-    "command-line": "ConvertToJpg [INFILE] [OUTFILE]",
-    "author": "ANTs developers",
-    "description": "A tool to convert NIfTI images to JPG format.",
-    "url": "https://github.com/ANTsX/ANTs",
-    "tool-version": "2.5.3",
-    "schema-version": "0.5",
-    "inputs": [
-        {
-            "id": "infile",
-            "name": "Input File",
-            "value-key": "[INFILE]",
-            "type": "File",
-            "optional": false,
-            "command-line-flag": "",
-            "description": "The input file in NIfTI format."
-        },
-        {
-            "id": "outfile",
-            "name": "Output File",
-            "value-key": "[OUTFILE]",
-            "type": "String",
-            "optional": false,
-            "command-line-flag": "",
-            "description": "The output file in JPG format."
-        }
-    ],
-    "output-files": [
-        {
-            "id": "output_jpg",
-            "name": "Output JPG",
-            "description": "The converted JPG image.",
-            "path-template": "[OUTFILE]"
-        }
-    ],
-    "container-image": {
-        "type": "docker",
-        "image": "antsx/ants:v2.5.3"
+  "name": "ConvertToJpg",
+  "command-line": "ConvertToJpg [INFILE] [OUTFILE]",
+  "author": "ANTs developers",
+  "description": "A tool to convert NIfTI images to JPG format.",
+  "url": "https://github.com/ANTsX/ANTs",
+  "tool-version": "2.5.3",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "infile",
+      "name": "Input File",
+      "value-key": "[INFILE]",
+      "type": "File",
+      "optional": false,
+      "command-line-flag": "",
+      "description": "The input file in NIfTI format."
+    },
+    {
+      "id": "outfile",
+      "name": "Output File",
+      "value-key": "[OUTFILE]",
+      "type": "String",
+      "optional": false,
+      "command-line-flag": "",
+      "description": "The output file in JPG format."
     }
+  ],
+  "output-files": [
+    {
+      "id": "output_jpg",
+      "name": "Output JPG",
+      "description": "The converted JPG image.",
+      "path-template": "[OUTFILE]"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  }
 }

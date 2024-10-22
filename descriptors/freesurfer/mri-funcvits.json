@@ -73,10 +73,7 @@
       "optional": true,
       "id": "hemi",
       "name": "Hemifields",
-      "default-value": [
-        "lh",
-        "rh"
-      ]
+      "default-value": ["lh", "rh"]
     },
     {
       "command-line-flag": "--svitdir",

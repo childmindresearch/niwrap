@@ -55,10 +55,7 @@
       "optional": true,
       "name": "Endianness",
       "id": "endianness",
-      "value-choices": [
-        "b",
-        "l"
-      ]
+      "value-choices": ["b", "l"]
     }
   ],
   "output-files": [

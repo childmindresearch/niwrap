@@ -19,10 +19,7 @@
       "optional": false,
       "id": "hemisphere",
       "name": "Hemisphere",
-      "value-choices": [
-        "lh",
-        "rh"
-      ]
+      "value-choices": ["lh", "rh"]
     },
     {
       "description": "Morphed surface file.",

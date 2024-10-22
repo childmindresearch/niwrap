@@ -77,10 +77,7 @@
       "optional": true,
       "id": "hemisphere",
       "name": "Hemisphere",
-      "value-choices": [
-        "lh",
-        "rh"
-      ]
+      "value-choices": ["lh", "rh"]
     },
     {
       "command-line-flag": "--surf",
