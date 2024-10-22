@@ -3,7 +3,7 @@
   "name": "mris_thickness_diff",
   "author": "FreeSurfer Developers",
   "description": "Computes the difference of two surface data sets defined on two surface meshes.",
-  "command-line": "/usr/local/freesurfer/bin/mris_thickness_diff [SURFACE1] [DATA1] [SURFACE2] [DATA2] [SRC_TYPE_FLAG] [TRG_TYPE_FLAG] [OUT_FILE] [OUT_RESAMPLED_FLAG] [NSMOOTH_FLAG] [REGISTER_FLAG] [XFORM_FILE] [INVERT_FLAG] [SRC_VOLUME] [DST_VOLUME] [ABS_FLAG] [LOG_FILE] [SUBJECT_NAME]",
+  "command-line": "mris_thickness_diff [SURFACE1] [DATA1] [SURFACE2] [DATA2] [SRC_TYPE_FLAG] [TRG_TYPE_FLAG] [OUT_FILE] [OUT_RESAMPLED_FLAG] [NSMOOTH_FLAG] [REGISTER_FLAG] [XFORM_FILE] [INVERT_FLAG] [SRC_VOLUME] [DST_VOLUME] [ABS_FLAG] [LOG_FILE] [SUBJECT_NAME]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

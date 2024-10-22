@@ -3,7 +3,7 @@
   "name": "mri_compute_overlap",
   "author": "FreeSurfer Developers",
   "description": "Computes three different types of overlap measures for labels in input volumes.",
-  "command-line": "/usr/local/freesurfer/bin/mri_compute_overlap [VOLUMES] [LABEL_NUMBERS] [ALL_LABELS_FLAG] [SHOW_LABEL_FLAG] [TOTAL_OVERLAP_FLAG] [NO_SUMMARY_FLAG] [MASK] [OUTPUT_FILE] [QUIET_MODE_FLAG] [TRANSLATE_LABEL] [HELP_FLAG]",
+  "command-line": "mri_compute_overlap [VOLUMES] [LABEL_NUMBERS] [ALL_LABELS_FLAG] [SHOW_LABEL_FLAG] [TOTAL_OVERLAP_FLAG] [NO_SUMMARY_FLAG] [MASK] [OUTPUT_FILE] [QUIET_MODE_FLAG] [TRANSLATE_LABEL] [HELP_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

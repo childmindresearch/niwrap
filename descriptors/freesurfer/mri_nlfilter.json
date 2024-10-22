@@ -1,7 +1,7 @@
 {
   "name": "mri_nlfilter",
   "description": "This program processes an image using a nonlocal filter and writes the results to an output file. It supports different filtering methods such as median, Gaussian, and mean.",
-  "command-line": "/usr/local/freesurfer/bin/mri_nlfilter [INPUT_FILE] [OUTPUT_FILE] [BLUR_SIGMA] [GAUSSIAN_SIGMA] [MEAN_FLAG] [WINDOW_SIZE] [CPLOV_FLAG] [MINMAX_FLAG] [NO_OFFSETS_FLAG] [NO_CROP_FLAG] [VERSION_FLAG] [HELP_FLAG]",
+  "command-line": "mri_nlfilter [INPUT_FILE] [OUTPUT_FILE] [BLUR_SIGMA] [GAUSSIAN_SIGMA] [MEAN_FLAG] [WINDOW_SIZE] [CPLOV_FLAG] [MINMAX_FLAG] [NO_OFFSETS_FLAG] [NO_CROP_FLAG] [VERSION_FLAG] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

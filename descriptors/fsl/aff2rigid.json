@@ -3,7 +3,7 @@
   "name": "aff2rigid",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for converting affine transformations to rigid transformations.",
-  "command-line": "/usr/local/fsl/bin/aff2rigid [INPUT_TRANSFORM] [OUTPUT_TRANSFORM]",
+  "command-line": "aff2rigid [INPUT_TRANSFORM] [OUTPUT_TRANSFORM]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

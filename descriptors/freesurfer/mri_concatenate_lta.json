@@ -1,7 +1,7 @@
 {
   "name": "mri_concatenate_lta",
   "description": "Concatenates two consecutive LTA transformations into one overall transformation, Out = LTA2*LTA1",
-  "command-line": "/usr/local/freesurfer/bin/mri_concatenate_lta [LTA_1] [LTA_2] [LTA_FINAL] [TAL_SRC] [TAL_TEMPLATE] [INVERT1_FLAG] [INVERT2_FLAG] [INVERTOUT_FLAG] [OUT_TYPE] [SUBJECT] [RMSDIFF_RADIUS] [RMSDIFF_OUTPUTFILE]",
+  "command-line": "mri_concatenate_lta [LTA_1] [LTA_2] [LTA_FINAL] [TAL_SRC] [TAL_TEMPLATE] [INVERT1_FLAG] [INVERT2_FLAG] [INVERTOUT_FLAG] [OUT_TYPE] [SUBJECT] [RMSDIFF_RADIUS] [RMSDIFF_OUTPUTFILE]",
   "schema-version": "0.5",
   "inputs": [
     {

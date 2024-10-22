@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mri_fieldsign",
   "description": "Field Sign Mapping Tool from FreeSurfer",
-  "command-line": "/usr/local/freesurfer/bin/mri_fieldsign [FIELDSIGN_FILE] [ECCEN] [POLAR] [SUBJECT] [HEMI] [PATCH_FILE] [OCCIP_FLAG] [SPHERE_FLAG] [FWHM] [NSMOOTH] [REVERSE_FLAG] [OLD_FLAG] [ECCEN_ROT] [POLAR_ROT] [ECCEN_OUT] [POLAR_OUT] [ECCEN_SFA] [POLAR_SFA] [SFA_DIR] [SFA_TRUE_FLAG] [DEBUG_FLAG] [CHECKOPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_fieldsign [FIELDSIGN_FILE] [ECCEN] [POLAR] [SUBJECT] [HEMI] [PATCH_FILE] [OCCIP_FLAG] [SPHERE_FLAG] [FWHM] [NSMOOTH] [REVERSE_FLAG] [OLD_FLAG] [ECCEN_ROT] [POLAR_ROT] [ECCEN_OUT] [POLAR_OUT] [ECCEN_SFA] [POLAR_SFA] [SFA_DIR] [SFA_TRUE_FLAG] [DEBUG_FLAG] [CHECKOPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

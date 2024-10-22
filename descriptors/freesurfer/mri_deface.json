@@ -2,7 +2,7 @@
   "name": "mri_deface",
   "tool-version": "7.4.1",
   "description": "MRI Deface utility for removing facial features from MRI images.",
-  "command-line": "/usr/local/freesurfer/bin/mri_deface [INPUT_VOLUME] [BRAIN_TEMPLATE] [FACE_TEMPLATE] [OUTPUT_VOLUME]",
+  "command-line": "mri_deface [INPUT_VOLUME] [BRAIN_TEMPLATE] [FACE_TEMPLATE] [OUTPUT_VOLUME]",
   "schema-version": "0.5",
   "inputs": [
     {

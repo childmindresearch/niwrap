@@ -1,7 +1,7 @@
 {
   "name": "predict_v1.sh",
   "description": "A script for predicting brain images using registration",
-  "command-line": "/usr/local/freesurfer/bin/predict_v1.sh [TEMPLATE] [INFLATED_FLAG] [HEMI] [PRINT_MODE_FLAG] [SUBJECTS]...",
+  "command-line": "predict_v1.sh [TEMPLATE] [INFLATED_FLAG] [HEMI] [PRINT_MODE_FLAG] [SUBJECTS]...",
   "schema-version": "0.5",
   "inputs": [
     {

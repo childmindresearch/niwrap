@@ -2,7 +2,7 @@
   "name": "mri_and",
   "author": "FreeSurfer Developers",
   "description": "Performs a logical voxel-wise AND on a series of volumes",
-  "command-line": "/usr/local/freesurfer/bin/mri_and [INPUT_FILES]",
+  "command-line": "mri_and [INPUT_FILES]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

@@ -2,7 +2,7 @@
   "name": "mri_rigid_register",
   "author": "FreeSurfer Developers",
   "description": "Rigid registration tool for MRI volumes",
-  "command-line": "/usr/local/freesurfer/bin/mri_rigid_register [SOURCE_VOLUME] [TARGET_VOLUME] [TRANSFORM_OUTPUT]",
+  "command-line": "mri_rigid_register [SOURCE_VOLUME] [TARGET_VOLUME] [TRANSFORM_OUTPUT]",
   "schema-version": "0.5",
   "inputs": [
     {

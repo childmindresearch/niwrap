@@ -1,7 +1,7 @@
 {
   "name": "mris_label_area",
   "description": "Compute the area of specific labels on a surface of a brain hemisphere in FreeSurfer.",
-  "command-line": "/usr/local/freesurfer/bin/mris_label_area [PCT] [LOG_FILE] [BRAIN_VOL] <subject_name> <hemi> <surf_name> <annot_name> [LABELS...]",
+  "command-line": "mris_label_area [PCT] [LOG_FILE] [BRAIN_VOL] <subject_name> <hemi> <surf_name> <annot_name> [LABELS...]",
   "inputs": [
     {
       "description": "Name of the subject",

@@ -1,6 +1,6 @@
 {
   "name": "mri_polv",
-  "command-line": "/usr/local/freesurfer/bin/mri_polv [WINDOW_SIZE] <input image> <output image>",
+  "command-line": "mri_polv [WINDOW_SIZE] <input image> <output image>",
   "description": "Calculate an image specifying the plane of least variance at each point in the input image.",
   "schema-version": "0.5",
   "inputs": [

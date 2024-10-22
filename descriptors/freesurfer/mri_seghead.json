@@ -3,7 +3,7 @@
   "tool-version": "7.4.1",
   "author": "FreeSurfer Developers",
   "description": "Binarizes an input volume to identify the head's voxels.",
-  "command-line": "/usr/local/freesurfer/bin/mri_seghead [INPUT_VOLUME] [OUTPUT_VOLUME] [FILL_VALUE] [FHI] [THRESH1] [THRESH2] [THRESH] [NHITSMIN] [HVOLDAT] [SIGNAL_BEHIND_HEAD_FLAG] [RESCALE_FLAG] [FILL_HOLES_FLAG] [SEED] [OR_MASK] [GDIAG]",
+  "command-line": "mri_seghead [INPUT_VOLUME] [OUTPUT_VOLUME] [FILL_VALUE] [FHI] [THRESH1] [THRESH2] [THRESH] [NHITSMIN] [HVOLDAT] [SIGNAL_BEHIND_HEAD_FLAG] [RESCALE_FLAG] [FILL_HOLES_FLAG] [SEED] [OR_MASK] [GDIAG]",
   "schema-version": "0.5",
   "inputs": [
     {

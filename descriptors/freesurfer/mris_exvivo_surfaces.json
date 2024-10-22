@@ -3,7 +3,7 @@
   "name": "mris_exvivo_surfaces",
   "author": "FreeSurfer Developers",
   "description": "FreeSurfer tool to position tessellation of the cortical surface at the white and gray matter surfaces, and generate relevant surface files.",
-  "command-line": "/usr/local/freesurfer/bin/mris_exvivo_surfaces [SUBJECT_NAME] [HEMISPHERE] [OMIT_SELF_INTERSECTION_FLAG] [CREATE_CURVATURE_AREA_FLAG] [AVERAGE_CURVATURE] [WHITE_ONLY_FLAG] [FORMALIN_FLAG]",
+  "command-line": "mris_exvivo_surfaces [SUBJECT_NAME] [HEMISPHERE] [OMIT_SELF_INTERSECTION_FLAG] [CREATE_CURVATURE_AREA_FLAG] [AVERAGE_CURVATURE] [WHITE_ONLY_FLAG] [FORMALIN_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

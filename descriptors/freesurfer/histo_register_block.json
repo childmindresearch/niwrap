@@ -2,7 +2,7 @@
   "name": "histo_register_block",
   "tool-version": "7.4.1",
   "description": "A tool to align a histological slice with a block face image.",
-  "command-line": "/usr/local/freesurfer/bin/histo_register_block [SEG_TIME1] [SEG_TIME2] [TRANSFORM1] [TRANSFORM2] [OUTPUT_FILE] [OUT_LIKE] [INVERT_TRANSFORM]",
+  "command-line": "histo_register_block [SEG_TIME1] [SEG_TIME2] [TRANSFORM1] [TRANSFORM2] [OUTPUT_FILE] [OUT_LIKE] [INVERT_TRANSFORM]",
   "schema-version": "0.5",
   "inputs": [
     {

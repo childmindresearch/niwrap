@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer",
   "description": "MRI vessel segmentation tool",
-  "command-line": "/usr/local/freesurfer/bin/mri_vessel_segment [T1_IMAGE] [T2_IMAGE] [ASEG] [OUTPUT] [SHAPE_FLAG]",
+  "command-line": "mri_vessel_segment [T1_IMAGE] [T2_IMAGE] [ASEG] [OUTPUT] [SHAPE_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

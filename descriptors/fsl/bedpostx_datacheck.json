@@ -3,7 +3,7 @@
   "name": "bedpostx_datacheck",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Check the data directory for BEDPOSTX compatibility",
-  "command-line": "/usr/local/fsl/bin/bedpostx_datacheck [DATA_DIR]",
+  "command-line": "bedpostx_datacheck [DATA_DIR]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

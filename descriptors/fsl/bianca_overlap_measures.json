@@ -3,7 +3,7 @@
   "name": "bianca_overlap_measures",
   "description": "BIANCA overlap measures script for FSL",
   "author": "FMRIB Analysis Group, University of Oxford",
-  "command-line": "/usr/local/fsl/bin/bianca_overlap_measures [LESION_MASK] [MANUAL_MASK] [OUTPUT_DIR]",
+  "command-line": "bianca_overlap_measures [LESION_MASK] [MANUAL_MASK] [OUTPUT_DIR]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

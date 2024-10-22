@@ -3,7 +3,7 @@
   "name": "mri_linear_align",
   "author": "FreeSurfer Developers",
   "description": "MRI Linear Alignment Tool for Freesurfer",
-  "command-line": "/usr/local/freesurfer/bin/mri_linear_align [SOURCE] [TARGET] [OUTPUT_XFORM]",
+  "command-line": "mri_linear_align [SOURCE] [TARGET] [OUTPUT_XFORM]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

@@ -3,7 +3,7 @@
   "name": "mri_dct_align_binary",
   "author": "FreeSurfer Developers",
   "description": "A binary tool for aligning MRI images using DCT.",
-  "command-line": "/usr/local/freesurfer/bin/mri_dct_align_binary [SOURCE] [DESTINATION] [OUTPUT_XFORM]",
+  "command-line": "mri_dct_align_binary [SOURCE] [DESTINATION] [OUTPUT_XFORM]",
   "schema-version": "0.5",
   "inputs": [
     {

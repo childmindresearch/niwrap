@@ -2,7 +2,7 @@
   "name": "mris_segment",
   "tool-version": "7.4.1",
   "description": "A command-line tool for segmenting surfaces in FreeSurfer",
-  "command-line": "/usr/local/freesurfer/bin/mris_segment [SUBJECTS] [OUTPUT_SUBJECT] [OUTPUT_FILE]",
+  "command-line": "mris_segment [SUBJECTS] [OUTPUT_SUBJECT] [OUTPUT_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {

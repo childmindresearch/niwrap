@@ -1,6 +1,6 @@
 {
   "name": "mris_average_curvature",
-  "command-line": "/usr/local/freesurfer/bin/mris_average_curvature [INPUT_CURVATURE_FILE] [HEMI] [SURFACE] [SUBJECTS] [OUTPUT_CURVATURE_FILE] [SUMMARY_STATS_FLAG] [OUTPUT_SURFACE_FLAG]",
+  "command-line": "mris_average_curvature [INPUT_CURVATURE_FILE] [HEMI] [SURFACE] [SUBJECTS] [OUTPUT_CURVATURE_FILE] [SUMMARY_STATS_FLAG] [OUTPUT_SURFACE_FLAG]",
   "description": "This tool averages curvature data across multiple subjects and generates an output curvature file painted onto the last subject specified. It can also generate summary statistics if requested.",
   "inputs": [
     {

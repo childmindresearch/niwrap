@@ -3,7 +3,7 @@
   "name": "adjunct_aw_tableize_roi_info.py",
   "author": "AFNI Developers",
   "description": "A simple helper function for the fat_proc scripts that generates a text file containing ROI count/size information based on provided atlases and masks.",
-  "command-line": "/opt/afni/src/../install/adjunct_aw_tableize_roi_info.py [OUTPUT_FILE] [WARPED_ATLAS] [WARPED_MASK] [REFERENCE_ATLAS] [REFERENCE_MASK] [MODESMOOTH_VALUE]",
+  "command-line": "adjunct_aw_tableize_roi_info.py [OUTPUT_FILE] [WARPED_ATLAS] [WARPED_MASK] [REFERENCE_ATLAS] [REFERENCE_MASK] [MODESMOOTH_VALUE]",
   "inputs": [
     {
       "description": "Output file name",

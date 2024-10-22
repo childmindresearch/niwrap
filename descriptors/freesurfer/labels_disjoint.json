@@ -3,7 +3,7 @@
   "name": "labels_disjoint",
   "author": "FreeSurfer Developers",
   "description": "Subtracts one label file from another, effectively creating a label that represents label1 minus label2",
-  "command-line": "/usr/local/freesurfer/bin/labels_disjoint [LABEL1] [LABEL2] [OUTPUTNAME]",
+  "command-line": "labels_disjoint [LABEL1] [LABEL2] [OUTPUTNAME]",
   "schema-version": "0.5",
   "inputs": [
     {

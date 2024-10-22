@@ -3,7 +3,7 @@
   "name": "mri_fdr",
   "author": "FreeSurfer Developers",
   "description": "A program that performs False Discovery Rate correction.",
-  "command-line": "/usr/local/freesurfer/bin/mri_fdr [INPUT] [FDR] [DEFAULT_FRAME] [POSITIVE_ONLY_FLAG] [NEGATIVE_ONLY_FLAG] [ALL_VOXELS_FLAG] [RAW_P_VALUES_FLAG] [THRESHOLD_FILE] [DEBUG_FLAG] [CHECK_OPTS_FLAG]",
+  "command-line": "mri_fdr [INPUT] [FDR] [DEFAULT_FRAME] [POSITIVE_ONLY_FLAG] [NEGATIVE_ONLY_FLAG] [ALL_VOXELS_FLAG] [RAW_P_VALUES_FLAG] [THRESHOLD_FILE] [DEBUG_FLAG] [CHECK_OPTS_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

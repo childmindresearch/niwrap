@@ -3,7 +3,7 @@
   "name": "mris_watershed",
   "author": "FreeSurfer Developers",
   "description": "This program computes the watershed transform on the surface of an intensity gradient and writes the resulting measurement into a .annot file.",
-  "command-line": "/usr/local/freesurfer/bin/mris_watershed [INPUT_SURFACE] [INPUT_GRADIENT_FIELD] [OUTPUT_ANNOTATION] [MAX_CLUSTERS] [MASK_LABEL]",
+  "command-line": "mris_watershed [INPUT_SURFACE] [INPUT_GRADIENT_FIELD] [OUTPUT_ANNOTATION] [MAX_CLUSTERS] [MASK_LABEL]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

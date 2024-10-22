@@ -1,6 +1,6 @@
 {
   "name": "run_SegmentThalamicNuclei.sh",
-  "command-line": "/usr/local/freesurfer/bin/run_SegmentThalamicNuclei.sh [MCR_ROOT] [ARGS...]",
+  "command-line": "run_SegmentThalamicNuclei.sh [MCR_ROOT] [ARGS...]",
   "description": "Script for segmenting thalamic nuclei using FreeSurfer",
   "inputs": [
     {

@@ -3,7 +3,7 @@
   "name": "imln",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Creates a link (called file2) to file1",
-  "command-line": "/usr/local/fsl/bin/imln [INPUT_FILE] [LINK_NAME]",
+  "command-line": "imln [INPUT_FILE] [LINK_NAME]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

@@ -3,7 +3,7 @@
   "name": "mri_voldiff",
   "author": "FreeSurfer Developers",
   "description": "Determines whether two volumes are different in terms of pixel data, dimension, precision, resolution, or geometry.",
-  "command-line": "/usr/local/freesurfer/bin/mri_voldiff --v1 [VOLUME1] --v2 [VOLUME2] [VOX2RAS_THRESH] [PIX_THRESH] [ALLOW_PREC_FLAG] [ALLOW_RES_FLAG] [ALLOW_VOX2RAS_FLAG] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "mri_voldiff --v1 [VOLUME1] --v2 [VOLUME2] [VOX2RAS_THRESH] [PIX_THRESH] [ALLOW_PREC_FLAG] [ALLOW_RES_FLAG] [ALLOW_VOX2RAS_FLAG] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

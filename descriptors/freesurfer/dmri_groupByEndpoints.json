@@ -2,7 +2,7 @@
   "name": "dmri_groupByEndpoints",
   "author": "FreeSurfer Developers",
   "description": "A tool to group streamlines by their endpoints using diffusion MRI data.",
-  "command-line": "/usr/local/freesurfer/bin/dmri_groupByEndpoints [STREAMLINE_FILE] [IMAGE_FILE] [OUTPUT_DIRECTORY]",
+  "command-line": "dmri_groupByEndpoints [STREAMLINE_FILE] [IMAGE_FILE] [OUTPUT_DIRECTORY]",
   "schema-version": "0.5",
   "inputs": [
     {

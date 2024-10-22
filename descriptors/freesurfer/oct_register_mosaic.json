@@ -1,7 +1,7 @@
 {
   "name": "oct_register_mosaic",
   "description": "Tool for registering multiple OCT (Optical Coherence Tomography) tiles or a mosaic list into a single output volume",
-  "command-line": "/usr/local/freesurfer/bin/oct_register_mosaic [TILES] [OUTPUT_VOLUME] [DOWNSAMPLE] [WEIGHT]",
+  "command-line": "oct_register_mosaic [TILES] [OUTPUT_VOLUME] [DOWNSAMPLE] [WEIGHT]",
   "schema-version": "0.5",
   "inputs": [
     {

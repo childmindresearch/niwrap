@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mris_image2vtk",
   "description": "Convert image to VTK format with specified thresholds and smoothing parameters",
-  "command-line": "/usr/local/freesurfer/bin/mris_image2vtk [INPUT_FILE] [OUTPUT_FILE] [LOWER_THRESHOLD] [UPPER_THRESHOLD] [VTK_SMOOTH_ITERS] [IMAGE_SMOOTH_SIZE] [REDUCTION_PERCENT]",
+  "command-line": "mris_image2vtk [INPUT_FILE] [OUTPUT_FILE] [LOWER_THRESHOLD] [UPPER_THRESHOLD] [VTK_SMOOTH_ITERS] [IMAGE_SMOOTH_SIZE] [REDUCTION_PERCENT]",
   "schema-version": "0.5",
   "inputs": [
     {

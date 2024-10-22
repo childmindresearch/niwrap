@@ -3,7 +3,7 @@
   "name": "mri_defacer",
   "author": "FreeSurfer Developers",
   "description": "Tool for defacing MRI images to remove facial features",
-  "command-line": "/usr/local/freesurfer/bin/mri_defacer --i [INPUT_VOL] --hm [HEADMASK] --ts [TEMPSURF] --l [TEMPLABEL] --w [WATERMARK] --o [DEFACED_VOL] --m [FACEMASK] --fill-const [CONST_IN] [CONST_OUT] --xmask [XMASK] [OPTIONS]",
+  "command-line": "mri_defacer --i [INPUT_VOL] --hm [HEADMASK] --ts [TEMPSURF] --l [TEMPLABEL] --w [WATERMARK] --o [DEFACED_VOL] --m [FACEMASK] --fill-const [CONST_IN] [CONST_OUT] --xmask [XMASK] [OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {

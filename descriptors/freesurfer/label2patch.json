@@ -3,7 +3,7 @@
   "name": "label2patch",
   "author": "FreeSurfer Developers",
   "description": "Utility to create patches from label files in Freesurfer.",
-  "command-line": "/usr/local/freesurfer/bin/label2patch [SUBJECT_NAME] [HEMI] [LABEL_FILE] [OUTPUT_PATCH] [DILATE] [ERODE] [CLOSE] [SUBJECTS_DIR] [SURFACE_NAME] [WRITE_SURFACE_FLAG]",
+  "command-line": "label2patch [SUBJECT_NAME] [HEMI] [LABEL_FILE] [OUTPUT_PATCH] [DILATE] [ERODE] [CLOSE] [SUBJECTS_DIR] [SURFACE_NAME] [WRITE_SURFACE_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

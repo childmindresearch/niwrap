@@ -1,7 +1,7 @@
 {
   "name": "hiam_register",
   "description": "This program registers a surface with an average surface.",
-  "command-line": "/usr/local/freesurfer/bin/hiam_register [INPUT_SURFACE] [AVERAGE_SURFACE] [OUTPUT_SURFACE]",
+  "command-line": "hiam_register [INPUT_SURFACE] [AVERAGE_SURFACE] [OUTPUT_SURFACE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

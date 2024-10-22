@@ -1,7 +1,7 @@
 {
   "name": "dmri_match",
   "description": "Tool for matching diffusion MRI parcellations",
-  "command-line": "/usr/local/freesurfer/bin/dmri_match -s1 [PARCELLATION1] -s2 [PARCELLATION2] -c [NUM_CLUSTERS] -h1 [CLUSTERING_PATH1] -h2 [CLUSTERING_PATH2] [LABELS] [EUCLIDEAN_FLAG] [BB_FLAG] [SYM_FLAG] [INTER_HEMI_RATIO_REMOVAL] -o [OUTPUT]",
+  "command-line": "dmri_match -s1 [PARCELLATION1] -s2 [PARCELLATION2] -c [NUM_CLUSTERS] -h1 [CLUSTERING_PATH1] -h2 [CLUSTERING_PATH2] [LABELS] [EUCLIDEAN_FLAG] [BB_FLAG] [SYM_FLAG] [INTER_HEMI_RATIO_REMOVAL] -o [OUTPUT]",
   "schema-version": "0.5",
   "inputs": [
     {

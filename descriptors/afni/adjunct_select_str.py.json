@@ -3,7 +3,7 @@
   "name": "adjunct_select_str.py",
   "author": "AFNI Developers",
   "description": "A simple helper function for the fat_proc* scripts.",
-  "command-line": "/opt/afni/src/../install/adjunct_select_str.py [INPUT_FILE] [NUM_BRICKS] [OUTPUT_FILE]",
+  "command-line": "adjunct_select_str.py [INPUT_FILE] [NUM_BRICKS] [OUTPUT_FILE]",
   "inputs": [
     {
       "description": "File containing a list of integers",

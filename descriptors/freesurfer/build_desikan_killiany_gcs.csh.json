@@ -1,6 +1,6 @@
 {
   "name": "build_desikan_killiany_gcs.csh",
-  "command-line": "/usr/local/freesurfer/bin/build_desikan_killiany_gcs.csh [HEMI]",
+  "command-line": "build_desikan_killiany_gcs.csh [HEMI]",
   "description": "Tool to build Desikan-Killiany cortical parcellation in FreeSurfer.",
   "schema-version": "0.5",
   "inputs": [

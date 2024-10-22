@@ -1,7 +1,7 @@
 {
   "name": "mri_dct_align",
   "description": "MRI DCT alignment tool from FreeSurfer",
-  "command-line": "/usr/local/freesurfer/bin/mri_dct_align [SOURCE] [DESTINATION] [OUTPUT_XFORM]",
+  "command-line": "mri_dct_align [SOURCE] [DESTINATION] [OUTPUT_XFORM]",
   "schema-version": "0.5",
   "inputs": [
     {

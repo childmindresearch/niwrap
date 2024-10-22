@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://example.com/dmri_AnatomiCuts.json",
   "description": "AnatomiCuts tool for DTI fibers segmentation",
-  "command-line": "/usr/local/freesurfer/bin/dmri_AnatomiCuts -s [SEGMENTATION_FILE] -f [FIBER_FILE] -c [CLUSTERS] -n [POINTS] -e [FIBERS_EIGEN] -o [OUTPUT_FOLDER] -d [DIRECTION_FLAG]",
+  "command-line": "dmri_AnatomiCuts -s [SEGMENTATION_FILE] -f [FIBER_FILE] -c [CLUSTERS] -n [POINTS] -e [FIBERS_EIGEN] -o [OUTPUT_FOLDER] -d [DIRECTION_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

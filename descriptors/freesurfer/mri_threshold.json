@@ -1,7 +1,7 @@
 {
   "name": "mri_threshold",
   "description": "This program will lower threshold an input volume",
-  "command-line": "/usr/local/freesurfer/bin/mri_threshold [INPUT_VOLUME] [THRESHOLD] [OUTPUT_VOLUME] [BINARIZE_FLAG] [UPPER_THRESHOLD_FLAG] [FRAME_NUMBER]",
+  "command-line": "mri_threshold [INPUT_VOLUME] [THRESHOLD] [OUTPUT_VOLUME] [BINARIZE_FLAG] [UPPER_THRESHOLD_FLAG] [FRAME_NUMBER]",
   "schema-version": "0.5",
   "inputs": [
     {

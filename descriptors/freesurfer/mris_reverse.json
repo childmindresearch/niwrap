@@ -1,7 +1,7 @@
 {
   "name": "mris_reverse",
   "description": "This tool reverses a cortical surface.",
-  "command-line": "/usr/local/freesurfer/bin/mris_reverse [INPUT_SURFACE] [OUTPUT_SURFACE]",
+  "command-line": "mris_reverse [INPUT_SURFACE] [OUTPUT_SURFACE]",
   "schema-version": "0.5",
   "inputs": [
     {

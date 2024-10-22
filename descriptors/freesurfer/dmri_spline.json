@@ -3,7 +3,7 @@
   "name": "dmri_spline",
   "author": "FreeSurfer Developers",
   "description": "Tool for interpolating and analyzing splines within a defined mask",
-  "command-line": "/usr/local/freesurfer/bin/dmri_spline --cpts [CPTS] --mask [MASK] [OUTPUT_VOLUME] [SHOW_FLAG] [OUTPUT_POINTS_FILE] [OUTPUT_VECTORS_BASE] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "command-line": "dmri_spline --cpts [CPTS] --mask [MASK] [OUTPUT_VOLUME] [SHOW_FLAG] [OUTPUT_POINTS_FILE] [OUTPUT_VECTORS_BASE] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

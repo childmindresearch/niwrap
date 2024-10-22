@@ -3,7 +3,7 @@
   "name": "mris_seg2annot",
   "author": "FreeSurfer Developers",
   "description": "Converts a surface-based segmentation into a custom annotation file.",
-  "command-line": "/usr/local/freesurfer/bin/mris_seg2annot [SURFSEG] [COLORTABLE] [AUTO_CTAB] [SUBJECT] [HEMI] [ANNOT] [SURFACE] [DEBUG] [DEBUG_VERTEX] [CHECKOPTS] [VERSION]",
+  "command-line": "mris_seg2annot [SURFSEG] [COLORTABLE] [AUTO_CTAB] [SUBJECT] [HEMI] [ANNOT] [SURFACE] [DEBUG] [DEBUG_VERTEX] [CHECKOPTS] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {

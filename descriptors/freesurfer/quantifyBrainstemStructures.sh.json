@@ -2,7 +2,7 @@
   "name": "quantifyBrainstemStructures.sh",
   "description": "A script to gather results from FreeSurfer brainstem processing and write them to an output file.",
   "schema-version": "0.5",
-  "command-line": "/usr/local/freesurfer/bin/quantifyBrainstemStructures.sh [OUTPUT_FILE] [SUBJECTS_DIRECTORY]",
+  "command-line": "quantifyBrainstemStructures.sh [OUTPUT_FILE] [SUBJECTS_DIRECTORY]",
   "inputs": [
     {
       "description": "The path to the output file where results should be written.",

@@ -3,7 +3,7 @@
   "name": "mris_flatten",
   "author": "FreeSurfer Developers",
   "description": "This program will flatten a surface patch",
-  "command-line": "/usr/local/freesurfer/bin/mris_flatten [INPUT_PATCH] [OUTPUT_PATCH] [ITERATIONS] [NEIGHBORHOOD] [RIP_DILATIONS] [RANDOM_SEED] [COPY_COORDS_FLAG] [NORAND_FLAG]",
+  "command-line": "mris_flatten [INPUT_PATCH] [OUTPUT_PATCH] [ITERATIONS] [NEIGHBORHOOD] [RIP_DILATIONS] [RANDOM_SEED] [COPY_COORDS_FLAG] [NORAND_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

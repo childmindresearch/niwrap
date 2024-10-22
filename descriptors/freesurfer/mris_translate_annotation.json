@@ -1,7 +1,7 @@
 {
   "name": "mris_translate_annotation",
   "description": "This program applies a translation table to an annotation file.",
-  "command-line": "/usr/local/freesurfer/bin/mris_translate_annotation [SUBJECT] [HEMI] [IN_ANNOT] [TRANSLATION_FILE] [OUT_ANNOT]",
+  "command-line": "mris_translate_annotation [SUBJECT] [HEMI] [IN_ANNOT] [TRANSLATION_FILE] [OUT_ANNOT]",
   "schema-version": "0.5",
   "inputs": [
     {

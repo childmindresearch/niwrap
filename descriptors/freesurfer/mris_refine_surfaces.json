@@ -3,7 +3,7 @@
   "name": "mris_refine_surfaces",
   "author": "FreeSurfer Developers",
   "description": "Refines cortical surfaces around the region specified by the label file",
-  "command-line": "/usr/local/freesurfer/bin/mris_refine_surfaces [SUBJECT_NAME] [HEMI] [HIRES_VOLUME] [LABEL_FILE] [LOW_TO_HIRES_XFM] [SDIR_FLAG] [MGZ_FLAG] [SUFFIX_FLAG]",
+  "command-line": "mris_refine_surfaces [SUBJECT_NAME] [HEMI] [HIRES_VOLUME] [LABEL_FILE] [LOW_TO_HIRES_XFM] [SDIR_FLAG] [MGZ_FLAG] [SUFFIX_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

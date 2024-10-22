@@ -3,7 +3,7 @@
   "name": "adjunct_combine_str.py",
   "author": "AFNI Developers",
   "description": "A simple helper function for fat_proc* scripts that processes string selectors and outputs a new string selector.",
-  "command-line": "/opt/afni/src/../install/adjunct_combine_str.py [OUTPUT_FILE] [UPPER_INDEX] [STRING_SELECTORS]",
+  "command-line": "adjunct_combine_str.py [OUTPUT_FILE] [UPPER_INDEX] [STRING_SELECTORS]",
   "inputs": [
     {
       "description": "An output file name",

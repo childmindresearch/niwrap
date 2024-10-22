@@ -3,7 +3,7 @@
   "name": "fspython",
   "author": "FreeSurfer Developers",
   "description": "Freesurfer's embedded Python interpreter",
-  "command-line": "/usr/local/freesurfer/python/bin/python3 [OPTION] [ARGS]",
+  "command-line": "python3 [OPTION] [ARGS]",
   "schema-version": "0.5",
   "inputs": [
     {

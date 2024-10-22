@@ -3,7 +3,7 @@
   "name": "labels_union",
   "author": "FreeSurfer Developers",
   "description": "Utility to create the union of two label files.",
-  "command-line": "/usr/local/freesurfer/bin/labels_union [LABEL1] [LABEL2] [OUTPUTNAME]",
+  "command-line": "labels_union [LABEL1] [LABEL2] [OUTPUTNAME]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

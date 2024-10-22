@@ -1,7 +1,7 @@
 {
   "name": "mri_annotation2label",
   "description": "Convert an annotation into multiple label files or into a segmentation volume.",
-  "command-line": "/usr/local/freesurfer/bin/mri_annotation2label [SUBJECT] [HEMI] [LOBES] [LOBES_STRICT] [LOBES_STRICT_PHCG] [LABEL] [LABELBASE] [OUTDIR] [SEG] [SEGBASE] [CTAB] [BORDER] [BORDER_ANNOT] [ANNOTATION] [SUBJECTS_DIR] [SURFACE] [STAT] [HELP] [VERSION]",
+  "command-line": "mri_annotation2label [SUBJECT] [HEMI] [LOBES] [LOBES_STRICT] [LOBES_STRICT_PHCG] [LABEL] [LABELBASE] [OUTDIR] [SEG] [SEGBASE] [CTAB] [BORDER] [BORDER_ANNOT] [ANNOTATION] [SUBJECTS_DIR] [SURFACE] [STAT] [HELP] [VERSION]",
   "schema-version": "0.5",
   "inputs": [
     {

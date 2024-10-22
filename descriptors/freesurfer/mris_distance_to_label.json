@@ -3,7 +3,7 @@
   "name": "mris_distance_to_label",
   "author": "FreeSurfer Developers",
   "description": "A tool for measuring the distance between vertices on a surface and a labeled region.",
-  "command-line": "/usr/local/freesurfer/bin/mris_distance_to_label [HEMISPHERE] [SUBJECT_1]",
+  "command-line": "mris_distance_to_label [HEMISPHERE] [SUBJECT_1]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

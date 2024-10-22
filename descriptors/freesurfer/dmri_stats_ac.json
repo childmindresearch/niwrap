@@ -2,7 +2,7 @@
   "name": "dmri_stats_ac",
   "tool-version": "7.4.1",
   "description": "The tool 'dmri_stats_ac' performs statistical analysis on dMRI data.",
-  "command-line": "/usr/local/freesurfer/bin/dmri_stats_ac -i [ANATOMICUTS_FOLDER] -n [NUM_CLUSTERS] -c [CORRESPONDENCE_FILE] -m [NUM_MEASURES] [MEASURE_NAMES_AND_VALUES] -o [OUTPUT]",
+  "command-line": "dmri_stats_ac -i [ANATOMICUTS_FOLDER] -n [NUM_CLUSTERS] -c [CORRESPONDENCE_FILE] -m [NUM_MEASURES] [MEASURE_NAMES_AND_VALUES] -o [OUTPUT]",
   "inputs": [
     {
       "command-line-flag": "-i",

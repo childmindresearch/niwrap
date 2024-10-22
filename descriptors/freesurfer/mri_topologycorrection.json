@@ -1,6 +1,6 @@
 {
   "name": "mri_topologycorrection",
-  "command-line": "/usr/local/freesurfer/bin/mri_topologycorrection [OPTIONS] [INPUT_ORIG_FILE] [INPUT_SEGMENTED_FILE] [OUTPUT_FOLDER]",
+  "command-line": "mri_topologycorrection [OPTIONS] [INPUT_ORIG_FILE] [INPUT_SEGMENTED_FILE] [OUTPUT_FOLDER]",
   "schema-version": "0.5",
   "description": "Corrects the topology of segmented MRI images.",
   "inputs": [

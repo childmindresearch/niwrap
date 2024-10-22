@@ -2,7 +2,7 @@
   "name": "@djunct_dwi_selector",
   "tool-version": "24.2.06",
   "description": "Selects DWI data and creates a representative image.",
-  "command-line": "/opt/afni/src/../install/@djunct_dwi_selector.tcsh [DWI] [PNG] [OUTFILE]",
+  "command-line": "@djunct_dwi_selector.tcsh [DWI] [PNG] [OUTFILE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

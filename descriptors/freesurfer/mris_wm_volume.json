@@ -1,7 +1,7 @@
 {
   "name": "mris_wm_volume",
   "description": "Computes the volume of the enclosed hemisphere white matter surface, ignoring non-white matter voxels in the aseg.",
-  "command-line": "/usr/local/freesurfer/bin/mris_wm_volume [SUBJECT] [HEMI] [SUBJECTS_DIR_FLAG] [WHITE_SURF_NAME] [ASEG_NAME] [VERBOSE_FLAG]",
+  "command-line": "mris_wm_volume [SUBJECT] [HEMI] [SUBJECTS_DIR_FLAG] [WHITE_SURF_NAME] [ASEG_NAME] [VERBOSE_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/descriptors/pairreg.json",
   "description": "Pairwise registration tool",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "/usr/local/fsl/bin/pairreg [BRAIN1] [BRAIN2] [SKULL1] [SKULL2] [OUTPUTMATRIX] [FLIRT_ARGS]",
+  "command-line": "pairreg [BRAIN1] [BRAIN2] [SKULL1] [SKULL2] [OUTPUTMATRIX] [FLIRT_ARGS]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

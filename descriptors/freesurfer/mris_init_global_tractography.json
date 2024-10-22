@@ -1,7 +1,7 @@
 {
   "name": "mris_init_global_tractography",
   "description": "Initializes global tractography for a given subject and parcellation.",
-  "command-line": "/usr/local/freesurfer/bin/mris_init_global_tractography [SUBJECT] [PARCELLATION] [OUTPUT_VOLUME]",
+  "command-line": "mris_init_global_tractography [SUBJECT] [PARCELLATION] [OUTPUT_VOLUME]",
   "schema-version": "0.5",
   "inputs": [
     {

@@ -1,6 +1,6 @@
 {
   "name": "dmri_train",
-  "command-line": "/usr/local/freesurfer/bin/dmri_train [SLIST] [TRK] [ROIS] [SEG] [CMASK] [LMASK] [BMASK_TRAINING] [OUTTRK] [BMASK_TEST] [FA] [REG] [REGNL] [REFNL] [BASEREG] [BASEREF] [NCPTS] [MAX] [XSTR] [APRIOR] [SPRIOR] [TRUNC] [OUT] [OUTDIR] [CPTDIR] [DEBUG] [CHECKOPTS] [HELP] [VERSION]",
+  "command-line": "dmri_train [SLIST] [TRK] [ROIS] [SEG] [CMASK] [LMASK] [BMASK_TRAINING] [OUTTRK] [BMASK_TEST] [FA] [REG] [REGNL] [REFNL] [BASEREG] [BASEREF] [NCPTS] [MAX] [XSTR] [APRIOR] [SPRIOR] [TRUNC] [OUT] [OUTDIR] [CPTDIR] [DEBUG] [CHECKOPTS] [HELP] [VERSION]",
   "description": "DMRI training tool for processing diffusion MRI data in FreeSurfer",
   "schema-version": "0.5",
   "inputs": [

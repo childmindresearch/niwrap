@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/dev/mri_coreg/cbsd.json",
   "description": "mri_coreg performs a linear registration between two volumes using the method compatible with spm_coreg.",
-  "command-line": "/usr/local/freesurfer/bin/mri_coreg --mov [MOV_VOLUME] --ref [REF_VOLUME] --reg [REGISTRATION] [ADDITIONAL_PARAMETERS]",
+  "command-line": "mri_coreg --mov [MOV_VOLUME] --ref [REF_VOLUME] --reg [REGISTRATION] [ADDITIONAL_PARAMETERS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"

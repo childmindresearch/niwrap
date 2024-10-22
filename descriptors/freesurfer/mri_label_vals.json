@@ -1,7 +1,7 @@
 {
   "name": "mri_label_vals",
   "description": "Extract values at label coordinates from a volume",
-  "command-line": "/usr/local/freesurfer/bin/mri_label_vals [VOLUME] [LABEL_FILE] [CRAS_FLAG] [HELP_FLAG]",
+  "command-line": "mri_label_vals [VOLUME] [LABEL_FILE] [CRAS_FLAG] [HELP_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {

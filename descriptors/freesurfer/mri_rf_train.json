@@ -3,7 +3,7 @@
   "name": "mri_rf_train",
   "author": "FreeSurfer Developers",
   "description": "Trains GCA data with multiple subjects using MRI data.",
-  "command-line": "/usr/local/freesurfer/bin/mri_rf_train [SEG_VOLUME_DIR] [ATLAS_TRANSFORM] [MASK_VOLNAME] [NODE_SPACING] [PRIOR_SPACING] [INPUT_TRAINING_DATA...] [SANITY_CHECK] <SUBJECT1> <SUBJECT2> ... [OUTPUT_RFA_FILENAME]",
+  "command-line": "mri_rf_train [SEG_VOLUME_DIR] [ATLAS_TRANSFORM] [MASK_VOLNAME] [NODE_SPACING] [PRIOR_SPACING] [INPUT_TRAINING_DATA...] [SANITY_CHECK] <SUBJECT1> <SUBJECT2> ... [OUTPUT_RFA_FILENAME]",
   "schema-version": "0.5",
   "inputs": [
     {

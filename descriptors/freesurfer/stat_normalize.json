@@ -1,6 +1,6 @@
 {
   "name": "stat_normalize",
-  "command-line": "/usr/local/freesurfer/bin/stat_normalize [INPUT_SV_PREFIX] [OUTPUT_SV_PREFIX] [RESOLUTION] [FIELD_OF_VIEW] [SPH_AVG] [XFM_FILE] [FIX_XFM_FLAG] [FLOAT2INT_OPTION]",
+  "command-line": "stat_normalize [INPUT_SV_PREFIX] [OUTPUT_SV_PREFIX] [RESOLUTION] [FIELD_OF_VIEW] [SPH_AVG] [XFM_FILE] [FIX_XFM_FLAG] [FLOAT2INT_OPTION]",
   "schema-version": "0.5",
   "description": "This program will convert and average a sequence of volume-based statistics in Talairach space.",
   "inputs": [

@@ -1,7 +1,7 @@
 {
   "name": "label2flat",
   "description": "A tool used in FreeSurfer to process labeling and patch files.",
-  "command-line": "/usr/local/freesurfer/bin/label2flat [SUBJECT_NAME] [LABEL_FILE] [PATCH_FILE] [OUTPUT_FILE]",
+  "command-line": "label2flat [SUBJECT_NAME] [LABEL_FILE] [PATCH_FILE] [OUTPUT_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
