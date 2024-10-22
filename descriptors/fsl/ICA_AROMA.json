@@ -113,14 +113,14 @@
     {
       "name": "Aggr denoised file",
       "id": "aggr_denoised_file",
-      "path-template": "out\\denoised_func_data_aggr.nii.gz",
+      "path-template": "out/denoised_func_data_aggr.nii.gz",
       "optional": true,
       "description": "If generated: aggressively denoised volume."
     },
     {
       "name": "Nonaggr denoised file",
       "id": "nonaggr_denoised_file",
-      "path-template": "out\\denoised_func_data_nonaggr.nii.gz",
+      "path-template": "out/denoised_func_data_nonaggr.nii.gz",
       "optional": true,
       "description": "If generated: non aggressively denoised volume."
     },
