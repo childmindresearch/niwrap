@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">DTIGEN_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;31555654262ada785889f37cdfaee9a64450483a.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6ea607eac1ba994726ca05216bbd34156b6fbcef.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dtigen&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
@@ -117,70 +117,72 @@
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">    Generate diffusion data using tensor model.</span>
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    </span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    Author: FSL</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    </span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    Args:</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">        tensor: Input tensor file.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">        s0: Input S0 file.</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        output_data: Output data file.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        bvecs: bvecs ASCII text file.</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        bvals: bvals ASCII text file.</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        brainmask: Brain mask file.</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        kurtosis: Mean kurtosis map.</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        help_: Display help message.</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    Returns:</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        NamedTuple of outputs (described in `DtigenOutputs`).</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DTIGEN_METADATA</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dtigen&quot;</span><span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="s2">&quot;-t&quot;</span><span class="p">,</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="p">])</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>        <span class="s2">&quot;--s0&quot;</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="p">])</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="n">output_data</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="p">])</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bvecs</span><span class="p">)</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="s2">&quot;-b&quot;</span><span class="p">,</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bvals</span><span class="p">)</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="p">])</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brainmask</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="p">])</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">kurtosis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;--kurt&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">kurtosis</span><span class="p">)</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">)</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DtigenOutputs</span><span class="p">(</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">output_diffusion_data</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_data</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">output_kurtosis_map</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">kurtosis</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">kurtosis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="p">)</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="s2">&quot;DTIGEN_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="s2">&quot;DtigenOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="s2">&quot;dtigen&quot;</span><span class="p">,</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="p">]</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    </span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    Args:</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        tensor: Input tensor file.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        s0: Input S0 file.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        output_data: Output data file.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        bvecs: bvecs ASCII text file.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        bvals: bvals ASCII text file.</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        brainmask: Brain mask file.</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        kurtosis: Mean kurtosis map.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        help_: Display help message.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Returns:</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        NamedTuple of outputs (described in `DtigenOutputs`).</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DTIGEN_METADATA</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dtigen&quot;</span><span class="p">)</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="s2">&quot;-t&quot;</span><span class="p">,</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="p">])</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="s2">&quot;--s0&quot;</span><span class="p">,</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="p">])</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="n">output_data</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="p">])</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bvecs</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="p">])</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="s2">&quot;-b&quot;</span><span class="p">,</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bvals</span><span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="p">])</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brainmask</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="p">])</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">kurtosis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;--kurt&quot;</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">kurtosis</span><span class="p">)</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">)</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DtigenOutputs</span><span class="p">(</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">output_diffusion_data</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_data</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">output_kurtosis_map</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">kurtosis</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">kurtosis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="s2">&quot;DTIGEN_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="s2">&quot;DtigenOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="s2">&quot;dtigen&quot;</span><span class="p">,</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -189,7 +191,7 @@
                     <div class="attr variable">
             <span class="name">DTIGEN_METADATA</span>        =
 <input id="DTIGEN_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="DTIGEN_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;31555654262ada785889f37cdfaee9a64450483a.boutiques&#39;, name=&#39;dtigen&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
+            <label class="view-value-button pdoc-button" for="DTIGEN_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6ea607eac1ba994726ca05216bbd34156b6fbcef.boutiques&#39;, name=&#39;dtigen&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -305,69 +307,73 @@
 </span><span id="dtigen-41"><a href="#dtigen-41"><span class="linenos"> 41</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="dtigen-42"><a href="#dtigen-42"><span class="linenos"> 42</span></a><span class="sd">    Generate diffusion data using tensor model.</span>
 </span><span id="dtigen-43"><a href="#dtigen-43"><span class="linenos"> 43</span></a><span class="sd">    </span>
-</span><span id="dtigen-44"><a href="#dtigen-44"><span class="linenos"> 44</span></a><span class="sd">    Author: FSL</span>
+</span><span id="dtigen-44"><a href="#dtigen-44"><span class="linenos"> 44</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="dtigen-45"><a href="#dtigen-45"><span class="linenos"> 45</span></a><span class="sd">    </span>
-</span><span id="dtigen-46"><a href="#dtigen-46"><span class="linenos"> 46</span></a><span class="sd">    Args:</span>
-</span><span id="dtigen-47"><a href="#dtigen-47"><span class="linenos"> 47</span></a><span class="sd">        tensor: Input tensor file.</span>
-</span><span id="dtigen-48"><a href="#dtigen-48"><span class="linenos"> 48</span></a><span class="sd">        s0: Input S0 file.</span>
-</span><span id="dtigen-49"><a href="#dtigen-49"><span class="linenos"> 49</span></a><span class="sd">        output_data: Output data file.</span>
-</span><span id="dtigen-50"><a href="#dtigen-50"><span class="linenos"> 50</span></a><span class="sd">        bvecs: bvecs ASCII text file.</span>
-</span><span id="dtigen-51"><a href="#dtigen-51"><span class="linenos"> 51</span></a><span class="sd">        bvals: bvals ASCII text file.</span>
-</span><span id="dtigen-52"><a href="#dtigen-52"><span class="linenos"> 52</span></a><span class="sd">        brainmask: Brain mask file.</span>
-</span><span id="dtigen-53"><a href="#dtigen-53"><span class="linenos"> 53</span></a><span class="sd">        kurtosis: Mean kurtosis map.</span>
-</span><span id="dtigen-54"><a href="#dtigen-54"><span class="linenos"> 54</span></a><span class="sd">        help_: Display help message.</span>
-</span><span id="dtigen-55"><a href="#dtigen-55"><span class="linenos"> 55</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="dtigen-56"><a href="#dtigen-56"><span class="linenos"> 56</span></a><span class="sd">    Returns:</span>
-</span><span id="dtigen-57"><a href="#dtigen-57"><span class="linenos"> 57</span></a><span class="sd">        NamedTuple of outputs (described in `DtigenOutputs`).</span>
-</span><span id="dtigen-58"><a href="#dtigen-58"><span class="linenos"> 58</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="dtigen-59"><a href="#dtigen-59"><span class="linenos"> 59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="dtigen-60"><a href="#dtigen-60"><span class="linenos"> 60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DTIGEN_METADATA</span><span class="p">)</span>
-</span><span id="dtigen-61"><a href="#dtigen-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="dtigen-62"><a href="#dtigen-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dtigen&quot;</span><span class="p">)</span>
-</span><span id="dtigen-63"><a href="#dtigen-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dtigen-64"><a href="#dtigen-64"><span class="linenos"> 64</span></a>        <span class="s2">&quot;-t&quot;</span><span class="p">,</span>
-</span><span id="dtigen-65"><a href="#dtigen-65"><span class="linenos"> 65</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-</span><span id="dtigen-66"><a href="#dtigen-66"><span class="linenos"> 66</span></a>    <span class="p">])</span>
-</span><span id="dtigen-67"><a href="#dtigen-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dtigen-68"><a href="#dtigen-68"><span class="linenos"> 68</span></a>        <span class="s2">&quot;--s0&quot;</span><span class="p">,</span>
-</span><span id="dtigen-69"><a href="#dtigen-69"><span class="linenos"> 69</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="dtigen-70"><a href="#dtigen-70"><span class="linenos"> 70</span></a>    <span class="p">])</span>
-</span><span id="dtigen-71"><a href="#dtigen-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dtigen-72"><a href="#dtigen-72"><span class="linenos"> 72</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-</span><span id="dtigen-73"><a href="#dtigen-73"><span class="linenos"> 73</span></a>        <span class="n">output_data</span>
-</span><span id="dtigen-74"><a href="#dtigen-74"><span class="linenos"> 74</span></a>    <span class="p">])</span>
-</span><span id="dtigen-75"><a href="#dtigen-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dtigen-76"><a href="#dtigen-76"><span class="linenos"> 76</span></a>        <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
-</span><span id="dtigen-77"><a href="#dtigen-77"><span class="linenos"> 77</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bvecs</span><span class="p">)</span>
-</span><span id="dtigen-78"><a href="#dtigen-78"><span class="linenos"> 78</span></a>    <span class="p">])</span>
-</span><span id="dtigen-79"><a href="#dtigen-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dtigen-80"><a href="#dtigen-80"><span class="linenos"> 80</span></a>        <span class="s2">&quot;-b&quot;</span><span class="p">,</span>
-</span><span id="dtigen-81"><a href="#dtigen-81"><span class="linenos"> 81</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bvals</span><span class="p">)</span>
-</span><span id="dtigen-82"><a href="#dtigen-82"><span class="linenos"> 82</span></a>    <span class="p">])</span>
-</span><span id="dtigen-83"><a href="#dtigen-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dtigen-84"><a href="#dtigen-84"><span class="linenos"> 84</span></a>        <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
-</span><span id="dtigen-85"><a href="#dtigen-85"><span class="linenos"> 85</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brainmask</span><span class="p">)</span>
-</span><span id="dtigen-86"><a href="#dtigen-86"><span class="linenos"> 86</span></a>    <span class="p">])</span>
-</span><span id="dtigen-87"><a href="#dtigen-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">kurtosis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dtigen-88"><a href="#dtigen-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dtigen-89"><a href="#dtigen-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;--kurt&quot;</span><span class="p">,</span>
-</span><span id="dtigen-90"><a href="#dtigen-90"><span class="linenos"> 90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">kurtosis</span><span class="p">)</span>
-</span><span id="dtigen-91"><a href="#dtigen-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
-</span><span id="dtigen-92"><a href="#dtigen-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="dtigen-93"><a href="#dtigen-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">)</span>
-</span><span id="dtigen-94"><a href="#dtigen-94"><span class="linenos"> 94</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DtigenOutputs</span><span class="p">(</span>
-</span><span id="dtigen-95"><a href="#dtigen-95"><span class="linenos"> 95</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="dtigen-96"><a href="#dtigen-96"><span class="linenos"> 96</span></a>        <span class="n">output_diffusion_data</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_data</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="dtigen-97"><a href="#dtigen-97"><span class="linenos"> 97</span></a>        <span class="n">output_kurtosis_map</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">kurtosis</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">kurtosis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dtigen-98"><a href="#dtigen-98"><span class="linenos"> 98</span></a>    <span class="p">)</span>
-</span><span id="dtigen-99"><a href="#dtigen-99"><span class="linenos"> 99</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="dtigen-100"><a href="#dtigen-100"><span class="linenos">100</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="dtigen-46"><a href="#dtigen-46"><span class="linenos"> 46</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="dtigen-47"><a href="#dtigen-47"><span class="linenos"> 47</span></a><span class="sd">    </span>
+</span><span id="dtigen-48"><a href="#dtigen-48"><span class="linenos"> 48</span></a><span class="sd">    Args:</span>
+</span><span id="dtigen-49"><a href="#dtigen-49"><span class="linenos"> 49</span></a><span class="sd">        tensor: Input tensor file.</span>
+</span><span id="dtigen-50"><a href="#dtigen-50"><span class="linenos"> 50</span></a><span class="sd">        s0: Input S0 file.</span>
+</span><span id="dtigen-51"><a href="#dtigen-51"><span class="linenos"> 51</span></a><span class="sd">        output_data: Output data file.</span>
+</span><span id="dtigen-52"><a href="#dtigen-52"><span class="linenos"> 52</span></a><span class="sd">        bvecs: bvecs ASCII text file.</span>
+</span><span id="dtigen-53"><a href="#dtigen-53"><span class="linenos"> 53</span></a><span class="sd">        bvals: bvals ASCII text file.</span>
+</span><span id="dtigen-54"><a href="#dtigen-54"><span class="linenos"> 54</span></a><span class="sd">        brainmask: Brain mask file.</span>
+</span><span id="dtigen-55"><a href="#dtigen-55"><span class="linenos"> 55</span></a><span class="sd">        kurtosis: Mean kurtosis map.</span>
+</span><span id="dtigen-56"><a href="#dtigen-56"><span class="linenos"> 56</span></a><span class="sd">        help_: Display help message.</span>
+</span><span id="dtigen-57"><a href="#dtigen-57"><span class="linenos"> 57</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="dtigen-58"><a href="#dtigen-58"><span class="linenos"> 58</span></a><span class="sd">    Returns:</span>
+</span><span id="dtigen-59"><a href="#dtigen-59"><span class="linenos"> 59</span></a><span class="sd">        NamedTuple of outputs (described in `DtigenOutputs`).</span>
+</span><span id="dtigen-60"><a href="#dtigen-60"><span class="linenos"> 60</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="dtigen-61"><a href="#dtigen-61"><span class="linenos"> 61</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="dtigen-62"><a href="#dtigen-62"><span class="linenos"> 62</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DTIGEN_METADATA</span><span class="p">)</span>
+</span><span id="dtigen-63"><a href="#dtigen-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="dtigen-64"><a href="#dtigen-64"><span class="linenos"> 64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dtigen&quot;</span><span class="p">)</span>
+</span><span id="dtigen-65"><a href="#dtigen-65"><span class="linenos"> 65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dtigen-66"><a href="#dtigen-66"><span class="linenos"> 66</span></a>        <span class="s2">&quot;-t&quot;</span><span class="p">,</span>
+</span><span id="dtigen-67"><a href="#dtigen-67"><span class="linenos"> 67</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+</span><span id="dtigen-68"><a href="#dtigen-68"><span class="linenos"> 68</span></a>    <span class="p">])</span>
+</span><span id="dtigen-69"><a href="#dtigen-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dtigen-70"><a href="#dtigen-70"><span class="linenos"> 70</span></a>        <span class="s2">&quot;--s0&quot;</span><span class="p">,</span>
+</span><span id="dtigen-71"><a href="#dtigen-71"><span class="linenos"> 71</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
+</span><span id="dtigen-72"><a href="#dtigen-72"><span class="linenos"> 72</span></a>    <span class="p">])</span>
+</span><span id="dtigen-73"><a href="#dtigen-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dtigen-74"><a href="#dtigen-74"><span class="linenos"> 74</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="dtigen-75"><a href="#dtigen-75"><span class="linenos"> 75</span></a>        <span class="n">output_data</span>
+</span><span id="dtigen-76"><a href="#dtigen-76"><span class="linenos"> 76</span></a>    <span class="p">])</span>
+</span><span id="dtigen-77"><a href="#dtigen-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dtigen-78"><a href="#dtigen-78"><span class="linenos"> 78</span></a>        <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
+</span><span id="dtigen-79"><a href="#dtigen-79"><span class="linenos"> 79</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bvecs</span><span class="p">)</span>
+</span><span id="dtigen-80"><a href="#dtigen-80"><span class="linenos"> 80</span></a>    <span class="p">])</span>
+</span><span id="dtigen-81"><a href="#dtigen-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dtigen-82"><a href="#dtigen-82"><span class="linenos"> 82</span></a>        <span class="s2">&quot;-b&quot;</span><span class="p">,</span>
+</span><span id="dtigen-83"><a href="#dtigen-83"><span class="linenos"> 83</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">bvals</span><span class="p">)</span>
+</span><span id="dtigen-84"><a href="#dtigen-84"><span class="linenos"> 84</span></a>    <span class="p">])</span>
+</span><span id="dtigen-85"><a href="#dtigen-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dtigen-86"><a href="#dtigen-86"><span class="linenos"> 86</span></a>        <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+</span><span id="dtigen-87"><a href="#dtigen-87"><span class="linenos"> 87</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">brainmask</span><span class="p">)</span>
+</span><span id="dtigen-88"><a href="#dtigen-88"><span class="linenos"> 88</span></a>    <span class="p">])</span>
+</span><span id="dtigen-89"><a href="#dtigen-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">kurtosis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dtigen-90"><a href="#dtigen-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dtigen-91"><a href="#dtigen-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;--kurt&quot;</span><span class="p">,</span>
+</span><span id="dtigen-92"><a href="#dtigen-92"><span class="linenos"> 92</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">kurtosis</span><span class="p">)</span>
+</span><span id="dtigen-93"><a href="#dtigen-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
+</span><span id="dtigen-94"><a href="#dtigen-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="dtigen-95"><a href="#dtigen-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">)</span>
+</span><span id="dtigen-96"><a href="#dtigen-96"><span class="linenos"> 96</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DtigenOutputs</span><span class="p">(</span>
+</span><span id="dtigen-97"><a href="#dtigen-97"><span class="linenos"> 97</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="dtigen-98"><a href="#dtigen-98"><span class="linenos"> 98</span></a>        <span class="n">output_diffusion_data</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_data</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="dtigen-99"><a href="#dtigen-99"><span class="linenos"> 99</span></a>        <span class="n">output_kurtosis_map</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">kurtosis</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">kurtosis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dtigen-100"><a href="#dtigen-100"><span class="linenos">100</span></a>    <span class="p">)</span>
+</span><span id="dtigen-101"><a href="#dtigen-101"><span class="linenos">101</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="dtigen-102"><a href="#dtigen-102"><span class="linenos">102</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Generate diffusion data using tensor model.</p>
 
-<p>Author: FSL</p>
+<p>Author: FMRIB Analysis Group, University of Oxford</p>
+
+<p>URL: <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

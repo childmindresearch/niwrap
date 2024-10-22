@@ -126,7 +126,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TRANSFORMCOMPOSE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a2fc6d9d3b3dd64b855cd95ce39872475de0addc.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8e378625408e1058e736b1bc94ac29bb3d2555e8.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;transformcompose&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -253,77 +253,76 @@
 </span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    </span>
 </span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    .</span>
 </span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    </span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    Author: David Raffelt (david.raffelt@florey.edu.au)</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    </span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">    URL:</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/transformcompose.html</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    </span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    Args:</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">        input_: the input transforms (either linear or non-linear warps).</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">        output: the output file (may be a linear transformation text file, or a\</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">            deformation warp field image, depending on usage).</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">        template: define the output grid defined by a template image.</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    Returns:</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">        NamedTuple of outputs (described in `TransformcomposeOutputs`).</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TRANSFORMCOMPOSE_METADATA</span><span class="p">)</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;transformcompose&quot;</span><span class="p">)</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>            <span class="s2">&quot;-template&quot;</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="p">])</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="p">])</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_</span><span class="p">])</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TransformcomposeOutputs</span><span class="p">(</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="p">)</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    </span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    Args:</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        input_: the input transforms (either linear or non-linear warps).</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">        output: the output file (may be a linear transformation text file, or a\</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">            deformation warp field image, depending on usage).</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">        template: define the output grid defined by a template image.</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    Returns:</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">        NamedTuple of outputs (described in `TransformcomposeOutputs`).</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TRANSFORMCOMPOSE_METADATA</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;transformcompose&quot;</span><span class="p">)</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>            <span class="s2">&quot;-template&quot;</span><span class="p">,</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="p">])</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="p">])</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_</span><span class="p">])</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TransformcomposeOutputs</span><span class="p">(</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="p">)</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="s2">&quot;TRANSFORMCOMPOSE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="s2">&quot;TransformcomposeConfig&quot;</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="s2">&quot;TransformcomposeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="s2">&quot;TransformcomposeVariousFile&quot;</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="s2">&quot;TransformcomposeVariousString&quot;</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="s2">&quot;transformcompose&quot;</span><span class="p">,</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="p">]</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="s2">&quot;TRANSFORMCOMPOSE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="s2">&quot;TransformcomposeConfig&quot;</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="s2">&quot;TransformcomposeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="s2">&quot;TransformcomposeVariousFile&quot;</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="s2">&quot;TransformcomposeVariousString&quot;</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="s2">&quot;transformcompose&quot;</span><span class="p">,</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -332,7 +331,7 @@
                     <div class="attr variable">
             <span class="name">TRANSFORMCOMPOSE_METADATA</span>        =
 <input id="TRANSFORMCOMPOSE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TRANSFORMCOMPOSE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a2fc6d9d3b3dd64b855cd95ce39872475de0addc.boutiques&#39;, name=&#39;transformcompose&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TRANSFORMCOMPOSE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8e378625408e1058e736b1bc94ac29bb3d2555e8.boutiques&#39;, name=&#39;transformcompose&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -794,67 +793,66 @@
 </span><span id="transformcompose-135"><a href="#transformcompose-135"><span class="linenos">135</span></a><span class="sd">    </span>
 </span><span id="transformcompose-136"><a href="#transformcompose-136"><span class="linenos">136</span></a><span class="sd">    .</span>
 </span><span id="transformcompose-137"><a href="#transformcompose-137"><span class="linenos">137</span></a><span class="sd">    </span>
-</span><span id="transformcompose-138"><a href="#transformcompose-138"><span class="linenos">138</span></a><span class="sd">    Author: David Raffelt (david.raffelt@florey.edu.au)</span>
+</span><span id="transformcompose-138"><a href="#transformcompose-138"><span class="linenos">138</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="transformcompose-139"><a href="#transformcompose-139"><span class="linenos">139</span></a><span class="sd">    </span>
-</span><span id="transformcompose-140"><a href="#transformcompose-140"><span class="linenos">140</span></a><span class="sd">    URL:</span>
-</span><span id="transformcompose-141"><a href="#transformcompose-141"><span class="linenos">141</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/transformcompose.html</span>
-</span><span id="transformcompose-142"><a href="#transformcompose-142"><span class="linenos">142</span></a><span class="sd">    </span>
-</span><span id="transformcompose-143"><a href="#transformcompose-143"><span class="linenos">143</span></a><span class="sd">    Args:</span>
-</span><span id="transformcompose-144"><a href="#transformcompose-144"><span class="linenos">144</span></a><span class="sd">        input_: the input transforms (either linear or non-linear warps).</span>
-</span><span id="transformcompose-145"><a href="#transformcompose-145"><span class="linenos">145</span></a><span class="sd">        output: the output file (may be a linear transformation text file, or a\</span>
-</span><span id="transformcompose-146"><a href="#transformcompose-146"><span class="linenos">146</span></a><span class="sd">            deformation warp field image, depending on usage).</span>
-</span><span id="transformcompose-147"><a href="#transformcompose-147"><span class="linenos">147</span></a><span class="sd">        template: define the output grid defined by a template image.</span>
-</span><span id="transformcompose-148"><a href="#transformcompose-148"><span class="linenos">148</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="transformcompose-149"><a href="#transformcompose-149"><span class="linenos">149</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="transformcompose-150"><a href="#transformcompose-150"><span class="linenos">150</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="transformcompose-151"><a href="#transformcompose-151"><span class="linenos">151</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="transformcompose-152"><a href="#transformcompose-152"><span class="linenos">152</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="transformcompose-153"><a href="#transformcompose-153"><span class="linenos">153</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="transformcompose-154"><a href="#transformcompose-154"><span class="linenos">154</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="transformcompose-155"><a href="#transformcompose-155"><span class="linenos">155</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="transformcompose-156"><a href="#transformcompose-156"><span class="linenos">156</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="transformcompose-157"><a href="#transformcompose-157"><span class="linenos">157</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="transformcompose-158"><a href="#transformcompose-158"><span class="linenos">158</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="transformcompose-159"><a href="#transformcompose-159"><span class="linenos">159</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="transformcompose-160"><a href="#transformcompose-160"><span class="linenos">160</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="transformcompose-161"><a href="#transformcompose-161"><span class="linenos">161</span></a><span class="sd">    Returns:</span>
-</span><span id="transformcompose-162"><a href="#transformcompose-162"><span class="linenos">162</span></a><span class="sd">        NamedTuple of outputs (described in `TransformcomposeOutputs`).</span>
-</span><span id="transformcompose-163"><a href="#transformcompose-163"><span class="linenos">163</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="transformcompose-164"><a href="#transformcompose-164"><span class="linenos">164</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="transformcompose-165"><a href="#transformcompose-165"><span class="linenos">165</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TRANSFORMCOMPOSE_METADATA</span><span class="p">)</span>
-</span><span id="transformcompose-166"><a href="#transformcompose-166"><span class="linenos">166</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="transformcompose-167"><a href="#transformcompose-167"><span class="linenos">167</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;transformcompose&quot;</span><span class="p">)</span>
-</span><span id="transformcompose-168"><a href="#transformcompose-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="transformcompose-169"><a href="#transformcompose-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="transformcompose-170"><a href="#transformcompose-170"><span class="linenos">170</span></a>            <span class="s2">&quot;-template&quot;</span><span class="p">,</span>
-</span><span id="transformcompose-171"><a href="#transformcompose-171"><span class="linenos">171</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
-</span><span id="transformcompose-172"><a href="#transformcompose-172"><span class="linenos">172</span></a>        <span class="p">])</span>
-</span><span id="transformcompose-173"><a href="#transformcompose-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="transformcompose-174"><a href="#transformcompose-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="transformcompose-175"><a href="#transformcompose-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="transformcompose-176"><a href="#transformcompose-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="transformcompose-177"><a href="#transformcompose-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="transformcompose-178"><a href="#transformcompose-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="transformcompose-179"><a href="#transformcompose-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="transformcompose-180"><a href="#transformcompose-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="transformcompose-181"><a href="#transformcompose-181"><span class="linenos">181</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="transformcompose-182"><a href="#transformcompose-182"><span class="linenos">182</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="transformcompose-183"><a href="#transformcompose-183"><span class="linenos">183</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="transformcompose-184"><a href="#transformcompose-184"><span class="linenos">184</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="transformcompose-185"><a href="#transformcompose-185"><span class="linenos">185</span></a>        <span class="p">])</span>
-</span><span id="transformcompose-186"><a href="#transformcompose-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="transformcompose-187"><a href="#transformcompose-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="transformcompose-188"><a href="#transformcompose-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="transformcompose-189"><a href="#transformcompose-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="transformcompose-190"><a href="#transformcompose-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="transformcompose-191"><a href="#transformcompose-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="transformcompose-192"><a href="#transformcompose-192"><span class="linenos">192</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_</span><span class="p">])</span>
-</span><span id="transformcompose-193"><a href="#transformcompose-193"><span class="linenos">193</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="transformcompose-194"><a href="#transformcompose-194"><span class="linenos">194</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TransformcomposeOutputs</span><span class="p">(</span>
-</span><span id="transformcompose-195"><a href="#transformcompose-195"><span class="linenos">195</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="transformcompose-196"><a href="#transformcompose-196"><span class="linenos">196</span></a>    <span class="p">)</span>
-</span><span id="transformcompose-197"><a href="#transformcompose-197"><span class="linenos">197</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="transformcompose-198"><a href="#transformcompose-198"><span class="linenos">198</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="transformcompose-140"><a href="#transformcompose-140"><span class="linenos">140</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="transformcompose-141"><a href="#transformcompose-141"><span class="linenos">141</span></a><span class="sd">    </span>
+</span><span id="transformcompose-142"><a href="#transformcompose-142"><span class="linenos">142</span></a><span class="sd">    Args:</span>
+</span><span id="transformcompose-143"><a href="#transformcompose-143"><span class="linenos">143</span></a><span class="sd">        input_: the input transforms (either linear or non-linear warps).</span>
+</span><span id="transformcompose-144"><a href="#transformcompose-144"><span class="linenos">144</span></a><span class="sd">        output: the output file (may be a linear transformation text file, or a\</span>
+</span><span id="transformcompose-145"><a href="#transformcompose-145"><span class="linenos">145</span></a><span class="sd">            deformation warp field image, depending on usage).</span>
+</span><span id="transformcompose-146"><a href="#transformcompose-146"><span class="linenos">146</span></a><span class="sd">        template: define the output grid defined by a template image.</span>
+</span><span id="transformcompose-147"><a href="#transformcompose-147"><span class="linenos">147</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="transformcompose-148"><a href="#transformcompose-148"><span class="linenos">148</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="transformcompose-149"><a href="#transformcompose-149"><span class="linenos">149</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="transformcompose-150"><a href="#transformcompose-150"><span class="linenos">150</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="transformcompose-151"><a href="#transformcompose-151"><span class="linenos">151</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="transformcompose-152"><a href="#transformcompose-152"><span class="linenos">152</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="transformcompose-153"><a href="#transformcompose-153"><span class="linenos">153</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="transformcompose-154"><a href="#transformcompose-154"><span class="linenos">154</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="transformcompose-155"><a href="#transformcompose-155"><span class="linenos">155</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="transformcompose-156"><a href="#transformcompose-156"><span class="linenos">156</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="transformcompose-157"><a href="#transformcompose-157"><span class="linenos">157</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="transformcompose-158"><a href="#transformcompose-158"><span class="linenos">158</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="transformcompose-159"><a href="#transformcompose-159"><span class="linenos">159</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="transformcompose-160"><a href="#transformcompose-160"><span class="linenos">160</span></a><span class="sd">    Returns:</span>
+</span><span id="transformcompose-161"><a href="#transformcompose-161"><span class="linenos">161</span></a><span class="sd">        NamedTuple of outputs (described in `TransformcomposeOutputs`).</span>
+</span><span id="transformcompose-162"><a href="#transformcompose-162"><span class="linenos">162</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="transformcompose-163"><a href="#transformcompose-163"><span class="linenos">163</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="transformcompose-164"><a href="#transformcompose-164"><span class="linenos">164</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TRANSFORMCOMPOSE_METADATA</span><span class="p">)</span>
+</span><span id="transformcompose-165"><a href="#transformcompose-165"><span class="linenos">165</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="transformcompose-166"><a href="#transformcompose-166"><span class="linenos">166</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;transformcompose&quot;</span><span class="p">)</span>
+</span><span id="transformcompose-167"><a href="#transformcompose-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="transformcompose-168"><a href="#transformcompose-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="transformcompose-169"><a href="#transformcompose-169"><span class="linenos">169</span></a>            <span class="s2">&quot;-template&quot;</span><span class="p">,</span>
+</span><span id="transformcompose-170"><a href="#transformcompose-170"><span class="linenos">170</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+</span><span id="transformcompose-171"><a href="#transformcompose-171"><span class="linenos">171</span></a>        <span class="p">])</span>
+</span><span id="transformcompose-172"><a href="#transformcompose-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="transformcompose-173"><a href="#transformcompose-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="transformcompose-174"><a href="#transformcompose-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="transformcompose-175"><a href="#transformcompose-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="transformcompose-176"><a href="#transformcompose-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="transformcompose-177"><a href="#transformcompose-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="transformcompose-178"><a href="#transformcompose-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="transformcompose-179"><a href="#transformcompose-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="transformcompose-180"><a href="#transformcompose-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="transformcompose-181"><a href="#transformcompose-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="transformcompose-182"><a href="#transformcompose-182"><span class="linenos">182</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="transformcompose-183"><a href="#transformcompose-183"><span class="linenos">183</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="transformcompose-184"><a href="#transformcompose-184"><span class="linenos">184</span></a>        <span class="p">])</span>
+</span><span id="transformcompose-185"><a href="#transformcompose-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="transformcompose-186"><a href="#transformcompose-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="transformcompose-187"><a href="#transformcompose-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="transformcompose-188"><a href="#transformcompose-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="transformcompose-189"><a href="#transformcompose-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="transformcompose-190"><a href="#transformcompose-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="transformcompose-191"><a href="#transformcompose-191"><span class="linenos">191</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_</span><span class="p">])</span>
+</span><span id="transformcompose-192"><a href="#transformcompose-192"><span class="linenos">192</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="transformcompose-193"><a href="#transformcompose-193"><span class="linenos">193</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TransformcomposeOutputs</span><span class="p">(</span>
+</span><span id="transformcompose-194"><a href="#transformcompose-194"><span class="linenos">194</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="transformcompose-195"><a href="#transformcompose-195"><span class="linenos">195</span></a>    <span class="p">)</span>
+</span><span id="transformcompose-196"><a href="#transformcompose-196"><span class="linenos">196</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="transformcompose-197"><a href="#transformcompose-197"><span class="linenos">197</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -882,10 +880,9 @@ supplied if the -template option is not used.</p>
 
 <p>.</p>
 
-<p>Author: David Raffelt (david.raffelt@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/transformcompose.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/transformcompose.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

@@ -99,7 +99,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SURFACE_APPLY_AFFINE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;254c7fc5163039c9944a1695a599e75bc077568e.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;bc7bedf2247f5ce1c3534b41ffc51edcdb4ffba5.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;surface-apply-affine&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -161,41 +161,43 @@
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    affine, which can be obtained with the -convert-affine command, or aff_conv</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    from the 4dfp suite.</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">    </span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">    </span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    Args:</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        in_surf: the surface to transform.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        affine: the affine file.</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        out_surf: the output transformed surface.</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        flirt: MUST be used if affine is a flirt affine.</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    Returns:</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceApplyAffineOutputs`).</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_APPLY_AFFINE_METADATA</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-apply-affine&quot;</span><span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_surf</span><span class="p">))</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">affine</span><span class="p">)</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_surf</span><span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">flirt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceApplyAffineOutputs</span><span class="p">(</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">out_surf</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_surf</span><span class="p">),</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="s2">&quot;SURFACE_APPLY_AFFINE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="s2">&quot;SurfaceApplyAffineFlirt&quot;</span><span class="p">,</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="s2">&quot;SurfaceApplyAffineOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="s2">&quot;surface_apply_affine&quot;</span><span class="p">,</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="p">]</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    </span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    Args:</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        in_surf: the surface to transform.</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        affine: the affine file.</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        out_surf: the output transformed surface.</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        flirt: MUST be used if affine is a flirt affine.</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    Returns:</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceApplyAffineOutputs`).</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_APPLY_AFFINE_METADATA</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-apply-affine&quot;</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_surf</span><span class="p">))</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">affine</span><span class="p">)</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_surf</span><span class="p">)</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">flirt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceApplyAffineOutputs</span><span class="p">(</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">out_surf</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_surf</span><span class="p">),</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="p">)</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="s2">&quot;SURFACE_APPLY_AFFINE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="s2">&quot;SurfaceApplyAffineFlirt&quot;</span><span class="p">,</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="s2">&quot;SurfaceApplyAffineOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="s2">&quot;surface_apply_affine&quot;</span><span class="p">,</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -204,7 +206,7 @@
                     <div class="attr variable">
             <span class="name">SURFACE_APPLY_AFFINE_METADATA</span>        =
 <input id="SURFACE_APPLY_AFFINE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SURFACE_APPLY_AFFINE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;254c7fc5163039c9944a1695a599e75bc077568e.boutiques&#39;, name=&#39;surface-apply-affine&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SURFACE_APPLY_AFFINE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;bc7bedf2247f5ce1c3534b41ffc51edcdb4ffba5.boutiques&#39;, name=&#39;surface-apply-affine&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -424,49 +426,51 @@
 
     </div>
     <a class="headerlink" href="#surface_apply_affine"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="surface_apply_affine-57"><a href="#surface_apply_affine-57"><span class="linenos">57</span></a><span class="k">def</span> <span class="nf">surface_apply_affine</span><span class="p">(</span>
-</span><span id="surface_apply_affine-58"><a href="#surface_apply_affine-58"><span class="linenos">58</span></a>    <span class="n">in_surf</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="surface_apply_affine-59"><a href="#surface_apply_affine-59"><span class="linenos">59</span></a>    <span class="n">affine</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="surface_apply_affine-60"><a href="#surface_apply_affine-60"><span class="linenos">60</span></a>    <span class="n">out_surf</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="surface_apply_affine-61"><a href="#surface_apply_affine-61"><span class="linenos">61</span></a>    <span class="n">flirt</span><span class="p">:</span> <span class="n">SurfaceApplyAffineFlirt</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="surface_apply_affine-62"><a href="#surface_apply_affine-62"><span class="linenos">62</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="surface_apply_affine-63"><a href="#surface_apply_affine-63"><span class="linenos">63</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfaceApplyAffineOutputs</span><span class="p">:</span>
-</span><span id="surface_apply_affine-64"><a href="#surface_apply_affine-64"><span class="linenos">64</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="surface_apply_affine-65"><a href="#surface_apply_affine-65"><span class="linenos">65</span></a><span class="sd">    Apply affine transform to surface file.</span>
-</span><span id="surface_apply_affine-66"><a href="#surface_apply_affine-66"><span class="linenos">66</span></a><span class="sd">    </span>
-</span><span id="surface_apply_affine-67"><a href="#surface_apply_affine-67"><span class="linenos">67</span></a><span class="sd">    For flirt matrices, you must use the -flirt option, because flirt matrices</span>
-</span><span id="surface_apply_affine-68"><a href="#surface_apply_affine-68"><span class="linenos">68</span></a><span class="sd">    are not a complete description of the coordinate transform they represent.</span>
-</span><span id="surface_apply_affine-69"><a href="#surface_apply_affine-69"><span class="linenos">69</span></a><span class="sd">    If the -flirt option is not present, the affine must be a nifti &#39;world&#39;</span>
-</span><span id="surface_apply_affine-70"><a href="#surface_apply_affine-70"><span class="linenos">70</span></a><span class="sd">    affine, which can be obtained with the -convert-affine command, or aff_conv</span>
-</span><span id="surface_apply_affine-71"><a href="#surface_apply_affine-71"><span class="linenos">71</span></a><span class="sd">    from the 4dfp suite.</span>
-</span><span id="surface_apply_affine-72"><a href="#surface_apply_affine-72"><span class="linenos">72</span></a><span class="sd">    </span>
-</span><span id="surface_apply_affine-73"><a href="#surface_apply_affine-73"><span class="linenos">73</span></a><span class="sd">    Author: Washington University School of Medicin</span>
-</span><span id="surface_apply_affine-74"><a href="#surface_apply_affine-74"><span class="linenos">74</span></a><span class="sd">    </span>
-</span><span id="surface_apply_affine-75"><a href="#surface_apply_affine-75"><span class="linenos">75</span></a><span class="sd">    Args:</span>
-</span><span id="surface_apply_affine-76"><a href="#surface_apply_affine-76"><span class="linenos">76</span></a><span class="sd">        in_surf: the surface to transform.</span>
-</span><span id="surface_apply_affine-77"><a href="#surface_apply_affine-77"><span class="linenos">77</span></a><span class="sd">        affine: the affine file.</span>
-</span><span id="surface_apply_affine-78"><a href="#surface_apply_affine-78"><span class="linenos">78</span></a><span class="sd">        out_surf: the output transformed surface.</span>
-</span><span id="surface_apply_affine-79"><a href="#surface_apply_affine-79"><span class="linenos">79</span></a><span class="sd">        flirt: MUST be used if affine is a flirt affine.</span>
-</span><span id="surface_apply_affine-80"><a href="#surface_apply_affine-80"><span class="linenos">80</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="surface_apply_affine-81"><a href="#surface_apply_affine-81"><span class="linenos">81</span></a><span class="sd">    Returns:</span>
-</span><span id="surface_apply_affine-82"><a href="#surface_apply_affine-82"><span class="linenos">82</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceApplyAffineOutputs`).</span>
-</span><span id="surface_apply_affine-83"><a href="#surface_apply_affine-83"><span class="linenos">83</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="surface_apply_affine-84"><a href="#surface_apply_affine-84"><span class="linenos">84</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="surface_apply_affine-85"><a href="#surface_apply_affine-85"><span class="linenos">85</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_APPLY_AFFINE_METADATA</span><span class="p">)</span>
-</span><span id="surface_apply_affine-86"><a href="#surface_apply_affine-86"><span class="linenos">86</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="surface_apply_affine-87"><a href="#surface_apply_affine-87"><span class="linenos">87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="surface_apply_affine-88"><a href="#surface_apply_affine-88"><span class="linenos">88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-apply-affine&quot;</span><span class="p">)</span>
-</span><span id="surface_apply_affine-89"><a href="#surface_apply_affine-89"><span class="linenos">89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_surf</span><span class="p">))</span>
-</span><span id="surface_apply_affine-90"><a href="#surface_apply_affine-90"><span class="linenos">90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">affine</span><span class="p">)</span>
-</span><span id="surface_apply_affine-91"><a href="#surface_apply_affine-91"><span class="linenos">91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_surf</span><span class="p">)</span>
-</span><span id="surface_apply_affine-92"><a href="#surface_apply_affine-92"><span class="linenos">92</span></a>    <span class="k">if</span> <span class="n">flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surface_apply_affine-93"><a href="#surface_apply_affine-93"><span class="linenos">93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">flirt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="surface_apply_affine-94"><a href="#surface_apply_affine-94"><span class="linenos">94</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceApplyAffineOutputs</span><span class="p">(</span>
-</span><span id="surface_apply_affine-95"><a href="#surface_apply_affine-95"><span class="linenos">95</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="surface_apply_affine-96"><a href="#surface_apply_affine-96"><span class="linenos">96</span></a>        <span class="n">out_surf</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_surf</span><span class="p">),</span>
-</span><span id="surface_apply_affine-97"><a href="#surface_apply_affine-97"><span class="linenos">97</span></a>    <span class="p">)</span>
-</span><span id="surface_apply_affine-98"><a href="#surface_apply_affine-98"><span class="linenos">98</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="surface_apply_affine-99"><a href="#surface_apply_affine-99"><span class="linenos">99</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="surface_apply_affine-57"><a href="#surface_apply_affine-57"><span class="linenos"> 57</span></a><span class="k">def</span> <span class="nf">surface_apply_affine</span><span class="p">(</span>
+</span><span id="surface_apply_affine-58"><a href="#surface_apply_affine-58"><span class="linenos"> 58</span></a>    <span class="n">in_surf</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="surface_apply_affine-59"><a href="#surface_apply_affine-59"><span class="linenos"> 59</span></a>    <span class="n">affine</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="surface_apply_affine-60"><a href="#surface_apply_affine-60"><span class="linenos"> 60</span></a>    <span class="n">out_surf</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="surface_apply_affine-61"><a href="#surface_apply_affine-61"><span class="linenos"> 61</span></a>    <span class="n">flirt</span><span class="p">:</span> <span class="n">SurfaceApplyAffineFlirt</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_apply_affine-62"><a href="#surface_apply_affine-62"><span class="linenos"> 62</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_apply_affine-63"><a href="#surface_apply_affine-63"><span class="linenos"> 63</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfaceApplyAffineOutputs</span><span class="p">:</span>
+</span><span id="surface_apply_affine-64"><a href="#surface_apply_affine-64"><span class="linenos"> 64</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="surface_apply_affine-65"><a href="#surface_apply_affine-65"><span class="linenos"> 65</span></a><span class="sd">    Apply affine transform to surface file.</span>
+</span><span id="surface_apply_affine-66"><a href="#surface_apply_affine-66"><span class="linenos"> 66</span></a><span class="sd">    </span>
+</span><span id="surface_apply_affine-67"><a href="#surface_apply_affine-67"><span class="linenos"> 67</span></a><span class="sd">    For flirt matrices, you must use the -flirt option, because flirt matrices</span>
+</span><span id="surface_apply_affine-68"><a href="#surface_apply_affine-68"><span class="linenos"> 68</span></a><span class="sd">    are not a complete description of the coordinate transform they represent.</span>
+</span><span id="surface_apply_affine-69"><a href="#surface_apply_affine-69"><span class="linenos"> 69</span></a><span class="sd">    If the -flirt option is not present, the affine must be a nifti &#39;world&#39;</span>
+</span><span id="surface_apply_affine-70"><a href="#surface_apply_affine-70"><span class="linenos"> 70</span></a><span class="sd">    affine, which can be obtained with the -convert-affine command, or aff_conv</span>
+</span><span id="surface_apply_affine-71"><a href="#surface_apply_affine-71"><span class="linenos"> 71</span></a><span class="sd">    from the 4dfp suite.</span>
+</span><span id="surface_apply_affine-72"><a href="#surface_apply_affine-72"><span class="linenos"> 72</span></a><span class="sd">    </span>
+</span><span id="surface_apply_affine-73"><a href="#surface_apply_affine-73"><span class="linenos"> 73</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="surface_apply_affine-74"><a href="#surface_apply_affine-74"><span class="linenos"> 74</span></a><span class="sd">    </span>
+</span><span id="surface_apply_affine-75"><a href="#surface_apply_affine-75"><span class="linenos"> 75</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="surface_apply_affine-76"><a href="#surface_apply_affine-76"><span class="linenos"> 76</span></a><span class="sd">    </span>
+</span><span id="surface_apply_affine-77"><a href="#surface_apply_affine-77"><span class="linenos"> 77</span></a><span class="sd">    Args:</span>
+</span><span id="surface_apply_affine-78"><a href="#surface_apply_affine-78"><span class="linenos"> 78</span></a><span class="sd">        in_surf: the surface to transform.</span>
+</span><span id="surface_apply_affine-79"><a href="#surface_apply_affine-79"><span class="linenos"> 79</span></a><span class="sd">        affine: the affine file.</span>
+</span><span id="surface_apply_affine-80"><a href="#surface_apply_affine-80"><span class="linenos"> 80</span></a><span class="sd">        out_surf: the output transformed surface.</span>
+</span><span id="surface_apply_affine-81"><a href="#surface_apply_affine-81"><span class="linenos"> 81</span></a><span class="sd">        flirt: MUST be used if affine is a flirt affine.</span>
+</span><span id="surface_apply_affine-82"><a href="#surface_apply_affine-82"><span class="linenos"> 82</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="surface_apply_affine-83"><a href="#surface_apply_affine-83"><span class="linenos"> 83</span></a><span class="sd">    Returns:</span>
+</span><span id="surface_apply_affine-84"><a href="#surface_apply_affine-84"><span class="linenos"> 84</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceApplyAffineOutputs`).</span>
+</span><span id="surface_apply_affine-85"><a href="#surface_apply_affine-85"><span class="linenos"> 85</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="surface_apply_affine-86"><a href="#surface_apply_affine-86"><span class="linenos"> 86</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="surface_apply_affine-87"><a href="#surface_apply_affine-87"><span class="linenos"> 87</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_APPLY_AFFINE_METADATA</span><span class="p">)</span>
+</span><span id="surface_apply_affine-88"><a href="#surface_apply_affine-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="surface_apply_affine-89"><a href="#surface_apply_affine-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="surface_apply_affine-90"><a href="#surface_apply_affine-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-apply-affine&quot;</span><span class="p">)</span>
+</span><span id="surface_apply_affine-91"><a href="#surface_apply_affine-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_surf</span><span class="p">))</span>
+</span><span id="surface_apply_affine-92"><a href="#surface_apply_affine-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">affine</span><span class="p">)</span>
+</span><span id="surface_apply_affine-93"><a href="#surface_apply_affine-93"><span class="linenos"> 93</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_surf</span><span class="p">)</span>
+</span><span id="surface_apply_affine-94"><a href="#surface_apply_affine-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surface_apply_affine-95"><a href="#surface_apply_affine-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">flirt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="surface_apply_affine-96"><a href="#surface_apply_affine-96"><span class="linenos"> 96</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceApplyAffineOutputs</span><span class="p">(</span>
+</span><span id="surface_apply_affine-97"><a href="#surface_apply_affine-97"><span class="linenos"> 97</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="surface_apply_affine-98"><a href="#surface_apply_affine-98"><span class="linenos"> 98</span></a>        <span class="n">out_surf</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_surf</span><span class="p">),</span>
+</span><span id="surface_apply_affine-99"><a href="#surface_apply_affine-99"><span class="linenos"> 99</span></a>    <span class="p">)</span>
+</span><span id="surface_apply_affine-100"><a href="#surface_apply_affine-100"><span class="linenos">100</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="surface_apply_affine-101"><a href="#surface_apply_affine-101"><span class="linenos">101</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -478,7 +482,9 @@ If the -flirt option is not present, the affine must be a nifti 'world'
 affine, which can be obtained with the -convert-affine command, or aff_conv
 from the 4dfp suite.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

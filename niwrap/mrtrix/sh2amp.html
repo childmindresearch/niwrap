@@ -147,7 +147,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SH2AMP_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;392ae46eb2d92b24d451f55d682e80b44763c820.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b88a6fe01eede507fd3fd0ee64c193a8f9c85310.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sh2amp&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -332,117 +332,116 @@
 </span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">    </span>
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">    .</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    </span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    Author: David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    (jdtournier@gmail.com)</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    </span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2amp.html</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">    </span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">    Args:</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        input_: the input image consisting of spherical harmonic (SH)\</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">            coefficients.</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        directions: the list of directions along which the SH functions will be\</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">            sampled, generated using the dirgen command.</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        output: the output image consisting of the amplitude of the SH\</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">            functions along the specified directions.</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        nonnegative: cap all negative amplitudes to zero.</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">            this option will be instead used.</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">            int8, uint8, bit.</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    Returns:</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        NamedTuple of outputs (described in `Sh2ampOutputs`).</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SH2AMP_METADATA</span><span class="p">)</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sh2amp&quot;</span><span class="p">)</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">nonnegative</span><span class="p">:</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonnegative&quot;</span><span class="p">)</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>        <span class="p">])</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">fslgrad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fslgrad</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>        <span class="p">])</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>            <span class="n">datatype</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>        <span class="p">])</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>        <span class="p">])</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">directions</span><span class="p">))</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Sh2ampOutputs</span><span class="p">(</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="p">)</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">    </span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">    </span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">    Args:</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        input_: the input image consisting of spherical harmonic (SH)\</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">            coefficients.</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        directions: the list of directions along which the SH functions will be\</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">            sampled, generated using the dirgen command.</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        output: the output image consisting of the amplitude of the SH\</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">            functions along the specified directions.</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        nonnegative: cap all negative amplitudes to zero.</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">            int8, uint8, bit.</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">    Returns:</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        NamedTuple of outputs (described in `Sh2ampOutputs`).</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SH2AMP_METADATA</span><span class="p">)</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sh2amp&quot;</span><span class="p">)</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">nonnegative</span><span class="p">:</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonnegative&quot;</span><span class="p">)</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>        <span class="p">])</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="k">if</span> <span class="n">fslgrad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fslgrad</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>        <span class="p">])</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>            <span class="n">datatype</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="p">])</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>        <span class="p">])</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">directions</span><span class="p">))</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Sh2ampOutputs</span><span class="p">(</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="p">)</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>
 </span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="s2">&quot;SH2AMP_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="s2">&quot;Sh2ampConfig&quot;</span><span class="p">,</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="s2">&quot;Sh2ampFslgrad&quot;</span><span class="p">,</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="s2">&quot;Sh2ampOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="s2">&quot;Sh2ampVariousFile&quot;</span><span class="p">,</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="s2">&quot;Sh2ampVariousString&quot;</span><span class="p">,</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="s2">&quot;sh2amp&quot;</span><span class="p">,</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="p">]</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;SH2AMP_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="s2">&quot;Sh2ampConfig&quot;</span><span class="p">,</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="s2">&quot;Sh2ampFslgrad&quot;</span><span class="p">,</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="s2">&quot;Sh2ampOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="s2">&quot;Sh2ampVariousFile&quot;</span><span class="p">,</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="s2">&quot;Sh2ampVariousString&quot;</span><span class="p">,</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="s2">&quot;sh2amp&quot;</span><span class="p">,</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -451,7 +450,7 @@
                     <div class="attr variable">
             <span class="name">SH2AMP_METADATA</span>        =
 <input id="SH2AMP_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SH2AMP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;392ae46eb2d92b24d451f55d682e80b44763c820.boutiques&#39;, name=&#39;sh2amp&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SH2AMP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;b88a6fe01eede507fd3fd0ee64c193a8f9c85310.boutiques&#39;, name=&#39;sh2amp&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -1098,106 +1097,105 @@ the specified directions.</p>
 </span><span id="sh2amp-193"><a href="#sh2amp-193"><span class="linenos">193</span></a><span class="sd">    </span>
 </span><span id="sh2amp-194"><a href="#sh2amp-194"><span class="linenos">194</span></a><span class="sd">    .</span>
 </span><span id="sh2amp-195"><a href="#sh2amp-195"><span class="linenos">195</span></a><span class="sd">    </span>
-</span><span id="sh2amp-196"><a href="#sh2amp-196"><span class="linenos">196</span></a><span class="sd">    Author: David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier</span>
-</span><span id="sh2amp-197"><a href="#sh2amp-197"><span class="linenos">197</span></a><span class="sd">    (jdtournier@gmail.com)</span>
-</span><span id="sh2amp-198"><a href="#sh2amp-198"><span class="linenos">198</span></a><span class="sd">    </span>
-</span><span id="sh2amp-199"><a href="#sh2amp-199"><span class="linenos">199</span></a><span class="sd">    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2amp.html</span>
-</span><span id="sh2amp-200"><a href="#sh2amp-200"><span class="linenos">200</span></a><span class="sd">    </span>
-</span><span id="sh2amp-201"><a href="#sh2amp-201"><span class="linenos">201</span></a><span class="sd">    Args:</span>
-</span><span id="sh2amp-202"><a href="#sh2amp-202"><span class="linenos">202</span></a><span class="sd">        input_: the input image consisting of spherical harmonic (SH)\</span>
-</span><span id="sh2amp-203"><a href="#sh2amp-203"><span class="linenos">203</span></a><span class="sd">            coefficients.</span>
-</span><span id="sh2amp-204"><a href="#sh2amp-204"><span class="linenos">204</span></a><span class="sd">        directions: the list of directions along which the SH functions will be\</span>
-</span><span id="sh2amp-205"><a href="#sh2amp-205"><span class="linenos">205</span></a><span class="sd">            sampled, generated using the dirgen command.</span>
-</span><span id="sh2amp-206"><a href="#sh2amp-206"><span class="linenos">206</span></a><span class="sd">        output: the output image consisting of the amplitude of the SH\</span>
-</span><span id="sh2amp-207"><a href="#sh2amp-207"><span class="linenos">207</span></a><span class="sd">            functions along the specified directions.</span>
-</span><span id="sh2amp-208"><a href="#sh2amp-208"><span class="linenos">208</span></a><span class="sd">        nonnegative: cap all negative amplitudes to zero.</span>
-</span><span id="sh2amp-209"><a href="#sh2amp-209"><span class="linenos">209</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="sh2amp-210"><a href="#sh2amp-210"><span class="linenos">210</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
-</span><span id="sh2amp-211"><a href="#sh2amp-211"><span class="linenos">211</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
-</span><span id="sh2amp-212"><a href="#sh2amp-212"><span class="linenos">212</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
-</span><span id="sh2amp-213"><a href="#sh2amp-213"><span class="linenos">213</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
-</span><span id="sh2amp-214"><a href="#sh2amp-214"><span class="linenos">214</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
-</span><span id="sh2amp-215"><a href="#sh2amp-215"><span class="linenos">215</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="sh2amp-216"><a href="#sh2amp-216"><span class="linenos">216</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
-</span><span id="sh2amp-217"><a href="#sh2amp-217"><span class="linenos">217</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
-</span><span id="sh2amp-218"><a href="#sh2amp-218"><span class="linenos">218</span></a><span class="sd">            this option will be instead used.</span>
-</span><span id="sh2amp-219"><a href="#sh2amp-219"><span class="linenos">219</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
-</span><span id="sh2amp-220"><a href="#sh2amp-220"><span class="linenos">220</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
-</span><span id="sh2amp-221"><a href="#sh2amp-221"><span class="linenos">221</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
-</span><span id="sh2amp-222"><a href="#sh2amp-222"><span class="linenos">222</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
-</span><span id="sh2amp-223"><a href="#sh2amp-223"><span class="linenos">223</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
-</span><span id="sh2amp-224"><a href="#sh2amp-224"><span class="linenos">224</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
-</span><span id="sh2amp-225"><a href="#sh2amp-225"><span class="linenos">225</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
-</span><span id="sh2amp-226"><a href="#sh2amp-226"><span class="linenos">226</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
-</span><span id="sh2amp-227"><a href="#sh2amp-227"><span class="linenos">227</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
-</span><span id="sh2amp-228"><a href="#sh2amp-228"><span class="linenos">228</span></a><span class="sd">            int8, uint8, bit.</span>
-</span><span id="sh2amp-229"><a href="#sh2amp-229"><span class="linenos">229</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="sh2amp-230"><a href="#sh2amp-230"><span class="linenos">230</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="sh2amp-231"><a href="#sh2amp-231"><span class="linenos">231</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="sh2amp-232"><a href="#sh2amp-232"><span class="linenos">232</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="sh2amp-233"><a href="#sh2amp-233"><span class="linenos">233</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="sh2amp-234"><a href="#sh2amp-234"><span class="linenos">234</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="sh2amp-235"><a href="#sh2amp-235"><span class="linenos">235</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="sh2amp-236"><a href="#sh2amp-236"><span class="linenos">236</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="sh2amp-237"><a href="#sh2amp-237"><span class="linenos">237</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="sh2amp-238"><a href="#sh2amp-238"><span class="linenos">238</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="sh2amp-239"><a href="#sh2amp-239"><span class="linenos">239</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="sh2amp-240"><a href="#sh2amp-240"><span class="linenos">240</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="sh2amp-241"><a href="#sh2amp-241"><span class="linenos">241</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="sh2amp-242"><a href="#sh2amp-242"><span class="linenos">242</span></a><span class="sd">    Returns:</span>
-</span><span id="sh2amp-243"><a href="#sh2amp-243"><span class="linenos">243</span></a><span class="sd">        NamedTuple of outputs (described in `Sh2ampOutputs`).</span>
-</span><span id="sh2amp-244"><a href="#sh2amp-244"><span class="linenos">244</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="sh2amp-245"><a href="#sh2amp-245"><span class="linenos">245</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="sh2amp-246"><a href="#sh2amp-246"><span class="linenos">246</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SH2AMP_METADATA</span><span class="p">)</span>
-</span><span id="sh2amp-247"><a href="#sh2amp-247"><span class="linenos">247</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="sh2amp-248"><a href="#sh2amp-248"><span class="linenos">248</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sh2amp&quot;</span><span class="p">)</span>
-</span><span id="sh2amp-249"><a href="#sh2amp-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">nonnegative</span><span class="p">:</span>
-</span><span id="sh2amp-250"><a href="#sh2amp-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonnegative&quot;</span><span class="p">)</span>
-</span><span id="sh2amp-251"><a href="#sh2amp-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="sh2amp-252"><a href="#sh2amp-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="sh2amp-253"><a href="#sh2amp-253"><span class="linenos">253</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
-</span><span id="sh2amp-254"><a href="#sh2amp-254"><span class="linenos">254</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
-</span><span id="sh2amp-255"><a href="#sh2amp-255"><span class="linenos">255</span></a>        <span class="p">])</span>
-</span><span id="sh2amp-256"><a href="#sh2amp-256"><span class="linenos">256</span></a>    <span class="k">if</span> <span class="n">fslgrad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="sh2amp-257"><a href="#sh2amp-257"><span class="linenos">257</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fslgrad</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="sh2amp-258"><a href="#sh2amp-258"><span class="linenos">258</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="sh2amp-259"><a href="#sh2amp-259"><span class="linenos">259</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="sh2amp-260"><a href="#sh2amp-260"><span class="linenos">260</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
-</span><span id="sh2amp-261"><a href="#sh2amp-261"><span class="linenos">261</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
-</span><span id="sh2amp-262"><a href="#sh2amp-262"><span class="linenos">262</span></a>        <span class="p">])</span>
-</span><span id="sh2amp-263"><a href="#sh2amp-263"><span class="linenos">263</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="sh2amp-264"><a href="#sh2amp-264"><span class="linenos">264</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="sh2amp-265"><a href="#sh2amp-265"><span class="linenos">265</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
-</span><span id="sh2amp-266"><a href="#sh2amp-266"><span class="linenos">266</span></a>            <span class="n">datatype</span>
-</span><span id="sh2amp-267"><a href="#sh2amp-267"><span class="linenos">267</span></a>        <span class="p">])</span>
-</span><span id="sh2amp-268"><a href="#sh2amp-268"><span class="linenos">268</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="sh2amp-269"><a href="#sh2amp-269"><span class="linenos">269</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="sh2amp-270"><a href="#sh2amp-270"><span class="linenos">270</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="sh2amp-271"><a href="#sh2amp-271"><span class="linenos">271</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="sh2amp-272"><a href="#sh2amp-272"><span class="linenos">272</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="sh2amp-273"><a href="#sh2amp-273"><span class="linenos">273</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="sh2amp-274"><a href="#sh2amp-274"><span class="linenos">274</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="sh2amp-275"><a href="#sh2amp-275"><span class="linenos">275</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="sh2amp-276"><a href="#sh2amp-276"><span class="linenos">276</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="sh2amp-277"><a href="#sh2amp-277"><span class="linenos">277</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="sh2amp-278"><a href="#sh2amp-278"><span class="linenos">278</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="sh2amp-279"><a href="#sh2amp-279"><span class="linenos">279</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="sh2amp-280"><a href="#sh2amp-280"><span class="linenos">280</span></a>        <span class="p">])</span>
-</span><span id="sh2amp-281"><a href="#sh2amp-281"><span class="linenos">281</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="sh2amp-282"><a href="#sh2amp-282"><span class="linenos">282</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="sh2amp-283"><a href="#sh2amp-283"><span class="linenos">283</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="sh2amp-284"><a href="#sh2amp-284"><span class="linenos">284</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="sh2amp-285"><a href="#sh2amp-285"><span class="linenos">285</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="sh2amp-286"><a href="#sh2amp-286"><span class="linenos">286</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="sh2amp-287"><a href="#sh2amp-287"><span class="linenos">287</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
-</span><span id="sh2amp-288"><a href="#sh2amp-288"><span class="linenos">288</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">directions</span><span class="p">))</span>
-</span><span id="sh2amp-289"><a href="#sh2amp-289"><span class="linenos">289</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="sh2amp-290"><a href="#sh2amp-290"><span class="linenos">290</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Sh2ampOutputs</span><span class="p">(</span>
-</span><span id="sh2amp-291"><a href="#sh2amp-291"><span class="linenos">291</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="sh2amp-292"><a href="#sh2amp-292"><span class="linenos">292</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="sh2amp-293"><a href="#sh2amp-293"><span class="linenos">293</span></a>    <span class="p">)</span>
-</span><span id="sh2amp-294"><a href="#sh2amp-294"><span class="linenos">294</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="sh2amp-295"><a href="#sh2amp-295"><span class="linenos">295</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="sh2amp-196"><a href="#sh2amp-196"><span class="linenos">196</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="sh2amp-197"><a href="#sh2amp-197"><span class="linenos">197</span></a><span class="sd">    </span>
+</span><span id="sh2amp-198"><a href="#sh2amp-198"><span class="linenos">198</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="sh2amp-199"><a href="#sh2amp-199"><span class="linenos">199</span></a><span class="sd">    </span>
+</span><span id="sh2amp-200"><a href="#sh2amp-200"><span class="linenos">200</span></a><span class="sd">    Args:</span>
+</span><span id="sh2amp-201"><a href="#sh2amp-201"><span class="linenos">201</span></a><span class="sd">        input_: the input image consisting of spherical harmonic (SH)\</span>
+</span><span id="sh2amp-202"><a href="#sh2amp-202"><span class="linenos">202</span></a><span class="sd">            coefficients.</span>
+</span><span id="sh2amp-203"><a href="#sh2amp-203"><span class="linenos">203</span></a><span class="sd">        directions: the list of directions along which the SH functions will be\</span>
+</span><span id="sh2amp-204"><a href="#sh2amp-204"><span class="linenos">204</span></a><span class="sd">            sampled, generated using the dirgen command.</span>
+</span><span id="sh2amp-205"><a href="#sh2amp-205"><span class="linenos">205</span></a><span class="sd">        output: the output image consisting of the amplitude of the SH\</span>
+</span><span id="sh2amp-206"><a href="#sh2amp-206"><span class="linenos">206</span></a><span class="sd">            functions along the specified directions.</span>
+</span><span id="sh2amp-207"><a href="#sh2amp-207"><span class="linenos">207</span></a><span class="sd">        nonnegative: cap all negative amplitudes to zero.</span>
+</span><span id="sh2amp-208"><a href="#sh2amp-208"><span class="linenos">208</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="sh2amp-209"><a href="#sh2amp-209"><span class="linenos">209</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
+</span><span id="sh2amp-210"><a href="#sh2amp-210"><span class="linenos">210</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
+</span><span id="sh2amp-211"><a href="#sh2amp-211"><span class="linenos">211</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
+</span><span id="sh2amp-212"><a href="#sh2amp-212"><span class="linenos">212</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
+</span><span id="sh2amp-213"><a href="#sh2amp-213"><span class="linenos">213</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
+</span><span id="sh2amp-214"><a href="#sh2amp-214"><span class="linenos">214</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="sh2amp-215"><a href="#sh2amp-215"><span class="linenos">215</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="sh2amp-216"><a href="#sh2amp-216"><span class="linenos">216</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="sh2amp-217"><a href="#sh2amp-217"><span class="linenos">217</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="sh2amp-218"><a href="#sh2amp-218"><span class="linenos">218</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
+</span><span id="sh2amp-219"><a href="#sh2amp-219"><span class="linenos">219</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
+</span><span id="sh2amp-220"><a href="#sh2amp-220"><span class="linenos">220</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
+</span><span id="sh2amp-221"><a href="#sh2amp-221"><span class="linenos">221</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
+</span><span id="sh2amp-222"><a href="#sh2amp-222"><span class="linenos">222</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
+</span><span id="sh2amp-223"><a href="#sh2amp-223"><span class="linenos">223</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
+</span><span id="sh2amp-224"><a href="#sh2amp-224"><span class="linenos">224</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
+</span><span id="sh2amp-225"><a href="#sh2amp-225"><span class="linenos">225</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
+</span><span id="sh2amp-226"><a href="#sh2amp-226"><span class="linenos">226</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
+</span><span id="sh2amp-227"><a href="#sh2amp-227"><span class="linenos">227</span></a><span class="sd">            int8, uint8, bit.</span>
+</span><span id="sh2amp-228"><a href="#sh2amp-228"><span class="linenos">228</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="sh2amp-229"><a href="#sh2amp-229"><span class="linenos">229</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="sh2amp-230"><a href="#sh2amp-230"><span class="linenos">230</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="sh2amp-231"><a href="#sh2amp-231"><span class="linenos">231</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="sh2amp-232"><a href="#sh2amp-232"><span class="linenos">232</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="sh2amp-233"><a href="#sh2amp-233"><span class="linenos">233</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="sh2amp-234"><a href="#sh2amp-234"><span class="linenos">234</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="sh2amp-235"><a href="#sh2amp-235"><span class="linenos">235</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="sh2amp-236"><a href="#sh2amp-236"><span class="linenos">236</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="sh2amp-237"><a href="#sh2amp-237"><span class="linenos">237</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="sh2amp-238"><a href="#sh2amp-238"><span class="linenos">238</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="sh2amp-239"><a href="#sh2amp-239"><span class="linenos">239</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="sh2amp-240"><a href="#sh2amp-240"><span class="linenos">240</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="sh2amp-241"><a href="#sh2amp-241"><span class="linenos">241</span></a><span class="sd">    Returns:</span>
+</span><span id="sh2amp-242"><a href="#sh2amp-242"><span class="linenos">242</span></a><span class="sd">        NamedTuple of outputs (described in `Sh2ampOutputs`).</span>
+</span><span id="sh2amp-243"><a href="#sh2amp-243"><span class="linenos">243</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="sh2amp-244"><a href="#sh2amp-244"><span class="linenos">244</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="sh2amp-245"><a href="#sh2amp-245"><span class="linenos">245</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SH2AMP_METADATA</span><span class="p">)</span>
+</span><span id="sh2amp-246"><a href="#sh2amp-246"><span class="linenos">246</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="sh2amp-247"><a href="#sh2amp-247"><span class="linenos">247</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sh2amp&quot;</span><span class="p">)</span>
+</span><span id="sh2amp-248"><a href="#sh2amp-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">nonnegative</span><span class="p">:</span>
+</span><span id="sh2amp-249"><a href="#sh2amp-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonnegative&quot;</span><span class="p">)</span>
+</span><span id="sh2amp-250"><a href="#sh2amp-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="sh2amp-251"><a href="#sh2amp-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="sh2amp-252"><a href="#sh2amp-252"><span class="linenos">252</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
+</span><span id="sh2amp-253"><a href="#sh2amp-253"><span class="linenos">253</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+</span><span id="sh2amp-254"><a href="#sh2amp-254"><span class="linenos">254</span></a>        <span class="p">])</span>
+</span><span id="sh2amp-255"><a href="#sh2amp-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">fslgrad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="sh2amp-256"><a href="#sh2amp-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fslgrad</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="sh2amp-257"><a href="#sh2amp-257"><span class="linenos">257</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="sh2amp-258"><a href="#sh2amp-258"><span class="linenos">258</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="sh2amp-259"><a href="#sh2amp-259"><span class="linenos">259</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
+</span><span id="sh2amp-260"><a href="#sh2amp-260"><span class="linenos">260</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
+</span><span id="sh2amp-261"><a href="#sh2amp-261"><span class="linenos">261</span></a>        <span class="p">])</span>
+</span><span id="sh2amp-262"><a href="#sh2amp-262"><span class="linenos">262</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="sh2amp-263"><a href="#sh2amp-263"><span class="linenos">263</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="sh2amp-264"><a href="#sh2amp-264"><span class="linenos">264</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
+</span><span id="sh2amp-265"><a href="#sh2amp-265"><span class="linenos">265</span></a>            <span class="n">datatype</span>
+</span><span id="sh2amp-266"><a href="#sh2amp-266"><span class="linenos">266</span></a>        <span class="p">])</span>
+</span><span id="sh2amp-267"><a href="#sh2amp-267"><span class="linenos">267</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="sh2amp-268"><a href="#sh2amp-268"><span class="linenos">268</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="sh2amp-269"><a href="#sh2amp-269"><span class="linenos">269</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="sh2amp-270"><a href="#sh2amp-270"><span class="linenos">270</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="sh2amp-271"><a href="#sh2amp-271"><span class="linenos">271</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="sh2amp-272"><a href="#sh2amp-272"><span class="linenos">272</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="sh2amp-273"><a href="#sh2amp-273"><span class="linenos">273</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="sh2amp-274"><a href="#sh2amp-274"><span class="linenos">274</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="sh2amp-275"><a href="#sh2amp-275"><span class="linenos">275</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="sh2amp-276"><a href="#sh2amp-276"><span class="linenos">276</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="sh2amp-277"><a href="#sh2amp-277"><span class="linenos">277</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="sh2amp-278"><a href="#sh2amp-278"><span class="linenos">278</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="sh2amp-279"><a href="#sh2amp-279"><span class="linenos">279</span></a>        <span class="p">])</span>
+</span><span id="sh2amp-280"><a href="#sh2amp-280"><span class="linenos">280</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="sh2amp-281"><a href="#sh2amp-281"><span class="linenos">281</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="sh2amp-282"><a href="#sh2amp-282"><span class="linenos">282</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="sh2amp-283"><a href="#sh2amp-283"><span class="linenos">283</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="sh2amp-284"><a href="#sh2amp-284"><span class="linenos">284</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="sh2amp-285"><a href="#sh2amp-285"><span class="linenos">285</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="sh2amp-286"><a href="#sh2amp-286"><span class="linenos">286</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
+</span><span id="sh2amp-287"><a href="#sh2amp-287"><span class="linenos">287</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">directions</span><span class="p">))</span>
+</span><span id="sh2amp-288"><a href="#sh2amp-288"><span class="linenos">288</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="sh2amp-289"><a href="#sh2amp-289"><span class="linenos">289</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Sh2ampOutputs</span><span class="p">(</span>
+</span><span id="sh2amp-290"><a href="#sh2amp-290"><span class="linenos">290</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="sh2amp-291"><a href="#sh2amp-291"><span class="linenos">291</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="sh2amp-292"><a href="#sh2amp-292"><span class="linenos">292</span></a>    <span class="p">)</span>
+</span><span id="sh2amp-293"><a href="#sh2amp-293"><span class="linenos">293</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="sh2amp-294"><a href="#sh2amp-294"><span class="linenos">294</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1240,10 +1238,9 @@ described the main documentation, which can be found at the following link:
 
 <p>.</p>
 
-<p>Author: David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier
-(jdtournier@gmail.com)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL: <a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2amp.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2amp.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

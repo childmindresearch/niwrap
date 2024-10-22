@@ -108,7 +108,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FOD2FIXEL_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;0f495be6ac07c3442550036e3ffcf4914a2efeca.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4748cd2237541a5061a51ecd86840055b92d34ff.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fod2fixel&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -205,147 +205,146 @@
 </span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    measure for the analysis of diffusion-weighted magnetic resonance</span>
 </span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    images.Neuroimage, 2012, 15;59(4), 3976-94.</span>
 </span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    </span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    </span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    URL:</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/fod2fixel.html</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    </span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    Args:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        fod: the input fod image.</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        fixel_directory: the output fixel directory.</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">        afd: output the total Apparent Fibre Density per fixel (integral of FOD\</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">            lobe).</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        peak_amp: output the amplitude of the FOD at the maximal peak per fixel.</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">        disp: output a measure of dispersion per fixel as the ratio between FOD\</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">            lobe integral and maximal peak amplitude.</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">        fmls_integral: threshold absolute numerical integral of positive FOD\</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">            lobes. Any lobe for which the integral is smaller than this threshold\</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">            will be discarded. Default: 0.</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        fmls_peak_value: threshold peak amplitude of positive FOD lobes. Any\</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">            lobe for which the maximal peak amplitude is smaller than this\</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">            threshold will be discarded. Default: 0.1.</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        fmls_no_thresholds: disable all FOD lobe thresholding; every lobe where\</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">            the FOD is positive will be retained.</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        fmls_lobe_merge_ratio: Specify the ratio between a given FOD amplitude\</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">            sample between two lobes, and the smallest peak amplitude of the\</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">            adjacent lobes, above which those lobes will be merged. This is the\</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">            amplitude of the FOD at the &#39;bridge&#39; point between the two lobes,\</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">            divided by the peak amplitude of the smaller of the two adjoining\</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">            lobes. A value of 1.0 will never merge two lobes into one; a value of\</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">            0.0 will always merge lobes unless they are bisected by a zero-valued\</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">            crossing. Default: 1.</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">        mask: only perform computation within the specified binary brain mask\</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">            image.</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">        maxnum: maximum number of fixels to output for any particular voxel\</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">            (default: no limit).</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        nii: output the directions and index file in nii format (instead of the\</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">            default mif).</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        dirpeak: define the fixel direction as that of the lobe&#39;s maximal peak\</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">            as opposed to its weighted mean direction (the default).</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    Returns:</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        NamedTuple of outputs (described in `Fod2fixelOutputs`).</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOD2FIXEL_METADATA</span><span class="p">)</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fod2fixel&quot;</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">afd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>            <span class="s2">&quot;-afd&quot;</span><span class="p">,</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>            <span class="n">afd</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="p">])</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">peak_amp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>            <span class="s2">&quot;-peak_amp&quot;</span><span class="p">,</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>            <span class="n">peak_amp</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="p">])</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">disp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>            <span class="s2">&quot;-disp&quot;</span><span class="p">,</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>            <span class="n">disp</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="p">])</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">fmls_integral</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="s2">&quot;-fmls_integral&quot;</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_integral</span><span class="p">)</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="p">])</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">fmls_peak_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>            <span class="s2">&quot;-fmls_peak_value&quot;</span><span class="p">,</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_peak_value</span><span class="p">)</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="p">])</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">fmls_no_thresholds</span><span class="p">:</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fmls_no_thresholds&quot;</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="k">if</span> <span class="n">fmls_lobe_merge_ratio</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>            <span class="s2">&quot;-fmls_lobe_merge_ratio&quot;</span><span class="p">,</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_lobe_merge_ratio</span><span class="p">)</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="p">])</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="p">])</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">maxnum</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>            <span class="s2">&quot;-maxnum&quot;</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">maxnum</span><span class="p">)</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="p">])</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">nii</span><span class="p">:</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nii&quot;</span><span class="p">)</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">dirpeak</span><span class="p">:</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dirpeak&quot;</span><span class="p">)</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>        <span class="p">])</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fod</span><span class="p">))</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fixel_directory</span><span class="p">)</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Fod2fixelOutputs</span><span class="p">(</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">fixel_directory</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fixel_directory</span><span class="p">),</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">afd</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">afd</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">afd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>        <span class="n">peak_amp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">peak_amp</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">peak_amp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="n">disp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">disp</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">disp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="p">)</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    </span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    Args:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">        fod: the input fod image.</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        fixel_directory: the output fixel directory.</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        afd: output the total Apparent Fibre Density per fixel (integral of FOD\</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">            lobe).</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">        peak_amp: output the amplitude of the FOD at the maximal peak per fixel.</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        disp: output a measure of dispersion per fixel as the ratio between FOD\</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">            lobe integral and maximal peak amplitude.</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        fmls_integral: threshold absolute numerical integral of positive FOD\</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">            lobes. Any lobe for which the integral is smaller than this threshold\</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">            will be discarded. Default: 0.</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        fmls_peak_value: threshold peak amplitude of positive FOD lobes. Any\</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">            lobe for which the maximal peak amplitude is smaller than this\</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">            threshold will be discarded. Default: 0.1.</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        fmls_no_thresholds: disable all FOD lobe thresholding; every lobe where\</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">            the FOD is positive will be retained.</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">        fmls_lobe_merge_ratio: Specify the ratio between a given FOD amplitude\</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">            sample between two lobes, and the smallest peak amplitude of the\</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">            adjacent lobes, above which those lobes will be merged. This is the\</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">            amplitude of the FOD at the &#39;bridge&#39; point between the two lobes,\</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">            divided by the peak amplitude of the smaller of the two adjoining\</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">            lobes. A value of 1.0 will never merge two lobes into one; a value of\</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">            0.0 will always merge lobes unless they are bisected by a zero-valued\</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">            crossing. Default: 1.</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">        mask: only perform computation within the specified binary brain mask\</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">            image.</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">        maxnum: maximum number of fixels to output for any particular voxel\</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">            (default: no limit).</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        nii: output the directions and index file in nii format (instead of the\</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">            default mif).</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">        dirpeak: define the fixel direction as that of the lobe&#39;s maximal peak\</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">            as opposed to its weighted mean direction (the default).</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    Returns:</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        NamedTuple of outputs (described in `Fod2fixelOutputs`).</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOD2FIXEL_METADATA</span><span class="p">)</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fod2fixel&quot;</span><span class="p">)</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">afd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>            <span class="s2">&quot;-afd&quot;</span><span class="p">,</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>            <span class="n">afd</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="p">])</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">peak_amp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>            <span class="s2">&quot;-peak_amp&quot;</span><span class="p">,</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>            <span class="n">peak_amp</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="p">])</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">disp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>            <span class="s2">&quot;-disp&quot;</span><span class="p">,</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>            <span class="n">disp</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="p">])</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">fmls_integral</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>            <span class="s2">&quot;-fmls_integral&quot;</span><span class="p">,</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_integral</span><span class="p">)</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="p">])</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">fmls_peak_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>            <span class="s2">&quot;-fmls_peak_value&quot;</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_peak_value</span><span class="p">)</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="p">])</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">fmls_no_thresholds</span><span class="p">:</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fmls_no_thresholds&quot;</span><span class="p">)</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">fmls_lobe_merge_ratio</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>            <span class="s2">&quot;-fmls_lobe_merge_ratio&quot;</span><span class="p">,</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_lobe_merge_ratio</span><span class="p">)</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>        <span class="p">])</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>        <span class="p">])</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">maxnum</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>            <span class="s2">&quot;-maxnum&quot;</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">maxnum</span><span class="p">)</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>        <span class="p">])</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">nii</span><span class="p">:</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nii&quot;</span><span class="p">)</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">dirpeak</span><span class="p">:</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dirpeak&quot;</span><span class="p">)</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>        <span class="p">])</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fod</span><span class="p">))</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fixel_directory</span><span class="p">)</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Fod2fixelOutputs</span><span class="p">(</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">fixel_directory</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fixel_directory</span><span class="p">),</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">afd</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">afd</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">afd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">peak_amp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">peak_amp</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">peak_amp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>        <span class="n">disp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">disp</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">disp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="p">)</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>
 </span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;FOD2FIXEL_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;Fod2fixelConfig&quot;</span><span class="p">,</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;Fod2fixelOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="s2">&quot;fod2fixel&quot;</span><span class="p">,</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="p">]</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="s2">&quot;FOD2FIXEL_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="s2">&quot;Fod2fixelConfig&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="s2">&quot;Fod2fixelOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="s2">&quot;fod2fixel&quot;</span><span class="p">,</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -354,7 +353,7 @@
                     <div class="attr variable">
             <span class="name">FOD2FIXEL_METADATA</span>        =
 <input id="FOD2FIXEL_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FOD2FIXEL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;0f495be6ac07c3442550036e3ffcf4914a2efeca.boutiques&#39;, name=&#39;fod2fixel&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FOD2FIXEL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4748cd2237541a5061a51ecd86840055b92d34ff.boutiques&#39;, name=&#39;fod2fixel&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -665,139 +664,138 @@ integral and maximal peak amplitude</p>
 </span><span id="fod2fixel-105"><a href="#fod2fixel-105"><span class="linenos">105</span></a><span class="sd">    measure for the analysis of diffusion-weighted magnetic resonance</span>
 </span><span id="fod2fixel-106"><a href="#fod2fixel-106"><span class="linenos">106</span></a><span class="sd">    images.Neuroimage, 2012, 15;59(4), 3976-94.</span>
 </span><span id="fod2fixel-107"><a href="#fod2fixel-107"><span class="linenos">107</span></a><span class="sd">    </span>
-</span><span id="fod2fixel-108"><a href="#fod2fixel-108"><span class="linenos">108</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="fod2fixel-108"><a href="#fod2fixel-108"><span class="linenos">108</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="fod2fixel-109"><a href="#fod2fixel-109"><span class="linenos">109</span></a><span class="sd">    </span>
-</span><span id="fod2fixel-110"><a href="#fod2fixel-110"><span class="linenos">110</span></a><span class="sd">    URL:</span>
-</span><span id="fod2fixel-111"><a href="#fod2fixel-111"><span class="linenos">111</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/fod2fixel.html</span>
-</span><span id="fod2fixel-112"><a href="#fod2fixel-112"><span class="linenos">112</span></a><span class="sd">    </span>
-</span><span id="fod2fixel-113"><a href="#fod2fixel-113"><span class="linenos">113</span></a><span class="sd">    Args:</span>
-</span><span id="fod2fixel-114"><a href="#fod2fixel-114"><span class="linenos">114</span></a><span class="sd">        fod: the input fod image.</span>
-</span><span id="fod2fixel-115"><a href="#fod2fixel-115"><span class="linenos">115</span></a><span class="sd">        fixel_directory: the output fixel directory.</span>
-</span><span id="fod2fixel-116"><a href="#fod2fixel-116"><span class="linenos">116</span></a><span class="sd">        afd: output the total Apparent Fibre Density per fixel (integral of FOD\</span>
-</span><span id="fod2fixel-117"><a href="#fod2fixel-117"><span class="linenos">117</span></a><span class="sd">            lobe).</span>
-</span><span id="fod2fixel-118"><a href="#fod2fixel-118"><span class="linenos">118</span></a><span class="sd">        peak_amp: output the amplitude of the FOD at the maximal peak per fixel.</span>
-</span><span id="fod2fixel-119"><a href="#fod2fixel-119"><span class="linenos">119</span></a><span class="sd">        disp: output a measure of dispersion per fixel as the ratio between FOD\</span>
-</span><span id="fod2fixel-120"><a href="#fod2fixel-120"><span class="linenos">120</span></a><span class="sd">            lobe integral and maximal peak amplitude.</span>
-</span><span id="fod2fixel-121"><a href="#fod2fixel-121"><span class="linenos">121</span></a><span class="sd">        fmls_integral: threshold absolute numerical integral of positive FOD\</span>
-</span><span id="fod2fixel-122"><a href="#fod2fixel-122"><span class="linenos">122</span></a><span class="sd">            lobes. Any lobe for which the integral is smaller than this threshold\</span>
-</span><span id="fod2fixel-123"><a href="#fod2fixel-123"><span class="linenos">123</span></a><span class="sd">            will be discarded. Default: 0.</span>
-</span><span id="fod2fixel-124"><a href="#fod2fixel-124"><span class="linenos">124</span></a><span class="sd">        fmls_peak_value: threshold peak amplitude of positive FOD lobes. Any\</span>
-</span><span id="fod2fixel-125"><a href="#fod2fixel-125"><span class="linenos">125</span></a><span class="sd">            lobe for which the maximal peak amplitude is smaller than this\</span>
-</span><span id="fod2fixel-126"><a href="#fod2fixel-126"><span class="linenos">126</span></a><span class="sd">            threshold will be discarded. Default: 0.1.</span>
-</span><span id="fod2fixel-127"><a href="#fod2fixel-127"><span class="linenos">127</span></a><span class="sd">        fmls_no_thresholds: disable all FOD lobe thresholding; every lobe where\</span>
-</span><span id="fod2fixel-128"><a href="#fod2fixel-128"><span class="linenos">128</span></a><span class="sd">            the FOD is positive will be retained.</span>
-</span><span id="fod2fixel-129"><a href="#fod2fixel-129"><span class="linenos">129</span></a><span class="sd">        fmls_lobe_merge_ratio: Specify the ratio between a given FOD amplitude\</span>
-</span><span id="fod2fixel-130"><a href="#fod2fixel-130"><span class="linenos">130</span></a><span class="sd">            sample between two lobes, and the smallest peak amplitude of the\</span>
-</span><span id="fod2fixel-131"><a href="#fod2fixel-131"><span class="linenos">131</span></a><span class="sd">            adjacent lobes, above which those lobes will be merged. This is the\</span>
-</span><span id="fod2fixel-132"><a href="#fod2fixel-132"><span class="linenos">132</span></a><span class="sd">            amplitude of the FOD at the &#39;bridge&#39; point between the two lobes,\</span>
-</span><span id="fod2fixel-133"><a href="#fod2fixel-133"><span class="linenos">133</span></a><span class="sd">            divided by the peak amplitude of the smaller of the two adjoining\</span>
-</span><span id="fod2fixel-134"><a href="#fod2fixel-134"><span class="linenos">134</span></a><span class="sd">            lobes. A value of 1.0 will never merge two lobes into one; a value of\</span>
-</span><span id="fod2fixel-135"><a href="#fod2fixel-135"><span class="linenos">135</span></a><span class="sd">            0.0 will always merge lobes unless they are bisected by a zero-valued\</span>
-</span><span id="fod2fixel-136"><a href="#fod2fixel-136"><span class="linenos">136</span></a><span class="sd">            crossing. Default: 1.</span>
-</span><span id="fod2fixel-137"><a href="#fod2fixel-137"><span class="linenos">137</span></a><span class="sd">        mask: only perform computation within the specified binary brain mask\</span>
-</span><span id="fod2fixel-138"><a href="#fod2fixel-138"><span class="linenos">138</span></a><span class="sd">            image.</span>
-</span><span id="fod2fixel-139"><a href="#fod2fixel-139"><span class="linenos">139</span></a><span class="sd">        maxnum: maximum number of fixels to output for any particular voxel\</span>
-</span><span id="fod2fixel-140"><a href="#fod2fixel-140"><span class="linenos">140</span></a><span class="sd">            (default: no limit).</span>
-</span><span id="fod2fixel-141"><a href="#fod2fixel-141"><span class="linenos">141</span></a><span class="sd">        nii: output the directions and index file in nii format (instead of the\</span>
-</span><span id="fod2fixel-142"><a href="#fod2fixel-142"><span class="linenos">142</span></a><span class="sd">            default mif).</span>
-</span><span id="fod2fixel-143"><a href="#fod2fixel-143"><span class="linenos">143</span></a><span class="sd">        dirpeak: define the fixel direction as that of the lobe&#39;s maximal peak\</span>
-</span><span id="fod2fixel-144"><a href="#fod2fixel-144"><span class="linenos">144</span></a><span class="sd">            as opposed to its weighted mean direction (the default).</span>
-</span><span id="fod2fixel-145"><a href="#fod2fixel-145"><span class="linenos">145</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="fod2fixel-146"><a href="#fod2fixel-146"><span class="linenos">146</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="fod2fixel-147"><a href="#fod2fixel-147"><span class="linenos">147</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="fod2fixel-148"><a href="#fod2fixel-148"><span class="linenos">148</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="fod2fixel-149"><a href="#fod2fixel-149"><span class="linenos">149</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="fod2fixel-150"><a href="#fod2fixel-150"><span class="linenos">150</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="fod2fixel-151"><a href="#fod2fixel-151"><span class="linenos">151</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="fod2fixel-152"><a href="#fod2fixel-152"><span class="linenos">152</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="fod2fixel-153"><a href="#fod2fixel-153"><span class="linenos">153</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="fod2fixel-154"><a href="#fod2fixel-154"><span class="linenos">154</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="fod2fixel-155"><a href="#fod2fixel-155"><span class="linenos">155</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="fod2fixel-156"><a href="#fod2fixel-156"><span class="linenos">156</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="fod2fixel-157"><a href="#fod2fixel-157"><span class="linenos">157</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fod2fixel-158"><a href="#fod2fixel-158"><span class="linenos">158</span></a><span class="sd">    Returns:</span>
-</span><span id="fod2fixel-159"><a href="#fod2fixel-159"><span class="linenos">159</span></a><span class="sd">        NamedTuple of outputs (described in `Fod2fixelOutputs`).</span>
-</span><span id="fod2fixel-160"><a href="#fod2fixel-160"><span class="linenos">160</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fod2fixel-161"><a href="#fod2fixel-161"><span class="linenos">161</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fod2fixel-162"><a href="#fod2fixel-162"><span class="linenos">162</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOD2FIXEL_METADATA</span><span class="p">)</span>
-</span><span id="fod2fixel-163"><a href="#fod2fixel-163"><span class="linenos">163</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fod2fixel-164"><a href="#fod2fixel-164"><span class="linenos">164</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fod2fixel&quot;</span><span class="p">)</span>
-</span><span id="fod2fixel-165"><a href="#fod2fixel-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">afd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fod2fixel-166"><a href="#fod2fixel-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fod2fixel-167"><a href="#fod2fixel-167"><span class="linenos">167</span></a>            <span class="s2">&quot;-afd&quot;</span><span class="p">,</span>
-</span><span id="fod2fixel-168"><a href="#fod2fixel-168"><span class="linenos">168</span></a>            <span class="n">afd</span>
-</span><span id="fod2fixel-169"><a href="#fod2fixel-169"><span class="linenos">169</span></a>        <span class="p">])</span>
-</span><span id="fod2fixel-170"><a href="#fod2fixel-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">peak_amp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fod2fixel-171"><a href="#fod2fixel-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fod2fixel-172"><a href="#fod2fixel-172"><span class="linenos">172</span></a>            <span class="s2">&quot;-peak_amp&quot;</span><span class="p">,</span>
-</span><span id="fod2fixel-173"><a href="#fod2fixel-173"><span class="linenos">173</span></a>            <span class="n">peak_amp</span>
-</span><span id="fod2fixel-174"><a href="#fod2fixel-174"><span class="linenos">174</span></a>        <span class="p">])</span>
-</span><span id="fod2fixel-175"><a href="#fod2fixel-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">disp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fod2fixel-176"><a href="#fod2fixel-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fod2fixel-177"><a href="#fod2fixel-177"><span class="linenos">177</span></a>            <span class="s2">&quot;-disp&quot;</span><span class="p">,</span>
-</span><span id="fod2fixel-178"><a href="#fod2fixel-178"><span class="linenos">178</span></a>            <span class="n">disp</span>
-</span><span id="fod2fixel-179"><a href="#fod2fixel-179"><span class="linenos">179</span></a>        <span class="p">])</span>
-</span><span id="fod2fixel-180"><a href="#fod2fixel-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">fmls_integral</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fod2fixel-181"><a href="#fod2fixel-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fod2fixel-182"><a href="#fod2fixel-182"><span class="linenos">182</span></a>            <span class="s2">&quot;-fmls_integral&quot;</span><span class="p">,</span>
-</span><span id="fod2fixel-183"><a href="#fod2fixel-183"><span class="linenos">183</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_integral</span><span class="p">)</span>
-</span><span id="fod2fixel-184"><a href="#fod2fixel-184"><span class="linenos">184</span></a>        <span class="p">])</span>
-</span><span id="fod2fixel-185"><a href="#fod2fixel-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">fmls_peak_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fod2fixel-186"><a href="#fod2fixel-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fod2fixel-187"><a href="#fod2fixel-187"><span class="linenos">187</span></a>            <span class="s2">&quot;-fmls_peak_value&quot;</span><span class="p">,</span>
-</span><span id="fod2fixel-188"><a href="#fod2fixel-188"><span class="linenos">188</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_peak_value</span><span class="p">)</span>
-</span><span id="fod2fixel-189"><a href="#fod2fixel-189"><span class="linenos">189</span></a>        <span class="p">])</span>
-</span><span id="fod2fixel-190"><a href="#fod2fixel-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">fmls_no_thresholds</span><span class="p">:</span>
-</span><span id="fod2fixel-191"><a href="#fod2fixel-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fmls_no_thresholds&quot;</span><span class="p">)</span>
-</span><span id="fod2fixel-192"><a href="#fod2fixel-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">fmls_lobe_merge_ratio</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fod2fixel-193"><a href="#fod2fixel-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fod2fixel-194"><a href="#fod2fixel-194"><span class="linenos">194</span></a>            <span class="s2">&quot;-fmls_lobe_merge_ratio&quot;</span><span class="p">,</span>
-</span><span id="fod2fixel-195"><a href="#fod2fixel-195"><span class="linenos">195</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_lobe_merge_ratio</span><span class="p">)</span>
-</span><span id="fod2fixel-196"><a href="#fod2fixel-196"><span class="linenos">196</span></a>        <span class="p">])</span>
-</span><span id="fod2fixel-197"><a href="#fod2fixel-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fod2fixel-198"><a href="#fod2fixel-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fod2fixel-199"><a href="#fod2fixel-199"><span class="linenos">199</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="fod2fixel-200"><a href="#fod2fixel-200"><span class="linenos">200</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="fod2fixel-201"><a href="#fod2fixel-201"><span class="linenos">201</span></a>        <span class="p">])</span>
-</span><span id="fod2fixel-202"><a href="#fod2fixel-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">maxnum</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fod2fixel-203"><a href="#fod2fixel-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fod2fixel-204"><a href="#fod2fixel-204"><span class="linenos">204</span></a>            <span class="s2">&quot;-maxnum&quot;</span><span class="p">,</span>
-</span><span id="fod2fixel-205"><a href="#fod2fixel-205"><span class="linenos">205</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">maxnum</span><span class="p">)</span>
-</span><span id="fod2fixel-206"><a href="#fod2fixel-206"><span class="linenos">206</span></a>        <span class="p">])</span>
-</span><span id="fod2fixel-207"><a href="#fod2fixel-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">nii</span><span class="p">:</span>
-</span><span id="fod2fixel-208"><a href="#fod2fixel-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nii&quot;</span><span class="p">)</span>
-</span><span id="fod2fixel-209"><a href="#fod2fixel-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">dirpeak</span><span class="p">:</span>
-</span><span id="fod2fixel-210"><a href="#fod2fixel-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dirpeak&quot;</span><span class="p">)</span>
-</span><span id="fod2fixel-211"><a href="#fod2fixel-211"><span class="linenos">211</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="fod2fixel-212"><a href="#fod2fixel-212"><span class="linenos">212</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="fod2fixel-213"><a href="#fod2fixel-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="fod2fixel-214"><a href="#fod2fixel-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="fod2fixel-215"><a href="#fod2fixel-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="fod2fixel-216"><a href="#fod2fixel-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="fod2fixel-217"><a href="#fod2fixel-217"><span class="linenos">217</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="fod2fixel-218"><a href="#fod2fixel-218"><span class="linenos">218</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="fod2fixel-219"><a href="#fod2fixel-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fod2fixel-220"><a href="#fod2fixel-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fod2fixel-221"><a href="#fod2fixel-221"><span class="linenos">221</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="fod2fixel-222"><a href="#fod2fixel-222"><span class="linenos">222</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="fod2fixel-223"><a href="#fod2fixel-223"><span class="linenos">223</span></a>        <span class="p">])</span>
-</span><span id="fod2fixel-224"><a href="#fod2fixel-224"><span class="linenos">224</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fod2fixel-225"><a href="#fod2fixel-225"><span class="linenos">225</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="fod2fixel-226"><a href="#fod2fixel-226"><span class="linenos">226</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="fod2fixel-227"><a href="#fod2fixel-227"><span class="linenos">227</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="fod2fixel-228"><a href="#fod2fixel-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="fod2fixel-229"><a href="#fod2fixel-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="fod2fixel-230"><a href="#fod2fixel-230"><span class="linenos">230</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fod</span><span class="p">))</span>
-</span><span id="fod2fixel-231"><a href="#fod2fixel-231"><span class="linenos">231</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fixel_directory</span><span class="p">)</span>
-</span><span id="fod2fixel-232"><a href="#fod2fixel-232"><span class="linenos">232</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Fod2fixelOutputs</span><span class="p">(</span>
-</span><span id="fod2fixel-233"><a href="#fod2fixel-233"><span class="linenos">233</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fod2fixel-234"><a href="#fod2fixel-234"><span class="linenos">234</span></a>        <span class="n">fixel_directory</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fixel_directory</span><span class="p">),</span>
-</span><span id="fod2fixel-235"><a href="#fod2fixel-235"><span class="linenos">235</span></a>        <span class="n">afd</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">afd</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">afd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fod2fixel-236"><a href="#fod2fixel-236"><span class="linenos">236</span></a>        <span class="n">peak_amp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">peak_amp</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">peak_amp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fod2fixel-237"><a href="#fod2fixel-237"><span class="linenos">237</span></a>        <span class="n">disp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">disp</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">disp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fod2fixel-238"><a href="#fod2fixel-238"><span class="linenos">238</span></a>    <span class="p">)</span>
-</span><span id="fod2fixel-239"><a href="#fod2fixel-239"><span class="linenos">239</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fod2fixel-240"><a href="#fod2fixel-240"><span class="linenos">240</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fod2fixel-110"><a href="#fod2fixel-110"><span class="linenos">110</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="fod2fixel-111"><a href="#fod2fixel-111"><span class="linenos">111</span></a><span class="sd">    </span>
+</span><span id="fod2fixel-112"><a href="#fod2fixel-112"><span class="linenos">112</span></a><span class="sd">    Args:</span>
+</span><span id="fod2fixel-113"><a href="#fod2fixel-113"><span class="linenos">113</span></a><span class="sd">        fod: the input fod image.</span>
+</span><span id="fod2fixel-114"><a href="#fod2fixel-114"><span class="linenos">114</span></a><span class="sd">        fixel_directory: the output fixel directory.</span>
+</span><span id="fod2fixel-115"><a href="#fod2fixel-115"><span class="linenos">115</span></a><span class="sd">        afd: output the total Apparent Fibre Density per fixel (integral of FOD\</span>
+</span><span id="fod2fixel-116"><a href="#fod2fixel-116"><span class="linenos">116</span></a><span class="sd">            lobe).</span>
+</span><span id="fod2fixel-117"><a href="#fod2fixel-117"><span class="linenos">117</span></a><span class="sd">        peak_amp: output the amplitude of the FOD at the maximal peak per fixel.</span>
+</span><span id="fod2fixel-118"><a href="#fod2fixel-118"><span class="linenos">118</span></a><span class="sd">        disp: output a measure of dispersion per fixel as the ratio between FOD\</span>
+</span><span id="fod2fixel-119"><a href="#fod2fixel-119"><span class="linenos">119</span></a><span class="sd">            lobe integral and maximal peak amplitude.</span>
+</span><span id="fod2fixel-120"><a href="#fod2fixel-120"><span class="linenos">120</span></a><span class="sd">        fmls_integral: threshold absolute numerical integral of positive FOD\</span>
+</span><span id="fod2fixel-121"><a href="#fod2fixel-121"><span class="linenos">121</span></a><span class="sd">            lobes. Any lobe for which the integral is smaller than this threshold\</span>
+</span><span id="fod2fixel-122"><a href="#fod2fixel-122"><span class="linenos">122</span></a><span class="sd">            will be discarded. Default: 0.</span>
+</span><span id="fod2fixel-123"><a href="#fod2fixel-123"><span class="linenos">123</span></a><span class="sd">        fmls_peak_value: threshold peak amplitude of positive FOD lobes. Any\</span>
+</span><span id="fod2fixel-124"><a href="#fod2fixel-124"><span class="linenos">124</span></a><span class="sd">            lobe for which the maximal peak amplitude is smaller than this\</span>
+</span><span id="fod2fixel-125"><a href="#fod2fixel-125"><span class="linenos">125</span></a><span class="sd">            threshold will be discarded. Default: 0.1.</span>
+</span><span id="fod2fixel-126"><a href="#fod2fixel-126"><span class="linenos">126</span></a><span class="sd">        fmls_no_thresholds: disable all FOD lobe thresholding; every lobe where\</span>
+</span><span id="fod2fixel-127"><a href="#fod2fixel-127"><span class="linenos">127</span></a><span class="sd">            the FOD is positive will be retained.</span>
+</span><span id="fod2fixel-128"><a href="#fod2fixel-128"><span class="linenos">128</span></a><span class="sd">        fmls_lobe_merge_ratio: Specify the ratio between a given FOD amplitude\</span>
+</span><span id="fod2fixel-129"><a href="#fod2fixel-129"><span class="linenos">129</span></a><span class="sd">            sample between two lobes, and the smallest peak amplitude of the\</span>
+</span><span id="fod2fixel-130"><a href="#fod2fixel-130"><span class="linenos">130</span></a><span class="sd">            adjacent lobes, above which those lobes will be merged. This is the\</span>
+</span><span id="fod2fixel-131"><a href="#fod2fixel-131"><span class="linenos">131</span></a><span class="sd">            amplitude of the FOD at the &#39;bridge&#39; point between the two lobes,\</span>
+</span><span id="fod2fixel-132"><a href="#fod2fixel-132"><span class="linenos">132</span></a><span class="sd">            divided by the peak amplitude of the smaller of the two adjoining\</span>
+</span><span id="fod2fixel-133"><a href="#fod2fixel-133"><span class="linenos">133</span></a><span class="sd">            lobes. A value of 1.0 will never merge two lobes into one; a value of\</span>
+</span><span id="fod2fixel-134"><a href="#fod2fixel-134"><span class="linenos">134</span></a><span class="sd">            0.0 will always merge lobes unless they are bisected by a zero-valued\</span>
+</span><span id="fod2fixel-135"><a href="#fod2fixel-135"><span class="linenos">135</span></a><span class="sd">            crossing. Default: 1.</span>
+</span><span id="fod2fixel-136"><a href="#fod2fixel-136"><span class="linenos">136</span></a><span class="sd">        mask: only perform computation within the specified binary brain mask\</span>
+</span><span id="fod2fixel-137"><a href="#fod2fixel-137"><span class="linenos">137</span></a><span class="sd">            image.</span>
+</span><span id="fod2fixel-138"><a href="#fod2fixel-138"><span class="linenos">138</span></a><span class="sd">        maxnum: maximum number of fixels to output for any particular voxel\</span>
+</span><span id="fod2fixel-139"><a href="#fod2fixel-139"><span class="linenos">139</span></a><span class="sd">            (default: no limit).</span>
+</span><span id="fod2fixel-140"><a href="#fod2fixel-140"><span class="linenos">140</span></a><span class="sd">        nii: output the directions and index file in nii format (instead of the\</span>
+</span><span id="fod2fixel-141"><a href="#fod2fixel-141"><span class="linenos">141</span></a><span class="sd">            default mif).</span>
+</span><span id="fod2fixel-142"><a href="#fod2fixel-142"><span class="linenos">142</span></a><span class="sd">        dirpeak: define the fixel direction as that of the lobe&#39;s maximal peak\</span>
+</span><span id="fod2fixel-143"><a href="#fod2fixel-143"><span class="linenos">143</span></a><span class="sd">            as opposed to its weighted mean direction (the default).</span>
+</span><span id="fod2fixel-144"><a href="#fod2fixel-144"><span class="linenos">144</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="fod2fixel-145"><a href="#fod2fixel-145"><span class="linenos">145</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="fod2fixel-146"><a href="#fod2fixel-146"><span class="linenos">146</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="fod2fixel-147"><a href="#fod2fixel-147"><span class="linenos">147</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="fod2fixel-148"><a href="#fod2fixel-148"><span class="linenos">148</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="fod2fixel-149"><a href="#fod2fixel-149"><span class="linenos">149</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="fod2fixel-150"><a href="#fod2fixel-150"><span class="linenos">150</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="fod2fixel-151"><a href="#fod2fixel-151"><span class="linenos">151</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="fod2fixel-152"><a href="#fod2fixel-152"><span class="linenos">152</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="fod2fixel-153"><a href="#fod2fixel-153"><span class="linenos">153</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="fod2fixel-154"><a href="#fod2fixel-154"><span class="linenos">154</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="fod2fixel-155"><a href="#fod2fixel-155"><span class="linenos">155</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="fod2fixel-156"><a href="#fod2fixel-156"><span class="linenos">156</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fod2fixel-157"><a href="#fod2fixel-157"><span class="linenos">157</span></a><span class="sd">    Returns:</span>
+</span><span id="fod2fixel-158"><a href="#fod2fixel-158"><span class="linenos">158</span></a><span class="sd">        NamedTuple of outputs (described in `Fod2fixelOutputs`).</span>
+</span><span id="fod2fixel-159"><a href="#fod2fixel-159"><span class="linenos">159</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fod2fixel-160"><a href="#fod2fixel-160"><span class="linenos">160</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fod2fixel-161"><a href="#fod2fixel-161"><span class="linenos">161</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOD2FIXEL_METADATA</span><span class="p">)</span>
+</span><span id="fod2fixel-162"><a href="#fod2fixel-162"><span class="linenos">162</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fod2fixel-163"><a href="#fod2fixel-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fod2fixel&quot;</span><span class="p">)</span>
+</span><span id="fod2fixel-164"><a href="#fod2fixel-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">afd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fod2fixel-165"><a href="#fod2fixel-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fod2fixel-166"><a href="#fod2fixel-166"><span class="linenos">166</span></a>            <span class="s2">&quot;-afd&quot;</span><span class="p">,</span>
+</span><span id="fod2fixel-167"><a href="#fod2fixel-167"><span class="linenos">167</span></a>            <span class="n">afd</span>
+</span><span id="fod2fixel-168"><a href="#fod2fixel-168"><span class="linenos">168</span></a>        <span class="p">])</span>
+</span><span id="fod2fixel-169"><a href="#fod2fixel-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">peak_amp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fod2fixel-170"><a href="#fod2fixel-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fod2fixel-171"><a href="#fod2fixel-171"><span class="linenos">171</span></a>            <span class="s2">&quot;-peak_amp&quot;</span><span class="p">,</span>
+</span><span id="fod2fixel-172"><a href="#fod2fixel-172"><span class="linenos">172</span></a>            <span class="n">peak_amp</span>
+</span><span id="fod2fixel-173"><a href="#fod2fixel-173"><span class="linenos">173</span></a>        <span class="p">])</span>
+</span><span id="fod2fixel-174"><a href="#fod2fixel-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">disp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fod2fixel-175"><a href="#fod2fixel-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fod2fixel-176"><a href="#fod2fixel-176"><span class="linenos">176</span></a>            <span class="s2">&quot;-disp&quot;</span><span class="p">,</span>
+</span><span id="fod2fixel-177"><a href="#fod2fixel-177"><span class="linenos">177</span></a>            <span class="n">disp</span>
+</span><span id="fod2fixel-178"><a href="#fod2fixel-178"><span class="linenos">178</span></a>        <span class="p">])</span>
+</span><span id="fod2fixel-179"><a href="#fod2fixel-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">fmls_integral</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fod2fixel-180"><a href="#fod2fixel-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fod2fixel-181"><a href="#fod2fixel-181"><span class="linenos">181</span></a>            <span class="s2">&quot;-fmls_integral&quot;</span><span class="p">,</span>
+</span><span id="fod2fixel-182"><a href="#fod2fixel-182"><span class="linenos">182</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_integral</span><span class="p">)</span>
+</span><span id="fod2fixel-183"><a href="#fod2fixel-183"><span class="linenos">183</span></a>        <span class="p">])</span>
+</span><span id="fod2fixel-184"><a href="#fod2fixel-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">fmls_peak_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fod2fixel-185"><a href="#fod2fixel-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fod2fixel-186"><a href="#fod2fixel-186"><span class="linenos">186</span></a>            <span class="s2">&quot;-fmls_peak_value&quot;</span><span class="p">,</span>
+</span><span id="fod2fixel-187"><a href="#fod2fixel-187"><span class="linenos">187</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_peak_value</span><span class="p">)</span>
+</span><span id="fod2fixel-188"><a href="#fod2fixel-188"><span class="linenos">188</span></a>        <span class="p">])</span>
+</span><span id="fod2fixel-189"><a href="#fod2fixel-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">fmls_no_thresholds</span><span class="p">:</span>
+</span><span id="fod2fixel-190"><a href="#fod2fixel-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fmls_no_thresholds&quot;</span><span class="p">)</span>
+</span><span id="fod2fixel-191"><a href="#fod2fixel-191"><span class="linenos">191</span></a>    <span class="k">if</span> <span class="n">fmls_lobe_merge_ratio</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fod2fixel-192"><a href="#fod2fixel-192"><span class="linenos">192</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fod2fixel-193"><a href="#fod2fixel-193"><span class="linenos">193</span></a>            <span class="s2">&quot;-fmls_lobe_merge_ratio&quot;</span><span class="p">,</span>
+</span><span id="fod2fixel-194"><a href="#fod2fixel-194"><span class="linenos">194</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fmls_lobe_merge_ratio</span><span class="p">)</span>
+</span><span id="fod2fixel-195"><a href="#fod2fixel-195"><span class="linenos">195</span></a>        <span class="p">])</span>
+</span><span id="fod2fixel-196"><a href="#fod2fixel-196"><span class="linenos">196</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fod2fixel-197"><a href="#fod2fixel-197"><span class="linenos">197</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fod2fixel-198"><a href="#fod2fixel-198"><span class="linenos">198</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="fod2fixel-199"><a href="#fod2fixel-199"><span class="linenos">199</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="fod2fixel-200"><a href="#fod2fixel-200"><span class="linenos">200</span></a>        <span class="p">])</span>
+</span><span id="fod2fixel-201"><a href="#fod2fixel-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">maxnum</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fod2fixel-202"><a href="#fod2fixel-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fod2fixel-203"><a href="#fod2fixel-203"><span class="linenos">203</span></a>            <span class="s2">&quot;-maxnum&quot;</span><span class="p">,</span>
+</span><span id="fod2fixel-204"><a href="#fod2fixel-204"><span class="linenos">204</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">maxnum</span><span class="p">)</span>
+</span><span id="fod2fixel-205"><a href="#fod2fixel-205"><span class="linenos">205</span></a>        <span class="p">])</span>
+</span><span id="fod2fixel-206"><a href="#fod2fixel-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">nii</span><span class="p">:</span>
+</span><span id="fod2fixel-207"><a href="#fod2fixel-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nii&quot;</span><span class="p">)</span>
+</span><span id="fod2fixel-208"><a href="#fod2fixel-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">dirpeak</span><span class="p">:</span>
+</span><span id="fod2fixel-209"><a href="#fod2fixel-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dirpeak&quot;</span><span class="p">)</span>
+</span><span id="fod2fixel-210"><a href="#fod2fixel-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="fod2fixel-211"><a href="#fod2fixel-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="fod2fixel-212"><a href="#fod2fixel-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="fod2fixel-213"><a href="#fod2fixel-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="fod2fixel-214"><a href="#fod2fixel-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="fod2fixel-215"><a href="#fod2fixel-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="fod2fixel-216"><a href="#fod2fixel-216"><span class="linenos">216</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="fod2fixel-217"><a href="#fod2fixel-217"><span class="linenos">217</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="fod2fixel-218"><a href="#fod2fixel-218"><span class="linenos">218</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fod2fixel-219"><a href="#fod2fixel-219"><span class="linenos">219</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fod2fixel-220"><a href="#fod2fixel-220"><span class="linenos">220</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="fod2fixel-221"><a href="#fod2fixel-221"><span class="linenos">221</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="fod2fixel-222"><a href="#fod2fixel-222"><span class="linenos">222</span></a>        <span class="p">])</span>
+</span><span id="fod2fixel-223"><a href="#fod2fixel-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fod2fixel-224"><a href="#fod2fixel-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="fod2fixel-225"><a href="#fod2fixel-225"><span class="linenos">225</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="fod2fixel-226"><a href="#fod2fixel-226"><span class="linenos">226</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="fod2fixel-227"><a href="#fod2fixel-227"><span class="linenos">227</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="fod2fixel-228"><a href="#fod2fixel-228"><span class="linenos">228</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="fod2fixel-229"><a href="#fod2fixel-229"><span class="linenos">229</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fod</span><span class="p">))</span>
+</span><span id="fod2fixel-230"><a href="#fod2fixel-230"><span class="linenos">230</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fixel_directory</span><span class="p">)</span>
+</span><span id="fod2fixel-231"><a href="#fod2fixel-231"><span class="linenos">231</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Fod2fixelOutputs</span><span class="p">(</span>
+</span><span id="fod2fixel-232"><a href="#fod2fixel-232"><span class="linenos">232</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fod2fixel-233"><a href="#fod2fixel-233"><span class="linenos">233</span></a>        <span class="n">fixel_directory</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fixel_directory</span><span class="p">),</span>
+</span><span id="fod2fixel-234"><a href="#fod2fixel-234"><span class="linenos">234</span></a>        <span class="n">afd</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">afd</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">afd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fod2fixel-235"><a href="#fod2fixel-235"><span class="linenos">235</span></a>        <span class="n">peak_amp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">peak_amp</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">peak_amp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fod2fixel-236"><a href="#fod2fixel-236"><span class="linenos">236</span></a>        <span class="n">disp</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">disp</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">disp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fod2fixel-237"><a href="#fod2fixel-237"><span class="linenos">237</span></a>    <span class="p">)</span>
+</span><span id="fod2fixel-238"><a href="#fod2fixel-238"><span class="linenos">238</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fod2fixel-239"><a href="#fod2fixel-239"><span class="linenos">239</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -818,10 +816,9 @@ measure for the analysis of diffusion-weighted magnetic resonance
 images.Neuroimage, 2012, 15;59(4), 3976-94.</p></li>
 </ul>
 
-<p>Author: Robert E. Smith (robert.smith@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/fod2fixel.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/fod2fixel.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

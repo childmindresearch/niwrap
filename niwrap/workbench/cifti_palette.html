@@ -177,7 +177,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CIFTI_PALETTE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f570bc0703eb6b0341b022b06117dc2175ee23ae.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;76cafc6fe3e669b9d166f01089cc02c465222952.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cifti-palette&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -443,104 +443,106 @@
 </span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="sd">    POSITIVE_NEGATIVE_SEPARATE</span>
 </span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">    .</span>
 </span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">    </span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">    </span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">    Args:</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">        cifti_in: the cifti input.</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">        mode: the mapping mode.</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">        opt_column_column: select a single column for scalar maps: the column\</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">            number or name.</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">        pos_percent: percentage min/max for positive data coloring.</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">        neg_percent: percentage min/max for negative data coloring.</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">        pos_user: user min/max values for positive data coloring.</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">        neg_user: user min/max values for negative data coloring.</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">        opt_interpolate_interpolate: interpolate colors: boolean, whether to\</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">            interpolate.</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">        opt_disp_pos_display: display positive data: boolean, whether to\</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">            display.</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">        opt_disp_neg_display: display positive data: boolean, whether to\</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">    </span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">    Args:</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">        cifti_in: the cifti input.</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">        mode: the mapping mode.</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">        opt_column_column: select a single column for scalar maps: the column\</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">            number or name.</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">        pos_percent: percentage min/max for positive data coloring.</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">        neg_percent: percentage min/max for negative data coloring.</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">        pos_user: user min/max values for positive data coloring.</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">        neg_user: user min/max values for negative data coloring.</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">        opt_interpolate_interpolate: interpolate colors: boolean, whether to\</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">            interpolate.</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">        opt_disp_pos_display: display positive data: boolean, whether to\</span>
 </span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">            display.</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">        opt_disp_zero_display: display data closer to zero than the min cutoff:\</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">            boolean, whether to display.</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">        opt_palette_name_name: set the palette used: the name of the palette.</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">        thresholding: set the thresholding.</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">        opt_inversion_type: specify palette inversion: the type of inversion.</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">    Returns:</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiPaletteOutputs`).</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_PALETTE_METADATA</span><span class="p">)</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-palette&quot;</span><span class="p">)</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>            <span class="n">opt_column_column</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>        <span class="p">])</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="k">if</span> <span class="n">pos_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pos_percent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="k">if</span> <span class="n">neg_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">neg_percent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="k">if</span> <span class="n">pos_user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pos_user</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="k">if</span> <span class="n">neg_user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">neg_user</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="k">if</span> <span class="n">opt_interpolate_interpolate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>            <span class="s2">&quot;-interpolate&quot;</span><span class="p">,</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>            <span class="n">opt_interpolate_interpolate</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>        <span class="p">])</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="k">if</span> <span class="n">opt_disp_pos_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>            <span class="s2">&quot;-disp-pos&quot;</span><span class="p">,</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>            <span class="n">opt_disp_pos_display</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>        <span class="p">])</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="k">if</span> <span class="n">opt_disp_neg_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>            <span class="s2">&quot;-disp-neg&quot;</span><span class="p">,</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>            <span class="n">opt_disp_neg_display</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>        <span class="p">])</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="k">if</span> <span class="n">opt_disp_zero_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>            <span class="s2">&quot;-disp-zero&quot;</span><span class="p">,</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>            <span class="n">opt_disp_zero_display</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>        <span class="p">])</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="k">if</span> <span class="n">opt_palette_name_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>            <span class="s2">&quot;-palette-name&quot;</span><span class="p">,</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>            <span class="n">opt_palette_name_name</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>        <span class="p">])</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="k">if</span> <span class="n">thresholding</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">thresholding</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="k">if</span> <span class="n">opt_inversion_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>            <span class="s2">&quot;-inversion&quot;</span><span class="p">,</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>            <span class="n">opt_inversion_type</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>        <span class="p">])</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiPaletteOutputs</span><span class="p">(</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="p">)</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="s2">&quot;CIFTI_PALETTE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="s2">&quot;CiftiPaletteNegPercent&quot;</span><span class="p">,</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;CiftiPaletteNegUser&quot;</span><span class="p">,</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;CiftiPaletteOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;CiftiPalettePosPercent&quot;</span><span class="p">,</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;CiftiPalettePosUser&quot;</span><span class="p">,</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="s2">&quot;CiftiPaletteThresholding&quot;</span><span class="p">,</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="s2">&quot;cifti_palette&quot;</span><span class="p">,</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="p">]</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">        opt_disp_neg_display: display positive data: boolean, whether to\</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">            display.</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">        opt_disp_zero_display: display data closer to zero than the min cutoff:\</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">            boolean, whether to display.</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">        opt_palette_name_name: set the palette used: the name of the palette.</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="sd">        thresholding: set the thresholding.</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">        opt_inversion_type: specify palette inversion: the type of inversion.</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">    Returns:</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiPaletteOutputs`).</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_PALETTE_METADATA</span><span class="p">)</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-palette&quot;</span><span class="p">)</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>            <span class="n">opt_column_column</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>        <span class="p">])</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="k">if</span> <span class="n">pos_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pos_percent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="k">if</span> <span class="n">neg_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">neg_percent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="k">if</span> <span class="n">pos_user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pos_user</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="k">if</span> <span class="n">neg_user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">neg_user</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="k">if</span> <span class="n">opt_interpolate_interpolate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>            <span class="s2">&quot;-interpolate&quot;</span><span class="p">,</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>            <span class="n">opt_interpolate_interpolate</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>        <span class="p">])</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="k">if</span> <span class="n">opt_disp_pos_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>            <span class="s2">&quot;-disp-pos&quot;</span><span class="p">,</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>            <span class="n">opt_disp_pos_display</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>        <span class="p">])</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="k">if</span> <span class="n">opt_disp_neg_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>            <span class="s2">&quot;-disp-neg&quot;</span><span class="p">,</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>            <span class="n">opt_disp_neg_display</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>        <span class="p">])</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="k">if</span> <span class="n">opt_disp_zero_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>            <span class="s2">&quot;-disp-zero&quot;</span><span class="p">,</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>            <span class="n">opt_disp_zero_display</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>        <span class="p">])</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>    <span class="k">if</span> <span class="n">opt_palette_name_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>            <span class="s2">&quot;-palette-name&quot;</span><span class="p">,</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>            <span class="n">opt_palette_name_name</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>        <span class="p">])</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="k">if</span> <span class="n">thresholding</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">thresholding</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="k">if</span> <span class="n">opt_inversion_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>            <span class="s2">&quot;-inversion&quot;</span><span class="p">,</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>            <span class="n">opt_inversion_type</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>        <span class="p">])</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiPaletteOutputs</span><span class="p">(</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="p">)</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;CIFTI_PALETTE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;CiftiPaletteNegPercent&quot;</span><span class="p">,</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;CiftiPaletteNegUser&quot;</span><span class="p">,</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;CiftiPaletteOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="s2">&quot;CiftiPalettePosPercent&quot;</span><span class="p">,</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="s2">&quot;CiftiPalettePosUser&quot;</span><span class="p">,</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="s2">&quot;CiftiPaletteThresholding&quot;</span><span class="p">,</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="s2">&quot;cifti_palette&quot;</span><span class="p">,</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -549,7 +551,7 @@
                     <div class="attr variable">
             <span class="name">CIFTI_PALETTE_METADATA</span>        =
 <input id="CIFTI_PALETTE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CIFTI_PALETTE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f570bc0703eb6b0341b022b06117dc2175ee23ae.boutiques&#39;, name=&#39;cifti-palette&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CIFTI_PALETTE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;76cafc6fe3e669b9d166f01089cc02c465222952.boutiques&#39;, name=&#39;cifti-palette&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -1433,92 +1435,94 @@
 </span><span id="cifti_palette-274"><a href="#cifti_palette-274"><span class="linenos">274</span></a><span class="sd">    POSITIVE_NEGATIVE_SEPARATE</span>
 </span><span id="cifti_palette-275"><a href="#cifti_palette-275"><span class="linenos">275</span></a><span class="sd">    .</span>
 </span><span id="cifti_palette-276"><a href="#cifti_palette-276"><span class="linenos">276</span></a><span class="sd">    </span>
-</span><span id="cifti_palette-277"><a href="#cifti_palette-277"><span class="linenos">277</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="cifti_palette-277"><a href="#cifti_palette-277"><span class="linenos">277</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="cifti_palette-278"><a href="#cifti_palette-278"><span class="linenos">278</span></a><span class="sd">    </span>
-</span><span id="cifti_palette-279"><a href="#cifti_palette-279"><span class="linenos">279</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_palette-280"><a href="#cifti_palette-280"><span class="linenos">280</span></a><span class="sd">        cifti_in: the cifti input.</span>
-</span><span id="cifti_palette-281"><a href="#cifti_palette-281"><span class="linenos">281</span></a><span class="sd">        mode: the mapping mode.</span>
-</span><span id="cifti_palette-282"><a href="#cifti_palette-282"><span class="linenos">282</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="cifti_palette-283"><a href="#cifti_palette-283"><span class="linenos">283</span></a><span class="sd">        opt_column_column: select a single column for scalar maps: the column\</span>
-</span><span id="cifti_palette-284"><a href="#cifti_palette-284"><span class="linenos">284</span></a><span class="sd">            number or name.</span>
-</span><span id="cifti_palette-285"><a href="#cifti_palette-285"><span class="linenos">285</span></a><span class="sd">        pos_percent: percentage min/max for positive data coloring.</span>
-</span><span id="cifti_palette-286"><a href="#cifti_palette-286"><span class="linenos">286</span></a><span class="sd">        neg_percent: percentage min/max for negative data coloring.</span>
-</span><span id="cifti_palette-287"><a href="#cifti_palette-287"><span class="linenos">287</span></a><span class="sd">        pos_user: user min/max values for positive data coloring.</span>
-</span><span id="cifti_palette-288"><a href="#cifti_palette-288"><span class="linenos">288</span></a><span class="sd">        neg_user: user min/max values for negative data coloring.</span>
-</span><span id="cifti_palette-289"><a href="#cifti_palette-289"><span class="linenos">289</span></a><span class="sd">        opt_interpolate_interpolate: interpolate colors: boolean, whether to\</span>
-</span><span id="cifti_palette-290"><a href="#cifti_palette-290"><span class="linenos">290</span></a><span class="sd">            interpolate.</span>
-</span><span id="cifti_palette-291"><a href="#cifti_palette-291"><span class="linenos">291</span></a><span class="sd">        opt_disp_pos_display: display positive data: boolean, whether to\</span>
-</span><span id="cifti_palette-292"><a href="#cifti_palette-292"><span class="linenos">292</span></a><span class="sd">            display.</span>
-</span><span id="cifti_palette-293"><a href="#cifti_palette-293"><span class="linenos">293</span></a><span class="sd">        opt_disp_neg_display: display positive data: boolean, whether to\</span>
+</span><span id="cifti_palette-279"><a href="#cifti_palette-279"><span class="linenos">279</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_palette-280"><a href="#cifti_palette-280"><span class="linenos">280</span></a><span class="sd">    </span>
+</span><span id="cifti_palette-281"><a href="#cifti_palette-281"><span class="linenos">281</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_palette-282"><a href="#cifti_palette-282"><span class="linenos">282</span></a><span class="sd">        cifti_in: the cifti input.</span>
+</span><span id="cifti_palette-283"><a href="#cifti_palette-283"><span class="linenos">283</span></a><span class="sd">        mode: the mapping mode.</span>
+</span><span id="cifti_palette-284"><a href="#cifti_palette-284"><span class="linenos">284</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="cifti_palette-285"><a href="#cifti_palette-285"><span class="linenos">285</span></a><span class="sd">        opt_column_column: select a single column for scalar maps: the column\</span>
+</span><span id="cifti_palette-286"><a href="#cifti_palette-286"><span class="linenos">286</span></a><span class="sd">            number or name.</span>
+</span><span id="cifti_palette-287"><a href="#cifti_palette-287"><span class="linenos">287</span></a><span class="sd">        pos_percent: percentage min/max for positive data coloring.</span>
+</span><span id="cifti_palette-288"><a href="#cifti_palette-288"><span class="linenos">288</span></a><span class="sd">        neg_percent: percentage min/max for negative data coloring.</span>
+</span><span id="cifti_palette-289"><a href="#cifti_palette-289"><span class="linenos">289</span></a><span class="sd">        pos_user: user min/max values for positive data coloring.</span>
+</span><span id="cifti_palette-290"><a href="#cifti_palette-290"><span class="linenos">290</span></a><span class="sd">        neg_user: user min/max values for negative data coloring.</span>
+</span><span id="cifti_palette-291"><a href="#cifti_palette-291"><span class="linenos">291</span></a><span class="sd">        opt_interpolate_interpolate: interpolate colors: boolean, whether to\</span>
+</span><span id="cifti_palette-292"><a href="#cifti_palette-292"><span class="linenos">292</span></a><span class="sd">            interpolate.</span>
+</span><span id="cifti_palette-293"><a href="#cifti_palette-293"><span class="linenos">293</span></a><span class="sd">        opt_disp_pos_display: display positive data: boolean, whether to\</span>
 </span><span id="cifti_palette-294"><a href="#cifti_palette-294"><span class="linenos">294</span></a><span class="sd">            display.</span>
-</span><span id="cifti_palette-295"><a href="#cifti_palette-295"><span class="linenos">295</span></a><span class="sd">        opt_disp_zero_display: display data closer to zero than the min cutoff:\</span>
-</span><span id="cifti_palette-296"><a href="#cifti_palette-296"><span class="linenos">296</span></a><span class="sd">            boolean, whether to display.</span>
-</span><span id="cifti_palette-297"><a href="#cifti_palette-297"><span class="linenos">297</span></a><span class="sd">        opt_palette_name_name: set the palette used: the name of the palette.</span>
-</span><span id="cifti_palette-298"><a href="#cifti_palette-298"><span class="linenos">298</span></a><span class="sd">        thresholding: set the thresholding.</span>
-</span><span id="cifti_palette-299"><a href="#cifti_palette-299"><span class="linenos">299</span></a><span class="sd">        opt_inversion_type: specify palette inversion: the type of inversion.</span>
-</span><span id="cifti_palette-300"><a href="#cifti_palette-300"><span class="linenos">300</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_palette-301"><a href="#cifti_palette-301"><span class="linenos">301</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_palette-302"><a href="#cifti_palette-302"><span class="linenos">302</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiPaletteOutputs`).</span>
-</span><span id="cifti_palette-303"><a href="#cifti_palette-303"><span class="linenos">303</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_palette-304"><a href="#cifti_palette-304"><span class="linenos">304</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_palette-305"><a href="#cifti_palette-305"><span class="linenos">305</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_PALETTE_METADATA</span><span class="p">)</span>
-</span><span id="cifti_palette-306"><a href="#cifti_palette-306"><span class="linenos">306</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="cifti_palette-307"><a href="#cifti_palette-307"><span class="linenos">307</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="cifti_palette-308"><a href="#cifti_palette-308"><span class="linenos">308</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-palette&quot;</span><span class="p">)</span>
-</span><span id="cifti_palette-309"><a href="#cifti_palette-309"><span class="linenos">309</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="cifti_palette-310"><a href="#cifti_palette-310"><span class="linenos">310</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
-</span><span id="cifti_palette-311"><a href="#cifti_palette-311"><span class="linenos">311</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="cifti_palette-312"><a href="#cifti_palette-312"><span class="linenos">312</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-313"><a href="#cifti_palette-313"><span class="linenos">313</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_palette-314"><a href="#cifti_palette-314"><span class="linenos">314</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
-</span><span id="cifti_palette-315"><a href="#cifti_palette-315"><span class="linenos">315</span></a>            <span class="n">opt_column_column</span>
-</span><span id="cifti_palette-316"><a href="#cifti_palette-316"><span class="linenos">316</span></a>        <span class="p">])</span>
-</span><span id="cifti_palette-317"><a href="#cifti_palette-317"><span class="linenos">317</span></a>    <span class="k">if</span> <span class="n">pos_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-318"><a href="#cifti_palette-318"><span class="linenos">318</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pos_percent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_palette-319"><a href="#cifti_palette-319"><span class="linenos">319</span></a>    <span class="k">if</span> <span class="n">neg_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-320"><a href="#cifti_palette-320"><span class="linenos">320</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">neg_percent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_palette-321"><a href="#cifti_palette-321"><span class="linenos">321</span></a>    <span class="k">if</span> <span class="n">pos_user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-322"><a href="#cifti_palette-322"><span class="linenos">322</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pos_user</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_palette-323"><a href="#cifti_palette-323"><span class="linenos">323</span></a>    <span class="k">if</span> <span class="n">neg_user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-324"><a href="#cifti_palette-324"><span class="linenos">324</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">neg_user</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_palette-325"><a href="#cifti_palette-325"><span class="linenos">325</span></a>    <span class="k">if</span> <span class="n">opt_interpolate_interpolate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-326"><a href="#cifti_palette-326"><span class="linenos">326</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_palette-327"><a href="#cifti_palette-327"><span class="linenos">327</span></a>            <span class="s2">&quot;-interpolate&quot;</span><span class="p">,</span>
-</span><span id="cifti_palette-328"><a href="#cifti_palette-328"><span class="linenos">328</span></a>            <span class="n">opt_interpolate_interpolate</span>
-</span><span id="cifti_palette-329"><a href="#cifti_palette-329"><span class="linenos">329</span></a>        <span class="p">])</span>
-</span><span id="cifti_palette-330"><a href="#cifti_palette-330"><span class="linenos">330</span></a>    <span class="k">if</span> <span class="n">opt_disp_pos_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-331"><a href="#cifti_palette-331"><span class="linenos">331</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_palette-332"><a href="#cifti_palette-332"><span class="linenos">332</span></a>            <span class="s2">&quot;-disp-pos&quot;</span><span class="p">,</span>
-</span><span id="cifti_palette-333"><a href="#cifti_palette-333"><span class="linenos">333</span></a>            <span class="n">opt_disp_pos_display</span>
-</span><span id="cifti_palette-334"><a href="#cifti_palette-334"><span class="linenos">334</span></a>        <span class="p">])</span>
-</span><span id="cifti_palette-335"><a href="#cifti_palette-335"><span class="linenos">335</span></a>    <span class="k">if</span> <span class="n">opt_disp_neg_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-336"><a href="#cifti_palette-336"><span class="linenos">336</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_palette-337"><a href="#cifti_palette-337"><span class="linenos">337</span></a>            <span class="s2">&quot;-disp-neg&quot;</span><span class="p">,</span>
-</span><span id="cifti_palette-338"><a href="#cifti_palette-338"><span class="linenos">338</span></a>            <span class="n">opt_disp_neg_display</span>
-</span><span id="cifti_palette-339"><a href="#cifti_palette-339"><span class="linenos">339</span></a>        <span class="p">])</span>
-</span><span id="cifti_palette-340"><a href="#cifti_palette-340"><span class="linenos">340</span></a>    <span class="k">if</span> <span class="n">opt_disp_zero_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-341"><a href="#cifti_palette-341"><span class="linenos">341</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_palette-342"><a href="#cifti_palette-342"><span class="linenos">342</span></a>            <span class="s2">&quot;-disp-zero&quot;</span><span class="p">,</span>
-</span><span id="cifti_palette-343"><a href="#cifti_palette-343"><span class="linenos">343</span></a>            <span class="n">opt_disp_zero_display</span>
-</span><span id="cifti_palette-344"><a href="#cifti_palette-344"><span class="linenos">344</span></a>        <span class="p">])</span>
-</span><span id="cifti_palette-345"><a href="#cifti_palette-345"><span class="linenos">345</span></a>    <span class="k">if</span> <span class="n">opt_palette_name_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-346"><a href="#cifti_palette-346"><span class="linenos">346</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_palette-347"><a href="#cifti_palette-347"><span class="linenos">347</span></a>            <span class="s2">&quot;-palette-name&quot;</span><span class="p">,</span>
-</span><span id="cifti_palette-348"><a href="#cifti_palette-348"><span class="linenos">348</span></a>            <span class="n">opt_palette_name_name</span>
-</span><span id="cifti_palette-349"><a href="#cifti_palette-349"><span class="linenos">349</span></a>        <span class="p">])</span>
-</span><span id="cifti_palette-350"><a href="#cifti_palette-350"><span class="linenos">350</span></a>    <span class="k">if</span> <span class="n">thresholding</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-351"><a href="#cifti_palette-351"><span class="linenos">351</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">thresholding</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_palette-352"><a href="#cifti_palette-352"><span class="linenos">352</span></a>    <span class="k">if</span> <span class="n">opt_inversion_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_palette-353"><a href="#cifti_palette-353"><span class="linenos">353</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_palette-354"><a href="#cifti_palette-354"><span class="linenos">354</span></a>            <span class="s2">&quot;-inversion&quot;</span><span class="p">,</span>
-</span><span id="cifti_palette-355"><a href="#cifti_palette-355"><span class="linenos">355</span></a>            <span class="n">opt_inversion_type</span>
-</span><span id="cifti_palette-356"><a href="#cifti_palette-356"><span class="linenos">356</span></a>        <span class="p">])</span>
-</span><span id="cifti_palette-357"><a href="#cifti_palette-357"><span class="linenos">357</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiPaletteOutputs</span><span class="p">(</span>
-</span><span id="cifti_palette-358"><a href="#cifti_palette-358"><span class="linenos">358</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="cifti_palette-359"><a href="#cifti_palette-359"><span class="linenos">359</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="cifti_palette-360"><a href="#cifti_palette-360"><span class="linenos">360</span></a>    <span class="p">)</span>
-</span><span id="cifti_palette-361"><a href="#cifti_palette-361"><span class="linenos">361</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="cifti_palette-362"><a href="#cifti_palette-362"><span class="linenos">362</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="cifti_palette-295"><a href="#cifti_palette-295"><span class="linenos">295</span></a><span class="sd">        opt_disp_neg_display: display positive data: boolean, whether to\</span>
+</span><span id="cifti_palette-296"><a href="#cifti_palette-296"><span class="linenos">296</span></a><span class="sd">            display.</span>
+</span><span id="cifti_palette-297"><a href="#cifti_palette-297"><span class="linenos">297</span></a><span class="sd">        opt_disp_zero_display: display data closer to zero than the min cutoff:\</span>
+</span><span id="cifti_palette-298"><a href="#cifti_palette-298"><span class="linenos">298</span></a><span class="sd">            boolean, whether to display.</span>
+</span><span id="cifti_palette-299"><a href="#cifti_palette-299"><span class="linenos">299</span></a><span class="sd">        opt_palette_name_name: set the palette used: the name of the palette.</span>
+</span><span id="cifti_palette-300"><a href="#cifti_palette-300"><span class="linenos">300</span></a><span class="sd">        thresholding: set the thresholding.</span>
+</span><span id="cifti_palette-301"><a href="#cifti_palette-301"><span class="linenos">301</span></a><span class="sd">        opt_inversion_type: specify palette inversion: the type of inversion.</span>
+</span><span id="cifti_palette-302"><a href="#cifti_palette-302"><span class="linenos">302</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_palette-303"><a href="#cifti_palette-303"><span class="linenos">303</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_palette-304"><a href="#cifti_palette-304"><span class="linenos">304</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiPaletteOutputs`).</span>
+</span><span id="cifti_palette-305"><a href="#cifti_palette-305"><span class="linenos">305</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_palette-306"><a href="#cifti_palette-306"><span class="linenos">306</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_palette-307"><a href="#cifti_palette-307"><span class="linenos">307</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_PALETTE_METADATA</span><span class="p">)</span>
+</span><span id="cifti_palette-308"><a href="#cifti_palette-308"><span class="linenos">308</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="cifti_palette-309"><a href="#cifti_palette-309"><span class="linenos">309</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="cifti_palette-310"><a href="#cifti_palette-310"><span class="linenos">310</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-palette&quot;</span><span class="p">)</span>
+</span><span id="cifti_palette-311"><a href="#cifti_palette-311"><span class="linenos">311</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="cifti_palette-312"><a href="#cifti_palette-312"><span class="linenos">312</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+</span><span id="cifti_palette-313"><a href="#cifti_palette-313"><span class="linenos">313</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="cifti_palette-314"><a href="#cifti_palette-314"><span class="linenos">314</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-315"><a href="#cifti_palette-315"><span class="linenos">315</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_palette-316"><a href="#cifti_palette-316"><span class="linenos">316</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
+</span><span id="cifti_palette-317"><a href="#cifti_palette-317"><span class="linenos">317</span></a>            <span class="n">opt_column_column</span>
+</span><span id="cifti_palette-318"><a href="#cifti_palette-318"><span class="linenos">318</span></a>        <span class="p">])</span>
+</span><span id="cifti_palette-319"><a href="#cifti_palette-319"><span class="linenos">319</span></a>    <span class="k">if</span> <span class="n">pos_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-320"><a href="#cifti_palette-320"><span class="linenos">320</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pos_percent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_palette-321"><a href="#cifti_palette-321"><span class="linenos">321</span></a>    <span class="k">if</span> <span class="n">neg_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-322"><a href="#cifti_palette-322"><span class="linenos">322</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">neg_percent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_palette-323"><a href="#cifti_palette-323"><span class="linenos">323</span></a>    <span class="k">if</span> <span class="n">pos_user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-324"><a href="#cifti_palette-324"><span class="linenos">324</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pos_user</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_palette-325"><a href="#cifti_palette-325"><span class="linenos">325</span></a>    <span class="k">if</span> <span class="n">neg_user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-326"><a href="#cifti_palette-326"><span class="linenos">326</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">neg_user</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_palette-327"><a href="#cifti_palette-327"><span class="linenos">327</span></a>    <span class="k">if</span> <span class="n">opt_interpolate_interpolate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-328"><a href="#cifti_palette-328"><span class="linenos">328</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_palette-329"><a href="#cifti_palette-329"><span class="linenos">329</span></a>            <span class="s2">&quot;-interpolate&quot;</span><span class="p">,</span>
+</span><span id="cifti_palette-330"><a href="#cifti_palette-330"><span class="linenos">330</span></a>            <span class="n">opt_interpolate_interpolate</span>
+</span><span id="cifti_palette-331"><a href="#cifti_palette-331"><span class="linenos">331</span></a>        <span class="p">])</span>
+</span><span id="cifti_palette-332"><a href="#cifti_palette-332"><span class="linenos">332</span></a>    <span class="k">if</span> <span class="n">opt_disp_pos_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-333"><a href="#cifti_palette-333"><span class="linenos">333</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_palette-334"><a href="#cifti_palette-334"><span class="linenos">334</span></a>            <span class="s2">&quot;-disp-pos&quot;</span><span class="p">,</span>
+</span><span id="cifti_palette-335"><a href="#cifti_palette-335"><span class="linenos">335</span></a>            <span class="n">opt_disp_pos_display</span>
+</span><span id="cifti_palette-336"><a href="#cifti_palette-336"><span class="linenos">336</span></a>        <span class="p">])</span>
+</span><span id="cifti_palette-337"><a href="#cifti_palette-337"><span class="linenos">337</span></a>    <span class="k">if</span> <span class="n">opt_disp_neg_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-338"><a href="#cifti_palette-338"><span class="linenos">338</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_palette-339"><a href="#cifti_palette-339"><span class="linenos">339</span></a>            <span class="s2">&quot;-disp-neg&quot;</span><span class="p">,</span>
+</span><span id="cifti_palette-340"><a href="#cifti_palette-340"><span class="linenos">340</span></a>            <span class="n">opt_disp_neg_display</span>
+</span><span id="cifti_palette-341"><a href="#cifti_palette-341"><span class="linenos">341</span></a>        <span class="p">])</span>
+</span><span id="cifti_palette-342"><a href="#cifti_palette-342"><span class="linenos">342</span></a>    <span class="k">if</span> <span class="n">opt_disp_zero_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-343"><a href="#cifti_palette-343"><span class="linenos">343</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_palette-344"><a href="#cifti_palette-344"><span class="linenos">344</span></a>            <span class="s2">&quot;-disp-zero&quot;</span><span class="p">,</span>
+</span><span id="cifti_palette-345"><a href="#cifti_palette-345"><span class="linenos">345</span></a>            <span class="n">opt_disp_zero_display</span>
+</span><span id="cifti_palette-346"><a href="#cifti_palette-346"><span class="linenos">346</span></a>        <span class="p">])</span>
+</span><span id="cifti_palette-347"><a href="#cifti_palette-347"><span class="linenos">347</span></a>    <span class="k">if</span> <span class="n">opt_palette_name_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-348"><a href="#cifti_palette-348"><span class="linenos">348</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_palette-349"><a href="#cifti_palette-349"><span class="linenos">349</span></a>            <span class="s2">&quot;-palette-name&quot;</span><span class="p">,</span>
+</span><span id="cifti_palette-350"><a href="#cifti_palette-350"><span class="linenos">350</span></a>            <span class="n">opt_palette_name_name</span>
+</span><span id="cifti_palette-351"><a href="#cifti_palette-351"><span class="linenos">351</span></a>        <span class="p">])</span>
+</span><span id="cifti_palette-352"><a href="#cifti_palette-352"><span class="linenos">352</span></a>    <span class="k">if</span> <span class="n">thresholding</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-353"><a href="#cifti_palette-353"><span class="linenos">353</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">thresholding</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_palette-354"><a href="#cifti_palette-354"><span class="linenos">354</span></a>    <span class="k">if</span> <span class="n">opt_inversion_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_palette-355"><a href="#cifti_palette-355"><span class="linenos">355</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_palette-356"><a href="#cifti_palette-356"><span class="linenos">356</span></a>            <span class="s2">&quot;-inversion&quot;</span><span class="p">,</span>
+</span><span id="cifti_palette-357"><a href="#cifti_palette-357"><span class="linenos">357</span></a>            <span class="n">opt_inversion_type</span>
+</span><span id="cifti_palette-358"><a href="#cifti_palette-358"><span class="linenos">358</span></a>        <span class="p">])</span>
+</span><span id="cifti_palette-359"><a href="#cifti_palette-359"><span class="linenos">359</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiPaletteOutputs</span><span class="p">(</span>
+</span><span id="cifti_palette-360"><a href="#cifti_palette-360"><span class="linenos">360</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="cifti_palette-361"><a href="#cifti_palette-361"><span class="linenos">361</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="cifti_palette-362"><a href="#cifti_palette-362"><span class="linenos">362</span></a>    <span class="p">)</span>
+</span><span id="cifti_palette-363"><a href="#cifti_palette-363"><span class="linenos">363</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="cifti_palette-364"><a href="#cifti_palette-364"><span class="linenos">364</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1601,7 +1605,9 @@ POSITIVE_WITH_NEGATIVE
 POSITIVE_NEGATIVE_SEPARATE
 .</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

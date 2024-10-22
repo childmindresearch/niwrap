@@ -135,7 +135,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CIFTI_ERODE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d3b8b44bdde6181bba5681dd1a66c8288edb477e.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a904e7bb86148cc21c4fe0470b676ba65b2f5a17.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cifti-erode&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -278,57 +278,59 @@
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    The -*-corrected-areas options are intended for eroding on group average</span>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    surfaces, but it is only an approximate correction.</span>
 </span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">    </span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    </span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    Args:</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        cifti_in: the input cifti file.</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">            component.</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    Returns:</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiErodeOutputs`).</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_ERODE_METADATA</span><span class="p">)</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-erode&quot;</span><span class="p">)</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">left_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">right_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">cerebellum_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiErodeOutputs</span><span class="p">(</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="p">)</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="s2">&quot;CIFTI_ERODE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="s2">&quot;CiftiErodeCerebellumSurface&quot;</span><span class="p">,</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="s2">&quot;CiftiErodeLeftSurface&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="s2">&quot;CiftiErodeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="s2">&quot;CiftiErodeRightSurface&quot;</span><span class="p">,</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="s2">&quot;cifti_erode&quot;</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="p">]</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    </span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    Args:</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        cifti_in: the input cifti file.</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">            component.</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    Returns:</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiErodeOutputs`).</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_ERODE_METADATA</span><span class="p">)</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-erode&quot;</span><span class="p">)</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">left_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">right_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">cerebellum_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiErodeOutputs</span><span class="p">(</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="p">)</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="s2">&quot;CIFTI_ERODE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="s2">&quot;CiftiErodeCerebellumSurface&quot;</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="s2">&quot;CiftiErodeLeftSurface&quot;</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="s2">&quot;CiftiErodeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="s2">&quot;CiftiErodeRightSurface&quot;</span><span class="p">,</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="s2">&quot;cifti_erode&quot;</span><span class="p">,</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -337,7 +339,7 @@
                     <div class="attr variable">
             <span class="name">CIFTI_ERODE_METADATA</span>        =
 <input id="CIFTI_ERODE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CIFTI_ERODE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d3b8b44bdde6181bba5681dd1a66c8288edb477e.boutiques&#39;, name=&#39;cifti-erode&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CIFTI_ERODE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a904e7bb86148cc21c4fe0470b676ba65b2f5a17.boutiques&#39;, name=&#39;cifti-erode&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -880,47 +882,49 @@ corrected vertex areas, as a metric</p>
 </span><span id="cifti_erode-151"><a href="#cifti_erode-151"><span class="linenos">151</span></a><span class="sd">    The -*-corrected-areas options are intended for eroding on group average</span>
 </span><span id="cifti_erode-152"><a href="#cifti_erode-152"><span class="linenos">152</span></a><span class="sd">    surfaces, but it is only an approximate correction.</span>
 </span><span id="cifti_erode-153"><a href="#cifti_erode-153"><span class="linenos">153</span></a><span class="sd">    </span>
-</span><span id="cifti_erode-154"><a href="#cifti_erode-154"><span class="linenos">154</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="cifti_erode-154"><a href="#cifti_erode-154"><span class="linenos">154</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="cifti_erode-155"><a href="#cifti_erode-155"><span class="linenos">155</span></a><span class="sd">    </span>
-</span><span id="cifti_erode-156"><a href="#cifti_erode-156"><span class="linenos">156</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_erode-157"><a href="#cifti_erode-157"><span class="linenos">157</span></a><span class="sd">        cifti_in: the input cifti file.</span>
-</span><span id="cifti_erode-158"><a href="#cifti_erode-158"><span class="linenos">158</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
-</span><span id="cifti_erode-159"><a href="#cifti_erode-159"><span class="linenos">159</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
-</span><span id="cifti_erode-160"><a href="#cifti_erode-160"><span class="linenos">160</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
-</span><span id="cifti_erode-161"><a href="#cifti_erode-161"><span class="linenos">161</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="cifti_erode-162"><a href="#cifti_erode-162"><span class="linenos">162</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
-</span><span id="cifti_erode-163"><a href="#cifti_erode-163"><span class="linenos">163</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
-</span><span id="cifti_erode-164"><a href="#cifti_erode-164"><span class="linenos">164</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
-</span><span id="cifti_erode-165"><a href="#cifti_erode-165"><span class="linenos">165</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
-</span><span id="cifti_erode-166"><a href="#cifti_erode-166"><span class="linenos">166</span></a><span class="sd">            component.</span>
-</span><span id="cifti_erode-167"><a href="#cifti_erode-167"><span class="linenos">167</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_erode-168"><a href="#cifti_erode-168"><span class="linenos">168</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_erode-169"><a href="#cifti_erode-169"><span class="linenos">169</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiErodeOutputs`).</span>
-</span><span id="cifti_erode-170"><a href="#cifti_erode-170"><span class="linenos">170</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_erode-171"><a href="#cifti_erode-171"><span class="linenos">171</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_erode-172"><a href="#cifti_erode-172"><span class="linenos">172</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_ERODE_METADATA</span><span class="p">)</span>
-</span><span id="cifti_erode-173"><a href="#cifti_erode-173"><span class="linenos">173</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="cifti_erode-174"><a href="#cifti_erode-174"><span class="linenos">174</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="cifti_erode-175"><a href="#cifti_erode-175"><span class="linenos">175</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-erode&quot;</span><span class="p">)</span>
-</span><span id="cifti_erode-176"><a href="#cifti_erode-176"><span class="linenos">176</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="cifti_erode-177"><a href="#cifti_erode-177"><span class="linenos">177</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
-</span><span id="cifti_erode-178"><a href="#cifti_erode-178"><span class="linenos">178</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
-</span><span id="cifti_erode-179"><a href="#cifti_erode-179"><span class="linenos">179</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
-</span><span id="cifti_erode-180"><a href="#cifti_erode-180"><span class="linenos">180</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="cifti_erode-181"><a href="#cifti_erode-181"><span class="linenos">181</span></a>    <span class="k">if</span> <span class="n">left_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_erode-182"><a href="#cifti_erode-182"><span class="linenos">182</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_erode-183"><a href="#cifti_erode-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">right_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_erode-184"><a href="#cifti_erode-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_erode-185"><a href="#cifti_erode-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">cerebellum_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_erode-186"><a href="#cifti_erode-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_erode-187"><a href="#cifti_erode-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
-</span><span id="cifti_erode-188"><a href="#cifti_erode-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
-</span><span id="cifti_erode-189"><a href="#cifti_erode-189"><span class="linenos">189</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiErodeOutputs</span><span class="p">(</span>
-</span><span id="cifti_erode-190"><a href="#cifti_erode-190"><span class="linenos">190</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="cifti_erode-191"><a href="#cifti_erode-191"><span class="linenos">191</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="cifti_erode-192"><a href="#cifti_erode-192"><span class="linenos">192</span></a>    <span class="p">)</span>
-</span><span id="cifti_erode-193"><a href="#cifti_erode-193"><span class="linenos">193</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="cifti_erode-194"><a href="#cifti_erode-194"><span class="linenos">194</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="cifti_erode-156"><a href="#cifti_erode-156"><span class="linenos">156</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_erode-157"><a href="#cifti_erode-157"><span class="linenos">157</span></a><span class="sd">    </span>
+</span><span id="cifti_erode-158"><a href="#cifti_erode-158"><span class="linenos">158</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_erode-159"><a href="#cifti_erode-159"><span class="linenos">159</span></a><span class="sd">        cifti_in: the input cifti file.</span>
+</span><span id="cifti_erode-160"><a href="#cifti_erode-160"><span class="linenos">160</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
+</span><span id="cifti_erode-161"><a href="#cifti_erode-161"><span class="linenos">161</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
+</span><span id="cifti_erode-162"><a href="#cifti_erode-162"><span class="linenos">162</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
+</span><span id="cifti_erode-163"><a href="#cifti_erode-163"><span class="linenos">163</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="cifti_erode-164"><a href="#cifti_erode-164"><span class="linenos">164</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
+</span><span id="cifti_erode-165"><a href="#cifti_erode-165"><span class="linenos">165</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
+</span><span id="cifti_erode-166"><a href="#cifti_erode-166"><span class="linenos">166</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
+</span><span id="cifti_erode-167"><a href="#cifti_erode-167"><span class="linenos">167</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
+</span><span id="cifti_erode-168"><a href="#cifti_erode-168"><span class="linenos">168</span></a><span class="sd">            component.</span>
+</span><span id="cifti_erode-169"><a href="#cifti_erode-169"><span class="linenos">169</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_erode-170"><a href="#cifti_erode-170"><span class="linenos">170</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_erode-171"><a href="#cifti_erode-171"><span class="linenos">171</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiErodeOutputs`).</span>
+</span><span id="cifti_erode-172"><a href="#cifti_erode-172"><span class="linenos">172</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_erode-173"><a href="#cifti_erode-173"><span class="linenos">173</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_erode-174"><a href="#cifti_erode-174"><span class="linenos">174</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_ERODE_METADATA</span><span class="p">)</span>
+</span><span id="cifti_erode-175"><a href="#cifti_erode-175"><span class="linenos">175</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="cifti_erode-176"><a href="#cifti_erode-176"><span class="linenos">176</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="cifti_erode-177"><a href="#cifti_erode-177"><span class="linenos">177</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-erode&quot;</span><span class="p">)</span>
+</span><span id="cifti_erode-178"><a href="#cifti_erode-178"><span class="linenos">178</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="cifti_erode-179"><a href="#cifti_erode-179"><span class="linenos">179</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</span><span id="cifti_erode-180"><a href="#cifti_erode-180"><span class="linenos">180</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
+</span><span id="cifti_erode-181"><a href="#cifti_erode-181"><span class="linenos">181</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
+</span><span id="cifti_erode-182"><a href="#cifti_erode-182"><span class="linenos">182</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="cifti_erode-183"><a href="#cifti_erode-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">left_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_erode-184"><a href="#cifti_erode-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_erode-185"><a href="#cifti_erode-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">right_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_erode-186"><a href="#cifti_erode-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_erode-187"><a href="#cifti_erode-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">cerebellum_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_erode-188"><a href="#cifti_erode-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_erode-189"><a href="#cifti_erode-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
+</span><span id="cifti_erode-190"><a href="#cifti_erode-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
+</span><span id="cifti_erode-191"><a href="#cifti_erode-191"><span class="linenos">191</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiErodeOutputs</span><span class="p">(</span>
+</span><span id="cifti_erode-192"><a href="#cifti_erode-192"><span class="linenos">192</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="cifti_erode-193"><a href="#cifti_erode-193"><span class="linenos">193</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="cifti_erode-194"><a href="#cifti_erode-194"><span class="linenos">194</span></a>    <span class="p">)</span>
+</span><span id="cifti_erode-195"><a href="#cifti_erode-195"><span class="linenos">195</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="cifti_erode-196"><a href="#cifti_erode-196"><span class="linenos">196</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -935,7 +939,9 @@ structure).</p>
 <p>The -*-corrected-areas options are intended for eroding on group average
 surfaces, but it is only an approximate correction.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V__SNAPSHOT_VOLREG_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;e41cf6ba6d044ca81ae9c6d2ad2f6e1d5280c6d3.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;e11a34b276acc0a9b81802237e6fe33d1478ea13.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;@snapshot_volreg&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -110,43 +110,42 @@
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    Create a JPEG image showing the edges of an EPI dataset overlayed on an</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    anatomical dataset to judge 3D registration quality.</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    URL:</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@snapshot_volreg.html</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    </span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        anatdataset: Anatomical dataset file.</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        epidataset: EPI dataset file.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        jname: Name for the output JPEG file.</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        xdisplay: Display number of an already running Xvfb instance.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">    Returns:</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        NamedTuple of outputs (described in `VSnapshotVolregOutputs`).</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__SNAPSHOT_VOLREG_METADATA</span><span class="p">)</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@snapshot_volreg&quot;</span><span class="p">)</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">anatdataset</span><span class="p">))</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">epidataset</span><span class="p">))</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="k">if</span> <span class="n">jname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jname</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="k">if</span> <span class="n">xdisplay</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xdisplay</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VSnapshotVolregOutputs</span><span class="p">(</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="n">output_jpeg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jname</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        anatdataset: Anatomical dataset file.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        epidataset: EPI dataset file.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        jname: Name for the output JPEG file.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        xdisplay: Display number of an already running Xvfb instance.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">    Returns:</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        NamedTuple of outputs (described in `VSnapshotVolregOutputs`).</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__SNAPSHOT_VOLREG_METADATA</span><span class="p">)</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@snapshot_volreg&quot;</span><span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">anatdataset</span><span class="p">))</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">epidataset</span><span class="p">))</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="k">if</span> <span class="n">jname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jname</span><span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="k">if</span> <span class="n">xdisplay</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xdisplay</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VSnapshotVolregOutputs</span><span class="p">(</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">output_jpeg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jname</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="p">)</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>
 </span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="s2">&quot;VSnapshotVolregOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="s2">&quot;V__SNAPSHOT_VOLREG_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="s2">&quot;v__snapshot_volreg&quot;</span><span class="p">,</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a><span class="p">]</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="s2">&quot;VSnapshotVolregOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="s2">&quot;V__SNAPSHOT_VOLREG_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="s2">&quot;v__snapshot_volreg&quot;</span><span class="p">,</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -224,7 +223,7 @@ anatomical dataset</p>
                     <div class="attr variable">
             <span class="name">V__SNAPSHOT_VOLREG_METADATA</span>        =
 <input id="V__SNAPSHOT_VOLREG_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V__SNAPSHOT_VOLREG_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;e41cf6ba6d044ca81ae9c6d2ad2f6e1d5280c6d3.boutiques&#39;, name=&#39;@snapshot_volreg&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V__SNAPSHOT_VOLREG_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;e11a34b276acc0a9b81802237e6fe33d1478ea13.boutiques&#39;, name=&#39;@snapshot_volreg&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -255,46 +254,44 @@ anatomical dataset</p>
 </span><span id="v__snapshot_volreg-37"><a href="#v__snapshot_volreg-37"><span class="linenos">37</span></a><span class="sd">    Create a JPEG image showing the edges of an EPI dataset overlayed on an</span>
 </span><span id="v__snapshot_volreg-38"><a href="#v__snapshot_volreg-38"><span class="linenos">38</span></a><span class="sd">    anatomical dataset to judge 3D registration quality.</span>
 </span><span id="v__snapshot_volreg-39"><a href="#v__snapshot_volreg-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="v__snapshot_volreg-40"><a href="#v__snapshot_volreg-40"><span class="linenos">40</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="v__snapshot_volreg-40"><a href="#v__snapshot_volreg-40"><span class="linenos">40</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="v__snapshot_volreg-41"><a href="#v__snapshot_volreg-41"><span class="linenos">41</span></a><span class="sd">    </span>
-</span><span id="v__snapshot_volreg-42"><a href="#v__snapshot_volreg-42"><span class="linenos">42</span></a><span class="sd">    URL:</span>
-</span><span id="v__snapshot_volreg-43"><a href="#v__snapshot_volreg-43"><span class="linenos">43</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@snapshot_volreg.html</span>
-</span><span id="v__snapshot_volreg-44"><a href="#v__snapshot_volreg-44"><span class="linenos">44</span></a><span class="sd">    </span>
-</span><span id="v__snapshot_volreg-45"><a href="#v__snapshot_volreg-45"><span class="linenos">45</span></a><span class="sd">    Args:</span>
-</span><span id="v__snapshot_volreg-46"><a href="#v__snapshot_volreg-46"><span class="linenos">46</span></a><span class="sd">        anatdataset: Anatomical dataset file.</span>
-</span><span id="v__snapshot_volreg-47"><a href="#v__snapshot_volreg-47"><span class="linenos">47</span></a><span class="sd">        epidataset: EPI dataset file.</span>
-</span><span id="v__snapshot_volreg-48"><a href="#v__snapshot_volreg-48"><span class="linenos">48</span></a><span class="sd">        jname: Name for the output JPEG file.</span>
-</span><span id="v__snapshot_volreg-49"><a href="#v__snapshot_volreg-49"><span class="linenos">49</span></a><span class="sd">        xdisplay: Display number of an already running Xvfb instance.</span>
-</span><span id="v__snapshot_volreg-50"><a href="#v__snapshot_volreg-50"><span class="linenos">50</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v__snapshot_volreg-51"><a href="#v__snapshot_volreg-51"><span class="linenos">51</span></a><span class="sd">    Returns:</span>
-</span><span id="v__snapshot_volreg-52"><a href="#v__snapshot_volreg-52"><span class="linenos">52</span></a><span class="sd">        NamedTuple of outputs (described in `VSnapshotVolregOutputs`).</span>
-</span><span id="v__snapshot_volreg-53"><a href="#v__snapshot_volreg-53"><span class="linenos">53</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v__snapshot_volreg-54"><a href="#v__snapshot_volreg-54"><span class="linenos">54</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v__snapshot_volreg-55"><a href="#v__snapshot_volreg-55"><span class="linenos">55</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__SNAPSHOT_VOLREG_METADATA</span><span class="p">)</span>
-</span><span id="v__snapshot_volreg-56"><a href="#v__snapshot_volreg-56"><span class="linenos">56</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="v__snapshot_volreg-57"><a href="#v__snapshot_volreg-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@snapshot_volreg&quot;</span><span class="p">)</span>
-</span><span id="v__snapshot_volreg-58"><a href="#v__snapshot_volreg-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">anatdataset</span><span class="p">))</span>
-</span><span id="v__snapshot_volreg-59"><a href="#v__snapshot_volreg-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">epidataset</span><span class="p">))</span>
-</span><span id="v__snapshot_volreg-60"><a href="#v__snapshot_volreg-60"><span class="linenos">60</span></a>    <span class="k">if</span> <span class="n">jname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__snapshot_volreg-61"><a href="#v__snapshot_volreg-61"><span class="linenos">61</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jname</span><span class="p">)</span>
-</span><span id="v__snapshot_volreg-62"><a href="#v__snapshot_volreg-62"><span class="linenos">62</span></a>    <span class="k">if</span> <span class="n">xdisplay</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__snapshot_volreg-63"><a href="#v__snapshot_volreg-63"><span class="linenos">63</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xdisplay</span><span class="p">)</span>
-</span><span id="v__snapshot_volreg-64"><a href="#v__snapshot_volreg-64"><span class="linenos">64</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VSnapshotVolregOutputs</span><span class="p">(</span>
-</span><span id="v__snapshot_volreg-65"><a href="#v__snapshot_volreg-65"><span class="linenos">65</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v__snapshot_volreg-66"><a href="#v__snapshot_volreg-66"><span class="linenos">66</span></a>        <span class="n">output_jpeg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jname</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v__snapshot_volreg-67"><a href="#v__snapshot_volreg-67"><span class="linenos">67</span></a>    <span class="p">)</span>
-</span><span id="v__snapshot_volreg-68"><a href="#v__snapshot_volreg-68"><span class="linenos">68</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v__snapshot_volreg-69"><a href="#v__snapshot_volreg-69"><span class="linenos">69</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v__snapshot_volreg-42"><a href="#v__snapshot_volreg-42"><span class="linenos">42</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v__snapshot_volreg-43"><a href="#v__snapshot_volreg-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="v__snapshot_volreg-44"><a href="#v__snapshot_volreg-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
+</span><span id="v__snapshot_volreg-45"><a href="#v__snapshot_volreg-45"><span class="linenos">45</span></a><span class="sd">        anatdataset: Anatomical dataset file.</span>
+</span><span id="v__snapshot_volreg-46"><a href="#v__snapshot_volreg-46"><span class="linenos">46</span></a><span class="sd">        epidataset: EPI dataset file.</span>
+</span><span id="v__snapshot_volreg-47"><a href="#v__snapshot_volreg-47"><span class="linenos">47</span></a><span class="sd">        jname: Name for the output JPEG file.</span>
+</span><span id="v__snapshot_volreg-48"><a href="#v__snapshot_volreg-48"><span class="linenos">48</span></a><span class="sd">        xdisplay: Display number of an already running Xvfb instance.</span>
+</span><span id="v__snapshot_volreg-49"><a href="#v__snapshot_volreg-49"><span class="linenos">49</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v__snapshot_volreg-50"><a href="#v__snapshot_volreg-50"><span class="linenos">50</span></a><span class="sd">    Returns:</span>
+</span><span id="v__snapshot_volreg-51"><a href="#v__snapshot_volreg-51"><span class="linenos">51</span></a><span class="sd">        NamedTuple of outputs (described in `VSnapshotVolregOutputs`).</span>
+</span><span id="v__snapshot_volreg-52"><a href="#v__snapshot_volreg-52"><span class="linenos">52</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v__snapshot_volreg-53"><a href="#v__snapshot_volreg-53"><span class="linenos">53</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v__snapshot_volreg-54"><a href="#v__snapshot_volreg-54"><span class="linenos">54</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__SNAPSHOT_VOLREG_METADATA</span><span class="p">)</span>
+</span><span id="v__snapshot_volreg-55"><a href="#v__snapshot_volreg-55"><span class="linenos">55</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="v__snapshot_volreg-56"><a href="#v__snapshot_volreg-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@snapshot_volreg&quot;</span><span class="p">)</span>
+</span><span id="v__snapshot_volreg-57"><a href="#v__snapshot_volreg-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">anatdataset</span><span class="p">))</span>
+</span><span id="v__snapshot_volreg-58"><a href="#v__snapshot_volreg-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">epidataset</span><span class="p">))</span>
+</span><span id="v__snapshot_volreg-59"><a href="#v__snapshot_volreg-59"><span class="linenos">59</span></a>    <span class="k">if</span> <span class="n">jname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__snapshot_volreg-60"><a href="#v__snapshot_volreg-60"><span class="linenos">60</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jname</span><span class="p">)</span>
+</span><span id="v__snapshot_volreg-61"><a href="#v__snapshot_volreg-61"><span class="linenos">61</span></a>    <span class="k">if</span> <span class="n">xdisplay</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__snapshot_volreg-62"><a href="#v__snapshot_volreg-62"><span class="linenos">62</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xdisplay</span><span class="p">)</span>
+</span><span id="v__snapshot_volreg-63"><a href="#v__snapshot_volreg-63"><span class="linenos">63</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VSnapshotVolregOutputs</span><span class="p">(</span>
+</span><span id="v__snapshot_volreg-64"><a href="#v__snapshot_volreg-64"><span class="linenos">64</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v__snapshot_volreg-65"><a href="#v__snapshot_volreg-65"><span class="linenos">65</span></a>        <span class="n">output_jpeg</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jname</span> <span class="o">+</span> <span class="s2">&quot;.jpg&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__snapshot_volreg-66"><a href="#v__snapshot_volreg-66"><span class="linenos">66</span></a>    <span class="p">)</span>
+</span><span id="v__snapshot_volreg-67"><a href="#v__snapshot_volreg-67"><span class="linenos">67</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v__snapshot_volreg-68"><a href="#v__snapshot_volreg-68"><span class="linenos">68</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Create a JPEG image showing the edges of an EPI dataset overlayed on an
 anatomical dataset to judge 3D registration quality.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/@snapshot_volreg.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/@snapshot_volreg.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

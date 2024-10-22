@@ -111,7 +111,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CONNECTOMESTATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a133a8de6ede1c498219fbf0a214b2217592e27b.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a535681290f66c0887d4200e46496cba897c8f9a.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;connectomestats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -269,205 +269,204 @@
 </span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    nonstationarity in cluster-based and TFCE inference.</span>
 </span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    Neuroimage, 2011, 54(3), 2006-19.</span>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    </span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">    </span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    URL:</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/connectomestats.html</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    </span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    Args:</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        input_: a text file listing the file names of the input connectomes.</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        algorithm: the algorithm to use in network-based\</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">            clustering/enhancement. Options are: nbs, tfnbs, none.</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        design: the design matrix.</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        contrast: the contrast matrix.</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        output: the filename prefix for all output.</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        notest: don&#39;t perform statistical inference; only output population\</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">            statistics (effect size, stdev etc).</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        errors: specify nature of errors for shuffling; options are:\</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            ee,ise,both (default: ee).</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        exchange_within: specify blocks of observations within each of which\</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">            data may undergo restricted exchange.</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        exchange_whole: specify blocks of observations that may be exchanged\</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">            with one another (for independent and symmetric errors, sign-flipping\</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">            will occur block-wise).</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        strong: use strong familywise error control across multiple hypotheses.</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        nshuffles: the number of shuffles (default: 5000).</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        permutations: manually define the permutations (relabelling). The input\</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">            should be a text file defining a m x n matrix, where each relabelling\</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">            is defined as a column vector of size m, and the number of columns, n,\</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">            defines the number of permutations. Can be generated with the\</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">            palm_quickperms function in PALM\</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM). Overrides the -nshuffles\</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">            option.</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        nonstationarity: perform non-stationarity correction.</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        skew_nonstationarity: specify the skew parameter for empirical\</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">            statistic calculation (default for this command is 1).</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        nshuffles_nonstationarity: the number of shuffles to use when\</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">            precomputing the empirical statistic image for non-stationarity\</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">            correction (default: 5000).</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        permutations_nonstationarity: manually define the permutations\</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">            (relabelling) for computing the emprical statistics for\</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">            non-stationarity correction. The input should be a text file defining a\</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">            m x n matrix, where each relabelling is defined as a column vector of\</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">            size m, and the number of columns, n, defines the number of\</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">            permutations. Can be generated with the palm_quickperms function in\</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">            PALM (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM) Overrides the\</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">            -nshuffles_nonstationarity option.</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">        tfce_dh: the height increment used in the tfce integration (default:\</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">            0.1).</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        tfce_e: tfce extent exponent (default: 0.4).</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        tfce_h: tfce height exponent (default: 3).</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">        variance: define variance groups for the G-statistic; measurements for\</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">            which the expected variance is equivalent should contain the same index.</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        ftests: perform F-tests; input text file should contain, for each\</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">            F-test, a row containing ones and zeros, where ones indicate the rows\</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">            of the contrast matrix to be included in the F-test.</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        fonly: only assess F-tests; do not perform statistical inference on\</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">            entries in the contrast matrix.</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        column: add a column to the design matrix corresponding to subject\</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">            edge-wise values (note that the contrast matrix must include an\</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">            additional column for each use of this option); the text file provided\</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">            via this option should contain a file name for each subject.</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        threshold: the t-statistic value to use in threshold-based clustering\</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">            algorithms.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">    Returns:</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        NamedTuple of outputs (described in `ConnectomestatsOutputs`).</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONNECTOMESTATS_METADATA</span><span class="p">)</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;connectomestats&quot;</span><span class="p">)</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">notest</span><span class="p">:</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-notest&quot;</span><span class="p">)</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>            <span class="s2">&quot;-errors&quot;</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>            <span class="n">errors</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>        <span class="p">])</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="k">if</span> <span class="n">exchange_within</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>            <span class="s2">&quot;-exchange_within&quot;</span><span class="p">,</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_within</span><span class="p">)</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>        <span class="p">])</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="k">if</span> <span class="n">exchange_whole</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>            <span class="s2">&quot;-exchange_whole&quot;</span><span class="p">,</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_whole</span><span class="p">)</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="p">])</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="k">if</span> <span class="n">strong</span><span class="p">:</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-strong&quot;</span><span class="p">)</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="k">if</span> <span class="n">nshuffles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>            <span class="s2">&quot;-nshuffles&quot;</span><span class="p">,</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles</span><span class="p">)</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>        <span class="p">])</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="k">if</span> <span class="n">permutations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>            <span class="s2">&quot;-permutations&quot;</span><span class="p">,</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations</span><span class="p">)</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>        <span class="p">])</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="k">if</span> <span class="n">nonstationarity</span><span class="p">:</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonstationarity&quot;</span><span class="p">)</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="k">if</span> <span class="n">skew_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>            <span class="s2">&quot;-skew_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">skew_nonstationarity</span><span class="p">)</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>        <span class="p">])</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="k">if</span> <span class="n">nshuffles_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>            <span class="s2">&quot;-nshuffles_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles_nonstationarity</span><span class="p">)</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>        <span class="p">])</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="k">if</span> <span class="n">permutations_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>            <span class="s2">&quot;-permutations_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations_nonstationarity</span><span class="p">)</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>        <span class="p">])</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="k">if</span> <span class="n">tfce_dh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>            <span class="s2">&quot;-tfce_dh&quot;</span><span class="p">,</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_dh</span><span class="p">)</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>        <span class="p">])</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="k">if</span> <span class="n">tfce_e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>            <span class="s2">&quot;-tfce_e&quot;</span><span class="p">,</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_e</span><span class="p">)</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>        <span class="p">])</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>    <span class="k">if</span> <span class="n">tfce_h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>            <span class="s2">&quot;-tfce_h&quot;</span><span class="p">,</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_h</span><span class="p">)</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>        <span class="p">])</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="k">if</span> <span class="n">variance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>            <span class="s2">&quot;-variance&quot;</span><span class="p">,</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>        <span class="p">])</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="k">if</span> <span class="n">ftests</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>            <span class="s2">&quot;-ftests&quot;</span><span class="p">,</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ftests</span><span class="p">)</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>        <span class="p">])</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="k">if</span> <span class="n">fonly</span><span class="p">:</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fonly&quot;</span><span class="p">)</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="k">if</span> <span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>            <span class="s2">&quot;-threshold&quot;</span><span class="p">,</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>        <span class="p">])</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>        <span class="p">])</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">design</span><span class="p">))</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">contrast</span><span class="p">))</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConnectomestatsOutputs</span><span class="p">(</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="p">)</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    </span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    Args:</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        input_: a text file listing the file names of the input connectomes.</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        algorithm: the algorithm to use in network-based\</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">            clustering/enhancement. Options are: nbs, tfnbs, none.</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        design: the design matrix.</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        contrast: the contrast matrix.</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        output: the filename prefix for all output.</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        notest: don&#39;t perform statistical inference; only output population\</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">            statistics (effect size, stdev etc).</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        errors: specify nature of errors for shuffling; options are:\</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">            ee,ise,both (default: ee).</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        exchange_within: specify blocks of observations within each of which\</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">            data may undergo restricted exchange.</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        exchange_whole: specify blocks of observations that may be exchanged\</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">            with one another (for independent and symmetric errors, sign-flipping\</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">            will occur block-wise).</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        strong: use strong familywise error control across multiple hypotheses.</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        nshuffles: the number of shuffles (default: 5000).</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        permutations: manually define the permutations (relabelling). The input\</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">            should be a text file defining a m x n matrix, where each relabelling\</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">            is defined as a column vector of size m, and the number of columns, n,\</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">            defines the number of permutations. Can be generated with the\</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">            palm_quickperms function in PALM\</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM). Overrides the -nshuffles\</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            option.</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        nonstationarity: perform non-stationarity correction.</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        skew_nonstationarity: specify the skew parameter for empirical\</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">            statistic calculation (default for this command is 1).</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        nshuffles_nonstationarity: the number of shuffles to use when\</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">            precomputing the empirical statistic image for non-stationarity\</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">            correction (default: 5000).</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        permutations_nonstationarity: manually define the permutations\</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">            (relabelling) for computing the emprical statistics for\</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">            non-stationarity correction. The input should be a text file defining a\</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">            m x n matrix, where each relabelling is defined as a column vector of\</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">            size m, and the number of columns, n, defines the number of\</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">            permutations. Can be generated with the palm_quickperms function in\</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">            PALM (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM) Overrides the\</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">            -nshuffles_nonstationarity option.</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        tfce_dh: the height increment used in the tfce integration (default:\</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">            0.1).</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        tfce_e: tfce extent exponent (default: 0.4).</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        tfce_h: tfce height exponent (default: 3).</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        variance: define variance groups for the G-statistic; measurements for\</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">            which the expected variance is equivalent should contain the same index.</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        ftests: perform F-tests; input text file should contain, for each\</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">            F-test, a row containing ones and zeros, where ones indicate the rows\</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">            of the contrast matrix to be included in the F-test.</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        fonly: only assess F-tests; do not perform statistical inference on\</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">            entries in the contrast matrix.</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        column: add a column to the design matrix corresponding to subject\</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">            edge-wise values (note that the contrast matrix must include an\</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">            additional column for each use of this option); the text file provided\</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">            via this option should contain a file name for each subject.</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        threshold: the t-statistic value to use in threshold-based clustering\</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">            algorithms.</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">    Returns:</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        NamedTuple of outputs (described in `ConnectomestatsOutputs`).</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONNECTOMESTATS_METADATA</span><span class="p">)</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;connectomestats&quot;</span><span class="p">)</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">notest</span><span class="p">:</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-notest&quot;</span><span class="p">)</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>            <span class="s2">&quot;-errors&quot;</span><span class="p">,</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>            <span class="n">errors</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>        <span class="p">])</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">exchange_within</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>            <span class="s2">&quot;-exchange_within&quot;</span><span class="p">,</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_within</span><span class="p">)</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>        <span class="p">])</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="k">if</span> <span class="n">exchange_whole</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>            <span class="s2">&quot;-exchange_whole&quot;</span><span class="p">,</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_whole</span><span class="p">)</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>        <span class="p">])</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="k">if</span> <span class="n">strong</span><span class="p">:</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-strong&quot;</span><span class="p">)</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="k">if</span> <span class="n">nshuffles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>            <span class="s2">&quot;-nshuffles&quot;</span><span class="p">,</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles</span><span class="p">)</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>        <span class="p">])</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="k">if</span> <span class="n">permutations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>            <span class="s2">&quot;-permutations&quot;</span><span class="p">,</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations</span><span class="p">)</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>        <span class="p">])</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="k">if</span> <span class="n">nonstationarity</span><span class="p">:</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonstationarity&quot;</span><span class="p">)</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="k">if</span> <span class="n">skew_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>            <span class="s2">&quot;-skew_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">skew_nonstationarity</span><span class="p">)</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>        <span class="p">])</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="k">if</span> <span class="n">nshuffles_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>            <span class="s2">&quot;-nshuffles_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles_nonstationarity</span><span class="p">)</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>        <span class="p">])</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="k">if</span> <span class="n">permutations_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>            <span class="s2">&quot;-permutations_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations_nonstationarity</span><span class="p">)</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>        <span class="p">])</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="k">if</span> <span class="n">tfce_dh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>            <span class="s2">&quot;-tfce_dh&quot;</span><span class="p">,</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_dh</span><span class="p">)</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>        <span class="p">])</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="k">if</span> <span class="n">tfce_e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>            <span class="s2">&quot;-tfce_e&quot;</span><span class="p">,</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_e</span><span class="p">)</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>        <span class="p">])</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="k">if</span> <span class="n">tfce_h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>            <span class="s2">&quot;-tfce_h&quot;</span><span class="p">,</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_h</span><span class="p">)</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>        <span class="p">])</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="k">if</span> <span class="n">variance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>            <span class="s2">&quot;-variance&quot;</span><span class="p">,</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>        <span class="p">])</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="k">if</span> <span class="n">ftests</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>            <span class="s2">&quot;-ftests&quot;</span><span class="p">,</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ftests</span><span class="p">)</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>        <span class="p">])</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="k">if</span> <span class="n">fonly</span><span class="p">:</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fonly&quot;</span><span class="p">)</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>    <span class="k">if</span> <span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>            <span class="s2">&quot;-threshold&quot;</span><span class="p">,</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>        <span class="p">])</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>        <span class="p">])</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">design</span><span class="p">))</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">contrast</span><span class="p">))</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConnectomestatsOutputs</span><span class="p">(</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="p">)</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>
 </span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="s2">&quot;CONNECTOMESTATS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="s2">&quot;ConnectomestatsColumn&quot;</span><span class="p">,</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="s2">&quot;ConnectomestatsConfig&quot;</span><span class="p">,</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="s2">&quot;ConnectomestatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>    <span class="s2">&quot;connectomestats&quot;</span><span class="p">,</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="p">]</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>    <span class="s2">&quot;CONNECTOMESTATS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="s2">&quot;ConnectomestatsColumn&quot;</span><span class="p">,</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="s2">&quot;ConnectomestatsConfig&quot;</span><span class="p">,</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="s2">&quot;ConnectomestatsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="s2">&quot;connectomestats&quot;</span><span class="p">,</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -476,7 +475,7 @@
                     <div class="attr variable">
             <span class="name">CONNECTOMESTATS_METADATA</span>        =
 <input id="CONNECTOMESTATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CONNECTOMESTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a133a8de6ede1c498219fbf0a214b2217592e27b.boutiques&#39;, name=&#39;connectomestats&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CONNECTOMESTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a535681290f66c0887d4200e46496cba897c8f9a.boutiques&#39;, name=&#39;connectomestats&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -891,196 +890,195 @@ contain a file name for each subject</p>
 </span><span id="connectomestats-166"><a href="#connectomestats-166"><span class="linenos">166</span></a><span class="sd">    nonstationarity in cluster-based and TFCE inference.</span>
 </span><span id="connectomestats-167"><a href="#connectomestats-167"><span class="linenos">167</span></a><span class="sd">    Neuroimage, 2011, 54(3), 2006-19.</span>
 </span><span id="connectomestats-168"><a href="#connectomestats-168"><span class="linenos">168</span></a><span class="sd">    </span>
-</span><span id="connectomestats-169"><a href="#connectomestats-169"><span class="linenos">169</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="connectomestats-169"><a href="#connectomestats-169"><span class="linenos">169</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="connectomestats-170"><a href="#connectomestats-170"><span class="linenos">170</span></a><span class="sd">    </span>
-</span><span id="connectomestats-171"><a href="#connectomestats-171"><span class="linenos">171</span></a><span class="sd">    URL:</span>
-</span><span id="connectomestats-172"><a href="#connectomestats-172"><span class="linenos">172</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/connectomestats.html</span>
-</span><span id="connectomestats-173"><a href="#connectomestats-173"><span class="linenos">173</span></a><span class="sd">    </span>
-</span><span id="connectomestats-174"><a href="#connectomestats-174"><span class="linenos">174</span></a><span class="sd">    Args:</span>
-</span><span id="connectomestats-175"><a href="#connectomestats-175"><span class="linenos">175</span></a><span class="sd">        input_: a text file listing the file names of the input connectomes.</span>
-</span><span id="connectomestats-176"><a href="#connectomestats-176"><span class="linenos">176</span></a><span class="sd">        algorithm: the algorithm to use in network-based\</span>
-</span><span id="connectomestats-177"><a href="#connectomestats-177"><span class="linenos">177</span></a><span class="sd">            clustering/enhancement. Options are: nbs, tfnbs, none.</span>
-</span><span id="connectomestats-178"><a href="#connectomestats-178"><span class="linenos">178</span></a><span class="sd">        design: the design matrix.</span>
-</span><span id="connectomestats-179"><a href="#connectomestats-179"><span class="linenos">179</span></a><span class="sd">        contrast: the contrast matrix.</span>
-</span><span id="connectomestats-180"><a href="#connectomestats-180"><span class="linenos">180</span></a><span class="sd">        output: the filename prefix for all output.</span>
-</span><span id="connectomestats-181"><a href="#connectomestats-181"><span class="linenos">181</span></a><span class="sd">        notest: don&#39;t perform statistical inference; only output population\</span>
-</span><span id="connectomestats-182"><a href="#connectomestats-182"><span class="linenos">182</span></a><span class="sd">            statistics (effect size, stdev etc).</span>
-</span><span id="connectomestats-183"><a href="#connectomestats-183"><span class="linenos">183</span></a><span class="sd">        errors: specify nature of errors for shuffling; options are:\</span>
-</span><span id="connectomestats-184"><a href="#connectomestats-184"><span class="linenos">184</span></a><span class="sd">            ee,ise,both (default: ee).</span>
-</span><span id="connectomestats-185"><a href="#connectomestats-185"><span class="linenos">185</span></a><span class="sd">        exchange_within: specify blocks of observations within each of which\</span>
-</span><span id="connectomestats-186"><a href="#connectomestats-186"><span class="linenos">186</span></a><span class="sd">            data may undergo restricted exchange.</span>
-</span><span id="connectomestats-187"><a href="#connectomestats-187"><span class="linenos">187</span></a><span class="sd">        exchange_whole: specify blocks of observations that may be exchanged\</span>
-</span><span id="connectomestats-188"><a href="#connectomestats-188"><span class="linenos">188</span></a><span class="sd">            with one another (for independent and symmetric errors, sign-flipping\</span>
-</span><span id="connectomestats-189"><a href="#connectomestats-189"><span class="linenos">189</span></a><span class="sd">            will occur block-wise).</span>
-</span><span id="connectomestats-190"><a href="#connectomestats-190"><span class="linenos">190</span></a><span class="sd">        strong: use strong familywise error control across multiple hypotheses.</span>
-</span><span id="connectomestats-191"><a href="#connectomestats-191"><span class="linenos">191</span></a><span class="sd">        nshuffles: the number of shuffles (default: 5000).</span>
-</span><span id="connectomestats-192"><a href="#connectomestats-192"><span class="linenos">192</span></a><span class="sd">        permutations: manually define the permutations (relabelling). The input\</span>
-</span><span id="connectomestats-193"><a href="#connectomestats-193"><span class="linenos">193</span></a><span class="sd">            should be a text file defining a m x n matrix, where each relabelling\</span>
-</span><span id="connectomestats-194"><a href="#connectomestats-194"><span class="linenos">194</span></a><span class="sd">            is defined as a column vector of size m, and the number of columns, n,\</span>
-</span><span id="connectomestats-195"><a href="#connectomestats-195"><span class="linenos">195</span></a><span class="sd">            defines the number of permutations. Can be generated with the\</span>
-</span><span id="connectomestats-196"><a href="#connectomestats-196"><span class="linenos">196</span></a><span class="sd">            palm_quickperms function in PALM\</span>
-</span><span id="connectomestats-197"><a href="#connectomestats-197"><span class="linenos">197</span></a><span class="sd">            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM). Overrides the -nshuffles\</span>
-</span><span id="connectomestats-198"><a href="#connectomestats-198"><span class="linenos">198</span></a><span class="sd">            option.</span>
-</span><span id="connectomestats-199"><a href="#connectomestats-199"><span class="linenos">199</span></a><span class="sd">        nonstationarity: perform non-stationarity correction.</span>
-</span><span id="connectomestats-200"><a href="#connectomestats-200"><span class="linenos">200</span></a><span class="sd">        skew_nonstationarity: specify the skew parameter for empirical\</span>
-</span><span id="connectomestats-201"><a href="#connectomestats-201"><span class="linenos">201</span></a><span class="sd">            statistic calculation (default for this command is 1).</span>
-</span><span id="connectomestats-202"><a href="#connectomestats-202"><span class="linenos">202</span></a><span class="sd">        nshuffles_nonstationarity: the number of shuffles to use when\</span>
-</span><span id="connectomestats-203"><a href="#connectomestats-203"><span class="linenos">203</span></a><span class="sd">            precomputing the empirical statistic image for non-stationarity\</span>
-</span><span id="connectomestats-204"><a href="#connectomestats-204"><span class="linenos">204</span></a><span class="sd">            correction (default: 5000).</span>
-</span><span id="connectomestats-205"><a href="#connectomestats-205"><span class="linenos">205</span></a><span class="sd">        permutations_nonstationarity: manually define the permutations\</span>
-</span><span id="connectomestats-206"><a href="#connectomestats-206"><span class="linenos">206</span></a><span class="sd">            (relabelling) for computing the emprical statistics for\</span>
-</span><span id="connectomestats-207"><a href="#connectomestats-207"><span class="linenos">207</span></a><span class="sd">            non-stationarity correction. The input should be a text file defining a\</span>
-</span><span id="connectomestats-208"><a href="#connectomestats-208"><span class="linenos">208</span></a><span class="sd">            m x n matrix, where each relabelling is defined as a column vector of\</span>
-</span><span id="connectomestats-209"><a href="#connectomestats-209"><span class="linenos">209</span></a><span class="sd">            size m, and the number of columns, n, defines the number of\</span>
-</span><span id="connectomestats-210"><a href="#connectomestats-210"><span class="linenos">210</span></a><span class="sd">            permutations. Can be generated with the palm_quickperms function in\</span>
-</span><span id="connectomestats-211"><a href="#connectomestats-211"><span class="linenos">211</span></a><span class="sd">            PALM (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM) Overrides the\</span>
-</span><span id="connectomestats-212"><a href="#connectomestats-212"><span class="linenos">212</span></a><span class="sd">            -nshuffles_nonstationarity option.</span>
-</span><span id="connectomestats-213"><a href="#connectomestats-213"><span class="linenos">213</span></a><span class="sd">        tfce_dh: the height increment used in the tfce integration (default:\</span>
-</span><span id="connectomestats-214"><a href="#connectomestats-214"><span class="linenos">214</span></a><span class="sd">            0.1).</span>
-</span><span id="connectomestats-215"><a href="#connectomestats-215"><span class="linenos">215</span></a><span class="sd">        tfce_e: tfce extent exponent (default: 0.4).</span>
-</span><span id="connectomestats-216"><a href="#connectomestats-216"><span class="linenos">216</span></a><span class="sd">        tfce_h: tfce height exponent (default: 3).</span>
-</span><span id="connectomestats-217"><a href="#connectomestats-217"><span class="linenos">217</span></a><span class="sd">        variance: define variance groups for the G-statistic; measurements for\</span>
-</span><span id="connectomestats-218"><a href="#connectomestats-218"><span class="linenos">218</span></a><span class="sd">            which the expected variance is equivalent should contain the same index.</span>
-</span><span id="connectomestats-219"><a href="#connectomestats-219"><span class="linenos">219</span></a><span class="sd">        ftests: perform F-tests; input text file should contain, for each\</span>
-</span><span id="connectomestats-220"><a href="#connectomestats-220"><span class="linenos">220</span></a><span class="sd">            F-test, a row containing ones and zeros, where ones indicate the rows\</span>
-</span><span id="connectomestats-221"><a href="#connectomestats-221"><span class="linenos">221</span></a><span class="sd">            of the contrast matrix to be included in the F-test.</span>
-</span><span id="connectomestats-222"><a href="#connectomestats-222"><span class="linenos">222</span></a><span class="sd">        fonly: only assess F-tests; do not perform statistical inference on\</span>
-</span><span id="connectomestats-223"><a href="#connectomestats-223"><span class="linenos">223</span></a><span class="sd">            entries in the contrast matrix.</span>
-</span><span id="connectomestats-224"><a href="#connectomestats-224"><span class="linenos">224</span></a><span class="sd">        column: add a column to the design matrix corresponding to subject\</span>
-</span><span id="connectomestats-225"><a href="#connectomestats-225"><span class="linenos">225</span></a><span class="sd">            edge-wise values (note that the contrast matrix must include an\</span>
-</span><span id="connectomestats-226"><a href="#connectomestats-226"><span class="linenos">226</span></a><span class="sd">            additional column for each use of this option); the text file provided\</span>
-</span><span id="connectomestats-227"><a href="#connectomestats-227"><span class="linenos">227</span></a><span class="sd">            via this option should contain a file name for each subject.</span>
-</span><span id="connectomestats-228"><a href="#connectomestats-228"><span class="linenos">228</span></a><span class="sd">        threshold: the t-statistic value to use in threshold-based clustering\</span>
-</span><span id="connectomestats-229"><a href="#connectomestats-229"><span class="linenos">229</span></a><span class="sd">            algorithms.</span>
-</span><span id="connectomestats-230"><a href="#connectomestats-230"><span class="linenos">230</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="connectomestats-231"><a href="#connectomestats-231"><span class="linenos">231</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="connectomestats-232"><a href="#connectomestats-232"><span class="linenos">232</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="connectomestats-233"><a href="#connectomestats-233"><span class="linenos">233</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="connectomestats-234"><a href="#connectomestats-234"><span class="linenos">234</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="connectomestats-235"><a href="#connectomestats-235"><span class="linenos">235</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="connectomestats-236"><a href="#connectomestats-236"><span class="linenos">236</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="connectomestats-237"><a href="#connectomestats-237"><span class="linenos">237</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="connectomestats-238"><a href="#connectomestats-238"><span class="linenos">238</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="connectomestats-239"><a href="#connectomestats-239"><span class="linenos">239</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="connectomestats-240"><a href="#connectomestats-240"><span class="linenos">240</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="connectomestats-241"><a href="#connectomestats-241"><span class="linenos">241</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="connectomestats-242"><a href="#connectomestats-242"><span class="linenos">242</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="connectomestats-243"><a href="#connectomestats-243"><span class="linenos">243</span></a><span class="sd">    Returns:</span>
-</span><span id="connectomestats-244"><a href="#connectomestats-244"><span class="linenos">244</span></a><span class="sd">        NamedTuple of outputs (described in `ConnectomestatsOutputs`).</span>
-</span><span id="connectomestats-245"><a href="#connectomestats-245"><span class="linenos">245</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="connectomestats-246"><a href="#connectomestats-246"><span class="linenos">246</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="connectomestats-247"><a href="#connectomestats-247"><span class="linenos">247</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONNECTOMESTATS_METADATA</span><span class="p">)</span>
-</span><span id="connectomestats-248"><a href="#connectomestats-248"><span class="linenos">248</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="connectomestats-249"><a href="#connectomestats-249"><span class="linenos">249</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;connectomestats&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-250"><a href="#connectomestats-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">notest</span><span class="p">:</span>
-</span><span id="connectomestats-251"><a href="#connectomestats-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-notest&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-252"><a href="#connectomestats-252"><span class="linenos">252</span></a>    <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-253"><a href="#connectomestats-253"><span class="linenos">253</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-254"><a href="#connectomestats-254"><span class="linenos">254</span></a>            <span class="s2">&quot;-errors&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-255"><a href="#connectomestats-255"><span class="linenos">255</span></a>            <span class="n">errors</span>
-</span><span id="connectomestats-256"><a href="#connectomestats-256"><span class="linenos">256</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-257"><a href="#connectomestats-257"><span class="linenos">257</span></a>    <span class="k">if</span> <span class="n">exchange_within</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-258"><a href="#connectomestats-258"><span class="linenos">258</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-259"><a href="#connectomestats-259"><span class="linenos">259</span></a>            <span class="s2">&quot;-exchange_within&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-260"><a href="#connectomestats-260"><span class="linenos">260</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_within</span><span class="p">)</span>
-</span><span id="connectomestats-261"><a href="#connectomestats-261"><span class="linenos">261</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-262"><a href="#connectomestats-262"><span class="linenos">262</span></a>    <span class="k">if</span> <span class="n">exchange_whole</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-263"><a href="#connectomestats-263"><span class="linenos">263</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-264"><a href="#connectomestats-264"><span class="linenos">264</span></a>            <span class="s2">&quot;-exchange_whole&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-265"><a href="#connectomestats-265"><span class="linenos">265</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_whole</span><span class="p">)</span>
-</span><span id="connectomestats-266"><a href="#connectomestats-266"><span class="linenos">266</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-267"><a href="#connectomestats-267"><span class="linenos">267</span></a>    <span class="k">if</span> <span class="n">strong</span><span class="p">:</span>
-</span><span id="connectomestats-268"><a href="#connectomestats-268"><span class="linenos">268</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-strong&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-269"><a href="#connectomestats-269"><span class="linenos">269</span></a>    <span class="k">if</span> <span class="n">nshuffles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-270"><a href="#connectomestats-270"><span class="linenos">270</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-271"><a href="#connectomestats-271"><span class="linenos">271</span></a>            <span class="s2">&quot;-nshuffles&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-272"><a href="#connectomestats-272"><span class="linenos">272</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles</span><span class="p">)</span>
-</span><span id="connectomestats-273"><a href="#connectomestats-273"><span class="linenos">273</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-274"><a href="#connectomestats-274"><span class="linenos">274</span></a>    <span class="k">if</span> <span class="n">permutations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-275"><a href="#connectomestats-275"><span class="linenos">275</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-276"><a href="#connectomestats-276"><span class="linenos">276</span></a>            <span class="s2">&quot;-permutations&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-277"><a href="#connectomestats-277"><span class="linenos">277</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations</span><span class="p">)</span>
-</span><span id="connectomestats-278"><a href="#connectomestats-278"><span class="linenos">278</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-279"><a href="#connectomestats-279"><span class="linenos">279</span></a>    <span class="k">if</span> <span class="n">nonstationarity</span><span class="p">:</span>
-</span><span id="connectomestats-280"><a href="#connectomestats-280"><span class="linenos">280</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonstationarity&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-281"><a href="#connectomestats-281"><span class="linenos">281</span></a>    <span class="k">if</span> <span class="n">skew_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-282"><a href="#connectomestats-282"><span class="linenos">282</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-283"><a href="#connectomestats-283"><span class="linenos">283</span></a>            <span class="s2">&quot;-skew_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-284"><a href="#connectomestats-284"><span class="linenos">284</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">skew_nonstationarity</span><span class="p">)</span>
-</span><span id="connectomestats-285"><a href="#connectomestats-285"><span class="linenos">285</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-286"><a href="#connectomestats-286"><span class="linenos">286</span></a>    <span class="k">if</span> <span class="n">nshuffles_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-287"><a href="#connectomestats-287"><span class="linenos">287</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-288"><a href="#connectomestats-288"><span class="linenos">288</span></a>            <span class="s2">&quot;-nshuffles_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-289"><a href="#connectomestats-289"><span class="linenos">289</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles_nonstationarity</span><span class="p">)</span>
-</span><span id="connectomestats-290"><a href="#connectomestats-290"><span class="linenos">290</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-291"><a href="#connectomestats-291"><span class="linenos">291</span></a>    <span class="k">if</span> <span class="n">permutations_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-292"><a href="#connectomestats-292"><span class="linenos">292</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-293"><a href="#connectomestats-293"><span class="linenos">293</span></a>            <span class="s2">&quot;-permutations_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-294"><a href="#connectomestats-294"><span class="linenos">294</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations_nonstationarity</span><span class="p">)</span>
-</span><span id="connectomestats-295"><a href="#connectomestats-295"><span class="linenos">295</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-296"><a href="#connectomestats-296"><span class="linenos">296</span></a>    <span class="k">if</span> <span class="n">tfce_dh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-297"><a href="#connectomestats-297"><span class="linenos">297</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-298"><a href="#connectomestats-298"><span class="linenos">298</span></a>            <span class="s2">&quot;-tfce_dh&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-299"><a href="#connectomestats-299"><span class="linenos">299</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_dh</span><span class="p">)</span>
-</span><span id="connectomestats-300"><a href="#connectomestats-300"><span class="linenos">300</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-301"><a href="#connectomestats-301"><span class="linenos">301</span></a>    <span class="k">if</span> <span class="n">tfce_e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-302"><a href="#connectomestats-302"><span class="linenos">302</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-303"><a href="#connectomestats-303"><span class="linenos">303</span></a>            <span class="s2">&quot;-tfce_e&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-304"><a href="#connectomestats-304"><span class="linenos">304</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_e</span><span class="p">)</span>
-</span><span id="connectomestats-305"><a href="#connectomestats-305"><span class="linenos">305</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-306"><a href="#connectomestats-306"><span class="linenos">306</span></a>    <span class="k">if</span> <span class="n">tfce_h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-307"><a href="#connectomestats-307"><span class="linenos">307</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-308"><a href="#connectomestats-308"><span class="linenos">308</span></a>            <span class="s2">&quot;-tfce_h&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-309"><a href="#connectomestats-309"><span class="linenos">309</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_h</span><span class="p">)</span>
-</span><span id="connectomestats-310"><a href="#connectomestats-310"><span class="linenos">310</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-311"><a href="#connectomestats-311"><span class="linenos">311</span></a>    <span class="k">if</span> <span class="n">variance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-312"><a href="#connectomestats-312"><span class="linenos">312</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-313"><a href="#connectomestats-313"><span class="linenos">313</span></a>            <span class="s2">&quot;-variance&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-314"><a href="#connectomestats-314"><span class="linenos">314</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
-</span><span id="connectomestats-315"><a href="#connectomestats-315"><span class="linenos">315</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-316"><a href="#connectomestats-316"><span class="linenos">316</span></a>    <span class="k">if</span> <span class="n">ftests</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-317"><a href="#connectomestats-317"><span class="linenos">317</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-318"><a href="#connectomestats-318"><span class="linenos">318</span></a>            <span class="s2">&quot;-ftests&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-319"><a href="#connectomestats-319"><span class="linenos">319</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ftests</span><span class="p">)</span>
-</span><span id="connectomestats-320"><a href="#connectomestats-320"><span class="linenos">320</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-321"><a href="#connectomestats-321"><span class="linenos">321</span></a>    <span class="k">if</span> <span class="n">fonly</span><span class="p">:</span>
-</span><span id="connectomestats-322"><a href="#connectomestats-322"><span class="linenos">322</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fonly&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-323"><a href="#connectomestats-323"><span class="linenos">323</span></a>    <span class="k">if</span> <span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-324"><a href="#connectomestats-324"><span class="linenos">324</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="connectomestats-325"><a href="#connectomestats-325"><span class="linenos">325</span></a>    <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-326"><a href="#connectomestats-326"><span class="linenos">326</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-327"><a href="#connectomestats-327"><span class="linenos">327</span></a>            <span class="s2">&quot;-threshold&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-328"><a href="#connectomestats-328"><span class="linenos">328</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
-</span><span id="connectomestats-329"><a href="#connectomestats-329"><span class="linenos">329</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-330"><a href="#connectomestats-330"><span class="linenos">330</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="connectomestats-331"><a href="#connectomestats-331"><span class="linenos">331</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-332"><a href="#connectomestats-332"><span class="linenos">332</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="connectomestats-333"><a href="#connectomestats-333"><span class="linenos">333</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-334"><a href="#connectomestats-334"><span class="linenos">334</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="connectomestats-335"><a href="#connectomestats-335"><span class="linenos">335</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-336"><a href="#connectomestats-336"><span class="linenos">336</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="connectomestats-337"><a href="#connectomestats-337"><span class="linenos">337</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-338"><a href="#connectomestats-338"><span class="linenos">338</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-339"><a href="#connectomestats-339"><span class="linenos">339</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="connectomestats-340"><a href="#connectomestats-340"><span class="linenos">340</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="connectomestats-341"><a href="#connectomestats-341"><span class="linenos">341</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="connectomestats-342"><a href="#connectomestats-342"><span class="linenos">342</span></a>        <span class="p">])</span>
-</span><span id="connectomestats-343"><a href="#connectomestats-343"><span class="linenos">343</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="connectomestats-344"><a href="#connectomestats-344"><span class="linenos">344</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="connectomestats-345"><a href="#connectomestats-345"><span class="linenos">345</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="connectomestats-346"><a href="#connectomestats-346"><span class="linenos">346</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-347"><a href="#connectomestats-347"><span class="linenos">347</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="connectomestats-348"><a href="#connectomestats-348"><span class="linenos">348</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="connectomestats-349"><a href="#connectomestats-349"><span class="linenos">349</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
-</span><span id="connectomestats-350"><a href="#connectomestats-350"><span class="linenos">350</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
-</span><span id="connectomestats-351"><a href="#connectomestats-351"><span class="linenos">351</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">design</span><span class="p">))</span>
-</span><span id="connectomestats-352"><a href="#connectomestats-352"><span class="linenos">352</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">contrast</span><span class="p">))</span>
-</span><span id="connectomestats-353"><a href="#connectomestats-353"><span class="linenos">353</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="connectomestats-354"><a href="#connectomestats-354"><span class="linenos">354</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConnectomestatsOutputs</span><span class="p">(</span>
-</span><span id="connectomestats-355"><a href="#connectomestats-355"><span class="linenos">355</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="connectomestats-356"><a href="#connectomestats-356"><span class="linenos">356</span></a>    <span class="p">)</span>
-</span><span id="connectomestats-357"><a href="#connectomestats-357"><span class="linenos">357</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="connectomestats-358"><a href="#connectomestats-358"><span class="linenos">358</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="connectomestats-171"><a href="#connectomestats-171"><span class="linenos">171</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="connectomestats-172"><a href="#connectomestats-172"><span class="linenos">172</span></a><span class="sd">    </span>
+</span><span id="connectomestats-173"><a href="#connectomestats-173"><span class="linenos">173</span></a><span class="sd">    Args:</span>
+</span><span id="connectomestats-174"><a href="#connectomestats-174"><span class="linenos">174</span></a><span class="sd">        input_: a text file listing the file names of the input connectomes.</span>
+</span><span id="connectomestats-175"><a href="#connectomestats-175"><span class="linenos">175</span></a><span class="sd">        algorithm: the algorithm to use in network-based\</span>
+</span><span id="connectomestats-176"><a href="#connectomestats-176"><span class="linenos">176</span></a><span class="sd">            clustering/enhancement. Options are: nbs, tfnbs, none.</span>
+</span><span id="connectomestats-177"><a href="#connectomestats-177"><span class="linenos">177</span></a><span class="sd">        design: the design matrix.</span>
+</span><span id="connectomestats-178"><a href="#connectomestats-178"><span class="linenos">178</span></a><span class="sd">        contrast: the contrast matrix.</span>
+</span><span id="connectomestats-179"><a href="#connectomestats-179"><span class="linenos">179</span></a><span class="sd">        output: the filename prefix for all output.</span>
+</span><span id="connectomestats-180"><a href="#connectomestats-180"><span class="linenos">180</span></a><span class="sd">        notest: don&#39;t perform statistical inference; only output population\</span>
+</span><span id="connectomestats-181"><a href="#connectomestats-181"><span class="linenos">181</span></a><span class="sd">            statistics (effect size, stdev etc).</span>
+</span><span id="connectomestats-182"><a href="#connectomestats-182"><span class="linenos">182</span></a><span class="sd">        errors: specify nature of errors for shuffling; options are:\</span>
+</span><span id="connectomestats-183"><a href="#connectomestats-183"><span class="linenos">183</span></a><span class="sd">            ee,ise,both (default: ee).</span>
+</span><span id="connectomestats-184"><a href="#connectomestats-184"><span class="linenos">184</span></a><span class="sd">        exchange_within: specify blocks of observations within each of which\</span>
+</span><span id="connectomestats-185"><a href="#connectomestats-185"><span class="linenos">185</span></a><span class="sd">            data may undergo restricted exchange.</span>
+</span><span id="connectomestats-186"><a href="#connectomestats-186"><span class="linenos">186</span></a><span class="sd">        exchange_whole: specify blocks of observations that may be exchanged\</span>
+</span><span id="connectomestats-187"><a href="#connectomestats-187"><span class="linenos">187</span></a><span class="sd">            with one another (for independent and symmetric errors, sign-flipping\</span>
+</span><span id="connectomestats-188"><a href="#connectomestats-188"><span class="linenos">188</span></a><span class="sd">            will occur block-wise).</span>
+</span><span id="connectomestats-189"><a href="#connectomestats-189"><span class="linenos">189</span></a><span class="sd">        strong: use strong familywise error control across multiple hypotheses.</span>
+</span><span id="connectomestats-190"><a href="#connectomestats-190"><span class="linenos">190</span></a><span class="sd">        nshuffles: the number of shuffles (default: 5000).</span>
+</span><span id="connectomestats-191"><a href="#connectomestats-191"><span class="linenos">191</span></a><span class="sd">        permutations: manually define the permutations (relabelling). The input\</span>
+</span><span id="connectomestats-192"><a href="#connectomestats-192"><span class="linenos">192</span></a><span class="sd">            should be a text file defining a m x n matrix, where each relabelling\</span>
+</span><span id="connectomestats-193"><a href="#connectomestats-193"><span class="linenos">193</span></a><span class="sd">            is defined as a column vector of size m, and the number of columns, n,\</span>
+</span><span id="connectomestats-194"><a href="#connectomestats-194"><span class="linenos">194</span></a><span class="sd">            defines the number of permutations. Can be generated with the\</span>
+</span><span id="connectomestats-195"><a href="#connectomestats-195"><span class="linenos">195</span></a><span class="sd">            palm_quickperms function in PALM\</span>
+</span><span id="connectomestats-196"><a href="#connectomestats-196"><span class="linenos">196</span></a><span class="sd">            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM). Overrides the -nshuffles\</span>
+</span><span id="connectomestats-197"><a href="#connectomestats-197"><span class="linenos">197</span></a><span class="sd">            option.</span>
+</span><span id="connectomestats-198"><a href="#connectomestats-198"><span class="linenos">198</span></a><span class="sd">        nonstationarity: perform non-stationarity correction.</span>
+</span><span id="connectomestats-199"><a href="#connectomestats-199"><span class="linenos">199</span></a><span class="sd">        skew_nonstationarity: specify the skew parameter for empirical\</span>
+</span><span id="connectomestats-200"><a href="#connectomestats-200"><span class="linenos">200</span></a><span class="sd">            statistic calculation (default for this command is 1).</span>
+</span><span id="connectomestats-201"><a href="#connectomestats-201"><span class="linenos">201</span></a><span class="sd">        nshuffles_nonstationarity: the number of shuffles to use when\</span>
+</span><span id="connectomestats-202"><a href="#connectomestats-202"><span class="linenos">202</span></a><span class="sd">            precomputing the empirical statistic image for non-stationarity\</span>
+</span><span id="connectomestats-203"><a href="#connectomestats-203"><span class="linenos">203</span></a><span class="sd">            correction (default: 5000).</span>
+</span><span id="connectomestats-204"><a href="#connectomestats-204"><span class="linenos">204</span></a><span class="sd">        permutations_nonstationarity: manually define the permutations\</span>
+</span><span id="connectomestats-205"><a href="#connectomestats-205"><span class="linenos">205</span></a><span class="sd">            (relabelling) for computing the emprical statistics for\</span>
+</span><span id="connectomestats-206"><a href="#connectomestats-206"><span class="linenos">206</span></a><span class="sd">            non-stationarity correction. The input should be a text file defining a\</span>
+</span><span id="connectomestats-207"><a href="#connectomestats-207"><span class="linenos">207</span></a><span class="sd">            m x n matrix, where each relabelling is defined as a column vector of\</span>
+</span><span id="connectomestats-208"><a href="#connectomestats-208"><span class="linenos">208</span></a><span class="sd">            size m, and the number of columns, n, defines the number of\</span>
+</span><span id="connectomestats-209"><a href="#connectomestats-209"><span class="linenos">209</span></a><span class="sd">            permutations. Can be generated with the palm_quickperms function in\</span>
+</span><span id="connectomestats-210"><a href="#connectomestats-210"><span class="linenos">210</span></a><span class="sd">            PALM (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM) Overrides the\</span>
+</span><span id="connectomestats-211"><a href="#connectomestats-211"><span class="linenos">211</span></a><span class="sd">            -nshuffles_nonstationarity option.</span>
+</span><span id="connectomestats-212"><a href="#connectomestats-212"><span class="linenos">212</span></a><span class="sd">        tfce_dh: the height increment used in the tfce integration (default:\</span>
+</span><span id="connectomestats-213"><a href="#connectomestats-213"><span class="linenos">213</span></a><span class="sd">            0.1).</span>
+</span><span id="connectomestats-214"><a href="#connectomestats-214"><span class="linenos">214</span></a><span class="sd">        tfce_e: tfce extent exponent (default: 0.4).</span>
+</span><span id="connectomestats-215"><a href="#connectomestats-215"><span class="linenos">215</span></a><span class="sd">        tfce_h: tfce height exponent (default: 3).</span>
+</span><span id="connectomestats-216"><a href="#connectomestats-216"><span class="linenos">216</span></a><span class="sd">        variance: define variance groups for the G-statistic; measurements for\</span>
+</span><span id="connectomestats-217"><a href="#connectomestats-217"><span class="linenos">217</span></a><span class="sd">            which the expected variance is equivalent should contain the same index.</span>
+</span><span id="connectomestats-218"><a href="#connectomestats-218"><span class="linenos">218</span></a><span class="sd">        ftests: perform F-tests; input text file should contain, for each\</span>
+</span><span id="connectomestats-219"><a href="#connectomestats-219"><span class="linenos">219</span></a><span class="sd">            F-test, a row containing ones and zeros, where ones indicate the rows\</span>
+</span><span id="connectomestats-220"><a href="#connectomestats-220"><span class="linenos">220</span></a><span class="sd">            of the contrast matrix to be included in the F-test.</span>
+</span><span id="connectomestats-221"><a href="#connectomestats-221"><span class="linenos">221</span></a><span class="sd">        fonly: only assess F-tests; do not perform statistical inference on\</span>
+</span><span id="connectomestats-222"><a href="#connectomestats-222"><span class="linenos">222</span></a><span class="sd">            entries in the contrast matrix.</span>
+</span><span id="connectomestats-223"><a href="#connectomestats-223"><span class="linenos">223</span></a><span class="sd">        column: add a column to the design matrix corresponding to subject\</span>
+</span><span id="connectomestats-224"><a href="#connectomestats-224"><span class="linenos">224</span></a><span class="sd">            edge-wise values (note that the contrast matrix must include an\</span>
+</span><span id="connectomestats-225"><a href="#connectomestats-225"><span class="linenos">225</span></a><span class="sd">            additional column for each use of this option); the text file provided\</span>
+</span><span id="connectomestats-226"><a href="#connectomestats-226"><span class="linenos">226</span></a><span class="sd">            via this option should contain a file name for each subject.</span>
+</span><span id="connectomestats-227"><a href="#connectomestats-227"><span class="linenos">227</span></a><span class="sd">        threshold: the t-statistic value to use in threshold-based clustering\</span>
+</span><span id="connectomestats-228"><a href="#connectomestats-228"><span class="linenos">228</span></a><span class="sd">            algorithms.</span>
+</span><span id="connectomestats-229"><a href="#connectomestats-229"><span class="linenos">229</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="connectomestats-230"><a href="#connectomestats-230"><span class="linenos">230</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="connectomestats-231"><a href="#connectomestats-231"><span class="linenos">231</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="connectomestats-232"><a href="#connectomestats-232"><span class="linenos">232</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="connectomestats-233"><a href="#connectomestats-233"><span class="linenos">233</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="connectomestats-234"><a href="#connectomestats-234"><span class="linenos">234</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="connectomestats-235"><a href="#connectomestats-235"><span class="linenos">235</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="connectomestats-236"><a href="#connectomestats-236"><span class="linenos">236</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="connectomestats-237"><a href="#connectomestats-237"><span class="linenos">237</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="connectomestats-238"><a href="#connectomestats-238"><span class="linenos">238</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="connectomestats-239"><a href="#connectomestats-239"><span class="linenos">239</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="connectomestats-240"><a href="#connectomestats-240"><span class="linenos">240</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="connectomestats-241"><a href="#connectomestats-241"><span class="linenos">241</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="connectomestats-242"><a href="#connectomestats-242"><span class="linenos">242</span></a><span class="sd">    Returns:</span>
+</span><span id="connectomestats-243"><a href="#connectomestats-243"><span class="linenos">243</span></a><span class="sd">        NamedTuple of outputs (described in `ConnectomestatsOutputs`).</span>
+</span><span id="connectomestats-244"><a href="#connectomestats-244"><span class="linenos">244</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="connectomestats-245"><a href="#connectomestats-245"><span class="linenos">245</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="connectomestats-246"><a href="#connectomestats-246"><span class="linenos">246</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONNECTOMESTATS_METADATA</span><span class="p">)</span>
+</span><span id="connectomestats-247"><a href="#connectomestats-247"><span class="linenos">247</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="connectomestats-248"><a href="#connectomestats-248"><span class="linenos">248</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;connectomestats&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-249"><a href="#connectomestats-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">notest</span><span class="p">:</span>
+</span><span id="connectomestats-250"><a href="#connectomestats-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-notest&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-251"><a href="#connectomestats-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-252"><a href="#connectomestats-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-253"><a href="#connectomestats-253"><span class="linenos">253</span></a>            <span class="s2">&quot;-errors&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-254"><a href="#connectomestats-254"><span class="linenos">254</span></a>            <span class="n">errors</span>
+</span><span id="connectomestats-255"><a href="#connectomestats-255"><span class="linenos">255</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-256"><a href="#connectomestats-256"><span class="linenos">256</span></a>    <span class="k">if</span> <span class="n">exchange_within</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-257"><a href="#connectomestats-257"><span class="linenos">257</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-258"><a href="#connectomestats-258"><span class="linenos">258</span></a>            <span class="s2">&quot;-exchange_within&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-259"><a href="#connectomestats-259"><span class="linenos">259</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_within</span><span class="p">)</span>
+</span><span id="connectomestats-260"><a href="#connectomestats-260"><span class="linenos">260</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-261"><a href="#connectomestats-261"><span class="linenos">261</span></a>    <span class="k">if</span> <span class="n">exchange_whole</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-262"><a href="#connectomestats-262"><span class="linenos">262</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-263"><a href="#connectomestats-263"><span class="linenos">263</span></a>            <span class="s2">&quot;-exchange_whole&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-264"><a href="#connectomestats-264"><span class="linenos">264</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_whole</span><span class="p">)</span>
+</span><span id="connectomestats-265"><a href="#connectomestats-265"><span class="linenos">265</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-266"><a href="#connectomestats-266"><span class="linenos">266</span></a>    <span class="k">if</span> <span class="n">strong</span><span class="p">:</span>
+</span><span id="connectomestats-267"><a href="#connectomestats-267"><span class="linenos">267</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-strong&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-268"><a href="#connectomestats-268"><span class="linenos">268</span></a>    <span class="k">if</span> <span class="n">nshuffles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-269"><a href="#connectomestats-269"><span class="linenos">269</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-270"><a href="#connectomestats-270"><span class="linenos">270</span></a>            <span class="s2">&quot;-nshuffles&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-271"><a href="#connectomestats-271"><span class="linenos">271</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles</span><span class="p">)</span>
+</span><span id="connectomestats-272"><a href="#connectomestats-272"><span class="linenos">272</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-273"><a href="#connectomestats-273"><span class="linenos">273</span></a>    <span class="k">if</span> <span class="n">permutations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-274"><a href="#connectomestats-274"><span class="linenos">274</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-275"><a href="#connectomestats-275"><span class="linenos">275</span></a>            <span class="s2">&quot;-permutations&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-276"><a href="#connectomestats-276"><span class="linenos">276</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations</span><span class="p">)</span>
+</span><span id="connectomestats-277"><a href="#connectomestats-277"><span class="linenos">277</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-278"><a href="#connectomestats-278"><span class="linenos">278</span></a>    <span class="k">if</span> <span class="n">nonstationarity</span><span class="p">:</span>
+</span><span id="connectomestats-279"><a href="#connectomestats-279"><span class="linenos">279</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonstationarity&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-280"><a href="#connectomestats-280"><span class="linenos">280</span></a>    <span class="k">if</span> <span class="n">skew_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-281"><a href="#connectomestats-281"><span class="linenos">281</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-282"><a href="#connectomestats-282"><span class="linenos">282</span></a>            <span class="s2">&quot;-skew_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-283"><a href="#connectomestats-283"><span class="linenos">283</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">skew_nonstationarity</span><span class="p">)</span>
+</span><span id="connectomestats-284"><a href="#connectomestats-284"><span class="linenos">284</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-285"><a href="#connectomestats-285"><span class="linenos">285</span></a>    <span class="k">if</span> <span class="n">nshuffles_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-286"><a href="#connectomestats-286"><span class="linenos">286</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-287"><a href="#connectomestats-287"><span class="linenos">287</span></a>            <span class="s2">&quot;-nshuffles_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-288"><a href="#connectomestats-288"><span class="linenos">288</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles_nonstationarity</span><span class="p">)</span>
+</span><span id="connectomestats-289"><a href="#connectomestats-289"><span class="linenos">289</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-290"><a href="#connectomestats-290"><span class="linenos">290</span></a>    <span class="k">if</span> <span class="n">permutations_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-291"><a href="#connectomestats-291"><span class="linenos">291</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-292"><a href="#connectomestats-292"><span class="linenos">292</span></a>            <span class="s2">&quot;-permutations_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-293"><a href="#connectomestats-293"><span class="linenos">293</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations_nonstationarity</span><span class="p">)</span>
+</span><span id="connectomestats-294"><a href="#connectomestats-294"><span class="linenos">294</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-295"><a href="#connectomestats-295"><span class="linenos">295</span></a>    <span class="k">if</span> <span class="n">tfce_dh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-296"><a href="#connectomestats-296"><span class="linenos">296</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-297"><a href="#connectomestats-297"><span class="linenos">297</span></a>            <span class="s2">&quot;-tfce_dh&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-298"><a href="#connectomestats-298"><span class="linenos">298</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_dh</span><span class="p">)</span>
+</span><span id="connectomestats-299"><a href="#connectomestats-299"><span class="linenos">299</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-300"><a href="#connectomestats-300"><span class="linenos">300</span></a>    <span class="k">if</span> <span class="n">tfce_e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-301"><a href="#connectomestats-301"><span class="linenos">301</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-302"><a href="#connectomestats-302"><span class="linenos">302</span></a>            <span class="s2">&quot;-tfce_e&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-303"><a href="#connectomestats-303"><span class="linenos">303</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_e</span><span class="p">)</span>
+</span><span id="connectomestats-304"><a href="#connectomestats-304"><span class="linenos">304</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-305"><a href="#connectomestats-305"><span class="linenos">305</span></a>    <span class="k">if</span> <span class="n">tfce_h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-306"><a href="#connectomestats-306"><span class="linenos">306</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-307"><a href="#connectomestats-307"><span class="linenos">307</span></a>            <span class="s2">&quot;-tfce_h&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-308"><a href="#connectomestats-308"><span class="linenos">308</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tfce_h</span><span class="p">)</span>
+</span><span id="connectomestats-309"><a href="#connectomestats-309"><span class="linenos">309</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-310"><a href="#connectomestats-310"><span class="linenos">310</span></a>    <span class="k">if</span> <span class="n">variance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-311"><a href="#connectomestats-311"><span class="linenos">311</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-312"><a href="#connectomestats-312"><span class="linenos">312</span></a>            <span class="s2">&quot;-variance&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-313"><a href="#connectomestats-313"><span class="linenos">313</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
+</span><span id="connectomestats-314"><a href="#connectomestats-314"><span class="linenos">314</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-315"><a href="#connectomestats-315"><span class="linenos">315</span></a>    <span class="k">if</span> <span class="n">ftests</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-316"><a href="#connectomestats-316"><span class="linenos">316</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-317"><a href="#connectomestats-317"><span class="linenos">317</span></a>            <span class="s2">&quot;-ftests&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-318"><a href="#connectomestats-318"><span class="linenos">318</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ftests</span><span class="p">)</span>
+</span><span id="connectomestats-319"><a href="#connectomestats-319"><span class="linenos">319</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-320"><a href="#connectomestats-320"><span class="linenos">320</span></a>    <span class="k">if</span> <span class="n">fonly</span><span class="p">:</span>
+</span><span id="connectomestats-321"><a href="#connectomestats-321"><span class="linenos">321</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fonly&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-322"><a href="#connectomestats-322"><span class="linenos">322</span></a>    <span class="k">if</span> <span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-323"><a href="#connectomestats-323"><span class="linenos">323</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="connectomestats-324"><a href="#connectomestats-324"><span class="linenos">324</span></a>    <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-325"><a href="#connectomestats-325"><span class="linenos">325</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-326"><a href="#connectomestats-326"><span class="linenos">326</span></a>            <span class="s2">&quot;-threshold&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-327"><a href="#connectomestats-327"><span class="linenos">327</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
+</span><span id="connectomestats-328"><a href="#connectomestats-328"><span class="linenos">328</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-329"><a href="#connectomestats-329"><span class="linenos">329</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="connectomestats-330"><a href="#connectomestats-330"><span class="linenos">330</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-331"><a href="#connectomestats-331"><span class="linenos">331</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="connectomestats-332"><a href="#connectomestats-332"><span class="linenos">332</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-333"><a href="#connectomestats-333"><span class="linenos">333</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="connectomestats-334"><a href="#connectomestats-334"><span class="linenos">334</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-335"><a href="#connectomestats-335"><span class="linenos">335</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="connectomestats-336"><a href="#connectomestats-336"><span class="linenos">336</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-337"><a href="#connectomestats-337"><span class="linenos">337</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-338"><a href="#connectomestats-338"><span class="linenos">338</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="connectomestats-339"><a href="#connectomestats-339"><span class="linenos">339</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="connectomestats-340"><a href="#connectomestats-340"><span class="linenos">340</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="connectomestats-341"><a href="#connectomestats-341"><span class="linenos">341</span></a>        <span class="p">])</span>
+</span><span id="connectomestats-342"><a href="#connectomestats-342"><span class="linenos">342</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="connectomestats-343"><a href="#connectomestats-343"><span class="linenos">343</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="connectomestats-344"><a href="#connectomestats-344"><span class="linenos">344</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="connectomestats-345"><a href="#connectomestats-345"><span class="linenos">345</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-346"><a href="#connectomestats-346"><span class="linenos">346</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="connectomestats-347"><a href="#connectomestats-347"><span class="linenos">347</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="connectomestats-348"><a href="#connectomestats-348"><span class="linenos">348</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
+</span><span id="connectomestats-349"><a href="#connectomestats-349"><span class="linenos">349</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>
+</span><span id="connectomestats-350"><a href="#connectomestats-350"><span class="linenos">350</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">design</span><span class="p">))</span>
+</span><span id="connectomestats-351"><a href="#connectomestats-351"><span class="linenos">351</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">contrast</span><span class="p">))</span>
+</span><span id="connectomestats-352"><a href="#connectomestats-352"><span class="linenos">352</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="connectomestats-353"><a href="#connectomestats-353"><span class="linenos">353</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConnectomestatsOutputs</span><span class="p">(</span>
+</span><span id="connectomestats-354"><a href="#connectomestats-354"><span class="linenos">354</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="connectomestats-355"><a href="#connectomestats-355"><span class="linenos">355</span></a>    <span class="p">)</span>
+</span><span id="connectomestats-356"><a href="#connectomestats-356"><span class="linenos">356</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="connectomestats-357"><a href="#connectomestats-357"><span class="linenos">357</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1130,10 +1128,9 @@ nonstationarity in cluster-based and TFCE inference.
 Neuroimage, 2011, 54(3), 2006-19.</p></li>
 </ul>
 
-<p>Author: Robert E. Smith (robert.smith@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/connectomestats.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/connectomestats.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

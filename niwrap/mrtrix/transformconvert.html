@@ -99,7 +99,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TRANSFORMCONVERT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3a4a3ef4828a481fc9cdaa05890cd0cad5c5f34a.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;75054a4be3e9dc5460e5441d97e2350d859886dd.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;transformconvert&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -170,72 +170,71 @@
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    </span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    .</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    </span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    Author: Max Pietsch (maximilian.pietsch@kcl.ac.uk)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    </span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    URL:</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/transformconvert.html</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    Args:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        input_: the input(s) for the specified operation.</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        operation: the operation to perform, one of:\</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">            flirt_import, itk_import.</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        output: the output transformation matrix.</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    Returns:</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        NamedTuple of outputs (described in `TransformconvertOutputs`).</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TRANSFORMCONVERT_METADATA</span><span class="p">)</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;transformconvert&quot;</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">operation</span><span class="p">)</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TransformconvertOutputs</span><span class="p">(</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    </span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    Args:</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        input_: the input(s) for the specified operation.</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        operation: the operation to perform, one of:\</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">            flirt_import, itk_import.</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        output: the output transformation matrix.</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    Returns:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        NamedTuple of outputs (described in `TransformconvertOutputs`).</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TRANSFORMCONVERT_METADATA</span><span class="p">)</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;transformconvert&quot;</span><span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="p">])</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">operation</span><span class="p">)</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TransformconvertOutputs</span><span class="p">(</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>
 </span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="s2">&quot;TRANSFORMCONVERT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="s2">&quot;TransformconvertConfig&quot;</span><span class="p">,</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="s2">&quot;TransformconvertOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="s2">&quot;transformconvert&quot;</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="p">]</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="s2">&quot;TRANSFORMCONVERT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="s2">&quot;TransformconvertConfig&quot;</span><span class="p">,</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="s2">&quot;TransformconvertOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="s2">&quot;transformconvert&quot;</span><span class="p">,</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -244,7 +243,7 @@
                     <div class="attr variable">
             <span class="name">TRANSFORMCONVERT_METADATA</span>        =
 <input id="TRANSFORMCONVERT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TRANSFORMCONVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3a4a3ef4828a481fc9cdaa05890cd0cad5c5f34a.boutiques&#39;, name=&#39;transformconvert&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TRANSFORMCONVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;75054a4be3e9dc5460e5441d97e2350d859886dd.boutiques&#39;, name=&#39;transformconvert&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -489,64 +488,63 @@
 </span><span id="transformconvert-79"><a href="#transformconvert-79"><span class="linenos"> 79</span></a><span class="sd">    </span>
 </span><span id="transformconvert-80"><a href="#transformconvert-80"><span class="linenos"> 80</span></a><span class="sd">    .</span>
 </span><span id="transformconvert-81"><a href="#transformconvert-81"><span class="linenos"> 81</span></a><span class="sd">    </span>
-</span><span id="transformconvert-82"><a href="#transformconvert-82"><span class="linenos"> 82</span></a><span class="sd">    Author: Max Pietsch (maximilian.pietsch@kcl.ac.uk)</span>
+</span><span id="transformconvert-82"><a href="#transformconvert-82"><span class="linenos"> 82</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="transformconvert-83"><a href="#transformconvert-83"><span class="linenos"> 83</span></a><span class="sd">    </span>
-</span><span id="transformconvert-84"><a href="#transformconvert-84"><span class="linenos"> 84</span></a><span class="sd">    URL:</span>
-</span><span id="transformconvert-85"><a href="#transformconvert-85"><span class="linenos"> 85</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/transformconvert.html</span>
-</span><span id="transformconvert-86"><a href="#transformconvert-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
-</span><span id="transformconvert-87"><a href="#transformconvert-87"><span class="linenos"> 87</span></a><span class="sd">    Args:</span>
-</span><span id="transformconvert-88"><a href="#transformconvert-88"><span class="linenos"> 88</span></a><span class="sd">        input_: the input(s) for the specified operation.</span>
-</span><span id="transformconvert-89"><a href="#transformconvert-89"><span class="linenos"> 89</span></a><span class="sd">        operation: the operation to perform, one of:\</span>
-</span><span id="transformconvert-90"><a href="#transformconvert-90"><span class="linenos"> 90</span></a><span class="sd">            flirt_import, itk_import.</span>
-</span><span id="transformconvert-91"><a href="#transformconvert-91"><span class="linenos"> 91</span></a><span class="sd">        output: the output transformation matrix.</span>
-</span><span id="transformconvert-92"><a href="#transformconvert-92"><span class="linenos"> 92</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="transformconvert-93"><a href="#transformconvert-93"><span class="linenos"> 93</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="transformconvert-94"><a href="#transformconvert-94"><span class="linenos"> 94</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="transformconvert-95"><a href="#transformconvert-95"><span class="linenos"> 95</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="transformconvert-96"><a href="#transformconvert-96"><span class="linenos"> 96</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="transformconvert-97"><a href="#transformconvert-97"><span class="linenos"> 97</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="transformconvert-98"><a href="#transformconvert-98"><span class="linenos"> 98</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="transformconvert-99"><a href="#transformconvert-99"><span class="linenos"> 99</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="transformconvert-100"><a href="#transformconvert-100"><span class="linenos">100</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="transformconvert-101"><a href="#transformconvert-101"><span class="linenos">101</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="transformconvert-102"><a href="#transformconvert-102"><span class="linenos">102</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="transformconvert-103"><a href="#transformconvert-103"><span class="linenos">103</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="transformconvert-104"><a href="#transformconvert-104"><span class="linenos">104</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="transformconvert-105"><a href="#transformconvert-105"><span class="linenos">105</span></a><span class="sd">    Returns:</span>
-</span><span id="transformconvert-106"><a href="#transformconvert-106"><span class="linenos">106</span></a><span class="sd">        NamedTuple of outputs (described in `TransformconvertOutputs`).</span>
-</span><span id="transformconvert-107"><a href="#transformconvert-107"><span class="linenos">107</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="transformconvert-108"><a href="#transformconvert-108"><span class="linenos">108</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="transformconvert-109"><a href="#transformconvert-109"><span class="linenos">109</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TRANSFORMCONVERT_METADATA</span><span class="p">)</span>
-</span><span id="transformconvert-110"><a href="#transformconvert-110"><span class="linenos">110</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="transformconvert-111"><a href="#transformconvert-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;transformconvert&quot;</span><span class="p">)</span>
-</span><span id="transformconvert-112"><a href="#transformconvert-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="transformconvert-113"><a href="#transformconvert-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="transformconvert-114"><a href="#transformconvert-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="transformconvert-115"><a href="#transformconvert-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="transformconvert-116"><a href="#transformconvert-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="transformconvert-117"><a href="#transformconvert-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="transformconvert-118"><a href="#transformconvert-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="transformconvert-119"><a href="#transformconvert-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="transformconvert-120"><a href="#transformconvert-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="transformconvert-121"><a href="#transformconvert-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="transformconvert-122"><a href="#transformconvert-122"><span class="linenos">122</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="transformconvert-123"><a href="#transformconvert-123"><span class="linenos">123</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="transformconvert-124"><a href="#transformconvert-124"><span class="linenos">124</span></a>        <span class="p">])</span>
-</span><span id="transformconvert-125"><a href="#transformconvert-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="transformconvert-126"><a href="#transformconvert-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="transformconvert-127"><a href="#transformconvert-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="transformconvert-128"><a href="#transformconvert-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="transformconvert-129"><a href="#transformconvert-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="transformconvert-130"><a href="#transformconvert-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="transformconvert-131"><a href="#transformconvert-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
-</span><span id="transformconvert-132"><a href="#transformconvert-132"><span class="linenos">132</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">operation</span><span class="p">)</span>
-</span><span id="transformconvert-133"><a href="#transformconvert-133"><span class="linenos">133</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="transformconvert-134"><a href="#transformconvert-134"><span class="linenos">134</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TransformconvertOutputs</span><span class="p">(</span>
-</span><span id="transformconvert-135"><a href="#transformconvert-135"><span class="linenos">135</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="transformconvert-136"><a href="#transformconvert-136"><span class="linenos">136</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="transformconvert-137"><a href="#transformconvert-137"><span class="linenos">137</span></a>    <span class="p">)</span>
-</span><span id="transformconvert-138"><a href="#transformconvert-138"><span class="linenos">138</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="transformconvert-139"><a href="#transformconvert-139"><span class="linenos">139</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="transformconvert-84"><a href="#transformconvert-84"><span class="linenos"> 84</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="transformconvert-85"><a href="#transformconvert-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
+</span><span id="transformconvert-86"><a href="#transformconvert-86"><span class="linenos"> 86</span></a><span class="sd">    Args:</span>
+</span><span id="transformconvert-87"><a href="#transformconvert-87"><span class="linenos"> 87</span></a><span class="sd">        input_: the input(s) for the specified operation.</span>
+</span><span id="transformconvert-88"><a href="#transformconvert-88"><span class="linenos"> 88</span></a><span class="sd">        operation: the operation to perform, one of:\</span>
+</span><span id="transformconvert-89"><a href="#transformconvert-89"><span class="linenos"> 89</span></a><span class="sd">            flirt_import, itk_import.</span>
+</span><span id="transformconvert-90"><a href="#transformconvert-90"><span class="linenos"> 90</span></a><span class="sd">        output: the output transformation matrix.</span>
+</span><span id="transformconvert-91"><a href="#transformconvert-91"><span class="linenos"> 91</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="transformconvert-92"><a href="#transformconvert-92"><span class="linenos"> 92</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="transformconvert-93"><a href="#transformconvert-93"><span class="linenos"> 93</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="transformconvert-94"><a href="#transformconvert-94"><span class="linenos"> 94</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="transformconvert-95"><a href="#transformconvert-95"><span class="linenos"> 95</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="transformconvert-96"><a href="#transformconvert-96"><span class="linenos"> 96</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="transformconvert-97"><a href="#transformconvert-97"><span class="linenos"> 97</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="transformconvert-98"><a href="#transformconvert-98"><span class="linenos"> 98</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="transformconvert-99"><a href="#transformconvert-99"><span class="linenos"> 99</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="transformconvert-100"><a href="#transformconvert-100"><span class="linenos">100</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="transformconvert-101"><a href="#transformconvert-101"><span class="linenos">101</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="transformconvert-102"><a href="#transformconvert-102"><span class="linenos">102</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="transformconvert-103"><a href="#transformconvert-103"><span class="linenos">103</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="transformconvert-104"><a href="#transformconvert-104"><span class="linenos">104</span></a><span class="sd">    Returns:</span>
+</span><span id="transformconvert-105"><a href="#transformconvert-105"><span class="linenos">105</span></a><span class="sd">        NamedTuple of outputs (described in `TransformconvertOutputs`).</span>
+</span><span id="transformconvert-106"><a href="#transformconvert-106"><span class="linenos">106</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="transformconvert-107"><a href="#transformconvert-107"><span class="linenos">107</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="transformconvert-108"><a href="#transformconvert-108"><span class="linenos">108</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TRANSFORMCONVERT_METADATA</span><span class="p">)</span>
+</span><span id="transformconvert-109"><a href="#transformconvert-109"><span class="linenos">109</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="transformconvert-110"><a href="#transformconvert-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;transformconvert&quot;</span><span class="p">)</span>
+</span><span id="transformconvert-111"><a href="#transformconvert-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="transformconvert-112"><a href="#transformconvert-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="transformconvert-113"><a href="#transformconvert-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="transformconvert-114"><a href="#transformconvert-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="transformconvert-115"><a href="#transformconvert-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="transformconvert-116"><a href="#transformconvert-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="transformconvert-117"><a href="#transformconvert-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="transformconvert-118"><a href="#transformconvert-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="transformconvert-119"><a href="#transformconvert-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="transformconvert-120"><a href="#transformconvert-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="transformconvert-121"><a href="#transformconvert-121"><span class="linenos">121</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="transformconvert-122"><a href="#transformconvert-122"><span class="linenos">122</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="transformconvert-123"><a href="#transformconvert-123"><span class="linenos">123</span></a>        <span class="p">])</span>
+</span><span id="transformconvert-124"><a href="#transformconvert-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="transformconvert-125"><a href="#transformconvert-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="transformconvert-126"><a href="#transformconvert-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="transformconvert-127"><a href="#transformconvert-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="transformconvert-128"><a href="#transformconvert-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="transformconvert-129"><a href="#transformconvert-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="transformconvert-130"><a href="#transformconvert-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+</span><span id="transformconvert-131"><a href="#transformconvert-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">operation</span><span class="p">)</span>
+</span><span id="transformconvert-132"><a href="#transformconvert-132"><span class="linenos">132</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="transformconvert-133"><a href="#transformconvert-133"><span class="linenos">133</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TransformconvertOutputs</span><span class="p">(</span>
+</span><span id="transformconvert-134"><a href="#transformconvert-134"><span class="linenos">134</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="transformconvert-135"><a href="#transformconvert-135"><span class="linenos">135</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="transformconvert-136"><a href="#transformconvert-136"><span class="linenos">136</span></a>    <span class="p">)</span>
+</span><span id="transformconvert-137"><a href="#transformconvert-137"><span class="linenos">137</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="transformconvert-138"><a href="#transformconvert-138"><span class="linenos">138</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -560,10 +558,9 @@ provided below.</p>
 
 <p>.</p>
 
-<p>Author: Max Pietsch (maximilian.pietsch@kcl.ac.uk)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/transformconvert.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/transformconvert.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

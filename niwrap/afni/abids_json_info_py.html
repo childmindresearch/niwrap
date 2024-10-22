@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">ABIDS_JSON_INFO_PY_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;37a03272e1ec07271b8984d53cd795de38925181.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;29b15b0c3b3b92b7936e8e79bd8f79411f0e65a4.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;abids_json_info.py&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -107,62 +107,61 @@
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    A tool to extract information from BIDS formatted json files.</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    URL:</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_json_info.py.html</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    </span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        json_files: Specify .json file(s).</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        tr_flag: Print the TR from the json file in seconds, from the\</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">            &#39;RepetitionTime&#39; field.</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        te_flag: Print out the &#39;EchoTime&#39; field in milliseconds (the json file\</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">            stores it in seconds).</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        te_sec_flag: Print the &#39;EchoTime&#39; field in seconds.</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        match_nii_flag: Check if there is a .nii or .nii.gz file that matches\</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">            the .json file (1 if the dataset is loadable).</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        field_list: Print any field or list of fields from the json file.</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        list_fields_flag: Print a list of the available fields from the .json\</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">            file. This must be the only argument specified.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        help_flag: Show this help message and exit.</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">    Returns:</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        NamedTuple of outputs (described in `AbidsJsonInfoPyOutputs`).</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ABIDS_JSON_INFO_PY_METADATA</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;abids_json_info.py&quot;</span><span class="p">)</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">json_files</span><span class="p">])</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">tr_flag</span><span class="p">:</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TR&quot;</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">te_flag</span><span class="p">:</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TE&quot;</span><span class="p">)</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="k">if</span> <span class="n">te_sec_flag</span><span class="p">:</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TE_sec&quot;</span><span class="p">)</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">match_nii_flag</span><span class="p">:</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-match_nii&quot;</span><span class="p">)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">field_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>            <span class="s2">&quot;-field&quot;</span><span class="p">,</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>            <span class="o">*</span><span class="n">field_list</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="p">])</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">list_fields_flag</span><span class="p">:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-list_fields&quot;</span><span class="p">)</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">AbidsJsonInfoPyOutputs</span><span class="p">(</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="p">)</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        json_files: Specify .json file(s).</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        tr_flag: Print the TR from the json file in seconds, from the\</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">            &#39;RepetitionTime&#39; field.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        te_flag: Print out the &#39;EchoTime&#39; field in milliseconds (the json file\</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">            stores it in seconds).</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        te_sec_flag: Print the &#39;EchoTime&#39; field in seconds.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        match_nii_flag: Check if there is a .nii or .nii.gz file that matches\</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">            the .json file (1 if the dataset is loadable).</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        field_list: Print any field or list of fields from the json file.</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        list_fields_flag: Print a list of the available fields from the .json\</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">            file. This must be the only argument specified.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">        help_flag: Show this help message and exit.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">    Returns:</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">        NamedTuple of outputs (described in `AbidsJsonInfoPyOutputs`).</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ABIDS_JSON_INFO_PY_METADATA</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;abids_json_info.py&quot;</span><span class="p">)</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">json_files</span><span class="p">])</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">tr_flag</span><span class="p">:</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TR&quot;</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="k">if</span> <span class="n">te_flag</span><span class="p">:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TE&quot;</span><span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">te_sec_flag</span><span class="p">:</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TE_sec&quot;</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">match_nii_flag</span><span class="p">:</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-match_nii&quot;</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">field_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>            <span class="s2">&quot;-field&quot;</span><span class="p">,</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>            <span class="o">*</span><span class="n">field_list</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="p">])</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">list_fields_flag</span><span class="p">:</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-list_fields&quot;</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">AbidsJsonInfoPyOutputs</span><span class="p">(</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>
 </span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>
-</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>
-</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>    <span class="s2">&quot;ABIDS_JSON_INFO_PY_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>    <span class="s2">&quot;AbidsJsonInfoPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a>    <span class="s2">&quot;abids_json_info_py&quot;</span><span class="p">,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a><span class="p">]</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="s2">&quot;ABIDS_JSON_INFO_PY_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>    <span class="s2">&quot;AbidsJsonInfoPyOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>    <span class="s2">&quot;abids_json_info_py&quot;</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -171,7 +170,7 @@
                     <div class="attr variable">
             <span class="name">ABIDS_JSON_INFO_PY_METADATA</span>        =
 <input id="ABIDS_JSON_INFO_PY_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="ABIDS_JSON_INFO_PY_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;37a03272e1ec07271b8984d53cd795de38925181.boutiques&#39;, name=&#39;abids_json_info.py&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="ABIDS_JSON_INFO_PY_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;29b15b0c3b3b92b7936e8e79bd8f79411f0e65a4.boutiques&#39;, name=&#39;abids_json_info.py&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -257,64 +256,62 @@
 </span><span id="abids_json_info_py-37"><a href="#abids_json_info_py-37"><span class="linenos">37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="abids_json_info_py-38"><a href="#abids_json_info_py-38"><span class="linenos">38</span></a><span class="sd">    A tool to extract information from BIDS formatted json files.</span>
 </span><span id="abids_json_info_py-39"><a href="#abids_json_info_py-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="abids_json_info_py-40"><a href="#abids_json_info_py-40"><span class="linenos">40</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="abids_json_info_py-40"><a href="#abids_json_info_py-40"><span class="linenos">40</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="abids_json_info_py-41"><a href="#abids_json_info_py-41"><span class="linenos">41</span></a><span class="sd">    </span>
-</span><span id="abids_json_info_py-42"><a href="#abids_json_info_py-42"><span class="linenos">42</span></a><span class="sd">    URL:</span>
-</span><span id="abids_json_info_py-43"><a href="#abids_json_info_py-43"><span class="linenos">43</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_json_info.py.html</span>
-</span><span id="abids_json_info_py-44"><a href="#abids_json_info_py-44"><span class="linenos">44</span></a><span class="sd">    </span>
-</span><span id="abids_json_info_py-45"><a href="#abids_json_info_py-45"><span class="linenos">45</span></a><span class="sd">    Args:</span>
-</span><span id="abids_json_info_py-46"><a href="#abids_json_info_py-46"><span class="linenos">46</span></a><span class="sd">        json_files: Specify .json file(s).</span>
-</span><span id="abids_json_info_py-47"><a href="#abids_json_info_py-47"><span class="linenos">47</span></a><span class="sd">        tr_flag: Print the TR from the json file in seconds, from the\</span>
-</span><span id="abids_json_info_py-48"><a href="#abids_json_info_py-48"><span class="linenos">48</span></a><span class="sd">            &#39;RepetitionTime&#39; field.</span>
-</span><span id="abids_json_info_py-49"><a href="#abids_json_info_py-49"><span class="linenos">49</span></a><span class="sd">        te_flag: Print out the &#39;EchoTime&#39; field in milliseconds (the json file\</span>
-</span><span id="abids_json_info_py-50"><a href="#abids_json_info_py-50"><span class="linenos">50</span></a><span class="sd">            stores it in seconds).</span>
-</span><span id="abids_json_info_py-51"><a href="#abids_json_info_py-51"><span class="linenos">51</span></a><span class="sd">        te_sec_flag: Print the &#39;EchoTime&#39; field in seconds.</span>
-</span><span id="abids_json_info_py-52"><a href="#abids_json_info_py-52"><span class="linenos">52</span></a><span class="sd">        match_nii_flag: Check if there is a .nii or .nii.gz file that matches\</span>
-</span><span id="abids_json_info_py-53"><a href="#abids_json_info_py-53"><span class="linenos">53</span></a><span class="sd">            the .json file (1 if the dataset is loadable).</span>
-</span><span id="abids_json_info_py-54"><a href="#abids_json_info_py-54"><span class="linenos">54</span></a><span class="sd">        field_list: Print any field or list of fields from the json file.</span>
-</span><span id="abids_json_info_py-55"><a href="#abids_json_info_py-55"><span class="linenos">55</span></a><span class="sd">        list_fields_flag: Print a list of the available fields from the .json\</span>
-</span><span id="abids_json_info_py-56"><a href="#abids_json_info_py-56"><span class="linenos">56</span></a><span class="sd">            file. This must be the only argument specified.</span>
-</span><span id="abids_json_info_py-57"><a href="#abids_json_info_py-57"><span class="linenos">57</span></a><span class="sd">        help_flag: Show this help message and exit.</span>
-</span><span id="abids_json_info_py-58"><a href="#abids_json_info_py-58"><span class="linenos">58</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="abids_json_info_py-59"><a href="#abids_json_info_py-59"><span class="linenos">59</span></a><span class="sd">    Returns:</span>
-</span><span id="abids_json_info_py-60"><a href="#abids_json_info_py-60"><span class="linenos">60</span></a><span class="sd">        NamedTuple of outputs (described in `AbidsJsonInfoPyOutputs`).</span>
-</span><span id="abids_json_info_py-61"><a href="#abids_json_info_py-61"><span class="linenos">61</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="abids_json_info_py-62"><a href="#abids_json_info_py-62"><span class="linenos">62</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="abids_json_info_py-63"><a href="#abids_json_info_py-63"><span class="linenos">63</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ABIDS_JSON_INFO_PY_METADATA</span><span class="p">)</span>
-</span><span id="abids_json_info_py-64"><a href="#abids_json_info_py-64"><span class="linenos">64</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="abids_json_info_py-65"><a href="#abids_json_info_py-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;abids_json_info.py&quot;</span><span class="p">)</span>
-</span><span id="abids_json_info_py-66"><a href="#abids_json_info_py-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">json_files</span><span class="p">])</span>
-</span><span id="abids_json_info_py-67"><a href="#abids_json_info_py-67"><span class="linenos">67</span></a>    <span class="k">if</span> <span class="n">tr_flag</span><span class="p">:</span>
-</span><span id="abids_json_info_py-68"><a href="#abids_json_info_py-68"><span class="linenos">68</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TR&quot;</span><span class="p">)</span>
-</span><span id="abids_json_info_py-69"><a href="#abids_json_info_py-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">te_flag</span><span class="p">:</span>
-</span><span id="abids_json_info_py-70"><a href="#abids_json_info_py-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TE&quot;</span><span class="p">)</span>
-</span><span id="abids_json_info_py-71"><a href="#abids_json_info_py-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">te_sec_flag</span><span class="p">:</span>
-</span><span id="abids_json_info_py-72"><a href="#abids_json_info_py-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TE_sec&quot;</span><span class="p">)</span>
-</span><span id="abids_json_info_py-73"><a href="#abids_json_info_py-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">match_nii_flag</span><span class="p">:</span>
-</span><span id="abids_json_info_py-74"><a href="#abids_json_info_py-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-match_nii&quot;</span><span class="p">)</span>
-</span><span id="abids_json_info_py-75"><a href="#abids_json_info_py-75"><span class="linenos">75</span></a>    <span class="k">if</span> <span class="n">field_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="abids_json_info_py-76"><a href="#abids_json_info_py-76"><span class="linenos">76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="abids_json_info_py-77"><a href="#abids_json_info_py-77"><span class="linenos">77</span></a>            <span class="s2">&quot;-field&quot;</span><span class="p">,</span>
-</span><span id="abids_json_info_py-78"><a href="#abids_json_info_py-78"><span class="linenos">78</span></a>            <span class="o">*</span><span class="n">field_list</span>
-</span><span id="abids_json_info_py-79"><a href="#abids_json_info_py-79"><span class="linenos">79</span></a>        <span class="p">])</span>
-</span><span id="abids_json_info_py-80"><a href="#abids_json_info_py-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">list_fields_flag</span><span class="p">:</span>
-</span><span id="abids_json_info_py-81"><a href="#abids_json_info_py-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-list_fields&quot;</span><span class="p">)</span>
-</span><span id="abids_json_info_py-82"><a href="#abids_json_info_py-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
-</span><span id="abids_json_info_py-83"><a href="#abids_json_info_py-83"><span class="linenos">83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="abids_json_info_py-84"><a href="#abids_json_info_py-84"><span class="linenos">84</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">AbidsJsonInfoPyOutputs</span><span class="p">(</span>
-</span><span id="abids_json_info_py-85"><a href="#abids_json_info_py-85"><span class="linenos">85</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="abids_json_info_py-86"><a href="#abids_json_info_py-86"><span class="linenos">86</span></a>    <span class="p">)</span>
-</span><span id="abids_json_info_py-87"><a href="#abids_json_info_py-87"><span class="linenos">87</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="abids_json_info_py-88"><a href="#abids_json_info_py-88"><span class="linenos">88</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="abids_json_info_py-42"><a href="#abids_json_info_py-42"><span class="linenos">42</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="abids_json_info_py-43"><a href="#abids_json_info_py-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="abids_json_info_py-44"><a href="#abids_json_info_py-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
+</span><span id="abids_json_info_py-45"><a href="#abids_json_info_py-45"><span class="linenos">45</span></a><span class="sd">        json_files: Specify .json file(s).</span>
+</span><span id="abids_json_info_py-46"><a href="#abids_json_info_py-46"><span class="linenos">46</span></a><span class="sd">        tr_flag: Print the TR from the json file in seconds, from the\</span>
+</span><span id="abids_json_info_py-47"><a href="#abids_json_info_py-47"><span class="linenos">47</span></a><span class="sd">            &#39;RepetitionTime&#39; field.</span>
+</span><span id="abids_json_info_py-48"><a href="#abids_json_info_py-48"><span class="linenos">48</span></a><span class="sd">        te_flag: Print out the &#39;EchoTime&#39; field in milliseconds (the json file\</span>
+</span><span id="abids_json_info_py-49"><a href="#abids_json_info_py-49"><span class="linenos">49</span></a><span class="sd">            stores it in seconds).</span>
+</span><span id="abids_json_info_py-50"><a href="#abids_json_info_py-50"><span class="linenos">50</span></a><span class="sd">        te_sec_flag: Print the &#39;EchoTime&#39; field in seconds.</span>
+</span><span id="abids_json_info_py-51"><a href="#abids_json_info_py-51"><span class="linenos">51</span></a><span class="sd">        match_nii_flag: Check if there is a .nii or .nii.gz file that matches\</span>
+</span><span id="abids_json_info_py-52"><a href="#abids_json_info_py-52"><span class="linenos">52</span></a><span class="sd">            the .json file (1 if the dataset is loadable).</span>
+</span><span id="abids_json_info_py-53"><a href="#abids_json_info_py-53"><span class="linenos">53</span></a><span class="sd">        field_list: Print any field or list of fields from the json file.</span>
+</span><span id="abids_json_info_py-54"><a href="#abids_json_info_py-54"><span class="linenos">54</span></a><span class="sd">        list_fields_flag: Print a list of the available fields from the .json\</span>
+</span><span id="abids_json_info_py-55"><a href="#abids_json_info_py-55"><span class="linenos">55</span></a><span class="sd">            file. This must be the only argument specified.</span>
+</span><span id="abids_json_info_py-56"><a href="#abids_json_info_py-56"><span class="linenos">56</span></a><span class="sd">        help_flag: Show this help message and exit.</span>
+</span><span id="abids_json_info_py-57"><a href="#abids_json_info_py-57"><span class="linenos">57</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="abids_json_info_py-58"><a href="#abids_json_info_py-58"><span class="linenos">58</span></a><span class="sd">    Returns:</span>
+</span><span id="abids_json_info_py-59"><a href="#abids_json_info_py-59"><span class="linenos">59</span></a><span class="sd">        NamedTuple of outputs (described in `AbidsJsonInfoPyOutputs`).</span>
+</span><span id="abids_json_info_py-60"><a href="#abids_json_info_py-60"><span class="linenos">60</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="abids_json_info_py-61"><a href="#abids_json_info_py-61"><span class="linenos">61</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="abids_json_info_py-62"><a href="#abids_json_info_py-62"><span class="linenos">62</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ABIDS_JSON_INFO_PY_METADATA</span><span class="p">)</span>
+</span><span id="abids_json_info_py-63"><a href="#abids_json_info_py-63"><span class="linenos">63</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="abids_json_info_py-64"><a href="#abids_json_info_py-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;abids_json_info.py&quot;</span><span class="p">)</span>
+</span><span id="abids_json_info_py-65"><a href="#abids_json_info_py-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">json_files</span><span class="p">])</span>
+</span><span id="abids_json_info_py-66"><a href="#abids_json_info_py-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">tr_flag</span><span class="p">:</span>
+</span><span id="abids_json_info_py-67"><a href="#abids_json_info_py-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TR&quot;</span><span class="p">)</span>
+</span><span id="abids_json_info_py-68"><a href="#abids_json_info_py-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">te_flag</span><span class="p">:</span>
+</span><span id="abids_json_info_py-69"><a href="#abids_json_info_py-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TE&quot;</span><span class="p">)</span>
+</span><span id="abids_json_info_py-70"><a href="#abids_json_info_py-70"><span class="linenos">70</span></a>    <span class="k">if</span> <span class="n">te_sec_flag</span><span class="p">:</span>
+</span><span id="abids_json_info_py-71"><a href="#abids_json_info_py-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TE_sec&quot;</span><span class="p">)</span>
+</span><span id="abids_json_info_py-72"><a href="#abids_json_info_py-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">match_nii_flag</span><span class="p">:</span>
+</span><span id="abids_json_info_py-73"><a href="#abids_json_info_py-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-match_nii&quot;</span><span class="p">)</span>
+</span><span id="abids_json_info_py-74"><a href="#abids_json_info_py-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">field_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="abids_json_info_py-75"><a href="#abids_json_info_py-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="abids_json_info_py-76"><a href="#abids_json_info_py-76"><span class="linenos">76</span></a>            <span class="s2">&quot;-field&quot;</span><span class="p">,</span>
+</span><span id="abids_json_info_py-77"><a href="#abids_json_info_py-77"><span class="linenos">77</span></a>            <span class="o">*</span><span class="n">field_list</span>
+</span><span id="abids_json_info_py-78"><a href="#abids_json_info_py-78"><span class="linenos">78</span></a>        <span class="p">])</span>
+</span><span id="abids_json_info_py-79"><a href="#abids_json_info_py-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">list_fields_flag</span><span class="p">:</span>
+</span><span id="abids_json_info_py-80"><a href="#abids_json_info_py-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-list_fields&quot;</span><span class="p">)</span>
+</span><span id="abids_json_info_py-81"><a href="#abids_json_info_py-81"><span class="linenos">81</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
+</span><span id="abids_json_info_py-82"><a href="#abids_json_info_py-82"><span class="linenos">82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="abids_json_info_py-83"><a href="#abids_json_info_py-83"><span class="linenos">83</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">AbidsJsonInfoPyOutputs</span><span class="p">(</span>
+</span><span id="abids_json_info_py-84"><a href="#abids_json_info_py-84"><span class="linenos">84</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="abids_json_info_py-85"><a href="#abids_json_info_py-85"><span class="linenos">85</span></a>    <span class="p">)</span>
+</span><span id="abids_json_info_py-86"><a href="#abids_json_info_py-86"><span class="linenos">86</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="abids_json_info_py-87"><a href="#abids_json_info_py-87"><span class="linenos">87</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>A tool to extract information from BIDS formatted json files.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_json_info.py.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_json_info.py.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">COMPARE_SURFACES_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5e9572f48ee61452099e956945950a7fda3d2d6f.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1e4adc71975e9cacfb4dd4b6b68d24185052774f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CompareSurfaces&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -125,105 +125,104 @@
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    Calculates distance at each node in Surface 1 (S1) to Surface 2 (S2) along the</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    local surface normal at each node in S1. Superseded by SurfToSurf.</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    </span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    </span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    URL:</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/CompareSurfaces.html</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    </span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    Args:</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        spec_file: File containing surface specification.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        hemisphere: Specify the hemisphere being processed (left or right).</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        volume_parent_1: Volume parent BRIK for first surface.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        volume_parent_2: Volume parent BRIK for second surface.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        file_prefix: Prefix for distance and node color output files. Existing\</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">            file will not be overwritten.</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        one_node: Output results for node index only. This option is for\</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            debugging.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        node_range: Output results from node istart to node istop only. This\</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            option is for debugging.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        no_consistency_check: Skip mesh orientation consistency check. This\</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">            speeds up the start time so it is useful for debugging runs.</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        no_volreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">            transformations present in the Surface Volume.</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        no_transform: Same as -novolreg.</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        set_environment_variable: Set environment variable ENVname to be\</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">            ENVvalue. Quotes are necessary.</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        trace_: Turns on In/Out debug and Memory tracing.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        extreme_trace: Turns on extreme tracing.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        no_memory_trace: Turn off memory tracing.</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        yes_memory_trace: Turn on memory tracing (default).</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    Returns:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        NamedTuple of outputs (described in `CompareSurfacesOutputs`).</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">COMPARE_SURFACES_METADATA</span><span class="p">)</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CompareSurfaces&quot;</span><span class="p">)</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="s2">&quot;-spec&quot;</span><span class="p">,</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">spec_file</span><span class="p">)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="p">])</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="s2">&quot;-hemi&quot;</span><span class="p">,</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">hemisphere</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="p">])</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="s2">&quot;-sv1&quot;</span><span class="p">,</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_parent_1</span><span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="p">])</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="s2">&quot;-sv2&quot;</span><span class="p">,</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_parent_2</span><span class="p">)</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="p">])</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="n">file_prefix</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="p">])</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">one_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="s2">&quot;-onenode&quot;</span><span class="p">,</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">one_node</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="p">])</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">node_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-noderange&quot;</span><span class="p">,</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">node_range</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="p">])</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">no_consistency_check</span><span class="p">:</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nocons&quot;</span><span class="p">)</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">no_volreg</span><span class="p">:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-novolreg&quot;</span><span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">no_transform</span><span class="p">:</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noxform&quot;</span><span class="p">)</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">set_environment_variable</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>            <span class="s2">&quot;-setenv&quot;</span><span class="p">,</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="n">set_environment_variable</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="p">])</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">trace_</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-trace&quot;</span><span class="p">)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">extreme_trace</span><span class="p">:</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TRACE&quot;</span><span class="p">)</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">no_memory_trace</span><span class="p">:</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nomall&quot;</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">yes_memory_trace</span><span class="p">:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-yesmall&quot;</span><span class="p">)</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CompareSurfacesOutputs</span><span class="p">(</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">distance_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">file_prefix</span> <span class="o">+</span> <span class="s2">&quot;_distance.txt&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">color_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">file_prefix</span> <span class="o">+</span> <span class="s2">&quot;_color.txt&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="p">)</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    </span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    Args:</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        spec_file: File containing surface specification.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        hemisphere: Specify the hemisphere being processed (left or right).</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        volume_parent_1: Volume parent BRIK for first surface.</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        volume_parent_2: Volume parent BRIK for second surface.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        file_prefix: Prefix for distance and node color output files. Existing\</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            file will not be overwritten.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        one_node: Output results for node index only. This option is for\</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            debugging.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        node_range: Output results from node istart to node istop only. This\</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">            option is for debugging.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        no_consistency_check: Skip mesh orientation consistency check. This\</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">            speeds up the start time so it is useful for debugging runs.</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        no_volreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">            transformations present in the Surface Volume.</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        no_transform: Same as -novolreg.</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        set_environment_variable: Set environment variable ENVname to be\</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">            ENVvalue. Quotes are necessary.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        trace_: Turns on In/Out debug and Memory tracing.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        extreme_trace: Turns on extreme tracing.</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        no_memory_trace: Turn off memory tracing.</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        yes_memory_trace: Turn on memory tracing (default).</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    Returns:</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        NamedTuple of outputs (described in `CompareSurfacesOutputs`).</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">COMPARE_SURFACES_METADATA</span><span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CompareSurfaces&quot;</span><span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="s2">&quot;-spec&quot;</span><span class="p">,</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">spec_file</span><span class="p">)</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="p">])</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="s2">&quot;-hemi&quot;</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">hemisphere</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="p">])</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="s2">&quot;-sv1&quot;</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_parent_1</span><span class="p">)</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="p">])</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="s2">&quot;-sv2&quot;</span><span class="p">,</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_parent_2</span><span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="p">])</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="n">file_prefix</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="p">])</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">one_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="s2">&quot;-onenode&quot;</span><span class="p">,</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">one_node</span><span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="p">])</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">node_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="s2">&quot;-noderange&quot;</span><span class="p">,</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">node_range</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="p">])</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">no_consistency_check</span><span class="p">:</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nocons&quot;</span><span class="p">)</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">no_volreg</span><span class="p">:</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-novolreg&quot;</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">no_transform</span><span class="p">:</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noxform&quot;</span><span class="p">)</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">set_environment_variable</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>            <span class="s2">&quot;-setenv&quot;</span><span class="p">,</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>            <span class="n">set_environment_variable</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="p">])</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">trace_</span><span class="p">:</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-trace&quot;</span><span class="p">)</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">extreme_trace</span><span class="p">:</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TRACE&quot;</span><span class="p">)</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">no_memory_trace</span><span class="p">:</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nomall&quot;</span><span class="p">)</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">yes_memory_trace</span><span class="p">:</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-yesmall&quot;</span><span class="p">)</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CompareSurfacesOutputs</span><span class="p">(</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">distance_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">file_prefix</span> <span class="o">+</span> <span class="s2">&quot;_distance.txt&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">color_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">file_prefix</span> <span class="o">+</span> <span class="s2">&quot;_color.txt&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="p">)</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>
 </span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="s2">&quot;COMPARE_SURFACES_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="s2">&quot;CompareSurfacesOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="s2">&quot;compare_surfaces&quot;</span><span class="p">,</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="p">]</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="s2">&quot;COMPARE_SURFACES_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="s2">&quot;CompareSurfacesOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="s2">&quot;compare_surfaces&quot;</span><span class="p">,</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -232,7 +231,7 @@
                     <div class="attr variable">
             <span class="name">COMPARE_SURFACES_METADATA</span>        =
 <input id="COMPARE_SURFACES_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="COMPARE_SURFACES_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5e9572f48ee61452099e956945950a7fda3d2d6f.boutiques&#39;, name=&#39;CompareSurfaces&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="COMPARE_SURFACES_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1e4adc71975e9cacfb4dd4b6b68d24185052774f.boutiques&#39;, name=&#39;CompareSurfaces&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -356,108 +355,106 @@
 </span><span id="compare_surfaces-49"><a href="#compare_surfaces-49"><span class="linenos"> 49</span></a><span class="sd">    Calculates distance at each node in Surface 1 (S1) to Surface 2 (S2) along the</span>
 </span><span id="compare_surfaces-50"><a href="#compare_surfaces-50"><span class="linenos"> 50</span></a><span class="sd">    local surface normal at each node in S1. Superseded by SurfToSurf.</span>
 </span><span id="compare_surfaces-51"><a href="#compare_surfaces-51"><span class="linenos"> 51</span></a><span class="sd">    </span>
-</span><span id="compare_surfaces-52"><a href="#compare_surfaces-52"><span class="linenos"> 52</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="compare_surfaces-52"><a href="#compare_surfaces-52"><span class="linenos"> 52</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="compare_surfaces-53"><a href="#compare_surfaces-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
-</span><span id="compare_surfaces-54"><a href="#compare_surfaces-54"><span class="linenos"> 54</span></a><span class="sd">    URL:</span>
-</span><span id="compare_surfaces-55"><a href="#compare_surfaces-55"><span class="linenos"> 55</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/CompareSurfaces.html</span>
-</span><span id="compare_surfaces-56"><a href="#compare_surfaces-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
-</span><span id="compare_surfaces-57"><a href="#compare_surfaces-57"><span class="linenos"> 57</span></a><span class="sd">    Args:</span>
-</span><span id="compare_surfaces-58"><a href="#compare_surfaces-58"><span class="linenos"> 58</span></a><span class="sd">        spec_file: File containing surface specification.</span>
-</span><span id="compare_surfaces-59"><a href="#compare_surfaces-59"><span class="linenos"> 59</span></a><span class="sd">        hemisphere: Specify the hemisphere being processed (left or right).</span>
-</span><span id="compare_surfaces-60"><a href="#compare_surfaces-60"><span class="linenos"> 60</span></a><span class="sd">        volume_parent_1: Volume parent BRIK for first surface.</span>
-</span><span id="compare_surfaces-61"><a href="#compare_surfaces-61"><span class="linenos"> 61</span></a><span class="sd">        volume_parent_2: Volume parent BRIK for second surface.</span>
-</span><span id="compare_surfaces-62"><a href="#compare_surfaces-62"><span class="linenos"> 62</span></a><span class="sd">        file_prefix: Prefix for distance and node color output files. Existing\</span>
-</span><span id="compare_surfaces-63"><a href="#compare_surfaces-63"><span class="linenos"> 63</span></a><span class="sd">            file will not be overwritten.</span>
-</span><span id="compare_surfaces-64"><a href="#compare_surfaces-64"><span class="linenos"> 64</span></a><span class="sd">        one_node: Output results for node index only. This option is for\</span>
-</span><span id="compare_surfaces-65"><a href="#compare_surfaces-65"><span class="linenos"> 65</span></a><span class="sd">            debugging.</span>
-</span><span id="compare_surfaces-66"><a href="#compare_surfaces-66"><span class="linenos"> 66</span></a><span class="sd">        node_range: Output results from node istart to node istop only. This\</span>
-</span><span id="compare_surfaces-67"><a href="#compare_surfaces-67"><span class="linenos"> 67</span></a><span class="sd">            option is for debugging.</span>
-</span><span id="compare_surfaces-68"><a href="#compare_surfaces-68"><span class="linenos"> 68</span></a><span class="sd">        no_consistency_check: Skip mesh orientation consistency check. This\</span>
-</span><span id="compare_surfaces-69"><a href="#compare_surfaces-69"><span class="linenos"> 69</span></a><span class="sd">            speeds up the start time so it is useful for debugging runs.</span>
-</span><span id="compare_surfaces-70"><a href="#compare_surfaces-70"><span class="linenos"> 70</span></a><span class="sd">        no_volreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\</span>
-</span><span id="compare_surfaces-71"><a href="#compare_surfaces-71"><span class="linenos"> 71</span></a><span class="sd">            transformations present in the Surface Volume.</span>
-</span><span id="compare_surfaces-72"><a href="#compare_surfaces-72"><span class="linenos"> 72</span></a><span class="sd">        no_transform: Same as -novolreg.</span>
-</span><span id="compare_surfaces-73"><a href="#compare_surfaces-73"><span class="linenos"> 73</span></a><span class="sd">        set_environment_variable: Set environment variable ENVname to be\</span>
-</span><span id="compare_surfaces-74"><a href="#compare_surfaces-74"><span class="linenos"> 74</span></a><span class="sd">            ENVvalue. Quotes are necessary.</span>
-</span><span id="compare_surfaces-75"><a href="#compare_surfaces-75"><span class="linenos"> 75</span></a><span class="sd">        trace_: Turns on In/Out debug and Memory tracing.</span>
-</span><span id="compare_surfaces-76"><a href="#compare_surfaces-76"><span class="linenos"> 76</span></a><span class="sd">        extreme_trace: Turns on extreme tracing.</span>
-</span><span id="compare_surfaces-77"><a href="#compare_surfaces-77"><span class="linenos"> 77</span></a><span class="sd">        no_memory_trace: Turn off memory tracing.</span>
-</span><span id="compare_surfaces-78"><a href="#compare_surfaces-78"><span class="linenos"> 78</span></a><span class="sd">        yes_memory_trace: Turn on memory tracing (default).</span>
-</span><span id="compare_surfaces-79"><a href="#compare_surfaces-79"><span class="linenos"> 79</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="compare_surfaces-80"><a href="#compare_surfaces-80"><span class="linenos"> 80</span></a><span class="sd">    Returns:</span>
-</span><span id="compare_surfaces-81"><a href="#compare_surfaces-81"><span class="linenos"> 81</span></a><span class="sd">        NamedTuple of outputs (described in `CompareSurfacesOutputs`).</span>
-</span><span id="compare_surfaces-82"><a href="#compare_surfaces-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="compare_surfaces-83"><a href="#compare_surfaces-83"><span class="linenos"> 83</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="compare_surfaces-84"><a href="#compare_surfaces-84"><span class="linenos"> 84</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">COMPARE_SURFACES_METADATA</span><span class="p">)</span>
-</span><span id="compare_surfaces-85"><a href="#compare_surfaces-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="compare_surfaces-86"><a href="#compare_surfaces-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CompareSurfaces&quot;</span><span class="p">)</span>
-</span><span id="compare_surfaces-87"><a href="#compare_surfaces-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="compare_surfaces-88"><a href="#compare_surfaces-88"><span class="linenos"> 88</span></a>        <span class="s2">&quot;-spec&quot;</span><span class="p">,</span>
-</span><span id="compare_surfaces-89"><a href="#compare_surfaces-89"><span class="linenos"> 89</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">spec_file</span><span class="p">)</span>
-</span><span id="compare_surfaces-90"><a href="#compare_surfaces-90"><span class="linenos"> 90</span></a>    <span class="p">])</span>
-</span><span id="compare_surfaces-91"><a href="#compare_surfaces-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="compare_surfaces-92"><a href="#compare_surfaces-92"><span class="linenos"> 92</span></a>        <span class="s2">&quot;-hemi&quot;</span><span class="p">,</span>
-</span><span id="compare_surfaces-93"><a href="#compare_surfaces-93"><span class="linenos"> 93</span></a>        <span class="n">hemisphere</span>
-</span><span id="compare_surfaces-94"><a href="#compare_surfaces-94"><span class="linenos"> 94</span></a>    <span class="p">])</span>
-</span><span id="compare_surfaces-95"><a href="#compare_surfaces-95"><span class="linenos"> 95</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="compare_surfaces-96"><a href="#compare_surfaces-96"><span class="linenos"> 96</span></a>        <span class="s2">&quot;-sv1&quot;</span><span class="p">,</span>
-</span><span id="compare_surfaces-97"><a href="#compare_surfaces-97"><span class="linenos"> 97</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_parent_1</span><span class="p">)</span>
-</span><span id="compare_surfaces-98"><a href="#compare_surfaces-98"><span class="linenos"> 98</span></a>    <span class="p">])</span>
-</span><span id="compare_surfaces-99"><a href="#compare_surfaces-99"><span class="linenos"> 99</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="compare_surfaces-100"><a href="#compare_surfaces-100"><span class="linenos">100</span></a>        <span class="s2">&quot;-sv2&quot;</span><span class="p">,</span>
-</span><span id="compare_surfaces-101"><a href="#compare_surfaces-101"><span class="linenos">101</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_parent_2</span><span class="p">)</span>
-</span><span id="compare_surfaces-102"><a href="#compare_surfaces-102"><span class="linenos">102</span></a>    <span class="p">])</span>
-</span><span id="compare_surfaces-103"><a href="#compare_surfaces-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="compare_surfaces-104"><a href="#compare_surfaces-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="compare_surfaces-105"><a href="#compare_surfaces-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="compare_surfaces-106"><a href="#compare_surfaces-106"><span class="linenos">106</span></a>            <span class="n">file_prefix</span>
-</span><span id="compare_surfaces-107"><a href="#compare_surfaces-107"><span class="linenos">107</span></a>        <span class="p">])</span>
-</span><span id="compare_surfaces-108"><a href="#compare_surfaces-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">one_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="compare_surfaces-109"><a href="#compare_surfaces-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="compare_surfaces-110"><a href="#compare_surfaces-110"><span class="linenos">110</span></a>            <span class="s2">&quot;-onenode&quot;</span><span class="p">,</span>
-</span><span id="compare_surfaces-111"><a href="#compare_surfaces-111"><span class="linenos">111</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">one_node</span><span class="p">)</span>
-</span><span id="compare_surfaces-112"><a href="#compare_surfaces-112"><span class="linenos">112</span></a>        <span class="p">])</span>
-</span><span id="compare_surfaces-113"><a href="#compare_surfaces-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">node_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="compare_surfaces-114"><a href="#compare_surfaces-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="compare_surfaces-115"><a href="#compare_surfaces-115"><span class="linenos">115</span></a>            <span class="s2">&quot;-noderange&quot;</span><span class="p">,</span>
-</span><span id="compare_surfaces-116"><a href="#compare_surfaces-116"><span class="linenos">116</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">node_range</span><span class="p">)</span>
-</span><span id="compare_surfaces-117"><a href="#compare_surfaces-117"><span class="linenos">117</span></a>        <span class="p">])</span>
-</span><span id="compare_surfaces-118"><a href="#compare_surfaces-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">no_consistency_check</span><span class="p">:</span>
-</span><span id="compare_surfaces-119"><a href="#compare_surfaces-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nocons&quot;</span><span class="p">)</span>
-</span><span id="compare_surfaces-120"><a href="#compare_surfaces-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">no_volreg</span><span class="p">:</span>
-</span><span id="compare_surfaces-121"><a href="#compare_surfaces-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-novolreg&quot;</span><span class="p">)</span>
-</span><span id="compare_surfaces-122"><a href="#compare_surfaces-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">no_transform</span><span class="p">:</span>
-</span><span id="compare_surfaces-123"><a href="#compare_surfaces-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noxform&quot;</span><span class="p">)</span>
-</span><span id="compare_surfaces-124"><a href="#compare_surfaces-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">set_environment_variable</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="compare_surfaces-125"><a href="#compare_surfaces-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="compare_surfaces-126"><a href="#compare_surfaces-126"><span class="linenos">126</span></a>            <span class="s2">&quot;-setenv&quot;</span><span class="p">,</span>
-</span><span id="compare_surfaces-127"><a href="#compare_surfaces-127"><span class="linenos">127</span></a>            <span class="n">set_environment_variable</span>
-</span><span id="compare_surfaces-128"><a href="#compare_surfaces-128"><span class="linenos">128</span></a>        <span class="p">])</span>
-</span><span id="compare_surfaces-129"><a href="#compare_surfaces-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">trace_</span><span class="p">:</span>
-</span><span id="compare_surfaces-130"><a href="#compare_surfaces-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-trace&quot;</span><span class="p">)</span>
-</span><span id="compare_surfaces-131"><a href="#compare_surfaces-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">extreme_trace</span><span class="p">:</span>
-</span><span id="compare_surfaces-132"><a href="#compare_surfaces-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TRACE&quot;</span><span class="p">)</span>
-</span><span id="compare_surfaces-133"><a href="#compare_surfaces-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">no_memory_trace</span><span class="p">:</span>
-</span><span id="compare_surfaces-134"><a href="#compare_surfaces-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nomall&quot;</span><span class="p">)</span>
-</span><span id="compare_surfaces-135"><a href="#compare_surfaces-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">yes_memory_trace</span><span class="p">:</span>
-</span><span id="compare_surfaces-136"><a href="#compare_surfaces-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-yesmall&quot;</span><span class="p">)</span>
-</span><span id="compare_surfaces-137"><a href="#compare_surfaces-137"><span class="linenos">137</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CompareSurfacesOutputs</span><span class="p">(</span>
-</span><span id="compare_surfaces-138"><a href="#compare_surfaces-138"><span class="linenos">138</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="compare_surfaces-139"><a href="#compare_surfaces-139"><span class="linenos">139</span></a>        <span class="n">distance_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">file_prefix</span> <span class="o">+</span> <span class="s2">&quot;_distance.txt&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="compare_surfaces-140"><a href="#compare_surfaces-140"><span class="linenos">140</span></a>        <span class="n">color_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">file_prefix</span> <span class="o">+</span> <span class="s2">&quot;_color.txt&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="compare_surfaces-141"><a href="#compare_surfaces-141"><span class="linenos">141</span></a>    <span class="p">)</span>
-</span><span id="compare_surfaces-142"><a href="#compare_surfaces-142"><span class="linenos">142</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="compare_surfaces-143"><a href="#compare_surfaces-143"><span class="linenos">143</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="compare_surfaces-54"><a href="#compare_surfaces-54"><span class="linenos"> 54</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="compare_surfaces-55"><a href="#compare_surfaces-55"><span class="linenos"> 55</span></a><span class="sd">    </span>
+</span><span id="compare_surfaces-56"><a href="#compare_surfaces-56"><span class="linenos"> 56</span></a><span class="sd">    Args:</span>
+</span><span id="compare_surfaces-57"><a href="#compare_surfaces-57"><span class="linenos"> 57</span></a><span class="sd">        spec_file: File containing surface specification.</span>
+</span><span id="compare_surfaces-58"><a href="#compare_surfaces-58"><span class="linenos"> 58</span></a><span class="sd">        hemisphere: Specify the hemisphere being processed (left or right).</span>
+</span><span id="compare_surfaces-59"><a href="#compare_surfaces-59"><span class="linenos"> 59</span></a><span class="sd">        volume_parent_1: Volume parent BRIK for first surface.</span>
+</span><span id="compare_surfaces-60"><a href="#compare_surfaces-60"><span class="linenos"> 60</span></a><span class="sd">        volume_parent_2: Volume parent BRIK for second surface.</span>
+</span><span id="compare_surfaces-61"><a href="#compare_surfaces-61"><span class="linenos"> 61</span></a><span class="sd">        file_prefix: Prefix for distance and node color output files. Existing\</span>
+</span><span id="compare_surfaces-62"><a href="#compare_surfaces-62"><span class="linenos"> 62</span></a><span class="sd">            file will not be overwritten.</span>
+</span><span id="compare_surfaces-63"><a href="#compare_surfaces-63"><span class="linenos"> 63</span></a><span class="sd">        one_node: Output results for node index only. This option is for\</span>
+</span><span id="compare_surfaces-64"><a href="#compare_surfaces-64"><span class="linenos"> 64</span></a><span class="sd">            debugging.</span>
+</span><span id="compare_surfaces-65"><a href="#compare_surfaces-65"><span class="linenos"> 65</span></a><span class="sd">        node_range: Output results from node istart to node istop only. This\</span>
+</span><span id="compare_surfaces-66"><a href="#compare_surfaces-66"><span class="linenos"> 66</span></a><span class="sd">            option is for debugging.</span>
+</span><span id="compare_surfaces-67"><a href="#compare_surfaces-67"><span class="linenos"> 67</span></a><span class="sd">        no_consistency_check: Skip mesh orientation consistency check. This\</span>
+</span><span id="compare_surfaces-68"><a href="#compare_surfaces-68"><span class="linenos"> 68</span></a><span class="sd">            speeds up the start time so it is useful for debugging runs.</span>
+</span><span id="compare_surfaces-69"><a href="#compare_surfaces-69"><span class="linenos"> 69</span></a><span class="sd">        no_volreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\</span>
+</span><span id="compare_surfaces-70"><a href="#compare_surfaces-70"><span class="linenos"> 70</span></a><span class="sd">            transformations present in the Surface Volume.</span>
+</span><span id="compare_surfaces-71"><a href="#compare_surfaces-71"><span class="linenos"> 71</span></a><span class="sd">        no_transform: Same as -novolreg.</span>
+</span><span id="compare_surfaces-72"><a href="#compare_surfaces-72"><span class="linenos"> 72</span></a><span class="sd">        set_environment_variable: Set environment variable ENVname to be\</span>
+</span><span id="compare_surfaces-73"><a href="#compare_surfaces-73"><span class="linenos"> 73</span></a><span class="sd">            ENVvalue. Quotes are necessary.</span>
+</span><span id="compare_surfaces-74"><a href="#compare_surfaces-74"><span class="linenos"> 74</span></a><span class="sd">        trace_: Turns on In/Out debug and Memory tracing.</span>
+</span><span id="compare_surfaces-75"><a href="#compare_surfaces-75"><span class="linenos"> 75</span></a><span class="sd">        extreme_trace: Turns on extreme tracing.</span>
+</span><span id="compare_surfaces-76"><a href="#compare_surfaces-76"><span class="linenos"> 76</span></a><span class="sd">        no_memory_trace: Turn off memory tracing.</span>
+</span><span id="compare_surfaces-77"><a href="#compare_surfaces-77"><span class="linenos"> 77</span></a><span class="sd">        yes_memory_trace: Turn on memory tracing (default).</span>
+</span><span id="compare_surfaces-78"><a href="#compare_surfaces-78"><span class="linenos"> 78</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="compare_surfaces-79"><a href="#compare_surfaces-79"><span class="linenos"> 79</span></a><span class="sd">    Returns:</span>
+</span><span id="compare_surfaces-80"><a href="#compare_surfaces-80"><span class="linenos"> 80</span></a><span class="sd">        NamedTuple of outputs (described in `CompareSurfacesOutputs`).</span>
+</span><span id="compare_surfaces-81"><a href="#compare_surfaces-81"><span class="linenos"> 81</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="compare_surfaces-82"><a href="#compare_surfaces-82"><span class="linenos"> 82</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="compare_surfaces-83"><a href="#compare_surfaces-83"><span class="linenos"> 83</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">COMPARE_SURFACES_METADATA</span><span class="p">)</span>
+</span><span id="compare_surfaces-84"><a href="#compare_surfaces-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="compare_surfaces-85"><a href="#compare_surfaces-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CompareSurfaces&quot;</span><span class="p">)</span>
+</span><span id="compare_surfaces-86"><a href="#compare_surfaces-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="compare_surfaces-87"><a href="#compare_surfaces-87"><span class="linenos"> 87</span></a>        <span class="s2">&quot;-spec&quot;</span><span class="p">,</span>
+</span><span id="compare_surfaces-88"><a href="#compare_surfaces-88"><span class="linenos"> 88</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">spec_file</span><span class="p">)</span>
+</span><span id="compare_surfaces-89"><a href="#compare_surfaces-89"><span class="linenos"> 89</span></a>    <span class="p">])</span>
+</span><span id="compare_surfaces-90"><a href="#compare_surfaces-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="compare_surfaces-91"><a href="#compare_surfaces-91"><span class="linenos"> 91</span></a>        <span class="s2">&quot;-hemi&quot;</span><span class="p">,</span>
+</span><span id="compare_surfaces-92"><a href="#compare_surfaces-92"><span class="linenos"> 92</span></a>        <span class="n">hemisphere</span>
+</span><span id="compare_surfaces-93"><a href="#compare_surfaces-93"><span class="linenos"> 93</span></a>    <span class="p">])</span>
+</span><span id="compare_surfaces-94"><a href="#compare_surfaces-94"><span class="linenos"> 94</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="compare_surfaces-95"><a href="#compare_surfaces-95"><span class="linenos"> 95</span></a>        <span class="s2">&quot;-sv1&quot;</span><span class="p">,</span>
+</span><span id="compare_surfaces-96"><a href="#compare_surfaces-96"><span class="linenos"> 96</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_parent_1</span><span class="p">)</span>
+</span><span id="compare_surfaces-97"><a href="#compare_surfaces-97"><span class="linenos"> 97</span></a>    <span class="p">])</span>
+</span><span id="compare_surfaces-98"><a href="#compare_surfaces-98"><span class="linenos"> 98</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="compare_surfaces-99"><a href="#compare_surfaces-99"><span class="linenos"> 99</span></a>        <span class="s2">&quot;-sv2&quot;</span><span class="p">,</span>
+</span><span id="compare_surfaces-100"><a href="#compare_surfaces-100"><span class="linenos">100</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_parent_2</span><span class="p">)</span>
+</span><span id="compare_surfaces-101"><a href="#compare_surfaces-101"><span class="linenos">101</span></a>    <span class="p">])</span>
+</span><span id="compare_surfaces-102"><a href="#compare_surfaces-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="compare_surfaces-103"><a href="#compare_surfaces-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="compare_surfaces-104"><a href="#compare_surfaces-104"><span class="linenos">104</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="compare_surfaces-105"><a href="#compare_surfaces-105"><span class="linenos">105</span></a>            <span class="n">file_prefix</span>
+</span><span id="compare_surfaces-106"><a href="#compare_surfaces-106"><span class="linenos">106</span></a>        <span class="p">])</span>
+</span><span id="compare_surfaces-107"><a href="#compare_surfaces-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">one_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="compare_surfaces-108"><a href="#compare_surfaces-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="compare_surfaces-109"><a href="#compare_surfaces-109"><span class="linenos">109</span></a>            <span class="s2">&quot;-onenode&quot;</span><span class="p">,</span>
+</span><span id="compare_surfaces-110"><a href="#compare_surfaces-110"><span class="linenos">110</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">one_node</span><span class="p">)</span>
+</span><span id="compare_surfaces-111"><a href="#compare_surfaces-111"><span class="linenos">111</span></a>        <span class="p">])</span>
+</span><span id="compare_surfaces-112"><a href="#compare_surfaces-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">node_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="compare_surfaces-113"><a href="#compare_surfaces-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="compare_surfaces-114"><a href="#compare_surfaces-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-noderange&quot;</span><span class="p">,</span>
+</span><span id="compare_surfaces-115"><a href="#compare_surfaces-115"><span class="linenos">115</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">node_range</span><span class="p">)</span>
+</span><span id="compare_surfaces-116"><a href="#compare_surfaces-116"><span class="linenos">116</span></a>        <span class="p">])</span>
+</span><span id="compare_surfaces-117"><a href="#compare_surfaces-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">no_consistency_check</span><span class="p">:</span>
+</span><span id="compare_surfaces-118"><a href="#compare_surfaces-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nocons&quot;</span><span class="p">)</span>
+</span><span id="compare_surfaces-119"><a href="#compare_surfaces-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">no_volreg</span><span class="p">:</span>
+</span><span id="compare_surfaces-120"><a href="#compare_surfaces-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-novolreg&quot;</span><span class="p">)</span>
+</span><span id="compare_surfaces-121"><a href="#compare_surfaces-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">no_transform</span><span class="p">:</span>
+</span><span id="compare_surfaces-122"><a href="#compare_surfaces-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noxform&quot;</span><span class="p">)</span>
+</span><span id="compare_surfaces-123"><a href="#compare_surfaces-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">set_environment_variable</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="compare_surfaces-124"><a href="#compare_surfaces-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="compare_surfaces-125"><a href="#compare_surfaces-125"><span class="linenos">125</span></a>            <span class="s2">&quot;-setenv&quot;</span><span class="p">,</span>
+</span><span id="compare_surfaces-126"><a href="#compare_surfaces-126"><span class="linenos">126</span></a>            <span class="n">set_environment_variable</span>
+</span><span id="compare_surfaces-127"><a href="#compare_surfaces-127"><span class="linenos">127</span></a>        <span class="p">])</span>
+</span><span id="compare_surfaces-128"><a href="#compare_surfaces-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">trace_</span><span class="p">:</span>
+</span><span id="compare_surfaces-129"><a href="#compare_surfaces-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-trace&quot;</span><span class="p">)</span>
+</span><span id="compare_surfaces-130"><a href="#compare_surfaces-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">extreme_trace</span><span class="p">:</span>
+</span><span id="compare_surfaces-131"><a href="#compare_surfaces-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TRACE&quot;</span><span class="p">)</span>
+</span><span id="compare_surfaces-132"><a href="#compare_surfaces-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">no_memory_trace</span><span class="p">:</span>
+</span><span id="compare_surfaces-133"><a href="#compare_surfaces-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nomall&quot;</span><span class="p">)</span>
+</span><span id="compare_surfaces-134"><a href="#compare_surfaces-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">yes_memory_trace</span><span class="p">:</span>
+</span><span id="compare_surfaces-135"><a href="#compare_surfaces-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-yesmall&quot;</span><span class="p">)</span>
+</span><span id="compare_surfaces-136"><a href="#compare_surfaces-136"><span class="linenos">136</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CompareSurfacesOutputs</span><span class="p">(</span>
+</span><span id="compare_surfaces-137"><a href="#compare_surfaces-137"><span class="linenos">137</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="compare_surfaces-138"><a href="#compare_surfaces-138"><span class="linenos">138</span></a>        <span class="n">distance_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">file_prefix</span> <span class="o">+</span> <span class="s2">&quot;_distance.txt&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="compare_surfaces-139"><a href="#compare_surfaces-139"><span class="linenos">139</span></a>        <span class="n">color_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">file_prefix</span> <span class="o">+</span> <span class="s2">&quot;_color.txt&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">file_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="compare_surfaces-140"><a href="#compare_surfaces-140"><span class="linenos">140</span></a>    <span class="p">)</span>
+</span><span id="compare_surfaces-141"><a href="#compare_surfaces-141"><span class="linenos">141</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="compare_surfaces-142"><a href="#compare_surfaces-142"><span class="linenos">142</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Calculates distance at each node in Surface 1 (S1) to Surface 2 (S2) along the
 local surface normal at each node in S1. Superseded by SurfToSurf.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/CompareSurfaces.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/CompareSurfaces.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

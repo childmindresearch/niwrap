@@ -210,7 +210,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">DWIEXTRACT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;523b6b7652a8696dd8707ee5f35400e2f15e5a2a.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5b00b542225211d60f5d1b333fb8c27f5a4730f1.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dwiextract&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -474,163 +474,160 @@
 </span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="sd">    </span>
 </span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="sd">    .</span>
 </span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="sd">    </span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">    Author: David Raffelt (david.raffelt@florey.edu.au) and Thijs Dhollander</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">    (thijs.dhollander@gmail.com) and Robert E. Smith</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">    (robert.smith@florey.edu.au)</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">    </span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
 </span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">    </span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">    URL:</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/dwiextract.html</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">    </span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">    Args:</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">        input_: the input DW image.</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        output: the output image (diffusion-weighted volumes by default).</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">        bzero: Output b=0 volumes (instead of the diffusion weighted volumes,\</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">            if -singleshell is not specified).</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">        no_bzero: Output only non b=0 volumes (default, if -singleshell is not\</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">            specified).</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">        singleshell: Force a single-shell (single non b=0 shell) output. This\</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">            will include b=0 volumes, if present. Use with -bzero to enforce\</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">            presence of b=0 volumes (error if not present) or with -no_bzero to\</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">            exclude them.</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="sd">            this option will be instead used.</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">        shells: specify one or more b-values to use during processing, as a\</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="sd">            comma-separated list of the desired approximate b-values (b-values are\</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="sd">            clustered to allow for small deviations). Note that some commands are\</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="sd">            incompatible with multiple b-values, and will report an error if more\</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">            than one b-value is provided.\</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="sd">            WARNING: note that, even though the b=0 volumes are never referred\</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="sd">            to as shells in the literature, they still have to be explicitly\</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">            included in the list of b-values as provided to the -shell option!\</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">            Several algorithms which include the b=0 volumes in their\</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">            computations may otherwise return an undesired result.</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">        export_grad_mrtrix: export the diffusion-weighted gradient table to\</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">            file in MRtrix format.</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="sd">        export_grad_fsl: export the diffusion-weighted gradient table to files\</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">            in FSL (bvecs / bvals) format.</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">        import_pe_table: import a phase-encoding table from file.</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">        import_pe_eddy: import phase-encoding information from an EDDY-style\</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">            config / index file pair.</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="sd">        pe: select volumes with a particular phase encoding; this can be three\</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">            comma-separated values (for i,j,k components of vector direction) or\</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">            four (direction &amp; total readout time).</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a><span class="sd">    Returns:</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a><span class="sd">        NamedTuple of outputs (described in `DwiextractOutputs`).</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWIEXTRACT_METADATA</span><span class="p">)</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dwiextract&quot;</span><span class="p">)</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>    <span class="k">if</span> <span class="n">bzero</span><span class="p">:</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bzero&quot;</span><span class="p">)</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="k">if</span> <span class="n">no_bzero</span><span class="p">:</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_bzero&quot;</span><span class="p">)</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="k">if</span> <span class="n">singleshell</span><span class="p">:</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-singleshell&quot;</span><span class="p">)</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>        <span class="p">])</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="k">if</span> <span class="n">fslgrad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fslgrad</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="k">if</span> <span class="n">shells</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>            <span class="s2">&quot;-shells&quot;</span><span class="p">,</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">shells</span><span class="p">))</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>        <span class="p">])</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="k">if</span> <span class="n">export_grad_mrtrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>            <span class="s2">&quot;-export_grad_mrtrix&quot;</span><span class="p">,</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>            <span class="n">export_grad_mrtrix</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>        <span class="p">])</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="k">if</span> <span class="n">export_grad_fsl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">export_grad_fsl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="k">if</span> <span class="n">import_pe_table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>            <span class="s2">&quot;-import_pe_table&quot;</span><span class="p">,</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">import_pe_table</span><span class="p">)</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>        <span class="p">])</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="k">if</span> <span class="n">import_pe_eddy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">import_pe_eddy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>    <span class="k">if</span> <span class="n">pe</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>            <span class="s2">&quot;-pe&quot;</span><span class="p">,</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pe</span><span class="p">))</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>        <span class="p">])</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>        <span class="p">])</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>        <span class="p">])</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DwiextractOutputs</span><span class="p">(</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>        <span class="n">export_grad_mrtrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">export_grad_mrtrix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">export_grad_mrtrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>        <span class="n">export_grad_fsl</span><span class="o">=</span><span class="n">export_grad_fsl</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">export_grad_fsl</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="p">)</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="s2">&quot;DWIEXTRACT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="s2">&quot;DwiextractConfig&quot;</span><span class="p">,</span>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="s2">&quot;DwiextractExportGradFsl&quot;</span><span class="p">,</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;DwiextractExportGradFslOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;DwiextractFslgrad&quot;</span><span class="p">,</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;DwiextractImportPeEddy&quot;</span><span class="p">,</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="s2">&quot;DwiextractOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="s2">&quot;DwiextractVariousFile&quot;</span><span class="p">,</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="s2">&quot;DwiextractVariousString&quot;</span><span class="p">,</span>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="s2">&quot;dwiextract&quot;</span><span class="p">,</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="p">]</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">    Args:</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">        input_: the input DW image.</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">        output: the output image (diffusion-weighted volumes by default).</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">        bzero: Output b=0 volumes (instead of the diffusion weighted volumes,\</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">            if -singleshell is not specified).</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        no_bzero: Output only non b=0 volumes (default, if -singleshell is not\</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">            specified).</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">        singleshell: Force a single-shell (single non b=0 shell) output. This\</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">            will include b=0 volumes, if present. Use with -bzero to enforce\</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">            presence of b=0 volumes (error if not present) or with -no_bzero to\</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">            exclude them.</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="sd">        shells: specify one or more b-values to use during processing, as a\</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a><span class="sd">            comma-separated list of the desired approximate b-values (b-values are\</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="sd">            clustered to allow for small deviations). Note that some commands are\</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="sd">            incompatible with multiple b-values, and will report an error if more\</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a><span class="sd">            than one b-value is provided.\</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a><span class="sd">            WARNING: note that, even though the b=0 volumes are never referred\</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a><span class="sd">            to as shells in the literature, they still have to be explicitly\</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a><span class="sd">            included in the list of b-values as provided to the -shell option!\</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a><span class="sd">            Several algorithms which include the b=0 volumes in their\</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a><span class="sd">            computations may otherwise return an undesired result.</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">        export_grad_mrtrix: export the diffusion-weighted gradient table to\</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a><span class="sd">            file in MRtrix format.</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a><span class="sd">        export_grad_fsl: export the diffusion-weighted gradient table to files\</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="sd">            in FSL (bvecs / bvals) format.</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a><span class="sd">        import_pe_table: import a phase-encoding table from file.</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a><span class="sd">        import_pe_eddy: import phase-encoding information from an EDDY-style\</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="sd">            config / index file pair.</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a><span class="sd">        pe: select volumes with a particular phase encoding; this can be three\</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="sd">            comma-separated values (for i,j,k components of vector direction) or\</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="sd">            four (direction &amp; total readout time).</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a><span class="sd">    Returns:</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a><span class="sd">        NamedTuple of outputs (described in `DwiextractOutputs`).</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWIEXTRACT_METADATA</span><span class="p">)</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dwiextract&quot;</span><span class="p">)</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>    <span class="k">if</span> <span class="n">bzero</span><span class="p">:</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bzero&quot;</span><span class="p">)</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="k">if</span> <span class="n">no_bzero</span><span class="p">:</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_bzero&quot;</span><span class="p">)</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="k">if</span> <span class="n">singleshell</span><span class="p">:</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-singleshell&quot;</span><span class="p">)</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>        <span class="p">])</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="k">if</span> <span class="n">fslgrad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fslgrad</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>    <span class="k">if</span> <span class="n">shells</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>            <span class="s2">&quot;-shells&quot;</span><span class="p">,</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">shells</span><span class="p">))</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>        <span class="p">])</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="k">if</span> <span class="n">export_grad_mrtrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>            <span class="s2">&quot;-export_grad_mrtrix&quot;</span><span class="p">,</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>            <span class="n">export_grad_mrtrix</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>        <span class="p">])</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>    <span class="k">if</span> <span class="n">export_grad_fsl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">export_grad_fsl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="k">if</span> <span class="n">import_pe_table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>            <span class="s2">&quot;-import_pe_table&quot;</span><span class="p">,</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">import_pe_table</span><span class="p">)</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>        <span class="p">])</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>    <span class="k">if</span> <span class="n">import_pe_eddy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">import_pe_eddy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>    <span class="k">if</span> <span class="n">pe</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>            <span class="s2">&quot;-pe&quot;</span><span class="p">,</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pe</span><span class="p">))</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>        <span class="p">])</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>        <span class="p">])</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>        <span class="p">])</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DwiextractOutputs</span><span class="p">(</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>        <span class="n">export_grad_mrtrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">export_grad_mrtrix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">export_grad_mrtrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>        <span class="n">export_grad_fsl</span><span class="o">=</span><span class="n">export_grad_fsl</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">export_grad_fsl</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="p">)</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="s2">&quot;DWIEXTRACT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="s2">&quot;DwiextractConfig&quot;</span><span class="p">,</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="s2">&quot;DwiextractExportGradFsl&quot;</span><span class="p">,</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>    <span class="s2">&quot;DwiextractExportGradFslOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="s2">&quot;DwiextractFslgrad&quot;</span><span class="p">,</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="s2">&quot;DwiextractImportPeEddy&quot;</span><span class="p">,</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;DwiextractOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;DwiextractVariousFile&quot;</span><span class="p">,</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;DwiextractVariousString&quot;</span><span class="p">,</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="s2">&quot;dwiextract&quot;</span><span class="p">,</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -639,7 +636,7 @@
                     <div class="attr variable">
             <span class="name">DWIEXTRACT_METADATA</span>        =
 <input id="DWIEXTRACT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="DWIEXTRACT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;523b6b7652a8696dd8707ee5f35400e2f15e5a2a.boutiques&#39;, name=&#39;dwiextract&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="DWIEXTRACT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5b00b542225211d60f5d1b333fb8c27f5a4730f1.boutiques&#39;, name=&#39;dwiextract&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -1725,149 +1722,146 @@ pair</p>
 </span><span id="dwiextract-272"><a href="#dwiextract-272"><span class="linenos">272</span></a><span class="sd">    </span>
 </span><span id="dwiextract-273"><a href="#dwiextract-273"><span class="linenos">273</span></a><span class="sd">    .</span>
 </span><span id="dwiextract-274"><a href="#dwiextract-274"><span class="linenos">274</span></a><span class="sd">    </span>
-</span><span id="dwiextract-275"><a href="#dwiextract-275"><span class="linenos">275</span></a><span class="sd">    Author: David Raffelt (david.raffelt@florey.edu.au) and Thijs Dhollander</span>
-</span><span id="dwiextract-276"><a href="#dwiextract-276"><span class="linenos">276</span></a><span class="sd">    (thijs.dhollander@gmail.com) and Robert E. Smith</span>
-</span><span id="dwiextract-277"><a href="#dwiextract-277"><span class="linenos">277</span></a><span class="sd">    (robert.smith@florey.edu.au)</span>
+</span><span id="dwiextract-275"><a href="#dwiextract-275"><span class="linenos">275</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="dwiextract-276"><a href="#dwiextract-276"><span class="linenos">276</span></a><span class="sd">    </span>
+</span><span id="dwiextract-277"><a href="#dwiextract-277"><span class="linenos">277</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
 </span><span id="dwiextract-278"><a href="#dwiextract-278"><span class="linenos">278</span></a><span class="sd">    </span>
-</span><span id="dwiextract-279"><a href="#dwiextract-279"><span class="linenos">279</span></a><span class="sd">    URL:</span>
-</span><span id="dwiextract-280"><a href="#dwiextract-280"><span class="linenos">280</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/dwiextract.html</span>
-</span><span id="dwiextract-281"><a href="#dwiextract-281"><span class="linenos">281</span></a><span class="sd">    </span>
-</span><span id="dwiextract-282"><a href="#dwiextract-282"><span class="linenos">282</span></a><span class="sd">    Args:</span>
-</span><span id="dwiextract-283"><a href="#dwiextract-283"><span class="linenos">283</span></a><span class="sd">        input_: the input DW image.</span>
-</span><span id="dwiextract-284"><a href="#dwiextract-284"><span class="linenos">284</span></a><span class="sd">        output: the output image (diffusion-weighted volumes by default).</span>
-</span><span id="dwiextract-285"><a href="#dwiextract-285"><span class="linenos">285</span></a><span class="sd">        bzero: Output b=0 volumes (instead of the diffusion weighted volumes,\</span>
-</span><span id="dwiextract-286"><a href="#dwiextract-286"><span class="linenos">286</span></a><span class="sd">            if -singleshell is not specified).</span>
-</span><span id="dwiextract-287"><a href="#dwiextract-287"><span class="linenos">287</span></a><span class="sd">        no_bzero: Output only non b=0 volumes (default, if -singleshell is not\</span>
-</span><span id="dwiextract-288"><a href="#dwiextract-288"><span class="linenos">288</span></a><span class="sd">            specified).</span>
-</span><span id="dwiextract-289"><a href="#dwiextract-289"><span class="linenos">289</span></a><span class="sd">        singleshell: Force a single-shell (single non b=0 shell) output. This\</span>
-</span><span id="dwiextract-290"><a href="#dwiextract-290"><span class="linenos">290</span></a><span class="sd">            will include b=0 volumes, if present. Use with -bzero to enforce\</span>
-</span><span id="dwiextract-291"><a href="#dwiextract-291"><span class="linenos">291</span></a><span class="sd">            presence of b=0 volumes (error if not present) or with -no_bzero to\</span>
-</span><span id="dwiextract-292"><a href="#dwiextract-292"><span class="linenos">292</span></a><span class="sd">            exclude them.</span>
-</span><span id="dwiextract-293"><a href="#dwiextract-293"><span class="linenos">293</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="dwiextract-294"><a href="#dwiextract-294"><span class="linenos">294</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
-</span><span id="dwiextract-295"><a href="#dwiextract-295"><span class="linenos">295</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
-</span><span id="dwiextract-296"><a href="#dwiextract-296"><span class="linenos">296</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
-</span><span id="dwiextract-297"><a href="#dwiextract-297"><span class="linenos">297</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
-</span><span id="dwiextract-298"><a href="#dwiextract-298"><span class="linenos">298</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
-</span><span id="dwiextract-299"><a href="#dwiextract-299"><span class="linenos">299</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
-</span><span id="dwiextract-300"><a href="#dwiextract-300"><span class="linenos">300</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
-</span><span id="dwiextract-301"><a href="#dwiextract-301"><span class="linenos">301</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
-</span><span id="dwiextract-302"><a href="#dwiextract-302"><span class="linenos">302</span></a><span class="sd">            this option will be instead used.</span>
-</span><span id="dwiextract-303"><a href="#dwiextract-303"><span class="linenos">303</span></a><span class="sd">        shells: specify one or more b-values to use during processing, as a\</span>
-</span><span id="dwiextract-304"><a href="#dwiextract-304"><span class="linenos">304</span></a><span class="sd">            comma-separated list of the desired approximate b-values (b-values are\</span>
-</span><span id="dwiextract-305"><a href="#dwiextract-305"><span class="linenos">305</span></a><span class="sd">            clustered to allow for small deviations). Note that some commands are\</span>
-</span><span id="dwiextract-306"><a href="#dwiextract-306"><span class="linenos">306</span></a><span class="sd">            incompatible with multiple b-values, and will report an error if more\</span>
-</span><span id="dwiextract-307"><a href="#dwiextract-307"><span class="linenos">307</span></a><span class="sd">            than one b-value is provided.\</span>
-</span><span id="dwiextract-308"><a href="#dwiextract-308"><span class="linenos">308</span></a><span class="sd">            WARNING: note that, even though the b=0 volumes are never referred\</span>
-</span><span id="dwiextract-309"><a href="#dwiextract-309"><span class="linenos">309</span></a><span class="sd">            to as shells in the literature, they still have to be explicitly\</span>
-</span><span id="dwiextract-310"><a href="#dwiextract-310"><span class="linenos">310</span></a><span class="sd">            included in the list of b-values as provided to the -shell option!\</span>
-</span><span id="dwiextract-311"><a href="#dwiextract-311"><span class="linenos">311</span></a><span class="sd">            Several algorithms which include the b=0 volumes in their\</span>
-</span><span id="dwiextract-312"><a href="#dwiextract-312"><span class="linenos">312</span></a><span class="sd">            computations may otherwise return an undesired result.</span>
-</span><span id="dwiextract-313"><a href="#dwiextract-313"><span class="linenos">313</span></a><span class="sd">        export_grad_mrtrix: export the diffusion-weighted gradient table to\</span>
-</span><span id="dwiextract-314"><a href="#dwiextract-314"><span class="linenos">314</span></a><span class="sd">            file in MRtrix format.</span>
-</span><span id="dwiextract-315"><a href="#dwiextract-315"><span class="linenos">315</span></a><span class="sd">        export_grad_fsl: export the diffusion-weighted gradient table to files\</span>
-</span><span id="dwiextract-316"><a href="#dwiextract-316"><span class="linenos">316</span></a><span class="sd">            in FSL (bvecs / bvals) format.</span>
-</span><span id="dwiextract-317"><a href="#dwiextract-317"><span class="linenos">317</span></a><span class="sd">        import_pe_table: import a phase-encoding table from file.</span>
-</span><span id="dwiextract-318"><a href="#dwiextract-318"><span class="linenos">318</span></a><span class="sd">        import_pe_eddy: import phase-encoding information from an EDDY-style\</span>
-</span><span id="dwiextract-319"><a href="#dwiextract-319"><span class="linenos">319</span></a><span class="sd">            config / index file pair.</span>
-</span><span id="dwiextract-320"><a href="#dwiextract-320"><span class="linenos">320</span></a><span class="sd">        pe: select volumes with a particular phase encoding; this can be three\</span>
-</span><span id="dwiextract-321"><a href="#dwiextract-321"><span class="linenos">321</span></a><span class="sd">            comma-separated values (for i,j,k components of vector direction) or\</span>
-</span><span id="dwiextract-322"><a href="#dwiextract-322"><span class="linenos">322</span></a><span class="sd">            four (direction &amp; total readout time).</span>
-</span><span id="dwiextract-323"><a href="#dwiextract-323"><span class="linenos">323</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
-</span><span id="dwiextract-324"><a href="#dwiextract-324"><span class="linenos">324</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
-</span><span id="dwiextract-325"><a href="#dwiextract-325"><span class="linenos">325</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
-</span><span id="dwiextract-326"><a href="#dwiextract-326"><span class="linenos">326</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
-</span><span id="dwiextract-327"><a href="#dwiextract-327"><span class="linenos">327</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="dwiextract-328"><a href="#dwiextract-328"><span class="linenos">328</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="dwiextract-329"><a href="#dwiextract-329"><span class="linenos">329</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="dwiextract-330"><a href="#dwiextract-330"><span class="linenos">330</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="dwiextract-331"><a href="#dwiextract-331"><span class="linenos">331</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="dwiextract-332"><a href="#dwiextract-332"><span class="linenos">332</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="dwiextract-333"><a href="#dwiextract-333"><span class="linenos">333</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="dwiextract-334"><a href="#dwiextract-334"><span class="linenos">334</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="dwiextract-335"><a href="#dwiextract-335"><span class="linenos">335</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="dwiextract-336"><a href="#dwiextract-336"><span class="linenos">336</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="dwiextract-337"><a href="#dwiextract-337"><span class="linenos">337</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="dwiextract-338"><a href="#dwiextract-338"><span class="linenos">338</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="dwiextract-339"><a href="#dwiextract-339"><span class="linenos">339</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="dwiextract-340"><a href="#dwiextract-340"><span class="linenos">340</span></a><span class="sd">    Returns:</span>
-</span><span id="dwiextract-341"><a href="#dwiextract-341"><span class="linenos">341</span></a><span class="sd">        NamedTuple of outputs (described in `DwiextractOutputs`).</span>
-</span><span id="dwiextract-342"><a href="#dwiextract-342"><span class="linenos">342</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="dwiextract-343"><a href="#dwiextract-343"><span class="linenos">343</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="dwiextract-344"><a href="#dwiextract-344"><span class="linenos">344</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWIEXTRACT_METADATA</span><span class="p">)</span>
-</span><span id="dwiextract-345"><a href="#dwiextract-345"><span class="linenos">345</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="dwiextract-346"><a href="#dwiextract-346"><span class="linenos">346</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dwiextract&quot;</span><span class="p">)</span>
-</span><span id="dwiextract-347"><a href="#dwiextract-347"><span class="linenos">347</span></a>    <span class="k">if</span> <span class="n">bzero</span><span class="p">:</span>
-</span><span id="dwiextract-348"><a href="#dwiextract-348"><span class="linenos">348</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bzero&quot;</span><span class="p">)</span>
-</span><span id="dwiextract-349"><a href="#dwiextract-349"><span class="linenos">349</span></a>    <span class="k">if</span> <span class="n">no_bzero</span><span class="p">:</span>
-</span><span id="dwiextract-350"><a href="#dwiextract-350"><span class="linenos">350</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_bzero&quot;</span><span class="p">)</span>
-</span><span id="dwiextract-351"><a href="#dwiextract-351"><span class="linenos">351</span></a>    <span class="k">if</span> <span class="n">singleshell</span><span class="p">:</span>
-</span><span id="dwiextract-352"><a href="#dwiextract-352"><span class="linenos">352</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-singleshell&quot;</span><span class="p">)</span>
-</span><span id="dwiextract-353"><a href="#dwiextract-353"><span class="linenos">353</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-354"><a href="#dwiextract-354"><span class="linenos">354</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwiextract-355"><a href="#dwiextract-355"><span class="linenos">355</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
-</span><span id="dwiextract-356"><a href="#dwiextract-356"><span class="linenos">356</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
-</span><span id="dwiextract-357"><a href="#dwiextract-357"><span class="linenos">357</span></a>        <span class="p">])</span>
-</span><span id="dwiextract-358"><a href="#dwiextract-358"><span class="linenos">358</span></a>    <span class="k">if</span> <span class="n">fslgrad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-359"><a href="#dwiextract-359"><span class="linenos">359</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fslgrad</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="dwiextract-360"><a href="#dwiextract-360"><span class="linenos">360</span></a>    <span class="k">if</span> <span class="n">shells</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-361"><a href="#dwiextract-361"><span class="linenos">361</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwiextract-362"><a href="#dwiextract-362"><span class="linenos">362</span></a>            <span class="s2">&quot;-shells&quot;</span><span class="p">,</span>
-</span><span id="dwiextract-363"><a href="#dwiextract-363"><span class="linenos">363</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">shells</span><span class="p">))</span>
-</span><span id="dwiextract-364"><a href="#dwiextract-364"><span class="linenos">364</span></a>        <span class="p">])</span>
-</span><span id="dwiextract-365"><a href="#dwiextract-365"><span class="linenos">365</span></a>    <span class="k">if</span> <span class="n">export_grad_mrtrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-366"><a href="#dwiextract-366"><span class="linenos">366</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwiextract-367"><a href="#dwiextract-367"><span class="linenos">367</span></a>            <span class="s2">&quot;-export_grad_mrtrix&quot;</span><span class="p">,</span>
-</span><span id="dwiextract-368"><a href="#dwiextract-368"><span class="linenos">368</span></a>            <span class="n">export_grad_mrtrix</span>
-</span><span id="dwiextract-369"><a href="#dwiextract-369"><span class="linenos">369</span></a>        <span class="p">])</span>
-</span><span id="dwiextract-370"><a href="#dwiextract-370"><span class="linenos">370</span></a>    <span class="k">if</span> <span class="n">export_grad_fsl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-371"><a href="#dwiextract-371"><span class="linenos">371</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">export_grad_fsl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="dwiextract-372"><a href="#dwiextract-372"><span class="linenos">372</span></a>    <span class="k">if</span> <span class="n">import_pe_table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-373"><a href="#dwiextract-373"><span class="linenos">373</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwiextract-374"><a href="#dwiextract-374"><span class="linenos">374</span></a>            <span class="s2">&quot;-import_pe_table&quot;</span><span class="p">,</span>
-</span><span id="dwiextract-375"><a href="#dwiextract-375"><span class="linenos">375</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">import_pe_table</span><span class="p">)</span>
-</span><span id="dwiextract-376"><a href="#dwiextract-376"><span class="linenos">376</span></a>        <span class="p">])</span>
-</span><span id="dwiextract-377"><a href="#dwiextract-377"><span class="linenos">377</span></a>    <span class="k">if</span> <span class="n">import_pe_eddy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-378"><a href="#dwiextract-378"><span class="linenos">378</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">import_pe_eddy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="dwiextract-379"><a href="#dwiextract-379"><span class="linenos">379</span></a>    <span class="k">if</span> <span class="n">pe</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-380"><a href="#dwiextract-380"><span class="linenos">380</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwiextract-381"><a href="#dwiextract-381"><span class="linenos">381</span></a>            <span class="s2">&quot;-pe&quot;</span><span class="p">,</span>
-</span><span id="dwiextract-382"><a href="#dwiextract-382"><span class="linenos">382</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pe</span><span class="p">))</span>
-</span><span id="dwiextract-383"><a href="#dwiextract-383"><span class="linenos">383</span></a>        <span class="p">])</span>
-</span><span id="dwiextract-384"><a href="#dwiextract-384"><span class="linenos">384</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-385"><a href="#dwiextract-385"><span class="linenos">385</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwiextract-386"><a href="#dwiextract-386"><span class="linenos">386</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
-</span><span id="dwiextract-387"><a href="#dwiextract-387"><span class="linenos">387</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
-</span><span id="dwiextract-388"><a href="#dwiextract-388"><span class="linenos">388</span></a>        <span class="p">])</span>
-</span><span id="dwiextract-389"><a href="#dwiextract-389"><span class="linenos">389</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="dwiextract-390"><a href="#dwiextract-390"><span class="linenos">390</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="dwiextract-391"><a href="#dwiextract-391"><span class="linenos">391</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="dwiextract-392"><a href="#dwiextract-392"><span class="linenos">392</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="dwiextract-393"><a href="#dwiextract-393"><span class="linenos">393</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="dwiextract-394"><a href="#dwiextract-394"><span class="linenos">394</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="dwiextract-395"><a href="#dwiextract-395"><span class="linenos">395</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="dwiextract-396"><a href="#dwiextract-396"><span class="linenos">396</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="dwiextract-397"><a href="#dwiextract-397"><span class="linenos">397</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-398"><a href="#dwiextract-398"><span class="linenos">398</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="dwiextract-399"><a href="#dwiextract-399"><span class="linenos">399</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="dwiextract-400"><a href="#dwiextract-400"><span class="linenos">400</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="dwiextract-401"><a href="#dwiextract-401"><span class="linenos">401</span></a>        <span class="p">])</span>
-</span><span id="dwiextract-402"><a href="#dwiextract-402"><span class="linenos">402</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="dwiextract-403"><a href="#dwiextract-403"><span class="linenos">403</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="dwiextract-404"><a href="#dwiextract-404"><span class="linenos">404</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="dwiextract-405"><a href="#dwiextract-405"><span class="linenos">405</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="dwiextract-406"><a href="#dwiextract-406"><span class="linenos">406</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="dwiextract-407"><a href="#dwiextract-407"><span class="linenos">407</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="dwiextract-408"><a href="#dwiextract-408"><span class="linenos">408</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
-</span><span id="dwiextract-409"><a href="#dwiextract-409"><span class="linenos">409</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="dwiextract-410"><a href="#dwiextract-410"><span class="linenos">410</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DwiextractOutputs</span><span class="p">(</span>
-</span><span id="dwiextract-411"><a href="#dwiextract-411"><span class="linenos">411</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="dwiextract-412"><a href="#dwiextract-412"><span class="linenos">412</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="dwiextract-413"><a href="#dwiextract-413"><span class="linenos">413</span></a>        <span class="n">export_grad_mrtrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">export_grad_mrtrix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">export_grad_mrtrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwiextract-414"><a href="#dwiextract-414"><span class="linenos">414</span></a>        <span class="n">export_grad_fsl</span><span class="o">=</span><span class="n">export_grad_fsl</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">export_grad_fsl</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="dwiextract-415"><a href="#dwiextract-415"><span class="linenos">415</span></a>    <span class="p">)</span>
-</span><span id="dwiextract-416"><a href="#dwiextract-416"><span class="linenos">416</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="dwiextract-417"><a href="#dwiextract-417"><span class="linenos">417</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="dwiextract-279"><a href="#dwiextract-279"><span class="linenos">279</span></a><span class="sd">    Args:</span>
+</span><span id="dwiextract-280"><a href="#dwiextract-280"><span class="linenos">280</span></a><span class="sd">        input_: the input DW image.</span>
+</span><span id="dwiextract-281"><a href="#dwiextract-281"><span class="linenos">281</span></a><span class="sd">        output: the output image (diffusion-weighted volumes by default).</span>
+</span><span id="dwiextract-282"><a href="#dwiextract-282"><span class="linenos">282</span></a><span class="sd">        bzero: Output b=0 volumes (instead of the diffusion weighted volumes,\</span>
+</span><span id="dwiextract-283"><a href="#dwiextract-283"><span class="linenos">283</span></a><span class="sd">            if -singleshell is not specified).</span>
+</span><span id="dwiextract-284"><a href="#dwiextract-284"><span class="linenos">284</span></a><span class="sd">        no_bzero: Output only non b=0 volumes (default, if -singleshell is not\</span>
+</span><span id="dwiextract-285"><a href="#dwiextract-285"><span class="linenos">285</span></a><span class="sd">            specified).</span>
+</span><span id="dwiextract-286"><a href="#dwiextract-286"><span class="linenos">286</span></a><span class="sd">        singleshell: Force a single-shell (single non b=0 shell) output. This\</span>
+</span><span id="dwiextract-287"><a href="#dwiextract-287"><span class="linenos">287</span></a><span class="sd">            will include b=0 volumes, if present. Use with -bzero to enforce\</span>
+</span><span id="dwiextract-288"><a href="#dwiextract-288"><span class="linenos">288</span></a><span class="sd">            presence of b=0 volumes (error if not present) or with -no_bzero to\</span>
+</span><span id="dwiextract-289"><a href="#dwiextract-289"><span class="linenos">289</span></a><span class="sd">            exclude them.</span>
+</span><span id="dwiextract-290"><a href="#dwiextract-290"><span class="linenos">290</span></a><span class="sd">        grad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="dwiextract-291"><a href="#dwiextract-291"><span class="linenos">291</span></a><span class="sd">            acquisition in a text file. This should be supplied as a 4xN text file\</span>
+</span><span id="dwiextract-292"><a href="#dwiextract-292"><span class="linenos">292</span></a><span class="sd">            with each line is in the format [ X Y Z b ], where [ X Y Z ] describe\</span>
+</span><span id="dwiextract-293"><a href="#dwiextract-293"><span class="linenos">293</span></a><span class="sd">            the direction of the applied gradient, and b gives the b-value in units\</span>
+</span><span id="dwiextract-294"><a href="#dwiextract-294"><span class="linenos">294</span></a><span class="sd">            of s/mm^2. If a diffusion gradient scheme is present in the input image\</span>
+</span><span id="dwiextract-295"><a href="#dwiextract-295"><span class="linenos">295</span></a><span class="sd">            header, the data provided with this option will be instead used.</span>
+</span><span id="dwiextract-296"><a href="#dwiextract-296"><span class="linenos">296</span></a><span class="sd">        fslgrad: Provide the diffusion-weighted gradient scheme used in the\</span>
+</span><span id="dwiextract-297"><a href="#dwiextract-297"><span class="linenos">297</span></a><span class="sd">            acquisition in FSL bvecs/bvals format files. If a diffusion gradient\</span>
+</span><span id="dwiextract-298"><a href="#dwiextract-298"><span class="linenos">298</span></a><span class="sd">            scheme is present in the input image header, the data provided with\</span>
+</span><span id="dwiextract-299"><a href="#dwiextract-299"><span class="linenos">299</span></a><span class="sd">            this option will be instead used.</span>
+</span><span id="dwiextract-300"><a href="#dwiextract-300"><span class="linenos">300</span></a><span class="sd">        shells: specify one or more b-values to use during processing, as a\</span>
+</span><span id="dwiextract-301"><a href="#dwiextract-301"><span class="linenos">301</span></a><span class="sd">            comma-separated list of the desired approximate b-values (b-values are\</span>
+</span><span id="dwiextract-302"><a href="#dwiextract-302"><span class="linenos">302</span></a><span class="sd">            clustered to allow for small deviations). Note that some commands are\</span>
+</span><span id="dwiextract-303"><a href="#dwiextract-303"><span class="linenos">303</span></a><span class="sd">            incompatible with multiple b-values, and will report an error if more\</span>
+</span><span id="dwiextract-304"><a href="#dwiextract-304"><span class="linenos">304</span></a><span class="sd">            than one b-value is provided.\</span>
+</span><span id="dwiextract-305"><a href="#dwiextract-305"><span class="linenos">305</span></a><span class="sd">            WARNING: note that, even though the b=0 volumes are never referred\</span>
+</span><span id="dwiextract-306"><a href="#dwiextract-306"><span class="linenos">306</span></a><span class="sd">            to as shells in the literature, they still have to be explicitly\</span>
+</span><span id="dwiextract-307"><a href="#dwiextract-307"><span class="linenos">307</span></a><span class="sd">            included in the list of b-values as provided to the -shell option!\</span>
+</span><span id="dwiextract-308"><a href="#dwiextract-308"><span class="linenos">308</span></a><span class="sd">            Several algorithms which include the b=0 volumes in their\</span>
+</span><span id="dwiextract-309"><a href="#dwiextract-309"><span class="linenos">309</span></a><span class="sd">            computations may otherwise return an undesired result.</span>
+</span><span id="dwiextract-310"><a href="#dwiextract-310"><span class="linenos">310</span></a><span class="sd">        export_grad_mrtrix: export the diffusion-weighted gradient table to\</span>
+</span><span id="dwiextract-311"><a href="#dwiextract-311"><span class="linenos">311</span></a><span class="sd">            file in MRtrix format.</span>
+</span><span id="dwiextract-312"><a href="#dwiextract-312"><span class="linenos">312</span></a><span class="sd">        export_grad_fsl: export the diffusion-weighted gradient table to files\</span>
+</span><span id="dwiextract-313"><a href="#dwiextract-313"><span class="linenos">313</span></a><span class="sd">            in FSL (bvecs / bvals) format.</span>
+</span><span id="dwiextract-314"><a href="#dwiextract-314"><span class="linenos">314</span></a><span class="sd">        import_pe_table: import a phase-encoding table from file.</span>
+</span><span id="dwiextract-315"><a href="#dwiextract-315"><span class="linenos">315</span></a><span class="sd">        import_pe_eddy: import phase-encoding information from an EDDY-style\</span>
+</span><span id="dwiextract-316"><a href="#dwiextract-316"><span class="linenos">316</span></a><span class="sd">            config / index file pair.</span>
+</span><span id="dwiextract-317"><a href="#dwiextract-317"><span class="linenos">317</span></a><span class="sd">        pe: select volumes with a particular phase encoding; this can be three\</span>
+</span><span id="dwiextract-318"><a href="#dwiextract-318"><span class="linenos">318</span></a><span class="sd">            comma-separated values (for i,j,k components of vector direction) or\</span>
+</span><span id="dwiextract-319"><a href="#dwiextract-319"><span class="linenos">319</span></a><span class="sd">            four (direction &amp; total readout time).</span>
+</span><span id="dwiextract-320"><a href="#dwiextract-320"><span class="linenos">320</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
+</span><span id="dwiextract-321"><a href="#dwiextract-321"><span class="linenos">321</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
+</span><span id="dwiextract-322"><a href="#dwiextract-322"><span class="linenos">322</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
+</span><span id="dwiextract-323"><a href="#dwiextract-323"><span class="linenos">323</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
+</span><span id="dwiextract-324"><a href="#dwiextract-324"><span class="linenos">324</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="dwiextract-325"><a href="#dwiextract-325"><span class="linenos">325</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="dwiextract-326"><a href="#dwiextract-326"><span class="linenos">326</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="dwiextract-327"><a href="#dwiextract-327"><span class="linenos">327</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="dwiextract-328"><a href="#dwiextract-328"><span class="linenos">328</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="dwiextract-329"><a href="#dwiextract-329"><span class="linenos">329</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="dwiextract-330"><a href="#dwiextract-330"><span class="linenos">330</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="dwiextract-331"><a href="#dwiextract-331"><span class="linenos">331</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="dwiextract-332"><a href="#dwiextract-332"><span class="linenos">332</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="dwiextract-333"><a href="#dwiextract-333"><span class="linenos">333</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="dwiextract-334"><a href="#dwiextract-334"><span class="linenos">334</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="dwiextract-335"><a href="#dwiextract-335"><span class="linenos">335</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="dwiextract-336"><a href="#dwiextract-336"><span class="linenos">336</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="dwiextract-337"><a href="#dwiextract-337"><span class="linenos">337</span></a><span class="sd">    Returns:</span>
+</span><span id="dwiextract-338"><a href="#dwiextract-338"><span class="linenos">338</span></a><span class="sd">        NamedTuple of outputs (described in `DwiextractOutputs`).</span>
+</span><span id="dwiextract-339"><a href="#dwiextract-339"><span class="linenos">339</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="dwiextract-340"><a href="#dwiextract-340"><span class="linenos">340</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="dwiextract-341"><a href="#dwiextract-341"><span class="linenos">341</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">DWIEXTRACT_METADATA</span><span class="p">)</span>
+</span><span id="dwiextract-342"><a href="#dwiextract-342"><span class="linenos">342</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="dwiextract-343"><a href="#dwiextract-343"><span class="linenos">343</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;dwiextract&quot;</span><span class="p">)</span>
+</span><span id="dwiextract-344"><a href="#dwiextract-344"><span class="linenos">344</span></a>    <span class="k">if</span> <span class="n">bzero</span><span class="p">:</span>
+</span><span id="dwiextract-345"><a href="#dwiextract-345"><span class="linenos">345</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bzero&quot;</span><span class="p">)</span>
+</span><span id="dwiextract-346"><a href="#dwiextract-346"><span class="linenos">346</span></a>    <span class="k">if</span> <span class="n">no_bzero</span><span class="p">:</span>
+</span><span id="dwiextract-347"><a href="#dwiextract-347"><span class="linenos">347</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_bzero&quot;</span><span class="p">)</span>
+</span><span id="dwiextract-348"><a href="#dwiextract-348"><span class="linenos">348</span></a>    <span class="k">if</span> <span class="n">singleshell</span><span class="p">:</span>
+</span><span id="dwiextract-349"><a href="#dwiextract-349"><span class="linenos">349</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-singleshell&quot;</span><span class="p">)</span>
+</span><span id="dwiextract-350"><a href="#dwiextract-350"><span class="linenos">350</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-351"><a href="#dwiextract-351"><span class="linenos">351</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwiextract-352"><a href="#dwiextract-352"><span class="linenos">352</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
+</span><span id="dwiextract-353"><a href="#dwiextract-353"><span class="linenos">353</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+</span><span id="dwiextract-354"><a href="#dwiextract-354"><span class="linenos">354</span></a>        <span class="p">])</span>
+</span><span id="dwiextract-355"><a href="#dwiextract-355"><span class="linenos">355</span></a>    <span class="k">if</span> <span class="n">fslgrad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-356"><a href="#dwiextract-356"><span class="linenos">356</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fslgrad</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="dwiextract-357"><a href="#dwiextract-357"><span class="linenos">357</span></a>    <span class="k">if</span> <span class="n">shells</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-358"><a href="#dwiextract-358"><span class="linenos">358</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwiextract-359"><a href="#dwiextract-359"><span class="linenos">359</span></a>            <span class="s2">&quot;-shells&quot;</span><span class="p">,</span>
+</span><span id="dwiextract-360"><a href="#dwiextract-360"><span class="linenos">360</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">shells</span><span class="p">))</span>
+</span><span id="dwiextract-361"><a href="#dwiextract-361"><span class="linenos">361</span></a>        <span class="p">])</span>
+</span><span id="dwiextract-362"><a href="#dwiextract-362"><span class="linenos">362</span></a>    <span class="k">if</span> <span class="n">export_grad_mrtrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-363"><a href="#dwiextract-363"><span class="linenos">363</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwiextract-364"><a href="#dwiextract-364"><span class="linenos">364</span></a>            <span class="s2">&quot;-export_grad_mrtrix&quot;</span><span class="p">,</span>
+</span><span id="dwiextract-365"><a href="#dwiextract-365"><span class="linenos">365</span></a>            <span class="n">export_grad_mrtrix</span>
+</span><span id="dwiextract-366"><a href="#dwiextract-366"><span class="linenos">366</span></a>        <span class="p">])</span>
+</span><span id="dwiextract-367"><a href="#dwiextract-367"><span class="linenos">367</span></a>    <span class="k">if</span> <span class="n">export_grad_fsl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-368"><a href="#dwiextract-368"><span class="linenos">368</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">export_grad_fsl</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="dwiextract-369"><a href="#dwiextract-369"><span class="linenos">369</span></a>    <span class="k">if</span> <span class="n">import_pe_table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-370"><a href="#dwiextract-370"><span class="linenos">370</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwiextract-371"><a href="#dwiextract-371"><span class="linenos">371</span></a>            <span class="s2">&quot;-import_pe_table&quot;</span><span class="p">,</span>
+</span><span id="dwiextract-372"><a href="#dwiextract-372"><span class="linenos">372</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">import_pe_table</span><span class="p">)</span>
+</span><span id="dwiextract-373"><a href="#dwiextract-373"><span class="linenos">373</span></a>        <span class="p">])</span>
+</span><span id="dwiextract-374"><a href="#dwiextract-374"><span class="linenos">374</span></a>    <span class="k">if</span> <span class="n">import_pe_eddy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-375"><a href="#dwiextract-375"><span class="linenos">375</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">import_pe_eddy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="dwiextract-376"><a href="#dwiextract-376"><span class="linenos">376</span></a>    <span class="k">if</span> <span class="n">pe</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-377"><a href="#dwiextract-377"><span class="linenos">377</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwiextract-378"><a href="#dwiextract-378"><span class="linenos">378</span></a>            <span class="s2">&quot;-pe&quot;</span><span class="p">,</span>
+</span><span id="dwiextract-379"><a href="#dwiextract-379"><span class="linenos">379</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">pe</span><span class="p">))</span>
+</span><span id="dwiextract-380"><a href="#dwiextract-380"><span class="linenos">380</span></a>        <span class="p">])</span>
+</span><span id="dwiextract-381"><a href="#dwiextract-381"><span class="linenos">381</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-382"><a href="#dwiextract-382"><span class="linenos">382</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwiextract-383"><a href="#dwiextract-383"><span class="linenos">383</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
+</span><span id="dwiextract-384"><a href="#dwiextract-384"><span class="linenos">384</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
+</span><span id="dwiextract-385"><a href="#dwiextract-385"><span class="linenos">385</span></a>        <span class="p">])</span>
+</span><span id="dwiextract-386"><a href="#dwiextract-386"><span class="linenos">386</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="dwiextract-387"><a href="#dwiextract-387"><span class="linenos">387</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="dwiextract-388"><a href="#dwiextract-388"><span class="linenos">388</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="dwiextract-389"><a href="#dwiextract-389"><span class="linenos">389</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="dwiextract-390"><a href="#dwiextract-390"><span class="linenos">390</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="dwiextract-391"><a href="#dwiextract-391"><span class="linenos">391</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="dwiextract-392"><a href="#dwiextract-392"><span class="linenos">392</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="dwiextract-393"><a href="#dwiextract-393"><span class="linenos">393</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="dwiextract-394"><a href="#dwiextract-394"><span class="linenos">394</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-395"><a href="#dwiextract-395"><span class="linenos">395</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="dwiextract-396"><a href="#dwiextract-396"><span class="linenos">396</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="dwiextract-397"><a href="#dwiextract-397"><span class="linenos">397</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="dwiextract-398"><a href="#dwiextract-398"><span class="linenos">398</span></a>        <span class="p">])</span>
+</span><span id="dwiextract-399"><a href="#dwiextract-399"><span class="linenos">399</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="dwiextract-400"><a href="#dwiextract-400"><span class="linenos">400</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="dwiextract-401"><a href="#dwiextract-401"><span class="linenos">401</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="dwiextract-402"><a href="#dwiextract-402"><span class="linenos">402</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="dwiextract-403"><a href="#dwiextract-403"><span class="linenos">403</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="dwiextract-404"><a href="#dwiextract-404"><span class="linenos">404</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="dwiextract-405"><a href="#dwiextract-405"><span class="linenos">405</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_</span><span class="p">))</span>
+</span><span id="dwiextract-406"><a href="#dwiextract-406"><span class="linenos">406</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="dwiextract-407"><a href="#dwiextract-407"><span class="linenos">407</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">DwiextractOutputs</span><span class="p">(</span>
+</span><span id="dwiextract-408"><a href="#dwiextract-408"><span class="linenos">408</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="dwiextract-409"><a href="#dwiextract-409"><span class="linenos">409</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="dwiextract-410"><a href="#dwiextract-410"><span class="linenos">410</span></a>        <span class="n">export_grad_mrtrix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">export_grad_mrtrix</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">export_grad_mrtrix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwiextract-411"><a href="#dwiextract-411"><span class="linenos">411</span></a>        <span class="n">export_grad_fsl</span><span class="o">=</span><span class="n">export_grad_fsl</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">export_grad_fsl</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="dwiextract-412"><a href="#dwiextract-412"><span class="linenos">412</span></a>    <span class="p">)</span>
+</span><span id="dwiextract-413"><a href="#dwiextract-413"><span class="linenos">413</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="dwiextract-414"><a href="#dwiextract-414"><span class="linenos">414</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1878,12 +1872,9 @@ dataset.</p>
 
 <p>.</p>
 
-<p>Author: David Raffelt (david.raffelt@florey.edu.au) and Thijs Dhollander
-(thijs.dhollander@gmail.com) and Robert E. Smith
-(robert.smith@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/dwiextract.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/dwiextract.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

@@ -114,7 +114,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CONVERT_FIBER_ORIENTATIONS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b82b32f7078784d7898cbb90201df3ef89134e4d.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6600ad75d90523bfc9a521774dc1537ecc3e45c5.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;convert-fiber-orientations&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -223,39 +223,41 @@
 </span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    THALAMUS_LEFT</span>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    THALAMUS_RIGHT.</span>
 </span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    </span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    </span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    Args:</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        label_volume: volume of cifti structure labels.</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        fiber_out: the output fiber orientation file.</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        fiber: specify the parameter volumes for a fiber.</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    Returns:</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertFiberOrientationsOutputs`).</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_FIBER_ORIENTATIONS_METADATA</span><span class="p">)</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-fiber-orientations&quot;</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label_volume</span><span class="p">))</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fiber_out</span><span class="p">)</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">fiber</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">fiber</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertFiberOrientationsOutputs</span><span class="p">(</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">fiber_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fiber_out</span><span class="p">),</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="s2">&quot;CONVERT_FIBER_ORIENTATIONS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="s2">&quot;ConvertFiberOrientationsFiber&quot;</span><span class="p">,</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="s2">&quot;ConvertFiberOrientationsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="s2">&quot;convert_fiber_orientations&quot;</span><span class="p">,</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="p">]</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    </span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    Args:</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        label_volume: volume of cifti structure labels.</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        fiber_out: the output fiber orientation file.</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        fiber: specify the parameter volumes for a fiber.</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    Returns:</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertFiberOrientationsOutputs`).</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_FIBER_ORIENTATIONS_METADATA</span><span class="p">)</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-fiber-orientations&quot;</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label_volume</span><span class="p">))</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fiber_out</span><span class="p">)</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">fiber</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">fiber</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertFiberOrientationsOutputs</span><span class="p">(</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">fiber_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fiber_out</span><span class="p">),</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="p">)</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="s2">&quot;CONVERT_FIBER_ORIENTATIONS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="s2">&quot;ConvertFiberOrientationsFiber&quot;</span><span class="p">,</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="s2">&quot;ConvertFiberOrientationsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="s2">&quot;convert_fiber_orientations&quot;</span><span class="p">,</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -264,7 +266,7 @@
                     <div class="attr variable">
             <span class="name">CONVERT_FIBER_ORIENTATIONS_METADATA</span>        =
 <input id="CONVERT_FIBER_ORIENTATIONS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CONVERT_FIBER_ORIENTATIONS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;b82b32f7078784d7898cbb90201df3ef89134e4d.boutiques&#39;, name=&#39;convert-fiber-orientations&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CONVERT_FIBER_ORIENTATIONS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6600ad75d90523bfc9a521774dc1537ecc3e45c5.boutiques&#39;, name=&#39;convert-fiber-orientations&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -617,31 +619,33 @@
 </span><span id="convert_fiber_orientations-117"><a href="#convert_fiber_orientations-117"><span class="linenos">117</span></a><span class="sd">    THALAMUS_LEFT</span>
 </span><span id="convert_fiber_orientations-118"><a href="#convert_fiber_orientations-118"><span class="linenos">118</span></a><span class="sd">    THALAMUS_RIGHT.</span>
 </span><span id="convert_fiber_orientations-119"><a href="#convert_fiber_orientations-119"><span class="linenos">119</span></a><span class="sd">    </span>
-</span><span id="convert_fiber_orientations-120"><a href="#convert_fiber_orientations-120"><span class="linenos">120</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="convert_fiber_orientations-120"><a href="#convert_fiber_orientations-120"><span class="linenos">120</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="convert_fiber_orientations-121"><a href="#convert_fiber_orientations-121"><span class="linenos">121</span></a><span class="sd">    </span>
-</span><span id="convert_fiber_orientations-122"><a href="#convert_fiber_orientations-122"><span class="linenos">122</span></a><span class="sd">    Args:</span>
-</span><span id="convert_fiber_orientations-123"><a href="#convert_fiber_orientations-123"><span class="linenos">123</span></a><span class="sd">        label_volume: volume of cifti structure labels.</span>
-</span><span id="convert_fiber_orientations-124"><a href="#convert_fiber_orientations-124"><span class="linenos">124</span></a><span class="sd">        fiber_out: the output fiber orientation file.</span>
-</span><span id="convert_fiber_orientations-125"><a href="#convert_fiber_orientations-125"><span class="linenos">125</span></a><span class="sd">        fiber: specify the parameter volumes for a fiber.</span>
-</span><span id="convert_fiber_orientations-126"><a href="#convert_fiber_orientations-126"><span class="linenos">126</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="convert_fiber_orientations-127"><a href="#convert_fiber_orientations-127"><span class="linenos">127</span></a><span class="sd">    Returns:</span>
-</span><span id="convert_fiber_orientations-128"><a href="#convert_fiber_orientations-128"><span class="linenos">128</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertFiberOrientationsOutputs`).</span>
-</span><span id="convert_fiber_orientations-129"><a href="#convert_fiber_orientations-129"><span class="linenos">129</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="convert_fiber_orientations-130"><a href="#convert_fiber_orientations-130"><span class="linenos">130</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="convert_fiber_orientations-131"><a href="#convert_fiber_orientations-131"><span class="linenos">131</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_FIBER_ORIENTATIONS_METADATA</span><span class="p">)</span>
-</span><span id="convert_fiber_orientations-132"><a href="#convert_fiber_orientations-132"><span class="linenos">132</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="convert_fiber_orientations-133"><a href="#convert_fiber_orientations-133"><span class="linenos">133</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="convert_fiber_orientations-134"><a href="#convert_fiber_orientations-134"><span class="linenos">134</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-fiber-orientations&quot;</span><span class="p">)</span>
-</span><span id="convert_fiber_orientations-135"><a href="#convert_fiber_orientations-135"><span class="linenos">135</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label_volume</span><span class="p">))</span>
-</span><span id="convert_fiber_orientations-136"><a href="#convert_fiber_orientations-136"><span class="linenos">136</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fiber_out</span><span class="p">)</span>
-</span><span id="convert_fiber_orientations-137"><a href="#convert_fiber_orientations-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">fiber</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="convert_fiber_orientations-138"><a href="#convert_fiber_orientations-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">fiber</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="convert_fiber_orientations-139"><a href="#convert_fiber_orientations-139"><span class="linenos">139</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertFiberOrientationsOutputs</span><span class="p">(</span>
-</span><span id="convert_fiber_orientations-140"><a href="#convert_fiber_orientations-140"><span class="linenos">140</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="convert_fiber_orientations-141"><a href="#convert_fiber_orientations-141"><span class="linenos">141</span></a>        <span class="n">fiber_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fiber_out</span><span class="p">),</span>
-</span><span id="convert_fiber_orientations-142"><a href="#convert_fiber_orientations-142"><span class="linenos">142</span></a>    <span class="p">)</span>
-</span><span id="convert_fiber_orientations-143"><a href="#convert_fiber_orientations-143"><span class="linenos">143</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="convert_fiber_orientations-144"><a href="#convert_fiber_orientations-144"><span class="linenos">144</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="convert_fiber_orientations-122"><a href="#convert_fiber_orientations-122"><span class="linenos">122</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="convert_fiber_orientations-123"><a href="#convert_fiber_orientations-123"><span class="linenos">123</span></a><span class="sd">    </span>
+</span><span id="convert_fiber_orientations-124"><a href="#convert_fiber_orientations-124"><span class="linenos">124</span></a><span class="sd">    Args:</span>
+</span><span id="convert_fiber_orientations-125"><a href="#convert_fiber_orientations-125"><span class="linenos">125</span></a><span class="sd">        label_volume: volume of cifti structure labels.</span>
+</span><span id="convert_fiber_orientations-126"><a href="#convert_fiber_orientations-126"><span class="linenos">126</span></a><span class="sd">        fiber_out: the output fiber orientation file.</span>
+</span><span id="convert_fiber_orientations-127"><a href="#convert_fiber_orientations-127"><span class="linenos">127</span></a><span class="sd">        fiber: specify the parameter volumes for a fiber.</span>
+</span><span id="convert_fiber_orientations-128"><a href="#convert_fiber_orientations-128"><span class="linenos">128</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="convert_fiber_orientations-129"><a href="#convert_fiber_orientations-129"><span class="linenos">129</span></a><span class="sd">    Returns:</span>
+</span><span id="convert_fiber_orientations-130"><a href="#convert_fiber_orientations-130"><span class="linenos">130</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertFiberOrientationsOutputs`).</span>
+</span><span id="convert_fiber_orientations-131"><a href="#convert_fiber_orientations-131"><span class="linenos">131</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="convert_fiber_orientations-132"><a href="#convert_fiber_orientations-132"><span class="linenos">132</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="convert_fiber_orientations-133"><a href="#convert_fiber_orientations-133"><span class="linenos">133</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_FIBER_ORIENTATIONS_METADATA</span><span class="p">)</span>
+</span><span id="convert_fiber_orientations-134"><a href="#convert_fiber_orientations-134"><span class="linenos">134</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="convert_fiber_orientations-135"><a href="#convert_fiber_orientations-135"><span class="linenos">135</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="convert_fiber_orientations-136"><a href="#convert_fiber_orientations-136"><span class="linenos">136</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-fiber-orientations&quot;</span><span class="p">)</span>
+</span><span id="convert_fiber_orientations-137"><a href="#convert_fiber_orientations-137"><span class="linenos">137</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label_volume</span><span class="p">))</span>
+</span><span id="convert_fiber_orientations-138"><a href="#convert_fiber_orientations-138"><span class="linenos">138</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fiber_out</span><span class="p">)</span>
+</span><span id="convert_fiber_orientations-139"><a href="#convert_fiber_orientations-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">fiber</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="convert_fiber_orientations-140"><a href="#convert_fiber_orientations-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">fiber</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="convert_fiber_orientations-141"><a href="#convert_fiber_orientations-141"><span class="linenos">141</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertFiberOrientationsOutputs</span><span class="p">(</span>
+</span><span id="convert_fiber_orientations-142"><a href="#convert_fiber_orientations-142"><span class="linenos">142</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="convert_fiber_orientations-143"><a href="#convert_fiber_orientations-143"><span class="linenos">143</span></a>        <span class="n">fiber_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fiber_out</span><span class="p">),</span>
+</span><span id="convert_fiber_orientations-144"><a href="#convert_fiber_orientations-144"><span class="linenos">144</span></a>    <span class="p">)</span>
+</span><span id="convert_fiber_orientations-145"><a href="#convert_fiber_orientations-145"><span class="linenos">145</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="convert_fiber_orientations-146"><a href="#convert_fiber_orientations-146"><span class="linenos">146</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -685,7 +689,9 @@ PUTAMEN_RIGHT
 THALAMUS_LEFT
 THALAMUS_RIGHT.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

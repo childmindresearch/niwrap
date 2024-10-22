@@ -162,7 +162,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">VOLUME_CREATE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5d7086a20f40e1369099258732e008fa1d902dda.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f8cc4765bcdbff21d356e59b4422607a10cf1c6d.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;volume-create&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -298,47 +298,49 @@
 </span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    Creates a volume file full of zeros. Exactly one of -plumb or -sform must be</span>
 </span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    specified.</span>
 </span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    </span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">    </span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    Args:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        i_dim: length of first dimension.</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        j_dim: length of second dimension.</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        k_dim: length of third dimension.</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">        volume_out: the output volume.</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">        plumb: set via axis order and spacing/offset.</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        sform: set via a nifti sform.</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    Returns:</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeCreateOutputs`).</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_CREATE_METADATA</span><span class="p">)</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-create&quot;</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i_dim</span><span class="p">))</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">j_dim</span><span class="p">))</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">k_dim</span><span class="p">))</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">plumb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">plumb</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">sform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sform</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeCreateOutputs</span><span class="p">(</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="p">)</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="s2">&quot;VOLUME_CREATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="s2">&quot;VolumeCreateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="s2">&quot;VolumeCreatePlumb&quot;</span><span class="p">,</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="s2">&quot;VolumeCreateSform&quot;</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="s2">&quot;volume_create&quot;</span><span class="p">,</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="p">]</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    </span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    Args:</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        i_dim: length of first dimension.</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">        j_dim: length of second dimension.</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">        k_dim: length of third dimension.</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        volume_out: the output volume.</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        plumb: set via axis order and spacing/offset.</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        sform: set via a nifti sform.</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    Returns:</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeCreateOutputs`).</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_CREATE_METADATA</span><span class="p">)</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-create&quot;</span><span class="p">)</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i_dim</span><span class="p">))</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">j_dim</span><span class="p">))</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">k_dim</span><span class="p">))</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">plumb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">plumb</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">sform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sform</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeCreateOutputs</span><span class="p">(</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="p">)</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="s2">&quot;VOLUME_CREATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="s2">&quot;VolumeCreateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="s2">&quot;VolumeCreatePlumb&quot;</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="s2">&quot;VolumeCreateSform&quot;</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="s2">&quot;volume_create&quot;</span><span class="p">,</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -347,7 +349,7 @@
                     <div class="attr variable">
             <span class="name">VOLUME_CREATE_METADATA</span>        =
 <input id="VOLUME_CREATE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="VOLUME_CREATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5d7086a20f40e1369099258732e008fa1d902dda.boutiques&#39;, name=&#39;volume-create&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="VOLUME_CREATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f8cc4765bcdbff21d356e59b4422607a10cf1c6d.boutiques&#39;, name=&#39;volume-create&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -972,38 +974,40 @@ dimension</p>
 </span><span id="volume_create-144"><a href="#volume_create-144"><span class="linenos">144</span></a><span class="sd">    Creates a volume file full of zeros. Exactly one of -plumb or -sform must be</span>
 </span><span id="volume_create-145"><a href="#volume_create-145"><span class="linenos">145</span></a><span class="sd">    specified.</span>
 </span><span id="volume_create-146"><a href="#volume_create-146"><span class="linenos">146</span></a><span class="sd">    </span>
-</span><span id="volume_create-147"><a href="#volume_create-147"><span class="linenos">147</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="volume_create-147"><a href="#volume_create-147"><span class="linenos">147</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="volume_create-148"><a href="#volume_create-148"><span class="linenos">148</span></a><span class="sd">    </span>
-</span><span id="volume_create-149"><a href="#volume_create-149"><span class="linenos">149</span></a><span class="sd">    Args:</span>
-</span><span id="volume_create-150"><a href="#volume_create-150"><span class="linenos">150</span></a><span class="sd">        i_dim: length of first dimension.</span>
-</span><span id="volume_create-151"><a href="#volume_create-151"><span class="linenos">151</span></a><span class="sd">        j_dim: length of second dimension.</span>
-</span><span id="volume_create-152"><a href="#volume_create-152"><span class="linenos">152</span></a><span class="sd">        k_dim: length of third dimension.</span>
-</span><span id="volume_create-153"><a href="#volume_create-153"><span class="linenos">153</span></a><span class="sd">        volume_out: the output volume.</span>
-</span><span id="volume_create-154"><a href="#volume_create-154"><span class="linenos">154</span></a><span class="sd">        plumb: set via axis order and spacing/offset.</span>
-</span><span id="volume_create-155"><a href="#volume_create-155"><span class="linenos">155</span></a><span class="sd">        sform: set via a nifti sform.</span>
-</span><span id="volume_create-156"><a href="#volume_create-156"><span class="linenos">156</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_create-157"><a href="#volume_create-157"><span class="linenos">157</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_create-158"><a href="#volume_create-158"><span class="linenos">158</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeCreateOutputs`).</span>
-</span><span id="volume_create-159"><a href="#volume_create-159"><span class="linenos">159</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_create-160"><a href="#volume_create-160"><span class="linenos">160</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_create-161"><a href="#volume_create-161"><span class="linenos">161</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_CREATE_METADATA</span><span class="p">)</span>
-</span><span id="volume_create-162"><a href="#volume_create-162"><span class="linenos">162</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="volume_create-163"><a href="#volume_create-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="volume_create-164"><a href="#volume_create-164"><span class="linenos">164</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-create&quot;</span><span class="p">)</span>
-</span><span id="volume_create-165"><a href="#volume_create-165"><span class="linenos">165</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i_dim</span><span class="p">))</span>
-</span><span id="volume_create-166"><a href="#volume_create-166"><span class="linenos">166</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">j_dim</span><span class="p">))</span>
-</span><span id="volume_create-167"><a href="#volume_create-167"><span class="linenos">167</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">k_dim</span><span class="p">))</span>
-</span><span id="volume_create-168"><a href="#volume_create-168"><span class="linenos">168</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
-</span><span id="volume_create-169"><a href="#volume_create-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">plumb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_create-170"><a href="#volume_create-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">plumb</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="volume_create-171"><a href="#volume_create-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">sform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_create-172"><a href="#volume_create-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sform</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="volume_create-173"><a href="#volume_create-173"><span class="linenos">173</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeCreateOutputs</span><span class="p">(</span>
-</span><span id="volume_create-174"><a href="#volume_create-174"><span class="linenos">174</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="volume_create-175"><a href="#volume_create-175"><span class="linenos">175</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
-</span><span id="volume_create-176"><a href="#volume_create-176"><span class="linenos">176</span></a>    <span class="p">)</span>
-</span><span id="volume_create-177"><a href="#volume_create-177"><span class="linenos">177</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="volume_create-178"><a href="#volume_create-178"><span class="linenos">178</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="volume_create-149"><a href="#volume_create-149"><span class="linenos">149</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_create-150"><a href="#volume_create-150"><span class="linenos">150</span></a><span class="sd">    </span>
+</span><span id="volume_create-151"><a href="#volume_create-151"><span class="linenos">151</span></a><span class="sd">    Args:</span>
+</span><span id="volume_create-152"><a href="#volume_create-152"><span class="linenos">152</span></a><span class="sd">        i_dim: length of first dimension.</span>
+</span><span id="volume_create-153"><a href="#volume_create-153"><span class="linenos">153</span></a><span class="sd">        j_dim: length of second dimension.</span>
+</span><span id="volume_create-154"><a href="#volume_create-154"><span class="linenos">154</span></a><span class="sd">        k_dim: length of third dimension.</span>
+</span><span id="volume_create-155"><a href="#volume_create-155"><span class="linenos">155</span></a><span class="sd">        volume_out: the output volume.</span>
+</span><span id="volume_create-156"><a href="#volume_create-156"><span class="linenos">156</span></a><span class="sd">        plumb: set via axis order and spacing/offset.</span>
+</span><span id="volume_create-157"><a href="#volume_create-157"><span class="linenos">157</span></a><span class="sd">        sform: set via a nifti sform.</span>
+</span><span id="volume_create-158"><a href="#volume_create-158"><span class="linenos">158</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_create-159"><a href="#volume_create-159"><span class="linenos">159</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_create-160"><a href="#volume_create-160"><span class="linenos">160</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeCreateOutputs`).</span>
+</span><span id="volume_create-161"><a href="#volume_create-161"><span class="linenos">161</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_create-162"><a href="#volume_create-162"><span class="linenos">162</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_create-163"><a href="#volume_create-163"><span class="linenos">163</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_CREATE_METADATA</span><span class="p">)</span>
+</span><span id="volume_create-164"><a href="#volume_create-164"><span class="linenos">164</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="volume_create-165"><a href="#volume_create-165"><span class="linenos">165</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="volume_create-166"><a href="#volume_create-166"><span class="linenos">166</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-create&quot;</span><span class="p">)</span>
+</span><span id="volume_create-167"><a href="#volume_create-167"><span class="linenos">167</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i_dim</span><span class="p">))</span>
+</span><span id="volume_create-168"><a href="#volume_create-168"><span class="linenos">168</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">j_dim</span><span class="p">))</span>
+</span><span id="volume_create-169"><a href="#volume_create-169"><span class="linenos">169</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">k_dim</span><span class="p">))</span>
+</span><span id="volume_create-170"><a href="#volume_create-170"><span class="linenos">170</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
+</span><span id="volume_create-171"><a href="#volume_create-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">plumb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_create-172"><a href="#volume_create-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">plumb</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="volume_create-173"><a href="#volume_create-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">sform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_create-174"><a href="#volume_create-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sform</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="volume_create-175"><a href="#volume_create-175"><span class="linenos">175</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeCreateOutputs</span><span class="p">(</span>
+</span><span id="volume_create-176"><a href="#volume_create-176"><span class="linenos">176</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="volume_create-177"><a href="#volume_create-177"><span class="linenos">177</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
+</span><span id="volume_create-178"><a href="#volume_create-178"><span class="linenos">178</span></a>    <span class="p">)</span>
+</span><span id="volume_create-179"><a href="#volume_create-179"><span class="linenos">179</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="volume_create-180"><a href="#volume_create-180"><span class="linenos">180</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1012,7 +1016,9 @@ dimension</p>
 <p>Creates a volume file full of zeros. Exactly one of -plumb or -sform must be
 specified.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

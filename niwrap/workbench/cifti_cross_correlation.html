@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">CIFTI_CROSS_CORRELATION_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4c7c2681bca3ea30eea358f6794f230da3a4e6da.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;22031efe575311962103cb8ab829373f17516a01.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cifti-cross-correlation&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -119,55 +119,57 @@
 </span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">    Restricting the memory usage will make it calculate the output in chunks, by</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">    reading through &lt;cifti-b&gt; multiple times.</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">    </span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">    </span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">    Args:</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        cifti_a: first input cifti file.</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        cifti_b: second input cifti file.</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        cifti_out: output cifti file.</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        opt_weights_weight_file: specify column weights: text file containing\</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">            one weight per column.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        opt_fisher_z: apply fisher small z transform (ie, artanh) to\</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">            correlation.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">        opt_mem_limit_limit_gb: restrict memory usage: memory limit in\</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">            gigabytes.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">    Returns:</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCrossCorrelationOutputs`).</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CROSS_CORRELATION_METADATA</span><span class="p">)</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-cross-correlation&quot;</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_a</span><span class="p">))</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_b</span><span class="p">))</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">opt_weights_weight_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>            <span class="s2">&quot;-weights&quot;</span><span class="p">,</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>            <span class="n">opt_weights_weight_file</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="p">])</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="k">if</span> <span class="n">opt_fisher_z</span><span class="p">:</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fisher-z&quot;</span><span class="p">)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">opt_mem_limit_limit_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>            <span class="s2">&quot;-mem-limit&quot;</span><span class="p">,</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_mem_limit_limit_gb</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="p">])</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiCrossCorrelationOutputs</span><span class="p">(</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>
-</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>
-</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a>    <span class="s2">&quot;CIFTI_CROSS_CORRELATION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a>    <span class="s2">&quot;CiftiCrossCorrelationOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos">95</span></a>    <span class="s2">&quot;cifti_cross_correlation&quot;</span><span class="p">,</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos">96</span></a><span class="p">]</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">    </span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">    Args:</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        cifti_a: first input cifti file.</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        cifti_b: second input cifti file.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">        cifti_out: output cifti file.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        opt_weights_weight_file: specify column weights: text file containing\</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">            one weight per column.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">        opt_fisher_z: apply fisher small z transform (ie, artanh) to\</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">            correlation.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        opt_mem_limit_limit_gb: restrict memory usage: memory limit in\</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">            gigabytes.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">    Returns:</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCrossCorrelationOutputs`).</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CROSS_CORRELATION_METADATA</span><span class="p">)</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-cross-correlation&quot;</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_a</span><span class="p">))</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_b</span><span class="p">))</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">opt_weights_weight_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>            <span class="s2">&quot;-weights&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>            <span class="n">opt_weights_weight_file</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="p">])</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">opt_fisher_z</span><span class="p">:</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fisher-z&quot;</span><span class="p">)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">if</span> <span class="n">opt_mem_limit_limit_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>            <span class="s2">&quot;-mem-limit&quot;</span><span class="p">,</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_mem_limit_limit_gb</span><span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>        <span class="p">])</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiCrossCorrelationOutputs</span><span class="p">(</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>    <span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>
+</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a>
+</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos">95</span></a>    <span class="s2">&quot;CIFTI_CROSS_CORRELATION_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos">96</span></a>    <span class="s2">&quot;CiftiCrossCorrelationOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos">97</span></a>    <span class="s2">&quot;cifti_cross_correlation&quot;</span><span class="p">,</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos">98</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -176,7 +178,7 @@
                     <div class="attr variable">
             <span class="name">CIFTI_CROSS_CORRELATION_METADATA</span>        =
 <input id="CIFTI_CROSS_CORRELATION_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CIFTI_CROSS_CORRELATION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4c7c2681bca3ea30eea358f6794f230da3a4e6da.boutiques&#39;, name=&#39;cifti-cross-correlation&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CIFTI_CROSS_CORRELATION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;22031efe575311962103cb8ab829373f17516a01.boutiques&#39;, name=&#39;cifti-cross-correlation&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -284,48 +286,50 @@
 </span><span id="cifti_cross_correlation-46"><a href="#cifti_cross_correlation-46"><span class="linenos">46</span></a><span class="sd">    Restricting the memory usage will make it calculate the output in chunks, by</span>
 </span><span id="cifti_cross_correlation-47"><a href="#cifti_cross_correlation-47"><span class="linenos">47</span></a><span class="sd">    reading through &lt;cifti-b&gt; multiple times.</span>
 </span><span id="cifti_cross_correlation-48"><a href="#cifti_cross_correlation-48"><span class="linenos">48</span></a><span class="sd">    </span>
-</span><span id="cifti_cross_correlation-49"><a href="#cifti_cross_correlation-49"><span class="linenos">49</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="cifti_cross_correlation-49"><a href="#cifti_cross_correlation-49"><span class="linenos">49</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="cifti_cross_correlation-50"><a href="#cifti_cross_correlation-50"><span class="linenos">50</span></a><span class="sd">    </span>
-</span><span id="cifti_cross_correlation-51"><a href="#cifti_cross_correlation-51"><span class="linenos">51</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_cross_correlation-52"><a href="#cifti_cross_correlation-52"><span class="linenos">52</span></a><span class="sd">        cifti_a: first input cifti file.</span>
-</span><span id="cifti_cross_correlation-53"><a href="#cifti_cross_correlation-53"><span class="linenos">53</span></a><span class="sd">        cifti_b: second input cifti file.</span>
-</span><span id="cifti_cross_correlation-54"><a href="#cifti_cross_correlation-54"><span class="linenos">54</span></a><span class="sd">        cifti_out: output cifti file.</span>
-</span><span id="cifti_cross_correlation-55"><a href="#cifti_cross_correlation-55"><span class="linenos">55</span></a><span class="sd">        opt_weights_weight_file: specify column weights: text file containing\</span>
-</span><span id="cifti_cross_correlation-56"><a href="#cifti_cross_correlation-56"><span class="linenos">56</span></a><span class="sd">            one weight per column.</span>
-</span><span id="cifti_cross_correlation-57"><a href="#cifti_cross_correlation-57"><span class="linenos">57</span></a><span class="sd">        opt_fisher_z: apply fisher small z transform (ie, artanh) to\</span>
-</span><span id="cifti_cross_correlation-58"><a href="#cifti_cross_correlation-58"><span class="linenos">58</span></a><span class="sd">            correlation.</span>
-</span><span id="cifti_cross_correlation-59"><a href="#cifti_cross_correlation-59"><span class="linenos">59</span></a><span class="sd">        opt_mem_limit_limit_gb: restrict memory usage: memory limit in\</span>
-</span><span id="cifti_cross_correlation-60"><a href="#cifti_cross_correlation-60"><span class="linenos">60</span></a><span class="sd">            gigabytes.</span>
-</span><span id="cifti_cross_correlation-61"><a href="#cifti_cross_correlation-61"><span class="linenos">61</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_cross_correlation-62"><a href="#cifti_cross_correlation-62"><span class="linenos">62</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_cross_correlation-63"><a href="#cifti_cross_correlation-63"><span class="linenos">63</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCrossCorrelationOutputs`).</span>
-</span><span id="cifti_cross_correlation-64"><a href="#cifti_cross_correlation-64"><span class="linenos">64</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_cross_correlation-65"><a href="#cifti_cross_correlation-65"><span class="linenos">65</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_cross_correlation-66"><a href="#cifti_cross_correlation-66"><span class="linenos">66</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CROSS_CORRELATION_METADATA</span><span class="p">)</span>
-</span><span id="cifti_cross_correlation-67"><a href="#cifti_cross_correlation-67"><span class="linenos">67</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="cifti_cross_correlation-68"><a href="#cifti_cross_correlation-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="cifti_cross_correlation-69"><a href="#cifti_cross_correlation-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-cross-correlation&quot;</span><span class="p">)</span>
-</span><span id="cifti_cross_correlation-70"><a href="#cifti_cross_correlation-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_a</span><span class="p">))</span>
-</span><span id="cifti_cross_correlation-71"><a href="#cifti_cross_correlation-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_b</span><span class="p">))</span>
-</span><span id="cifti_cross_correlation-72"><a href="#cifti_cross_correlation-72"><span class="linenos">72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="cifti_cross_correlation-73"><a href="#cifti_cross_correlation-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">opt_weights_weight_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_cross_correlation-74"><a href="#cifti_cross_correlation-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_cross_correlation-75"><a href="#cifti_cross_correlation-75"><span class="linenos">75</span></a>            <span class="s2">&quot;-weights&quot;</span><span class="p">,</span>
-</span><span id="cifti_cross_correlation-76"><a href="#cifti_cross_correlation-76"><span class="linenos">76</span></a>            <span class="n">opt_weights_weight_file</span>
-</span><span id="cifti_cross_correlation-77"><a href="#cifti_cross_correlation-77"><span class="linenos">77</span></a>        <span class="p">])</span>
-</span><span id="cifti_cross_correlation-78"><a href="#cifti_cross_correlation-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">opt_fisher_z</span><span class="p">:</span>
-</span><span id="cifti_cross_correlation-79"><a href="#cifti_cross_correlation-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fisher-z&quot;</span><span class="p">)</span>
-</span><span id="cifti_cross_correlation-80"><a href="#cifti_cross_correlation-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">opt_mem_limit_limit_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_cross_correlation-81"><a href="#cifti_cross_correlation-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_cross_correlation-82"><a href="#cifti_cross_correlation-82"><span class="linenos">82</span></a>            <span class="s2">&quot;-mem-limit&quot;</span><span class="p">,</span>
-</span><span id="cifti_cross_correlation-83"><a href="#cifti_cross_correlation-83"><span class="linenos">83</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_mem_limit_limit_gb</span><span class="p">)</span>
-</span><span id="cifti_cross_correlation-84"><a href="#cifti_cross_correlation-84"><span class="linenos">84</span></a>        <span class="p">])</span>
-</span><span id="cifti_cross_correlation-85"><a href="#cifti_cross_correlation-85"><span class="linenos">85</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiCrossCorrelationOutputs</span><span class="p">(</span>
-</span><span id="cifti_cross_correlation-86"><a href="#cifti_cross_correlation-86"><span class="linenos">86</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="cifti_cross_correlation-87"><a href="#cifti_cross_correlation-87"><span class="linenos">87</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="cifti_cross_correlation-88"><a href="#cifti_cross_correlation-88"><span class="linenos">88</span></a>    <span class="p">)</span>
-</span><span id="cifti_cross_correlation-89"><a href="#cifti_cross_correlation-89"><span class="linenos">89</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="cifti_cross_correlation-90"><a href="#cifti_cross_correlation-90"><span class="linenos">90</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="cifti_cross_correlation-51"><a href="#cifti_cross_correlation-51"><span class="linenos">51</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_cross_correlation-52"><a href="#cifti_cross_correlation-52"><span class="linenos">52</span></a><span class="sd">    </span>
+</span><span id="cifti_cross_correlation-53"><a href="#cifti_cross_correlation-53"><span class="linenos">53</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_cross_correlation-54"><a href="#cifti_cross_correlation-54"><span class="linenos">54</span></a><span class="sd">        cifti_a: first input cifti file.</span>
+</span><span id="cifti_cross_correlation-55"><a href="#cifti_cross_correlation-55"><span class="linenos">55</span></a><span class="sd">        cifti_b: second input cifti file.</span>
+</span><span id="cifti_cross_correlation-56"><a href="#cifti_cross_correlation-56"><span class="linenos">56</span></a><span class="sd">        cifti_out: output cifti file.</span>
+</span><span id="cifti_cross_correlation-57"><a href="#cifti_cross_correlation-57"><span class="linenos">57</span></a><span class="sd">        opt_weights_weight_file: specify column weights: text file containing\</span>
+</span><span id="cifti_cross_correlation-58"><a href="#cifti_cross_correlation-58"><span class="linenos">58</span></a><span class="sd">            one weight per column.</span>
+</span><span id="cifti_cross_correlation-59"><a href="#cifti_cross_correlation-59"><span class="linenos">59</span></a><span class="sd">        opt_fisher_z: apply fisher small z transform (ie, artanh) to\</span>
+</span><span id="cifti_cross_correlation-60"><a href="#cifti_cross_correlation-60"><span class="linenos">60</span></a><span class="sd">            correlation.</span>
+</span><span id="cifti_cross_correlation-61"><a href="#cifti_cross_correlation-61"><span class="linenos">61</span></a><span class="sd">        opt_mem_limit_limit_gb: restrict memory usage: memory limit in\</span>
+</span><span id="cifti_cross_correlation-62"><a href="#cifti_cross_correlation-62"><span class="linenos">62</span></a><span class="sd">            gigabytes.</span>
+</span><span id="cifti_cross_correlation-63"><a href="#cifti_cross_correlation-63"><span class="linenos">63</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_cross_correlation-64"><a href="#cifti_cross_correlation-64"><span class="linenos">64</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_cross_correlation-65"><a href="#cifti_cross_correlation-65"><span class="linenos">65</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCrossCorrelationOutputs`).</span>
+</span><span id="cifti_cross_correlation-66"><a href="#cifti_cross_correlation-66"><span class="linenos">66</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_cross_correlation-67"><a href="#cifti_cross_correlation-67"><span class="linenos">67</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_cross_correlation-68"><a href="#cifti_cross_correlation-68"><span class="linenos">68</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CROSS_CORRELATION_METADATA</span><span class="p">)</span>
+</span><span id="cifti_cross_correlation-69"><a href="#cifti_cross_correlation-69"><span class="linenos">69</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="cifti_cross_correlation-70"><a href="#cifti_cross_correlation-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="cifti_cross_correlation-71"><a href="#cifti_cross_correlation-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-cross-correlation&quot;</span><span class="p">)</span>
+</span><span id="cifti_cross_correlation-72"><a href="#cifti_cross_correlation-72"><span class="linenos">72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_a</span><span class="p">))</span>
+</span><span id="cifti_cross_correlation-73"><a href="#cifti_cross_correlation-73"><span class="linenos">73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_b</span><span class="p">))</span>
+</span><span id="cifti_cross_correlation-74"><a href="#cifti_cross_correlation-74"><span class="linenos">74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="cifti_cross_correlation-75"><a href="#cifti_cross_correlation-75"><span class="linenos">75</span></a>    <span class="k">if</span> <span class="n">opt_weights_weight_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_cross_correlation-76"><a href="#cifti_cross_correlation-76"><span class="linenos">76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_cross_correlation-77"><a href="#cifti_cross_correlation-77"><span class="linenos">77</span></a>            <span class="s2">&quot;-weights&quot;</span><span class="p">,</span>
+</span><span id="cifti_cross_correlation-78"><a href="#cifti_cross_correlation-78"><span class="linenos">78</span></a>            <span class="n">opt_weights_weight_file</span>
+</span><span id="cifti_cross_correlation-79"><a href="#cifti_cross_correlation-79"><span class="linenos">79</span></a>        <span class="p">])</span>
+</span><span id="cifti_cross_correlation-80"><a href="#cifti_cross_correlation-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">opt_fisher_z</span><span class="p">:</span>
+</span><span id="cifti_cross_correlation-81"><a href="#cifti_cross_correlation-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fisher-z&quot;</span><span class="p">)</span>
+</span><span id="cifti_cross_correlation-82"><a href="#cifti_cross_correlation-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">opt_mem_limit_limit_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_cross_correlation-83"><a href="#cifti_cross_correlation-83"><span class="linenos">83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_cross_correlation-84"><a href="#cifti_cross_correlation-84"><span class="linenos">84</span></a>            <span class="s2">&quot;-mem-limit&quot;</span><span class="p">,</span>
+</span><span id="cifti_cross_correlation-85"><a href="#cifti_cross_correlation-85"><span class="linenos">85</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_mem_limit_limit_gb</span><span class="p">)</span>
+</span><span id="cifti_cross_correlation-86"><a href="#cifti_cross_correlation-86"><span class="linenos">86</span></a>        <span class="p">])</span>
+</span><span id="cifti_cross_correlation-87"><a href="#cifti_cross_correlation-87"><span class="linenos">87</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiCrossCorrelationOutputs</span><span class="p">(</span>
+</span><span id="cifti_cross_correlation-88"><a href="#cifti_cross_correlation-88"><span class="linenos">88</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="cifti_cross_correlation-89"><a href="#cifti_cross_correlation-89"><span class="linenos">89</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="cifti_cross_correlation-90"><a href="#cifti_cross_correlation-90"><span class="linenos">90</span></a>    <span class="p">)</span>
+</span><span id="cifti_cross_correlation-91"><a href="#cifti_cross_correlation-91"><span class="linenos">91</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="cifti_cross_correlation-92"><a href="#cifti_cross_correlation-92"><span class="linenos">92</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -340,7 +344,9 @@ artanh(r), to do further math on this output, consider using -cifti-math.</p>
 <p>Restricting the memory usage will make it calculate the output in chunks, by
 reading through <cifti-b> multiple times.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

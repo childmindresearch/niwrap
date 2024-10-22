@@ -96,7 +96,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FAT_PROC_DECMAP_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;160ec619653edbedd5d71497f683c40fb1bb99a1.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5d4b32a54bdd18b7bea855a52f4b838de1b32088.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fat_proc_decmap&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -143,94 +143,93 @@
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    This program makes a directionally encoded color (DEC) map for DTI results.</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    </span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    URL:</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_decmap.html</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    </span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    Args:</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        in_fa: Input FA (scalar) map.</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        in_v1: Input first eigenvector (3-vector) map.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        prefix: Set prefix (and path) for output DWI data.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        mask: Optional mask for picking out a region. Otherwise, only places\</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">            with FA&gt;0 are given coloration.</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        fa_thr: For QC1 type of DEC images, use FFF to threshold where DEC\</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">            values are calculated (default: 0.2).</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        fa_sca: For QC2 type of DEC images, use SSS to scale the FA weighting\</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">            of what would otherwise be a &#39;classical&#39; DEC map (default: 0.7).</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        workdir: Specify a working directory, which can be removed (default:\</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">            &#39;__WORKING_decmap&#39;).</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        no_clean: Do not delete temporary files when finishing.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        qc_prefix: Set the prefix of the QC image files (default: &#39;PREFIX&#39;).</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        no_cmd_out: Do not save the command line call of this program and\</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">            location where it was run.</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        no_qc_view: Turn off generating QC image files.</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    Returns:</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        NamedTuple of outputs (described in `FatProcDecmapOutputs`).</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_PROC_DECMAP_METADATA</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_proc_decmap&quot;</span><span class="p">)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-in_fa&quot;</span><span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fa</span><span class="p">))</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-in_v1&quot;</span><span class="p">)</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_v1</span><span class="p">))</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">prefix</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="p">])</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="p">])</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">fa_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="s2">&quot;-fa_thr&quot;</span><span class="p">,</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fa_thr</span><span class="p">)</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="p">])</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">fa_sca</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="s2">&quot;-fa_sca&quot;</span><span class="p">,</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fa_sca</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="p">])</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">workdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="s2">&quot;-workdir&quot;</span><span class="p">,</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="n">workdir</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="p">])</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">no_clean</span><span class="p">:</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_clean&quot;</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">qc_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="s2">&quot;-qc_prefix&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="n">qc_prefix</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="p">])</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">no_cmd_out</span><span class="p">:</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cmd_out&quot;</span><span class="p">)</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">no_qc_view</span><span class="p">:</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_qc_view&quot;</span><span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatProcDecmapOutputs</span><span class="p">(</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">outfile_dec_rgb</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">outfile_dec_unwt_thr</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec_unwt_thr.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">outfile_dec_sca</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec_sca*.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">qc_dec_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec*.png&quot;</span><span class="p">),</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">qc_dec_unwt_thrx_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec_unwt_thrx*.png&quot;</span><span class="p">),</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">qc_dec_sca_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec_sca*.png&quot;</span><span class="p">),</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="p">)</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    </span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    Args:</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        in_fa: Input FA (scalar) map.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        in_v1: Input first eigenvector (3-vector) map.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        prefix: Set prefix (and path) for output DWI data.</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        mask: Optional mask for picking out a region. Otherwise, only places\</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            with FA&gt;0 are given coloration.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        fa_thr: For QC1 type of DEC images, use FFF to threshold where DEC\</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">            values are calculated (default: 0.2).</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        fa_sca: For QC2 type of DEC images, use SSS to scale the FA weighting\</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">            of what would otherwise be a &#39;classical&#39; DEC map (default: 0.7).</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        workdir: Specify a working directory, which can be removed (default:\</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">            &#39;__WORKING_decmap&#39;).</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        no_clean: Do not delete temporary files when finishing.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        qc_prefix: Set the prefix of the QC image files (default: &#39;PREFIX&#39;).</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        no_cmd_out: Do not save the command line call of this program and\</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">            location where it was run.</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        no_qc_view: Turn off generating QC image files.</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    Returns:</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        NamedTuple of outputs (described in `FatProcDecmapOutputs`).</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_PROC_DECMAP_METADATA</span><span class="p">)</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_proc_decmap&quot;</span><span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-in_fa&quot;</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fa</span><span class="p">))</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-in_v1&quot;</span><span class="p">)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_v1</span><span class="p">))</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">prefix</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="p">])</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">fa_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="s2">&quot;-fa_thr&quot;</span><span class="p">,</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fa_thr</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="p">])</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">fa_sca</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="s2">&quot;-fa_sca&quot;</span><span class="p">,</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fa_sca</span><span class="p">)</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="p">])</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">workdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="s2">&quot;-workdir&quot;</span><span class="p">,</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="n">workdir</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="p">])</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">no_clean</span><span class="p">:</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_clean&quot;</span><span class="p">)</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">qc_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="s2">&quot;-qc_prefix&quot;</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="n">qc_prefix</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="p">])</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">no_cmd_out</span><span class="p">:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cmd_out&quot;</span><span class="p">)</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">no_qc_view</span><span class="p">:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_qc_view&quot;</span><span class="p">)</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatProcDecmapOutputs</span><span class="p">(</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">outfile_dec_rgb</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">outfile_dec_unwt_thr</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec_unwt_thr.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">outfile_dec_sca</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec_sca*.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">qc_dec_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec*.png&quot;</span><span class="p">),</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">qc_dec_unwt_thrx_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec_unwt_thrx*.png&quot;</span><span class="p">),</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">qc_dec_sca_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec_sca*.png&quot;</span><span class="p">),</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="p">)</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>
 </span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="s2">&quot;FAT_PROC_DECMAP_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="s2">&quot;FatProcDecmapOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="s2">&quot;fat_proc_decmap&quot;</span><span class="p">,</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="p">]</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="s2">&quot;FAT_PROC_DECMAP_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="s2">&quot;FatProcDecmapOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="s2">&quot;fat_proc_decmap&quot;</span><span class="p">,</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -239,7 +238,7 @@
                     <div class="attr variable">
             <span class="name">FAT_PROC_DECMAP_METADATA</span>        =
 <input id="FAT_PROC_DECMAP_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FAT_PROC_DECMAP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;160ec619653edbedd5d71497f683c40fb1bb99a1.boutiques&#39;, name=&#39;fat_proc_decmap&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FAT_PROC_DECMAP_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5d4b32a54bdd18b7bea855a52f4b838de1b32088.boutiques&#39;, name=&#39;fat_proc_decmap&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -424,96 +423,94 @@ data.</p>
 </span><span id="fat_proc_decmap-55"><a href="#fat_proc_decmap-55"><span class="linenos"> 55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="fat_proc_decmap-56"><a href="#fat_proc_decmap-56"><span class="linenos"> 56</span></a><span class="sd">    This program makes a directionally encoded color (DEC) map for DTI results.</span>
 </span><span id="fat_proc_decmap-57"><a href="#fat_proc_decmap-57"><span class="linenos"> 57</span></a><span class="sd">    </span>
-</span><span id="fat_proc_decmap-58"><a href="#fat_proc_decmap-58"><span class="linenos"> 58</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="fat_proc_decmap-58"><a href="#fat_proc_decmap-58"><span class="linenos"> 58</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="fat_proc_decmap-59"><a href="#fat_proc_decmap-59"><span class="linenos"> 59</span></a><span class="sd">    </span>
-</span><span id="fat_proc_decmap-60"><a href="#fat_proc_decmap-60"><span class="linenos"> 60</span></a><span class="sd">    URL:</span>
-</span><span id="fat_proc_decmap-61"><a href="#fat_proc_decmap-61"><span class="linenos"> 61</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_decmap.html</span>
-</span><span id="fat_proc_decmap-62"><a href="#fat_proc_decmap-62"><span class="linenos"> 62</span></a><span class="sd">    </span>
-</span><span id="fat_proc_decmap-63"><a href="#fat_proc_decmap-63"><span class="linenos"> 63</span></a><span class="sd">    Args:</span>
-</span><span id="fat_proc_decmap-64"><a href="#fat_proc_decmap-64"><span class="linenos"> 64</span></a><span class="sd">        in_fa: Input FA (scalar) map.</span>
-</span><span id="fat_proc_decmap-65"><a href="#fat_proc_decmap-65"><span class="linenos"> 65</span></a><span class="sd">        in_v1: Input first eigenvector (3-vector) map.</span>
-</span><span id="fat_proc_decmap-66"><a href="#fat_proc_decmap-66"><span class="linenos"> 66</span></a><span class="sd">        prefix: Set prefix (and path) for output DWI data.</span>
-</span><span id="fat_proc_decmap-67"><a href="#fat_proc_decmap-67"><span class="linenos"> 67</span></a><span class="sd">        mask: Optional mask for picking out a region. Otherwise, only places\</span>
-</span><span id="fat_proc_decmap-68"><a href="#fat_proc_decmap-68"><span class="linenos"> 68</span></a><span class="sd">            with FA&gt;0 are given coloration.</span>
-</span><span id="fat_proc_decmap-69"><a href="#fat_proc_decmap-69"><span class="linenos"> 69</span></a><span class="sd">        fa_thr: For QC1 type of DEC images, use FFF to threshold where DEC\</span>
-</span><span id="fat_proc_decmap-70"><a href="#fat_proc_decmap-70"><span class="linenos"> 70</span></a><span class="sd">            values are calculated (default: 0.2).</span>
-</span><span id="fat_proc_decmap-71"><a href="#fat_proc_decmap-71"><span class="linenos"> 71</span></a><span class="sd">        fa_sca: For QC2 type of DEC images, use SSS to scale the FA weighting\</span>
-</span><span id="fat_proc_decmap-72"><a href="#fat_proc_decmap-72"><span class="linenos"> 72</span></a><span class="sd">            of what would otherwise be a &#39;classical&#39; DEC map (default: 0.7).</span>
-</span><span id="fat_proc_decmap-73"><a href="#fat_proc_decmap-73"><span class="linenos"> 73</span></a><span class="sd">        workdir: Specify a working directory, which can be removed (default:\</span>
-</span><span id="fat_proc_decmap-74"><a href="#fat_proc_decmap-74"><span class="linenos"> 74</span></a><span class="sd">            &#39;__WORKING_decmap&#39;).</span>
-</span><span id="fat_proc_decmap-75"><a href="#fat_proc_decmap-75"><span class="linenos"> 75</span></a><span class="sd">        no_clean: Do not delete temporary files when finishing.</span>
-</span><span id="fat_proc_decmap-76"><a href="#fat_proc_decmap-76"><span class="linenos"> 76</span></a><span class="sd">        qc_prefix: Set the prefix of the QC image files (default: &#39;PREFIX&#39;).</span>
-</span><span id="fat_proc_decmap-77"><a href="#fat_proc_decmap-77"><span class="linenos"> 77</span></a><span class="sd">        no_cmd_out: Do not save the command line call of this program and\</span>
-</span><span id="fat_proc_decmap-78"><a href="#fat_proc_decmap-78"><span class="linenos"> 78</span></a><span class="sd">            location where it was run.</span>
-</span><span id="fat_proc_decmap-79"><a href="#fat_proc_decmap-79"><span class="linenos"> 79</span></a><span class="sd">        no_qc_view: Turn off generating QC image files.</span>
-</span><span id="fat_proc_decmap-80"><a href="#fat_proc_decmap-80"><span class="linenos"> 80</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fat_proc_decmap-81"><a href="#fat_proc_decmap-81"><span class="linenos"> 81</span></a><span class="sd">    Returns:</span>
-</span><span id="fat_proc_decmap-82"><a href="#fat_proc_decmap-82"><span class="linenos"> 82</span></a><span class="sd">        NamedTuple of outputs (described in `FatProcDecmapOutputs`).</span>
-</span><span id="fat_proc_decmap-83"><a href="#fat_proc_decmap-83"><span class="linenos"> 83</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fat_proc_decmap-84"><a href="#fat_proc_decmap-84"><span class="linenos"> 84</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fat_proc_decmap-85"><a href="#fat_proc_decmap-85"><span class="linenos"> 85</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_PROC_DECMAP_METADATA</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-86"><a href="#fat_proc_decmap-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fat_proc_decmap-87"><a href="#fat_proc_decmap-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_proc_decmap&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-88"><a href="#fat_proc_decmap-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-in_fa&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-89"><a href="#fat_proc_decmap-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fa</span><span class="p">))</span>
-</span><span id="fat_proc_decmap-90"><a href="#fat_proc_decmap-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-in_v1&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-91"><a href="#fat_proc_decmap-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_v1</span><span class="p">))</span>
-</span><span id="fat_proc_decmap-92"><a href="#fat_proc_decmap-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-93"><a href="#fat_proc_decmap-93"><span class="linenos"> 93</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_decmap-94"><a href="#fat_proc_decmap-94"><span class="linenos"> 94</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_decmap-95"><a href="#fat_proc_decmap-95"><span class="linenos"> 95</span></a>        <span class="n">prefix</span>
-</span><span id="fat_proc_decmap-96"><a href="#fat_proc_decmap-96"><span class="linenos"> 96</span></a>    <span class="p">])</span>
-</span><span id="fat_proc_decmap-97"><a href="#fat_proc_decmap-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_decmap-98"><a href="#fat_proc_decmap-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_decmap-99"><a href="#fat_proc_decmap-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_decmap-100"><a href="#fat_proc_decmap-100"><span class="linenos">100</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-101"><a href="#fat_proc_decmap-101"><span class="linenos">101</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_decmap-102"><a href="#fat_proc_decmap-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">fa_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_decmap-103"><a href="#fat_proc_decmap-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_decmap-104"><a href="#fat_proc_decmap-104"><span class="linenos">104</span></a>            <span class="s2">&quot;-fa_thr&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_decmap-105"><a href="#fat_proc_decmap-105"><span class="linenos">105</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fa_thr</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-106"><a href="#fat_proc_decmap-106"><span class="linenos">106</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_decmap-107"><a href="#fat_proc_decmap-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">fa_sca</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_decmap-108"><a href="#fat_proc_decmap-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_decmap-109"><a href="#fat_proc_decmap-109"><span class="linenos">109</span></a>            <span class="s2">&quot;-fa_sca&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_decmap-110"><a href="#fat_proc_decmap-110"><span class="linenos">110</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fa_sca</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-111"><a href="#fat_proc_decmap-111"><span class="linenos">111</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_decmap-112"><a href="#fat_proc_decmap-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">workdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_decmap-113"><a href="#fat_proc_decmap-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_decmap-114"><a href="#fat_proc_decmap-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-workdir&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_decmap-115"><a href="#fat_proc_decmap-115"><span class="linenos">115</span></a>            <span class="n">workdir</span>
-</span><span id="fat_proc_decmap-116"><a href="#fat_proc_decmap-116"><span class="linenos">116</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_decmap-117"><a href="#fat_proc_decmap-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">no_clean</span><span class="p">:</span>
-</span><span id="fat_proc_decmap-118"><a href="#fat_proc_decmap-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_clean&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-119"><a href="#fat_proc_decmap-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">qc_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_decmap-120"><a href="#fat_proc_decmap-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_decmap-121"><a href="#fat_proc_decmap-121"><span class="linenos">121</span></a>            <span class="s2">&quot;-qc_prefix&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_decmap-122"><a href="#fat_proc_decmap-122"><span class="linenos">122</span></a>            <span class="n">qc_prefix</span>
-</span><span id="fat_proc_decmap-123"><a href="#fat_proc_decmap-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_decmap-124"><a href="#fat_proc_decmap-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">no_cmd_out</span><span class="p">:</span>
-</span><span id="fat_proc_decmap-125"><a href="#fat_proc_decmap-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cmd_out&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-126"><a href="#fat_proc_decmap-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">no_qc_view</span><span class="p">:</span>
-</span><span id="fat_proc_decmap-127"><a href="#fat_proc_decmap-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_qc_view&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-128"><a href="#fat_proc_decmap-128"><span class="linenos">128</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatProcDecmapOutputs</span><span class="p">(</span>
-</span><span id="fat_proc_decmap-129"><a href="#fat_proc_decmap-129"><span class="linenos">129</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fat_proc_decmap-130"><a href="#fat_proc_decmap-130"><span class="linenos">130</span></a>        <span class="n">outfile_dec_rgb</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="fat_proc_decmap-131"><a href="#fat_proc_decmap-131"><span class="linenos">131</span></a>        <span class="n">outfile_dec_unwt_thr</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec_unwt_thr.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="fat_proc_decmap-132"><a href="#fat_proc_decmap-132"><span class="linenos">132</span></a>        <span class="n">outfile_dec_sca</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec_sca*.nii.gz&quot;</span><span class="p">),</span>
-</span><span id="fat_proc_decmap-133"><a href="#fat_proc_decmap-133"><span class="linenos">133</span></a>        <span class="n">qc_dec_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec*.png&quot;</span><span class="p">),</span>
-</span><span id="fat_proc_decmap-134"><a href="#fat_proc_decmap-134"><span class="linenos">134</span></a>        <span class="n">qc_dec_unwt_thrx_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec_unwt_thrx*.png&quot;</span><span class="p">),</span>
-</span><span id="fat_proc_decmap-135"><a href="#fat_proc_decmap-135"><span class="linenos">135</span></a>        <span class="n">qc_dec_sca_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec_sca*.png&quot;</span><span class="p">),</span>
-</span><span id="fat_proc_decmap-136"><a href="#fat_proc_decmap-136"><span class="linenos">136</span></a>    <span class="p">)</span>
-</span><span id="fat_proc_decmap-137"><a href="#fat_proc_decmap-137"><span class="linenos">137</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fat_proc_decmap-138"><a href="#fat_proc_decmap-138"><span class="linenos">138</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fat_proc_decmap-60"><a href="#fat_proc_decmap-60"><span class="linenos"> 60</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="fat_proc_decmap-61"><a href="#fat_proc_decmap-61"><span class="linenos"> 61</span></a><span class="sd">    </span>
+</span><span id="fat_proc_decmap-62"><a href="#fat_proc_decmap-62"><span class="linenos"> 62</span></a><span class="sd">    Args:</span>
+</span><span id="fat_proc_decmap-63"><a href="#fat_proc_decmap-63"><span class="linenos"> 63</span></a><span class="sd">        in_fa: Input FA (scalar) map.</span>
+</span><span id="fat_proc_decmap-64"><a href="#fat_proc_decmap-64"><span class="linenos"> 64</span></a><span class="sd">        in_v1: Input first eigenvector (3-vector) map.</span>
+</span><span id="fat_proc_decmap-65"><a href="#fat_proc_decmap-65"><span class="linenos"> 65</span></a><span class="sd">        prefix: Set prefix (and path) for output DWI data.</span>
+</span><span id="fat_proc_decmap-66"><a href="#fat_proc_decmap-66"><span class="linenos"> 66</span></a><span class="sd">        mask: Optional mask for picking out a region. Otherwise, only places\</span>
+</span><span id="fat_proc_decmap-67"><a href="#fat_proc_decmap-67"><span class="linenos"> 67</span></a><span class="sd">            with FA&gt;0 are given coloration.</span>
+</span><span id="fat_proc_decmap-68"><a href="#fat_proc_decmap-68"><span class="linenos"> 68</span></a><span class="sd">        fa_thr: For QC1 type of DEC images, use FFF to threshold where DEC\</span>
+</span><span id="fat_proc_decmap-69"><a href="#fat_proc_decmap-69"><span class="linenos"> 69</span></a><span class="sd">            values are calculated (default: 0.2).</span>
+</span><span id="fat_proc_decmap-70"><a href="#fat_proc_decmap-70"><span class="linenos"> 70</span></a><span class="sd">        fa_sca: For QC2 type of DEC images, use SSS to scale the FA weighting\</span>
+</span><span id="fat_proc_decmap-71"><a href="#fat_proc_decmap-71"><span class="linenos"> 71</span></a><span class="sd">            of what would otherwise be a &#39;classical&#39; DEC map (default: 0.7).</span>
+</span><span id="fat_proc_decmap-72"><a href="#fat_proc_decmap-72"><span class="linenos"> 72</span></a><span class="sd">        workdir: Specify a working directory, which can be removed (default:\</span>
+</span><span id="fat_proc_decmap-73"><a href="#fat_proc_decmap-73"><span class="linenos"> 73</span></a><span class="sd">            &#39;__WORKING_decmap&#39;).</span>
+</span><span id="fat_proc_decmap-74"><a href="#fat_proc_decmap-74"><span class="linenos"> 74</span></a><span class="sd">        no_clean: Do not delete temporary files when finishing.</span>
+</span><span id="fat_proc_decmap-75"><a href="#fat_proc_decmap-75"><span class="linenos"> 75</span></a><span class="sd">        qc_prefix: Set the prefix of the QC image files (default: &#39;PREFIX&#39;).</span>
+</span><span id="fat_proc_decmap-76"><a href="#fat_proc_decmap-76"><span class="linenos"> 76</span></a><span class="sd">        no_cmd_out: Do not save the command line call of this program and\</span>
+</span><span id="fat_proc_decmap-77"><a href="#fat_proc_decmap-77"><span class="linenos"> 77</span></a><span class="sd">            location where it was run.</span>
+</span><span id="fat_proc_decmap-78"><a href="#fat_proc_decmap-78"><span class="linenos"> 78</span></a><span class="sd">        no_qc_view: Turn off generating QC image files.</span>
+</span><span id="fat_proc_decmap-79"><a href="#fat_proc_decmap-79"><span class="linenos"> 79</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fat_proc_decmap-80"><a href="#fat_proc_decmap-80"><span class="linenos"> 80</span></a><span class="sd">    Returns:</span>
+</span><span id="fat_proc_decmap-81"><a href="#fat_proc_decmap-81"><span class="linenos"> 81</span></a><span class="sd">        NamedTuple of outputs (described in `FatProcDecmapOutputs`).</span>
+</span><span id="fat_proc_decmap-82"><a href="#fat_proc_decmap-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fat_proc_decmap-83"><a href="#fat_proc_decmap-83"><span class="linenos"> 83</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fat_proc_decmap-84"><a href="#fat_proc_decmap-84"><span class="linenos"> 84</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_PROC_DECMAP_METADATA</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-85"><a href="#fat_proc_decmap-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fat_proc_decmap-86"><a href="#fat_proc_decmap-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_proc_decmap&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-87"><a href="#fat_proc_decmap-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-in_fa&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-88"><a href="#fat_proc_decmap-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fa</span><span class="p">))</span>
+</span><span id="fat_proc_decmap-89"><a href="#fat_proc_decmap-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-in_v1&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-90"><a href="#fat_proc_decmap-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_v1</span><span class="p">))</span>
+</span><span id="fat_proc_decmap-91"><a href="#fat_proc_decmap-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-92"><a href="#fat_proc_decmap-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_decmap-93"><a href="#fat_proc_decmap-93"><span class="linenos"> 93</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_decmap-94"><a href="#fat_proc_decmap-94"><span class="linenos"> 94</span></a>        <span class="n">prefix</span>
+</span><span id="fat_proc_decmap-95"><a href="#fat_proc_decmap-95"><span class="linenos"> 95</span></a>    <span class="p">])</span>
+</span><span id="fat_proc_decmap-96"><a href="#fat_proc_decmap-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_decmap-97"><a href="#fat_proc_decmap-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_decmap-98"><a href="#fat_proc_decmap-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_decmap-99"><a href="#fat_proc_decmap-99"><span class="linenos"> 99</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-100"><a href="#fat_proc_decmap-100"><span class="linenos">100</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_decmap-101"><a href="#fat_proc_decmap-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">fa_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_decmap-102"><a href="#fat_proc_decmap-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_decmap-103"><a href="#fat_proc_decmap-103"><span class="linenos">103</span></a>            <span class="s2">&quot;-fa_thr&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_decmap-104"><a href="#fat_proc_decmap-104"><span class="linenos">104</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fa_thr</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-105"><a href="#fat_proc_decmap-105"><span class="linenos">105</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_decmap-106"><a href="#fat_proc_decmap-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">fa_sca</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_decmap-107"><a href="#fat_proc_decmap-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_decmap-108"><a href="#fat_proc_decmap-108"><span class="linenos">108</span></a>            <span class="s2">&quot;-fa_sca&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_decmap-109"><a href="#fat_proc_decmap-109"><span class="linenos">109</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fa_sca</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-110"><a href="#fat_proc_decmap-110"><span class="linenos">110</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_decmap-111"><a href="#fat_proc_decmap-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">workdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_decmap-112"><a href="#fat_proc_decmap-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_decmap-113"><a href="#fat_proc_decmap-113"><span class="linenos">113</span></a>            <span class="s2">&quot;-workdir&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_decmap-114"><a href="#fat_proc_decmap-114"><span class="linenos">114</span></a>            <span class="n">workdir</span>
+</span><span id="fat_proc_decmap-115"><a href="#fat_proc_decmap-115"><span class="linenos">115</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_decmap-116"><a href="#fat_proc_decmap-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">no_clean</span><span class="p">:</span>
+</span><span id="fat_proc_decmap-117"><a href="#fat_proc_decmap-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_clean&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-118"><a href="#fat_proc_decmap-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">qc_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_decmap-119"><a href="#fat_proc_decmap-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_decmap-120"><a href="#fat_proc_decmap-120"><span class="linenos">120</span></a>            <span class="s2">&quot;-qc_prefix&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_decmap-121"><a href="#fat_proc_decmap-121"><span class="linenos">121</span></a>            <span class="n">qc_prefix</span>
+</span><span id="fat_proc_decmap-122"><a href="#fat_proc_decmap-122"><span class="linenos">122</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_decmap-123"><a href="#fat_proc_decmap-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">no_cmd_out</span><span class="p">:</span>
+</span><span id="fat_proc_decmap-124"><a href="#fat_proc_decmap-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cmd_out&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-125"><a href="#fat_proc_decmap-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">no_qc_view</span><span class="p">:</span>
+</span><span id="fat_proc_decmap-126"><a href="#fat_proc_decmap-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_qc_view&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-127"><a href="#fat_proc_decmap-127"><span class="linenos">127</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatProcDecmapOutputs</span><span class="p">(</span>
+</span><span id="fat_proc_decmap-128"><a href="#fat_proc_decmap-128"><span class="linenos">128</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fat_proc_decmap-129"><a href="#fat_proc_decmap-129"><span class="linenos">129</span></a>        <span class="n">outfile_dec_rgb</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="fat_proc_decmap-130"><a href="#fat_proc_decmap-130"><span class="linenos">130</span></a>        <span class="n">outfile_dec_unwt_thr</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec_unwt_thr.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="fat_proc_decmap-131"><a href="#fat_proc_decmap-131"><span class="linenos">131</span></a>        <span class="n">outfile_dec_sca</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_dec_sca*.nii.gz&quot;</span><span class="p">),</span>
+</span><span id="fat_proc_decmap-132"><a href="#fat_proc_decmap-132"><span class="linenos">132</span></a>        <span class="n">qc_dec_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec*.png&quot;</span><span class="p">),</span>
+</span><span id="fat_proc_decmap-133"><a href="#fat_proc_decmap-133"><span class="linenos">133</span></a>        <span class="n">qc_dec_unwt_thrx_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec_unwt_thrx*.png&quot;</span><span class="p">),</span>
+</span><span id="fat_proc_decmap-134"><a href="#fat_proc_decmap-134"><span class="linenos">134</span></a>        <span class="n">qc_dec_sca_images</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;_qc_dec_sca*.png&quot;</span><span class="p">),</span>
+</span><span id="fat_proc_decmap-135"><a href="#fat_proc_decmap-135"><span class="linenos">135</span></a>    <span class="p">)</span>
+</span><span id="fat_proc_decmap-136"><a href="#fat_proc_decmap-136"><span class="linenos">136</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fat_proc_decmap-137"><a href="#fat_proc_decmap-137"><span class="linenos">137</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>This program makes a directionally encoded color (DEC) map for DTI results.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_decmap.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_decmap.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

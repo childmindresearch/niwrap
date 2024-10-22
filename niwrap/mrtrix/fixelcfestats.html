@@ -141,7 +141,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FIXELCFESTATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ee3bb73a1251abf2131550881e972d6232152783.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;85b1cb9bb9525faf62a80ea0820d52c7ae94777f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fixelcfestats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -346,222 +346,220 @@
 </span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    nonstationarity in cluster-based and TFCE inference. NeuroImage, 2011,</span>
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    54(3), 2006-19.</span>
 </span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">    </span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    Author: David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    (robert.smith@florey.edu.au)</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    </span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    URL:</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcfestats.html</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    </span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Args:</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        in_fixel_directory: the fixel directory containing the data files for\</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">            each subject (after obtaining fixel correspondence.</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        subjects: a text file listing the subject identifiers (one per line).\</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">            This should correspond with the filenames in the fixel directory\</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">            (including the file extension), and be listed in the same order as the\</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">            rows of the design matrix.</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        design: the design matrix.</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        contrast: the contrast matrix, specified as rows of weights.</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">        connectivity: the fixel-fixel connectivity matrix.</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        out_fixel_directory: the output directory where results will be saved.\</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">            Will be created if it does not exist.</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        mask: provide a fixel data file containing a mask of those fixels to be\</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            used during processing.</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        notest: don&#39;t perform statistical inference; only output population\</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">            statistics (effect size, stdev etc).</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        errors: specify nature of errors for shuffling; options are:\</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">            ee,ise,both (default: ee).</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        exchange_within: specify blocks of observations within each of which\</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">            data may undergo restricted exchange.</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">        exchange_whole: specify blocks of observations that may be exchanged\</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">            with one another (for independent and symmetric errors, sign-flipping\</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">            will occur block-wise).</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">        strong: use strong familywise error control across multiple hypotheses.</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">        nshuffles: the number of shuffles (default: 5000).</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">        permutations: manually define the permutations (relabelling). The input\</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">            should be a text file defining a m x n matrix, where each relabelling\</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">            is defined as a column vector of size m, and the number of columns, n,\</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">            defines the number of permutations. Can be generated with the\</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">            palm_quickperms function in PALM\</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM). Overrides the -nshuffles\</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">            option.</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">        nonstationarity: perform non-stationarity correction.</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">        skew_nonstationarity: specify the skew parameter for empirical\</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">            statistic calculation (default for this command is 1).</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">        nshuffles_nonstationarity: the number of shuffles to use when\</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">            precomputing the empirical statistic image for non-stationarity\</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">            correction (default: 5000).</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">        permutations_nonstationarity: manually define the permutations\</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">            (relabelling) for computing the emprical statistics for\</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">            non-stationarity correction. The input should be a text file defining a\</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">            m x n matrix, where each relabelling is defined as a column vector of\</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">            size m, and the number of columns, n, defines the number of\</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">            permutations. Can be generated with the palm_quickperms function in\</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">            PALM (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM) Overrides the\</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">            -nshuffles_nonstationarity option.</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">        cfe_dh: the height increment used in the cfe integration (default: 0.1).</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="sd">        cfe_e: cfe extent exponent (default: 2).</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="sd">        cfe_h: cfe height exponent (default: 3).</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a><span class="sd">        cfe_c: cfe connectivity exponent (default: 0.5).</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="sd">        cfe_legacy: use the legacy (non-normalised) form of the cfe equation.</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="sd">        variance: define variance groups for the G-statistic; measurements for\</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="sd">            which the expected variance is equivalent should contain the same index.</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">        ftests: perform F-tests; input text file should contain, for each\</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">            F-test, a row containing ones and zeros, where ones indicate the rows\</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">            of the contrast matrix to be included in the F-test.</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">        fonly: only assess F-tests; do not perform statistical inference on\</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">            entries in the contrast matrix.</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">        column: add a column to the design matrix corresponding to subject\</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">            fixel-wise values (note that the contrast matrix must include an\</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">            additional column for each use of this option); the text file provided\</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">            via this option should contain a file name for each subject.</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">    Returns:</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">        NamedTuple of outputs (described in `FixelcfestatsOutputs`).</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELCFESTATS_METADATA</span><span class="p">)</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelcfestats&quot;</span><span class="p">)</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>        <span class="p">])</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="k">if</span> <span class="n">notest</span><span class="p">:</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-notest&quot;</span><span class="p">)</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>            <span class="s2">&quot;-errors&quot;</span><span class="p">,</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>            <span class="n">errors</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>        <span class="p">])</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="k">if</span> <span class="n">exchange_within</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>            <span class="s2">&quot;-exchange_within&quot;</span><span class="p">,</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_within</span><span class="p">)</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>        <span class="p">])</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>    <span class="k">if</span> <span class="n">exchange_whole</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>            <span class="s2">&quot;-exchange_whole&quot;</span><span class="p">,</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_whole</span><span class="p">)</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>        <span class="p">])</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="k">if</span> <span class="n">strong</span><span class="p">:</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-strong&quot;</span><span class="p">)</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="k">if</span> <span class="n">nshuffles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>            <span class="s2">&quot;-nshuffles&quot;</span><span class="p">,</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles</span><span class="p">)</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>        <span class="p">])</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="k">if</span> <span class="n">permutations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>            <span class="s2">&quot;-permutations&quot;</span><span class="p">,</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations</span><span class="p">)</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>        <span class="p">])</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="k">if</span> <span class="n">nonstationarity</span><span class="p">:</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonstationarity&quot;</span><span class="p">)</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="k">if</span> <span class="n">skew_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>            <span class="s2">&quot;-skew_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">skew_nonstationarity</span><span class="p">)</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>        <span class="p">])</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="k">if</span> <span class="n">nshuffles_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>            <span class="s2">&quot;-nshuffles_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles_nonstationarity</span><span class="p">)</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>        <span class="p">])</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="k">if</span> <span class="n">permutations_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>            <span class="s2">&quot;-permutations_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations_nonstationarity</span><span class="p">)</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>        <span class="p">])</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="k">if</span> <span class="n">cfe_dh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>            <span class="s2">&quot;-cfe_dh&quot;</span><span class="p">,</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_dh</span><span class="p">)</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>        <span class="p">])</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="k">if</span> <span class="n">cfe_e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>            <span class="s2">&quot;-cfe_e&quot;</span><span class="p">,</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_e</span><span class="p">)</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>        <span class="p">])</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="k">if</span> <span class="n">cfe_h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>            <span class="s2">&quot;-cfe_h&quot;</span><span class="p">,</span>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_h</span><span class="p">)</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>        <span class="p">])</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="k">if</span> <span class="n">cfe_c</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>            <span class="s2">&quot;-cfe_c&quot;</span><span class="p">,</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_c</span><span class="p">)</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>        <span class="p">])</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="k">if</span> <span class="n">cfe_legacy</span><span class="p">:</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cfe_legacy&quot;</span><span class="p">)</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="k">if</span> <span class="n">variance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>            <span class="s2">&quot;-variance&quot;</span><span class="p">,</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>        <span class="p">])</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>    <span class="k">if</span> <span class="n">ftests</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>            <span class="s2">&quot;-ftests&quot;</span><span class="p">,</span>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ftests</span><span class="p">)</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>        <span class="p">])</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="k">if</span> <span class="n">fonly</span><span class="p">:</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fonly&quot;</span><span class="p">)</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="k">if</span> <span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>        <span class="p">])</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fixel_directory</span><span class="p">))</span>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subjects</span><span class="p">))</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">design</span><span class="p">))</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">contrast</span><span class="p">))</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">connectivity</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_fixel_directory</span><span class="p">)</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelcfestatsOutputs</span><span class="p">(</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="p">)</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;FIXELCFESTATS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;FixelcfestatsColumn&quot;</span><span class="p">,</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;FixelcfestatsConfig&quot;</span><span class="p">,</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="s2">&quot;FixelcfestatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="s2">&quot;FixelcfestatsVariousFile&quot;</span><span class="p">,</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>    <span class="s2">&quot;FixelcfestatsVariousString&quot;</span><span class="p">,</span>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="s2">&quot;fixelcfestats&quot;</span><span class="p">,</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a><span class="p">]</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">    </span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">    </span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    Args:</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        in_fixel_directory: the fixel directory containing the data files for\</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">            each subject (after obtaining fixel correspondence.</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        subjects: a text file listing the subject identifiers (one per line).\</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">            This should correspond with the filenames in the fixel directory\</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">            (including the file extension), and be listed in the same order as the\</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">            rows of the design matrix.</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        design: the design matrix.</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        contrast: the contrast matrix, specified as rows of weights.</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        connectivity: the fixel-fixel connectivity matrix.</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">        out_fixel_directory: the output directory where results will be saved.\</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="sd">            Will be created if it does not exist.</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="sd">        mask: provide a fixel data file containing a mask of those fixels to be\</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="sd">            used during processing.</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="sd">        notest: don&#39;t perform statistical inference; only output population\</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a><span class="sd">            statistics (effect size, stdev etc).</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a><span class="sd">        errors: specify nature of errors for shuffling; options are:\</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="sd">            ee,ise,both (default: ee).</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="sd">        exchange_within: specify blocks of observations within each of which\</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a><span class="sd">            data may undergo restricted exchange.</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a><span class="sd">        exchange_whole: specify blocks of observations that may be exchanged\</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a><span class="sd">            with one another (for independent and symmetric errors, sign-flipping\</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a><span class="sd">            will occur block-wise).</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a><span class="sd">        strong: use strong familywise error control across multiple hypotheses.</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a><span class="sd">        nshuffles: the number of shuffles (default: 5000).</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a><span class="sd">        permutations: manually define the permutations (relabelling). The input\</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a><span class="sd">            should be a text file defining a m x n matrix, where each relabelling\</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a><span class="sd">            is defined as a column vector of size m, and the number of columns, n,\</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a><span class="sd">            defines the number of permutations. Can be generated with the\</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="sd">            palm_quickperms function in PALM\</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a><span class="sd">            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM). Overrides the -nshuffles\</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="sd">            option.</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a><span class="sd">        nonstationarity: perform non-stationarity correction.</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="sd">        skew_nonstationarity: specify the skew parameter for empirical\</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a><span class="sd">            statistic calculation (default for this command is 1).</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="sd">        nshuffles_nonstationarity: the number of shuffles to use when\</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a><span class="sd">            precomputing the empirical statistic image for non-stationarity\</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="sd">            correction (default: 5000).</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a><span class="sd">        permutations_nonstationarity: manually define the permutations\</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="sd">            (relabelling) for computing the emprical statistics for\</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="sd">            non-stationarity correction. The input should be a text file defining a\</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="sd">            m x n matrix, where each relabelling is defined as a column vector of\</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a><span class="sd">            size m, and the number of columns, n, defines the number of\</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="sd">            permutations. Can be generated with the palm_quickperms function in\</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">            PALM (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM) Overrides the\</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a><span class="sd">            -nshuffles_nonstationarity option.</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a><span class="sd">        cfe_dh: the height increment used in the cfe integration (default: 0.1).</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="sd">        cfe_e: cfe extent exponent (default: 2).</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a><span class="sd">        cfe_h: cfe height exponent (default: 3).</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a><span class="sd">        cfe_c: cfe connectivity exponent (default: 0.5).</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="sd">        cfe_legacy: use the legacy (non-normalised) form of the cfe equation.</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a><span class="sd">        variance: define variance groups for the G-statistic; measurements for\</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a><span class="sd">            which the expected variance is equivalent should contain the same index.</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a><span class="sd">        ftests: perform F-tests; input text file should contain, for each\</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a><span class="sd">            F-test, a row containing ones and zeros, where ones indicate the rows\</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a><span class="sd">            of the contrast matrix to be included in the F-test.</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="sd">        fonly: only assess F-tests; do not perform statistical inference on\</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="sd">            entries in the contrast matrix.</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="sd">        column: add a column to the design matrix corresponding to subject\</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a><span class="sd">            fixel-wise values (note that the contrast matrix must include an\</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a><span class="sd">            additional column for each use of this option); the text file provided\</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a><span class="sd">            via this option should contain a file name for each subject.</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="sd">    Returns:</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="sd">        NamedTuple of outputs (described in `FixelcfestatsOutputs`).</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELCFESTATS_METADATA</span><span class="p">)</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelcfestats&quot;</span><span class="p">)</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>        <span class="p">])</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>    <span class="k">if</span> <span class="n">notest</span><span class="p">:</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-notest&quot;</span><span class="p">)</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>            <span class="s2">&quot;-errors&quot;</span><span class="p">,</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>            <span class="n">errors</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>        <span class="p">])</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="k">if</span> <span class="n">exchange_within</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>            <span class="s2">&quot;-exchange_within&quot;</span><span class="p">,</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_within</span><span class="p">)</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>        <span class="p">])</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="k">if</span> <span class="n">exchange_whole</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>            <span class="s2">&quot;-exchange_whole&quot;</span><span class="p">,</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_whole</span><span class="p">)</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>        <span class="p">])</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="k">if</span> <span class="n">strong</span><span class="p">:</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-strong&quot;</span><span class="p">)</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="k">if</span> <span class="n">nshuffles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>            <span class="s2">&quot;-nshuffles&quot;</span><span class="p">,</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles</span><span class="p">)</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>        <span class="p">])</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="k">if</span> <span class="n">permutations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>            <span class="s2">&quot;-permutations&quot;</span><span class="p">,</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations</span><span class="p">)</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>        <span class="p">])</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="k">if</span> <span class="n">nonstationarity</span><span class="p">:</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonstationarity&quot;</span><span class="p">)</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="k">if</span> <span class="n">skew_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>            <span class="s2">&quot;-skew_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">skew_nonstationarity</span><span class="p">)</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>        <span class="p">])</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>    <span class="k">if</span> <span class="n">nshuffles_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>            <span class="s2">&quot;-nshuffles_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles_nonstationarity</span><span class="p">)</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>        <span class="p">])</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="k">if</span> <span class="n">permutations_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>            <span class="s2">&quot;-permutations_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations_nonstationarity</span><span class="p">)</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>        <span class="p">])</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="k">if</span> <span class="n">cfe_dh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>            <span class="s2">&quot;-cfe_dh&quot;</span><span class="p">,</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_dh</span><span class="p">)</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>        <span class="p">])</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>    <span class="k">if</span> <span class="n">cfe_e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>            <span class="s2">&quot;-cfe_e&quot;</span><span class="p">,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_e</span><span class="p">)</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>        <span class="p">])</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="k">if</span> <span class="n">cfe_h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>            <span class="s2">&quot;-cfe_h&quot;</span><span class="p">,</span>
+</span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_h</span><span class="p">)</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>        <span class="p">])</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="k">if</span> <span class="n">cfe_c</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>            <span class="s2">&quot;-cfe_c&quot;</span><span class="p">,</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_c</span><span class="p">)</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>        <span class="p">])</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="k">if</span> <span class="n">cfe_legacy</span><span class="p">:</span>
+</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cfe_legacy&quot;</span><span class="p">)</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>    <span class="k">if</span> <span class="n">variance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>            <span class="s2">&quot;-variance&quot;</span><span class="p">,</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>        <span class="p">])</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>    <span class="k">if</span> <span class="n">ftests</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a>            <span class="s2">&quot;-ftests&quot;</span><span class="p">,</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ftests</span><span class="p">)</span>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>        <span class="p">])</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="k">if</span> <span class="n">fonly</span><span class="p">:</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fonly&quot;</span><span class="p">)</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="k">if</span> <span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>        <span class="p">])</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fixel_directory</span><span class="p">))</span>
+</span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subjects</span><span class="p">))</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">design</span><span class="p">))</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">contrast</span><span class="p">))</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">connectivity</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_fixel_directory</span><span class="p">)</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelcfestatsOutputs</span><span class="p">(</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="p">)</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>    <span class="s2">&quot;FIXELCFESTATS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>    <span class="s2">&quot;FixelcfestatsColumn&quot;</span><span class="p">,</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="s2">&quot;FixelcfestatsConfig&quot;</span><span class="p">,</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>    <span class="s2">&quot;FixelcfestatsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>    <span class="s2">&quot;FixelcfestatsVariousFile&quot;</span><span class="p">,</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>    <span class="s2">&quot;FixelcfestatsVariousString&quot;</span><span class="p">,</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>    <span class="s2">&quot;fixelcfestats&quot;</span><span class="p">,</span>
+</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -570,7 +568,7 @@
                     <div class="attr variable">
             <span class="name">FIXELCFESTATS_METADATA</span>        =
 <input id="FIXELCFESTATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FIXELCFESTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ee3bb73a1251abf2131550881e972d6232152783.boutiques&#39;, name=&#39;fixelcfestats&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FIXELCFESTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;85b1cb9bb9525faf62a80ea0820d52c7ae94777f.boutiques&#39;, name=&#39;fixelcfestats&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -1206,211 +1204,209 @@ contain a file name for each subject</p>
 </span><span id="fixelcfestats-213"><a href="#fixelcfestats-213"><span class="linenos">213</span></a><span class="sd">    nonstationarity in cluster-based and TFCE inference. NeuroImage, 2011,</span>
 </span><span id="fixelcfestats-214"><a href="#fixelcfestats-214"><span class="linenos">214</span></a><span class="sd">    54(3), 2006-19.</span>
 </span><span id="fixelcfestats-215"><a href="#fixelcfestats-215"><span class="linenos">215</span></a><span class="sd">    </span>
-</span><span id="fixelcfestats-216"><a href="#fixelcfestats-216"><span class="linenos">216</span></a><span class="sd">    Author: David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith</span>
-</span><span id="fixelcfestats-217"><a href="#fixelcfestats-217"><span class="linenos">217</span></a><span class="sd">    (robert.smith@florey.edu.au)</span>
-</span><span id="fixelcfestats-218"><a href="#fixelcfestats-218"><span class="linenos">218</span></a><span class="sd">    </span>
-</span><span id="fixelcfestats-219"><a href="#fixelcfestats-219"><span class="linenos">219</span></a><span class="sd">    URL:</span>
-</span><span id="fixelcfestats-220"><a href="#fixelcfestats-220"><span class="linenos">220</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcfestats.html</span>
-</span><span id="fixelcfestats-221"><a href="#fixelcfestats-221"><span class="linenos">221</span></a><span class="sd">    </span>
-</span><span id="fixelcfestats-222"><a href="#fixelcfestats-222"><span class="linenos">222</span></a><span class="sd">    Args:</span>
-</span><span id="fixelcfestats-223"><a href="#fixelcfestats-223"><span class="linenos">223</span></a><span class="sd">        in_fixel_directory: the fixel directory containing the data files for\</span>
-</span><span id="fixelcfestats-224"><a href="#fixelcfestats-224"><span class="linenos">224</span></a><span class="sd">            each subject (after obtaining fixel correspondence.</span>
-</span><span id="fixelcfestats-225"><a href="#fixelcfestats-225"><span class="linenos">225</span></a><span class="sd">        subjects: a text file listing the subject identifiers (one per line).\</span>
-</span><span id="fixelcfestats-226"><a href="#fixelcfestats-226"><span class="linenos">226</span></a><span class="sd">            This should correspond with the filenames in the fixel directory\</span>
-</span><span id="fixelcfestats-227"><a href="#fixelcfestats-227"><span class="linenos">227</span></a><span class="sd">            (including the file extension), and be listed in the same order as the\</span>
-</span><span id="fixelcfestats-228"><a href="#fixelcfestats-228"><span class="linenos">228</span></a><span class="sd">            rows of the design matrix.</span>
-</span><span id="fixelcfestats-229"><a href="#fixelcfestats-229"><span class="linenos">229</span></a><span class="sd">        design: the design matrix.</span>
-</span><span id="fixelcfestats-230"><a href="#fixelcfestats-230"><span class="linenos">230</span></a><span class="sd">        contrast: the contrast matrix, specified as rows of weights.</span>
-</span><span id="fixelcfestats-231"><a href="#fixelcfestats-231"><span class="linenos">231</span></a><span class="sd">        connectivity: the fixel-fixel connectivity matrix.</span>
-</span><span id="fixelcfestats-232"><a href="#fixelcfestats-232"><span class="linenos">232</span></a><span class="sd">        out_fixel_directory: the output directory where results will be saved.\</span>
-</span><span id="fixelcfestats-233"><a href="#fixelcfestats-233"><span class="linenos">233</span></a><span class="sd">            Will be created if it does not exist.</span>
-</span><span id="fixelcfestats-234"><a href="#fixelcfestats-234"><span class="linenos">234</span></a><span class="sd">        mask: provide a fixel data file containing a mask of those fixels to be\</span>
-</span><span id="fixelcfestats-235"><a href="#fixelcfestats-235"><span class="linenos">235</span></a><span class="sd">            used during processing.</span>
-</span><span id="fixelcfestats-236"><a href="#fixelcfestats-236"><span class="linenos">236</span></a><span class="sd">        notest: don&#39;t perform statistical inference; only output population\</span>
-</span><span id="fixelcfestats-237"><a href="#fixelcfestats-237"><span class="linenos">237</span></a><span class="sd">            statistics (effect size, stdev etc).</span>
-</span><span id="fixelcfestats-238"><a href="#fixelcfestats-238"><span class="linenos">238</span></a><span class="sd">        errors: specify nature of errors for shuffling; options are:\</span>
-</span><span id="fixelcfestats-239"><a href="#fixelcfestats-239"><span class="linenos">239</span></a><span class="sd">            ee,ise,both (default: ee).</span>
-</span><span id="fixelcfestats-240"><a href="#fixelcfestats-240"><span class="linenos">240</span></a><span class="sd">        exchange_within: specify blocks of observations within each of which\</span>
-</span><span id="fixelcfestats-241"><a href="#fixelcfestats-241"><span class="linenos">241</span></a><span class="sd">            data may undergo restricted exchange.</span>
-</span><span id="fixelcfestats-242"><a href="#fixelcfestats-242"><span class="linenos">242</span></a><span class="sd">        exchange_whole: specify blocks of observations that may be exchanged\</span>
-</span><span id="fixelcfestats-243"><a href="#fixelcfestats-243"><span class="linenos">243</span></a><span class="sd">            with one another (for independent and symmetric errors, sign-flipping\</span>
-</span><span id="fixelcfestats-244"><a href="#fixelcfestats-244"><span class="linenos">244</span></a><span class="sd">            will occur block-wise).</span>
-</span><span id="fixelcfestats-245"><a href="#fixelcfestats-245"><span class="linenos">245</span></a><span class="sd">        strong: use strong familywise error control across multiple hypotheses.</span>
-</span><span id="fixelcfestats-246"><a href="#fixelcfestats-246"><span class="linenos">246</span></a><span class="sd">        nshuffles: the number of shuffles (default: 5000).</span>
-</span><span id="fixelcfestats-247"><a href="#fixelcfestats-247"><span class="linenos">247</span></a><span class="sd">        permutations: manually define the permutations (relabelling). The input\</span>
-</span><span id="fixelcfestats-248"><a href="#fixelcfestats-248"><span class="linenos">248</span></a><span class="sd">            should be a text file defining a m x n matrix, where each relabelling\</span>
-</span><span id="fixelcfestats-249"><a href="#fixelcfestats-249"><span class="linenos">249</span></a><span class="sd">            is defined as a column vector of size m, and the number of columns, n,\</span>
-</span><span id="fixelcfestats-250"><a href="#fixelcfestats-250"><span class="linenos">250</span></a><span class="sd">            defines the number of permutations. Can be generated with the\</span>
-</span><span id="fixelcfestats-251"><a href="#fixelcfestats-251"><span class="linenos">251</span></a><span class="sd">            palm_quickperms function in PALM\</span>
-</span><span id="fixelcfestats-252"><a href="#fixelcfestats-252"><span class="linenos">252</span></a><span class="sd">            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM). Overrides the -nshuffles\</span>
-</span><span id="fixelcfestats-253"><a href="#fixelcfestats-253"><span class="linenos">253</span></a><span class="sd">            option.</span>
-</span><span id="fixelcfestats-254"><a href="#fixelcfestats-254"><span class="linenos">254</span></a><span class="sd">        nonstationarity: perform non-stationarity correction.</span>
-</span><span id="fixelcfestats-255"><a href="#fixelcfestats-255"><span class="linenos">255</span></a><span class="sd">        skew_nonstationarity: specify the skew parameter for empirical\</span>
-</span><span id="fixelcfestats-256"><a href="#fixelcfestats-256"><span class="linenos">256</span></a><span class="sd">            statistic calculation (default for this command is 1).</span>
-</span><span id="fixelcfestats-257"><a href="#fixelcfestats-257"><span class="linenos">257</span></a><span class="sd">        nshuffles_nonstationarity: the number of shuffles to use when\</span>
-</span><span id="fixelcfestats-258"><a href="#fixelcfestats-258"><span class="linenos">258</span></a><span class="sd">            precomputing the empirical statistic image for non-stationarity\</span>
-</span><span id="fixelcfestats-259"><a href="#fixelcfestats-259"><span class="linenos">259</span></a><span class="sd">            correction (default: 5000).</span>
-</span><span id="fixelcfestats-260"><a href="#fixelcfestats-260"><span class="linenos">260</span></a><span class="sd">        permutations_nonstationarity: manually define the permutations\</span>
-</span><span id="fixelcfestats-261"><a href="#fixelcfestats-261"><span class="linenos">261</span></a><span class="sd">            (relabelling) for computing the emprical statistics for\</span>
-</span><span id="fixelcfestats-262"><a href="#fixelcfestats-262"><span class="linenos">262</span></a><span class="sd">            non-stationarity correction. The input should be a text file defining a\</span>
-</span><span id="fixelcfestats-263"><a href="#fixelcfestats-263"><span class="linenos">263</span></a><span class="sd">            m x n matrix, where each relabelling is defined as a column vector of\</span>
-</span><span id="fixelcfestats-264"><a href="#fixelcfestats-264"><span class="linenos">264</span></a><span class="sd">            size m, and the number of columns, n, defines the number of\</span>
-</span><span id="fixelcfestats-265"><a href="#fixelcfestats-265"><span class="linenos">265</span></a><span class="sd">            permutations. Can be generated with the palm_quickperms function in\</span>
-</span><span id="fixelcfestats-266"><a href="#fixelcfestats-266"><span class="linenos">266</span></a><span class="sd">            PALM (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM) Overrides the\</span>
-</span><span id="fixelcfestats-267"><a href="#fixelcfestats-267"><span class="linenos">267</span></a><span class="sd">            -nshuffles_nonstationarity option.</span>
-</span><span id="fixelcfestats-268"><a href="#fixelcfestats-268"><span class="linenos">268</span></a><span class="sd">        cfe_dh: the height increment used in the cfe integration (default: 0.1).</span>
-</span><span id="fixelcfestats-269"><a href="#fixelcfestats-269"><span class="linenos">269</span></a><span class="sd">        cfe_e: cfe extent exponent (default: 2).</span>
-</span><span id="fixelcfestats-270"><a href="#fixelcfestats-270"><span class="linenos">270</span></a><span class="sd">        cfe_h: cfe height exponent (default: 3).</span>
-</span><span id="fixelcfestats-271"><a href="#fixelcfestats-271"><span class="linenos">271</span></a><span class="sd">        cfe_c: cfe connectivity exponent (default: 0.5).</span>
-</span><span id="fixelcfestats-272"><a href="#fixelcfestats-272"><span class="linenos">272</span></a><span class="sd">        cfe_legacy: use the legacy (non-normalised) form of the cfe equation.</span>
-</span><span id="fixelcfestats-273"><a href="#fixelcfestats-273"><span class="linenos">273</span></a><span class="sd">        variance: define variance groups for the G-statistic; measurements for\</span>
-</span><span id="fixelcfestats-274"><a href="#fixelcfestats-274"><span class="linenos">274</span></a><span class="sd">            which the expected variance is equivalent should contain the same index.</span>
-</span><span id="fixelcfestats-275"><a href="#fixelcfestats-275"><span class="linenos">275</span></a><span class="sd">        ftests: perform F-tests; input text file should contain, for each\</span>
-</span><span id="fixelcfestats-276"><a href="#fixelcfestats-276"><span class="linenos">276</span></a><span class="sd">            F-test, a row containing ones and zeros, where ones indicate the rows\</span>
-</span><span id="fixelcfestats-277"><a href="#fixelcfestats-277"><span class="linenos">277</span></a><span class="sd">            of the contrast matrix to be included in the F-test.</span>
-</span><span id="fixelcfestats-278"><a href="#fixelcfestats-278"><span class="linenos">278</span></a><span class="sd">        fonly: only assess F-tests; do not perform statistical inference on\</span>
-</span><span id="fixelcfestats-279"><a href="#fixelcfestats-279"><span class="linenos">279</span></a><span class="sd">            entries in the contrast matrix.</span>
-</span><span id="fixelcfestats-280"><a href="#fixelcfestats-280"><span class="linenos">280</span></a><span class="sd">        column: add a column to the design matrix corresponding to subject\</span>
-</span><span id="fixelcfestats-281"><a href="#fixelcfestats-281"><span class="linenos">281</span></a><span class="sd">            fixel-wise values (note that the contrast matrix must include an\</span>
-</span><span id="fixelcfestats-282"><a href="#fixelcfestats-282"><span class="linenos">282</span></a><span class="sd">            additional column for each use of this option); the text file provided\</span>
-</span><span id="fixelcfestats-283"><a href="#fixelcfestats-283"><span class="linenos">283</span></a><span class="sd">            via this option should contain a file name for each subject.</span>
-</span><span id="fixelcfestats-284"><a href="#fixelcfestats-284"><span class="linenos">284</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="fixelcfestats-285"><a href="#fixelcfestats-285"><span class="linenos">285</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="fixelcfestats-286"><a href="#fixelcfestats-286"><span class="linenos">286</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="fixelcfestats-287"><a href="#fixelcfestats-287"><span class="linenos">287</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="fixelcfestats-288"><a href="#fixelcfestats-288"><span class="linenos">288</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="fixelcfestats-289"><a href="#fixelcfestats-289"><span class="linenos">289</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="fixelcfestats-290"><a href="#fixelcfestats-290"><span class="linenos">290</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="fixelcfestats-291"><a href="#fixelcfestats-291"><span class="linenos">291</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="fixelcfestats-292"><a href="#fixelcfestats-292"><span class="linenos">292</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="fixelcfestats-293"><a href="#fixelcfestats-293"><span class="linenos">293</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="fixelcfestats-294"><a href="#fixelcfestats-294"><span class="linenos">294</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="fixelcfestats-295"><a href="#fixelcfestats-295"><span class="linenos">295</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="fixelcfestats-296"><a href="#fixelcfestats-296"><span class="linenos">296</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fixelcfestats-297"><a href="#fixelcfestats-297"><span class="linenos">297</span></a><span class="sd">    Returns:</span>
-</span><span id="fixelcfestats-298"><a href="#fixelcfestats-298"><span class="linenos">298</span></a><span class="sd">        NamedTuple of outputs (described in `FixelcfestatsOutputs`).</span>
-</span><span id="fixelcfestats-299"><a href="#fixelcfestats-299"><span class="linenos">299</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fixelcfestats-300"><a href="#fixelcfestats-300"><span class="linenos">300</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fixelcfestats-301"><a href="#fixelcfestats-301"><span class="linenos">301</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELCFESTATS_METADATA</span><span class="p">)</span>
-</span><span id="fixelcfestats-302"><a href="#fixelcfestats-302"><span class="linenos">302</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fixelcfestats-303"><a href="#fixelcfestats-303"><span class="linenos">303</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelcfestats&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-304"><a href="#fixelcfestats-304"><span class="linenos">304</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-305"><a href="#fixelcfestats-305"><span class="linenos">305</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-306"><a href="#fixelcfestats-306"><span class="linenos">306</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-307"><a href="#fixelcfestats-307"><span class="linenos">307</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="fixelcfestats-308"><a href="#fixelcfestats-308"><span class="linenos">308</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-309"><a href="#fixelcfestats-309"><span class="linenos">309</span></a>    <span class="k">if</span> <span class="n">notest</span><span class="p">:</span>
-</span><span id="fixelcfestats-310"><a href="#fixelcfestats-310"><span class="linenos">310</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-notest&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-311"><a href="#fixelcfestats-311"><span class="linenos">311</span></a>    <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-312"><a href="#fixelcfestats-312"><span class="linenos">312</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-313"><a href="#fixelcfestats-313"><span class="linenos">313</span></a>            <span class="s2">&quot;-errors&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-314"><a href="#fixelcfestats-314"><span class="linenos">314</span></a>            <span class="n">errors</span>
-</span><span id="fixelcfestats-315"><a href="#fixelcfestats-315"><span class="linenos">315</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-316"><a href="#fixelcfestats-316"><span class="linenos">316</span></a>    <span class="k">if</span> <span class="n">exchange_within</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-317"><a href="#fixelcfestats-317"><span class="linenos">317</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-318"><a href="#fixelcfestats-318"><span class="linenos">318</span></a>            <span class="s2">&quot;-exchange_within&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-319"><a href="#fixelcfestats-319"><span class="linenos">319</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_within</span><span class="p">)</span>
-</span><span id="fixelcfestats-320"><a href="#fixelcfestats-320"><span class="linenos">320</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-321"><a href="#fixelcfestats-321"><span class="linenos">321</span></a>    <span class="k">if</span> <span class="n">exchange_whole</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-322"><a href="#fixelcfestats-322"><span class="linenos">322</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-323"><a href="#fixelcfestats-323"><span class="linenos">323</span></a>            <span class="s2">&quot;-exchange_whole&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-324"><a href="#fixelcfestats-324"><span class="linenos">324</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_whole</span><span class="p">)</span>
-</span><span id="fixelcfestats-325"><a href="#fixelcfestats-325"><span class="linenos">325</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-326"><a href="#fixelcfestats-326"><span class="linenos">326</span></a>    <span class="k">if</span> <span class="n">strong</span><span class="p">:</span>
-</span><span id="fixelcfestats-327"><a href="#fixelcfestats-327"><span class="linenos">327</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-strong&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-328"><a href="#fixelcfestats-328"><span class="linenos">328</span></a>    <span class="k">if</span> <span class="n">nshuffles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-329"><a href="#fixelcfestats-329"><span class="linenos">329</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-330"><a href="#fixelcfestats-330"><span class="linenos">330</span></a>            <span class="s2">&quot;-nshuffles&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-331"><a href="#fixelcfestats-331"><span class="linenos">331</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles</span><span class="p">)</span>
-</span><span id="fixelcfestats-332"><a href="#fixelcfestats-332"><span class="linenos">332</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-333"><a href="#fixelcfestats-333"><span class="linenos">333</span></a>    <span class="k">if</span> <span class="n">permutations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-334"><a href="#fixelcfestats-334"><span class="linenos">334</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-335"><a href="#fixelcfestats-335"><span class="linenos">335</span></a>            <span class="s2">&quot;-permutations&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-336"><a href="#fixelcfestats-336"><span class="linenos">336</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations</span><span class="p">)</span>
-</span><span id="fixelcfestats-337"><a href="#fixelcfestats-337"><span class="linenos">337</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-338"><a href="#fixelcfestats-338"><span class="linenos">338</span></a>    <span class="k">if</span> <span class="n">nonstationarity</span><span class="p">:</span>
-</span><span id="fixelcfestats-339"><a href="#fixelcfestats-339"><span class="linenos">339</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonstationarity&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-340"><a href="#fixelcfestats-340"><span class="linenos">340</span></a>    <span class="k">if</span> <span class="n">skew_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-341"><a href="#fixelcfestats-341"><span class="linenos">341</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-342"><a href="#fixelcfestats-342"><span class="linenos">342</span></a>            <span class="s2">&quot;-skew_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-343"><a href="#fixelcfestats-343"><span class="linenos">343</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">skew_nonstationarity</span><span class="p">)</span>
-</span><span id="fixelcfestats-344"><a href="#fixelcfestats-344"><span class="linenos">344</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-345"><a href="#fixelcfestats-345"><span class="linenos">345</span></a>    <span class="k">if</span> <span class="n">nshuffles_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-346"><a href="#fixelcfestats-346"><span class="linenos">346</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-347"><a href="#fixelcfestats-347"><span class="linenos">347</span></a>            <span class="s2">&quot;-nshuffles_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-348"><a href="#fixelcfestats-348"><span class="linenos">348</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles_nonstationarity</span><span class="p">)</span>
-</span><span id="fixelcfestats-349"><a href="#fixelcfestats-349"><span class="linenos">349</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-350"><a href="#fixelcfestats-350"><span class="linenos">350</span></a>    <span class="k">if</span> <span class="n">permutations_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-351"><a href="#fixelcfestats-351"><span class="linenos">351</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-352"><a href="#fixelcfestats-352"><span class="linenos">352</span></a>            <span class="s2">&quot;-permutations_nonstationarity&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-353"><a href="#fixelcfestats-353"><span class="linenos">353</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations_nonstationarity</span><span class="p">)</span>
-</span><span id="fixelcfestats-354"><a href="#fixelcfestats-354"><span class="linenos">354</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-355"><a href="#fixelcfestats-355"><span class="linenos">355</span></a>    <span class="k">if</span> <span class="n">cfe_dh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-356"><a href="#fixelcfestats-356"><span class="linenos">356</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-357"><a href="#fixelcfestats-357"><span class="linenos">357</span></a>            <span class="s2">&quot;-cfe_dh&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-358"><a href="#fixelcfestats-358"><span class="linenos">358</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_dh</span><span class="p">)</span>
-</span><span id="fixelcfestats-359"><a href="#fixelcfestats-359"><span class="linenos">359</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-360"><a href="#fixelcfestats-360"><span class="linenos">360</span></a>    <span class="k">if</span> <span class="n">cfe_e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-361"><a href="#fixelcfestats-361"><span class="linenos">361</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-362"><a href="#fixelcfestats-362"><span class="linenos">362</span></a>            <span class="s2">&quot;-cfe_e&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-363"><a href="#fixelcfestats-363"><span class="linenos">363</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_e</span><span class="p">)</span>
-</span><span id="fixelcfestats-364"><a href="#fixelcfestats-364"><span class="linenos">364</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-365"><a href="#fixelcfestats-365"><span class="linenos">365</span></a>    <span class="k">if</span> <span class="n">cfe_h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-366"><a href="#fixelcfestats-366"><span class="linenos">366</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-367"><a href="#fixelcfestats-367"><span class="linenos">367</span></a>            <span class="s2">&quot;-cfe_h&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-368"><a href="#fixelcfestats-368"><span class="linenos">368</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_h</span><span class="p">)</span>
-</span><span id="fixelcfestats-369"><a href="#fixelcfestats-369"><span class="linenos">369</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-370"><a href="#fixelcfestats-370"><span class="linenos">370</span></a>    <span class="k">if</span> <span class="n">cfe_c</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-371"><a href="#fixelcfestats-371"><span class="linenos">371</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-372"><a href="#fixelcfestats-372"><span class="linenos">372</span></a>            <span class="s2">&quot;-cfe_c&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-373"><a href="#fixelcfestats-373"><span class="linenos">373</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_c</span><span class="p">)</span>
-</span><span id="fixelcfestats-374"><a href="#fixelcfestats-374"><span class="linenos">374</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-375"><a href="#fixelcfestats-375"><span class="linenos">375</span></a>    <span class="k">if</span> <span class="n">cfe_legacy</span><span class="p">:</span>
-</span><span id="fixelcfestats-376"><a href="#fixelcfestats-376"><span class="linenos">376</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cfe_legacy&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-377"><a href="#fixelcfestats-377"><span class="linenos">377</span></a>    <span class="k">if</span> <span class="n">variance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-378"><a href="#fixelcfestats-378"><span class="linenos">378</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-379"><a href="#fixelcfestats-379"><span class="linenos">379</span></a>            <span class="s2">&quot;-variance&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-380"><a href="#fixelcfestats-380"><span class="linenos">380</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
-</span><span id="fixelcfestats-381"><a href="#fixelcfestats-381"><span class="linenos">381</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-382"><a href="#fixelcfestats-382"><span class="linenos">382</span></a>    <span class="k">if</span> <span class="n">ftests</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-383"><a href="#fixelcfestats-383"><span class="linenos">383</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-384"><a href="#fixelcfestats-384"><span class="linenos">384</span></a>            <span class="s2">&quot;-ftests&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-385"><a href="#fixelcfestats-385"><span class="linenos">385</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ftests</span><span class="p">)</span>
-</span><span id="fixelcfestats-386"><a href="#fixelcfestats-386"><span class="linenos">386</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-387"><a href="#fixelcfestats-387"><span class="linenos">387</span></a>    <span class="k">if</span> <span class="n">fonly</span><span class="p">:</span>
-</span><span id="fixelcfestats-388"><a href="#fixelcfestats-388"><span class="linenos">388</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fonly&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-389"><a href="#fixelcfestats-389"><span class="linenos">389</span></a>    <span class="k">if</span> <span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-390"><a href="#fixelcfestats-390"><span class="linenos">390</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="fixelcfestats-391"><a href="#fixelcfestats-391"><span class="linenos">391</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="fixelcfestats-392"><a href="#fixelcfestats-392"><span class="linenos">392</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-393"><a href="#fixelcfestats-393"><span class="linenos">393</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="fixelcfestats-394"><a href="#fixelcfestats-394"><span class="linenos">394</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-395"><a href="#fixelcfestats-395"><span class="linenos">395</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="fixelcfestats-396"><a href="#fixelcfestats-396"><span class="linenos">396</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-397"><a href="#fixelcfestats-397"><span class="linenos">397</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="fixelcfestats-398"><a href="#fixelcfestats-398"><span class="linenos">398</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-399"><a href="#fixelcfestats-399"><span class="linenos">399</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-400"><a href="#fixelcfestats-400"><span class="linenos">400</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelcfestats-401"><a href="#fixelcfestats-401"><span class="linenos">401</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="fixelcfestats-402"><a href="#fixelcfestats-402"><span class="linenos">402</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="fixelcfestats-403"><a href="#fixelcfestats-403"><span class="linenos">403</span></a>        <span class="p">])</span>
-</span><span id="fixelcfestats-404"><a href="#fixelcfestats-404"><span class="linenos">404</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelcfestats-405"><a href="#fixelcfestats-405"><span class="linenos">405</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="fixelcfestats-406"><a href="#fixelcfestats-406"><span class="linenos">406</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="fixelcfestats-407"><a href="#fixelcfestats-407"><span class="linenos">407</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-408"><a href="#fixelcfestats-408"><span class="linenos">408</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="fixelcfestats-409"><a href="#fixelcfestats-409"><span class="linenos">409</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="fixelcfestats-410"><a href="#fixelcfestats-410"><span class="linenos">410</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fixel_directory</span><span class="p">))</span>
-</span><span id="fixelcfestats-411"><a href="#fixelcfestats-411"><span class="linenos">411</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subjects</span><span class="p">))</span>
-</span><span id="fixelcfestats-412"><a href="#fixelcfestats-412"><span class="linenos">412</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">design</span><span class="p">))</span>
-</span><span id="fixelcfestats-413"><a href="#fixelcfestats-413"><span class="linenos">413</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">contrast</span><span class="p">))</span>
-</span><span id="fixelcfestats-414"><a href="#fixelcfestats-414"><span class="linenos">414</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">connectivity</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="fixelcfestats-415"><a href="#fixelcfestats-415"><span class="linenos">415</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_fixel_directory</span><span class="p">)</span>
-</span><span id="fixelcfestats-416"><a href="#fixelcfestats-416"><span class="linenos">416</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelcfestatsOutputs</span><span class="p">(</span>
-</span><span id="fixelcfestats-417"><a href="#fixelcfestats-417"><span class="linenos">417</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fixelcfestats-418"><a href="#fixelcfestats-418"><span class="linenos">418</span></a>    <span class="p">)</span>
-</span><span id="fixelcfestats-419"><a href="#fixelcfestats-419"><span class="linenos">419</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fixelcfestats-420"><a href="#fixelcfestats-420"><span class="linenos">420</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fixelcfestats-216"><a href="#fixelcfestats-216"><span class="linenos">216</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="fixelcfestats-217"><a href="#fixelcfestats-217"><span class="linenos">217</span></a><span class="sd">    </span>
+</span><span id="fixelcfestats-218"><a href="#fixelcfestats-218"><span class="linenos">218</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="fixelcfestats-219"><a href="#fixelcfestats-219"><span class="linenos">219</span></a><span class="sd">    </span>
+</span><span id="fixelcfestats-220"><a href="#fixelcfestats-220"><span class="linenos">220</span></a><span class="sd">    Args:</span>
+</span><span id="fixelcfestats-221"><a href="#fixelcfestats-221"><span class="linenos">221</span></a><span class="sd">        in_fixel_directory: the fixel directory containing the data files for\</span>
+</span><span id="fixelcfestats-222"><a href="#fixelcfestats-222"><span class="linenos">222</span></a><span class="sd">            each subject (after obtaining fixel correspondence.</span>
+</span><span id="fixelcfestats-223"><a href="#fixelcfestats-223"><span class="linenos">223</span></a><span class="sd">        subjects: a text file listing the subject identifiers (one per line).\</span>
+</span><span id="fixelcfestats-224"><a href="#fixelcfestats-224"><span class="linenos">224</span></a><span class="sd">            This should correspond with the filenames in the fixel directory\</span>
+</span><span id="fixelcfestats-225"><a href="#fixelcfestats-225"><span class="linenos">225</span></a><span class="sd">            (including the file extension), and be listed in the same order as the\</span>
+</span><span id="fixelcfestats-226"><a href="#fixelcfestats-226"><span class="linenos">226</span></a><span class="sd">            rows of the design matrix.</span>
+</span><span id="fixelcfestats-227"><a href="#fixelcfestats-227"><span class="linenos">227</span></a><span class="sd">        design: the design matrix.</span>
+</span><span id="fixelcfestats-228"><a href="#fixelcfestats-228"><span class="linenos">228</span></a><span class="sd">        contrast: the contrast matrix, specified as rows of weights.</span>
+</span><span id="fixelcfestats-229"><a href="#fixelcfestats-229"><span class="linenos">229</span></a><span class="sd">        connectivity: the fixel-fixel connectivity matrix.</span>
+</span><span id="fixelcfestats-230"><a href="#fixelcfestats-230"><span class="linenos">230</span></a><span class="sd">        out_fixel_directory: the output directory where results will be saved.\</span>
+</span><span id="fixelcfestats-231"><a href="#fixelcfestats-231"><span class="linenos">231</span></a><span class="sd">            Will be created if it does not exist.</span>
+</span><span id="fixelcfestats-232"><a href="#fixelcfestats-232"><span class="linenos">232</span></a><span class="sd">        mask: provide a fixel data file containing a mask of those fixels to be\</span>
+</span><span id="fixelcfestats-233"><a href="#fixelcfestats-233"><span class="linenos">233</span></a><span class="sd">            used during processing.</span>
+</span><span id="fixelcfestats-234"><a href="#fixelcfestats-234"><span class="linenos">234</span></a><span class="sd">        notest: don&#39;t perform statistical inference; only output population\</span>
+</span><span id="fixelcfestats-235"><a href="#fixelcfestats-235"><span class="linenos">235</span></a><span class="sd">            statistics (effect size, stdev etc).</span>
+</span><span id="fixelcfestats-236"><a href="#fixelcfestats-236"><span class="linenos">236</span></a><span class="sd">        errors: specify nature of errors for shuffling; options are:\</span>
+</span><span id="fixelcfestats-237"><a href="#fixelcfestats-237"><span class="linenos">237</span></a><span class="sd">            ee,ise,both (default: ee).</span>
+</span><span id="fixelcfestats-238"><a href="#fixelcfestats-238"><span class="linenos">238</span></a><span class="sd">        exchange_within: specify blocks of observations within each of which\</span>
+</span><span id="fixelcfestats-239"><a href="#fixelcfestats-239"><span class="linenos">239</span></a><span class="sd">            data may undergo restricted exchange.</span>
+</span><span id="fixelcfestats-240"><a href="#fixelcfestats-240"><span class="linenos">240</span></a><span class="sd">        exchange_whole: specify blocks of observations that may be exchanged\</span>
+</span><span id="fixelcfestats-241"><a href="#fixelcfestats-241"><span class="linenos">241</span></a><span class="sd">            with one another (for independent and symmetric errors, sign-flipping\</span>
+</span><span id="fixelcfestats-242"><a href="#fixelcfestats-242"><span class="linenos">242</span></a><span class="sd">            will occur block-wise).</span>
+</span><span id="fixelcfestats-243"><a href="#fixelcfestats-243"><span class="linenos">243</span></a><span class="sd">        strong: use strong familywise error control across multiple hypotheses.</span>
+</span><span id="fixelcfestats-244"><a href="#fixelcfestats-244"><span class="linenos">244</span></a><span class="sd">        nshuffles: the number of shuffles (default: 5000).</span>
+</span><span id="fixelcfestats-245"><a href="#fixelcfestats-245"><span class="linenos">245</span></a><span class="sd">        permutations: manually define the permutations (relabelling). The input\</span>
+</span><span id="fixelcfestats-246"><a href="#fixelcfestats-246"><span class="linenos">246</span></a><span class="sd">            should be a text file defining a m x n matrix, where each relabelling\</span>
+</span><span id="fixelcfestats-247"><a href="#fixelcfestats-247"><span class="linenos">247</span></a><span class="sd">            is defined as a column vector of size m, and the number of columns, n,\</span>
+</span><span id="fixelcfestats-248"><a href="#fixelcfestats-248"><span class="linenos">248</span></a><span class="sd">            defines the number of permutations. Can be generated with the\</span>
+</span><span id="fixelcfestats-249"><a href="#fixelcfestats-249"><span class="linenos">249</span></a><span class="sd">            palm_quickperms function in PALM\</span>
+</span><span id="fixelcfestats-250"><a href="#fixelcfestats-250"><span class="linenos">250</span></a><span class="sd">            (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM). Overrides the -nshuffles\</span>
+</span><span id="fixelcfestats-251"><a href="#fixelcfestats-251"><span class="linenos">251</span></a><span class="sd">            option.</span>
+</span><span id="fixelcfestats-252"><a href="#fixelcfestats-252"><span class="linenos">252</span></a><span class="sd">        nonstationarity: perform non-stationarity correction.</span>
+</span><span id="fixelcfestats-253"><a href="#fixelcfestats-253"><span class="linenos">253</span></a><span class="sd">        skew_nonstationarity: specify the skew parameter for empirical\</span>
+</span><span id="fixelcfestats-254"><a href="#fixelcfestats-254"><span class="linenos">254</span></a><span class="sd">            statistic calculation (default for this command is 1).</span>
+</span><span id="fixelcfestats-255"><a href="#fixelcfestats-255"><span class="linenos">255</span></a><span class="sd">        nshuffles_nonstationarity: the number of shuffles to use when\</span>
+</span><span id="fixelcfestats-256"><a href="#fixelcfestats-256"><span class="linenos">256</span></a><span class="sd">            precomputing the empirical statistic image for non-stationarity\</span>
+</span><span id="fixelcfestats-257"><a href="#fixelcfestats-257"><span class="linenos">257</span></a><span class="sd">            correction (default: 5000).</span>
+</span><span id="fixelcfestats-258"><a href="#fixelcfestats-258"><span class="linenos">258</span></a><span class="sd">        permutations_nonstationarity: manually define the permutations\</span>
+</span><span id="fixelcfestats-259"><a href="#fixelcfestats-259"><span class="linenos">259</span></a><span class="sd">            (relabelling) for computing the emprical statistics for\</span>
+</span><span id="fixelcfestats-260"><a href="#fixelcfestats-260"><span class="linenos">260</span></a><span class="sd">            non-stationarity correction. The input should be a text file defining a\</span>
+</span><span id="fixelcfestats-261"><a href="#fixelcfestats-261"><span class="linenos">261</span></a><span class="sd">            m x n matrix, where each relabelling is defined as a column vector of\</span>
+</span><span id="fixelcfestats-262"><a href="#fixelcfestats-262"><span class="linenos">262</span></a><span class="sd">            size m, and the number of columns, n, defines the number of\</span>
+</span><span id="fixelcfestats-263"><a href="#fixelcfestats-263"><span class="linenos">263</span></a><span class="sd">            permutations. Can be generated with the palm_quickperms function in\</span>
+</span><span id="fixelcfestats-264"><a href="#fixelcfestats-264"><span class="linenos">264</span></a><span class="sd">            PALM (http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PALM) Overrides the\</span>
+</span><span id="fixelcfestats-265"><a href="#fixelcfestats-265"><span class="linenos">265</span></a><span class="sd">            -nshuffles_nonstationarity option.</span>
+</span><span id="fixelcfestats-266"><a href="#fixelcfestats-266"><span class="linenos">266</span></a><span class="sd">        cfe_dh: the height increment used in the cfe integration (default: 0.1).</span>
+</span><span id="fixelcfestats-267"><a href="#fixelcfestats-267"><span class="linenos">267</span></a><span class="sd">        cfe_e: cfe extent exponent (default: 2).</span>
+</span><span id="fixelcfestats-268"><a href="#fixelcfestats-268"><span class="linenos">268</span></a><span class="sd">        cfe_h: cfe height exponent (default: 3).</span>
+</span><span id="fixelcfestats-269"><a href="#fixelcfestats-269"><span class="linenos">269</span></a><span class="sd">        cfe_c: cfe connectivity exponent (default: 0.5).</span>
+</span><span id="fixelcfestats-270"><a href="#fixelcfestats-270"><span class="linenos">270</span></a><span class="sd">        cfe_legacy: use the legacy (non-normalised) form of the cfe equation.</span>
+</span><span id="fixelcfestats-271"><a href="#fixelcfestats-271"><span class="linenos">271</span></a><span class="sd">        variance: define variance groups for the G-statistic; measurements for\</span>
+</span><span id="fixelcfestats-272"><a href="#fixelcfestats-272"><span class="linenos">272</span></a><span class="sd">            which the expected variance is equivalent should contain the same index.</span>
+</span><span id="fixelcfestats-273"><a href="#fixelcfestats-273"><span class="linenos">273</span></a><span class="sd">        ftests: perform F-tests; input text file should contain, for each\</span>
+</span><span id="fixelcfestats-274"><a href="#fixelcfestats-274"><span class="linenos">274</span></a><span class="sd">            F-test, a row containing ones and zeros, where ones indicate the rows\</span>
+</span><span id="fixelcfestats-275"><a href="#fixelcfestats-275"><span class="linenos">275</span></a><span class="sd">            of the contrast matrix to be included in the F-test.</span>
+</span><span id="fixelcfestats-276"><a href="#fixelcfestats-276"><span class="linenos">276</span></a><span class="sd">        fonly: only assess F-tests; do not perform statistical inference on\</span>
+</span><span id="fixelcfestats-277"><a href="#fixelcfestats-277"><span class="linenos">277</span></a><span class="sd">            entries in the contrast matrix.</span>
+</span><span id="fixelcfestats-278"><a href="#fixelcfestats-278"><span class="linenos">278</span></a><span class="sd">        column: add a column to the design matrix corresponding to subject\</span>
+</span><span id="fixelcfestats-279"><a href="#fixelcfestats-279"><span class="linenos">279</span></a><span class="sd">            fixel-wise values (note that the contrast matrix must include an\</span>
+</span><span id="fixelcfestats-280"><a href="#fixelcfestats-280"><span class="linenos">280</span></a><span class="sd">            additional column for each use of this option); the text file provided\</span>
+</span><span id="fixelcfestats-281"><a href="#fixelcfestats-281"><span class="linenos">281</span></a><span class="sd">            via this option should contain a file name for each subject.</span>
+</span><span id="fixelcfestats-282"><a href="#fixelcfestats-282"><span class="linenos">282</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="fixelcfestats-283"><a href="#fixelcfestats-283"><span class="linenos">283</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="fixelcfestats-284"><a href="#fixelcfestats-284"><span class="linenos">284</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="fixelcfestats-285"><a href="#fixelcfestats-285"><span class="linenos">285</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="fixelcfestats-286"><a href="#fixelcfestats-286"><span class="linenos">286</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="fixelcfestats-287"><a href="#fixelcfestats-287"><span class="linenos">287</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="fixelcfestats-288"><a href="#fixelcfestats-288"><span class="linenos">288</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="fixelcfestats-289"><a href="#fixelcfestats-289"><span class="linenos">289</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="fixelcfestats-290"><a href="#fixelcfestats-290"><span class="linenos">290</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="fixelcfestats-291"><a href="#fixelcfestats-291"><span class="linenos">291</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="fixelcfestats-292"><a href="#fixelcfestats-292"><span class="linenos">292</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="fixelcfestats-293"><a href="#fixelcfestats-293"><span class="linenos">293</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="fixelcfestats-294"><a href="#fixelcfestats-294"><span class="linenos">294</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fixelcfestats-295"><a href="#fixelcfestats-295"><span class="linenos">295</span></a><span class="sd">    Returns:</span>
+</span><span id="fixelcfestats-296"><a href="#fixelcfestats-296"><span class="linenos">296</span></a><span class="sd">        NamedTuple of outputs (described in `FixelcfestatsOutputs`).</span>
+</span><span id="fixelcfestats-297"><a href="#fixelcfestats-297"><span class="linenos">297</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fixelcfestats-298"><a href="#fixelcfestats-298"><span class="linenos">298</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fixelcfestats-299"><a href="#fixelcfestats-299"><span class="linenos">299</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELCFESTATS_METADATA</span><span class="p">)</span>
+</span><span id="fixelcfestats-300"><a href="#fixelcfestats-300"><span class="linenos">300</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fixelcfestats-301"><a href="#fixelcfestats-301"><span class="linenos">301</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelcfestats&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-302"><a href="#fixelcfestats-302"><span class="linenos">302</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-303"><a href="#fixelcfestats-303"><span class="linenos">303</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-304"><a href="#fixelcfestats-304"><span class="linenos">304</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-305"><a href="#fixelcfestats-305"><span class="linenos">305</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="fixelcfestats-306"><a href="#fixelcfestats-306"><span class="linenos">306</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-307"><a href="#fixelcfestats-307"><span class="linenos">307</span></a>    <span class="k">if</span> <span class="n">notest</span><span class="p">:</span>
+</span><span id="fixelcfestats-308"><a href="#fixelcfestats-308"><span class="linenos">308</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-notest&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-309"><a href="#fixelcfestats-309"><span class="linenos">309</span></a>    <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-310"><a href="#fixelcfestats-310"><span class="linenos">310</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-311"><a href="#fixelcfestats-311"><span class="linenos">311</span></a>            <span class="s2">&quot;-errors&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-312"><a href="#fixelcfestats-312"><span class="linenos">312</span></a>            <span class="n">errors</span>
+</span><span id="fixelcfestats-313"><a href="#fixelcfestats-313"><span class="linenos">313</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-314"><a href="#fixelcfestats-314"><span class="linenos">314</span></a>    <span class="k">if</span> <span class="n">exchange_within</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-315"><a href="#fixelcfestats-315"><span class="linenos">315</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-316"><a href="#fixelcfestats-316"><span class="linenos">316</span></a>            <span class="s2">&quot;-exchange_within&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-317"><a href="#fixelcfestats-317"><span class="linenos">317</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_within</span><span class="p">)</span>
+</span><span id="fixelcfestats-318"><a href="#fixelcfestats-318"><span class="linenos">318</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-319"><a href="#fixelcfestats-319"><span class="linenos">319</span></a>    <span class="k">if</span> <span class="n">exchange_whole</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-320"><a href="#fixelcfestats-320"><span class="linenos">320</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-321"><a href="#fixelcfestats-321"><span class="linenos">321</span></a>            <span class="s2">&quot;-exchange_whole&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-322"><a href="#fixelcfestats-322"><span class="linenos">322</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">exchange_whole</span><span class="p">)</span>
+</span><span id="fixelcfestats-323"><a href="#fixelcfestats-323"><span class="linenos">323</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-324"><a href="#fixelcfestats-324"><span class="linenos">324</span></a>    <span class="k">if</span> <span class="n">strong</span><span class="p">:</span>
+</span><span id="fixelcfestats-325"><a href="#fixelcfestats-325"><span class="linenos">325</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-strong&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-326"><a href="#fixelcfestats-326"><span class="linenos">326</span></a>    <span class="k">if</span> <span class="n">nshuffles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-327"><a href="#fixelcfestats-327"><span class="linenos">327</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-328"><a href="#fixelcfestats-328"><span class="linenos">328</span></a>            <span class="s2">&quot;-nshuffles&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-329"><a href="#fixelcfestats-329"><span class="linenos">329</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles</span><span class="p">)</span>
+</span><span id="fixelcfestats-330"><a href="#fixelcfestats-330"><span class="linenos">330</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-331"><a href="#fixelcfestats-331"><span class="linenos">331</span></a>    <span class="k">if</span> <span class="n">permutations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-332"><a href="#fixelcfestats-332"><span class="linenos">332</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-333"><a href="#fixelcfestats-333"><span class="linenos">333</span></a>            <span class="s2">&quot;-permutations&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-334"><a href="#fixelcfestats-334"><span class="linenos">334</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations</span><span class="p">)</span>
+</span><span id="fixelcfestats-335"><a href="#fixelcfestats-335"><span class="linenos">335</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-336"><a href="#fixelcfestats-336"><span class="linenos">336</span></a>    <span class="k">if</span> <span class="n">nonstationarity</span><span class="p">:</span>
+</span><span id="fixelcfestats-337"><a href="#fixelcfestats-337"><span class="linenos">337</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nonstationarity&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-338"><a href="#fixelcfestats-338"><span class="linenos">338</span></a>    <span class="k">if</span> <span class="n">skew_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-339"><a href="#fixelcfestats-339"><span class="linenos">339</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-340"><a href="#fixelcfestats-340"><span class="linenos">340</span></a>            <span class="s2">&quot;-skew_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-341"><a href="#fixelcfestats-341"><span class="linenos">341</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">skew_nonstationarity</span><span class="p">)</span>
+</span><span id="fixelcfestats-342"><a href="#fixelcfestats-342"><span class="linenos">342</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-343"><a href="#fixelcfestats-343"><span class="linenos">343</span></a>    <span class="k">if</span> <span class="n">nshuffles_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-344"><a href="#fixelcfestats-344"><span class="linenos">344</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-345"><a href="#fixelcfestats-345"><span class="linenos">345</span></a>            <span class="s2">&quot;-nshuffles_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-346"><a href="#fixelcfestats-346"><span class="linenos">346</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nshuffles_nonstationarity</span><span class="p">)</span>
+</span><span id="fixelcfestats-347"><a href="#fixelcfestats-347"><span class="linenos">347</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-348"><a href="#fixelcfestats-348"><span class="linenos">348</span></a>    <span class="k">if</span> <span class="n">permutations_nonstationarity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-349"><a href="#fixelcfestats-349"><span class="linenos">349</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-350"><a href="#fixelcfestats-350"><span class="linenos">350</span></a>            <span class="s2">&quot;-permutations_nonstationarity&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-351"><a href="#fixelcfestats-351"><span class="linenos">351</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">permutations_nonstationarity</span><span class="p">)</span>
+</span><span id="fixelcfestats-352"><a href="#fixelcfestats-352"><span class="linenos">352</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-353"><a href="#fixelcfestats-353"><span class="linenos">353</span></a>    <span class="k">if</span> <span class="n">cfe_dh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-354"><a href="#fixelcfestats-354"><span class="linenos">354</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-355"><a href="#fixelcfestats-355"><span class="linenos">355</span></a>            <span class="s2">&quot;-cfe_dh&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-356"><a href="#fixelcfestats-356"><span class="linenos">356</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_dh</span><span class="p">)</span>
+</span><span id="fixelcfestats-357"><a href="#fixelcfestats-357"><span class="linenos">357</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-358"><a href="#fixelcfestats-358"><span class="linenos">358</span></a>    <span class="k">if</span> <span class="n">cfe_e</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-359"><a href="#fixelcfestats-359"><span class="linenos">359</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-360"><a href="#fixelcfestats-360"><span class="linenos">360</span></a>            <span class="s2">&quot;-cfe_e&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-361"><a href="#fixelcfestats-361"><span class="linenos">361</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_e</span><span class="p">)</span>
+</span><span id="fixelcfestats-362"><a href="#fixelcfestats-362"><span class="linenos">362</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-363"><a href="#fixelcfestats-363"><span class="linenos">363</span></a>    <span class="k">if</span> <span class="n">cfe_h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-364"><a href="#fixelcfestats-364"><span class="linenos">364</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-365"><a href="#fixelcfestats-365"><span class="linenos">365</span></a>            <span class="s2">&quot;-cfe_h&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-366"><a href="#fixelcfestats-366"><span class="linenos">366</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_h</span><span class="p">)</span>
+</span><span id="fixelcfestats-367"><a href="#fixelcfestats-367"><span class="linenos">367</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-368"><a href="#fixelcfestats-368"><span class="linenos">368</span></a>    <span class="k">if</span> <span class="n">cfe_c</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-369"><a href="#fixelcfestats-369"><span class="linenos">369</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-370"><a href="#fixelcfestats-370"><span class="linenos">370</span></a>            <span class="s2">&quot;-cfe_c&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-371"><a href="#fixelcfestats-371"><span class="linenos">371</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cfe_c</span><span class="p">)</span>
+</span><span id="fixelcfestats-372"><a href="#fixelcfestats-372"><span class="linenos">372</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-373"><a href="#fixelcfestats-373"><span class="linenos">373</span></a>    <span class="k">if</span> <span class="n">cfe_legacy</span><span class="p">:</span>
+</span><span id="fixelcfestats-374"><a href="#fixelcfestats-374"><span class="linenos">374</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cfe_legacy&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-375"><a href="#fixelcfestats-375"><span class="linenos">375</span></a>    <span class="k">if</span> <span class="n">variance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-376"><a href="#fixelcfestats-376"><span class="linenos">376</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-377"><a href="#fixelcfestats-377"><span class="linenos">377</span></a>            <span class="s2">&quot;-variance&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-378"><a href="#fixelcfestats-378"><span class="linenos">378</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
+</span><span id="fixelcfestats-379"><a href="#fixelcfestats-379"><span class="linenos">379</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-380"><a href="#fixelcfestats-380"><span class="linenos">380</span></a>    <span class="k">if</span> <span class="n">ftests</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-381"><a href="#fixelcfestats-381"><span class="linenos">381</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-382"><a href="#fixelcfestats-382"><span class="linenos">382</span></a>            <span class="s2">&quot;-ftests&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-383"><a href="#fixelcfestats-383"><span class="linenos">383</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ftests</span><span class="p">)</span>
+</span><span id="fixelcfestats-384"><a href="#fixelcfestats-384"><span class="linenos">384</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-385"><a href="#fixelcfestats-385"><span class="linenos">385</span></a>    <span class="k">if</span> <span class="n">fonly</span><span class="p">:</span>
+</span><span id="fixelcfestats-386"><a href="#fixelcfestats-386"><span class="linenos">386</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fonly&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-387"><a href="#fixelcfestats-387"><span class="linenos">387</span></a>    <span class="k">if</span> <span class="n">column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-388"><a href="#fixelcfestats-388"><span class="linenos">388</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">column</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="fixelcfestats-389"><a href="#fixelcfestats-389"><span class="linenos">389</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="fixelcfestats-390"><a href="#fixelcfestats-390"><span class="linenos">390</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-391"><a href="#fixelcfestats-391"><span class="linenos">391</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="fixelcfestats-392"><a href="#fixelcfestats-392"><span class="linenos">392</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-393"><a href="#fixelcfestats-393"><span class="linenos">393</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="fixelcfestats-394"><a href="#fixelcfestats-394"><span class="linenos">394</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-395"><a href="#fixelcfestats-395"><span class="linenos">395</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="fixelcfestats-396"><a href="#fixelcfestats-396"><span class="linenos">396</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-397"><a href="#fixelcfestats-397"><span class="linenos">397</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-398"><a href="#fixelcfestats-398"><span class="linenos">398</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelcfestats-399"><a href="#fixelcfestats-399"><span class="linenos">399</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="fixelcfestats-400"><a href="#fixelcfestats-400"><span class="linenos">400</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="fixelcfestats-401"><a href="#fixelcfestats-401"><span class="linenos">401</span></a>        <span class="p">])</span>
+</span><span id="fixelcfestats-402"><a href="#fixelcfestats-402"><span class="linenos">402</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelcfestats-403"><a href="#fixelcfestats-403"><span class="linenos">403</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="fixelcfestats-404"><a href="#fixelcfestats-404"><span class="linenos">404</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="fixelcfestats-405"><a href="#fixelcfestats-405"><span class="linenos">405</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-406"><a href="#fixelcfestats-406"><span class="linenos">406</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="fixelcfestats-407"><a href="#fixelcfestats-407"><span class="linenos">407</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="fixelcfestats-408"><a href="#fixelcfestats-408"><span class="linenos">408</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fixel_directory</span><span class="p">))</span>
+</span><span id="fixelcfestats-409"><a href="#fixelcfestats-409"><span class="linenos">409</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">subjects</span><span class="p">))</span>
+</span><span id="fixelcfestats-410"><a href="#fixelcfestats-410"><span class="linenos">410</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">design</span><span class="p">))</span>
+</span><span id="fixelcfestats-411"><a href="#fixelcfestats-411"><span class="linenos">411</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">contrast</span><span class="p">))</span>
+</span><span id="fixelcfestats-412"><a href="#fixelcfestats-412"><span class="linenos">412</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">connectivity</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="fixelcfestats-413"><a href="#fixelcfestats-413"><span class="linenos">413</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_fixel_directory</span><span class="p">)</span>
+</span><span id="fixelcfestats-414"><a href="#fixelcfestats-414"><span class="linenos">414</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelcfestatsOutputs</span><span class="p">(</span>
+</span><span id="fixelcfestats-415"><a href="#fixelcfestats-415"><span class="linenos">415</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fixelcfestats-416"><a href="#fixelcfestats-416"><span class="linenos">416</span></a>    <span class="p">)</span>
+</span><span id="fixelcfestats-417"><a href="#fixelcfestats-417"><span class="linenos">417</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fixelcfestats-418"><a href="#fixelcfestats-418"><span class="linenos">418</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1461,11 +1457,9 @@ nonstationarity in cluster-based and TFCE inference. NeuroImage, 2011,
 54(3), 2006-19.</p></li>
 </ul>
 
-<p>Author: David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith
-(robert.smith@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcfestats.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcfestats.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

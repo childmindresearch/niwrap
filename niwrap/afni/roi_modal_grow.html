@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">ROI_MODAL_GROW_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;bf225aae5f4a73080d8a0a41020ba697931c6439.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;76b12819d76b89a4c6be2901d45be0595700f561.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ROI_modal_grow&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -110,82 +110,81 @@
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">    Script to grow a set of regions in a volumetric dataset using modal smoothing.</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">    </span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">    </span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">    URL:</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_modal_grow.html</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    </span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    Args:</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">        input_dset: Required input dataset. This dataset should be a set of\</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">            integer values, assuming approximate isotropic voxels.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">        niters: Number of iterations for modal growth, generally making sense\</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">            for values from about 1-10.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        outdir: Directory name for output. All output goes to this directory.\</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">            Default is rmgrow.</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        mask: Mask dataset at the same grid as the input dataset. Could be a\</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">            dilated version of the original mask or a larger region like a cortical\</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">            ribbon mask. Not required but often desirable.</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        prefix: Base name of the final output dataset, i.e., baseprefix.nii.gz.\</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">            Default is rmg, so output would be rmg.nii.gz.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        neighborhood_type: Neighborhood type used in finding mode. 1 - facing\</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">            neighbors, 2 - edges, 3 - corners.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    Returns:</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        NamedTuple of outputs (described in `RoiModalGrowOutputs`).</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="k">if</span> <span class="n">neighborhood_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">neighborhood_type</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">):</span> 
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;neighborhood_type&#39; must be between 1 &lt;= x &lt;= 3 but was </span><span class="si">{</span><span class="n">neighborhood_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROI_MODAL_GROW_METADATA</span><span class="p">)</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@ROI_modal_grow&quot;</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-input&quot;</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_dset</span><span class="p">)</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="p">])</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-niters&quot;</span><span class="p">)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;-niters&quot;</span><span class="p">,</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-outdir&quot;</span><span class="p">)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">outdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>            <span class="s2">&quot;-outdir&quot;</span><span class="p">,</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="n">outdir</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="p">])</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mask&quot;</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="n">prefix</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-NN&quot;</span><span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">neighborhood_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-NN&quot;</span><span class="p">,</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">neighborhood_type</span><span class="p">)</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="p">])</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RoiModalGrowOutputs</span><span class="p">(</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outdir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    Args:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">        input_dset: Required input dataset. This dataset should be a set of\</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">            integer values, assuming approximate isotropic voxels.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">        niters: Number of iterations for modal growth, generally making sense\</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">            for values from about 1-10.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        outdir: Directory name for output. All output goes to this directory.\</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">            Default is rmgrow.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        mask: Mask dataset at the same grid as the input dataset. Could be a\</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">            dilated version of the original mask or a larger region like a cortical\</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">            ribbon mask. Not required but often desirable.</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        prefix: Base name of the final output dataset, i.e., baseprefix.nii.gz.\</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">            Default is rmg, so output would be rmg.nii.gz.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        neighborhood_type: Neighborhood type used in finding mode. 1 - facing\</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">            neighbors, 2 - edges, 3 - corners.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    Returns:</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        NamedTuple of outputs (described in `RoiModalGrowOutputs`).</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="k">if</span> <span class="n">neighborhood_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">neighborhood_type</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">):</span> 
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;neighborhood_type&#39; must be between 1 &lt;= x &lt;= 3 but was </span><span class="si">{</span><span class="n">neighborhood_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROI_MODAL_GROW_METADATA</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@ROI_modal_grow&quot;</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-input&quot;</span><span class="p">)</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_dset</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="p">])</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-niters&quot;</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="s2">&quot;-niters&quot;</span><span class="p">,</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="p">])</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-outdir&quot;</span><span class="p">)</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="k">if</span> <span class="n">outdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>            <span class="s2">&quot;-outdir&quot;</span><span class="p">,</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>            <span class="n">outdir</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="p">])</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mask&quot;</span><span class="p">)</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="p">])</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="n">prefix</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-NN&quot;</span><span class="p">)</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">neighborhood_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;-NN&quot;</span><span class="p">,</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">neighborhood_type</span><span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="p">])</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RoiModalGrowOutputs</span><span class="p">(</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outdir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="p">)</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>
 </span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="s2">&quot;ROI_MODAL_GROW_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="s2">&quot;RoiModalGrowOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="s2">&quot;roi_modal_grow&quot;</span><span class="p">,</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="p">]</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="s2">&quot;ROI_MODAL_GROW_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="s2">&quot;RoiModalGrowOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="s2">&quot;roi_modal_grow&quot;</span><span class="p">,</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -194,7 +193,7 @@
                     <div class="attr variable">
             <span class="name">ROI_MODAL_GROW_METADATA</span>        =
 <input id="ROI_MODAL_GROW_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="ROI_MODAL_GROW_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;bf225aae5f4a73080d8a0a41020ba697931c6439.boutiques&#39;, name=&#39;ROI_modal_grow&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="ROI_MODAL_GROW_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;76b12819d76b89a4c6be2901d45be0595700f561.boutiques&#39;, name=&#39;ROI_modal_grow&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -293,84 +292,82 @@
 </span><span id="roi_modal_grow-37"><a href="#roi_modal_grow-37"><span class="linenos"> 37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="roi_modal_grow-38"><a href="#roi_modal_grow-38"><span class="linenos"> 38</span></a><span class="sd">    Script to grow a set of regions in a volumetric dataset using modal smoothing.</span>
 </span><span id="roi_modal_grow-39"><a href="#roi_modal_grow-39"><span class="linenos"> 39</span></a><span class="sd">    </span>
-</span><span id="roi_modal_grow-40"><a href="#roi_modal_grow-40"><span class="linenos"> 40</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="roi_modal_grow-40"><a href="#roi_modal_grow-40"><span class="linenos"> 40</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="roi_modal_grow-41"><a href="#roi_modal_grow-41"><span class="linenos"> 41</span></a><span class="sd">    </span>
-</span><span id="roi_modal_grow-42"><a href="#roi_modal_grow-42"><span class="linenos"> 42</span></a><span class="sd">    URL:</span>
-</span><span id="roi_modal_grow-43"><a href="#roi_modal_grow-43"><span class="linenos"> 43</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_modal_grow.html</span>
-</span><span id="roi_modal_grow-44"><a href="#roi_modal_grow-44"><span class="linenos"> 44</span></a><span class="sd">    </span>
-</span><span id="roi_modal_grow-45"><a href="#roi_modal_grow-45"><span class="linenos"> 45</span></a><span class="sd">    Args:</span>
-</span><span id="roi_modal_grow-46"><a href="#roi_modal_grow-46"><span class="linenos"> 46</span></a><span class="sd">        input_dset: Required input dataset. This dataset should be a set of\</span>
-</span><span id="roi_modal_grow-47"><a href="#roi_modal_grow-47"><span class="linenos"> 47</span></a><span class="sd">            integer values, assuming approximate isotropic voxels.</span>
-</span><span id="roi_modal_grow-48"><a href="#roi_modal_grow-48"><span class="linenos"> 48</span></a><span class="sd">        niters: Number of iterations for modal growth, generally making sense\</span>
-</span><span id="roi_modal_grow-49"><a href="#roi_modal_grow-49"><span class="linenos"> 49</span></a><span class="sd">            for values from about 1-10.</span>
-</span><span id="roi_modal_grow-50"><a href="#roi_modal_grow-50"><span class="linenos"> 50</span></a><span class="sd">        outdir: Directory name for output. All output goes to this directory.\</span>
-</span><span id="roi_modal_grow-51"><a href="#roi_modal_grow-51"><span class="linenos"> 51</span></a><span class="sd">            Default is rmgrow.</span>
-</span><span id="roi_modal_grow-52"><a href="#roi_modal_grow-52"><span class="linenos"> 52</span></a><span class="sd">        mask: Mask dataset at the same grid as the input dataset. Could be a\</span>
-</span><span id="roi_modal_grow-53"><a href="#roi_modal_grow-53"><span class="linenos"> 53</span></a><span class="sd">            dilated version of the original mask or a larger region like a cortical\</span>
-</span><span id="roi_modal_grow-54"><a href="#roi_modal_grow-54"><span class="linenos"> 54</span></a><span class="sd">            ribbon mask. Not required but often desirable.</span>
-</span><span id="roi_modal_grow-55"><a href="#roi_modal_grow-55"><span class="linenos"> 55</span></a><span class="sd">        prefix: Base name of the final output dataset, i.e., baseprefix.nii.gz.\</span>
-</span><span id="roi_modal_grow-56"><a href="#roi_modal_grow-56"><span class="linenos"> 56</span></a><span class="sd">            Default is rmg, so output would be rmg.nii.gz.</span>
-</span><span id="roi_modal_grow-57"><a href="#roi_modal_grow-57"><span class="linenos"> 57</span></a><span class="sd">        neighborhood_type: Neighborhood type used in finding mode. 1 - facing\</span>
-</span><span id="roi_modal_grow-58"><a href="#roi_modal_grow-58"><span class="linenos"> 58</span></a><span class="sd">            neighbors, 2 - edges, 3 - corners.</span>
-</span><span id="roi_modal_grow-59"><a href="#roi_modal_grow-59"><span class="linenos"> 59</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="roi_modal_grow-60"><a href="#roi_modal_grow-60"><span class="linenos"> 60</span></a><span class="sd">    Returns:</span>
-</span><span id="roi_modal_grow-61"><a href="#roi_modal_grow-61"><span class="linenos"> 61</span></a><span class="sd">        NamedTuple of outputs (described in `RoiModalGrowOutputs`).</span>
-</span><span id="roi_modal_grow-62"><a href="#roi_modal_grow-62"><span class="linenos"> 62</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="roi_modal_grow-63"><a href="#roi_modal_grow-63"><span class="linenos"> 63</span></a>    <span class="k">if</span> <span class="n">neighborhood_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">neighborhood_type</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">):</span> 
-</span><span id="roi_modal_grow-64"><a href="#roi_modal_grow-64"><span class="linenos"> 64</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;neighborhood_type&#39; must be between 1 &lt;= x &lt;= 3 but was </span><span class="si">{</span><span class="n">neighborhood_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="roi_modal_grow-65"><a href="#roi_modal_grow-65"><span class="linenos"> 65</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="roi_modal_grow-66"><a href="#roi_modal_grow-66"><span class="linenos"> 66</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROI_MODAL_GROW_METADATA</span><span class="p">)</span>
-</span><span id="roi_modal_grow-67"><a href="#roi_modal_grow-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="roi_modal_grow-68"><a href="#roi_modal_grow-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@ROI_modal_grow&quot;</span><span class="p">)</span>
-</span><span id="roi_modal_grow-69"><a href="#roi_modal_grow-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-input&quot;</span><span class="p">)</span>
-</span><span id="roi_modal_grow-70"><a href="#roi_modal_grow-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="roi_modal_grow-71"><a href="#roi_modal_grow-71"><span class="linenos"> 71</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
-</span><span id="roi_modal_grow-72"><a href="#roi_modal_grow-72"><span class="linenos"> 72</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_dset</span><span class="p">)</span>
-</span><span id="roi_modal_grow-73"><a href="#roi_modal_grow-73"><span class="linenos"> 73</span></a>    <span class="p">])</span>
-</span><span id="roi_modal_grow-74"><a href="#roi_modal_grow-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-niters&quot;</span><span class="p">)</span>
-</span><span id="roi_modal_grow-75"><a href="#roi_modal_grow-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="roi_modal_grow-76"><a href="#roi_modal_grow-76"><span class="linenos"> 76</span></a>        <span class="s2">&quot;-niters&quot;</span><span class="p">,</span>
-</span><span id="roi_modal_grow-77"><a href="#roi_modal_grow-77"><span class="linenos"> 77</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
-</span><span id="roi_modal_grow-78"><a href="#roi_modal_grow-78"><span class="linenos"> 78</span></a>    <span class="p">])</span>
-</span><span id="roi_modal_grow-79"><a href="#roi_modal_grow-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-outdir&quot;</span><span class="p">)</span>
-</span><span id="roi_modal_grow-80"><a href="#roi_modal_grow-80"><span class="linenos"> 80</span></a>    <span class="k">if</span> <span class="n">outdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="roi_modal_grow-81"><a href="#roi_modal_grow-81"><span class="linenos"> 81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="roi_modal_grow-82"><a href="#roi_modal_grow-82"><span class="linenos"> 82</span></a>            <span class="s2">&quot;-outdir&quot;</span><span class="p">,</span>
-</span><span id="roi_modal_grow-83"><a href="#roi_modal_grow-83"><span class="linenos"> 83</span></a>            <span class="n">outdir</span>
-</span><span id="roi_modal_grow-84"><a href="#roi_modal_grow-84"><span class="linenos"> 84</span></a>        <span class="p">])</span>
-</span><span id="roi_modal_grow-85"><a href="#roi_modal_grow-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mask&quot;</span><span class="p">)</span>
-</span><span id="roi_modal_grow-86"><a href="#roi_modal_grow-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="roi_modal_grow-87"><a href="#roi_modal_grow-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="roi_modal_grow-88"><a href="#roi_modal_grow-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="roi_modal_grow-89"><a href="#roi_modal_grow-89"><span class="linenos"> 89</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="roi_modal_grow-90"><a href="#roi_modal_grow-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="roi_modal_grow-91"><a href="#roi_modal_grow-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
-</span><span id="roi_modal_grow-92"><a href="#roi_modal_grow-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="roi_modal_grow-93"><a href="#roi_modal_grow-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="roi_modal_grow-94"><a href="#roi_modal_grow-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="roi_modal_grow-95"><a href="#roi_modal_grow-95"><span class="linenos"> 95</span></a>            <span class="n">prefix</span>
-</span><span id="roi_modal_grow-96"><a href="#roi_modal_grow-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
-</span><span id="roi_modal_grow-97"><a href="#roi_modal_grow-97"><span class="linenos"> 97</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-NN&quot;</span><span class="p">)</span>
-</span><span id="roi_modal_grow-98"><a href="#roi_modal_grow-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">neighborhood_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="roi_modal_grow-99"><a href="#roi_modal_grow-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="roi_modal_grow-100"><a href="#roi_modal_grow-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-NN&quot;</span><span class="p">,</span>
-</span><span id="roi_modal_grow-101"><a href="#roi_modal_grow-101"><span class="linenos">101</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">neighborhood_type</span><span class="p">)</span>
-</span><span id="roi_modal_grow-102"><a href="#roi_modal_grow-102"><span class="linenos">102</span></a>        <span class="p">])</span>
-</span><span id="roi_modal_grow-103"><a href="#roi_modal_grow-103"><span class="linenos">103</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RoiModalGrowOutputs</span><span class="p">(</span>
-</span><span id="roi_modal_grow-104"><a href="#roi_modal_grow-104"><span class="linenos">104</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="roi_modal_grow-105"><a href="#roi_modal_grow-105"><span class="linenos">105</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outdir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="roi_modal_grow-106"><a href="#roi_modal_grow-106"><span class="linenos">106</span></a>    <span class="p">)</span>
-</span><span id="roi_modal_grow-107"><a href="#roi_modal_grow-107"><span class="linenos">107</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="roi_modal_grow-108"><a href="#roi_modal_grow-108"><span class="linenos">108</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="roi_modal_grow-42"><a href="#roi_modal_grow-42"><span class="linenos"> 42</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="roi_modal_grow-43"><a href="#roi_modal_grow-43"><span class="linenos"> 43</span></a><span class="sd">    </span>
+</span><span id="roi_modal_grow-44"><a href="#roi_modal_grow-44"><span class="linenos"> 44</span></a><span class="sd">    Args:</span>
+</span><span id="roi_modal_grow-45"><a href="#roi_modal_grow-45"><span class="linenos"> 45</span></a><span class="sd">        input_dset: Required input dataset. This dataset should be a set of\</span>
+</span><span id="roi_modal_grow-46"><a href="#roi_modal_grow-46"><span class="linenos"> 46</span></a><span class="sd">            integer values, assuming approximate isotropic voxels.</span>
+</span><span id="roi_modal_grow-47"><a href="#roi_modal_grow-47"><span class="linenos"> 47</span></a><span class="sd">        niters: Number of iterations for modal growth, generally making sense\</span>
+</span><span id="roi_modal_grow-48"><a href="#roi_modal_grow-48"><span class="linenos"> 48</span></a><span class="sd">            for values from about 1-10.</span>
+</span><span id="roi_modal_grow-49"><a href="#roi_modal_grow-49"><span class="linenos"> 49</span></a><span class="sd">        outdir: Directory name for output. All output goes to this directory.\</span>
+</span><span id="roi_modal_grow-50"><a href="#roi_modal_grow-50"><span class="linenos"> 50</span></a><span class="sd">            Default is rmgrow.</span>
+</span><span id="roi_modal_grow-51"><a href="#roi_modal_grow-51"><span class="linenos"> 51</span></a><span class="sd">        mask: Mask dataset at the same grid as the input dataset. Could be a\</span>
+</span><span id="roi_modal_grow-52"><a href="#roi_modal_grow-52"><span class="linenos"> 52</span></a><span class="sd">            dilated version of the original mask or a larger region like a cortical\</span>
+</span><span id="roi_modal_grow-53"><a href="#roi_modal_grow-53"><span class="linenos"> 53</span></a><span class="sd">            ribbon mask. Not required but often desirable.</span>
+</span><span id="roi_modal_grow-54"><a href="#roi_modal_grow-54"><span class="linenos"> 54</span></a><span class="sd">        prefix: Base name of the final output dataset, i.e., baseprefix.nii.gz.\</span>
+</span><span id="roi_modal_grow-55"><a href="#roi_modal_grow-55"><span class="linenos"> 55</span></a><span class="sd">            Default is rmg, so output would be rmg.nii.gz.</span>
+</span><span id="roi_modal_grow-56"><a href="#roi_modal_grow-56"><span class="linenos"> 56</span></a><span class="sd">        neighborhood_type: Neighborhood type used in finding mode. 1 - facing\</span>
+</span><span id="roi_modal_grow-57"><a href="#roi_modal_grow-57"><span class="linenos"> 57</span></a><span class="sd">            neighbors, 2 - edges, 3 - corners.</span>
+</span><span id="roi_modal_grow-58"><a href="#roi_modal_grow-58"><span class="linenos"> 58</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="roi_modal_grow-59"><a href="#roi_modal_grow-59"><span class="linenos"> 59</span></a><span class="sd">    Returns:</span>
+</span><span id="roi_modal_grow-60"><a href="#roi_modal_grow-60"><span class="linenos"> 60</span></a><span class="sd">        NamedTuple of outputs (described in `RoiModalGrowOutputs`).</span>
+</span><span id="roi_modal_grow-61"><a href="#roi_modal_grow-61"><span class="linenos"> 61</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="roi_modal_grow-62"><a href="#roi_modal_grow-62"><span class="linenos"> 62</span></a>    <span class="k">if</span> <span class="n">neighborhood_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">neighborhood_type</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">):</span> 
+</span><span id="roi_modal_grow-63"><a href="#roi_modal_grow-63"><span class="linenos"> 63</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;neighborhood_type&#39; must be between 1 &lt;= x &lt;= 3 but was </span><span class="si">{</span><span class="n">neighborhood_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="roi_modal_grow-64"><a href="#roi_modal_grow-64"><span class="linenos"> 64</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="roi_modal_grow-65"><a href="#roi_modal_grow-65"><span class="linenos"> 65</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">ROI_MODAL_GROW_METADATA</span><span class="p">)</span>
+</span><span id="roi_modal_grow-66"><a href="#roi_modal_grow-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="roi_modal_grow-67"><a href="#roi_modal_grow-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@ROI_modal_grow&quot;</span><span class="p">)</span>
+</span><span id="roi_modal_grow-68"><a href="#roi_modal_grow-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-input&quot;</span><span class="p">)</span>
+</span><span id="roi_modal_grow-69"><a href="#roi_modal_grow-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="roi_modal_grow-70"><a href="#roi_modal_grow-70"><span class="linenos"> 70</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
+</span><span id="roi_modal_grow-71"><a href="#roi_modal_grow-71"><span class="linenos"> 71</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_dset</span><span class="p">)</span>
+</span><span id="roi_modal_grow-72"><a href="#roi_modal_grow-72"><span class="linenos"> 72</span></a>    <span class="p">])</span>
+</span><span id="roi_modal_grow-73"><a href="#roi_modal_grow-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-niters&quot;</span><span class="p">)</span>
+</span><span id="roi_modal_grow-74"><a href="#roi_modal_grow-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="roi_modal_grow-75"><a href="#roi_modal_grow-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;-niters&quot;</span><span class="p">,</span>
+</span><span id="roi_modal_grow-76"><a href="#roi_modal_grow-76"><span class="linenos"> 76</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">niters</span><span class="p">)</span>
+</span><span id="roi_modal_grow-77"><a href="#roi_modal_grow-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
+</span><span id="roi_modal_grow-78"><a href="#roi_modal_grow-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-outdir&quot;</span><span class="p">)</span>
+</span><span id="roi_modal_grow-79"><a href="#roi_modal_grow-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">outdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="roi_modal_grow-80"><a href="#roi_modal_grow-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="roi_modal_grow-81"><a href="#roi_modal_grow-81"><span class="linenos"> 81</span></a>            <span class="s2">&quot;-outdir&quot;</span><span class="p">,</span>
+</span><span id="roi_modal_grow-82"><a href="#roi_modal_grow-82"><span class="linenos"> 82</span></a>            <span class="n">outdir</span>
+</span><span id="roi_modal_grow-83"><a href="#roi_modal_grow-83"><span class="linenos"> 83</span></a>        <span class="p">])</span>
+</span><span id="roi_modal_grow-84"><a href="#roi_modal_grow-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mask&quot;</span><span class="p">)</span>
+</span><span id="roi_modal_grow-85"><a href="#roi_modal_grow-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="roi_modal_grow-86"><a href="#roi_modal_grow-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="roi_modal_grow-87"><a href="#roi_modal_grow-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="roi_modal_grow-88"><a href="#roi_modal_grow-88"><span class="linenos"> 88</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="roi_modal_grow-89"><a href="#roi_modal_grow-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
+</span><span id="roi_modal_grow-90"><a href="#roi_modal_grow-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-prefix&quot;</span><span class="p">)</span>
+</span><span id="roi_modal_grow-91"><a href="#roi_modal_grow-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="roi_modal_grow-92"><a href="#roi_modal_grow-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="roi_modal_grow-93"><a href="#roi_modal_grow-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="roi_modal_grow-94"><a href="#roi_modal_grow-94"><span class="linenos"> 94</span></a>            <span class="n">prefix</span>
+</span><span id="roi_modal_grow-95"><a href="#roi_modal_grow-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
+</span><span id="roi_modal_grow-96"><a href="#roi_modal_grow-96"><span class="linenos"> 96</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-NN&quot;</span><span class="p">)</span>
+</span><span id="roi_modal_grow-97"><a href="#roi_modal_grow-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">neighborhood_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="roi_modal_grow-98"><a href="#roi_modal_grow-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="roi_modal_grow-99"><a href="#roi_modal_grow-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-NN&quot;</span><span class="p">,</span>
+</span><span id="roi_modal_grow-100"><a href="#roi_modal_grow-100"><span class="linenos">100</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">neighborhood_type</span><span class="p">)</span>
+</span><span id="roi_modal_grow-101"><a href="#roi_modal_grow-101"><span class="linenos">101</span></a>        <span class="p">])</span>
+</span><span id="roi_modal_grow-102"><a href="#roi_modal_grow-102"><span class="linenos">102</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RoiModalGrowOutputs</span><span class="p">(</span>
+</span><span id="roi_modal_grow-103"><a href="#roi_modal_grow-103"><span class="linenos">103</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="roi_modal_grow-104"><a href="#roi_modal_grow-104"><span class="linenos">104</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outdir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">outdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="roi_modal_grow-105"><a href="#roi_modal_grow-105"><span class="linenos">105</span></a>    <span class="p">)</span>
+</span><span id="roi_modal_grow-106"><a href="#roi_modal_grow-106"><span class="linenos">106</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="roi_modal_grow-107"><a href="#roi_modal_grow-107"><span class="linenos">107</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Script to grow a set of regions in a volumetric dataset using modal smoothing.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_modal_grow.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_modal_grow.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

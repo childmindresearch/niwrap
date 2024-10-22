@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">VOLUME_SMOOTHING_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;851dd3843d1be827eaf3ed7ed82c046936b9a10d.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;04214b770647acf66bb0b754e686da4008897235.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;volume-smoothing&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -123,58 +123,60 @@
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    zeros that indicate lack of information, preventing them from pulling down</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    the intensity of nearby voxels, while giving the zero an extrapolated value.</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    </span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    Args:</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        volume_in: the volume to smooth.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        kernel: the size of the gaussian smoothing kernel in mm, as sigma by\</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">            default.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        volume_out: the output volume.</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        opt_fwhm: kernel size is FWHM, not sigma.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        opt_roi_roivol: smooth only from data within an ROI: the volume to use\</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            as an ROI.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        opt_fix_zeros: treat zero values as not being data.</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to smooth: the\</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            subvolume number or name.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    Returns:</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeSmoothingOutputs`).</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_SMOOTHING_METADATA</span><span class="p">)</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-smoothing&quot;</span><span class="p">)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_in</span><span class="p">))</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">kernel</span><span class="p">))</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="k">if</span> <span class="n">opt_fwhm</span><span class="p">:</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fwhm&quot;</span><span class="p">)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">opt_roi_roivol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>            <span class="s2">&quot;-roi&quot;</span><span class="p">,</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_roi_roivol</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="p">])</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">opt_fix_zeros</span><span class="p">:</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fix-zeros&quot;</span><span class="p">)</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">opt_subvolume_subvol</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeSmoothingOutputs</span><span class="p">(</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="s2">&quot;VOLUME_SMOOTHING_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="s2">&quot;VolumeSmoothingOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="s2">&quot;volume_smoothing&quot;</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="p">]</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    </span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    Args:</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        volume_in: the volume to smooth.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        kernel: the size of the gaussian smoothing kernel in mm, as sigma by\</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">            default.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        volume_out: the output volume.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        opt_fwhm: kernel size is FWHM, not sigma.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        opt_roi_roivol: smooth only from data within an ROI: the volume to use\</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            as an ROI.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        opt_fix_zeros: treat zero values as not being data.</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to smooth: the\</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            subvolume number or name.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    Returns:</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeSmoothingOutputs`).</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_SMOOTHING_METADATA</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-smoothing&quot;</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_in</span><span class="p">))</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">kernel</span><span class="p">))</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">opt_fwhm</span><span class="p">:</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fwhm&quot;</span><span class="p">)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">opt_roi_roivol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;-roi&quot;</span><span class="p">,</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_roi_roivol</span><span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="p">])</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">opt_fix_zeros</span><span class="p">:</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fix-zeros&quot;</span><span class="p">)</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="n">opt_subvolume_subvol</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeSmoothingOutputs</span><span class="p">(</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="s2">&quot;VOLUME_SMOOTHING_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="s2">&quot;VolumeSmoothingOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="s2">&quot;volume_smoothing&quot;</span><span class="p">,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -183,7 +185,7 @@
                     <div class="attr variable">
             <span class="name">VOLUME_SMOOTHING_METADATA</span>        =
 <input id="VOLUME_SMOOTHING_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="VOLUME_SMOOTHING_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;851dd3843d1be827eaf3ed7ed82c046936b9a10d.boutiques&#39;, name=&#39;volume-smoothing&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="VOLUME_SMOOTHING_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;04214b770647acf66bb0b754e686da4008897235.boutiques&#39;, name=&#39;volume-smoothing&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -295,51 +297,53 @@
 </span><span id="volume_smoothing-50"><a href="#volume_smoothing-50"><span class="linenos">50</span></a><span class="sd">    zeros that indicate lack of information, preventing them from pulling down</span>
 </span><span id="volume_smoothing-51"><a href="#volume_smoothing-51"><span class="linenos">51</span></a><span class="sd">    the intensity of nearby voxels, while giving the zero an extrapolated value.</span>
 </span><span id="volume_smoothing-52"><a href="#volume_smoothing-52"><span class="linenos">52</span></a><span class="sd">    </span>
-</span><span id="volume_smoothing-53"><a href="#volume_smoothing-53"><span class="linenos">53</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="volume_smoothing-53"><a href="#volume_smoothing-53"><span class="linenos">53</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="volume_smoothing-54"><a href="#volume_smoothing-54"><span class="linenos">54</span></a><span class="sd">    </span>
-</span><span id="volume_smoothing-55"><a href="#volume_smoothing-55"><span class="linenos">55</span></a><span class="sd">    Args:</span>
-</span><span id="volume_smoothing-56"><a href="#volume_smoothing-56"><span class="linenos">56</span></a><span class="sd">        volume_in: the volume to smooth.</span>
-</span><span id="volume_smoothing-57"><a href="#volume_smoothing-57"><span class="linenos">57</span></a><span class="sd">        kernel: the size of the gaussian smoothing kernel in mm, as sigma by\</span>
-</span><span id="volume_smoothing-58"><a href="#volume_smoothing-58"><span class="linenos">58</span></a><span class="sd">            default.</span>
-</span><span id="volume_smoothing-59"><a href="#volume_smoothing-59"><span class="linenos">59</span></a><span class="sd">        volume_out: the output volume.</span>
-</span><span id="volume_smoothing-60"><a href="#volume_smoothing-60"><span class="linenos">60</span></a><span class="sd">        opt_fwhm: kernel size is FWHM, not sigma.</span>
-</span><span id="volume_smoothing-61"><a href="#volume_smoothing-61"><span class="linenos">61</span></a><span class="sd">        opt_roi_roivol: smooth only from data within an ROI: the volume to use\</span>
-</span><span id="volume_smoothing-62"><a href="#volume_smoothing-62"><span class="linenos">62</span></a><span class="sd">            as an ROI.</span>
-</span><span id="volume_smoothing-63"><a href="#volume_smoothing-63"><span class="linenos">63</span></a><span class="sd">        opt_fix_zeros: treat zero values as not being data.</span>
-</span><span id="volume_smoothing-64"><a href="#volume_smoothing-64"><span class="linenos">64</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to smooth: the\</span>
-</span><span id="volume_smoothing-65"><a href="#volume_smoothing-65"><span class="linenos">65</span></a><span class="sd">            subvolume number or name.</span>
-</span><span id="volume_smoothing-66"><a href="#volume_smoothing-66"><span class="linenos">66</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_smoothing-67"><a href="#volume_smoothing-67"><span class="linenos">67</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_smoothing-68"><a href="#volume_smoothing-68"><span class="linenos">68</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeSmoothingOutputs`).</span>
-</span><span id="volume_smoothing-69"><a href="#volume_smoothing-69"><span class="linenos">69</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_smoothing-70"><a href="#volume_smoothing-70"><span class="linenos">70</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_smoothing-71"><a href="#volume_smoothing-71"><span class="linenos">71</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_SMOOTHING_METADATA</span><span class="p">)</span>
-</span><span id="volume_smoothing-72"><a href="#volume_smoothing-72"><span class="linenos">72</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="volume_smoothing-73"><a href="#volume_smoothing-73"><span class="linenos">73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="volume_smoothing-74"><a href="#volume_smoothing-74"><span class="linenos">74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-smoothing&quot;</span><span class="p">)</span>
-</span><span id="volume_smoothing-75"><a href="#volume_smoothing-75"><span class="linenos">75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_in</span><span class="p">))</span>
-</span><span id="volume_smoothing-76"><a href="#volume_smoothing-76"><span class="linenos">76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">kernel</span><span class="p">))</span>
-</span><span id="volume_smoothing-77"><a href="#volume_smoothing-77"><span class="linenos">77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
-</span><span id="volume_smoothing-78"><a href="#volume_smoothing-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">opt_fwhm</span><span class="p">:</span>
-</span><span id="volume_smoothing-79"><a href="#volume_smoothing-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fwhm&quot;</span><span class="p">)</span>
-</span><span id="volume_smoothing-80"><a href="#volume_smoothing-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">opt_roi_roivol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_smoothing-81"><a href="#volume_smoothing-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="volume_smoothing-82"><a href="#volume_smoothing-82"><span class="linenos">82</span></a>            <span class="s2">&quot;-roi&quot;</span><span class="p">,</span>
-</span><span id="volume_smoothing-83"><a href="#volume_smoothing-83"><span class="linenos">83</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_roi_roivol</span><span class="p">)</span>
-</span><span id="volume_smoothing-84"><a href="#volume_smoothing-84"><span class="linenos">84</span></a>        <span class="p">])</span>
-</span><span id="volume_smoothing-85"><a href="#volume_smoothing-85"><span class="linenos">85</span></a>    <span class="k">if</span> <span class="n">opt_fix_zeros</span><span class="p">:</span>
-</span><span id="volume_smoothing-86"><a href="#volume_smoothing-86"><span class="linenos">86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fix-zeros&quot;</span><span class="p">)</span>
-</span><span id="volume_smoothing-87"><a href="#volume_smoothing-87"><span class="linenos">87</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_smoothing-88"><a href="#volume_smoothing-88"><span class="linenos">88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="volume_smoothing-89"><a href="#volume_smoothing-89"><span class="linenos">89</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
-</span><span id="volume_smoothing-90"><a href="#volume_smoothing-90"><span class="linenos">90</span></a>            <span class="n">opt_subvolume_subvol</span>
-</span><span id="volume_smoothing-91"><a href="#volume_smoothing-91"><span class="linenos">91</span></a>        <span class="p">])</span>
-</span><span id="volume_smoothing-92"><a href="#volume_smoothing-92"><span class="linenos">92</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeSmoothingOutputs</span><span class="p">(</span>
-</span><span id="volume_smoothing-93"><a href="#volume_smoothing-93"><span class="linenos">93</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="volume_smoothing-94"><a href="#volume_smoothing-94"><span class="linenos">94</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
-</span><span id="volume_smoothing-95"><a href="#volume_smoothing-95"><span class="linenos">95</span></a>    <span class="p">)</span>
-</span><span id="volume_smoothing-96"><a href="#volume_smoothing-96"><span class="linenos">96</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="volume_smoothing-97"><a href="#volume_smoothing-97"><span class="linenos">97</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="volume_smoothing-55"><a href="#volume_smoothing-55"><span class="linenos">55</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_smoothing-56"><a href="#volume_smoothing-56"><span class="linenos">56</span></a><span class="sd">    </span>
+</span><span id="volume_smoothing-57"><a href="#volume_smoothing-57"><span class="linenos">57</span></a><span class="sd">    Args:</span>
+</span><span id="volume_smoothing-58"><a href="#volume_smoothing-58"><span class="linenos">58</span></a><span class="sd">        volume_in: the volume to smooth.</span>
+</span><span id="volume_smoothing-59"><a href="#volume_smoothing-59"><span class="linenos">59</span></a><span class="sd">        kernel: the size of the gaussian smoothing kernel in mm, as sigma by\</span>
+</span><span id="volume_smoothing-60"><a href="#volume_smoothing-60"><span class="linenos">60</span></a><span class="sd">            default.</span>
+</span><span id="volume_smoothing-61"><a href="#volume_smoothing-61"><span class="linenos">61</span></a><span class="sd">        volume_out: the output volume.</span>
+</span><span id="volume_smoothing-62"><a href="#volume_smoothing-62"><span class="linenos">62</span></a><span class="sd">        opt_fwhm: kernel size is FWHM, not sigma.</span>
+</span><span id="volume_smoothing-63"><a href="#volume_smoothing-63"><span class="linenos">63</span></a><span class="sd">        opt_roi_roivol: smooth only from data within an ROI: the volume to use\</span>
+</span><span id="volume_smoothing-64"><a href="#volume_smoothing-64"><span class="linenos">64</span></a><span class="sd">            as an ROI.</span>
+</span><span id="volume_smoothing-65"><a href="#volume_smoothing-65"><span class="linenos">65</span></a><span class="sd">        opt_fix_zeros: treat zero values as not being data.</span>
+</span><span id="volume_smoothing-66"><a href="#volume_smoothing-66"><span class="linenos">66</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to smooth: the\</span>
+</span><span id="volume_smoothing-67"><a href="#volume_smoothing-67"><span class="linenos">67</span></a><span class="sd">            subvolume number or name.</span>
+</span><span id="volume_smoothing-68"><a href="#volume_smoothing-68"><span class="linenos">68</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_smoothing-69"><a href="#volume_smoothing-69"><span class="linenos">69</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_smoothing-70"><a href="#volume_smoothing-70"><span class="linenos">70</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeSmoothingOutputs`).</span>
+</span><span id="volume_smoothing-71"><a href="#volume_smoothing-71"><span class="linenos">71</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_smoothing-72"><a href="#volume_smoothing-72"><span class="linenos">72</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_smoothing-73"><a href="#volume_smoothing-73"><span class="linenos">73</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_SMOOTHING_METADATA</span><span class="p">)</span>
+</span><span id="volume_smoothing-74"><a href="#volume_smoothing-74"><span class="linenos">74</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="volume_smoothing-75"><a href="#volume_smoothing-75"><span class="linenos">75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="volume_smoothing-76"><a href="#volume_smoothing-76"><span class="linenos">76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-smoothing&quot;</span><span class="p">)</span>
+</span><span id="volume_smoothing-77"><a href="#volume_smoothing-77"><span class="linenos">77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_in</span><span class="p">))</span>
+</span><span id="volume_smoothing-78"><a href="#volume_smoothing-78"><span class="linenos">78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">kernel</span><span class="p">))</span>
+</span><span id="volume_smoothing-79"><a href="#volume_smoothing-79"><span class="linenos">79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
+</span><span id="volume_smoothing-80"><a href="#volume_smoothing-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">opt_fwhm</span><span class="p">:</span>
+</span><span id="volume_smoothing-81"><a href="#volume_smoothing-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fwhm&quot;</span><span class="p">)</span>
+</span><span id="volume_smoothing-82"><a href="#volume_smoothing-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">opt_roi_roivol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_smoothing-83"><a href="#volume_smoothing-83"><span class="linenos">83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="volume_smoothing-84"><a href="#volume_smoothing-84"><span class="linenos">84</span></a>            <span class="s2">&quot;-roi&quot;</span><span class="p">,</span>
+</span><span id="volume_smoothing-85"><a href="#volume_smoothing-85"><span class="linenos">85</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_roi_roivol</span><span class="p">)</span>
+</span><span id="volume_smoothing-86"><a href="#volume_smoothing-86"><span class="linenos">86</span></a>        <span class="p">])</span>
+</span><span id="volume_smoothing-87"><a href="#volume_smoothing-87"><span class="linenos">87</span></a>    <span class="k">if</span> <span class="n">opt_fix_zeros</span><span class="p">:</span>
+</span><span id="volume_smoothing-88"><a href="#volume_smoothing-88"><span class="linenos">88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fix-zeros&quot;</span><span class="p">)</span>
+</span><span id="volume_smoothing-89"><a href="#volume_smoothing-89"><span class="linenos">89</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_smoothing-90"><a href="#volume_smoothing-90"><span class="linenos">90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="volume_smoothing-91"><a href="#volume_smoothing-91"><span class="linenos">91</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
+</span><span id="volume_smoothing-92"><a href="#volume_smoothing-92"><span class="linenos">92</span></a>            <span class="n">opt_subvolume_subvol</span>
+</span><span id="volume_smoothing-93"><a href="#volume_smoothing-93"><span class="linenos">93</span></a>        <span class="p">])</span>
+</span><span id="volume_smoothing-94"><a href="#volume_smoothing-94"><span class="linenos">94</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeSmoothingOutputs</span><span class="p">(</span>
+</span><span id="volume_smoothing-95"><a href="#volume_smoothing-95"><span class="linenos">95</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="volume_smoothing-96"><a href="#volume_smoothing-96"><span class="linenos">96</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
+</span><span id="volume_smoothing-97"><a href="#volume_smoothing-97"><span class="linenos">97</span></a>    <span class="p">)</span>
+</span><span id="volume_smoothing-98"><a href="#volume_smoothing-98"><span class="linenos">98</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="volume_smoothing-99"><a href="#volume_smoothing-99"><span class="linenos">99</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -357,7 +361,9 @@ is zero, but still write a smoothed value to the voxel. This is useful for
 zeros that indicate lack of information, preventing them from pulling down
 the intensity of nearby voxels, while giving the zero an extrapolated value.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">WPNG_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ee9dea3a500047fdb3f87be5f712f960d7183717.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ca21ffdb19e09a9507e79b0f6e8067c70b0e28f2.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;wpng&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
@@ -110,61 +110,63 @@
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    Simple PGM/PPM/PAM to PNG Converter.</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: Unknown</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    Args:</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        input_file: Input PNM file (binary PGM &#39;P5&#39;, PPM &#39;P6&#39; or PAM &#39;P8&#39;).</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        gamma: Transfer-function exponent (``gamma&#39;&#39;) of the image in\</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">            floating-point format (e.g., ``0.45455&#39;&#39;). If image looks correct on\</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">            given display system, image gamma is equal to inverse of display-system\</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">            exponent, i.e., 1 / (LUT * CRT) (where LUT = lookup-table exponent and\</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">            CRT = CRT exponent; first varies, second is usually 2.2, all are\</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">            positive).</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        bgcolor: Desired background color for alpha-channel images, in\</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">            7-character hex RGB format (e.g., ``#ff7700&#39;&#39; for orange: same as HTML\</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">            colors).</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        text_flag: Prompt interactively for text info (tEXt chunks).</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        time_flag: Include a tIME chunk (last modification time).</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        interlace_flag: Write interlaced PNG image.</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">    Returns:</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">        NamedTuple of outputs (described in `WpngOutputs`).</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">WPNG_METADATA</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wpng&quot;</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="k">if</span> <span class="n">input_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">))</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">gamma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>            <span class="s2">&quot;-gamma&quot;</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">gamma</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="p">])</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="k">if</span> <span class="n">bgcolor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>            <span class="s2">&quot;-bgcolor&quot;</span><span class="p">,</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>            <span class="n">bgcolor</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="p">])</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="k">if</span> <span class="n">text_flag</span><span class="p">:</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-text&quot;</span><span class="p">)</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="k">if</span> <span class="n">time_flag</span><span class="p">:</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-time&quot;</span><span class="p">)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">interlace_flag</span><span class="p">:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-interlace&quot;</span><span class="p">)</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WpngOutputs</span><span class="p">(</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[INPUT_FILE_BASE_NAME].png&quot;</span><span class="p">),</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>
-</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>
-</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="s2">&quot;WPNG_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>    <span class="s2">&quot;WpngOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>    <span class="s2">&quot;wpng&quot;</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a><span class="p">]</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        input_file: Input PNM file (binary PGM &#39;P5&#39;, PPM &#39;P6&#39; or PAM &#39;P8&#39;).</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        gamma: Transfer-function exponent (``gamma&#39;&#39;) of the image in\</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">            floating-point format (e.g., ``0.45455&#39;&#39;). If image looks correct on\</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">            given display system, image gamma is equal to inverse of display-system\</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">            exponent, i.e., 1 / (LUT * CRT) (where LUT = lookup-table exponent and\</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">            CRT = CRT exponent; first varies, second is usually 2.2, all are\</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">            positive).</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        bgcolor: Desired background color for alpha-channel images, in\</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">            7-character hex RGB format (e.g., ``#ff7700&#39;&#39; for orange: same as HTML\</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">            colors).</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        text_flag: Prompt interactively for text info (tEXt chunks).</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">        time_flag: Include a tIME chunk (last modification time).</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        interlace_flag: Write interlaced PNG image.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">    Returns:</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        NamedTuple of outputs (described in `WpngOutputs`).</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">WPNG_METADATA</span><span class="p">)</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wpng&quot;</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">input_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">))</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="k">if</span> <span class="n">gamma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>            <span class="s2">&quot;-gamma&quot;</span><span class="p">,</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">gamma</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="p">])</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">bgcolor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>            <span class="s2">&quot;-bgcolor&quot;</span><span class="p">,</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>            <span class="n">bgcolor</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="p">])</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="k">if</span> <span class="n">text_flag</span><span class="p">:</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-text&quot;</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="k">if</span> <span class="n">time_flag</span><span class="p">:</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-time&quot;</span><span class="p">)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">if</span> <span class="n">interlace_flag</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-interlace&quot;</span><span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WpngOutputs</span><span class="p">(</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[INPUT_FILE_BASE_NAME].png&quot;</span><span class="p">),</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>    <span class="s2">&quot;WPNG_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a>    <span class="s2">&quot;WpngOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a>    <span class="s2">&quot;wpng&quot;</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos">95</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -173,7 +175,7 @@
                     <div class="attr variable">
             <span class="name">WPNG_METADATA</span>        =
 <input id="WPNG_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="WPNG_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ee9dea3a500047fdb3f87be5f712f960d7183717.boutiques&#39;, name=&#39;wpng&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
+            <label class="view-value-button pdoc-button" for="WPNG_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ca21ffdb19e09a9507e79b0f6e8067c70b0e28f2.boutiques&#39;, name=&#39;wpng&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -272,60 +274,64 @@
 </span><span id="wpng-37"><a href="#wpng-37"><span class="linenos">37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="wpng-38"><a href="#wpng-38"><span class="linenos">38</span></a><span class="sd">    Simple PGM/PPM/PAM to PNG Converter.</span>
 </span><span id="wpng-39"><a href="#wpng-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="wpng-40"><a href="#wpng-40"><span class="linenos">40</span></a><span class="sd">    Author: Unknown</span>
+</span><span id="wpng-40"><a href="#wpng-40"><span class="linenos">40</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="wpng-41"><a href="#wpng-41"><span class="linenos">41</span></a><span class="sd">    </span>
-</span><span id="wpng-42"><a href="#wpng-42"><span class="linenos">42</span></a><span class="sd">    Args:</span>
-</span><span id="wpng-43"><a href="#wpng-43"><span class="linenos">43</span></a><span class="sd">        input_file: Input PNM file (binary PGM &#39;P5&#39;, PPM &#39;P6&#39; or PAM &#39;P8&#39;).</span>
-</span><span id="wpng-44"><a href="#wpng-44"><span class="linenos">44</span></a><span class="sd">        gamma: Transfer-function exponent (``gamma&#39;&#39;) of the image in\</span>
-</span><span id="wpng-45"><a href="#wpng-45"><span class="linenos">45</span></a><span class="sd">            floating-point format (e.g., ``0.45455&#39;&#39;). If image looks correct on\</span>
-</span><span id="wpng-46"><a href="#wpng-46"><span class="linenos">46</span></a><span class="sd">            given display system, image gamma is equal to inverse of display-system\</span>
-</span><span id="wpng-47"><a href="#wpng-47"><span class="linenos">47</span></a><span class="sd">            exponent, i.e., 1 / (LUT * CRT) (where LUT = lookup-table exponent and\</span>
-</span><span id="wpng-48"><a href="#wpng-48"><span class="linenos">48</span></a><span class="sd">            CRT = CRT exponent; first varies, second is usually 2.2, all are\</span>
-</span><span id="wpng-49"><a href="#wpng-49"><span class="linenos">49</span></a><span class="sd">            positive).</span>
-</span><span id="wpng-50"><a href="#wpng-50"><span class="linenos">50</span></a><span class="sd">        bgcolor: Desired background color for alpha-channel images, in\</span>
-</span><span id="wpng-51"><a href="#wpng-51"><span class="linenos">51</span></a><span class="sd">            7-character hex RGB format (e.g., ``#ff7700&#39;&#39; for orange: same as HTML\</span>
-</span><span id="wpng-52"><a href="#wpng-52"><span class="linenos">52</span></a><span class="sd">            colors).</span>
-</span><span id="wpng-53"><a href="#wpng-53"><span class="linenos">53</span></a><span class="sd">        text_flag: Prompt interactively for text info (tEXt chunks).</span>
-</span><span id="wpng-54"><a href="#wpng-54"><span class="linenos">54</span></a><span class="sd">        time_flag: Include a tIME chunk (last modification time).</span>
-</span><span id="wpng-55"><a href="#wpng-55"><span class="linenos">55</span></a><span class="sd">        interlace_flag: Write interlaced PNG image.</span>
-</span><span id="wpng-56"><a href="#wpng-56"><span class="linenos">56</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="wpng-57"><a href="#wpng-57"><span class="linenos">57</span></a><span class="sd">    Returns:</span>
-</span><span id="wpng-58"><a href="#wpng-58"><span class="linenos">58</span></a><span class="sd">        NamedTuple of outputs (described in `WpngOutputs`).</span>
-</span><span id="wpng-59"><a href="#wpng-59"><span class="linenos">59</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="wpng-60"><a href="#wpng-60"><span class="linenos">60</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="wpng-61"><a href="#wpng-61"><span class="linenos">61</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">WPNG_METADATA</span><span class="p">)</span>
-</span><span id="wpng-62"><a href="#wpng-62"><span class="linenos">62</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="wpng-63"><a href="#wpng-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wpng&quot;</span><span class="p">)</span>
-</span><span id="wpng-64"><a href="#wpng-64"><span class="linenos">64</span></a>    <span class="k">if</span> <span class="n">input_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="wpng-65"><a href="#wpng-65"><span class="linenos">65</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">))</span>
-</span><span id="wpng-66"><a href="#wpng-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">gamma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="wpng-67"><a href="#wpng-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="wpng-68"><a href="#wpng-68"><span class="linenos">68</span></a>            <span class="s2">&quot;-gamma&quot;</span><span class="p">,</span>
-</span><span id="wpng-69"><a href="#wpng-69"><span class="linenos">69</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">gamma</span><span class="p">)</span>
-</span><span id="wpng-70"><a href="#wpng-70"><span class="linenos">70</span></a>        <span class="p">])</span>
-</span><span id="wpng-71"><a href="#wpng-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">bgcolor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="wpng-72"><a href="#wpng-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="wpng-73"><a href="#wpng-73"><span class="linenos">73</span></a>            <span class="s2">&quot;-bgcolor&quot;</span><span class="p">,</span>
-</span><span id="wpng-74"><a href="#wpng-74"><span class="linenos">74</span></a>            <span class="n">bgcolor</span>
-</span><span id="wpng-75"><a href="#wpng-75"><span class="linenos">75</span></a>        <span class="p">])</span>
-</span><span id="wpng-76"><a href="#wpng-76"><span class="linenos">76</span></a>    <span class="k">if</span> <span class="n">text_flag</span><span class="p">:</span>
-</span><span id="wpng-77"><a href="#wpng-77"><span class="linenos">77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-text&quot;</span><span class="p">)</span>
-</span><span id="wpng-78"><a href="#wpng-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">time_flag</span><span class="p">:</span>
-</span><span id="wpng-79"><a href="#wpng-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-time&quot;</span><span class="p">)</span>
-</span><span id="wpng-80"><a href="#wpng-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">interlace_flag</span><span class="p">:</span>
-</span><span id="wpng-81"><a href="#wpng-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-interlace&quot;</span><span class="p">)</span>
-</span><span id="wpng-82"><a href="#wpng-82"><span class="linenos">82</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WpngOutputs</span><span class="p">(</span>
-</span><span id="wpng-83"><a href="#wpng-83"><span class="linenos">83</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="wpng-84"><a href="#wpng-84"><span class="linenos">84</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[INPUT_FILE_BASE_NAME].png&quot;</span><span class="p">),</span>
-</span><span id="wpng-85"><a href="#wpng-85"><span class="linenos">85</span></a>    <span class="p">)</span>
-</span><span id="wpng-86"><a href="#wpng-86"><span class="linenos">86</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="wpng-87"><a href="#wpng-87"><span class="linenos">87</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="wpng-42"><a href="#wpng-42"><span class="linenos">42</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="wpng-43"><a href="#wpng-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="wpng-44"><a href="#wpng-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
+</span><span id="wpng-45"><a href="#wpng-45"><span class="linenos">45</span></a><span class="sd">        input_file: Input PNM file (binary PGM &#39;P5&#39;, PPM &#39;P6&#39; or PAM &#39;P8&#39;).</span>
+</span><span id="wpng-46"><a href="#wpng-46"><span class="linenos">46</span></a><span class="sd">        gamma: Transfer-function exponent (``gamma&#39;&#39;) of the image in\</span>
+</span><span id="wpng-47"><a href="#wpng-47"><span class="linenos">47</span></a><span class="sd">            floating-point format (e.g., ``0.45455&#39;&#39;). If image looks correct on\</span>
+</span><span id="wpng-48"><a href="#wpng-48"><span class="linenos">48</span></a><span class="sd">            given display system, image gamma is equal to inverse of display-system\</span>
+</span><span id="wpng-49"><a href="#wpng-49"><span class="linenos">49</span></a><span class="sd">            exponent, i.e., 1 / (LUT * CRT) (where LUT = lookup-table exponent and\</span>
+</span><span id="wpng-50"><a href="#wpng-50"><span class="linenos">50</span></a><span class="sd">            CRT = CRT exponent; first varies, second is usually 2.2, all are\</span>
+</span><span id="wpng-51"><a href="#wpng-51"><span class="linenos">51</span></a><span class="sd">            positive).</span>
+</span><span id="wpng-52"><a href="#wpng-52"><span class="linenos">52</span></a><span class="sd">        bgcolor: Desired background color for alpha-channel images, in\</span>
+</span><span id="wpng-53"><a href="#wpng-53"><span class="linenos">53</span></a><span class="sd">            7-character hex RGB format (e.g., ``#ff7700&#39;&#39; for orange: same as HTML\</span>
+</span><span id="wpng-54"><a href="#wpng-54"><span class="linenos">54</span></a><span class="sd">            colors).</span>
+</span><span id="wpng-55"><a href="#wpng-55"><span class="linenos">55</span></a><span class="sd">        text_flag: Prompt interactively for text info (tEXt chunks).</span>
+</span><span id="wpng-56"><a href="#wpng-56"><span class="linenos">56</span></a><span class="sd">        time_flag: Include a tIME chunk (last modification time).</span>
+</span><span id="wpng-57"><a href="#wpng-57"><span class="linenos">57</span></a><span class="sd">        interlace_flag: Write interlaced PNG image.</span>
+</span><span id="wpng-58"><a href="#wpng-58"><span class="linenos">58</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="wpng-59"><a href="#wpng-59"><span class="linenos">59</span></a><span class="sd">    Returns:</span>
+</span><span id="wpng-60"><a href="#wpng-60"><span class="linenos">60</span></a><span class="sd">        NamedTuple of outputs (described in `WpngOutputs`).</span>
+</span><span id="wpng-61"><a href="#wpng-61"><span class="linenos">61</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="wpng-62"><a href="#wpng-62"><span class="linenos">62</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="wpng-63"><a href="#wpng-63"><span class="linenos">63</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">WPNG_METADATA</span><span class="p">)</span>
+</span><span id="wpng-64"><a href="#wpng-64"><span class="linenos">64</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="wpng-65"><a href="#wpng-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wpng&quot;</span><span class="p">)</span>
+</span><span id="wpng-66"><a href="#wpng-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">input_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="wpng-67"><a href="#wpng-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">))</span>
+</span><span id="wpng-68"><a href="#wpng-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">gamma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="wpng-69"><a href="#wpng-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="wpng-70"><a href="#wpng-70"><span class="linenos">70</span></a>            <span class="s2">&quot;-gamma&quot;</span><span class="p">,</span>
+</span><span id="wpng-71"><a href="#wpng-71"><span class="linenos">71</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">gamma</span><span class="p">)</span>
+</span><span id="wpng-72"><a href="#wpng-72"><span class="linenos">72</span></a>        <span class="p">])</span>
+</span><span id="wpng-73"><a href="#wpng-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">bgcolor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="wpng-74"><a href="#wpng-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="wpng-75"><a href="#wpng-75"><span class="linenos">75</span></a>            <span class="s2">&quot;-bgcolor&quot;</span><span class="p">,</span>
+</span><span id="wpng-76"><a href="#wpng-76"><span class="linenos">76</span></a>            <span class="n">bgcolor</span>
+</span><span id="wpng-77"><a href="#wpng-77"><span class="linenos">77</span></a>        <span class="p">])</span>
+</span><span id="wpng-78"><a href="#wpng-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">text_flag</span><span class="p">:</span>
+</span><span id="wpng-79"><a href="#wpng-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-text&quot;</span><span class="p">)</span>
+</span><span id="wpng-80"><a href="#wpng-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">time_flag</span><span class="p">:</span>
+</span><span id="wpng-81"><a href="#wpng-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-time&quot;</span><span class="p">)</span>
+</span><span id="wpng-82"><a href="#wpng-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">interlace_flag</span><span class="p">:</span>
+</span><span id="wpng-83"><a href="#wpng-83"><span class="linenos">83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-interlace&quot;</span><span class="p">)</span>
+</span><span id="wpng-84"><a href="#wpng-84"><span class="linenos">84</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WpngOutputs</span><span class="p">(</span>
+</span><span id="wpng-85"><a href="#wpng-85"><span class="linenos">85</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="wpng-86"><a href="#wpng-86"><span class="linenos">86</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[INPUT_FILE_BASE_NAME].png&quot;</span><span class="p">),</span>
+</span><span id="wpng-87"><a href="#wpng-87"><span class="linenos">87</span></a>    <span class="p">)</span>
+</span><span id="wpng-88"><a href="#wpng-88"><span class="linenos">88</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="wpng-89"><a href="#wpng-89"><span class="linenos">89</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Simple PGM/PPM/PAM to PNG Converter.</p>
 
-<p>Author: Unknown</p>
+<p>Author: FMRIB Analysis Group, University of Oxford</p>
+
+<p>URL: <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">LABEL_DILATE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;498db5fc8253994ef6b739a0c725f875bb441406.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6aa2da85bf2298655baa1e302491d37e0c0f6583.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;label-dilate&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -117,62 +117,64 @@
 </span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    vertices with a positive value in the ROI. If it is not specified, only</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    vertices with the unlabeled key are bad.</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    </span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    </span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    Args:</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        label: the input label.</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        surface: the surface to dilate on.</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        dilate_dist: distance in mm to dilate the labels.</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        label_out: the output label file.</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,\</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">            rather than vertices with the unlabeled key: metric file, positive\</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">            values denote vertices to have their values replaced.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        opt_column_column: select a single column to dilate: the column number\</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">            or name.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">            metric.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    Returns:</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        NamedTuple of outputs (described in `LabelDilateOutputs`).</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_DILATE_METADATA</span><span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-dilate&quot;</span><span class="p">)</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">dilate_dist</span><span class="p">))</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_out</span><span class="p">)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="k">if</span> <span class="n">opt_bad_vertex_roi_roi_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>            <span class="s2">&quot;-bad-vertex-roi&quot;</span><span class="p">,</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="p">])</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="n">opt_column_column</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="p">])</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">opt_corrected_areas_area_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="s2">&quot;-corrected-areas&quot;</span><span class="p">,</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="p">])</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelDilateOutputs</span><span class="p">(</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">label_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">label_out</span><span class="p">),</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="p">)</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="s2">&quot;LABEL_DILATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="s2">&quot;LabelDilateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="s2">&quot;label_dilate&quot;</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="p">]</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    </span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    Args:</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        label: the input label.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        surface: the surface to dilate on.</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        dilate_dist: distance in mm to dilate the labels.</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        label_out: the output label file.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,\</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">            rather than vertices with the unlabeled key: metric file, positive\</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">            values denote vertices to have their values replaced.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        opt_column_column: select a single column to dilate: the column number\</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">            or name.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">            metric.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    Returns:</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        NamedTuple of outputs (described in `LabelDilateOutputs`).</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_DILATE_METADATA</span><span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-dilate&quot;</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">dilate_dist</span><span class="p">))</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_out</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="k">if</span> <span class="n">opt_bad_vertex_roi_roi_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>            <span class="s2">&quot;-bad-vertex-roi&quot;</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="p">])</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="n">opt_column_column</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="p">])</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">opt_corrected_areas_area_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-corrected-areas&quot;</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelDilateOutputs</span><span class="p">(</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">label_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">label_out</span><span class="p">),</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="p">)</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="s2">&quot;LABEL_DILATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="s2">&quot;LabelDilateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="s2">&quot;label_dilate&quot;</span><span class="p">,</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -181,7 +183,7 @@
                     <div class="attr variable">
             <span class="name">LABEL_DILATE_METADATA</span>        =
 <input id="LABEL_DILATE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="LABEL_DILATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;498db5fc8253994ef6b739a0c725f875bb441406.boutiques&#39;, name=&#39;label-dilate&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="LABEL_DILATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6aa2da85bf2298655baa1e302491d37e0c0f6583.boutiques&#39;, name=&#39;label-dilate&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -287,55 +289,57 @@
 </span><span id="label_dilate-44"><a href="#label_dilate-44"><span class="linenos">44</span></a><span class="sd">    vertices with a positive value in the ROI. If it is not specified, only</span>
 </span><span id="label_dilate-45"><a href="#label_dilate-45"><span class="linenos">45</span></a><span class="sd">    vertices with the unlabeled key are bad.</span>
 </span><span id="label_dilate-46"><a href="#label_dilate-46"><span class="linenos">46</span></a><span class="sd">    </span>
-</span><span id="label_dilate-47"><a href="#label_dilate-47"><span class="linenos">47</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="label_dilate-47"><a href="#label_dilate-47"><span class="linenos">47</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="label_dilate-48"><a href="#label_dilate-48"><span class="linenos">48</span></a><span class="sd">    </span>
-</span><span id="label_dilate-49"><a href="#label_dilate-49"><span class="linenos">49</span></a><span class="sd">    Args:</span>
-</span><span id="label_dilate-50"><a href="#label_dilate-50"><span class="linenos">50</span></a><span class="sd">        label: the input label.</span>
-</span><span id="label_dilate-51"><a href="#label_dilate-51"><span class="linenos">51</span></a><span class="sd">        surface: the surface to dilate on.</span>
-</span><span id="label_dilate-52"><a href="#label_dilate-52"><span class="linenos">52</span></a><span class="sd">        dilate_dist: distance in mm to dilate the labels.</span>
-</span><span id="label_dilate-53"><a href="#label_dilate-53"><span class="linenos">53</span></a><span class="sd">        label_out: the output label file.</span>
-</span><span id="label_dilate-54"><a href="#label_dilate-54"><span class="linenos">54</span></a><span class="sd">        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,\</span>
-</span><span id="label_dilate-55"><a href="#label_dilate-55"><span class="linenos">55</span></a><span class="sd">            rather than vertices with the unlabeled key: metric file, positive\</span>
-</span><span id="label_dilate-56"><a href="#label_dilate-56"><span class="linenos">56</span></a><span class="sd">            values denote vertices to have their values replaced.</span>
-</span><span id="label_dilate-57"><a href="#label_dilate-57"><span class="linenos">57</span></a><span class="sd">        opt_column_column: select a single column to dilate: the column number\</span>
-</span><span id="label_dilate-58"><a href="#label_dilate-58"><span class="linenos">58</span></a><span class="sd">            or name.</span>
-</span><span id="label_dilate-59"><a href="#label_dilate-59"><span class="linenos">59</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
-</span><span id="label_dilate-60"><a href="#label_dilate-60"><span class="linenos">60</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
-</span><span id="label_dilate-61"><a href="#label_dilate-61"><span class="linenos">61</span></a><span class="sd">            metric.</span>
-</span><span id="label_dilate-62"><a href="#label_dilate-62"><span class="linenos">62</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="label_dilate-63"><a href="#label_dilate-63"><span class="linenos">63</span></a><span class="sd">    Returns:</span>
-</span><span id="label_dilate-64"><a href="#label_dilate-64"><span class="linenos">64</span></a><span class="sd">        NamedTuple of outputs (described in `LabelDilateOutputs`).</span>
-</span><span id="label_dilate-65"><a href="#label_dilate-65"><span class="linenos">65</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="label_dilate-66"><a href="#label_dilate-66"><span class="linenos">66</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="label_dilate-67"><a href="#label_dilate-67"><span class="linenos">67</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_DILATE_METADATA</span><span class="p">)</span>
-</span><span id="label_dilate-68"><a href="#label_dilate-68"><span class="linenos">68</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="label_dilate-69"><a href="#label_dilate-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="label_dilate-70"><a href="#label_dilate-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-dilate&quot;</span><span class="p">)</span>
-</span><span id="label_dilate-71"><a href="#label_dilate-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
-</span><span id="label_dilate-72"><a href="#label_dilate-72"><span class="linenos">72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
-</span><span id="label_dilate-73"><a href="#label_dilate-73"><span class="linenos">73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">dilate_dist</span><span class="p">))</span>
-</span><span id="label_dilate-74"><a href="#label_dilate-74"><span class="linenos">74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_out</span><span class="p">)</span>
-</span><span id="label_dilate-75"><a href="#label_dilate-75"><span class="linenos">75</span></a>    <span class="k">if</span> <span class="n">opt_bad_vertex_roi_roi_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="label_dilate-76"><a href="#label_dilate-76"><span class="linenos">76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="label_dilate-77"><a href="#label_dilate-77"><span class="linenos">77</span></a>            <span class="s2">&quot;-bad-vertex-roi&quot;</span><span class="p">,</span>
-</span><span id="label_dilate-78"><a href="#label_dilate-78"><span class="linenos">78</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">)</span>
-</span><span id="label_dilate-79"><a href="#label_dilate-79"><span class="linenos">79</span></a>        <span class="p">])</span>
-</span><span id="label_dilate-80"><a href="#label_dilate-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="label_dilate-81"><a href="#label_dilate-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="label_dilate-82"><a href="#label_dilate-82"><span class="linenos">82</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
-</span><span id="label_dilate-83"><a href="#label_dilate-83"><span class="linenos">83</span></a>            <span class="n">opt_column_column</span>
-</span><span id="label_dilate-84"><a href="#label_dilate-84"><span class="linenos">84</span></a>        <span class="p">])</span>
-</span><span id="label_dilate-85"><a href="#label_dilate-85"><span class="linenos">85</span></a>    <span class="k">if</span> <span class="n">opt_corrected_areas_area_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="label_dilate-86"><a href="#label_dilate-86"><span class="linenos">86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="label_dilate-87"><a href="#label_dilate-87"><span class="linenos">87</span></a>            <span class="s2">&quot;-corrected-areas&quot;</span><span class="p">,</span>
-</span><span id="label_dilate-88"><a href="#label_dilate-88"><span class="linenos">88</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
-</span><span id="label_dilate-89"><a href="#label_dilate-89"><span class="linenos">89</span></a>        <span class="p">])</span>
-</span><span id="label_dilate-90"><a href="#label_dilate-90"><span class="linenos">90</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelDilateOutputs</span><span class="p">(</span>
-</span><span id="label_dilate-91"><a href="#label_dilate-91"><span class="linenos">91</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="label_dilate-92"><a href="#label_dilate-92"><span class="linenos">92</span></a>        <span class="n">label_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">label_out</span><span class="p">),</span>
-</span><span id="label_dilate-93"><a href="#label_dilate-93"><span class="linenos">93</span></a>    <span class="p">)</span>
-</span><span id="label_dilate-94"><a href="#label_dilate-94"><span class="linenos">94</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="label_dilate-95"><a href="#label_dilate-95"><span class="linenos">95</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="label_dilate-49"><a href="#label_dilate-49"><span class="linenos">49</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="label_dilate-50"><a href="#label_dilate-50"><span class="linenos">50</span></a><span class="sd">    </span>
+</span><span id="label_dilate-51"><a href="#label_dilate-51"><span class="linenos">51</span></a><span class="sd">    Args:</span>
+</span><span id="label_dilate-52"><a href="#label_dilate-52"><span class="linenos">52</span></a><span class="sd">        label: the input label.</span>
+</span><span id="label_dilate-53"><a href="#label_dilate-53"><span class="linenos">53</span></a><span class="sd">        surface: the surface to dilate on.</span>
+</span><span id="label_dilate-54"><a href="#label_dilate-54"><span class="linenos">54</span></a><span class="sd">        dilate_dist: distance in mm to dilate the labels.</span>
+</span><span id="label_dilate-55"><a href="#label_dilate-55"><span class="linenos">55</span></a><span class="sd">        label_out: the output label file.</span>
+</span><span id="label_dilate-56"><a href="#label_dilate-56"><span class="linenos">56</span></a><span class="sd">        opt_bad_vertex_roi_roi_metric: specify an roi of vertices to overwrite,\</span>
+</span><span id="label_dilate-57"><a href="#label_dilate-57"><span class="linenos">57</span></a><span class="sd">            rather than vertices with the unlabeled key: metric file, positive\</span>
+</span><span id="label_dilate-58"><a href="#label_dilate-58"><span class="linenos">58</span></a><span class="sd">            values denote vertices to have their values replaced.</span>
+</span><span id="label_dilate-59"><a href="#label_dilate-59"><span class="linenos">59</span></a><span class="sd">        opt_column_column: select a single column to dilate: the column number\</span>
+</span><span id="label_dilate-60"><a href="#label_dilate-60"><span class="linenos">60</span></a><span class="sd">            or name.</span>
+</span><span id="label_dilate-61"><a href="#label_dilate-61"><span class="linenos">61</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
+</span><span id="label_dilate-62"><a href="#label_dilate-62"><span class="linenos">62</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
+</span><span id="label_dilate-63"><a href="#label_dilate-63"><span class="linenos">63</span></a><span class="sd">            metric.</span>
+</span><span id="label_dilate-64"><a href="#label_dilate-64"><span class="linenos">64</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="label_dilate-65"><a href="#label_dilate-65"><span class="linenos">65</span></a><span class="sd">    Returns:</span>
+</span><span id="label_dilate-66"><a href="#label_dilate-66"><span class="linenos">66</span></a><span class="sd">        NamedTuple of outputs (described in `LabelDilateOutputs`).</span>
+</span><span id="label_dilate-67"><a href="#label_dilate-67"><span class="linenos">67</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="label_dilate-68"><a href="#label_dilate-68"><span class="linenos">68</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="label_dilate-69"><a href="#label_dilate-69"><span class="linenos">69</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_DILATE_METADATA</span><span class="p">)</span>
+</span><span id="label_dilate-70"><a href="#label_dilate-70"><span class="linenos">70</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="label_dilate-71"><a href="#label_dilate-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="label_dilate-72"><a href="#label_dilate-72"><span class="linenos">72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-dilate&quot;</span><span class="p">)</span>
+</span><span id="label_dilate-73"><a href="#label_dilate-73"><span class="linenos">73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
+</span><span id="label_dilate-74"><a href="#label_dilate-74"><span class="linenos">74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
+</span><span id="label_dilate-75"><a href="#label_dilate-75"><span class="linenos">75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">dilate_dist</span><span class="p">))</span>
+</span><span id="label_dilate-76"><a href="#label_dilate-76"><span class="linenos">76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_out</span><span class="p">)</span>
+</span><span id="label_dilate-77"><a href="#label_dilate-77"><span class="linenos">77</span></a>    <span class="k">if</span> <span class="n">opt_bad_vertex_roi_roi_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="label_dilate-78"><a href="#label_dilate-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="label_dilate-79"><a href="#label_dilate-79"><span class="linenos">79</span></a>            <span class="s2">&quot;-bad-vertex-roi&quot;</span><span class="p">,</span>
+</span><span id="label_dilate-80"><a href="#label_dilate-80"><span class="linenos">80</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_vertex_roi_roi_metric</span><span class="p">)</span>
+</span><span id="label_dilate-81"><a href="#label_dilate-81"><span class="linenos">81</span></a>        <span class="p">])</span>
+</span><span id="label_dilate-82"><a href="#label_dilate-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="label_dilate-83"><a href="#label_dilate-83"><span class="linenos">83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="label_dilate-84"><a href="#label_dilate-84"><span class="linenos">84</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
+</span><span id="label_dilate-85"><a href="#label_dilate-85"><span class="linenos">85</span></a>            <span class="n">opt_column_column</span>
+</span><span id="label_dilate-86"><a href="#label_dilate-86"><span class="linenos">86</span></a>        <span class="p">])</span>
+</span><span id="label_dilate-87"><a href="#label_dilate-87"><span class="linenos">87</span></a>    <span class="k">if</span> <span class="n">opt_corrected_areas_area_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="label_dilate-88"><a href="#label_dilate-88"><span class="linenos">88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="label_dilate-89"><a href="#label_dilate-89"><span class="linenos">89</span></a>            <span class="s2">&quot;-corrected-areas&quot;</span><span class="p">,</span>
+</span><span id="label_dilate-90"><a href="#label_dilate-90"><span class="linenos">90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
+</span><span id="label_dilate-91"><a href="#label_dilate-91"><span class="linenos">91</span></a>        <span class="p">])</span>
+</span><span id="label_dilate-92"><a href="#label_dilate-92"><span class="linenos">92</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelDilateOutputs</span><span class="p">(</span>
+</span><span id="label_dilate-93"><a href="#label_dilate-93"><span class="linenos">93</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="label_dilate-94"><a href="#label_dilate-94"><span class="linenos">94</span></a>        <span class="n">label_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">label_out</span><span class="p">),</span>
+</span><span id="label_dilate-95"><a href="#label_dilate-95"><span class="linenos">95</span></a>    <span class="p">)</span>
+</span><span id="label_dilate-96"><a href="#label_dilate-96"><span class="linenos">96</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="label_dilate-97"><a href="#label_dilate-97"><span class="linenos">97</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -347,7 +351,9 @@ all vertices, including those with the unlabeled key, are good, except for
 vertices with a positive value in the ROI. If it is not specified, only
 vertices with the unlabeled key are bad.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

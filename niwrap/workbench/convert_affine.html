@@ -156,7 +156,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CONVERT_AFFINE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;7a81c98e6ffb9e99458da7102f3f7f507d10fe49.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4491ff10b3f39e57dcb42052a9a8a1ad2e550313.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;convert-affine&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -319,59 +319,61 @@
 </span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    You must specify exactly one -from option, but you may specify multiple -to</span>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    options, and -to-flirt may be specified more than once.</span>
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    </span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    </span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    Args:</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        from_world: input is a NIFTI &#39;world&#39; affine.</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        opt_from_itk_input: input is an ITK matrix: the input affine.</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        from_flirt: input is a flirt matrix.</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        to_world: write output as a NIFTI &#39;world&#39; affine.</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        opt_to_itk_output: write output as an ITK affine: output - the output\</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">            affine.</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        to_flirt: write output as a flirt matrix.</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    Returns:</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertAffineOutputs`).</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_AFFINE_METADATA</span><span class="p">)</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-affine&quot;</span><span class="p">)</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">from_world</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_world</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">opt_from_itk_input</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>            <span class="s2">&quot;-from-itk&quot;</span><span class="p">,</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>            <span class="n">opt_from_itk_input</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="p">])</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">from_flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_flirt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">to_world</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">to_world</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">opt_to_itk_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>            <span class="s2">&quot;-to-itk&quot;</span><span class="p">,</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>            <span class="n">opt_to_itk_output</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>        <span class="p">])</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">to_flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">to_flirt</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertAffineOutputs</span><span class="p">(</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="p">)</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;CONVERT_AFFINE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;ConvertAffineFromFlirt&quot;</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;ConvertAffineFromWorld&quot;</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="s2">&quot;ConvertAffineOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;ConvertAffineToFlirt&quot;</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="s2">&quot;ConvertAffineToWorld&quot;</span><span class="p">,</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="s2">&quot;convert_affine&quot;</span><span class="p">,</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="p">]</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    </span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    Args:</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        from_world: input is a NIFTI &#39;world&#39; affine.</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        opt_from_itk_input: input is an ITK matrix: the input affine.</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        from_flirt: input is a flirt matrix.</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        to_world: write output as a NIFTI &#39;world&#39; affine.</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        opt_to_itk_output: write output as an ITK affine: output - the output\</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            affine.</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        to_flirt: write output as a flirt matrix.</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">    Returns:</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertAffineOutputs`).</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_AFFINE_METADATA</span><span class="p">)</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-affine&quot;</span><span class="p">)</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">from_world</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_world</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="k">if</span> <span class="n">opt_from_itk_input</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>            <span class="s2">&quot;-from-itk&quot;</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="n">opt_from_itk_input</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="p">])</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">from_flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_flirt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">to_world</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">to_world</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">opt_to_itk_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>            <span class="s2">&quot;-to-itk&quot;</span><span class="p">,</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>            <span class="n">opt_to_itk_output</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>        <span class="p">])</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">to_flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">to_flirt</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertAffineOutputs</span><span class="p">(</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="p">)</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;CONVERT_AFFINE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="s2">&quot;ConvertAffineFromFlirt&quot;</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;ConvertAffineFromWorld&quot;</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="s2">&quot;ConvertAffineOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="s2">&quot;ConvertAffineToFlirt&quot;</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="s2">&quot;ConvertAffineToWorld&quot;</span><span class="p">,</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="s2">&quot;convert_affine&quot;</span><span class="p">,</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -380,7 +382,7 @@
                     <div class="attr variable">
             <span class="name">CONVERT_AFFINE_METADATA</span>        =
 <input id="CONVERT_AFFINE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CONVERT_AFFINE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;7a81c98e6ffb9e99458da7102f3f7f507d10fe49.boutiques&#39;, name=&#39;convert-affine&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CONVERT_AFFINE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4491ff10b3f39e57dcb42052a9a8a1ad2e550313.boutiques&#39;, name=&#39;convert-affine&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -1048,48 +1050,50 @@
 </span><span id="convert_affine-171"><a href="#convert_affine-171"><span class="linenos">171</span></a><span class="sd">    You must specify exactly one -from option, but you may specify multiple -to</span>
 </span><span id="convert_affine-172"><a href="#convert_affine-172"><span class="linenos">172</span></a><span class="sd">    options, and -to-flirt may be specified more than once.</span>
 </span><span id="convert_affine-173"><a href="#convert_affine-173"><span class="linenos">173</span></a><span class="sd">    </span>
-</span><span id="convert_affine-174"><a href="#convert_affine-174"><span class="linenos">174</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="convert_affine-174"><a href="#convert_affine-174"><span class="linenos">174</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="convert_affine-175"><a href="#convert_affine-175"><span class="linenos">175</span></a><span class="sd">    </span>
-</span><span id="convert_affine-176"><a href="#convert_affine-176"><span class="linenos">176</span></a><span class="sd">    Args:</span>
-</span><span id="convert_affine-177"><a href="#convert_affine-177"><span class="linenos">177</span></a><span class="sd">        from_world: input is a NIFTI &#39;world&#39; affine.</span>
-</span><span id="convert_affine-178"><a href="#convert_affine-178"><span class="linenos">178</span></a><span class="sd">        opt_from_itk_input: input is an ITK matrix: the input affine.</span>
-</span><span id="convert_affine-179"><a href="#convert_affine-179"><span class="linenos">179</span></a><span class="sd">        from_flirt: input is a flirt matrix.</span>
-</span><span id="convert_affine-180"><a href="#convert_affine-180"><span class="linenos">180</span></a><span class="sd">        to_world: write output as a NIFTI &#39;world&#39; affine.</span>
-</span><span id="convert_affine-181"><a href="#convert_affine-181"><span class="linenos">181</span></a><span class="sd">        opt_to_itk_output: write output as an ITK affine: output - the output\</span>
-</span><span id="convert_affine-182"><a href="#convert_affine-182"><span class="linenos">182</span></a><span class="sd">            affine.</span>
-</span><span id="convert_affine-183"><a href="#convert_affine-183"><span class="linenos">183</span></a><span class="sd">        to_flirt: write output as a flirt matrix.</span>
-</span><span id="convert_affine-184"><a href="#convert_affine-184"><span class="linenos">184</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="convert_affine-185"><a href="#convert_affine-185"><span class="linenos">185</span></a><span class="sd">    Returns:</span>
-</span><span id="convert_affine-186"><a href="#convert_affine-186"><span class="linenos">186</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertAffineOutputs`).</span>
-</span><span id="convert_affine-187"><a href="#convert_affine-187"><span class="linenos">187</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="convert_affine-188"><a href="#convert_affine-188"><span class="linenos">188</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="convert_affine-189"><a href="#convert_affine-189"><span class="linenos">189</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_AFFINE_METADATA</span><span class="p">)</span>
-</span><span id="convert_affine-190"><a href="#convert_affine-190"><span class="linenos">190</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="convert_affine-191"><a href="#convert_affine-191"><span class="linenos">191</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="convert_affine-192"><a href="#convert_affine-192"><span class="linenos">192</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-affine&quot;</span><span class="p">)</span>
-</span><span id="convert_affine-193"><a href="#convert_affine-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">from_world</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="convert_affine-194"><a href="#convert_affine-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_world</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="convert_affine-195"><a href="#convert_affine-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">opt_from_itk_input</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="convert_affine-196"><a href="#convert_affine-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="convert_affine-197"><a href="#convert_affine-197"><span class="linenos">197</span></a>            <span class="s2">&quot;-from-itk&quot;</span><span class="p">,</span>
-</span><span id="convert_affine-198"><a href="#convert_affine-198"><span class="linenos">198</span></a>            <span class="n">opt_from_itk_input</span>
-</span><span id="convert_affine-199"><a href="#convert_affine-199"><span class="linenos">199</span></a>        <span class="p">])</span>
-</span><span id="convert_affine-200"><a href="#convert_affine-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">from_flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="convert_affine-201"><a href="#convert_affine-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_flirt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="convert_affine-202"><a href="#convert_affine-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">to_world</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="convert_affine-203"><a href="#convert_affine-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">to_world</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="convert_affine-204"><a href="#convert_affine-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">opt_to_itk_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="convert_affine-205"><a href="#convert_affine-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="convert_affine-206"><a href="#convert_affine-206"><span class="linenos">206</span></a>            <span class="s2">&quot;-to-itk&quot;</span><span class="p">,</span>
-</span><span id="convert_affine-207"><a href="#convert_affine-207"><span class="linenos">207</span></a>            <span class="n">opt_to_itk_output</span>
-</span><span id="convert_affine-208"><a href="#convert_affine-208"><span class="linenos">208</span></a>        <span class="p">])</span>
-</span><span id="convert_affine-209"><a href="#convert_affine-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">to_flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="convert_affine-210"><a href="#convert_affine-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">to_flirt</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="convert_affine-211"><a href="#convert_affine-211"><span class="linenos">211</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertAffineOutputs</span><span class="p">(</span>
-</span><span id="convert_affine-212"><a href="#convert_affine-212"><span class="linenos">212</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="convert_affine-213"><a href="#convert_affine-213"><span class="linenos">213</span></a>    <span class="p">)</span>
-</span><span id="convert_affine-214"><a href="#convert_affine-214"><span class="linenos">214</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="convert_affine-215"><a href="#convert_affine-215"><span class="linenos">215</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="convert_affine-176"><a href="#convert_affine-176"><span class="linenos">176</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="convert_affine-177"><a href="#convert_affine-177"><span class="linenos">177</span></a><span class="sd">    </span>
+</span><span id="convert_affine-178"><a href="#convert_affine-178"><span class="linenos">178</span></a><span class="sd">    Args:</span>
+</span><span id="convert_affine-179"><a href="#convert_affine-179"><span class="linenos">179</span></a><span class="sd">        from_world: input is a NIFTI &#39;world&#39; affine.</span>
+</span><span id="convert_affine-180"><a href="#convert_affine-180"><span class="linenos">180</span></a><span class="sd">        opt_from_itk_input: input is an ITK matrix: the input affine.</span>
+</span><span id="convert_affine-181"><a href="#convert_affine-181"><span class="linenos">181</span></a><span class="sd">        from_flirt: input is a flirt matrix.</span>
+</span><span id="convert_affine-182"><a href="#convert_affine-182"><span class="linenos">182</span></a><span class="sd">        to_world: write output as a NIFTI &#39;world&#39; affine.</span>
+</span><span id="convert_affine-183"><a href="#convert_affine-183"><span class="linenos">183</span></a><span class="sd">        opt_to_itk_output: write output as an ITK affine: output - the output\</span>
+</span><span id="convert_affine-184"><a href="#convert_affine-184"><span class="linenos">184</span></a><span class="sd">            affine.</span>
+</span><span id="convert_affine-185"><a href="#convert_affine-185"><span class="linenos">185</span></a><span class="sd">        to_flirt: write output as a flirt matrix.</span>
+</span><span id="convert_affine-186"><a href="#convert_affine-186"><span class="linenos">186</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="convert_affine-187"><a href="#convert_affine-187"><span class="linenos">187</span></a><span class="sd">    Returns:</span>
+</span><span id="convert_affine-188"><a href="#convert_affine-188"><span class="linenos">188</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertAffineOutputs`).</span>
+</span><span id="convert_affine-189"><a href="#convert_affine-189"><span class="linenos">189</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="convert_affine-190"><a href="#convert_affine-190"><span class="linenos">190</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="convert_affine-191"><a href="#convert_affine-191"><span class="linenos">191</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_AFFINE_METADATA</span><span class="p">)</span>
+</span><span id="convert_affine-192"><a href="#convert_affine-192"><span class="linenos">192</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="convert_affine-193"><a href="#convert_affine-193"><span class="linenos">193</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="convert_affine-194"><a href="#convert_affine-194"><span class="linenos">194</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-affine&quot;</span><span class="p">)</span>
+</span><span id="convert_affine-195"><a href="#convert_affine-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">from_world</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="convert_affine-196"><a href="#convert_affine-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_world</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="convert_affine-197"><a href="#convert_affine-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">opt_from_itk_input</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="convert_affine-198"><a href="#convert_affine-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="convert_affine-199"><a href="#convert_affine-199"><span class="linenos">199</span></a>            <span class="s2">&quot;-from-itk&quot;</span><span class="p">,</span>
+</span><span id="convert_affine-200"><a href="#convert_affine-200"><span class="linenos">200</span></a>            <span class="n">opt_from_itk_input</span>
+</span><span id="convert_affine-201"><a href="#convert_affine-201"><span class="linenos">201</span></a>        <span class="p">])</span>
+</span><span id="convert_affine-202"><a href="#convert_affine-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">from_flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="convert_affine-203"><a href="#convert_affine-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_flirt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="convert_affine-204"><a href="#convert_affine-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">to_world</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="convert_affine-205"><a href="#convert_affine-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">to_world</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="convert_affine-206"><a href="#convert_affine-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">opt_to_itk_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="convert_affine-207"><a href="#convert_affine-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="convert_affine-208"><a href="#convert_affine-208"><span class="linenos">208</span></a>            <span class="s2">&quot;-to-itk&quot;</span><span class="p">,</span>
+</span><span id="convert_affine-209"><a href="#convert_affine-209"><span class="linenos">209</span></a>            <span class="n">opt_to_itk_output</span>
+</span><span id="convert_affine-210"><a href="#convert_affine-210"><span class="linenos">210</span></a>        <span class="p">])</span>
+</span><span id="convert_affine-211"><a href="#convert_affine-211"><span class="linenos">211</span></a>    <span class="k">if</span> <span class="n">to_flirt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="convert_affine-212"><a href="#convert_affine-212"><span class="linenos">212</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">to_flirt</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="convert_affine-213"><a href="#convert_affine-213"><span class="linenos">213</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertAffineOutputs</span><span class="p">(</span>
+</span><span id="convert_affine-214"><a href="#convert_affine-214"><span class="linenos">214</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="convert_affine-215"><a href="#convert_affine-215"><span class="linenos">215</span></a>    <span class="p">)</span>
+</span><span id="convert_affine-216"><a href="#convert_affine-216"><span class="linenos">216</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="convert_affine-217"><a href="#convert_affine-217"><span class="linenos">217</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1107,7 +1111,9 @@ coordinates to source coordinates.</p>
 <p>You must specify exactly one -from option, but you may specify multiple -to
 options, and -to-flirt may be specified more than once.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

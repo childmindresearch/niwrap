@@ -99,7 +99,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CIFTI_EXTREMA_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;464baa942d98c4b291d1f1775c9b6d09d9928789.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;20477f65355e9f632c945ddf952641fdf056a370.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cifti-extrema&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -174,105 +174,107 @@
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    direction. COLUMN is the direction that works on dtseries and dscalar. For</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    dconn, if it is symmetric use COLUMN, otherwise use ROW.</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    </span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    Args:</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        cifti: the input cifti.</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        surface_distance: the minimum distance between extrema of the same\</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            type, for surface components.</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        volume_distance: the minimum distance between extrema of the same type,\</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            for volume components.</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        direction: which dimension to find extrema along, ROW or COLUMN.</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        cifti_out: the output cifti.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        opt_left_surface_surface: specify the left surface to use: the left\</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            surface file.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        opt_right_surface_surface: specify the right surface to use: the right\</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    </span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    Args:</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        cifti: the input cifti.</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        surface_distance: the minimum distance between extrema of the same\</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            type, for surface components.</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        volume_distance: the minimum distance between extrema of the same type,\</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">            for volume components.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        direction: which dimension to find extrema along, ROW or COLUMN.</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        cifti_out: the output cifti.</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        opt_left_surface_surface: specify the left surface to use: the left\</span>
 </span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            surface file.</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        opt_cerebellum_surface_surface: specify the cerebellum surface to use:\</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            the cerebellum surface file.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        opt_surface_presmooth_surface_kernel: smooth on the surface before\</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            finding extrema: the size of the gaussian surface smoothing kernel in\</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            mm, as sigma by default.</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        opt_volume_presmooth_volume_kernel: smooth volume components before\</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">            finding extrema: the size of the gaussian volume smoothing kernel in\</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            mm, as sigma by default.</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        opt_presmooth_fwhm: smoothing kernel distances are FWHM, not sigma.</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        threshold: ignore small extrema.</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">            component.</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        opt_sum_maps: output the sum of the extrema maps instead of each map\</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">            separately.</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        opt_consolidate_mode: use consolidation of local minima instead of a\</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">            large neighborhood.</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">        opt_only_maxima: only find the maxima.</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">        opt_only_minima: only find the minima.</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Returns:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiExtremaOutputs`).</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_EXTREMA_METADATA</span><span class="p">)</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-extrema&quot;</span><span class="p">)</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti</span><span class="p">))</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">opt_left_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>            <span class="s2">&quot;-left-surface&quot;</span><span class="p">,</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_left_surface_surface</span><span class="p">)</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="p">])</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">opt_right_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>            <span class="s2">&quot;-right-surface&quot;</span><span class="p">,</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_right_surface_surface</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="p">])</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">opt_cerebellum_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>            <span class="s2">&quot;-cerebellum-surface&quot;</span><span class="p">,</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_cerebellum_surface_surface</span><span class="p">)</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="p">])</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">opt_surface_presmooth_surface_kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>            <span class="s2">&quot;-surface-presmooth&quot;</span><span class="p">,</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">)</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="p">])</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">opt_volume_presmooth_volume_kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>            <span class="s2">&quot;-volume-presmooth&quot;</span><span class="p">,</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">)</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="p">])</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">if</span> <span class="n">opt_presmooth_fwhm</span><span class="p">:</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-presmooth-fwhm&quot;</span><span class="p">)</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">threshold</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">opt_sum_maps</span><span class="p">:</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum-maps&quot;</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">opt_consolidate_mode</span><span class="p">:</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-consolidate-mode&quot;</span><span class="p">)</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">opt_only_maxima</span><span class="p">:</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-maxima&quot;</span><span class="p">)</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">opt_only_minima</span><span class="p">:</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-minima&quot;</span><span class="p">)</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiExtremaOutputs</span><span class="p">(</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="p">)</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="s2">&quot;CIFTI_EXTREMA_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="s2">&quot;CiftiExtremaOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="s2">&quot;CiftiExtremaThreshold&quot;</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="s2">&quot;cifti_extrema&quot;</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="p">]</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        opt_right_surface_surface: specify the right surface to use: the right\</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            surface file.</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        opt_cerebellum_surface_surface: specify the cerebellum surface to use:\</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            the cerebellum surface file.</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        opt_surface_presmooth_surface_kernel: smooth on the surface before\</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">            finding extrema: the size of the gaussian surface smoothing kernel in\</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">            mm, as sigma by default.</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        opt_volume_presmooth_volume_kernel: smooth volume components before\</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">            finding extrema: the size of the gaussian volume smoothing kernel in\</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            mm, as sigma by default.</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        opt_presmooth_fwhm: smoothing kernel distances are FWHM, not sigma.</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        threshold: ignore small extrema.</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">            component.</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        opt_sum_maps: output the sum of the extrema maps instead of each map\</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">            separately.</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">        opt_consolidate_mode: use consolidation of local minima instead of a\</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">            large neighborhood.</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        opt_only_maxima: only find the maxima.</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">        opt_only_minima: only find the minima.</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    Returns:</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiExtremaOutputs`).</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_EXTREMA_METADATA</span><span class="p">)</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-extrema&quot;</span><span class="p">)</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti</span><span class="p">))</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">opt_left_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="s2">&quot;-left-surface&quot;</span><span class="p">,</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_left_surface_surface</span><span class="p">)</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="p">])</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">opt_right_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="s2">&quot;-right-surface&quot;</span><span class="p">,</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_right_surface_surface</span><span class="p">)</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="p">])</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">opt_cerebellum_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="s2">&quot;-cerebellum-surface&quot;</span><span class="p">,</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_cerebellum_surface_surface</span><span class="p">)</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="p">])</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">opt_surface_presmooth_surface_kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>            <span class="s2">&quot;-surface-presmooth&quot;</span><span class="p">,</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">)</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="p">])</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">opt_volume_presmooth_volume_kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="s2">&quot;-volume-presmooth&quot;</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">)</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="p">])</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">opt_presmooth_fwhm</span><span class="p">:</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-presmooth-fwhm&quot;</span><span class="p">)</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">threshold</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">opt_sum_maps</span><span class="p">:</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum-maps&quot;</span><span class="p">)</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">opt_consolidate_mode</span><span class="p">:</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-consolidate-mode&quot;</span><span class="p">)</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">opt_only_maxima</span><span class="p">:</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-maxima&quot;</span><span class="p">)</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">opt_only_minima</span><span class="p">:</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-minima&quot;</span><span class="p">)</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiExtremaOutputs</span><span class="p">(</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="s2">&quot;CIFTI_EXTREMA_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="s2">&quot;CiftiExtremaOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="s2">&quot;CiftiExtremaThreshold&quot;</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="s2">&quot;cifti_extrema&quot;</span><span class="p">,</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -281,7 +283,7 @@
                     <div class="attr variable">
             <span class="name">CIFTI_EXTREMA_METADATA</span>        =
 <input id="CIFTI_EXTREMA_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CIFTI_EXTREMA_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;464baa942d98c4b291d1f1775c9b6d09d9928789.boutiques&#39;, name=&#39;cifti-extrema&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CIFTI_EXTREMA_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;20477f65355e9f632c945ddf952641fdf056a370.boutiques&#39;, name=&#39;cifti-extrema&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -530,97 +532,99 @@
 </span><span id="cifti_extrema-83"><a href="#cifti_extrema-83"><span class="linenos"> 83</span></a><span class="sd">    direction. COLUMN is the direction that works on dtseries and dscalar. For</span>
 </span><span id="cifti_extrema-84"><a href="#cifti_extrema-84"><span class="linenos"> 84</span></a><span class="sd">    dconn, if it is symmetric use COLUMN, otherwise use ROW.</span>
 </span><span id="cifti_extrema-85"><a href="#cifti_extrema-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
-</span><span id="cifti_extrema-86"><a href="#cifti_extrema-86"><span class="linenos"> 86</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="cifti_extrema-86"><a href="#cifti_extrema-86"><span class="linenos"> 86</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="cifti_extrema-87"><a href="#cifti_extrema-87"><span class="linenos"> 87</span></a><span class="sd">    </span>
-</span><span id="cifti_extrema-88"><a href="#cifti_extrema-88"><span class="linenos"> 88</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_extrema-89"><a href="#cifti_extrema-89"><span class="linenos"> 89</span></a><span class="sd">        cifti: the input cifti.</span>
-</span><span id="cifti_extrema-90"><a href="#cifti_extrema-90"><span class="linenos"> 90</span></a><span class="sd">        surface_distance: the minimum distance between extrema of the same\</span>
-</span><span id="cifti_extrema-91"><a href="#cifti_extrema-91"><span class="linenos"> 91</span></a><span class="sd">            type, for surface components.</span>
-</span><span id="cifti_extrema-92"><a href="#cifti_extrema-92"><span class="linenos"> 92</span></a><span class="sd">        volume_distance: the minimum distance between extrema of the same type,\</span>
-</span><span id="cifti_extrema-93"><a href="#cifti_extrema-93"><span class="linenos"> 93</span></a><span class="sd">            for volume components.</span>
-</span><span id="cifti_extrema-94"><a href="#cifti_extrema-94"><span class="linenos"> 94</span></a><span class="sd">        direction: which dimension to find extrema along, ROW or COLUMN.</span>
-</span><span id="cifti_extrema-95"><a href="#cifti_extrema-95"><span class="linenos"> 95</span></a><span class="sd">        cifti_out: the output cifti.</span>
-</span><span id="cifti_extrema-96"><a href="#cifti_extrema-96"><span class="linenos"> 96</span></a><span class="sd">        opt_left_surface_surface: specify the left surface to use: the left\</span>
-</span><span id="cifti_extrema-97"><a href="#cifti_extrema-97"><span class="linenos"> 97</span></a><span class="sd">            surface file.</span>
-</span><span id="cifti_extrema-98"><a href="#cifti_extrema-98"><span class="linenos"> 98</span></a><span class="sd">        opt_right_surface_surface: specify the right surface to use: the right\</span>
+</span><span id="cifti_extrema-88"><a href="#cifti_extrema-88"><span class="linenos"> 88</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_extrema-89"><a href="#cifti_extrema-89"><span class="linenos"> 89</span></a><span class="sd">    </span>
+</span><span id="cifti_extrema-90"><a href="#cifti_extrema-90"><span class="linenos"> 90</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_extrema-91"><a href="#cifti_extrema-91"><span class="linenos"> 91</span></a><span class="sd">        cifti: the input cifti.</span>
+</span><span id="cifti_extrema-92"><a href="#cifti_extrema-92"><span class="linenos"> 92</span></a><span class="sd">        surface_distance: the minimum distance between extrema of the same\</span>
+</span><span id="cifti_extrema-93"><a href="#cifti_extrema-93"><span class="linenos"> 93</span></a><span class="sd">            type, for surface components.</span>
+</span><span id="cifti_extrema-94"><a href="#cifti_extrema-94"><span class="linenos"> 94</span></a><span class="sd">        volume_distance: the minimum distance between extrema of the same type,\</span>
+</span><span id="cifti_extrema-95"><a href="#cifti_extrema-95"><span class="linenos"> 95</span></a><span class="sd">            for volume components.</span>
+</span><span id="cifti_extrema-96"><a href="#cifti_extrema-96"><span class="linenos"> 96</span></a><span class="sd">        direction: which dimension to find extrema along, ROW or COLUMN.</span>
+</span><span id="cifti_extrema-97"><a href="#cifti_extrema-97"><span class="linenos"> 97</span></a><span class="sd">        cifti_out: the output cifti.</span>
+</span><span id="cifti_extrema-98"><a href="#cifti_extrema-98"><span class="linenos"> 98</span></a><span class="sd">        opt_left_surface_surface: specify the left surface to use: the left\</span>
 </span><span id="cifti_extrema-99"><a href="#cifti_extrema-99"><span class="linenos"> 99</span></a><span class="sd">            surface file.</span>
-</span><span id="cifti_extrema-100"><a href="#cifti_extrema-100"><span class="linenos">100</span></a><span class="sd">        opt_cerebellum_surface_surface: specify the cerebellum surface to use:\</span>
-</span><span id="cifti_extrema-101"><a href="#cifti_extrema-101"><span class="linenos">101</span></a><span class="sd">            the cerebellum surface file.</span>
-</span><span id="cifti_extrema-102"><a href="#cifti_extrema-102"><span class="linenos">102</span></a><span class="sd">        opt_surface_presmooth_surface_kernel: smooth on the surface before\</span>
-</span><span id="cifti_extrema-103"><a href="#cifti_extrema-103"><span class="linenos">103</span></a><span class="sd">            finding extrema: the size of the gaussian surface smoothing kernel in\</span>
-</span><span id="cifti_extrema-104"><a href="#cifti_extrema-104"><span class="linenos">104</span></a><span class="sd">            mm, as sigma by default.</span>
-</span><span id="cifti_extrema-105"><a href="#cifti_extrema-105"><span class="linenos">105</span></a><span class="sd">        opt_volume_presmooth_volume_kernel: smooth volume components before\</span>
-</span><span id="cifti_extrema-106"><a href="#cifti_extrema-106"><span class="linenos">106</span></a><span class="sd">            finding extrema: the size of the gaussian volume smoothing kernel in\</span>
-</span><span id="cifti_extrema-107"><a href="#cifti_extrema-107"><span class="linenos">107</span></a><span class="sd">            mm, as sigma by default.</span>
-</span><span id="cifti_extrema-108"><a href="#cifti_extrema-108"><span class="linenos">108</span></a><span class="sd">        opt_presmooth_fwhm: smoothing kernel distances are FWHM, not sigma.</span>
-</span><span id="cifti_extrema-109"><a href="#cifti_extrema-109"><span class="linenos">109</span></a><span class="sd">        threshold: ignore small extrema.</span>
-</span><span id="cifti_extrema-110"><a href="#cifti_extrema-110"><span class="linenos">110</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
-</span><span id="cifti_extrema-111"><a href="#cifti_extrema-111"><span class="linenos">111</span></a><span class="sd">            component.</span>
-</span><span id="cifti_extrema-112"><a href="#cifti_extrema-112"><span class="linenos">112</span></a><span class="sd">        opt_sum_maps: output the sum of the extrema maps instead of each map\</span>
-</span><span id="cifti_extrema-113"><a href="#cifti_extrema-113"><span class="linenos">113</span></a><span class="sd">            separately.</span>
-</span><span id="cifti_extrema-114"><a href="#cifti_extrema-114"><span class="linenos">114</span></a><span class="sd">        opt_consolidate_mode: use consolidation of local minima instead of a\</span>
-</span><span id="cifti_extrema-115"><a href="#cifti_extrema-115"><span class="linenos">115</span></a><span class="sd">            large neighborhood.</span>
-</span><span id="cifti_extrema-116"><a href="#cifti_extrema-116"><span class="linenos">116</span></a><span class="sd">        opt_only_maxima: only find the maxima.</span>
-</span><span id="cifti_extrema-117"><a href="#cifti_extrema-117"><span class="linenos">117</span></a><span class="sd">        opt_only_minima: only find the minima.</span>
-</span><span id="cifti_extrema-118"><a href="#cifti_extrema-118"><span class="linenos">118</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_extrema-119"><a href="#cifti_extrema-119"><span class="linenos">119</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_extrema-120"><a href="#cifti_extrema-120"><span class="linenos">120</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiExtremaOutputs`).</span>
-</span><span id="cifti_extrema-121"><a href="#cifti_extrema-121"><span class="linenos">121</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_extrema-122"><a href="#cifti_extrema-122"><span class="linenos">122</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_extrema-123"><a href="#cifti_extrema-123"><span class="linenos">123</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_EXTREMA_METADATA</span><span class="p">)</span>
-</span><span id="cifti_extrema-124"><a href="#cifti_extrema-124"><span class="linenos">124</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="cifti_extrema-125"><a href="#cifti_extrema-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="cifti_extrema-126"><a href="#cifti_extrema-126"><span class="linenos">126</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-extrema&quot;</span><span class="p">)</span>
-</span><span id="cifti_extrema-127"><a href="#cifti_extrema-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti</span><span class="p">))</span>
-</span><span id="cifti_extrema-128"><a href="#cifti_extrema-128"><span class="linenos">128</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
-</span><span id="cifti_extrema-129"><a href="#cifti_extrema-129"><span class="linenos">129</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
-</span><span id="cifti_extrema-130"><a href="#cifti_extrema-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
-</span><span id="cifti_extrema-131"><a href="#cifti_extrema-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="cifti_extrema-132"><a href="#cifti_extrema-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">opt_left_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_extrema-133"><a href="#cifti_extrema-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_extrema-134"><a href="#cifti_extrema-134"><span class="linenos">134</span></a>            <span class="s2">&quot;-left-surface&quot;</span><span class="p">,</span>
-</span><span id="cifti_extrema-135"><a href="#cifti_extrema-135"><span class="linenos">135</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_left_surface_surface</span><span class="p">)</span>
-</span><span id="cifti_extrema-136"><a href="#cifti_extrema-136"><span class="linenos">136</span></a>        <span class="p">])</span>
-</span><span id="cifti_extrema-137"><a href="#cifti_extrema-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">opt_right_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_extrema-138"><a href="#cifti_extrema-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_extrema-139"><a href="#cifti_extrema-139"><span class="linenos">139</span></a>            <span class="s2">&quot;-right-surface&quot;</span><span class="p">,</span>
-</span><span id="cifti_extrema-140"><a href="#cifti_extrema-140"><span class="linenos">140</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_right_surface_surface</span><span class="p">)</span>
-</span><span id="cifti_extrema-141"><a href="#cifti_extrema-141"><span class="linenos">141</span></a>        <span class="p">])</span>
-</span><span id="cifti_extrema-142"><a href="#cifti_extrema-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">opt_cerebellum_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_extrema-143"><a href="#cifti_extrema-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_extrema-144"><a href="#cifti_extrema-144"><span class="linenos">144</span></a>            <span class="s2">&quot;-cerebellum-surface&quot;</span><span class="p">,</span>
-</span><span id="cifti_extrema-145"><a href="#cifti_extrema-145"><span class="linenos">145</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_cerebellum_surface_surface</span><span class="p">)</span>
-</span><span id="cifti_extrema-146"><a href="#cifti_extrema-146"><span class="linenos">146</span></a>        <span class="p">])</span>
-</span><span id="cifti_extrema-147"><a href="#cifti_extrema-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">opt_surface_presmooth_surface_kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_extrema-148"><a href="#cifti_extrema-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_extrema-149"><a href="#cifti_extrema-149"><span class="linenos">149</span></a>            <span class="s2">&quot;-surface-presmooth&quot;</span><span class="p">,</span>
-</span><span id="cifti_extrema-150"><a href="#cifti_extrema-150"><span class="linenos">150</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">)</span>
-</span><span id="cifti_extrema-151"><a href="#cifti_extrema-151"><span class="linenos">151</span></a>        <span class="p">])</span>
-</span><span id="cifti_extrema-152"><a href="#cifti_extrema-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">opt_volume_presmooth_volume_kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_extrema-153"><a href="#cifti_extrema-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_extrema-154"><a href="#cifti_extrema-154"><span class="linenos">154</span></a>            <span class="s2">&quot;-volume-presmooth&quot;</span><span class="p">,</span>
-</span><span id="cifti_extrema-155"><a href="#cifti_extrema-155"><span class="linenos">155</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">)</span>
-</span><span id="cifti_extrema-156"><a href="#cifti_extrema-156"><span class="linenos">156</span></a>        <span class="p">])</span>
-</span><span id="cifti_extrema-157"><a href="#cifti_extrema-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">opt_presmooth_fwhm</span><span class="p">:</span>
-</span><span id="cifti_extrema-158"><a href="#cifti_extrema-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-presmooth-fwhm&quot;</span><span class="p">)</span>
-</span><span id="cifti_extrema-159"><a href="#cifti_extrema-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_extrema-160"><a href="#cifti_extrema-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">threshold</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_extrema-161"><a href="#cifti_extrema-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
-</span><span id="cifti_extrema-162"><a href="#cifti_extrema-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
-</span><span id="cifti_extrema-163"><a href="#cifti_extrema-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">opt_sum_maps</span><span class="p">:</span>
-</span><span id="cifti_extrema-164"><a href="#cifti_extrema-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum-maps&quot;</span><span class="p">)</span>
-</span><span id="cifti_extrema-165"><a href="#cifti_extrema-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">opt_consolidate_mode</span><span class="p">:</span>
-</span><span id="cifti_extrema-166"><a href="#cifti_extrema-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-consolidate-mode&quot;</span><span class="p">)</span>
-</span><span id="cifti_extrema-167"><a href="#cifti_extrema-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">opt_only_maxima</span><span class="p">:</span>
-</span><span id="cifti_extrema-168"><a href="#cifti_extrema-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-maxima&quot;</span><span class="p">)</span>
-</span><span id="cifti_extrema-169"><a href="#cifti_extrema-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">opt_only_minima</span><span class="p">:</span>
-</span><span id="cifti_extrema-170"><a href="#cifti_extrema-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-minima&quot;</span><span class="p">)</span>
-</span><span id="cifti_extrema-171"><a href="#cifti_extrema-171"><span class="linenos">171</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiExtremaOutputs</span><span class="p">(</span>
-</span><span id="cifti_extrema-172"><a href="#cifti_extrema-172"><span class="linenos">172</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="cifti_extrema-173"><a href="#cifti_extrema-173"><span class="linenos">173</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="cifti_extrema-174"><a href="#cifti_extrema-174"><span class="linenos">174</span></a>    <span class="p">)</span>
-</span><span id="cifti_extrema-175"><a href="#cifti_extrema-175"><span class="linenos">175</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="cifti_extrema-176"><a href="#cifti_extrema-176"><span class="linenos">176</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="cifti_extrema-100"><a href="#cifti_extrema-100"><span class="linenos">100</span></a><span class="sd">        opt_right_surface_surface: specify the right surface to use: the right\</span>
+</span><span id="cifti_extrema-101"><a href="#cifti_extrema-101"><span class="linenos">101</span></a><span class="sd">            surface file.</span>
+</span><span id="cifti_extrema-102"><a href="#cifti_extrema-102"><span class="linenos">102</span></a><span class="sd">        opt_cerebellum_surface_surface: specify the cerebellum surface to use:\</span>
+</span><span id="cifti_extrema-103"><a href="#cifti_extrema-103"><span class="linenos">103</span></a><span class="sd">            the cerebellum surface file.</span>
+</span><span id="cifti_extrema-104"><a href="#cifti_extrema-104"><span class="linenos">104</span></a><span class="sd">        opt_surface_presmooth_surface_kernel: smooth on the surface before\</span>
+</span><span id="cifti_extrema-105"><a href="#cifti_extrema-105"><span class="linenos">105</span></a><span class="sd">            finding extrema: the size of the gaussian surface smoothing kernel in\</span>
+</span><span id="cifti_extrema-106"><a href="#cifti_extrema-106"><span class="linenos">106</span></a><span class="sd">            mm, as sigma by default.</span>
+</span><span id="cifti_extrema-107"><a href="#cifti_extrema-107"><span class="linenos">107</span></a><span class="sd">        opt_volume_presmooth_volume_kernel: smooth volume components before\</span>
+</span><span id="cifti_extrema-108"><a href="#cifti_extrema-108"><span class="linenos">108</span></a><span class="sd">            finding extrema: the size of the gaussian volume smoothing kernel in\</span>
+</span><span id="cifti_extrema-109"><a href="#cifti_extrema-109"><span class="linenos">109</span></a><span class="sd">            mm, as sigma by default.</span>
+</span><span id="cifti_extrema-110"><a href="#cifti_extrema-110"><span class="linenos">110</span></a><span class="sd">        opt_presmooth_fwhm: smoothing kernel distances are FWHM, not sigma.</span>
+</span><span id="cifti_extrema-111"><a href="#cifti_extrema-111"><span class="linenos">111</span></a><span class="sd">        threshold: ignore small extrema.</span>
+</span><span id="cifti_extrema-112"><a href="#cifti_extrema-112"><span class="linenos">112</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
+</span><span id="cifti_extrema-113"><a href="#cifti_extrema-113"><span class="linenos">113</span></a><span class="sd">            component.</span>
+</span><span id="cifti_extrema-114"><a href="#cifti_extrema-114"><span class="linenos">114</span></a><span class="sd">        opt_sum_maps: output the sum of the extrema maps instead of each map\</span>
+</span><span id="cifti_extrema-115"><a href="#cifti_extrema-115"><span class="linenos">115</span></a><span class="sd">            separately.</span>
+</span><span id="cifti_extrema-116"><a href="#cifti_extrema-116"><span class="linenos">116</span></a><span class="sd">        opt_consolidate_mode: use consolidation of local minima instead of a\</span>
+</span><span id="cifti_extrema-117"><a href="#cifti_extrema-117"><span class="linenos">117</span></a><span class="sd">            large neighborhood.</span>
+</span><span id="cifti_extrema-118"><a href="#cifti_extrema-118"><span class="linenos">118</span></a><span class="sd">        opt_only_maxima: only find the maxima.</span>
+</span><span id="cifti_extrema-119"><a href="#cifti_extrema-119"><span class="linenos">119</span></a><span class="sd">        opt_only_minima: only find the minima.</span>
+</span><span id="cifti_extrema-120"><a href="#cifti_extrema-120"><span class="linenos">120</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_extrema-121"><a href="#cifti_extrema-121"><span class="linenos">121</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_extrema-122"><a href="#cifti_extrema-122"><span class="linenos">122</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiExtremaOutputs`).</span>
+</span><span id="cifti_extrema-123"><a href="#cifti_extrema-123"><span class="linenos">123</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_extrema-124"><a href="#cifti_extrema-124"><span class="linenos">124</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_extrema-125"><a href="#cifti_extrema-125"><span class="linenos">125</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_EXTREMA_METADATA</span><span class="p">)</span>
+</span><span id="cifti_extrema-126"><a href="#cifti_extrema-126"><span class="linenos">126</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="cifti_extrema-127"><a href="#cifti_extrema-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="cifti_extrema-128"><a href="#cifti_extrema-128"><span class="linenos">128</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-extrema&quot;</span><span class="p">)</span>
+</span><span id="cifti_extrema-129"><a href="#cifti_extrema-129"><span class="linenos">129</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti</span><span class="p">))</span>
+</span><span id="cifti_extrema-130"><a href="#cifti_extrema-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
+</span><span id="cifti_extrema-131"><a href="#cifti_extrema-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
+</span><span id="cifti_extrema-132"><a href="#cifti_extrema-132"><span class="linenos">132</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</span><span id="cifti_extrema-133"><a href="#cifti_extrema-133"><span class="linenos">133</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="cifti_extrema-134"><a href="#cifti_extrema-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">opt_left_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_extrema-135"><a href="#cifti_extrema-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_extrema-136"><a href="#cifti_extrema-136"><span class="linenos">136</span></a>            <span class="s2">&quot;-left-surface&quot;</span><span class="p">,</span>
+</span><span id="cifti_extrema-137"><a href="#cifti_extrema-137"><span class="linenos">137</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_left_surface_surface</span><span class="p">)</span>
+</span><span id="cifti_extrema-138"><a href="#cifti_extrema-138"><span class="linenos">138</span></a>        <span class="p">])</span>
+</span><span id="cifti_extrema-139"><a href="#cifti_extrema-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">opt_right_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_extrema-140"><a href="#cifti_extrema-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_extrema-141"><a href="#cifti_extrema-141"><span class="linenos">141</span></a>            <span class="s2">&quot;-right-surface&quot;</span><span class="p">,</span>
+</span><span id="cifti_extrema-142"><a href="#cifti_extrema-142"><span class="linenos">142</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_right_surface_surface</span><span class="p">)</span>
+</span><span id="cifti_extrema-143"><a href="#cifti_extrema-143"><span class="linenos">143</span></a>        <span class="p">])</span>
+</span><span id="cifti_extrema-144"><a href="#cifti_extrema-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">opt_cerebellum_surface_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_extrema-145"><a href="#cifti_extrema-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_extrema-146"><a href="#cifti_extrema-146"><span class="linenos">146</span></a>            <span class="s2">&quot;-cerebellum-surface&quot;</span><span class="p">,</span>
+</span><span id="cifti_extrema-147"><a href="#cifti_extrema-147"><span class="linenos">147</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_cerebellum_surface_surface</span><span class="p">)</span>
+</span><span id="cifti_extrema-148"><a href="#cifti_extrema-148"><span class="linenos">148</span></a>        <span class="p">])</span>
+</span><span id="cifti_extrema-149"><a href="#cifti_extrema-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">opt_surface_presmooth_surface_kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_extrema-150"><a href="#cifti_extrema-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_extrema-151"><a href="#cifti_extrema-151"><span class="linenos">151</span></a>            <span class="s2">&quot;-surface-presmooth&quot;</span><span class="p">,</span>
+</span><span id="cifti_extrema-152"><a href="#cifti_extrema-152"><span class="linenos">152</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_surface_presmooth_surface_kernel</span><span class="p">)</span>
+</span><span id="cifti_extrema-153"><a href="#cifti_extrema-153"><span class="linenos">153</span></a>        <span class="p">])</span>
+</span><span id="cifti_extrema-154"><a href="#cifti_extrema-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">opt_volume_presmooth_volume_kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_extrema-155"><a href="#cifti_extrema-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_extrema-156"><a href="#cifti_extrema-156"><span class="linenos">156</span></a>            <span class="s2">&quot;-volume-presmooth&quot;</span><span class="p">,</span>
+</span><span id="cifti_extrema-157"><a href="#cifti_extrema-157"><span class="linenos">157</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_volume_presmooth_volume_kernel</span><span class="p">)</span>
+</span><span id="cifti_extrema-158"><a href="#cifti_extrema-158"><span class="linenos">158</span></a>        <span class="p">])</span>
+</span><span id="cifti_extrema-159"><a href="#cifti_extrema-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">opt_presmooth_fwhm</span><span class="p">:</span>
+</span><span id="cifti_extrema-160"><a href="#cifti_extrema-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-presmooth-fwhm&quot;</span><span class="p">)</span>
+</span><span id="cifti_extrema-161"><a href="#cifti_extrema-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_extrema-162"><a href="#cifti_extrema-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">threshold</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_extrema-163"><a href="#cifti_extrema-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
+</span><span id="cifti_extrema-164"><a href="#cifti_extrema-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
+</span><span id="cifti_extrema-165"><a href="#cifti_extrema-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">opt_sum_maps</span><span class="p">:</span>
+</span><span id="cifti_extrema-166"><a href="#cifti_extrema-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum-maps&quot;</span><span class="p">)</span>
+</span><span id="cifti_extrema-167"><a href="#cifti_extrema-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">opt_consolidate_mode</span><span class="p">:</span>
+</span><span id="cifti_extrema-168"><a href="#cifti_extrema-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-consolidate-mode&quot;</span><span class="p">)</span>
+</span><span id="cifti_extrema-169"><a href="#cifti_extrema-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">opt_only_maxima</span><span class="p">:</span>
+</span><span id="cifti_extrema-170"><a href="#cifti_extrema-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-maxima&quot;</span><span class="p">)</span>
+</span><span id="cifti_extrema-171"><a href="#cifti_extrema-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">opt_only_minima</span><span class="p">:</span>
+</span><span id="cifti_extrema-172"><a href="#cifti_extrema-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-minima&quot;</span><span class="p">)</span>
+</span><span id="cifti_extrema-173"><a href="#cifti_extrema-173"><span class="linenos">173</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiExtremaOutputs</span><span class="p">(</span>
+</span><span id="cifti_extrema-174"><a href="#cifti_extrema-174"><span class="linenos">174</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="cifti_extrema-175"><a href="#cifti_extrema-175"><span class="linenos">175</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="cifti_extrema-176"><a href="#cifti_extrema-176"><span class="linenos">176</span></a>    <span class="p">)</span>
+</span><span id="cifti_extrema-177"><a href="#cifti_extrema-177"><span class="linenos">177</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="cifti_extrema-178"><a href="#cifti_extrema-178"><span class="linenos">178</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -632,7 +636,9 @@ The input cifti file must have a brain models mapping along the specified
 direction. COLUMN is the direction that works on dtseries and dscalar. For
 dconn, if it is symmetric use COLUMN, otherwise use ROW.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

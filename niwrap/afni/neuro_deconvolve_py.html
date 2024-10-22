@@ -87,7 +87,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">NEURO_DECONVOLVE_PY_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ea023431386088245b3e959a0753d9b2581057ac.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;7deab2368a36fa0ebe35904371306494cb49280c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;neuro_deconvolve.py&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -125,82 +125,81 @@
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    Generate a script to apply 3dTfitter to deconvolve an MRI signal (BOLD response</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    curve) into a neuro response curve.</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    </span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    </span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    URL:</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/neuro_deconvolve.py.html</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    </span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    Args:</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        input_file: Set the data to deconvolve.</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        prefix: Set the prefix for output filenames.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        script: Specify the name of the output script.</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        kernel: Set the response kernel.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        kernel_file: Set the filename to store the kernel in; should be at the\</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">            upsampled TR.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        mask_dset: Set a mask dataset for 3dTfitter to use.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        old_style: Make old-style script (pre-2015.02.24) for 1D case.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        tr: Set the scanner TR; needed for 1D formatted input files.</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        tr_nup: Upsample factor for TR; number of pieces each original TR is\</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            divided into.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        verbosity: Set the verbose level.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    Returns:</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        NamedTuple of outputs (described in `NeuroDeconvolvePyOutputs`).</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">NEURO_DECONVOLVE_PY_METADATA</span><span class="p">)</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;neuro_deconvolve.py&quot;</span><span class="p">)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">))</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="k">if</span> <span class="n">kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>            <span class="s2">&quot;-kernel&quot;</span><span class="p">,</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>            <span class="n">kernel</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="p">])</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">kernel_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;-kernel_file&quot;</span><span class="p">,</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="n">kernel_file</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">mask_dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;-mask_dset&quot;</span><span class="p">,</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_dset</span><span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">old_style</span><span class="p">:</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-old&quot;</span><span class="p">)</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">tr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;-tr&quot;</span><span class="p">,</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">tr_nup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="s2">&quot;-tr_nup&quot;</span><span class="p">,</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tr_nup</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="p">])</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">verbosity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="s2">&quot;-verb&quot;</span><span class="p">,</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbosity</span><span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="p">])</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">NeuroDeconvolvePyOutputs</span><span class="p">(</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">output_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">output_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">kernel_file_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">kernel_file</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">kernel_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="p">)</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    </span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    Args:</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        input_file: Set the data to deconvolve.</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        prefix: Set the prefix for output filenames.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        script: Specify the name of the output script.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        kernel: Set the response kernel.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        kernel_file: Set the filename to store the kernel in; should be at the\</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">            upsampled TR.</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        mask_dset: Set a mask dataset for 3dTfitter to use.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        old_style: Make old-style script (pre-2015.02.24) for 1D case.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        tr: Set the scanner TR; needed for 1D formatted input files.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        tr_nup: Upsample factor for TR; number of pieces each original TR is\</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            divided into.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        verbosity: Set the verbose level.</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    Returns:</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        NamedTuple of outputs (described in `NeuroDeconvolvePyOutputs`).</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">NEURO_DECONVOLVE_PY_METADATA</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;neuro_deconvolve.py&quot;</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">))</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="k">if</span> <span class="n">kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>            <span class="s2">&quot;-kernel&quot;</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>            <span class="n">kernel</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="p">])</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">kernel_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;-kernel_file&quot;</span><span class="p">,</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="n">kernel_file</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="p">])</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">mask_dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-mask_dset&quot;</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_dset</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">old_style</span><span class="p">:</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-old&quot;</span><span class="p">)</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">tr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;-tr&quot;</span><span class="p">,</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">tr_nup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-tr_nup&quot;</span><span class="p">,</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tr_nup</span><span class="p">)</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="p">])</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">verbosity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-verb&quot;</span><span class="p">,</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbosity</span><span class="p">)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="p">])</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">NeuroDeconvolvePyOutputs</span><span class="p">(</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">output_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">output_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">kernel_file_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">kernel_file</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">kernel_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="p">)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;NEURO_DECONVOLVE_PY_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="s2">&quot;NeuroDeconvolvePyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="s2">&quot;neuro_deconvolve_py&quot;</span><span class="p">,</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="p">]</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="s2">&quot;NEURO_DECONVOLVE_PY_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;NeuroDeconvolvePyOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="s2">&quot;neuro_deconvolve_py&quot;</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -209,7 +208,7 @@
                     <div class="attr variable">
             <span class="name">NEURO_DECONVOLVE_PY_METADATA</span>        =
 <input id="NEURO_DECONVOLVE_PY_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="NEURO_DECONVOLVE_PY_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ea023431386088245b3e959a0753d9b2581057ac.boutiques&#39;, name=&#39;neuro_deconvolve.py&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="NEURO_DECONVOLVE_PY_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;7deab2368a36fa0ebe35904371306494cb49280c.boutiques&#39;, name=&#39;neuro_deconvolve.py&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -343,85 +342,83 @@
 </span><span id="neuro_deconvolve_py-46"><a href="#neuro_deconvolve_py-46"><span class="linenos"> 46</span></a><span class="sd">    Generate a script to apply 3dTfitter to deconvolve an MRI signal (BOLD response</span>
 </span><span id="neuro_deconvolve_py-47"><a href="#neuro_deconvolve_py-47"><span class="linenos"> 47</span></a><span class="sd">    curve) into a neuro response curve.</span>
 </span><span id="neuro_deconvolve_py-48"><a href="#neuro_deconvolve_py-48"><span class="linenos"> 48</span></a><span class="sd">    </span>
-</span><span id="neuro_deconvolve_py-49"><a href="#neuro_deconvolve_py-49"><span class="linenos"> 49</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="neuro_deconvolve_py-49"><a href="#neuro_deconvolve_py-49"><span class="linenos"> 49</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="neuro_deconvolve_py-50"><a href="#neuro_deconvolve_py-50"><span class="linenos"> 50</span></a><span class="sd">    </span>
-</span><span id="neuro_deconvolve_py-51"><a href="#neuro_deconvolve_py-51"><span class="linenos"> 51</span></a><span class="sd">    URL:</span>
-</span><span id="neuro_deconvolve_py-52"><a href="#neuro_deconvolve_py-52"><span class="linenos"> 52</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/neuro_deconvolve.py.html</span>
-</span><span id="neuro_deconvolve_py-53"><a href="#neuro_deconvolve_py-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
-</span><span id="neuro_deconvolve_py-54"><a href="#neuro_deconvolve_py-54"><span class="linenos"> 54</span></a><span class="sd">    Args:</span>
-</span><span id="neuro_deconvolve_py-55"><a href="#neuro_deconvolve_py-55"><span class="linenos"> 55</span></a><span class="sd">        input_file: Set the data to deconvolve.</span>
-</span><span id="neuro_deconvolve_py-56"><a href="#neuro_deconvolve_py-56"><span class="linenos"> 56</span></a><span class="sd">        prefix: Set the prefix for output filenames.</span>
-</span><span id="neuro_deconvolve_py-57"><a href="#neuro_deconvolve_py-57"><span class="linenos"> 57</span></a><span class="sd">        script: Specify the name of the output script.</span>
-</span><span id="neuro_deconvolve_py-58"><a href="#neuro_deconvolve_py-58"><span class="linenos"> 58</span></a><span class="sd">        kernel: Set the response kernel.</span>
-</span><span id="neuro_deconvolve_py-59"><a href="#neuro_deconvolve_py-59"><span class="linenos"> 59</span></a><span class="sd">        kernel_file: Set the filename to store the kernel in; should be at the\</span>
-</span><span id="neuro_deconvolve_py-60"><a href="#neuro_deconvolve_py-60"><span class="linenos"> 60</span></a><span class="sd">            upsampled TR.</span>
-</span><span id="neuro_deconvolve_py-61"><a href="#neuro_deconvolve_py-61"><span class="linenos"> 61</span></a><span class="sd">        mask_dset: Set a mask dataset for 3dTfitter to use.</span>
-</span><span id="neuro_deconvolve_py-62"><a href="#neuro_deconvolve_py-62"><span class="linenos"> 62</span></a><span class="sd">        old_style: Make old-style script (pre-2015.02.24) for 1D case.</span>
-</span><span id="neuro_deconvolve_py-63"><a href="#neuro_deconvolve_py-63"><span class="linenos"> 63</span></a><span class="sd">        tr: Set the scanner TR; needed for 1D formatted input files.</span>
-</span><span id="neuro_deconvolve_py-64"><a href="#neuro_deconvolve_py-64"><span class="linenos"> 64</span></a><span class="sd">        tr_nup: Upsample factor for TR; number of pieces each original TR is\</span>
-</span><span id="neuro_deconvolve_py-65"><a href="#neuro_deconvolve_py-65"><span class="linenos"> 65</span></a><span class="sd">            divided into.</span>
-</span><span id="neuro_deconvolve_py-66"><a href="#neuro_deconvolve_py-66"><span class="linenos"> 66</span></a><span class="sd">        verbosity: Set the verbose level.</span>
-</span><span id="neuro_deconvolve_py-67"><a href="#neuro_deconvolve_py-67"><span class="linenos"> 67</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="neuro_deconvolve_py-68"><a href="#neuro_deconvolve_py-68"><span class="linenos"> 68</span></a><span class="sd">    Returns:</span>
-</span><span id="neuro_deconvolve_py-69"><a href="#neuro_deconvolve_py-69"><span class="linenos"> 69</span></a><span class="sd">        NamedTuple of outputs (described in `NeuroDeconvolvePyOutputs`).</span>
-</span><span id="neuro_deconvolve_py-70"><a href="#neuro_deconvolve_py-70"><span class="linenos"> 70</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="neuro_deconvolve_py-71"><a href="#neuro_deconvolve_py-71"><span class="linenos"> 71</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="neuro_deconvolve_py-72"><a href="#neuro_deconvolve_py-72"><span class="linenos"> 72</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">NEURO_DECONVOLVE_PY_METADATA</span><span class="p">)</span>
-</span><span id="neuro_deconvolve_py-73"><a href="#neuro_deconvolve_py-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="neuro_deconvolve_py-74"><a href="#neuro_deconvolve_py-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;neuro_deconvolve.py&quot;</span><span class="p">)</span>
-</span><span id="neuro_deconvolve_py-75"><a href="#neuro_deconvolve_py-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">))</span>
-</span><span id="neuro_deconvolve_py-76"><a href="#neuro_deconvolve_py-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
-</span><span id="neuro_deconvolve_py-77"><a href="#neuro_deconvolve_py-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
-</span><span id="neuro_deconvolve_py-78"><a href="#neuro_deconvolve_py-78"><span class="linenos"> 78</span></a>    <span class="k">if</span> <span class="n">kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="neuro_deconvolve_py-79"><a href="#neuro_deconvolve_py-79"><span class="linenos"> 79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="neuro_deconvolve_py-80"><a href="#neuro_deconvolve_py-80"><span class="linenos"> 80</span></a>            <span class="s2">&quot;-kernel&quot;</span><span class="p">,</span>
-</span><span id="neuro_deconvolve_py-81"><a href="#neuro_deconvolve_py-81"><span class="linenos"> 81</span></a>            <span class="n">kernel</span>
-</span><span id="neuro_deconvolve_py-82"><a href="#neuro_deconvolve_py-82"><span class="linenos"> 82</span></a>        <span class="p">])</span>
-</span><span id="neuro_deconvolve_py-83"><a href="#neuro_deconvolve_py-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">kernel_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="neuro_deconvolve_py-84"><a href="#neuro_deconvolve_py-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="neuro_deconvolve_py-85"><a href="#neuro_deconvolve_py-85"><span class="linenos"> 85</span></a>            <span class="s2">&quot;-kernel_file&quot;</span><span class="p">,</span>
-</span><span id="neuro_deconvolve_py-86"><a href="#neuro_deconvolve_py-86"><span class="linenos"> 86</span></a>            <span class="n">kernel_file</span>
-</span><span id="neuro_deconvolve_py-87"><a href="#neuro_deconvolve_py-87"><span class="linenos"> 87</span></a>        <span class="p">])</span>
-</span><span id="neuro_deconvolve_py-88"><a href="#neuro_deconvolve_py-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">mask_dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="neuro_deconvolve_py-89"><a href="#neuro_deconvolve_py-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="neuro_deconvolve_py-90"><a href="#neuro_deconvolve_py-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;-mask_dset&quot;</span><span class="p">,</span>
-</span><span id="neuro_deconvolve_py-91"><a href="#neuro_deconvolve_py-91"><span class="linenos"> 91</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_dset</span><span class="p">)</span>
-</span><span id="neuro_deconvolve_py-92"><a href="#neuro_deconvolve_py-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
-</span><span id="neuro_deconvolve_py-93"><a href="#neuro_deconvolve_py-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">old_style</span><span class="p">:</span>
-</span><span id="neuro_deconvolve_py-94"><a href="#neuro_deconvolve_py-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-old&quot;</span><span class="p">)</span>
-</span><span id="neuro_deconvolve_py-95"><a href="#neuro_deconvolve_py-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">tr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="neuro_deconvolve_py-96"><a href="#neuro_deconvolve_py-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="neuro_deconvolve_py-97"><a href="#neuro_deconvolve_py-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;-tr&quot;</span><span class="p">,</span>
-</span><span id="neuro_deconvolve_py-98"><a href="#neuro_deconvolve_py-98"><span class="linenos"> 98</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
-</span><span id="neuro_deconvolve_py-99"><a href="#neuro_deconvolve_py-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
-</span><span id="neuro_deconvolve_py-100"><a href="#neuro_deconvolve_py-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">tr_nup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="neuro_deconvolve_py-101"><a href="#neuro_deconvolve_py-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="neuro_deconvolve_py-102"><a href="#neuro_deconvolve_py-102"><span class="linenos">102</span></a>            <span class="s2">&quot;-tr_nup&quot;</span><span class="p">,</span>
-</span><span id="neuro_deconvolve_py-103"><a href="#neuro_deconvolve_py-103"><span class="linenos">103</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tr_nup</span><span class="p">)</span>
-</span><span id="neuro_deconvolve_py-104"><a href="#neuro_deconvolve_py-104"><span class="linenos">104</span></a>        <span class="p">])</span>
-</span><span id="neuro_deconvolve_py-105"><a href="#neuro_deconvolve_py-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">verbosity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="neuro_deconvolve_py-106"><a href="#neuro_deconvolve_py-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="neuro_deconvolve_py-107"><a href="#neuro_deconvolve_py-107"><span class="linenos">107</span></a>            <span class="s2">&quot;-verb&quot;</span><span class="p">,</span>
-</span><span id="neuro_deconvolve_py-108"><a href="#neuro_deconvolve_py-108"><span class="linenos">108</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbosity</span><span class="p">)</span>
-</span><span id="neuro_deconvolve_py-109"><a href="#neuro_deconvolve_py-109"><span class="linenos">109</span></a>        <span class="p">])</span>
-</span><span id="neuro_deconvolve_py-110"><a href="#neuro_deconvolve_py-110"><span class="linenos">110</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">NeuroDeconvolvePyOutputs</span><span class="p">(</span>
-</span><span id="neuro_deconvolve_py-111"><a href="#neuro_deconvolve_py-111"><span class="linenos">111</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="neuro_deconvolve_py-112"><a href="#neuro_deconvolve_py-112"><span class="linenos">112</span></a>        <span class="n">output_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
-</span><span id="neuro_deconvolve_py-113"><a href="#neuro_deconvolve_py-113"><span class="linenos">113</span></a>        <span class="n">output_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
-</span><span id="neuro_deconvolve_py-114"><a href="#neuro_deconvolve_py-114"><span class="linenos">114</span></a>        <span class="n">kernel_file_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">kernel_file</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">kernel_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="neuro_deconvolve_py-115"><a href="#neuro_deconvolve_py-115"><span class="linenos">115</span></a>    <span class="p">)</span>
-</span><span id="neuro_deconvolve_py-116"><a href="#neuro_deconvolve_py-116"><span class="linenos">116</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="neuro_deconvolve_py-117"><a href="#neuro_deconvolve_py-117"><span class="linenos">117</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="neuro_deconvolve_py-51"><a href="#neuro_deconvolve_py-51"><span class="linenos"> 51</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="neuro_deconvolve_py-52"><a href="#neuro_deconvolve_py-52"><span class="linenos"> 52</span></a><span class="sd">    </span>
+</span><span id="neuro_deconvolve_py-53"><a href="#neuro_deconvolve_py-53"><span class="linenos"> 53</span></a><span class="sd">    Args:</span>
+</span><span id="neuro_deconvolve_py-54"><a href="#neuro_deconvolve_py-54"><span class="linenos"> 54</span></a><span class="sd">        input_file: Set the data to deconvolve.</span>
+</span><span id="neuro_deconvolve_py-55"><a href="#neuro_deconvolve_py-55"><span class="linenos"> 55</span></a><span class="sd">        prefix: Set the prefix for output filenames.</span>
+</span><span id="neuro_deconvolve_py-56"><a href="#neuro_deconvolve_py-56"><span class="linenos"> 56</span></a><span class="sd">        script: Specify the name of the output script.</span>
+</span><span id="neuro_deconvolve_py-57"><a href="#neuro_deconvolve_py-57"><span class="linenos"> 57</span></a><span class="sd">        kernel: Set the response kernel.</span>
+</span><span id="neuro_deconvolve_py-58"><a href="#neuro_deconvolve_py-58"><span class="linenos"> 58</span></a><span class="sd">        kernel_file: Set the filename to store the kernel in; should be at the\</span>
+</span><span id="neuro_deconvolve_py-59"><a href="#neuro_deconvolve_py-59"><span class="linenos"> 59</span></a><span class="sd">            upsampled TR.</span>
+</span><span id="neuro_deconvolve_py-60"><a href="#neuro_deconvolve_py-60"><span class="linenos"> 60</span></a><span class="sd">        mask_dset: Set a mask dataset for 3dTfitter to use.</span>
+</span><span id="neuro_deconvolve_py-61"><a href="#neuro_deconvolve_py-61"><span class="linenos"> 61</span></a><span class="sd">        old_style: Make old-style script (pre-2015.02.24) for 1D case.</span>
+</span><span id="neuro_deconvolve_py-62"><a href="#neuro_deconvolve_py-62"><span class="linenos"> 62</span></a><span class="sd">        tr: Set the scanner TR; needed for 1D formatted input files.</span>
+</span><span id="neuro_deconvolve_py-63"><a href="#neuro_deconvolve_py-63"><span class="linenos"> 63</span></a><span class="sd">        tr_nup: Upsample factor for TR; number of pieces each original TR is\</span>
+</span><span id="neuro_deconvolve_py-64"><a href="#neuro_deconvolve_py-64"><span class="linenos"> 64</span></a><span class="sd">            divided into.</span>
+</span><span id="neuro_deconvolve_py-65"><a href="#neuro_deconvolve_py-65"><span class="linenos"> 65</span></a><span class="sd">        verbosity: Set the verbose level.</span>
+</span><span id="neuro_deconvolve_py-66"><a href="#neuro_deconvolve_py-66"><span class="linenos"> 66</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="neuro_deconvolve_py-67"><a href="#neuro_deconvolve_py-67"><span class="linenos"> 67</span></a><span class="sd">    Returns:</span>
+</span><span id="neuro_deconvolve_py-68"><a href="#neuro_deconvolve_py-68"><span class="linenos"> 68</span></a><span class="sd">        NamedTuple of outputs (described in `NeuroDeconvolvePyOutputs`).</span>
+</span><span id="neuro_deconvolve_py-69"><a href="#neuro_deconvolve_py-69"><span class="linenos"> 69</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="neuro_deconvolve_py-70"><a href="#neuro_deconvolve_py-70"><span class="linenos"> 70</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="neuro_deconvolve_py-71"><a href="#neuro_deconvolve_py-71"><span class="linenos"> 71</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">NEURO_DECONVOLVE_PY_METADATA</span><span class="p">)</span>
+</span><span id="neuro_deconvolve_py-72"><a href="#neuro_deconvolve_py-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="neuro_deconvolve_py-73"><a href="#neuro_deconvolve_py-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;neuro_deconvolve.py&quot;</span><span class="p">)</span>
+</span><span id="neuro_deconvolve_py-74"><a href="#neuro_deconvolve_py-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">))</span>
+</span><span id="neuro_deconvolve_py-75"><a href="#neuro_deconvolve_py-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+</span><span id="neuro_deconvolve_py-76"><a href="#neuro_deconvolve_py-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">script</span><span class="p">)</span>
+</span><span id="neuro_deconvolve_py-77"><a href="#neuro_deconvolve_py-77"><span class="linenos"> 77</span></a>    <span class="k">if</span> <span class="n">kernel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="neuro_deconvolve_py-78"><a href="#neuro_deconvolve_py-78"><span class="linenos"> 78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="neuro_deconvolve_py-79"><a href="#neuro_deconvolve_py-79"><span class="linenos"> 79</span></a>            <span class="s2">&quot;-kernel&quot;</span><span class="p">,</span>
+</span><span id="neuro_deconvolve_py-80"><a href="#neuro_deconvolve_py-80"><span class="linenos"> 80</span></a>            <span class="n">kernel</span>
+</span><span id="neuro_deconvolve_py-81"><a href="#neuro_deconvolve_py-81"><span class="linenos"> 81</span></a>        <span class="p">])</span>
+</span><span id="neuro_deconvolve_py-82"><a href="#neuro_deconvolve_py-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">kernel_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="neuro_deconvolve_py-83"><a href="#neuro_deconvolve_py-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="neuro_deconvolve_py-84"><a href="#neuro_deconvolve_py-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;-kernel_file&quot;</span><span class="p">,</span>
+</span><span id="neuro_deconvolve_py-85"><a href="#neuro_deconvolve_py-85"><span class="linenos"> 85</span></a>            <span class="n">kernel_file</span>
+</span><span id="neuro_deconvolve_py-86"><a href="#neuro_deconvolve_py-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
+</span><span id="neuro_deconvolve_py-87"><a href="#neuro_deconvolve_py-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">mask_dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="neuro_deconvolve_py-88"><a href="#neuro_deconvolve_py-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="neuro_deconvolve_py-89"><a href="#neuro_deconvolve_py-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;-mask_dset&quot;</span><span class="p">,</span>
+</span><span id="neuro_deconvolve_py-90"><a href="#neuro_deconvolve_py-90"><span class="linenos"> 90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_dset</span><span class="p">)</span>
+</span><span id="neuro_deconvolve_py-91"><a href="#neuro_deconvolve_py-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
+</span><span id="neuro_deconvolve_py-92"><a href="#neuro_deconvolve_py-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">old_style</span><span class="p">:</span>
+</span><span id="neuro_deconvolve_py-93"><a href="#neuro_deconvolve_py-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-old&quot;</span><span class="p">)</span>
+</span><span id="neuro_deconvolve_py-94"><a href="#neuro_deconvolve_py-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">tr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="neuro_deconvolve_py-95"><a href="#neuro_deconvolve_py-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="neuro_deconvolve_py-96"><a href="#neuro_deconvolve_py-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;-tr&quot;</span><span class="p">,</span>
+</span><span id="neuro_deconvolve_py-97"><a href="#neuro_deconvolve_py-97"><span class="linenos"> 97</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span>
+</span><span id="neuro_deconvolve_py-98"><a href="#neuro_deconvolve_py-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
+</span><span id="neuro_deconvolve_py-99"><a href="#neuro_deconvolve_py-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">tr_nup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="neuro_deconvolve_py-100"><a href="#neuro_deconvolve_py-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="neuro_deconvolve_py-101"><a href="#neuro_deconvolve_py-101"><span class="linenos">101</span></a>            <span class="s2">&quot;-tr_nup&quot;</span><span class="p">,</span>
+</span><span id="neuro_deconvolve_py-102"><a href="#neuro_deconvolve_py-102"><span class="linenos">102</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">tr_nup</span><span class="p">)</span>
+</span><span id="neuro_deconvolve_py-103"><a href="#neuro_deconvolve_py-103"><span class="linenos">103</span></a>        <span class="p">])</span>
+</span><span id="neuro_deconvolve_py-104"><a href="#neuro_deconvolve_py-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">verbosity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="neuro_deconvolve_py-105"><a href="#neuro_deconvolve_py-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="neuro_deconvolve_py-106"><a href="#neuro_deconvolve_py-106"><span class="linenos">106</span></a>            <span class="s2">&quot;-verb&quot;</span><span class="p">,</span>
+</span><span id="neuro_deconvolve_py-107"><a href="#neuro_deconvolve_py-107"><span class="linenos">107</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbosity</span><span class="p">)</span>
+</span><span id="neuro_deconvolve_py-108"><a href="#neuro_deconvolve_py-108"><span class="linenos">108</span></a>        <span class="p">])</span>
+</span><span id="neuro_deconvolve_py-109"><a href="#neuro_deconvolve_py-109"><span class="linenos">109</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">NeuroDeconvolvePyOutputs</span><span class="p">(</span>
+</span><span id="neuro_deconvolve_py-110"><a href="#neuro_deconvolve_py-110"><span class="linenos">110</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="neuro_deconvolve_py-111"><a href="#neuro_deconvolve_py-111"><span class="linenos">111</span></a>        <span class="n">output_head</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.HEAD&quot;</span><span class="p">),</span>
+</span><span id="neuro_deconvolve_py-112"><a href="#neuro_deconvolve_py-112"><span class="linenos">112</span></a>        <span class="n">output_brik</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+orig.BRIK&quot;</span><span class="p">),</span>
+</span><span id="neuro_deconvolve_py-113"><a href="#neuro_deconvolve_py-113"><span class="linenos">113</span></a>        <span class="n">kernel_file_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">kernel_file</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">kernel_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="neuro_deconvolve_py-114"><a href="#neuro_deconvolve_py-114"><span class="linenos">114</span></a>    <span class="p">)</span>
+</span><span id="neuro_deconvolve_py-115"><a href="#neuro_deconvolve_py-115"><span class="linenos">115</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="neuro_deconvolve_py-116"><a href="#neuro_deconvolve_py-116"><span class="linenos">116</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Generate a script to apply 3dTfitter to deconvolve an MRI signal (BOLD response
 curve) into a neuro response curve.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/neuro_deconvolve.py.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/neuro_deconvolve.py.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

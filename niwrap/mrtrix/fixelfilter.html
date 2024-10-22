@@ -156,7 +156,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FIXELFILTER_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;78842b51be89a3840bbb410c2b7545b0ffec7a31.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;de612300fec8260dbe9407acf8595be232354182.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fixelfilter&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -321,117 +321,116 @@
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    </span>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    .</span>
 </span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    </span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    </span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    URL:</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelfilter.html</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    </span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    Args:</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        matrix: provide a fixel-fixel connectivity matrix for filtering\</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">            operations that require it.</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        input_: the input: either a fixel data file, or a fixel directory (see\</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">            Description).</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        filter_: the filtering operation to perform; options are: connect,\</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">            smooth.</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        output: the output: either a fixel data file, or a fixel directory (see\</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">            Description).</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">        threshold_value: specify a threshold for the input fixel data file\</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">            values (default = 0.5).</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        threshold_connectivity: specify a fixel-fixel connectivity threshold\</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">            for connected-component analysis (default = 0.10000000000000001).</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        fwhm: the full-width half-maximum (FWHM) of the spatial component of\</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">            the smoothing filter (default = 10mm).</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">        minweight: apply a minimum threshold to smoothing weights (default =\</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            0.01).</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        mask: only perform smoothing within a specified binary fixel mask.</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    Returns:</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">        NamedTuple of outputs (described in `FixelfilterOutputs`).</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELFILTER_METADATA</span><span class="p">)</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelfilter&quot;</span><span class="p">)</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="s2">&quot;-matrix&quot;</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="p">])</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">threshold_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>            <span class="s2">&quot;-threshold_value&quot;</span><span class="p">,</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_value</span><span class="p">)</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="p">])</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="k">if</span> <span class="n">threshold_connectivity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>            <span class="s2">&quot;-threshold_connectivity&quot;</span><span class="p">,</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_connectivity</span><span class="p">)</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="p">])</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>            <span class="s2">&quot;-fwhm&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="p">])</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">minweight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>            <span class="s2">&quot;-minweight&quot;</span><span class="p">,</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">minweight</span><span class="p">)</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>        <span class="p">])</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="p">])</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>        <span class="p">])</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelfilterOutputs</span><span class="p">(</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="p">)</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    </span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    Args:</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        matrix: provide a fixel-fixel connectivity matrix for filtering\</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">            operations that require it.</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        input_: the input: either a fixel data file, or a fixel directory (see\</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            Description).</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        filter_: the filtering operation to perform; options are: connect,\</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">            smooth.</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        output: the output: either a fixel data file, or a fixel directory (see\</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">            Description).</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        threshold_value: specify a threshold for the input fixel data file\</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">            values (default = 0.5).</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        threshold_connectivity: specify a fixel-fixel connectivity threshold\</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">            for connected-component analysis (default = 0.10000000000000001).</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">        fwhm: the full-width half-maximum (FWHM) of the spatial component of\</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">            the smoothing filter (default = 10mm).</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">        minweight: apply a minimum threshold to smoothing weights (default =\</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">            0.01).</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">        mask: only perform smoothing within a specified binary fixel mask.</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    Returns:</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        NamedTuple of outputs (described in `FixelfilterOutputs`).</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELFILTER_METADATA</span><span class="p">)</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelfilter&quot;</span><span class="p">)</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="s2">&quot;-matrix&quot;</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="p">])</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">threshold_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>            <span class="s2">&quot;-threshold_value&quot;</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_value</span><span class="p">)</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>        <span class="p">])</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="k">if</span> <span class="n">threshold_connectivity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>            <span class="s2">&quot;-threshold_connectivity&quot;</span><span class="p">,</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_connectivity</span><span class="p">)</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>        <span class="p">])</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>            <span class="s2">&quot;-fwhm&quot;</span><span class="p">,</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>        <span class="p">])</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="k">if</span> <span class="n">minweight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>            <span class="s2">&quot;-minweight&quot;</span><span class="p">,</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">minweight</span><span class="p">)</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="p">])</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="p">])</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>        <span class="p">])</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelfilterOutputs</span><span class="p">(</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="p">)</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>
 </span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="s2">&quot;FIXELFILTER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;FixelfilterConfig&quot;</span><span class="p">,</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;FixelfilterOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;FixelfilterVariousFile&quot;</span><span class="p">,</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="s2">&quot;FixelfilterVariousFile_&quot;</span><span class="p">,</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="s2">&quot;FixelfilterVariousString&quot;</span><span class="p">,</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="s2">&quot;FixelfilterVariousString_&quot;</span><span class="p">,</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="s2">&quot;fixelfilter&quot;</span><span class="p">,</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a><span class="p">]</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="s2">&quot;FIXELFILTER_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="s2">&quot;FixelfilterConfig&quot;</span><span class="p">,</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="s2">&quot;FixelfilterOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="s2">&quot;FixelfilterVariousFile&quot;</span><span class="p">,</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="s2">&quot;FixelfilterVariousFile_&quot;</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="s2">&quot;FixelfilterVariousString&quot;</span><span class="p">,</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>    <span class="s2">&quot;FixelfilterVariousString_&quot;</span><span class="p">,</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="s2">&quot;fixelfilter&quot;</span><span class="p">,</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -440,7 +439,7 @@
                     <div class="attr variable">
             <span class="name">FIXELFILTER_METADATA</span>        =
 <input id="FIXELFILTER_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FIXELFILTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;78842b51be89a3840bbb410c2b7545b0ffec7a31.boutiques&#39;, name=&#39;fixelfilter&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FIXELFILTER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;de612300fec8260dbe9407acf8595be232354182.boutiques&#39;, name=&#39;fixelfilter&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -1114,105 +1113,104 @@
 </span><span id="fixelfilter-173"><a href="#fixelfilter-173"><span class="linenos">173</span></a><span class="sd">    </span>
 </span><span id="fixelfilter-174"><a href="#fixelfilter-174"><span class="linenos">174</span></a><span class="sd">    .</span>
 </span><span id="fixelfilter-175"><a href="#fixelfilter-175"><span class="linenos">175</span></a><span class="sd">    </span>
-</span><span id="fixelfilter-176"><a href="#fixelfilter-176"><span class="linenos">176</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="fixelfilter-176"><a href="#fixelfilter-176"><span class="linenos">176</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="fixelfilter-177"><a href="#fixelfilter-177"><span class="linenos">177</span></a><span class="sd">    </span>
-</span><span id="fixelfilter-178"><a href="#fixelfilter-178"><span class="linenos">178</span></a><span class="sd">    URL:</span>
-</span><span id="fixelfilter-179"><a href="#fixelfilter-179"><span class="linenos">179</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelfilter.html</span>
-</span><span id="fixelfilter-180"><a href="#fixelfilter-180"><span class="linenos">180</span></a><span class="sd">    </span>
-</span><span id="fixelfilter-181"><a href="#fixelfilter-181"><span class="linenos">181</span></a><span class="sd">    Args:</span>
-</span><span id="fixelfilter-182"><a href="#fixelfilter-182"><span class="linenos">182</span></a><span class="sd">        matrix: provide a fixel-fixel connectivity matrix for filtering\</span>
-</span><span id="fixelfilter-183"><a href="#fixelfilter-183"><span class="linenos">183</span></a><span class="sd">            operations that require it.</span>
-</span><span id="fixelfilter-184"><a href="#fixelfilter-184"><span class="linenos">184</span></a><span class="sd">        input_: the input: either a fixel data file, or a fixel directory (see\</span>
-</span><span id="fixelfilter-185"><a href="#fixelfilter-185"><span class="linenos">185</span></a><span class="sd">            Description).</span>
-</span><span id="fixelfilter-186"><a href="#fixelfilter-186"><span class="linenos">186</span></a><span class="sd">        filter_: the filtering operation to perform; options are: connect,\</span>
-</span><span id="fixelfilter-187"><a href="#fixelfilter-187"><span class="linenos">187</span></a><span class="sd">            smooth.</span>
-</span><span id="fixelfilter-188"><a href="#fixelfilter-188"><span class="linenos">188</span></a><span class="sd">        output: the output: either a fixel data file, or a fixel directory (see\</span>
-</span><span id="fixelfilter-189"><a href="#fixelfilter-189"><span class="linenos">189</span></a><span class="sd">            Description).</span>
-</span><span id="fixelfilter-190"><a href="#fixelfilter-190"><span class="linenos">190</span></a><span class="sd">        threshold_value: specify a threshold for the input fixel data file\</span>
-</span><span id="fixelfilter-191"><a href="#fixelfilter-191"><span class="linenos">191</span></a><span class="sd">            values (default = 0.5).</span>
-</span><span id="fixelfilter-192"><a href="#fixelfilter-192"><span class="linenos">192</span></a><span class="sd">        threshold_connectivity: specify a fixel-fixel connectivity threshold\</span>
-</span><span id="fixelfilter-193"><a href="#fixelfilter-193"><span class="linenos">193</span></a><span class="sd">            for connected-component analysis (default = 0.10000000000000001).</span>
-</span><span id="fixelfilter-194"><a href="#fixelfilter-194"><span class="linenos">194</span></a><span class="sd">        fwhm: the full-width half-maximum (FWHM) of the spatial component of\</span>
-</span><span id="fixelfilter-195"><a href="#fixelfilter-195"><span class="linenos">195</span></a><span class="sd">            the smoothing filter (default = 10mm).</span>
-</span><span id="fixelfilter-196"><a href="#fixelfilter-196"><span class="linenos">196</span></a><span class="sd">        minweight: apply a minimum threshold to smoothing weights (default =\</span>
-</span><span id="fixelfilter-197"><a href="#fixelfilter-197"><span class="linenos">197</span></a><span class="sd">            0.01).</span>
-</span><span id="fixelfilter-198"><a href="#fixelfilter-198"><span class="linenos">198</span></a><span class="sd">        mask: only perform smoothing within a specified binary fixel mask.</span>
-</span><span id="fixelfilter-199"><a href="#fixelfilter-199"><span class="linenos">199</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="fixelfilter-200"><a href="#fixelfilter-200"><span class="linenos">200</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="fixelfilter-201"><a href="#fixelfilter-201"><span class="linenos">201</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="fixelfilter-202"><a href="#fixelfilter-202"><span class="linenos">202</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="fixelfilter-203"><a href="#fixelfilter-203"><span class="linenos">203</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="fixelfilter-204"><a href="#fixelfilter-204"><span class="linenos">204</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="fixelfilter-205"><a href="#fixelfilter-205"><span class="linenos">205</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="fixelfilter-206"><a href="#fixelfilter-206"><span class="linenos">206</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="fixelfilter-207"><a href="#fixelfilter-207"><span class="linenos">207</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="fixelfilter-208"><a href="#fixelfilter-208"><span class="linenos">208</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="fixelfilter-209"><a href="#fixelfilter-209"><span class="linenos">209</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="fixelfilter-210"><a href="#fixelfilter-210"><span class="linenos">210</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="fixelfilter-211"><a href="#fixelfilter-211"><span class="linenos">211</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fixelfilter-212"><a href="#fixelfilter-212"><span class="linenos">212</span></a><span class="sd">    Returns:</span>
-</span><span id="fixelfilter-213"><a href="#fixelfilter-213"><span class="linenos">213</span></a><span class="sd">        NamedTuple of outputs (described in `FixelfilterOutputs`).</span>
-</span><span id="fixelfilter-214"><a href="#fixelfilter-214"><span class="linenos">214</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fixelfilter-215"><a href="#fixelfilter-215"><span class="linenos">215</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fixelfilter-216"><a href="#fixelfilter-216"><span class="linenos">216</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELFILTER_METADATA</span><span class="p">)</span>
-</span><span id="fixelfilter-217"><a href="#fixelfilter-217"><span class="linenos">217</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fixelfilter-218"><a href="#fixelfilter-218"><span class="linenos">218</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelfilter&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-219"><a href="#fixelfilter-219"><span class="linenos">219</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-220"><a href="#fixelfilter-220"><span class="linenos">220</span></a>        <span class="s2">&quot;-matrix&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-221"><a href="#fixelfilter-221"><span class="linenos">221</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-</span><span id="fixelfilter-222"><a href="#fixelfilter-222"><span class="linenos">222</span></a>    <span class="p">])</span>
-</span><span id="fixelfilter-223"><a href="#fixelfilter-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">threshold_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-224"><a href="#fixelfilter-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-225"><a href="#fixelfilter-225"><span class="linenos">225</span></a>            <span class="s2">&quot;-threshold_value&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-226"><a href="#fixelfilter-226"><span class="linenos">226</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_value</span><span class="p">)</span>
-</span><span id="fixelfilter-227"><a href="#fixelfilter-227"><span class="linenos">227</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-228"><a href="#fixelfilter-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">threshold_connectivity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-229"><a href="#fixelfilter-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-230"><a href="#fixelfilter-230"><span class="linenos">230</span></a>            <span class="s2">&quot;-threshold_connectivity&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-231"><a href="#fixelfilter-231"><span class="linenos">231</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_connectivity</span><span class="p">)</span>
-</span><span id="fixelfilter-232"><a href="#fixelfilter-232"><span class="linenos">232</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-233"><a href="#fixelfilter-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-234"><a href="#fixelfilter-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-235"><a href="#fixelfilter-235"><span class="linenos">235</span></a>            <span class="s2">&quot;-fwhm&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-236"><a href="#fixelfilter-236"><span class="linenos">236</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
-</span><span id="fixelfilter-237"><a href="#fixelfilter-237"><span class="linenos">237</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-238"><a href="#fixelfilter-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">minweight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-239"><a href="#fixelfilter-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-240"><a href="#fixelfilter-240"><span class="linenos">240</span></a>            <span class="s2">&quot;-minweight&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-241"><a href="#fixelfilter-241"><span class="linenos">241</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">minweight</span><span class="p">)</span>
-</span><span id="fixelfilter-242"><a href="#fixelfilter-242"><span class="linenos">242</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-243"><a href="#fixelfilter-243"><span class="linenos">243</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-244"><a href="#fixelfilter-244"><span class="linenos">244</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-245"><a href="#fixelfilter-245"><span class="linenos">245</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-246"><a href="#fixelfilter-246"><span class="linenos">246</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="fixelfilter-247"><a href="#fixelfilter-247"><span class="linenos">247</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-248"><a href="#fixelfilter-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="fixelfilter-249"><a href="#fixelfilter-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-250"><a href="#fixelfilter-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="fixelfilter-251"><a href="#fixelfilter-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-252"><a href="#fixelfilter-252"><span class="linenos">252</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="fixelfilter-253"><a href="#fixelfilter-253"><span class="linenos">253</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-254"><a href="#fixelfilter-254"><span class="linenos">254</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="fixelfilter-255"><a href="#fixelfilter-255"><span class="linenos">255</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-256"><a href="#fixelfilter-256"><span class="linenos">256</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-257"><a href="#fixelfilter-257"><span class="linenos">257</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fixelfilter-258"><a href="#fixelfilter-258"><span class="linenos">258</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="fixelfilter-259"><a href="#fixelfilter-259"><span class="linenos">259</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="fixelfilter-260"><a href="#fixelfilter-260"><span class="linenos">260</span></a>        <span class="p">])</span>
-</span><span id="fixelfilter-261"><a href="#fixelfilter-261"><span class="linenos">261</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fixelfilter-262"><a href="#fixelfilter-262"><span class="linenos">262</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="fixelfilter-263"><a href="#fixelfilter-263"><span class="linenos">263</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="fixelfilter-264"><a href="#fixelfilter-264"><span class="linenos">264</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-265"><a href="#fixelfilter-265"><span class="linenos">265</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="fixelfilter-266"><a href="#fixelfilter-266"><span class="linenos">266</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="fixelfilter-267"><a href="#fixelfilter-267"><span class="linenos">267</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="fixelfilter-268"><a href="#fixelfilter-268"><span class="linenos">268</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
-</span><span id="fixelfilter-269"><a href="#fixelfilter-269"><span class="linenos">269</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="fixelfilter-270"><a href="#fixelfilter-270"><span class="linenos">270</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelfilterOutputs</span><span class="p">(</span>
-</span><span id="fixelfilter-271"><a href="#fixelfilter-271"><span class="linenos">271</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fixelfilter-272"><a href="#fixelfilter-272"><span class="linenos">272</span></a>    <span class="p">)</span>
-</span><span id="fixelfilter-273"><a href="#fixelfilter-273"><span class="linenos">273</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fixelfilter-274"><a href="#fixelfilter-274"><span class="linenos">274</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fixelfilter-178"><a href="#fixelfilter-178"><span class="linenos">178</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="fixelfilter-179"><a href="#fixelfilter-179"><span class="linenos">179</span></a><span class="sd">    </span>
+</span><span id="fixelfilter-180"><a href="#fixelfilter-180"><span class="linenos">180</span></a><span class="sd">    Args:</span>
+</span><span id="fixelfilter-181"><a href="#fixelfilter-181"><span class="linenos">181</span></a><span class="sd">        matrix: provide a fixel-fixel connectivity matrix for filtering\</span>
+</span><span id="fixelfilter-182"><a href="#fixelfilter-182"><span class="linenos">182</span></a><span class="sd">            operations that require it.</span>
+</span><span id="fixelfilter-183"><a href="#fixelfilter-183"><span class="linenos">183</span></a><span class="sd">        input_: the input: either a fixel data file, or a fixel directory (see\</span>
+</span><span id="fixelfilter-184"><a href="#fixelfilter-184"><span class="linenos">184</span></a><span class="sd">            Description).</span>
+</span><span id="fixelfilter-185"><a href="#fixelfilter-185"><span class="linenos">185</span></a><span class="sd">        filter_: the filtering operation to perform; options are: connect,\</span>
+</span><span id="fixelfilter-186"><a href="#fixelfilter-186"><span class="linenos">186</span></a><span class="sd">            smooth.</span>
+</span><span id="fixelfilter-187"><a href="#fixelfilter-187"><span class="linenos">187</span></a><span class="sd">        output: the output: either a fixel data file, or a fixel directory (see\</span>
+</span><span id="fixelfilter-188"><a href="#fixelfilter-188"><span class="linenos">188</span></a><span class="sd">            Description).</span>
+</span><span id="fixelfilter-189"><a href="#fixelfilter-189"><span class="linenos">189</span></a><span class="sd">        threshold_value: specify a threshold for the input fixel data file\</span>
+</span><span id="fixelfilter-190"><a href="#fixelfilter-190"><span class="linenos">190</span></a><span class="sd">            values (default = 0.5).</span>
+</span><span id="fixelfilter-191"><a href="#fixelfilter-191"><span class="linenos">191</span></a><span class="sd">        threshold_connectivity: specify a fixel-fixel connectivity threshold\</span>
+</span><span id="fixelfilter-192"><a href="#fixelfilter-192"><span class="linenos">192</span></a><span class="sd">            for connected-component analysis (default = 0.10000000000000001).</span>
+</span><span id="fixelfilter-193"><a href="#fixelfilter-193"><span class="linenos">193</span></a><span class="sd">        fwhm: the full-width half-maximum (FWHM) of the spatial component of\</span>
+</span><span id="fixelfilter-194"><a href="#fixelfilter-194"><span class="linenos">194</span></a><span class="sd">            the smoothing filter (default = 10mm).</span>
+</span><span id="fixelfilter-195"><a href="#fixelfilter-195"><span class="linenos">195</span></a><span class="sd">        minweight: apply a minimum threshold to smoothing weights (default =\</span>
+</span><span id="fixelfilter-196"><a href="#fixelfilter-196"><span class="linenos">196</span></a><span class="sd">            0.01).</span>
+</span><span id="fixelfilter-197"><a href="#fixelfilter-197"><span class="linenos">197</span></a><span class="sd">        mask: only perform smoothing within a specified binary fixel mask.</span>
+</span><span id="fixelfilter-198"><a href="#fixelfilter-198"><span class="linenos">198</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="fixelfilter-199"><a href="#fixelfilter-199"><span class="linenos">199</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="fixelfilter-200"><a href="#fixelfilter-200"><span class="linenos">200</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="fixelfilter-201"><a href="#fixelfilter-201"><span class="linenos">201</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="fixelfilter-202"><a href="#fixelfilter-202"><span class="linenos">202</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="fixelfilter-203"><a href="#fixelfilter-203"><span class="linenos">203</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="fixelfilter-204"><a href="#fixelfilter-204"><span class="linenos">204</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="fixelfilter-205"><a href="#fixelfilter-205"><span class="linenos">205</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="fixelfilter-206"><a href="#fixelfilter-206"><span class="linenos">206</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="fixelfilter-207"><a href="#fixelfilter-207"><span class="linenos">207</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="fixelfilter-208"><a href="#fixelfilter-208"><span class="linenos">208</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="fixelfilter-209"><a href="#fixelfilter-209"><span class="linenos">209</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="fixelfilter-210"><a href="#fixelfilter-210"><span class="linenos">210</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fixelfilter-211"><a href="#fixelfilter-211"><span class="linenos">211</span></a><span class="sd">    Returns:</span>
+</span><span id="fixelfilter-212"><a href="#fixelfilter-212"><span class="linenos">212</span></a><span class="sd">        NamedTuple of outputs (described in `FixelfilterOutputs`).</span>
+</span><span id="fixelfilter-213"><a href="#fixelfilter-213"><span class="linenos">213</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fixelfilter-214"><a href="#fixelfilter-214"><span class="linenos">214</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fixelfilter-215"><a href="#fixelfilter-215"><span class="linenos">215</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FIXELFILTER_METADATA</span><span class="p">)</span>
+</span><span id="fixelfilter-216"><a href="#fixelfilter-216"><span class="linenos">216</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fixelfilter-217"><a href="#fixelfilter-217"><span class="linenos">217</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fixelfilter&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-218"><a href="#fixelfilter-218"><span class="linenos">218</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-219"><a href="#fixelfilter-219"><span class="linenos">219</span></a>        <span class="s2">&quot;-matrix&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-220"><a href="#fixelfilter-220"><span class="linenos">220</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</span><span id="fixelfilter-221"><a href="#fixelfilter-221"><span class="linenos">221</span></a>    <span class="p">])</span>
+</span><span id="fixelfilter-222"><a href="#fixelfilter-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">threshold_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-223"><a href="#fixelfilter-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-224"><a href="#fixelfilter-224"><span class="linenos">224</span></a>            <span class="s2">&quot;-threshold_value&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-225"><a href="#fixelfilter-225"><span class="linenos">225</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_value</span><span class="p">)</span>
+</span><span id="fixelfilter-226"><a href="#fixelfilter-226"><span class="linenos">226</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-227"><a href="#fixelfilter-227"><span class="linenos">227</span></a>    <span class="k">if</span> <span class="n">threshold_connectivity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-228"><a href="#fixelfilter-228"><span class="linenos">228</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-229"><a href="#fixelfilter-229"><span class="linenos">229</span></a>            <span class="s2">&quot;-threshold_connectivity&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-230"><a href="#fixelfilter-230"><span class="linenos">230</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">threshold_connectivity</span><span class="p">)</span>
+</span><span id="fixelfilter-231"><a href="#fixelfilter-231"><span class="linenos">231</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-232"><a href="#fixelfilter-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">fwhm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-233"><a href="#fixelfilter-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-234"><a href="#fixelfilter-234"><span class="linenos">234</span></a>            <span class="s2">&quot;-fwhm&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-235"><a href="#fixelfilter-235"><span class="linenos">235</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fwhm</span><span class="p">)</span>
+</span><span id="fixelfilter-236"><a href="#fixelfilter-236"><span class="linenos">236</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-237"><a href="#fixelfilter-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">minweight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-238"><a href="#fixelfilter-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-239"><a href="#fixelfilter-239"><span class="linenos">239</span></a>            <span class="s2">&quot;-minweight&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-240"><a href="#fixelfilter-240"><span class="linenos">240</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">minweight</span><span class="p">)</span>
+</span><span id="fixelfilter-241"><a href="#fixelfilter-241"><span class="linenos">241</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-242"><a href="#fixelfilter-242"><span class="linenos">242</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-243"><a href="#fixelfilter-243"><span class="linenos">243</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-244"><a href="#fixelfilter-244"><span class="linenos">244</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-245"><a href="#fixelfilter-245"><span class="linenos">245</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="fixelfilter-246"><a href="#fixelfilter-246"><span class="linenos">246</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-247"><a href="#fixelfilter-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="fixelfilter-248"><a href="#fixelfilter-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-249"><a href="#fixelfilter-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="fixelfilter-250"><a href="#fixelfilter-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-251"><a href="#fixelfilter-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="fixelfilter-252"><a href="#fixelfilter-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-253"><a href="#fixelfilter-253"><span class="linenos">253</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="fixelfilter-254"><a href="#fixelfilter-254"><span class="linenos">254</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-255"><a href="#fixelfilter-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-256"><a href="#fixelfilter-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fixelfilter-257"><a href="#fixelfilter-257"><span class="linenos">257</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="fixelfilter-258"><a href="#fixelfilter-258"><span class="linenos">258</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="fixelfilter-259"><a href="#fixelfilter-259"><span class="linenos">259</span></a>        <span class="p">])</span>
+</span><span id="fixelfilter-260"><a href="#fixelfilter-260"><span class="linenos">260</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fixelfilter-261"><a href="#fixelfilter-261"><span class="linenos">261</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="fixelfilter-262"><a href="#fixelfilter-262"><span class="linenos">262</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="fixelfilter-263"><a href="#fixelfilter-263"><span class="linenos">263</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-264"><a href="#fixelfilter-264"><span class="linenos">264</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="fixelfilter-265"><a href="#fixelfilter-265"><span class="linenos">265</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="fixelfilter-266"><a href="#fixelfilter-266"><span class="linenos">266</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="fixelfilter-267"><a href="#fixelfilter-267"><span class="linenos">267</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
+</span><span id="fixelfilter-268"><a href="#fixelfilter-268"><span class="linenos">268</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="fixelfilter-269"><a href="#fixelfilter-269"><span class="linenos">269</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FixelfilterOutputs</span><span class="p">(</span>
+</span><span id="fixelfilter-270"><a href="#fixelfilter-270"><span class="linenos">270</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fixelfilter-271"><a href="#fixelfilter-271"><span class="linenos">271</span></a>    <span class="p">)</span>
+</span><span id="fixelfilter-272"><a href="#fixelfilter-272"><span class="linenos">272</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fixelfilter-273"><a href="#fixelfilter-273"><span class="linenos">273</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1228,10 +1226,9 @@ specified filter operation to all fixel data files within the directory.</p>
 
 <p>.</p>
 
-<p>Author: Robert E. Smith (robert.smith@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelfilter.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelfilter.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

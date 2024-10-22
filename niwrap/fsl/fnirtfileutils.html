@@ -87,7 +87,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FNIRTFILEUTILS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;131118713d967308bf86031ae825e470b7a7a8a5.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;44b9c01f83a5825080519d917786cf4ae31dd12c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fnirtfileutils&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
@@ -126,92 +126,94 @@
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    FNIRT file utilities for FSL - Converts FNIRT warp field coefficients to other</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    formats.</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    </span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    Author: University of Oxford (Jesper Andersson)</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    </span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    Args:</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        input_coefs: Filename of input coefficient volume to be converted.</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        ref_volume: Filename for reference volume.</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        out_field: Filename for output field/coef volume - uses relative warp\</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">            convention.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        output_format: Output format [field, spline], default=field.</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        warp_res: Warp resolution (mm), only relevant when --outformat=spline.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        knot_space: Knot-spacing (voxels), only relevant when\</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">            --outformat=spline.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        jacobian_output: Filename for output jacobian determinant map volume.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        jacobian_matrix_output: Filename for output full jacobian matrix 4D-map\</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">            volume.</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        with_aff: If set, the affine transform is included in the\</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            field/jacobian.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        verbose_flag: Switch on diagnostic messages.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        help_flag: Display this help message.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    Returns:</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        NamedTuple of outputs (described in `FnirtfileutilsOutputs`).</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FNIRTFILEUTILS_METADATA</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fnirtfileutils&quot;</span><span class="p">)</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="s2">&quot;--in&quot;</span><span class="p">,</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_coefs</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="p">])</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>            <span class="s2">&quot;--ref&quot;</span><span class="p">,</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ref_volume</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="p">])</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">out_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="n">out_field</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="p">])</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">output_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;--outformat&quot;</span><span class="p">,</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="n">output_format</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">warp_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;--warpres&quot;</span><span class="p">,</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">warp_res</span><span class="p">)</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">knot_space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="s2">&quot;--knotspace&quot;</span><span class="p">,</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">knot_space</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="p">])</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">jacobian_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="s2">&quot;--jac&quot;</span><span class="p">,</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="n">jacobian_output</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="p">])</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">jacobian_matrix_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="s2">&quot;--matjac&quot;</span><span class="p">,</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="n">jacobian_matrix_output</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="p">])</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">with_aff</span><span class="p">:</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--withaff&quot;</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--verbose&quot;</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FnirtfileutilsOutputs</span><span class="p">(</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">output_field_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_field</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">jacobian_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">jacobian_matrix_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="p">)</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="s2">&quot;FNIRTFILEUTILS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="s2">&quot;FnirtfileutilsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="s2">&quot;fnirtfileutils&quot;</span><span class="p">,</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="p">]</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    </span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    Args:</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        input_coefs: Filename of input coefficient volume to be converted.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        ref_volume: Filename for reference volume.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        out_field: Filename for output field/coef volume - uses relative warp\</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">            convention.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        output_format: Output format [field, spline], default=field.</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        warp_res: Warp resolution (mm), only relevant when --outformat=spline.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        knot_space: Knot-spacing (voxels), only relevant when\</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            --outformat=spline.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        jacobian_output: Filename for output jacobian determinant map volume.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        jacobian_matrix_output: Filename for output full jacobian matrix 4D-map\</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            volume.</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        with_aff: If set, the affine transform is included in the\</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            field/jacobian.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        verbose_flag: Switch on diagnostic messages.</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        help_flag: Display this help message.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    Returns:</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        NamedTuple of outputs (described in `FnirtfileutilsOutputs`).</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FNIRTFILEUTILS_METADATA</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fnirtfileutils&quot;</span><span class="p">)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="s2">&quot;--in&quot;</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_coefs</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="p">])</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;--ref&quot;</span><span class="p">,</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ref_volume</span><span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="p">])</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">out_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">out_field</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">output_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;--outformat&quot;</span><span class="p">,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="n">output_format</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">warp_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;--warpres&quot;</span><span class="p">,</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">warp_res</span><span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="p">])</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">knot_space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="s2">&quot;--knotspace&quot;</span><span class="p">,</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">knot_space</span><span class="p">)</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="p">])</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">jacobian_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="s2">&quot;--jac&quot;</span><span class="p">,</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="n">jacobian_output</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="p">])</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">jacobian_matrix_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="s2">&quot;--matjac&quot;</span><span class="p">,</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="n">jacobian_matrix_output</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="p">])</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">with_aff</span><span class="p">:</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--withaff&quot;</span><span class="p">)</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--verbose&quot;</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FnirtfileutilsOutputs</span><span class="p">(</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">output_field_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_field</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">jacobian_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">jacobian_matrix_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="p">)</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="s2">&quot;FNIRTFILEUTILS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="s2">&quot;FnirtfileutilsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="s2">&quot;fnirtfileutils&quot;</span><span class="p">,</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -220,7 +222,7 @@
                     <div class="attr variable">
             <span class="name">FNIRTFILEUTILS_METADATA</span>        =
 <input id="FNIRTFILEUTILS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FNIRTFILEUTILS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;131118713d967308bf86031ae825e470b7a7a8a5.boutiques&#39;, name=&#39;fnirtfileutils&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FNIRTFILEUTILS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;44b9c01f83a5825080519d917786cf4ae31dd12c.boutiques&#39;, name=&#39;fnirtfileutils&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -355,92 +357,96 @@
 </span><span id="fnirtfileutils-47"><a href="#fnirtfileutils-47"><span class="linenos"> 47</span></a><span class="sd">    FNIRT file utilities for FSL - Converts FNIRT warp field coefficients to other</span>
 </span><span id="fnirtfileutils-48"><a href="#fnirtfileutils-48"><span class="linenos"> 48</span></a><span class="sd">    formats.</span>
 </span><span id="fnirtfileutils-49"><a href="#fnirtfileutils-49"><span class="linenos"> 49</span></a><span class="sd">    </span>
-</span><span id="fnirtfileutils-50"><a href="#fnirtfileutils-50"><span class="linenos"> 50</span></a><span class="sd">    Author: University of Oxford (Jesper Andersson)</span>
+</span><span id="fnirtfileutils-50"><a href="#fnirtfileutils-50"><span class="linenos"> 50</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="fnirtfileutils-51"><a href="#fnirtfileutils-51"><span class="linenos"> 51</span></a><span class="sd">    </span>
-</span><span id="fnirtfileutils-52"><a href="#fnirtfileutils-52"><span class="linenos"> 52</span></a><span class="sd">    Args:</span>
-</span><span id="fnirtfileutils-53"><a href="#fnirtfileutils-53"><span class="linenos"> 53</span></a><span class="sd">        input_coefs: Filename of input coefficient volume to be converted.</span>
-</span><span id="fnirtfileutils-54"><a href="#fnirtfileutils-54"><span class="linenos"> 54</span></a><span class="sd">        ref_volume: Filename for reference volume.</span>
-</span><span id="fnirtfileutils-55"><a href="#fnirtfileutils-55"><span class="linenos"> 55</span></a><span class="sd">        out_field: Filename for output field/coef volume - uses relative warp\</span>
-</span><span id="fnirtfileutils-56"><a href="#fnirtfileutils-56"><span class="linenos"> 56</span></a><span class="sd">            convention.</span>
-</span><span id="fnirtfileutils-57"><a href="#fnirtfileutils-57"><span class="linenos"> 57</span></a><span class="sd">        output_format: Output format [field, spline], default=field.</span>
-</span><span id="fnirtfileutils-58"><a href="#fnirtfileutils-58"><span class="linenos"> 58</span></a><span class="sd">        warp_res: Warp resolution (mm), only relevant when --outformat=spline.</span>
-</span><span id="fnirtfileutils-59"><a href="#fnirtfileutils-59"><span class="linenos"> 59</span></a><span class="sd">        knot_space: Knot-spacing (voxels), only relevant when\</span>
-</span><span id="fnirtfileutils-60"><a href="#fnirtfileutils-60"><span class="linenos"> 60</span></a><span class="sd">            --outformat=spline.</span>
-</span><span id="fnirtfileutils-61"><a href="#fnirtfileutils-61"><span class="linenos"> 61</span></a><span class="sd">        jacobian_output: Filename for output jacobian determinant map volume.</span>
-</span><span id="fnirtfileutils-62"><a href="#fnirtfileutils-62"><span class="linenos"> 62</span></a><span class="sd">        jacobian_matrix_output: Filename for output full jacobian matrix 4D-map\</span>
-</span><span id="fnirtfileutils-63"><a href="#fnirtfileutils-63"><span class="linenos"> 63</span></a><span class="sd">            volume.</span>
-</span><span id="fnirtfileutils-64"><a href="#fnirtfileutils-64"><span class="linenos"> 64</span></a><span class="sd">        with_aff: If set, the affine transform is included in the\</span>
-</span><span id="fnirtfileutils-65"><a href="#fnirtfileutils-65"><span class="linenos"> 65</span></a><span class="sd">            field/jacobian.</span>
-</span><span id="fnirtfileutils-66"><a href="#fnirtfileutils-66"><span class="linenos"> 66</span></a><span class="sd">        verbose_flag: Switch on diagnostic messages.</span>
-</span><span id="fnirtfileutils-67"><a href="#fnirtfileutils-67"><span class="linenos"> 67</span></a><span class="sd">        help_flag: Display this help message.</span>
-</span><span id="fnirtfileutils-68"><a href="#fnirtfileutils-68"><span class="linenos"> 68</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fnirtfileutils-69"><a href="#fnirtfileutils-69"><span class="linenos"> 69</span></a><span class="sd">    Returns:</span>
-</span><span id="fnirtfileutils-70"><a href="#fnirtfileutils-70"><span class="linenos"> 70</span></a><span class="sd">        NamedTuple of outputs (described in `FnirtfileutilsOutputs`).</span>
-</span><span id="fnirtfileutils-71"><a href="#fnirtfileutils-71"><span class="linenos"> 71</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fnirtfileutils-72"><a href="#fnirtfileutils-72"><span class="linenos"> 72</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fnirtfileutils-73"><a href="#fnirtfileutils-73"><span class="linenos"> 73</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FNIRTFILEUTILS_METADATA</span><span class="p">)</span>
-</span><span id="fnirtfileutils-74"><a href="#fnirtfileutils-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fnirtfileutils-75"><a href="#fnirtfileutils-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fnirtfileutils&quot;</span><span class="p">)</span>
-</span><span id="fnirtfileutils-76"><a href="#fnirtfileutils-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fnirtfileutils-77"><a href="#fnirtfileutils-77"><span class="linenos"> 77</span></a>        <span class="s2">&quot;--in&quot;</span><span class="p">,</span>
-</span><span id="fnirtfileutils-78"><a href="#fnirtfileutils-78"><span class="linenos"> 78</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_coefs</span><span class="p">)</span>
-</span><span id="fnirtfileutils-79"><a href="#fnirtfileutils-79"><span class="linenos"> 79</span></a>    <span class="p">])</span>
-</span><span id="fnirtfileutils-80"><a href="#fnirtfileutils-80"><span class="linenos"> 80</span></a>    <span class="k">if</span> <span class="n">ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fnirtfileutils-81"><a href="#fnirtfileutils-81"><span class="linenos"> 81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fnirtfileutils-82"><a href="#fnirtfileutils-82"><span class="linenos"> 82</span></a>            <span class="s2">&quot;--ref&quot;</span><span class="p">,</span>
-</span><span id="fnirtfileutils-83"><a href="#fnirtfileutils-83"><span class="linenos"> 83</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ref_volume</span><span class="p">)</span>
-</span><span id="fnirtfileutils-84"><a href="#fnirtfileutils-84"><span class="linenos"> 84</span></a>        <span class="p">])</span>
-</span><span id="fnirtfileutils-85"><a href="#fnirtfileutils-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">out_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fnirtfileutils-86"><a href="#fnirtfileutils-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fnirtfileutils-87"><a href="#fnirtfileutils-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
-</span><span id="fnirtfileutils-88"><a href="#fnirtfileutils-88"><span class="linenos"> 88</span></a>            <span class="n">out_field</span>
-</span><span id="fnirtfileutils-89"><a href="#fnirtfileutils-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
-</span><span id="fnirtfileutils-90"><a href="#fnirtfileutils-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">output_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fnirtfileutils-91"><a href="#fnirtfileutils-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fnirtfileutils-92"><a href="#fnirtfileutils-92"><span class="linenos"> 92</span></a>            <span class="s2">&quot;--outformat&quot;</span><span class="p">,</span>
-</span><span id="fnirtfileutils-93"><a href="#fnirtfileutils-93"><span class="linenos"> 93</span></a>            <span class="n">output_format</span>
-</span><span id="fnirtfileutils-94"><a href="#fnirtfileutils-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
-</span><span id="fnirtfileutils-95"><a href="#fnirtfileutils-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">warp_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fnirtfileutils-96"><a href="#fnirtfileutils-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fnirtfileutils-97"><a href="#fnirtfileutils-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;--warpres&quot;</span><span class="p">,</span>
-</span><span id="fnirtfileutils-98"><a href="#fnirtfileutils-98"><span class="linenos"> 98</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">warp_res</span><span class="p">)</span>
-</span><span id="fnirtfileutils-99"><a href="#fnirtfileutils-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
-</span><span id="fnirtfileutils-100"><a href="#fnirtfileutils-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">knot_space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fnirtfileutils-101"><a href="#fnirtfileutils-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fnirtfileutils-102"><a href="#fnirtfileutils-102"><span class="linenos">102</span></a>            <span class="s2">&quot;--knotspace&quot;</span><span class="p">,</span>
-</span><span id="fnirtfileutils-103"><a href="#fnirtfileutils-103"><span class="linenos">103</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">knot_space</span><span class="p">)</span>
-</span><span id="fnirtfileutils-104"><a href="#fnirtfileutils-104"><span class="linenos">104</span></a>        <span class="p">])</span>
-</span><span id="fnirtfileutils-105"><a href="#fnirtfileutils-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">jacobian_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fnirtfileutils-106"><a href="#fnirtfileutils-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fnirtfileutils-107"><a href="#fnirtfileutils-107"><span class="linenos">107</span></a>            <span class="s2">&quot;--jac&quot;</span><span class="p">,</span>
-</span><span id="fnirtfileutils-108"><a href="#fnirtfileutils-108"><span class="linenos">108</span></a>            <span class="n">jacobian_output</span>
-</span><span id="fnirtfileutils-109"><a href="#fnirtfileutils-109"><span class="linenos">109</span></a>        <span class="p">])</span>
-</span><span id="fnirtfileutils-110"><a href="#fnirtfileutils-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">jacobian_matrix_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fnirtfileutils-111"><a href="#fnirtfileutils-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fnirtfileutils-112"><a href="#fnirtfileutils-112"><span class="linenos">112</span></a>            <span class="s2">&quot;--matjac&quot;</span><span class="p">,</span>
-</span><span id="fnirtfileutils-113"><a href="#fnirtfileutils-113"><span class="linenos">113</span></a>            <span class="n">jacobian_matrix_output</span>
-</span><span id="fnirtfileutils-114"><a href="#fnirtfileutils-114"><span class="linenos">114</span></a>        <span class="p">])</span>
-</span><span id="fnirtfileutils-115"><a href="#fnirtfileutils-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">with_aff</span><span class="p">:</span>
-</span><span id="fnirtfileutils-116"><a href="#fnirtfileutils-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--withaff&quot;</span><span class="p">)</span>
-</span><span id="fnirtfileutils-117"><a href="#fnirtfileutils-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
-</span><span id="fnirtfileutils-118"><a href="#fnirtfileutils-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--verbose&quot;</span><span class="p">)</span>
-</span><span id="fnirtfileutils-119"><a href="#fnirtfileutils-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
-</span><span id="fnirtfileutils-120"><a href="#fnirtfileutils-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
-</span><span id="fnirtfileutils-121"><a href="#fnirtfileutils-121"><span class="linenos">121</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FnirtfileutilsOutputs</span><span class="p">(</span>
-</span><span id="fnirtfileutils-122"><a href="#fnirtfileutils-122"><span class="linenos">122</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fnirtfileutils-123"><a href="#fnirtfileutils-123"><span class="linenos">123</span></a>        <span class="n">output_field_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_field</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fnirtfileutils-124"><a href="#fnirtfileutils-124"><span class="linenos">124</span></a>        <span class="n">jacobian_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fnirtfileutils-125"><a href="#fnirtfileutils-125"><span class="linenos">125</span></a>        <span class="n">jacobian_matrix_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="fnirtfileutils-126"><a href="#fnirtfileutils-126"><span class="linenos">126</span></a>    <span class="p">)</span>
-</span><span id="fnirtfileutils-127"><a href="#fnirtfileutils-127"><span class="linenos">127</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fnirtfileutils-128"><a href="#fnirtfileutils-128"><span class="linenos">128</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fnirtfileutils-52"><a href="#fnirtfileutils-52"><span class="linenos"> 52</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="fnirtfileutils-53"><a href="#fnirtfileutils-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
+</span><span id="fnirtfileutils-54"><a href="#fnirtfileutils-54"><span class="linenos"> 54</span></a><span class="sd">    Args:</span>
+</span><span id="fnirtfileutils-55"><a href="#fnirtfileutils-55"><span class="linenos"> 55</span></a><span class="sd">        input_coefs: Filename of input coefficient volume to be converted.</span>
+</span><span id="fnirtfileutils-56"><a href="#fnirtfileutils-56"><span class="linenos"> 56</span></a><span class="sd">        ref_volume: Filename for reference volume.</span>
+</span><span id="fnirtfileutils-57"><a href="#fnirtfileutils-57"><span class="linenos"> 57</span></a><span class="sd">        out_field: Filename for output field/coef volume - uses relative warp\</span>
+</span><span id="fnirtfileutils-58"><a href="#fnirtfileutils-58"><span class="linenos"> 58</span></a><span class="sd">            convention.</span>
+</span><span id="fnirtfileutils-59"><a href="#fnirtfileutils-59"><span class="linenos"> 59</span></a><span class="sd">        output_format: Output format [field, spline], default=field.</span>
+</span><span id="fnirtfileutils-60"><a href="#fnirtfileutils-60"><span class="linenos"> 60</span></a><span class="sd">        warp_res: Warp resolution (mm), only relevant when --outformat=spline.</span>
+</span><span id="fnirtfileutils-61"><a href="#fnirtfileutils-61"><span class="linenos"> 61</span></a><span class="sd">        knot_space: Knot-spacing (voxels), only relevant when\</span>
+</span><span id="fnirtfileutils-62"><a href="#fnirtfileutils-62"><span class="linenos"> 62</span></a><span class="sd">            --outformat=spline.</span>
+</span><span id="fnirtfileutils-63"><a href="#fnirtfileutils-63"><span class="linenos"> 63</span></a><span class="sd">        jacobian_output: Filename for output jacobian determinant map volume.</span>
+</span><span id="fnirtfileutils-64"><a href="#fnirtfileutils-64"><span class="linenos"> 64</span></a><span class="sd">        jacobian_matrix_output: Filename for output full jacobian matrix 4D-map\</span>
+</span><span id="fnirtfileutils-65"><a href="#fnirtfileutils-65"><span class="linenos"> 65</span></a><span class="sd">            volume.</span>
+</span><span id="fnirtfileutils-66"><a href="#fnirtfileutils-66"><span class="linenos"> 66</span></a><span class="sd">        with_aff: If set, the affine transform is included in the\</span>
+</span><span id="fnirtfileutils-67"><a href="#fnirtfileutils-67"><span class="linenos"> 67</span></a><span class="sd">            field/jacobian.</span>
+</span><span id="fnirtfileutils-68"><a href="#fnirtfileutils-68"><span class="linenos"> 68</span></a><span class="sd">        verbose_flag: Switch on diagnostic messages.</span>
+</span><span id="fnirtfileutils-69"><a href="#fnirtfileutils-69"><span class="linenos"> 69</span></a><span class="sd">        help_flag: Display this help message.</span>
+</span><span id="fnirtfileutils-70"><a href="#fnirtfileutils-70"><span class="linenos"> 70</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fnirtfileutils-71"><a href="#fnirtfileutils-71"><span class="linenos"> 71</span></a><span class="sd">    Returns:</span>
+</span><span id="fnirtfileutils-72"><a href="#fnirtfileutils-72"><span class="linenos"> 72</span></a><span class="sd">        NamedTuple of outputs (described in `FnirtfileutilsOutputs`).</span>
+</span><span id="fnirtfileutils-73"><a href="#fnirtfileutils-73"><span class="linenos"> 73</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fnirtfileutils-74"><a href="#fnirtfileutils-74"><span class="linenos"> 74</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fnirtfileutils-75"><a href="#fnirtfileutils-75"><span class="linenos"> 75</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FNIRTFILEUTILS_METADATA</span><span class="p">)</span>
+</span><span id="fnirtfileutils-76"><a href="#fnirtfileutils-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fnirtfileutils-77"><a href="#fnirtfileutils-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fnirtfileutils&quot;</span><span class="p">)</span>
+</span><span id="fnirtfileutils-78"><a href="#fnirtfileutils-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fnirtfileutils-79"><a href="#fnirtfileutils-79"><span class="linenos"> 79</span></a>        <span class="s2">&quot;--in&quot;</span><span class="p">,</span>
+</span><span id="fnirtfileutils-80"><a href="#fnirtfileutils-80"><span class="linenos"> 80</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_coefs</span><span class="p">)</span>
+</span><span id="fnirtfileutils-81"><a href="#fnirtfileutils-81"><span class="linenos"> 81</span></a>    <span class="p">])</span>
+</span><span id="fnirtfileutils-82"><a href="#fnirtfileutils-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fnirtfileutils-83"><a href="#fnirtfileutils-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fnirtfileutils-84"><a href="#fnirtfileutils-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;--ref&quot;</span><span class="p">,</span>
+</span><span id="fnirtfileutils-85"><a href="#fnirtfileutils-85"><span class="linenos"> 85</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">ref_volume</span><span class="p">)</span>
+</span><span id="fnirtfileutils-86"><a href="#fnirtfileutils-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
+</span><span id="fnirtfileutils-87"><a href="#fnirtfileutils-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">out_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fnirtfileutils-88"><a href="#fnirtfileutils-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fnirtfileutils-89"><a href="#fnirtfileutils-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;--out&quot;</span><span class="p">,</span>
+</span><span id="fnirtfileutils-90"><a href="#fnirtfileutils-90"><span class="linenos"> 90</span></a>            <span class="n">out_field</span>
+</span><span id="fnirtfileutils-91"><a href="#fnirtfileutils-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
+</span><span id="fnirtfileutils-92"><a href="#fnirtfileutils-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">output_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fnirtfileutils-93"><a href="#fnirtfileutils-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fnirtfileutils-94"><a href="#fnirtfileutils-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;--outformat&quot;</span><span class="p">,</span>
+</span><span id="fnirtfileutils-95"><a href="#fnirtfileutils-95"><span class="linenos"> 95</span></a>            <span class="n">output_format</span>
+</span><span id="fnirtfileutils-96"><a href="#fnirtfileutils-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
+</span><span id="fnirtfileutils-97"><a href="#fnirtfileutils-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">warp_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fnirtfileutils-98"><a href="#fnirtfileutils-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fnirtfileutils-99"><a href="#fnirtfileutils-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;--warpres&quot;</span><span class="p">,</span>
+</span><span id="fnirtfileutils-100"><a href="#fnirtfileutils-100"><span class="linenos">100</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">warp_res</span><span class="p">)</span>
+</span><span id="fnirtfileutils-101"><a href="#fnirtfileutils-101"><span class="linenos">101</span></a>        <span class="p">])</span>
+</span><span id="fnirtfileutils-102"><a href="#fnirtfileutils-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">knot_space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fnirtfileutils-103"><a href="#fnirtfileutils-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fnirtfileutils-104"><a href="#fnirtfileutils-104"><span class="linenos">104</span></a>            <span class="s2">&quot;--knotspace&quot;</span><span class="p">,</span>
+</span><span id="fnirtfileutils-105"><a href="#fnirtfileutils-105"><span class="linenos">105</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">knot_space</span><span class="p">)</span>
+</span><span id="fnirtfileutils-106"><a href="#fnirtfileutils-106"><span class="linenos">106</span></a>        <span class="p">])</span>
+</span><span id="fnirtfileutils-107"><a href="#fnirtfileutils-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">jacobian_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fnirtfileutils-108"><a href="#fnirtfileutils-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fnirtfileutils-109"><a href="#fnirtfileutils-109"><span class="linenos">109</span></a>            <span class="s2">&quot;--jac&quot;</span><span class="p">,</span>
+</span><span id="fnirtfileutils-110"><a href="#fnirtfileutils-110"><span class="linenos">110</span></a>            <span class="n">jacobian_output</span>
+</span><span id="fnirtfileutils-111"><a href="#fnirtfileutils-111"><span class="linenos">111</span></a>        <span class="p">])</span>
+</span><span id="fnirtfileutils-112"><a href="#fnirtfileutils-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">jacobian_matrix_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fnirtfileutils-113"><a href="#fnirtfileutils-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fnirtfileutils-114"><a href="#fnirtfileutils-114"><span class="linenos">114</span></a>            <span class="s2">&quot;--matjac&quot;</span><span class="p">,</span>
+</span><span id="fnirtfileutils-115"><a href="#fnirtfileutils-115"><span class="linenos">115</span></a>            <span class="n">jacobian_matrix_output</span>
+</span><span id="fnirtfileutils-116"><a href="#fnirtfileutils-116"><span class="linenos">116</span></a>        <span class="p">])</span>
+</span><span id="fnirtfileutils-117"><a href="#fnirtfileutils-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">with_aff</span><span class="p">:</span>
+</span><span id="fnirtfileutils-118"><a href="#fnirtfileutils-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--withaff&quot;</span><span class="p">)</span>
+</span><span id="fnirtfileutils-119"><a href="#fnirtfileutils-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
+</span><span id="fnirtfileutils-120"><a href="#fnirtfileutils-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--verbose&quot;</span><span class="p">)</span>
+</span><span id="fnirtfileutils-121"><a href="#fnirtfileutils-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
+</span><span id="fnirtfileutils-122"><a href="#fnirtfileutils-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--help&quot;</span><span class="p">)</span>
+</span><span id="fnirtfileutils-123"><a href="#fnirtfileutils-123"><span class="linenos">123</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FnirtfileutilsOutputs</span><span class="p">(</span>
+</span><span id="fnirtfileutils-124"><a href="#fnirtfileutils-124"><span class="linenos">124</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fnirtfileutils-125"><a href="#fnirtfileutils-125"><span class="linenos">125</span></a>        <span class="n">output_field_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_field</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fnirtfileutils-126"><a href="#fnirtfileutils-126"><span class="linenos">126</span></a>        <span class="n">jacobian_output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fnirtfileutils-127"><a href="#fnirtfileutils-127"><span class="linenos">127</span></a>        <span class="n">jacobian_matrix_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="o">+</span> <span class="s2">&quot;.nii.gz&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">jacobian_matrix_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="fnirtfileutils-128"><a href="#fnirtfileutils-128"><span class="linenos">128</span></a>    <span class="p">)</span>
+</span><span id="fnirtfileutils-129"><a href="#fnirtfileutils-129"><span class="linenos">129</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fnirtfileutils-130"><a href="#fnirtfileutils-130"><span class="linenos">130</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>FNIRT file utilities for FSL - Converts FNIRT warp field coefficients to other
 formats.</p>
 
-<p>Author: University of Oxford (Jesper Andersson)</p>
+<p>Author: FMRIB Analysis Group, University of Oxford</p>
+
+<p>URL: <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

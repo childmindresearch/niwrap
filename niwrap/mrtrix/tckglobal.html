@@ -126,7 +126,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TCKGLOBAL_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;9a2dbc3f27bab5e95b5061f6292c2ac390832c5c.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;83ed2ed5059d206686d68bca5253e7191f588b5d.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tckglobal&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -273,223 +273,222 @@
 </span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">    Maes, F. Global tractography of multi-shell diffusion-weighted imaging data</span>
 </span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    using a multi-tissue model. NeuroImage, 2015, 123, 89-101.</span>
 </span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    </span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    Author: Daan Christiaens (daan.christiaens@kcl.ac.uk)</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    </span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    URL:</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/tckglobal.html</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    </span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    Args:</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        source: the image containing the raw DWI data.</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        response: the response of a track segment on the DWI signal.</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        tracks: the output file containing the tracks generated.</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        grad: specify the diffusion encoding scheme (required if not supplied\</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">            in the header).</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        mask: only reconstruct the tractogram within the specified brain mask\</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">            image.</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        riso: set one or more isotropic response functions. (multiple allowed).</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        lmax: set the maximum harmonic order for the output series. (default =\</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">            8).</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        length: set the length of the particles (fibre segments). (default =\</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">            1mm).</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        weight: set the weight by which particles contribute to the model.\</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">            (default = 0.1).</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        ppot: set the particle potential, i.e., the cost of adding one segment,\</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">            relative to the particle weight. (default = 0.05).</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        cpot: set the connection potential, i.e., the energy term that drives\</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">            two segments together. (default = 0.5).</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        t0: set the initial temperature of the metropolis hastings optimizer.\</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">            (default = 0.1).</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        t1: set the final temperature of the metropolis hastings optimizer.\</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">            (default = 0.001).</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        niter: set the number of iterations of the metropolis hastings\</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">            optimizer. (default = 10M).</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        fod: Predicted fibre orientation distribution function (fODF).\</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">            This fODF is estimated as part of the global track optimization,\</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">            and therefore incorporates the spatial regularization that it\</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">            imposes. Internally, the fODF is represented as a discrete sum of\</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">            apodized point spread functions (aPSF) oriented along the\</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">            directions of all particles in the voxel, used to predict the DWI\</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">            signal from the particle configuration.</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">        noapo: disable spherical convolution of fODF with apodized PSF, to\</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">            output a sum of delta functions rather than a sum of aPSFs.</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">        fiso: Predicted isotropic fractions of the tissues for which response\</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">            functions were provided with -riso. Typically, these are CSF and GM.</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        eext: Residual external energy in every voxel.</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        etrend: internal and external energy trend and cooling statistics.</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        balance: balance internal and external energy. (default = 0)\</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">            Negative values give more weight to the internal energy, positive\</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">            to the external energy.</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        density: set the desired density of the free Poisson process. (default\</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">            = 1).</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        prob: set the probabilities of generating birth, death, randshift,\</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">            optshift and connect proposals respectively. (default =\</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">            0.25,0.05,0.25,0.1,0.35).</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        beta: set the width of the Hanning interpolation window. (in [0, 1],\</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">            default = 0)\</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">            If used, a mask is required, and this mask must keep at least one\</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">            voxel distance to the image bounding box.</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">        lambda_: set the weight of the internal energy directly. (default = 1)\</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">            If provided, any value of -balance will be ignored.</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">    Returns:</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">        NamedTuple of outputs (described in `TckglobalOutputs`).</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKGLOBAL_METADATA</span><span class="p">)</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckglobal&quot;</span><span class="p">)</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="p">])</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="p">])</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="k">if</span> <span class="n">riso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">riso</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="k">if</span> <span class="n">lmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>            <span class="s2">&quot;-lmax&quot;</span><span class="p">,</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lmax</span><span class="p">)</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>        <span class="p">])</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">length</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>            <span class="s2">&quot;-length&quot;</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>        <span class="p">])</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>            <span class="s2">&quot;-weight&quot;</span><span class="p">,</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>        <span class="p">])</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="k">if</span> <span class="n">ppot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>            <span class="s2">&quot;-ppot&quot;</span><span class="p">,</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">ppot</span><span class="p">)</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="p">])</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="k">if</span> <span class="n">cpot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>            <span class="s2">&quot;-cpot&quot;</span><span class="p">,</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cpot</span><span class="p">)</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>        <span class="p">])</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>    <span class="k">if</span> <span class="n">t0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>            <span class="s2">&quot;-t0&quot;</span><span class="p">,</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>        <span class="p">])</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>    <span class="k">if</span> <span class="n">t1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>            <span class="s2">&quot;-t1&quot;</span><span class="p">,</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>        <span class="p">])</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="k">if</span> <span class="n">niter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>            <span class="s2">&quot;-niter&quot;</span><span class="p">,</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niter</span><span class="p">)</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>        <span class="p">])</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="k">if</span> <span class="n">fod</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>            <span class="s2">&quot;-fod&quot;</span><span class="p">,</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>            <span class="n">fod</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>        <span class="p">])</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="k">if</span> <span class="n">noapo</span><span class="p">:</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noapo&quot;</span><span class="p">)</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="k">if</span> <span class="n">fiso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>            <span class="s2">&quot;-fiso&quot;</span><span class="p">,</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>            <span class="n">fiso</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>        <span class="p">])</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="k">if</span> <span class="n">eext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>            <span class="s2">&quot;-eext&quot;</span><span class="p">,</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>            <span class="n">eext</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>        <span class="p">])</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="k">if</span> <span class="n">etrend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>            <span class="s2">&quot;-etrend&quot;</span><span class="p">,</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>            <span class="n">etrend</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>        <span class="p">])</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="k">if</span> <span class="n">balance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>            <span class="s2">&quot;-balance&quot;</span><span class="p">,</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">balance</span><span class="p">)</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>        <span class="p">])</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="k">if</span> <span class="n">density</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>            <span class="s2">&quot;-density&quot;</span><span class="p">,</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">density</span><span class="p">)</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>        <span class="p">])</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="k">if</span> <span class="n">prob</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>            <span class="s2">&quot;-prob&quot;</span><span class="p">,</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>        <span class="p">])</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="k">if</span> <span class="n">beta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>            <span class="s2">&quot;-beta&quot;</span><span class="p">,</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>        <span class="p">])</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="k">if</span> <span class="n">lambda_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>            <span class="s2">&quot;-lambda&quot;</span><span class="p">,</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lambda_</span><span class="p">)</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>        <span class="p">])</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>        <span class="p">])</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
-</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
-</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tracks</span><span class="p">)</span>
-</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckglobalOutputs</span><span class="p">(</span>
-</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>        <span class="n">tracks</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">tracks</span><span class="p">),</span>
-</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>        <span class="n">fod</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fod</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fod</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>        <span class="n">fiso</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fiso</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fiso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>        <span class="n">eext</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">eext</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">eext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>        <span class="n">etrend</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">etrend</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">etrend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="p">)</span>
-</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    </span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    Args:</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">        source: the image containing the raw DWI data.</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        response: the response of a track segment on the DWI signal.</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        tracks: the output file containing the tracks generated.</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        grad: specify the diffusion encoding scheme (required if not supplied\</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">            in the header).</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        mask: only reconstruct the tractogram within the specified brain mask\</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">            image.</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        riso: set one or more isotropic response functions. (multiple allowed).</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        lmax: set the maximum harmonic order for the output series. (default =\</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">            8).</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        length: set the length of the particles (fibre segments). (default =\</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">            1mm).</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        weight: set the weight by which particles contribute to the model.\</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">            (default = 0.1).</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        ppot: set the particle potential, i.e., the cost of adding one segment,\</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">            relative to the particle weight. (default = 0.05).</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        cpot: set the connection potential, i.e., the energy term that drives\</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">            two segments together. (default = 0.5).</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        t0: set the initial temperature of the metropolis hastings optimizer.\</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">            (default = 0.1).</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        t1: set the final temperature of the metropolis hastings optimizer.\</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            (default = 0.001).</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        niter: set the number of iterations of the metropolis hastings\</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">            optimizer. (default = 10M).</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        fod: Predicted fibre orientation distribution function (fODF).\</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">            This fODF is estimated as part of the global track optimization,\</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">            and therefore incorporates the spatial regularization that it\</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">            imposes. Internally, the fODF is represented as a discrete sum of\</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">            apodized point spread functions (aPSF) oriented along the\</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">            directions of all particles in the voxel, used to predict the DWI\</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">            signal from the particle configuration.</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        noapo: disable spherical convolution of fODF with apodized PSF, to\</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">            output a sum of delta functions rather than a sum of aPSFs.</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">        fiso: Predicted isotropic fractions of the tissues for which response\</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            functions were provided with -riso. Typically, these are CSF and GM.</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        eext: Residual external energy in every voxel.</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        etrend: internal and external energy trend and cooling statistics.</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        balance: balance internal and external energy. (default = 0)\</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">            Negative values give more weight to the internal energy, positive\</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">            to the external energy.</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        density: set the desired density of the free Poisson process. (default\</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">            = 1).</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        prob: set the probabilities of generating birth, death, randshift,\</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">            optshift and connect proposals respectively. (default =\</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">            0.25,0.05,0.25,0.1,0.35).</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        beta: set the width of the Hanning interpolation window. (in [0, 1],\</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">            default = 0)\</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">            If used, a mask is required, and this mask must keep at least one\</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">            voxel distance to the image bounding box.</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        lambda_: set the weight of the internal energy directly. (default = 1)\</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">            If provided, any value of -balance will be ignored.</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a><span class="sd">    Returns:</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="sd">        NamedTuple of outputs (described in `TckglobalOutputs`).</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKGLOBAL_METADATA</span><span class="p">)</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckglobal&quot;</span><span class="p">)</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>        <span class="p">])</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>        <span class="p">])</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="k">if</span> <span class="n">riso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">riso</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="k">if</span> <span class="n">lmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>            <span class="s2">&quot;-lmax&quot;</span><span class="p">,</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lmax</span><span class="p">)</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>        <span class="p">])</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">length</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>            <span class="s2">&quot;-length&quot;</span><span class="p">,</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>        <span class="p">])</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>            <span class="s2">&quot;-weight&quot;</span><span class="p">,</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>        <span class="p">])</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="k">if</span> <span class="n">ppot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>            <span class="s2">&quot;-ppot&quot;</span><span class="p">,</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">ppot</span><span class="p">)</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>        <span class="p">])</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="k">if</span> <span class="n">cpot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>            <span class="s2">&quot;-cpot&quot;</span><span class="p">,</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cpot</span><span class="p">)</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="p">])</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="k">if</span> <span class="n">t0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>            <span class="s2">&quot;-t0&quot;</span><span class="p">,</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>        <span class="p">])</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="k">if</span> <span class="n">t1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>            <span class="s2">&quot;-t1&quot;</span><span class="p">,</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>        <span class="p">])</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="k">if</span> <span class="n">niter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>            <span class="s2">&quot;-niter&quot;</span><span class="p">,</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niter</span><span class="p">)</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>        <span class="p">])</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>    <span class="k">if</span> <span class="n">fod</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>            <span class="s2">&quot;-fod&quot;</span><span class="p">,</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>            <span class="n">fod</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>        <span class="p">])</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="k">if</span> <span class="n">noapo</span><span class="p">:</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noapo&quot;</span><span class="p">)</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="k">if</span> <span class="n">fiso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>            <span class="s2">&quot;-fiso&quot;</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>            <span class="n">fiso</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>        <span class="p">])</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="k">if</span> <span class="n">eext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>            <span class="s2">&quot;-eext&quot;</span><span class="p">,</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>            <span class="n">eext</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>        <span class="p">])</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>    <span class="k">if</span> <span class="n">etrend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>            <span class="s2">&quot;-etrend&quot;</span><span class="p">,</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>            <span class="n">etrend</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>        <span class="p">])</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>    <span class="k">if</span> <span class="n">balance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>            <span class="s2">&quot;-balance&quot;</span><span class="p">,</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">balance</span><span class="p">)</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>        <span class="p">])</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="k">if</span> <span class="n">density</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>            <span class="s2">&quot;-density&quot;</span><span class="p">,</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">density</span><span class="p">)</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>        <span class="p">])</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="k">if</span> <span class="n">prob</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>            <span class="s2">&quot;-prob&quot;</span><span class="p">,</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>        <span class="p">])</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>    <span class="k">if</span> <span class="n">beta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>            <span class="s2">&quot;-beta&quot;</span><span class="p">,</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>        <span class="p">])</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="k">if</span> <span class="n">lambda_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>            <span class="s2">&quot;-lambda&quot;</span><span class="p">,</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lambda_</span><span class="p">)</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>        <span class="p">])</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>        <span class="p">])</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-350"><a href="#L-350"><span class="linenos">350</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-351"><a href="#L-351"><span class="linenos">351</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
+</span><span id="L-352"><a href="#L-352"><span class="linenos">352</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
+</span><span id="L-353"><a href="#L-353"><span class="linenos">353</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tracks</span><span class="p">)</span>
+</span><span id="L-354"><a href="#L-354"><span class="linenos">354</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckglobalOutputs</span><span class="p">(</span>
+</span><span id="L-355"><a href="#L-355"><span class="linenos">355</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>        <span class="n">tracks</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">tracks</span><span class="p">),</span>
+</span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>        <span class="n">fod</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fod</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fod</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>        <span class="n">fiso</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fiso</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fiso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>        <span class="n">eext</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">eext</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">eext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>        <span class="n">etrend</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">etrend</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">etrend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>    <span class="p">)</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a>
 </span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a>
-</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a>
-</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;TCKGLOBAL_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;TckglobalConfig&quot;</span><span class="p">,</span>
-</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;TckglobalOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="s2">&quot;TckglobalRiso&quot;</span><span class="p">,</span>
-</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="s2">&quot;tckglobal&quot;</span><span class="p">,</span>
-</span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="p">]</span>
+</span><span id="L-366"><a href="#L-366"><span class="linenos">366</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-367"><a href="#L-367"><span class="linenos">367</span></a>    <span class="s2">&quot;TCKGLOBAL_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-368"><a href="#L-368"><span class="linenos">368</span></a>    <span class="s2">&quot;TckglobalConfig&quot;</span><span class="p">,</span>
+</span><span id="L-369"><a href="#L-369"><span class="linenos">369</span></a>    <span class="s2">&quot;TckglobalOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-370"><a href="#L-370"><span class="linenos">370</span></a>    <span class="s2">&quot;TckglobalRiso&quot;</span><span class="p">,</span>
+</span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="s2">&quot;tckglobal&quot;</span><span class="p">,</span>
+</span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -498,7 +497,7 @@
                     <div class="attr variable">
             <span class="name">TCKGLOBAL_METADATA</span>        =
 <input id="TCKGLOBAL_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TCKGLOBAL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;9a2dbc3f27bab5e95b5061f6292c2ac390832c5c.boutiques&#39;, name=&#39;tckglobal&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TCKGLOBAL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;83ed2ed5059d206686d68bca5253e7191f588b5d.boutiques&#39;, name=&#39;tckglobal&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -967,214 +966,213 @@ were provided with -riso. Typically, these are CSF and GM.</p>
 </span><span id="tckglobal-155"><a href="#tckglobal-155"><span class="linenos">155</span></a><span class="sd">    Maes, F. Global tractography of multi-shell diffusion-weighted imaging data</span>
 </span><span id="tckglobal-156"><a href="#tckglobal-156"><span class="linenos">156</span></a><span class="sd">    using a multi-tissue model. NeuroImage, 2015, 123, 89-101.</span>
 </span><span id="tckglobal-157"><a href="#tckglobal-157"><span class="linenos">157</span></a><span class="sd">    </span>
-</span><span id="tckglobal-158"><a href="#tckglobal-158"><span class="linenos">158</span></a><span class="sd">    Author: Daan Christiaens (daan.christiaens@kcl.ac.uk)</span>
+</span><span id="tckglobal-158"><a href="#tckglobal-158"><span class="linenos">158</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="tckglobal-159"><a href="#tckglobal-159"><span class="linenos">159</span></a><span class="sd">    </span>
-</span><span id="tckglobal-160"><a href="#tckglobal-160"><span class="linenos">160</span></a><span class="sd">    URL:</span>
-</span><span id="tckglobal-161"><a href="#tckglobal-161"><span class="linenos">161</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/tckglobal.html</span>
-</span><span id="tckglobal-162"><a href="#tckglobal-162"><span class="linenos">162</span></a><span class="sd">    </span>
-</span><span id="tckglobal-163"><a href="#tckglobal-163"><span class="linenos">163</span></a><span class="sd">    Args:</span>
-</span><span id="tckglobal-164"><a href="#tckglobal-164"><span class="linenos">164</span></a><span class="sd">        source: the image containing the raw DWI data.</span>
-</span><span id="tckglobal-165"><a href="#tckglobal-165"><span class="linenos">165</span></a><span class="sd">        response: the response of a track segment on the DWI signal.</span>
-</span><span id="tckglobal-166"><a href="#tckglobal-166"><span class="linenos">166</span></a><span class="sd">        tracks: the output file containing the tracks generated.</span>
-</span><span id="tckglobal-167"><a href="#tckglobal-167"><span class="linenos">167</span></a><span class="sd">        grad: specify the diffusion encoding scheme (required if not supplied\</span>
-</span><span id="tckglobal-168"><a href="#tckglobal-168"><span class="linenos">168</span></a><span class="sd">            in the header).</span>
-</span><span id="tckglobal-169"><a href="#tckglobal-169"><span class="linenos">169</span></a><span class="sd">        mask: only reconstruct the tractogram within the specified brain mask\</span>
-</span><span id="tckglobal-170"><a href="#tckglobal-170"><span class="linenos">170</span></a><span class="sd">            image.</span>
-</span><span id="tckglobal-171"><a href="#tckglobal-171"><span class="linenos">171</span></a><span class="sd">        riso: set one or more isotropic response functions. (multiple allowed).</span>
-</span><span id="tckglobal-172"><a href="#tckglobal-172"><span class="linenos">172</span></a><span class="sd">        lmax: set the maximum harmonic order for the output series. (default =\</span>
-</span><span id="tckglobal-173"><a href="#tckglobal-173"><span class="linenos">173</span></a><span class="sd">            8).</span>
-</span><span id="tckglobal-174"><a href="#tckglobal-174"><span class="linenos">174</span></a><span class="sd">        length: set the length of the particles (fibre segments). (default =\</span>
-</span><span id="tckglobal-175"><a href="#tckglobal-175"><span class="linenos">175</span></a><span class="sd">            1mm).</span>
-</span><span id="tckglobal-176"><a href="#tckglobal-176"><span class="linenos">176</span></a><span class="sd">        weight: set the weight by which particles contribute to the model.\</span>
-</span><span id="tckglobal-177"><a href="#tckglobal-177"><span class="linenos">177</span></a><span class="sd">            (default = 0.1).</span>
-</span><span id="tckglobal-178"><a href="#tckglobal-178"><span class="linenos">178</span></a><span class="sd">        ppot: set the particle potential, i.e., the cost of adding one segment,\</span>
-</span><span id="tckglobal-179"><a href="#tckglobal-179"><span class="linenos">179</span></a><span class="sd">            relative to the particle weight. (default = 0.05).</span>
-</span><span id="tckglobal-180"><a href="#tckglobal-180"><span class="linenos">180</span></a><span class="sd">        cpot: set the connection potential, i.e., the energy term that drives\</span>
-</span><span id="tckglobal-181"><a href="#tckglobal-181"><span class="linenos">181</span></a><span class="sd">            two segments together. (default = 0.5).</span>
-</span><span id="tckglobal-182"><a href="#tckglobal-182"><span class="linenos">182</span></a><span class="sd">        t0: set the initial temperature of the metropolis hastings optimizer.\</span>
-</span><span id="tckglobal-183"><a href="#tckglobal-183"><span class="linenos">183</span></a><span class="sd">            (default = 0.1).</span>
-</span><span id="tckglobal-184"><a href="#tckglobal-184"><span class="linenos">184</span></a><span class="sd">        t1: set the final temperature of the metropolis hastings optimizer.\</span>
-</span><span id="tckglobal-185"><a href="#tckglobal-185"><span class="linenos">185</span></a><span class="sd">            (default = 0.001).</span>
-</span><span id="tckglobal-186"><a href="#tckglobal-186"><span class="linenos">186</span></a><span class="sd">        niter: set the number of iterations of the metropolis hastings\</span>
-</span><span id="tckglobal-187"><a href="#tckglobal-187"><span class="linenos">187</span></a><span class="sd">            optimizer. (default = 10M).</span>
-</span><span id="tckglobal-188"><a href="#tckglobal-188"><span class="linenos">188</span></a><span class="sd">        fod: Predicted fibre orientation distribution function (fODF).\</span>
-</span><span id="tckglobal-189"><a href="#tckglobal-189"><span class="linenos">189</span></a><span class="sd">            This fODF is estimated as part of the global track optimization,\</span>
-</span><span id="tckglobal-190"><a href="#tckglobal-190"><span class="linenos">190</span></a><span class="sd">            and therefore incorporates the spatial regularization that it\</span>
-</span><span id="tckglobal-191"><a href="#tckglobal-191"><span class="linenos">191</span></a><span class="sd">            imposes. Internally, the fODF is represented as a discrete sum of\</span>
-</span><span id="tckglobal-192"><a href="#tckglobal-192"><span class="linenos">192</span></a><span class="sd">            apodized point spread functions (aPSF) oriented along the\</span>
-</span><span id="tckglobal-193"><a href="#tckglobal-193"><span class="linenos">193</span></a><span class="sd">            directions of all particles in the voxel, used to predict the DWI\</span>
-</span><span id="tckglobal-194"><a href="#tckglobal-194"><span class="linenos">194</span></a><span class="sd">            signal from the particle configuration.</span>
-</span><span id="tckglobal-195"><a href="#tckglobal-195"><span class="linenos">195</span></a><span class="sd">        noapo: disable spherical convolution of fODF with apodized PSF, to\</span>
-</span><span id="tckglobal-196"><a href="#tckglobal-196"><span class="linenos">196</span></a><span class="sd">            output a sum of delta functions rather than a sum of aPSFs.</span>
-</span><span id="tckglobal-197"><a href="#tckglobal-197"><span class="linenos">197</span></a><span class="sd">        fiso: Predicted isotropic fractions of the tissues for which response\</span>
-</span><span id="tckglobal-198"><a href="#tckglobal-198"><span class="linenos">198</span></a><span class="sd">            functions were provided with -riso. Typically, these are CSF and GM.</span>
-</span><span id="tckglobal-199"><a href="#tckglobal-199"><span class="linenos">199</span></a><span class="sd">        eext: Residual external energy in every voxel.</span>
-</span><span id="tckglobal-200"><a href="#tckglobal-200"><span class="linenos">200</span></a><span class="sd">        etrend: internal and external energy trend and cooling statistics.</span>
-</span><span id="tckglobal-201"><a href="#tckglobal-201"><span class="linenos">201</span></a><span class="sd">        balance: balance internal and external energy. (default = 0)\</span>
-</span><span id="tckglobal-202"><a href="#tckglobal-202"><span class="linenos">202</span></a><span class="sd">            Negative values give more weight to the internal energy, positive\</span>
-</span><span id="tckglobal-203"><a href="#tckglobal-203"><span class="linenos">203</span></a><span class="sd">            to the external energy.</span>
-</span><span id="tckglobal-204"><a href="#tckglobal-204"><span class="linenos">204</span></a><span class="sd">        density: set the desired density of the free Poisson process. (default\</span>
-</span><span id="tckglobal-205"><a href="#tckglobal-205"><span class="linenos">205</span></a><span class="sd">            = 1).</span>
-</span><span id="tckglobal-206"><a href="#tckglobal-206"><span class="linenos">206</span></a><span class="sd">        prob: set the probabilities of generating birth, death, randshift,\</span>
-</span><span id="tckglobal-207"><a href="#tckglobal-207"><span class="linenos">207</span></a><span class="sd">            optshift and connect proposals respectively. (default =\</span>
-</span><span id="tckglobal-208"><a href="#tckglobal-208"><span class="linenos">208</span></a><span class="sd">            0.25,0.05,0.25,0.1,0.35).</span>
-</span><span id="tckglobal-209"><a href="#tckglobal-209"><span class="linenos">209</span></a><span class="sd">        beta: set the width of the Hanning interpolation window. (in [0, 1],\</span>
-</span><span id="tckglobal-210"><a href="#tckglobal-210"><span class="linenos">210</span></a><span class="sd">            default = 0)\</span>
-</span><span id="tckglobal-211"><a href="#tckglobal-211"><span class="linenos">211</span></a><span class="sd">            If used, a mask is required, and this mask must keep at least one\</span>
-</span><span id="tckglobal-212"><a href="#tckglobal-212"><span class="linenos">212</span></a><span class="sd">            voxel distance to the image bounding box.</span>
-</span><span id="tckglobal-213"><a href="#tckglobal-213"><span class="linenos">213</span></a><span class="sd">        lambda_: set the weight of the internal energy directly. (default = 1)\</span>
-</span><span id="tckglobal-214"><a href="#tckglobal-214"><span class="linenos">214</span></a><span class="sd">            If provided, any value of -balance will be ignored.</span>
-</span><span id="tckglobal-215"><a href="#tckglobal-215"><span class="linenos">215</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="tckglobal-216"><a href="#tckglobal-216"><span class="linenos">216</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="tckglobal-217"><a href="#tckglobal-217"><span class="linenos">217</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="tckglobal-218"><a href="#tckglobal-218"><span class="linenos">218</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="tckglobal-219"><a href="#tckglobal-219"><span class="linenos">219</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="tckglobal-220"><a href="#tckglobal-220"><span class="linenos">220</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="tckglobal-221"><a href="#tckglobal-221"><span class="linenos">221</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="tckglobal-222"><a href="#tckglobal-222"><span class="linenos">222</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="tckglobal-223"><a href="#tckglobal-223"><span class="linenos">223</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="tckglobal-224"><a href="#tckglobal-224"><span class="linenos">224</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="tckglobal-225"><a href="#tckglobal-225"><span class="linenos">225</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="tckglobal-226"><a href="#tckglobal-226"><span class="linenos">226</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="tckglobal-227"><a href="#tckglobal-227"><span class="linenos">227</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="tckglobal-228"><a href="#tckglobal-228"><span class="linenos">228</span></a><span class="sd">    Returns:</span>
-</span><span id="tckglobal-229"><a href="#tckglobal-229"><span class="linenos">229</span></a><span class="sd">        NamedTuple of outputs (described in `TckglobalOutputs`).</span>
-</span><span id="tckglobal-230"><a href="#tckglobal-230"><span class="linenos">230</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="tckglobal-231"><a href="#tckglobal-231"><span class="linenos">231</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="tckglobal-232"><a href="#tckglobal-232"><span class="linenos">232</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKGLOBAL_METADATA</span><span class="p">)</span>
-</span><span id="tckglobal-233"><a href="#tckglobal-233"><span class="linenos">233</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="tckglobal-234"><a href="#tckglobal-234"><span class="linenos">234</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckglobal&quot;</span><span class="p">)</span>
-</span><span id="tckglobal-235"><a href="#tckglobal-235"><span class="linenos">235</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-236"><a href="#tckglobal-236"><span class="linenos">236</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-237"><a href="#tckglobal-237"><span class="linenos">237</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-238"><a href="#tckglobal-238"><span class="linenos">238</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
-</span><span id="tckglobal-239"><a href="#tckglobal-239"><span class="linenos">239</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-240"><a href="#tckglobal-240"><span class="linenos">240</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-241"><a href="#tckglobal-241"><span class="linenos">241</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-242"><a href="#tckglobal-242"><span class="linenos">242</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-243"><a href="#tckglobal-243"><span class="linenos">243</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="tckglobal-244"><a href="#tckglobal-244"><span class="linenos">244</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-245"><a href="#tckglobal-245"><span class="linenos">245</span></a>    <span class="k">if</span> <span class="n">riso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-246"><a href="#tckglobal-246"><span class="linenos">246</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">riso</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="tckglobal-247"><a href="#tckglobal-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">lmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-248"><a href="#tckglobal-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-249"><a href="#tckglobal-249"><span class="linenos">249</span></a>            <span class="s2">&quot;-lmax&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-250"><a href="#tckglobal-250"><span class="linenos">250</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lmax</span><span class="p">)</span>
-</span><span id="tckglobal-251"><a href="#tckglobal-251"><span class="linenos">251</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-252"><a href="#tckglobal-252"><span class="linenos">252</span></a>    <span class="k">if</span> <span class="n">length</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-253"><a href="#tckglobal-253"><span class="linenos">253</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-254"><a href="#tckglobal-254"><span class="linenos">254</span></a>            <span class="s2">&quot;-length&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-255"><a href="#tckglobal-255"><span class="linenos">255</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
-</span><span id="tckglobal-256"><a href="#tckglobal-256"><span class="linenos">256</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-257"><a href="#tckglobal-257"><span class="linenos">257</span></a>    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-258"><a href="#tckglobal-258"><span class="linenos">258</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-259"><a href="#tckglobal-259"><span class="linenos">259</span></a>            <span class="s2">&quot;-weight&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-260"><a href="#tckglobal-260"><span class="linenos">260</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
-</span><span id="tckglobal-261"><a href="#tckglobal-261"><span class="linenos">261</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-262"><a href="#tckglobal-262"><span class="linenos">262</span></a>    <span class="k">if</span> <span class="n">ppot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-263"><a href="#tckglobal-263"><span class="linenos">263</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-264"><a href="#tckglobal-264"><span class="linenos">264</span></a>            <span class="s2">&quot;-ppot&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-265"><a href="#tckglobal-265"><span class="linenos">265</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">ppot</span><span class="p">)</span>
-</span><span id="tckglobal-266"><a href="#tckglobal-266"><span class="linenos">266</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-267"><a href="#tckglobal-267"><span class="linenos">267</span></a>    <span class="k">if</span> <span class="n">cpot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-268"><a href="#tckglobal-268"><span class="linenos">268</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-269"><a href="#tckglobal-269"><span class="linenos">269</span></a>            <span class="s2">&quot;-cpot&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-270"><a href="#tckglobal-270"><span class="linenos">270</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cpot</span><span class="p">)</span>
-</span><span id="tckglobal-271"><a href="#tckglobal-271"><span class="linenos">271</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-272"><a href="#tckglobal-272"><span class="linenos">272</span></a>    <span class="k">if</span> <span class="n">t0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-273"><a href="#tckglobal-273"><span class="linenos">273</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-274"><a href="#tckglobal-274"><span class="linenos">274</span></a>            <span class="s2">&quot;-t0&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-275"><a href="#tckglobal-275"><span class="linenos">275</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
-</span><span id="tckglobal-276"><a href="#tckglobal-276"><span class="linenos">276</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-277"><a href="#tckglobal-277"><span class="linenos">277</span></a>    <span class="k">if</span> <span class="n">t1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-278"><a href="#tckglobal-278"><span class="linenos">278</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-279"><a href="#tckglobal-279"><span class="linenos">279</span></a>            <span class="s2">&quot;-t1&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-280"><a href="#tckglobal-280"><span class="linenos">280</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
-</span><span id="tckglobal-281"><a href="#tckglobal-281"><span class="linenos">281</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-282"><a href="#tckglobal-282"><span class="linenos">282</span></a>    <span class="k">if</span> <span class="n">niter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-283"><a href="#tckglobal-283"><span class="linenos">283</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-284"><a href="#tckglobal-284"><span class="linenos">284</span></a>            <span class="s2">&quot;-niter&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-285"><a href="#tckglobal-285"><span class="linenos">285</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niter</span><span class="p">)</span>
-</span><span id="tckglobal-286"><a href="#tckglobal-286"><span class="linenos">286</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-287"><a href="#tckglobal-287"><span class="linenos">287</span></a>    <span class="k">if</span> <span class="n">fod</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-288"><a href="#tckglobal-288"><span class="linenos">288</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-289"><a href="#tckglobal-289"><span class="linenos">289</span></a>            <span class="s2">&quot;-fod&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-290"><a href="#tckglobal-290"><span class="linenos">290</span></a>            <span class="n">fod</span>
-</span><span id="tckglobal-291"><a href="#tckglobal-291"><span class="linenos">291</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-292"><a href="#tckglobal-292"><span class="linenos">292</span></a>    <span class="k">if</span> <span class="n">noapo</span><span class="p">:</span>
-</span><span id="tckglobal-293"><a href="#tckglobal-293"><span class="linenos">293</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noapo&quot;</span><span class="p">)</span>
-</span><span id="tckglobal-294"><a href="#tckglobal-294"><span class="linenos">294</span></a>    <span class="k">if</span> <span class="n">fiso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-295"><a href="#tckglobal-295"><span class="linenos">295</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-296"><a href="#tckglobal-296"><span class="linenos">296</span></a>            <span class="s2">&quot;-fiso&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-297"><a href="#tckglobal-297"><span class="linenos">297</span></a>            <span class="n">fiso</span>
-</span><span id="tckglobal-298"><a href="#tckglobal-298"><span class="linenos">298</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-299"><a href="#tckglobal-299"><span class="linenos">299</span></a>    <span class="k">if</span> <span class="n">eext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-300"><a href="#tckglobal-300"><span class="linenos">300</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-301"><a href="#tckglobal-301"><span class="linenos">301</span></a>            <span class="s2">&quot;-eext&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-302"><a href="#tckglobal-302"><span class="linenos">302</span></a>            <span class="n">eext</span>
-</span><span id="tckglobal-303"><a href="#tckglobal-303"><span class="linenos">303</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-304"><a href="#tckglobal-304"><span class="linenos">304</span></a>    <span class="k">if</span> <span class="n">etrend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-305"><a href="#tckglobal-305"><span class="linenos">305</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-306"><a href="#tckglobal-306"><span class="linenos">306</span></a>            <span class="s2">&quot;-etrend&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-307"><a href="#tckglobal-307"><span class="linenos">307</span></a>            <span class="n">etrend</span>
-</span><span id="tckglobal-308"><a href="#tckglobal-308"><span class="linenos">308</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-309"><a href="#tckglobal-309"><span class="linenos">309</span></a>    <span class="k">if</span> <span class="n">balance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-310"><a href="#tckglobal-310"><span class="linenos">310</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-311"><a href="#tckglobal-311"><span class="linenos">311</span></a>            <span class="s2">&quot;-balance&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-312"><a href="#tckglobal-312"><span class="linenos">312</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">balance</span><span class="p">)</span>
-</span><span id="tckglobal-313"><a href="#tckglobal-313"><span class="linenos">313</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-314"><a href="#tckglobal-314"><span class="linenos">314</span></a>    <span class="k">if</span> <span class="n">density</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-315"><a href="#tckglobal-315"><span class="linenos">315</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-316"><a href="#tckglobal-316"><span class="linenos">316</span></a>            <span class="s2">&quot;-density&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-317"><a href="#tckglobal-317"><span class="linenos">317</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">density</span><span class="p">)</span>
-</span><span id="tckglobal-318"><a href="#tckglobal-318"><span class="linenos">318</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-319"><a href="#tckglobal-319"><span class="linenos">319</span></a>    <span class="k">if</span> <span class="n">prob</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-320"><a href="#tckglobal-320"><span class="linenos">320</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-321"><a href="#tckglobal-321"><span class="linenos">321</span></a>            <span class="s2">&quot;-prob&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-322"><a href="#tckglobal-322"><span class="linenos">322</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
-</span><span id="tckglobal-323"><a href="#tckglobal-323"><span class="linenos">323</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-324"><a href="#tckglobal-324"><span class="linenos">324</span></a>    <span class="k">if</span> <span class="n">beta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-325"><a href="#tckglobal-325"><span class="linenos">325</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-326"><a href="#tckglobal-326"><span class="linenos">326</span></a>            <span class="s2">&quot;-beta&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-327"><a href="#tckglobal-327"><span class="linenos">327</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
-</span><span id="tckglobal-328"><a href="#tckglobal-328"><span class="linenos">328</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-329"><a href="#tckglobal-329"><span class="linenos">329</span></a>    <span class="k">if</span> <span class="n">lambda_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-330"><a href="#tckglobal-330"><span class="linenos">330</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-331"><a href="#tckglobal-331"><span class="linenos">331</span></a>            <span class="s2">&quot;-lambda&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-332"><a href="#tckglobal-332"><span class="linenos">332</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lambda_</span><span class="p">)</span>
-</span><span id="tckglobal-333"><a href="#tckglobal-333"><span class="linenos">333</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-334"><a href="#tckglobal-334"><span class="linenos">334</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="tckglobal-335"><a href="#tckglobal-335"><span class="linenos">335</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="tckglobal-336"><a href="#tckglobal-336"><span class="linenos">336</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="tckglobal-337"><a href="#tckglobal-337"><span class="linenos">337</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="tckglobal-338"><a href="#tckglobal-338"><span class="linenos">338</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="tckglobal-339"><a href="#tckglobal-339"><span class="linenos">339</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="tckglobal-340"><a href="#tckglobal-340"><span class="linenos">340</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="tckglobal-341"><a href="#tckglobal-341"><span class="linenos">341</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="tckglobal-342"><a href="#tckglobal-342"><span class="linenos">342</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-343"><a href="#tckglobal-343"><span class="linenos">343</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckglobal-344"><a href="#tckglobal-344"><span class="linenos">344</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="tckglobal-345"><a href="#tckglobal-345"><span class="linenos">345</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="tckglobal-346"><a href="#tckglobal-346"><span class="linenos">346</span></a>        <span class="p">])</span>
-</span><span id="tckglobal-347"><a href="#tckglobal-347"><span class="linenos">347</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckglobal-348"><a href="#tckglobal-348"><span class="linenos">348</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="tckglobal-349"><a href="#tckglobal-349"><span class="linenos">349</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="tckglobal-350"><a href="#tckglobal-350"><span class="linenos">350</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="tckglobal-351"><a href="#tckglobal-351"><span class="linenos">351</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="tckglobal-352"><a href="#tckglobal-352"><span class="linenos">352</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="tckglobal-353"><a href="#tckglobal-353"><span class="linenos">353</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
-</span><span id="tckglobal-354"><a href="#tckglobal-354"><span class="linenos">354</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
-</span><span id="tckglobal-355"><a href="#tckglobal-355"><span class="linenos">355</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tracks</span><span class="p">)</span>
-</span><span id="tckglobal-356"><a href="#tckglobal-356"><span class="linenos">356</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckglobalOutputs</span><span class="p">(</span>
-</span><span id="tckglobal-357"><a href="#tckglobal-357"><span class="linenos">357</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="tckglobal-358"><a href="#tckglobal-358"><span class="linenos">358</span></a>        <span class="n">tracks</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">tracks</span><span class="p">),</span>
-</span><span id="tckglobal-359"><a href="#tckglobal-359"><span class="linenos">359</span></a>        <span class="n">fod</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fod</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fod</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckglobal-360"><a href="#tckglobal-360"><span class="linenos">360</span></a>        <span class="n">fiso</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fiso</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fiso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckglobal-361"><a href="#tckglobal-361"><span class="linenos">361</span></a>        <span class="n">eext</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">eext</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">eext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckglobal-362"><a href="#tckglobal-362"><span class="linenos">362</span></a>        <span class="n">etrend</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">etrend</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">etrend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckglobal-363"><a href="#tckglobal-363"><span class="linenos">363</span></a>    <span class="p">)</span>
-</span><span id="tckglobal-364"><a href="#tckglobal-364"><span class="linenos">364</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="tckglobal-365"><a href="#tckglobal-365"><span class="linenos">365</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="tckglobal-160"><a href="#tckglobal-160"><span class="linenos">160</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="tckglobal-161"><a href="#tckglobal-161"><span class="linenos">161</span></a><span class="sd">    </span>
+</span><span id="tckglobal-162"><a href="#tckglobal-162"><span class="linenos">162</span></a><span class="sd">    Args:</span>
+</span><span id="tckglobal-163"><a href="#tckglobal-163"><span class="linenos">163</span></a><span class="sd">        source: the image containing the raw DWI data.</span>
+</span><span id="tckglobal-164"><a href="#tckglobal-164"><span class="linenos">164</span></a><span class="sd">        response: the response of a track segment on the DWI signal.</span>
+</span><span id="tckglobal-165"><a href="#tckglobal-165"><span class="linenos">165</span></a><span class="sd">        tracks: the output file containing the tracks generated.</span>
+</span><span id="tckglobal-166"><a href="#tckglobal-166"><span class="linenos">166</span></a><span class="sd">        grad: specify the diffusion encoding scheme (required if not supplied\</span>
+</span><span id="tckglobal-167"><a href="#tckglobal-167"><span class="linenos">167</span></a><span class="sd">            in the header).</span>
+</span><span id="tckglobal-168"><a href="#tckglobal-168"><span class="linenos">168</span></a><span class="sd">        mask: only reconstruct the tractogram within the specified brain mask\</span>
+</span><span id="tckglobal-169"><a href="#tckglobal-169"><span class="linenos">169</span></a><span class="sd">            image.</span>
+</span><span id="tckglobal-170"><a href="#tckglobal-170"><span class="linenos">170</span></a><span class="sd">        riso: set one or more isotropic response functions. (multiple allowed).</span>
+</span><span id="tckglobal-171"><a href="#tckglobal-171"><span class="linenos">171</span></a><span class="sd">        lmax: set the maximum harmonic order for the output series. (default =\</span>
+</span><span id="tckglobal-172"><a href="#tckglobal-172"><span class="linenos">172</span></a><span class="sd">            8).</span>
+</span><span id="tckglobal-173"><a href="#tckglobal-173"><span class="linenos">173</span></a><span class="sd">        length: set the length of the particles (fibre segments). (default =\</span>
+</span><span id="tckglobal-174"><a href="#tckglobal-174"><span class="linenos">174</span></a><span class="sd">            1mm).</span>
+</span><span id="tckglobal-175"><a href="#tckglobal-175"><span class="linenos">175</span></a><span class="sd">        weight: set the weight by which particles contribute to the model.\</span>
+</span><span id="tckglobal-176"><a href="#tckglobal-176"><span class="linenos">176</span></a><span class="sd">            (default = 0.1).</span>
+</span><span id="tckglobal-177"><a href="#tckglobal-177"><span class="linenos">177</span></a><span class="sd">        ppot: set the particle potential, i.e., the cost of adding one segment,\</span>
+</span><span id="tckglobal-178"><a href="#tckglobal-178"><span class="linenos">178</span></a><span class="sd">            relative to the particle weight. (default = 0.05).</span>
+</span><span id="tckglobal-179"><a href="#tckglobal-179"><span class="linenos">179</span></a><span class="sd">        cpot: set the connection potential, i.e., the energy term that drives\</span>
+</span><span id="tckglobal-180"><a href="#tckglobal-180"><span class="linenos">180</span></a><span class="sd">            two segments together. (default = 0.5).</span>
+</span><span id="tckglobal-181"><a href="#tckglobal-181"><span class="linenos">181</span></a><span class="sd">        t0: set the initial temperature of the metropolis hastings optimizer.\</span>
+</span><span id="tckglobal-182"><a href="#tckglobal-182"><span class="linenos">182</span></a><span class="sd">            (default = 0.1).</span>
+</span><span id="tckglobal-183"><a href="#tckglobal-183"><span class="linenos">183</span></a><span class="sd">        t1: set the final temperature of the metropolis hastings optimizer.\</span>
+</span><span id="tckglobal-184"><a href="#tckglobal-184"><span class="linenos">184</span></a><span class="sd">            (default = 0.001).</span>
+</span><span id="tckglobal-185"><a href="#tckglobal-185"><span class="linenos">185</span></a><span class="sd">        niter: set the number of iterations of the metropolis hastings\</span>
+</span><span id="tckglobal-186"><a href="#tckglobal-186"><span class="linenos">186</span></a><span class="sd">            optimizer. (default = 10M).</span>
+</span><span id="tckglobal-187"><a href="#tckglobal-187"><span class="linenos">187</span></a><span class="sd">        fod: Predicted fibre orientation distribution function (fODF).\</span>
+</span><span id="tckglobal-188"><a href="#tckglobal-188"><span class="linenos">188</span></a><span class="sd">            This fODF is estimated as part of the global track optimization,\</span>
+</span><span id="tckglobal-189"><a href="#tckglobal-189"><span class="linenos">189</span></a><span class="sd">            and therefore incorporates the spatial regularization that it\</span>
+</span><span id="tckglobal-190"><a href="#tckglobal-190"><span class="linenos">190</span></a><span class="sd">            imposes. Internally, the fODF is represented as a discrete sum of\</span>
+</span><span id="tckglobal-191"><a href="#tckglobal-191"><span class="linenos">191</span></a><span class="sd">            apodized point spread functions (aPSF) oriented along the\</span>
+</span><span id="tckglobal-192"><a href="#tckglobal-192"><span class="linenos">192</span></a><span class="sd">            directions of all particles in the voxel, used to predict the DWI\</span>
+</span><span id="tckglobal-193"><a href="#tckglobal-193"><span class="linenos">193</span></a><span class="sd">            signal from the particle configuration.</span>
+</span><span id="tckglobal-194"><a href="#tckglobal-194"><span class="linenos">194</span></a><span class="sd">        noapo: disable spherical convolution of fODF with apodized PSF, to\</span>
+</span><span id="tckglobal-195"><a href="#tckglobal-195"><span class="linenos">195</span></a><span class="sd">            output a sum of delta functions rather than a sum of aPSFs.</span>
+</span><span id="tckglobal-196"><a href="#tckglobal-196"><span class="linenos">196</span></a><span class="sd">        fiso: Predicted isotropic fractions of the tissues for which response\</span>
+</span><span id="tckglobal-197"><a href="#tckglobal-197"><span class="linenos">197</span></a><span class="sd">            functions were provided with -riso. Typically, these are CSF and GM.</span>
+</span><span id="tckglobal-198"><a href="#tckglobal-198"><span class="linenos">198</span></a><span class="sd">        eext: Residual external energy in every voxel.</span>
+</span><span id="tckglobal-199"><a href="#tckglobal-199"><span class="linenos">199</span></a><span class="sd">        etrend: internal and external energy trend and cooling statistics.</span>
+</span><span id="tckglobal-200"><a href="#tckglobal-200"><span class="linenos">200</span></a><span class="sd">        balance: balance internal and external energy. (default = 0)\</span>
+</span><span id="tckglobal-201"><a href="#tckglobal-201"><span class="linenos">201</span></a><span class="sd">            Negative values give more weight to the internal energy, positive\</span>
+</span><span id="tckglobal-202"><a href="#tckglobal-202"><span class="linenos">202</span></a><span class="sd">            to the external energy.</span>
+</span><span id="tckglobal-203"><a href="#tckglobal-203"><span class="linenos">203</span></a><span class="sd">        density: set the desired density of the free Poisson process. (default\</span>
+</span><span id="tckglobal-204"><a href="#tckglobal-204"><span class="linenos">204</span></a><span class="sd">            = 1).</span>
+</span><span id="tckglobal-205"><a href="#tckglobal-205"><span class="linenos">205</span></a><span class="sd">        prob: set the probabilities of generating birth, death, randshift,\</span>
+</span><span id="tckglobal-206"><a href="#tckglobal-206"><span class="linenos">206</span></a><span class="sd">            optshift and connect proposals respectively. (default =\</span>
+</span><span id="tckglobal-207"><a href="#tckglobal-207"><span class="linenos">207</span></a><span class="sd">            0.25,0.05,0.25,0.1,0.35).</span>
+</span><span id="tckglobal-208"><a href="#tckglobal-208"><span class="linenos">208</span></a><span class="sd">        beta: set the width of the Hanning interpolation window. (in [0, 1],\</span>
+</span><span id="tckglobal-209"><a href="#tckglobal-209"><span class="linenos">209</span></a><span class="sd">            default = 0)\</span>
+</span><span id="tckglobal-210"><a href="#tckglobal-210"><span class="linenos">210</span></a><span class="sd">            If used, a mask is required, and this mask must keep at least one\</span>
+</span><span id="tckglobal-211"><a href="#tckglobal-211"><span class="linenos">211</span></a><span class="sd">            voxel distance to the image bounding box.</span>
+</span><span id="tckglobal-212"><a href="#tckglobal-212"><span class="linenos">212</span></a><span class="sd">        lambda_: set the weight of the internal energy directly. (default = 1)\</span>
+</span><span id="tckglobal-213"><a href="#tckglobal-213"><span class="linenos">213</span></a><span class="sd">            If provided, any value of -balance will be ignored.</span>
+</span><span id="tckglobal-214"><a href="#tckglobal-214"><span class="linenos">214</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="tckglobal-215"><a href="#tckglobal-215"><span class="linenos">215</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="tckglobal-216"><a href="#tckglobal-216"><span class="linenos">216</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="tckglobal-217"><a href="#tckglobal-217"><span class="linenos">217</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="tckglobal-218"><a href="#tckglobal-218"><span class="linenos">218</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="tckglobal-219"><a href="#tckglobal-219"><span class="linenos">219</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="tckglobal-220"><a href="#tckglobal-220"><span class="linenos">220</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="tckglobal-221"><a href="#tckglobal-221"><span class="linenos">221</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="tckglobal-222"><a href="#tckglobal-222"><span class="linenos">222</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="tckglobal-223"><a href="#tckglobal-223"><span class="linenos">223</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="tckglobal-224"><a href="#tckglobal-224"><span class="linenos">224</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="tckglobal-225"><a href="#tckglobal-225"><span class="linenos">225</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="tckglobal-226"><a href="#tckglobal-226"><span class="linenos">226</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="tckglobal-227"><a href="#tckglobal-227"><span class="linenos">227</span></a><span class="sd">    Returns:</span>
+</span><span id="tckglobal-228"><a href="#tckglobal-228"><span class="linenos">228</span></a><span class="sd">        NamedTuple of outputs (described in `TckglobalOutputs`).</span>
+</span><span id="tckglobal-229"><a href="#tckglobal-229"><span class="linenos">229</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="tckglobal-230"><a href="#tckglobal-230"><span class="linenos">230</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="tckglobal-231"><a href="#tckglobal-231"><span class="linenos">231</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKGLOBAL_METADATA</span><span class="p">)</span>
+</span><span id="tckglobal-232"><a href="#tckglobal-232"><span class="linenos">232</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="tckglobal-233"><a href="#tckglobal-233"><span class="linenos">233</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckglobal&quot;</span><span class="p">)</span>
+</span><span id="tckglobal-234"><a href="#tckglobal-234"><span class="linenos">234</span></a>    <span class="k">if</span> <span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-235"><a href="#tckglobal-235"><span class="linenos">235</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-236"><a href="#tckglobal-236"><span class="linenos">236</span></a>            <span class="s2">&quot;-grad&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-237"><a href="#tckglobal-237"><span class="linenos">237</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+</span><span id="tckglobal-238"><a href="#tckglobal-238"><span class="linenos">238</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-239"><a href="#tckglobal-239"><span class="linenos">239</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-240"><a href="#tckglobal-240"><span class="linenos">240</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-241"><a href="#tckglobal-241"><span class="linenos">241</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-242"><a href="#tckglobal-242"><span class="linenos">242</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="tckglobal-243"><a href="#tckglobal-243"><span class="linenos">243</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-244"><a href="#tckglobal-244"><span class="linenos">244</span></a>    <span class="k">if</span> <span class="n">riso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-245"><a href="#tckglobal-245"><span class="linenos">245</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">riso</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="tckglobal-246"><a href="#tckglobal-246"><span class="linenos">246</span></a>    <span class="k">if</span> <span class="n">lmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-247"><a href="#tckglobal-247"><span class="linenos">247</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-248"><a href="#tckglobal-248"><span class="linenos">248</span></a>            <span class="s2">&quot;-lmax&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-249"><a href="#tckglobal-249"><span class="linenos">249</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lmax</span><span class="p">)</span>
+</span><span id="tckglobal-250"><a href="#tckglobal-250"><span class="linenos">250</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-251"><a href="#tckglobal-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">length</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-252"><a href="#tckglobal-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-253"><a href="#tckglobal-253"><span class="linenos">253</span></a>            <span class="s2">&quot;-length&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-254"><a href="#tckglobal-254"><span class="linenos">254</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+</span><span id="tckglobal-255"><a href="#tckglobal-255"><span class="linenos">255</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-256"><a href="#tckglobal-256"><span class="linenos">256</span></a>    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-257"><a href="#tckglobal-257"><span class="linenos">257</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-258"><a href="#tckglobal-258"><span class="linenos">258</span></a>            <span class="s2">&quot;-weight&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-259"><a href="#tckglobal-259"><span class="linenos">259</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+</span><span id="tckglobal-260"><a href="#tckglobal-260"><span class="linenos">260</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-261"><a href="#tckglobal-261"><span class="linenos">261</span></a>    <span class="k">if</span> <span class="n">ppot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-262"><a href="#tckglobal-262"><span class="linenos">262</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-263"><a href="#tckglobal-263"><span class="linenos">263</span></a>            <span class="s2">&quot;-ppot&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-264"><a href="#tckglobal-264"><span class="linenos">264</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">ppot</span><span class="p">)</span>
+</span><span id="tckglobal-265"><a href="#tckglobal-265"><span class="linenos">265</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-266"><a href="#tckglobal-266"><span class="linenos">266</span></a>    <span class="k">if</span> <span class="n">cpot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-267"><a href="#tckglobal-267"><span class="linenos">267</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-268"><a href="#tckglobal-268"><span class="linenos">268</span></a>            <span class="s2">&quot;-cpot&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-269"><a href="#tckglobal-269"><span class="linenos">269</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cpot</span><span class="p">)</span>
+</span><span id="tckglobal-270"><a href="#tckglobal-270"><span class="linenos">270</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-271"><a href="#tckglobal-271"><span class="linenos">271</span></a>    <span class="k">if</span> <span class="n">t0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-272"><a href="#tckglobal-272"><span class="linenos">272</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-273"><a href="#tckglobal-273"><span class="linenos">273</span></a>            <span class="s2">&quot;-t0&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-274"><a href="#tckglobal-274"><span class="linenos">274</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
+</span><span id="tckglobal-275"><a href="#tckglobal-275"><span class="linenos">275</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-276"><a href="#tckglobal-276"><span class="linenos">276</span></a>    <span class="k">if</span> <span class="n">t1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-277"><a href="#tckglobal-277"><span class="linenos">277</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-278"><a href="#tckglobal-278"><span class="linenos">278</span></a>            <span class="s2">&quot;-t1&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-279"><a href="#tckglobal-279"><span class="linenos">279</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+</span><span id="tckglobal-280"><a href="#tckglobal-280"><span class="linenos">280</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-281"><a href="#tckglobal-281"><span class="linenos">281</span></a>    <span class="k">if</span> <span class="n">niter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-282"><a href="#tckglobal-282"><span class="linenos">282</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-283"><a href="#tckglobal-283"><span class="linenos">283</span></a>            <span class="s2">&quot;-niter&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-284"><a href="#tckglobal-284"><span class="linenos">284</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">niter</span><span class="p">)</span>
+</span><span id="tckglobal-285"><a href="#tckglobal-285"><span class="linenos">285</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-286"><a href="#tckglobal-286"><span class="linenos">286</span></a>    <span class="k">if</span> <span class="n">fod</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-287"><a href="#tckglobal-287"><span class="linenos">287</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-288"><a href="#tckglobal-288"><span class="linenos">288</span></a>            <span class="s2">&quot;-fod&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-289"><a href="#tckglobal-289"><span class="linenos">289</span></a>            <span class="n">fod</span>
+</span><span id="tckglobal-290"><a href="#tckglobal-290"><span class="linenos">290</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-291"><a href="#tckglobal-291"><span class="linenos">291</span></a>    <span class="k">if</span> <span class="n">noapo</span><span class="p">:</span>
+</span><span id="tckglobal-292"><a href="#tckglobal-292"><span class="linenos">292</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noapo&quot;</span><span class="p">)</span>
+</span><span id="tckglobal-293"><a href="#tckglobal-293"><span class="linenos">293</span></a>    <span class="k">if</span> <span class="n">fiso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-294"><a href="#tckglobal-294"><span class="linenos">294</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-295"><a href="#tckglobal-295"><span class="linenos">295</span></a>            <span class="s2">&quot;-fiso&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-296"><a href="#tckglobal-296"><span class="linenos">296</span></a>            <span class="n">fiso</span>
+</span><span id="tckglobal-297"><a href="#tckglobal-297"><span class="linenos">297</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-298"><a href="#tckglobal-298"><span class="linenos">298</span></a>    <span class="k">if</span> <span class="n">eext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-299"><a href="#tckglobal-299"><span class="linenos">299</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-300"><a href="#tckglobal-300"><span class="linenos">300</span></a>            <span class="s2">&quot;-eext&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-301"><a href="#tckglobal-301"><span class="linenos">301</span></a>            <span class="n">eext</span>
+</span><span id="tckglobal-302"><a href="#tckglobal-302"><span class="linenos">302</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-303"><a href="#tckglobal-303"><span class="linenos">303</span></a>    <span class="k">if</span> <span class="n">etrend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-304"><a href="#tckglobal-304"><span class="linenos">304</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-305"><a href="#tckglobal-305"><span class="linenos">305</span></a>            <span class="s2">&quot;-etrend&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-306"><a href="#tckglobal-306"><span class="linenos">306</span></a>            <span class="n">etrend</span>
+</span><span id="tckglobal-307"><a href="#tckglobal-307"><span class="linenos">307</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-308"><a href="#tckglobal-308"><span class="linenos">308</span></a>    <span class="k">if</span> <span class="n">balance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-309"><a href="#tckglobal-309"><span class="linenos">309</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-310"><a href="#tckglobal-310"><span class="linenos">310</span></a>            <span class="s2">&quot;-balance&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-311"><a href="#tckglobal-311"><span class="linenos">311</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">balance</span><span class="p">)</span>
+</span><span id="tckglobal-312"><a href="#tckglobal-312"><span class="linenos">312</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-313"><a href="#tckglobal-313"><span class="linenos">313</span></a>    <span class="k">if</span> <span class="n">density</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-314"><a href="#tckglobal-314"><span class="linenos">314</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-315"><a href="#tckglobal-315"><span class="linenos">315</span></a>            <span class="s2">&quot;-density&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-316"><a href="#tckglobal-316"><span class="linenos">316</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">density</span><span class="p">)</span>
+</span><span id="tckglobal-317"><a href="#tckglobal-317"><span class="linenos">317</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-318"><a href="#tckglobal-318"><span class="linenos">318</span></a>    <span class="k">if</span> <span class="n">prob</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-319"><a href="#tckglobal-319"><span class="linenos">319</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-320"><a href="#tckglobal-320"><span class="linenos">320</span></a>            <span class="s2">&quot;-prob&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-321"><a href="#tckglobal-321"><span class="linenos">321</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
+</span><span id="tckglobal-322"><a href="#tckglobal-322"><span class="linenos">322</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-323"><a href="#tckglobal-323"><span class="linenos">323</span></a>    <span class="k">if</span> <span class="n">beta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-324"><a href="#tckglobal-324"><span class="linenos">324</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-325"><a href="#tckglobal-325"><span class="linenos">325</span></a>            <span class="s2">&quot;-beta&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-326"><a href="#tckglobal-326"><span class="linenos">326</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
+</span><span id="tckglobal-327"><a href="#tckglobal-327"><span class="linenos">327</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-328"><a href="#tckglobal-328"><span class="linenos">328</span></a>    <span class="k">if</span> <span class="n">lambda_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-329"><a href="#tckglobal-329"><span class="linenos">329</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-330"><a href="#tckglobal-330"><span class="linenos">330</span></a>            <span class="s2">&quot;-lambda&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-331"><a href="#tckglobal-331"><span class="linenos">331</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lambda_</span><span class="p">)</span>
+</span><span id="tckglobal-332"><a href="#tckglobal-332"><span class="linenos">332</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-333"><a href="#tckglobal-333"><span class="linenos">333</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="tckglobal-334"><a href="#tckglobal-334"><span class="linenos">334</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="tckglobal-335"><a href="#tckglobal-335"><span class="linenos">335</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="tckglobal-336"><a href="#tckglobal-336"><span class="linenos">336</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="tckglobal-337"><a href="#tckglobal-337"><span class="linenos">337</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="tckglobal-338"><a href="#tckglobal-338"><span class="linenos">338</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="tckglobal-339"><a href="#tckglobal-339"><span class="linenos">339</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="tckglobal-340"><a href="#tckglobal-340"><span class="linenos">340</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="tckglobal-341"><a href="#tckglobal-341"><span class="linenos">341</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-342"><a href="#tckglobal-342"><span class="linenos">342</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckglobal-343"><a href="#tckglobal-343"><span class="linenos">343</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="tckglobal-344"><a href="#tckglobal-344"><span class="linenos">344</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="tckglobal-345"><a href="#tckglobal-345"><span class="linenos">345</span></a>        <span class="p">])</span>
+</span><span id="tckglobal-346"><a href="#tckglobal-346"><span class="linenos">346</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckglobal-347"><a href="#tckglobal-347"><span class="linenos">347</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="tckglobal-348"><a href="#tckglobal-348"><span class="linenos">348</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="tckglobal-349"><a href="#tckglobal-349"><span class="linenos">349</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="tckglobal-350"><a href="#tckglobal-350"><span class="linenos">350</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="tckglobal-351"><a href="#tckglobal-351"><span class="linenos">351</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="tckglobal-352"><a href="#tckglobal-352"><span class="linenos">352</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
+</span><span id="tckglobal-353"><a href="#tckglobal-353"><span class="linenos">353</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">response</span><span class="p">))</span>
+</span><span id="tckglobal-354"><a href="#tckglobal-354"><span class="linenos">354</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tracks</span><span class="p">)</span>
+</span><span id="tckglobal-355"><a href="#tckglobal-355"><span class="linenos">355</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckglobalOutputs</span><span class="p">(</span>
+</span><span id="tckglobal-356"><a href="#tckglobal-356"><span class="linenos">356</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="tckglobal-357"><a href="#tckglobal-357"><span class="linenos">357</span></a>        <span class="n">tracks</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">tracks</span><span class="p">),</span>
+</span><span id="tckglobal-358"><a href="#tckglobal-358"><span class="linenos">358</span></a>        <span class="n">fod</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fod</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fod</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckglobal-359"><a href="#tckglobal-359"><span class="linenos">359</span></a>        <span class="n">fiso</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">fiso</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">fiso</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckglobal-360"><a href="#tckglobal-360"><span class="linenos">360</span></a>        <span class="n">eext</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">eext</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">eext</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckglobal-361"><a href="#tckglobal-361"><span class="linenos">361</span></a>        <span class="n">etrend</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">etrend</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">etrend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckglobal-362"><a href="#tckglobal-362"><span class="linenos">362</span></a>    <span class="p">)</span>
+</span><span id="tckglobal-363"><a href="#tckglobal-363"><span class="linenos">363</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="tckglobal-364"><a href="#tckglobal-364"><span class="linenos">364</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1202,10 +1200,9 @@ of the global optimization and thus affected by spatial regularization.</p>
 Maes, F. Global tractography of multi-shell diffusion-weighted imaging data
 using a multi-tissue model. NeuroImage, 2015, 123, 89-101.</p>
 
-<p>Author: Daan Christiaens (daan.christiaens@kcl.ac.uk)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/tckglobal.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/tckglobal.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

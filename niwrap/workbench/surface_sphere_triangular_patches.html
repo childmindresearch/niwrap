@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d60e74b6c01ae1d563f381b30959216cadf62ff2.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;cf5e1de7b6567680a60ad682a310a3d86b617588.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;surface-sphere-triangular-patches&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -105,37 +105,39 @@
 </span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">    Divide the given undistorted sphere into equally-sized triangular patches.</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    Patches overlap by a border of 1 vertex.</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    </span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Args:</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">        sphere: an undistorted, regularly divided icosahedral sphere.</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        divisions: how many pieces to divide each icosahedral edge into, must\</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">            divide perfectly into the given sphere.</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        text_out: output - text file for the vertex numbers of the patches.</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">    Returns:</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceSphereTriangularPatchesOutputs`).</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA</span><span class="p">)</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-sphere-triangular-patches&quot;</span><span class="p">)</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere</span><span class="p">))</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">divisions</span><span class="p">))</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceSphereTriangularPatchesOutputs</span><span class="p">(</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="p">)</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="s2">&quot;SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="s2">&quot;SurfaceSphereTriangularPatchesOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="s2">&quot;surface_sphere_triangular_patches&quot;</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a><span class="p">]</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    Args:</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        sphere: an undistorted, regularly divided icosahedral sphere.</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        divisions: how many pieces to divide each icosahedral edge into, must\</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">            divide perfectly into the given sphere.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        text_out: output - text file for the vertex numbers of the patches.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">    Returns:</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceSphereTriangularPatchesOutputs`).</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA</span><span class="p">)</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-sphere-triangular-patches&quot;</span><span class="p">)</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere</span><span class="p">))</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">divisions</span><span class="p">))</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceSphereTriangularPatchesOutputs</span><span class="p">(</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="s2">&quot;SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="s2">&quot;SurfaceSphereTriangularPatchesOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="s2">&quot;surface_sphere_triangular_patches&quot;</span><span class="p">,</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -144,7 +146,7 @@
                     <div class="attr variable">
             <span class="name">SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA</span>        =
 <input id="SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d60e74b6c01ae1d563f381b30959216cadf62ff2.boutiques&#39;, name=&#39;surface-sphere-triangular-patches&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;cf5e1de7b6567680a60ad682a310a3d86b617588.boutiques&#39;, name=&#39;surface-sphere-triangular-patches&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -228,30 +230,32 @@
 </span><span id="surface_sphere_triangular_patches-35"><a href="#surface_sphere_triangular_patches-35"><span class="linenos">35</span></a><span class="sd">    Divide the given undistorted sphere into equally-sized triangular patches.</span>
 </span><span id="surface_sphere_triangular_patches-36"><a href="#surface_sphere_triangular_patches-36"><span class="linenos">36</span></a><span class="sd">    Patches overlap by a border of 1 vertex.</span>
 </span><span id="surface_sphere_triangular_patches-37"><a href="#surface_sphere_triangular_patches-37"><span class="linenos">37</span></a><span class="sd">    </span>
-</span><span id="surface_sphere_triangular_patches-38"><a href="#surface_sphere_triangular_patches-38"><span class="linenos">38</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="surface_sphere_triangular_patches-38"><a href="#surface_sphere_triangular_patches-38"><span class="linenos">38</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="surface_sphere_triangular_patches-39"><a href="#surface_sphere_triangular_patches-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="surface_sphere_triangular_patches-40"><a href="#surface_sphere_triangular_patches-40"><span class="linenos">40</span></a><span class="sd">    Args:</span>
-</span><span id="surface_sphere_triangular_patches-41"><a href="#surface_sphere_triangular_patches-41"><span class="linenos">41</span></a><span class="sd">        sphere: an undistorted, regularly divided icosahedral sphere.</span>
-</span><span id="surface_sphere_triangular_patches-42"><a href="#surface_sphere_triangular_patches-42"><span class="linenos">42</span></a><span class="sd">        divisions: how many pieces to divide each icosahedral edge into, must\</span>
-</span><span id="surface_sphere_triangular_patches-43"><a href="#surface_sphere_triangular_patches-43"><span class="linenos">43</span></a><span class="sd">            divide perfectly into the given sphere.</span>
-</span><span id="surface_sphere_triangular_patches-44"><a href="#surface_sphere_triangular_patches-44"><span class="linenos">44</span></a><span class="sd">        text_out: output - text file for the vertex numbers of the patches.</span>
-</span><span id="surface_sphere_triangular_patches-45"><a href="#surface_sphere_triangular_patches-45"><span class="linenos">45</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="surface_sphere_triangular_patches-46"><a href="#surface_sphere_triangular_patches-46"><span class="linenos">46</span></a><span class="sd">    Returns:</span>
-</span><span id="surface_sphere_triangular_patches-47"><a href="#surface_sphere_triangular_patches-47"><span class="linenos">47</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceSphereTriangularPatchesOutputs`).</span>
-</span><span id="surface_sphere_triangular_patches-48"><a href="#surface_sphere_triangular_patches-48"><span class="linenos">48</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="surface_sphere_triangular_patches-49"><a href="#surface_sphere_triangular_patches-49"><span class="linenos">49</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="surface_sphere_triangular_patches-50"><a href="#surface_sphere_triangular_patches-50"><span class="linenos">50</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA</span><span class="p">)</span>
-</span><span id="surface_sphere_triangular_patches-51"><a href="#surface_sphere_triangular_patches-51"><span class="linenos">51</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="surface_sphere_triangular_patches-52"><a href="#surface_sphere_triangular_patches-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="surface_sphere_triangular_patches-53"><a href="#surface_sphere_triangular_patches-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-sphere-triangular-patches&quot;</span><span class="p">)</span>
-</span><span id="surface_sphere_triangular_patches-54"><a href="#surface_sphere_triangular_patches-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere</span><span class="p">))</span>
-</span><span id="surface_sphere_triangular_patches-55"><a href="#surface_sphere_triangular_patches-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">divisions</span><span class="p">))</span>
-</span><span id="surface_sphere_triangular_patches-56"><a href="#surface_sphere_triangular_patches-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text_out</span><span class="p">)</span>
-</span><span id="surface_sphere_triangular_patches-57"><a href="#surface_sphere_triangular_patches-57"><span class="linenos">57</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceSphereTriangularPatchesOutputs</span><span class="p">(</span>
-</span><span id="surface_sphere_triangular_patches-58"><a href="#surface_sphere_triangular_patches-58"><span class="linenos">58</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="surface_sphere_triangular_patches-59"><a href="#surface_sphere_triangular_patches-59"><span class="linenos">59</span></a>    <span class="p">)</span>
-</span><span id="surface_sphere_triangular_patches-60"><a href="#surface_sphere_triangular_patches-60"><span class="linenos">60</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="surface_sphere_triangular_patches-61"><a href="#surface_sphere_triangular_patches-61"><span class="linenos">61</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="surface_sphere_triangular_patches-40"><a href="#surface_sphere_triangular_patches-40"><span class="linenos">40</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="surface_sphere_triangular_patches-41"><a href="#surface_sphere_triangular_patches-41"><span class="linenos">41</span></a><span class="sd">    </span>
+</span><span id="surface_sphere_triangular_patches-42"><a href="#surface_sphere_triangular_patches-42"><span class="linenos">42</span></a><span class="sd">    Args:</span>
+</span><span id="surface_sphere_triangular_patches-43"><a href="#surface_sphere_triangular_patches-43"><span class="linenos">43</span></a><span class="sd">        sphere: an undistorted, regularly divided icosahedral sphere.</span>
+</span><span id="surface_sphere_triangular_patches-44"><a href="#surface_sphere_triangular_patches-44"><span class="linenos">44</span></a><span class="sd">        divisions: how many pieces to divide each icosahedral edge into, must\</span>
+</span><span id="surface_sphere_triangular_patches-45"><a href="#surface_sphere_triangular_patches-45"><span class="linenos">45</span></a><span class="sd">            divide perfectly into the given sphere.</span>
+</span><span id="surface_sphere_triangular_patches-46"><a href="#surface_sphere_triangular_patches-46"><span class="linenos">46</span></a><span class="sd">        text_out: output - text file for the vertex numbers of the patches.</span>
+</span><span id="surface_sphere_triangular_patches-47"><a href="#surface_sphere_triangular_patches-47"><span class="linenos">47</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="surface_sphere_triangular_patches-48"><a href="#surface_sphere_triangular_patches-48"><span class="linenos">48</span></a><span class="sd">    Returns:</span>
+</span><span id="surface_sphere_triangular_patches-49"><a href="#surface_sphere_triangular_patches-49"><span class="linenos">49</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceSphereTriangularPatchesOutputs`).</span>
+</span><span id="surface_sphere_triangular_patches-50"><a href="#surface_sphere_triangular_patches-50"><span class="linenos">50</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="surface_sphere_triangular_patches-51"><a href="#surface_sphere_triangular_patches-51"><span class="linenos">51</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="surface_sphere_triangular_patches-52"><a href="#surface_sphere_triangular_patches-52"><span class="linenos">52</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA</span><span class="p">)</span>
+</span><span id="surface_sphere_triangular_patches-53"><a href="#surface_sphere_triangular_patches-53"><span class="linenos">53</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="surface_sphere_triangular_patches-54"><a href="#surface_sphere_triangular_patches-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="surface_sphere_triangular_patches-55"><a href="#surface_sphere_triangular_patches-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-sphere-triangular-patches&quot;</span><span class="p">)</span>
+</span><span id="surface_sphere_triangular_patches-56"><a href="#surface_sphere_triangular_patches-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere</span><span class="p">))</span>
+</span><span id="surface_sphere_triangular_patches-57"><a href="#surface_sphere_triangular_patches-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">divisions</span><span class="p">))</span>
+</span><span id="surface_sphere_triangular_patches-58"><a href="#surface_sphere_triangular_patches-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text_out</span><span class="p">)</span>
+</span><span id="surface_sphere_triangular_patches-59"><a href="#surface_sphere_triangular_patches-59"><span class="linenos">59</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceSphereTriangularPatchesOutputs</span><span class="p">(</span>
+</span><span id="surface_sphere_triangular_patches-60"><a href="#surface_sphere_triangular_patches-60"><span class="linenos">60</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="surface_sphere_triangular_patches-61"><a href="#surface_sphere_triangular_patches-61"><span class="linenos">61</span></a>    <span class="p">)</span>
+</span><span id="surface_sphere_triangular_patches-62"><a href="#surface_sphere_triangular_patches-62"><span class="linenos">62</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="surface_sphere_triangular_patches-63"><a href="#surface_sphere_triangular_patches-63"><span class="linenos">63</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -260,7 +264,9 @@
 <p>Divide the given undistorted sphere into equally-sized triangular patches.
 Patches overlap by a border of 1 vertex.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

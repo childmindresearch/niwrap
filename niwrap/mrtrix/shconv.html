@@ -129,7 +129,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SHCONV_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2763ad6db27e39a7c0eb5218740b8885f1a762a3.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3c84c5743ea66d880048dc5dc975db440966a75e.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;shconv&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -260,91 +260,90 @@
 </span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    </span>
 </span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">    .</span>
 </span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    </span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    Author: David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    (jdtournier@gmail.com)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    </span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/shconv.html</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    </span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    Args:</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        odf_response: pairs of input ODF image and corresponding responses.</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">        sh_out: the output spherical harmonics coefficients image.</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">            int8, uint8, bit.</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    Returns:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        NamedTuple of outputs (described in `ShconvOutputs`).</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SHCONV_METADATA</span><span class="p">)</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;shconv&quot;</span><span class="p">)</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>            <span class="n">datatype</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="p">])</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="p">])</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="p">])</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">odf_response</span><span class="p">)</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sh_out</span><span class="p">)</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ShconvOutputs</span><span class="p">(</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>        <span class="n">sh_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">sh_out</span><span class="p">),</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="p">)</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    </span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    </span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    Args:</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">        odf_response: pairs of input ODF image and corresponding responses.</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        sh_out: the output spherical harmonics coefficients image.</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">            int8, uint8, bit.</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    Returns:</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        NamedTuple of outputs (described in `ShconvOutputs`).</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SHCONV_METADATA</span><span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;shconv&quot;</span><span class="p">)</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="n">datatype</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="p">])</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="p">])</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="p">])</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">odf_response</span><span class="p">)</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sh_out</span><span class="p">)</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ShconvOutputs</span><span class="p">(</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="n">sh_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">sh_out</span><span class="p">),</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="p">)</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>
 </span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;SHCONV_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;ShconvConfig&quot;</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="s2">&quot;ShconvOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;ShconvVariousFile&quot;</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="s2">&quot;ShconvVariousString&quot;</span><span class="p">,</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="s2">&quot;shconv&quot;</span><span class="p">,</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="p">]</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="s2">&quot;SHCONV_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="s2">&quot;ShconvConfig&quot;</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="s2">&quot;ShconvOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="s2">&quot;ShconvVariousFile&quot;</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;ShconvVariousString&quot;</span><span class="p">,</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="s2">&quot;shconv&quot;</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -353,7 +352,7 @@
                     <div class="attr variable">
             <span class="name">SHCONV_METADATA</span>        =
 <input id="SHCONV_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SHCONV_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2763ad6db27e39a7c0eb5218740b8885f1a762a3.boutiques&#39;, name=&#39;shconv&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SHCONV_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3c84c5743ea66d880048dc5dc975db440966a75e.boutiques&#39;, name=&#39;shconv&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -832,81 +831,80 @@
 </span><span id="shconv-139"><a href="#shconv-139"><span class="linenos">139</span></a><span class="sd">    </span>
 </span><span id="shconv-140"><a href="#shconv-140"><span class="linenos">140</span></a><span class="sd">    .</span>
 </span><span id="shconv-141"><a href="#shconv-141"><span class="linenos">141</span></a><span class="sd">    </span>
-</span><span id="shconv-142"><a href="#shconv-142"><span class="linenos">142</span></a><span class="sd">    Author: David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier</span>
-</span><span id="shconv-143"><a href="#shconv-143"><span class="linenos">143</span></a><span class="sd">    (jdtournier@gmail.com)</span>
-</span><span id="shconv-144"><a href="#shconv-144"><span class="linenos">144</span></a><span class="sd">    </span>
-</span><span id="shconv-145"><a href="#shconv-145"><span class="linenos">145</span></a><span class="sd">    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/shconv.html</span>
-</span><span id="shconv-146"><a href="#shconv-146"><span class="linenos">146</span></a><span class="sd">    </span>
-</span><span id="shconv-147"><a href="#shconv-147"><span class="linenos">147</span></a><span class="sd">    Args:</span>
-</span><span id="shconv-148"><a href="#shconv-148"><span class="linenos">148</span></a><span class="sd">        odf_response: pairs of input ODF image and corresponding responses.</span>
-</span><span id="shconv-149"><a href="#shconv-149"><span class="linenos">149</span></a><span class="sd">        sh_out: the output spherical harmonics coefficients image.</span>
-</span><span id="shconv-150"><a href="#shconv-150"><span class="linenos">150</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
-</span><span id="shconv-151"><a href="#shconv-151"><span class="linenos">151</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
-</span><span id="shconv-152"><a href="#shconv-152"><span class="linenos">152</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
-</span><span id="shconv-153"><a href="#shconv-153"><span class="linenos">153</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
-</span><span id="shconv-154"><a href="#shconv-154"><span class="linenos">154</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
-</span><span id="shconv-155"><a href="#shconv-155"><span class="linenos">155</span></a><span class="sd">            int8, uint8, bit.</span>
-</span><span id="shconv-156"><a href="#shconv-156"><span class="linenos">156</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
-</span><span id="shconv-157"><a href="#shconv-157"><span class="linenos">157</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
-</span><span id="shconv-158"><a href="#shconv-158"><span class="linenos">158</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
-</span><span id="shconv-159"><a href="#shconv-159"><span class="linenos">159</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
-</span><span id="shconv-160"><a href="#shconv-160"><span class="linenos">160</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="shconv-161"><a href="#shconv-161"><span class="linenos">161</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="shconv-162"><a href="#shconv-162"><span class="linenos">162</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="shconv-163"><a href="#shconv-163"><span class="linenos">163</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="shconv-164"><a href="#shconv-164"><span class="linenos">164</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="shconv-165"><a href="#shconv-165"><span class="linenos">165</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="shconv-166"><a href="#shconv-166"><span class="linenos">166</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="shconv-167"><a href="#shconv-167"><span class="linenos">167</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="shconv-168"><a href="#shconv-168"><span class="linenos">168</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="shconv-169"><a href="#shconv-169"><span class="linenos">169</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="shconv-170"><a href="#shconv-170"><span class="linenos">170</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="shconv-171"><a href="#shconv-171"><span class="linenos">171</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="shconv-172"><a href="#shconv-172"><span class="linenos">172</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="shconv-173"><a href="#shconv-173"><span class="linenos">173</span></a><span class="sd">    Returns:</span>
-</span><span id="shconv-174"><a href="#shconv-174"><span class="linenos">174</span></a><span class="sd">        NamedTuple of outputs (described in `ShconvOutputs`).</span>
-</span><span id="shconv-175"><a href="#shconv-175"><span class="linenos">175</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="shconv-176"><a href="#shconv-176"><span class="linenos">176</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="shconv-177"><a href="#shconv-177"><span class="linenos">177</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SHCONV_METADATA</span><span class="p">)</span>
-</span><span id="shconv-178"><a href="#shconv-178"><span class="linenos">178</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="shconv-179"><a href="#shconv-179"><span class="linenos">179</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;shconv&quot;</span><span class="p">)</span>
-</span><span id="shconv-180"><a href="#shconv-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="shconv-181"><a href="#shconv-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="shconv-182"><a href="#shconv-182"><span class="linenos">182</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
-</span><span id="shconv-183"><a href="#shconv-183"><span class="linenos">183</span></a>            <span class="n">datatype</span>
-</span><span id="shconv-184"><a href="#shconv-184"><span class="linenos">184</span></a>        <span class="p">])</span>
-</span><span id="shconv-185"><a href="#shconv-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="shconv-186"><a href="#shconv-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="shconv-187"><a href="#shconv-187"><span class="linenos">187</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
-</span><span id="shconv-188"><a href="#shconv-188"><span class="linenos">188</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
-</span><span id="shconv-189"><a href="#shconv-189"><span class="linenos">189</span></a>        <span class="p">])</span>
-</span><span id="shconv-190"><a href="#shconv-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="shconv-191"><a href="#shconv-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="shconv-192"><a href="#shconv-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="shconv-193"><a href="#shconv-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="shconv-194"><a href="#shconv-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="shconv-195"><a href="#shconv-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="shconv-196"><a href="#shconv-196"><span class="linenos">196</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="shconv-197"><a href="#shconv-197"><span class="linenos">197</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="shconv-198"><a href="#shconv-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="shconv-199"><a href="#shconv-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="shconv-200"><a href="#shconv-200"><span class="linenos">200</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="shconv-201"><a href="#shconv-201"><span class="linenos">201</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="shconv-202"><a href="#shconv-202"><span class="linenos">202</span></a>        <span class="p">])</span>
-</span><span id="shconv-203"><a href="#shconv-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="shconv-204"><a href="#shconv-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="shconv-205"><a href="#shconv-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="shconv-206"><a href="#shconv-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="shconv-207"><a href="#shconv-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="shconv-208"><a href="#shconv-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="shconv-209"><a href="#shconv-209"><span class="linenos">209</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">odf_response</span><span class="p">)</span>
-</span><span id="shconv-210"><a href="#shconv-210"><span class="linenos">210</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sh_out</span><span class="p">)</span>
-</span><span id="shconv-211"><a href="#shconv-211"><span class="linenos">211</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ShconvOutputs</span><span class="p">(</span>
-</span><span id="shconv-212"><a href="#shconv-212"><span class="linenos">212</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="shconv-213"><a href="#shconv-213"><span class="linenos">213</span></a>        <span class="n">sh_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">sh_out</span><span class="p">),</span>
-</span><span id="shconv-214"><a href="#shconv-214"><span class="linenos">214</span></a>    <span class="p">)</span>
-</span><span id="shconv-215"><a href="#shconv-215"><span class="linenos">215</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="shconv-216"><a href="#shconv-216"><span class="linenos">216</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="shconv-142"><a href="#shconv-142"><span class="linenos">142</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="shconv-143"><a href="#shconv-143"><span class="linenos">143</span></a><span class="sd">    </span>
+</span><span id="shconv-144"><a href="#shconv-144"><span class="linenos">144</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="shconv-145"><a href="#shconv-145"><span class="linenos">145</span></a><span class="sd">    </span>
+</span><span id="shconv-146"><a href="#shconv-146"><span class="linenos">146</span></a><span class="sd">    Args:</span>
+</span><span id="shconv-147"><a href="#shconv-147"><span class="linenos">147</span></a><span class="sd">        odf_response: pairs of input ODF image and corresponding responses.</span>
+</span><span id="shconv-148"><a href="#shconv-148"><span class="linenos">148</span></a><span class="sd">        sh_out: the output spherical harmonics coefficients image.</span>
+</span><span id="shconv-149"><a href="#shconv-149"><span class="linenos">149</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
+</span><span id="shconv-150"><a href="#shconv-150"><span class="linenos">150</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
+</span><span id="shconv-151"><a href="#shconv-151"><span class="linenos">151</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
+</span><span id="shconv-152"><a href="#shconv-152"><span class="linenos">152</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
+</span><span id="shconv-153"><a href="#shconv-153"><span class="linenos">153</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
+</span><span id="shconv-154"><a href="#shconv-154"><span class="linenos">154</span></a><span class="sd">            int8, uint8, bit.</span>
+</span><span id="shconv-155"><a href="#shconv-155"><span class="linenos">155</span></a><span class="sd">        strides: specify the strides of the output data in memory; either as a\</span>
+</span><span id="shconv-156"><a href="#shconv-156"><span class="linenos">156</span></a><span class="sd">            comma-separated list of (signed) integers, or as a template image from\</span>
+</span><span id="shconv-157"><a href="#shconv-157"><span class="linenos">157</span></a><span class="sd">            which the strides shall be extracted and used. The actual strides\</span>
+</span><span id="shconv-158"><a href="#shconv-158"><span class="linenos">158</span></a><span class="sd">            produced will depend on whether the output image format can support it.</span>
+</span><span id="shconv-159"><a href="#shconv-159"><span class="linenos">159</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="shconv-160"><a href="#shconv-160"><span class="linenos">160</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="shconv-161"><a href="#shconv-161"><span class="linenos">161</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="shconv-162"><a href="#shconv-162"><span class="linenos">162</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="shconv-163"><a href="#shconv-163"><span class="linenos">163</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="shconv-164"><a href="#shconv-164"><span class="linenos">164</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="shconv-165"><a href="#shconv-165"><span class="linenos">165</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="shconv-166"><a href="#shconv-166"><span class="linenos">166</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="shconv-167"><a href="#shconv-167"><span class="linenos">167</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="shconv-168"><a href="#shconv-168"><span class="linenos">168</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="shconv-169"><a href="#shconv-169"><span class="linenos">169</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="shconv-170"><a href="#shconv-170"><span class="linenos">170</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="shconv-171"><a href="#shconv-171"><span class="linenos">171</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="shconv-172"><a href="#shconv-172"><span class="linenos">172</span></a><span class="sd">    Returns:</span>
+</span><span id="shconv-173"><a href="#shconv-173"><span class="linenos">173</span></a><span class="sd">        NamedTuple of outputs (described in `ShconvOutputs`).</span>
+</span><span id="shconv-174"><a href="#shconv-174"><span class="linenos">174</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="shconv-175"><a href="#shconv-175"><span class="linenos">175</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="shconv-176"><a href="#shconv-176"><span class="linenos">176</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SHCONV_METADATA</span><span class="p">)</span>
+</span><span id="shconv-177"><a href="#shconv-177"><span class="linenos">177</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="shconv-178"><a href="#shconv-178"><span class="linenos">178</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;shconv&quot;</span><span class="p">)</span>
+</span><span id="shconv-179"><a href="#shconv-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="shconv-180"><a href="#shconv-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="shconv-181"><a href="#shconv-181"><span class="linenos">181</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
+</span><span id="shconv-182"><a href="#shconv-182"><span class="linenos">182</span></a>            <span class="n">datatype</span>
+</span><span id="shconv-183"><a href="#shconv-183"><span class="linenos">183</span></a>        <span class="p">])</span>
+</span><span id="shconv-184"><a href="#shconv-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="shconv-185"><a href="#shconv-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="shconv-186"><a href="#shconv-186"><span class="linenos">186</span></a>            <span class="s2">&quot;-strides&quot;</span><span class="p">,</span>
+</span><span id="shconv-187"><a href="#shconv-187"><span class="linenos">187</span></a>            <span class="o">*</span><span class="n">strides</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span>
+</span><span id="shconv-188"><a href="#shconv-188"><span class="linenos">188</span></a>        <span class="p">])</span>
+</span><span id="shconv-189"><a href="#shconv-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="shconv-190"><a href="#shconv-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="shconv-191"><a href="#shconv-191"><span class="linenos">191</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="shconv-192"><a href="#shconv-192"><span class="linenos">192</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="shconv-193"><a href="#shconv-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="shconv-194"><a href="#shconv-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="shconv-195"><a href="#shconv-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="shconv-196"><a href="#shconv-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="shconv-197"><a href="#shconv-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="shconv-198"><a href="#shconv-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="shconv-199"><a href="#shconv-199"><span class="linenos">199</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="shconv-200"><a href="#shconv-200"><span class="linenos">200</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="shconv-201"><a href="#shconv-201"><span class="linenos">201</span></a>        <span class="p">])</span>
+</span><span id="shconv-202"><a href="#shconv-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="shconv-203"><a href="#shconv-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="shconv-204"><a href="#shconv-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="shconv-205"><a href="#shconv-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="shconv-206"><a href="#shconv-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="shconv-207"><a href="#shconv-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="shconv-208"><a href="#shconv-208"><span class="linenos">208</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">odf_response</span><span class="p">)</span>
+</span><span id="shconv-209"><a href="#shconv-209"><span class="linenos">209</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sh_out</span><span class="p">)</span>
+</span><span id="shconv-210"><a href="#shconv-210"><span class="linenos">210</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ShconvOutputs</span><span class="p">(</span>
+</span><span id="shconv-211"><a href="#shconv-211"><span class="linenos">211</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="shconv-212"><a href="#shconv-212"><span class="linenos">212</span></a>        <span class="n">sh_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">sh_out</span><span class="p">),</span>
+</span><span id="shconv-213"><a href="#shconv-213"><span class="linenos">213</span></a>    <span class="p">)</span>
+</span><span id="shconv-214"><a href="#shconv-214"><span class="linenos">214</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="shconv-215"><a href="#shconv-215"><span class="linenos">215</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -935,10 +933,9 @@ described the main documentation, which can be found at the following link:
 
 <p>.</p>
 
-<p>Author: David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier
-(jdtournier@gmail.com)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL: <a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/shconv.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/shconv.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

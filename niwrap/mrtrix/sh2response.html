@@ -102,7 +102,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SH2RESPONSE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2ac3ba8ab50d4cf9227f875454b7446510342d3c.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;73af982ff7a9439d2a7181a0cb546efa4f302105.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sh2response&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -180,91 +180,90 @@
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    .</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    </span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    Author: J-Donald Tournier (jdtournier@gmail.com)</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    </span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    URL:</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2response.html</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    </span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    Args:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        sh: the spherical harmonic decomposition of the diffusion-weighted\</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">            images.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        mask: the mask containing the voxels from which to estimate the\</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">            response function.</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        directions: a 4D image containing the direction vectors along which to\</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">            estimate the response function.</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        response: the output axially-symmetric spherical harmonic coefficients.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        lmax: specify the maximum harmonic degree of the response function to\</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            estimate.</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        dump: dump the m=0 SH coefficients from all voxels in the mask to the\</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">            output file, rather than their mean.</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Returns:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        NamedTuple of outputs (described in `Sh2responseOutputs`).</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SH2RESPONSE_METADATA</span><span class="p">)</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sh2response&quot;</span><span class="p">)</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">lmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="s2">&quot;-lmax&quot;</span><span class="p">,</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lmax</span><span class="p">)</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="p">])</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="s2">&quot;-dump&quot;</span><span class="p">,</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>            <span class="n">dump</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="p">])</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="p">])</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sh</span><span class="p">))</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">))</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">directions</span><span class="p">))</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Sh2responseOutputs</span><span class="p">(</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="n">response</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">response</span><span class="p">),</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">dump</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">dump</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    </span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    Args:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        sh: the spherical harmonic decomposition of the diffusion-weighted\</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">            images.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        mask: the mask containing the voxels from which to estimate the\</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            response function.</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        directions: a 4D image containing the direction vectors along which to\</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            estimate the response function.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        response: the output axially-symmetric spherical harmonic coefficients.</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        lmax: specify the maximum harmonic degree of the response function to\</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">            estimate.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        dump: dump the m=0 SH coefficients from all voxels in the mask to the\</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            output file, rather than their mean.</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    Returns:</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">        NamedTuple of outputs (described in `Sh2responseOutputs`).</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SH2RESPONSE_METADATA</span><span class="p">)</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sh2response&quot;</span><span class="p">)</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">lmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="s2">&quot;-lmax&quot;</span><span class="p">,</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lmax</span><span class="p">)</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="p">])</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="s2">&quot;-dump&quot;</span><span class="p">,</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="n">dump</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="p">])</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="p">])</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sh</span><span class="p">))</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">))</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">directions</span><span class="p">))</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Sh2responseOutputs</span><span class="p">(</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">response</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">response</span><span class="p">),</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="n">dump</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">dump</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="p">)</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>
 </span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="s2">&quot;SH2RESPONSE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="s2">&quot;Sh2responseConfig&quot;</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="s2">&quot;Sh2responseOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="s2">&quot;sh2response&quot;</span><span class="p">,</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="p">]</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="s2">&quot;SH2RESPONSE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="s2">&quot;Sh2responseConfig&quot;</span><span class="p">,</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="s2">&quot;Sh2responseOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="s2">&quot;sh2response&quot;</span><span class="p">,</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -273,7 +272,7 @@
                     <div class="attr variable">
             <span class="name">SH2RESPONSE_METADATA</span>        =
 <input id="SH2RESPONSE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SH2RESPONSE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2ac3ba8ab50d4cf9227f875454b7446510342d3c.boutiques&#39;, name=&#39;sh2response&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SH2RESPONSE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;73af982ff7a9439d2a7181a0cb546efa4f302105.boutiques&#39;, name=&#39;sh2response&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -539,83 +538,82 @@ file, rather than their mean</p>
 </span><span id="sh2response-86"><a href="#sh2response-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
 </span><span id="sh2response-87"><a href="#sh2response-87"><span class="linenos"> 87</span></a><span class="sd">    .</span>
 </span><span id="sh2response-88"><a href="#sh2response-88"><span class="linenos"> 88</span></a><span class="sd">    </span>
-</span><span id="sh2response-89"><a href="#sh2response-89"><span class="linenos"> 89</span></a><span class="sd">    Author: J-Donald Tournier (jdtournier@gmail.com)</span>
+</span><span id="sh2response-89"><a href="#sh2response-89"><span class="linenos"> 89</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="sh2response-90"><a href="#sh2response-90"><span class="linenos"> 90</span></a><span class="sd">    </span>
-</span><span id="sh2response-91"><a href="#sh2response-91"><span class="linenos"> 91</span></a><span class="sd">    URL:</span>
-</span><span id="sh2response-92"><a href="#sh2response-92"><span class="linenos"> 92</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2response.html</span>
-</span><span id="sh2response-93"><a href="#sh2response-93"><span class="linenos"> 93</span></a><span class="sd">    </span>
-</span><span id="sh2response-94"><a href="#sh2response-94"><span class="linenos"> 94</span></a><span class="sd">    Args:</span>
-</span><span id="sh2response-95"><a href="#sh2response-95"><span class="linenos"> 95</span></a><span class="sd">        sh: the spherical harmonic decomposition of the diffusion-weighted\</span>
-</span><span id="sh2response-96"><a href="#sh2response-96"><span class="linenos"> 96</span></a><span class="sd">            images.</span>
-</span><span id="sh2response-97"><a href="#sh2response-97"><span class="linenos"> 97</span></a><span class="sd">        mask: the mask containing the voxels from which to estimate the\</span>
-</span><span id="sh2response-98"><a href="#sh2response-98"><span class="linenos"> 98</span></a><span class="sd">            response function.</span>
-</span><span id="sh2response-99"><a href="#sh2response-99"><span class="linenos"> 99</span></a><span class="sd">        directions: a 4D image containing the direction vectors along which to\</span>
-</span><span id="sh2response-100"><a href="#sh2response-100"><span class="linenos">100</span></a><span class="sd">            estimate the response function.</span>
-</span><span id="sh2response-101"><a href="#sh2response-101"><span class="linenos">101</span></a><span class="sd">        response: the output axially-symmetric spherical harmonic coefficients.</span>
-</span><span id="sh2response-102"><a href="#sh2response-102"><span class="linenos">102</span></a><span class="sd">        lmax: specify the maximum harmonic degree of the response function to\</span>
-</span><span id="sh2response-103"><a href="#sh2response-103"><span class="linenos">103</span></a><span class="sd">            estimate.</span>
-</span><span id="sh2response-104"><a href="#sh2response-104"><span class="linenos">104</span></a><span class="sd">        dump: dump the m=0 SH coefficients from all voxels in the mask to the\</span>
-</span><span id="sh2response-105"><a href="#sh2response-105"><span class="linenos">105</span></a><span class="sd">            output file, rather than their mean.</span>
-</span><span id="sh2response-106"><a href="#sh2response-106"><span class="linenos">106</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="sh2response-107"><a href="#sh2response-107"><span class="linenos">107</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="sh2response-108"><a href="#sh2response-108"><span class="linenos">108</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="sh2response-109"><a href="#sh2response-109"><span class="linenos">109</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="sh2response-110"><a href="#sh2response-110"><span class="linenos">110</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="sh2response-111"><a href="#sh2response-111"><span class="linenos">111</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="sh2response-112"><a href="#sh2response-112"><span class="linenos">112</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="sh2response-113"><a href="#sh2response-113"><span class="linenos">113</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="sh2response-114"><a href="#sh2response-114"><span class="linenos">114</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="sh2response-115"><a href="#sh2response-115"><span class="linenos">115</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="sh2response-116"><a href="#sh2response-116"><span class="linenos">116</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="sh2response-117"><a href="#sh2response-117"><span class="linenos">117</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="sh2response-118"><a href="#sh2response-118"><span class="linenos">118</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="sh2response-119"><a href="#sh2response-119"><span class="linenos">119</span></a><span class="sd">    Returns:</span>
-</span><span id="sh2response-120"><a href="#sh2response-120"><span class="linenos">120</span></a><span class="sd">        NamedTuple of outputs (described in `Sh2responseOutputs`).</span>
-</span><span id="sh2response-121"><a href="#sh2response-121"><span class="linenos">121</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="sh2response-122"><a href="#sh2response-122"><span class="linenos">122</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="sh2response-123"><a href="#sh2response-123"><span class="linenos">123</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SH2RESPONSE_METADATA</span><span class="p">)</span>
-</span><span id="sh2response-124"><a href="#sh2response-124"><span class="linenos">124</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="sh2response-125"><a href="#sh2response-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sh2response&quot;</span><span class="p">)</span>
-</span><span id="sh2response-126"><a href="#sh2response-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">lmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="sh2response-127"><a href="#sh2response-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="sh2response-128"><a href="#sh2response-128"><span class="linenos">128</span></a>            <span class="s2">&quot;-lmax&quot;</span><span class="p">,</span>
-</span><span id="sh2response-129"><a href="#sh2response-129"><span class="linenos">129</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lmax</span><span class="p">)</span>
-</span><span id="sh2response-130"><a href="#sh2response-130"><span class="linenos">130</span></a>        <span class="p">])</span>
-</span><span id="sh2response-131"><a href="#sh2response-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="sh2response-132"><a href="#sh2response-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="sh2response-133"><a href="#sh2response-133"><span class="linenos">133</span></a>            <span class="s2">&quot;-dump&quot;</span><span class="p">,</span>
-</span><span id="sh2response-134"><a href="#sh2response-134"><span class="linenos">134</span></a>            <span class="n">dump</span>
-</span><span id="sh2response-135"><a href="#sh2response-135"><span class="linenos">135</span></a>        <span class="p">])</span>
-</span><span id="sh2response-136"><a href="#sh2response-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="sh2response-137"><a href="#sh2response-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="sh2response-138"><a href="#sh2response-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="sh2response-139"><a href="#sh2response-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="sh2response-140"><a href="#sh2response-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="sh2response-141"><a href="#sh2response-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="sh2response-142"><a href="#sh2response-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="sh2response-143"><a href="#sh2response-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="sh2response-144"><a href="#sh2response-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="sh2response-145"><a href="#sh2response-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="sh2response-146"><a href="#sh2response-146"><span class="linenos">146</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="sh2response-147"><a href="#sh2response-147"><span class="linenos">147</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="sh2response-148"><a href="#sh2response-148"><span class="linenos">148</span></a>        <span class="p">])</span>
-</span><span id="sh2response-149"><a href="#sh2response-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="sh2response-150"><a href="#sh2response-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="sh2response-151"><a href="#sh2response-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="sh2response-152"><a href="#sh2response-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="sh2response-153"><a href="#sh2response-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="sh2response-154"><a href="#sh2response-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="sh2response-155"><a href="#sh2response-155"><span class="linenos">155</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sh</span><span class="p">))</span>
-</span><span id="sh2response-156"><a href="#sh2response-156"><span class="linenos">156</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">))</span>
-</span><span id="sh2response-157"><a href="#sh2response-157"><span class="linenos">157</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">directions</span><span class="p">))</span>
-</span><span id="sh2response-158"><a href="#sh2response-158"><span class="linenos">158</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-</span><span id="sh2response-159"><a href="#sh2response-159"><span class="linenos">159</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Sh2responseOutputs</span><span class="p">(</span>
-</span><span id="sh2response-160"><a href="#sh2response-160"><span class="linenos">160</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="sh2response-161"><a href="#sh2response-161"><span class="linenos">161</span></a>        <span class="n">response</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">response</span><span class="p">),</span>
-</span><span id="sh2response-162"><a href="#sh2response-162"><span class="linenos">162</span></a>        <span class="n">dump</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">dump</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="sh2response-163"><a href="#sh2response-163"><span class="linenos">163</span></a>    <span class="p">)</span>
-</span><span id="sh2response-164"><a href="#sh2response-164"><span class="linenos">164</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="sh2response-165"><a href="#sh2response-165"><span class="linenos">165</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="sh2response-91"><a href="#sh2response-91"><span class="linenos"> 91</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="sh2response-92"><a href="#sh2response-92"><span class="linenos"> 92</span></a><span class="sd">    </span>
+</span><span id="sh2response-93"><a href="#sh2response-93"><span class="linenos"> 93</span></a><span class="sd">    Args:</span>
+</span><span id="sh2response-94"><a href="#sh2response-94"><span class="linenos"> 94</span></a><span class="sd">        sh: the spherical harmonic decomposition of the diffusion-weighted\</span>
+</span><span id="sh2response-95"><a href="#sh2response-95"><span class="linenos"> 95</span></a><span class="sd">            images.</span>
+</span><span id="sh2response-96"><a href="#sh2response-96"><span class="linenos"> 96</span></a><span class="sd">        mask: the mask containing the voxels from which to estimate the\</span>
+</span><span id="sh2response-97"><a href="#sh2response-97"><span class="linenos"> 97</span></a><span class="sd">            response function.</span>
+</span><span id="sh2response-98"><a href="#sh2response-98"><span class="linenos"> 98</span></a><span class="sd">        directions: a 4D image containing the direction vectors along which to\</span>
+</span><span id="sh2response-99"><a href="#sh2response-99"><span class="linenos"> 99</span></a><span class="sd">            estimate the response function.</span>
+</span><span id="sh2response-100"><a href="#sh2response-100"><span class="linenos">100</span></a><span class="sd">        response: the output axially-symmetric spherical harmonic coefficients.</span>
+</span><span id="sh2response-101"><a href="#sh2response-101"><span class="linenos">101</span></a><span class="sd">        lmax: specify the maximum harmonic degree of the response function to\</span>
+</span><span id="sh2response-102"><a href="#sh2response-102"><span class="linenos">102</span></a><span class="sd">            estimate.</span>
+</span><span id="sh2response-103"><a href="#sh2response-103"><span class="linenos">103</span></a><span class="sd">        dump: dump the m=0 SH coefficients from all voxels in the mask to the\</span>
+</span><span id="sh2response-104"><a href="#sh2response-104"><span class="linenos">104</span></a><span class="sd">            output file, rather than their mean.</span>
+</span><span id="sh2response-105"><a href="#sh2response-105"><span class="linenos">105</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="sh2response-106"><a href="#sh2response-106"><span class="linenos">106</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="sh2response-107"><a href="#sh2response-107"><span class="linenos">107</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="sh2response-108"><a href="#sh2response-108"><span class="linenos">108</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="sh2response-109"><a href="#sh2response-109"><span class="linenos">109</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="sh2response-110"><a href="#sh2response-110"><span class="linenos">110</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="sh2response-111"><a href="#sh2response-111"><span class="linenos">111</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="sh2response-112"><a href="#sh2response-112"><span class="linenos">112</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="sh2response-113"><a href="#sh2response-113"><span class="linenos">113</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="sh2response-114"><a href="#sh2response-114"><span class="linenos">114</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="sh2response-115"><a href="#sh2response-115"><span class="linenos">115</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="sh2response-116"><a href="#sh2response-116"><span class="linenos">116</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="sh2response-117"><a href="#sh2response-117"><span class="linenos">117</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="sh2response-118"><a href="#sh2response-118"><span class="linenos">118</span></a><span class="sd">    Returns:</span>
+</span><span id="sh2response-119"><a href="#sh2response-119"><span class="linenos">119</span></a><span class="sd">        NamedTuple of outputs (described in `Sh2responseOutputs`).</span>
+</span><span id="sh2response-120"><a href="#sh2response-120"><span class="linenos">120</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="sh2response-121"><a href="#sh2response-121"><span class="linenos">121</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="sh2response-122"><a href="#sh2response-122"><span class="linenos">122</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SH2RESPONSE_METADATA</span><span class="p">)</span>
+</span><span id="sh2response-123"><a href="#sh2response-123"><span class="linenos">123</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="sh2response-124"><a href="#sh2response-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sh2response&quot;</span><span class="p">)</span>
+</span><span id="sh2response-125"><a href="#sh2response-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">lmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="sh2response-126"><a href="#sh2response-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="sh2response-127"><a href="#sh2response-127"><span class="linenos">127</span></a>            <span class="s2">&quot;-lmax&quot;</span><span class="p">,</span>
+</span><span id="sh2response-128"><a href="#sh2response-128"><span class="linenos">128</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">lmax</span><span class="p">)</span>
+</span><span id="sh2response-129"><a href="#sh2response-129"><span class="linenos">129</span></a>        <span class="p">])</span>
+</span><span id="sh2response-130"><a href="#sh2response-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="sh2response-131"><a href="#sh2response-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="sh2response-132"><a href="#sh2response-132"><span class="linenos">132</span></a>            <span class="s2">&quot;-dump&quot;</span><span class="p">,</span>
+</span><span id="sh2response-133"><a href="#sh2response-133"><span class="linenos">133</span></a>            <span class="n">dump</span>
+</span><span id="sh2response-134"><a href="#sh2response-134"><span class="linenos">134</span></a>        <span class="p">])</span>
+</span><span id="sh2response-135"><a href="#sh2response-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="sh2response-136"><a href="#sh2response-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="sh2response-137"><a href="#sh2response-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="sh2response-138"><a href="#sh2response-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="sh2response-139"><a href="#sh2response-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="sh2response-140"><a href="#sh2response-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="sh2response-141"><a href="#sh2response-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="sh2response-142"><a href="#sh2response-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="sh2response-143"><a href="#sh2response-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="sh2response-144"><a href="#sh2response-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="sh2response-145"><a href="#sh2response-145"><span class="linenos">145</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="sh2response-146"><a href="#sh2response-146"><span class="linenos">146</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="sh2response-147"><a href="#sh2response-147"><span class="linenos">147</span></a>        <span class="p">])</span>
+</span><span id="sh2response-148"><a href="#sh2response-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="sh2response-149"><a href="#sh2response-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="sh2response-150"><a href="#sh2response-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="sh2response-151"><a href="#sh2response-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="sh2response-152"><a href="#sh2response-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="sh2response-153"><a href="#sh2response-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="sh2response-154"><a href="#sh2response-154"><span class="linenos">154</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sh</span><span class="p">))</span>
+</span><span id="sh2response-155"><a href="#sh2response-155"><span class="linenos">155</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">))</span>
+</span><span id="sh2response-156"><a href="#sh2response-156"><span class="linenos">156</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">directions</span><span class="p">))</span>
+</span><span id="sh2response-157"><a href="#sh2response-157"><span class="linenos">157</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</span><span id="sh2response-158"><a href="#sh2response-158"><span class="linenos">158</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Sh2responseOutputs</span><span class="p">(</span>
+</span><span id="sh2response-159"><a href="#sh2response-159"><span class="linenos">159</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="sh2response-160"><a href="#sh2response-160"><span class="linenos">160</span></a>        <span class="n">response</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">response</span><span class="p">),</span>
+</span><span id="sh2response-161"><a href="#sh2response-161"><span class="linenos">161</span></a>        <span class="n">dump</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">dump</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="sh2response-162"><a href="#sh2response-162"><span class="linenos">162</span></a>    <span class="p">)</span>
+</span><span id="sh2response-163"><a href="#sh2response-163"><span class="linenos">163</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="sh2response-164"><a href="#sh2response-164"><span class="linenos">164</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -630,10 +628,9 @@ described the main documentation, which can be found at the following link:
 
 <p>.</p>
 
-<p>Author: J-Donald Tournier (jdtournier@gmail.com)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2response.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2response.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

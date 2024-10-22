@@ -153,7 +153,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CIFTI_CREATE_DENSE_SCALAR_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;9b8cd37bb018039e267d697f4e368abc03ba2233.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;9448de07d07be5cf7e7c1db0a682c95c092182e5.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cifti-create-dense-scalar&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -352,56 +352,58 @@
 </span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    THALAMUS_LEFT</span>
 </span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    THALAMUS_RIGHT.</span>
 </span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    </span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">    </span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    Args:</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        volume: volume component.</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        left_metric: metric for left surface.</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        right_metric: metric for right surface.</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">        cerebellum_metric: metric for the cerebellum.</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        opt_name_file_file: use a text file to set all map names: text file\</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">            containing map names, one per line.</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">    Returns:</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCreateDenseScalarOutputs`).</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CREATE_DENSE_SCALAR_METADATA</span><span class="p">)</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-create-dense-scalar&quot;</span><span class="p">)</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="k">if</span> <span class="n">left_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">right_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="k">if</span> <span class="n">cerebellum_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">opt_name_file_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>            <span class="s2">&quot;-name-file&quot;</span><span class="p">,</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>            <span class="n">opt_name_file_file</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>        <span class="p">])</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiCreateDenseScalarOutputs</span><span class="p">(</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="p">)</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="s2">&quot;CIFTI_CREATE_DENSE_SCALAR_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarCerebellumMetric&quot;</span><span class="p">,</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarLeftMetric&quot;</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarRightMetric&quot;</span><span class="p">,</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarVolume&quot;</span><span class="p">,</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;cifti_create_dense_scalar&quot;</span><span class="p">,</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="p">]</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    </span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    Args:</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        volume: volume component.</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">        left_metric: metric for left surface.</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        right_metric: metric for right surface.</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        cerebellum_metric: metric for the cerebellum.</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        opt_name_file_file: use a text file to set all map names: text file\</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">            containing map names, one per line.</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">    Returns:</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCreateDenseScalarOutputs`).</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CREATE_DENSE_SCALAR_METADATA</span><span class="p">)</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-create-dense-scalar&quot;</span><span class="p">)</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">left_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="k">if</span> <span class="n">right_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">cerebellum_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="k">if</span> <span class="n">opt_name_file_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>            <span class="s2">&quot;-name-file&quot;</span><span class="p">,</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>            <span class="n">opt_name_file_file</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="p">])</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiCreateDenseScalarOutputs</span><span class="p">(</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="p">)</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;CIFTI_CREATE_DENSE_SCALAR_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarCerebellumMetric&quot;</span><span class="p">,</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarLeftMetric&quot;</span><span class="p">,</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarRightMetric&quot;</span><span class="p">,</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="s2">&quot;CiftiCreateDenseScalarVolume&quot;</span><span class="p">,</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="s2">&quot;cifti_create_dense_scalar&quot;</span><span class="p">,</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -410,7 +412,7 @@
                     <div class="attr variable">
             <span class="name">CIFTI_CREATE_DENSE_SCALAR_METADATA</span>        =
 <input id="CIFTI_CREATE_DENSE_SCALAR_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CIFTI_CREATE_DENSE_SCALAR_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;9b8cd37bb018039e267d697f4e368abc03ba2233.boutiques&#39;, name=&#39;cifti-create-dense-scalar&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CIFTI_CREATE_DENSE_SCALAR_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;9448de07d07be5cf7e7c1db0a682c95c092182e5.boutiques&#39;, name=&#39;cifti-create-dense-scalar&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -1110,45 +1112,47 @@
 </span><span id="cifti_create_dense_scalar-207"><a href="#cifti_create_dense_scalar-207"><span class="linenos">207</span></a><span class="sd">    THALAMUS_LEFT</span>
 </span><span id="cifti_create_dense_scalar-208"><a href="#cifti_create_dense_scalar-208"><span class="linenos">208</span></a><span class="sd">    THALAMUS_RIGHT.</span>
 </span><span id="cifti_create_dense_scalar-209"><a href="#cifti_create_dense_scalar-209"><span class="linenos">209</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_scalar-210"><a href="#cifti_create_dense_scalar-210"><span class="linenos">210</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="cifti_create_dense_scalar-210"><a href="#cifti_create_dense_scalar-210"><span class="linenos">210</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="cifti_create_dense_scalar-211"><a href="#cifti_create_dense_scalar-211"><span class="linenos">211</span></a><span class="sd">    </span>
-</span><span id="cifti_create_dense_scalar-212"><a href="#cifti_create_dense_scalar-212"><span class="linenos">212</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_create_dense_scalar-213"><a href="#cifti_create_dense_scalar-213"><span class="linenos">213</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="cifti_create_dense_scalar-214"><a href="#cifti_create_dense_scalar-214"><span class="linenos">214</span></a><span class="sd">        volume: volume component.</span>
-</span><span id="cifti_create_dense_scalar-215"><a href="#cifti_create_dense_scalar-215"><span class="linenos">215</span></a><span class="sd">        left_metric: metric for left surface.</span>
-</span><span id="cifti_create_dense_scalar-216"><a href="#cifti_create_dense_scalar-216"><span class="linenos">216</span></a><span class="sd">        right_metric: metric for right surface.</span>
-</span><span id="cifti_create_dense_scalar-217"><a href="#cifti_create_dense_scalar-217"><span class="linenos">217</span></a><span class="sd">        cerebellum_metric: metric for the cerebellum.</span>
-</span><span id="cifti_create_dense_scalar-218"><a href="#cifti_create_dense_scalar-218"><span class="linenos">218</span></a><span class="sd">        opt_name_file_file: use a text file to set all map names: text file\</span>
-</span><span id="cifti_create_dense_scalar-219"><a href="#cifti_create_dense_scalar-219"><span class="linenos">219</span></a><span class="sd">            containing map names, one per line.</span>
-</span><span id="cifti_create_dense_scalar-220"><a href="#cifti_create_dense_scalar-220"><span class="linenos">220</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_create_dense_scalar-221"><a href="#cifti_create_dense_scalar-221"><span class="linenos">221</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_create_dense_scalar-222"><a href="#cifti_create_dense_scalar-222"><span class="linenos">222</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCreateDenseScalarOutputs`).</span>
-</span><span id="cifti_create_dense_scalar-223"><a href="#cifti_create_dense_scalar-223"><span class="linenos">223</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_create_dense_scalar-224"><a href="#cifti_create_dense_scalar-224"><span class="linenos">224</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_create_dense_scalar-225"><a href="#cifti_create_dense_scalar-225"><span class="linenos">225</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CREATE_DENSE_SCALAR_METADATA</span><span class="p">)</span>
-</span><span id="cifti_create_dense_scalar-226"><a href="#cifti_create_dense_scalar-226"><span class="linenos">226</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="cifti_create_dense_scalar-227"><a href="#cifti_create_dense_scalar-227"><span class="linenos">227</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="cifti_create_dense_scalar-228"><a href="#cifti_create_dense_scalar-228"><span class="linenos">228</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-create-dense-scalar&quot;</span><span class="p">)</span>
-</span><span id="cifti_create_dense_scalar-229"><a href="#cifti_create_dense_scalar-229"><span class="linenos">229</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="cifti_create_dense_scalar-230"><a href="#cifti_create_dense_scalar-230"><span class="linenos">230</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_create_dense_scalar-231"><a href="#cifti_create_dense_scalar-231"><span class="linenos">231</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_create_dense_scalar-232"><a href="#cifti_create_dense_scalar-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">left_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_create_dense_scalar-233"><a href="#cifti_create_dense_scalar-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_create_dense_scalar-234"><a href="#cifti_create_dense_scalar-234"><span class="linenos">234</span></a>    <span class="k">if</span> <span class="n">right_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_create_dense_scalar-235"><a href="#cifti_create_dense_scalar-235"><span class="linenos">235</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_create_dense_scalar-236"><a href="#cifti_create_dense_scalar-236"><span class="linenos">236</span></a>    <span class="k">if</span> <span class="n">cerebellum_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_create_dense_scalar-237"><a href="#cifti_create_dense_scalar-237"><span class="linenos">237</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_create_dense_scalar-238"><a href="#cifti_create_dense_scalar-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">opt_name_file_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_create_dense_scalar-239"><a href="#cifti_create_dense_scalar-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_create_dense_scalar-240"><a href="#cifti_create_dense_scalar-240"><span class="linenos">240</span></a>            <span class="s2">&quot;-name-file&quot;</span><span class="p">,</span>
-</span><span id="cifti_create_dense_scalar-241"><a href="#cifti_create_dense_scalar-241"><span class="linenos">241</span></a>            <span class="n">opt_name_file_file</span>
-</span><span id="cifti_create_dense_scalar-242"><a href="#cifti_create_dense_scalar-242"><span class="linenos">242</span></a>        <span class="p">])</span>
-</span><span id="cifti_create_dense_scalar-243"><a href="#cifti_create_dense_scalar-243"><span class="linenos">243</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiCreateDenseScalarOutputs</span><span class="p">(</span>
-</span><span id="cifti_create_dense_scalar-244"><a href="#cifti_create_dense_scalar-244"><span class="linenos">244</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="cifti_create_dense_scalar-245"><a href="#cifti_create_dense_scalar-245"><span class="linenos">245</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="cifti_create_dense_scalar-246"><a href="#cifti_create_dense_scalar-246"><span class="linenos">246</span></a>    <span class="p">)</span>
-</span><span id="cifti_create_dense_scalar-247"><a href="#cifti_create_dense_scalar-247"><span class="linenos">247</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="cifti_create_dense_scalar-248"><a href="#cifti_create_dense_scalar-248"><span class="linenos">248</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="cifti_create_dense_scalar-212"><a href="#cifti_create_dense_scalar-212"><span class="linenos">212</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_create_dense_scalar-213"><a href="#cifti_create_dense_scalar-213"><span class="linenos">213</span></a><span class="sd">    </span>
+</span><span id="cifti_create_dense_scalar-214"><a href="#cifti_create_dense_scalar-214"><span class="linenos">214</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_create_dense_scalar-215"><a href="#cifti_create_dense_scalar-215"><span class="linenos">215</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="cifti_create_dense_scalar-216"><a href="#cifti_create_dense_scalar-216"><span class="linenos">216</span></a><span class="sd">        volume: volume component.</span>
+</span><span id="cifti_create_dense_scalar-217"><a href="#cifti_create_dense_scalar-217"><span class="linenos">217</span></a><span class="sd">        left_metric: metric for left surface.</span>
+</span><span id="cifti_create_dense_scalar-218"><a href="#cifti_create_dense_scalar-218"><span class="linenos">218</span></a><span class="sd">        right_metric: metric for right surface.</span>
+</span><span id="cifti_create_dense_scalar-219"><a href="#cifti_create_dense_scalar-219"><span class="linenos">219</span></a><span class="sd">        cerebellum_metric: metric for the cerebellum.</span>
+</span><span id="cifti_create_dense_scalar-220"><a href="#cifti_create_dense_scalar-220"><span class="linenos">220</span></a><span class="sd">        opt_name_file_file: use a text file to set all map names: text file\</span>
+</span><span id="cifti_create_dense_scalar-221"><a href="#cifti_create_dense_scalar-221"><span class="linenos">221</span></a><span class="sd">            containing map names, one per line.</span>
+</span><span id="cifti_create_dense_scalar-222"><a href="#cifti_create_dense_scalar-222"><span class="linenos">222</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_create_dense_scalar-223"><a href="#cifti_create_dense_scalar-223"><span class="linenos">223</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_create_dense_scalar-224"><a href="#cifti_create_dense_scalar-224"><span class="linenos">224</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiCreateDenseScalarOutputs`).</span>
+</span><span id="cifti_create_dense_scalar-225"><a href="#cifti_create_dense_scalar-225"><span class="linenos">225</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_create_dense_scalar-226"><a href="#cifti_create_dense_scalar-226"><span class="linenos">226</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_create_dense_scalar-227"><a href="#cifti_create_dense_scalar-227"><span class="linenos">227</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_CREATE_DENSE_SCALAR_METADATA</span><span class="p">)</span>
+</span><span id="cifti_create_dense_scalar-228"><a href="#cifti_create_dense_scalar-228"><span class="linenos">228</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="cifti_create_dense_scalar-229"><a href="#cifti_create_dense_scalar-229"><span class="linenos">229</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="cifti_create_dense_scalar-230"><a href="#cifti_create_dense_scalar-230"><span class="linenos">230</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-create-dense-scalar&quot;</span><span class="p">)</span>
+</span><span id="cifti_create_dense_scalar-231"><a href="#cifti_create_dense_scalar-231"><span class="linenos">231</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="cifti_create_dense_scalar-232"><a href="#cifti_create_dense_scalar-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_create_dense_scalar-233"><a href="#cifti_create_dense_scalar-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_create_dense_scalar-234"><a href="#cifti_create_dense_scalar-234"><span class="linenos">234</span></a>    <span class="k">if</span> <span class="n">left_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_create_dense_scalar-235"><a href="#cifti_create_dense_scalar-235"><span class="linenos">235</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_create_dense_scalar-236"><a href="#cifti_create_dense_scalar-236"><span class="linenos">236</span></a>    <span class="k">if</span> <span class="n">right_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_create_dense_scalar-237"><a href="#cifti_create_dense_scalar-237"><span class="linenos">237</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_create_dense_scalar-238"><a href="#cifti_create_dense_scalar-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">cerebellum_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_create_dense_scalar-239"><a href="#cifti_create_dense_scalar-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_metric</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_create_dense_scalar-240"><a href="#cifti_create_dense_scalar-240"><span class="linenos">240</span></a>    <span class="k">if</span> <span class="n">opt_name_file_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_create_dense_scalar-241"><a href="#cifti_create_dense_scalar-241"><span class="linenos">241</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_create_dense_scalar-242"><a href="#cifti_create_dense_scalar-242"><span class="linenos">242</span></a>            <span class="s2">&quot;-name-file&quot;</span><span class="p">,</span>
+</span><span id="cifti_create_dense_scalar-243"><a href="#cifti_create_dense_scalar-243"><span class="linenos">243</span></a>            <span class="n">opt_name_file_file</span>
+</span><span id="cifti_create_dense_scalar-244"><a href="#cifti_create_dense_scalar-244"><span class="linenos">244</span></a>        <span class="p">])</span>
+</span><span id="cifti_create_dense_scalar-245"><a href="#cifti_create_dense_scalar-245"><span class="linenos">245</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiCreateDenseScalarOutputs</span><span class="p">(</span>
+</span><span id="cifti_create_dense_scalar-246"><a href="#cifti_create_dense_scalar-246"><span class="linenos">246</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="cifti_create_dense_scalar-247"><a href="#cifti_create_dense_scalar-247"><span class="linenos">247</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="cifti_create_dense_scalar-248"><a href="#cifti_create_dense_scalar-248"><span class="linenos">248</span></a>    <span class="p">)</span>
+</span><span id="cifti_create_dense_scalar-249"><a href="#cifti_create_dense_scalar-249"><span class="linenos">249</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="cifti_create_dense_scalar-250"><a href="#cifti_create_dense_scalar-250"><span class="linenos">250</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1196,7 +1200,9 @@ PUTAMEN_RIGHT
 THALAMUS_LEFT
 THALAMUS_RIGHT.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

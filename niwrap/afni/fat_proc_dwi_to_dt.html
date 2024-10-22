@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FAT_PROC_DWI_TO_DT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8ed37d189533bd1e9a2b1990a953bb8f2ba02e67.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c5a2942f4ac3b0a68c89864b914dd62d776684d1.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fat_proc_dwi_to_dt&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -134,181 +134,180 @@
 </span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    This program fits tensors and DT parameters, as well as the uncertainty of DT</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    parameters needed for tractography.</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    </span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    </span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    URL:</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_dwi_to_dt.html</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    </span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    Args:</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        in_dwi: 4D volume of N DWIs. Required.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        in_gradmat: Input text file of N gradient vectors or bmatrices.</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        prefix: Set prefix for output DWI data.</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        in_bvals: Optional, if bvalue information is in a separate file from\</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">            the b-vectors or matrices.</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        mask: Optional whole brain mask can be input; otherwise, automasking is\</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">            performed.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        mask_from_struc: Flag to make a mask using 3dSkullStrip+3dmask_tool\</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">            from the structural file.</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        in_struc_res: Alignment of the output DWI to the REF data set via\</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">            anatomical reference; a version of the anatomical that has been\</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">            resampled to match the DWI set.</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        in_ref_orig: Use another data set to adjust the DWI and subsequent\</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">            parameter dsets&#39; orientation and origin.</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        prefix_dti: Set prefix for output DTI data; default is &#39;dt&#39;. Do not\</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">            include path information here.</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        flip_x: Flip the DW gradients in the x-direction.</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        flip_y: Flip the DW gradients in the y-direction.</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        flip_z: Flip the DW gradients in the z-direction.</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        no_flip: Do not flip the DW gradients.</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        no_scale_out_1000: Turn off scaling of physical length units by 1000\</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            for tensor fitting.</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        no_reweight: Turn off reweighting and refitting of tensors during\</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            estimation.</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        no_cumulative_wts: Turn off displaying overall weight factors for each\</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">            gradient.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        qc_fa_thr: Set threshold for overlay FA volume in QC image.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        qc_fa_max: Set cbar max for overlay FA volume in QC image.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        qc_fa_unc_max: Set cbar max for overlay uncertainty (stdev) of FA in QC\</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            image.</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        qc_v12_unc_max: Set cbar max for overlay uncertainty (stdev) of V1\</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            towards V2 direction for DTs in QC image.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        qc_prefix: Set the prefix of the QC image files separately.</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        no_qc_view: Turn off generating QC image files.</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        no_cmd_out: Don&#39;t save the command line call of this program and the\</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">            location where it was run.</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        workdir: Specify a working directory, which can be removed.</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        no_clean: Do not remove the working directory.</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        uncert_off: Don&#39;t perform uncertainty calculation.</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        uncert_iters: Set the number of Monte Carlo iterations for the\</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">            uncertainty calculation (default: 300).</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        uncert_extra_cmds: Extra commands for the uncertainty calculations.</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        check_abs_min: Help the program push through finding tiny negative\</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">            values in columns that should contain numbers &gt;=0. Provide a tolerance\</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">            value VVV.</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    Returns:</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">        NamedTuple of outputs (described in `FatProcDwiToDtOutputs`).</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_PROC_DWI_TO_DT_METADATA</span><span class="p">)</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_proc_dwi_to_dt&quot;</span><span class="p">)</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_dwi</span><span class="p">))</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="s2">&quot;-in_col_matA | -in_col_matT | -in_col_vec | -in_row_vec&quot;</span><span class="p">,</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_gradmat</span><span class="p">)</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="p">])</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">prefix</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="p">])</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">in_bvals</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>            <span class="s2">&quot;-in_bvals&quot;</span><span class="p">,</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_bvals</span><span class="p">)</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="p">])</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="p">])</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">mask_from_struc</span><span class="p">:</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mask_from_struc&quot;</span><span class="p">)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">in_struc_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="s2">&quot;-in_struc_res&quot;</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_struc_res</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="p">])</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">in_ref_orig</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>            <span class="s2">&quot;-in_ref_orig&quot;</span><span class="p">,</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_ref_orig</span><span class="p">)</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="p">])</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">prefix_dti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="s2">&quot;-prefix_dti&quot;</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>            <span class="n">prefix_dti</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="p">])</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">flip_x</span><span class="p">:</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_x&quot;</span><span class="p">)</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">flip_y</span><span class="p">:</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_y&quot;</span><span class="p">)</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">flip_z</span><span class="p">:</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_z&quot;</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">no_flip</span><span class="p">:</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_flip&quot;</span><span class="p">)</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">no_scale_out_1000</span><span class="p">:</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_scale_out_1000&quot;</span><span class="p">)</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">no_reweight</span><span class="p">:</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_reweight&quot;</span><span class="p">)</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">no_cumulative_wts</span><span class="p">:</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cumulative_wts&quot;</span><span class="p">)</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">qc_fa_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>            <span class="s2">&quot;-qc_fa_thr&quot;</span><span class="p">,</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_thr</span><span class="p">)</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="p">])</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">qc_fa_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>            <span class="s2">&quot;-qc_fa_max&quot;</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_max</span><span class="p">)</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="p">])</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">qc_fa_unc_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>            <span class="s2">&quot;-qc_fa_unc_max&quot;</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_unc_max</span><span class="p">)</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="p">])</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">qc_v12_unc_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>            <span class="s2">&quot;-qc_v12_unc_max&quot;</span><span class="p">,</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_v12_unc_max</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="p">])</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">qc_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>            <span class="s2">&quot;-qc_prefix&quot;</span><span class="p">,</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>            <span class="n">qc_prefix</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="p">])</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">no_qc_view</span><span class="p">:</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_qc_view&quot;</span><span class="p">)</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">no_cmd_out</span><span class="p">:</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cmd_out&quot;</span><span class="p">)</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">workdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>            <span class="s2">&quot;-workdir&quot;</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>            <span class="n">workdir</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="p">])</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">no_clean</span><span class="p">:</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_clean&quot;</span><span class="p">)</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">uncert_off</span><span class="p">:</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-uncert_off&quot;</span><span class="p">)</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">uncert_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>            <span class="s2">&quot;-uncert_iters&quot;</span><span class="p">,</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">uncert_iters</span><span class="p">)</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="p">])</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">uncert_extra_cmds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>            <span class="s2">&quot;-uncert_extra_cmds&quot;</span><span class="p">,</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>            <span class="n">uncert_extra_cmds</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="p">])</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="k">if</span> <span class="n">check_abs_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>            <span class="s2">&quot;-check_abs_min&quot;</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">check_abs_min</span><span class="p">)</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>        <span class="p">])</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatProcDwiToDtOutputs</span><span class="p">(</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">),</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="p">)</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    </span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    Args:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        in_dwi: 4D volume of N DWIs. Required.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        in_gradmat: Input text file of N gradient vectors or bmatrices.</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        prefix: Set prefix for output DWI data.</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        in_bvals: Optional, if bvalue information is in a separate file from\</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">            the b-vectors or matrices.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        mask: Optional whole brain mask can be input; otherwise, automasking is\</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">            performed.</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        mask_from_struc: Flag to make a mask using 3dSkullStrip+3dmask_tool\</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">            from the structural file.</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        in_struc_res: Alignment of the output DWI to the REF data set via\</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">            anatomical reference; a version of the anatomical that has been\</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">            resampled to match the DWI set.</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        in_ref_orig: Use another data set to adjust the DWI and subsequent\</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">            parameter dsets&#39; orientation and origin.</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        prefix_dti: Set prefix for output DTI data; default is &#39;dt&#39;. Do not\</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">            include path information here.</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        flip_x: Flip the DW gradients in the x-direction.</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        flip_y: Flip the DW gradients in the y-direction.</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        flip_z: Flip the DW gradients in the z-direction.</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        no_flip: Do not flip the DW gradients.</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        no_scale_out_1000: Turn off scaling of physical length units by 1000\</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">            for tensor fitting.</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        no_reweight: Turn off reweighting and refitting of tensors during\</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">            estimation.</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        no_cumulative_wts: Turn off displaying overall weight factors for each\</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">            gradient.</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        qc_fa_thr: Set threshold for overlay FA volume in QC image.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        qc_fa_max: Set cbar max for overlay FA volume in QC image.</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        qc_fa_unc_max: Set cbar max for overlay uncertainty (stdev) of FA in QC\</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">            image.</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        qc_v12_unc_max: Set cbar max for overlay uncertainty (stdev) of V1\</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">            towards V2 direction for DTs in QC image.</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        qc_prefix: Set the prefix of the QC image files separately.</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        no_qc_view: Turn off generating QC image files.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        no_cmd_out: Don&#39;t save the command line call of this program and the\</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            location where it was run.</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        workdir: Specify a working directory, which can be removed.</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        no_clean: Do not remove the working directory.</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        uncert_off: Don&#39;t perform uncertainty calculation.</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        uncert_iters: Set the number of Monte Carlo iterations for the\</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            uncertainty calculation (default: 300).</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        uncert_extra_cmds: Extra commands for the uncertainty calculations.</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        check_abs_min: Help the program push through finding tiny negative\</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">            values in columns that should contain numbers &gt;=0. Provide a tolerance\</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">            value VVV.</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    Returns:</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">        NamedTuple of outputs (described in `FatProcDwiToDtOutputs`).</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_PROC_DWI_TO_DT_METADATA</span><span class="p">)</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_proc_dwi_to_dt&quot;</span><span class="p">)</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_dwi</span><span class="p">))</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="s2">&quot;-in_col_matA | -in_col_matT | -in_col_vec | -in_row_vec&quot;</span><span class="p">,</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_gradmat</span><span class="p">)</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="p">])</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">prefix</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="p">])</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">in_bvals</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="s2">&quot;-in_bvals&quot;</span><span class="p">,</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_bvals</span><span class="p">)</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="p">])</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="p">])</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">mask_from_struc</span><span class="p">:</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mask_from_struc&quot;</span><span class="p">)</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">in_struc_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>            <span class="s2">&quot;-in_struc_res&quot;</span><span class="p">,</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_struc_res</span><span class="p">)</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="p">])</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">in_ref_orig</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>            <span class="s2">&quot;-in_ref_orig&quot;</span><span class="p">,</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_ref_orig</span><span class="p">)</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="p">])</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">prefix_dti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="s2">&quot;-prefix_dti&quot;</span><span class="p">,</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="n">prefix_dti</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="p">])</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">flip_x</span><span class="p">:</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_x&quot;</span><span class="p">)</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">flip_y</span><span class="p">:</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_y&quot;</span><span class="p">)</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">flip_z</span><span class="p">:</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_z&quot;</span><span class="p">)</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">no_flip</span><span class="p">:</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_flip&quot;</span><span class="p">)</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">no_scale_out_1000</span><span class="p">:</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_scale_out_1000&quot;</span><span class="p">)</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">no_reweight</span><span class="p">:</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_reweight&quot;</span><span class="p">)</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">no_cumulative_wts</span><span class="p">:</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cumulative_wts&quot;</span><span class="p">)</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">qc_fa_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>            <span class="s2">&quot;-qc_fa_thr&quot;</span><span class="p">,</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_thr</span><span class="p">)</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="p">])</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">qc_fa_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>            <span class="s2">&quot;-qc_fa_max&quot;</span><span class="p">,</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_max</span><span class="p">)</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="p">])</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="k">if</span> <span class="n">qc_fa_unc_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>            <span class="s2">&quot;-qc_fa_unc_max&quot;</span><span class="p">,</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_unc_max</span><span class="p">)</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="p">])</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">qc_v12_unc_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>            <span class="s2">&quot;-qc_v12_unc_max&quot;</span><span class="p">,</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_v12_unc_max</span><span class="p">)</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="p">])</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="k">if</span> <span class="n">qc_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>            <span class="s2">&quot;-qc_prefix&quot;</span><span class="p">,</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>            <span class="n">qc_prefix</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="p">])</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="k">if</span> <span class="n">no_qc_view</span><span class="p">:</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_qc_view&quot;</span><span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">no_cmd_out</span><span class="p">:</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cmd_out&quot;</span><span class="p">)</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">workdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>            <span class="s2">&quot;-workdir&quot;</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>            <span class="n">workdir</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>        <span class="p">])</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">no_clean</span><span class="p">:</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_clean&quot;</span><span class="p">)</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">uncert_off</span><span class="p">:</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-uncert_off&quot;</span><span class="p">)</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">uncert_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>            <span class="s2">&quot;-uncert_iters&quot;</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">uncert_iters</span><span class="p">)</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="p">])</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">uncert_extra_cmds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>            <span class="s2">&quot;-uncert_extra_cmds&quot;</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>            <span class="n">uncert_extra_cmds</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="p">])</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">check_abs_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>            <span class="s2">&quot;-check_abs_min&quot;</span><span class="p">,</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">check_abs_min</span><span class="p">)</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>        <span class="p">])</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatProcDwiToDtOutputs</span><span class="p">(</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">),</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="p">)</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>
 </span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;FAT_PROC_DWI_TO_DT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;FatProcDwiToDtOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="s2">&quot;fat_proc_dwi_to_dt&quot;</span><span class="p">,</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a><span class="p">]</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="s2">&quot;FAT_PROC_DWI_TO_DT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="s2">&quot;FatProcDwiToDtOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="s2">&quot;fat_proc_dwi_to_dt&quot;</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -317,7 +316,7 @@
                     <div class="attr variable">
             <span class="name">FAT_PROC_DWI_TO_DT_METADATA</span>        =
 <input id="FAT_PROC_DWI_TO_DT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FAT_PROC_DWI_TO_DT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8ed37d189533bd1e9a2b1990a953bb8f2ba02e67.boutiques&#39;, name=&#39;fat_proc_dwi_to_dt&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FAT_PROC_DWI_TO_DT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;c5a2942f4ac3b0a68c89864b914dd62d776684d1.boutiques&#39;, name=&#39;fat_proc_dwi_to_dt&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -440,184 +439,182 @@
 </span><span id="fat_proc_dwi_to_dt-61"><a href="#fat_proc_dwi_to_dt-61"><span class="linenos"> 61</span></a><span class="sd">    This program fits tensors and DT parameters, as well as the uncertainty of DT</span>
 </span><span id="fat_proc_dwi_to_dt-62"><a href="#fat_proc_dwi_to_dt-62"><span class="linenos"> 62</span></a><span class="sd">    parameters needed for tractography.</span>
 </span><span id="fat_proc_dwi_to_dt-63"><a href="#fat_proc_dwi_to_dt-63"><span class="linenos"> 63</span></a><span class="sd">    </span>
-</span><span id="fat_proc_dwi_to_dt-64"><a href="#fat_proc_dwi_to_dt-64"><span class="linenos"> 64</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="fat_proc_dwi_to_dt-64"><a href="#fat_proc_dwi_to_dt-64"><span class="linenos"> 64</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="fat_proc_dwi_to_dt-65"><a href="#fat_proc_dwi_to_dt-65"><span class="linenos"> 65</span></a><span class="sd">    </span>
-</span><span id="fat_proc_dwi_to_dt-66"><a href="#fat_proc_dwi_to_dt-66"><span class="linenos"> 66</span></a><span class="sd">    URL:</span>
-</span><span id="fat_proc_dwi_to_dt-67"><a href="#fat_proc_dwi_to_dt-67"><span class="linenos"> 67</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_dwi_to_dt.html</span>
-</span><span id="fat_proc_dwi_to_dt-68"><a href="#fat_proc_dwi_to_dt-68"><span class="linenos"> 68</span></a><span class="sd">    </span>
-</span><span id="fat_proc_dwi_to_dt-69"><a href="#fat_proc_dwi_to_dt-69"><span class="linenos"> 69</span></a><span class="sd">    Args:</span>
-</span><span id="fat_proc_dwi_to_dt-70"><a href="#fat_proc_dwi_to_dt-70"><span class="linenos"> 70</span></a><span class="sd">        in_dwi: 4D volume of N DWIs. Required.</span>
-</span><span id="fat_proc_dwi_to_dt-71"><a href="#fat_proc_dwi_to_dt-71"><span class="linenos"> 71</span></a><span class="sd">        in_gradmat: Input text file of N gradient vectors or bmatrices.</span>
-</span><span id="fat_proc_dwi_to_dt-72"><a href="#fat_proc_dwi_to_dt-72"><span class="linenos"> 72</span></a><span class="sd">        prefix: Set prefix for output DWI data.</span>
-</span><span id="fat_proc_dwi_to_dt-73"><a href="#fat_proc_dwi_to_dt-73"><span class="linenos"> 73</span></a><span class="sd">        in_bvals: Optional, if bvalue information is in a separate file from\</span>
-</span><span id="fat_proc_dwi_to_dt-74"><a href="#fat_proc_dwi_to_dt-74"><span class="linenos"> 74</span></a><span class="sd">            the b-vectors or matrices.</span>
-</span><span id="fat_proc_dwi_to_dt-75"><a href="#fat_proc_dwi_to_dt-75"><span class="linenos"> 75</span></a><span class="sd">        mask: Optional whole brain mask can be input; otherwise, automasking is\</span>
-</span><span id="fat_proc_dwi_to_dt-76"><a href="#fat_proc_dwi_to_dt-76"><span class="linenos"> 76</span></a><span class="sd">            performed.</span>
-</span><span id="fat_proc_dwi_to_dt-77"><a href="#fat_proc_dwi_to_dt-77"><span class="linenos"> 77</span></a><span class="sd">        mask_from_struc: Flag to make a mask using 3dSkullStrip+3dmask_tool\</span>
-</span><span id="fat_proc_dwi_to_dt-78"><a href="#fat_proc_dwi_to_dt-78"><span class="linenos"> 78</span></a><span class="sd">            from the structural file.</span>
-</span><span id="fat_proc_dwi_to_dt-79"><a href="#fat_proc_dwi_to_dt-79"><span class="linenos"> 79</span></a><span class="sd">        in_struc_res: Alignment of the output DWI to the REF data set via\</span>
-</span><span id="fat_proc_dwi_to_dt-80"><a href="#fat_proc_dwi_to_dt-80"><span class="linenos"> 80</span></a><span class="sd">            anatomical reference; a version of the anatomical that has been\</span>
-</span><span id="fat_proc_dwi_to_dt-81"><a href="#fat_proc_dwi_to_dt-81"><span class="linenos"> 81</span></a><span class="sd">            resampled to match the DWI set.</span>
-</span><span id="fat_proc_dwi_to_dt-82"><a href="#fat_proc_dwi_to_dt-82"><span class="linenos"> 82</span></a><span class="sd">        in_ref_orig: Use another data set to adjust the DWI and subsequent\</span>
-</span><span id="fat_proc_dwi_to_dt-83"><a href="#fat_proc_dwi_to_dt-83"><span class="linenos"> 83</span></a><span class="sd">            parameter dsets&#39; orientation and origin.</span>
-</span><span id="fat_proc_dwi_to_dt-84"><a href="#fat_proc_dwi_to_dt-84"><span class="linenos"> 84</span></a><span class="sd">        prefix_dti: Set prefix for output DTI data; default is &#39;dt&#39;. Do not\</span>
-</span><span id="fat_proc_dwi_to_dt-85"><a href="#fat_proc_dwi_to_dt-85"><span class="linenos"> 85</span></a><span class="sd">            include path information here.</span>
-</span><span id="fat_proc_dwi_to_dt-86"><a href="#fat_proc_dwi_to_dt-86"><span class="linenos"> 86</span></a><span class="sd">        flip_x: Flip the DW gradients in the x-direction.</span>
-</span><span id="fat_proc_dwi_to_dt-87"><a href="#fat_proc_dwi_to_dt-87"><span class="linenos"> 87</span></a><span class="sd">        flip_y: Flip the DW gradients in the y-direction.</span>
-</span><span id="fat_proc_dwi_to_dt-88"><a href="#fat_proc_dwi_to_dt-88"><span class="linenos"> 88</span></a><span class="sd">        flip_z: Flip the DW gradients in the z-direction.</span>
-</span><span id="fat_proc_dwi_to_dt-89"><a href="#fat_proc_dwi_to_dt-89"><span class="linenos"> 89</span></a><span class="sd">        no_flip: Do not flip the DW gradients.</span>
-</span><span id="fat_proc_dwi_to_dt-90"><a href="#fat_proc_dwi_to_dt-90"><span class="linenos"> 90</span></a><span class="sd">        no_scale_out_1000: Turn off scaling of physical length units by 1000\</span>
-</span><span id="fat_proc_dwi_to_dt-91"><a href="#fat_proc_dwi_to_dt-91"><span class="linenos"> 91</span></a><span class="sd">            for tensor fitting.</span>
-</span><span id="fat_proc_dwi_to_dt-92"><a href="#fat_proc_dwi_to_dt-92"><span class="linenos"> 92</span></a><span class="sd">        no_reweight: Turn off reweighting and refitting of tensors during\</span>
-</span><span id="fat_proc_dwi_to_dt-93"><a href="#fat_proc_dwi_to_dt-93"><span class="linenos"> 93</span></a><span class="sd">            estimation.</span>
-</span><span id="fat_proc_dwi_to_dt-94"><a href="#fat_proc_dwi_to_dt-94"><span class="linenos"> 94</span></a><span class="sd">        no_cumulative_wts: Turn off displaying overall weight factors for each\</span>
-</span><span id="fat_proc_dwi_to_dt-95"><a href="#fat_proc_dwi_to_dt-95"><span class="linenos"> 95</span></a><span class="sd">            gradient.</span>
-</span><span id="fat_proc_dwi_to_dt-96"><a href="#fat_proc_dwi_to_dt-96"><span class="linenos"> 96</span></a><span class="sd">        qc_fa_thr: Set threshold for overlay FA volume in QC image.</span>
-</span><span id="fat_proc_dwi_to_dt-97"><a href="#fat_proc_dwi_to_dt-97"><span class="linenos"> 97</span></a><span class="sd">        qc_fa_max: Set cbar max for overlay FA volume in QC image.</span>
-</span><span id="fat_proc_dwi_to_dt-98"><a href="#fat_proc_dwi_to_dt-98"><span class="linenos"> 98</span></a><span class="sd">        qc_fa_unc_max: Set cbar max for overlay uncertainty (stdev) of FA in QC\</span>
-</span><span id="fat_proc_dwi_to_dt-99"><a href="#fat_proc_dwi_to_dt-99"><span class="linenos"> 99</span></a><span class="sd">            image.</span>
-</span><span id="fat_proc_dwi_to_dt-100"><a href="#fat_proc_dwi_to_dt-100"><span class="linenos">100</span></a><span class="sd">        qc_v12_unc_max: Set cbar max for overlay uncertainty (stdev) of V1\</span>
-</span><span id="fat_proc_dwi_to_dt-101"><a href="#fat_proc_dwi_to_dt-101"><span class="linenos">101</span></a><span class="sd">            towards V2 direction for DTs in QC image.</span>
-</span><span id="fat_proc_dwi_to_dt-102"><a href="#fat_proc_dwi_to_dt-102"><span class="linenos">102</span></a><span class="sd">        qc_prefix: Set the prefix of the QC image files separately.</span>
-</span><span id="fat_proc_dwi_to_dt-103"><a href="#fat_proc_dwi_to_dt-103"><span class="linenos">103</span></a><span class="sd">        no_qc_view: Turn off generating QC image files.</span>
-</span><span id="fat_proc_dwi_to_dt-104"><a href="#fat_proc_dwi_to_dt-104"><span class="linenos">104</span></a><span class="sd">        no_cmd_out: Don&#39;t save the command line call of this program and the\</span>
-</span><span id="fat_proc_dwi_to_dt-105"><a href="#fat_proc_dwi_to_dt-105"><span class="linenos">105</span></a><span class="sd">            location where it was run.</span>
-</span><span id="fat_proc_dwi_to_dt-106"><a href="#fat_proc_dwi_to_dt-106"><span class="linenos">106</span></a><span class="sd">        workdir: Specify a working directory, which can be removed.</span>
-</span><span id="fat_proc_dwi_to_dt-107"><a href="#fat_proc_dwi_to_dt-107"><span class="linenos">107</span></a><span class="sd">        no_clean: Do not remove the working directory.</span>
-</span><span id="fat_proc_dwi_to_dt-108"><a href="#fat_proc_dwi_to_dt-108"><span class="linenos">108</span></a><span class="sd">        uncert_off: Don&#39;t perform uncertainty calculation.</span>
-</span><span id="fat_proc_dwi_to_dt-109"><a href="#fat_proc_dwi_to_dt-109"><span class="linenos">109</span></a><span class="sd">        uncert_iters: Set the number of Monte Carlo iterations for the\</span>
-</span><span id="fat_proc_dwi_to_dt-110"><a href="#fat_proc_dwi_to_dt-110"><span class="linenos">110</span></a><span class="sd">            uncertainty calculation (default: 300).</span>
-</span><span id="fat_proc_dwi_to_dt-111"><a href="#fat_proc_dwi_to_dt-111"><span class="linenos">111</span></a><span class="sd">        uncert_extra_cmds: Extra commands for the uncertainty calculations.</span>
-</span><span id="fat_proc_dwi_to_dt-112"><a href="#fat_proc_dwi_to_dt-112"><span class="linenos">112</span></a><span class="sd">        check_abs_min: Help the program push through finding tiny negative\</span>
-</span><span id="fat_proc_dwi_to_dt-113"><a href="#fat_proc_dwi_to_dt-113"><span class="linenos">113</span></a><span class="sd">            values in columns that should contain numbers &gt;=0. Provide a tolerance\</span>
-</span><span id="fat_proc_dwi_to_dt-114"><a href="#fat_proc_dwi_to_dt-114"><span class="linenos">114</span></a><span class="sd">            value VVV.</span>
-</span><span id="fat_proc_dwi_to_dt-115"><a href="#fat_proc_dwi_to_dt-115"><span class="linenos">115</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fat_proc_dwi_to_dt-116"><a href="#fat_proc_dwi_to_dt-116"><span class="linenos">116</span></a><span class="sd">    Returns:</span>
-</span><span id="fat_proc_dwi_to_dt-117"><a href="#fat_proc_dwi_to_dt-117"><span class="linenos">117</span></a><span class="sd">        NamedTuple of outputs (described in `FatProcDwiToDtOutputs`).</span>
-</span><span id="fat_proc_dwi_to_dt-118"><a href="#fat_proc_dwi_to_dt-118"><span class="linenos">118</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fat_proc_dwi_to_dt-119"><a href="#fat_proc_dwi_to_dt-119"><span class="linenos">119</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fat_proc_dwi_to_dt-120"><a href="#fat_proc_dwi_to_dt-120"><span class="linenos">120</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_PROC_DWI_TO_DT_METADATA</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-121"><a href="#fat_proc_dwi_to_dt-121"><span class="linenos">121</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fat_proc_dwi_to_dt-122"><a href="#fat_proc_dwi_to_dt-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_proc_dwi_to_dt&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-123"><a href="#fat_proc_dwi_to_dt-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_dwi</span><span class="p">))</span>
-</span><span id="fat_proc_dwi_to_dt-124"><a href="#fat_proc_dwi_to_dt-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-125"><a href="#fat_proc_dwi_to_dt-125"><span class="linenos">125</span></a>        <span class="s2">&quot;-in_col_matA | -in_col_matT | -in_col_vec | -in_row_vec&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-126"><a href="#fat_proc_dwi_to_dt-126"><span class="linenos">126</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_gradmat</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-127"><a href="#fat_proc_dwi_to_dt-127"><span class="linenos">127</span></a>    <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-128"><a href="#fat_proc_dwi_to_dt-128"><span class="linenos">128</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-129"><a href="#fat_proc_dwi_to_dt-129"><span class="linenos">129</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-130"><a href="#fat_proc_dwi_to_dt-130"><span class="linenos">130</span></a>        <span class="n">prefix</span>
-</span><span id="fat_proc_dwi_to_dt-131"><a href="#fat_proc_dwi_to_dt-131"><span class="linenos">131</span></a>    <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-132"><a href="#fat_proc_dwi_to_dt-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">in_bvals</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-133"><a href="#fat_proc_dwi_to_dt-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-134"><a href="#fat_proc_dwi_to_dt-134"><span class="linenos">134</span></a>            <span class="s2">&quot;-in_bvals&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-135"><a href="#fat_proc_dwi_to_dt-135"><span class="linenos">135</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_bvals</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-136"><a href="#fat_proc_dwi_to_dt-136"><span class="linenos">136</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-137"><a href="#fat_proc_dwi_to_dt-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-138"><a href="#fat_proc_dwi_to_dt-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-139"><a href="#fat_proc_dwi_to_dt-139"><span class="linenos">139</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-140"><a href="#fat_proc_dwi_to_dt-140"><span class="linenos">140</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-141"><a href="#fat_proc_dwi_to_dt-141"><span class="linenos">141</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-142"><a href="#fat_proc_dwi_to_dt-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">mask_from_struc</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-143"><a href="#fat_proc_dwi_to_dt-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mask_from_struc&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-144"><a href="#fat_proc_dwi_to_dt-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">in_struc_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-145"><a href="#fat_proc_dwi_to_dt-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-146"><a href="#fat_proc_dwi_to_dt-146"><span class="linenos">146</span></a>            <span class="s2">&quot;-in_struc_res&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-147"><a href="#fat_proc_dwi_to_dt-147"><span class="linenos">147</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_struc_res</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-148"><a href="#fat_proc_dwi_to_dt-148"><span class="linenos">148</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-149"><a href="#fat_proc_dwi_to_dt-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">in_ref_orig</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-150"><a href="#fat_proc_dwi_to_dt-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-151"><a href="#fat_proc_dwi_to_dt-151"><span class="linenos">151</span></a>            <span class="s2">&quot;-in_ref_orig&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-152"><a href="#fat_proc_dwi_to_dt-152"><span class="linenos">152</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_ref_orig</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-153"><a href="#fat_proc_dwi_to_dt-153"><span class="linenos">153</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-154"><a href="#fat_proc_dwi_to_dt-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">prefix_dti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-155"><a href="#fat_proc_dwi_to_dt-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-156"><a href="#fat_proc_dwi_to_dt-156"><span class="linenos">156</span></a>            <span class="s2">&quot;-prefix_dti&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-157"><a href="#fat_proc_dwi_to_dt-157"><span class="linenos">157</span></a>            <span class="n">prefix_dti</span>
-</span><span id="fat_proc_dwi_to_dt-158"><a href="#fat_proc_dwi_to_dt-158"><span class="linenos">158</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-159"><a href="#fat_proc_dwi_to_dt-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">flip_x</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-160"><a href="#fat_proc_dwi_to_dt-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_x&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-161"><a href="#fat_proc_dwi_to_dt-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">flip_y</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-162"><a href="#fat_proc_dwi_to_dt-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_y&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-163"><a href="#fat_proc_dwi_to_dt-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">flip_z</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-164"><a href="#fat_proc_dwi_to_dt-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_z&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-165"><a href="#fat_proc_dwi_to_dt-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">no_flip</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-166"><a href="#fat_proc_dwi_to_dt-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_flip&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-167"><a href="#fat_proc_dwi_to_dt-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">no_scale_out_1000</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-168"><a href="#fat_proc_dwi_to_dt-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_scale_out_1000&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-169"><a href="#fat_proc_dwi_to_dt-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">no_reweight</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-170"><a href="#fat_proc_dwi_to_dt-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_reweight&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-171"><a href="#fat_proc_dwi_to_dt-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">no_cumulative_wts</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-172"><a href="#fat_proc_dwi_to_dt-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cumulative_wts&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-173"><a href="#fat_proc_dwi_to_dt-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">qc_fa_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-174"><a href="#fat_proc_dwi_to_dt-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-175"><a href="#fat_proc_dwi_to_dt-175"><span class="linenos">175</span></a>            <span class="s2">&quot;-qc_fa_thr&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-176"><a href="#fat_proc_dwi_to_dt-176"><span class="linenos">176</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_thr</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-177"><a href="#fat_proc_dwi_to_dt-177"><span class="linenos">177</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-178"><a href="#fat_proc_dwi_to_dt-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">qc_fa_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-179"><a href="#fat_proc_dwi_to_dt-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-180"><a href="#fat_proc_dwi_to_dt-180"><span class="linenos">180</span></a>            <span class="s2">&quot;-qc_fa_max&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-181"><a href="#fat_proc_dwi_to_dt-181"><span class="linenos">181</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_max</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-182"><a href="#fat_proc_dwi_to_dt-182"><span class="linenos">182</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-183"><a href="#fat_proc_dwi_to_dt-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">qc_fa_unc_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-184"><a href="#fat_proc_dwi_to_dt-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-185"><a href="#fat_proc_dwi_to_dt-185"><span class="linenos">185</span></a>            <span class="s2">&quot;-qc_fa_unc_max&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-186"><a href="#fat_proc_dwi_to_dt-186"><span class="linenos">186</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_unc_max</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-187"><a href="#fat_proc_dwi_to_dt-187"><span class="linenos">187</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-188"><a href="#fat_proc_dwi_to_dt-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">qc_v12_unc_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-189"><a href="#fat_proc_dwi_to_dt-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-190"><a href="#fat_proc_dwi_to_dt-190"><span class="linenos">190</span></a>            <span class="s2">&quot;-qc_v12_unc_max&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-191"><a href="#fat_proc_dwi_to_dt-191"><span class="linenos">191</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_v12_unc_max</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-192"><a href="#fat_proc_dwi_to_dt-192"><span class="linenos">192</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-193"><a href="#fat_proc_dwi_to_dt-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">qc_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-194"><a href="#fat_proc_dwi_to_dt-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-195"><a href="#fat_proc_dwi_to_dt-195"><span class="linenos">195</span></a>            <span class="s2">&quot;-qc_prefix&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-196"><a href="#fat_proc_dwi_to_dt-196"><span class="linenos">196</span></a>            <span class="n">qc_prefix</span>
-</span><span id="fat_proc_dwi_to_dt-197"><a href="#fat_proc_dwi_to_dt-197"><span class="linenos">197</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-198"><a href="#fat_proc_dwi_to_dt-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">no_qc_view</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-199"><a href="#fat_proc_dwi_to_dt-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_qc_view&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-200"><a href="#fat_proc_dwi_to_dt-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">no_cmd_out</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-201"><a href="#fat_proc_dwi_to_dt-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cmd_out&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-202"><a href="#fat_proc_dwi_to_dt-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">workdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-203"><a href="#fat_proc_dwi_to_dt-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-204"><a href="#fat_proc_dwi_to_dt-204"><span class="linenos">204</span></a>            <span class="s2">&quot;-workdir&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-205"><a href="#fat_proc_dwi_to_dt-205"><span class="linenos">205</span></a>            <span class="n">workdir</span>
-</span><span id="fat_proc_dwi_to_dt-206"><a href="#fat_proc_dwi_to_dt-206"><span class="linenos">206</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-207"><a href="#fat_proc_dwi_to_dt-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">no_clean</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-208"><a href="#fat_proc_dwi_to_dt-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_clean&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-209"><a href="#fat_proc_dwi_to_dt-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">uncert_off</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-210"><a href="#fat_proc_dwi_to_dt-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-uncert_off&quot;</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-211"><a href="#fat_proc_dwi_to_dt-211"><span class="linenos">211</span></a>    <span class="k">if</span> <span class="n">uncert_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-212"><a href="#fat_proc_dwi_to_dt-212"><span class="linenos">212</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-213"><a href="#fat_proc_dwi_to_dt-213"><span class="linenos">213</span></a>            <span class="s2">&quot;-uncert_iters&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-214"><a href="#fat_proc_dwi_to_dt-214"><span class="linenos">214</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">uncert_iters</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-215"><a href="#fat_proc_dwi_to_dt-215"><span class="linenos">215</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-216"><a href="#fat_proc_dwi_to_dt-216"><span class="linenos">216</span></a>    <span class="k">if</span> <span class="n">uncert_extra_cmds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-217"><a href="#fat_proc_dwi_to_dt-217"><span class="linenos">217</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-218"><a href="#fat_proc_dwi_to_dt-218"><span class="linenos">218</span></a>            <span class="s2">&quot;-uncert_extra_cmds&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-219"><a href="#fat_proc_dwi_to_dt-219"><span class="linenos">219</span></a>            <span class="n">uncert_extra_cmds</span>
-</span><span id="fat_proc_dwi_to_dt-220"><a href="#fat_proc_dwi_to_dt-220"><span class="linenos">220</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-221"><a href="#fat_proc_dwi_to_dt-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">check_abs_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_proc_dwi_to_dt-222"><a href="#fat_proc_dwi_to_dt-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_proc_dwi_to_dt-223"><a href="#fat_proc_dwi_to_dt-223"><span class="linenos">223</span></a>            <span class="s2">&quot;-check_abs_min&quot;</span><span class="p">,</span>
-</span><span id="fat_proc_dwi_to_dt-224"><a href="#fat_proc_dwi_to_dt-224"><span class="linenos">224</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">check_abs_min</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-225"><a href="#fat_proc_dwi_to_dt-225"><span class="linenos">225</span></a>        <span class="p">])</span>
-</span><span id="fat_proc_dwi_to_dt-226"><a href="#fat_proc_dwi_to_dt-226"><span class="linenos">226</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatProcDwiToDtOutputs</span><span class="p">(</span>
-</span><span id="fat_proc_dwi_to_dt-227"><a href="#fat_proc_dwi_to_dt-227"><span class="linenos">227</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fat_proc_dwi_to_dt-228"><a href="#fat_proc_dwi_to_dt-228"><span class="linenos">228</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">),</span>
-</span><span id="fat_proc_dwi_to_dt-229"><a href="#fat_proc_dwi_to_dt-229"><span class="linenos">229</span></a>    <span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-230"><a href="#fat_proc_dwi_to_dt-230"><span class="linenos">230</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fat_proc_dwi_to_dt-231"><a href="#fat_proc_dwi_to_dt-231"><span class="linenos">231</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fat_proc_dwi_to_dt-66"><a href="#fat_proc_dwi_to_dt-66"><span class="linenos"> 66</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="fat_proc_dwi_to_dt-67"><a href="#fat_proc_dwi_to_dt-67"><span class="linenos"> 67</span></a><span class="sd">    </span>
+</span><span id="fat_proc_dwi_to_dt-68"><a href="#fat_proc_dwi_to_dt-68"><span class="linenos"> 68</span></a><span class="sd">    Args:</span>
+</span><span id="fat_proc_dwi_to_dt-69"><a href="#fat_proc_dwi_to_dt-69"><span class="linenos"> 69</span></a><span class="sd">        in_dwi: 4D volume of N DWIs. Required.</span>
+</span><span id="fat_proc_dwi_to_dt-70"><a href="#fat_proc_dwi_to_dt-70"><span class="linenos"> 70</span></a><span class="sd">        in_gradmat: Input text file of N gradient vectors or bmatrices.</span>
+</span><span id="fat_proc_dwi_to_dt-71"><a href="#fat_proc_dwi_to_dt-71"><span class="linenos"> 71</span></a><span class="sd">        prefix: Set prefix for output DWI data.</span>
+</span><span id="fat_proc_dwi_to_dt-72"><a href="#fat_proc_dwi_to_dt-72"><span class="linenos"> 72</span></a><span class="sd">        in_bvals: Optional, if bvalue information is in a separate file from\</span>
+</span><span id="fat_proc_dwi_to_dt-73"><a href="#fat_proc_dwi_to_dt-73"><span class="linenos"> 73</span></a><span class="sd">            the b-vectors or matrices.</span>
+</span><span id="fat_proc_dwi_to_dt-74"><a href="#fat_proc_dwi_to_dt-74"><span class="linenos"> 74</span></a><span class="sd">        mask: Optional whole brain mask can be input; otherwise, automasking is\</span>
+</span><span id="fat_proc_dwi_to_dt-75"><a href="#fat_proc_dwi_to_dt-75"><span class="linenos"> 75</span></a><span class="sd">            performed.</span>
+</span><span id="fat_proc_dwi_to_dt-76"><a href="#fat_proc_dwi_to_dt-76"><span class="linenos"> 76</span></a><span class="sd">        mask_from_struc: Flag to make a mask using 3dSkullStrip+3dmask_tool\</span>
+</span><span id="fat_proc_dwi_to_dt-77"><a href="#fat_proc_dwi_to_dt-77"><span class="linenos"> 77</span></a><span class="sd">            from the structural file.</span>
+</span><span id="fat_proc_dwi_to_dt-78"><a href="#fat_proc_dwi_to_dt-78"><span class="linenos"> 78</span></a><span class="sd">        in_struc_res: Alignment of the output DWI to the REF data set via\</span>
+</span><span id="fat_proc_dwi_to_dt-79"><a href="#fat_proc_dwi_to_dt-79"><span class="linenos"> 79</span></a><span class="sd">            anatomical reference; a version of the anatomical that has been\</span>
+</span><span id="fat_proc_dwi_to_dt-80"><a href="#fat_proc_dwi_to_dt-80"><span class="linenos"> 80</span></a><span class="sd">            resampled to match the DWI set.</span>
+</span><span id="fat_proc_dwi_to_dt-81"><a href="#fat_proc_dwi_to_dt-81"><span class="linenos"> 81</span></a><span class="sd">        in_ref_orig: Use another data set to adjust the DWI and subsequent\</span>
+</span><span id="fat_proc_dwi_to_dt-82"><a href="#fat_proc_dwi_to_dt-82"><span class="linenos"> 82</span></a><span class="sd">            parameter dsets&#39; orientation and origin.</span>
+</span><span id="fat_proc_dwi_to_dt-83"><a href="#fat_proc_dwi_to_dt-83"><span class="linenos"> 83</span></a><span class="sd">        prefix_dti: Set prefix for output DTI data; default is &#39;dt&#39;. Do not\</span>
+</span><span id="fat_proc_dwi_to_dt-84"><a href="#fat_proc_dwi_to_dt-84"><span class="linenos"> 84</span></a><span class="sd">            include path information here.</span>
+</span><span id="fat_proc_dwi_to_dt-85"><a href="#fat_proc_dwi_to_dt-85"><span class="linenos"> 85</span></a><span class="sd">        flip_x: Flip the DW gradients in the x-direction.</span>
+</span><span id="fat_proc_dwi_to_dt-86"><a href="#fat_proc_dwi_to_dt-86"><span class="linenos"> 86</span></a><span class="sd">        flip_y: Flip the DW gradients in the y-direction.</span>
+</span><span id="fat_proc_dwi_to_dt-87"><a href="#fat_proc_dwi_to_dt-87"><span class="linenos"> 87</span></a><span class="sd">        flip_z: Flip the DW gradients in the z-direction.</span>
+</span><span id="fat_proc_dwi_to_dt-88"><a href="#fat_proc_dwi_to_dt-88"><span class="linenos"> 88</span></a><span class="sd">        no_flip: Do not flip the DW gradients.</span>
+</span><span id="fat_proc_dwi_to_dt-89"><a href="#fat_proc_dwi_to_dt-89"><span class="linenos"> 89</span></a><span class="sd">        no_scale_out_1000: Turn off scaling of physical length units by 1000\</span>
+</span><span id="fat_proc_dwi_to_dt-90"><a href="#fat_proc_dwi_to_dt-90"><span class="linenos"> 90</span></a><span class="sd">            for tensor fitting.</span>
+</span><span id="fat_proc_dwi_to_dt-91"><a href="#fat_proc_dwi_to_dt-91"><span class="linenos"> 91</span></a><span class="sd">        no_reweight: Turn off reweighting and refitting of tensors during\</span>
+</span><span id="fat_proc_dwi_to_dt-92"><a href="#fat_proc_dwi_to_dt-92"><span class="linenos"> 92</span></a><span class="sd">            estimation.</span>
+</span><span id="fat_proc_dwi_to_dt-93"><a href="#fat_proc_dwi_to_dt-93"><span class="linenos"> 93</span></a><span class="sd">        no_cumulative_wts: Turn off displaying overall weight factors for each\</span>
+</span><span id="fat_proc_dwi_to_dt-94"><a href="#fat_proc_dwi_to_dt-94"><span class="linenos"> 94</span></a><span class="sd">            gradient.</span>
+</span><span id="fat_proc_dwi_to_dt-95"><a href="#fat_proc_dwi_to_dt-95"><span class="linenos"> 95</span></a><span class="sd">        qc_fa_thr: Set threshold for overlay FA volume in QC image.</span>
+</span><span id="fat_proc_dwi_to_dt-96"><a href="#fat_proc_dwi_to_dt-96"><span class="linenos"> 96</span></a><span class="sd">        qc_fa_max: Set cbar max for overlay FA volume in QC image.</span>
+</span><span id="fat_proc_dwi_to_dt-97"><a href="#fat_proc_dwi_to_dt-97"><span class="linenos"> 97</span></a><span class="sd">        qc_fa_unc_max: Set cbar max for overlay uncertainty (stdev) of FA in QC\</span>
+</span><span id="fat_proc_dwi_to_dt-98"><a href="#fat_proc_dwi_to_dt-98"><span class="linenos"> 98</span></a><span class="sd">            image.</span>
+</span><span id="fat_proc_dwi_to_dt-99"><a href="#fat_proc_dwi_to_dt-99"><span class="linenos"> 99</span></a><span class="sd">        qc_v12_unc_max: Set cbar max for overlay uncertainty (stdev) of V1\</span>
+</span><span id="fat_proc_dwi_to_dt-100"><a href="#fat_proc_dwi_to_dt-100"><span class="linenos">100</span></a><span class="sd">            towards V2 direction for DTs in QC image.</span>
+</span><span id="fat_proc_dwi_to_dt-101"><a href="#fat_proc_dwi_to_dt-101"><span class="linenos">101</span></a><span class="sd">        qc_prefix: Set the prefix of the QC image files separately.</span>
+</span><span id="fat_proc_dwi_to_dt-102"><a href="#fat_proc_dwi_to_dt-102"><span class="linenos">102</span></a><span class="sd">        no_qc_view: Turn off generating QC image files.</span>
+</span><span id="fat_proc_dwi_to_dt-103"><a href="#fat_proc_dwi_to_dt-103"><span class="linenos">103</span></a><span class="sd">        no_cmd_out: Don&#39;t save the command line call of this program and the\</span>
+</span><span id="fat_proc_dwi_to_dt-104"><a href="#fat_proc_dwi_to_dt-104"><span class="linenos">104</span></a><span class="sd">            location where it was run.</span>
+</span><span id="fat_proc_dwi_to_dt-105"><a href="#fat_proc_dwi_to_dt-105"><span class="linenos">105</span></a><span class="sd">        workdir: Specify a working directory, which can be removed.</span>
+</span><span id="fat_proc_dwi_to_dt-106"><a href="#fat_proc_dwi_to_dt-106"><span class="linenos">106</span></a><span class="sd">        no_clean: Do not remove the working directory.</span>
+</span><span id="fat_proc_dwi_to_dt-107"><a href="#fat_proc_dwi_to_dt-107"><span class="linenos">107</span></a><span class="sd">        uncert_off: Don&#39;t perform uncertainty calculation.</span>
+</span><span id="fat_proc_dwi_to_dt-108"><a href="#fat_proc_dwi_to_dt-108"><span class="linenos">108</span></a><span class="sd">        uncert_iters: Set the number of Monte Carlo iterations for the\</span>
+</span><span id="fat_proc_dwi_to_dt-109"><a href="#fat_proc_dwi_to_dt-109"><span class="linenos">109</span></a><span class="sd">            uncertainty calculation (default: 300).</span>
+</span><span id="fat_proc_dwi_to_dt-110"><a href="#fat_proc_dwi_to_dt-110"><span class="linenos">110</span></a><span class="sd">        uncert_extra_cmds: Extra commands for the uncertainty calculations.</span>
+</span><span id="fat_proc_dwi_to_dt-111"><a href="#fat_proc_dwi_to_dt-111"><span class="linenos">111</span></a><span class="sd">        check_abs_min: Help the program push through finding tiny negative\</span>
+</span><span id="fat_proc_dwi_to_dt-112"><a href="#fat_proc_dwi_to_dt-112"><span class="linenos">112</span></a><span class="sd">            values in columns that should contain numbers &gt;=0. Provide a tolerance\</span>
+</span><span id="fat_proc_dwi_to_dt-113"><a href="#fat_proc_dwi_to_dt-113"><span class="linenos">113</span></a><span class="sd">            value VVV.</span>
+</span><span id="fat_proc_dwi_to_dt-114"><a href="#fat_proc_dwi_to_dt-114"><span class="linenos">114</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fat_proc_dwi_to_dt-115"><a href="#fat_proc_dwi_to_dt-115"><span class="linenos">115</span></a><span class="sd">    Returns:</span>
+</span><span id="fat_proc_dwi_to_dt-116"><a href="#fat_proc_dwi_to_dt-116"><span class="linenos">116</span></a><span class="sd">        NamedTuple of outputs (described in `FatProcDwiToDtOutputs`).</span>
+</span><span id="fat_proc_dwi_to_dt-117"><a href="#fat_proc_dwi_to_dt-117"><span class="linenos">117</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fat_proc_dwi_to_dt-118"><a href="#fat_proc_dwi_to_dt-118"><span class="linenos">118</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fat_proc_dwi_to_dt-119"><a href="#fat_proc_dwi_to_dt-119"><span class="linenos">119</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_PROC_DWI_TO_DT_METADATA</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-120"><a href="#fat_proc_dwi_to_dt-120"><span class="linenos">120</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fat_proc_dwi_to_dt-121"><a href="#fat_proc_dwi_to_dt-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_proc_dwi_to_dt&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-122"><a href="#fat_proc_dwi_to_dt-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_dwi</span><span class="p">))</span>
+</span><span id="fat_proc_dwi_to_dt-123"><a href="#fat_proc_dwi_to_dt-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-124"><a href="#fat_proc_dwi_to_dt-124"><span class="linenos">124</span></a>        <span class="s2">&quot;-in_col_matA | -in_col_matT | -in_col_vec | -in_row_vec&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-125"><a href="#fat_proc_dwi_to_dt-125"><span class="linenos">125</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_gradmat</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-126"><a href="#fat_proc_dwi_to_dt-126"><span class="linenos">126</span></a>    <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-127"><a href="#fat_proc_dwi_to_dt-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-128"><a href="#fat_proc_dwi_to_dt-128"><span class="linenos">128</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-129"><a href="#fat_proc_dwi_to_dt-129"><span class="linenos">129</span></a>        <span class="n">prefix</span>
+</span><span id="fat_proc_dwi_to_dt-130"><a href="#fat_proc_dwi_to_dt-130"><span class="linenos">130</span></a>    <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-131"><a href="#fat_proc_dwi_to_dt-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">in_bvals</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-132"><a href="#fat_proc_dwi_to_dt-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-133"><a href="#fat_proc_dwi_to_dt-133"><span class="linenos">133</span></a>            <span class="s2">&quot;-in_bvals&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-134"><a href="#fat_proc_dwi_to_dt-134"><span class="linenos">134</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_bvals</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-135"><a href="#fat_proc_dwi_to_dt-135"><span class="linenos">135</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-136"><a href="#fat_proc_dwi_to_dt-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-137"><a href="#fat_proc_dwi_to_dt-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-138"><a href="#fat_proc_dwi_to_dt-138"><span class="linenos">138</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-139"><a href="#fat_proc_dwi_to_dt-139"><span class="linenos">139</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-140"><a href="#fat_proc_dwi_to_dt-140"><span class="linenos">140</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-141"><a href="#fat_proc_dwi_to_dt-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">mask_from_struc</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-142"><a href="#fat_proc_dwi_to_dt-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mask_from_struc&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-143"><a href="#fat_proc_dwi_to_dt-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">in_struc_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-144"><a href="#fat_proc_dwi_to_dt-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-145"><a href="#fat_proc_dwi_to_dt-145"><span class="linenos">145</span></a>            <span class="s2">&quot;-in_struc_res&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-146"><a href="#fat_proc_dwi_to_dt-146"><span class="linenos">146</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_struc_res</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-147"><a href="#fat_proc_dwi_to_dt-147"><span class="linenos">147</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-148"><a href="#fat_proc_dwi_to_dt-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">in_ref_orig</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-149"><a href="#fat_proc_dwi_to_dt-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-150"><a href="#fat_proc_dwi_to_dt-150"><span class="linenos">150</span></a>            <span class="s2">&quot;-in_ref_orig&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-151"><a href="#fat_proc_dwi_to_dt-151"><span class="linenos">151</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_ref_orig</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-152"><a href="#fat_proc_dwi_to_dt-152"><span class="linenos">152</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-153"><a href="#fat_proc_dwi_to_dt-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">prefix_dti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-154"><a href="#fat_proc_dwi_to_dt-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-155"><a href="#fat_proc_dwi_to_dt-155"><span class="linenos">155</span></a>            <span class="s2">&quot;-prefix_dti&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-156"><a href="#fat_proc_dwi_to_dt-156"><span class="linenos">156</span></a>            <span class="n">prefix_dti</span>
+</span><span id="fat_proc_dwi_to_dt-157"><a href="#fat_proc_dwi_to_dt-157"><span class="linenos">157</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-158"><a href="#fat_proc_dwi_to_dt-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">flip_x</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-159"><a href="#fat_proc_dwi_to_dt-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_x&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-160"><a href="#fat_proc_dwi_to_dt-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">flip_y</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-161"><a href="#fat_proc_dwi_to_dt-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_y&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-162"><a href="#fat_proc_dwi_to_dt-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">flip_z</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-163"><a href="#fat_proc_dwi_to_dt-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-flip_z&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-164"><a href="#fat_proc_dwi_to_dt-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">no_flip</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-165"><a href="#fat_proc_dwi_to_dt-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_flip&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-166"><a href="#fat_proc_dwi_to_dt-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">no_scale_out_1000</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-167"><a href="#fat_proc_dwi_to_dt-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_scale_out_1000&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-168"><a href="#fat_proc_dwi_to_dt-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">no_reweight</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-169"><a href="#fat_proc_dwi_to_dt-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_reweight&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-170"><a href="#fat_proc_dwi_to_dt-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">no_cumulative_wts</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-171"><a href="#fat_proc_dwi_to_dt-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cumulative_wts&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-172"><a href="#fat_proc_dwi_to_dt-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">qc_fa_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-173"><a href="#fat_proc_dwi_to_dt-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-174"><a href="#fat_proc_dwi_to_dt-174"><span class="linenos">174</span></a>            <span class="s2">&quot;-qc_fa_thr&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-175"><a href="#fat_proc_dwi_to_dt-175"><span class="linenos">175</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_thr</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-176"><a href="#fat_proc_dwi_to_dt-176"><span class="linenos">176</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-177"><a href="#fat_proc_dwi_to_dt-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">qc_fa_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-178"><a href="#fat_proc_dwi_to_dt-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-179"><a href="#fat_proc_dwi_to_dt-179"><span class="linenos">179</span></a>            <span class="s2">&quot;-qc_fa_max&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-180"><a href="#fat_proc_dwi_to_dt-180"><span class="linenos">180</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_max</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-181"><a href="#fat_proc_dwi_to_dt-181"><span class="linenos">181</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-182"><a href="#fat_proc_dwi_to_dt-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">qc_fa_unc_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-183"><a href="#fat_proc_dwi_to_dt-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-184"><a href="#fat_proc_dwi_to_dt-184"><span class="linenos">184</span></a>            <span class="s2">&quot;-qc_fa_unc_max&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-185"><a href="#fat_proc_dwi_to_dt-185"><span class="linenos">185</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_fa_unc_max</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-186"><a href="#fat_proc_dwi_to_dt-186"><span class="linenos">186</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-187"><a href="#fat_proc_dwi_to_dt-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">qc_v12_unc_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-188"><a href="#fat_proc_dwi_to_dt-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-189"><a href="#fat_proc_dwi_to_dt-189"><span class="linenos">189</span></a>            <span class="s2">&quot;-qc_v12_unc_max&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-190"><a href="#fat_proc_dwi_to_dt-190"><span class="linenos">190</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">qc_v12_unc_max</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-191"><a href="#fat_proc_dwi_to_dt-191"><span class="linenos">191</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-192"><a href="#fat_proc_dwi_to_dt-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">qc_prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-193"><a href="#fat_proc_dwi_to_dt-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-194"><a href="#fat_proc_dwi_to_dt-194"><span class="linenos">194</span></a>            <span class="s2">&quot;-qc_prefix&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-195"><a href="#fat_proc_dwi_to_dt-195"><span class="linenos">195</span></a>            <span class="n">qc_prefix</span>
+</span><span id="fat_proc_dwi_to_dt-196"><a href="#fat_proc_dwi_to_dt-196"><span class="linenos">196</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-197"><a href="#fat_proc_dwi_to_dt-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">no_qc_view</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-198"><a href="#fat_proc_dwi_to_dt-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_qc_view&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-199"><a href="#fat_proc_dwi_to_dt-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">no_cmd_out</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-200"><a href="#fat_proc_dwi_to_dt-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cmd_out&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-201"><a href="#fat_proc_dwi_to_dt-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">workdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-202"><a href="#fat_proc_dwi_to_dt-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-203"><a href="#fat_proc_dwi_to_dt-203"><span class="linenos">203</span></a>            <span class="s2">&quot;-workdir&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-204"><a href="#fat_proc_dwi_to_dt-204"><span class="linenos">204</span></a>            <span class="n">workdir</span>
+</span><span id="fat_proc_dwi_to_dt-205"><a href="#fat_proc_dwi_to_dt-205"><span class="linenos">205</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-206"><a href="#fat_proc_dwi_to_dt-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">no_clean</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-207"><a href="#fat_proc_dwi_to_dt-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_clean&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-208"><a href="#fat_proc_dwi_to_dt-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">uncert_off</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-209"><a href="#fat_proc_dwi_to_dt-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-uncert_off&quot;</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-210"><a href="#fat_proc_dwi_to_dt-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">uncert_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-211"><a href="#fat_proc_dwi_to_dt-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-212"><a href="#fat_proc_dwi_to_dt-212"><span class="linenos">212</span></a>            <span class="s2">&quot;-uncert_iters&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-213"><a href="#fat_proc_dwi_to_dt-213"><span class="linenos">213</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">uncert_iters</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-214"><a href="#fat_proc_dwi_to_dt-214"><span class="linenos">214</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-215"><a href="#fat_proc_dwi_to_dt-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">uncert_extra_cmds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-216"><a href="#fat_proc_dwi_to_dt-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-217"><a href="#fat_proc_dwi_to_dt-217"><span class="linenos">217</span></a>            <span class="s2">&quot;-uncert_extra_cmds&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-218"><a href="#fat_proc_dwi_to_dt-218"><span class="linenos">218</span></a>            <span class="n">uncert_extra_cmds</span>
+</span><span id="fat_proc_dwi_to_dt-219"><a href="#fat_proc_dwi_to_dt-219"><span class="linenos">219</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-220"><a href="#fat_proc_dwi_to_dt-220"><span class="linenos">220</span></a>    <span class="k">if</span> <span class="n">check_abs_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_proc_dwi_to_dt-221"><a href="#fat_proc_dwi_to_dt-221"><span class="linenos">221</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_proc_dwi_to_dt-222"><a href="#fat_proc_dwi_to_dt-222"><span class="linenos">222</span></a>            <span class="s2">&quot;-check_abs_min&quot;</span><span class="p">,</span>
+</span><span id="fat_proc_dwi_to_dt-223"><a href="#fat_proc_dwi_to_dt-223"><span class="linenos">223</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">check_abs_min</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-224"><a href="#fat_proc_dwi_to_dt-224"><span class="linenos">224</span></a>        <span class="p">])</span>
+</span><span id="fat_proc_dwi_to_dt-225"><a href="#fat_proc_dwi_to_dt-225"><span class="linenos">225</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatProcDwiToDtOutputs</span><span class="p">(</span>
+</span><span id="fat_proc_dwi_to_dt-226"><a href="#fat_proc_dwi_to_dt-226"><span class="linenos">226</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fat_proc_dwi_to_dt-227"><a href="#fat_proc_dwi_to_dt-227"><span class="linenos">227</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">),</span>
+</span><span id="fat_proc_dwi_to_dt-228"><a href="#fat_proc_dwi_to_dt-228"><span class="linenos">228</span></a>    <span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-229"><a href="#fat_proc_dwi_to_dt-229"><span class="linenos">229</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fat_proc_dwi_to_dt-230"><a href="#fat_proc_dwi_to_dt-230"><span class="linenos">230</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>This program fits tensors and DT parameters, as well as the uncertainty of DT
 parameters needed for tractography.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_dwi_to_dt.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_dwi_to_dt.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

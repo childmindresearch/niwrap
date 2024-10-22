@@ -135,7 +135,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CIFTI_DILATE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4f892acd3a820a270e25b98c3fd28edcaee9017e.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;0057aea9a69539bb8eac6eaeceaa49cbf242cda7.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cifti-dilate&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -288,72 +288,74 @@
 </span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    value zero, are good, except for locations with a positive value in the ROI.</span>
 </span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    If it is not specified, only values equal to zero are bad.</span>
 </span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    </span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    </span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    Args:</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        cifti_in: the input cifti file.</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        opt_bad_brainordinate_roi_roi_cifti: specify an roi of brainordinates\</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">            to overwrite, rather than zeros: cifti dscalar or dtseries file,\</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">            positive values denote brainordinates to have their values replaced.</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        opt_nearest: use nearest good value instead of a weighted average.</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">            component.</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        opt_legacy_mode: use the math from v1.3.2 and earlier for weighted\</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">            dilation.</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">    Returns:</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiDilateOutputs`).</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_DILATE_METADATA</span><span class="p">)</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-dilate&quot;</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="k">if</span> <span class="n">left_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">right_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">cerebellum_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">opt_bad_brainordinate_roi_roi_cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>            <span class="s2">&quot;-bad-brainordinate-roi&quot;</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_brainordinate_roi_roi_cifti</span><span class="p">)</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="p">])</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">opt_nearest</span><span class="p">:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nearest&quot;</span><span class="p">)</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="k">if</span> <span class="n">opt_legacy_mode</span><span class="p">:</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-legacy-mode&quot;</span><span class="p">)</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiDilateOutputs</span><span class="p">(</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="p">)</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;CIFTI_DILATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="s2">&quot;CiftiDilateCerebellumSurface&quot;</span><span class="p">,</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="s2">&quot;CiftiDilateLeftSurface&quot;</span><span class="p">,</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="s2">&quot;CiftiDilateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="s2">&quot;CiftiDilateRightSurface&quot;</span><span class="p">,</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="s2">&quot;cifti_dilate&quot;</span><span class="p">,</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="p">]</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    </span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">    Args:</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        cifti_in: the input cifti file.</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        opt_bad_brainordinate_roi_roi_cifti: specify an roi of brainordinates\</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">            to overwrite, rather than zeros: cifti dscalar or dtseries file,\</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">            positive values denote brainordinates to have their values replaced.</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        opt_nearest: use nearest good value instead of a weighted average.</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">            component.</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        opt_legacy_mode: use the math from v1.3.2 and earlier for weighted\</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            dilation.</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    Returns:</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiDilateOutputs`).</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_DILATE_METADATA</span><span class="p">)</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-dilate&quot;</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">left_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">right_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">cerebellum_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">opt_bad_brainordinate_roi_roi_cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>            <span class="s2">&quot;-bad-brainordinate-roi&quot;</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_brainordinate_roi_roi_cifti</span><span class="p">)</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="p">])</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">opt_nearest</span><span class="p">:</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nearest&quot;</span><span class="p">)</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">opt_legacy_mode</span><span class="p">:</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-legacy-mode&quot;</span><span class="p">)</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiDilateOutputs</span><span class="p">(</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="p">)</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="s2">&quot;CIFTI_DILATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="s2">&quot;CiftiDilateCerebellumSurface&quot;</span><span class="p">,</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="s2">&quot;CiftiDilateLeftSurface&quot;</span><span class="p">,</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="s2">&quot;CiftiDilateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="s2">&quot;CiftiDilateRightSurface&quot;</span><span class="p">,</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="s2">&quot;cifti_dilate&quot;</span><span class="p">,</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -362,7 +364,7 @@
                     <div class="attr variable">
             <span class="name">CIFTI_DILATE_METADATA</span>        =
 <input id="CIFTI_DILATE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CIFTI_DILATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4f892acd3a820a270e25b98c3fd28edcaee9017e.boutiques&#39;, name=&#39;cifti-dilate&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CIFTI_DILATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;0057aea9a69539bb8eac6eaeceaa49cbf242cda7.boutiques&#39;, name=&#39;cifti-dilate&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -915,62 +917,64 @@ corrected vertex areas, as a metric</p>
 </span><span id="cifti_dilate-161"><a href="#cifti_dilate-161"><span class="linenos">161</span></a><span class="sd">    value zero, are good, except for locations with a positive value in the ROI.</span>
 </span><span id="cifti_dilate-162"><a href="#cifti_dilate-162"><span class="linenos">162</span></a><span class="sd">    If it is not specified, only values equal to zero are bad.</span>
 </span><span id="cifti_dilate-163"><a href="#cifti_dilate-163"><span class="linenos">163</span></a><span class="sd">    </span>
-</span><span id="cifti_dilate-164"><a href="#cifti_dilate-164"><span class="linenos">164</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="cifti_dilate-164"><a href="#cifti_dilate-164"><span class="linenos">164</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="cifti_dilate-165"><a href="#cifti_dilate-165"><span class="linenos">165</span></a><span class="sd">    </span>
-</span><span id="cifti_dilate-166"><a href="#cifti_dilate-166"><span class="linenos">166</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_dilate-167"><a href="#cifti_dilate-167"><span class="linenos">167</span></a><span class="sd">        cifti_in: the input cifti file.</span>
-</span><span id="cifti_dilate-168"><a href="#cifti_dilate-168"><span class="linenos">168</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
-</span><span id="cifti_dilate-169"><a href="#cifti_dilate-169"><span class="linenos">169</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
-</span><span id="cifti_dilate-170"><a href="#cifti_dilate-170"><span class="linenos">170</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
-</span><span id="cifti_dilate-171"><a href="#cifti_dilate-171"><span class="linenos">171</span></a><span class="sd">        cifti_out: the output cifti file.</span>
-</span><span id="cifti_dilate-172"><a href="#cifti_dilate-172"><span class="linenos">172</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
-</span><span id="cifti_dilate-173"><a href="#cifti_dilate-173"><span class="linenos">173</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
-</span><span id="cifti_dilate-174"><a href="#cifti_dilate-174"><span class="linenos">174</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
-</span><span id="cifti_dilate-175"><a href="#cifti_dilate-175"><span class="linenos">175</span></a><span class="sd">        opt_bad_brainordinate_roi_roi_cifti: specify an roi of brainordinates\</span>
-</span><span id="cifti_dilate-176"><a href="#cifti_dilate-176"><span class="linenos">176</span></a><span class="sd">            to overwrite, rather than zeros: cifti dscalar or dtseries file,\</span>
-</span><span id="cifti_dilate-177"><a href="#cifti_dilate-177"><span class="linenos">177</span></a><span class="sd">            positive values denote brainordinates to have their values replaced.</span>
-</span><span id="cifti_dilate-178"><a href="#cifti_dilate-178"><span class="linenos">178</span></a><span class="sd">        opt_nearest: use nearest good value instead of a weighted average.</span>
-</span><span id="cifti_dilate-179"><a href="#cifti_dilate-179"><span class="linenos">179</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
-</span><span id="cifti_dilate-180"><a href="#cifti_dilate-180"><span class="linenos">180</span></a><span class="sd">            component.</span>
-</span><span id="cifti_dilate-181"><a href="#cifti_dilate-181"><span class="linenos">181</span></a><span class="sd">        opt_legacy_mode: use the math from v1.3.2 and earlier for weighted\</span>
-</span><span id="cifti_dilate-182"><a href="#cifti_dilate-182"><span class="linenos">182</span></a><span class="sd">            dilation.</span>
-</span><span id="cifti_dilate-183"><a href="#cifti_dilate-183"><span class="linenos">183</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_dilate-184"><a href="#cifti_dilate-184"><span class="linenos">184</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_dilate-185"><a href="#cifti_dilate-185"><span class="linenos">185</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiDilateOutputs`).</span>
-</span><span id="cifti_dilate-186"><a href="#cifti_dilate-186"><span class="linenos">186</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_dilate-187"><a href="#cifti_dilate-187"><span class="linenos">187</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_dilate-188"><a href="#cifti_dilate-188"><span class="linenos">188</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_DILATE_METADATA</span><span class="p">)</span>
-</span><span id="cifti_dilate-189"><a href="#cifti_dilate-189"><span class="linenos">189</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="cifti_dilate-190"><a href="#cifti_dilate-190"><span class="linenos">190</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="cifti_dilate-191"><a href="#cifti_dilate-191"><span class="linenos">191</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-dilate&quot;</span><span class="p">)</span>
-</span><span id="cifti_dilate-192"><a href="#cifti_dilate-192"><span class="linenos">192</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="cifti_dilate-193"><a href="#cifti_dilate-193"><span class="linenos">193</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
-</span><span id="cifti_dilate-194"><a href="#cifti_dilate-194"><span class="linenos">194</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
-</span><span id="cifti_dilate-195"><a href="#cifti_dilate-195"><span class="linenos">195</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
-</span><span id="cifti_dilate-196"><a href="#cifti_dilate-196"><span class="linenos">196</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
-</span><span id="cifti_dilate-197"><a href="#cifti_dilate-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">left_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_dilate-198"><a href="#cifti_dilate-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_dilate-199"><a href="#cifti_dilate-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">right_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_dilate-200"><a href="#cifti_dilate-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_dilate-201"><a href="#cifti_dilate-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">cerebellum_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_dilate-202"><a href="#cifti_dilate-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_dilate-203"><a href="#cifti_dilate-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">opt_bad_brainordinate_roi_roi_cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_dilate-204"><a href="#cifti_dilate-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_dilate-205"><a href="#cifti_dilate-205"><span class="linenos">205</span></a>            <span class="s2">&quot;-bad-brainordinate-roi&quot;</span><span class="p">,</span>
-</span><span id="cifti_dilate-206"><a href="#cifti_dilate-206"><span class="linenos">206</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_brainordinate_roi_roi_cifti</span><span class="p">)</span>
-</span><span id="cifti_dilate-207"><a href="#cifti_dilate-207"><span class="linenos">207</span></a>        <span class="p">])</span>
-</span><span id="cifti_dilate-208"><a href="#cifti_dilate-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">opt_nearest</span><span class="p">:</span>
-</span><span id="cifti_dilate-209"><a href="#cifti_dilate-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nearest&quot;</span><span class="p">)</span>
-</span><span id="cifti_dilate-210"><a href="#cifti_dilate-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
-</span><span id="cifti_dilate-211"><a href="#cifti_dilate-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
-</span><span id="cifti_dilate-212"><a href="#cifti_dilate-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">opt_legacy_mode</span><span class="p">:</span>
-</span><span id="cifti_dilate-213"><a href="#cifti_dilate-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-legacy-mode&quot;</span><span class="p">)</span>
-</span><span id="cifti_dilate-214"><a href="#cifti_dilate-214"><span class="linenos">214</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiDilateOutputs</span><span class="p">(</span>
-</span><span id="cifti_dilate-215"><a href="#cifti_dilate-215"><span class="linenos">215</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="cifti_dilate-216"><a href="#cifti_dilate-216"><span class="linenos">216</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
-</span><span id="cifti_dilate-217"><a href="#cifti_dilate-217"><span class="linenos">217</span></a>    <span class="p">)</span>
-</span><span id="cifti_dilate-218"><a href="#cifti_dilate-218"><span class="linenos">218</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="cifti_dilate-219"><a href="#cifti_dilate-219"><span class="linenos">219</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="cifti_dilate-166"><a href="#cifti_dilate-166"><span class="linenos">166</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_dilate-167"><a href="#cifti_dilate-167"><span class="linenos">167</span></a><span class="sd">    </span>
+</span><span id="cifti_dilate-168"><a href="#cifti_dilate-168"><span class="linenos">168</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_dilate-169"><a href="#cifti_dilate-169"><span class="linenos">169</span></a><span class="sd">        cifti_in: the input cifti file.</span>
+</span><span id="cifti_dilate-170"><a href="#cifti_dilate-170"><span class="linenos">170</span></a><span class="sd">        direction: which dimension to dilate along, ROW or COLUMN.</span>
+</span><span id="cifti_dilate-171"><a href="#cifti_dilate-171"><span class="linenos">171</span></a><span class="sd">        surface_distance: the distance to dilate on surfaces, in mm.</span>
+</span><span id="cifti_dilate-172"><a href="#cifti_dilate-172"><span class="linenos">172</span></a><span class="sd">        volume_distance: the distance to dilate in the volume, in mm.</span>
+</span><span id="cifti_dilate-173"><a href="#cifti_dilate-173"><span class="linenos">173</span></a><span class="sd">        cifti_out: the output cifti file.</span>
+</span><span id="cifti_dilate-174"><a href="#cifti_dilate-174"><span class="linenos">174</span></a><span class="sd">        left_surface: specify the left surface to use.</span>
+</span><span id="cifti_dilate-175"><a href="#cifti_dilate-175"><span class="linenos">175</span></a><span class="sd">        right_surface: specify the right surface to use.</span>
+</span><span id="cifti_dilate-176"><a href="#cifti_dilate-176"><span class="linenos">176</span></a><span class="sd">        cerebellum_surface: specify the cerebellum surface to use.</span>
+</span><span id="cifti_dilate-177"><a href="#cifti_dilate-177"><span class="linenos">177</span></a><span class="sd">        opt_bad_brainordinate_roi_roi_cifti: specify an roi of brainordinates\</span>
+</span><span id="cifti_dilate-178"><a href="#cifti_dilate-178"><span class="linenos">178</span></a><span class="sd">            to overwrite, rather than zeros: cifti dscalar or dtseries file,\</span>
+</span><span id="cifti_dilate-179"><a href="#cifti_dilate-179"><span class="linenos">179</span></a><span class="sd">            positive values denote brainordinates to have their values replaced.</span>
+</span><span id="cifti_dilate-180"><a href="#cifti_dilate-180"><span class="linenos">180</span></a><span class="sd">        opt_nearest: use nearest good value instead of a weighted average.</span>
+</span><span id="cifti_dilate-181"><a href="#cifti_dilate-181"><span class="linenos">181</span></a><span class="sd">        opt_merged_volume: treat volume components as if they were a single\</span>
+</span><span id="cifti_dilate-182"><a href="#cifti_dilate-182"><span class="linenos">182</span></a><span class="sd">            component.</span>
+</span><span id="cifti_dilate-183"><a href="#cifti_dilate-183"><span class="linenos">183</span></a><span class="sd">        opt_legacy_mode: use the math from v1.3.2 and earlier for weighted\</span>
+</span><span id="cifti_dilate-184"><a href="#cifti_dilate-184"><span class="linenos">184</span></a><span class="sd">            dilation.</span>
+</span><span id="cifti_dilate-185"><a href="#cifti_dilate-185"><span class="linenos">185</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_dilate-186"><a href="#cifti_dilate-186"><span class="linenos">186</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_dilate-187"><a href="#cifti_dilate-187"><span class="linenos">187</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiDilateOutputs`).</span>
+</span><span id="cifti_dilate-188"><a href="#cifti_dilate-188"><span class="linenos">188</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_dilate-189"><a href="#cifti_dilate-189"><span class="linenos">189</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_dilate-190"><a href="#cifti_dilate-190"><span class="linenos">190</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_DILATE_METADATA</span><span class="p">)</span>
+</span><span id="cifti_dilate-191"><a href="#cifti_dilate-191"><span class="linenos">191</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="cifti_dilate-192"><a href="#cifti_dilate-192"><span class="linenos">192</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="cifti_dilate-193"><a href="#cifti_dilate-193"><span class="linenos">193</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-dilate&quot;</span><span class="p">)</span>
+</span><span id="cifti_dilate-194"><a href="#cifti_dilate-194"><span class="linenos">194</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="cifti_dilate-195"><a href="#cifti_dilate-195"><span class="linenos">195</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</span><span id="cifti_dilate-196"><a href="#cifti_dilate-196"><span class="linenos">196</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">surface_distance</span><span class="p">))</span>
+</span><span id="cifti_dilate-197"><a href="#cifti_dilate-197"><span class="linenos">197</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">volume_distance</span><span class="p">))</span>
+</span><span id="cifti_dilate-198"><a href="#cifti_dilate-198"><span class="linenos">198</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">)</span>
+</span><span id="cifti_dilate-199"><a href="#cifti_dilate-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">left_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_dilate-200"><a href="#cifti_dilate-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_dilate-201"><a href="#cifti_dilate-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">right_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_dilate-202"><a href="#cifti_dilate-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_dilate-203"><a href="#cifti_dilate-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">cerebellum_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_dilate-204"><a href="#cifti_dilate-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surface</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_dilate-205"><a href="#cifti_dilate-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">opt_bad_brainordinate_roi_roi_cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_dilate-206"><a href="#cifti_dilate-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_dilate-207"><a href="#cifti_dilate-207"><span class="linenos">207</span></a>            <span class="s2">&quot;-bad-brainordinate-roi&quot;</span><span class="p">,</span>
+</span><span id="cifti_dilate-208"><a href="#cifti_dilate-208"><span class="linenos">208</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_brainordinate_roi_roi_cifti</span><span class="p">)</span>
+</span><span id="cifti_dilate-209"><a href="#cifti_dilate-209"><span class="linenos">209</span></a>        <span class="p">])</span>
+</span><span id="cifti_dilate-210"><a href="#cifti_dilate-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">opt_nearest</span><span class="p">:</span>
+</span><span id="cifti_dilate-211"><a href="#cifti_dilate-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nearest&quot;</span><span class="p">)</span>
+</span><span id="cifti_dilate-212"><a href="#cifti_dilate-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">opt_merged_volume</span><span class="p">:</span>
+</span><span id="cifti_dilate-213"><a href="#cifti_dilate-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-merged-volume&quot;</span><span class="p">)</span>
+</span><span id="cifti_dilate-214"><a href="#cifti_dilate-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">opt_legacy_mode</span><span class="p">:</span>
+</span><span id="cifti_dilate-215"><a href="#cifti_dilate-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-legacy-mode&quot;</span><span class="p">)</span>
+</span><span id="cifti_dilate-216"><a href="#cifti_dilate-216"><span class="linenos">216</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiDilateOutputs</span><span class="p">(</span>
+</span><span id="cifti_dilate-217"><a href="#cifti_dilate-217"><span class="linenos">217</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="cifti_dilate-218"><a href="#cifti_dilate-218"><span class="linenos">218</span></a>        <span class="n">cifti_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">cifti_out</span><span class="p">),</span>
+</span><span id="cifti_dilate-219"><a href="#cifti_dilate-219"><span class="linenos">219</span></a>    <span class="p">)</span>
+</span><span id="cifti_dilate-220"><a href="#cifti_dilate-220"><span class="linenos">220</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="cifti_dilate-221"><a href="#cifti_dilate-221"><span class="linenos">221</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -992,7 +996,9 @@ structure in a group average surface.</p>
 value zero, are good, except for locations with a positive value in the ROI.
 If it is not specified, only values equal to zero are bad.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

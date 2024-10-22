@@ -108,7 +108,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TCKSIFT2_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d7481a621dcc1c55eb2b1d9041f033c4a9f61311.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;399c2a04022ba3cedcda7e35cf69c1dae578656c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tcksift2&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -216,238 +216,237 @@
 </span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    Tractography: Methods and Inter-Subject Normalisation. Open Science</span>
 </span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    Framework, https://doi.org/10.31219/osf.io/c67kn.</span>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    </span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    </span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    URL:</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/tcksift2.html</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    </span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">    Args:</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        in_tracks: the input track file.</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        in_fod: input image containing the spherical harmonics of the fibre\</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">            orientation distributions.</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">        out_weights: output text file containing the weighting factor for each\</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">            streamline.</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">        proc_mask: provide an image containing the processing mask weights for\</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">            the model; image spatial dimensions must match the fixel image.</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">        act: use an ACT five-tissue-type segmented anatomical image to derive\</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">            the processing mask.</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">        fd_scale_gm: provide this option (in conjunction with -act) to\</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">            heuristically downsize the fibre density estimates based on the\</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">            presence of GM in the voxel. This can assist in reducing tissue\</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">            interface effects when using a single-tissue deconvolution algorithm.</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">        no_dilate_lut: do NOT dilate FOD lobe lookup tables; only map\</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">            streamlines to FOD lobes if the precise tangent lies within the angular\</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">            spread of that lobe.</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        make_null_lobes: add an additional FOD lobe to each voxel, with zero\</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">            integral, that covers all directions with zero / negative FOD\</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">            amplitudes.</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">        remove_untracked: remove FOD lobes that do not have any streamline\</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">            density attributed to them; this improves filtering slightly, at the\</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">            expense of longer computation time (and you can no longer do\</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">            quantitative comparisons between reconstructions if this is enabled).</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        fd_thresh: fibre density threshold; exclude an FOD lobe from filtering\</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">            processing if its integral is less than this amount (streamlines will\</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">            still be mapped to it, but it will not contribute to the cost function\</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">            or the filtering).</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        csv_: output statistics of execution per iteration to a .csv file.</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">        out_mu: output the final value of SIFT proportionality coefficient mu\</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">            to a text file.</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        output_debug: provide various output images for assessing &amp; debugging\</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">            performance etc.</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        out_coeffs: output text file containing the weighting coefficient for\</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">            each streamline.</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        reg_tikhonov: provide coefficient for regularising streamline weighting\</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">            coefficients (Tikhonov regularisation) (default: 0).</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">        reg_tv: provide coefficient for regularising variance of streamline\</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">            weighting coefficient to fixels along its length (Total Variation\</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">            regularisation) (default: 0.1).</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        min_td_frac: minimum fraction of the FOD integral reconstructed by\</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">            streamlines; if the reconstructed streamline density is below this\</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">            fraction, the fixel is excluded from optimisation (default: 0.1).</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        min_iters: minimum number of iterations to run before testing for\</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">            convergence; this can prevent premature termination at early iterations\</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">            if the cost function increases slightly (default: 10).</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        max_iters: maximum number of iterations to run before terminating\</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">            program.</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        min_factor: minimum weighting factor for an individual streamline; if\</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">            the factor falls below this number the streamline will be rejected\</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">            entirely (factor set to zero) (default: 0).</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        min_coeff: minimum weighting coefficient for an individual streamline;\</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">            similar to the &#39;-min_factor&#39; option, but using the exponential\</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">            coefficient basis of the SIFT2 model; these parameters are related as:\</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">            factor = e^(coeff). Note that the -min_factor and -min_coeff options\</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">            are mutually exclusive - you can only provide one. (default: -inf).</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        max_factor: maximum weighting factor that can be assigned to any one\</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">            streamline (default: inf).</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        max_coeff: maximum weighting coefficient for an individual streamline;\</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">            similar to the &#39;-max_factor&#39; option, but using the exponential\</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            coefficient basis of the SIFT2 model; these parameters are related as:\</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">            factor = e^(coeff). Note that the -max_factor and -max_coeff options\</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">            are mutually exclusive - you can only provide one. (default: inf).</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        max_coeff_step: maximum change to a streamline&#39;s weighting coefficient\</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">            in a single iteration (default: 1).</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">        min_cf_decrease: minimum decrease in the cost function (as a fraction\</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">            of the initial value) that must occur each iteration for the algorithm\</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">            to continue (default: 2.5e-05).</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">        linear: perform a linear estimation of streamline weights, rather than\</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">            the standard non-linear optimisation (typically does not provide as\</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">            accurate a model fit; but only requires a single pass).</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    Returns:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        NamedTuple of outputs (described in `Tcksift2Outputs`).</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKSIFT2_METADATA</span><span class="p">)</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tcksift2&quot;</span><span class="p">)</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">proc_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>            <span class="s2">&quot;-proc_mask&quot;</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">proc_mask</span><span class="p">)</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="p">])</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">act</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>            <span class="s2">&quot;-act&quot;</span><span class="p">,</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">act</span><span class="p">)</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>        <span class="p">])</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="k">if</span> <span class="n">fd_scale_gm</span><span class="p">:</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fd_scale_gm&quot;</span><span class="p">)</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="k">if</span> <span class="n">no_dilate_lut</span><span class="p">:</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_dilate_lut&quot;</span><span class="p">)</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">make_null_lobes</span><span class="p">:</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-make_null_lobes&quot;</span><span class="p">)</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="k">if</span> <span class="n">remove_untracked</span><span class="p">:</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-remove_untracked&quot;</span><span class="p">)</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">fd_thresh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>            <span class="s2">&quot;-fd_thresh&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fd_thresh</span><span class="p">)</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="p">])</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">csv_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>            <span class="s2">&quot;-csv&quot;</span><span class="p">,</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>            <span class="n">csv_</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>        <span class="p">])</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="k">if</span> <span class="n">out_mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>            <span class="s2">&quot;-out_mu&quot;</span><span class="p">,</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>            <span class="n">out_mu</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="p">])</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">output_debug</span><span class="p">:</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-output_debug&quot;</span><span class="p">)</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">out_coeffs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>            <span class="s2">&quot;-out_coeffs&quot;</span><span class="p">,</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>            <span class="n">out_coeffs</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>        <span class="p">])</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="k">if</span> <span class="n">reg_tikhonov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>            <span class="s2">&quot;-reg_tikhonov&quot;</span><span class="p">,</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reg_tikhonov</span><span class="p">)</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>        <span class="p">])</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="k">if</span> <span class="n">reg_tv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>            <span class="s2">&quot;-reg_tv&quot;</span><span class="p">,</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reg_tv</span><span class="p">)</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>        <span class="p">])</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="k">if</span> <span class="n">min_td_frac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>            <span class="s2">&quot;-min_td_frac&quot;</span><span class="p">,</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_td_frac</span><span class="p">)</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>        <span class="p">])</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>    <span class="k">if</span> <span class="n">min_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>            <span class="s2">&quot;-min_iters&quot;</span><span class="p">,</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_iters</span><span class="p">)</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>        <span class="p">])</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="k">if</span> <span class="n">max_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>            <span class="s2">&quot;-max_iters&quot;</span><span class="p">,</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_iters</span><span class="p">)</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>        <span class="p">])</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="k">if</span> <span class="n">min_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>            <span class="s2">&quot;-min_factor&quot;</span><span class="p">,</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_factor</span><span class="p">)</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>        <span class="p">])</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="k">if</span> <span class="n">min_coeff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>            <span class="s2">&quot;-min_coeff&quot;</span><span class="p">,</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_coeff</span><span class="p">)</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>        <span class="p">])</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>    <span class="k">if</span> <span class="n">max_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>            <span class="s2">&quot;-max_factor&quot;</span><span class="p">,</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_factor</span><span class="p">)</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>        <span class="p">])</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="k">if</span> <span class="n">max_coeff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>            <span class="s2">&quot;-max_coeff&quot;</span><span class="p">,</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_coeff</span><span class="p">)</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>        <span class="p">])</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="k">if</span> <span class="n">max_coeff_step</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>            <span class="s2">&quot;-max_coeff_step&quot;</span><span class="p">,</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_coeff_step</span><span class="p">)</span>
-</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>        <span class="p">])</span>
-</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>    <span class="k">if</span> <span class="n">min_cf_decrease</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>            <span class="s2">&quot;-min_cf_decrease&quot;</span><span class="p">,</span>
-</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_cf_decrease</span><span class="p">)</span>
-</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>        <span class="p">])</span>
-</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>    <span class="k">if</span> <span class="n">linear</span><span class="p">:</span>
-</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-linear&quot;</span><span class="p">)</span>
-</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>        <span class="p">])</span>
-</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_tracks</span><span class="p">))</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fod</span><span class="p">))</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_weights</span><span class="p">)</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Tcksift2Outputs</span><span class="p">(</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>        <span class="n">out_weights</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_weights</span><span class="p">),</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>        <span class="n">csv_</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">csv_</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">csv_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>        <span class="n">out_mu</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_mu</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>        <span class="n">out_coeffs</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_coeffs</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_coeffs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="p">)</span>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    </span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    Args:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        in_tracks: the input track file.</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        in_fod: input image containing the spherical harmonics of the fibre\</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">            orientation distributions.</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        out_weights: output text file containing the weighting factor for each\</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">            streamline.</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        proc_mask: provide an image containing the processing mask weights for\</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">            the model; image spatial dimensions must match the fixel image.</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        act: use an ACT five-tissue-type segmented anatomical image to derive\</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">            the processing mask.</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">        fd_scale_gm: provide this option (in conjunction with -act) to\</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">            heuristically downsize the fibre density estimates based on the\</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">            presence of GM in the voxel. This can assist in reducing tissue\</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">            interface effects when using a single-tissue deconvolution algorithm.</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">        no_dilate_lut: do NOT dilate FOD lobe lookup tables; only map\</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">            streamlines to FOD lobes if the precise tangent lies within the angular\</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">            spread of that lobe.</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        make_null_lobes: add an additional FOD lobe to each voxel, with zero\</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">            integral, that covers all directions with zero / negative FOD\</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">            amplitudes.</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        remove_untracked: remove FOD lobes that do not have any streamline\</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">            density attributed to them; this improves filtering slightly, at the\</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">            expense of longer computation time (and you can no longer do\</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">            quantitative comparisons between reconstructions if this is enabled).</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">        fd_thresh: fibre density threshold; exclude an FOD lobe from filtering\</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">            processing if its integral is less than this amount (streamlines will\</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">            still be mapped to it, but it will not contribute to the cost function\</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">            or the filtering).</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        csv_: output statistics of execution per iteration to a .csv file.</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        out_mu: output the final value of SIFT proportionality coefficient mu\</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">            to a text file.</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">        output_debug: provide various output images for assessing &amp; debugging\</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">            performance etc.</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        out_coeffs: output text file containing the weighting coefficient for\</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">            each streamline.</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        reg_tikhonov: provide coefficient for regularising streamline weighting\</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">            coefficients (Tikhonov regularisation) (default: 0).</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">        reg_tv: provide coefficient for regularising variance of streamline\</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">            weighting coefficient to fixels along its length (Total Variation\</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">            regularisation) (default: 0.1).</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">        min_td_frac: minimum fraction of the FOD integral reconstructed by\</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">            streamlines; if the reconstructed streamline density is below this\</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">            fraction, the fixel is excluded from optimisation (default: 0.1).</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        min_iters: minimum number of iterations to run before testing for\</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">            convergence; this can prevent premature termination at early iterations\</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">            if the cost function increases slightly (default: 10).</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        max_iters: maximum number of iterations to run before terminating\</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">            program.</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        min_factor: minimum weighting factor for an individual streamline; if\</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">            the factor falls below this number the streamline will be rejected\</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">            entirely (factor set to zero) (default: 0).</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        min_coeff: minimum weighting coefficient for an individual streamline;\</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">            similar to the &#39;-min_factor&#39; option, but using the exponential\</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">            coefficient basis of the SIFT2 model; these parameters are related as:\</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">            factor = e^(coeff). Note that the -min_factor and -min_coeff options\</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">            are mutually exclusive - you can only provide one. (default: -inf).</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        max_factor: maximum weighting factor that can be assigned to any one\</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">            streamline (default: inf).</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        max_coeff: maximum weighting coefficient for an individual streamline;\</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">            similar to the &#39;-max_factor&#39; option, but using the exponential\</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">            coefficient basis of the SIFT2 model; these parameters are related as:\</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            factor = e^(coeff). Note that the -max_factor and -max_coeff options\</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">            are mutually exclusive - you can only provide one. (default: inf).</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">        max_coeff_step: maximum change to a streamline&#39;s weighting coefficient\</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">            in a single iteration (default: 1).</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">        min_cf_decrease: minimum decrease in the cost function (as a fraction\</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">            of the initial value) that must occur each iteration for the algorithm\</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">            to continue (default: 2.5e-05).</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        linear: perform a linear estimation of streamline weights, rather than\</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">            the standard non-linear optimisation (typically does not provide as\</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">            accurate a model fit; but only requires a single pass).</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    Returns:</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">        NamedTuple of outputs (described in `Tcksift2Outputs`).</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKSIFT2_METADATA</span><span class="p">)</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tcksift2&quot;</span><span class="p">)</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">proc_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>            <span class="s2">&quot;-proc_mask&quot;</span><span class="p">,</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">proc_mask</span><span class="p">)</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>        <span class="p">])</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="k">if</span> <span class="n">act</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>            <span class="s2">&quot;-act&quot;</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">act</span><span class="p">)</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>        <span class="p">])</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">fd_scale_gm</span><span class="p">:</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fd_scale_gm&quot;</span><span class="p">)</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="k">if</span> <span class="n">no_dilate_lut</span><span class="p">:</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_dilate_lut&quot;</span><span class="p">)</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="k">if</span> <span class="n">make_null_lobes</span><span class="p">:</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-make_null_lobes&quot;</span><span class="p">)</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">if</span> <span class="n">remove_untracked</span><span class="p">:</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-remove_untracked&quot;</span><span class="p">)</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="k">if</span> <span class="n">fd_thresh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>            <span class="s2">&quot;-fd_thresh&quot;</span><span class="p">,</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fd_thresh</span><span class="p">)</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>        <span class="p">])</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="k">if</span> <span class="n">csv_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>            <span class="s2">&quot;-csv&quot;</span><span class="p">,</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>            <span class="n">csv_</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="p">])</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="k">if</span> <span class="n">out_mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>            <span class="s2">&quot;-out_mu&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>            <span class="n">out_mu</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="p">])</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="k">if</span> <span class="n">output_debug</span><span class="p">:</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-output_debug&quot;</span><span class="p">)</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">out_coeffs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>            <span class="s2">&quot;-out_coeffs&quot;</span><span class="p">,</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>            <span class="n">out_coeffs</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>        <span class="p">])</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="k">if</span> <span class="n">reg_tikhonov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>            <span class="s2">&quot;-reg_tikhonov&quot;</span><span class="p">,</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reg_tikhonov</span><span class="p">)</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>        <span class="p">])</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="k">if</span> <span class="n">reg_tv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>            <span class="s2">&quot;-reg_tv&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reg_tv</span><span class="p">)</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>        <span class="p">])</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="k">if</span> <span class="n">min_td_frac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>            <span class="s2">&quot;-min_td_frac&quot;</span><span class="p">,</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_td_frac</span><span class="p">)</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="p">])</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="k">if</span> <span class="n">min_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>            <span class="s2">&quot;-min_iters&quot;</span><span class="p">,</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_iters</span><span class="p">)</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>        <span class="p">])</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="k">if</span> <span class="n">max_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>            <span class="s2">&quot;-max_iters&quot;</span><span class="p">,</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_iters</span><span class="p">)</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>        <span class="p">])</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>    <span class="k">if</span> <span class="n">min_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>            <span class="s2">&quot;-min_factor&quot;</span><span class="p">,</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_factor</span><span class="p">)</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>        <span class="p">])</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="k">if</span> <span class="n">min_coeff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>            <span class="s2">&quot;-min_coeff&quot;</span><span class="p">,</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_coeff</span><span class="p">)</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>        <span class="p">])</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="k">if</span> <span class="n">max_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>            <span class="s2">&quot;-max_factor&quot;</span><span class="p">,</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_factor</span><span class="p">)</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>        <span class="p">])</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="k">if</span> <span class="n">max_coeff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>            <span class="s2">&quot;-max_coeff&quot;</span><span class="p">,</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_coeff</span><span class="p">)</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>        <span class="p">])</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="k">if</span> <span class="n">max_coeff_step</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>            <span class="s2">&quot;-max_coeff_step&quot;</span><span class="p">,</span>
+</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_coeff_step</span><span class="p">)</span>
+</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a>        <span class="p">])</span>
+</span><span id="L-303"><a href="#L-303"><span class="linenos">303</span></a>    <span class="k">if</span> <span class="n">min_cf_decrease</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-304"><a href="#L-304"><span class="linenos">304</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-305"><a href="#L-305"><span class="linenos">305</span></a>            <span class="s2">&quot;-min_cf_decrease&quot;</span><span class="p">,</span>
+</span><span id="L-306"><a href="#L-306"><span class="linenos">306</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_cf_decrease</span><span class="p">)</span>
+</span><span id="L-307"><a href="#L-307"><span class="linenos">307</span></a>        <span class="p">])</span>
+</span><span id="L-308"><a href="#L-308"><span class="linenos">308</span></a>    <span class="k">if</span> <span class="n">linear</span><span class="p">:</span>
+</span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-linear&quot;</span><span class="p">)</span>
+</span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a>        <span class="p">])</span>
+</span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_tracks</span><span class="p">))</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fod</span><span class="p">))</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_weights</span><span class="p">)</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Tcksift2Outputs</span><span class="p">(</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>        <span class="n">out_weights</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_weights</span><span class="p">),</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>        <span class="n">csv_</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">csv_</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">csv_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>        <span class="n">out_mu</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_mu</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>        <span class="n">out_coeffs</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_coeffs</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_coeffs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>    <span class="p">)</span>
+</span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>
 </span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>
-</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>
-</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="s2">&quot;TCKSIFT2_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>    <span class="s2">&quot;Tcksift2Config&quot;</span><span class="p">,</span>
-</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="s2">&quot;Tcksift2Outputs&quot;</span><span class="p">,</span>
-</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a>    <span class="s2">&quot;tcksift2&quot;</span><span class="p">,</span>
-</span><span id="L-349"><a href="#L-349"><span class="linenos">349</span></a><span class="p">]</span>
+</span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-344"><a href="#L-344"><span class="linenos">344</span></a>    <span class="s2">&quot;TCKSIFT2_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-345"><a href="#L-345"><span class="linenos">345</span></a>    <span class="s2">&quot;Tcksift2Config&quot;</span><span class="p">,</span>
+</span><span id="L-346"><a href="#L-346"><span class="linenos">346</span></a>    <span class="s2">&quot;Tcksift2Outputs&quot;</span><span class="p">,</span>
+</span><span id="L-347"><a href="#L-347"><span class="linenos">347</span></a>    <span class="s2">&quot;tcksift2&quot;</span><span class="p">,</span>
+</span><span id="L-348"><a href="#L-348"><span class="linenos">348</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -456,7 +455,7 @@
                     <div class="attr variable">
             <span class="name">TCKSIFT2_METADATA</span>        =
 <input id="TCKSIFT2_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TCKSIFT2_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d7481a621dcc1c55eb2b1d9041f033c4a9f61311.boutiques&#39;, name=&#39;tcksift2&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TCKSIFT2_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;399c2a04022ba3cedcda7e35cf69c1dae578656c.boutiques&#39;, name=&#39;tcksift2&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -778,230 +777,229 @@ file</p>
 </span><span id="tcksift2-116"><a href="#tcksift2-116"><span class="linenos">116</span></a><span class="sd">    Tractography: Methods and Inter-Subject Normalisation. Open Science</span>
 </span><span id="tcksift2-117"><a href="#tcksift2-117"><span class="linenos">117</span></a><span class="sd">    Framework, https://doi.org/10.31219/osf.io/c67kn.</span>
 </span><span id="tcksift2-118"><a href="#tcksift2-118"><span class="linenos">118</span></a><span class="sd">    </span>
-</span><span id="tcksift2-119"><a href="#tcksift2-119"><span class="linenos">119</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="tcksift2-119"><a href="#tcksift2-119"><span class="linenos">119</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="tcksift2-120"><a href="#tcksift2-120"><span class="linenos">120</span></a><span class="sd">    </span>
-</span><span id="tcksift2-121"><a href="#tcksift2-121"><span class="linenos">121</span></a><span class="sd">    URL:</span>
-</span><span id="tcksift2-122"><a href="#tcksift2-122"><span class="linenos">122</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/tcksift2.html</span>
-</span><span id="tcksift2-123"><a href="#tcksift2-123"><span class="linenos">123</span></a><span class="sd">    </span>
-</span><span id="tcksift2-124"><a href="#tcksift2-124"><span class="linenos">124</span></a><span class="sd">    Args:</span>
-</span><span id="tcksift2-125"><a href="#tcksift2-125"><span class="linenos">125</span></a><span class="sd">        in_tracks: the input track file.</span>
-</span><span id="tcksift2-126"><a href="#tcksift2-126"><span class="linenos">126</span></a><span class="sd">        in_fod: input image containing the spherical harmonics of the fibre\</span>
-</span><span id="tcksift2-127"><a href="#tcksift2-127"><span class="linenos">127</span></a><span class="sd">            orientation distributions.</span>
-</span><span id="tcksift2-128"><a href="#tcksift2-128"><span class="linenos">128</span></a><span class="sd">        out_weights: output text file containing the weighting factor for each\</span>
-</span><span id="tcksift2-129"><a href="#tcksift2-129"><span class="linenos">129</span></a><span class="sd">            streamline.</span>
-</span><span id="tcksift2-130"><a href="#tcksift2-130"><span class="linenos">130</span></a><span class="sd">        proc_mask: provide an image containing the processing mask weights for\</span>
-</span><span id="tcksift2-131"><a href="#tcksift2-131"><span class="linenos">131</span></a><span class="sd">            the model; image spatial dimensions must match the fixel image.</span>
-</span><span id="tcksift2-132"><a href="#tcksift2-132"><span class="linenos">132</span></a><span class="sd">        act: use an ACT five-tissue-type segmented anatomical image to derive\</span>
-</span><span id="tcksift2-133"><a href="#tcksift2-133"><span class="linenos">133</span></a><span class="sd">            the processing mask.</span>
-</span><span id="tcksift2-134"><a href="#tcksift2-134"><span class="linenos">134</span></a><span class="sd">        fd_scale_gm: provide this option (in conjunction with -act) to\</span>
-</span><span id="tcksift2-135"><a href="#tcksift2-135"><span class="linenos">135</span></a><span class="sd">            heuristically downsize the fibre density estimates based on the\</span>
-</span><span id="tcksift2-136"><a href="#tcksift2-136"><span class="linenos">136</span></a><span class="sd">            presence of GM in the voxel. This can assist in reducing tissue\</span>
-</span><span id="tcksift2-137"><a href="#tcksift2-137"><span class="linenos">137</span></a><span class="sd">            interface effects when using a single-tissue deconvolution algorithm.</span>
-</span><span id="tcksift2-138"><a href="#tcksift2-138"><span class="linenos">138</span></a><span class="sd">        no_dilate_lut: do NOT dilate FOD lobe lookup tables; only map\</span>
-</span><span id="tcksift2-139"><a href="#tcksift2-139"><span class="linenos">139</span></a><span class="sd">            streamlines to FOD lobes if the precise tangent lies within the angular\</span>
-</span><span id="tcksift2-140"><a href="#tcksift2-140"><span class="linenos">140</span></a><span class="sd">            spread of that lobe.</span>
-</span><span id="tcksift2-141"><a href="#tcksift2-141"><span class="linenos">141</span></a><span class="sd">        make_null_lobes: add an additional FOD lobe to each voxel, with zero\</span>
-</span><span id="tcksift2-142"><a href="#tcksift2-142"><span class="linenos">142</span></a><span class="sd">            integral, that covers all directions with zero / negative FOD\</span>
-</span><span id="tcksift2-143"><a href="#tcksift2-143"><span class="linenos">143</span></a><span class="sd">            amplitudes.</span>
-</span><span id="tcksift2-144"><a href="#tcksift2-144"><span class="linenos">144</span></a><span class="sd">        remove_untracked: remove FOD lobes that do not have any streamline\</span>
-</span><span id="tcksift2-145"><a href="#tcksift2-145"><span class="linenos">145</span></a><span class="sd">            density attributed to them; this improves filtering slightly, at the\</span>
-</span><span id="tcksift2-146"><a href="#tcksift2-146"><span class="linenos">146</span></a><span class="sd">            expense of longer computation time (and you can no longer do\</span>
-</span><span id="tcksift2-147"><a href="#tcksift2-147"><span class="linenos">147</span></a><span class="sd">            quantitative comparisons between reconstructions if this is enabled).</span>
-</span><span id="tcksift2-148"><a href="#tcksift2-148"><span class="linenos">148</span></a><span class="sd">        fd_thresh: fibre density threshold; exclude an FOD lobe from filtering\</span>
-</span><span id="tcksift2-149"><a href="#tcksift2-149"><span class="linenos">149</span></a><span class="sd">            processing if its integral is less than this amount (streamlines will\</span>
-</span><span id="tcksift2-150"><a href="#tcksift2-150"><span class="linenos">150</span></a><span class="sd">            still be mapped to it, but it will not contribute to the cost function\</span>
-</span><span id="tcksift2-151"><a href="#tcksift2-151"><span class="linenos">151</span></a><span class="sd">            or the filtering).</span>
-</span><span id="tcksift2-152"><a href="#tcksift2-152"><span class="linenos">152</span></a><span class="sd">        csv_: output statistics of execution per iteration to a .csv file.</span>
-</span><span id="tcksift2-153"><a href="#tcksift2-153"><span class="linenos">153</span></a><span class="sd">        out_mu: output the final value of SIFT proportionality coefficient mu\</span>
-</span><span id="tcksift2-154"><a href="#tcksift2-154"><span class="linenos">154</span></a><span class="sd">            to a text file.</span>
-</span><span id="tcksift2-155"><a href="#tcksift2-155"><span class="linenos">155</span></a><span class="sd">        output_debug: provide various output images for assessing &amp; debugging\</span>
-</span><span id="tcksift2-156"><a href="#tcksift2-156"><span class="linenos">156</span></a><span class="sd">            performance etc.</span>
-</span><span id="tcksift2-157"><a href="#tcksift2-157"><span class="linenos">157</span></a><span class="sd">        out_coeffs: output text file containing the weighting coefficient for\</span>
-</span><span id="tcksift2-158"><a href="#tcksift2-158"><span class="linenos">158</span></a><span class="sd">            each streamline.</span>
-</span><span id="tcksift2-159"><a href="#tcksift2-159"><span class="linenos">159</span></a><span class="sd">        reg_tikhonov: provide coefficient for regularising streamline weighting\</span>
-</span><span id="tcksift2-160"><a href="#tcksift2-160"><span class="linenos">160</span></a><span class="sd">            coefficients (Tikhonov regularisation) (default: 0).</span>
-</span><span id="tcksift2-161"><a href="#tcksift2-161"><span class="linenos">161</span></a><span class="sd">        reg_tv: provide coefficient for regularising variance of streamline\</span>
-</span><span id="tcksift2-162"><a href="#tcksift2-162"><span class="linenos">162</span></a><span class="sd">            weighting coefficient to fixels along its length (Total Variation\</span>
-</span><span id="tcksift2-163"><a href="#tcksift2-163"><span class="linenos">163</span></a><span class="sd">            regularisation) (default: 0.1).</span>
-</span><span id="tcksift2-164"><a href="#tcksift2-164"><span class="linenos">164</span></a><span class="sd">        min_td_frac: minimum fraction of the FOD integral reconstructed by\</span>
-</span><span id="tcksift2-165"><a href="#tcksift2-165"><span class="linenos">165</span></a><span class="sd">            streamlines; if the reconstructed streamline density is below this\</span>
-</span><span id="tcksift2-166"><a href="#tcksift2-166"><span class="linenos">166</span></a><span class="sd">            fraction, the fixel is excluded from optimisation (default: 0.1).</span>
-</span><span id="tcksift2-167"><a href="#tcksift2-167"><span class="linenos">167</span></a><span class="sd">        min_iters: minimum number of iterations to run before testing for\</span>
-</span><span id="tcksift2-168"><a href="#tcksift2-168"><span class="linenos">168</span></a><span class="sd">            convergence; this can prevent premature termination at early iterations\</span>
-</span><span id="tcksift2-169"><a href="#tcksift2-169"><span class="linenos">169</span></a><span class="sd">            if the cost function increases slightly (default: 10).</span>
-</span><span id="tcksift2-170"><a href="#tcksift2-170"><span class="linenos">170</span></a><span class="sd">        max_iters: maximum number of iterations to run before terminating\</span>
-</span><span id="tcksift2-171"><a href="#tcksift2-171"><span class="linenos">171</span></a><span class="sd">            program.</span>
-</span><span id="tcksift2-172"><a href="#tcksift2-172"><span class="linenos">172</span></a><span class="sd">        min_factor: minimum weighting factor for an individual streamline; if\</span>
-</span><span id="tcksift2-173"><a href="#tcksift2-173"><span class="linenos">173</span></a><span class="sd">            the factor falls below this number the streamline will be rejected\</span>
-</span><span id="tcksift2-174"><a href="#tcksift2-174"><span class="linenos">174</span></a><span class="sd">            entirely (factor set to zero) (default: 0).</span>
-</span><span id="tcksift2-175"><a href="#tcksift2-175"><span class="linenos">175</span></a><span class="sd">        min_coeff: minimum weighting coefficient for an individual streamline;\</span>
-</span><span id="tcksift2-176"><a href="#tcksift2-176"><span class="linenos">176</span></a><span class="sd">            similar to the &#39;-min_factor&#39; option, but using the exponential\</span>
-</span><span id="tcksift2-177"><a href="#tcksift2-177"><span class="linenos">177</span></a><span class="sd">            coefficient basis of the SIFT2 model; these parameters are related as:\</span>
-</span><span id="tcksift2-178"><a href="#tcksift2-178"><span class="linenos">178</span></a><span class="sd">            factor = e^(coeff). Note that the -min_factor and -min_coeff options\</span>
-</span><span id="tcksift2-179"><a href="#tcksift2-179"><span class="linenos">179</span></a><span class="sd">            are mutually exclusive - you can only provide one. (default: -inf).</span>
-</span><span id="tcksift2-180"><a href="#tcksift2-180"><span class="linenos">180</span></a><span class="sd">        max_factor: maximum weighting factor that can be assigned to any one\</span>
-</span><span id="tcksift2-181"><a href="#tcksift2-181"><span class="linenos">181</span></a><span class="sd">            streamline (default: inf).</span>
-</span><span id="tcksift2-182"><a href="#tcksift2-182"><span class="linenos">182</span></a><span class="sd">        max_coeff: maximum weighting coefficient for an individual streamline;\</span>
-</span><span id="tcksift2-183"><a href="#tcksift2-183"><span class="linenos">183</span></a><span class="sd">            similar to the &#39;-max_factor&#39; option, but using the exponential\</span>
-</span><span id="tcksift2-184"><a href="#tcksift2-184"><span class="linenos">184</span></a><span class="sd">            coefficient basis of the SIFT2 model; these parameters are related as:\</span>
-</span><span id="tcksift2-185"><a href="#tcksift2-185"><span class="linenos">185</span></a><span class="sd">            factor = e^(coeff). Note that the -max_factor and -max_coeff options\</span>
-</span><span id="tcksift2-186"><a href="#tcksift2-186"><span class="linenos">186</span></a><span class="sd">            are mutually exclusive - you can only provide one. (default: inf).</span>
-</span><span id="tcksift2-187"><a href="#tcksift2-187"><span class="linenos">187</span></a><span class="sd">        max_coeff_step: maximum change to a streamline&#39;s weighting coefficient\</span>
-</span><span id="tcksift2-188"><a href="#tcksift2-188"><span class="linenos">188</span></a><span class="sd">            in a single iteration (default: 1).</span>
-</span><span id="tcksift2-189"><a href="#tcksift2-189"><span class="linenos">189</span></a><span class="sd">        min_cf_decrease: minimum decrease in the cost function (as a fraction\</span>
-</span><span id="tcksift2-190"><a href="#tcksift2-190"><span class="linenos">190</span></a><span class="sd">            of the initial value) that must occur each iteration for the algorithm\</span>
-</span><span id="tcksift2-191"><a href="#tcksift2-191"><span class="linenos">191</span></a><span class="sd">            to continue (default: 2.5e-05).</span>
-</span><span id="tcksift2-192"><a href="#tcksift2-192"><span class="linenos">192</span></a><span class="sd">        linear: perform a linear estimation of streamline weights, rather than\</span>
-</span><span id="tcksift2-193"><a href="#tcksift2-193"><span class="linenos">193</span></a><span class="sd">            the standard non-linear optimisation (typically does not provide as\</span>
-</span><span id="tcksift2-194"><a href="#tcksift2-194"><span class="linenos">194</span></a><span class="sd">            accurate a model fit; but only requires a single pass).</span>
-</span><span id="tcksift2-195"><a href="#tcksift2-195"><span class="linenos">195</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="tcksift2-196"><a href="#tcksift2-196"><span class="linenos">196</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="tcksift2-197"><a href="#tcksift2-197"><span class="linenos">197</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="tcksift2-198"><a href="#tcksift2-198"><span class="linenos">198</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="tcksift2-199"><a href="#tcksift2-199"><span class="linenos">199</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="tcksift2-200"><a href="#tcksift2-200"><span class="linenos">200</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="tcksift2-201"><a href="#tcksift2-201"><span class="linenos">201</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="tcksift2-202"><a href="#tcksift2-202"><span class="linenos">202</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="tcksift2-203"><a href="#tcksift2-203"><span class="linenos">203</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="tcksift2-204"><a href="#tcksift2-204"><span class="linenos">204</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="tcksift2-205"><a href="#tcksift2-205"><span class="linenos">205</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="tcksift2-206"><a href="#tcksift2-206"><span class="linenos">206</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="tcksift2-207"><a href="#tcksift2-207"><span class="linenos">207</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="tcksift2-208"><a href="#tcksift2-208"><span class="linenos">208</span></a><span class="sd">    Returns:</span>
-</span><span id="tcksift2-209"><a href="#tcksift2-209"><span class="linenos">209</span></a><span class="sd">        NamedTuple of outputs (described in `Tcksift2Outputs`).</span>
-</span><span id="tcksift2-210"><a href="#tcksift2-210"><span class="linenos">210</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="tcksift2-211"><a href="#tcksift2-211"><span class="linenos">211</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="tcksift2-212"><a href="#tcksift2-212"><span class="linenos">212</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKSIFT2_METADATA</span><span class="p">)</span>
-</span><span id="tcksift2-213"><a href="#tcksift2-213"><span class="linenos">213</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="tcksift2-214"><a href="#tcksift2-214"><span class="linenos">214</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tcksift2&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-215"><a href="#tcksift2-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">proc_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-216"><a href="#tcksift2-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-217"><a href="#tcksift2-217"><span class="linenos">217</span></a>            <span class="s2">&quot;-proc_mask&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-218"><a href="#tcksift2-218"><span class="linenos">218</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">proc_mask</span><span class="p">)</span>
-</span><span id="tcksift2-219"><a href="#tcksift2-219"><span class="linenos">219</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-220"><a href="#tcksift2-220"><span class="linenos">220</span></a>    <span class="k">if</span> <span class="n">act</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-221"><a href="#tcksift2-221"><span class="linenos">221</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-222"><a href="#tcksift2-222"><span class="linenos">222</span></a>            <span class="s2">&quot;-act&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-223"><a href="#tcksift2-223"><span class="linenos">223</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">act</span><span class="p">)</span>
-</span><span id="tcksift2-224"><a href="#tcksift2-224"><span class="linenos">224</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-225"><a href="#tcksift2-225"><span class="linenos">225</span></a>    <span class="k">if</span> <span class="n">fd_scale_gm</span><span class="p">:</span>
-</span><span id="tcksift2-226"><a href="#tcksift2-226"><span class="linenos">226</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fd_scale_gm&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-227"><a href="#tcksift2-227"><span class="linenos">227</span></a>    <span class="k">if</span> <span class="n">no_dilate_lut</span><span class="p">:</span>
-</span><span id="tcksift2-228"><a href="#tcksift2-228"><span class="linenos">228</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_dilate_lut&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-229"><a href="#tcksift2-229"><span class="linenos">229</span></a>    <span class="k">if</span> <span class="n">make_null_lobes</span><span class="p">:</span>
-</span><span id="tcksift2-230"><a href="#tcksift2-230"><span class="linenos">230</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-make_null_lobes&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-231"><a href="#tcksift2-231"><span class="linenos">231</span></a>    <span class="k">if</span> <span class="n">remove_untracked</span><span class="p">:</span>
-</span><span id="tcksift2-232"><a href="#tcksift2-232"><span class="linenos">232</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-remove_untracked&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-233"><a href="#tcksift2-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">fd_thresh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-234"><a href="#tcksift2-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-235"><a href="#tcksift2-235"><span class="linenos">235</span></a>            <span class="s2">&quot;-fd_thresh&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-236"><a href="#tcksift2-236"><span class="linenos">236</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fd_thresh</span><span class="p">)</span>
-</span><span id="tcksift2-237"><a href="#tcksift2-237"><span class="linenos">237</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-238"><a href="#tcksift2-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">csv_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-239"><a href="#tcksift2-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-240"><a href="#tcksift2-240"><span class="linenos">240</span></a>            <span class="s2">&quot;-csv&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-241"><a href="#tcksift2-241"><span class="linenos">241</span></a>            <span class="n">csv_</span>
-</span><span id="tcksift2-242"><a href="#tcksift2-242"><span class="linenos">242</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-243"><a href="#tcksift2-243"><span class="linenos">243</span></a>    <span class="k">if</span> <span class="n">out_mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-244"><a href="#tcksift2-244"><span class="linenos">244</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-245"><a href="#tcksift2-245"><span class="linenos">245</span></a>            <span class="s2">&quot;-out_mu&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-246"><a href="#tcksift2-246"><span class="linenos">246</span></a>            <span class="n">out_mu</span>
-</span><span id="tcksift2-247"><a href="#tcksift2-247"><span class="linenos">247</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-248"><a href="#tcksift2-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">output_debug</span><span class="p">:</span>
-</span><span id="tcksift2-249"><a href="#tcksift2-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-output_debug&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-250"><a href="#tcksift2-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">out_coeffs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-251"><a href="#tcksift2-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-252"><a href="#tcksift2-252"><span class="linenos">252</span></a>            <span class="s2">&quot;-out_coeffs&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-253"><a href="#tcksift2-253"><span class="linenos">253</span></a>            <span class="n">out_coeffs</span>
-</span><span id="tcksift2-254"><a href="#tcksift2-254"><span class="linenos">254</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-255"><a href="#tcksift2-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">reg_tikhonov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-256"><a href="#tcksift2-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-257"><a href="#tcksift2-257"><span class="linenos">257</span></a>            <span class="s2">&quot;-reg_tikhonov&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-258"><a href="#tcksift2-258"><span class="linenos">258</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reg_tikhonov</span><span class="p">)</span>
-</span><span id="tcksift2-259"><a href="#tcksift2-259"><span class="linenos">259</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-260"><a href="#tcksift2-260"><span class="linenos">260</span></a>    <span class="k">if</span> <span class="n">reg_tv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-261"><a href="#tcksift2-261"><span class="linenos">261</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-262"><a href="#tcksift2-262"><span class="linenos">262</span></a>            <span class="s2">&quot;-reg_tv&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-263"><a href="#tcksift2-263"><span class="linenos">263</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reg_tv</span><span class="p">)</span>
-</span><span id="tcksift2-264"><a href="#tcksift2-264"><span class="linenos">264</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-265"><a href="#tcksift2-265"><span class="linenos">265</span></a>    <span class="k">if</span> <span class="n">min_td_frac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-266"><a href="#tcksift2-266"><span class="linenos">266</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-267"><a href="#tcksift2-267"><span class="linenos">267</span></a>            <span class="s2">&quot;-min_td_frac&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-268"><a href="#tcksift2-268"><span class="linenos">268</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_td_frac</span><span class="p">)</span>
-</span><span id="tcksift2-269"><a href="#tcksift2-269"><span class="linenos">269</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-270"><a href="#tcksift2-270"><span class="linenos">270</span></a>    <span class="k">if</span> <span class="n">min_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-271"><a href="#tcksift2-271"><span class="linenos">271</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-272"><a href="#tcksift2-272"><span class="linenos">272</span></a>            <span class="s2">&quot;-min_iters&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-273"><a href="#tcksift2-273"><span class="linenos">273</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_iters</span><span class="p">)</span>
-</span><span id="tcksift2-274"><a href="#tcksift2-274"><span class="linenos">274</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-275"><a href="#tcksift2-275"><span class="linenos">275</span></a>    <span class="k">if</span> <span class="n">max_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-276"><a href="#tcksift2-276"><span class="linenos">276</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-277"><a href="#tcksift2-277"><span class="linenos">277</span></a>            <span class="s2">&quot;-max_iters&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-278"><a href="#tcksift2-278"><span class="linenos">278</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_iters</span><span class="p">)</span>
-</span><span id="tcksift2-279"><a href="#tcksift2-279"><span class="linenos">279</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-280"><a href="#tcksift2-280"><span class="linenos">280</span></a>    <span class="k">if</span> <span class="n">min_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-281"><a href="#tcksift2-281"><span class="linenos">281</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-282"><a href="#tcksift2-282"><span class="linenos">282</span></a>            <span class="s2">&quot;-min_factor&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-283"><a href="#tcksift2-283"><span class="linenos">283</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_factor</span><span class="p">)</span>
-</span><span id="tcksift2-284"><a href="#tcksift2-284"><span class="linenos">284</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-285"><a href="#tcksift2-285"><span class="linenos">285</span></a>    <span class="k">if</span> <span class="n">min_coeff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-286"><a href="#tcksift2-286"><span class="linenos">286</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-287"><a href="#tcksift2-287"><span class="linenos">287</span></a>            <span class="s2">&quot;-min_coeff&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-288"><a href="#tcksift2-288"><span class="linenos">288</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_coeff</span><span class="p">)</span>
-</span><span id="tcksift2-289"><a href="#tcksift2-289"><span class="linenos">289</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-290"><a href="#tcksift2-290"><span class="linenos">290</span></a>    <span class="k">if</span> <span class="n">max_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-291"><a href="#tcksift2-291"><span class="linenos">291</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-292"><a href="#tcksift2-292"><span class="linenos">292</span></a>            <span class="s2">&quot;-max_factor&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-293"><a href="#tcksift2-293"><span class="linenos">293</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_factor</span><span class="p">)</span>
-</span><span id="tcksift2-294"><a href="#tcksift2-294"><span class="linenos">294</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-295"><a href="#tcksift2-295"><span class="linenos">295</span></a>    <span class="k">if</span> <span class="n">max_coeff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-296"><a href="#tcksift2-296"><span class="linenos">296</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-297"><a href="#tcksift2-297"><span class="linenos">297</span></a>            <span class="s2">&quot;-max_coeff&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-298"><a href="#tcksift2-298"><span class="linenos">298</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_coeff</span><span class="p">)</span>
-</span><span id="tcksift2-299"><a href="#tcksift2-299"><span class="linenos">299</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-300"><a href="#tcksift2-300"><span class="linenos">300</span></a>    <span class="k">if</span> <span class="n">max_coeff_step</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-301"><a href="#tcksift2-301"><span class="linenos">301</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-302"><a href="#tcksift2-302"><span class="linenos">302</span></a>            <span class="s2">&quot;-max_coeff_step&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-303"><a href="#tcksift2-303"><span class="linenos">303</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_coeff_step</span><span class="p">)</span>
-</span><span id="tcksift2-304"><a href="#tcksift2-304"><span class="linenos">304</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-305"><a href="#tcksift2-305"><span class="linenos">305</span></a>    <span class="k">if</span> <span class="n">min_cf_decrease</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-306"><a href="#tcksift2-306"><span class="linenos">306</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-307"><a href="#tcksift2-307"><span class="linenos">307</span></a>            <span class="s2">&quot;-min_cf_decrease&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-308"><a href="#tcksift2-308"><span class="linenos">308</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_cf_decrease</span><span class="p">)</span>
-</span><span id="tcksift2-309"><a href="#tcksift2-309"><span class="linenos">309</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-310"><a href="#tcksift2-310"><span class="linenos">310</span></a>    <span class="k">if</span> <span class="n">linear</span><span class="p">:</span>
-</span><span id="tcksift2-311"><a href="#tcksift2-311"><span class="linenos">311</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-linear&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-312"><a href="#tcksift2-312"><span class="linenos">312</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="tcksift2-313"><a href="#tcksift2-313"><span class="linenos">313</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-314"><a href="#tcksift2-314"><span class="linenos">314</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="tcksift2-315"><a href="#tcksift2-315"><span class="linenos">315</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-316"><a href="#tcksift2-316"><span class="linenos">316</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="tcksift2-317"><a href="#tcksift2-317"><span class="linenos">317</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-318"><a href="#tcksift2-318"><span class="linenos">318</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="tcksift2-319"><a href="#tcksift2-319"><span class="linenos">319</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-320"><a href="#tcksift2-320"><span class="linenos">320</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-321"><a href="#tcksift2-321"><span class="linenos">321</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tcksift2-322"><a href="#tcksift2-322"><span class="linenos">322</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="tcksift2-323"><a href="#tcksift2-323"><span class="linenos">323</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="tcksift2-324"><a href="#tcksift2-324"><span class="linenos">324</span></a>        <span class="p">])</span>
-</span><span id="tcksift2-325"><a href="#tcksift2-325"><span class="linenos">325</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tcksift2-326"><a href="#tcksift2-326"><span class="linenos">326</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="tcksift2-327"><a href="#tcksift2-327"><span class="linenos">327</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="tcksift2-328"><a href="#tcksift2-328"><span class="linenos">328</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-329"><a href="#tcksift2-329"><span class="linenos">329</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="tcksift2-330"><a href="#tcksift2-330"><span class="linenos">330</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="tcksift2-331"><a href="#tcksift2-331"><span class="linenos">331</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_tracks</span><span class="p">))</span>
-</span><span id="tcksift2-332"><a href="#tcksift2-332"><span class="linenos">332</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fod</span><span class="p">))</span>
-</span><span id="tcksift2-333"><a href="#tcksift2-333"><span class="linenos">333</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_weights</span><span class="p">)</span>
-</span><span id="tcksift2-334"><a href="#tcksift2-334"><span class="linenos">334</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Tcksift2Outputs</span><span class="p">(</span>
-</span><span id="tcksift2-335"><a href="#tcksift2-335"><span class="linenos">335</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="tcksift2-336"><a href="#tcksift2-336"><span class="linenos">336</span></a>        <span class="n">out_weights</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_weights</span><span class="p">),</span>
-</span><span id="tcksift2-337"><a href="#tcksift2-337"><span class="linenos">337</span></a>        <span class="n">csv_</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">csv_</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">csv_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tcksift2-338"><a href="#tcksift2-338"><span class="linenos">338</span></a>        <span class="n">out_mu</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_mu</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tcksift2-339"><a href="#tcksift2-339"><span class="linenos">339</span></a>        <span class="n">out_coeffs</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_coeffs</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_coeffs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tcksift2-340"><a href="#tcksift2-340"><span class="linenos">340</span></a>    <span class="p">)</span>
-</span><span id="tcksift2-341"><a href="#tcksift2-341"><span class="linenos">341</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="tcksift2-342"><a href="#tcksift2-342"><span class="linenos">342</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="tcksift2-121"><a href="#tcksift2-121"><span class="linenos">121</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="tcksift2-122"><a href="#tcksift2-122"><span class="linenos">122</span></a><span class="sd">    </span>
+</span><span id="tcksift2-123"><a href="#tcksift2-123"><span class="linenos">123</span></a><span class="sd">    Args:</span>
+</span><span id="tcksift2-124"><a href="#tcksift2-124"><span class="linenos">124</span></a><span class="sd">        in_tracks: the input track file.</span>
+</span><span id="tcksift2-125"><a href="#tcksift2-125"><span class="linenos">125</span></a><span class="sd">        in_fod: input image containing the spherical harmonics of the fibre\</span>
+</span><span id="tcksift2-126"><a href="#tcksift2-126"><span class="linenos">126</span></a><span class="sd">            orientation distributions.</span>
+</span><span id="tcksift2-127"><a href="#tcksift2-127"><span class="linenos">127</span></a><span class="sd">        out_weights: output text file containing the weighting factor for each\</span>
+</span><span id="tcksift2-128"><a href="#tcksift2-128"><span class="linenos">128</span></a><span class="sd">            streamline.</span>
+</span><span id="tcksift2-129"><a href="#tcksift2-129"><span class="linenos">129</span></a><span class="sd">        proc_mask: provide an image containing the processing mask weights for\</span>
+</span><span id="tcksift2-130"><a href="#tcksift2-130"><span class="linenos">130</span></a><span class="sd">            the model; image spatial dimensions must match the fixel image.</span>
+</span><span id="tcksift2-131"><a href="#tcksift2-131"><span class="linenos">131</span></a><span class="sd">        act: use an ACT five-tissue-type segmented anatomical image to derive\</span>
+</span><span id="tcksift2-132"><a href="#tcksift2-132"><span class="linenos">132</span></a><span class="sd">            the processing mask.</span>
+</span><span id="tcksift2-133"><a href="#tcksift2-133"><span class="linenos">133</span></a><span class="sd">        fd_scale_gm: provide this option (in conjunction with -act) to\</span>
+</span><span id="tcksift2-134"><a href="#tcksift2-134"><span class="linenos">134</span></a><span class="sd">            heuristically downsize the fibre density estimates based on the\</span>
+</span><span id="tcksift2-135"><a href="#tcksift2-135"><span class="linenos">135</span></a><span class="sd">            presence of GM in the voxel. This can assist in reducing tissue\</span>
+</span><span id="tcksift2-136"><a href="#tcksift2-136"><span class="linenos">136</span></a><span class="sd">            interface effects when using a single-tissue deconvolution algorithm.</span>
+</span><span id="tcksift2-137"><a href="#tcksift2-137"><span class="linenos">137</span></a><span class="sd">        no_dilate_lut: do NOT dilate FOD lobe lookup tables; only map\</span>
+</span><span id="tcksift2-138"><a href="#tcksift2-138"><span class="linenos">138</span></a><span class="sd">            streamlines to FOD lobes if the precise tangent lies within the angular\</span>
+</span><span id="tcksift2-139"><a href="#tcksift2-139"><span class="linenos">139</span></a><span class="sd">            spread of that lobe.</span>
+</span><span id="tcksift2-140"><a href="#tcksift2-140"><span class="linenos">140</span></a><span class="sd">        make_null_lobes: add an additional FOD lobe to each voxel, with zero\</span>
+</span><span id="tcksift2-141"><a href="#tcksift2-141"><span class="linenos">141</span></a><span class="sd">            integral, that covers all directions with zero / negative FOD\</span>
+</span><span id="tcksift2-142"><a href="#tcksift2-142"><span class="linenos">142</span></a><span class="sd">            amplitudes.</span>
+</span><span id="tcksift2-143"><a href="#tcksift2-143"><span class="linenos">143</span></a><span class="sd">        remove_untracked: remove FOD lobes that do not have any streamline\</span>
+</span><span id="tcksift2-144"><a href="#tcksift2-144"><span class="linenos">144</span></a><span class="sd">            density attributed to them; this improves filtering slightly, at the\</span>
+</span><span id="tcksift2-145"><a href="#tcksift2-145"><span class="linenos">145</span></a><span class="sd">            expense of longer computation time (and you can no longer do\</span>
+</span><span id="tcksift2-146"><a href="#tcksift2-146"><span class="linenos">146</span></a><span class="sd">            quantitative comparisons between reconstructions if this is enabled).</span>
+</span><span id="tcksift2-147"><a href="#tcksift2-147"><span class="linenos">147</span></a><span class="sd">        fd_thresh: fibre density threshold; exclude an FOD lobe from filtering\</span>
+</span><span id="tcksift2-148"><a href="#tcksift2-148"><span class="linenos">148</span></a><span class="sd">            processing if its integral is less than this amount (streamlines will\</span>
+</span><span id="tcksift2-149"><a href="#tcksift2-149"><span class="linenos">149</span></a><span class="sd">            still be mapped to it, but it will not contribute to the cost function\</span>
+</span><span id="tcksift2-150"><a href="#tcksift2-150"><span class="linenos">150</span></a><span class="sd">            or the filtering).</span>
+</span><span id="tcksift2-151"><a href="#tcksift2-151"><span class="linenos">151</span></a><span class="sd">        csv_: output statistics of execution per iteration to a .csv file.</span>
+</span><span id="tcksift2-152"><a href="#tcksift2-152"><span class="linenos">152</span></a><span class="sd">        out_mu: output the final value of SIFT proportionality coefficient mu\</span>
+</span><span id="tcksift2-153"><a href="#tcksift2-153"><span class="linenos">153</span></a><span class="sd">            to a text file.</span>
+</span><span id="tcksift2-154"><a href="#tcksift2-154"><span class="linenos">154</span></a><span class="sd">        output_debug: provide various output images for assessing &amp; debugging\</span>
+</span><span id="tcksift2-155"><a href="#tcksift2-155"><span class="linenos">155</span></a><span class="sd">            performance etc.</span>
+</span><span id="tcksift2-156"><a href="#tcksift2-156"><span class="linenos">156</span></a><span class="sd">        out_coeffs: output text file containing the weighting coefficient for\</span>
+</span><span id="tcksift2-157"><a href="#tcksift2-157"><span class="linenos">157</span></a><span class="sd">            each streamline.</span>
+</span><span id="tcksift2-158"><a href="#tcksift2-158"><span class="linenos">158</span></a><span class="sd">        reg_tikhonov: provide coefficient for regularising streamline weighting\</span>
+</span><span id="tcksift2-159"><a href="#tcksift2-159"><span class="linenos">159</span></a><span class="sd">            coefficients (Tikhonov regularisation) (default: 0).</span>
+</span><span id="tcksift2-160"><a href="#tcksift2-160"><span class="linenos">160</span></a><span class="sd">        reg_tv: provide coefficient for regularising variance of streamline\</span>
+</span><span id="tcksift2-161"><a href="#tcksift2-161"><span class="linenos">161</span></a><span class="sd">            weighting coefficient to fixels along its length (Total Variation\</span>
+</span><span id="tcksift2-162"><a href="#tcksift2-162"><span class="linenos">162</span></a><span class="sd">            regularisation) (default: 0.1).</span>
+</span><span id="tcksift2-163"><a href="#tcksift2-163"><span class="linenos">163</span></a><span class="sd">        min_td_frac: minimum fraction of the FOD integral reconstructed by\</span>
+</span><span id="tcksift2-164"><a href="#tcksift2-164"><span class="linenos">164</span></a><span class="sd">            streamlines; if the reconstructed streamline density is below this\</span>
+</span><span id="tcksift2-165"><a href="#tcksift2-165"><span class="linenos">165</span></a><span class="sd">            fraction, the fixel is excluded from optimisation (default: 0.1).</span>
+</span><span id="tcksift2-166"><a href="#tcksift2-166"><span class="linenos">166</span></a><span class="sd">        min_iters: minimum number of iterations to run before testing for\</span>
+</span><span id="tcksift2-167"><a href="#tcksift2-167"><span class="linenos">167</span></a><span class="sd">            convergence; this can prevent premature termination at early iterations\</span>
+</span><span id="tcksift2-168"><a href="#tcksift2-168"><span class="linenos">168</span></a><span class="sd">            if the cost function increases slightly (default: 10).</span>
+</span><span id="tcksift2-169"><a href="#tcksift2-169"><span class="linenos">169</span></a><span class="sd">        max_iters: maximum number of iterations to run before terminating\</span>
+</span><span id="tcksift2-170"><a href="#tcksift2-170"><span class="linenos">170</span></a><span class="sd">            program.</span>
+</span><span id="tcksift2-171"><a href="#tcksift2-171"><span class="linenos">171</span></a><span class="sd">        min_factor: minimum weighting factor for an individual streamline; if\</span>
+</span><span id="tcksift2-172"><a href="#tcksift2-172"><span class="linenos">172</span></a><span class="sd">            the factor falls below this number the streamline will be rejected\</span>
+</span><span id="tcksift2-173"><a href="#tcksift2-173"><span class="linenos">173</span></a><span class="sd">            entirely (factor set to zero) (default: 0).</span>
+</span><span id="tcksift2-174"><a href="#tcksift2-174"><span class="linenos">174</span></a><span class="sd">        min_coeff: minimum weighting coefficient for an individual streamline;\</span>
+</span><span id="tcksift2-175"><a href="#tcksift2-175"><span class="linenos">175</span></a><span class="sd">            similar to the &#39;-min_factor&#39; option, but using the exponential\</span>
+</span><span id="tcksift2-176"><a href="#tcksift2-176"><span class="linenos">176</span></a><span class="sd">            coefficient basis of the SIFT2 model; these parameters are related as:\</span>
+</span><span id="tcksift2-177"><a href="#tcksift2-177"><span class="linenos">177</span></a><span class="sd">            factor = e^(coeff). Note that the -min_factor and -min_coeff options\</span>
+</span><span id="tcksift2-178"><a href="#tcksift2-178"><span class="linenos">178</span></a><span class="sd">            are mutually exclusive - you can only provide one. (default: -inf).</span>
+</span><span id="tcksift2-179"><a href="#tcksift2-179"><span class="linenos">179</span></a><span class="sd">        max_factor: maximum weighting factor that can be assigned to any one\</span>
+</span><span id="tcksift2-180"><a href="#tcksift2-180"><span class="linenos">180</span></a><span class="sd">            streamline (default: inf).</span>
+</span><span id="tcksift2-181"><a href="#tcksift2-181"><span class="linenos">181</span></a><span class="sd">        max_coeff: maximum weighting coefficient for an individual streamline;\</span>
+</span><span id="tcksift2-182"><a href="#tcksift2-182"><span class="linenos">182</span></a><span class="sd">            similar to the &#39;-max_factor&#39; option, but using the exponential\</span>
+</span><span id="tcksift2-183"><a href="#tcksift2-183"><span class="linenos">183</span></a><span class="sd">            coefficient basis of the SIFT2 model; these parameters are related as:\</span>
+</span><span id="tcksift2-184"><a href="#tcksift2-184"><span class="linenos">184</span></a><span class="sd">            factor = e^(coeff). Note that the -max_factor and -max_coeff options\</span>
+</span><span id="tcksift2-185"><a href="#tcksift2-185"><span class="linenos">185</span></a><span class="sd">            are mutually exclusive - you can only provide one. (default: inf).</span>
+</span><span id="tcksift2-186"><a href="#tcksift2-186"><span class="linenos">186</span></a><span class="sd">        max_coeff_step: maximum change to a streamline&#39;s weighting coefficient\</span>
+</span><span id="tcksift2-187"><a href="#tcksift2-187"><span class="linenos">187</span></a><span class="sd">            in a single iteration (default: 1).</span>
+</span><span id="tcksift2-188"><a href="#tcksift2-188"><span class="linenos">188</span></a><span class="sd">        min_cf_decrease: minimum decrease in the cost function (as a fraction\</span>
+</span><span id="tcksift2-189"><a href="#tcksift2-189"><span class="linenos">189</span></a><span class="sd">            of the initial value) that must occur each iteration for the algorithm\</span>
+</span><span id="tcksift2-190"><a href="#tcksift2-190"><span class="linenos">190</span></a><span class="sd">            to continue (default: 2.5e-05).</span>
+</span><span id="tcksift2-191"><a href="#tcksift2-191"><span class="linenos">191</span></a><span class="sd">        linear: perform a linear estimation of streamline weights, rather than\</span>
+</span><span id="tcksift2-192"><a href="#tcksift2-192"><span class="linenos">192</span></a><span class="sd">            the standard non-linear optimisation (typically does not provide as\</span>
+</span><span id="tcksift2-193"><a href="#tcksift2-193"><span class="linenos">193</span></a><span class="sd">            accurate a model fit; but only requires a single pass).</span>
+</span><span id="tcksift2-194"><a href="#tcksift2-194"><span class="linenos">194</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="tcksift2-195"><a href="#tcksift2-195"><span class="linenos">195</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="tcksift2-196"><a href="#tcksift2-196"><span class="linenos">196</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="tcksift2-197"><a href="#tcksift2-197"><span class="linenos">197</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="tcksift2-198"><a href="#tcksift2-198"><span class="linenos">198</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="tcksift2-199"><a href="#tcksift2-199"><span class="linenos">199</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="tcksift2-200"><a href="#tcksift2-200"><span class="linenos">200</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="tcksift2-201"><a href="#tcksift2-201"><span class="linenos">201</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="tcksift2-202"><a href="#tcksift2-202"><span class="linenos">202</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="tcksift2-203"><a href="#tcksift2-203"><span class="linenos">203</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="tcksift2-204"><a href="#tcksift2-204"><span class="linenos">204</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="tcksift2-205"><a href="#tcksift2-205"><span class="linenos">205</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="tcksift2-206"><a href="#tcksift2-206"><span class="linenos">206</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="tcksift2-207"><a href="#tcksift2-207"><span class="linenos">207</span></a><span class="sd">    Returns:</span>
+</span><span id="tcksift2-208"><a href="#tcksift2-208"><span class="linenos">208</span></a><span class="sd">        NamedTuple of outputs (described in `Tcksift2Outputs`).</span>
+</span><span id="tcksift2-209"><a href="#tcksift2-209"><span class="linenos">209</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="tcksift2-210"><a href="#tcksift2-210"><span class="linenos">210</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="tcksift2-211"><a href="#tcksift2-211"><span class="linenos">211</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKSIFT2_METADATA</span><span class="p">)</span>
+</span><span id="tcksift2-212"><a href="#tcksift2-212"><span class="linenos">212</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="tcksift2-213"><a href="#tcksift2-213"><span class="linenos">213</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tcksift2&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-214"><a href="#tcksift2-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">proc_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-215"><a href="#tcksift2-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-216"><a href="#tcksift2-216"><span class="linenos">216</span></a>            <span class="s2">&quot;-proc_mask&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-217"><a href="#tcksift2-217"><span class="linenos">217</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">proc_mask</span><span class="p">)</span>
+</span><span id="tcksift2-218"><a href="#tcksift2-218"><span class="linenos">218</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-219"><a href="#tcksift2-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">act</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-220"><a href="#tcksift2-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-221"><a href="#tcksift2-221"><span class="linenos">221</span></a>            <span class="s2">&quot;-act&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-222"><a href="#tcksift2-222"><span class="linenos">222</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">act</span><span class="p">)</span>
+</span><span id="tcksift2-223"><a href="#tcksift2-223"><span class="linenos">223</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-224"><a href="#tcksift2-224"><span class="linenos">224</span></a>    <span class="k">if</span> <span class="n">fd_scale_gm</span><span class="p">:</span>
+</span><span id="tcksift2-225"><a href="#tcksift2-225"><span class="linenos">225</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fd_scale_gm&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-226"><a href="#tcksift2-226"><span class="linenos">226</span></a>    <span class="k">if</span> <span class="n">no_dilate_lut</span><span class="p">:</span>
+</span><span id="tcksift2-227"><a href="#tcksift2-227"><span class="linenos">227</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_dilate_lut&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-228"><a href="#tcksift2-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">make_null_lobes</span><span class="p">:</span>
+</span><span id="tcksift2-229"><a href="#tcksift2-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-make_null_lobes&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-230"><a href="#tcksift2-230"><span class="linenos">230</span></a>    <span class="k">if</span> <span class="n">remove_untracked</span><span class="p">:</span>
+</span><span id="tcksift2-231"><a href="#tcksift2-231"><span class="linenos">231</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-remove_untracked&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-232"><a href="#tcksift2-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">fd_thresh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-233"><a href="#tcksift2-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-234"><a href="#tcksift2-234"><span class="linenos">234</span></a>            <span class="s2">&quot;-fd_thresh&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-235"><a href="#tcksift2-235"><span class="linenos">235</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">fd_thresh</span><span class="p">)</span>
+</span><span id="tcksift2-236"><a href="#tcksift2-236"><span class="linenos">236</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-237"><a href="#tcksift2-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">csv_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-238"><a href="#tcksift2-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-239"><a href="#tcksift2-239"><span class="linenos">239</span></a>            <span class="s2">&quot;-csv&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-240"><a href="#tcksift2-240"><span class="linenos">240</span></a>            <span class="n">csv_</span>
+</span><span id="tcksift2-241"><a href="#tcksift2-241"><span class="linenos">241</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-242"><a href="#tcksift2-242"><span class="linenos">242</span></a>    <span class="k">if</span> <span class="n">out_mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-243"><a href="#tcksift2-243"><span class="linenos">243</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-244"><a href="#tcksift2-244"><span class="linenos">244</span></a>            <span class="s2">&quot;-out_mu&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-245"><a href="#tcksift2-245"><span class="linenos">245</span></a>            <span class="n">out_mu</span>
+</span><span id="tcksift2-246"><a href="#tcksift2-246"><span class="linenos">246</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-247"><a href="#tcksift2-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">output_debug</span><span class="p">:</span>
+</span><span id="tcksift2-248"><a href="#tcksift2-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-output_debug&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-249"><a href="#tcksift2-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">out_coeffs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-250"><a href="#tcksift2-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-251"><a href="#tcksift2-251"><span class="linenos">251</span></a>            <span class="s2">&quot;-out_coeffs&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-252"><a href="#tcksift2-252"><span class="linenos">252</span></a>            <span class="n">out_coeffs</span>
+</span><span id="tcksift2-253"><a href="#tcksift2-253"><span class="linenos">253</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-254"><a href="#tcksift2-254"><span class="linenos">254</span></a>    <span class="k">if</span> <span class="n">reg_tikhonov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-255"><a href="#tcksift2-255"><span class="linenos">255</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-256"><a href="#tcksift2-256"><span class="linenos">256</span></a>            <span class="s2">&quot;-reg_tikhonov&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-257"><a href="#tcksift2-257"><span class="linenos">257</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reg_tikhonov</span><span class="p">)</span>
+</span><span id="tcksift2-258"><a href="#tcksift2-258"><span class="linenos">258</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-259"><a href="#tcksift2-259"><span class="linenos">259</span></a>    <span class="k">if</span> <span class="n">reg_tv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-260"><a href="#tcksift2-260"><span class="linenos">260</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-261"><a href="#tcksift2-261"><span class="linenos">261</span></a>            <span class="s2">&quot;-reg_tv&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-262"><a href="#tcksift2-262"><span class="linenos">262</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reg_tv</span><span class="p">)</span>
+</span><span id="tcksift2-263"><a href="#tcksift2-263"><span class="linenos">263</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-264"><a href="#tcksift2-264"><span class="linenos">264</span></a>    <span class="k">if</span> <span class="n">min_td_frac</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-265"><a href="#tcksift2-265"><span class="linenos">265</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-266"><a href="#tcksift2-266"><span class="linenos">266</span></a>            <span class="s2">&quot;-min_td_frac&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-267"><a href="#tcksift2-267"><span class="linenos">267</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_td_frac</span><span class="p">)</span>
+</span><span id="tcksift2-268"><a href="#tcksift2-268"><span class="linenos">268</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-269"><a href="#tcksift2-269"><span class="linenos">269</span></a>    <span class="k">if</span> <span class="n">min_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-270"><a href="#tcksift2-270"><span class="linenos">270</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-271"><a href="#tcksift2-271"><span class="linenos">271</span></a>            <span class="s2">&quot;-min_iters&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-272"><a href="#tcksift2-272"><span class="linenos">272</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_iters</span><span class="p">)</span>
+</span><span id="tcksift2-273"><a href="#tcksift2-273"><span class="linenos">273</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-274"><a href="#tcksift2-274"><span class="linenos">274</span></a>    <span class="k">if</span> <span class="n">max_iters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-275"><a href="#tcksift2-275"><span class="linenos">275</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-276"><a href="#tcksift2-276"><span class="linenos">276</span></a>            <span class="s2">&quot;-max_iters&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-277"><a href="#tcksift2-277"><span class="linenos">277</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_iters</span><span class="p">)</span>
+</span><span id="tcksift2-278"><a href="#tcksift2-278"><span class="linenos">278</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-279"><a href="#tcksift2-279"><span class="linenos">279</span></a>    <span class="k">if</span> <span class="n">min_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-280"><a href="#tcksift2-280"><span class="linenos">280</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-281"><a href="#tcksift2-281"><span class="linenos">281</span></a>            <span class="s2">&quot;-min_factor&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-282"><a href="#tcksift2-282"><span class="linenos">282</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_factor</span><span class="p">)</span>
+</span><span id="tcksift2-283"><a href="#tcksift2-283"><span class="linenos">283</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-284"><a href="#tcksift2-284"><span class="linenos">284</span></a>    <span class="k">if</span> <span class="n">min_coeff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-285"><a href="#tcksift2-285"><span class="linenos">285</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-286"><a href="#tcksift2-286"><span class="linenos">286</span></a>            <span class="s2">&quot;-min_coeff&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-287"><a href="#tcksift2-287"><span class="linenos">287</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_coeff</span><span class="p">)</span>
+</span><span id="tcksift2-288"><a href="#tcksift2-288"><span class="linenos">288</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-289"><a href="#tcksift2-289"><span class="linenos">289</span></a>    <span class="k">if</span> <span class="n">max_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-290"><a href="#tcksift2-290"><span class="linenos">290</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-291"><a href="#tcksift2-291"><span class="linenos">291</span></a>            <span class="s2">&quot;-max_factor&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-292"><a href="#tcksift2-292"><span class="linenos">292</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_factor</span><span class="p">)</span>
+</span><span id="tcksift2-293"><a href="#tcksift2-293"><span class="linenos">293</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-294"><a href="#tcksift2-294"><span class="linenos">294</span></a>    <span class="k">if</span> <span class="n">max_coeff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-295"><a href="#tcksift2-295"><span class="linenos">295</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-296"><a href="#tcksift2-296"><span class="linenos">296</span></a>            <span class="s2">&quot;-max_coeff&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-297"><a href="#tcksift2-297"><span class="linenos">297</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_coeff</span><span class="p">)</span>
+</span><span id="tcksift2-298"><a href="#tcksift2-298"><span class="linenos">298</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-299"><a href="#tcksift2-299"><span class="linenos">299</span></a>    <span class="k">if</span> <span class="n">max_coeff_step</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-300"><a href="#tcksift2-300"><span class="linenos">300</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-301"><a href="#tcksift2-301"><span class="linenos">301</span></a>            <span class="s2">&quot;-max_coeff_step&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-302"><a href="#tcksift2-302"><span class="linenos">302</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">max_coeff_step</span><span class="p">)</span>
+</span><span id="tcksift2-303"><a href="#tcksift2-303"><span class="linenos">303</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-304"><a href="#tcksift2-304"><span class="linenos">304</span></a>    <span class="k">if</span> <span class="n">min_cf_decrease</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-305"><a href="#tcksift2-305"><span class="linenos">305</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-306"><a href="#tcksift2-306"><span class="linenos">306</span></a>            <span class="s2">&quot;-min_cf_decrease&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-307"><a href="#tcksift2-307"><span class="linenos">307</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_cf_decrease</span><span class="p">)</span>
+</span><span id="tcksift2-308"><a href="#tcksift2-308"><span class="linenos">308</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-309"><a href="#tcksift2-309"><span class="linenos">309</span></a>    <span class="k">if</span> <span class="n">linear</span><span class="p">:</span>
+</span><span id="tcksift2-310"><a href="#tcksift2-310"><span class="linenos">310</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-linear&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-311"><a href="#tcksift2-311"><span class="linenos">311</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="tcksift2-312"><a href="#tcksift2-312"><span class="linenos">312</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-313"><a href="#tcksift2-313"><span class="linenos">313</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="tcksift2-314"><a href="#tcksift2-314"><span class="linenos">314</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-315"><a href="#tcksift2-315"><span class="linenos">315</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="tcksift2-316"><a href="#tcksift2-316"><span class="linenos">316</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-317"><a href="#tcksift2-317"><span class="linenos">317</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="tcksift2-318"><a href="#tcksift2-318"><span class="linenos">318</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-319"><a href="#tcksift2-319"><span class="linenos">319</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-320"><a href="#tcksift2-320"><span class="linenos">320</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tcksift2-321"><a href="#tcksift2-321"><span class="linenos">321</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="tcksift2-322"><a href="#tcksift2-322"><span class="linenos">322</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="tcksift2-323"><a href="#tcksift2-323"><span class="linenos">323</span></a>        <span class="p">])</span>
+</span><span id="tcksift2-324"><a href="#tcksift2-324"><span class="linenos">324</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tcksift2-325"><a href="#tcksift2-325"><span class="linenos">325</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="tcksift2-326"><a href="#tcksift2-326"><span class="linenos">326</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="tcksift2-327"><a href="#tcksift2-327"><span class="linenos">327</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-328"><a href="#tcksift2-328"><span class="linenos">328</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="tcksift2-329"><a href="#tcksift2-329"><span class="linenos">329</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="tcksift2-330"><a href="#tcksift2-330"><span class="linenos">330</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_tracks</span><span class="p">))</span>
+</span><span id="tcksift2-331"><a href="#tcksift2-331"><span class="linenos">331</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_fod</span><span class="p">))</span>
+</span><span id="tcksift2-332"><a href="#tcksift2-332"><span class="linenos">332</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_weights</span><span class="p">)</span>
+</span><span id="tcksift2-333"><a href="#tcksift2-333"><span class="linenos">333</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Tcksift2Outputs</span><span class="p">(</span>
+</span><span id="tcksift2-334"><a href="#tcksift2-334"><span class="linenos">334</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="tcksift2-335"><a href="#tcksift2-335"><span class="linenos">335</span></a>        <span class="n">out_weights</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_weights</span><span class="p">),</span>
+</span><span id="tcksift2-336"><a href="#tcksift2-336"><span class="linenos">336</span></a>        <span class="n">csv_</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">csv_</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">csv_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tcksift2-337"><a href="#tcksift2-337"><span class="linenos">337</span></a>        <span class="n">out_mu</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_mu</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tcksift2-338"><a href="#tcksift2-338"><span class="linenos">338</span></a>        <span class="n">out_coeffs</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_coeffs</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_coeffs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tcksift2-339"><a href="#tcksift2-339"><span class="linenos">339</span></a>    <span class="p">)</span>
+</span><span id="tcksift2-340"><a href="#tcksift2-340"><span class="linenos">340</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="tcksift2-341"><a href="#tcksift2-341"><span class="linenos">341</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1021,10 +1019,9 @@ Tractography: Methods and Inter-Subject Normalisation. Open Science
 Framework, <a href="https://doi.org/10.31219/osf.io/c67kn">https://doi.org/10.31219/osf.io/c67kn</a>.</li>
 </ul>
 
-<p>Author: Robert E. Smith (robert.smith@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/tcksift2.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/tcksift2.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

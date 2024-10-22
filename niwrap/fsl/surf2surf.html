@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SURF2SURF_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ff7fa1b803632391867b9ed36a0ed6abe6803beb.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f04d013a8dfed9725f2aa61d23bdd94cecf6db6c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;surf2surf&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
@@ -110,86 +110,88 @@
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">    </span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">    </span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    Args:</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">        input_surface: Input surface.</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">        output_surface: Output surface.</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">        input_convention: Input convention [default=caret] - only used if\</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">            output convention is different.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">        output_convention: Output convention [default=same as input].</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        input_ref_volume: Input reference volume - Must set this if changing\</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">            conventions.</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        output_ref_volume: Output reference volume [default=same as input].</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        transform: In-to-out ASCII matrix or out-to-in warpfield\</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">            [default=identity].</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        output_type: Output type: ASCII, VTK, GIFTI_ASCII, GIFTI_BIN,\</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">            GIFTI_BIN_GZ (default).</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        output_values: Set output scalar values (e.g.\</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">            --values=mysurface.func.gii or --values=1).</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    Returns:</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        NamedTuple of outputs (described in `Surf2surfOutputs`).</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURF2SURF_METADATA</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;surf2surf&quot;</span><span class="p">)</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>        <span class="s2">&quot;--surfin&quot;</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_surface</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="p">])</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">)</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="s2">&quot;--surfout&quot;</span><span class="p">,</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output_surface</span><span class="p">)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="p">])</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="k">if</span> <span class="n">input_convention</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>            <span class="s2">&quot;--convin&quot;</span><span class="p">,</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>            <span class="n">input_convention</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="p">])</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="k">if</span> <span class="n">output_convention</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="s2">&quot;--convout&quot;</span><span class="p">,</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="n">output_convention</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="p">])</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">input_ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;--volin&quot;</span><span class="p">,</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_ref_volume</span><span class="p">)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">output_ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="s2">&quot;--volout&quot;</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output_ref_volume</span><span class="p">)</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;--xfm&quot;</span><span class="p">,</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">output_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="s2">&quot;--outputtype&quot;</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="n">output_type</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="p">])</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">output_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="s2">&quot;--values&quot;</span><span class="p">,</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="n">output_values</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="p">])</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Surf2surfOutputs</span><span class="p">(</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="p">)</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="s2">&quot;SURF2SURF_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="s2">&quot;Surf2surfOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;surf2surf&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="p">]</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    </span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    Args:</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">        input_surface: Input surface.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">        output_surface: Output surface.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">        input_convention: Input convention [default=caret] - only used if\</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">            output convention is different.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        output_convention: Output convention [default=same as input].</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        input_ref_volume: Input reference volume - Must set this if changing\</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">            conventions.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        output_ref_volume: Output reference volume [default=same as input].</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        transform: In-to-out ASCII matrix or out-to-in warpfield\</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">            [default=identity].</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        output_type: Output type: ASCII, VTK, GIFTI_ASCII, GIFTI_BIN,\</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">            GIFTI_BIN_GZ (default).</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        output_values: Set output scalar values (e.g.\</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">            --values=mysurface.func.gii or --values=1).</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    Returns:</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        NamedTuple of outputs (described in `Surf2surfOutputs`).</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURF2SURF_METADATA</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;surf2surf&quot;</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="s2">&quot;--surfin&quot;</span><span class="p">,</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_surface</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="p">])</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="s2">&quot;--surfout&quot;</span><span class="p">,</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output_surface</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="p">])</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="k">if</span> <span class="n">input_convention</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>            <span class="s2">&quot;--convin&quot;</span><span class="p">,</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>            <span class="n">input_convention</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="p">])</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">output_convention</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;--convout&quot;</span><span class="p">,</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="n">output_convention</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">input_ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;--volin&quot;</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_ref_volume</span><span class="p">)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">output_ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;--volout&quot;</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output_ref_volume</span><span class="p">)</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;--xfm&quot;</span><span class="p">,</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="p">])</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">output_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="s2">&quot;--outputtype&quot;</span><span class="p">,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="n">output_type</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="p">])</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">output_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="s2">&quot;--values&quot;</span><span class="p">,</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="n">output_values</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="p">])</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Surf2surfOutputs</span><span class="p">(</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;SURF2SURF_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="s2">&quot;Surf2surfOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="s2">&quot;surf2surf&quot;</span><span class="p">,</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -198,7 +200,7 @@
                     <div class="attr variable">
             <span class="name">SURF2SURF_METADATA</span>        =
 <input id="SURF2SURF_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SURF2SURF_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ff7fa1b803632391867b9ed36a0ed6abe6803beb.boutiques&#39;, name=&#39;surf2surf&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SURF2SURF_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f04d013a8dfed9725f2aa61d23bdd94cecf6db6c.boutiques&#39;, name=&#39;surf2surf&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -287,85 +289,89 @@
 </span><span id="surf2surf-40"><a href="#surf2surf-40"><span class="linenos"> 40</span></a><span class="sd">    </span>
 </span><span id="surf2surf-41"><a href="#surf2surf-41"><span class="linenos"> 41</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="surf2surf-42"><a href="#surf2surf-42"><span class="linenos"> 42</span></a><span class="sd">    </span>
-</span><span id="surf2surf-43"><a href="#surf2surf-43"><span class="linenos"> 43</span></a><span class="sd">    Args:</span>
-</span><span id="surf2surf-44"><a href="#surf2surf-44"><span class="linenos"> 44</span></a><span class="sd">        input_surface: Input surface.</span>
-</span><span id="surf2surf-45"><a href="#surf2surf-45"><span class="linenos"> 45</span></a><span class="sd">        output_surface: Output surface.</span>
-</span><span id="surf2surf-46"><a href="#surf2surf-46"><span class="linenos"> 46</span></a><span class="sd">        input_convention: Input convention [default=caret] - only used if\</span>
-</span><span id="surf2surf-47"><a href="#surf2surf-47"><span class="linenos"> 47</span></a><span class="sd">            output convention is different.</span>
-</span><span id="surf2surf-48"><a href="#surf2surf-48"><span class="linenos"> 48</span></a><span class="sd">        output_convention: Output convention [default=same as input].</span>
-</span><span id="surf2surf-49"><a href="#surf2surf-49"><span class="linenos"> 49</span></a><span class="sd">        input_ref_volume: Input reference volume - Must set this if changing\</span>
-</span><span id="surf2surf-50"><a href="#surf2surf-50"><span class="linenos"> 50</span></a><span class="sd">            conventions.</span>
-</span><span id="surf2surf-51"><a href="#surf2surf-51"><span class="linenos"> 51</span></a><span class="sd">        output_ref_volume: Output reference volume [default=same as input].</span>
-</span><span id="surf2surf-52"><a href="#surf2surf-52"><span class="linenos"> 52</span></a><span class="sd">        transform: In-to-out ASCII matrix or out-to-in warpfield\</span>
-</span><span id="surf2surf-53"><a href="#surf2surf-53"><span class="linenos"> 53</span></a><span class="sd">            [default=identity].</span>
-</span><span id="surf2surf-54"><a href="#surf2surf-54"><span class="linenos"> 54</span></a><span class="sd">        output_type: Output type: ASCII, VTK, GIFTI_ASCII, GIFTI_BIN,\</span>
-</span><span id="surf2surf-55"><a href="#surf2surf-55"><span class="linenos"> 55</span></a><span class="sd">            GIFTI_BIN_GZ (default).</span>
-</span><span id="surf2surf-56"><a href="#surf2surf-56"><span class="linenos"> 56</span></a><span class="sd">        output_values: Set output scalar values (e.g.\</span>
-</span><span id="surf2surf-57"><a href="#surf2surf-57"><span class="linenos"> 57</span></a><span class="sd">            --values=mysurface.func.gii or --values=1).</span>
-</span><span id="surf2surf-58"><a href="#surf2surf-58"><span class="linenos"> 58</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="surf2surf-59"><a href="#surf2surf-59"><span class="linenos"> 59</span></a><span class="sd">    Returns:</span>
-</span><span id="surf2surf-60"><a href="#surf2surf-60"><span class="linenos"> 60</span></a><span class="sd">        NamedTuple of outputs (described in `Surf2surfOutputs`).</span>
-</span><span id="surf2surf-61"><a href="#surf2surf-61"><span class="linenos"> 61</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="surf2surf-62"><a href="#surf2surf-62"><span class="linenos"> 62</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="surf2surf-63"><a href="#surf2surf-63"><span class="linenos"> 63</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURF2SURF_METADATA</span><span class="p">)</span>
-</span><span id="surf2surf-64"><a href="#surf2surf-64"><span class="linenos"> 64</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="surf2surf-65"><a href="#surf2surf-65"><span class="linenos"> 65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;surf2surf&quot;</span><span class="p">)</span>
-</span><span id="surf2surf-66"><a href="#surf2surf-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
-</span><span id="surf2surf-67"><a href="#surf2surf-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surf2surf-68"><a href="#surf2surf-68"><span class="linenos"> 68</span></a>        <span class="s2">&quot;--surfin&quot;</span><span class="p">,</span>
-</span><span id="surf2surf-69"><a href="#surf2surf-69"><span class="linenos"> 69</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_surface</span><span class="p">)</span>
-</span><span id="surf2surf-70"><a href="#surf2surf-70"><span class="linenos"> 70</span></a>    <span class="p">])</span>
-</span><span id="surf2surf-71"><a href="#surf2surf-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">)</span>
-</span><span id="surf2surf-72"><a href="#surf2surf-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surf2surf-73"><a href="#surf2surf-73"><span class="linenos"> 73</span></a>        <span class="s2">&quot;--surfout&quot;</span><span class="p">,</span>
-</span><span id="surf2surf-74"><a href="#surf2surf-74"><span class="linenos"> 74</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output_surface</span><span class="p">)</span>
-</span><span id="surf2surf-75"><a href="#surf2surf-75"><span class="linenos"> 75</span></a>    <span class="p">])</span>
-</span><span id="surf2surf-76"><a href="#surf2surf-76"><span class="linenos"> 76</span></a>    <span class="k">if</span> <span class="n">input_convention</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surf2surf-77"><a href="#surf2surf-77"><span class="linenos"> 77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surf2surf-78"><a href="#surf2surf-78"><span class="linenos"> 78</span></a>            <span class="s2">&quot;--convin&quot;</span><span class="p">,</span>
-</span><span id="surf2surf-79"><a href="#surf2surf-79"><span class="linenos"> 79</span></a>            <span class="n">input_convention</span>
-</span><span id="surf2surf-80"><a href="#surf2surf-80"><span class="linenos"> 80</span></a>        <span class="p">])</span>
-</span><span id="surf2surf-81"><a href="#surf2surf-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">output_convention</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surf2surf-82"><a href="#surf2surf-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surf2surf-83"><a href="#surf2surf-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;--convout&quot;</span><span class="p">,</span>
-</span><span id="surf2surf-84"><a href="#surf2surf-84"><span class="linenos"> 84</span></a>            <span class="n">output_convention</span>
-</span><span id="surf2surf-85"><a href="#surf2surf-85"><span class="linenos"> 85</span></a>        <span class="p">])</span>
-</span><span id="surf2surf-86"><a href="#surf2surf-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">input_ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surf2surf-87"><a href="#surf2surf-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surf2surf-88"><a href="#surf2surf-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;--volin&quot;</span><span class="p">,</span>
-</span><span id="surf2surf-89"><a href="#surf2surf-89"><span class="linenos"> 89</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_ref_volume</span><span class="p">)</span>
-</span><span id="surf2surf-90"><a href="#surf2surf-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="surf2surf-91"><a href="#surf2surf-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">output_ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surf2surf-92"><a href="#surf2surf-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surf2surf-93"><a href="#surf2surf-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;--volout&quot;</span><span class="p">,</span>
-</span><span id="surf2surf-94"><a href="#surf2surf-94"><span class="linenos"> 94</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output_ref_volume</span><span class="p">)</span>
-</span><span id="surf2surf-95"><a href="#surf2surf-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
-</span><span id="surf2surf-96"><a href="#surf2surf-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surf2surf-97"><a href="#surf2surf-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surf2surf-98"><a href="#surf2surf-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;--xfm&quot;</span><span class="p">,</span>
-</span><span id="surf2surf-99"><a href="#surf2surf-99"><span class="linenos"> 99</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
-</span><span id="surf2surf-100"><a href="#surf2surf-100"><span class="linenos">100</span></a>        <span class="p">])</span>
-</span><span id="surf2surf-101"><a href="#surf2surf-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">output_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surf2surf-102"><a href="#surf2surf-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surf2surf-103"><a href="#surf2surf-103"><span class="linenos">103</span></a>            <span class="s2">&quot;--outputtype&quot;</span><span class="p">,</span>
-</span><span id="surf2surf-104"><a href="#surf2surf-104"><span class="linenos">104</span></a>            <span class="n">output_type</span>
-</span><span id="surf2surf-105"><a href="#surf2surf-105"><span class="linenos">105</span></a>        <span class="p">])</span>
-</span><span id="surf2surf-106"><a href="#surf2surf-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">output_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surf2surf-107"><a href="#surf2surf-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surf2surf-108"><a href="#surf2surf-108"><span class="linenos">108</span></a>            <span class="s2">&quot;--values&quot;</span><span class="p">,</span>
-</span><span id="surf2surf-109"><a href="#surf2surf-109"><span class="linenos">109</span></a>            <span class="n">output_values</span>
-</span><span id="surf2surf-110"><a href="#surf2surf-110"><span class="linenos">110</span></a>        <span class="p">])</span>
-</span><span id="surf2surf-111"><a href="#surf2surf-111"><span class="linenos">111</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Surf2surfOutputs</span><span class="p">(</span>
-</span><span id="surf2surf-112"><a href="#surf2surf-112"><span class="linenos">112</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="surf2surf-113"><a href="#surf2surf-113"><span class="linenos">113</span></a>    <span class="p">)</span>
-</span><span id="surf2surf-114"><a href="#surf2surf-114"><span class="linenos">114</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="surf2surf-115"><a href="#surf2surf-115"><span class="linenos">115</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="surf2surf-43"><a href="#surf2surf-43"><span class="linenos"> 43</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="surf2surf-44"><a href="#surf2surf-44"><span class="linenos"> 44</span></a><span class="sd">    </span>
+</span><span id="surf2surf-45"><a href="#surf2surf-45"><span class="linenos"> 45</span></a><span class="sd">    Args:</span>
+</span><span id="surf2surf-46"><a href="#surf2surf-46"><span class="linenos"> 46</span></a><span class="sd">        input_surface: Input surface.</span>
+</span><span id="surf2surf-47"><a href="#surf2surf-47"><span class="linenos"> 47</span></a><span class="sd">        output_surface: Output surface.</span>
+</span><span id="surf2surf-48"><a href="#surf2surf-48"><span class="linenos"> 48</span></a><span class="sd">        input_convention: Input convention [default=caret] - only used if\</span>
+</span><span id="surf2surf-49"><a href="#surf2surf-49"><span class="linenos"> 49</span></a><span class="sd">            output convention is different.</span>
+</span><span id="surf2surf-50"><a href="#surf2surf-50"><span class="linenos"> 50</span></a><span class="sd">        output_convention: Output convention [default=same as input].</span>
+</span><span id="surf2surf-51"><a href="#surf2surf-51"><span class="linenos"> 51</span></a><span class="sd">        input_ref_volume: Input reference volume - Must set this if changing\</span>
+</span><span id="surf2surf-52"><a href="#surf2surf-52"><span class="linenos"> 52</span></a><span class="sd">            conventions.</span>
+</span><span id="surf2surf-53"><a href="#surf2surf-53"><span class="linenos"> 53</span></a><span class="sd">        output_ref_volume: Output reference volume [default=same as input].</span>
+</span><span id="surf2surf-54"><a href="#surf2surf-54"><span class="linenos"> 54</span></a><span class="sd">        transform: In-to-out ASCII matrix or out-to-in warpfield\</span>
+</span><span id="surf2surf-55"><a href="#surf2surf-55"><span class="linenos"> 55</span></a><span class="sd">            [default=identity].</span>
+</span><span id="surf2surf-56"><a href="#surf2surf-56"><span class="linenos"> 56</span></a><span class="sd">        output_type: Output type: ASCII, VTK, GIFTI_ASCII, GIFTI_BIN,\</span>
+</span><span id="surf2surf-57"><a href="#surf2surf-57"><span class="linenos"> 57</span></a><span class="sd">            GIFTI_BIN_GZ (default).</span>
+</span><span id="surf2surf-58"><a href="#surf2surf-58"><span class="linenos"> 58</span></a><span class="sd">        output_values: Set output scalar values (e.g.\</span>
+</span><span id="surf2surf-59"><a href="#surf2surf-59"><span class="linenos"> 59</span></a><span class="sd">            --values=mysurface.func.gii or --values=1).</span>
+</span><span id="surf2surf-60"><a href="#surf2surf-60"><span class="linenos"> 60</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="surf2surf-61"><a href="#surf2surf-61"><span class="linenos"> 61</span></a><span class="sd">    Returns:</span>
+</span><span id="surf2surf-62"><a href="#surf2surf-62"><span class="linenos"> 62</span></a><span class="sd">        NamedTuple of outputs (described in `Surf2surfOutputs`).</span>
+</span><span id="surf2surf-63"><a href="#surf2surf-63"><span class="linenos"> 63</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="surf2surf-64"><a href="#surf2surf-64"><span class="linenos"> 64</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="surf2surf-65"><a href="#surf2surf-65"><span class="linenos"> 65</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURF2SURF_METADATA</span><span class="p">)</span>
+</span><span id="surf2surf-66"><a href="#surf2surf-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="surf2surf-67"><a href="#surf2surf-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;surf2surf&quot;</span><span class="p">)</span>
+</span><span id="surf2surf-68"><a href="#surf2surf-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
+</span><span id="surf2surf-69"><a href="#surf2surf-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf2surf-70"><a href="#surf2surf-70"><span class="linenos"> 70</span></a>        <span class="s2">&quot;--surfin&quot;</span><span class="p">,</span>
+</span><span id="surf2surf-71"><a href="#surf2surf-71"><span class="linenos"> 71</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_surface</span><span class="p">)</span>
+</span><span id="surf2surf-72"><a href="#surf2surf-72"><span class="linenos"> 72</span></a>    <span class="p">])</span>
+</span><span id="surf2surf-73"><a href="#surf2surf-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">)</span>
+</span><span id="surf2surf-74"><a href="#surf2surf-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf2surf-75"><a href="#surf2surf-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;--surfout&quot;</span><span class="p">,</span>
+</span><span id="surf2surf-76"><a href="#surf2surf-76"><span class="linenos"> 76</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output_surface</span><span class="p">)</span>
+</span><span id="surf2surf-77"><a href="#surf2surf-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
+</span><span id="surf2surf-78"><a href="#surf2surf-78"><span class="linenos"> 78</span></a>    <span class="k">if</span> <span class="n">input_convention</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surf2surf-79"><a href="#surf2surf-79"><span class="linenos"> 79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf2surf-80"><a href="#surf2surf-80"><span class="linenos"> 80</span></a>            <span class="s2">&quot;--convin&quot;</span><span class="p">,</span>
+</span><span id="surf2surf-81"><a href="#surf2surf-81"><span class="linenos"> 81</span></a>            <span class="n">input_convention</span>
+</span><span id="surf2surf-82"><a href="#surf2surf-82"><span class="linenos"> 82</span></a>        <span class="p">])</span>
+</span><span id="surf2surf-83"><a href="#surf2surf-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">output_convention</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surf2surf-84"><a href="#surf2surf-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf2surf-85"><a href="#surf2surf-85"><span class="linenos"> 85</span></a>            <span class="s2">&quot;--convout&quot;</span><span class="p">,</span>
+</span><span id="surf2surf-86"><a href="#surf2surf-86"><span class="linenos"> 86</span></a>            <span class="n">output_convention</span>
+</span><span id="surf2surf-87"><a href="#surf2surf-87"><span class="linenos"> 87</span></a>        <span class="p">])</span>
+</span><span id="surf2surf-88"><a href="#surf2surf-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">input_ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surf2surf-89"><a href="#surf2surf-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf2surf-90"><a href="#surf2surf-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;--volin&quot;</span><span class="p">,</span>
+</span><span id="surf2surf-91"><a href="#surf2surf-91"><span class="linenos"> 91</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_ref_volume</span><span class="p">)</span>
+</span><span id="surf2surf-92"><a href="#surf2surf-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
+</span><span id="surf2surf-93"><a href="#surf2surf-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">output_ref_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surf2surf-94"><a href="#surf2surf-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf2surf-95"><a href="#surf2surf-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;--volout&quot;</span><span class="p">,</span>
+</span><span id="surf2surf-96"><a href="#surf2surf-96"><span class="linenos"> 96</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">output_ref_volume</span><span class="p">)</span>
+</span><span id="surf2surf-97"><a href="#surf2surf-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
+</span><span id="surf2surf-98"><a href="#surf2surf-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surf2surf-99"><a href="#surf2surf-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf2surf-100"><a href="#surf2surf-100"><span class="linenos">100</span></a>            <span class="s2">&quot;--xfm&quot;</span><span class="p">,</span>
+</span><span id="surf2surf-101"><a href="#surf2surf-101"><span class="linenos">101</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+</span><span id="surf2surf-102"><a href="#surf2surf-102"><span class="linenos">102</span></a>        <span class="p">])</span>
+</span><span id="surf2surf-103"><a href="#surf2surf-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">output_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surf2surf-104"><a href="#surf2surf-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf2surf-105"><a href="#surf2surf-105"><span class="linenos">105</span></a>            <span class="s2">&quot;--outputtype&quot;</span><span class="p">,</span>
+</span><span id="surf2surf-106"><a href="#surf2surf-106"><span class="linenos">106</span></a>            <span class="n">output_type</span>
+</span><span id="surf2surf-107"><a href="#surf2surf-107"><span class="linenos">107</span></a>        <span class="p">])</span>
+</span><span id="surf2surf-108"><a href="#surf2surf-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">output_values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surf2surf-109"><a href="#surf2surf-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surf2surf-110"><a href="#surf2surf-110"><span class="linenos">110</span></a>            <span class="s2">&quot;--values&quot;</span><span class="p">,</span>
+</span><span id="surf2surf-111"><a href="#surf2surf-111"><span class="linenos">111</span></a>            <span class="n">output_values</span>
+</span><span id="surf2surf-112"><a href="#surf2surf-112"><span class="linenos">112</span></a>        <span class="p">])</span>
+</span><span id="surf2surf-113"><a href="#surf2surf-113"><span class="linenos">113</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Surf2surfOutputs</span><span class="p">(</span>
+</span><span id="surf2surf-114"><a href="#surf2surf-114"><span class="linenos">114</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="surf2surf-115"><a href="#surf2surf-115"><span class="linenos">115</span></a>    <span class="p">)</span>
+</span><span id="surf2surf-116"><a href="#surf2surf-116"><span class="linenos">116</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="surf2surf-117"><a href="#surf2surf-117"><span class="linenos">117</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Conversions between surface formats and/or conventions.</p>
 
 <p>Author: FMRIB Analysis Group, University of Oxford</p>
+
+<p>URL: <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

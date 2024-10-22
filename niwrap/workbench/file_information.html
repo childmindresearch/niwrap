@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FILE_INFORMATION_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f864ba42ad5e68fac32ba7e06c7a8d85190c2331.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4f3efe631f7525173d2f9ead98a75886c062437a.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;file-information&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -153,72 +153,74 @@
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    Volume: nii, nii.gz</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    .</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    </span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    Args:</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        data_file: data file.</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        opt_no_map_info: do not show map information for files that support\</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            maps.</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        opt_only_step_interval: suppress normal output, print the interval\</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            between maps.</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        opt_only_number_of_maps: suppress normal output, print the number of\</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">            maps.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        opt_only_map_names: suppress normal output, print the names of all maps.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        opt_only_metadata: suppress normal output, print file metadata.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        opt_key_key: only print the metadata for one key, with no formatting:\</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            the metadata key.</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        opt_only_cifti_xml: suppress normal output, print the cifti xml if the\</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            file type has it.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        opt_czi: For a CZI file, show information from the libCZI Info Command\</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            instead of the Workbench CZI File.</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        opt_czi_all_sub_blocks: show all sub-blocks in CZI file (may produce\</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">            long output).</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        opt_czi_xml: show XML from CZI file.</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    Returns:</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        NamedTuple of outputs (described in `FileInformationOutputs`).</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_INFORMATION_METADATA</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-file-information&quot;</span><span class="p">)</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">opt_no_map_info</span><span class="p">:</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-map-info&quot;</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">opt_only_step_interval</span><span class="p">:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-step-interval&quot;</span><span class="p">)</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">opt_only_number_of_maps</span><span class="p">:</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-number-of-maps&quot;</span><span class="p">)</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">opt_only_map_names</span><span class="p">:</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-map-names&quot;</span><span class="p">)</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">opt_only_metadata</span><span class="p">:</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-metadata&quot;</span><span class="p">)</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">opt_key_key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="s2">&quot;-key&quot;</span><span class="p">,</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>            <span class="n">opt_key_key</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="p">])</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">opt_only_cifti_xml</span><span class="p">:</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-cifti-xml&quot;</span><span class="p">)</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">opt_czi</span><span class="p">:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi&quot;</span><span class="p">)</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">opt_czi_all_sub_blocks</span><span class="p">:</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi-all-sub-blocks&quot;</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">opt_czi_xml</span><span class="p">:</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi-xml&quot;</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FileInformationOutputs</span><span class="p">(</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="s2">&quot;FILE_INFORMATION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="s2">&quot;FileInformationOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="s2">&quot;file_information&quot;</span><span class="p">,</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="p">]</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    </span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    Args:</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        data_file: data file.</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        opt_no_map_info: do not show map information for files that support\</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            maps.</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        opt_only_step_interval: suppress normal output, print the interval\</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">            between maps.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        opt_only_number_of_maps: suppress normal output, print the number of\</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            maps.</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        opt_only_map_names: suppress normal output, print the names of all maps.</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        opt_only_metadata: suppress normal output, print file metadata.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        opt_key_key: only print the metadata for one key, with no formatting:\</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            the metadata key.</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        opt_only_cifti_xml: suppress normal output, print the cifti xml if the\</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            file type has it.</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        opt_czi: For a CZI file, show information from the libCZI Info Command\</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">            instead of the Workbench CZI File.</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        opt_czi_all_sub_blocks: show all sub-blocks in CZI file (may produce\</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            long output).</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        opt_czi_xml: show XML from CZI file.</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    Returns:</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        NamedTuple of outputs (described in `FileInformationOutputs`).</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_INFORMATION_METADATA</span><span class="p">)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-file-information&quot;</span><span class="p">)</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">opt_no_map_info</span><span class="p">:</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-map-info&quot;</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">opt_only_step_interval</span><span class="p">:</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-step-interval&quot;</span><span class="p">)</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">opt_only_number_of_maps</span><span class="p">:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-number-of-maps&quot;</span><span class="p">)</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">opt_only_map_names</span><span class="p">:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-map-names&quot;</span><span class="p">)</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">opt_only_metadata</span><span class="p">:</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-metadata&quot;</span><span class="p">)</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">opt_key_key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="s2">&quot;-key&quot;</span><span class="p">,</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="n">opt_key_key</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="p">])</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">opt_only_cifti_xml</span><span class="p">:</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-cifti-xml&quot;</span><span class="p">)</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">opt_czi</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi&quot;</span><span class="p">)</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">opt_czi_all_sub_blocks</span><span class="p">:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi-all-sub-blocks&quot;</span><span class="p">)</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">opt_czi_xml</span><span class="p">:</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi-xml&quot;</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FileInformationOutputs</span><span class="p">(</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="p">)</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="s2">&quot;FILE_INFORMATION_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="s2">&quot;FileInformationOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="s2">&quot;file_information&quot;</span><span class="p">,</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -227,7 +229,7 @@
                     <div class="attr variable">
             <span class="name">FILE_INFORMATION_METADATA</span>        =
 <input id="FILE_INFORMATION_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FILE_INFORMATION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f864ba42ad5e68fac32ba7e06c7a8d85190c2331.boutiques&#39;, name=&#39;file-information&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FILE_INFORMATION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4f3efe631f7525173d2f9ead98a75886c062437a.boutiques&#39;, name=&#39;file-information&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -359,65 +361,67 @@
 </span><span id="file_information-83"><a href="#file_information-83"><span class="linenos"> 83</span></a><span class="sd">    Volume: nii, nii.gz</span>
 </span><span id="file_information-84"><a href="#file_information-84"><span class="linenos"> 84</span></a><span class="sd">    .</span>
 </span><span id="file_information-85"><a href="#file_information-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
-</span><span id="file_information-86"><a href="#file_information-86"><span class="linenos"> 86</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="file_information-86"><a href="#file_information-86"><span class="linenos"> 86</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="file_information-87"><a href="#file_information-87"><span class="linenos"> 87</span></a><span class="sd">    </span>
-</span><span id="file_information-88"><a href="#file_information-88"><span class="linenos"> 88</span></a><span class="sd">    Args:</span>
-</span><span id="file_information-89"><a href="#file_information-89"><span class="linenos"> 89</span></a><span class="sd">        data_file: data file.</span>
-</span><span id="file_information-90"><a href="#file_information-90"><span class="linenos"> 90</span></a><span class="sd">        opt_no_map_info: do not show map information for files that support\</span>
-</span><span id="file_information-91"><a href="#file_information-91"><span class="linenos"> 91</span></a><span class="sd">            maps.</span>
-</span><span id="file_information-92"><a href="#file_information-92"><span class="linenos"> 92</span></a><span class="sd">        opt_only_step_interval: suppress normal output, print the interval\</span>
-</span><span id="file_information-93"><a href="#file_information-93"><span class="linenos"> 93</span></a><span class="sd">            between maps.</span>
-</span><span id="file_information-94"><a href="#file_information-94"><span class="linenos"> 94</span></a><span class="sd">        opt_only_number_of_maps: suppress normal output, print the number of\</span>
-</span><span id="file_information-95"><a href="#file_information-95"><span class="linenos"> 95</span></a><span class="sd">            maps.</span>
-</span><span id="file_information-96"><a href="#file_information-96"><span class="linenos"> 96</span></a><span class="sd">        opt_only_map_names: suppress normal output, print the names of all maps.</span>
-</span><span id="file_information-97"><a href="#file_information-97"><span class="linenos"> 97</span></a><span class="sd">        opt_only_metadata: suppress normal output, print file metadata.</span>
-</span><span id="file_information-98"><a href="#file_information-98"><span class="linenos"> 98</span></a><span class="sd">        opt_key_key: only print the metadata for one key, with no formatting:\</span>
-</span><span id="file_information-99"><a href="#file_information-99"><span class="linenos"> 99</span></a><span class="sd">            the metadata key.</span>
-</span><span id="file_information-100"><a href="#file_information-100"><span class="linenos">100</span></a><span class="sd">        opt_only_cifti_xml: suppress normal output, print the cifti xml if the\</span>
-</span><span id="file_information-101"><a href="#file_information-101"><span class="linenos">101</span></a><span class="sd">            file type has it.</span>
-</span><span id="file_information-102"><a href="#file_information-102"><span class="linenos">102</span></a><span class="sd">        opt_czi: For a CZI file, show information from the libCZI Info Command\</span>
-</span><span id="file_information-103"><a href="#file_information-103"><span class="linenos">103</span></a><span class="sd">            instead of the Workbench CZI File.</span>
-</span><span id="file_information-104"><a href="#file_information-104"><span class="linenos">104</span></a><span class="sd">        opt_czi_all_sub_blocks: show all sub-blocks in CZI file (may produce\</span>
-</span><span id="file_information-105"><a href="#file_information-105"><span class="linenos">105</span></a><span class="sd">            long output).</span>
-</span><span id="file_information-106"><a href="#file_information-106"><span class="linenos">106</span></a><span class="sd">        opt_czi_xml: show XML from CZI file.</span>
-</span><span id="file_information-107"><a href="#file_information-107"><span class="linenos">107</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="file_information-108"><a href="#file_information-108"><span class="linenos">108</span></a><span class="sd">    Returns:</span>
-</span><span id="file_information-109"><a href="#file_information-109"><span class="linenos">109</span></a><span class="sd">        NamedTuple of outputs (described in `FileInformationOutputs`).</span>
-</span><span id="file_information-110"><a href="#file_information-110"><span class="linenos">110</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="file_information-111"><a href="#file_information-111"><span class="linenos">111</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="file_information-112"><a href="#file_information-112"><span class="linenos">112</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_INFORMATION_METADATA</span><span class="p">)</span>
-</span><span id="file_information-113"><a href="#file_information-113"><span class="linenos">113</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="file_information-114"><a href="#file_information-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="file_information-115"><a href="#file_information-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-file-information&quot;</span><span class="p">)</span>
-</span><span id="file_information-116"><a href="#file_information-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-</span><span id="file_information-117"><a href="#file_information-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">opt_no_map_info</span><span class="p">:</span>
-</span><span id="file_information-118"><a href="#file_information-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-map-info&quot;</span><span class="p">)</span>
-</span><span id="file_information-119"><a href="#file_information-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">opt_only_step_interval</span><span class="p">:</span>
-</span><span id="file_information-120"><a href="#file_information-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-step-interval&quot;</span><span class="p">)</span>
-</span><span id="file_information-121"><a href="#file_information-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">opt_only_number_of_maps</span><span class="p">:</span>
-</span><span id="file_information-122"><a href="#file_information-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-number-of-maps&quot;</span><span class="p">)</span>
-</span><span id="file_information-123"><a href="#file_information-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">opt_only_map_names</span><span class="p">:</span>
-</span><span id="file_information-124"><a href="#file_information-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-map-names&quot;</span><span class="p">)</span>
-</span><span id="file_information-125"><a href="#file_information-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">opt_only_metadata</span><span class="p">:</span>
-</span><span id="file_information-126"><a href="#file_information-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-metadata&quot;</span><span class="p">)</span>
-</span><span id="file_information-127"><a href="#file_information-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">opt_key_key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="file_information-128"><a href="#file_information-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="file_information-129"><a href="#file_information-129"><span class="linenos">129</span></a>            <span class="s2">&quot;-key&quot;</span><span class="p">,</span>
-</span><span id="file_information-130"><a href="#file_information-130"><span class="linenos">130</span></a>            <span class="n">opt_key_key</span>
-</span><span id="file_information-131"><a href="#file_information-131"><span class="linenos">131</span></a>        <span class="p">])</span>
-</span><span id="file_information-132"><a href="#file_information-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">opt_only_cifti_xml</span><span class="p">:</span>
-</span><span id="file_information-133"><a href="#file_information-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-cifti-xml&quot;</span><span class="p">)</span>
-</span><span id="file_information-134"><a href="#file_information-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">opt_czi</span><span class="p">:</span>
-</span><span id="file_information-135"><a href="#file_information-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi&quot;</span><span class="p">)</span>
-</span><span id="file_information-136"><a href="#file_information-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">opt_czi_all_sub_blocks</span><span class="p">:</span>
-</span><span id="file_information-137"><a href="#file_information-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi-all-sub-blocks&quot;</span><span class="p">)</span>
-</span><span id="file_information-138"><a href="#file_information-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">opt_czi_xml</span><span class="p">:</span>
-</span><span id="file_information-139"><a href="#file_information-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi-xml&quot;</span><span class="p">)</span>
-</span><span id="file_information-140"><a href="#file_information-140"><span class="linenos">140</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FileInformationOutputs</span><span class="p">(</span>
-</span><span id="file_information-141"><a href="#file_information-141"><span class="linenos">141</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="file_information-142"><a href="#file_information-142"><span class="linenos">142</span></a>    <span class="p">)</span>
-</span><span id="file_information-143"><a href="#file_information-143"><span class="linenos">143</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="file_information-144"><a href="#file_information-144"><span class="linenos">144</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="file_information-88"><a href="#file_information-88"><span class="linenos"> 88</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="file_information-89"><a href="#file_information-89"><span class="linenos"> 89</span></a><span class="sd">    </span>
+</span><span id="file_information-90"><a href="#file_information-90"><span class="linenos"> 90</span></a><span class="sd">    Args:</span>
+</span><span id="file_information-91"><a href="#file_information-91"><span class="linenos"> 91</span></a><span class="sd">        data_file: data file.</span>
+</span><span id="file_information-92"><a href="#file_information-92"><span class="linenos"> 92</span></a><span class="sd">        opt_no_map_info: do not show map information for files that support\</span>
+</span><span id="file_information-93"><a href="#file_information-93"><span class="linenos"> 93</span></a><span class="sd">            maps.</span>
+</span><span id="file_information-94"><a href="#file_information-94"><span class="linenos"> 94</span></a><span class="sd">        opt_only_step_interval: suppress normal output, print the interval\</span>
+</span><span id="file_information-95"><a href="#file_information-95"><span class="linenos"> 95</span></a><span class="sd">            between maps.</span>
+</span><span id="file_information-96"><a href="#file_information-96"><span class="linenos"> 96</span></a><span class="sd">        opt_only_number_of_maps: suppress normal output, print the number of\</span>
+</span><span id="file_information-97"><a href="#file_information-97"><span class="linenos"> 97</span></a><span class="sd">            maps.</span>
+</span><span id="file_information-98"><a href="#file_information-98"><span class="linenos"> 98</span></a><span class="sd">        opt_only_map_names: suppress normal output, print the names of all maps.</span>
+</span><span id="file_information-99"><a href="#file_information-99"><span class="linenos"> 99</span></a><span class="sd">        opt_only_metadata: suppress normal output, print file metadata.</span>
+</span><span id="file_information-100"><a href="#file_information-100"><span class="linenos">100</span></a><span class="sd">        opt_key_key: only print the metadata for one key, with no formatting:\</span>
+</span><span id="file_information-101"><a href="#file_information-101"><span class="linenos">101</span></a><span class="sd">            the metadata key.</span>
+</span><span id="file_information-102"><a href="#file_information-102"><span class="linenos">102</span></a><span class="sd">        opt_only_cifti_xml: suppress normal output, print the cifti xml if the\</span>
+</span><span id="file_information-103"><a href="#file_information-103"><span class="linenos">103</span></a><span class="sd">            file type has it.</span>
+</span><span id="file_information-104"><a href="#file_information-104"><span class="linenos">104</span></a><span class="sd">        opt_czi: For a CZI file, show information from the libCZI Info Command\</span>
+</span><span id="file_information-105"><a href="#file_information-105"><span class="linenos">105</span></a><span class="sd">            instead of the Workbench CZI File.</span>
+</span><span id="file_information-106"><a href="#file_information-106"><span class="linenos">106</span></a><span class="sd">        opt_czi_all_sub_blocks: show all sub-blocks in CZI file (may produce\</span>
+</span><span id="file_information-107"><a href="#file_information-107"><span class="linenos">107</span></a><span class="sd">            long output).</span>
+</span><span id="file_information-108"><a href="#file_information-108"><span class="linenos">108</span></a><span class="sd">        opt_czi_xml: show XML from CZI file.</span>
+</span><span id="file_information-109"><a href="#file_information-109"><span class="linenos">109</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="file_information-110"><a href="#file_information-110"><span class="linenos">110</span></a><span class="sd">    Returns:</span>
+</span><span id="file_information-111"><a href="#file_information-111"><span class="linenos">111</span></a><span class="sd">        NamedTuple of outputs (described in `FileInformationOutputs`).</span>
+</span><span id="file_information-112"><a href="#file_information-112"><span class="linenos">112</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="file_information-113"><a href="#file_information-113"><span class="linenos">113</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="file_information-114"><a href="#file_information-114"><span class="linenos">114</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FILE_INFORMATION_METADATA</span><span class="p">)</span>
+</span><span id="file_information-115"><a href="#file_information-115"><span class="linenos">115</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="file_information-116"><a href="#file_information-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="file_information-117"><a href="#file_information-117"><span class="linenos">117</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-file-information&quot;</span><span class="p">)</span>
+</span><span id="file_information-118"><a href="#file_information-118"><span class="linenos">118</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+</span><span id="file_information-119"><a href="#file_information-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">opt_no_map_info</span><span class="p">:</span>
+</span><span id="file_information-120"><a href="#file_information-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no-map-info&quot;</span><span class="p">)</span>
+</span><span id="file_information-121"><a href="#file_information-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">opt_only_step_interval</span><span class="p">:</span>
+</span><span id="file_information-122"><a href="#file_information-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-step-interval&quot;</span><span class="p">)</span>
+</span><span id="file_information-123"><a href="#file_information-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">opt_only_number_of_maps</span><span class="p">:</span>
+</span><span id="file_information-124"><a href="#file_information-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-number-of-maps&quot;</span><span class="p">)</span>
+</span><span id="file_information-125"><a href="#file_information-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">opt_only_map_names</span><span class="p">:</span>
+</span><span id="file_information-126"><a href="#file_information-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-map-names&quot;</span><span class="p">)</span>
+</span><span id="file_information-127"><a href="#file_information-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">opt_only_metadata</span><span class="p">:</span>
+</span><span id="file_information-128"><a href="#file_information-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-metadata&quot;</span><span class="p">)</span>
+</span><span id="file_information-129"><a href="#file_information-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">opt_key_key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="file_information-130"><a href="#file_information-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="file_information-131"><a href="#file_information-131"><span class="linenos">131</span></a>            <span class="s2">&quot;-key&quot;</span><span class="p">,</span>
+</span><span id="file_information-132"><a href="#file_information-132"><span class="linenos">132</span></a>            <span class="n">opt_key_key</span>
+</span><span id="file_information-133"><a href="#file_information-133"><span class="linenos">133</span></a>        <span class="p">])</span>
+</span><span id="file_information-134"><a href="#file_information-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">opt_only_cifti_xml</span><span class="p">:</span>
+</span><span id="file_information-135"><a href="#file_information-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-only-cifti-xml&quot;</span><span class="p">)</span>
+</span><span id="file_information-136"><a href="#file_information-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">opt_czi</span><span class="p">:</span>
+</span><span id="file_information-137"><a href="#file_information-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi&quot;</span><span class="p">)</span>
+</span><span id="file_information-138"><a href="#file_information-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">opt_czi_all_sub_blocks</span><span class="p">:</span>
+</span><span id="file_information-139"><a href="#file_information-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi-all-sub-blocks&quot;</span><span class="p">)</span>
+</span><span id="file_information-140"><a href="#file_information-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">opt_czi_xml</span><span class="p">:</span>
+</span><span id="file_information-141"><a href="#file_information-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-czi-xml&quot;</span><span class="p">)</span>
+</span><span id="file_information-142"><a href="#file_information-142"><span class="linenos">142</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FileInformationOutputs</span><span class="p">(</span>
+</span><span id="file_information-143"><a href="#file_information-143"><span class="linenos">143</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="file_information-144"><a href="#file_information-144"><span class="linenos">144</span></a>    <span class="p">)</span>
+</span><span id="file_information-145"><a href="#file_information-145"><span class="linenos">145</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="file_information-146"><a href="#file_information-146"><span class="linenos">146</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -465,7 +469,9 @@ Surface: surf.gii
 Volume: nii, nii.gz
 .</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

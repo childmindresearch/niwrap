@@ -117,7 +117,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SURFACE_RESAMPLE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;37492368d85050d4a156315600c6bc3e1a4b7e68.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4168972491f06e1a32e3a77db8ca8f8d951f800f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;surface-resample&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -225,56 +225,58 @@
 </span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    BARYCENTRIC</span>
 </span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    .</span>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    </span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    </span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    Args:</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">        surface_in: the surface file to resample.</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        current_sphere: a sphere surface with the mesh that the input surface\</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">            is currently on.</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        new_sphere: a sphere surface that is in register with &lt;current-sphere&gt;\</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">            and has the desired output mesh.</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        method: the method name.</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">        surface_out: the output surface file.</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        area_surfs: specify surfaces to do vertex area correction based on.</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">        area_metrics: specify vertex area metrics to do area correction based\</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">            on.</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">        opt_bypass_sphere_check: ADVANCED: allow the current and new &#39;spheres&#39;\</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">            to have arbitrary shape as long as they follow the same contour.</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    Returns:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceResampleOutputs`).</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_RESAMPLE_METADATA</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-resample&quot;</span><span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_in</span><span class="p">))</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">current_sphere</span><span class="p">))</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">new_sphere</span><span class="p">))</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface_out</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">area_surfs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">area_surfs</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">area_metrics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">area_metrics</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">opt_bypass_sphere_check</span><span class="p">:</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bypass-sphere-check&quot;</span><span class="p">)</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceResampleOutputs</span><span class="p">(</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">surface_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">surface_out</span><span class="p">),</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="p">)</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="s2">&quot;SURFACE_RESAMPLE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="s2">&quot;SurfaceResampleAreaMetrics&quot;</span><span class="p">,</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="s2">&quot;SurfaceResampleAreaSurfs&quot;</span><span class="p">,</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="s2">&quot;SurfaceResampleOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="s2">&quot;surface_resample&quot;</span><span class="p">,</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="p">]</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    </span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">    Args:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        surface_in: the surface file to resample.</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        current_sphere: a sphere surface with the mesh that the input surface\</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">            is currently on.</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        new_sphere: a sphere surface that is in register with &lt;current-sphere&gt;\</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">            and has the desired output mesh.</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        method: the method name.</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">        surface_out: the output surface file.</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        area_surfs: specify surfaces to do vertex area correction based on.</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">        area_metrics: specify vertex area metrics to do area correction based\</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">            on.</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">        opt_bypass_sphere_check: ADVANCED: allow the current and new &#39;spheres&#39;\</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">            to have arbitrary shape as long as they follow the same contour.</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    Returns:</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceResampleOutputs`).</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_RESAMPLE_METADATA</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-resample&quot;</span><span class="p">)</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_in</span><span class="p">))</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">current_sphere</span><span class="p">))</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">new_sphere</span><span class="p">))</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface_out</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">area_surfs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">area_surfs</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">area_metrics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">area_metrics</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">opt_bypass_sphere_check</span><span class="p">:</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bypass-sphere-check&quot;</span><span class="p">)</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceResampleOutputs</span><span class="p">(</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">surface_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">surface_out</span><span class="p">),</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="p">)</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="s2">&quot;SURFACE_RESAMPLE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="s2">&quot;SurfaceResampleAreaMetrics&quot;</span><span class="p">,</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="s2">&quot;SurfaceResampleAreaSurfs&quot;</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="s2">&quot;SurfaceResampleOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="s2">&quot;surface_resample&quot;</span><span class="p">,</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -283,7 +285,7 @@
                     <div class="attr variable">
             <span class="name">SURFACE_RESAMPLE_METADATA</span>        =
 <input id="SURFACE_RESAMPLE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SURFACE_RESAMPLE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;37492368d85050d4a156315600c6bc3e1a4b7e68.boutiques&#39;, name=&#39;surface-resample&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SURFACE_RESAMPLE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4168972491f06e1a32e3a77db8ca8f8d951f800f.boutiques&#39;, name=&#39;surface-resample&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -669,47 +671,49 @@
 </span><span id="surface_resample-116"><a href="#surface_resample-116"><span class="linenos">116</span></a><span class="sd">    BARYCENTRIC</span>
 </span><span id="surface_resample-117"><a href="#surface_resample-117"><span class="linenos">117</span></a><span class="sd">    .</span>
 </span><span id="surface_resample-118"><a href="#surface_resample-118"><span class="linenos">118</span></a><span class="sd">    </span>
-</span><span id="surface_resample-119"><a href="#surface_resample-119"><span class="linenos">119</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="surface_resample-119"><a href="#surface_resample-119"><span class="linenos">119</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="surface_resample-120"><a href="#surface_resample-120"><span class="linenos">120</span></a><span class="sd">    </span>
-</span><span id="surface_resample-121"><a href="#surface_resample-121"><span class="linenos">121</span></a><span class="sd">    Args:</span>
-</span><span id="surface_resample-122"><a href="#surface_resample-122"><span class="linenos">122</span></a><span class="sd">        surface_in: the surface file to resample.</span>
-</span><span id="surface_resample-123"><a href="#surface_resample-123"><span class="linenos">123</span></a><span class="sd">        current_sphere: a sphere surface with the mesh that the input surface\</span>
-</span><span id="surface_resample-124"><a href="#surface_resample-124"><span class="linenos">124</span></a><span class="sd">            is currently on.</span>
-</span><span id="surface_resample-125"><a href="#surface_resample-125"><span class="linenos">125</span></a><span class="sd">        new_sphere: a sphere surface that is in register with &lt;current-sphere&gt;\</span>
-</span><span id="surface_resample-126"><a href="#surface_resample-126"><span class="linenos">126</span></a><span class="sd">            and has the desired output mesh.</span>
-</span><span id="surface_resample-127"><a href="#surface_resample-127"><span class="linenos">127</span></a><span class="sd">        method: the method name.</span>
-</span><span id="surface_resample-128"><a href="#surface_resample-128"><span class="linenos">128</span></a><span class="sd">        surface_out: the output surface file.</span>
-</span><span id="surface_resample-129"><a href="#surface_resample-129"><span class="linenos">129</span></a><span class="sd">        area_surfs: specify surfaces to do vertex area correction based on.</span>
-</span><span id="surface_resample-130"><a href="#surface_resample-130"><span class="linenos">130</span></a><span class="sd">        area_metrics: specify vertex area metrics to do area correction based\</span>
-</span><span id="surface_resample-131"><a href="#surface_resample-131"><span class="linenos">131</span></a><span class="sd">            on.</span>
-</span><span id="surface_resample-132"><a href="#surface_resample-132"><span class="linenos">132</span></a><span class="sd">        opt_bypass_sphere_check: ADVANCED: allow the current and new &#39;spheres&#39;\</span>
-</span><span id="surface_resample-133"><a href="#surface_resample-133"><span class="linenos">133</span></a><span class="sd">            to have arbitrary shape as long as they follow the same contour.</span>
-</span><span id="surface_resample-134"><a href="#surface_resample-134"><span class="linenos">134</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="surface_resample-135"><a href="#surface_resample-135"><span class="linenos">135</span></a><span class="sd">    Returns:</span>
-</span><span id="surface_resample-136"><a href="#surface_resample-136"><span class="linenos">136</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceResampleOutputs`).</span>
-</span><span id="surface_resample-137"><a href="#surface_resample-137"><span class="linenos">137</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="surface_resample-138"><a href="#surface_resample-138"><span class="linenos">138</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="surface_resample-139"><a href="#surface_resample-139"><span class="linenos">139</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_RESAMPLE_METADATA</span><span class="p">)</span>
-</span><span id="surface_resample-140"><a href="#surface_resample-140"><span class="linenos">140</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="surface_resample-141"><a href="#surface_resample-141"><span class="linenos">141</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="surface_resample-142"><a href="#surface_resample-142"><span class="linenos">142</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-resample&quot;</span><span class="p">)</span>
-</span><span id="surface_resample-143"><a href="#surface_resample-143"><span class="linenos">143</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_in</span><span class="p">))</span>
-</span><span id="surface_resample-144"><a href="#surface_resample-144"><span class="linenos">144</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">current_sphere</span><span class="p">))</span>
-</span><span id="surface_resample-145"><a href="#surface_resample-145"><span class="linenos">145</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">new_sphere</span><span class="p">))</span>
-</span><span id="surface_resample-146"><a href="#surface_resample-146"><span class="linenos">146</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
-</span><span id="surface_resample-147"><a href="#surface_resample-147"><span class="linenos">147</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface_out</span><span class="p">)</span>
-</span><span id="surface_resample-148"><a href="#surface_resample-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">area_surfs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surface_resample-149"><a href="#surface_resample-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">area_surfs</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="surface_resample-150"><a href="#surface_resample-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">area_metrics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surface_resample-151"><a href="#surface_resample-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">area_metrics</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="surface_resample-152"><a href="#surface_resample-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">opt_bypass_sphere_check</span><span class="p">:</span>
-</span><span id="surface_resample-153"><a href="#surface_resample-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bypass-sphere-check&quot;</span><span class="p">)</span>
-</span><span id="surface_resample-154"><a href="#surface_resample-154"><span class="linenos">154</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceResampleOutputs</span><span class="p">(</span>
-</span><span id="surface_resample-155"><a href="#surface_resample-155"><span class="linenos">155</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="surface_resample-156"><a href="#surface_resample-156"><span class="linenos">156</span></a>        <span class="n">surface_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">surface_out</span><span class="p">),</span>
-</span><span id="surface_resample-157"><a href="#surface_resample-157"><span class="linenos">157</span></a>    <span class="p">)</span>
-</span><span id="surface_resample-158"><a href="#surface_resample-158"><span class="linenos">158</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="surface_resample-159"><a href="#surface_resample-159"><span class="linenos">159</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="surface_resample-121"><a href="#surface_resample-121"><span class="linenos">121</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="surface_resample-122"><a href="#surface_resample-122"><span class="linenos">122</span></a><span class="sd">    </span>
+</span><span id="surface_resample-123"><a href="#surface_resample-123"><span class="linenos">123</span></a><span class="sd">    Args:</span>
+</span><span id="surface_resample-124"><a href="#surface_resample-124"><span class="linenos">124</span></a><span class="sd">        surface_in: the surface file to resample.</span>
+</span><span id="surface_resample-125"><a href="#surface_resample-125"><span class="linenos">125</span></a><span class="sd">        current_sphere: a sphere surface with the mesh that the input surface\</span>
+</span><span id="surface_resample-126"><a href="#surface_resample-126"><span class="linenos">126</span></a><span class="sd">            is currently on.</span>
+</span><span id="surface_resample-127"><a href="#surface_resample-127"><span class="linenos">127</span></a><span class="sd">        new_sphere: a sphere surface that is in register with &lt;current-sphere&gt;\</span>
+</span><span id="surface_resample-128"><a href="#surface_resample-128"><span class="linenos">128</span></a><span class="sd">            and has the desired output mesh.</span>
+</span><span id="surface_resample-129"><a href="#surface_resample-129"><span class="linenos">129</span></a><span class="sd">        method: the method name.</span>
+</span><span id="surface_resample-130"><a href="#surface_resample-130"><span class="linenos">130</span></a><span class="sd">        surface_out: the output surface file.</span>
+</span><span id="surface_resample-131"><a href="#surface_resample-131"><span class="linenos">131</span></a><span class="sd">        area_surfs: specify surfaces to do vertex area correction based on.</span>
+</span><span id="surface_resample-132"><a href="#surface_resample-132"><span class="linenos">132</span></a><span class="sd">        area_metrics: specify vertex area metrics to do area correction based\</span>
+</span><span id="surface_resample-133"><a href="#surface_resample-133"><span class="linenos">133</span></a><span class="sd">            on.</span>
+</span><span id="surface_resample-134"><a href="#surface_resample-134"><span class="linenos">134</span></a><span class="sd">        opt_bypass_sphere_check: ADVANCED: allow the current and new &#39;spheres&#39;\</span>
+</span><span id="surface_resample-135"><a href="#surface_resample-135"><span class="linenos">135</span></a><span class="sd">            to have arbitrary shape as long as they follow the same contour.</span>
+</span><span id="surface_resample-136"><a href="#surface_resample-136"><span class="linenos">136</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="surface_resample-137"><a href="#surface_resample-137"><span class="linenos">137</span></a><span class="sd">    Returns:</span>
+</span><span id="surface_resample-138"><a href="#surface_resample-138"><span class="linenos">138</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceResampleOutputs`).</span>
+</span><span id="surface_resample-139"><a href="#surface_resample-139"><span class="linenos">139</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="surface_resample-140"><a href="#surface_resample-140"><span class="linenos">140</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="surface_resample-141"><a href="#surface_resample-141"><span class="linenos">141</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_RESAMPLE_METADATA</span><span class="p">)</span>
+</span><span id="surface_resample-142"><a href="#surface_resample-142"><span class="linenos">142</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="surface_resample-143"><a href="#surface_resample-143"><span class="linenos">143</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="surface_resample-144"><a href="#surface_resample-144"><span class="linenos">144</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-resample&quot;</span><span class="p">)</span>
+</span><span id="surface_resample-145"><a href="#surface_resample-145"><span class="linenos">145</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_in</span><span class="p">))</span>
+</span><span id="surface_resample-146"><a href="#surface_resample-146"><span class="linenos">146</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">current_sphere</span><span class="p">))</span>
+</span><span id="surface_resample-147"><a href="#surface_resample-147"><span class="linenos">147</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">new_sphere</span><span class="p">))</span>
+</span><span id="surface_resample-148"><a href="#surface_resample-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</span><span id="surface_resample-149"><a href="#surface_resample-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface_out</span><span class="p">)</span>
+</span><span id="surface_resample-150"><a href="#surface_resample-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">area_surfs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surface_resample-151"><a href="#surface_resample-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">area_surfs</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="surface_resample-152"><a href="#surface_resample-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">area_metrics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surface_resample-153"><a href="#surface_resample-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">area_metrics</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="surface_resample-154"><a href="#surface_resample-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">opt_bypass_sphere_check</span><span class="p">:</span>
+</span><span id="surface_resample-155"><a href="#surface_resample-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bypass-sphere-check&quot;</span><span class="p">)</span>
+</span><span id="surface_resample-156"><a href="#surface_resample-156"><span class="linenos">156</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceResampleOutputs</span><span class="p">(</span>
+</span><span id="surface_resample-157"><a href="#surface_resample-157"><span class="linenos">157</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="surface_resample-158"><a href="#surface_resample-158"><span class="linenos">158</span></a>        <span class="n">surface_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">surface_out</span><span class="p">),</span>
+</span><span id="surface_resample-159"><a href="#surface_resample-159"><span class="linenos">159</span></a>    <span class="p">)</span>
+</span><span id="surface_resample-160"><a href="#surface_resample-160"><span class="linenos">160</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="surface_resample-161"><a href="#surface_resample-161"><span class="linenos">161</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -734,7 +738,9 @@ order to minimize smoothing.</p>
 BARYCENTRIC
 .</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

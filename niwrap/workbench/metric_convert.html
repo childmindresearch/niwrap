@@ -159,7 +159,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">METRIC_CONVERT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1e779534088fcd161aaabcf0b181dd8df7dea118.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ecaca4f2fe19e25bfbebf123fcb413a64d79f59f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;metric-convert&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -307,42 +307,44 @@
 </span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    that gifti-unaware programs can operate on the data. You must specify</span>
 </span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    exactly one of the options.</span>
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    </span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    </span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    Args:</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">        to_nifti: convert metric to nifti.</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">        from_nifti: convert nifti to metric.</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">    Returns:</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        NamedTuple of outputs (described in `MetricConvertOutputs`).</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_CONVERT_METADATA</span><span class="p">)</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-convert&quot;</span><span class="p">)</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">to_nifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">to_nifti</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">from_nifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_nifti</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricConvertOutputs</span><span class="p">(</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="n">to_nifti</span><span class="o">=</span><span class="n">to_nifti</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">to_nifti</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>        <span class="n">from_nifti</span><span class="o">=</span><span class="n">from_nifti</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">from_nifti</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="p">)</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="s2">&quot;METRIC_CONVERT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="s2">&quot;MetricConvertFromNifti&quot;</span><span class="p">,</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="s2">&quot;MetricConvertFromNiftiOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="s2">&quot;MetricConvertOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="s2">&quot;MetricConvertToNifti&quot;</span><span class="p">,</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="s2">&quot;MetricConvertToNiftiOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="s2">&quot;metric_convert&quot;</span><span class="p">,</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="p">]</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    </span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    Args:</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        to_nifti: convert metric to nifti.</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        from_nifti: convert nifti to metric.</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">    Returns:</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        NamedTuple of outputs (described in `MetricConvertOutputs`).</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_CONVERT_METADATA</span><span class="p">)</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-convert&quot;</span><span class="p">)</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">to_nifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">to_nifti</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">from_nifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_nifti</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricConvertOutputs</span><span class="p">(</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="n">to_nifti</span><span class="o">=</span><span class="n">to_nifti</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">to_nifti</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="n">from_nifti</span><span class="o">=</span><span class="n">from_nifti</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">from_nifti</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="p">)</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="s2">&quot;METRIC_CONVERT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="s2">&quot;MetricConvertFromNifti&quot;</span><span class="p">,</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="s2">&quot;MetricConvertFromNiftiOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="s2">&quot;MetricConvertOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="s2">&quot;MetricConvertToNifti&quot;</span><span class="p">,</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="s2">&quot;MetricConvertToNiftiOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="s2">&quot;metric_convert&quot;</span><span class="p">,</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -351,7 +353,7 @@
                     <div class="attr variable">
             <span class="name">METRIC_CONVERT_METADATA</span>        =
 <input id="METRIC_CONVERT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="METRIC_CONVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1e779534088fcd161aaabcf0b181dd8df7dea118.boutiques&#39;, name=&#39;metric-convert&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="METRIC_CONVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ecaca4f2fe19e25bfbebf123fcb413a64d79f59f.boutiques&#39;, name=&#39;metric-convert&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -1014,31 +1016,33 @@
 </span><span id="metric_convert-156"><a href="#metric_convert-156"><span class="linenos">156</span></a><span class="sd">    that gifti-unaware programs can operate on the data. You must specify</span>
 </span><span id="metric_convert-157"><a href="#metric_convert-157"><span class="linenos">157</span></a><span class="sd">    exactly one of the options.</span>
 </span><span id="metric_convert-158"><a href="#metric_convert-158"><span class="linenos">158</span></a><span class="sd">    </span>
-</span><span id="metric_convert-159"><a href="#metric_convert-159"><span class="linenos">159</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="metric_convert-159"><a href="#metric_convert-159"><span class="linenos">159</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="metric_convert-160"><a href="#metric_convert-160"><span class="linenos">160</span></a><span class="sd">    </span>
-</span><span id="metric_convert-161"><a href="#metric_convert-161"><span class="linenos">161</span></a><span class="sd">    Args:</span>
-</span><span id="metric_convert-162"><a href="#metric_convert-162"><span class="linenos">162</span></a><span class="sd">        to_nifti: convert metric to nifti.</span>
-</span><span id="metric_convert-163"><a href="#metric_convert-163"><span class="linenos">163</span></a><span class="sd">        from_nifti: convert nifti to metric.</span>
-</span><span id="metric_convert-164"><a href="#metric_convert-164"><span class="linenos">164</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="metric_convert-165"><a href="#metric_convert-165"><span class="linenos">165</span></a><span class="sd">    Returns:</span>
-</span><span id="metric_convert-166"><a href="#metric_convert-166"><span class="linenos">166</span></a><span class="sd">        NamedTuple of outputs (described in `MetricConvertOutputs`).</span>
-</span><span id="metric_convert-167"><a href="#metric_convert-167"><span class="linenos">167</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="metric_convert-168"><a href="#metric_convert-168"><span class="linenos">168</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="metric_convert-169"><a href="#metric_convert-169"><span class="linenos">169</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_CONVERT_METADATA</span><span class="p">)</span>
-</span><span id="metric_convert-170"><a href="#metric_convert-170"><span class="linenos">170</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="metric_convert-171"><a href="#metric_convert-171"><span class="linenos">171</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="metric_convert-172"><a href="#metric_convert-172"><span class="linenos">172</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-convert&quot;</span><span class="p">)</span>
-</span><span id="metric_convert-173"><a href="#metric_convert-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">to_nifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="metric_convert-174"><a href="#metric_convert-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">to_nifti</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="metric_convert-175"><a href="#metric_convert-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">from_nifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="metric_convert-176"><a href="#metric_convert-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_nifti</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="metric_convert-177"><a href="#metric_convert-177"><span class="linenos">177</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricConvertOutputs</span><span class="p">(</span>
-</span><span id="metric_convert-178"><a href="#metric_convert-178"><span class="linenos">178</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="metric_convert-179"><a href="#metric_convert-179"><span class="linenos">179</span></a>        <span class="n">to_nifti</span><span class="o">=</span><span class="n">to_nifti</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">to_nifti</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_convert-180"><a href="#metric_convert-180"><span class="linenos">180</span></a>        <span class="n">from_nifti</span><span class="o">=</span><span class="n">from_nifti</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">from_nifti</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="metric_convert-181"><a href="#metric_convert-181"><span class="linenos">181</span></a>    <span class="p">)</span>
-</span><span id="metric_convert-182"><a href="#metric_convert-182"><span class="linenos">182</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="metric_convert-183"><a href="#metric_convert-183"><span class="linenos">183</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="metric_convert-161"><a href="#metric_convert-161"><span class="linenos">161</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="metric_convert-162"><a href="#metric_convert-162"><span class="linenos">162</span></a><span class="sd">    </span>
+</span><span id="metric_convert-163"><a href="#metric_convert-163"><span class="linenos">163</span></a><span class="sd">    Args:</span>
+</span><span id="metric_convert-164"><a href="#metric_convert-164"><span class="linenos">164</span></a><span class="sd">        to_nifti: convert metric to nifti.</span>
+</span><span id="metric_convert-165"><a href="#metric_convert-165"><span class="linenos">165</span></a><span class="sd">        from_nifti: convert nifti to metric.</span>
+</span><span id="metric_convert-166"><a href="#metric_convert-166"><span class="linenos">166</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="metric_convert-167"><a href="#metric_convert-167"><span class="linenos">167</span></a><span class="sd">    Returns:</span>
+</span><span id="metric_convert-168"><a href="#metric_convert-168"><span class="linenos">168</span></a><span class="sd">        NamedTuple of outputs (described in `MetricConvertOutputs`).</span>
+</span><span id="metric_convert-169"><a href="#metric_convert-169"><span class="linenos">169</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="metric_convert-170"><a href="#metric_convert-170"><span class="linenos">170</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="metric_convert-171"><a href="#metric_convert-171"><span class="linenos">171</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_CONVERT_METADATA</span><span class="p">)</span>
+</span><span id="metric_convert-172"><a href="#metric_convert-172"><span class="linenos">172</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="metric_convert-173"><a href="#metric_convert-173"><span class="linenos">173</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="metric_convert-174"><a href="#metric_convert-174"><span class="linenos">174</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-convert&quot;</span><span class="p">)</span>
+</span><span id="metric_convert-175"><a href="#metric_convert-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">to_nifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="metric_convert-176"><a href="#metric_convert-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">to_nifti</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="metric_convert-177"><a href="#metric_convert-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">from_nifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="metric_convert-178"><a href="#metric_convert-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_nifti</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="metric_convert-179"><a href="#metric_convert-179"><span class="linenos">179</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricConvertOutputs</span><span class="p">(</span>
+</span><span id="metric_convert-180"><a href="#metric_convert-180"><span class="linenos">180</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="metric_convert-181"><a href="#metric_convert-181"><span class="linenos">181</span></a>        <span class="n">to_nifti</span><span class="o">=</span><span class="n">to_nifti</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">to_nifti</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_convert-182"><a href="#metric_convert-182"><span class="linenos">182</span></a>        <span class="n">from_nifti</span><span class="o">=</span><span class="n">from_nifti</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">from_nifti</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="metric_convert-183"><a href="#metric_convert-183"><span class="linenos">183</span></a>    <span class="p">)</span>
+</span><span id="metric_convert-184"><a href="#metric_convert-184"><span class="linenos">184</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="metric_convert-185"><a href="#metric_convert-185"><span class="linenos">185</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1048,7 +1052,9 @@
 that gifti-unaware programs can operate on the data. You must specify
 exactly one of the options.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

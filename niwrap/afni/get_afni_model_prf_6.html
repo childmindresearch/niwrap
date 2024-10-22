@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">GET_AFNI_MODEL_PRF_6_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;52cb0a55d1f2788fd55b3d4192849d204281ef6c.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a1644a25504c74d6961d86251212dfc9c7f6fb99.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;get_afni_model_PRF_6&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -106,47 +106,46 @@
 </span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    A command to invoke AFNI&#39;s population receptive field (pRF) model.</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    </span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    URL:</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF_6.html</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    </span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        nt_: Number of time points of the stimulus dataset.</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        amp: Amplitude of the pRF model.</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        x: X coordinate of the pRF center.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        y: Y coordinate of the pRF center.</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        sigma: Standard deviation of the Gaussian pRF.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        sigrat: Ratio of standard deviations (sigma_x/sigma_y) of the Gaussian\</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">            pRF.</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        theta: Rotation angle theta of the Gaussian pRF.</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">    Returns:</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        NamedTuple of outputs (described in `GetAfniModelPrf6Outputs`).</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GET_AFNI_MODEL_PRF_6_METADATA</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;get_afni_model_PRF_6&quot;</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">nt_</span><span class="p">))</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">amp</span><span class="p">))</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sigma</span><span class="p">))</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sigrat</span><span class="p">))</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">GetAfniModelPrf6Outputs</span><span class="p">(</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="p">)</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    </span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    Args:</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        nt_: Number of time points of the stimulus dataset.</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        amp: Amplitude of the pRF model.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        x: X coordinate of the pRF center.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        y: Y coordinate of the pRF center.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        sigma: Standard deviation of the Gaussian pRF.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        sigrat: Ratio of standard deviations (sigma_x/sigma_y) of the Gaussian\</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">            pRF.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        theta: Rotation angle theta of the Gaussian pRF.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">    Returns:</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        NamedTuple of outputs (described in `GetAfniModelPrf6Outputs`).</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GET_AFNI_MODEL_PRF_6_METADATA</span><span class="p">)</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;get_afni_model_PRF_6&quot;</span><span class="p">)</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">nt_</span><span class="p">))</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">amp</span><span class="p">))</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sigma</span><span class="p">))</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sigrat</span><span class="p">))</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">GetAfniModelPrf6Outputs</span><span class="p">(</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>
 </span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="s2">&quot;GET_AFNI_MODEL_PRF_6_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="s2">&quot;GetAfniModelPrf6Outputs&quot;</span><span class="p">,</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="s2">&quot;get_afni_model_prf_6&quot;</span><span class="p">,</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a><span class="p">]</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="s2">&quot;GET_AFNI_MODEL_PRF_6_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="s2">&quot;GetAfniModelPrf6Outputs&quot;</span><span class="p">,</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="s2">&quot;get_afni_model_prf_6&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -155,7 +154,7 @@
                     <div class="attr variable">
             <span class="name">GET_AFNI_MODEL_PRF_6_METADATA</span>        =
 <input id="GET_AFNI_MODEL_PRF_6_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="GET_AFNI_MODEL_PRF_6_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;52cb0a55d1f2788fd55b3d4192849d204281ef6c.boutiques&#39;, name=&#39;get_afni_model_PRF_6&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="GET_AFNI_MODEL_PRF_6_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a1644a25504c74d6961d86251212dfc9c7f6fb99.boutiques&#39;, name=&#39;get_afni_model_PRF_6&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -240,49 +239,47 @@
 </span><span id="get_afni_model_prf_6-36"><a href="#get_afni_model_prf_6-36"><span class="linenos">36</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="get_afni_model_prf_6-37"><a href="#get_afni_model_prf_6-37"><span class="linenos">37</span></a><span class="sd">    A command to invoke AFNI&#39;s population receptive field (pRF) model.</span>
 </span><span id="get_afni_model_prf_6-38"><a href="#get_afni_model_prf_6-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="get_afni_model_prf_6-39"><a href="#get_afni_model_prf_6-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="get_afni_model_prf_6-39"><a href="#get_afni_model_prf_6-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="get_afni_model_prf_6-40"><a href="#get_afni_model_prf_6-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="get_afni_model_prf_6-41"><a href="#get_afni_model_prf_6-41"><span class="linenos">41</span></a><span class="sd">    URL:</span>
-</span><span id="get_afni_model_prf_6-42"><a href="#get_afni_model_prf_6-42"><span class="linenos">42</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF_6.html</span>
-</span><span id="get_afni_model_prf_6-43"><a href="#get_afni_model_prf_6-43"><span class="linenos">43</span></a><span class="sd">    </span>
-</span><span id="get_afni_model_prf_6-44"><a href="#get_afni_model_prf_6-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
-</span><span id="get_afni_model_prf_6-45"><a href="#get_afni_model_prf_6-45"><span class="linenos">45</span></a><span class="sd">        nt_: Number of time points of the stimulus dataset.</span>
-</span><span id="get_afni_model_prf_6-46"><a href="#get_afni_model_prf_6-46"><span class="linenos">46</span></a><span class="sd">        amp: Amplitude of the pRF model.</span>
-</span><span id="get_afni_model_prf_6-47"><a href="#get_afni_model_prf_6-47"><span class="linenos">47</span></a><span class="sd">        x: X coordinate of the pRF center.</span>
-</span><span id="get_afni_model_prf_6-48"><a href="#get_afni_model_prf_6-48"><span class="linenos">48</span></a><span class="sd">        y: Y coordinate of the pRF center.</span>
-</span><span id="get_afni_model_prf_6-49"><a href="#get_afni_model_prf_6-49"><span class="linenos">49</span></a><span class="sd">        sigma: Standard deviation of the Gaussian pRF.</span>
-</span><span id="get_afni_model_prf_6-50"><a href="#get_afni_model_prf_6-50"><span class="linenos">50</span></a><span class="sd">        sigrat: Ratio of standard deviations (sigma_x/sigma_y) of the Gaussian\</span>
-</span><span id="get_afni_model_prf_6-51"><a href="#get_afni_model_prf_6-51"><span class="linenos">51</span></a><span class="sd">            pRF.</span>
-</span><span id="get_afni_model_prf_6-52"><a href="#get_afni_model_prf_6-52"><span class="linenos">52</span></a><span class="sd">        theta: Rotation angle theta of the Gaussian pRF.</span>
-</span><span id="get_afni_model_prf_6-53"><a href="#get_afni_model_prf_6-53"><span class="linenos">53</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="get_afni_model_prf_6-54"><a href="#get_afni_model_prf_6-54"><span class="linenos">54</span></a><span class="sd">    Returns:</span>
-</span><span id="get_afni_model_prf_6-55"><a href="#get_afni_model_prf_6-55"><span class="linenos">55</span></a><span class="sd">        NamedTuple of outputs (described in `GetAfniModelPrf6Outputs`).</span>
-</span><span id="get_afni_model_prf_6-56"><a href="#get_afni_model_prf_6-56"><span class="linenos">56</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="get_afni_model_prf_6-57"><a href="#get_afni_model_prf_6-57"><span class="linenos">57</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="get_afni_model_prf_6-58"><a href="#get_afni_model_prf_6-58"><span class="linenos">58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GET_AFNI_MODEL_PRF_6_METADATA</span><span class="p">)</span>
-</span><span id="get_afni_model_prf_6-59"><a href="#get_afni_model_prf_6-59"><span class="linenos">59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="get_afni_model_prf_6-60"><a href="#get_afni_model_prf_6-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;get_afni_model_PRF_6&quot;</span><span class="p">)</span>
-</span><span id="get_afni_model_prf_6-61"><a href="#get_afni_model_prf_6-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">nt_</span><span class="p">))</span>
-</span><span id="get_afni_model_prf_6-62"><a href="#get_afni_model_prf_6-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">amp</span><span class="p">))</span>
-</span><span id="get_afni_model_prf_6-63"><a href="#get_afni_model_prf_6-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</span><span id="get_afni_model_prf_6-64"><a href="#get_afni_model_prf_6-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-</span><span id="get_afni_model_prf_6-65"><a href="#get_afni_model_prf_6-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sigma</span><span class="p">))</span>
-</span><span id="get_afni_model_prf_6-66"><a href="#get_afni_model_prf_6-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sigrat</span><span class="p">))</span>
-</span><span id="get_afni_model_prf_6-67"><a href="#get_afni_model_prf_6-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
-</span><span id="get_afni_model_prf_6-68"><a href="#get_afni_model_prf_6-68"><span class="linenos">68</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">GetAfniModelPrf6Outputs</span><span class="p">(</span>
-</span><span id="get_afni_model_prf_6-69"><a href="#get_afni_model_prf_6-69"><span class="linenos">69</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="get_afni_model_prf_6-70"><a href="#get_afni_model_prf_6-70"><span class="linenos">70</span></a>    <span class="p">)</span>
-</span><span id="get_afni_model_prf_6-71"><a href="#get_afni_model_prf_6-71"><span class="linenos">71</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="get_afni_model_prf_6-72"><a href="#get_afni_model_prf_6-72"><span class="linenos">72</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="get_afni_model_prf_6-41"><a href="#get_afni_model_prf_6-41"><span class="linenos">41</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="get_afni_model_prf_6-42"><a href="#get_afni_model_prf_6-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="get_afni_model_prf_6-43"><a href="#get_afni_model_prf_6-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
+</span><span id="get_afni_model_prf_6-44"><a href="#get_afni_model_prf_6-44"><span class="linenos">44</span></a><span class="sd">        nt_: Number of time points of the stimulus dataset.</span>
+</span><span id="get_afni_model_prf_6-45"><a href="#get_afni_model_prf_6-45"><span class="linenos">45</span></a><span class="sd">        amp: Amplitude of the pRF model.</span>
+</span><span id="get_afni_model_prf_6-46"><a href="#get_afni_model_prf_6-46"><span class="linenos">46</span></a><span class="sd">        x: X coordinate of the pRF center.</span>
+</span><span id="get_afni_model_prf_6-47"><a href="#get_afni_model_prf_6-47"><span class="linenos">47</span></a><span class="sd">        y: Y coordinate of the pRF center.</span>
+</span><span id="get_afni_model_prf_6-48"><a href="#get_afni_model_prf_6-48"><span class="linenos">48</span></a><span class="sd">        sigma: Standard deviation of the Gaussian pRF.</span>
+</span><span id="get_afni_model_prf_6-49"><a href="#get_afni_model_prf_6-49"><span class="linenos">49</span></a><span class="sd">        sigrat: Ratio of standard deviations (sigma_x/sigma_y) of the Gaussian\</span>
+</span><span id="get_afni_model_prf_6-50"><a href="#get_afni_model_prf_6-50"><span class="linenos">50</span></a><span class="sd">            pRF.</span>
+</span><span id="get_afni_model_prf_6-51"><a href="#get_afni_model_prf_6-51"><span class="linenos">51</span></a><span class="sd">        theta: Rotation angle theta of the Gaussian pRF.</span>
+</span><span id="get_afni_model_prf_6-52"><a href="#get_afni_model_prf_6-52"><span class="linenos">52</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="get_afni_model_prf_6-53"><a href="#get_afni_model_prf_6-53"><span class="linenos">53</span></a><span class="sd">    Returns:</span>
+</span><span id="get_afni_model_prf_6-54"><a href="#get_afni_model_prf_6-54"><span class="linenos">54</span></a><span class="sd">        NamedTuple of outputs (described in `GetAfniModelPrf6Outputs`).</span>
+</span><span id="get_afni_model_prf_6-55"><a href="#get_afni_model_prf_6-55"><span class="linenos">55</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="get_afni_model_prf_6-56"><a href="#get_afni_model_prf_6-56"><span class="linenos">56</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="get_afni_model_prf_6-57"><a href="#get_afni_model_prf_6-57"><span class="linenos">57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GET_AFNI_MODEL_PRF_6_METADATA</span><span class="p">)</span>
+</span><span id="get_afni_model_prf_6-58"><a href="#get_afni_model_prf_6-58"><span class="linenos">58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="get_afni_model_prf_6-59"><a href="#get_afni_model_prf_6-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;get_afni_model_PRF_6&quot;</span><span class="p">)</span>
+</span><span id="get_afni_model_prf_6-60"><a href="#get_afni_model_prf_6-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">nt_</span><span class="p">))</span>
+</span><span id="get_afni_model_prf_6-61"><a href="#get_afni_model_prf_6-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">amp</span><span class="p">))</span>
+</span><span id="get_afni_model_prf_6-62"><a href="#get_afni_model_prf_6-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span><span id="get_afni_model_prf_6-63"><a href="#get_afni_model_prf_6-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</span><span id="get_afni_model_prf_6-64"><a href="#get_afni_model_prf_6-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sigma</span><span class="p">))</span>
+</span><span id="get_afni_model_prf_6-65"><a href="#get_afni_model_prf_6-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sigrat</span><span class="p">))</span>
+</span><span id="get_afni_model_prf_6-66"><a href="#get_afni_model_prf_6-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
+</span><span id="get_afni_model_prf_6-67"><a href="#get_afni_model_prf_6-67"><span class="linenos">67</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">GetAfniModelPrf6Outputs</span><span class="p">(</span>
+</span><span id="get_afni_model_prf_6-68"><a href="#get_afni_model_prf_6-68"><span class="linenos">68</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="get_afni_model_prf_6-69"><a href="#get_afni_model_prf_6-69"><span class="linenos">69</span></a>    <span class="p">)</span>
+</span><span id="get_afni_model_prf_6-70"><a href="#get_afni_model_prf_6-70"><span class="linenos">70</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="get_afni_model_prf_6-71"><a href="#get_afni_model_prf_6-71"><span class="linenos">71</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>A command to invoke AFNI's population receptive field (pRF) model.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF_6.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF_6.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

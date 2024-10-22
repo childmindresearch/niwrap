@@ -144,7 +144,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MTNORMALISE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3f2c8053a316dd7b7f0318315a1d28f67845229a.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3709b0ca1455372ea3dda75e22e31168270b187c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mtnormalise&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -307,136 +307,132 @@
 </span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">    inhomogeneity normalisation for quantitative apparent fibre density. In</span>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">    Proc. ISMRM, 2021, 29, 2472.</span>
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    </span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    Author: Thijs Dhollander (thijs.dhollander@gmail.com), Rami Tabbara</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    (rami.tabbara@florey.edu.au), David Raffelt (david.raffelt@florey.edu.au),</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    Jonas Rosnarho-Tornstrand (jonas.rosnarho-tornstrand@kcl.ac.uk) and J-Donald</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    Tournier (jdtournier@gmail.com)</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    </span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    URL:</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/mtnormalise.html</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    </span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">    Args:</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        mask: the mask defines the data used to compute the intensity\</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            normalisation. This option is mandatory.</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        input_output: list of all input and output tissue compartment files\</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">            (see example usage).</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        order: the maximum order of the polynomial basis used to fit the\</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">            normalisation field in the log-domain. An order of 0 is equivalent to\</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">            not allowing spatial variance of the intensity normalisation factor.\</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">            (default: 3).</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        niter: set the number of iterations. The first (and potentially only)\</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">            entry applies to the main loop. If supplied as a comma-separated list\</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">            of integers, the second entry applies to the inner loop to update the\</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">            balance factors (default: 15,7).</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">        reference: specify the (positive) reference value to which the summed\</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">            tissue compartments will be normalised. (default: 0.282095, SH DC term\</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            for unit angular integral).</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        balanced: incorporate the per-tissue balancing factors into scaling of\</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">            the output images (NOTE: use of this option has critical consequences\</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">            for AFD intensity normalisation; should not be used unless these\</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">            consequences are fully understood).</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">        check_norm: output the final estimated spatially varying intensity\</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">            level that is used for normalisation.</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">        check_mask: output the final mask used to compute the normalisation.\</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">            This mask excludes regions identified as outliers by the optimisation\</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">            process.</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">        check_factors: output the tissue balance factors computed during\</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">            normalisation.</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="sd">    Returns:</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="sd">        NamedTuple of outputs (described in `MtnormaliseOutputs`).</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MTNORMALISE_METADATA</span><span class="p">)</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mtnormalise&quot;</span><span class="p">)</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="p">])</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">order</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>            <span class="s2">&quot;-order&quot;</span><span class="p">,</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>            <span class="n">order</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="p">])</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">niter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>            <span class="s2">&quot;-niter&quot;</span><span class="p">,</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">niter</span><span class="p">))</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>        <span class="p">])</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>    <span class="k">if</span> <span class="n">reference</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>            <span class="s2">&quot;-reference&quot;</span><span class="p">,</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reference</span><span class="p">)</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="p">])</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">balanced</span><span class="p">:</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-balanced&quot;</span><span class="p">)</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">check_norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>            <span class="s2">&quot;-check_norm&quot;</span><span class="p">,</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>            <span class="n">check_norm</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>        <span class="p">])</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="k">if</span> <span class="n">check_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>            <span class="s2">&quot;-check_mask&quot;</span><span class="p">,</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>            <span class="n">check_mask</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>        <span class="p">])</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="k">if</span> <span class="n">check_factors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>            <span class="s2">&quot;-check_factors&quot;</span><span class="p">,</span>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>            <span class="n">check_factors</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>        <span class="p">])</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>        <span class="p">])</span>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">input_output</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MtnormaliseOutputs</span><span class="p">(</span>
-</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>        <span class="n">check_norm</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_norm</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>        <span class="n">check_mask</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_mask</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>        <span class="n">check_factors</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_factors</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_factors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>        <span class="n">input_output</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;outputs&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">input_output</span><span class="p">],</span>
-</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>    <span class="p">)</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>
-</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;MTNORMALISE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;MtnormaliseConfig&quot;</span><span class="p">,</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a>    <span class="s2">&quot;MtnormaliseInputOutput&quot;</span><span class="p">,</span>
-</span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a>    <span class="s2">&quot;MtnormaliseInputOutputOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>    <span class="s2">&quot;MtnormaliseOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a>    <span class="s2">&quot;mtnormalise&quot;</span><span class="p">,</span>
-</span><span id="L-302"><a href="#L-302"><span class="linenos">302</span></a><span class="p">]</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    </span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    </span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    Args:</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        mask: the mask defines the data used to compute the intensity\</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">            normalisation. This option is mandatory.</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        input_output: list of all input and output tissue compartment files\</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">            (see example usage).</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        order: the maximum order of the polynomial basis used to fit the\</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">            normalisation field in the log-domain. An order of 0 is equivalent to\</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">            not allowing spatial variance of the intensity normalisation factor.\</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">            (default: 3).</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        niter: set the number of iterations. The first (and potentially only)\</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">            entry applies to the main loop. If supplied as a comma-separated list\</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a><span class="sd">            of integers, the second entry applies to the inner loop to update the\</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="sd">            balance factors (default: 15,7).</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a><span class="sd">        reference: specify the (positive) reference value to which the summed\</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="sd">            tissue compartments will be normalised. (default: 0.282095, SH DC term\</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="sd">            for unit angular integral).</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="sd">        balanced: incorporate the per-tissue balancing factors into scaling of\</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">            the output images (NOTE: use of this option has critical consequences\</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="sd">            for AFD intensity normalisation; should not be used unless these\</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="sd">            consequences are fully understood).</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="sd">        check_norm: output the final estimated spatially varying intensity\</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="sd">            level that is used for normalisation.</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="sd">        check_mask: output the final mask used to compute the normalisation.\</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="sd">            This mask excludes regions identified as outliers by the optimisation\</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="sd">            process.</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="sd">        check_factors: output the tissue balance factors computed during\</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="sd">            normalisation.</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="sd">    Returns:</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="sd">        NamedTuple of outputs (described in `MtnormaliseOutputs`).</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MTNORMALISE_METADATA</span><span class="p">)</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mtnormalise&quot;</span><span class="p">)</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>        <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="p">])</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">order</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>            <span class="s2">&quot;-order&quot;</span><span class="p">,</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>            <span class="n">order</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="p">])</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">niter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>            <span class="s2">&quot;-niter&quot;</span><span class="p">,</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">niter</span><span class="p">))</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>        <span class="p">])</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">reference</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>            <span class="s2">&quot;-reference&quot;</span><span class="p">,</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reference</span><span class="p">)</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>        <span class="p">])</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="k">if</span> <span class="n">balanced</span><span class="p">:</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-balanced&quot;</span><span class="p">)</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="k">if</span> <span class="n">check_norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>            <span class="s2">&quot;-check_norm&quot;</span><span class="p">,</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>            <span class="n">check_norm</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>        <span class="p">])</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">check_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>            <span class="s2">&quot;-check_mask&quot;</span><span class="p">,</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>            <span class="n">check_mask</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>        <span class="p">])</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">check_factors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>            <span class="s2">&quot;-check_factors&quot;</span><span class="p">,</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>            <span class="n">check_factors</span>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>        <span class="p">])</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-270"><a href="#L-270"><span class="linenos">270</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-271"><a href="#L-271"><span class="linenos">271</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-272"><a href="#L-272"><span class="linenos">272</span></a>        <span class="p">])</span>
+</span><span id="L-273"><a href="#L-273"><span class="linenos">273</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">input_output</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MtnormaliseOutputs</span><span class="p">(</span>
+</span><span id="L-281"><a href="#L-281"><span class="linenos">281</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-282"><a href="#L-282"><span class="linenos">282</span></a>        <span class="n">check_norm</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_norm</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-283"><a href="#L-283"><span class="linenos">283</span></a>        <span class="n">check_mask</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_mask</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-284"><a href="#L-284"><span class="linenos">284</span></a>        <span class="n">check_factors</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_factors</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_factors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-285"><a href="#L-285"><span class="linenos">285</span></a>        <span class="n">input_output</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;outputs&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">input_output</span><span class="p">],</span>
+</span><span id="L-286"><a href="#L-286"><span class="linenos">286</span></a>    <span class="p">)</span>
+</span><span id="L-287"><a href="#L-287"><span class="linenos">287</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-288"><a href="#L-288"><span class="linenos">288</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-289"><a href="#L-289"><span class="linenos">289</span></a>
+</span><span id="L-290"><a href="#L-290"><span class="linenos">290</span></a>
+</span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>    <span class="s2">&quot;MTNORMALISE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a>    <span class="s2">&quot;MtnormaliseConfig&quot;</span><span class="p">,</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a>    <span class="s2">&quot;MtnormaliseInputOutput&quot;</span><span class="p">,</span>
+</span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>    <span class="s2">&quot;MtnormaliseInputOutputOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a>    <span class="s2">&quot;MtnormaliseOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a>    <span class="s2">&quot;mtnormalise&quot;</span><span class="p">,</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -445,7 +441,7 @@
                     <div class="attr variable">
             <span class="name">MTNORMALISE_METADATA</span>        =
 <input id="MTNORMALISE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MTNORMALISE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3f2c8053a316dd7b7f0318315a1d28f67845229a.boutiques&#39;, name=&#39;mtnormalise&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MTNORMALISE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3709b0ca1455372ea3dda75e22e31168270b187c.boutiques&#39;, name=&#39;mtnormalise&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -1032,126 +1028,122 @@ same length and order as the inputs.</p>
 </span><span id="mtnormalise-171"><a href="#mtnormalise-171"><span class="linenos">171</span></a><span class="sd">    inhomogeneity normalisation for quantitative apparent fibre density. In</span>
 </span><span id="mtnormalise-172"><a href="#mtnormalise-172"><span class="linenos">172</span></a><span class="sd">    Proc. ISMRM, 2021, 29, 2472.</span>
 </span><span id="mtnormalise-173"><a href="#mtnormalise-173"><span class="linenos">173</span></a><span class="sd">    </span>
-</span><span id="mtnormalise-174"><a href="#mtnormalise-174"><span class="linenos">174</span></a><span class="sd">    Author: Thijs Dhollander (thijs.dhollander@gmail.com), Rami Tabbara</span>
-</span><span id="mtnormalise-175"><a href="#mtnormalise-175"><span class="linenos">175</span></a><span class="sd">    (rami.tabbara@florey.edu.au), David Raffelt (david.raffelt@florey.edu.au),</span>
-</span><span id="mtnormalise-176"><a href="#mtnormalise-176"><span class="linenos">176</span></a><span class="sd">    Jonas Rosnarho-Tornstrand (jonas.rosnarho-tornstrand@kcl.ac.uk) and J-Donald</span>
-</span><span id="mtnormalise-177"><a href="#mtnormalise-177"><span class="linenos">177</span></a><span class="sd">    Tournier (jdtournier@gmail.com)</span>
-</span><span id="mtnormalise-178"><a href="#mtnormalise-178"><span class="linenos">178</span></a><span class="sd">    </span>
-</span><span id="mtnormalise-179"><a href="#mtnormalise-179"><span class="linenos">179</span></a><span class="sd">    URL:</span>
-</span><span id="mtnormalise-180"><a href="#mtnormalise-180"><span class="linenos">180</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/mtnormalise.html</span>
-</span><span id="mtnormalise-181"><a href="#mtnormalise-181"><span class="linenos">181</span></a><span class="sd">    </span>
-</span><span id="mtnormalise-182"><a href="#mtnormalise-182"><span class="linenos">182</span></a><span class="sd">    Args:</span>
-</span><span id="mtnormalise-183"><a href="#mtnormalise-183"><span class="linenos">183</span></a><span class="sd">        mask: the mask defines the data used to compute the intensity\</span>
-</span><span id="mtnormalise-184"><a href="#mtnormalise-184"><span class="linenos">184</span></a><span class="sd">            normalisation. This option is mandatory.</span>
-</span><span id="mtnormalise-185"><a href="#mtnormalise-185"><span class="linenos">185</span></a><span class="sd">        input_output: list of all input and output tissue compartment files\</span>
-</span><span id="mtnormalise-186"><a href="#mtnormalise-186"><span class="linenos">186</span></a><span class="sd">            (see example usage).</span>
-</span><span id="mtnormalise-187"><a href="#mtnormalise-187"><span class="linenos">187</span></a><span class="sd">        order: the maximum order of the polynomial basis used to fit the\</span>
-</span><span id="mtnormalise-188"><a href="#mtnormalise-188"><span class="linenos">188</span></a><span class="sd">            normalisation field in the log-domain. An order of 0 is equivalent to\</span>
-</span><span id="mtnormalise-189"><a href="#mtnormalise-189"><span class="linenos">189</span></a><span class="sd">            not allowing spatial variance of the intensity normalisation factor.\</span>
-</span><span id="mtnormalise-190"><a href="#mtnormalise-190"><span class="linenos">190</span></a><span class="sd">            (default: 3).</span>
-</span><span id="mtnormalise-191"><a href="#mtnormalise-191"><span class="linenos">191</span></a><span class="sd">        niter: set the number of iterations. The first (and potentially only)\</span>
-</span><span id="mtnormalise-192"><a href="#mtnormalise-192"><span class="linenos">192</span></a><span class="sd">            entry applies to the main loop. If supplied as a comma-separated list\</span>
-</span><span id="mtnormalise-193"><a href="#mtnormalise-193"><span class="linenos">193</span></a><span class="sd">            of integers, the second entry applies to the inner loop to update the\</span>
-</span><span id="mtnormalise-194"><a href="#mtnormalise-194"><span class="linenos">194</span></a><span class="sd">            balance factors (default: 15,7).</span>
-</span><span id="mtnormalise-195"><a href="#mtnormalise-195"><span class="linenos">195</span></a><span class="sd">        reference: specify the (positive) reference value to which the summed\</span>
-</span><span id="mtnormalise-196"><a href="#mtnormalise-196"><span class="linenos">196</span></a><span class="sd">            tissue compartments will be normalised. (default: 0.282095, SH DC term\</span>
-</span><span id="mtnormalise-197"><a href="#mtnormalise-197"><span class="linenos">197</span></a><span class="sd">            for unit angular integral).</span>
-</span><span id="mtnormalise-198"><a href="#mtnormalise-198"><span class="linenos">198</span></a><span class="sd">        balanced: incorporate the per-tissue balancing factors into scaling of\</span>
-</span><span id="mtnormalise-199"><a href="#mtnormalise-199"><span class="linenos">199</span></a><span class="sd">            the output images (NOTE: use of this option has critical consequences\</span>
-</span><span id="mtnormalise-200"><a href="#mtnormalise-200"><span class="linenos">200</span></a><span class="sd">            for AFD intensity normalisation; should not be used unless these\</span>
-</span><span id="mtnormalise-201"><a href="#mtnormalise-201"><span class="linenos">201</span></a><span class="sd">            consequences are fully understood).</span>
-</span><span id="mtnormalise-202"><a href="#mtnormalise-202"><span class="linenos">202</span></a><span class="sd">        check_norm: output the final estimated spatially varying intensity\</span>
-</span><span id="mtnormalise-203"><a href="#mtnormalise-203"><span class="linenos">203</span></a><span class="sd">            level that is used for normalisation.</span>
-</span><span id="mtnormalise-204"><a href="#mtnormalise-204"><span class="linenos">204</span></a><span class="sd">        check_mask: output the final mask used to compute the normalisation.\</span>
-</span><span id="mtnormalise-205"><a href="#mtnormalise-205"><span class="linenos">205</span></a><span class="sd">            This mask excludes regions identified as outliers by the optimisation\</span>
-</span><span id="mtnormalise-206"><a href="#mtnormalise-206"><span class="linenos">206</span></a><span class="sd">            process.</span>
-</span><span id="mtnormalise-207"><a href="#mtnormalise-207"><span class="linenos">207</span></a><span class="sd">        check_factors: output the tissue balance factors computed during\</span>
-</span><span id="mtnormalise-208"><a href="#mtnormalise-208"><span class="linenos">208</span></a><span class="sd">            normalisation.</span>
-</span><span id="mtnormalise-209"><a href="#mtnormalise-209"><span class="linenos">209</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="mtnormalise-210"><a href="#mtnormalise-210"><span class="linenos">210</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="mtnormalise-211"><a href="#mtnormalise-211"><span class="linenos">211</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="mtnormalise-212"><a href="#mtnormalise-212"><span class="linenos">212</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="mtnormalise-213"><a href="#mtnormalise-213"><span class="linenos">213</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="mtnormalise-214"><a href="#mtnormalise-214"><span class="linenos">214</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="mtnormalise-215"><a href="#mtnormalise-215"><span class="linenos">215</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="mtnormalise-216"><a href="#mtnormalise-216"><span class="linenos">216</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="mtnormalise-217"><a href="#mtnormalise-217"><span class="linenos">217</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="mtnormalise-218"><a href="#mtnormalise-218"><span class="linenos">218</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="mtnormalise-219"><a href="#mtnormalise-219"><span class="linenos">219</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="mtnormalise-220"><a href="#mtnormalise-220"><span class="linenos">220</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="mtnormalise-221"><a href="#mtnormalise-221"><span class="linenos">221</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="mtnormalise-222"><a href="#mtnormalise-222"><span class="linenos">222</span></a><span class="sd">    Returns:</span>
-</span><span id="mtnormalise-223"><a href="#mtnormalise-223"><span class="linenos">223</span></a><span class="sd">        NamedTuple of outputs (described in `MtnormaliseOutputs`).</span>
-</span><span id="mtnormalise-224"><a href="#mtnormalise-224"><span class="linenos">224</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="mtnormalise-225"><a href="#mtnormalise-225"><span class="linenos">225</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="mtnormalise-226"><a href="#mtnormalise-226"><span class="linenos">226</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MTNORMALISE_METADATA</span><span class="p">)</span>
-</span><span id="mtnormalise-227"><a href="#mtnormalise-227"><span class="linenos">227</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="mtnormalise-228"><a href="#mtnormalise-228"><span class="linenos">228</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mtnormalise&quot;</span><span class="p">)</span>
-</span><span id="mtnormalise-229"><a href="#mtnormalise-229"><span class="linenos">229</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mtnormalise-230"><a href="#mtnormalise-230"><span class="linenos">230</span></a>        <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="mtnormalise-231"><a href="#mtnormalise-231"><span class="linenos">231</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
-</span><span id="mtnormalise-232"><a href="#mtnormalise-232"><span class="linenos">232</span></a>    <span class="p">])</span>
-</span><span id="mtnormalise-233"><a href="#mtnormalise-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">order</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mtnormalise-234"><a href="#mtnormalise-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mtnormalise-235"><a href="#mtnormalise-235"><span class="linenos">235</span></a>            <span class="s2">&quot;-order&quot;</span><span class="p">,</span>
-</span><span id="mtnormalise-236"><a href="#mtnormalise-236"><span class="linenos">236</span></a>            <span class="n">order</span>
-</span><span id="mtnormalise-237"><a href="#mtnormalise-237"><span class="linenos">237</span></a>        <span class="p">])</span>
-</span><span id="mtnormalise-238"><a href="#mtnormalise-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">niter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mtnormalise-239"><a href="#mtnormalise-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mtnormalise-240"><a href="#mtnormalise-240"><span class="linenos">240</span></a>            <span class="s2">&quot;-niter&quot;</span><span class="p">,</span>
-</span><span id="mtnormalise-241"><a href="#mtnormalise-241"><span class="linenos">241</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">niter</span><span class="p">))</span>
-</span><span id="mtnormalise-242"><a href="#mtnormalise-242"><span class="linenos">242</span></a>        <span class="p">])</span>
-</span><span id="mtnormalise-243"><a href="#mtnormalise-243"><span class="linenos">243</span></a>    <span class="k">if</span> <span class="n">reference</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mtnormalise-244"><a href="#mtnormalise-244"><span class="linenos">244</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mtnormalise-245"><a href="#mtnormalise-245"><span class="linenos">245</span></a>            <span class="s2">&quot;-reference&quot;</span><span class="p">,</span>
-</span><span id="mtnormalise-246"><a href="#mtnormalise-246"><span class="linenos">246</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reference</span><span class="p">)</span>
-</span><span id="mtnormalise-247"><a href="#mtnormalise-247"><span class="linenos">247</span></a>        <span class="p">])</span>
-</span><span id="mtnormalise-248"><a href="#mtnormalise-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">balanced</span><span class="p">:</span>
-</span><span id="mtnormalise-249"><a href="#mtnormalise-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-balanced&quot;</span><span class="p">)</span>
-</span><span id="mtnormalise-250"><a href="#mtnormalise-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">check_norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mtnormalise-251"><a href="#mtnormalise-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mtnormalise-252"><a href="#mtnormalise-252"><span class="linenos">252</span></a>            <span class="s2">&quot;-check_norm&quot;</span><span class="p">,</span>
-</span><span id="mtnormalise-253"><a href="#mtnormalise-253"><span class="linenos">253</span></a>            <span class="n">check_norm</span>
-</span><span id="mtnormalise-254"><a href="#mtnormalise-254"><span class="linenos">254</span></a>        <span class="p">])</span>
-</span><span id="mtnormalise-255"><a href="#mtnormalise-255"><span class="linenos">255</span></a>    <span class="k">if</span> <span class="n">check_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mtnormalise-256"><a href="#mtnormalise-256"><span class="linenos">256</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mtnormalise-257"><a href="#mtnormalise-257"><span class="linenos">257</span></a>            <span class="s2">&quot;-check_mask&quot;</span><span class="p">,</span>
-</span><span id="mtnormalise-258"><a href="#mtnormalise-258"><span class="linenos">258</span></a>            <span class="n">check_mask</span>
-</span><span id="mtnormalise-259"><a href="#mtnormalise-259"><span class="linenos">259</span></a>        <span class="p">])</span>
-</span><span id="mtnormalise-260"><a href="#mtnormalise-260"><span class="linenos">260</span></a>    <span class="k">if</span> <span class="n">check_factors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mtnormalise-261"><a href="#mtnormalise-261"><span class="linenos">261</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mtnormalise-262"><a href="#mtnormalise-262"><span class="linenos">262</span></a>            <span class="s2">&quot;-check_factors&quot;</span><span class="p">,</span>
-</span><span id="mtnormalise-263"><a href="#mtnormalise-263"><span class="linenos">263</span></a>            <span class="n">check_factors</span>
-</span><span id="mtnormalise-264"><a href="#mtnormalise-264"><span class="linenos">264</span></a>        <span class="p">])</span>
-</span><span id="mtnormalise-265"><a href="#mtnormalise-265"><span class="linenos">265</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="mtnormalise-266"><a href="#mtnormalise-266"><span class="linenos">266</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="mtnormalise-267"><a href="#mtnormalise-267"><span class="linenos">267</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="mtnormalise-268"><a href="#mtnormalise-268"><span class="linenos">268</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="mtnormalise-269"><a href="#mtnormalise-269"><span class="linenos">269</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="mtnormalise-270"><a href="#mtnormalise-270"><span class="linenos">270</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="mtnormalise-271"><a href="#mtnormalise-271"><span class="linenos">271</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="mtnormalise-272"><a href="#mtnormalise-272"><span class="linenos">272</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="mtnormalise-273"><a href="#mtnormalise-273"><span class="linenos">273</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mtnormalise-274"><a href="#mtnormalise-274"><span class="linenos">274</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mtnormalise-275"><a href="#mtnormalise-275"><span class="linenos">275</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="mtnormalise-276"><a href="#mtnormalise-276"><span class="linenos">276</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="mtnormalise-277"><a href="#mtnormalise-277"><span class="linenos">277</span></a>        <span class="p">])</span>
-</span><span id="mtnormalise-278"><a href="#mtnormalise-278"><span class="linenos">278</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mtnormalise-279"><a href="#mtnormalise-279"><span class="linenos">279</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="mtnormalise-280"><a href="#mtnormalise-280"><span class="linenos">280</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="mtnormalise-281"><a href="#mtnormalise-281"><span class="linenos">281</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="mtnormalise-282"><a href="#mtnormalise-282"><span class="linenos">282</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="mtnormalise-283"><a href="#mtnormalise-283"><span class="linenos">283</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="mtnormalise-284"><a href="#mtnormalise-284"><span class="linenos">284</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">input_output</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="mtnormalise-285"><a href="#mtnormalise-285"><span class="linenos">285</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MtnormaliseOutputs</span><span class="p">(</span>
-</span><span id="mtnormalise-286"><a href="#mtnormalise-286"><span class="linenos">286</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="mtnormalise-287"><a href="#mtnormalise-287"><span class="linenos">287</span></a>        <span class="n">check_norm</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_norm</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mtnormalise-288"><a href="#mtnormalise-288"><span class="linenos">288</span></a>        <span class="n">check_mask</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_mask</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mtnormalise-289"><a href="#mtnormalise-289"><span class="linenos">289</span></a>        <span class="n">check_factors</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_factors</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_factors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="mtnormalise-290"><a href="#mtnormalise-290"><span class="linenos">290</span></a>        <span class="n">input_output</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;outputs&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">input_output</span><span class="p">],</span>
-</span><span id="mtnormalise-291"><a href="#mtnormalise-291"><span class="linenos">291</span></a>    <span class="p">)</span>
-</span><span id="mtnormalise-292"><a href="#mtnormalise-292"><span class="linenos">292</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="mtnormalise-293"><a href="#mtnormalise-293"><span class="linenos">293</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="mtnormalise-174"><a href="#mtnormalise-174"><span class="linenos">174</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="mtnormalise-175"><a href="#mtnormalise-175"><span class="linenos">175</span></a><span class="sd">    </span>
+</span><span id="mtnormalise-176"><a href="#mtnormalise-176"><span class="linenos">176</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="mtnormalise-177"><a href="#mtnormalise-177"><span class="linenos">177</span></a><span class="sd">    </span>
+</span><span id="mtnormalise-178"><a href="#mtnormalise-178"><span class="linenos">178</span></a><span class="sd">    Args:</span>
+</span><span id="mtnormalise-179"><a href="#mtnormalise-179"><span class="linenos">179</span></a><span class="sd">        mask: the mask defines the data used to compute the intensity\</span>
+</span><span id="mtnormalise-180"><a href="#mtnormalise-180"><span class="linenos">180</span></a><span class="sd">            normalisation. This option is mandatory.</span>
+</span><span id="mtnormalise-181"><a href="#mtnormalise-181"><span class="linenos">181</span></a><span class="sd">        input_output: list of all input and output tissue compartment files\</span>
+</span><span id="mtnormalise-182"><a href="#mtnormalise-182"><span class="linenos">182</span></a><span class="sd">            (see example usage).</span>
+</span><span id="mtnormalise-183"><a href="#mtnormalise-183"><span class="linenos">183</span></a><span class="sd">        order: the maximum order of the polynomial basis used to fit the\</span>
+</span><span id="mtnormalise-184"><a href="#mtnormalise-184"><span class="linenos">184</span></a><span class="sd">            normalisation field in the log-domain. An order of 0 is equivalent to\</span>
+</span><span id="mtnormalise-185"><a href="#mtnormalise-185"><span class="linenos">185</span></a><span class="sd">            not allowing spatial variance of the intensity normalisation factor.\</span>
+</span><span id="mtnormalise-186"><a href="#mtnormalise-186"><span class="linenos">186</span></a><span class="sd">            (default: 3).</span>
+</span><span id="mtnormalise-187"><a href="#mtnormalise-187"><span class="linenos">187</span></a><span class="sd">        niter: set the number of iterations. The first (and potentially only)\</span>
+</span><span id="mtnormalise-188"><a href="#mtnormalise-188"><span class="linenos">188</span></a><span class="sd">            entry applies to the main loop. If supplied as a comma-separated list\</span>
+</span><span id="mtnormalise-189"><a href="#mtnormalise-189"><span class="linenos">189</span></a><span class="sd">            of integers, the second entry applies to the inner loop to update the\</span>
+</span><span id="mtnormalise-190"><a href="#mtnormalise-190"><span class="linenos">190</span></a><span class="sd">            balance factors (default: 15,7).</span>
+</span><span id="mtnormalise-191"><a href="#mtnormalise-191"><span class="linenos">191</span></a><span class="sd">        reference: specify the (positive) reference value to which the summed\</span>
+</span><span id="mtnormalise-192"><a href="#mtnormalise-192"><span class="linenos">192</span></a><span class="sd">            tissue compartments will be normalised. (default: 0.282095, SH DC term\</span>
+</span><span id="mtnormalise-193"><a href="#mtnormalise-193"><span class="linenos">193</span></a><span class="sd">            for unit angular integral).</span>
+</span><span id="mtnormalise-194"><a href="#mtnormalise-194"><span class="linenos">194</span></a><span class="sd">        balanced: incorporate the per-tissue balancing factors into scaling of\</span>
+</span><span id="mtnormalise-195"><a href="#mtnormalise-195"><span class="linenos">195</span></a><span class="sd">            the output images (NOTE: use of this option has critical consequences\</span>
+</span><span id="mtnormalise-196"><a href="#mtnormalise-196"><span class="linenos">196</span></a><span class="sd">            for AFD intensity normalisation; should not be used unless these\</span>
+</span><span id="mtnormalise-197"><a href="#mtnormalise-197"><span class="linenos">197</span></a><span class="sd">            consequences are fully understood).</span>
+</span><span id="mtnormalise-198"><a href="#mtnormalise-198"><span class="linenos">198</span></a><span class="sd">        check_norm: output the final estimated spatially varying intensity\</span>
+</span><span id="mtnormalise-199"><a href="#mtnormalise-199"><span class="linenos">199</span></a><span class="sd">            level that is used for normalisation.</span>
+</span><span id="mtnormalise-200"><a href="#mtnormalise-200"><span class="linenos">200</span></a><span class="sd">        check_mask: output the final mask used to compute the normalisation.\</span>
+</span><span id="mtnormalise-201"><a href="#mtnormalise-201"><span class="linenos">201</span></a><span class="sd">            This mask excludes regions identified as outliers by the optimisation\</span>
+</span><span id="mtnormalise-202"><a href="#mtnormalise-202"><span class="linenos">202</span></a><span class="sd">            process.</span>
+</span><span id="mtnormalise-203"><a href="#mtnormalise-203"><span class="linenos">203</span></a><span class="sd">        check_factors: output the tissue balance factors computed during\</span>
+</span><span id="mtnormalise-204"><a href="#mtnormalise-204"><span class="linenos">204</span></a><span class="sd">            normalisation.</span>
+</span><span id="mtnormalise-205"><a href="#mtnormalise-205"><span class="linenos">205</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="mtnormalise-206"><a href="#mtnormalise-206"><span class="linenos">206</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="mtnormalise-207"><a href="#mtnormalise-207"><span class="linenos">207</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="mtnormalise-208"><a href="#mtnormalise-208"><span class="linenos">208</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="mtnormalise-209"><a href="#mtnormalise-209"><span class="linenos">209</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="mtnormalise-210"><a href="#mtnormalise-210"><span class="linenos">210</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="mtnormalise-211"><a href="#mtnormalise-211"><span class="linenos">211</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="mtnormalise-212"><a href="#mtnormalise-212"><span class="linenos">212</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="mtnormalise-213"><a href="#mtnormalise-213"><span class="linenos">213</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="mtnormalise-214"><a href="#mtnormalise-214"><span class="linenos">214</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="mtnormalise-215"><a href="#mtnormalise-215"><span class="linenos">215</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="mtnormalise-216"><a href="#mtnormalise-216"><span class="linenos">216</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="mtnormalise-217"><a href="#mtnormalise-217"><span class="linenos">217</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="mtnormalise-218"><a href="#mtnormalise-218"><span class="linenos">218</span></a><span class="sd">    Returns:</span>
+</span><span id="mtnormalise-219"><a href="#mtnormalise-219"><span class="linenos">219</span></a><span class="sd">        NamedTuple of outputs (described in `MtnormaliseOutputs`).</span>
+</span><span id="mtnormalise-220"><a href="#mtnormalise-220"><span class="linenos">220</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="mtnormalise-221"><a href="#mtnormalise-221"><span class="linenos">221</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="mtnormalise-222"><a href="#mtnormalise-222"><span class="linenos">222</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MTNORMALISE_METADATA</span><span class="p">)</span>
+</span><span id="mtnormalise-223"><a href="#mtnormalise-223"><span class="linenos">223</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="mtnormalise-224"><a href="#mtnormalise-224"><span class="linenos">224</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mtnormalise&quot;</span><span class="p">)</span>
+</span><span id="mtnormalise-225"><a href="#mtnormalise-225"><span class="linenos">225</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mtnormalise-226"><a href="#mtnormalise-226"><span class="linenos">226</span></a>        <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="mtnormalise-227"><a href="#mtnormalise-227"><span class="linenos">227</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</span><span id="mtnormalise-228"><a href="#mtnormalise-228"><span class="linenos">228</span></a>    <span class="p">])</span>
+</span><span id="mtnormalise-229"><a href="#mtnormalise-229"><span class="linenos">229</span></a>    <span class="k">if</span> <span class="n">order</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mtnormalise-230"><a href="#mtnormalise-230"><span class="linenos">230</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mtnormalise-231"><a href="#mtnormalise-231"><span class="linenos">231</span></a>            <span class="s2">&quot;-order&quot;</span><span class="p">,</span>
+</span><span id="mtnormalise-232"><a href="#mtnormalise-232"><span class="linenos">232</span></a>            <span class="n">order</span>
+</span><span id="mtnormalise-233"><a href="#mtnormalise-233"><span class="linenos">233</span></a>        <span class="p">])</span>
+</span><span id="mtnormalise-234"><a href="#mtnormalise-234"><span class="linenos">234</span></a>    <span class="k">if</span> <span class="n">niter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mtnormalise-235"><a href="#mtnormalise-235"><span class="linenos">235</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mtnormalise-236"><a href="#mtnormalise-236"><span class="linenos">236</span></a>            <span class="s2">&quot;-niter&quot;</span><span class="p">,</span>
+</span><span id="mtnormalise-237"><a href="#mtnormalise-237"><span class="linenos">237</span></a>            <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">niter</span><span class="p">))</span>
+</span><span id="mtnormalise-238"><a href="#mtnormalise-238"><span class="linenos">238</span></a>        <span class="p">])</span>
+</span><span id="mtnormalise-239"><a href="#mtnormalise-239"><span class="linenos">239</span></a>    <span class="k">if</span> <span class="n">reference</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mtnormalise-240"><a href="#mtnormalise-240"><span class="linenos">240</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mtnormalise-241"><a href="#mtnormalise-241"><span class="linenos">241</span></a>            <span class="s2">&quot;-reference&quot;</span><span class="p">,</span>
+</span><span id="mtnormalise-242"><a href="#mtnormalise-242"><span class="linenos">242</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">reference</span><span class="p">)</span>
+</span><span id="mtnormalise-243"><a href="#mtnormalise-243"><span class="linenos">243</span></a>        <span class="p">])</span>
+</span><span id="mtnormalise-244"><a href="#mtnormalise-244"><span class="linenos">244</span></a>    <span class="k">if</span> <span class="n">balanced</span><span class="p">:</span>
+</span><span id="mtnormalise-245"><a href="#mtnormalise-245"><span class="linenos">245</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-balanced&quot;</span><span class="p">)</span>
+</span><span id="mtnormalise-246"><a href="#mtnormalise-246"><span class="linenos">246</span></a>    <span class="k">if</span> <span class="n">check_norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mtnormalise-247"><a href="#mtnormalise-247"><span class="linenos">247</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mtnormalise-248"><a href="#mtnormalise-248"><span class="linenos">248</span></a>            <span class="s2">&quot;-check_norm&quot;</span><span class="p">,</span>
+</span><span id="mtnormalise-249"><a href="#mtnormalise-249"><span class="linenos">249</span></a>            <span class="n">check_norm</span>
+</span><span id="mtnormalise-250"><a href="#mtnormalise-250"><span class="linenos">250</span></a>        <span class="p">])</span>
+</span><span id="mtnormalise-251"><a href="#mtnormalise-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">check_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mtnormalise-252"><a href="#mtnormalise-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mtnormalise-253"><a href="#mtnormalise-253"><span class="linenos">253</span></a>            <span class="s2">&quot;-check_mask&quot;</span><span class="p">,</span>
+</span><span id="mtnormalise-254"><a href="#mtnormalise-254"><span class="linenos">254</span></a>            <span class="n">check_mask</span>
+</span><span id="mtnormalise-255"><a href="#mtnormalise-255"><span class="linenos">255</span></a>        <span class="p">])</span>
+</span><span id="mtnormalise-256"><a href="#mtnormalise-256"><span class="linenos">256</span></a>    <span class="k">if</span> <span class="n">check_factors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mtnormalise-257"><a href="#mtnormalise-257"><span class="linenos">257</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mtnormalise-258"><a href="#mtnormalise-258"><span class="linenos">258</span></a>            <span class="s2">&quot;-check_factors&quot;</span><span class="p">,</span>
+</span><span id="mtnormalise-259"><a href="#mtnormalise-259"><span class="linenos">259</span></a>            <span class="n">check_factors</span>
+</span><span id="mtnormalise-260"><a href="#mtnormalise-260"><span class="linenos">260</span></a>        <span class="p">])</span>
+</span><span id="mtnormalise-261"><a href="#mtnormalise-261"><span class="linenos">261</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="mtnormalise-262"><a href="#mtnormalise-262"><span class="linenos">262</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="mtnormalise-263"><a href="#mtnormalise-263"><span class="linenos">263</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="mtnormalise-264"><a href="#mtnormalise-264"><span class="linenos">264</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="mtnormalise-265"><a href="#mtnormalise-265"><span class="linenos">265</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="mtnormalise-266"><a href="#mtnormalise-266"><span class="linenos">266</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="mtnormalise-267"><a href="#mtnormalise-267"><span class="linenos">267</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="mtnormalise-268"><a href="#mtnormalise-268"><span class="linenos">268</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="mtnormalise-269"><a href="#mtnormalise-269"><span class="linenos">269</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mtnormalise-270"><a href="#mtnormalise-270"><span class="linenos">270</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mtnormalise-271"><a href="#mtnormalise-271"><span class="linenos">271</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="mtnormalise-272"><a href="#mtnormalise-272"><span class="linenos">272</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="mtnormalise-273"><a href="#mtnormalise-273"><span class="linenos">273</span></a>        <span class="p">])</span>
+</span><span id="mtnormalise-274"><a href="#mtnormalise-274"><span class="linenos">274</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mtnormalise-275"><a href="#mtnormalise-275"><span class="linenos">275</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="mtnormalise-276"><a href="#mtnormalise-276"><span class="linenos">276</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="mtnormalise-277"><a href="#mtnormalise-277"><span class="linenos">277</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="mtnormalise-278"><a href="#mtnormalise-278"><span class="linenos">278</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="mtnormalise-279"><a href="#mtnormalise-279"><span class="linenos">279</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="mtnormalise-280"><a href="#mtnormalise-280"><span class="linenos">280</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">input_output</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="mtnormalise-281"><a href="#mtnormalise-281"><span class="linenos">281</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MtnormaliseOutputs</span><span class="p">(</span>
+</span><span id="mtnormalise-282"><a href="#mtnormalise-282"><span class="linenos">282</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="mtnormalise-283"><a href="#mtnormalise-283"><span class="linenos">283</span></a>        <span class="n">check_norm</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_norm</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mtnormalise-284"><a href="#mtnormalise-284"><span class="linenos">284</span></a>        <span class="n">check_mask</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_mask</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mtnormalise-285"><a href="#mtnormalise-285"><span class="linenos">285</span></a>        <span class="n">check_factors</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">check_factors</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">check_factors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="mtnormalise-286"><a href="#mtnormalise-286"><span class="linenos">286</span></a>        <span class="n">input_output</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;outputs&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">input_output</span><span class="p">],</span>
+</span><span id="mtnormalise-287"><a href="#mtnormalise-287"><span class="linenos">287</span></a>    <span class="p">)</span>
+</span><span id="mtnormalise-288"><a href="#mtnormalise-288"><span class="linenos">288</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="mtnormalise-289"><a href="#mtnormalise-289"><span class="linenos">289</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1186,13 +1178,9 @@ Raffelt, D. &amp; Connelly, A. Multi-tissue log-domain intensity and
 inhomogeneity normalisation for quantitative apparent fibre density. In
 Proc. ISMRM, 2021, 29, 2472.</p>
 
-<p>Author: Thijs Dhollander (thijs.dhollander@gmail.com), Rami Tabbara
-(rami.tabbara@florey.edu.au), David Raffelt (david.raffelt@florey.edu.au),
-Jonas Rosnarho-Tornstrand (jonas.rosnarho-tornstrand@kcl.ac.uk) and J-Donald
-Tournier (jdtournier@gmail.com)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/mtnormalise.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/mtnormalise.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

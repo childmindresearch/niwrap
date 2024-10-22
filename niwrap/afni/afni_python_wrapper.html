@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">AFNI_PYTHON_WRAPPER_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4161e95bdbc15596c80fc69b4723c65aec5a6845.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ffbf9156ea551b7a5df9616d8db68547b7c02e0f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;afni_python_wrapper&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -108,80 +108,79 @@
 </span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="sd">    Python wrapper to call AFNI functions from the shell.</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">    </span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">    </span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    URL:</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_python_wrapper.py.html</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    </span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    Args:</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">        module: Specify the python module to import.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">        module_dir: Show the elements returned by dir().</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        eval_: Evaluate STRING in context of MODULE.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        exec_: Execute STRING in context of MODULE.</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        funchelp: Print the help for module function FUNC.</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        print_: Print the result of executing STRING.</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        lprint: Line print: print result list, one element per line.</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        listfunc: Execute FUNC(LIST) with sub-options.</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        help_: Show this help text.</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    Returns:</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        NamedTuple of outputs (described in `AfniPythonWrapperOutputs`).</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">AFNI_PYTHON_WRAPPER_METADATA</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;afni_python_wrapper&quot;</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="k">if</span> <span class="n">module</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>            <span class="s2">&quot;-module&quot;</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>            <span class="n">module</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>        <span class="p">])</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="k">if</span> <span class="n">module_dir</span><span class="p">:</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-module_dir&quot;</span><span class="p">)</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="k">if</span> <span class="n">eval_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>            <span class="s2">&quot;-eval&quot;</span><span class="p">,</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>            <span class="n">eval_</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="p">])</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="k">if</span> <span class="n">exec_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>            <span class="s2">&quot;-exec&quot;</span><span class="p">,</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>            <span class="n">exec_</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="p">])</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="k">if</span> <span class="n">funchelp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="s2">&quot;-funchelp&quot;</span><span class="p">,</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="n">funchelp</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="p">])</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">print_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;-print&quot;</span><span class="p">,</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="n">print_</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">lprint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="s2">&quot;-lprint&quot;</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="n">lprint</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">listfunc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;-listfunc&quot;</span><span class="p">,</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="n">listfunc</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">AfniPythonWrapperOutputs</span><span class="p">(</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="p">)</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    </span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    Args:</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">        module: Specify the python module to import.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">        module_dir: Show the elements returned by dir().</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">        eval_: Evaluate STRING in context of MODULE.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        exec_: Execute STRING in context of MODULE.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        funchelp: Print the help for module function FUNC.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        print_: Print the result of executing STRING.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        lprint: Line print: print result list, one element per line.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        listfunc: Execute FUNC(LIST) with sub-options.</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        help_: Show this help text.</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    Returns:</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        NamedTuple of outputs (described in `AfniPythonWrapperOutputs`).</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">AFNI_PYTHON_WRAPPER_METADATA</span><span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;afni_python_wrapper&quot;</span><span class="p">)</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="k">if</span> <span class="n">module</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>            <span class="s2">&quot;-module&quot;</span><span class="p">,</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>            <span class="n">module</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>        <span class="p">])</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="k">if</span> <span class="n">module_dir</span><span class="p">:</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-module_dir&quot;</span><span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="k">if</span> <span class="n">eval_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>            <span class="s2">&quot;-eval&quot;</span><span class="p">,</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>            <span class="n">eval_</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="p">])</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="k">if</span> <span class="n">exec_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>            <span class="s2">&quot;-exec&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>            <span class="n">exec_</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="p">])</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">funchelp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>            <span class="s2">&quot;-funchelp&quot;</span><span class="p">,</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="n">funchelp</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="p">])</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">print_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="s2">&quot;-print&quot;</span><span class="p">,</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="n">print_</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="p">])</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">lprint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;-lprint&quot;</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="n">lprint</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">listfunc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;-listfunc&quot;</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="n">listfunc</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">AfniPythonWrapperOutputs</span><span class="p">(</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>
 </span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="s2">&quot;AFNI_PYTHON_WRAPPER_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="s2">&quot;AfniPythonWrapperOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="s2">&quot;afni_python_wrapper&quot;</span><span class="p">,</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="p">]</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="s2">&quot;AFNI_PYTHON_WRAPPER_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="s2">&quot;AfniPythonWrapperOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="s2">&quot;afni_python_wrapper&quot;</span><span class="p">,</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -190,7 +189,7 @@
                     <div class="attr variable">
             <span class="name">AFNI_PYTHON_WRAPPER_METADATA</span>        =
 <input id="AFNI_PYTHON_WRAPPER_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="AFNI_PYTHON_WRAPPER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4161e95bdbc15596c80fc69b4723c65aec5a6845.boutiques&#39;, name=&#39;afni_python_wrapper&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="AFNI_PYTHON_WRAPPER_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ffbf9156ea551b7a5df9616d8db68547b7c02e0f.boutiques&#39;, name=&#39;afni_python_wrapper&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -277,82 +276,80 @@
 </span><span id="afni_python_wrapper-38"><a href="#afni_python_wrapper-38"><span class="linenos"> 38</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="afni_python_wrapper-39"><a href="#afni_python_wrapper-39"><span class="linenos"> 39</span></a><span class="sd">    Python wrapper to call AFNI functions from the shell.</span>
 </span><span id="afni_python_wrapper-40"><a href="#afni_python_wrapper-40"><span class="linenos"> 40</span></a><span class="sd">    </span>
-</span><span id="afni_python_wrapper-41"><a href="#afni_python_wrapper-41"><span class="linenos"> 41</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="afni_python_wrapper-41"><a href="#afni_python_wrapper-41"><span class="linenos"> 41</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="afni_python_wrapper-42"><a href="#afni_python_wrapper-42"><span class="linenos"> 42</span></a><span class="sd">    </span>
-</span><span id="afni_python_wrapper-43"><a href="#afni_python_wrapper-43"><span class="linenos"> 43</span></a><span class="sd">    URL:</span>
-</span><span id="afni_python_wrapper-44"><a href="#afni_python_wrapper-44"><span class="linenos"> 44</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_python_wrapper.py.html</span>
-</span><span id="afni_python_wrapper-45"><a href="#afni_python_wrapper-45"><span class="linenos"> 45</span></a><span class="sd">    </span>
-</span><span id="afni_python_wrapper-46"><a href="#afni_python_wrapper-46"><span class="linenos"> 46</span></a><span class="sd">    Args:</span>
-</span><span id="afni_python_wrapper-47"><a href="#afni_python_wrapper-47"><span class="linenos"> 47</span></a><span class="sd">        module: Specify the python module to import.</span>
-</span><span id="afni_python_wrapper-48"><a href="#afni_python_wrapper-48"><span class="linenos"> 48</span></a><span class="sd">        module_dir: Show the elements returned by dir().</span>
-</span><span id="afni_python_wrapper-49"><a href="#afni_python_wrapper-49"><span class="linenos"> 49</span></a><span class="sd">        eval_: Evaluate STRING in context of MODULE.</span>
-</span><span id="afni_python_wrapper-50"><a href="#afni_python_wrapper-50"><span class="linenos"> 50</span></a><span class="sd">        exec_: Execute STRING in context of MODULE.</span>
-</span><span id="afni_python_wrapper-51"><a href="#afni_python_wrapper-51"><span class="linenos"> 51</span></a><span class="sd">        funchelp: Print the help for module function FUNC.</span>
-</span><span id="afni_python_wrapper-52"><a href="#afni_python_wrapper-52"><span class="linenos"> 52</span></a><span class="sd">        print_: Print the result of executing STRING.</span>
-</span><span id="afni_python_wrapper-53"><a href="#afni_python_wrapper-53"><span class="linenos"> 53</span></a><span class="sd">        lprint: Line print: print result list, one element per line.</span>
-</span><span id="afni_python_wrapper-54"><a href="#afni_python_wrapper-54"><span class="linenos"> 54</span></a><span class="sd">        listfunc: Execute FUNC(LIST) with sub-options.</span>
-</span><span id="afni_python_wrapper-55"><a href="#afni_python_wrapper-55"><span class="linenos"> 55</span></a><span class="sd">        help_: Show this help text.</span>
-</span><span id="afni_python_wrapper-56"><a href="#afni_python_wrapper-56"><span class="linenos"> 56</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="afni_python_wrapper-57"><a href="#afni_python_wrapper-57"><span class="linenos"> 57</span></a><span class="sd">    Returns:</span>
-</span><span id="afni_python_wrapper-58"><a href="#afni_python_wrapper-58"><span class="linenos"> 58</span></a><span class="sd">        NamedTuple of outputs (described in `AfniPythonWrapperOutputs`).</span>
-</span><span id="afni_python_wrapper-59"><a href="#afni_python_wrapper-59"><span class="linenos"> 59</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="afni_python_wrapper-60"><a href="#afni_python_wrapper-60"><span class="linenos"> 60</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="afni_python_wrapper-61"><a href="#afni_python_wrapper-61"><span class="linenos"> 61</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">AFNI_PYTHON_WRAPPER_METADATA</span><span class="p">)</span>
-</span><span id="afni_python_wrapper-62"><a href="#afni_python_wrapper-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="afni_python_wrapper-63"><a href="#afni_python_wrapper-63"><span class="linenos"> 63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;afni_python_wrapper&quot;</span><span class="p">)</span>
-</span><span id="afni_python_wrapper-64"><a href="#afni_python_wrapper-64"><span class="linenos"> 64</span></a>    <span class="k">if</span> <span class="n">module</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="afni_python_wrapper-65"><a href="#afni_python_wrapper-65"><span class="linenos"> 65</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="afni_python_wrapper-66"><a href="#afni_python_wrapper-66"><span class="linenos"> 66</span></a>            <span class="s2">&quot;-module&quot;</span><span class="p">,</span>
-</span><span id="afni_python_wrapper-67"><a href="#afni_python_wrapper-67"><span class="linenos"> 67</span></a>            <span class="n">module</span>
-</span><span id="afni_python_wrapper-68"><a href="#afni_python_wrapper-68"><span class="linenos"> 68</span></a>        <span class="p">])</span>
-</span><span id="afni_python_wrapper-69"><a href="#afni_python_wrapper-69"><span class="linenos"> 69</span></a>    <span class="k">if</span> <span class="n">module_dir</span><span class="p">:</span>
-</span><span id="afni_python_wrapper-70"><a href="#afni_python_wrapper-70"><span class="linenos"> 70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-module_dir&quot;</span><span class="p">)</span>
-</span><span id="afni_python_wrapper-71"><a href="#afni_python_wrapper-71"><span class="linenos"> 71</span></a>    <span class="k">if</span> <span class="n">eval_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="afni_python_wrapper-72"><a href="#afni_python_wrapper-72"><span class="linenos"> 72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="afni_python_wrapper-73"><a href="#afni_python_wrapper-73"><span class="linenos"> 73</span></a>            <span class="s2">&quot;-eval&quot;</span><span class="p">,</span>
-</span><span id="afni_python_wrapper-74"><a href="#afni_python_wrapper-74"><span class="linenos"> 74</span></a>            <span class="n">eval_</span>
-</span><span id="afni_python_wrapper-75"><a href="#afni_python_wrapper-75"><span class="linenos"> 75</span></a>        <span class="p">])</span>
-</span><span id="afni_python_wrapper-76"><a href="#afni_python_wrapper-76"><span class="linenos"> 76</span></a>    <span class="k">if</span> <span class="n">exec_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="afni_python_wrapper-77"><a href="#afni_python_wrapper-77"><span class="linenos"> 77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="afni_python_wrapper-78"><a href="#afni_python_wrapper-78"><span class="linenos"> 78</span></a>            <span class="s2">&quot;-exec&quot;</span><span class="p">,</span>
-</span><span id="afni_python_wrapper-79"><a href="#afni_python_wrapper-79"><span class="linenos"> 79</span></a>            <span class="n">exec_</span>
-</span><span id="afni_python_wrapper-80"><a href="#afni_python_wrapper-80"><span class="linenos"> 80</span></a>        <span class="p">])</span>
-</span><span id="afni_python_wrapper-81"><a href="#afni_python_wrapper-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">funchelp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="afni_python_wrapper-82"><a href="#afni_python_wrapper-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="afni_python_wrapper-83"><a href="#afni_python_wrapper-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;-funchelp&quot;</span><span class="p">,</span>
-</span><span id="afni_python_wrapper-84"><a href="#afni_python_wrapper-84"><span class="linenos"> 84</span></a>            <span class="n">funchelp</span>
-</span><span id="afni_python_wrapper-85"><a href="#afni_python_wrapper-85"><span class="linenos"> 85</span></a>        <span class="p">])</span>
-</span><span id="afni_python_wrapper-86"><a href="#afni_python_wrapper-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">print_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="afni_python_wrapper-87"><a href="#afni_python_wrapper-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="afni_python_wrapper-88"><a href="#afni_python_wrapper-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-print&quot;</span><span class="p">,</span>
-</span><span id="afni_python_wrapper-89"><a href="#afni_python_wrapper-89"><span class="linenos"> 89</span></a>            <span class="n">print_</span>
-</span><span id="afni_python_wrapper-90"><a href="#afni_python_wrapper-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="afni_python_wrapper-91"><a href="#afni_python_wrapper-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">lprint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="afni_python_wrapper-92"><a href="#afni_python_wrapper-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="afni_python_wrapper-93"><a href="#afni_python_wrapper-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;-lprint&quot;</span><span class="p">,</span>
-</span><span id="afni_python_wrapper-94"><a href="#afni_python_wrapper-94"><span class="linenos"> 94</span></a>            <span class="n">lprint</span>
-</span><span id="afni_python_wrapper-95"><a href="#afni_python_wrapper-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
-</span><span id="afni_python_wrapper-96"><a href="#afni_python_wrapper-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">listfunc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="afni_python_wrapper-97"><a href="#afni_python_wrapper-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="afni_python_wrapper-98"><a href="#afni_python_wrapper-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;-listfunc&quot;</span><span class="p">,</span>
-</span><span id="afni_python_wrapper-99"><a href="#afni_python_wrapper-99"><span class="linenos"> 99</span></a>            <span class="n">listfunc</span>
-</span><span id="afni_python_wrapper-100"><a href="#afni_python_wrapper-100"><span class="linenos">100</span></a>        <span class="p">])</span>
-</span><span id="afni_python_wrapper-101"><a href="#afni_python_wrapper-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="afni_python_wrapper-102"><a href="#afni_python_wrapper-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="afni_python_wrapper-103"><a href="#afni_python_wrapper-103"><span class="linenos">103</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">AfniPythonWrapperOutputs</span><span class="p">(</span>
-</span><span id="afni_python_wrapper-104"><a href="#afni_python_wrapper-104"><span class="linenos">104</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="afni_python_wrapper-105"><a href="#afni_python_wrapper-105"><span class="linenos">105</span></a>    <span class="p">)</span>
-</span><span id="afni_python_wrapper-106"><a href="#afni_python_wrapper-106"><span class="linenos">106</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="afni_python_wrapper-107"><a href="#afni_python_wrapper-107"><span class="linenos">107</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="afni_python_wrapper-43"><a href="#afni_python_wrapper-43"><span class="linenos"> 43</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="afni_python_wrapper-44"><a href="#afni_python_wrapper-44"><span class="linenos"> 44</span></a><span class="sd">    </span>
+</span><span id="afni_python_wrapper-45"><a href="#afni_python_wrapper-45"><span class="linenos"> 45</span></a><span class="sd">    Args:</span>
+</span><span id="afni_python_wrapper-46"><a href="#afni_python_wrapper-46"><span class="linenos"> 46</span></a><span class="sd">        module: Specify the python module to import.</span>
+</span><span id="afni_python_wrapper-47"><a href="#afni_python_wrapper-47"><span class="linenos"> 47</span></a><span class="sd">        module_dir: Show the elements returned by dir().</span>
+</span><span id="afni_python_wrapper-48"><a href="#afni_python_wrapper-48"><span class="linenos"> 48</span></a><span class="sd">        eval_: Evaluate STRING in context of MODULE.</span>
+</span><span id="afni_python_wrapper-49"><a href="#afni_python_wrapper-49"><span class="linenos"> 49</span></a><span class="sd">        exec_: Execute STRING in context of MODULE.</span>
+</span><span id="afni_python_wrapper-50"><a href="#afni_python_wrapper-50"><span class="linenos"> 50</span></a><span class="sd">        funchelp: Print the help for module function FUNC.</span>
+</span><span id="afni_python_wrapper-51"><a href="#afni_python_wrapper-51"><span class="linenos"> 51</span></a><span class="sd">        print_: Print the result of executing STRING.</span>
+</span><span id="afni_python_wrapper-52"><a href="#afni_python_wrapper-52"><span class="linenos"> 52</span></a><span class="sd">        lprint: Line print: print result list, one element per line.</span>
+</span><span id="afni_python_wrapper-53"><a href="#afni_python_wrapper-53"><span class="linenos"> 53</span></a><span class="sd">        listfunc: Execute FUNC(LIST) with sub-options.</span>
+</span><span id="afni_python_wrapper-54"><a href="#afni_python_wrapper-54"><span class="linenos"> 54</span></a><span class="sd">        help_: Show this help text.</span>
+</span><span id="afni_python_wrapper-55"><a href="#afni_python_wrapper-55"><span class="linenos"> 55</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="afni_python_wrapper-56"><a href="#afni_python_wrapper-56"><span class="linenos"> 56</span></a><span class="sd">    Returns:</span>
+</span><span id="afni_python_wrapper-57"><a href="#afni_python_wrapper-57"><span class="linenos"> 57</span></a><span class="sd">        NamedTuple of outputs (described in `AfniPythonWrapperOutputs`).</span>
+</span><span id="afni_python_wrapper-58"><a href="#afni_python_wrapper-58"><span class="linenos"> 58</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="afni_python_wrapper-59"><a href="#afni_python_wrapper-59"><span class="linenos"> 59</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="afni_python_wrapper-60"><a href="#afni_python_wrapper-60"><span class="linenos"> 60</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">AFNI_PYTHON_WRAPPER_METADATA</span><span class="p">)</span>
+</span><span id="afni_python_wrapper-61"><a href="#afni_python_wrapper-61"><span class="linenos"> 61</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="afni_python_wrapper-62"><a href="#afni_python_wrapper-62"><span class="linenos"> 62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;afni_python_wrapper&quot;</span><span class="p">)</span>
+</span><span id="afni_python_wrapper-63"><a href="#afni_python_wrapper-63"><span class="linenos"> 63</span></a>    <span class="k">if</span> <span class="n">module</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="afni_python_wrapper-64"><a href="#afni_python_wrapper-64"><span class="linenos"> 64</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="afni_python_wrapper-65"><a href="#afni_python_wrapper-65"><span class="linenos"> 65</span></a>            <span class="s2">&quot;-module&quot;</span><span class="p">,</span>
+</span><span id="afni_python_wrapper-66"><a href="#afni_python_wrapper-66"><span class="linenos"> 66</span></a>            <span class="n">module</span>
+</span><span id="afni_python_wrapper-67"><a href="#afni_python_wrapper-67"><span class="linenos"> 67</span></a>        <span class="p">])</span>
+</span><span id="afni_python_wrapper-68"><a href="#afni_python_wrapper-68"><span class="linenos"> 68</span></a>    <span class="k">if</span> <span class="n">module_dir</span><span class="p">:</span>
+</span><span id="afni_python_wrapper-69"><a href="#afni_python_wrapper-69"><span class="linenos"> 69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-module_dir&quot;</span><span class="p">)</span>
+</span><span id="afni_python_wrapper-70"><a href="#afni_python_wrapper-70"><span class="linenos"> 70</span></a>    <span class="k">if</span> <span class="n">eval_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="afni_python_wrapper-71"><a href="#afni_python_wrapper-71"><span class="linenos"> 71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="afni_python_wrapper-72"><a href="#afni_python_wrapper-72"><span class="linenos"> 72</span></a>            <span class="s2">&quot;-eval&quot;</span><span class="p">,</span>
+</span><span id="afni_python_wrapper-73"><a href="#afni_python_wrapper-73"><span class="linenos"> 73</span></a>            <span class="n">eval_</span>
+</span><span id="afni_python_wrapper-74"><a href="#afni_python_wrapper-74"><span class="linenos"> 74</span></a>        <span class="p">])</span>
+</span><span id="afni_python_wrapper-75"><a href="#afni_python_wrapper-75"><span class="linenos"> 75</span></a>    <span class="k">if</span> <span class="n">exec_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="afni_python_wrapper-76"><a href="#afni_python_wrapper-76"><span class="linenos"> 76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="afni_python_wrapper-77"><a href="#afni_python_wrapper-77"><span class="linenos"> 77</span></a>            <span class="s2">&quot;-exec&quot;</span><span class="p">,</span>
+</span><span id="afni_python_wrapper-78"><a href="#afni_python_wrapper-78"><span class="linenos"> 78</span></a>            <span class="n">exec_</span>
+</span><span id="afni_python_wrapper-79"><a href="#afni_python_wrapper-79"><span class="linenos"> 79</span></a>        <span class="p">])</span>
+</span><span id="afni_python_wrapper-80"><a href="#afni_python_wrapper-80"><span class="linenos"> 80</span></a>    <span class="k">if</span> <span class="n">funchelp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="afni_python_wrapper-81"><a href="#afni_python_wrapper-81"><span class="linenos"> 81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="afni_python_wrapper-82"><a href="#afni_python_wrapper-82"><span class="linenos"> 82</span></a>            <span class="s2">&quot;-funchelp&quot;</span><span class="p">,</span>
+</span><span id="afni_python_wrapper-83"><a href="#afni_python_wrapper-83"><span class="linenos"> 83</span></a>            <span class="n">funchelp</span>
+</span><span id="afni_python_wrapper-84"><a href="#afni_python_wrapper-84"><span class="linenos"> 84</span></a>        <span class="p">])</span>
+</span><span id="afni_python_wrapper-85"><a href="#afni_python_wrapper-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">print_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="afni_python_wrapper-86"><a href="#afni_python_wrapper-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="afni_python_wrapper-87"><a href="#afni_python_wrapper-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;-print&quot;</span><span class="p">,</span>
+</span><span id="afni_python_wrapper-88"><a href="#afni_python_wrapper-88"><span class="linenos"> 88</span></a>            <span class="n">print_</span>
+</span><span id="afni_python_wrapper-89"><a href="#afni_python_wrapper-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
+</span><span id="afni_python_wrapper-90"><a href="#afni_python_wrapper-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">lprint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="afni_python_wrapper-91"><a href="#afni_python_wrapper-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="afni_python_wrapper-92"><a href="#afni_python_wrapper-92"><span class="linenos"> 92</span></a>            <span class="s2">&quot;-lprint&quot;</span><span class="p">,</span>
+</span><span id="afni_python_wrapper-93"><a href="#afni_python_wrapper-93"><span class="linenos"> 93</span></a>            <span class="n">lprint</span>
+</span><span id="afni_python_wrapper-94"><a href="#afni_python_wrapper-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
+</span><span id="afni_python_wrapper-95"><a href="#afni_python_wrapper-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">listfunc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="afni_python_wrapper-96"><a href="#afni_python_wrapper-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="afni_python_wrapper-97"><a href="#afni_python_wrapper-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;-listfunc&quot;</span><span class="p">,</span>
+</span><span id="afni_python_wrapper-98"><a href="#afni_python_wrapper-98"><span class="linenos"> 98</span></a>            <span class="n">listfunc</span>
+</span><span id="afni_python_wrapper-99"><a href="#afni_python_wrapper-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
+</span><span id="afni_python_wrapper-100"><a href="#afni_python_wrapper-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="afni_python_wrapper-101"><a href="#afni_python_wrapper-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="afni_python_wrapper-102"><a href="#afni_python_wrapper-102"><span class="linenos">102</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">AfniPythonWrapperOutputs</span><span class="p">(</span>
+</span><span id="afni_python_wrapper-103"><a href="#afni_python_wrapper-103"><span class="linenos">103</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="afni_python_wrapper-104"><a href="#afni_python_wrapper-104"><span class="linenos">104</span></a>    <span class="p">)</span>
+</span><span id="afni_python_wrapper-105"><a href="#afni_python_wrapper-105"><span class="linenos">105</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="afni_python_wrapper-106"><a href="#afni_python_wrapper-106"><span class="linenos">106</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Python wrapper to call AFNI functions from the shell.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_python_wrapper.py.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_python_wrapper.py.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

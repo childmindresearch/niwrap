@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">SPEC_FILE_RELOCATE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;343df0156cccccb7732447a63224c25638129722.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c50b381a094ead7a9084b9a3a76bdd8bc66b346c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;spec-file-relocate&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -106,34 +106,36 @@
 </span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    command makes a modified copy of the spec file, changing the relative paths</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    to refer to the new relative locations of the files.</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    </span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    Args:</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        input_spec: the spec file to use.</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        output_spec: output - the new spec file to create.</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    Returns:</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        NamedTuple of outputs (described in `SpecFileRelocateOutputs`).</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SPEC_FILE_RELOCATE_METADATA</span><span class="p">)</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-spec-file-relocate&quot;</span><span class="p">)</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_spec</span><span class="p">)</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_spec</span><span class="p">)</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SpecFileRelocateOutputs</span><span class="p">(</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="p">)</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="s2">&quot;SPEC_FILE_RELOCATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="s2">&quot;SpecFileRelocateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="s2">&quot;spec_file_relocate&quot;</span><span class="p">,</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="p">]</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    </span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    Args:</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        input_spec: the spec file to use.</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        output_spec: output - the new spec file to create.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">    Returns:</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        NamedTuple of outputs (described in `SpecFileRelocateOutputs`).</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SPEC_FILE_RELOCATE_METADATA</span><span class="p">)</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-spec-file-relocate&quot;</span><span class="p">)</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_spec</span><span class="p">)</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_spec</span><span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SpecFileRelocateOutputs</span><span class="p">(</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="p">)</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="s2">&quot;SPEC_FILE_RELOCATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="s2">&quot;SpecFileRelocateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="s2">&quot;spec_file_relocate&quot;</span><span class="p">,</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -142,7 +144,7 @@
                     <div class="attr variable">
             <span class="name">SPEC_FILE_RELOCATE_METADATA</span>        =
 <input id="SPEC_FILE_RELOCATE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SPEC_FILE_RELOCATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;343df0156cccccb7732447a63224c25638129722.boutiques&#39;, name=&#39;spec-file-relocate&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SPEC_FILE_RELOCATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;c50b381a094ead7a9084b9a3a76bdd8bc66b346c.boutiques&#39;, name=&#39;spec-file-relocate&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -227,27 +229,29 @@
 </span><span id="spec_file_relocate-36"><a href="#spec_file_relocate-36"><span class="linenos">36</span></a><span class="sd">    command makes a modified copy of the spec file, changing the relative paths</span>
 </span><span id="spec_file_relocate-37"><a href="#spec_file_relocate-37"><span class="linenos">37</span></a><span class="sd">    to refer to the new relative locations of the files.</span>
 </span><span id="spec_file_relocate-38"><a href="#spec_file_relocate-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="spec_file_relocate-39"><a href="#spec_file_relocate-39"><span class="linenos">39</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="spec_file_relocate-39"><a href="#spec_file_relocate-39"><span class="linenos">39</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="spec_file_relocate-40"><a href="#spec_file_relocate-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="spec_file_relocate-41"><a href="#spec_file_relocate-41"><span class="linenos">41</span></a><span class="sd">    Args:</span>
-</span><span id="spec_file_relocate-42"><a href="#spec_file_relocate-42"><span class="linenos">42</span></a><span class="sd">        input_spec: the spec file to use.</span>
-</span><span id="spec_file_relocate-43"><a href="#spec_file_relocate-43"><span class="linenos">43</span></a><span class="sd">        output_spec: output - the new spec file to create.</span>
-</span><span id="spec_file_relocate-44"><a href="#spec_file_relocate-44"><span class="linenos">44</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="spec_file_relocate-45"><a href="#spec_file_relocate-45"><span class="linenos">45</span></a><span class="sd">    Returns:</span>
-</span><span id="spec_file_relocate-46"><a href="#spec_file_relocate-46"><span class="linenos">46</span></a><span class="sd">        NamedTuple of outputs (described in `SpecFileRelocateOutputs`).</span>
-</span><span id="spec_file_relocate-47"><a href="#spec_file_relocate-47"><span class="linenos">47</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="spec_file_relocate-48"><a href="#spec_file_relocate-48"><span class="linenos">48</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="spec_file_relocate-49"><a href="#spec_file_relocate-49"><span class="linenos">49</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SPEC_FILE_RELOCATE_METADATA</span><span class="p">)</span>
-</span><span id="spec_file_relocate-50"><a href="#spec_file_relocate-50"><span class="linenos">50</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="spec_file_relocate-51"><a href="#spec_file_relocate-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="spec_file_relocate-52"><a href="#spec_file_relocate-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-spec-file-relocate&quot;</span><span class="p">)</span>
-</span><span id="spec_file_relocate-53"><a href="#spec_file_relocate-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_spec</span><span class="p">)</span>
-</span><span id="spec_file_relocate-54"><a href="#spec_file_relocate-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_spec</span><span class="p">)</span>
-</span><span id="spec_file_relocate-55"><a href="#spec_file_relocate-55"><span class="linenos">55</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SpecFileRelocateOutputs</span><span class="p">(</span>
-</span><span id="spec_file_relocate-56"><a href="#spec_file_relocate-56"><span class="linenos">56</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="spec_file_relocate-57"><a href="#spec_file_relocate-57"><span class="linenos">57</span></a>    <span class="p">)</span>
-</span><span id="spec_file_relocate-58"><a href="#spec_file_relocate-58"><span class="linenos">58</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="spec_file_relocate-59"><a href="#spec_file_relocate-59"><span class="linenos">59</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="spec_file_relocate-41"><a href="#spec_file_relocate-41"><span class="linenos">41</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="spec_file_relocate-42"><a href="#spec_file_relocate-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="spec_file_relocate-43"><a href="#spec_file_relocate-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
+</span><span id="spec_file_relocate-44"><a href="#spec_file_relocate-44"><span class="linenos">44</span></a><span class="sd">        input_spec: the spec file to use.</span>
+</span><span id="spec_file_relocate-45"><a href="#spec_file_relocate-45"><span class="linenos">45</span></a><span class="sd">        output_spec: output - the new spec file to create.</span>
+</span><span id="spec_file_relocate-46"><a href="#spec_file_relocate-46"><span class="linenos">46</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="spec_file_relocate-47"><a href="#spec_file_relocate-47"><span class="linenos">47</span></a><span class="sd">    Returns:</span>
+</span><span id="spec_file_relocate-48"><a href="#spec_file_relocate-48"><span class="linenos">48</span></a><span class="sd">        NamedTuple of outputs (described in `SpecFileRelocateOutputs`).</span>
+</span><span id="spec_file_relocate-49"><a href="#spec_file_relocate-49"><span class="linenos">49</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="spec_file_relocate-50"><a href="#spec_file_relocate-50"><span class="linenos">50</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="spec_file_relocate-51"><a href="#spec_file_relocate-51"><span class="linenos">51</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SPEC_FILE_RELOCATE_METADATA</span><span class="p">)</span>
+</span><span id="spec_file_relocate-52"><a href="#spec_file_relocate-52"><span class="linenos">52</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="spec_file_relocate-53"><a href="#spec_file_relocate-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="spec_file_relocate-54"><a href="#spec_file_relocate-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-spec-file-relocate&quot;</span><span class="p">)</span>
+</span><span id="spec_file_relocate-55"><a href="#spec_file_relocate-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_spec</span><span class="p">)</span>
+</span><span id="spec_file_relocate-56"><a href="#spec_file_relocate-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_spec</span><span class="p">)</span>
+</span><span id="spec_file_relocate-57"><a href="#spec_file_relocate-57"><span class="linenos">57</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SpecFileRelocateOutputs</span><span class="p">(</span>
+</span><span id="spec_file_relocate-58"><a href="#spec_file_relocate-58"><span class="linenos">58</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="spec_file_relocate-59"><a href="#spec_file_relocate-59"><span class="linenos">59</span></a>    <span class="p">)</span>
+</span><span id="spec_file_relocate-60"><a href="#spec_file_relocate-60"><span class="linenos">60</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="spec_file_relocate-61"><a href="#spec_file_relocate-61"><span class="linenos">61</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -258,7 +262,9 @@ spec file will cause it to lose track of the files it refers to. This
 command makes a modified copy of the spec file, changing the relative paths
 to refer to the new relative locations of the files.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">V__COMPUTE_OC_WEIGHTS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5e3f682a30f5996c6391430edd011c5417a938ae.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4427220e56bd9be0b0fb6b294b7d2992dca6669c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;@compute_OC_weights&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -113,87 +113,86 @@
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="sd">    Compute optimal combined weights dataset for multi-echo EPI data.</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">    </span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">    </span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    URL:</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@compute_OC_weights.html</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    </span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    Args:</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        echo_dsets: Specify one run of multi-echo EPI data.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        echo_times: Specify echo times as list (e.g., &quot;15 30.5 41&quot;). Use either\</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">            -echo_times or -echo_times_files.</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        prefix: Specify prefix of resulting OC weights dataset (e.g.,\</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">            OC.weights.SUBJ).</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        def_to_equal: Specify whether to default to equal weights (default =\</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">            no).</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        oc_method: Specify which OC method to employ (default = OC_A).</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        sum_weight_tolerance: Tolerance for summed weight difference from 1.0\</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">            (default = 0.001).</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        t2_star_limit: Specify limit for T2* values (default = 300).</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        work_dir: Specify directory to compute results in.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        verbosity: Increase verbosity of output.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    Returns:</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        NamedTuple of outputs (described in `VComputeOcWeightsOutputs`).</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__COMPUTE_OC_WEIGHTS_METADATA</span><span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@compute_OC_weights&quot;</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="k">if</span> <span class="n">echo_times</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>            <span class="s2">&quot;-echo_times&quot;</span><span class="p">,</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>            <span class="n">echo_times</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="p">])</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;-echo_dsets&quot;</span><span class="p">,</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="o">*</span><span class="n">echo_dsets</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>            <span class="n">prefix</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="p">])</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">def_to_equal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="s2">&quot;-def_to_equal&quot;</span><span class="p">,</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="n">def_to_equal</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="p">])</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">oc_method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;-oc_method&quot;</span><span class="p">,</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="n">oc_method</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">sum_weight_tolerance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;-sum_weight_tolerance&quot;</span><span class="p">,</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sum_weight_tolerance</span><span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">t2_star_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-t2_star_limit&quot;</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t2_star_limit</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="p">])</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">work_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-work_dir&quot;</span><span class="p">,</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="n">work_dir</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="p">])</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VComputeOcWeightsOutputs</span><span class="p">(</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">output_oc_weights</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+tlrc.HEAD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="p">)</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    </span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    Args:</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">        echo_dsets: Specify one run of multi-echo EPI data.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">        echo_times: Specify echo times as list (e.g., &quot;15 30.5 41&quot;). Use either\</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">            -echo_times or -echo_times_files.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        prefix: Specify prefix of resulting OC weights dataset (e.g.,\</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">            OC.weights.SUBJ).</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        def_to_equal: Specify whether to default to equal weights (default =\</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">            no).</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        oc_method: Specify which OC method to employ (default = OC_A).</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        sum_weight_tolerance: Tolerance for summed weight difference from 1.0\</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">            (default = 0.001).</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        t2_star_limit: Specify limit for T2* values (default = 300).</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        work_dir: Specify directory to compute results in.</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        verbosity: Increase verbosity of output.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    Returns:</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        NamedTuple of outputs (described in `VComputeOcWeightsOutputs`).</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__COMPUTE_OC_WEIGHTS_METADATA</span><span class="p">)</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@compute_OC_weights&quot;</span><span class="p">)</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="k">if</span> <span class="n">echo_times</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>            <span class="s2">&quot;-echo_times&quot;</span><span class="p">,</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>            <span class="n">echo_times</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="p">])</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="s2">&quot;-echo_dsets&quot;</span><span class="p">,</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>        <span class="o">*</span><span class="n">echo_dsets</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="p">])</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>            <span class="n">prefix</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="p">])</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">def_to_equal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;-def_to_equal&quot;</span><span class="p">,</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="n">def_to_equal</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">oc_method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;-oc_method&quot;</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="n">oc_method</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">sum_weight_tolerance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;-sum_weight_tolerance&quot;</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sum_weight_tolerance</span><span class="p">)</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">t2_star_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-t2_star_limit&quot;</span><span class="p">,</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t2_star_limit</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="p">])</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">work_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="s2">&quot;-work_dir&quot;</span><span class="p">,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="n">work_dir</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="p">])</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VComputeOcWeightsOutputs</span><span class="p">(</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">output_oc_weights</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+tlrc.HEAD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>
 </span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="s2">&quot;VComputeOcWeightsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;V__COMPUTE_OC_WEIGHTS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="s2">&quot;v__compute_oc_weights&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="p">]</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="s2">&quot;VComputeOcWeightsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="s2">&quot;V__COMPUTE_OC_WEIGHTS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;v__compute_oc_weights&quot;</span><span class="p">,</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -269,7 +268,7 @@
                     <div class="attr variable">
             <span class="name">V__COMPUTE_OC_WEIGHTS_METADATA</span>        =
 <input id="V__COMPUTE_OC_WEIGHTS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V__COMPUTE_OC_WEIGHTS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5e3f682a30f5996c6391430edd011c5417a938ae.boutiques&#39;, name=&#39;@compute_OC_weights&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V__COMPUTE_OC_WEIGHTS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4427220e56bd9be0b0fb6b294b7d2992dca6669c.boutiques&#39;, name=&#39;@compute_OC_weights&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -304,89 +303,87 @@
 </span><span id="v__compute_oc_weights-40"><a href="#v__compute_oc_weights-40"><span class="linenos"> 40</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="v__compute_oc_weights-41"><a href="#v__compute_oc_weights-41"><span class="linenos"> 41</span></a><span class="sd">    Compute optimal combined weights dataset for multi-echo EPI data.</span>
 </span><span id="v__compute_oc_weights-42"><a href="#v__compute_oc_weights-42"><span class="linenos"> 42</span></a><span class="sd">    </span>
-</span><span id="v__compute_oc_weights-43"><a href="#v__compute_oc_weights-43"><span class="linenos"> 43</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="v__compute_oc_weights-43"><a href="#v__compute_oc_weights-43"><span class="linenos"> 43</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="v__compute_oc_weights-44"><a href="#v__compute_oc_weights-44"><span class="linenos"> 44</span></a><span class="sd">    </span>
-</span><span id="v__compute_oc_weights-45"><a href="#v__compute_oc_weights-45"><span class="linenos"> 45</span></a><span class="sd">    URL:</span>
-</span><span id="v__compute_oc_weights-46"><a href="#v__compute_oc_weights-46"><span class="linenos"> 46</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@compute_OC_weights.html</span>
-</span><span id="v__compute_oc_weights-47"><a href="#v__compute_oc_weights-47"><span class="linenos"> 47</span></a><span class="sd">    </span>
-</span><span id="v__compute_oc_weights-48"><a href="#v__compute_oc_weights-48"><span class="linenos"> 48</span></a><span class="sd">    Args:</span>
-</span><span id="v__compute_oc_weights-49"><a href="#v__compute_oc_weights-49"><span class="linenos"> 49</span></a><span class="sd">        echo_dsets: Specify one run of multi-echo EPI data.</span>
-</span><span id="v__compute_oc_weights-50"><a href="#v__compute_oc_weights-50"><span class="linenos"> 50</span></a><span class="sd">        echo_times: Specify echo times as list (e.g., &quot;15 30.5 41&quot;). Use either\</span>
-</span><span id="v__compute_oc_weights-51"><a href="#v__compute_oc_weights-51"><span class="linenos"> 51</span></a><span class="sd">            -echo_times or -echo_times_files.</span>
-</span><span id="v__compute_oc_weights-52"><a href="#v__compute_oc_weights-52"><span class="linenos"> 52</span></a><span class="sd">        prefix: Specify prefix of resulting OC weights dataset (e.g.,\</span>
-</span><span id="v__compute_oc_weights-53"><a href="#v__compute_oc_weights-53"><span class="linenos"> 53</span></a><span class="sd">            OC.weights.SUBJ).</span>
-</span><span id="v__compute_oc_weights-54"><a href="#v__compute_oc_weights-54"><span class="linenos"> 54</span></a><span class="sd">        def_to_equal: Specify whether to default to equal weights (default =\</span>
-</span><span id="v__compute_oc_weights-55"><a href="#v__compute_oc_weights-55"><span class="linenos"> 55</span></a><span class="sd">            no).</span>
-</span><span id="v__compute_oc_weights-56"><a href="#v__compute_oc_weights-56"><span class="linenos"> 56</span></a><span class="sd">        oc_method: Specify which OC method to employ (default = OC_A).</span>
-</span><span id="v__compute_oc_weights-57"><a href="#v__compute_oc_weights-57"><span class="linenos"> 57</span></a><span class="sd">        sum_weight_tolerance: Tolerance for summed weight difference from 1.0\</span>
-</span><span id="v__compute_oc_weights-58"><a href="#v__compute_oc_weights-58"><span class="linenos"> 58</span></a><span class="sd">            (default = 0.001).</span>
-</span><span id="v__compute_oc_weights-59"><a href="#v__compute_oc_weights-59"><span class="linenos"> 59</span></a><span class="sd">        t2_star_limit: Specify limit for T2* values (default = 300).</span>
-</span><span id="v__compute_oc_weights-60"><a href="#v__compute_oc_weights-60"><span class="linenos"> 60</span></a><span class="sd">        work_dir: Specify directory to compute results in.</span>
-</span><span id="v__compute_oc_weights-61"><a href="#v__compute_oc_weights-61"><span class="linenos"> 61</span></a><span class="sd">        verbosity: Increase verbosity of output.</span>
-</span><span id="v__compute_oc_weights-62"><a href="#v__compute_oc_weights-62"><span class="linenos"> 62</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v__compute_oc_weights-63"><a href="#v__compute_oc_weights-63"><span class="linenos"> 63</span></a><span class="sd">    Returns:</span>
-</span><span id="v__compute_oc_weights-64"><a href="#v__compute_oc_weights-64"><span class="linenos"> 64</span></a><span class="sd">        NamedTuple of outputs (described in `VComputeOcWeightsOutputs`).</span>
-</span><span id="v__compute_oc_weights-65"><a href="#v__compute_oc_weights-65"><span class="linenos"> 65</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v__compute_oc_weights-66"><a href="#v__compute_oc_weights-66"><span class="linenos"> 66</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v__compute_oc_weights-67"><a href="#v__compute_oc_weights-67"><span class="linenos"> 67</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__COMPUTE_OC_WEIGHTS_METADATA</span><span class="p">)</span>
-</span><span id="v__compute_oc_weights-68"><a href="#v__compute_oc_weights-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="v__compute_oc_weights-69"><a href="#v__compute_oc_weights-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@compute_OC_weights&quot;</span><span class="p">)</span>
-</span><span id="v__compute_oc_weights-70"><a href="#v__compute_oc_weights-70"><span class="linenos"> 70</span></a>    <span class="k">if</span> <span class="n">echo_times</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__compute_oc_weights-71"><a href="#v__compute_oc_weights-71"><span class="linenos"> 71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__compute_oc_weights-72"><a href="#v__compute_oc_weights-72"><span class="linenos"> 72</span></a>            <span class="s2">&quot;-echo_times&quot;</span><span class="p">,</span>
-</span><span id="v__compute_oc_weights-73"><a href="#v__compute_oc_weights-73"><span class="linenos"> 73</span></a>            <span class="n">echo_times</span>
-</span><span id="v__compute_oc_weights-74"><a href="#v__compute_oc_weights-74"><span class="linenos"> 74</span></a>        <span class="p">])</span>
-</span><span id="v__compute_oc_weights-75"><a href="#v__compute_oc_weights-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__compute_oc_weights-76"><a href="#v__compute_oc_weights-76"><span class="linenos"> 76</span></a>        <span class="s2">&quot;-echo_dsets&quot;</span><span class="p">,</span>
-</span><span id="v__compute_oc_weights-77"><a href="#v__compute_oc_weights-77"><span class="linenos"> 77</span></a>        <span class="o">*</span><span class="n">echo_dsets</span>
-</span><span id="v__compute_oc_weights-78"><a href="#v__compute_oc_weights-78"><span class="linenos"> 78</span></a>    <span class="p">])</span>
-</span><span id="v__compute_oc_weights-79"><a href="#v__compute_oc_weights-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__compute_oc_weights-80"><a href="#v__compute_oc_weights-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__compute_oc_weights-81"><a href="#v__compute_oc_weights-81"><span class="linenos"> 81</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="v__compute_oc_weights-82"><a href="#v__compute_oc_weights-82"><span class="linenos"> 82</span></a>            <span class="n">prefix</span>
-</span><span id="v__compute_oc_weights-83"><a href="#v__compute_oc_weights-83"><span class="linenos"> 83</span></a>        <span class="p">])</span>
-</span><span id="v__compute_oc_weights-84"><a href="#v__compute_oc_weights-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">def_to_equal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__compute_oc_weights-85"><a href="#v__compute_oc_weights-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__compute_oc_weights-86"><a href="#v__compute_oc_weights-86"><span class="linenos"> 86</span></a>            <span class="s2">&quot;-def_to_equal&quot;</span><span class="p">,</span>
-</span><span id="v__compute_oc_weights-87"><a href="#v__compute_oc_weights-87"><span class="linenos"> 87</span></a>            <span class="n">def_to_equal</span>
-</span><span id="v__compute_oc_weights-88"><a href="#v__compute_oc_weights-88"><span class="linenos"> 88</span></a>        <span class="p">])</span>
-</span><span id="v__compute_oc_weights-89"><a href="#v__compute_oc_weights-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">oc_method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__compute_oc_weights-90"><a href="#v__compute_oc_weights-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__compute_oc_weights-91"><a href="#v__compute_oc_weights-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;-oc_method&quot;</span><span class="p">,</span>
-</span><span id="v__compute_oc_weights-92"><a href="#v__compute_oc_weights-92"><span class="linenos"> 92</span></a>            <span class="n">oc_method</span>
-</span><span id="v__compute_oc_weights-93"><a href="#v__compute_oc_weights-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
-</span><span id="v__compute_oc_weights-94"><a href="#v__compute_oc_weights-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">sum_weight_tolerance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__compute_oc_weights-95"><a href="#v__compute_oc_weights-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__compute_oc_weights-96"><a href="#v__compute_oc_weights-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;-sum_weight_tolerance&quot;</span><span class="p">,</span>
-</span><span id="v__compute_oc_weights-97"><a href="#v__compute_oc_weights-97"><span class="linenos"> 97</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sum_weight_tolerance</span><span class="p">)</span>
-</span><span id="v__compute_oc_weights-98"><a href="#v__compute_oc_weights-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
-</span><span id="v__compute_oc_weights-99"><a href="#v__compute_oc_weights-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">t2_star_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__compute_oc_weights-100"><a href="#v__compute_oc_weights-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__compute_oc_weights-101"><a href="#v__compute_oc_weights-101"><span class="linenos">101</span></a>            <span class="s2">&quot;-t2_star_limit&quot;</span><span class="p">,</span>
-</span><span id="v__compute_oc_weights-102"><a href="#v__compute_oc_weights-102"><span class="linenos">102</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t2_star_limit</span><span class="p">)</span>
-</span><span id="v__compute_oc_weights-103"><a href="#v__compute_oc_weights-103"><span class="linenos">103</span></a>        <span class="p">])</span>
-</span><span id="v__compute_oc_weights-104"><a href="#v__compute_oc_weights-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">work_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__compute_oc_weights-105"><a href="#v__compute_oc_weights-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__compute_oc_weights-106"><a href="#v__compute_oc_weights-106"><span class="linenos">106</span></a>            <span class="s2">&quot;-work_dir&quot;</span><span class="p">,</span>
-</span><span id="v__compute_oc_weights-107"><a href="#v__compute_oc_weights-107"><span class="linenos">107</span></a>            <span class="n">work_dir</span>
-</span><span id="v__compute_oc_weights-108"><a href="#v__compute_oc_weights-108"><span class="linenos">108</span></a>        <span class="p">])</span>
-</span><span id="v__compute_oc_weights-109"><a href="#v__compute_oc_weights-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
-</span><span id="v__compute_oc_weights-110"><a href="#v__compute_oc_weights-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
-</span><span id="v__compute_oc_weights-111"><a href="#v__compute_oc_weights-111"><span class="linenos">111</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VComputeOcWeightsOutputs</span><span class="p">(</span>
-</span><span id="v__compute_oc_weights-112"><a href="#v__compute_oc_weights-112"><span class="linenos">112</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v__compute_oc_weights-113"><a href="#v__compute_oc_weights-113"><span class="linenos">113</span></a>        <span class="n">output_oc_weights</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+tlrc.HEAD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v__compute_oc_weights-114"><a href="#v__compute_oc_weights-114"><span class="linenos">114</span></a>    <span class="p">)</span>
-</span><span id="v__compute_oc_weights-115"><a href="#v__compute_oc_weights-115"><span class="linenos">115</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v__compute_oc_weights-116"><a href="#v__compute_oc_weights-116"><span class="linenos">116</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v__compute_oc_weights-45"><a href="#v__compute_oc_weights-45"><span class="linenos"> 45</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v__compute_oc_weights-46"><a href="#v__compute_oc_weights-46"><span class="linenos"> 46</span></a><span class="sd">    </span>
+</span><span id="v__compute_oc_weights-47"><a href="#v__compute_oc_weights-47"><span class="linenos"> 47</span></a><span class="sd">    Args:</span>
+</span><span id="v__compute_oc_weights-48"><a href="#v__compute_oc_weights-48"><span class="linenos"> 48</span></a><span class="sd">        echo_dsets: Specify one run of multi-echo EPI data.</span>
+</span><span id="v__compute_oc_weights-49"><a href="#v__compute_oc_weights-49"><span class="linenos"> 49</span></a><span class="sd">        echo_times: Specify echo times as list (e.g., &quot;15 30.5 41&quot;). Use either\</span>
+</span><span id="v__compute_oc_weights-50"><a href="#v__compute_oc_weights-50"><span class="linenos"> 50</span></a><span class="sd">            -echo_times or -echo_times_files.</span>
+</span><span id="v__compute_oc_weights-51"><a href="#v__compute_oc_weights-51"><span class="linenos"> 51</span></a><span class="sd">        prefix: Specify prefix of resulting OC weights dataset (e.g.,\</span>
+</span><span id="v__compute_oc_weights-52"><a href="#v__compute_oc_weights-52"><span class="linenos"> 52</span></a><span class="sd">            OC.weights.SUBJ).</span>
+</span><span id="v__compute_oc_weights-53"><a href="#v__compute_oc_weights-53"><span class="linenos"> 53</span></a><span class="sd">        def_to_equal: Specify whether to default to equal weights (default =\</span>
+</span><span id="v__compute_oc_weights-54"><a href="#v__compute_oc_weights-54"><span class="linenos"> 54</span></a><span class="sd">            no).</span>
+</span><span id="v__compute_oc_weights-55"><a href="#v__compute_oc_weights-55"><span class="linenos"> 55</span></a><span class="sd">        oc_method: Specify which OC method to employ (default = OC_A).</span>
+</span><span id="v__compute_oc_weights-56"><a href="#v__compute_oc_weights-56"><span class="linenos"> 56</span></a><span class="sd">        sum_weight_tolerance: Tolerance for summed weight difference from 1.0\</span>
+</span><span id="v__compute_oc_weights-57"><a href="#v__compute_oc_weights-57"><span class="linenos"> 57</span></a><span class="sd">            (default = 0.001).</span>
+</span><span id="v__compute_oc_weights-58"><a href="#v__compute_oc_weights-58"><span class="linenos"> 58</span></a><span class="sd">        t2_star_limit: Specify limit for T2* values (default = 300).</span>
+</span><span id="v__compute_oc_weights-59"><a href="#v__compute_oc_weights-59"><span class="linenos"> 59</span></a><span class="sd">        work_dir: Specify directory to compute results in.</span>
+</span><span id="v__compute_oc_weights-60"><a href="#v__compute_oc_weights-60"><span class="linenos"> 60</span></a><span class="sd">        verbosity: Increase verbosity of output.</span>
+</span><span id="v__compute_oc_weights-61"><a href="#v__compute_oc_weights-61"><span class="linenos"> 61</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v__compute_oc_weights-62"><a href="#v__compute_oc_weights-62"><span class="linenos"> 62</span></a><span class="sd">    Returns:</span>
+</span><span id="v__compute_oc_weights-63"><a href="#v__compute_oc_weights-63"><span class="linenos"> 63</span></a><span class="sd">        NamedTuple of outputs (described in `VComputeOcWeightsOutputs`).</span>
+</span><span id="v__compute_oc_weights-64"><a href="#v__compute_oc_weights-64"><span class="linenos"> 64</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v__compute_oc_weights-65"><a href="#v__compute_oc_weights-65"><span class="linenos"> 65</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v__compute_oc_weights-66"><a href="#v__compute_oc_weights-66"><span class="linenos"> 66</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__COMPUTE_OC_WEIGHTS_METADATA</span><span class="p">)</span>
+</span><span id="v__compute_oc_weights-67"><a href="#v__compute_oc_weights-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="v__compute_oc_weights-68"><a href="#v__compute_oc_weights-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@compute_OC_weights&quot;</span><span class="p">)</span>
+</span><span id="v__compute_oc_weights-69"><a href="#v__compute_oc_weights-69"><span class="linenos"> 69</span></a>    <span class="k">if</span> <span class="n">echo_times</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__compute_oc_weights-70"><a href="#v__compute_oc_weights-70"><span class="linenos"> 70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__compute_oc_weights-71"><a href="#v__compute_oc_weights-71"><span class="linenos"> 71</span></a>            <span class="s2">&quot;-echo_times&quot;</span><span class="p">,</span>
+</span><span id="v__compute_oc_weights-72"><a href="#v__compute_oc_weights-72"><span class="linenos"> 72</span></a>            <span class="n">echo_times</span>
+</span><span id="v__compute_oc_weights-73"><a href="#v__compute_oc_weights-73"><span class="linenos"> 73</span></a>        <span class="p">])</span>
+</span><span id="v__compute_oc_weights-74"><a href="#v__compute_oc_weights-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__compute_oc_weights-75"><a href="#v__compute_oc_weights-75"><span class="linenos"> 75</span></a>        <span class="s2">&quot;-echo_dsets&quot;</span><span class="p">,</span>
+</span><span id="v__compute_oc_weights-76"><a href="#v__compute_oc_weights-76"><span class="linenos"> 76</span></a>        <span class="o">*</span><span class="n">echo_dsets</span>
+</span><span id="v__compute_oc_weights-77"><a href="#v__compute_oc_weights-77"><span class="linenos"> 77</span></a>    <span class="p">])</span>
+</span><span id="v__compute_oc_weights-78"><a href="#v__compute_oc_weights-78"><span class="linenos"> 78</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__compute_oc_weights-79"><a href="#v__compute_oc_weights-79"><span class="linenos"> 79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__compute_oc_weights-80"><a href="#v__compute_oc_weights-80"><span class="linenos"> 80</span></a>            <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="v__compute_oc_weights-81"><a href="#v__compute_oc_weights-81"><span class="linenos"> 81</span></a>            <span class="n">prefix</span>
+</span><span id="v__compute_oc_weights-82"><a href="#v__compute_oc_weights-82"><span class="linenos"> 82</span></a>        <span class="p">])</span>
+</span><span id="v__compute_oc_weights-83"><a href="#v__compute_oc_weights-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">def_to_equal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__compute_oc_weights-84"><a href="#v__compute_oc_weights-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__compute_oc_weights-85"><a href="#v__compute_oc_weights-85"><span class="linenos"> 85</span></a>            <span class="s2">&quot;-def_to_equal&quot;</span><span class="p">,</span>
+</span><span id="v__compute_oc_weights-86"><a href="#v__compute_oc_weights-86"><span class="linenos"> 86</span></a>            <span class="n">def_to_equal</span>
+</span><span id="v__compute_oc_weights-87"><a href="#v__compute_oc_weights-87"><span class="linenos"> 87</span></a>        <span class="p">])</span>
+</span><span id="v__compute_oc_weights-88"><a href="#v__compute_oc_weights-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">oc_method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__compute_oc_weights-89"><a href="#v__compute_oc_weights-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__compute_oc_weights-90"><a href="#v__compute_oc_weights-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;-oc_method&quot;</span><span class="p">,</span>
+</span><span id="v__compute_oc_weights-91"><a href="#v__compute_oc_weights-91"><span class="linenos"> 91</span></a>            <span class="n">oc_method</span>
+</span><span id="v__compute_oc_weights-92"><a href="#v__compute_oc_weights-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
+</span><span id="v__compute_oc_weights-93"><a href="#v__compute_oc_weights-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">sum_weight_tolerance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__compute_oc_weights-94"><a href="#v__compute_oc_weights-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__compute_oc_weights-95"><a href="#v__compute_oc_weights-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;-sum_weight_tolerance&quot;</span><span class="p">,</span>
+</span><span id="v__compute_oc_weights-96"><a href="#v__compute_oc_weights-96"><span class="linenos"> 96</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sum_weight_tolerance</span><span class="p">)</span>
+</span><span id="v__compute_oc_weights-97"><a href="#v__compute_oc_weights-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
+</span><span id="v__compute_oc_weights-98"><a href="#v__compute_oc_weights-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">t2_star_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__compute_oc_weights-99"><a href="#v__compute_oc_weights-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__compute_oc_weights-100"><a href="#v__compute_oc_weights-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-t2_star_limit&quot;</span><span class="p">,</span>
+</span><span id="v__compute_oc_weights-101"><a href="#v__compute_oc_weights-101"><span class="linenos">101</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">t2_star_limit</span><span class="p">)</span>
+</span><span id="v__compute_oc_weights-102"><a href="#v__compute_oc_weights-102"><span class="linenos">102</span></a>        <span class="p">])</span>
+</span><span id="v__compute_oc_weights-103"><a href="#v__compute_oc_weights-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">work_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__compute_oc_weights-104"><a href="#v__compute_oc_weights-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__compute_oc_weights-105"><a href="#v__compute_oc_weights-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-work_dir&quot;</span><span class="p">,</span>
+</span><span id="v__compute_oc_weights-106"><a href="#v__compute_oc_weights-106"><span class="linenos">106</span></a>            <span class="n">work_dir</span>
+</span><span id="v__compute_oc_weights-107"><a href="#v__compute_oc_weights-107"><span class="linenos">107</span></a>        <span class="p">])</span>
+</span><span id="v__compute_oc_weights-108"><a href="#v__compute_oc_weights-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">verbosity</span><span class="p">:</span>
+</span><span id="v__compute_oc_weights-109"><a href="#v__compute_oc_weights-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
+</span><span id="v__compute_oc_weights-110"><a href="#v__compute_oc_weights-110"><span class="linenos">110</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VComputeOcWeightsOutputs</span><span class="p">(</span>
+</span><span id="v__compute_oc_weights-111"><a href="#v__compute_oc_weights-111"><span class="linenos">111</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v__compute_oc_weights-112"><a href="#v__compute_oc_weights-112"><span class="linenos">112</span></a>        <span class="n">output_oc_weights</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;+tlrc.HEAD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__compute_oc_weights-113"><a href="#v__compute_oc_weights-113"><span class="linenos">113</span></a>    <span class="p">)</span>
+</span><span id="v__compute_oc_weights-114"><a href="#v__compute_oc_weights-114"><span class="linenos">114</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v__compute_oc_weights-115"><a href="#v__compute_oc_weights-115"><span class="linenos">115</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Compute optimal combined weights dataset for multi-echo EPI data.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/@compute_OC_weights.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/@compute_OC_weights.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

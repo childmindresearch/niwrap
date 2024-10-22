@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">INIT_USER_DOTFILES_PY_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;46bf1c58977e7bced1c1fbd2f6c4642aa3fe2ecd.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5fba872c5a2b8244bb6731f68100cd2208946051.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;init_user_dotfiles.py&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -117,107 +117,106 @@
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    Initialize or evaluate user dot files (.cshrc, .bashrc, ...) for system</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    settings.</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    </span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    </span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    URL:</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/init_user_dotfiles.py.html</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    Args:</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        help_: Show this help.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        help_dotfiles_all: Display dot files known by the program.</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        help_dotfiles_mod: Display modifiable dot files.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        help_shells: Display shells known by the program.</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        hist: Show module history.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        show_valid_opts: List valid options.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        ver: Show current version.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        dot_files_list: Specify dot files to focus on (default from\</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            -help_dotfiles_mod).</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        dir_bin: Specify bin directory to add to PATH (default comes from\</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">            `which afni_proc.py`).</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        dir_dot: Specify directory containing dot files.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        do_updates: Specify which updates to make (default is nothing).</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        dry_run: Do not modify files, but see what would happen.</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        force: Force edits, whether they seem needed or not.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        make_backup: Specify whether to make backups of originals (default is\</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">            yes).</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        shell_list: Specify shells instead of using -dflist.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        test: Just test the files for potential changes.</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        verbosity_level: Set the verbosity level (default 1).</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    Returns:</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        NamedTuple of outputs (described in `InitUserDotfilesPyOutputs`).</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INIT_USER_DOTFILES_PY_METADATA</span><span class="p">)</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;init_user_dotfiles.py&quot;</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">help_dotfiles_all</span><span class="p">:</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_dotfiles_all&quot;</span><span class="p">)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">help_dotfiles_mod</span><span class="p">:</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_dotfiles_mod&quot;</span><span class="p">)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">help_shells</span><span class="p">:</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_shells&quot;</span><span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">hist</span><span class="p">:</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hist&quot;</span><span class="p">)</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">show_valid_opts</span><span class="p">:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_valid_opts&quot;</span><span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">ver</span><span class="p">:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">dot_files_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-dflist&quot;</span><span class="p">,</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="o">*</span><span class="n">dot_files_list</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="p">])</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">dir_bin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="s2">&quot;-dir_bin&quot;</span><span class="p">,</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="n">dir_bin</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="p">])</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">dir_dot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="s2">&quot;-dir_dot&quot;</span><span class="p">,</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="n">dir_dot</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="p">])</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">do_updates</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-do_updates&quot;</span><span class="p">,</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="o">*</span><span class="n">do_updates</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="p">])</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">dry_run</span><span class="p">:</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dry_run&quot;</span><span class="p">)</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">make_backup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>            <span class="s2">&quot;-make_backup&quot;</span><span class="p">,</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>            <span class="n">make_backup</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="p">])</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">shell_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="s2">&quot;-shell_list&quot;</span><span class="p">,</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>            <span class="o">*</span><span class="n">shell_list</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="p">])</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">test</span><span class="p">:</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test&quot;</span><span class="p">)</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">verbosity_level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="s2">&quot;-verb&quot;</span><span class="p">,</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbosity_level</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="p">])</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">InitUserDotfilesPyOutputs</span><span class="p">(</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="p">)</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    </span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    Args:</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        help_: Show this help.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        help_dotfiles_all: Display dot files known by the program.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        help_dotfiles_mod: Display modifiable dot files.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        help_shells: Display shells known by the program.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        hist: Show module history.</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        show_valid_opts: List valid options.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        ver: Show current version.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        dot_files_list: Specify dot files to focus on (default from\</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">            -help_dotfiles_mod).</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        dir_bin: Specify bin directory to add to PATH (default comes from\</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            `which afni_proc.py`).</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        dir_dot: Specify directory containing dot files.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        do_updates: Specify which updates to make (default is nothing).</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        dry_run: Do not modify files, but see what would happen.</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        force: Force edits, whether they seem needed or not.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        make_backup: Specify whether to make backups of originals (default is\</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">            yes).</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        shell_list: Specify shells instead of using -dflist.</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        test: Just test the files for potential changes.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        verbosity_level: Set the verbosity level (default 1).</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    Returns:</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        NamedTuple of outputs (described in `InitUserDotfilesPyOutputs`).</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INIT_USER_DOTFILES_PY_METADATA</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;init_user_dotfiles.py&quot;</span><span class="p">)</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">help_dotfiles_all</span><span class="p">:</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_dotfiles_all&quot;</span><span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">help_dotfiles_mod</span><span class="p">:</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_dotfiles_mod&quot;</span><span class="p">)</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">help_shells</span><span class="p">:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_shells&quot;</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">hist</span><span class="p">:</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hist&quot;</span><span class="p">)</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">show_valid_opts</span><span class="p">:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_valid_opts&quot;</span><span class="p">)</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">ver</span><span class="p">:</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">dot_files_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;-dflist&quot;</span><span class="p">,</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="o">*</span><span class="n">dot_files_list</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="p">])</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">dir_bin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="s2">&quot;-dir_bin&quot;</span><span class="p">,</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="n">dir_bin</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="p">])</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">dir_dot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="s2">&quot;-dir_dot&quot;</span><span class="p">,</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="n">dir_dot</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="p">])</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">do_updates</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="s2">&quot;-do_updates&quot;</span><span class="p">,</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="o">*</span><span class="n">do_updates</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="p">])</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">dry_run</span><span class="p">:</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dry_run&quot;</span><span class="p">)</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">make_backup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="s2">&quot;-make_backup&quot;</span><span class="p">,</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>            <span class="n">make_backup</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="p">])</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">shell_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="s2">&quot;-shell_list&quot;</span><span class="p">,</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="o">*</span><span class="n">shell_list</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="p">])</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">test</span><span class="p">:</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test&quot;</span><span class="p">)</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">verbosity_level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>            <span class="s2">&quot;-verb&quot;</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbosity_level</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="p">])</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">InitUserDotfilesPyOutputs</span><span class="p">(</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="p">)</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>
 </span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="s2">&quot;INIT_USER_DOTFILES_PY_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="s2">&quot;InitUserDotfilesPyOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="s2">&quot;init_user_dotfiles_py&quot;</span><span class="p">,</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="p">]</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="s2">&quot;INIT_USER_DOTFILES_PY_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="s2">&quot;InitUserDotfilesPyOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="s2">&quot;init_user_dotfiles_py&quot;</span><span class="p">,</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -226,7 +225,7 @@
                     <div class="attr variable">
             <span class="name">INIT_USER_DOTFILES_PY_METADATA</span>        =
 <input id="INIT_USER_DOTFILES_PY_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="INIT_USER_DOTFILES_PY_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;46bf1c58977e7bced1c1fbd2f6c4642aa3fe2ecd.boutiques&#39;, name=&#39;init_user_dotfiles.py&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="INIT_USER_DOTFILES_PY_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5fba872c5a2b8244bb6731f68100cd2208946051.boutiques&#39;, name=&#39;init_user_dotfiles.py&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -322,110 +321,108 @@
 </span><span id="init_user_dotfiles_py-47"><a href="#init_user_dotfiles_py-47"><span class="linenos"> 47</span></a><span class="sd">    Initialize or evaluate user dot files (.cshrc, .bashrc, ...) for system</span>
 </span><span id="init_user_dotfiles_py-48"><a href="#init_user_dotfiles_py-48"><span class="linenos"> 48</span></a><span class="sd">    settings.</span>
 </span><span id="init_user_dotfiles_py-49"><a href="#init_user_dotfiles_py-49"><span class="linenos"> 49</span></a><span class="sd">    </span>
-</span><span id="init_user_dotfiles_py-50"><a href="#init_user_dotfiles_py-50"><span class="linenos"> 50</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="init_user_dotfiles_py-50"><a href="#init_user_dotfiles_py-50"><span class="linenos"> 50</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="init_user_dotfiles_py-51"><a href="#init_user_dotfiles_py-51"><span class="linenos"> 51</span></a><span class="sd">    </span>
-</span><span id="init_user_dotfiles_py-52"><a href="#init_user_dotfiles_py-52"><span class="linenos"> 52</span></a><span class="sd">    URL:</span>
-</span><span id="init_user_dotfiles_py-53"><a href="#init_user_dotfiles_py-53"><span class="linenos"> 53</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/init_user_dotfiles.py.html</span>
-</span><span id="init_user_dotfiles_py-54"><a href="#init_user_dotfiles_py-54"><span class="linenos"> 54</span></a><span class="sd">    </span>
-</span><span id="init_user_dotfiles_py-55"><a href="#init_user_dotfiles_py-55"><span class="linenos"> 55</span></a><span class="sd">    Args:</span>
-</span><span id="init_user_dotfiles_py-56"><a href="#init_user_dotfiles_py-56"><span class="linenos"> 56</span></a><span class="sd">        help_: Show this help.</span>
-</span><span id="init_user_dotfiles_py-57"><a href="#init_user_dotfiles_py-57"><span class="linenos"> 57</span></a><span class="sd">        help_dotfiles_all: Display dot files known by the program.</span>
-</span><span id="init_user_dotfiles_py-58"><a href="#init_user_dotfiles_py-58"><span class="linenos"> 58</span></a><span class="sd">        help_dotfiles_mod: Display modifiable dot files.</span>
-</span><span id="init_user_dotfiles_py-59"><a href="#init_user_dotfiles_py-59"><span class="linenos"> 59</span></a><span class="sd">        help_shells: Display shells known by the program.</span>
-</span><span id="init_user_dotfiles_py-60"><a href="#init_user_dotfiles_py-60"><span class="linenos"> 60</span></a><span class="sd">        hist: Show module history.</span>
-</span><span id="init_user_dotfiles_py-61"><a href="#init_user_dotfiles_py-61"><span class="linenos"> 61</span></a><span class="sd">        show_valid_opts: List valid options.</span>
-</span><span id="init_user_dotfiles_py-62"><a href="#init_user_dotfiles_py-62"><span class="linenos"> 62</span></a><span class="sd">        ver: Show current version.</span>
-</span><span id="init_user_dotfiles_py-63"><a href="#init_user_dotfiles_py-63"><span class="linenos"> 63</span></a><span class="sd">        dot_files_list: Specify dot files to focus on (default from\</span>
-</span><span id="init_user_dotfiles_py-64"><a href="#init_user_dotfiles_py-64"><span class="linenos"> 64</span></a><span class="sd">            -help_dotfiles_mod).</span>
-</span><span id="init_user_dotfiles_py-65"><a href="#init_user_dotfiles_py-65"><span class="linenos"> 65</span></a><span class="sd">        dir_bin: Specify bin directory to add to PATH (default comes from\</span>
-</span><span id="init_user_dotfiles_py-66"><a href="#init_user_dotfiles_py-66"><span class="linenos"> 66</span></a><span class="sd">            `which afni_proc.py`).</span>
-</span><span id="init_user_dotfiles_py-67"><a href="#init_user_dotfiles_py-67"><span class="linenos"> 67</span></a><span class="sd">        dir_dot: Specify directory containing dot files.</span>
-</span><span id="init_user_dotfiles_py-68"><a href="#init_user_dotfiles_py-68"><span class="linenos"> 68</span></a><span class="sd">        do_updates: Specify which updates to make (default is nothing).</span>
-</span><span id="init_user_dotfiles_py-69"><a href="#init_user_dotfiles_py-69"><span class="linenos"> 69</span></a><span class="sd">        dry_run: Do not modify files, but see what would happen.</span>
-</span><span id="init_user_dotfiles_py-70"><a href="#init_user_dotfiles_py-70"><span class="linenos"> 70</span></a><span class="sd">        force: Force edits, whether they seem needed or not.</span>
-</span><span id="init_user_dotfiles_py-71"><a href="#init_user_dotfiles_py-71"><span class="linenos"> 71</span></a><span class="sd">        make_backup: Specify whether to make backups of originals (default is\</span>
-</span><span id="init_user_dotfiles_py-72"><a href="#init_user_dotfiles_py-72"><span class="linenos"> 72</span></a><span class="sd">            yes).</span>
-</span><span id="init_user_dotfiles_py-73"><a href="#init_user_dotfiles_py-73"><span class="linenos"> 73</span></a><span class="sd">        shell_list: Specify shells instead of using -dflist.</span>
-</span><span id="init_user_dotfiles_py-74"><a href="#init_user_dotfiles_py-74"><span class="linenos"> 74</span></a><span class="sd">        test: Just test the files for potential changes.</span>
-</span><span id="init_user_dotfiles_py-75"><a href="#init_user_dotfiles_py-75"><span class="linenos"> 75</span></a><span class="sd">        verbosity_level: Set the verbosity level (default 1).</span>
-</span><span id="init_user_dotfiles_py-76"><a href="#init_user_dotfiles_py-76"><span class="linenos"> 76</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="init_user_dotfiles_py-77"><a href="#init_user_dotfiles_py-77"><span class="linenos"> 77</span></a><span class="sd">    Returns:</span>
-</span><span id="init_user_dotfiles_py-78"><a href="#init_user_dotfiles_py-78"><span class="linenos"> 78</span></a><span class="sd">        NamedTuple of outputs (described in `InitUserDotfilesPyOutputs`).</span>
-</span><span id="init_user_dotfiles_py-79"><a href="#init_user_dotfiles_py-79"><span class="linenos"> 79</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="init_user_dotfiles_py-80"><a href="#init_user_dotfiles_py-80"><span class="linenos"> 80</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="init_user_dotfiles_py-81"><a href="#init_user_dotfiles_py-81"><span class="linenos"> 81</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INIT_USER_DOTFILES_PY_METADATA</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-82"><a href="#init_user_dotfiles_py-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="init_user_dotfiles_py-83"><a href="#init_user_dotfiles_py-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;init_user_dotfiles.py&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-84"><a href="#init_user_dotfiles_py-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-85"><a href="#init_user_dotfiles_py-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-86"><a href="#init_user_dotfiles_py-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">help_dotfiles_all</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-87"><a href="#init_user_dotfiles_py-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_dotfiles_all&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-88"><a href="#init_user_dotfiles_py-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">help_dotfiles_mod</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-89"><a href="#init_user_dotfiles_py-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_dotfiles_mod&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-90"><a href="#init_user_dotfiles_py-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">help_shells</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-91"><a href="#init_user_dotfiles_py-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_shells&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-92"><a href="#init_user_dotfiles_py-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">hist</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-93"><a href="#init_user_dotfiles_py-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hist&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-94"><a href="#init_user_dotfiles_py-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">show_valid_opts</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-95"><a href="#init_user_dotfiles_py-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_valid_opts&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-96"><a href="#init_user_dotfiles_py-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">ver</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-97"><a href="#init_user_dotfiles_py-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-98"><a href="#init_user_dotfiles_py-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">dot_files_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-99"><a href="#init_user_dotfiles_py-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="init_user_dotfiles_py-100"><a href="#init_user_dotfiles_py-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-dflist&quot;</span><span class="p">,</span>
-</span><span id="init_user_dotfiles_py-101"><a href="#init_user_dotfiles_py-101"><span class="linenos">101</span></a>            <span class="o">*</span><span class="n">dot_files_list</span>
-</span><span id="init_user_dotfiles_py-102"><a href="#init_user_dotfiles_py-102"><span class="linenos">102</span></a>        <span class="p">])</span>
-</span><span id="init_user_dotfiles_py-103"><a href="#init_user_dotfiles_py-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">dir_bin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-104"><a href="#init_user_dotfiles_py-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="init_user_dotfiles_py-105"><a href="#init_user_dotfiles_py-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-dir_bin&quot;</span><span class="p">,</span>
-</span><span id="init_user_dotfiles_py-106"><a href="#init_user_dotfiles_py-106"><span class="linenos">106</span></a>            <span class="n">dir_bin</span>
-</span><span id="init_user_dotfiles_py-107"><a href="#init_user_dotfiles_py-107"><span class="linenos">107</span></a>        <span class="p">])</span>
-</span><span id="init_user_dotfiles_py-108"><a href="#init_user_dotfiles_py-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">dir_dot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-109"><a href="#init_user_dotfiles_py-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="init_user_dotfiles_py-110"><a href="#init_user_dotfiles_py-110"><span class="linenos">110</span></a>            <span class="s2">&quot;-dir_dot&quot;</span><span class="p">,</span>
-</span><span id="init_user_dotfiles_py-111"><a href="#init_user_dotfiles_py-111"><span class="linenos">111</span></a>            <span class="n">dir_dot</span>
-</span><span id="init_user_dotfiles_py-112"><a href="#init_user_dotfiles_py-112"><span class="linenos">112</span></a>        <span class="p">])</span>
-</span><span id="init_user_dotfiles_py-113"><a href="#init_user_dotfiles_py-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">do_updates</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-114"><a href="#init_user_dotfiles_py-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="init_user_dotfiles_py-115"><a href="#init_user_dotfiles_py-115"><span class="linenos">115</span></a>            <span class="s2">&quot;-do_updates&quot;</span><span class="p">,</span>
-</span><span id="init_user_dotfiles_py-116"><a href="#init_user_dotfiles_py-116"><span class="linenos">116</span></a>            <span class="o">*</span><span class="n">do_updates</span>
-</span><span id="init_user_dotfiles_py-117"><a href="#init_user_dotfiles_py-117"><span class="linenos">117</span></a>        <span class="p">])</span>
-</span><span id="init_user_dotfiles_py-118"><a href="#init_user_dotfiles_py-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">dry_run</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-119"><a href="#init_user_dotfiles_py-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dry_run&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-120"><a href="#init_user_dotfiles_py-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-121"><a href="#init_user_dotfiles_py-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-122"><a href="#init_user_dotfiles_py-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">make_backup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-123"><a href="#init_user_dotfiles_py-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="init_user_dotfiles_py-124"><a href="#init_user_dotfiles_py-124"><span class="linenos">124</span></a>            <span class="s2">&quot;-make_backup&quot;</span><span class="p">,</span>
-</span><span id="init_user_dotfiles_py-125"><a href="#init_user_dotfiles_py-125"><span class="linenos">125</span></a>            <span class="n">make_backup</span>
-</span><span id="init_user_dotfiles_py-126"><a href="#init_user_dotfiles_py-126"><span class="linenos">126</span></a>        <span class="p">])</span>
-</span><span id="init_user_dotfiles_py-127"><a href="#init_user_dotfiles_py-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">shell_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-128"><a href="#init_user_dotfiles_py-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="init_user_dotfiles_py-129"><a href="#init_user_dotfiles_py-129"><span class="linenos">129</span></a>            <span class="s2">&quot;-shell_list&quot;</span><span class="p">,</span>
-</span><span id="init_user_dotfiles_py-130"><a href="#init_user_dotfiles_py-130"><span class="linenos">130</span></a>            <span class="o">*</span><span class="n">shell_list</span>
-</span><span id="init_user_dotfiles_py-131"><a href="#init_user_dotfiles_py-131"><span class="linenos">131</span></a>        <span class="p">])</span>
-</span><span id="init_user_dotfiles_py-132"><a href="#init_user_dotfiles_py-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">test</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-133"><a href="#init_user_dotfiles_py-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test&quot;</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-134"><a href="#init_user_dotfiles_py-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">verbosity_level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="init_user_dotfiles_py-135"><a href="#init_user_dotfiles_py-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="init_user_dotfiles_py-136"><a href="#init_user_dotfiles_py-136"><span class="linenos">136</span></a>            <span class="s2">&quot;-verb&quot;</span><span class="p">,</span>
-</span><span id="init_user_dotfiles_py-137"><a href="#init_user_dotfiles_py-137"><span class="linenos">137</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbosity_level</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-138"><a href="#init_user_dotfiles_py-138"><span class="linenos">138</span></a>        <span class="p">])</span>
-</span><span id="init_user_dotfiles_py-139"><a href="#init_user_dotfiles_py-139"><span class="linenos">139</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">InitUserDotfilesPyOutputs</span><span class="p">(</span>
-</span><span id="init_user_dotfiles_py-140"><a href="#init_user_dotfiles_py-140"><span class="linenos">140</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="init_user_dotfiles_py-141"><a href="#init_user_dotfiles_py-141"><span class="linenos">141</span></a>    <span class="p">)</span>
-</span><span id="init_user_dotfiles_py-142"><a href="#init_user_dotfiles_py-142"><span class="linenos">142</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="init_user_dotfiles_py-143"><a href="#init_user_dotfiles_py-143"><span class="linenos">143</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="init_user_dotfiles_py-52"><a href="#init_user_dotfiles_py-52"><span class="linenos"> 52</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="init_user_dotfiles_py-53"><a href="#init_user_dotfiles_py-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
+</span><span id="init_user_dotfiles_py-54"><a href="#init_user_dotfiles_py-54"><span class="linenos"> 54</span></a><span class="sd">    Args:</span>
+</span><span id="init_user_dotfiles_py-55"><a href="#init_user_dotfiles_py-55"><span class="linenos"> 55</span></a><span class="sd">        help_: Show this help.</span>
+</span><span id="init_user_dotfiles_py-56"><a href="#init_user_dotfiles_py-56"><span class="linenos"> 56</span></a><span class="sd">        help_dotfiles_all: Display dot files known by the program.</span>
+</span><span id="init_user_dotfiles_py-57"><a href="#init_user_dotfiles_py-57"><span class="linenos"> 57</span></a><span class="sd">        help_dotfiles_mod: Display modifiable dot files.</span>
+</span><span id="init_user_dotfiles_py-58"><a href="#init_user_dotfiles_py-58"><span class="linenos"> 58</span></a><span class="sd">        help_shells: Display shells known by the program.</span>
+</span><span id="init_user_dotfiles_py-59"><a href="#init_user_dotfiles_py-59"><span class="linenos"> 59</span></a><span class="sd">        hist: Show module history.</span>
+</span><span id="init_user_dotfiles_py-60"><a href="#init_user_dotfiles_py-60"><span class="linenos"> 60</span></a><span class="sd">        show_valid_opts: List valid options.</span>
+</span><span id="init_user_dotfiles_py-61"><a href="#init_user_dotfiles_py-61"><span class="linenos"> 61</span></a><span class="sd">        ver: Show current version.</span>
+</span><span id="init_user_dotfiles_py-62"><a href="#init_user_dotfiles_py-62"><span class="linenos"> 62</span></a><span class="sd">        dot_files_list: Specify dot files to focus on (default from\</span>
+</span><span id="init_user_dotfiles_py-63"><a href="#init_user_dotfiles_py-63"><span class="linenos"> 63</span></a><span class="sd">            -help_dotfiles_mod).</span>
+</span><span id="init_user_dotfiles_py-64"><a href="#init_user_dotfiles_py-64"><span class="linenos"> 64</span></a><span class="sd">        dir_bin: Specify bin directory to add to PATH (default comes from\</span>
+</span><span id="init_user_dotfiles_py-65"><a href="#init_user_dotfiles_py-65"><span class="linenos"> 65</span></a><span class="sd">            `which afni_proc.py`).</span>
+</span><span id="init_user_dotfiles_py-66"><a href="#init_user_dotfiles_py-66"><span class="linenos"> 66</span></a><span class="sd">        dir_dot: Specify directory containing dot files.</span>
+</span><span id="init_user_dotfiles_py-67"><a href="#init_user_dotfiles_py-67"><span class="linenos"> 67</span></a><span class="sd">        do_updates: Specify which updates to make (default is nothing).</span>
+</span><span id="init_user_dotfiles_py-68"><a href="#init_user_dotfiles_py-68"><span class="linenos"> 68</span></a><span class="sd">        dry_run: Do not modify files, but see what would happen.</span>
+</span><span id="init_user_dotfiles_py-69"><a href="#init_user_dotfiles_py-69"><span class="linenos"> 69</span></a><span class="sd">        force: Force edits, whether they seem needed or not.</span>
+</span><span id="init_user_dotfiles_py-70"><a href="#init_user_dotfiles_py-70"><span class="linenos"> 70</span></a><span class="sd">        make_backup: Specify whether to make backups of originals (default is\</span>
+</span><span id="init_user_dotfiles_py-71"><a href="#init_user_dotfiles_py-71"><span class="linenos"> 71</span></a><span class="sd">            yes).</span>
+</span><span id="init_user_dotfiles_py-72"><a href="#init_user_dotfiles_py-72"><span class="linenos"> 72</span></a><span class="sd">        shell_list: Specify shells instead of using -dflist.</span>
+</span><span id="init_user_dotfiles_py-73"><a href="#init_user_dotfiles_py-73"><span class="linenos"> 73</span></a><span class="sd">        test: Just test the files for potential changes.</span>
+</span><span id="init_user_dotfiles_py-74"><a href="#init_user_dotfiles_py-74"><span class="linenos"> 74</span></a><span class="sd">        verbosity_level: Set the verbosity level (default 1).</span>
+</span><span id="init_user_dotfiles_py-75"><a href="#init_user_dotfiles_py-75"><span class="linenos"> 75</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="init_user_dotfiles_py-76"><a href="#init_user_dotfiles_py-76"><span class="linenos"> 76</span></a><span class="sd">    Returns:</span>
+</span><span id="init_user_dotfiles_py-77"><a href="#init_user_dotfiles_py-77"><span class="linenos"> 77</span></a><span class="sd">        NamedTuple of outputs (described in `InitUserDotfilesPyOutputs`).</span>
+</span><span id="init_user_dotfiles_py-78"><a href="#init_user_dotfiles_py-78"><span class="linenos"> 78</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="init_user_dotfiles_py-79"><a href="#init_user_dotfiles_py-79"><span class="linenos"> 79</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="init_user_dotfiles_py-80"><a href="#init_user_dotfiles_py-80"><span class="linenos"> 80</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">INIT_USER_DOTFILES_PY_METADATA</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-81"><a href="#init_user_dotfiles_py-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="init_user_dotfiles_py-82"><a href="#init_user_dotfiles_py-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;init_user_dotfiles.py&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-83"><a href="#init_user_dotfiles_py-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-84"><a href="#init_user_dotfiles_py-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-85"><a href="#init_user_dotfiles_py-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">help_dotfiles_all</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-86"><a href="#init_user_dotfiles_py-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_dotfiles_all&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-87"><a href="#init_user_dotfiles_py-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">help_dotfiles_mod</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-88"><a href="#init_user_dotfiles_py-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_dotfiles_mod&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-89"><a href="#init_user_dotfiles_py-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">help_shells</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-90"><a href="#init_user_dotfiles_py-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_shells&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-91"><a href="#init_user_dotfiles_py-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">hist</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-92"><a href="#init_user_dotfiles_py-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hist&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-93"><a href="#init_user_dotfiles_py-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">show_valid_opts</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-94"><a href="#init_user_dotfiles_py-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_valid_opts&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-95"><a href="#init_user_dotfiles_py-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">ver</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-96"><a href="#init_user_dotfiles_py-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-97"><a href="#init_user_dotfiles_py-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">dot_files_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-98"><a href="#init_user_dotfiles_py-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="init_user_dotfiles_py-99"><a href="#init_user_dotfiles_py-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-dflist&quot;</span><span class="p">,</span>
+</span><span id="init_user_dotfiles_py-100"><a href="#init_user_dotfiles_py-100"><span class="linenos">100</span></a>            <span class="o">*</span><span class="n">dot_files_list</span>
+</span><span id="init_user_dotfiles_py-101"><a href="#init_user_dotfiles_py-101"><span class="linenos">101</span></a>        <span class="p">])</span>
+</span><span id="init_user_dotfiles_py-102"><a href="#init_user_dotfiles_py-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">dir_bin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-103"><a href="#init_user_dotfiles_py-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="init_user_dotfiles_py-104"><a href="#init_user_dotfiles_py-104"><span class="linenos">104</span></a>            <span class="s2">&quot;-dir_bin&quot;</span><span class="p">,</span>
+</span><span id="init_user_dotfiles_py-105"><a href="#init_user_dotfiles_py-105"><span class="linenos">105</span></a>            <span class="n">dir_bin</span>
+</span><span id="init_user_dotfiles_py-106"><a href="#init_user_dotfiles_py-106"><span class="linenos">106</span></a>        <span class="p">])</span>
+</span><span id="init_user_dotfiles_py-107"><a href="#init_user_dotfiles_py-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">dir_dot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-108"><a href="#init_user_dotfiles_py-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="init_user_dotfiles_py-109"><a href="#init_user_dotfiles_py-109"><span class="linenos">109</span></a>            <span class="s2">&quot;-dir_dot&quot;</span><span class="p">,</span>
+</span><span id="init_user_dotfiles_py-110"><a href="#init_user_dotfiles_py-110"><span class="linenos">110</span></a>            <span class="n">dir_dot</span>
+</span><span id="init_user_dotfiles_py-111"><a href="#init_user_dotfiles_py-111"><span class="linenos">111</span></a>        <span class="p">])</span>
+</span><span id="init_user_dotfiles_py-112"><a href="#init_user_dotfiles_py-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">do_updates</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-113"><a href="#init_user_dotfiles_py-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="init_user_dotfiles_py-114"><a href="#init_user_dotfiles_py-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-do_updates&quot;</span><span class="p">,</span>
+</span><span id="init_user_dotfiles_py-115"><a href="#init_user_dotfiles_py-115"><span class="linenos">115</span></a>            <span class="o">*</span><span class="n">do_updates</span>
+</span><span id="init_user_dotfiles_py-116"><a href="#init_user_dotfiles_py-116"><span class="linenos">116</span></a>        <span class="p">])</span>
+</span><span id="init_user_dotfiles_py-117"><a href="#init_user_dotfiles_py-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">dry_run</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-118"><a href="#init_user_dotfiles_py-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dry_run&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-119"><a href="#init_user_dotfiles_py-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-120"><a href="#init_user_dotfiles_py-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-121"><a href="#init_user_dotfiles_py-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">make_backup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-122"><a href="#init_user_dotfiles_py-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="init_user_dotfiles_py-123"><a href="#init_user_dotfiles_py-123"><span class="linenos">123</span></a>            <span class="s2">&quot;-make_backup&quot;</span><span class="p">,</span>
+</span><span id="init_user_dotfiles_py-124"><a href="#init_user_dotfiles_py-124"><span class="linenos">124</span></a>            <span class="n">make_backup</span>
+</span><span id="init_user_dotfiles_py-125"><a href="#init_user_dotfiles_py-125"><span class="linenos">125</span></a>        <span class="p">])</span>
+</span><span id="init_user_dotfiles_py-126"><a href="#init_user_dotfiles_py-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">shell_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-127"><a href="#init_user_dotfiles_py-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="init_user_dotfiles_py-128"><a href="#init_user_dotfiles_py-128"><span class="linenos">128</span></a>            <span class="s2">&quot;-shell_list&quot;</span><span class="p">,</span>
+</span><span id="init_user_dotfiles_py-129"><a href="#init_user_dotfiles_py-129"><span class="linenos">129</span></a>            <span class="o">*</span><span class="n">shell_list</span>
+</span><span id="init_user_dotfiles_py-130"><a href="#init_user_dotfiles_py-130"><span class="linenos">130</span></a>        <span class="p">])</span>
+</span><span id="init_user_dotfiles_py-131"><a href="#init_user_dotfiles_py-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">test</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-132"><a href="#init_user_dotfiles_py-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test&quot;</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-133"><a href="#init_user_dotfiles_py-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">verbosity_level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="init_user_dotfiles_py-134"><a href="#init_user_dotfiles_py-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="init_user_dotfiles_py-135"><a href="#init_user_dotfiles_py-135"><span class="linenos">135</span></a>            <span class="s2">&quot;-verb&quot;</span><span class="p">,</span>
+</span><span id="init_user_dotfiles_py-136"><a href="#init_user_dotfiles_py-136"><span class="linenos">136</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbosity_level</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-137"><a href="#init_user_dotfiles_py-137"><span class="linenos">137</span></a>        <span class="p">])</span>
+</span><span id="init_user_dotfiles_py-138"><a href="#init_user_dotfiles_py-138"><span class="linenos">138</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">InitUserDotfilesPyOutputs</span><span class="p">(</span>
+</span><span id="init_user_dotfiles_py-139"><a href="#init_user_dotfiles_py-139"><span class="linenos">139</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="init_user_dotfiles_py-140"><a href="#init_user_dotfiles_py-140"><span class="linenos">140</span></a>    <span class="p">)</span>
+</span><span id="init_user_dotfiles_py-141"><a href="#init_user_dotfiles_py-141"><span class="linenos">141</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="init_user_dotfiles_py-142"><a href="#init_user_dotfiles_py-142"><span class="linenos">142</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Initialize or evaluate user dot files (.cshrc, .bashrc, ...) for system
 settings.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/init_user_dotfiles.py.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/init_user_dotfiles.py.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

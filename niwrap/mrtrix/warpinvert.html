@@ -99,7 +99,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">WARPINVERT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;77ca7378ae908b49b52bcdfb49bdaee81609104d.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;34bd9d16c822603308c19a28bf1253af52fb2b1c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;warpinvert&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -176,80 +176,78 @@
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    </span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    .</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au) and David Raffelt</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    (david.raffelt@florey.edu.au)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    </span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    URL:</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/warpinvert.html</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    </span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    Args:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        in_: the input warp image.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        out: the output warp image.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        template: define a template image grid for the output warp.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        displacement: indicates that the input warp field is a displacement\</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            field; the output will also be a displacement field.</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    Returns:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        NamedTuple of outputs (described in `WarpinvertOutputs`).</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">WARPINVERT_METADATA</span><span class="p">)</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;warpinvert&quot;</span><span class="p">)</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="s2">&quot;-template&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">displacement</span><span class="p">:</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-displacement&quot;</span><span class="p">)</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="p">])</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_</span><span class="p">))</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WarpinvertOutputs</span><span class="p">(</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out</span><span class="p">),</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="p">)</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="s2">&quot;WARPINVERT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="s2">&quot;WarpinvertConfig&quot;</span><span class="p">,</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="s2">&quot;WarpinvertOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="s2">&quot;warpinvert&quot;</span><span class="p">,</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="p">]</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    </span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    </span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    Args:</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        in_: the input warp image.</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        out: the output warp image.</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        template: define a template image grid for the output warp.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        displacement: indicates that the input warp field is a displacement\</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            field; the output will also be a displacement field.</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    Returns:</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        NamedTuple of outputs (described in `WarpinvertOutputs`).</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">WARPINVERT_METADATA</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;warpinvert&quot;</span><span class="p">)</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="s2">&quot;-template&quot;</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="p">])</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">displacement</span><span class="p">:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-displacement&quot;</span><span class="p">)</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="p">])</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_</span><span class="p">))</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WarpinvertOutputs</span><span class="p">(</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out</span><span class="p">),</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="s2">&quot;WARPINVERT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="s2">&quot;WarpinvertConfig&quot;</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="s2">&quot;WarpinvertOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="s2">&quot;warpinvert&quot;</span><span class="p">,</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -258,7 +256,7 @@
                     <div class="attr variable">
             <span class="name">WARPINVERT_METADATA</span>        =
 <input id="WARPINVERT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="WARPINVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;77ca7378ae908b49b52bcdfb49bdaee81609104d.boutiques&#39;, name=&#39;warpinvert&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="WARPINVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;34bd9d16c822603308c19a28bf1253af52fb2b1c.boutiques&#39;, name=&#39;warpinvert&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -509,72 +507,70 @@
 </span><span id="warpinvert-85"><a href="#warpinvert-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
 </span><span id="warpinvert-86"><a href="#warpinvert-86"><span class="linenos"> 86</span></a><span class="sd">    .</span>
 </span><span id="warpinvert-87"><a href="#warpinvert-87"><span class="linenos"> 87</span></a><span class="sd">    </span>
-</span><span id="warpinvert-88"><a href="#warpinvert-88"><span class="linenos"> 88</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au) and David Raffelt</span>
-</span><span id="warpinvert-89"><a href="#warpinvert-89"><span class="linenos"> 89</span></a><span class="sd">    (david.raffelt@florey.edu.au)</span>
-</span><span id="warpinvert-90"><a href="#warpinvert-90"><span class="linenos"> 90</span></a><span class="sd">    </span>
-</span><span id="warpinvert-91"><a href="#warpinvert-91"><span class="linenos"> 91</span></a><span class="sd">    URL:</span>
-</span><span id="warpinvert-92"><a href="#warpinvert-92"><span class="linenos"> 92</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/warpinvert.html</span>
-</span><span id="warpinvert-93"><a href="#warpinvert-93"><span class="linenos"> 93</span></a><span class="sd">    </span>
-</span><span id="warpinvert-94"><a href="#warpinvert-94"><span class="linenos"> 94</span></a><span class="sd">    Args:</span>
-</span><span id="warpinvert-95"><a href="#warpinvert-95"><span class="linenos"> 95</span></a><span class="sd">        in_: the input warp image.</span>
-</span><span id="warpinvert-96"><a href="#warpinvert-96"><span class="linenos"> 96</span></a><span class="sd">        out: the output warp image.</span>
-</span><span id="warpinvert-97"><a href="#warpinvert-97"><span class="linenos"> 97</span></a><span class="sd">        template: define a template image grid for the output warp.</span>
-</span><span id="warpinvert-98"><a href="#warpinvert-98"><span class="linenos"> 98</span></a><span class="sd">        displacement: indicates that the input warp field is a displacement\</span>
-</span><span id="warpinvert-99"><a href="#warpinvert-99"><span class="linenos"> 99</span></a><span class="sd">            field; the output will also be a displacement field.</span>
-</span><span id="warpinvert-100"><a href="#warpinvert-100"><span class="linenos">100</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="warpinvert-101"><a href="#warpinvert-101"><span class="linenos">101</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="warpinvert-102"><a href="#warpinvert-102"><span class="linenos">102</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="warpinvert-103"><a href="#warpinvert-103"><span class="linenos">103</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="warpinvert-104"><a href="#warpinvert-104"><span class="linenos">104</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="warpinvert-105"><a href="#warpinvert-105"><span class="linenos">105</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="warpinvert-106"><a href="#warpinvert-106"><span class="linenos">106</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="warpinvert-107"><a href="#warpinvert-107"><span class="linenos">107</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="warpinvert-108"><a href="#warpinvert-108"><span class="linenos">108</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="warpinvert-109"><a href="#warpinvert-109"><span class="linenos">109</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="warpinvert-110"><a href="#warpinvert-110"><span class="linenos">110</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="warpinvert-111"><a href="#warpinvert-111"><span class="linenos">111</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="warpinvert-112"><a href="#warpinvert-112"><span class="linenos">112</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="warpinvert-113"><a href="#warpinvert-113"><span class="linenos">113</span></a><span class="sd">    Returns:</span>
-</span><span id="warpinvert-114"><a href="#warpinvert-114"><span class="linenos">114</span></a><span class="sd">        NamedTuple of outputs (described in `WarpinvertOutputs`).</span>
-</span><span id="warpinvert-115"><a href="#warpinvert-115"><span class="linenos">115</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="warpinvert-116"><a href="#warpinvert-116"><span class="linenos">116</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="warpinvert-117"><a href="#warpinvert-117"><span class="linenos">117</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">WARPINVERT_METADATA</span><span class="p">)</span>
-</span><span id="warpinvert-118"><a href="#warpinvert-118"><span class="linenos">118</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="warpinvert-119"><a href="#warpinvert-119"><span class="linenos">119</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;warpinvert&quot;</span><span class="p">)</span>
-</span><span id="warpinvert-120"><a href="#warpinvert-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="warpinvert-121"><a href="#warpinvert-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="warpinvert-122"><a href="#warpinvert-122"><span class="linenos">122</span></a>            <span class="s2">&quot;-template&quot;</span><span class="p">,</span>
-</span><span id="warpinvert-123"><a href="#warpinvert-123"><span class="linenos">123</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
-</span><span id="warpinvert-124"><a href="#warpinvert-124"><span class="linenos">124</span></a>        <span class="p">])</span>
-</span><span id="warpinvert-125"><a href="#warpinvert-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">displacement</span><span class="p">:</span>
-</span><span id="warpinvert-126"><a href="#warpinvert-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-displacement&quot;</span><span class="p">)</span>
-</span><span id="warpinvert-127"><a href="#warpinvert-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="warpinvert-128"><a href="#warpinvert-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="warpinvert-129"><a href="#warpinvert-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="warpinvert-130"><a href="#warpinvert-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="warpinvert-131"><a href="#warpinvert-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="warpinvert-132"><a href="#warpinvert-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="warpinvert-133"><a href="#warpinvert-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="warpinvert-134"><a href="#warpinvert-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="warpinvert-135"><a href="#warpinvert-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="warpinvert-136"><a href="#warpinvert-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="warpinvert-137"><a href="#warpinvert-137"><span class="linenos">137</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="warpinvert-138"><a href="#warpinvert-138"><span class="linenos">138</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="warpinvert-139"><a href="#warpinvert-139"><span class="linenos">139</span></a>        <span class="p">])</span>
-</span><span id="warpinvert-140"><a href="#warpinvert-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="warpinvert-141"><a href="#warpinvert-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="warpinvert-142"><a href="#warpinvert-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="warpinvert-143"><a href="#warpinvert-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="warpinvert-144"><a href="#warpinvert-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="warpinvert-145"><a href="#warpinvert-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="warpinvert-146"><a href="#warpinvert-146"><span class="linenos">146</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_</span><span class="p">))</span>
-</span><span id="warpinvert-147"><a href="#warpinvert-147"><span class="linenos">147</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-</span><span id="warpinvert-148"><a href="#warpinvert-148"><span class="linenos">148</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WarpinvertOutputs</span><span class="p">(</span>
-</span><span id="warpinvert-149"><a href="#warpinvert-149"><span class="linenos">149</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="warpinvert-150"><a href="#warpinvert-150"><span class="linenos">150</span></a>        <span class="n">out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out</span><span class="p">),</span>
-</span><span id="warpinvert-151"><a href="#warpinvert-151"><span class="linenos">151</span></a>    <span class="p">)</span>
-</span><span id="warpinvert-152"><a href="#warpinvert-152"><span class="linenos">152</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="warpinvert-153"><a href="#warpinvert-153"><span class="linenos">153</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="warpinvert-88"><a href="#warpinvert-88"><span class="linenos"> 88</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="warpinvert-89"><a href="#warpinvert-89"><span class="linenos"> 89</span></a><span class="sd">    </span>
+</span><span id="warpinvert-90"><a href="#warpinvert-90"><span class="linenos"> 90</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="warpinvert-91"><a href="#warpinvert-91"><span class="linenos"> 91</span></a><span class="sd">    </span>
+</span><span id="warpinvert-92"><a href="#warpinvert-92"><span class="linenos"> 92</span></a><span class="sd">    Args:</span>
+</span><span id="warpinvert-93"><a href="#warpinvert-93"><span class="linenos"> 93</span></a><span class="sd">        in_: the input warp image.</span>
+</span><span id="warpinvert-94"><a href="#warpinvert-94"><span class="linenos"> 94</span></a><span class="sd">        out: the output warp image.</span>
+</span><span id="warpinvert-95"><a href="#warpinvert-95"><span class="linenos"> 95</span></a><span class="sd">        template: define a template image grid for the output warp.</span>
+</span><span id="warpinvert-96"><a href="#warpinvert-96"><span class="linenos"> 96</span></a><span class="sd">        displacement: indicates that the input warp field is a displacement\</span>
+</span><span id="warpinvert-97"><a href="#warpinvert-97"><span class="linenos"> 97</span></a><span class="sd">            field; the output will also be a displacement field.</span>
+</span><span id="warpinvert-98"><a href="#warpinvert-98"><span class="linenos"> 98</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="warpinvert-99"><a href="#warpinvert-99"><span class="linenos"> 99</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="warpinvert-100"><a href="#warpinvert-100"><span class="linenos">100</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="warpinvert-101"><a href="#warpinvert-101"><span class="linenos">101</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="warpinvert-102"><a href="#warpinvert-102"><span class="linenos">102</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="warpinvert-103"><a href="#warpinvert-103"><span class="linenos">103</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="warpinvert-104"><a href="#warpinvert-104"><span class="linenos">104</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="warpinvert-105"><a href="#warpinvert-105"><span class="linenos">105</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="warpinvert-106"><a href="#warpinvert-106"><span class="linenos">106</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="warpinvert-107"><a href="#warpinvert-107"><span class="linenos">107</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="warpinvert-108"><a href="#warpinvert-108"><span class="linenos">108</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="warpinvert-109"><a href="#warpinvert-109"><span class="linenos">109</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="warpinvert-110"><a href="#warpinvert-110"><span class="linenos">110</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="warpinvert-111"><a href="#warpinvert-111"><span class="linenos">111</span></a><span class="sd">    Returns:</span>
+</span><span id="warpinvert-112"><a href="#warpinvert-112"><span class="linenos">112</span></a><span class="sd">        NamedTuple of outputs (described in `WarpinvertOutputs`).</span>
+</span><span id="warpinvert-113"><a href="#warpinvert-113"><span class="linenos">113</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="warpinvert-114"><a href="#warpinvert-114"><span class="linenos">114</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="warpinvert-115"><a href="#warpinvert-115"><span class="linenos">115</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">WARPINVERT_METADATA</span><span class="p">)</span>
+</span><span id="warpinvert-116"><a href="#warpinvert-116"><span class="linenos">116</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="warpinvert-117"><a href="#warpinvert-117"><span class="linenos">117</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;warpinvert&quot;</span><span class="p">)</span>
+</span><span id="warpinvert-118"><a href="#warpinvert-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">template</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="warpinvert-119"><a href="#warpinvert-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="warpinvert-120"><a href="#warpinvert-120"><span class="linenos">120</span></a>            <span class="s2">&quot;-template&quot;</span><span class="p">,</span>
+</span><span id="warpinvert-121"><a href="#warpinvert-121"><span class="linenos">121</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+</span><span id="warpinvert-122"><a href="#warpinvert-122"><span class="linenos">122</span></a>        <span class="p">])</span>
+</span><span id="warpinvert-123"><a href="#warpinvert-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">displacement</span><span class="p">:</span>
+</span><span id="warpinvert-124"><a href="#warpinvert-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-displacement&quot;</span><span class="p">)</span>
+</span><span id="warpinvert-125"><a href="#warpinvert-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="warpinvert-126"><a href="#warpinvert-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="warpinvert-127"><a href="#warpinvert-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="warpinvert-128"><a href="#warpinvert-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="warpinvert-129"><a href="#warpinvert-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="warpinvert-130"><a href="#warpinvert-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="warpinvert-131"><a href="#warpinvert-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="warpinvert-132"><a href="#warpinvert-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="warpinvert-133"><a href="#warpinvert-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="warpinvert-134"><a href="#warpinvert-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="warpinvert-135"><a href="#warpinvert-135"><span class="linenos">135</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="warpinvert-136"><a href="#warpinvert-136"><span class="linenos">136</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="warpinvert-137"><a href="#warpinvert-137"><span class="linenos">137</span></a>        <span class="p">])</span>
+</span><span id="warpinvert-138"><a href="#warpinvert-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="warpinvert-139"><a href="#warpinvert-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="warpinvert-140"><a href="#warpinvert-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="warpinvert-141"><a href="#warpinvert-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="warpinvert-142"><a href="#warpinvert-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="warpinvert-143"><a href="#warpinvert-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="warpinvert-144"><a href="#warpinvert-144"><span class="linenos">144</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_</span><span class="p">))</span>
+</span><span id="warpinvert-145"><a href="#warpinvert-145"><span class="linenos">145</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span id="warpinvert-146"><a href="#warpinvert-146"><span class="linenos">146</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">WarpinvertOutputs</span><span class="p">(</span>
+</span><span id="warpinvert-147"><a href="#warpinvert-147"><span class="linenos">147</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="warpinvert-148"><a href="#warpinvert-148"><span class="linenos">148</span></a>        <span class="n">out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out</span><span class="p">),</span>
+</span><span id="warpinvert-149"><a href="#warpinvert-149"><span class="linenos">149</span></a>    <span class="p">)</span>
+</span><span id="warpinvert-150"><a href="#warpinvert-150"><span class="linenos">150</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="warpinvert-151"><a href="#warpinvert-151"><span class="linenos">151</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -593,11 +589,9 @@ field in this case.</p>
 
 <p>.</p>
 
-<p>Author: Robert E. Smith (robert.smith@florey.edu.au) and David Raffelt
-(david.raffelt@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/warpinvert.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/warpinvert.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

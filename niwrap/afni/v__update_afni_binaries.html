@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">V__UPDATE_AFNI_BINARIES_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1188231a95870386895c303bd78dc5e7a691fcb6.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;893694dbbccc046a97eb3b039a42a123a05bfc8f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;@update.afni.binaries&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -123,126 +123,125 @@
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    Install or update AFNI binaries.</span>
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    </span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    URL:</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@update.afni.binaries.html</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    </span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    Args:</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        defaults_flag: Install current package into abin.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        help_flag: Show this help.</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        help_sys_progs_flag: List system programs that block update.</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        apsearch: Specify getting apsearch updates.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        bindir: Set AFNI binary directory to ABIN.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        curl_flag: Default to curl instead of wget.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        do_dotfiles_flag: Try to initialize dot files if needed.</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        do_extras_flag: Do extra niceties (beyond simple install).</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        echo_flag: Turn on shell command echo.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        make_backup: Make a backup of binaries before replacing.</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        no_cert_verify_flag: Do not verify the server CA certificate.</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        no_recur_flag: Do not download and run new @uab script.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        proto: Access afni host via specified PROTOCOL.</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        quick_flag: Quick mode, no fancies.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        show_obsoletes_flag: List any obsolete packages.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        show_obsoletes_grep_flag: List any obsolete packages (easy to grep).</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        show_system_progs_flag: Show system programs that do not belong in\</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">            abin.</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        sys_ok_flag: OK to update, even if system progs found.</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        test_flag: Just attempt the download and quit.</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        test_protos_flag: Test download protocols and exit.</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        revert_flag: Revert binaries to previous version.</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        local_package: Install local PACKAGE.tgz package.</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        prog_list: Install given programs, not whole PACKAGE.</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        package: Install distribution package PACKAGE.</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    Returns:</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        NamedTuple of outputs (described in `VUpdateAfniBinariesOutputs`).</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__UPDATE_AFNI_BINARIES_METADATA</span><span class="p">)</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@update.afni.binaries&quot;</span><span class="p">)</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">defaults_flag</span><span class="p">:</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-defaults&quot;</span><span class="p">)</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">help_sys_progs_flag</span><span class="p">:</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_sys_progs&quot;</span><span class="p">)</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">apsearch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="s2">&quot;-apsearch&quot;</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="n">apsearch</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="p">])</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">bindir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="s2">&quot;-bindir&quot;</span><span class="p">,</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="n">bindir</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="p">])</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">curl_flag</span><span class="p">:</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-curl&quot;</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">do_dotfiles_flag</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-do_dotfiles&quot;</span><span class="p">)</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">do_extras_flag</span><span class="p">:</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-do_extras&quot;</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">echo_flag</span><span class="p">:</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-echo&quot;</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">make_backup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="s2">&quot;-make_backup&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="n">make_backup</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="p">])</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">no_cert_verify_flag</span><span class="p">:</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cert_verify&quot;</span><span class="p">)</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">no_recur_flag</span><span class="p">:</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_recur&quot;</span><span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">proto</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>            <span class="s2">&quot;-proto&quot;</span><span class="p">,</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="n">proto</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="p">])</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">quick_flag</span><span class="p">:</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quick&quot;</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">show_obsoletes_flag</span><span class="p">:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_obsoletes&quot;</span><span class="p">)</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">show_obsoletes_grep_flag</span><span class="p">:</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_obsoletes_grep&quot;</span><span class="p">)</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">show_system_progs_flag</span><span class="p">:</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_system_progs&quot;</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">sys_ok_flag</span><span class="p">:</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sys_ok&quot;</span><span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">test_flag</span><span class="p">:</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test&quot;</span><span class="p">)</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">test_protos_flag</span><span class="p">:</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test_protos&quot;</span><span class="p">)</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">revert_flag</span><span class="p">:</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-revert&quot;</span><span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">local_package</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>            <span class="s2">&quot;-local_package&quot;</span><span class="p">,</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>            <span class="n">local_package</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="p">])</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">prog_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="s2">&quot;-prog_list&quot;</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>            <span class="o">*</span><span class="n">prog_list</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="p">])</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">package</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>            <span class="s2">&quot;-package&quot;</span><span class="p">,</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>            <span class="n">package</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>        <span class="p">])</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VUpdateAfniBinariesOutputs</span><span class="p">(</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="p">)</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    </span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    Args:</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        defaults_flag: Install current package into abin.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        help_flag: Show this help.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        help_sys_progs_flag: List system programs that block update.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        apsearch: Specify getting apsearch updates.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        bindir: Set AFNI binary directory to ABIN.</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        curl_flag: Default to curl instead of wget.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        do_dotfiles_flag: Try to initialize dot files if needed.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        do_extras_flag: Do extra niceties (beyond simple install).</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        echo_flag: Turn on shell command echo.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        make_backup: Make a backup of binaries before replacing.</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        no_cert_verify_flag: Do not verify the server CA certificate.</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        no_recur_flag: Do not download and run new @uab script.</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        proto: Access afni host via specified PROTOCOL.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        quick_flag: Quick mode, no fancies.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        show_obsoletes_flag: List any obsolete packages.</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        show_obsoletes_grep_flag: List any obsolete packages (easy to grep).</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        show_system_progs_flag: Show system programs that do not belong in\</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">            abin.</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        sys_ok_flag: OK to update, even if system progs found.</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        test_flag: Just attempt the download and quit.</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        test_protos_flag: Test download protocols and exit.</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        revert_flag: Revert binaries to previous version.</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        local_package: Install local PACKAGE.tgz package.</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        prog_list: Install given programs, not whole PACKAGE.</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        package: Install distribution package PACKAGE.</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    Returns:</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        NamedTuple of outputs (described in `VUpdateAfniBinariesOutputs`).</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__UPDATE_AFNI_BINARIES_METADATA</span><span class="p">)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@update.afni.binaries&quot;</span><span class="p">)</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">defaults_flag</span><span class="p">:</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-defaults&quot;</span><span class="p">)</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">help_sys_progs_flag</span><span class="p">:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_sys_progs&quot;</span><span class="p">)</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">apsearch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="s2">&quot;-apsearch&quot;</span><span class="p">,</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="n">apsearch</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="p">])</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">bindir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="s2">&quot;-bindir&quot;</span><span class="p">,</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="n">bindir</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="p">])</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">curl_flag</span><span class="p">:</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-curl&quot;</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">do_dotfiles_flag</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-do_dotfiles&quot;</span><span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">do_extras_flag</span><span class="p">:</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-do_extras&quot;</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">echo_flag</span><span class="p">:</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-echo&quot;</span><span class="p">)</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">make_backup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="s2">&quot;-make_backup&quot;</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="n">make_backup</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="p">])</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">no_cert_verify_flag</span><span class="p">:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cert_verify&quot;</span><span class="p">)</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">no_recur_flag</span><span class="p">:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_recur&quot;</span><span class="p">)</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">proto</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="s2">&quot;-proto&quot;</span><span class="p">,</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>            <span class="n">proto</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="p">])</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">quick_flag</span><span class="p">:</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quick&quot;</span><span class="p">)</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">show_obsoletes_flag</span><span class="p">:</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_obsoletes&quot;</span><span class="p">)</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">show_obsoletes_grep_flag</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_obsoletes_grep&quot;</span><span class="p">)</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">show_system_progs_flag</span><span class="p">:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_system_progs&quot;</span><span class="p">)</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">sys_ok_flag</span><span class="p">:</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sys_ok&quot;</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">test_flag</span><span class="p">:</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test&quot;</span><span class="p">)</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">test_protos_flag</span><span class="p">:</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test_protos&quot;</span><span class="p">)</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">revert_flag</span><span class="p">:</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-revert&quot;</span><span class="p">)</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">local_package</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>            <span class="s2">&quot;-local_package&quot;</span><span class="p">,</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>            <span class="n">local_package</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="p">])</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">prog_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="s2">&quot;-prog_list&quot;</span><span class="p">,</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="o">*</span><span class="n">prog_list</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="p">])</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">package</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>            <span class="s2">&quot;-package&quot;</span><span class="p">,</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>            <span class="n">package</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="p">])</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VUpdateAfniBinariesOutputs</span><span class="p">(</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="p">)</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>
 </span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="s2">&quot;VUpdateAfniBinariesOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="s2">&quot;V__UPDATE_AFNI_BINARIES_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="s2">&quot;v__update_afni_binaries&quot;</span><span class="p">,</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="p">]</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="s2">&quot;VUpdateAfniBinariesOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="s2">&quot;V__UPDATE_AFNI_BINARIES_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="s2">&quot;v__update_afni_binaries&quot;</span><span class="p">,</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -303,7 +302,7 @@
                     <div class="attr variable">
             <span class="name">V__UPDATE_AFNI_BINARIES_METADATA</span>        =
 <input id="V__UPDATE_AFNI_BINARIES_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V__UPDATE_AFNI_BINARIES_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1188231a95870386895c303bd78dc5e7a691fcb6.boutiques&#39;, name=&#39;@update.afni.binaries&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V__UPDATE_AFNI_BINARIES_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;893694dbbccc046a97eb3b039a42a123a05bfc8f.boutiques&#39;, name=&#39;@update.afni.binaries&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -353,128 +352,126 @@
 </span><span id="v__update_afni_binaries-53"><a href="#v__update_afni_binaries-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="v__update_afni_binaries-54"><a href="#v__update_afni_binaries-54"><span class="linenos"> 54</span></a><span class="sd">    Install or update AFNI binaries.</span>
 </span><span id="v__update_afni_binaries-55"><a href="#v__update_afni_binaries-55"><span class="linenos"> 55</span></a><span class="sd">    </span>
-</span><span id="v__update_afni_binaries-56"><a href="#v__update_afni_binaries-56"><span class="linenos"> 56</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="v__update_afni_binaries-56"><a href="#v__update_afni_binaries-56"><span class="linenos"> 56</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="v__update_afni_binaries-57"><a href="#v__update_afni_binaries-57"><span class="linenos"> 57</span></a><span class="sd">    </span>
-</span><span id="v__update_afni_binaries-58"><a href="#v__update_afni_binaries-58"><span class="linenos"> 58</span></a><span class="sd">    URL:</span>
-</span><span id="v__update_afni_binaries-59"><a href="#v__update_afni_binaries-59"><span class="linenos"> 59</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@update.afni.binaries.html</span>
-</span><span id="v__update_afni_binaries-60"><a href="#v__update_afni_binaries-60"><span class="linenos"> 60</span></a><span class="sd">    </span>
-</span><span id="v__update_afni_binaries-61"><a href="#v__update_afni_binaries-61"><span class="linenos"> 61</span></a><span class="sd">    Args:</span>
-</span><span id="v__update_afni_binaries-62"><a href="#v__update_afni_binaries-62"><span class="linenos"> 62</span></a><span class="sd">        defaults_flag: Install current package into abin.</span>
-</span><span id="v__update_afni_binaries-63"><a href="#v__update_afni_binaries-63"><span class="linenos"> 63</span></a><span class="sd">        help_flag: Show this help.</span>
-</span><span id="v__update_afni_binaries-64"><a href="#v__update_afni_binaries-64"><span class="linenos"> 64</span></a><span class="sd">        help_sys_progs_flag: List system programs that block update.</span>
-</span><span id="v__update_afni_binaries-65"><a href="#v__update_afni_binaries-65"><span class="linenos"> 65</span></a><span class="sd">        apsearch: Specify getting apsearch updates.</span>
-</span><span id="v__update_afni_binaries-66"><a href="#v__update_afni_binaries-66"><span class="linenos"> 66</span></a><span class="sd">        bindir: Set AFNI binary directory to ABIN.</span>
-</span><span id="v__update_afni_binaries-67"><a href="#v__update_afni_binaries-67"><span class="linenos"> 67</span></a><span class="sd">        curl_flag: Default to curl instead of wget.</span>
-</span><span id="v__update_afni_binaries-68"><a href="#v__update_afni_binaries-68"><span class="linenos"> 68</span></a><span class="sd">        do_dotfiles_flag: Try to initialize dot files if needed.</span>
-</span><span id="v__update_afni_binaries-69"><a href="#v__update_afni_binaries-69"><span class="linenos"> 69</span></a><span class="sd">        do_extras_flag: Do extra niceties (beyond simple install).</span>
-</span><span id="v__update_afni_binaries-70"><a href="#v__update_afni_binaries-70"><span class="linenos"> 70</span></a><span class="sd">        echo_flag: Turn on shell command echo.</span>
-</span><span id="v__update_afni_binaries-71"><a href="#v__update_afni_binaries-71"><span class="linenos"> 71</span></a><span class="sd">        make_backup: Make a backup of binaries before replacing.</span>
-</span><span id="v__update_afni_binaries-72"><a href="#v__update_afni_binaries-72"><span class="linenos"> 72</span></a><span class="sd">        no_cert_verify_flag: Do not verify the server CA certificate.</span>
-</span><span id="v__update_afni_binaries-73"><a href="#v__update_afni_binaries-73"><span class="linenos"> 73</span></a><span class="sd">        no_recur_flag: Do not download and run new @uab script.</span>
-</span><span id="v__update_afni_binaries-74"><a href="#v__update_afni_binaries-74"><span class="linenos"> 74</span></a><span class="sd">        proto: Access afni host via specified PROTOCOL.</span>
-</span><span id="v__update_afni_binaries-75"><a href="#v__update_afni_binaries-75"><span class="linenos"> 75</span></a><span class="sd">        quick_flag: Quick mode, no fancies.</span>
-</span><span id="v__update_afni_binaries-76"><a href="#v__update_afni_binaries-76"><span class="linenos"> 76</span></a><span class="sd">        show_obsoletes_flag: List any obsolete packages.</span>
-</span><span id="v__update_afni_binaries-77"><a href="#v__update_afni_binaries-77"><span class="linenos"> 77</span></a><span class="sd">        show_obsoletes_grep_flag: List any obsolete packages (easy to grep).</span>
-</span><span id="v__update_afni_binaries-78"><a href="#v__update_afni_binaries-78"><span class="linenos"> 78</span></a><span class="sd">        show_system_progs_flag: Show system programs that do not belong in\</span>
-</span><span id="v__update_afni_binaries-79"><a href="#v__update_afni_binaries-79"><span class="linenos"> 79</span></a><span class="sd">            abin.</span>
-</span><span id="v__update_afni_binaries-80"><a href="#v__update_afni_binaries-80"><span class="linenos"> 80</span></a><span class="sd">        sys_ok_flag: OK to update, even if system progs found.</span>
-</span><span id="v__update_afni_binaries-81"><a href="#v__update_afni_binaries-81"><span class="linenos"> 81</span></a><span class="sd">        test_flag: Just attempt the download and quit.</span>
-</span><span id="v__update_afni_binaries-82"><a href="#v__update_afni_binaries-82"><span class="linenos"> 82</span></a><span class="sd">        test_protos_flag: Test download protocols and exit.</span>
-</span><span id="v__update_afni_binaries-83"><a href="#v__update_afni_binaries-83"><span class="linenos"> 83</span></a><span class="sd">        revert_flag: Revert binaries to previous version.</span>
-</span><span id="v__update_afni_binaries-84"><a href="#v__update_afni_binaries-84"><span class="linenos"> 84</span></a><span class="sd">        local_package: Install local PACKAGE.tgz package.</span>
-</span><span id="v__update_afni_binaries-85"><a href="#v__update_afni_binaries-85"><span class="linenos"> 85</span></a><span class="sd">        prog_list: Install given programs, not whole PACKAGE.</span>
-</span><span id="v__update_afni_binaries-86"><a href="#v__update_afni_binaries-86"><span class="linenos"> 86</span></a><span class="sd">        package: Install distribution package PACKAGE.</span>
-</span><span id="v__update_afni_binaries-87"><a href="#v__update_afni_binaries-87"><span class="linenos"> 87</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v__update_afni_binaries-88"><a href="#v__update_afni_binaries-88"><span class="linenos"> 88</span></a><span class="sd">    Returns:</span>
-</span><span id="v__update_afni_binaries-89"><a href="#v__update_afni_binaries-89"><span class="linenos"> 89</span></a><span class="sd">        NamedTuple of outputs (described in `VUpdateAfniBinariesOutputs`).</span>
-</span><span id="v__update_afni_binaries-90"><a href="#v__update_afni_binaries-90"><span class="linenos"> 90</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v__update_afni_binaries-91"><a href="#v__update_afni_binaries-91"><span class="linenos"> 91</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v__update_afni_binaries-92"><a href="#v__update_afni_binaries-92"><span class="linenos"> 92</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__UPDATE_AFNI_BINARIES_METADATA</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-93"><a href="#v__update_afni_binaries-93"><span class="linenos"> 93</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="v__update_afni_binaries-94"><a href="#v__update_afni_binaries-94"><span class="linenos"> 94</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@update.afni.binaries&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-95"><a href="#v__update_afni_binaries-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">defaults_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-96"><a href="#v__update_afni_binaries-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-defaults&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-97"><a href="#v__update_afni_binaries-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-98"><a href="#v__update_afni_binaries-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-99"><a href="#v__update_afni_binaries-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">help_sys_progs_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-100"><a href="#v__update_afni_binaries-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_sys_progs&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-101"><a href="#v__update_afni_binaries-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">apsearch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-102"><a href="#v__update_afni_binaries-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__update_afni_binaries-103"><a href="#v__update_afni_binaries-103"><span class="linenos">103</span></a>            <span class="s2">&quot;-apsearch&quot;</span><span class="p">,</span>
-</span><span id="v__update_afni_binaries-104"><a href="#v__update_afni_binaries-104"><span class="linenos">104</span></a>            <span class="n">apsearch</span>
-</span><span id="v__update_afni_binaries-105"><a href="#v__update_afni_binaries-105"><span class="linenos">105</span></a>        <span class="p">])</span>
-</span><span id="v__update_afni_binaries-106"><a href="#v__update_afni_binaries-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">bindir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-107"><a href="#v__update_afni_binaries-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__update_afni_binaries-108"><a href="#v__update_afni_binaries-108"><span class="linenos">108</span></a>            <span class="s2">&quot;-bindir&quot;</span><span class="p">,</span>
-</span><span id="v__update_afni_binaries-109"><a href="#v__update_afni_binaries-109"><span class="linenos">109</span></a>            <span class="n">bindir</span>
-</span><span id="v__update_afni_binaries-110"><a href="#v__update_afni_binaries-110"><span class="linenos">110</span></a>        <span class="p">])</span>
-</span><span id="v__update_afni_binaries-111"><a href="#v__update_afni_binaries-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">curl_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-112"><a href="#v__update_afni_binaries-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-curl&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-113"><a href="#v__update_afni_binaries-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">do_dotfiles_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-114"><a href="#v__update_afni_binaries-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-do_dotfiles&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-115"><a href="#v__update_afni_binaries-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">do_extras_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-116"><a href="#v__update_afni_binaries-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-do_extras&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-117"><a href="#v__update_afni_binaries-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">echo_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-118"><a href="#v__update_afni_binaries-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-echo&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-119"><a href="#v__update_afni_binaries-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">make_backup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-120"><a href="#v__update_afni_binaries-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__update_afni_binaries-121"><a href="#v__update_afni_binaries-121"><span class="linenos">121</span></a>            <span class="s2">&quot;-make_backup&quot;</span><span class="p">,</span>
-</span><span id="v__update_afni_binaries-122"><a href="#v__update_afni_binaries-122"><span class="linenos">122</span></a>            <span class="n">make_backup</span>
-</span><span id="v__update_afni_binaries-123"><a href="#v__update_afni_binaries-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="v__update_afni_binaries-124"><a href="#v__update_afni_binaries-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">no_cert_verify_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-125"><a href="#v__update_afni_binaries-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cert_verify&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-126"><a href="#v__update_afni_binaries-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">no_recur_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-127"><a href="#v__update_afni_binaries-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_recur&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-128"><a href="#v__update_afni_binaries-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">proto</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-129"><a href="#v__update_afni_binaries-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__update_afni_binaries-130"><a href="#v__update_afni_binaries-130"><span class="linenos">130</span></a>            <span class="s2">&quot;-proto&quot;</span><span class="p">,</span>
-</span><span id="v__update_afni_binaries-131"><a href="#v__update_afni_binaries-131"><span class="linenos">131</span></a>            <span class="n">proto</span>
-</span><span id="v__update_afni_binaries-132"><a href="#v__update_afni_binaries-132"><span class="linenos">132</span></a>        <span class="p">])</span>
-</span><span id="v__update_afni_binaries-133"><a href="#v__update_afni_binaries-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">quick_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-134"><a href="#v__update_afni_binaries-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quick&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-135"><a href="#v__update_afni_binaries-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">show_obsoletes_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-136"><a href="#v__update_afni_binaries-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_obsoletes&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-137"><a href="#v__update_afni_binaries-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">show_obsoletes_grep_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-138"><a href="#v__update_afni_binaries-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_obsoletes_grep&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-139"><a href="#v__update_afni_binaries-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">show_system_progs_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-140"><a href="#v__update_afni_binaries-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_system_progs&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-141"><a href="#v__update_afni_binaries-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">sys_ok_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-142"><a href="#v__update_afni_binaries-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sys_ok&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-143"><a href="#v__update_afni_binaries-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">test_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-144"><a href="#v__update_afni_binaries-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-145"><a href="#v__update_afni_binaries-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">test_protos_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-146"><a href="#v__update_afni_binaries-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test_protos&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-147"><a href="#v__update_afni_binaries-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">revert_flag</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-148"><a href="#v__update_afni_binaries-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-revert&quot;</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-149"><a href="#v__update_afni_binaries-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">local_package</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-150"><a href="#v__update_afni_binaries-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__update_afni_binaries-151"><a href="#v__update_afni_binaries-151"><span class="linenos">151</span></a>            <span class="s2">&quot;-local_package&quot;</span><span class="p">,</span>
-</span><span id="v__update_afni_binaries-152"><a href="#v__update_afni_binaries-152"><span class="linenos">152</span></a>            <span class="n">local_package</span>
-</span><span id="v__update_afni_binaries-153"><a href="#v__update_afni_binaries-153"><span class="linenos">153</span></a>        <span class="p">])</span>
-</span><span id="v__update_afni_binaries-154"><a href="#v__update_afni_binaries-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">prog_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-155"><a href="#v__update_afni_binaries-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__update_afni_binaries-156"><a href="#v__update_afni_binaries-156"><span class="linenos">156</span></a>            <span class="s2">&quot;-prog_list&quot;</span><span class="p">,</span>
-</span><span id="v__update_afni_binaries-157"><a href="#v__update_afni_binaries-157"><span class="linenos">157</span></a>            <span class="o">*</span><span class="n">prog_list</span>
-</span><span id="v__update_afni_binaries-158"><a href="#v__update_afni_binaries-158"><span class="linenos">158</span></a>        <span class="p">])</span>
-</span><span id="v__update_afni_binaries-159"><a href="#v__update_afni_binaries-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">package</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__update_afni_binaries-160"><a href="#v__update_afni_binaries-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__update_afni_binaries-161"><a href="#v__update_afni_binaries-161"><span class="linenos">161</span></a>            <span class="s2">&quot;-package&quot;</span><span class="p">,</span>
-</span><span id="v__update_afni_binaries-162"><a href="#v__update_afni_binaries-162"><span class="linenos">162</span></a>            <span class="n">package</span>
-</span><span id="v__update_afni_binaries-163"><a href="#v__update_afni_binaries-163"><span class="linenos">163</span></a>        <span class="p">])</span>
-</span><span id="v__update_afni_binaries-164"><a href="#v__update_afni_binaries-164"><span class="linenos">164</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VUpdateAfniBinariesOutputs</span><span class="p">(</span>
-</span><span id="v__update_afni_binaries-165"><a href="#v__update_afni_binaries-165"><span class="linenos">165</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v__update_afni_binaries-166"><a href="#v__update_afni_binaries-166"><span class="linenos">166</span></a>    <span class="p">)</span>
-</span><span id="v__update_afni_binaries-167"><a href="#v__update_afni_binaries-167"><span class="linenos">167</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v__update_afni_binaries-168"><a href="#v__update_afni_binaries-168"><span class="linenos">168</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v__update_afni_binaries-58"><a href="#v__update_afni_binaries-58"><span class="linenos"> 58</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v__update_afni_binaries-59"><a href="#v__update_afni_binaries-59"><span class="linenos"> 59</span></a><span class="sd">    </span>
+</span><span id="v__update_afni_binaries-60"><a href="#v__update_afni_binaries-60"><span class="linenos"> 60</span></a><span class="sd">    Args:</span>
+</span><span id="v__update_afni_binaries-61"><a href="#v__update_afni_binaries-61"><span class="linenos"> 61</span></a><span class="sd">        defaults_flag: Install current package into abin.</span>
+</span><span id="v__update_afni_binaries-62"><a href="#v__update_afni_binaries-62"><span class="linenos"> 62</span></a><span class="sd">        help_flag: Show this help.</span>
+</span><span id="v__update_afni_binaries-63"><a href="#v__update_afni_binaries-63"><span class="linenos"> 63</span></a><span class="sd">        help_sys_progs_flag: List system programs that block update.</span>
+</span><span id="v__update_afni_binaries-64"><a href="#v__update_afni_binaries-64"><span class="linenos"> 64</span></a><span class="sd">        apsearch: Specify getting apsearch updates.</span>
+</span><span id="v__update_afni_binaries-65"><a href="#v__update_afni_binaries-65"><span class="linenos"> 65</span></a><span class="sd">        bindir: Set AFNI binary directory to ABIN.</span>
+</span><span id="v__update_afni_binaries-66"><a href="#v__update_afni_binaries-66"><span class="linenos"> 66</span></a><span class="sd">        curl_flag: Default to curl instead of wget.</span>
+</span><span id="v__update_afni_binaries-67"><a href="#v__update_afni_binaries-67"><span class="linenos"> 67</span></a><span class="sd">        do_dotfiles_flag: Try to initialize dot files if needed.</span>
+</span><span id="v__update_afni_binaries-68"><a href="#v__update_afni_binaries-68"><span class="linenos"> 68</span></a><span class="sd">        do_extras_flag: Do extra niceties (beyond simple install).</span>
+</span><span id="v__update_afni_binaries-69"><a href="#v__update_afni_binaries-69"><span class="linenos"> 69</span></a><span class="sd">        echo_flag: Turn on shell command echo.</span>
+</span><span id="v__update_afni_binaries-70"><a href="#v__update_afni_binaries-70"><span class="linenos"> 70</span></a><span class="sd">        make_backup: Make a backup of binaries before replacing.</span>
+</span><span id="v__update_afni_binaries-71"><a href="#v__update_afni_binaries-71"><span class="linenos"> 71</span></a><span class="sd">        no_cert_verify_flag: Do not verify the server CA certificate.</span>
+</span><span id="v__update_afni_binaries-72"><a href="#v__update_afni_binaries-72"><span class="linenos"> 72</span></a><span class="sd">        no_recur_flag: Do not download and run new @uab script.</span>
+</span><span id="v__update_afni_binaries-73"><a href="#v__update_afni_binaries-73"><span class="linenos"> 73</span></a><span class="sd">        proto: Access afni host via specified PROTOCOL.</span>
+</span><span id="v__update_afni_binaries-74"><a href="#v__update_afni_binaries-74"><span class="linenos"> 74</span></a><span class="sd">        quick_flag: Quick mode, no fancies.</span>
+</span><span id="v__update_afni_binaries-75"><a href="#v__update_afni_binaries-75"><span class="linenos"> 75</span></a><span class="sd">        show_obsoletes_flag: List any obsolete packages.</span>
+</span><span id="v__update_afni_binaries-76"><a href="#v__update_afni_binaries-76"><span class="linenos"> 76</span></a><span class="sd">        show_obsoletes_grep_flag: List any obsolete packages (easy to grep).</span>
+</span><span id="v__update_afni_binaries-77"><a href="#v__update_afni_binaries-77"><span class="linenos"> 77</span></a><span class="sd">        show_system_progs_flag: Show system programs that do not belong in\</span>
+</span><span id="v__update_afni_binaries-78"><a href="#v__update_afni_binaries-78"><span class="linenos"> 78</span></a><span class="sd">            abin.</span>
+</span><span id="v__update_afni_binaries-79"><a href="#v__update_afni_binaries-79"><span class="linenos"> 79</span></a><span class="sd">        sys_ok_flag: OK to update, even if system progs found.</span>
+</span><span id="v__update_afni_binaries-80"><a href="#v__update_afni_binaries-80"><span class="linenos"> 80</span></a><span class="sd">        test_flag: Just attempt the download and quit.</span>
+</span><span id="v__update_afni_binaries-81"><a href="#v__update_afni_binaries-81"><span class="linenos"> 81</span></a><span class="sd">        test_protos_flag: Test download protocols and exit.</span>
+</span><span id="v__update_afni_binaries-82"><a href="#v__update_afni_binaries-82"><span class="linenos"> 82</span></a><span class="sd">        revert_flag: Revert binaries to previous version.</span>
+</span><span id="v__update_afni_binaries-83"><a href="#v__update_afni_binaries-83"><span class="linenos"> 83</span></a><span class="sd">        local_package: Install local PACKAGE.tgz package.</span>
+</span><span id="v__update_afni_binaries-84"><a href="#v__update_afni_binaries-84"><span class="linenos"> 84</span></a><span class="sd">        prog_list: Install given programs, not whole PACKAGE.</span>
+</span><span id="v__update_afni_binaries-85"><a href="#v__update_afni_binaries-85"><span class="linenos"> 85</span></a><span class="sd">        package: Install distribution package PACKAGE.</span>
+</span><span id="v__update_afni_binaries-86"><a href="#v__update_afni_binaries-86"><span class="linenos"> 86</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v__update_afni_binaries-87"><a href="#v__update_afni_binaries-87"><span class="linenos"> 87</span></a><span class="sd">    Returns:</span>
+</span><span id="v__update_afni_binaries-88"><a href="#v__update_afni_binaries-88"><span class="linenos"> 88</span></a><span class="sd">        NamedTuple of outputs (described in `VUpdateAfniBinariesOutputs`).</span>
+</span><span id="v__update_afni_binaries-89"><a href="#v__update_afni_binaries-89"><span class="linenos"> 89</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v__update_afni_binaries-90"><a href="#v__update_afni_binaries-90"><span class="linenos"> 90</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v__update_afni_binaries-91"><a href="#v__update_afni_binaries-91"><span class="linenos"> 91</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__UPDATE_AFNI_BINARIES_METADATA</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-92"><a href="#v__update_afni_binaries-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="v__update_afni_binaries-93"><a href="#v__update_afni_binaries-93"><span class="linenos"> 93</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@update.afni.binaries&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-94"><a href="#v__update_afni_binaries-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">defaults_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-95"><a href="#v__update_afni_binaries-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-defaults&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-96"><a href="#v__update_afni_binaries-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">help_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-97"><a href="#v__update_afni_binaries-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-98"><a href="#v__update_afni_binaries-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">help_sys_progs_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-99"><a href="#v__update_afni_binaries-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help_sys_progs&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-100"><a href="#v__update_afni_binaries-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">apsearch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-101"><a href="#v__update_afni_binaries-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__update_afni_binaries-102"><a href="#v__update_afni_binaries-102"><span class="linenos">102</span></a>            <span class="s2">&quot;-apsearch&quot;</span><span class="p">,</span>
+</span><span id="v__update_afni_binaries-103"><a href="#v__update_afni_binaries-103"><span class="linenos">103</span></a>            <span class="n">apsearch</span>
+</span><span id="v__update_afni_binaries-104"><a href="#v__update_afni_binaries-104"><span class="linenos">104</span></a>        <span class="p">])</span>
+</span><span id="v__update_afni_binaries-105"><a href="#v__update_afni_binaries-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">bindir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-106"><a href="#v__update_afni_binaries-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__update_afni_binaries-107"><a href="#v__update_afni_binaries-107"><span class="linenos">107</span></a>            <span class="s2">&quot;-bindir&quot;</span><span class="p">,</span>
+</span><span id="v__update_afni_binaries-108"><a href="#v__update_afni_binaries-108"><span class="linenos">108</span></a>            <span class="n">bindir</span>
+</span><span id="v__update_afni_binaries-109"><a href="#v__update_afni_binaries-109"><span class="linenos">109</span></a>        <span class="p">])</span>
+</span><span id="v__update_afni_binaries-110"><a href="#v__update_afni_binaries-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">curl_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-111"><a href="#v__update_afni_binaries-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-curl&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-112"><a href="#v__update_afni_binaries-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">do_dotfiles_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-113"><a href="#v__update_afni_binaries-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-do_dotfiles&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-114"><a href="#v__update_afni_binaries-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">do_extras_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-115"><a href="#v__update_afni_binaries-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-do_extras&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-116"><a href="#v__update_afni_binaries-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">echo_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-117"><a href="#v__update_afni_binaries-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-echo&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-118"><a href="#v__update_afni_binaries-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">make_backup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-119"><a href="#v__update_afni_binaries-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__update_afni_binaries-120"><a href="#v__update_afni_binaries-120"><span class="linenos">120</span></a>            <span class="s2">&quot;-make_backup&quot;</span><span class="p">,</span>
+</span><span id="v__update_afni_binaries-121"><a href="#v__update_afni_binaries-121"><span class="linenos">121</span></a>            <span class="n">make_backup</span>
+</span><span id="v__update_afni_binaries-122"><a href="#v__update_afni_binaries-122"><span class="linenos">122</span></a>        <span class="p">])</span>
+</span><span id="v__update_afni_binaries-123"><a href="#v__update_afni_binaries-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">no_cert_verify_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-124"><a href="#v__update_afni_binaries-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_cert_verify&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-125"><a href="#v__update_afni_binaries-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">no_recur_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-126"><a href="#v__update_afni_binaries-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-no_recur&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-127"><a href="#v__update_afni_binaries-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">proto</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-128"><a href="#v__update_afni_binaries-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__update_afni_binaries-129"><a href="#v__update_afni_binaries-129"><span class="linenos">129</span></a>            <span class="s2">&quot;-proto&quot;</span><span class="p">,</span>
+</span><span id="v__update_afni_binaries-130"><a href="#v__update_afni_binaries-130"><span class="linenos">130</span></a>            <span class="n">proto</span>
+</span><span id="v__update_afni_binaries-131"><a href="#v__update_afni_binaries-131"><span class="linenos">131</span></a>        <span class="p">])</span>
+</span><span id="v__update_afni_binaries-132"><a href="#v__update_afni_binaries-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">quick_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-133"><a href="#v__update_afni_binaries-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quick&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-134"><a href="#v__update_afni_binaries-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">show_obsoletes_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-135"><a href="#v__update_afni_binaries-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_obsoletes&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-136"><a href="#v__update_afni_binaries-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">show_obsoletes_grep_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-137"><a href="#v__update_afni_binaries-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_obsoletes_grep&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-138"><a href="#v__update_afni_binaries-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">show_system_progs_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-139"><a href="#v__update_afni_binaries-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_system_progs&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-140"><a href="#v__update_afni_binaries-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">sys_ok_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-141"><a href="#v__update_afni_binaries-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sys_ok&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-142"><a href="#v__update_afni_binaries-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">test_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-143"><a href="#v__update_afni_binaries-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-144"><a href="#v__update_afni_binaries-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">test_protos_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-145"><a href="#v__update_afni_binaries-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-test_protos&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-146"><a href="#v__update_afni_binaries-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">revert_flag</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-147"><a href="#v__update_afni_binaries-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-revert&quot;</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-148"><a href="#v__update_afni_binaries-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">local_package</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-149"><a href="#v__update_afni_binaries-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__update_afni_binaries-150"><a href="#v__update_afni_binaries-150"><span class="linenos">150</span></a>            <span class="s2">&quot;-local_package&quot;</span><span class="p">,</span>
+</span><span id="v__update_afni_binaries-151"><a href="#v__update_afni_binaries-151"><span class="linenos">151</span></a>            <span class="n">local_package</span>
+</span><span id="v__update_afni_binaries-152"><a href="#v__update_afni_binaries-152"><span class="linenos">152</span></a>        <span class="p">])</span>
+</span><span id="v__update_afni_binaries-153"><a href="#v__update_afni_binaries-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">prog_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-154"><a href="#v__update_afni_binaries-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__update_afni_binaries-155"><a href="#v__update_afni_binaries-155"><span class="linenos">155</span></a>            <span class="s2">&quot;-prog_list&quot;</span><span class="p">,</span>
+</span><span id="v__update_afni_binaries-156"><a href="#v__update_afni_binaries-156"><span class="linenos">156</span></a>            <span class="o">*</span><span class="n">prog_list</span>
+</span><span id="v__update_afni_binaries-157"><a href="#v__update_afni_binaries-157"><span class="linenos">157</span></a>        <span class="p">])</span>
+</span><span id="v__update_afni_binaries-158"><a href="#v__update_afni_binaries-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">package</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__update_afni_binaries-159"><a href="#v__update_afni_binaries-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__update_afni_binaries-160"><a href="#v__update_afni_binaries-160"><span class="linenos">160</span></a>            <span class="s2">&quot;-package&quot;</span><span class="p">,</span>
+</span><span id="v__update_afni_binaries-161"><a href="#v__update_afni_binaries-161"><span class="linenos">161</span></a>            <span class="n">package</span>
+</span><span id="v__update_afni_binaries-162"><a href="#v__update_afni_binaries-162"><span class="linenos">162</span></a>        <span class="p">])</span>
+</span><span id="v__update_afni_binaries-163"><a href="#v__update_afni_binaries-163"><span class="linenos">163</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VUpdateAfniBinariesOutputs</span><span class="p">(</span>
+</span><span id="v__update_afni_binaries-164"><a href="#v__update_afni_binaries-164"><span class="linenos">164</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v__update_afni_binaries-165"><a href="#v__update_afni_binaries-165"><span class="linenos">165</span></a>    <span class="p">)</span>
+</span><span id="v__update_afni_binaries-166"><a href="#v__update_afni_binaries-166"><span class="linenos">166</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v__update_afni_binaries-167"><a href="#v__update_afni_binaries-167"><span class="linenos">167</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Install or update AFNI binaries.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/@update.afni.binaries.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/@update.afni.binaries.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

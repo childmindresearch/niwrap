@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SURFACE_GEODESIC_DISTANCE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;038ac8f87c3b794812e70bdbc5c8d11e3e8caddf.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;56dcec8111c3113e7a99ad05b54eb0e01027d791.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;surface-geodesic-distance&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -126,55 +126,57 @@
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    but also neighbors derived from crawling across pairs of triangles that</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    share an edge.</span>
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    </span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Args:</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        surface: the surface to compute on.</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        vertex: the vertex to compute geodesic distance from.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        metric_out: the output metric.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        opt_naive: use only neighbors, don&#39;t crawl triangles (not recommended).</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        opt_limit_limit_mm: stop at a certain distance: distance in mm to stop\</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            at.</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            metric.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    Returns:</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceGeodesicDistanceOutputs`).</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_GEODESIC_DISTANCE_METADATA</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-geodesic-distance&quot;</span><span class="p">)</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">vertex</span><span class="p">))</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">opt_naive</span><span class="p">:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-naive&quot;</span><span class="p">)</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">opt_limit_limit_mm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;-limit&quot;</span><span class="p">,</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_limit_limit_mm</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="p">])</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">opt_corrected_areas_area_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-corrected-areas&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceGeodesicDistanceOutputs</span><span class="p">(</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">),</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="s2">&quot;SURFACE_GEODESIC_DISTANCE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="s2">&quot;SurfaceGeodesicDistanceOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="s2">&quot;surface_geodesic_distance&quot;</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="p">]</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    </span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    Args:</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        surface: the surface to compute on.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        vertex: the vertex to compute geodesic distance from.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        metric_out: the output metric.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        opt_naive: use only neighbors, don&#39;t crawl triangles (not recommended).</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        opt_limit_limit_mm: stop at a certain distance: distance in mm to stop\</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">            at.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">            metric.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    Returns:</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceGeodesicDistanceOutputs`).</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_GEODESIC_DISTANCE_METADATA</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-geodesic-distance&quot;</span><span class="p">)</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">vertex</span><span class="p">))</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">opt_naive</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-naive&quot;</span><span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">opt_limit_limit_mm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="s2">&quot;-limit&quot;</span><span class="p">,</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_limit_limit_mm</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="p">])</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">opt_corrected_areas_area_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;-corrected-areas&quot;</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceGeodesicDistanceOutputs</span><span class="p">(</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">),</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="s2">&quot;SURFACE_GEODESIC_DISTANCE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="s2">&quot;SurfaceGeodesicDistanceOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="s2">&quot;surface_geodesic_distance&quot;</span><span class="p">,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -183,7 +185,7 @@
                     <div class="attr variable">
             <span class="name">SURFACE_GEODESIC_DISTANCE_METADATA</span>        =
 <input id="SURFACE_GEODESIC_DISTANCE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SURFACE_GEODESIC_DISTANCE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;038ac8f87c3b794812e70bdbc5c8d11e3e8caddf.boutiques&#39;, name=&#39;surface-geodesic-distance&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SURFACE_GEODESIC_DISTANCE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;56dcec8111c3113e7a99ad05b54eb0e01027d791.boutiques&#39;, name=&#39;surface-geodesic-distance&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -298,48 +300,50 @@
 </span><span id="surface_geodesic_distance-53"><a href="#surface_geodesic_distance-53"><span class="linenos">53</span></a><span class="sd">    but also neighbors derived from crawling across pairs of triangles that</span>
 </span><span id="surface_geodesic_distance-54"><a href="#surface_geodesic_distance-54"><span class="linenos">54</span></a><span class="sd">    share an edge.</span>
 </span><span id="surface_geodesic_distance-55"><a href="#surface_geodesic_distance-55"><span class="linenos">55</span></a><span class="sd">    </span>
-</span><span id="surface_geodesic_distance-56"><a href="#surface_geodesic_distance-56"><span class="linenos">56</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="surface_geodesic_distance-56"><a href="#surface_geodesic_distance-56"><span class="linenos">56</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="surface_geodesic_distance-57"><a href="#surface_geodesic_distance-57"><span class="linenos">57</span></a><span class="sd">    </span>
-</span><span id="surface_geodesic_distance-58"><a href="#surface_geodesic_distance-58"><span class="linenos">58</span></a><span class="sd">    Args:</span>
-</span><span id="surface_geodesic_distance-59"><a href="#surface_geodesic_distance-59"><span class="linenos">59</span></a><span class="sd">        surface: the surface to compute on.</span>
-</span><span id="surface_geodesic_distance-60"><a href="#surface_geodesic_distance-60"><span class="linenos">60</span></a><span class="sd">        vertex: the vertex to compute geodesic distance from.</span>
-</span><span id="surface_geodesic_distance-61"><a href="#surface_geodesic_distance-61"><span class="linenos">61</span></a><span class="sd">        metric_out: the output metric.</span>
-</span><span id="surface_geodesic_distance-62"><a href="#surface_geodesic_distance-62"><span class="linenos">62</span></a><span class="sd">        opt_naive: use only neighbors, don&#39;t crawl triangles (not recommended).</span>
-</span><span id="surface_geodesic_distance-63"><a href="#surface_geodesic_distance-63"><span class="linenos">63</span></a><span class="sd">        opt_limit_limit_mm: stop at a certain distance: distance in mm to stop\</span>
-</span><span id="surface_geodesic_distance-64"><a href="#surface_geodesic_distance-64"><span class="linenos">64</span></a><span class="sd">            at.</span>
-</span><span id="surface_geodesic_distance-65"><a href="#surface_geodesic_distance-65"><span class="linenos">65</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
-</span><span id="surface_geodesic_distance-66"><a href="#surface_geodesic_distance-66"><span class="linenos">66</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
-</span><span id="surface_geodesic_distance-67"><a href="#surface_geodesic_distance-67"><span class="linenos">67</span></a><span class="sd">            metric.</span>
-</span><span id="surface_geodesic_distance-68"><a href="#surface_geodesic_distance-68"><span class="linenos">68</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="surface_geodesic_distance-69"><a href="#surface_geodesic_distance-69"><span class="linenos">69</span></a><span class="sd">    Returns:</span>
-</span><span id="surface_geodesic_distance-70"><a href="#surface_geodesic_distance-70"><span class="linenos">70</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceGeodesicDistanceOutputs`).</span>
-</span><span id="surface_geodesic_distance-71"><a href="#surface_geodesic_distance-71"><span class="linenos">71</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="surface_geodesic_distance-72"><a href="#surface_geodesic_distance-72"><span class="linenos">72</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="surface_geodesic_distance-73"><a href="#surface_geodesic_distance-73"><span class="linenos">73</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_GEODESIC_DISTANCE_METADATA</span><span class="p">)</span>
-</span><span id="surface_geodesic_distance-74"><a href="#surface_geodesic_distance-74"><span class="linenos">74</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="surface_geodesic_distance-75"><a href="#surface_geodesic_distance-75"><span class="linenos">75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="surface_geodesic_distance-76"><a href="#surface_geodesic_distance-76"><span class="linenos">76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-geodesic-distance&quot;</span><span class="p">)</span>
-</span><span id="surface_geodesic_distance-77"><a href="#surface_geodesic_distance-77"><span class="linenos">77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
-</span><span id="surface_geodesic_distance-78"><a href="#surface_geodesic_distance-78"><span class="linenos">78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">vertex</span><span class="p">))</span>
-</span><span id="surface_geodesic_distance-79"><a href="#surface_geodesic_distance-79"><span class="linenos">79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span>
-</span><span id="surface_geodesic_distance-80"><a href="#surface_geodesic_distance-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">opt_naive</span><span class="p">:</span>
-</span><span id="surface_geodesic_distance-81"><a href="#surface_geodesic_distance-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-naive&quot;</span><span class="p">)</span>
-</span><span id="surface_geodesic_distance-82"><a href="#surface_geodesic_distance-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">opt_limit_limit_mm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surface_geodesic_distance-83"><a href="#surface_geodesic_distance-83"><span class="linenos">83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surface_geodesic_distance-84"><a href="#surface_geodesic_distance-84"><span class="linenos">84</span></a>            <span class="s2">&quot;-limit&quot;</span><span class="p">,</span>
-</span><span id="surface_geodesic_distance-85"><a href="#surface_geodesic_distance-85"><span class="linenos">85</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_limit_limit_mm</span><span class="p">)</span>
-</span><span id="surface_geodesic_distance-86"><a href="#surface_geodesic_distance-86"><span class="linenos">86</span></a>        <span class="p">])</span>
-</span><span id="surface_geodesic_distance-87"><a href="#surface_geodesic_distance-87"><span class="linenos">87</span></a>    <span class="k">if</span> <span class="n">opt_corrected_areas_area_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surface_geodesic_distance-88"><a href="#surface_geodesic_distance-88"><span class="linenos">88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="surface_geodesic_distance-89"><a href="#surface_geodesic_distance-89"><span class="linenos">89</span></a>            <span class="s2">&quot;-corrected-areas&quot;</span><span class="p">,</span>
-</span><span id="surface_geodesic_distance-90"><a href="#surface_geodesic_distance-90"><span class="linenos">90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
-</span><span id="surface_geodesic_distance-91"><a href="#surface_geodesic_distance-91"><span class="linenos">91</span></a>        <span class="p">])</span>
-</span><span id="surface_geodesic_distance-92"><a href="#surface_geodesic_distance-92"><span class="linenos">92</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceGeodesicDistanceOutputs</span><span class="p">(</span>
-</span><span id="surface_geodesic_distance-93"><a href="#surface_geodesic_distance-93"><span class="linenos">93</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="surface_geodesic_distance-94"><a href="#surface_geodesic_distance-94"><span class="linenos">94</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">),</span>
-</span><span id="surface_geodesic_distance-95"><a href="#surface_geodesic_distance-95"><span class="linenos">95</span></a>    <span class="p">)</span>
-</span><span id="surface_geodesic_distance-96"><a href="#surface_geodesic_distance-96"><span class="linenos">96</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="surface_geodesic_distance-97"><a href="#surface_geodesic_distance-97"><span class="linenos">97</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="surface_geodesic_distance-58"><a href="#surface_geodesic_distance-58"><span class="linenos">58</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="surface_geodesic_distance-59"><a href="#surface_geodesic_distance-59"><span class="linenos">59</span></a><span class="sd">    </span>
+</span><span id="surface_geodesic_distance-60"><a href="#surface_geodesic_distance-60"><span class="linenos">60</span></a><span class="sd">    Args:</span>
+</span><span id="surface_geodesic_distance-61"><a href="#surface_geodesic_distance-61"><span class="linenos">61</span></a><span class="sd">        surface: the surface to compute on.</span>
+</span><span id="surface_geodesic_distance-62"><a href="#surface_geodesic_distance-62"><span class="linenos">62</span></a><span class="sd">        vertex: the vertex to compute geodesic distance from.</span>
+</span><span id="surface_geodesic_distance-63"><a href="#surface_geodesic_distance-63"><span class="linenos">63</span></a><span class="sd">        metric_out: the output metric.</span>
+</span><span id="surface_geodesic_distance-64"><a href="#surface_geodesic_distance-64"><span class="linenos">64</span></a><span class="sd">        opt_naive: use only neighbors, don&#39;t crawl triangles (not recommended).</span>
+</span><span id="surface_geodesic_distance-65"><a href="#surface_geodesic_distance-65"><span class="linenos">65</span></a><span class="sd">        opt_limit_limit_mm: stop at a certain distance: distance in mm to stop\</span>
+</span><span id="surface_geodesic_distance-66"><a href="#surface_geodesic_distance-66"><span class="linenos">66</span></a><span class="sd">            at.</span>
+</span><span id="surface_geodesic_distance-67"><a href="#surface_geodesic_distance-67"><span class="linenos">67</span></a><span class="sd">        opt_corrected_areas_area_metric: vertex areas to use instead of\</span>
+</span><span id="surface_geodesic_distance-68"><a href="#surface_geodesic_distance-68"><span class="linenos">68</span></a><span class="sd">            computing them from the surface: the corrected vertex areas, as a\</span>
+</span><span id="surface_geodesic_distance-69"><a href="#surface_geodesic_distance-69"><span class="linenos">69</span></a><span class="sd">            metric.</span>
+</span><span id="surface_geodesic_distance-70"><a href="#surface_geodesic_distance-70"><span class="linenos">70</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="surface_geodesic_distance-71"><a href="#surface_geodesic_distance-71"><span class="linenos">71</span></a><span class="sd">    Returns:</span>
+</span><span id="surface_geodesic_distance-72"><a href="#surface_geodesic_distance-72"><span class="linenos">72</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceGeodesicDistanceOutputs`).</span>
+</span><span id="surface_geodesic_distance-73"><a href="#surface_geodesic_distance-73"><span class="linenos">73</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="surface_geodesic_distance-74"><a href="#surface_geodesic_distance-74"><span class="linenos">74</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="surface_geodesic_distance-75"><a href="#surface_geodesic_distance-75"><span class="linenos">75</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_GEODESIC_DISTANCE_METADATA</span><span class="p">)</span>
+</span><span id="surface_geodesic_distance-76"><a href="#surface_geodesic_distance-76"><span class="linenos">76</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="surface_geodesic_distance-77"><a href="#surface_geodesic_distance-77"><span class="linenos">77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="surface_geodesic_distance-78"><a href="#surface_geodesic_distance-78"><span class="linenos">78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-geodesic-distance&quot;</span><span class="p">)</span>
+</span><span id="surface_geodesic_distance-79"><a href="#surface_geodesic_distance-79"><span class="linenos">79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
+</span><span id="surface_geodesic_distance-80"><a href="#surface_geodesic_distance-80"><span class="linenos">80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">vertex</span><span class="p">))</span>
+</span><span id="surface_geodesic_distance-81"><a href="#surface_geodesic_distance-81"><span class="linenos">81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span>
+</span><span id="surface_geodesic_distance-82"><a href="#surface_geodesic_distance-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">opt_naive</span><span class="p">:</span>
+</span><span id="surface_geodesic_distance-83"><a href="#surface_geodesic_distance-83"><span class="linenos">83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-naive&quot;</span><span class="p">)</span>
+</span><span id="surface_geodesic_distance-84"><a href="#surface_geodesic_distance-84"><span class="linenos">84</span></a>    <span class="k">if</span> <span class="n">opt_limit_limit_mm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surface_geodesic_distance-85"><a href="#surface_geodesic_distance-85"><span class="linenos">85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surface_geodesic_distance-86"><a href="#surface_geodesic_distance-86"><span class="linenos">86</span></a>            <span class="s2">&quot;-limit&quot;</span><span class="p">,</span>
+</span><span id="surface_geodesic_distance-87"><a href="#surface_geodesic_distance-87"><span class="linenos">87</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_limit_limit_mm</span><span class="p">)</span>
+</span><span id="surface_geodesic_distance-88"><a href="#surface_geodesic_distance-88"><span class="linenos">88</span></a>        <span class="p">])</span>
+</span><span id="surface_geodesic_distance-89"><a href="#surface_geodesic_distance-89"><span class="linenos">89</span></a>    <span class="k">if</span> <span class="n">opt_corrected_areas_area_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surface_geodesic_distance-90"><a href="#surface_geodesic_distance-90"><span class="linenos">90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surface_geodesic_distance-91"><a href="#surface_geodesic_distance-91"><span class="linenos">91</span></a>            <span class="s2">&quot;-corrected-areas&quot;</span><span class="p">,</span>
+</span><span id="surface_geodesic_distance-92"><a href="#surface_geodesic_distance-92"><span class="linenos">92</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_corrected_areas_area_metric</span><span class="p">)</span>
+</span><span id="surface_geodesic_distance-93"><a href="#surface_geodesic_distance-93"><span class="linenos">93</span></a>        <span class="p">])</span>
+</span><span id="surface_geodesic_distance-94"><a href="#surface_geodesic_distance-94"><span class="linenos">94</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceGeodesicDistanceOutputs</span><span class="p">(</span>
+</span><span id="surface_geodesic_distance-95"><a href="#surface_geodesic_distance-95"><span class="linenos">95</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="surface_geodesic_distance-96"><a href="#surface_geodesic_distance-96"><span class="linenos">96</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">),</span>
+</span><span id="surface_geodesic_distance-97"><a href="#surface_geodesic_distance-97"><span class="linenos">97</span></a>    <span class="p">)</span>
+</span><span id="surface_geodesic_distance-98"><a href="#surface_geodesic_distance-98"><span class="linenos">98</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="surface_geodesic_distance-99"><a href="#surface_geodesic_distance-99"><span class="linenos">99</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -361,7 +365,9 @@ to this option should be a group average of the output of
 but also neighbors derived from crawling across pairs of triangles that
 share an edge.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FAT_MAT_TABLEIZE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;331b88af40e4cbd6d235bf78ff986066742cced7.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;baa338d5cf5d41f07da4761e56ac490eac0fc6ad.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fat_mat_tableize&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -122,82 +122,81 @@
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    3dTrackID (*.grid) outputs, with optional additional subject information from</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    CSV files.</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    </span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    </span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    URL:</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_tableize.py.html</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    </span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    Args:</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        input_matrices: Names of *.netcc or *.grid files with matrices to be\</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">            used to make table; can be provided using wildcard chars.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        output_prefix: Output basename for the table and log files. Suffix and\</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">            file extensions will be added for the outputs.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        input_csv: Name of a CSV file to include in the table. The first column\</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">            must have subject ID labels that match with the input matrix files.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        input_list: File containing paths to subject matrices and optionally\</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            CSV IDs for matching.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        parameters: List of matrices to be included in the table, identified by\</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            their parameter name.</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        version: Display current version.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        date: Display release/editing date of current version.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        help_: Display help in terminal.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        help_short: Display help in terminal (short flag).</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        help_view: Display help in a separate text editor.</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    Returns:</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        NamedTuple of outputs (described in `FatMatTableizeOutputs`).</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_MAT_TABLEIZE_METADATA</span><span class="p">)</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_mat_tableize&quot;</span><span class="p">)</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="s2">&quot;-in_mat&quot;</span><span class="p">,</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="o">*</span><span class="n">input_matrices</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="p">])</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">input_csv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;-in_csv&quot;</span><span class="p">,</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_csv</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="p">])</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">input_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-in_listfile&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">output_prefix</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="p">])</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;-pars&quot;</span><span class="p">,</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="o">*</span><span class="n">parameters</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">date</span><span class="p">:</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-date&quot;</span><span class="p">)</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">help_short</span><span class="p">:</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">help_view</span><span class="p">:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hview&quot;</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatMatTableizeOutputs</span><span class="p">(</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">output_table</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;_tbl.txt&quot;</span><span class="p">),</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">output_log</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;_prep.log&quot;</span><span class="p">),</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="p">)</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    </span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    Args:</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">        input_matrices: Names of *.netcc or *.grid files with matrices to be\</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">            used to make table; can be provided using wildcard chars.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        output_prefix: Output basename for the table and log files. Suffix and\</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">            file extensions will be added for the outputs.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        input_csv: Name of a CSV file to include in the table. The first column\</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">            must have subject ID labels that match with the input matrix files.</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        input_list: File containing paths to subject matrices and optionally\</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">            CSV IDs for matching.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        parameters: List of matrices to be included in the table, identified by\</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">            their parameter name.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        version: Display current version.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        date: Display release/editing date of current version.</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        help_: Display help in terminal.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        help_short: Display help in terminal (short flag).</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        help_view: Display help in a separate text editor.</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    Returns:</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        NamedTuple of outputs (described in `FatMatTableizeOutputs`).</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_MAT_TABLEIZE_METADATA</span><span class="p">)</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_mat_tableize&quot;</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="s2">&quot;-in_mat&quot;</span><span class="p">,</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="o">*</span><span class="n">input_matrices</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="p">])</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="k">if</span> <span class="n">input_csv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="s2">&quot;-in_csv&quot;</span><span class="p">,</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_csv</span><span class="p">)</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="p">])</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">input_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;-in_listfile&quot;</span><span class="p">,</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">output_prefix</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="p">])</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;-pars&quot;</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="o">*</span><span class="n">parameters</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">date</span><span class="p">:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-date&quot;</span><span class="p">)</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">help_short</span><span class="p">:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">help_view</span><span class="p">:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hview&quot;</span><span class="p">)</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatMatTableizeOutputs</span><span class="p">(</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">output_table</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;_tbl.txt&quot;</span><span class="p">),</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">output_log</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;_prep.log&quot;</span><span class="p">),</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="p">)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;FAT_MAT_TABLEIZE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="s2">&quot;FatMatTableizeOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="s2">&quot;fat_mat_tableize&quot;</span><span class="p">,</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="p">]</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="s2">&quot;FAT_MAT_TABLEIZE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="s2">&quot;FatMatTableizeOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="s2">&quot;fat_mat_tableize&quot;</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -206,7 +205,7 @@
                     <div class="attr variable">
             <span class="name">FAT_MAT_TABLEIZE_METADATA</span>        =
 <input id="FAT_MAT_TABLEIZE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FAT_MAT_TABLEIZE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;331b88af40e4cbd6d235bf78ff986066742cced7.boutiques&#39;, name=&#39;fat_mat_tableize&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FAT_MAT_TABLEIZE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;baa338d5cf5d41f07da4761e56ac490eac0fc6ad.boutiques&#39;, name=&#39;fat_mat_tableize&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -328,75 +327,74 @@ file.</p>
 </span><span id="fat_mat_tableize-46"><a href="#fat_mat_tableize-46"><span class="linenos"> 46</span></a><span class="sd">    3dTrackID (*.grid) outputs, with optional additional subject information from</span>
 </span><span id="fat_mat_tableize-47"><a href="#fat_mat_tableize-47"><span class="linenos"> 47</span></a><span class="sd">    CSV files.</span>
 </span><span id="fat_mat_tableize-48"><a href="#fat_mat_tableize-48"><span class="linenos"> 48</span></a><span class="sd">    </span>
-</span><span id="fat_mat_tableize-49"><a href="#fat_mat_tableize-49"><span class="linenos"> 49</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="fat_mat_tableize-49"><a href="#fat_mat_tableize-49"><span class="linenos"> 49</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="fat_mat_tableize-50"><a href="#fat_mat_tableize-50"><span class="linenos"> 50</span></a><span class="sd">    </span>
-</span><span id="fat_mat_tableize-51"><a href="#fat_mat_tableize-51"><span class="linenos"> 51</span></a><span class="sd">    URL:</span>
-</span><span id="fat_mat_tableize-52"><a href="#fat_mat_tableize-52"><span class="linenos"> 52</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_tableize.py.html</span>
-</span><span id="fat_mat_tableize-53"><a href="#fat_mat_tableize-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
-</span><span id="fat_mat_tableize-54"><a href="#fat_mat_tableize-54"><span class="linenos"> 54</span></a><span class="sd">    Args:</span>
-</span><span id="fat_mat_tableize-55"><a href="#fat_mat_tableize-55"><span class="linenos"> 55</span></a><span class="sd">        input_matrices: Names of *.netcc or *.grid files with matrices to be\</span>
-</span><span id="fat_mat_tableize-56"><a href="#fat_mat_tableize-56"><span class="linenos"> 56</span></a><span class="sd">            used to make table; can be provided using wildcard chars.</span>
-</span><span id="fat_mat_tableize-57"><a href="#fat_mat_tableize-57"><span class="linenos"> 57</span></a><span class="sd">        output_prefix: Output basename for the table and log files. Suffix and\</span>
-</span><span id="fat_mat_tableize-58"><a href="#fat_mat_tableize-58"><span class="linenos"> 58</span></a><span class="sd">            file extensions will be added for the outputs.</span>
-</span><span id="fat_mat_tableize-59"><a href="#fat_mat_tableize-59"><span class="linenos"> 59</span></a><span class="sd">        input_csv: Name of a CSV file to include in the table. The first column\</span>
-</span><span id="fat_mat_tableize-60"><a href="#fat_mat_tableize-60"><span class="linenos"> 60</span></a><span class="sd">            must have subject ID labels that match with the input matrix files.</span>
-</span><span id="fat_mat_tableize-61"><a href="#fat_mat_tableize-61"><span class="linenos"> 61</span></a><span class="sd">        input_list: File containing paths to subject matrices and optionally\</span>
-</span><span id="fat_mat_tableize-62"><a href="#fat_mat_tableize-62"><span class="linenos"> 62</span></a><span class="sd">            CSV IDs for matching.</span>
-</span><span id="fat_mat_tableize-63"><a href="#fat_mat_tableize-63"><span class="linenos"> 63</span></a><span class="sd">        parameters: List of matrices to be included in the table, identified by\</span>
-</span><span id="fat_mat_tableize-64"><a href="#fat_mat_tableize-64"><span class="linenos"> 64</span></a><span class="sd">            their parameter name.</span>
-</span><span id="fat_mat_tableize-65"><a href="#fat_mat_tableize-65"><span class="linenos"> 65</span></a><span class="sd">        version: Display current version.</span>
-</span><span id="fat_mat_tableize-66"><a href="#fat_mat_tableize-66"><span class="linenos"> 66</span></a><span class="sd">        date: Display release/editing date of current version.</span>
-</span><span id="fat_mat_tableize-67"><a href="#fat_mat_tableize-67"><span class="linenos"> 67</span></a><span class="sd">        help_: Display help in terminal.</span>
-</span><span id="fat_mat_tableize-68"><a href="#fat_mat_tableize-68"><span class="linenos"> 68</span></a><span class="sd">        help_short: Display help in terminal (short flag).</span>
-</span><span id="fat_mat_tableize-69"><a href="#fat_mat_tableize-69"><span class="linenos"> 69</span></a><span class="sd">        help_view: Display help in a separate text editor.</span>
-</span><span id="fat_mat_tableize-70"><a href="#fat_mat_tableize-70"><span class="linenos"> 70</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fat_mat_tableize-71"><a href="#fat_mat_tableize-71"><span class="linenos"> 71</span></a><span class="sd">    Returns:</span>
-</span><span id="fat_mat_tableize-72"><a href="#fat_mat_tableize-72"><span class="linenos"> 72</span></a><span class="sd">        NamedTuple of outputs (described in `FatMatTableizeOutputs`).</span>
-</span><span id="fat_mat_tableize-73"><a href="#fat_mat_tableize-73"><span class="linenos"> 73</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fat_mat_tableize-74"><a href="#fat_mat_tableize-74"><span class="linenos"> 74</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fat_mat_tableize-75"><a href="#fat_mat_tableize-75"><span class="linenos"> 75</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_MAT_TABLEIZE_METADATA</span><span class="p">)</span>
-</span><span id="fat_mat_tableize-76"><a href="#fat_mat_tableize-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fat_mat_tableize-77"><a href="#fat_mat_tableize-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_mat_tableize&quot;</span><span class="p">)</span>
-</span><span id="fat_mat_tableize-78"><a href="#fat_mat_tableize-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_mat_tableize-79"><a href="#fat_mat_tableize-79"><span class="linenos"> 79</span></a>        <span class="s2">&quot;-in_mat&quot;</span><span class="p">,</span>
-</span><span id="fat_mat_tableize-80"><a href="#fat_mat_tableize-80"><span class="linenos"> 80</span></a>        <span class="o">*</span><span class="n">input_matrices</span>
-</span><span id="fat_mat_tableize-81"><a href="#fat_mat_tableize-81"><span class="linenos"> 81</span></a>    <span class="p">])</span>
-</span><span id="fat_mat_tableize-82"><a href="#fat_mat_tableize-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">input_csv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_mat_tableize-83"><a href="#fat_mat_tableize-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_mat_tableize-84"><a href="#fat_mat_tableize-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;-in_csv&quot;</span><span class="p">,</span>
-</span><span id="fat_mat_tableize-85"><a href="#fat_mat_tableize-85"><span class="linenos"> 85</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_csv</span><span class="p">)</span>
-</span><span id="fat_mat_tableize-86"><a href="#fat_mat_tableize-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
-</span><span id="fat_mat_tableize-87"><a href="#fat_mat_tableize-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">input_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_mat_tableize-88"><a href="#fat_mat_tableize-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_mat_tableize-89"><a href="#fat_mat_tableize-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;-in_listfile&quot;</span><span class="p">,</span>
-</span><span id="fat_mat_tableize-90"><a href="#fat_mat_tableize-90"><span class="linenos"> 90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span>
-</span><span id="fat_mat_tableize-91"><a href="#fat_mat_tableize-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
-</span><span id="fat_mat_tableize-92"><a href="#fat_mat_tableize-92"><span class="linenos"> 92</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_mat_tableize-93"><a href="#fat_mat_tableize-93"><span class="linenos"> 93</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
-</span><span id="fat_mat_tableize-94"><a href="#fat_mat_tableize-94"><span class="linenos"> 94</span></a>        <span class="n">output_prefix</span>
-</span><span id="fat_mat_tableize-95"><a href="#fat_mat_tableize-95"><span class="linenos"> 95</span></a>    <span class="p">])</span>
-</span><span id="fat_mat_tableize-96"><a href="#fat_mat_tableize-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fat_mat_tableize-97"><a href="#fat_mat_tableize-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fat_mat_tableize-98"><a href="#fat_mat_tableize-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;-pars&quot;</span><span class="p">,</span>
-</span><span id="fat_mat_tableize-99"><a href="#fat_mat_tableize-99"><span class="linenos"> 99</span></a>            <span class="o">*</span><span class="n">parameters</span>
-</span><span id="fat_mat_tableize-100"><a href="#fat_mat_tableize-100"><span class="linenos">100</span></a>        <span class="p">])</span>
-</span><span id="fat_mat_tableize-101"><a href="#fat_mat_tableize-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="fat_mat_tableize-102"><a href="#fat_mat_tableize-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
-</span><span id="fat_mat_tableize-103"><a href="#fat_mat_tableize-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">date</span><span class="p">:</span>
-</span><span id="fat_mat_tableize-104"><a href="#fat_mat_tableize-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-date&quot;</span><span class="p">)</span>
-</span><span id="fat_mat_tableize-105"><a href="#fat_mat_tableize-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="fat_mat_tableize-106"><a href="#fat_mat_tableize-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="fat_mat_tableize-107"><a href="#fat_mat_tableize-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">help_short</span><span class="p">:</span>
-</span><span id="fat_mat_tableize-108"><a href="#fat_mat_tableize-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">)</span>
-</span><span id="fat_mat_tableize-109"><a href="#fat_mat_tableize-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">help_view</span><span class="p">:</span>
-</span><span id="fat_mat_tableize-110"><a href="#fat_mat_tableize-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hview&quot;</span><span class="p">)</span>
-</span><span id="fat_mat_tableize-111"><a href="#fat_mat_tableize-111"><span class="linenos">111</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatMatTableizeOutputs</span><span class="p">(</span>
-</span><span id="fat_mat_tableize-112"><a href="#fat_mat_tableize-112"><span class="linenos">112</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fat_mat_tableize-113"><a href="#fat_mat_tableize-113"><span class="linenos">113</span></a>        <span class="n">output_table</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;_tbl.txt&quot;</span><span class="p">),</span>
-</span><span id="fat_mat_tableize-114"><a href="#fat_mat_tableize-114"><span class="linenos">114</span></a>        <span class="n">output_log</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;_prep.log&quot;</span><span class="p">),</span>
-</span><span id="fat_mat_tableize-115"><a href="#fat_mat_tableize-115"><span class="linenos">115</span></a>    <span class="p">)</span>
-</span><span id="fat_mat_tableize-116"><a href="#fat_mat_tableize-116"><span class="linenos">116</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fat_mat_tableize-117"><a href="#fat_mat_tableize-117"><span class="linenos">117</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fat_mat_tableize-51"><a href="#fat_mat_tableize-51"><span class="linenos"> 51</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="fat_mat_tableize-52"><a href="#fat_mat_tableize-52"><span class="linenos"> 52</span></a><span class="sd">    </span>
+</span><span id="fat_mat_tableize-53"><a href="#fat_mat_tableize-53"><span class="linenos"> 53</span></a><span class="sd">    Args:</span>
+</span><span id="fat_mat_tableize-54"><a href="#fat_mat_tableize-54"><span class="linenos"> 54</span></a><span class="sd">        input_matrices: Names of *.netcc or *.grid files with matrices to be\</span>
+</span><span id="fat_mat_tableize-55"><a href="#fat_mat_tableize-55"><span class="linenos"> 55</span></a><span class="sd">            used to make table; can be provided using wildcard chars.</span>
+</span><span id="fat_mat_tableize-56"><a href="#fat_mat_tableize-56"><span class="linenos"> 56</span></a><span class="sd">        output_prefix: Output basename for the table and log files. Suffix and\</span>
+</span><span id="fat_mat_tableize-57"><a href="#fat_mat_tableize-57"><span class="linenos"> 57</span></a><span class="sd">            file extensions will be added for the outputs.</span>
+</span><span id="fat_mat_tableize-58"><a href="#fat_mat_tableize-58"><span class="linenos"> 58</span></a><span class="sd">        input_csv: Name of a CSV file to include in the table. The first column\</span>
+</span><span id="fat_mat_tableize-59"><a href="#fat_mat_tableize-59"><span class="linenos"> 59</span></a><span class="sd">            must have subject ID labels that match with the input matrix files.</span>
+</span><span id="fat_mat_tableize-60"><a href="#fat_mat_tableize-60"><span class="linenos"> 60</span></a><span class="sd">        input_list: File containing paths to subject matrices and optionally\</span>
+</span><span id="fat_mat_tableize-61"><a href="#fat_mat_tableize-61"><span class="linenos"> 61</span></a><span class="sd">            CSV IDs for matching.</span>
+</span><span id="fat_mat_tableize-62"><a href="#fat_mat_tableize-62"><span class="linenos"> 62</span></a><span class="sd">        parameters: List of matrices to be included in the table, identified by\</span>
+</span><span id="fat_mat_tableize-63"><a href="#fat_mat_tableize-63"><span class="linenos"> 63</span></a><span class="sd">            their parameter name.</span>
+</span><span id="fat_mat_tableize-64"><a href="#fat_mat_tableize-64"><span class="linenos"> 64</span></a><span class="sd">        version: Display current version.</span>
+</span><span id="fat_mat_tableize-65"><a href="#fat_mat_tableize-65"><span class="linenos"> 65</span></a><span class="sd">        date: Display release/editing date of current version.</span>
+</span><span id="fat_mat_tableize-66"><a href="#fat_mat_tableize-66"><span class="linenos"> 66</span></a><span class="sd">        help_: Display help in terminal.</span>
+</span><span id="fat_mat_tableize-67"><a href="#fat_mat_tableize-67"><span class="linenos"> 67</span></a><span class="sd">        help_short: Display help in terminal (short flag).</span>
+</span><span id="fat_mat_tableize-68"><a href="#fat_mat_tableize-68"><span class="linenos"> 68</span></a><span class="sd">        help_view: Display help in a separate text editor.</span>
+</span><span id="fat_mat_tableize-69"><a href="#fat_mat_tableize-69"><span class="linenos"> 69</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fat_mat_tableize-70"><a href="#fat_mat_tableize-70"><span class="linenos"> 70</span></a><span class="sd">    Returns:</span>
+</span><span id="fat_mat_tableize-71"><a href="#fat_mat_tableize-71"><span class="linenos"> 71</span></a><span class="sd">        NamedTuple of outputs (described in `FatMatTableizeOutputs`).</span>
+</span><span id="fat_mat_tableize-72"><a href="#fat_mat_tableize-72"><span class="linenos"> 72</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fat_mat_tableize-73"><a href="#fat_mat_tableize-73"><span class="linenos"> 73</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fat_mat_tableize-74"><a href="#fat_mat_tableize-74"><span class="linenos"> 74</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FAT_MAT_TABLEIZE_METADATA</span><span class="p">)</span>
+</span><span id="fat_mat_tableize-75"><a href="#fat_mat_tableize-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fat_mat_tableize-76"><a href="#fat_mat_tableize-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fat_mat_tableize&quot;</span><span class="p">)</span>
+</span><span id="fat_mat_tableize-77"><a href="#fat_mat_tableize-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_mat_tableize-78"><a href="#fat_mat_tableize-78"><span class="linenos"> 78</span></a>        <span class="s2">&quot;-in_mat&quot;</span><span class="p">,</span>
+</span><span id="fat_mat_tableize-79"><a href="#fat_mat_tableize-79"><span class="linenos"> 79</span></a>        <span class="o">*</span><span class="n">input_matrices</span>
+</span><span id="fat_mat_tableize-80"><a href="#fat_mat_tableize-80"><span class="linenos"> 80</span></a>    <span class="p">])</span>
+</span><span id="fat_mat_tableize-81"><a href="#fat_mat_tableize-81"><span class="linenos"> 81</span></a>    <span class="k">if</span> <span class="n">input_csv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_mat_tableize-82"><a href="#fat_mat_tableize-82"><span class="linenos"> 82</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_mat_tableize-83"><a href="#fat_mat_tableize-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;-in_csv&quot;</span><span class="p">,</span>
+</span><span id="fat_mat_tableize-84"><a href="#fat_mat_tableize-84"><span class="linenos"> 84</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_csv</span><span class="p">)</span>
+</span><span id="fat_mat_tableize-85"><a href="#fat_mat_tableize-85"><span class="linenos"> 85</span></a>        <span class="p">])</span>
+</span><span id="fat_mat_tableize-86"><a href="#fat_mat_tableize-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">input_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_mat_tableize-87"><a href="#fat_mat_tableize-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_mat_tableize-88"><a href="#fat_mat_tableize-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-in_listfile&quot;</span><span class="p">,</span>
+</span><span id="fat_mat_tableize-89"><a href="#fat_mat_tableize-89"><span class="linenos"> 89</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span>
+</span><span id="fat_mat_tableize-90"><a href="#fat_mat_tableize-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
+</span><span id="fat_mat_tableize-91"><a href="#fat_mat_tableize-91"><span class="linenos"> 91</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_mat_tableize-92"><a href="#fat_mat_tableize-92"><span class="linenos"> 92</span></a>        <span class="s2">&quot;-prefix&quot;</span><span class="p">,</span>
+</span><span id="fat_mat_tableize-93"><a href="#fat_mat_tableize-93"><span class="linenos"> 93</span></a>        <span class="n">output_prefix</span>
+</span><span id="fat_mat_tableize-94"><a href="#fat_mat_tableize-94"><span class="linenos"> 94</span></a>    <span class="p">])</span>
+</span><span id="fat_mat_tableize-95"><a href="#fat_mat_tableize-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fat_mat_tableize-96"><a href="#fat_mat_tableize-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fat_mat_tableize-97"><a href="#fat_mat_tableize-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;-pars&quot;</span><span class="p">,</span>
+</span><span id="fat_mat_tableize-98"><a href="#fat_mat_tableize-98"><span class="linenos"> 98</span></a>            <span class="o">*</span><span class="n">parameters</span>
+</span><span id="fat_mat_tableize-99"><a href="#fat_mat_tableize-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
+</span><span id="fat_mat_tableize-100"><a href="#fat_mat_tableize-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="fat_mat_tableize-101"><a href="#fat_mat_tableize-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
+</span><span id="fat_mat_tableize-102"><a href="#fat_mat_tableize-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">date</span><span class="p">:</span>
+</span><span id="fat_mat_tableize-103"><a href="#fat_mat_tableize-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-date&quot;</span><span class="p">)</span>
+</span><span id="fat_mat_tableize-104"><a href="#fat_mat_tableize-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="fat_mat_tableize-105"><a href="#fat_mat_tableize-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="fat_mat_tableize-106"><a href="#fat_mat_tableize-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">help_short</span><span class="p">:</span>
+</span><span id="fat_mat_tableize-107"><a href="#fat_mat_tableize-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">)</span>
+</span><span id="fat_mat_tableize-108"><a href="#fat_mat_tableize-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">help_view</span><span class="p">:</span>
+</span><span id="fat_mat_tableize-109"><a href="#fat_mat_tableize-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hview&quot;</span><span class="p">)</span>
+</span><span id="fat_mat_tableize-110"><a href="#fat_mat_tableize-110"><span class="linenos">110</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FatMatTableizeOutputs</span><span class="p">(</span>
+</span><span id="fat_mat_tableize-111"><a href="#fat_mat_tableize-111"><span class="linenos">111</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fat_mat_tableize-112"><a href="#fat_mat_tableize-112"><span class="linenos">112</span></a>        <span class="n">output_table</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;_tbl.txt&quot;</span><span class="p">),</span>
+</span><span id="fat_mat_tableize-113"><a href="#fat_mat_tableize-113"><span class="linenos">113</span></a>        <span class="n">output_log</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_prefix</span> <span class="o">+</span> <span class="s2">&quot;_prep.log&quot;</span><span class="p">),</span>
+</span><span id="fat_mat_tableize-114"><a href="#fat_mat_tableize-114"><span class="linenos">114</span></a>    <span class="p">)</span>
+</span><span id="fat_mat_tableize-115"><a href="#fat_mat_tableize-115"><span class="linenos">115</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fat_mat_tableize-116"><a href="#fat_mat_tableize-116"><span class="linenos">116</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -404,10 +402,9 @@ file.</p>
 3dTrackID (</em>.grid) outputs, with optional additional subject information from
 CSV files.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_tableize.py.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_tableize.py.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

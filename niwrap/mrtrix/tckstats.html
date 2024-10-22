@@ -117,7 +117,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TCKSTATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2e6f7d19387564d069ab548694fef288498b97ad.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3760b66b1fa3a72514876d654c267f0868d2d468.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tckstats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -221,97 +221,96 @@
 </span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    </span>
 </span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    .</span>
 </span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    </span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    </span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    URL:</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/tckstats.html</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    </span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    Args:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">        tracks_in: the input track file.</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">        output: output only the field specified. Multiple such options can be\</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">            supplied if required. Choices are: mean, median, std, min, max, count.\</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">            Useful for use in scripts.</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        histogram: output a histogram of streamline lengths.</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        dump: dump the streamlines lengths to a text file.</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        ignorezero: do not generate a warning if the track file contains\</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">            streamlines with zero length.</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        tck_weights_in: specify a text scalar file containing the streamline\</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">            weights.</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    Returns:</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">        NamedTuple of outputs (described in `TckstatsOutputs`).</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKSTATS_METADATA</span><span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckstats&quot;</span><span class="p">)</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">output</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">histogram</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="s2">&quot;-histogram&quot;</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="n">histogram</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="p">])</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>            <span class="s2">&quot;-dump&quot;</span><span class="p">,</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>            <span class="n">dump</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="p">])</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">ignorezero</span><span class="p">:</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ignorezero&quot;</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">tck_weights_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>            <span class="s2">&quot;-tck_weights_in&quot;</span><span class="p">,</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tck_weights_in</span><span class="p">)</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="p">])</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="p">])</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tracks_in</span><span class="p">))</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckstatsOutputs</span><span class="p">(</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="n">histogram</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">histogram</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">histogram</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>        <span class="n">dump</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">dump</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="p">)</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    </span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Args:</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        tracks_in: the input track file.</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">        output: output only the field specified. Multiple such options can be\</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">            supplied if required. Choices are: mean, median, std, min, max, count.\</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">            Useful for use in scripts.</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        histogram: output a histogram of streamline lengths.</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        dump: dump the streamlines lengths to a text file.</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        ignorezero: do not generate a warning if the track file contains\</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">            streamlines with zero length.</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">        tck_weights_in: specify a text scalar file containing the streamline\</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">            weights.</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    Returns:</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">        NamedTuple of outputs (described in `TckstatsOutputs`).</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKSTATS_METADATA</span><span class="p">)</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckstats&quot;</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">output</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">histogram</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>            <span class="s2">&quot;-histogram&quot;</span><span class="p">,</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="n">histogram</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="p">])</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">if</span> <span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>            <span class="s2">&quot;-dump&quot;</span><span class="p">,</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>            <span class="n">dump</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="p">])</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">ignorezero</span><span class="p">:</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ignorezero&quot;</span><span class="p">)</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">tck_weights_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>            <span class="s2">&quot;-tck_weights_in&quot;</span><span class="p">,</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tck_weights_in</span><span class="p">)</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="p">])</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="p">])</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tracks_in</span><span class="p">))</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckstatsOutputs</span><span class="p">(</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">histogram</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">histogram</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">histogram</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="n">dump</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">dump</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>
 </span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="s2">&quot;TCKSTATS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="s2">&quot;TckstatsConfig&quot;</span><span class="p">,</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="s2">&quot;TckstatsOutput&quot;</span><span class="p">,</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="s2">&quot;TckstatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="s2">&quot;tckstats&quot;</span><span class="p">,</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="p">]</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="s2">&quot;TCKSTATS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="s2">&quot;TckstatsConfig&quot;</span><span class="p">,</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="s2">&quot;TckstatsOutput&quot;</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="s2">&quot;TckstatsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="s2">&quot;tckstats&quot;</span><span class="p">,</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -320,7 +319,7 @@
                     <div class="attr variable">
             <span class="name">TCKSTATS_METADATA</span>        =
 <input id="TCKSTATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TCKSTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2e6f7d19387564d069ab548694fef288498b97ad.boutiques&#39;, name=&#39;tckstats&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TCKSTATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3760b66b1fa3a72514876d654c267f0868d2d468.boutiques&#39;, name=&#39;tckstats&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -705,88 +704,87 @@ scripts.</p>
 </span><span id="tckstats-112"><a href="#tckstats-112"><span class="linenos">112</span></a><span class="sd">    </span>
 </span><span id="tckstats-113"><a href="#tckstats-113"><span class="linenos">113</span></a><span class="sd">    .</span>
 </span><span id="tckstats-114"><a href="#tckstats-114"><span class="linenos">114</span></a><span class="sd">    </span>
-</span><span id="tckstats-115"><a href="#tckstats-115"><span class="linenos">115</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="tckstats-115"><a href="#tckstats-115"><span class="linenos">115</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="tckstats-116"><a href="#tckstats-116"><span class="linenos">116</span></a><span class="sd">    </span>
-</span><span id="tckstats-117"><a href="#tckstats-117"><span class="linenos">117</span></a><span class="sd">    URL:</span>
-</span><span id="tckstats-118"><a href="#tckstats-118"><span class="linenos">118</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/tckstats.html</span>
-</span><span id="tckstats-119"><a href="#tckstats-119"><span class="linenos">119</span></a><span class="sd">    </span>
-</span><span id="tckstats-120"><a href="#tckstats-120"><span class="linenos">120</span></a><span class="sd">    Args:</span>
-</span><span id="tckstats-121"><a href="#tckstats-121"><span class="linenos">121</span></a><span class="sd">        tracks_in: the input track file.</span>
-</span><span id="tckstats-122"><a href="#tckstats-122"><span class="linenos">122</span></a><span class="sd">        output: output only the field specified. Multiple such options can be\</span>
-</span><span id="tckstats-123"><a href="#tckstats-123"><span class="linenos">123</span></a><span class="sd">            supplied if required. Choices are: mean, median, std, min, max, count.\</span>
-</span><span id="tckstats-124"><a href="#tckstats-124"><span class="linenos">124</span></a><span class="sd">            Useful for use in scripts.</span>
-</span><span id="tckstats-125"><a href="#tckstats-125"><span class="linenos">125</span></a><span class="sd">        histogram: output a histogram of streamline lengths.</span>
-</span><span id="tckstats-126"><a href="#tckstats-126"><span class="linenos">126</span></a><span class="sd">        dump: dump the streamlines lengths to a text file.</span>
-</span><span id="tckstats-127"><a href="#tckstats-127"><span class="linenos">127</span></a><span class="sd">        ignorezero: do not generate a warning if the track file contains\</span>
-</span><span id="tckstats-128"><a href="#tckstats-128"><span class="linenos">128</span></a><span class="sd">            streamlines with zero length.</span>
-</span><span id="tckstats-129"><a href="#tckstats-129"><span class="linenos">129</span></a><span class="sd">        tck_weights_in: specify a text scalar file containing the streamline\</span>
-</span><span id="tckstats-130"><a href="#tckstats-130"><span class="linenos">130</span></a><span class="sd">            weights.</span>
-</span><span id="tckstats-131"><a href="#tckstats-131"><span class="linenos">131</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="tckstats-132"><a href="#tckstats-132"><span class="linenos">132</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="tckstats-133"><a href="#tckstats-133"><span class="linenos">133</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="tckstats-134"><a href="#tckstats-134"><span class="linenos">134</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="tckstats-135"><a href="#tckstats-135"><span class="linenos">135</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="tckstats-136"><a href="#tckstats-136"><span class="linenos">136</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="tckstats-137"><a href="#tckstats-137"><span class="linenos">137</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="tckstats-138"><a href="#tckstats-138"><span class="linenos">138</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="tckstats-139"><a href="#tckstats-139"><span class="linenos">139</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="tckstats-140"><a href="#tckstats-140"><span class="linenos">140</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="tckstats-141"><a href="#tckstats-141"><span class="linenos">141</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="tckstats-142"><a href="#tckstats-142"><span class="linenos">142</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="tckstats-143"><a href="#tckstats-143"><span class="linenos">143</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="tckstats-144"><a href="#tckstats-144"><span class="linenos">144</span></a><span class="sd">    Returns:</span>
-</span><span id="tckstats-145"><a href="#tckstats-145"><span class="linenos">145</span></a><span class="sd">        NamedTuple of outputs (described in `TckstatsOutputs`).</span>
-</span><span id="tckstats-146"><a href="#tckstats-146"><span class="linenos">146</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="tckstats-147"><a href="#tckstats-147"><span class="linenos">147</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="tckstats-148"><a href="#tckstats-148"><span class="linenos">148</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKSTATS_METADATA</span><span class="p">)</span>
-</span><span id="tckstats-149"><a href="#tckstats-149"><span class="linenos">149</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="tckstats-150"><a href="#tckstats-150"><span class="linenos">150</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckstats&quot;</span><span class="p">)</span>
-</span><span id="tckstats-151"><a href="#tckstats-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckstats-152"><a href="#tckstats-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">output</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="tckstats-153"><a href="#tckstats-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">histogram</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckstats-154"><a href="#tckstats-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckstats-155"><a href="#tckstats-155"><span class="linenos">155</span></a>            <span class="s2">&quot;-histogram&quot;</span><span class="p">,</span>
-</span><span id="tckstats-156"><a href="#tckstats-156"><span class="linenos">156</span></a>            <span class="n">histogram</span>
-</span><span id="tckstats-157"><a href="#tckstats-157"><span class="linenos">157</span></a>        <span class="p">])</span>
-</span><span id="tckstats-158"><a href="#tckstats-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckstats-159"><a href="#tckstats-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckstats-160"><a href="#tckstats-160"><span class="linenos">160</span></a>            <span class="s2">&quot;-dump&quot;</span><span class="p">,</span>
-</span><span id="tckstats-161"><a href="#tckstats-161"><span class="linenos">161</span></a>            <span class="n">dump</span>
-</span><span id="tckstats-162"><a href="#tckstats-162"><span class="linenos">162</span></a>        <span class="p">])</span>
-</span><span id="tckstats-163"><a href="#tckstats-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">ignorezero</span><span class="p">:</span>
-</span><span id="tckstats-164"><a href="#tckstats-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ignorezero&quot;</span><span class="p">)</span>
-</span><span id="tckstats-165"><a href="#tckstats-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">tck_weights_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckstats-166"><a href="#tckstats-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckstats-167"><a href="#tckstats-167"><span class="linenos">167</span></a>            <span class="s2">&quot;-tck_weights_in&quot;</span><span class="p">,</span>
-</span><span id="tckstats-168"><a href="#tckstats-168"><span class="linenos">168</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tck_weights_in</span><span class="p">)</span>
-</span><span id="tckstats-169"><a href="#tckstats-169"><span class="linenos">169</span></a>        <span class="p">])</span>
-</span><span id="tckstats-170"><a href="#tckstats-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="tckstats-171"><a href="#tckstats-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="tckstats-172"><a href="#tckstats-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="tckstats-173"><a href="#tckstats-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="tckstats-174"><a href="#tckstats-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="tckstats-175"><a href="#tckstats-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="tckstats-176"><a href="#tckstats-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="tckstats-177"><a href="#tckstats-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="tckstats-178"><a href="#tckstats-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckstats-179"><a href="#tckstats-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckstats-180"><a href="#tckstats-180"><span class="linenos">180</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="tckstats-181"><a href="#tckstats-181"><span class="linenos">181</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="tckstats-182"><a href="#tckstats-182"><span class="linenos">182</span></a>        <span class="p">])</span>
-</span><span id="tckstats-183"><a href="#tckstats-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckstats-184"><a href="#tckstats-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="tckstats-185"><a href="#tckstats-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="tckstats-186"><a href="#tckstats-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="tckstats-187"><a href="#tckstats-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="tckstats-188"><a href="#tckstats-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="tckstats-189"><a href="#tckstats-189"><span class="linenos">189</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tracks_in</span><span class="p">))</span>
-</span><span id="tckstats-190"><a href="#tckstats-190"><span class="linenos">190</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckstatsOutputs</span><span class="p">(</span>
-</span><span id="tckstats-191"><a href="#tckstats-191"><span class="linenos">191</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="tckstats-192"><a href="#tckstats-192"><span class="linenos">192</span></a>        <span class="n">histogram</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">histogram</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">histogram</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckstats-193"><a href="#tckstats-193"><span class="linenos">193</span></a>        <span class="n">dump</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">dump</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="tckstats-194"><a href="#tckstats-194"><span class="linenos">194</span></a>    <span class="p">)</span>
-</span><span id="tckstats-195"><a href="#tckstats-195"><span class="linenos">195</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="tckstats-196"><a href="#tckstats-196"><span class="linenos">196</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="tckstats-117"><a href="#tckstats-117"><span class="linenos">117</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="tckstats-118"><a href="#tckstats-118"><span class="linenos">118</span></a><span class="sd">    </span>
+</span><span id="tckstats-119"><a href="#tckstats-119"><span class="linenos">119</span></a><span class="sd">    Args:</span>
+</span><span id="tckstats-120"><a href="#tckstats-120"><span class="linenos">120</span></a><span class="sd">        tracks_in: the input track file.</span>
+</span><span id="tckstats-121"><a href="#tckstats-121"><span class="linenos">121</span></a><span class="sd">        output: output only the field specified. Multiple such options can be\</span>
+</span><span id="tckstats-122"><a href="#tckstats-122"><span class="linenos">122</span></a><span class="sd">            supplied if required. Choices are: mean, median, std, min, max, count.\</span>
+</span><span id="tckstats-123"><a href="#tckstats-123"><span class="linenos">123</span></a><span class="sd">            Useful for use in scripts.</span>
+</span><span id="tckstats-124"><a href="#tckstats-124"><span class="linenos">124</span></a><span class="sd">        histogram: output a histogram of streamline lengths.</span>
+</span><span id="tckstats-125"><a href="#tckstats-125"><span class="linenos">125</span></a><span class="sd">        dump: dump the streamlines lengths to a text file.</span>
+</span><span id="tckstats-126"><a href="#tckstats-126"><span class="linenos">126</span></a><span class="sd">        ignorezero: do not generate a warning if the track file contains\</span>
+</span><span id="tckstats-127"><a href="#tckstats-127"><span class="linenos">127</span></a><span class="sd">            streamlines with zero length.</span>
+</span><span id="tckstats-128"><a href="#tckstats-128"><span class="linenos">128</span></a><span class="sd">        tck_weights_in: specify a text scalar file containing the streamline\</span>
+</span><span id="tckstats-129"><a href="#tckstats-129"><span class="linenos">129</span></a><span class="sd">            weights.</span>
+</span><span id="tckstats-130"><a href="#tckstats-130"><span class="linenos">130</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="tckstats-131"><a href="#tckstats-131"><span class="linenos">131</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="tckstats-132"><a href="#tckstats-132"><span class="linenos">132</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="tckstats-133"><a href="#tckstats-133"><span class="linenos">133</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="tckstats-134"><a href="#tckstats-134"><span class="linenos">134</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="tckstats-135"><a href="#tckstats-135"><span class="linenos">135</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="tckstats-136"><a href="#tckstats-136"><span class="linenos">136</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="tckstats-137"><a href="#tckstats-137"><span class="linenos">137</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="tckstats-138"><a href="#tckstats-138"><span class="linenos">138</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="tckstats-139"><a href="#tckstats-139"><span class="linenos">139</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="tckstats-140"><a href="#tckstats-140"><span class="linenos">140</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="tckstats-141"><a href="#tckstats-141"><span class="linenos">141</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="tckstats-142"><a href="#tckstats-142"><span class="linenos">142</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="tckstats-143"><a href="#tckstats-143"><span class="linenos">143</span></a><span class="sd">    Returns:</span>
+</span><span id="tckstats-144"><a href="#tckstats-144"><span class="linenos">144</span></a><span class="sd">        NamedTuple of outputs (described in `TckstatsOutputs`).</span>
+</span><span id="tckstats-145"><a href="#tckstats-145"><span class="linenos">145</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="tckstats-146"><a href="#tckstats-146"><span class="linenos">146</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="tckstats-147"><a href="#tckstats-147"><span class="linenos">147</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKSTATS_METADATA</span><span class="p">)</span>
+</span><span id="tckstats-148"><a href="#tckstats-148"><span class="linenos">148</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="tckstats-149"><a href="#tckstats-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckstats&quot;</span><span class="p">)</span>
+</span><span id="tckstats-150"><a href="#tckstats-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckstats-151"><a href="#tckstats-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">output</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="tckstats-152"><a href="#tckstats-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">histogram</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckstats-153"><a href="#tckstats-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckstats-154"><a href="#tckstats-154"><span class="linenos">154</span></a>            <span class="s2">&quot;-histogram&quot;</span><span class="p">,</span>
+</span><span id="tckstats-155"><a href="#tckstats-155"><span class="linenos">155</span></a>            <span class="n">histogram</span>
+</span><span id="tckstats-156"><a href="#tckstats-156"><span class="linenos">156</span></a>        <span class="p">])</span>
+</span><span id="tckstats-157"><a href="#tckstats-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckstats-158"><a href="#tckstats-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckstats-159"><a href="#tckstats-159"><span class="linenos">159</span></a>            <span class="s2">&quot;-dump&quot;</span><span class="p">,</span>
+</span><span id="tckstats-160"><a href="#tckstats-160"><span class="linenos">160</span></a>            <span class="n">dump</span>
+</span><span id="tckstats-161"><a href="#tckstats-161"><span class="linenos">161</span></a>        <span class="p">])</span>
+</span><span id="tckstats-162"><a href="#tckstats-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">ignorezero</span><span class="p">:</span>
+</span><span id="tckstats-163"><a href="#tckstats-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ignorezero&quot;</span><span class="p">)</span>
+</span><span id="tckstats-164"><a href="#tckstats-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">tck_weights_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckstats-165"><a href="#tckstats-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckstats-166"><a href="#tckstats-166"><span class="linenos">166</span></a>            <span class="s2">&quot;-tck_weights_in&quot;</span><span class="p">,</span>
+</span><span id="tckstats-167"><a href="#tckstats-167"><span class="linenos">167</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tck_weights_in</span><span class="p">)</span>
+</span><span id="tckstats-168"><a href="#tckstats-168"><span class="linenos">168</span></a>        <span class="p">])</span>
+</span><span id="tckstats-169"><a href="#tckstats-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="tckstats-170"><a href="#tckstats-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="tckstats-171"><a href="#tckstats-171"><span class="linenos">171</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="tckstats-172"><a href="#tckstats-172"><span class="linenos">172</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="tckstats-173"><a href="#tckstats-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="tckstats-174"><a href="#tckstats-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="tckstats-175"><a href="#tckstats-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="tckstats-176"><a href="#tckstats-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="tckstats-177"><a href="#tckstats-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckstats-178"><a href="#tckstats-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckstats-179"><a href="#tckstats-179"><span class="linenos">179</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="tckstats-180"><a href="#tckstats-180"><span class="linenos">180</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="tckstats-181"><a href="#tckstats-181"><span class="linenos">181</span></a>        <span class="p">])</span>
+</span><span id="tckstats-182"><a href="#tckstats-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckstats-183"><a href="#tckstats-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="tckstats-184"><a href="#tckstats-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="tckstats-185"><a href="#tckstats-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="tckstats-186"><a href="#tckstats-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="tckstats-187"><a href="#tckstats-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="tckstats-188"><a href="#tckstats-188"><span class="linenos">188</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tracks_in</span><span class="p">))</span>
+</span><span id="tckstats-189"><a href="#tckstats-189"><span class="linenos">189</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckstatsOutputs</span><span class="p">(</span>
+</span><span id="tckstats-190"><a href="#tckstats-190"><span class="linenos">190</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="tckstats-191"><a href="#tckstats-191"><span class="linenos">191</span></a>        <span class="n">histogram</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">histogram</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">histogram</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckstats-192"><a href="#tckstats-192"><span class="linenos">192</span></a>        <span class="n">dump</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">dump</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">dump</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="tckstats-193"><a href="#tckstats-193"><span class="linenos">193</span></a>    <span class="p">)</span>
+</span><span id="tckstats-194"><a href="#tckstats-194"><span class="linenos">194</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="tckstats-195"><a href="#tckstats-195"><span class="linenos">195</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -796,10 +794,9 @@ scripts.</p>
 
 <p>.</p>
 
-<p>Author: Robert E. Smith (robert.smith@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/tckstats.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/tckstats.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

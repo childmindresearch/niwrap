@@ -87,7 +87,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">C3D_AFFINE_TOOL_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;7ea823a818cb74f4dad96d412b2cbb7f6bb4c5f1.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6b866352e9b556eb1381835bc90e95b78d4328de.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;c3d_affine_tool&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;c3d&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;pyushkevich/itksnap:v3.8.2&quot;</span><span class="p">,</span>
@@ -131,109 +131,111 @@
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    RAS affine transform tool.</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    Author: ITK-Snap Team</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    Author: Convert3D Developers</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    </span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    Args:</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        transform_file: file or string representing the transform.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        reference_file: Set reference (fixed) image - only for -fsl2ras and\</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">            -ras2fsl.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        source_file: Set source (moving) image - only for -fsl2ras and\</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    URL: http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    </span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    Args:</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        transform_file: file or string representing the transform.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        reference_file: Set reference (fixed) image - only for -fsl2ras and\</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            -ras2fsl.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        sform_file: Read matrix from NifTI sform.</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        invert: Invert matrix.</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        determinant: Print the determinant.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        multiply: Multiply matrices.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        sqrt: Matrix square root (i.e., Q s.t. A = Q * Q).</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        itk_transform: Import ITK transform.</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        irtk_transform: Import IRTK .dof format transform.</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        fsl2ras: Convert FSL to RAS.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        ras2fsl: Convert RAS to FSL.</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        out_itk_transform: Export ITK transform.</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        out_irtk_transform: Export IRTK .dof format transform.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        out_matfile: Write output matrix.</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        info: Print matrix.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        info_full: Print matrix and more detail about the transform.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    Returns:</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        NamedTuple of outputs (described in `C3dAffineToolOutputs`).</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">C3D_AFFINE_TOOL_METADATA</span><span class="p">)</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c3d_affine_tool&quot;</span><span class="p">)</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">transform_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transform_file</span><span class="p">))</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">reference_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="s2">&quot;-ref&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reference_file</span><span class="p">)</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="p">])</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">source_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;-src&quot;</span><span class="p">,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">source_file</span><span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">sform_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;-sform&quot;</span><span class="p">,</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sform_file</span><span class="p">)</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="p">])</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">invert</span><span class="p">:</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-inv&quot;</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">determinant</span><span class="p">:</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-det&quot;</span><span class="p">)</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">multiply</span><span class="p">:</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mult&quot;</span><span class="p">)</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">sqrt</span><span class="p">:</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sqrt&quot;</span><span class="p">)</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="s2">&quot;-itk&quot;</span><span class="p">,</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">itk_transform</span><span class="p">)</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="p">])</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="s2">&quot;-irtk&quot;</span><span class="p">,</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">irtk_transform</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="p">])</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">fsl2ras</span><span class="p">:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fsl2ras&quot;</span><span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">ras2fsl</span><span class="p">:</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ras2fsl&quot;</span><span class="p">)</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">out_itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>            <span class="s2">&quot;-oitk&quot;</span><span class="p">,</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="n">out_itk_transform</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="p">])</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">out_irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="s2">&quot;-oirtk&quot;</span><span class="p">,</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="n">out_irtk_transform</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="p">])</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">out_matfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="n">out_matfile</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="p">])</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">info_full</span><span class="p">:</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info-full&quot;</span><span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">C3dAffineToolOutputs</span><span class="p">(</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">itk_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_itk_transform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">irtk_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_irtk_transform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">matrix_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_matfile</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_matfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="p">)</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="s2">&quot;C3D_AFFINE_TOOL_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="s2">&quot;C3dAffineToolOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="s2">&quot;c3d_affine_tool&quot;</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="p">]</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        source_file: Set source (moving) image - only for -fsl2ras and\</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            -ras2fsl.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        sform_file: Read matrix from NifTI sform.</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        invert: Invert matrix.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        determinant: Print the determinant.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        multiply: Multiply matrices.</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        sqrt: Matrix square root (i.e., Q s.t. A = Q * Q).</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        itk_transform: Import ITK transform.</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        irtk_transform: Import IRTK .dof format transform.</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        fsl2ras: Convert FSL to RAS.</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        ras2fsl: Convert RAS to FSL.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        out_itk_transform: Export ITK transform.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        out_irtk_transform: Export IRTK .dof format transform.</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        out_matfile: Write output matrix.</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        info: Print matrix.</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        info_full: Print matrix and more detail about the transform.</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    Returns:</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        NamedTuple of outputs (described in `C3dAffineToolOutputs`).</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">C3D_AFFINE_TOOL_METADATA</span><span class="p">)</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c3d_affine_tool&quot;</span><span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">transform_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transform_file</span><span class="p">))</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">reference_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;-ref&quot;</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reference_file</span><span class="p">)</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">source_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;-src&quot;</span><span class="p">,</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">source_file</span><span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">sform_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-sform&quot;</span><span class="p">,</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sform_file</span><span class="p">)</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="p">])</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">invert</span><span class="p">:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-inv&quot;</span><span class="p">)</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">determinant</span><span class="p">:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-det&quot;</span><span class="p">)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">multiply</span><span class="p">:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mult&quot;</span><span class="p">)</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">sqrt</span><span class="p">:</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sqrt&quot;</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="s2">&quot;-itk&quot;</span><span class="p">,</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">itk_transform</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="p">])</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="s2">&quot;-irtk&quot;</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">irtk_transform</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="p">])</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">fsl2ras</span><span class="p">:</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fsl2ras&quot;</span><span class="p">)</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">ras2fsl</span><span class="p">:</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ras2fsl&quot;</span><span class="p">)</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">out_itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="s2">&quot;-oitk&quot;</span><span class="p">,</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="n">out_itk_transform</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="p">])</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">out_irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="s2">&quot;-oirtk&quot;</span><span class="p">,</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>            <span class="n">out_irtk_transform</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="p">])</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">out_matfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>            <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>            <span class="n">out_matfile</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="p">])</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">info_full</span><span class="p">:</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info-full&quot;</span><span class="p">)</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">C3dAffineToolOutputs</span><span class="p">(</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">itk_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_itk_transform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">irtk_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_irtk_transform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">matrix_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_matfile</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_matfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="p">)</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="s2">&quot;C3D_AFFINE_TOOL_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="s2">&quot;C3dAffineToolOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="s2">&quot;c3d_affine_tool&quot;</span><span class="p">,</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -242,7 +244,7 @@
                     <div class="attr variable">
             <span class="name">C3D_AFFINE_TOOL_METADATA</span>        =
 <input id="C3D_AFFINE_TOOL_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="C3D_AFFINE_TOOL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;7ea823a818cb74f4dad96d412b2cbb7f6bb4c5f1.boutiques&#39;, name=&#39;c3d_affine_tool&#39;, package=&#39;c3d&#39;, citations=None, container_image_tag=&#39;pyushkevich/itksnap:v3.8.2&#39;)</span>
+            <label class="view-value-button pdoc-button" for="C3D_AFFINE_TOOL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6b866352e9b556eb1381835bc90e95b78d4328de.boutiques&#39;, name=&#39;c3d_affine_tool&#39;, package=&#39;c3d&#39;, citations=None, container_image_tag=&#39;pyushkevich/itksnap:v3.8.2&#39;)</span>
 
         
     </div>
@@ -382,108 +384,112 @@
 </span><span id="c3d_affine_tool-52"><a href="#c3d_affine_tool-52"><span class="linenos"> 52</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="c3d_affine_tool-53"><a href="#c3d_affine_tool-53"><span class="linenos"> 53</span></a><span class="sd">    RAS affine transform tool.</span>
 </span><span id="c3d_affine_tool-54"><a href="#c3d_affine_tool-54"><span class="linenos"> 54</span></a><span class="sd">    </span>
-</span><span id="c3d_affine_tool-55"><a href="#c3d_affine_tool-55"><span class="linenos"> 55</span></a><span class="sd">    Author: ITK-Snap Team</span>
+</span><span id="c3d_affine_tool-55"><a href="#c3d_affine_tool-55"><span class="linenos"> 55</span></a><span class="sd">    Author: Convert3D Developers</span>
 </span><span id="c3d_affine_tool-56"><a href="#c3d_affine_tool-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
-</span><span id="c3d_affine_tool-57"><a href="#c3d_affine_tool-57"><span class="linenos"> 57</span></a><span class="sd">    Args:</span>
-</span><span id="c3d_affine_tool-58"><a href="#c3d_affine_tool-58"><span class="linenos"> 58</span></a><span class="sd">        transform_file: file or string representing the transform.</span>
-</span><span id="c3d_affine_tool-59"><a href="#c3d_affine_tool-59"><span class="linenos"> 59</span></a><span class="sd">        reference_file: Set reference (fixed) image - only for -fsl2ras and\</span>
-</span><span id="c3d_affine_tool-60"><a href="#c3d_affine_tool-60"><span class="linenos"> 60</span></a><span class="sd">            -ras2fsl.</span>
-</span><span id="c3d_affine_tool-61"><a href="#c3d_affine_tool-61"><span class="linenos"> 61</span></a><span class="sd">        source_file: Set source (moving) image - only for -fsl2ras and\</span>
+</span><span id="c3d_affine_tool-57"><a href="#c3d_affine_tool-57"><span class="linenos"> 57</span></a><span class="sd">    URL: http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D</span>
+</span><span id="c3d_affine_tool-58"><a href="#c3d_affine_tool-58"><span class="linenos"> 58</span></a><span class="sd">    </span>
+</span><span id="c3d_affine_tool-59"><a href="#c3d_affine_tool-59"><span class="linenos"> 59</span></a><span class="sd">    Args:</span>
+</span><span id="c3d_affine_tool-60"><a href="#c3d_affine_tool-60"><span class="linenos"> 60</span></a><span class="sd">        transform_file: file or string representing the transform.</span>
+</span><span id="c3d_affine_tool-61"><a href="#c3d_affine_tool-61"><span class="linenos"> 61</span></a><span class="sd">        reference_file: Set reference (fixed) image - only for -fsl2ras and\</span>
 </span><span id="c3d_affine_tool-62"><a href="#c3d_affine_tool-62"><span class="linenos"> 62</span></a><span class="sd">            -ras2fsl.</span>
-</span><span id="c3d_affine_tool-63"><a href="#c3d_affine_tool-63"><span class="linenos"> 63</span></a><span class="sd">        sform_file: Read matrix from NifTI sform.</span>
-</span><span id="c3d_affine_tool-64"><a href="#c3d_affine_tool-64"><span class="linenos"> 64</span></a><span class="sd">        invert: Invert matrix.</span>
-</span><span id="c3d_affine_tool-65"><a href="#c3d_affine_tool-65"><span class="linenos"> 65</span></a><span class="sd">        determinant: Print the determinant.</span>
-</span><span id="c3d_affine_tool-66"><a href="#c3d_affine_tool-66"><span class="linenos"> 66</span></a><span class="sd">        multiply: Multiply matrices.</span>
-</span><span id="c3d_affine_tool-67"><a href="#c3d_affine_tool-67"><span class="linenos"> 67</span></a><span class="sd">        sqrt: Matrix square root (i.e., Q s.t. A = Q * Q).</span>
-</span><span id="c3d_affine_tool-68"><a href="#c3d_affine_tool-68"><span class="linenos"> 68</span></a><span class="sd">        itk_transform: Import ITK transform.</span>
-</span><span id="c3d_affine_tool-69"><a href="#c3d_affine_tool-69"><span class="linenos"> 69</span></a><span class="sd">        irtk_transform: Import IRTK .dof format transform.</span>
-</span><span id="c3d_affine_tool-70"><a href="#c3d_affine_tool-70"><span class="linenos"> 70</span></a><span class="sd">        fsl2ras: Convert FSL to RAS.</span>
-</span><span id="c3d_affine_tool-71"><a href="#c3d_affine_tool-71"><span class="linenos"> 71</span></a><span class="sd">        ras2fsl: Convert RAS to FSL.</span>
-</span><span id="c3d_affine_tool-72"><a href="#c3d_affine_tool-72"><span class="linenos"> 72</span></a><span class="sd">        out_itk_transform: Export ITK transform.</span>
-</span><span id="c3d_affine_tool-73"><a href="#c3d_affine_tool-73"><span class="linenos"> 73</span></a><span class="sd">        out_irtk_transform: Export IRTK .dof format transform.</span>
-</span><span id="c3d_affine_tool-74"><a href="#c3d_affine_tool-74"><span class="linenos"> 74</span></a><span class="sd">        out_matfile: Write output matrix.</span>
-</span><span id="c3d_affine_tool-75"><a href="#c3d_affine_tool-75"><span class="linenos"> 75</span></a><span class="sd">        info: Print matrix.</span>
-</span><span id="c3d_affine_tool-76"><a href="#c3d_affine_tool-76"><span class="linenos"> 76</span></a><span class="sd">        info_full: Print matrix and more detail about the transform.</span>
-</span><span id="c3d_affine_tool-77"><a href="#c3d_affine_tool-77"><span class="linenos"> 77</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="c3d_affine_tool-78"><a href="#c3d_affine_tool-78"><span class="linenos"> 78</span></a><span class="sd">    Returns:</span>
-</span><span id="c3d_affine_tool-79"><a href="#c3d_affine_tool-79"><span class="linenos"> 79</span></a><span class="sd">        NamedTuple of outputs (described in `C3dAffineToolOutputs`).</span>
-</span><span id="c3d_affine_tool-80"><a href="#c3d_affine_tool-80"><span class="linenos"> 80</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="c3d_affine_tool-81"><a href="#c3d_affine_tool-81"><span class="linenos"> 81</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="c3d_affine_tool-82"><a href="#c3d_affine_tool-82"><span class="linenos"> 82</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">C3D_AFFINE_TOOL_METADATA</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-83"><a href="#c3d_affine_tool-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="c3d_affine_tool-84"><a href="#c3d_affine_tool-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c3d_affine_tool&quot;</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-85"><a href="#c3d_affine_tool-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">transform_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-86"><a href="#c3d_affine_tool-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transform_file</span><span class="p">))</span>
-</span><span id="c3d_affine_tool-87"><a href="#c3d_affine_tool-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">reference_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-88"><a href="#c3d_affine_tool-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="c3d_affine_tool-89"><a href="#c3d_affine_tool-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;-ref&quot;</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-90"><a href="#c3d_affine_tool-90"><span class="linenos"> 90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reference_file</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-91"><a href="#c3d_affine_tool-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
-</span><span id="c3d_affine_tool-92"><a href="#c3d_affine_tool-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">source_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-93"><a href="#c3d_affine_tool-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="c3d_affine_tool-94"><a href="#c3d_affine_tool-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;-src&quot;</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-95"><a href="#c3d_affine_tool-95"><span class="linenos"> 95</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">source_file</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-96"><a href="#c3d_affine_tool-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
-</span><span id="c3d_affine_tool-97"><a href="#c3d_affine_tool-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">sform_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-98"><a href="#c3d_affine_tool-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="c3d_affine_tool-99"><a href="#c3d_affine_tool-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-sform&quot;</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-100"><a href="#c3d_affine_tool-100"><span class="linenos">100</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sform_file</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-101"><a href="#c3d_affine_tool-101"><span class="linenos">101</span></a>        <span class="p">])</span>
-</span><span id="c3d_affine_tool-102"><a href="#c3d_affine_tool-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">invert</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-103"><a href="#c3d_affine_tool-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-inv&quot;</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-104"><a href="#c3d_affine_tool-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">determinant</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-105"><a href="#c3d_affine_tool-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-det&quot;</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-106"><a href="#c3d_affine_tool-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">multiply</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-107"><a href="#c3d_affine_tool-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mult&quot;</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-108"><a href="#c3d_affine_tool-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">sqrt</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-109"><a href="#c3d_affine_tool-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sqrt&quot;</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-110"><a href="#c3d_affine_tool-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-111"><a href="#c3d_affine_tool-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="c3d_affine_tool-112"><a href="#c3d_affine_tool-112"><span class="linenos">112</span></a>            <span class="s2">&quot;-itk&quot;</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-113"><a href="#c3d_affine_tool-113"><span class="linenos">113</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">itk_transform</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-114"><a href="#c3d_affine_tool-114"><span class="linenos">114</span></a>        <span class="p">])</span>
-</span><span id="c3d_affine_tool-115"><a href="#c3d_affine_tool-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-116"><a href="#c3d_affine_tool-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="c3d_affine_tool-117"><a href="#c3d_affine_tool-117"><span class="linenos">117</span></a>            <span class="s2">&quot;-irtk&quot;</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-118"><a href="#c3d_affine_tool-118"><span class="linenos">118</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">irtk_transform</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-119"><a href="#c3d_affine_tool-119"><span class="linenos">119</span></a>        <span class="p">])</span>
-</span><span id="c3d_affine_tool-120"><a href="#c3d_affine_tool-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">fsl2ras</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-121"><a href="#c3d_affine_tool-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fsl2ras&quot;</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-122"><a href="#c3d_affine_tool-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">ras2fsl</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-123"><a href="#c3d_affine_tool-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ras2fsl&quot;</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-124"><a href="#c3d_affine_tool-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">out_itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-125"><a href="#c3d_affine_tool-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="c3d_affine_tool-126"><a href="#c3d_affine_tool-126"><span class="linenos">126</span></a>            <span class="s2">&quot;-oitk&quot;</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-127"><a href="#c3d_affine_tool-127"><span class="linenos">127</span></a>            <span class="n">out_itk_transform</span>
-</span><span id="c3d_affine_tool-128"><a href="#c3d_affine_tool-128"><span class="linenos">128</span></a>        <span class="p">])</span>
-</span><span id="c3d_affine_tool-129"><a href="#c3d_affine_tool-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">out_irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-130"><a href="#c3d_affine_tool-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="c3d_affine_tool-131"><a href="#c3d_affine_tool-131"><span class="linenos">131</span></a>            <span class="s2">&quot;-oirtk&quot;</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-132"><a href="#c3d_affine_tool-132"><span class="linenos">132</span></a>            <span class="n">out_irtk_transform</span>
-</span><span id="c3d_affine_tool-133"><a href="#c3d_affine_tool-133"><span class="linenos">133</span></a>        <span class="p">])</span>
-</span><span id="c3d_affine_tool-134"><a href="#c3d_affine_tool-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">out_matfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-135"><a href="#c3d_affine_tool-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="c3d_affine_tool-136"><a href="#c3d_affine_tool-136"><span class="linenos">136</span></a>            <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-137"><a href="#c3d_affine_tool-137"><span class="linenos">137</span></a>            <span class="n">out_matfile</span>
-</span><span id="c3d_affine_tool-138"><a href="#c3d_affine_tool-138"><span class="linenos">138</span></a>        <span class="p">])</span>
-</span><span id="c3d_affine_tool-139"><a href="#c3d_affine_tool-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-140"><a href="#c3d_affine_tool-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-141"><a href="#c3d_affine_tool-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">info_full</span><span class="p">:</span>
-</span><span id="c3d_affine_tool-142"><a href="#c3d_affine_tool-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info-full&quot;</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-143"><a href="#c3d_affine_tool-143"><span class="linenos">143</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">C3dAffineToolOutputs</span><span class="p">(</span>
-</span><span id="c3d_affine_tool-144"><a href="#c3d_affine_tool-144"><span class="linenos">144</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="c3d_affine_tool-145"><a href="#c3d_affine_tool-145"><span class="linenos">145</span></a>        <span class="n">itk_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_itk_transform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-146"><a href="#c3d_affine_tool-146"><span class="linenos">146</span></a>        <span class="n">irtk_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_irtk_transform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-147"><a href="#c3d_affine_tool-147"><span class="linenos">147</span></a>        <span class="n">matrix_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_matfile</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_matfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="c3d_affine_tool-148"><a href="#c3d_affine_tool-148"><span class="linenos">148</span></a>    <span class="p">)</span>
-</span><span id="c3d_affine_tool-149"><a href="#c3d_affine_tool-149"><span class="linenos">149</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="c3d_affine_tool-150"><a href="#c3d_affine_tool-150"><span class="linenos">150</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="c3d_affine_tool-63"><a href="#c3d_affine_tool-63"><span class="linenos"> 63</span></a><span class="sd">        source_file: Set source (moving) image - only for -fsl2ras and\</span>
+</span><span id="c3d_affine_tool-64"><a href="#c3d_affine_tool-64"><span class="linenos"> 64</span></a><span class="sd">            -ras2fsl.</span>
+</span><span id="c3d_affine_tool-65"><a href="#c3d_affine_tool-65"><span class="linenos"> 65</span></a><span class="sd">        sform_file: Read matrix from NifTI sform.</span>
+</span><span id="c3d_affine_tool-66"><a href="#c3d_affine_tool-66"><span class="linenos"> 66</span></a><span class="sd">        invert: Invert matrix.</span>
+</span><span id="c3d_affine_tool-67"><a href="#c3d_affine_tool-67"><span class="linenos"> 67</span></a><span class="sd">        determinant: Print the determinant.</span>
+</span><span id="c3d_affine_tool-68"><a href="#c3d_affine_tool-68"><span class="linenos"> 68</span></a><span class="sd">        multiply: Multiply matrices.</span>
+</span><span id="c3d_affine_tool-69"><a href="#c3d_affine_tool-69"><span class="linenos"> 69</span></a><span class="sd">        sqrt: Matrix square root (i.e., Q s.t. A = Q * Q).</span>
+</span><span id="c3d_affine_tool-70"><a href="#c3d_affine_tool-70"><span class="linenos"> 70</span></a><span class="sd">        itk_transform: Import ITK transform.</span>
+</span><span id="c3d_affine_tool-71"><a href="#c3d_affine_tool-71"><span class="linenos"> 71</span></a><span class="sd">        irtk_transform: Import IRTK .dof format transform.</span>
+</span><span id="c3d_affine_tool-72"><a href="#c3d_affine_tool-72"><span class="linenos"> 72</span></a><span class="sd">        fsl2ras: Convert FSL to RAS.</span>
+</span><span id="c3d_affine_tool-73"><a href="#c3d_affine_tool-73"><span class="linenos"> 73</span></a><span class="sd">        ras2fsl: Convert RAS to FSL.</span>
+</span><span id="c3d_affine_tool-74"><a href="#c3d_affine_tool-74"><span class="linenos"> 74</span></a><span class="sd">        out_itk_transform: Export ITK transform.</span>
+</span><span id="c3d_affine_tool-75"><a href="#c3d_affine_tool-75"><span class="linenos"> 75</span></a><span class="sd">        out_irtk_transform: Export IRTK .dof format transform.</span>
+</span><span id="c3d_affine_tool-76"><a href="#c3d_affine_tool-76"><span class="linenos"> 76</span></a><span class="sd">        out_matfile: Write output matrix.</span>
+</span><span id="c3d_affine_tool-77"><a href="#c3d_affine_tool-77"><span class="linenos"> 77</span></a><span class="sd">        info: Print matrix.</span>
+</span><span id="c3d_affine_tool-78"><a href="#c3d_affine_tool-78"><span class="linenos"> 78</span></a><span class="sd">        info_full: Print matrix and more detail about the transform.</span>
+</span><span id="c3d_affine_tool-79"><a href="#c3d_affine_tool-79"><span class="linenos"> 79</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="c3d_affine_tool-80"><a href="#c3d_affine_tool-80"><span class="linenos"> 80</span></a><span class="sd">    Returns:</span>
+</span><span id="c3d_affine_tool-81"><a href="#c3d_affine_tool-81"><span class="linenos"> 81</span></a><span class="sd">        NamedTuple of outputs (described in `C3dAffineToolOutputs`).</span>
+</span><span id="c3d_affine_tool-82"><a href="#c3d_affine_tool-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="c3d_affine_tool-83"><a href="#c3d_affine_tool-83"><span class="linenos"> 83</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="c3d_affine_tool-84"><a href="#c3d_affine_tool-84"><span class="linenos"> 84</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">C3D_AFFINE_TOOL_METADATA</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-85"><a href="#c3d_affine_tool-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="c3d_affine_tool-86"><a href="#c3d_affine_tool-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c3d_affine_tool&quot;</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-87"><a href="#c3d_affine_tool-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">transform_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-88"><a href="#c3d_affine_tool-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transform_file</span><span class="p">))</span>
+</span><span id="c3d_affine_tool-89"><a href="#c3d_affine_tool-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">reference_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-90"><a href="#c3d_affine_tool-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="c3d_affine_tool-91"><a href="#c3d_affine_tool-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;-ref&quot;</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-92"><a href="#c3d_affine_tool-92"><span class="linenos"> 92</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">reference_file</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-93"><a href="#c3d_affine_tool-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
+</span><span id="c3d_affine_tool-94"><a href="#c3d_affine_tool-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">source_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-95"><a href="#c3d_affine_tool-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="c3d_affine_tool-96"><a href="#c3d_affine_tool-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;-src&quot;</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-97"><a href="#c3d_affine_tool-97"><span class="linenos"> 97</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">source_file</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-98"><a href="#c3d_affine_tool-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
+</span><span id="c3d_affine_tool-99"><a href="#c3d_affine_tool-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">sform_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-100"><a href="#c3d_affine_tool-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="c3d_affine_tool-101"><a href="#c3d_affine_tool-101"><span class="linenos">101</span></a>            <span class="s2">&quot;-sform&quot;</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-102"><a href="#c3d_affine_tool-102"><span class="linenos">102</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sform_file</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-103"><a href="#c3d_affine_tool-103"><span class="linenos">103</span></a>        <span class="p">])</span>
+</span><span id="c3d_affine_tool-104"><a href="#c3d_affine_tool-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">invert</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-105"><a href="#c3d_affine_tool-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-inv&quot;</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-106"><a href="#c3d_affine_tool-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">determinant</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-107"><a href="#c3d_affine_tool-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-det&quot;</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-108"><a href="#c3d_affine_tool-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">multiply</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-109"><a href="#c3d_affine_tool-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mult&quot;</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-110"><a href="#c3d_affine_tool-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">sqrt</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-111"><a href="#c3d_affine_tool-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sqrt&quot;</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-112"><a href="#c3d_affine_tool-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-113"><a href="#c3d_affine_tool-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="c3d_affine_tool-114"><a href="#c3d_affine_tool-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-itk&quot;</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-115"><a href="#c3d_affine_tool-115"><span class="linenos">115</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">itk_transform</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-116"><a href="#c3d_affine_tool-116"><span class="linenos">116</span></a>        <span class="p">])</span>
+</span><span id="c3d_affine_tool-117"><a href="#c3d_affine_tool-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-118"><a href="#c3d_affine_tool-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="c3d_affine_tool-119"><a href="#c3d_affine_tool-119"><span class="linenos">119</span></a>            <span class="s2">&quot;-irtk&quot;</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-120"><a href="#c3d_affine_tool-120"><span class="linenos">120</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">irtk_transform</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-121"><a href="#c3d_affine_tool-121"><span class="linenos">121</span></a>        <span class="p">])</span>
+</span><span id="c3d_affine_tool-122"><a href="#c3d_affine_tool-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">fsl2ras</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-123"><a href="#c3d_affine_tool-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-fsl2ras&quot;</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-124"><a href="#c3d_affine_tool-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">ras2fsl</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-125"><a href="#c3d_affine_tool-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ras2fsl&quot;</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-126"><a href="#c3d_affine_tool-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">out_itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-127"><a href="#c3d_affine_tool-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="c3d_affine_tool-128"><a href="#c3d_affine_tool-128"><span class="linenos">128</span></a>            <span class="s2">&quot;-oitk&quot;</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-129"><a href="#c3d_affine_tool-129"><span class="linenos">129</span></a>            <span class="n">out_itk_transform</span>
+</span><span id="c3d_affine_tool-130"><a href="#c3d_affine_tool-130"><span class="linenos">130</span></a>        <span class="p">])</span>
+</span><span id="c3d_affine_tool-131"><a href="#c3d_affine_tool-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">out_irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-132"><a href="#c3d_affine_tool-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="c3d_affine_tool-133"><a href="#c3d_affine_tool-133"><span class="linenos">133</span></a>            <span class="s2">&quot;-oirtk&quot;</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-134"><a href="#c3d_affine_tool-134"><span class="linenos">134</span></a>            <span class="n">out_irtk_transform</span>
+</span><span id="c3d_affine_tool-135"><a href="#c3d_affine_tool-135"><span class="linenos">135</span></a>        <span class="p">])</span>
+</span><span id="c3d_affine_tool-136"><a href="#c3d_affine_tool-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">out_matfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-137"><a href="#c3d_affine_tool-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="c3d_affine_tool-138"><a href="#c3d_affine_tool-138"><span class="linenos">138</span></a>            <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-139"><a href="#c3d_affine_tool-139"><span class="linenos">139</span></a>            <span class="n">out_matfile</span>
+</span><span id="c3d_affine_tool-140"><a href="#c3d_affine_tool-140"><span class="linenos">140</span></a>        <span class="p">])</span>
+</span><span id="c3d_affine_tool-141"><a href="#c3d_affine_tool-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-142"><a href="#c3d_affine_tool-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-143"><a href="#c3d_affine_tool-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">info_full</span><span class="p">:</span>
+</span><span id="c3d_affine_tool-144"><a href="#c3d_affine_tool-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info-full&quot;</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-145"><a href="#c3d_affine_tool-145"><span class="linenos">145</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">C3dAffineToolOutputs</span><span class="p">(</span>
+</span><span id="c3d_affine_tool-146"><a href="#c3d_affine_tool-146"><span class="linenos">146</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="c3d_affine_tool-147"><a href="#c3d_affine_tool-147"><span class="linenos">147</span></a>        <span class="n">itk_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_itk_transform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_itk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-148"><a href="#c3d_affine_tool-148"><span class="linenos">148</span></a>        <span class="n">irtk_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_irtk_transform</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_irtk_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-149"><a href="#c3d_affine_tool-149"><span class="linenos">149</span></a>        <span class="n">matrix_transform_outfile</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">out_matfile</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">out_matfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="c3d_affine_tool-150"><a href="#c3d_affine_tool-150"><span class="linenos">150</span></a>    <span class="p">)</span>
+</span><span id="c3d_affine_tool-151"><a href="#c3d_affine_tool-151"><span class="linenos">151</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="c3d_affine_tool-152"><a href="#c3d_affine_tool-152"><span class="linenos">152</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>RAS affine transform tool.</p>
 
-<p>Author: ITK-Snap Team</p>
+<p>Author: Convert3D Developers</p>
+
+<p>URL: <a href="http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D">http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

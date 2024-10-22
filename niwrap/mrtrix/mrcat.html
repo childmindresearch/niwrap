@@ -99,7 +99,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">MRCAT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;21885e76d810f08df4364284639c8ed0bfacf428.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b3de92bc09aeac701d99649eaea82387c297125a.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mrcat&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -170,91 +170,90 @@
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    </span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    .</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    </span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    Author: J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    (robert.smith@florey.edu.au)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    </span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcat.html</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    Args:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        image1: the first input image.</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        image2: additional input image(s).</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        output: the output image.</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        axis: specify axis along which concatenation should be performed. By\</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">            default, the program will use the last non-singleton, non-spatial axis\</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            of any of the input images - in other words axis 3 or whichever axis\</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">            (greater than 3) of the input images has size greater than one.</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">            int8, uint8, bit.</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    Returns:</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">        NamedTuple of outputs (described in `MrcatOutputs`).</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRCAT_METADATA</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mrcat&quot;</span><span class="p">)</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="s2">&quot;-axis&quot;</span><span class="p">,</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="p">])</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="n">datatype</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="p">])</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="p">])</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">image1</span><span class="p">))</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">image2</span><span class="p">])</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrcatOutputs</span><span class="p">(</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="p">)</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    </span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    </span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    Args:</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        image1: the first input image.</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        image2: additional input image(s).</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        output: the output image.</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        axis: specify axis along which concatenation should be performed. By\</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            default, the program will use the last non-singleton, non-spatial axis\</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">            of any of the input images - in other words axis 3 or whichever axis\</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            (greater than 3) of the input images has size greater than one.</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            int8, uint8, bit.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    Returns:</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        NamedTuple of outputs (described in `MrcatOutputs`).</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRCAT_METADATA</span><span class="p">)</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mrcat&quot;</span><span class="p">)</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="s2">&quot;-axis&quot;</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="p">])</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="n">datatype</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="p">])</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="p">])</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">image1</span><span class="p">))</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">image2</span><span class="p">])</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrcatOutputs</span><span class="p">(</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="p">)</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>
 </span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="s2">&quot;MRCAT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="s2">&quot;MrcatConfig&quot;</span><span class="p">,</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="s2">&quot;MrcatOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="s2">&quot;mrcat&quot;</span><span class="p">,</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="p">]</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="s2">&quot;MRCAT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="s2">&quot;MrcatConfig&quot;</span><span class="p">,</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="s2">&quot;MrcatOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="s2">&quot;mrcat&quot;</span><span class="p">,</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -263,7 +262,7 @@
                     <div class="attr variable">
             <span class="name">MRCAT_METADATA</span>        =
 <input id="MRCAT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRCAT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;21885e76d810f08df4364284639c8ed0bfacf428.boutiques&#39;, name=&#39;mrcat&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRCAT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;b3de92bc09aeac701d99649eaea82387c297125a.boutiques&#39;, name=&#39;mrcat&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -508,83 +507,82 @@
 </span><span id="mrcat-79"><a href="#mrcat-79"><span class="linenos"> 79</span></a><span class="sd">    </span>
 </span><span id="mrcat-80"><a href="#mrcat-80"><span class="linenos"> 80</span></a><span class="sd">    .</span>
 </span><span id="mrcat-81"><a href="#mrcat-81"><span class="linenos"> 81</span></a><span class="sd">    </span>
-</span><span id="mrcat-82"><a href="#mrcat-82"><span class="linenos"> 82</span></a><span class="sd">    Author: J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith</span>
-</span><span id="mrcat-83"><a href="#mrcat-83"><span class="linenos"> 83</span></a><span class="sd">    (robert.smith@florey.edu.au)</span>
-</span><span id="mrcat-84"><a href="#mrcat-84"><span class="linenos"> 84</span></a><span class="sd">    </span>
-</span><span id="mrcat-85"><a href="#mrcat-85"><span class="linenos"> 85</span></a><span class="sd">    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcat.html</span>
-</span><span id="mrcat-86"><a href="#mrcat-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
-</span><span id="mrcat-87"><a href="#mrcat-87"><span class="linenos"> 87</span></a><span class="sd">    Args:</span>
-</span><span id="mrcat-88"><a href="#mrcat-88"><span class="linenos"> 88</span></a><span class="sd">        image1: the first input image.</span>
-</span><span id="mrcat-89"><a href="#mrcat-89"><span class="linenos"> 89</span></a><span class="sd">        image2: additional input image(s).</span>
-</span><span id="mrcat-90"><a href="#mrcat-90"><span class="linenos"> 90</span></a><span class="sd">        output: the output image.</span>
-</span><span id="mrcat-91"><a href="#mrcat-91"><span class="linenos"> 91</span></a><span class="sd">        axis: specify axis along which concatenation should be performed. By\</span>
-</span><span id="mrcat-92"><a href="#mrcat-92"><span class="linenos"> 92</span></a><span class="sd">            default, the program will use the last non-singleton, non-spatial axis\</span>
-</span><span id="mrcat-93"><a href="#mrcat-93"><span class="linenos"> 93</span></a><span class="sd">            of any of the input images - in other words axis 3 or whichever axis\</span>
-</span><span id="mrcat-94"><a href="#mrcat-94"><span class="linenos"> 94</span></a><span class="sd">            (greater than 3) of the input images has size greater than one.</span>
-</span><span id="mrcat-95"><a href="#mrcat-95"><span class="linenos"> 95</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
-</span><span id="mrcat-96"><a href="#mrcat-96"><span class="linenos"> 96</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
-</span><span id="mrcat-97"><a href="#mrcat-97"><span class="linenos"> 97</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
-</span><span id="mrcat-98"><a href="#mrcat-98"><span class="linenos"> 98</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
-</span><span id="mrcat-99"><a href="#mrcat-99"><span class="linenos"> 99</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
-</span><span id="mrcat-100"><a href="#mrcat-100"><span class="linenos">100</span></a><span class="sd">            int8, uint8, bit.</span>
-</span><span id="mrcat-101"><a href="#mrcat-101"><span class="linenos">101</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="mrcat-102"><a href="#mrcat-102"><span class="linenos">102</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="mrcat-103"><a href="#mrcat-103"><span class="linenos">103</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="mrcat-104"><a href="#mrcat-104"><span class="linenos">104</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="mrcat-105"><a href="#mrcat-105"><span class="linenos">105</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="mrcat-106"><a href="#mrcat-106"><span class="linenos">106</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="mrcat-107"><a href="#mrcat-107"><span class="linenos">107</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="mrcat-108"><a href="#mrcat-108"><span class="linenos">108</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="mrcat-109"><a href="#mrcat-109"><span class="linenos">109</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="mrcat-110"><a href="#mrcat-110"><span class="linenos">110</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="mrcat-111"><a href="#mrcat-111"><span class="linenos">111</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="mrcat-112"><a href="#mrcat-112"><span class="linenos">112</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="mrcat-113"><a href="#mrcat-113"><span class="linenos">113</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="mrcat-114"><a href="#mrcat-114"><span class="linenos">114</span></a><span class="sd">    Returns:</span>
-</span><span id="mrcat-115"><a href="#mrcat-115"><span class="linenos">115</span></a><span class="sd">        NamedTuple of outputs (described in `MrcatOutputs`).</span>
-</span><span id="mrcat-116"><a href="#mrcat-116"><span class="linenos">116</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="mrcat-117"><a href="#mrcat-117"><span class="linenos">117</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="mrcat-118"><a href="#mrcat-118"><span class="linenos">118</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRCAT_METADATA</span><span class="p">)</span>
-</span><span id="mrcat-119"><a href="#mrcat-119"><span class="linenos">119</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="mrcat-120"><a href="#mrcat-120"><span class="linenos">120</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mrcat&quot;</span><span class="p">)</span>
-</span><span id="mrcat-121"><a href="#mrcat-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mrcat-122"><a href="#mrcat-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mrcat-123"><a href="#mrcat-123"><span class="linenos">123</span></a>            <span class="s2">&quot;-axis&quot;</span><span class="p">,</span>
-</span><span id="mrcat-124"><a href="#mrcat-124"><span class="linenos">124</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-</span><span id="mrcat-125"><a href="#mrcat-125"><span class="linenos">125</span></a>        <span class="p">])</span>
-</span><span id="mrcat-126"><a href="#mrcat-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mrcat-127"><a href="#mrcat-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mrcat-128"><a href="#mrcat-128"><span class="linenos">128</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
-</span><span id="mrcat-129"><a href="#mrcat-129"><span class="linenos">129</span></a>            <span class="n">datatype</span>
-</span><span id="mrcat-130"><a href="#mrcat-130"><span class="linenos">130</span></a>        <span class="p">])</span>
-</span><span id="mrcat-131"><a href="#mrcat-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="mrcat-132"><a href="#mrcat-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="mrcat-133"><a href="#mrcat-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="mrcat-134"><a href="#mrcat-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="mrcat-135"><a href="#mrcat-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="mrcat-136"><a href="#mrcat-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="mrcat-137"><a href="#mrcat-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="mrcat-138"><a href="#mrcat-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="mrcat-139"><a href="#mrcat-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mrcat-140"><a href="#mrcat-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mrcat-141"><a href="#mrcat-141"><span class="linenos">141</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="mrcat-142"><a href="#mrcat-142"><span class="linenos">142</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="mrcat-143"><a href="#mrcat-143"><span class="linenos">143</span></a>        <span class="p">])</span>
-</span><span id="mrcat-144"><a href="#mrcat-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mrcat-145"><a href="#mrcat-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="mrcat-146"><a href="#mrcat-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="mrcat-147"><a href="#mrcat-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="mrcat-148"><a href="#mrcat-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="mrcat-149"><a href="#mrcat-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="mrcat-150"><a href="#mrcat-150"><span class="linenos">150</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">image1</span><span class="p">))</span>
-</span><span id="mrcat-151"><a href="#mrcat-151"><span class="linenos">151</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">image2</span><span class="p">])</span>
-</span><span id="mrcat-152"><a href="#mrcat-152"><span class="linenos">152</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="mrcat-153"><a href="#mrcat-153"><span class="linenos">153</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrcatOutputs</span><span class="p">(</span>
-</span><span id="mrcat-154"><a href="#mrcat-154"><span class="linenos">154</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="mrcat-155"><a href="#mrcat-155"><span class="linenos">155</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="mrcat-156"><a href="#mrcat-156"><span class="linenos">156</span></a>    <span class="p">)</span>
-</span><span id="mrcat-157"><a href="#mrcat-157"><span class="linenos">157</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="mrcat-158"><a href="#mrcat-158"><span class="linenos">158</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="mrcat-82"><a href="#mrcat-82"><span class="linenos"> 82</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="mrcat-83"><a href="#mrcat-83"><span class="linenos"> 83</span></a><span class="sd">    </span>
+</span><span id="mrcat-84"><a href="#mrcat-84"><span class="linenos"> 84</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="mrcat-85"><a href="#mrcat-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
+</span><span id="mrcat-86"><a href="#mrcat-86"><span class="linenos"> 86</span></a><span class="sd">    Args:</span>
+</span><span id="mrcat-87"><a href="#mrcat-87"><span class="linenos"> 87</span></a><span class="sd">        image1: the first input image.</span>
+</span><span id="mrcat-88"><a href="#mrcat-88"><span class="linenos"> 88</span></a><span class="sd">        image2: additional input image(s).</span>
+</span><span id="mrcat-89"><a href="#mrcat-89"><span class="linenos"> 89</span></a><span class="sd">        output: the output image.</span>
+</span><span id="mrcat-90"><a href="#mrcat-90"><span class="linenos"> 90</span></a><span class="sd">        axis: specify axis along which concatenation should be performed. By\</span>
+</span><span id="mrcat-91"><a href="#mrcat-91"><span class="linenos"> 91</span></a><span class="sd">            default, the program will use the last non-singleton, non-spatial axis\</span>
+</span><span id="mrcat-92"><a href="#mrcat-92"><span class="linenos"> 92</span></a><span class="sd">            of any of the input images - in other words axis 3 or whichever axis\</span>
+</span><span id="mrcat-93"><a href="#mrcat-93"><span class="linenos"> 93</span></a><span class="sd">            (greater than 3) of the input images has size greater than one.</span>
+</span><span id="mrcat-94"><a href="#mrcat-94"><span class="linenos"> 94</span></a><span class="sd">        datatype: specify output image data type. Valid choices are: float32,\</span>
+</span><span id="mrcat-95"><a href="#mrcat-95"><span class="linenos"> 95</span></a><span class="sd">            float32le, float32be, float64, float64le, float64be, int64, uint64,\</span>
+</span><span id="mrcat-96"><a href="#mrcat-96"><span class="linenos"> 96</span></a><span class="sd">            int64le, uint64le, int64be, uint64be, int32, uint32, int32le, uint32le,\</span>
+</span><span id="mrcat-97"><a href="#mrcat-97"><span class="linenos"> 97</span></a><span class="sd">            int32be, uint32be, int16, uint16, int16le, uint16le, int16be, uint16be,\</span>
+</span><span id="mrcat-98"><a href="#mrcat-98"><span class="linenos"> 98</span></a><span class="sd">            cfloat32, cfloat32le, cfloat32be, cfloat64, cfloat64le, cfloat64be,\</span>
+</span><span id="mrcat-99"><a href="#mrcat-99"><span class="linenos"> 99</span></a><span class="sd">            int8, uint8, bit.</span>
+</span><span id="mrcat-100"><a href="#mrcat-100"><span class="linenos">100</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="mrcat-101"><a href="#mrcat-101"><span class="linenos">101</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="mrcat-102"><a href="#mrcat-102"><span class="linenos">102</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="mrcat-103"><a href="#mrcat-103"><span class="linenos">103</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="mrcat-104"><a href="#mrcat-104"><span class="linenos">104</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="mrcat-105"><a href="#mrcat-105"><span class="linenos">105</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="mrcat-106"><a href="#mrcat-106"><span class="linenos">106</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="mrcat-107"><a href="#mrcat-107"><span class="linenos">107</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="mrcat-108"><a href="#mrcat-108"><span class="linenos">108</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="mrcat-109"><a href="#mrcat-109"><span class="linenos">109</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="mrcat-110"><a href="#mrcat-110"><span class="linenos">110</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="mrcat-111"><a href="#mrcat-111"><span class="linenos">111</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="mrcat-112"><a href="#mrcat-112"><span class="linenos">112</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="mrcat-113"><a href="#mrcat-113"><span class="linenos">113</span></a><span class="sd">    Returns:</span>
+</span><span id="mrcat-114"><a href="#mrcat-114"><span class="linenos">114</span></a><span class="sd">        NamedTuple of outputs (described in `MrcatOutputs`).</span>
+</span><span id="mrcat-115"><a href="#mrcat-115"><span class="linenos">115</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="mrcat-116"><a href="#mrcat-116"><span class="linenos">116</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="mrcat-117"><a href="#mrcat-117"><span class="linenos">117</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRCAT_METADATA</span><span class="p">)</span>
+</span><span id="mrcat-118"><a href="#mrcat-118"><span class="linenos">118</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="mrcat-119"><a href="#mrcat-119"><span class="linenos">119</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mrcat&quot;</span><span class="p">)</span>
+</span><span id="mrcat-120"><a href="#mrcat-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mrcat-121"><a href="#mrcat-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mrcat-122"><a href="#mrcat-122"><span class="linenos">122</span></a>            <span class="s2">&quot;-axis&quot;</span><span class="p">,</span>
+</span><span id="mrcat-123"><a href="#mrcat-123"><span class="linenos">123</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+</span><span id="mrcat-124"><a href="#mrcat-124"><span class="linenos">124</span></a>        <span class="p">])</span>
+</span><span id="mrcat-125"><a href="#mrcat-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mrcat-126"><a href="#mrcat-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mrcat-127"><a href="#mrcat-127"><span class="linenos">127</span></a>            <span class="s2">&quot;-datatype&quot;</span><span class="p">,</span>
+</span><span id="mrcat-128"><a href="#mrcat-128"><span class="linenos">128</span></a>            <span class="n">datatype</span>
+</span><span id="mrcat-129"><a href="#mrcat-129"><span class="linenos">129</span></a>        <span class="p">])</span>
+</span><span id="mrcat-130"><a href="#mrcat-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="mrcat-131"><a href="#mrcat-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="mrcat-132"><a href="#mrcat-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="mrcat-133"><a href="#mrcat-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="mrcat-134"><a href="#mrcat-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="mrcat-135"><a href="#mrcat-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="mrcat-136"><a href="#mrcat-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="mrcat-137"><a href="#mrcat-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="mrcat-138"><a href="#mrcat-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mrcat-139"><a href="#mrcat-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mrcat-140"><a href="#mrcat-140"><span class="linenos">140</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="mrcat-141"><a href="#mrcat-141"><span class="linenos">141</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="mrcat-142"><a href="#mrcat-142"><span class="linenos">142</span></a>        <span class="p">])</span>
+</span><span id="mrcat-143"><a href="#mrcat-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mrcat-144"><a href="#mrcat-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="mrcat-145"><a href="#mrcat-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="mrcat-146"><a href="#mrcat-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="mrcat-147"><a href="#mrcat-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="mrcat-148"><a href="#mrcat-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="mrcat-149"><a href="#mrcat-149"><span class="linenos">149</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">image1</span><span class="p">))</span>
+</span><span id="mrcat-150"><a href="#mrcat-150"><span class="linenos">150</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">image2</span><span class="p">])</span>
+</span><span id="mrcat-151"><a href="#mrcat-151"><span class="linenos">151</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="mrcat-152"><a href="#mrcat-152"><span class="linenos">152</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MrcatOutputs</span><span class="p">(</span>
+</span><span id="mrcat-153"><a href="#mrcat-153"><span class="linenos">153</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="mrcat-154"><a href="#mrcat-154"><span class="linenos">154</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="mrcat-155"><a href="#mrcat-155"><span class="linenos">155</span></a>    <span class="p">)</span>
+</span><span id="mrcat-156"><a href="#mrcat-156"><span class="linenos">156</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="mrcat-157"><a href="#mrcat-157"><span class="linenos">157</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -594,10 +592,9 @@
 
 <p>.</p>
 
-<p>Author: J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith
-(robert.smith@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL: <a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcat.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcat.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

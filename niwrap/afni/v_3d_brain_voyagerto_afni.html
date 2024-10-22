@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">V_3D_BRAIN_VOYAGERTO_AFNI_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d851f4492ffa3dbe3f101c2727427dd0686e2fdb.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;6e57612e994ff9fb4392a1ea7a2df2f7bddd8e62.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dBRAIN_VOYAGERtoAFNI&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -124,86 +124,85 @@
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    Converts a BrainVoyager vmr dataset to AFNI&#39;s BRIK format based on information</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    from BrainVoyager&#39;s website.</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    </span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    </span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    URL:</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBRAIN_VOYAGERtoAFNI.html</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    </span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    Args:</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        input_file: Input BrainVoyager VMR file.</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        force_byte_swap: Force byte swapping.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        brainvoyager_qx: .vmr file is from BrainVoyager QX.</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        tlrc_space: Dset in tlrc space.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        acpc_space: Dset in acpc-aligned space.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        orig_space: Dset in orig space.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        prefix: Prefix for output files.</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        novolreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            transformations present in the Surface Volume.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        noxform: Same as -novolreg.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        set_environment: Set environment variable ENVname to be ENVvalue.\</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">            Quotes are necessary.</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        trace_debugging: Turns on In/Out debug and Memory tracing.</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        trace_extreme_debugging: Turns on extreme tracing.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        turn_off_memory_tracing: Turn off memory tracing.</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        turn_on_memory_tracing: Turn on memory tracing (default).</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">    Returns:</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        NamedTuple of outputs (described in `V3dBrainVoyagertoAfniOutputs`).</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_BRAIN_VOYAGERTO_AFNI_METADATA</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dBRAIN_VOYAGERtoAFNI&quot;</span><span class="p">)</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="s2">&quot;--input&quot;</span><span class="p">,</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="p">])</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">force_byte_swap</span><span class="p">:</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bs&quot;</span><span class="p">)</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">brainvoyager_qx</span><span class="p">:</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-qx&quot;</span><span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">tlrc_space</span><span class="p">:</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-tlrc&quot;</span><span class="p">)</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">acpc_space</span><span class="p">:</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-acpc&quot;</span><span class="p">)</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">orig_space</span><span class="p">:</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-orig&quot;</span><span class="p">)</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;--prefix&quot;</span><span class="p">,</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="n">prefix</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">novolreg</span><span class="p">:</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-novolreg&quot;</span><span class="p">)</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">noxform</span><span class="p">:</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noxform&quot;</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">set_environment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-setenv&quot;</span><span class="p">,</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="n">set_environment</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="p">])</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">trace_debugging</span><span class="p">:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-trace&quot;</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">trace_extreme_debugging</span><span class="p">:</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TRACE&quot;</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">turn_off_memory_tracing</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nomall&quot;</span><span class="p">)</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">turn_on_memory_tracing</span><span class="p">:</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-yesmall&quot;</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dBrainVoyagertoAfniOutputs</span><span class="p">(</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">output_brik_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;output.BRIK&quot;</span><span class="p">),</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">output_head_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;output.HEAD&quot;</span><span class="p">),</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    Args:</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        input_file: Input BrainVoyager VMR file.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        force_byte_swap: Force byte swapping.</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        brainvoyager_qx: .vmr file is from BrainVoyager QX.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        tlrc_space: Dset in tlrc space.</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        acpc_space: Dset in acpc-aligned space.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        orig_space: Dset in orig space.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        prefix: Prefix for output files.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        novolreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            transformations present in the Surface Volume.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        noxform: Same as -novolreg.</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        set_environment: Set environment variable ENVname to be ENVvalue.\</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            Quotes are necessary.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        trace_debugging: Turns on In/Out debug and Memory tracing.</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        trace_extreme_debugging: Turns on extreme tracing.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        turn_off_memory_tracing: Turn off memory tracing.</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        turn_on_memory_tracing: Turn on memory tracing (default).</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    Returns:</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        NamedTuple of outputs (described in `V3dBrainVoyagertoAfniOutputs`).</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_BRAIN_VOYAGERTO_AFNI_METADATA</span><span class="p">)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dBRAIN_VOYAGERtoAFNI&quot;</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="s2">&quot;--input&quot;</span><span class="p">,</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="p">])</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">force_byte_swap</span><span class="p">:</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bs&quot;</span><span class="p">)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">brainvoyager_qx</span><span class="p">:</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-qx&quot;</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">tlrc_space</span><span class="p">:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-tlrc&quot;</span><span class="p">)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">acpc_space</span><span class="p">:</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-acpc&quot;</span><span class="p">)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">orig_space</span><span class="p">:</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-orig&quot;</span><span class="p">)</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;--prefix&quot;</span><span class="p">,</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="n">prefix</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">novolreg</span><span class="p">:</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-novolreg&quot;</span><span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">noxform</span><span class="p">:</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noxform&quot;</span><span class="p">)</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">set_environment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="s2">&quot;-setenv&quot;</span><span class="p">,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="n">set_environment</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="p">])</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">trace_debugging</span><span class="p">:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-trace&quot;</span><span class="p">)</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">trace_extreme_debugging</span><span class="p">:</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TRACE&quot;</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">turn_off_memory_tracing</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nomall&quot;</span><span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">turn_on_memory_tracing</span><span class="p">:</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-yesmall&quot;</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dBrainVoyagertoAfniOutputs</span><span class="p">(</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">output_brik_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;output.BRIK&quot;</span><span class="p">),</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">output_head_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;output.HEAD&quot;</span><span class="p">),</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>
 </span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="s2">&quot;V3dBrainVoyagertoAfniOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="s2">&quot;V_3D_BRAIN_VOYAGERTO_AFNI_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="s2">&quot;v_3d_brain_voyagerto_afni&quot;</span><span class="p">,</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="p">]</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="s2">&quot;V3dBrainVoyagertoAfniOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="s2">&quot;V_3D_BRAIN_VOYAGERTO_AFNI_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="s2">&quot;v_3d_brain_voyagerto_afni&quot;</span><span class="p">,</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -294,7 +293,7 @@
                     <div class="attr variable">
             <span class="name">V_3D_BRAIN_VOYAGERTO_AFNI_METADATA</span>        =
 <input id="V_3D_BRAIN_VOYAGERTO_AFNI_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V_3D_BRAIN_VOYAGERTO_AFNI_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d851f4492ffa3dbe3f101c2727427dd0686e2fdb.boutiques&#39;, name=&#39;3dBRAIN_VOYAGERtoAFNI&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V_3D_BRAIN_VOYAGERTO_AFNI_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;6e57612e994ff9fb4392a1ea7a2df2f7bddd8e62.boutiques&#39;, name=&#39;3dBRAIN_VOYAGERtoAFNI&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -335,89 +334,87 @@
 </span><span id="v_3d_brain_voyagerto_afni-48"><a href="#v_3d_brain_voyagerto_afni-48"><span class="linenos"> 48</span></a><span class="sd">    Converts a BrainVoyager vmr dataset to AFNI&#39;s BRIK format based on information</span>
 </span><span id="v_3d_brain_voyagerto_afni-49"><a href="#v_3d_brain_voyagerto_afni-49"><span class="linenos"> 49</span></a><span class="sd">    from BrainVoyager&#39;s website.</span>
 </span><span id="v_3d_brain_voyagerto_afni-50"><a href="#v_3d_brain_voyagerto_afni-50"><span class="linenos"> 50</span></a><span class="sd">    </span>
-</span><span id="v_3d_brain_voyagerto_afni-51"><a href="#v_3d_brain_voyagerto_afni-51"><span class="linenos"> 51</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="v_3d_brain_voyagerto_afni-51"><a href="#v_3d_brain_voyagerto_afni-51"><span class="linenos"> 51</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="v_3d_brain_voyagerto_afni-52"><a href="#v_3d_brain_voyagerto_afni-52"><span class="linenos"> 52</span></a><span class="sd">    </span>
-</span><span id="v_3d_brain_voyagerto_afni-53"><a href="#v_3d_brain_voyagerto_afni-53"><span class="linenos"> 53</span></a><span class="sd">    URL:</span>
-</span><span id="v_3d_brain_voyagerto_afni-54"><a href="#v_3d_brain_voyagerto_afni-54"><span class="linenos"> 54</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBRAIN_VOYAGERtoAFNI.html</span>
-</span><span id="v_3d_brain_voyagerto_afni-55"><a href="#v_3d_brain_voyagerto_afni-55"><span class="linenos"> 55</span></a><span class="sd">    </span>
-</span><span id="v_3d_brain_voyagerto_afni-56"><a href="#v_3d_brain_voyagerto_afni-56"><span class="linenos"> 56</span></a><span class="sd">    Args:</span>
-</span><span id="v_3d_brain_voyagerto_afni-57"><a href="#v_3d_brain_voyagerto_afni-57"><span class="linenos"> 57</span></a><span class="sd">        input_file: Input BrainVoyager VMR file.</span>
-</span><span id="v_3d_brain_voyagerto_afni-58"><a href="#v_3d_brain_voyagerto_afni-58"><span class="linenos"> 58</span></a><span class="sd">        force_byte_swap: Force byte swapping.</span>
-</span><span id="v_3d_brain_voyagerto_afni-59"><a href="#v_3d_brain_voyagerto_afni-59"><span class="linenos"> 59</span></a><span class="sd">        brainvoyager_qx: .vmr file is from BrainVoyager QX.</span>
-</span><span id="v_3d_brain_voyagerto_afni-60"><a href="#v_3d_brain_voyagerto_afni-60"><span class="linenos"> 60</span></a><span class="sd">        tlrc_space: Dset in tlrc space.</span>
-</span><span id="v_3d_brain_voyagerto_afni-61"><a href="#v_3d_brain_voyagerto_afni-61"><span class="linenos"> 61</span></a><span class="sd">        acpc_space: Dset in acpc-aligned space.</span>
-</span><span id="v_3d_brain_voyagerto_afni-62"><a href="#v_3d_brain_voyagerto_afni-62"><span class="linenos"> 62</span></a><span class="sd">        orig_space: Dset in orig space.</span>
-</span><span id="v_3d_brain_voyagerto_afni-63"><a href="#v_3d_brain_voyagerto_afni-63"><span class="linenos"> 63</span></a><span class="sd">        prefix: Prefix for output files.</span>
-</span><span id="v_3d_brain_voyagerto_afni-64"><a href="#v_3d_brain_voyagerto_afni-64"><span class="linenos"> 64</span></a><span class="sd">        novolreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\</span>
-</span><span id="v_3d_brain_voyagerto_afni-65"><a href="#v_3d_brain_voyagerto_afni-65"><span class="linenos"> 65</span></a><span class="sd">            transformations present in the Surface Volume.</span>
-</span><span id="v_3d_brain_voyagerto_afni-66"><a href="#v_3d_brain_voyagerto_afni-66"><span class="linenos"> 66</span></a><span class="sd">        noxform: Same as -novolreg.</span>
-</span><span id="v_3d_brain_voyagerto_afni-67"><a href="#v_3d_brain_voyagerto_afni-67"><span class="linenos"> 67</span></a><span class="sd">        set_environment: Set environment variable ENVname to be ENVvalue.\</span>
-</span><span id="v_3d_brain_voyagerto_afni-68"><a href="#v_3d_brain_voyagerto_afni-68"><span class="linenos"> 68</span></a><span class="sd">            Quotes are necessary.</span>
-</span><span id="v_3d_brain_voyagerto_afni-69"><a href="#v_3d_brain_voyagerto_afni-69"><span class="linenos"> 69</span></a><span class="sd">        trace_debugging: Turns on In/Out debug and Memory tracing.</span>
-</span><span id="v_3d_brain_voyagerto_afni-70"><a href="#v_3d_brain_voyagerto_afni-70"><span class="linenos"> 70</span></a><span class="sd">        trace_extreme_debugging: Turns on extreme tracing.</span>
-</span><span id="v_3d_brain_voyagerto_afni-71"><a href="#v_3d_brain_voyagerto_afni-71"><span class="linenos"> 71</span></a><span class="sd">        turn_off_memory_tracing: Turn off memory tracing.</span>
-</span><span id="v_3d_brain_voyagerto_afni-72"><a href="#v_3d_brain_voyagerto_afni-72"><span class="linenos"> 72</span></a><span class="sd">        turn_on_memory_tracing: Turn on memory tracing (default).</span>
-</span><span id="v_3d_brain_voyagerto_afni-73"><a href="#v_3d_brain_voyagerto_afni-73"><span class="linenos"> 73</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v_3d_brain_voyagerto_afni-74"><a href="#v_3d_brain_voyagerto_afni-74"><span class="linenos"> 74</span></a><span class="sd">    Returns:</span>
-</span><span id="v_3d_brain_voyagerto_afni-75"><a href="#v_3d_brain_voyagerto_afni-75"><span class="linenos"> 75</span></a><span class="sd">        NamedTuple of outputs (described in `V3dBrainVoyagertoAfniOutputs`).</span>
-</span><span id="v_3d_brain_voyagerto_afni-76"><a href="#v_3d_brain_voyagerto_afni-76"><span class="linenos"> 76</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v_3d_brain_voyagerto_afni-77"><a href="#v_3d_brain_voyagerto_afni-77"><span class="linenos"> 77</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v_3d_brain_voyagerto_afni-78"><a href="#v_3d_brain_voyagerto_afni-78"><span class="linenos"> 78</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_BRAIN_VOYAGERTO_AFNI_METADATA</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-79"><a href="#v_3d_brain_voyagerto_afni-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="v_3d_brain_voyagerto_afni-80"><a href="#v_3d_brain_voyagerto_afni-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dBRAIN_VOYAGERtoAFNI&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-81"><a href="#v_3d_brain_voyagerto_afni-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_brain_voyagerto_afni-82"><a href="#v_3d_brain_voyagerto_afni-82"><span class="linenos"> 82</span></a>        <span class="s2">&quot;--input&quot;</span><span class="p">,</span>
-</span><span id="v_3d_brain_voyagerto_afni-83"><a href="#v_3d_brain_voyagerto_afni-83"><span class="linenos"> 83</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-84"><a href="#v_3d_brain_voyagerto_afni-84"><span class="linenos"> 84</span></a>    <span class="p">])</span>
-</span><span id="v_3d_brain_voyagerto_afni-85"><a href="#v_3d_brain_voyagerto_afni-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">force_byte_swap</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-86"><a href="#v_3d_brain_voyagerto_afni-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bs&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-87"><a href="#v_3d_brain_voyagerto_afni-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">brainvoyager_qx</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-88"><a href="#v_3d_brain_voyagerto_afni-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-qx&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-89"><a href="#v_3d_brain_voyagerto_afni-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">tlrc_space</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-90"><a href="#v_3d_brain_voyagerto_afni-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-tlrc&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-91"><a href="#v_3d_brain_voyagerto_afni-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">acpc_space</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-92"><a href="#v_3d_brain_voyagerto_afni-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-acpc&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-93"><a href="#v_3d_brain_voyagerto_afni-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">orig_space</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-94"><a href="#v_3d_brain_voyagerto_afni-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-orig&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-95"><a href="#v_3d_brain_voyagerto_afni-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-96"><a href="#v_3d_brain_voyagerto_afni-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_brain_voyagerto_afni-97"><a href="#v_3d_brain_voyagerto_afni-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;--prefix&quot;</span><span class="p">,</span>
-</span><span id="v_3d_brain_voyagerto_afni-98"><a href="#v_3d_brain_voyagerto_afni-98"><span class="linenos"> 98</span></a>            <span class="n">prefix</span>
-</span><span id="v_3d_brain_voyagerto_afni-99"><a href="#v_3d_brain_voyagerto_afni-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
-</span><span id="v_3d_brain_voyagerto_afni-100"><a href="#v_3d_brain_voyagerto_afni-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">novolreg</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-101"><a href="#v_3d_brain_voyagerto_afni-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-novolreg&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-102"><a href="#v_3d_brain_voyagerto_afni-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">noxform</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-103"><a href="#v_3d_brain_voyagerto_afni-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noxform&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-104"><a href="#v_3d_brain_voyagerto_afni-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">set_environment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-105"><a href="#v_3d_brain_voyagerto_afni-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_brain_voyagerto_afni-106"><a href="#v_3d_brain_voyagerto_afni-106"><span class="linenos">106</span></a>            <span class="s2">&quot;-setenv&quot;</span><span class="p">,</span>
-</span><span id="v_3d_brain_voyagerto_afni-107"><a href="#v_3d_brain_voyagerto_afni-107"><span class="linenos">107</span></a>            <span class="n">set_environment</span>
-</span><span id="v_3d_brain_voyagerto_afni-108"><a href="#v_3d_brain_voyagerto_afni-108"><span class="linenos">108</span></a>        <span class="p">])</span>
-</span><span id="v_3d_brain_voyagerto_afni-109"><a href="#v_3d_brain_voyagerto_afni-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">trace_debugging</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-110"><a href="#v_3d_brain_voyagerto_afni-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-trace&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-111"><a href="#v_3d_brain_voyagerto_afni-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">trace_extreme_debugging</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-112"><a href="#v_3d_brain_voyagerto_afni-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TRACE&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-113"><a href="#v_3d_brain_voyagerto_afni-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">turn_off_memory_tracing</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-114"><a href="#v_3d_brain_voyagerto_afni-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nomall&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-115"><a href="#v_3d_brain_voyagerto_afni-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">turn_on_memory_tracing</span><span class="p">:</span>
-</span><span id="v_3d_brain_voyagerto_afni-116"><a href="#v_3d_brain_voyagerto_afni-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-yesmall&quot;</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-117"><a href="#v_3d_brain_voyagerto_afni-117"><span class="linenos">117</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dBrainVoyagertoAfniOutputs</span><span class="p">(</span>
-</span><span id="v_3d_brain_voyagerto_afni-118"><a href="#v_3d_brain_voyagerto_afni-118"><span class="linenos">118</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v_3d_brain_voyagerto_afni-119"><a href="#v_3d_brain_voyagerto_afni-119"><span class="linenos">119</span></a>        <span class="n">output_brik_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;output.BRIK&quot;</span><span class="p">),</span>
-</span><span id="v_3d_brain_voyagerto_afni-120"><a href="#v_3d_brain_voyagerto_afni-120"><span class="linenos">120</span></a>        <span class="n">output_head_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;output.HEAD&quot;</span><span class="p">),</span>
-</span><span id="v_3d_brain_voyagerto_afni-121"><a href="#v_3d_brain_voyagerto_afni-121"><span class="linenos">121</span></a>    <span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-122"><a href="#v_3d_brain_voyagerto_afni-122"><span class="linenos">122</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v_3d_brain_voyagerto_afni-123"><a href="#v_3d_brain_voyagerto_afni-123"><span class="linenos">123</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v_3d_brain_voyagerto_afni-53"><a href="#v_3d_brain_voyagerto_afni-53"><span class="linenos"> 53</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v_3d_brain_voyagerto_afni-54"><a href="#v_3d_brain_voyagerto_afni-54"><span class="linenos"> 54</span></a><span class="sd">    </span>
+</span><span id="v_3d_brain_voyagerto_afni-55"><a href="#v_3d_brain_voyagerto_afni-55"><span class="linenos"> 55</span></a><span class="sd">    Args:</span>
+</span><span id="v_3d_brain_voyagerto_afni-56"><a href="#v_3d_brain_voyagerto_afni-56"><span class="linenos"> 56</span></a><span class="sd">        input_file: Input BrainVoyager VMR file.</span>
+</span><span id="v_3d_brain_voyagerto_afni-57"><a href="#v_3d_brain_voyagerto_afni-57"><span class="linenos"> 57</span></a><span class="sd">        force_byte_swap: Force byte swapping.</span>
+</span><span id="v_3d_brain_voyagerto_afni-58"><a href="#v_3d_brain_voyagerto_afni-58"><span class="linenos"> 58</span></a><span class="sd">        brainvoyager_qx: .vmr file is from BrainVoyager QX.</span>
+</span><span id="v_3d_brain_voyagerto_afni-59"><a href="#v_3d_brain_voyagerto_afni-59"><span class="linenos"> 59</span></a><span class="sd">        tlrc_space: Dset in tlrc space.</span>
+</span><span id="v_3d_brain_voyagerto_afni-60"><a href="#v_3d_brain_voyagerto_afni-60"><span class="linenos"> 60</span></a><span class="sd">        acpc_space: Dset in acpc-aligned space.</span>
+</span><span id="v_3d_brain_voyagerto_afni-61"><a href="#v_3d_brain_voyagerto_afni-61"><span class="linenos"> 61</span></a><span class="sd">        orig_space: Dset in orig space.</span>
+</span><span id="v_3d_brain_voyagerto_afni-62"><a href="#v_3d_brain_voyagerto_afni-62"><span class="linenos"> 62</span></a><span class="sd">        prefix: Prefix for output files.</span>
+</span><span id="v_3d_brain_voyagerto_afni-63"><a href="#v_3d_brain_voyagerto_afni-63"><span class="linenos"> 63</span></a><span class="sd">        novolreg: Ignore any Rotate, Volreg, Tagalign, or WarpDrive\</span>
+</span><span id="v_3d_brain_voyagerto_afni-64"><a href="#v_3d_brain_voyagerto_afni-64"><span class="linenos"> 64</span></a><span class="sd">            transformations present in the Surface Volume.</span>
+</span><span id="v_3d_brain_voyagerto_afni-65"><a href="#v_3d_brain_voyagerto_afni-65"><span class="linenos"> 65</span></a><span class="sd">        noxform: Same as -novolreg.</span>
+</span><span id="v_3d_brain_voyagerto_afni-66"><a href="#v_3d_brain_voyagerto_afni-66"><span class="linenos"> 66</span></a><span class="sd">        set_environment: Set environment variable ENVname to be ENVvalue.\</span>
+</span><span id="v_3d_brain_voyagerto_afni-67"><a href="#v_3d_brain_voyagerto_afni-67"><span class="linenos"> 67</span></a><span class="sd">            Quotes are necessary.</span>
+</span><span id="v_3d_brain_voyagerto_afni-68"><a href="#v_3d_brain_voyagerto_afni-68"><span class="linenos"> 68</span></a><span class="sd">        trace_debugging: Turns on In/Out debug and Memory tracing.</span>
+</span><span id="v_3d_brain_voyagerto_afni-69"><a href="#v_3d_brain_voyagerto_afni-69"><span class="linenos"> 69</span></a><span class="sd">        trace_extreme_debugging: Turns on extreme tracing.</span>
+</span><span id="v_3d_brain_voyagerto_afni-70"><a href="#v_3d_brain_voyagerto_afni-70"><span class="linenos"> 70</span></a><span class="sd">        turn_off_memory_tracing: Turn off memory tracing.</span>
+</span><span id="v_3d_brain_voyagerto_afni-71"><a href="#v_3d_brain_voyagerto_afni-71"><span class="linenos"> 71</span></a><span class="sd">        turn_on_memory_tracing: Turn on memory tracing (default).</span>
+</span><span id="v_3d_brain_voyagerto_afni-72"><a href="#v_3d_brain_voyagerto_afni-72"><span class="linenos"> 72</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v_3d_brain_voyagerto_afni-73"><a href="#v_3d_brain_voyagerto_afni-73"><span class="linenos"> 73</span></a><span class="sd">    Returns:</span>
+</span><span id="v_3d_brain_voyagerto_afni-74"><a href="#v_3d_brain_voyagerto_afni-74"><span class="linenos"> 74</span></a><span class="sd">        NamedTuple of outputs (described in `V3dBrainVoyagertoAfniOutputs`).</span>
+</span><span id="v_3d_brain_voyagerto_afni-75"><a href="#v_3d_brain_voyagerto_afni-75"><span class="linenos"> 75</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v_3d_brain_voyagerto_afni-76"><a href="#v_3d_brain_voyagerto_afni-76"><span class="linenos"> 76</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v_3d_brain_voyagerto_afni-77"><a href="#v_3d_brain_voyagerto_afni-77"><span class="linenos"> 77</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_BRAIN_VOYAGERTO_AFNI_METADATA</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-78"><a href="#v_3d_brain_voyagerto_afni-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="v_3d_brain_voyagerto_afni-79"><a href="#v_3d_brain_voyagerto_afni-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dBRAIN_VOYAGERtoAFNI&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-80"><a href="#v_3d_brain_voyagerto_afni-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_brain_voyagerto_afni-81"><a href="#v_3d_brain_voyagerto_afni-81"><span class="linenos"> 81</span></a>        <span class="s2">&quot;--input&quot;</span><span class="p">,</span>
+</span><span id="v_3d_brain_voyagerto_afni-82"><a href="#v_3d_brain_voyagerto_afni-82"><span class="linenos"> 82</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-83"><a href="#v_3d_brain_voyagerto_afni-83"><span class="linenos"> 83</span></a>    <span class="p">])</span>
+</span><span id="v_3d_brain_voyagerto_afni-84"><a href="#v_3d_brain_voyagerto_afni-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">force_byte_swap</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-85"><a href="#v_3d_brain_voyagerto_afni-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-bs&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-86"><a href="#v_3d_brain_voyagerto_afni-86"><span class="linenos"> 86</span></a>    <span class="k">if</span> <span class="n">brainvoyager_qx</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-87"><a href="#v_3d_brain_voyagerto_afni-87"><span class="linenos"> 87</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-qx&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-88"><a href="#v_3d_brain_voyagerto_afni-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">tlrc_space</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-89"><a href="#v_3d_brain_voyagerto_afni-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-tlrc&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-90"><a href="#v_3d_brain_voyagerto_afni-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">acpc_space</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-91"><a href="#v_3d_brain_voyagerto_afni-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-acpc&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-92"><a href="#v_3d_brain_voyagerto_afni-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">orig_space</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-93"><a href="#v_3d_brain_voyagerto_afni-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-orig&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-94"><a href="#v_3d_brain_voyagerto_afni-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">prefix</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-95"><a href="#v_3d_brain_voyagerto_afni-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_brain_voyagerto_afni-96"><a href="#v_3d_brain_voyagerto_afni-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;--prefix&quot;</span><span class="p">,</span>
+</span><span id="v_3d_brain_voyagerto_afni-97"><a href="#v_3d_brain_voyagerto_afni-97"><span class="linenos"> 97</span></a>            <span class="n">prefix</span>
+</span><span id="v_3d_brain_voyagerto_afni-98"><a href="#v_3d_brain_voyagerto_afni-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
+</span><span id="v_3d_brain_voyagerto_afni-99"><a href="#v_3d_brain_voyagerto_afni-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">novolreg</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-100"><a href="#v_3d_brain_voyagerto_afni-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-novolreg&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-101"><a href="#v_3d_brain_voyagerto_afni-101"><span class="linenos">101</span></a>    <span class="k">if</span> <span class="n">noxform</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-102"><a href="#v_3d_brain_voyagerto_afni-102"><span class="linenos">102</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-noxform&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-103"><a href="#v_3d_brain_voyagerto_afni-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">set_environment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-104"><a href="#v_3d_brain_voyagerto_afni-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_brain_voyagerto_afni-105"><a href="#v_3d_brain_voyagerto_afni-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-setenv&quot;</span><span class="p">,</span>
+</span><span id="v_3d_brain_voyagerto_afni-106"><a href="#v_3d_brain_voyagerto_afni-106"><span class="linenos">106</span></a>            <span class="n">set_environment</span>
+</span><span id="v_3d_brain_voyagerto_afni-107"><a href="#v_3d_brain_voyagerto_afni-107"><span class="linenos">107</span></a>        <span class="p">])</span>
+</span><span id="v_3d_brain_voyagerto_afni-108"><a href="#v_3d_brain_voyagerto_afni-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">trace_debugging</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-109"><a href="#v_3d_brain_voyagerto_afni-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-trace&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-110"><a href="#v_3d_brain_voyagerto_afni-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">trace_extreme_debugging</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-111"><a href="#v_3d_brain_voyagerto_afni-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-TRACE&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-112"><a href="#v_3d_brain_voyagerto_afni-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">turn_off_memory_tracing</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-113"><a href="#v_3d_brain_voyagerto_afni-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-nomall&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-114"><a href="#v_3d_brain_voyagerto_afni-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">turn_on_memory_tracing</span><span class="p">:</span>
+</span><span id="v_3d_brain_voyagerto_afni-115"><a href="#v_3d_brain_voyagerto_afni-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-yesmall&quot;</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-116"><a href="#v_3d_brain_voyagerto_afni-116"><span class="linenos">116</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dBrainVoyagertoAfniOutputs</span><span class="p">(</span>
+</span><span id="v_3d_brain_voyagerto_afni-117"><a href="#v_3d_brain_voyagerto_afni-117"><span class="linenos">117</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v_3d_brain_voyagerto_afni-118"><a href="#v_3d_brain_voyagerto_afni-118"><span class="linenos">118</span></a>        <span class="n">output_brik_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;output.BRIK&quot;</span><span class="p">),</span>
+</span><span id="v_3d_brain_voyagerto_afni-119"><a href="#v_3d_brain_voyagerto_afni-119"><span class="linenos">119</span></a>        <span class="n">output_head_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;output.HEAD&quot;</span><span class="p">),</span>
+</span><span id="v_3d_brain_voyagerto_afni-120"><a href="#v_3d_brain_voyagerto_afni-120"><span class="linenos">120</span></a>    <span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-121"><a href="#v_3d_brain_voyagerto_afni-121"><span class="linenos">121</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v_3d_brain_voyagerto_afni-122"><a href="#v_3d_brain_voyagerto_afni-122"><span class="linenos">122</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Converts a BrainVoyager vmr dataset to AFNI's BRIK format based on information
 from BrainVoyager's website.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBRAIN_VOYAGERtoAFNI.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBRAIN_VOYAGERtoAFNI.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

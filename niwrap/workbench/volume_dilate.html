@@ -99,7 +99,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">VOLUME_DILATE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a0cc77e029a17feca7009ae856be1f20bac8d8a1.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8dd62945250935d06e5be37046dda0c87c95479e.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;volume-dilate&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -181,82 +181,84 @@
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    NEAREST - use the value from the nearest good voxel</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    WEIGHTED - use a weighted average based on distance.</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    </span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    </span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    Args:</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        volume: the volume to dilate.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        distance: distance in mm to dilate.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        method: dilation method to use.</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        volume_out: the output volume.</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        opt_exponent_exponent: use a different exponent in the weighting\</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            function: exponent &#39;n&#39; to use in (1 / (distance ^ n)) as the weighting\</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">            function (default 7).</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        opt_bad_voxel_roi_roi_volume: specify an roi of voxels to overwrite,\</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            rather than voxels with value zero: volume file, positive values denote\</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">            voxels to have their values replaced.</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        opt_data_roi_roi_volume: specify an roi of where there is data: volume\</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            file, positive values denote voxels that have data.</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to dilate: the\</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            subvolume number or name.</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        opt_legacy_cutoff: use the v1.3.2 method of excluding voxels further\</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">            than the dilation distance when calculating the dilated value.</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        opt_grad_extrapolate: additionally use the gradient to extrapolate,\</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">            intended to be used with WEIGHTED.</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        presmooth: apply presmoothing before computing gradient vectors, not\</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">            recommended.</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    Returns:</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeDilateOutputs`).</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_DILATE_METADATA</span><span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-dilate&quot;</span><span class="p">)</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume</span><span class="p">))</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">distance</span><span class="p">))</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">opt_exponent_exponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="s2">&quot;-exponent&quot;</span><span class="p">,</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_exponent_exponent</span><span class="p">)</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="p">])</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">opt_bad_voxel_roi_roi_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="s2">&quot;-bad-voxel-roi&quot;</span><span class="p">,</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_voxel_roi_roi_volume</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="p">])</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">opt_data_roi_roi_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="s2">&quot;-data-roi&quot;</span><span class="p">,</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_data_roi_roi_volume</span><span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="p">])</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="n">opt_subvolume_subvol</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="p">])</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">opt_legacy_cutoff</span><span class="p">:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-legacy-cutoff&quot;</span><span class="p">)</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">opt_grad_extrapolate</span><span class="p">:</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-grad-extrapolate&quot;</span><span class="p">)</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">presmooth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">presmooth</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeDilateOutputs</span><span class="p">(</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="p">)</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="s2">&quot;VOLUME_DILATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="s2">&quot;VolumeDilateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="s2">&quot;VolumeDilatePresmooth&quot;</span><span class="p">,</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="s2">&quot;volume_dilate&quot;</span><span class="p">,</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="p">]</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    </span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    Args:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        volume: the volume to dilate.</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        distance: distance in mm to dilate.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        method: dilation method to use.</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        volume_out: the output volume.</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        opt_exponent_exponent: use a different exponent in the weighting\</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            function: exponent &#39;n&#39; to use in (1 / (distance ^ n)) as the weighting\</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            function (default 7).</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        opt_bad_voxel_roi_roi_volume: specify an roi of voxels to overwrite,\</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">            rather than voxels with value zero: volume file, positive values denote\</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">            voxels to have their values replaced.</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        opt_data_roi_roi_volume: specify an roi of where there is data: volume\</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">            file, positive values denote voxels that have data.</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to dilate: the\</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">            subvolume number or name.</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        opt_legacy_cutoff: use the v1.3.2 method of excluding voxels further\</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">            than the dilation distance when calculating the dilated value.</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        opt_grad_extrapolate: additionally use the gradient to extrapolate,\</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">            intended to be used with WEIGHTED.</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">        presmooth: apply presmoothing before computing gradient vectors, not\</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">            recommended.</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Returns:</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeDilateOutputs`).</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_DILATE_METADATA</span><span class="p">)</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-dilate&quot;</span><span class="p">)</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume</span><span class="p">))</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">distance</span><span class="p">))</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">opt_exponent_exponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="s2">&quot;-exponent&quot;</span><span class="p">,</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_exponent_exponent</span><span class="p">)</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="p">])</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">opt_bad_voxel_roi_roi_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>            <span class="s2">&quot;-bad-voxel-roi&quot;</span><span class="p">,</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_voxel_roi_roi_volume</span><span class="p">)</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="p">])</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">opt_data_roi_roi_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>            <span class="s2">&quot;-data-roi&quot;</span><span class="p">,</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_data_roi_roi_volume</span><span class="p">)</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="p">])</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>            <span class="n">opt_subvolume_subvol</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="p">])</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">opt_legacy_cutoff</span><span class="p">:</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-legacy-cutoff&quot;</span><span class="p">)</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">opt_grad_extrapolate</span><span class="p">:</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-grad-extrapolate&quot;</span><span class="p">)</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">presmooth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">presmooth</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeDilateOutputs</span><span class="p">(</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="p">)</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="s2">&quot;VOLUME_DILATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="s2">&quot;VolumeDilateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="s2">&quot;VolumeDilatePresmooth&quot;</span><span class="p">,</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="s2">&quot;volume_dilate&quot;</span><span class="p">,</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -265,7 +267,7 @@
                     <div class="attr variable">
             <span class="name">VOLUME_DILATE_METADATA</span>        =
 <input id="VOLUME_DILATE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="VOLUME_DILATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a0cc77e029a17feca7009ae856be1f20bac8d8a1.boutiques&#39;, name=&#39;volume-dilate&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="VOLUME_DILATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8dd62945250935d06e5be37046dda0c87c95479e.boutiques&#39;, name=&#39;volume-dilate&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -523,74 +525,76 @@
 </span><span id="volume_dilate-90"><a href="#volume_dilate-90"><span class="linenos"> 90</span></a><span class="sd">    NEAREST - use the value from the nearest good voxel</span>
 </span><span id="volume_dilate-91"><a href="#volume_dilate-91"><span class="linenos"> 91</span></a><span class="sd">    WEIGHTED - use a weighted average based on distance.</span>
 </span><span id="volume_dilate-92"><a href="#volume_dilate-92"><span class="linenos"> 92</span></a><span class="sd">    </span>
-</span><span id="volume_dilate-93"><a href="#volume_dilate-93"><span class="linenos"> 93</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="volume_dilate-93"><a href="#volume_dilate-93"><span class="linenos"> 93</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="volume_dilate-94"><a href="#volume_dilate-94"><span class="linenos"> 94</span></a><span class="sd">    </span>
-</span><span id="volume_dilate-95"><a href="#volume_dilate-95"><span class="linenos"> 95</span></a><span class="sd">    Args:</span>
-</span><span id="volume_dilate-96"><a href="#volume_dilate-96"><span class="linenos"> 96</span></a><span class="sd">        volume: the volume to dilate.</span>
-</span><span id="volume_dilate-97"><a href="#volume_dilate-97"><span class="linenos"> 97</span></a><span class="sd">        distance: distance in mm to dilate.</span>
-</span><span id="volume_dilate-98"><a href="#volume_dilate-98"><span class="linenos"> 98</span></a><span class="sd">        method: dilation method to use.</span>
-</span><span id="volume_dilate-99"><a href="#volume_dilate-99"><span class="linenos"> 99</span></a><span class="sd">        volume_out: the output volume.</span>
-</span><span id="volume_dilate-100"><a href="#volume_dilate-100"><span class="linenos">100</span></a><span class="sd">        opt_exponent_exponent: use a different exponent in the weighting\</span>
-</span><span id="volume_dilate-101"><a href="#volume_dilate-101"><span class="linenos">101</span></a><span class="sd">            function: exponent &#39;n&#39; to use in (1 / (distance ^ n)) as the weighting\</span>
-</span><span id="volume_dilate-102"><a href="#volume_dilate-102"><span class="linenos">102</span></a><span class="sd">            function (default 7).</span>
-</span><span id="volume_dilate-103"><a href="#volume_dilate-103"><span class="linenos">103</span></a><span class="sd">        opt_bad_voxel_roi_roi_volume: specify an roi of voxels to overwrite,\</span>
-</span><span id="volume_dilate-104"><a href="#volume_dilate-104"><span class="linenos">104</span></a><span class="sd">            rather than voxels with value zero: volume file, positive values denote\</span>
-</span><span id="volume_dilate-105"><a href="#volume_dilate-105"><span class="linenos">105</span></a><span class="sd">            voxels to have their values replaced.</span>
-</span><span id="volume_dilate-106"><a href="#volume_dilate-106"><span class="linenos">106</span></a><span class="sd">        opt_data_roi_roi_volume: specify an roi of where there is data: volume\</span>
-</span><span id="volume_dilate-107"><a href="#volume_dilate-107"><span class="linenos">107</span></a><span class="sd">            file, positive values denote voxels that have data.</span>
-</span><span id="volume_dilate-108"><a href="#volume_dilate-108"><span class="linenos">108</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to dilate: the\</span>
-</span><span id="volume_dilate-109"><a href="#volume_dilate-109"><span class="linenos">109</span></a><span class="sd">            subvolume number or name.</span>
-</span><span id="volume_dilate-110"><a href="#volume_dilate-110"><span class="linenos">110</span></a><span class="sd">        opt_legacy_cutoff: use the v1.3.2 method of excluding voxels further\</span>
-</span><span id="volume_dilate-111"><a href="#volume_dilate-111"><span class="linenos">111</span></a><span class="sd">            than the dilation distance when calculating the dilated value.</span>
-</span><span id="volume_dilate-112"><a href="#volume_dilate-112"><span class="linenos">112</span></a><span class="sd">        opt_grad_extrapolate: additionally use the gradient to extrapolate,\</span>
-</span><span id="volume_dilate-113"><a href="#volume_dilate-113"><span class="linenos">113</span></a><span class="sd">            intended to be used with WEIGHTED.</span>
-</span><span id="volume_dilate-114"><a href="#volume_dilate-114"><span class="linenos">114</span></a><span class="sd">        presmooth: apply presmoothing before computing gradient vectors, not\</span>
-</span><span id="volume_dilate-115"><a href="#volume_dilate-115"><span class="linenos">115</span></a><span class="sd">            recommended.</span>
-</span><span id="volume_dilate-116"><a href="#volume_dilate-116"><span class="linenos">116</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_dilate-117"><a href="#volume_dilate-117"><span class="linenos">117</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_dilate-118"><a href="#volume_dilate-118"><span class="linenos">118</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeDilateOutputs`).</span>
-</span><span id="volume_dilate-119"><a href="#volume_dilate-119"><span class="linenos">119</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_dilate-120"><a href="#volume_dilate-120"><span class="linenos">120</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_dilate-121"><a href="#volume_dilate-121"><span class="linenos">121</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_DILATE_METADATA</span><span class="p">)</span>
-</span><span id="volume_dilate-122"><a href="#volume_dilate-122"><span class="linenos">122</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="volume_dilate-123"><a href="#volume_dilate-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="volume_dilate-124"><a href="#volume_dilate-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-dilate&quot;</span><span class="p">)</span>
-</span><span id="volume_dilate-125"><a href="#volume_dilate-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume</span><span class="p">))</span>
-</span><span id="volume_dilate-126"><a href="#volume_dilate-126"><span class="linenos">126</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">distance</span><span class="p">))</span>
-</span><span id="volume_dilate-127"><a href="#volume_dilate-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
-</span><span id="volume_dilate-128"><a href="#volume_dilate-128"><span class="linenos">128</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
-</span><span id="volume_dilate-129"><a href="#volume_dilate-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">opt_exponent_exponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_dilate-130"><a href="#volume_dilate-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="volume_dilate-131"><a href="#volume_dilate-131"><span class="linenos">131</span></a>            <span class="s2">&quot;-exponent&quot;</span><span class="p">,</span>
-</span><span id="volume_dilate-132"><a href="#volume_dilate-132"><span class="linenos">132</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_exponent_exponent</span><span class="p">)</span>
-</span><span id="volume_dilate-133"><a href="#volume_dilate-133"><span class="linenos">133</span></a>        <span class="p">])</span>
-</span><span id="volume_dilate-134"><a href="#volume_dilate-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">opt_bad_voxel_roi_roi_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_dilate-135"><a href="#volume_dilate-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="volume_dilate-136"><a href="#volume_dilate-136"><span class="linenos">136</span></a>            <span class="s2">&quot;-bad-voxel-roi&quot;</span><span class="p">,</span>
-</span><span id="volume_dilate-137"><a href="#volume_dilate-137"><span class="linenos">137</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_voxel_roi_roi_volume</span><span class="p">)</span>
-</span><span id="volume_dilate-138"><a href="#volume_dilate-138"><span class="linenos">138</span></a>        <span class="p">])</span>
-</span><span id="volume_dilate-139"><a href="#volume_dilate-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">opt_data_roi_roi_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_dilate-140"><a href="#volume_dilate-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="volume_dilate-141"><a href="#volume_dilate-141"><span class="linenos">141</span></a>            <span class="s2">&quot;-data-roi&quot;</span><span class="p">,</span>
-</span><span id="volume_dilate-142"><a href="#volume_dilate-142"><span class="linenos">142</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_data_roi_roi_volume</span><span class="p">)</span>
-</span><span id="volume_dilate-143"><a href="#volume_dilate-143"><span class="linenos">143</span></a>        <span class="p">])</span>
-</span><span id="volume_dilate-144"><a href="#volume_dilate-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_dilate-145"><a href="#volume_dilate-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="volume_dilate-146"><a href="#volume_dilate-146"><span class="linenos">146</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
-</span><span id="volume_dilate-147"><a href="#volume_dilate-147"><span class="linenos">147</span></a>            <span class="n">opt_subvolume_subvol</span>
-</span><span id="volume_dilate-148"><a href="#volume_dilate-148"><span class="linenos">148</span></a>        <span class="p">])</span>
-</span><span id="volume_dilate-149"><a href="#volume_dilate-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">opt_legacy_cutoff</span><span class="p">:</span>
-</span><span id="volume_dilate-150"><a href="#volume_dilate-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-legacy-cutoff&quot;</span><span class="p">)</span>
-</span><span id="volume_dilate-151"><a href="#volume_dilate-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">opt_grad_extrapolate</span><span class="p">:</span>
-</span><span id="volume_dilate-152"><a href="#volume_dilate-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-grad-extrapolate&quot;</span><span class="p">)</span>
-</span><span id="volume_dilate-153"><a href="#volume_dilate-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">presmooth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_dilate-154"><a href="#volume_dilate-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">presmooth</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="volume_dilate-155"><a href="#volume_dilate-155"><span class="linenos">155</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeDilateOutputs</span><span class="p">(</span>
-</span><span id="volume_dilate-156"><a href="#volume_dilate-156"><span class="linenos">156</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="volume_dilate-157"><a href="#volume_dilate-157"><span class="linenos">157</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
-</span><span id="volume_dilate-158"><a href="#volume_dilate-158"><span class="linenos">158</span></a>    <span class="p">)</span>
-</span><span id="volume_dilate-159"><a href="#volume_dilate-159"><span class="linenos">159</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="volume_dilate-160"><a href="#volume_dilate-160"><span class="linenos">160</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="volume_dilate-95"><a href="#volume_dilate-95"><span class="linenos"> 95</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_dilate-96"><a href="#volume_dilate-96"><span class="linenos"> 96</span></a><span class="sd">    </span>
+</span><span id="volume_dilate-97"><a href="#volume_dilate-97"><span class="linenos"> 97</span></a><span class="sd">    Args:</span>
+</span><span id="volume_dilate-98"><a href="#volume_dilate-98"><span class="linenos"> 98</span></a><span class="sd">        volume: the volume to dilate.</span>
+</span><span id="volume_dilate-99"><a href="#volume_dilate-99"><span class="linenos"> 99</span></a><span class="sd">        distance: distance in mm to dilate.</span>
+</span><span id="volume_dilate-100"><a href="#volume_dilate-100"><span class="linenos">100</span></a><span class="sd">        method: dilation method to use.</span>
+</span><span id="volume_dilate-101"><a href="#volume_dilate-101"><span class="linenos">101</span></a><span class="sd">        volume_out: the output volume.</span>
+</span><span id="volume_dilate-102"><a href="#volume_dilate-102"><span class="linenos">102</span></a><span class="sd">        opt_exponent_exponent: use a different exponent in the weighting\</span>
+</span><span id="volume_dilate-103"><a href="#volume_dilate-103"><span class="linenos">103</span></a><span class="sd">            function: exponent &#39;n&#39; to use in (1 / (distance ^ n)) as the weighting\</span>
+</span><span id="volume_dilate-104"><a href="#volume_dilate-104"><span class="linenos">104</span></a><span class="sd">            function (default 7).</span>
+</span><span id="volume_dilate-105"><a href="#volume_dilate-105"><span class="linenos">105</span></a><span class="sd">        opt_bad_voxel_roi_roi_volume: specify an roi of voxels to overwrite,\</span>
+</span><span id="volume_dilate-106"><a href="#volume_dilate-106"><span class="linenos">106</span></a><span class="sd">            rather than voxels with value zero: volume file, positive values denote\</span>
+</span><span id="volume_dilate-107"><a href="#volume_dilate-107"><span class="linenos">107</span></a><span class="sd">            voxels to have their values replaced.</span>
+</span><span id="volume_dilate-108"><a href="#volume_dilate-108"><span class="linenos">108</span></a><span class="sd">        opt_data_roi_roi_volume: specify an roi of where there is data: volume\</span>
+</span><span id="volume_dilate-109"><a href="#volume_dilate-109"><span class="linenos">109</span></a><span class="sd">            file, positive values denote voxels that have data.</span>
+</span><span id="volume_dilate-110"><a href="#volume_dilate-110"><span class="linenos">110</span></a><span class="sd">        opt_subvolume_subvol: select a single subvolume to dilate: the\</span>
+</span><span id="volume_dilate-111"><a href="#volume_dilate-111"><span class="linenos">111</span></a><span class="sd">            subvolume number or name.</span>
+</span><span id="volume_dilate-112"><a href="#volume_dilate-112"><span class="linenos">112</span></a><span class="sd">        opt_legacy_cutoff: use the v1.3.2 method of excluding voxels further\</span>
+</span><span id="volume_dilate-113"><a href="#volume_dilate-113"><span class="linenos">113</span></a><span class="sd">            than the dilation distance when calculating the dilated value.</span>
+</span><span id="volume_dilate-114"><a href="#volume_dilate-114"><span class="linenos">114</span></a><span class="sd">        opt_grad_extrapolate: additionally use the gradient to extrapolate,\</span>
+</span><span id="volume_dilate-115"><a href="#volume_dilate-115"><span class="linenos">115</span></a><span class="sd">            intended to be used with WEIGHTED.</span>
+</span><span id="volume_dilate-116"><a href="#volume_dilate-116"><span class="linenos">116</span></a><span class="sd">        presmooth: apply presmoothing before computing gradient vectors, not\</span>
+</span><span id="volume_dilate-117"><a href="#volume_dilate-117"><span class="linenos">117</span></a><span class="sd">            recommended.</span>
+</span><span id="volume_dilate-118"><a href="#volume_dilate-118"><span class="linenos">118</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_dilate-119"><a href="#volume_dilate-119"><span class="linenos">119</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_dilate-120"><a href="#volume_dilate-120"><span class="linenos">120</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeDilateOutputs`).</span>
+</span><span id="volume_dilate-121"><a href="#volume_dilate-121"><span class="linenos">121</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_dilate-122"><a href="#volume_dilate-122"><span class="linenos">122</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_dilate-123"><a href="#volume_dilate-123"><span class="linenos">123</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_DILATE_METADATA</span><span class="p">)</span>
+</span><span id="volume_dilate-124"><a href="#volume_dilate-124"><span class="linenos">124</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="volume_dilate-125"><a href="#volume_dilate-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="volume_dilate-126"><a href="#volume_dilate-126"><span class="linenos">126</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-dilate&quot;</span><span class="p">)</span>
+</span><span id="volume_dilate-127"><a href="#volume_dilate-127"><span class="linenos">127</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume</span><span class="p">))</span>
+</span><span id="volume_dilate-128"><a href="#volume_dilate-128"><span class="linenos">128</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">distance</span><span class="p">))</span>
+</span><span id="volume_dilate-129"><a href="#volume_dilate-129"><span class="linenos">129</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</span><span id="volume_dilate-130"><a href="#volume_dilate-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
+</span><span id="volume_dilate-131"><a href="#volume_dilate-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">opt_exponent_exponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_dilate-132"><a href="#volume_dilate-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="volume_dilate-133"><a href="#volume_dilate-133"><span class="linenos">133</span></a>            <span class="s2">&quot;-exponent&quot;</span><span class="p">,</span>
+</span><span id="volume_dilate-134"><a href="#volume_dilate-134"><span class="linenos">134</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_exponent_exponent</span><span class="p">)</span>
+</span><span id="volume_dilate-135"><a href="#volume_dilate-135"><span class="linenos">135</span></a>        <span class="p">])</span>
+</span><span id="volume_dilate-136"><a href="#volume_dilate-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">opt_bad_voxel_roi_roi_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_dilate-137"><a href="#volume_dilate-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="volume_dilate-138"><a href="#volume_dilate-138"><span class="linenos">138</span></a>            <span class="s2">&quot;-bad-voxel-roi&quot;</span><span class="p">,</span>
+</span><span id="volume_dilate-139"><a href="#volume_dilate-139"><span class="linenos">139</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_bad_voxel_roi_roi_volume</span><span class="p">)</span>
+</span><span id="volume_dilate-140"><a href="#volume_dilate-140"><span class="linenos">140</span></a>        <span class="p">])</span>
+</span><span id="volume_dilate-141"><a href="#volume_dilate-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">opt_data_roi_roi_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_dilate-142"><a href="#volume_dilate-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="volume_dilate-143"><a href="#volume_dilate-143"><span class="linenos">143</span></a>            <span class="s2">&quot;-data-roi&quot;</span><span class="p">,</span>
+</span><span id="volume_dilate-144"><a href="#volume_dilate-144"><span class="linenos">144</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_data_roi_roi_volume</span><span class="p">)</span>
+</span><span id="volume_dilate-145"><a href="#volume_dilate-145"><span class="linenos">145</span></a>        <span class="p">])</span>
+</span><span id="volume_dilate-146"><a href="#volume_dilate-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_dilate-147"><a href="#volume_dilate-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="volume_dilate-148"><a href="#volume_dilate-148"><span class="linenos">148</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
+</span><span id="volume_dilate-149"><a href="#volume_dilate-149"><span class="linenos">149</span></a>            <span class="n">opt_subvolume_subvol</span>
+</span><span id="volume_dilate-150"><a href="#volume_dilate-150"><span class="linenos">150</span></a>        <span class="p">])</span>
+</span><span id="volume_dilate-151"><a href="#volume_dilate-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">opt_legacy_cutoff</span><span class="p">:</span>
+</span><span id="volume_dilate-152"><a href="#volume_dilate-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-legacy-cutoff&quot;</span><span class="p">)</span>
+</span><span id="volume_dilate-153"><a href="#volume_dilate-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">opt_grad_extrapolate</span><span class="p">:</span>
+</span><span id="volume_dilate-154"><a href="#volume_dilate-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-grad-extrapolate&quot;</span><span class="p">)</span>
+</span><span id="volume_dilate-155"><a href="#volume_dilate-155"><span class="linenos">155</span></a>    <span class="k">if</span> <span class="n">presmooth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_dilate-156"><a href="#volume_dilate-156"><span class="linenos">156</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">presmooth</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="volume_dilate-157"><a href="#volume_dilate-157"><span class="linenos">157</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeDilateOutputs</span><span class="p">(</span>
+</span><span id="volume_dilate-158"><a href="#volume_dilate-158"><span class="linenos">158</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="volume_dilate-159"><a href="#volume_dilate-159"><span class="linenos">159</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
+</span><span id="volume_dilate-160"><a href="#volume_dilate-160"><span class="linenos">160</span></a>    <span class="p">)</span>
+</span><span id="volume_dilate-161"><a href="#volume_dilate-161"><span class="linenos">161</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="volume_dilate-162"><a href="#volume_dilate-162"><span class="linenos">162</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -614,7 +618,9 @@ If -data-roi is not specified, all voxels are assumed to have data.</p>
 <p>NEAREST - use the value from the nearest good voxel
 WEIGHTED - use a weighted average based on distance.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

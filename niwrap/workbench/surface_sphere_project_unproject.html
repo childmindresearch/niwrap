@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;aa4f9643dc31da16347181ca07c1e4031d1a62f5.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d8f632b8bb06dad43a9bfe9937a7752ac0d165db.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;surface-sphere-project-unproject&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -163,40 +163,42 @@
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    &lt;sphere-project-to&gt; and &lt;sphere-unproject-from&gt; must have the same topology</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    as each other, but &lt;sphere-in&gt; may have any topology.</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    </span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    </span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    Args:</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        sphere_in: a sphere with the desired output mesh.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        sphere_project_to: a sphere that aligns with sphere-in.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        sphere_unproject_from: &lt;sphere-project-to&gt; deformed to the desired\</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">            output space.</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        sphere_out: the output sphere.</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    Returns:</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceSphereProjectUnprojectOutputs`).</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-sphere-project-unproject&quot;</span><span class="p">)</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_in</span><span class="p">))</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_project_to</span><span class="p">))</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_unproject_from</span><span class="p">))</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sphere_out</span><span class="p">)</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceSphereProjectUnprojectOutputs</span><span class="p">(</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">sphere_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">sphere_out</span><span class="p">),</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="p">)</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="s2">&quot;SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="s2">&quot;SurfaceSphereProjectUnprojectOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="s2">&quot;surface_sphere_project_unproject&quot;</span><span class="p">,</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="p">]</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    </span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    Args:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        sphere_in: a sphere with the desired output mesh.</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        sphere_project_to: a sphere that aligns with sphere-in.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        sphere_unproject_from: &lt;sphere-project-to&gt; deformed to the desired\</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            output space.</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        sphere_out: the output sphere.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    Returns:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceSphereProjectUnprojectOutputs`).</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA</span><span class="p">)</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-sphere-project-unproject&quot;</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_in</span><span class="p">))</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_project_to</span><span class="p">))</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_unproject_from</span><span class="p">))</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sphere_out</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceSphereProjectUnprojectOutputs</span><span class="p">(</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">sphere_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">sphere_out</span><span class="p">),</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="p">)</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="s2">&quot;SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="s2">&quot;SurfaceSphereProjectUnprojectOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="s2">&quot;surface_sphere_project_unproject&quot;</span><span class="p">,</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -205,7 +207,7 @@
                     <div class="attr variable">
             <span class="name">SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA</span>        =
 <input id="SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;aa4f9643dc31da16347181ca07c1e4031d1a62f5.boutiques&#39;, name=&#39;surface-sphere-project-unproject&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d8f632b8bb06dad43a9bfe9937a7752ac0d165db.boutiques&#39;, name=&#39;surface-sphere-project-unproject&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -357,33 +359,35 @@
 </span><span id="surface_sphere_project_unproject-90"><a href="#surface_sphere_project_unproject-90"><span class="linenos"> 90</span></a><span class="sd">    &lt;sphere-project-to&gt; and &lt;sphere-unproject-from&gt; must have the same topology</span>
 </span><span id="surface_sphere_project_unproject-91"><a href="#surface_sphere_project_unproject-91"><span class="linenos"> 91</span></a><span class="sd">    as each other, but &lt;sphere-in&gt; may have any topology.</span>
 </span><span id="surface_sphere_project_unproject-92"><a href="#surface_sphere_project_unproject-92"><span class="linenos"> 92</span></a><span class="sd">    </span>
-</span><span id="surface_sphere_project_unproject-93"><a href="#surface_sphere_project_unproject-93"><span class="linenos"> 93</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="surface_sphere_project_unproject-93"><a href="#surface_sphere_project_unproject-93"><span class="linenos"> 93</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="surface_sphere_project_unproject-94"><a href="#surface_sphere_project_unproject-94"><span class="linenos"> 94</span></a><span class="sd">    </span>
-</span><span id="surface_sphere_project_unproject-95"><a href="#surface_sphere_project_unproject-95"><span class="linenos"> 95</span></a><span class="sd">    Args:</span>
-</span><span id="surface_sphere_project_unproject-96"><a href="#surface_sphere_project_unproject-96"><span class="linenos"> 96</span></a><span class="sd">        sphere_in: a sphere with the desired output mesh.</span>
-</span><span id="surface_sphere_project_unproject-97"><a href="#surface_sphere_project_unproject-97"><span class="linenos"> 97</span></a><span class="sd">        sphere_project_to: a sphere that aligns with sphere-in.</span>
-</span><span id="surface_sphere_project_unproject-98"><a href="#surface_sphere_project_unproject-98"><span class="linenos"> 98</span></a><span class="sd">        sphere_unproject_from: &lt;sphere-project-to&gt; deformed to the desired\</span>
-</span><span id="surface_sphere_project_unproject-99"><a href="#surface_sphere_project_unproject-99"><span class="linenos"> 99</span></a><span class="sd">            output space.</span>
-</span><span id="surface_sphere_project_unproject-100"><a href="#surface_sphere_project_unproject-100"><span class="linenos">100</span></a><span class="sd">        sphere_out: the output sphere.</span>
-</span><span id="surface_sphere_project_unproject-101"><a href="#surface_sphere_project_unproject-101"><span class="linenos">101</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="surface_sphere_project_unproject-102"><a href="#surface_sphere_project_unproject-102"><span class="linenos">102</span></a><span class="sd">    Returns:</span>
-</span><span id="surface_sphere_project_unproject-103"><a href="#surface_sphere_project_unproject-103"><span class="linenos">103</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceSphereProjectUnprojectOutputs`).</span>
-</span><span id="surface_sphere_project_unproject-104"><a href="#surface_sphere_project_unproject-104"><span class="linenos">104</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="surface_sphere_project_unproject-105"><a href="#surface_sphere_project_unproject-105"><span class="linenos">105</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="surface_sphere_project_unproject-106"><a href="#surface_sphere_project_unproject-106"><span class="linenos">106</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA</span><span class="p">)</span>
-</span><span id="surface_sphere_project_unproject-107"><a href="#surface_sphere_project_unproject-107"><span class="linenos">107</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="surface_sphere_project_unproject-108"><a href="#surface_sphere_project_unproject-108"><span class="linenos">108</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="surface_sphere_project_unproject-109"><a href="#surface_sphere_project_unproject-109"><span class="linenos">109</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-sphere-project-unproject&quot;</span><span class="p">)</span>
-</span><span id="surface_sphere_project_unproject-110"><a href="#surface_sphere_project_unproject-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_in</span><span class="p">))</span>
-</span><span id="surface_sphere_project_unproject-111"><a href="#surface_sphere_project_unproject-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_project_to</span><span class="p">))</span>
-</span><span id="surface_sphere_project_unproject-112"><a href="#surface_sphere_project_unproject-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_unproject_from</span><span class="p">))</span>
-</span><span id="surface_sphere_project_unproject-113"><a href="#surface_sphere_project_unproject-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sphere_out</span><span class="p">)</span>
-</span><span id="surface_sphere_project_unproject-114"><a href="#surface_sphere_project_unproject-114"><span class="linenos">114</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceSphereProjectUnprojectOutputs</span><span class="p">(</span>
-</span><span id="surface_sphere_project_unproject-115"><a href="#surface_sphere_project_unproject-115"><span class="linenos">115</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="surface_sphere_project_unproject-116"><a href="#surface_sphere_project_unproject-116"><span class="linenos">116</span></a>        <span class="n">sphere_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">sphere_out</span><span class="p">),</span>
-</span><span id="surface_sphere_project_unproject-117"><a href="#surface_sphere_project_unproject-117"><span class="linenos">117</span></a>    <span class="p">)</span>
-</span><span id="surface_sphere_project_unproject-118"><a href="#surface_sphere_project_unproject-118"><span class="linenos">118</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="surface_sphere_project_unproject-119"><a href="#surface_sphere_project_unproject-119"><span class="linenos">119</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="surface_sphere_project_unproject-95"><a href="#surface_sphere_project_unproject-95"><span class="linenos"> 95</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="surface_sphere_project_unproject-96"><a href="#surface_sphere_project_unproject-96"><span class="linenos"> 96</span></a><span class="sd">    </span>
+</span><span id="surface_sphere_project_unproject-97"><a href="#surface_sphere_project_unproject-97"><span class="linenos"> 97</span></a><span class="sd">    Args:</span>
+</span><span id="surface_sphere_project_unproject-98"><a href="#surface_sphere_project_unproject-98"><span class="linenos"> 98</span></a><span class="sd">        sphere_in: a sphere with the desired output mesh.</span>
+</span><span id="surface_sphere_project_unproject-99"><a href="#surface_sphere_project_unproject-99"><span class="linenos"> 99</span></a><span class="sd">        sphere_project_to: a sphere that aligns with sphere-in.</span>
+</span><span id="surface_sphere_project_unproject-100"><a href="#surface_sphere_project_unproject-100"><span class="linenos">100</span></a><span class="sd">        sphere_unproject_from: &lt;sphere-project-to&gt; deformed to the desired\</span>
+</span><span id="surface_sphere_project_unproject-101"><a href="#surface_sphere_project_unproject-101"><span class="linenos">101</span></a><span class="sd">            output space.</span>
+</span><span id="surface_sphere_project_unproject-102"><a href="#surface_sphere_project_unproject-102"><span class="linenos">102</span></a><span class="sd">        sphere_out: the output sphere.</span>
+</span><span id="surface_sphere_project_unproject-103"><a href="#surface_sphere_project_unproject-103"><span class="linenos">103</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="surface_sphere_project_unproject-104"><a href="#surface_sphere_project_unproject-104"><span class="linenos">104</span></a><span class="sd">    Returns:</span>
+</span><span id="surface_sphere_project_unproject-105"><a href="#surface_sphere_project_unproject-105"><span class="linenos">105</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceSphereProjectUnprojectOutputs`).</span>
+</span><span id="surface_sphere_project_unproject-106"><a href="#surface_sphere_project_unproject-106"><span class="linenos">106</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="surface_sphere_project_unproject-107"><a href="#surface_sphere_project_unproject-107"><span class="linenos">107</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="surface_sphere_project_unproject-108"><a href="#surface_sphere_project_unproject-108"><span class="linenos">108</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA</span><span class="p">)</span>
+</span><span id="surface_sphere_project_unproject-109"><a href="#surface_sphere_project_unproject-109"><span class="linenos">109</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="surface_sphere_project_unproject-110"><a href="#surface_sphere_project_unproject-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="surface_sphere_project_unproject-111"><a href="#surface_sphere_project_unproject-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-sphere-project-unproject&quot;</span><span class="p">)</span>
+</span><span id="surface_sphere_project_unproject-112"><a href="#surface_sphere_project_unproject-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_in</span><span class="p">))</span>
+</span><span id="surface_sphere_project_unproject-113"><a href="#surface_sphere_project_unproject-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_project_to</span><span class="p">))</span>
+</span><span id="surface_sphere_project_unproject-114"><a href="#surface_sphere_project_unproject-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">sphere_unproject_from</span><span class="p">))</span>
+</span><span id="surface_sphere_project_unproject-115"><a href="#surface_sphere_project_unproject-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sphere_out</span><span class="p">)</span>
+</span><span id="surface_sphere_project_unproject-116"><a href="#surface_sphere_project_unproject-116"><span class="linenos">116</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceSphereProjectUnprojectOutputs</span><span class="p">(</span>
+</span><span id="surface_sphere_project_unproject-117"><a href="#surface_sphere_project_unproject-117"><span class="linenos">117</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="surface_sphere_project_unproject-118"><a href="#surface_sphere_project_unproject-118"><span class="linenos">118</span></a>        <span class="n">sphere_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">sphere_out</span><span class="p">),</span>
+</span><span id="surface_sphere_project_unproject-119"><a href="#surface_sphere_project_unproject-119"><span class="linenos">119</span></a>    <span class="p">)</span>
+</span><span id="surface_sphere_project_unproject-120"><a href="#surface_sphere_project_unproject-120"><span class="linenos">120</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="surface_sphere_project_unproject-121"><a href="#surface_sphere_project_unproject-121"><span class="linenos">121</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -444,7 +448,9 @@ deformation from <sphere-project-to> to <sphere-unproject-from>.
 <sphere-project-to> and <sphere-unproject-from> must have the same topology
 as each other, but <sphere-in> may have any topology.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

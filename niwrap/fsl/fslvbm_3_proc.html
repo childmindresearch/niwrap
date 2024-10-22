@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FSLVBM_3_PROC_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4cb5537fa85014828cc336ad97bf5529986236a4.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3fedac2cfadb8c999bef2fe05c6d87fa5fde3bc0.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fslvbm_3_proc&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
@@ -136,198 +136,200 @@
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">    Pipeline for voxel-based morphometry analysis using FSL tools.</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    </span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    </span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    Args:</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        arch: Specify architecture.</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        coprocessor: Specify coprocessor.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        coprocessor_multi: Specify multiple coprocessors.</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        coprocessor_class: Specify coprocessor class.</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        coprocessor_class_strict: Use strict class matching for coprocessor.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        coprocessor_toolkit: Specify coprocessor toolkit.</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        not_requeueable: Do not requeue the job.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        jobhold: Job to hold.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        array_hold: Array hold.</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        logdir: Specify log directory.</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        mailoptions: Specify mail options.</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        mailto: Specify mail recipient.</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        name: Job name.</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        priority: Job priority.</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        queue_: Queue to submit to.</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        resource_: Resource identifier.</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        delete_job: Delete specified job.</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        memory_gb: Memory (GB).</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        parallel_env_threads: Parallel environment and threads.</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        array_task: Array task file.</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        array_native: Array native specification.</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        number_jobscripts: Keep number of job scripts.</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        keep_jobscript: Keep job script.</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        coprocessor_name: Specify coprocessor name.</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        has_queues: Specify queues.</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        project: Specify project name.</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        submit_scheduler: Submit to Scheduler.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        runtime_limit: Specify runtime limit in minutes.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        show_config: Show configuration.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        verbose: Verbose output.</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        version: Version information.</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        config_file: Specify configuration file.</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    Returns:</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        NamedTuple of outputs (described in `Fslvbm3ProcOutputs`).</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSLVBM_3_PROC_METADATA</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fslvbm_3_proc&quot;</span><span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">arch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="s2">&quot;-a&quot;</span><span class="p">,</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="n">arch</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="p">])</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">coprocessor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="s2">&quot;-c&quot;</span><span class="p">,</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="n">coprocessor</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="p">])</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">coprocessor_multi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="s2">&quot;--coprocessor_multi&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="n">coprocessor_multi</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="p">])</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">coprocessor_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>            <span class="s2">&quot;--coprocessor_class&quot;</span><span class="p">,</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="n">coprocessor_class</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="p">])</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">coprocessor_class_strict</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--coprocessor_class_strict&quot;</span><span class="p">)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">coprocessor_toolkit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="s2">&quot;--coprocessor_toolkit&quot;</span><span class="p">,</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>            <span class="n">coprocessor_toolkit</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="p">])</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">not_requeueable</span><span class="p">:</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-F&quot;</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">jobhold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>            <span class="s2">&quot;-j&quot;</span><span class="p">,</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="n">jobhold</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="p">])</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">array_hold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>            <span class="s2">&quot;--array_hold&quot;</span><span class="p">,</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="n">array_hold</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="p">])</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">logdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>            <span class="s2">&quot;-l&quot;</span><span class="p">,</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>            <span class="n">logdir</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="p">])</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">mailoptions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>            <span class="n">mailoptions</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="p">])</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">mailto</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>            <span class="s2">&quot;-M&quot;</span><span class="p">,</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>            <span class="n">mailto</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="p">])</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>            <span class="s2">&quot;-N&quot;</span><span class="p">,</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>            <span class="n">name</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>        <span class="p">])</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">priority</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>            <span class="s2">&quot;-p&quot;</span><span class="p">,</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>            <span class="n">priority</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="p">])</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="k">if</span> <span class="n">queue_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>            <span class="s2">&quot;-q&quot;</span><span class="p">,</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>            <span class="n">queue_</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="p">])</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">resource_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>            <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>            <span class="n">resource_</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>        <span class="p">])</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="k">if</span> <span class="n">delete_job</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>            <span class="s2">&quot;--delete_job&quot;</span><span class="p">,</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>            <span class="n">delete_job</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="p">])</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">memory_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>            <span class="s2">&quot;-R&quot;</span><span class="p">,</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">memory_gb</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="p">])</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">parallel_env_threads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>            <span class="s2">&quot;-s&quot;</span><span class="p">,</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>            <span class="n">parallel_env_threads</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="p">])</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">array_task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="s2">&quot;-t&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>            <span class="n">array_task</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="p">])</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">array_native</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>            <span class="s2">&quot;--array_native&quot;</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>            <span class="n">array_native</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="p">])</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">number_jobscripts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>            <span class="s2">&quot;-x&quot;</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">number_jobscripts</span><span class="p">)</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="p">])</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">keep_jobscript</span><span class="p">:</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep_jobscript&quot;</span><span class="p">)</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">coprocessor_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>            <span class="s2">&quot;--has_coprocessor&quot;</span><span class="p">,</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>            <span class="n">coprocessor_name</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="p">])</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">has_queues</span><span class="p">:</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--has_queues&quot;</span><span class="p">)</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>            <span class="s2">&quot;--project&quot;</span><span class="p">,</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>            <span class="n">project</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>        <span class="p">])</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="k">if</span> <span class="n">submit_scheduler</span><span class="p">:</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-S&quot;</span><span class="p">)</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">runtime_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>            <span class="s2">&quot;-T&quot;</span><span class="p">,</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">runtime_limit</span><span class="p">)</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="p">])</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">show_config</span><span class="p">:</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--show_config&quot;</span><span class="p">)</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-V&quot;</span><span class="p">)</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="k">if</span> <span class="n">config_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>            <span class="s2">&quot;-z&quot;</span><span class="p">,</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>        <span class="p">])</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Fslvbm3ProcOutputs</span><span class="p">(</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="n">output_directory</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;fslvbm3a&quot;</span><span class="p">),</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="p">)</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="s2">&quot;FSLVBM_3_PROC_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="s2">&quot;Fslvbm3ProcOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;fslvbm_3_proc&quot;</span><span class="p">,</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a><span class="p">]</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    </span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    Args:</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        arch: Specify architecture.</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        coprocessor: Specify coprocessor.</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        coprocessor_multi: Specify multiple coprocessors.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        coprocessor_class: Specify coprocessor class.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        coprocessor_class_strict: Use strict class matching for coprocessor.</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        coprocessor_toolkit: Specify coprocessor toolkit.</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        not_requeueable: Do not requeue the job.</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        jobhold: Job to hold.</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        array_hold: Array hold.</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        logdir: Specify log directory.</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        mailoptions: Specify mail options.</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        mailto: Specify mail recipient.</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        name: Job name.</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        priority: Job priority.</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        queue_: Queue to submit to.</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        resource_: Resource identifier.</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        delete_job: Delete specified job.</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        memory_gb: Memory (GB).</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        parallel_env_threads: Parallel environment and threads.</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        array_task: Array task file.</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        array_native: Array native specification.</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        number_jobscripts: Keep number of job scripts.</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        keep_jobscript: Keep job script.</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        coprocessor_name: Specify coprocessor name.</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        has_queues: Specify queues.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        project: Specify project name.</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        submit_scheduler: Submit to Scheduler.</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        runtime_limit: Specify runtime limit in minutes.</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        show_config: Show configuration.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        verbose: Verbose output.</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        version: Version information.</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        config_file: Specify configuration file.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    Returns:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        NamedTuple of outputs (described in `Fslvbm3ProcOutputs`).</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSLVBM_3_PROC_METADATA</span><span class="p">)</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fslvbm_3_proc&quot;</span><span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">arch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="s2">&quot;-a&quot;</span><span class="p">,</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="n">arch</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="p">])</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">coprocessor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>            <span class="s2">&quot;-c&quot;</span><span class="p">,</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="n">coprocessor</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="p">])</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">coprocessor_multi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="s2">&quot;--coprocessor_multi&quot;</span><span class="p">,</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>            <span class="n">coprocessor_multi</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="p">])</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">coprocessor_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="s2">&quot;--coprocessor_class&quot;</span><span class="p">,</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="n">coprocessor_class</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="p">])</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">coprocessor_class_strict</span><span class="p">:</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--coprocessor_class_strict&quot;</span><span class="p">)</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">coprocessor_toolkit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>            <span class="s2">&quot;--coprocessor_toolkit&quot;</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="n">coprocessor_toolkit</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="p">])</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">not_requeueable</span><span class="p">:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-F&quot;</span><span class="p">)</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">jobhold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="s2">&quot;-j&quot;</span><span class="p">,</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>            <span class="n">jobhold</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="p">])</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">array_hold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="s2">&quot;--array_hold&quot;</span><span class="p">,</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>            <span class="n">array_hold</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="p">])</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">logdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>            <span class="s2">&quot;-l&quot;</span><span class="p">,</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>            <span class="n">logdir</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="p">])</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">mailoptions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>            <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>            <span class="n">mailoptions</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>        <span class="p">])</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">mailto</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>            <span class="s2">&quot;-M&quot;</span><span class="p">,</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>            <span class="n">mailto</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="p">])</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>            <span class="s2">&quot;-N&quot;</span><span class="p">,</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>            <span class="n">name</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="p">])</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">priority</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>            <span class="s2">&quot;-p&quot;</span><span class="p">,</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>            <span class="n">priority</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="p">])</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">queue_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>            <span class="s2">&quot;-q&quot;</span><span class="p">,</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>            <span class="n">queue_</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="p">])</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">resource_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>            <span class="n">resource_</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="p">])</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">delete_job</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>            <span class="s2">&quot;--delete_job&quot;</span><span class="p">,</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>            <span class="n">delete_job</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="p">])</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">memory_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>            <span class="s2">&quot;-R&quot;</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">memory_gb</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="p">])</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">parallel_env_threads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>            <span class="s2">&quot;-s&quot;</span><span class="p">,</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>            <span class="n">parallel_env_threads</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="p">])</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">array_task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>            <span class="s2">&quot;-t&quot;</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>            <span class="n">array_task</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="p">])</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">array_native</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>            <span class="s2">&quot;--array_native&quot;</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>            <span class="n">array_native</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="p">])</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">number_jobscripts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>            <span class="s2">&quot;-x&quot;</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">number_jobscripts</span><span class="p">)</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="p">])</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">keep_jobscript</span><span class="p">:</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep_jobscript&quot;</span><span class="p">)</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="k">if</span> <span class="n">coprocessor_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>            <span class="s2">&quot;--has_coprocessor&quot;</span><span class="p">,</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>            <span class="n">coprocessor_name</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="p">])</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">has_queues</span><span class="p">:</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--has_queues&quot;</span><span class="p">)</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>            <span class="s2">&quot;--project&quot;</span><span class="p">,</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>            <span class="n">project</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="p">])</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">submit_scheduler</span><span class="p">:</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-S&quot;</span><span class="p">)</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="k">if</span> <span class="n">runtime_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>            <span class="s2">&quot;-T&quot;</span><span class="p">,</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">runtime_limit</span><span class="p">)</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="p">])</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="k">if</span> <span class="n">show_config</span><span class="p">:</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--show_config&quot;</span><span class="p">)</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-V&quot;</span><span class="p">)</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="k">if</span> <span class="n">config_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>            <span class="s2">&quot;-z&quot;</span><span class="p">,</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="p">])</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Fslvbm3ProcOutputs</span><span class="p">(</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>        <span class="n">output_directory</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;fslvbm3a&quot;</span><span class="p">),</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="p">)</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="s2">&quot;FSLVBM_3_PROC_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="s2">&quot;Fslvbm3ProcOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="s2">&quot;fslvbm_3_proc&quot;</span><span class="p">,</span>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -336,7 +338,7 @@
                     <div class="attr variable">
             <span class="name">FSLVBM_3_PROC_METADATA</span>        =
 <input id="FSLVBM_3_PROC_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FSLVBM_3_PROC_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4cb5537fa85014828cc336ad97bf5529986236a4.boutiques&#39;, name=&#39;fslvbm_3_proc&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FSLVBM_3_PROC_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3fedac2cfadb8c999bef2fe05c6d87fa5fde3bc0.boutiques&#39;, name=&#39;fslvbm_3_proc&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -461,197 +463,201 @@
 </span><span id="fslvbm_3_proc-63"><a href="#fslvbm_3_proc-63"><span class="linenos"> 63</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="fslvbm_3_proc-64"><a href="#fslvbm_3_proc-64"><span class="linenos"> 64</span></a><span class="sd">    Pipeline for voxel-based morphometry analysis using FSL tools.</span>
 </span><span id="fslvbm_3_proc-65"><a href="#fslvbm_3_proc-65"><span class="linenos"> 65</span></a><span class="sd">    </span>
-</span><span id="fslvbm_3_proc-66"><a href="#fslvbm_3_proc-66"><span class="linenos"> 66</span></a><span class="sd">    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)</span>
+</span><span id="fslvbm_3_proc-66"><a href="#fslvbm_3_proc-66"><span class="linenos"> 66</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="fslvbm_3_proc-67"><a href="#fslvbm_3_proc-67"><span class="linenos"> 67</span></a><span class="sd">    </span>
-</span><span id="fslvbm_3_proc-68"><a href="#fslvbm_3_proc-68"><span class="linenos"> 68</span></a><span class="sd">    Args:</span>
-</span><span id="fslvbm_3_proc-69"><a href="#fslvbm_3_proc-69"><span class="linenos"> 69</span></a><span class="sd">        arch: Specify architecture.</span>
-</span><span id="fslvbm_3_proc-70"><a href="#fslvbm_3_proc-70"><span class="linenos"> 70</span></a><span class="sd">        coprocessor: Specify coprocessor.</span>
-</span><span id="fslvbm_3_proc-71"><a href="#fslvbm_3_proc-71"><span class="linenos"> 71</span></a><span class="sd">        coprocessor_multi: Specify multiple coprocessors.</span>
-</span><span id="fslvbm_3_proc-72"><a href="#fslvbm_3_proc-72"><span class="linenos"> 72</span></a><span class="sd">        coprocessor_class: Specify coprocessor class.</span>
-</span><span id="fslvbm_3_proc-73"><a href="#fslvbm_3_proc-73"><span class="linenos"> 73</span></a><span class="sd">        coprocessor_class_strict: Use strict class matching for coprocessor.</span>
-</span><span id="fslvbm_3_proc-74"><a href="#fslvbm_3_proc-74"><span class="linenos"> 74</span></a><span class="sd">        coprocessor_toolkit: Specify coprocessor toolkit.</span>
-</span><span id="fslvbm_3_proc-75"><a href="#fslvbm_3_proc-75"><span class="linenos"> 75</span></a><span class="sd">        not_requeueable: Do not requeue the job.</span>
-</span><span id="fslvbm_3_proc-76"><a href="#fslvbm_3_proc-76"><span class="linenos"> 76</span></a><span class="sd">        jobhold: Job to hold.</span>
-</span><span id="fslvbm_3_proc-77"><a href="#fslvbm_3_proc-77"><span class="linenos"> 77</span></a><span class="sd">        array_hold: Array hold.</span>
-</span><span id="fslvbm_3_proc-78"><a href="#fslvbm_3_proc-78"><span class="linenos"> 78</span></a><span class="sd">        logdir: Specify log directory.</span>
-</span><span id="fslvbm_3_proc-79"><a href="#fslvbm_3_proc-79"><span class="linenos"> 79</span></a><span class="sd">        mailoptions: Specify mail options.</span>
-</span><span id="fslvbm_3_proc-80"><a href="#fslvbm_3_proc-80"><span class="linenos"> 80</span></a><span class="sd">        mailto: Specify mail recipient.</span>
-</span><span id="fslvbm_3_proc-81"><a href="#fslvbm_3_proc-81"><span class="linenos"> 81</span></a><span class="sd">        name: Job name.</span>
-</span><span id="fslvbm_3_proc-82"><a href="#fslvbm_3_proc-82"><span class="linenos"> 82</span></a><span class="sd">        priority: Job priority.</span>
-</span><span id="fslvbm_3_proc-83"><a href="#fslvbm_3_proc-83"><span class="linenos"> 83</span></a><span class="sd">        queue_: Queue to submit to.</span>
-</span><span id="fslvbm_3_proc-84"><a href="#fslvbm_3_proc-84"><span class="linenos"> 84</span></a><span class="sd">        resource_: Resource identifier.</span>
-</span><span id="fslvbm_3_proc-85"><a href="#fslvbm_3_proc-85"><span class="linenos"> 85</span></a><span class="sd">        delete_job: Delete specified job.</span>
-</span><span id="fslvbm_3_proc-86"><a href="#fslvbm_3_proc-86"><span class="linenos"> 86</span></a><span class="sd">        memory_gb: Memory (GB).</span>
-</span><span id="fslvbm_3_proc-87"><a href="#fslvbm_3_proc-87"><span class="linenos"> 87</span></a><span class="sd">        parallel_env_threads: Parallel environment and threads.</span>
-</span><span id="fslvbm_3_proc-88"><a href="#fslvbm_3_proc-88"><span class="linenos"> 88</span></a><span class="sd">        array_task: Array task file.</span>
-</span><span id="fslvbm_3_proc-89"><a href="#fslvbm_3_proc-89"><span class="linenos"> 89</span></a><span class="sd">        array_native: Array native specification.</span>
-</span><span id="fslvbm_3_proc-90"><a href="#fslvbm_3_proc-90"><span class="linenos"> 90</span></a><span class="sd">        number_jobscripts: Keep number of job scripts.</span>
-</span><span id="fslvbm_3_proc-91"><a href="#fslvbm_3_proc-91"><span class="linenos"> 91</span></a><span class="sd">        keep_jobscript: Keep job script.</span>
-</span><span id="fslvbm_3_proc-92"><a href="#fslvbm_3_proc-92"><span class="linenos"> 92</span></a><span class="sd">        coprocessor_name: Specify coprocessor name.</span>
-</span><span id="fslvbm_3_proc-93"><a href="#fslvbm_3_proc-93"><span class="linenos"> 93</span></a><span class="sd">        has_queues: Specify queues.</span>
-</span><span id="fslvbm_3_proc-94"><a href="#fslvbm_3_proc-94"><span class="linenos"> 94</span></a><span class="sd">        project: Specify project name.</span>
-</span><span id="fslvbm_3_proc-95"><a href="#fslvbm_3_proc-95"><span class="linenos"> 95</span></a><span class="sd">        submit_scheduler: Submit to Scheduler.</span>
-</span><span id="fslvbm_3_proc-96"><a href="#fslvbm_3_proc-96"><span class="linenos"> 96</span></a><span class="sd">        runtime_limit: Specify runtime limit in minutes.</span>
-</span><span id="fslvbm_3_proc-97"><a href="#fslvbm_3_proc-97"><span class="linenos"> 97</span></a><span class="sd">        show_config: Show configuration.</span>
-</span><span id="fslvbm_3_proc-98"><a href="#fslvbm_3_proc-98"><span class="linenos"> 98</span></a><span class="sd">        verbose: Verbose output.</span>
-</span><span id="fslvbm_3_proc-99"><a href="#fslvbm_3_proc-99"><span class="linenos"> 99</span></a><span class="sd">        version: Version information.</span>
-</span><span id="fslvbm_3_proc-100"><a href="#fslvbm_3_proc-100"><span class="linenos">100</span></a><span class="sd">        config_file: Specify configuration file.</span>
-</span><span id="fslvbm_3_proc-101"><a href="#fslvbm_3_proc-101"><span class="linenos">101</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fslvbm_3_proc-102"><a href="#fslvbm_3_proc-102"><span class="linenos">102</span></a><span class="sd">    Returns:</span>
-</span><span id="fslvbm_3_proc-103"><a href="#fslvbm_3_proc-103"><span class="linenos">103</span></a><span class="sd">        NamedTuple of outputs (described in `Fslvbm3ProcOutputs`).</span>
-</span><span id="fslvbm_3_proc-104"><a href="#fslvbm_3_proc-104"><span class="linenos">104</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fslvbm_3_proc-105"><a href="#fslvbm_3_proc-105"><span class="linenos">105</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fslvbm_3_proc-106"><a href="#fslvbm_3_proc-106"><span class="linenos">106</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSLVBM_3_PROC_METADATA</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-107"><a href="#fslvbm_3_proc-107"><span class="linenos">107</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fslvbm_3_proc-108"><a href="#fslvbm_3_proc-108"><span class="linenos">108</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fslvbm_3_proc&quot;</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-109"><a href="#fslvbm_3_proc-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">arch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-110"><a href="#fslvbm_3_proc-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-111"><a href="#fslvbm_3_proc-111"><span class="linenos">111</span></a>            <span class="s2">&quot;-a&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-112"><a href="#fslvbm_3_proc-112"><span class="linenos">112</span></a>            <span class="n">arch</span>
-</span><span id="fslvbm_3_proc-113"><a href="#fslvbm_3_proc-113"><span class="linenos">113</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-114"><a href="#fslvbm_3_proc-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">coprocessor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-115"><a href="#fslvbm_3_proc-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-116"><a href="#fslvbm_3_proc-116"><span class="linenos">116</span></a>            <span class="s2">&quot;-c&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-117"><a href="#fslvbm_3_proc-117"><span class="linenos">117</span></a>            <span class="n">coprocessor</span>
-</span><span id="fslvbm_3_proc-118"><a href="#fslvbm_3_proc-118"><span class="linenos">118</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-119"><a href="#fslvbm_3_proc-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">coprocessor_multi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-120"><a href="#fslvbm_3_proc-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-121"><a href="#fslvbm_3_proc-121"><span class="linenos">121</span></a>            <span class="s2">&quot;--coprocessor_multi&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-122"><a href="#fslvbm_3_proc-122"><span class="linenos">122</span></a>            <span class="n">coprocessor_multi</span>
-</span><span id="fslvbm_3_proc-123"><a href="#fslvbm_3_proc-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-124"><a href="#fslvbm_3_proc-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">coprocessor_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-125"><a href="#fslvbm_3_proc-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-126"><a href="#fslvbm_3_proc-126"><span class="linenos">126</span></a>            <span class="s2">&quot;--coprocessor_class&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-127"><a href="#fslvbm_3_proc-127"><span class="linenos">127</span></a>            <span class="n">coprocessor_class</span>
-</span><span id="fslvbm_3_proc-128"><a href="#fslvbm_3_proc-128"><span class="linenos">128</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-129"><a href="#fslvbm_3_proc-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">coprocessor_class_strict</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-130"><a href="#fslvbm_3_proc-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--coprocessor_class_strict&quot;</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-131"><a href="#fslvbm_3_proc-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">coprocessor_toolkit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-132"><a href="#fslvbm_3_proc-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-133"><a href="#fslvbm_3_proc-133"><span class="linenos">133</span></a>            <span class="s2">&quot;--coprocessor_toolkit&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-134"><a href="#fslvbm_3_proc-134"><span class="linenos">134</span></a>            <span class="n">coprocessor_toolkit</span>
-</span><span id="fslvbm_3_proc-135"><a href="#fslvbm_3_proc-135"><span class="linenos">135</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-136"><a href="#fslvbm_3_proc-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">not_requeueable</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-137"><a href="#fslvbm_3_proc-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-F&quot;</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-138"><a href="#fslvbm_3_proc-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">jobhold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-139"><a href="#fslvbm_3_proc-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-140"><a href="#fslvbm_3_proc-140"><span class="linenos">140</span></a>            <span class="s2">&quot;-j&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-141"><a href="#fslvbm_3_proc-141"><span class="linenos">141</span></a>            <span class="n">jobhold</span>
-</span><span id="fslvbm_3_proc-142"><a href="#fslvbm_3_proc-142"><span class="linenos">142</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-143"><a href="#fslvbm_3_proc-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">array_hold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-144"><a href="#fslvbm_3_proc-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-145"><a href="#fslvbm_3_proc-145"><span class="linenos">145</span></a>            <span class="s2">&quot;--array_hold&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-146"><a href="#fslvbm_3_proc-146"><span class="linenos">146</span></a>            <span class="n">array_hold</span>
-</span><span id="fslvbm_3_proc-147"><a href="#fslvbm_3_proc-147"><span class="linenos">147</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-148"><a href="#fslvbm_3_proc-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">logdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-149"><a href="#fslvbm_3_proc-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-150"><a href="#fslvbm_3_proc-150"><span class="linenos">150</span></a>            <span class="s2">&quot;-l&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-151"><a href="#fslvbm_3_proc-151"><span class="linenos">151</span></a>            <span class="n">logdir</span>
-</span><span id="fslvbm_3_proc-152"><a href="#fslvbm_3_proc-152"><span class="linenos">152</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-153"><a href="#fslvbm_3_proc-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">mailoptions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-154"><a href="#fslvbm_3_proc-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-155"><a href="#fslvbm_3_proc-155"><span class="linenos">155</span></a>            <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-156"><a href="#fslvbm_3_proc-156"><span class="linenos">156</span></a>            <span class="n">mailoptions</span>
-</span><span id="fslvbm_3_proc-157"><a href="#fslvbm_3_proc-157"><span class="linenos">157</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-158"><a href="#fslvbm_3_proc-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">mailto</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-159"><a href="#fslvbm_3_proc-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-160"><a href="#fslvbm_3_proc-160"><span class="linenos">160</span></a>            <span class="s2">&quot;-M&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-161"><a href="#fslvbm_3_proc-161"><span class="linenos">161</span></a>            <span class="n">mailto</span>
-</span><span id="fslvbm_3_proc-162"><a href="#fslvbm_3_proc-162"><span class="linenos">162</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-163"><a href="#fslvbm_3_proc-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-164"><a href="#fslvbm_3_proc-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-165"><a href="#fslvbm_3_proc-165"><span class="linenos">165</span></a>            <span class="s2">&quot;-N&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-166"><a href="#fslvbm_3_proc-166"><span class="linenos">166</span></a>            <span class="n">name</span>
-</span><span id="fslvbm_3_proc-167"><a href="#fslvbm_3_proc-167"><span class="linenos">167</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-168"><a href="#fslvbm_3_proc-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">priority</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-169"><a href="#fslvbm_3_proc-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-170"><a href="#fslvbm_3_proc-170"><span class="linenos">170</span></a>            <span class="s2">&quot;-p&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-171"><a href="#fslvbm_3_proc-171"><span class="linenos">171</span></a>            <span class="n">priority</span>
-</span><span id="fslvbm_3_proc-172"><a href="#fslvbm_3_proc-172"><span class="linenos">172</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-173"><a href="#fslvbm_3_proc-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">queue_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-174"><a href="#fslvbm_3_proc-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-175"><a href="#fslvbm_3_proc-175"><span class="linenos">175</span></a>            <span class="s2">&quot;-q&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-176"><a href="#fslvbm_3_proc-176"><span class="linenos">176</span></a>            <span class="n">queue_</span>
-</span><span id="fslvbm_3_proc-177"><a href="#fslvbm_3_proc-177"><span class="linenos">177</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-178"><a href="#fslvbm_3_proc-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">resource_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-179"><a href="#fslvbm_3_proc-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-180"><a href="#fslvbm_3_proc-180"><span class="linenos">180</span></a>            <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-181"><a href="#fslvbm_3_proc-181"><span class="linenos">181</span></a>            <span class="n">resource_</span>
-</span><span id="fslvbm_3_proc-182"><a href="#fslvbm_3_proc-182"><span class="linenos">182</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-183"><a href="#fslvbm_3_proc-183"><span class="linenos">183</span></a>    <span class="k">if</span> <span class="n">delete_job</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-184"><a href="#fslvbm_3_proc-184"><span class="linenos">184</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-185"><a href="#fslvbm_3_proc-185"><span class="linenos">185</span></a>            <span class="s2">&quot;--delete_job&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-186"><a href="#fslvbm_3_proc-186"><span class="linenos">186</span></a>            <span class="n">delete_job</span>
-</span><span id="fslvbm_3_proc-187"><a href="#fslvbm_3_proc-187"><span class="linenos">187</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-188"><a href="#fslvbm_3_proc-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">memory_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-189"><a href="#fslvbm_3_proc-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-190"><a href="#fslvbm_3_proc-190"><span class="linenos">190</span></a>            <span class="s2">&quot;-R&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-191"><a href="#fslvbm_3_proc-191"><span class="linenos">191</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">memory_gb</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-192"><a href="#fslvbm_3_proc-192"><span class="linenos">192</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-193"><a href="#fslvbm_3_proc-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">parallel_env_threads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-194"><a href="#fslvbm_3_proc-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-195"><a href="#fslvbm_3_proc-195"><span class="linenos">195</span></a>            <span class="s2">&quot;-s&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-196"><a href="#fslvbm_3_proc-196"><span class="linenos">196</span></a>            <span class="n">parallel_env_threads</span>
-</span><span id="fslvbm_3_proc-197"><a href="#fslvbm_3_proc-197"><span class="linenos">197</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-198"><a href="#fslvbm_3_proc-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">array_task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-199"><a href="#fslvbm_3_proc-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-200"><a href="#fslvbm_3_proc-200"><span class="linenos">200</span></a>            <span class="s2">&quot;-t&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-201"><a href="#fslvbm_3_proc-201"><span class="linenos">201</span></a>            <span class="n">array_task</span>
-</span><span id="fslvbm_3_proc-202"><a href="#fslvbm_3_proc-202"><span class="linenos">202</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-203"><a href="#fslvbm_3_proc-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">array_native</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-204"><a href="#fslvbm_3_proc-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-205"><a href="#fslvbm_3_proc-205"><span class="linenos">205</span></a>            <span class="s2">&quot;--array_native&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-206"><a href="#fslvbm_3_proc-206"><span class="linenos">206</span></a>            <span class="n">array_native</span>
-</span><span id="fslvbm_3_proc-207"><a href="#fslvbm_3_proc-207"><span class="linenos">207</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-208"><a href="#fslvbm_3_proc-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">number_jobscripts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-209"><a href="#fslvbm_3_proc-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-210"><a href="#fslvbm_3_proc-210"><span class="linenos">210</span></a>            <span class="s2">&quot;-x&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-211"><a href="#fslvbm_3_proc-211"><span class="linenos">211</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">number_jobscripts</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-212"><a href="#fslvbm_3_proc-212"><span class="linenos">212</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-213"><a href="#fslvbm_3_proc-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">keep_jobscript</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-214"><a href="#fslvbm_3_proc-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep_jobscript&quot;</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-215"><a href="#fslvbm_3_proc-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">coprocessor_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-216"><a href="#fslvbm_3_proc-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-217"><a href="#fslvbm_3_proc-217"><span class="linenos">217</span></a>            <span class="s2">&quot;--has_coprocessor&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-218"><a href="#fslvbm_3_proc-218"><span class="linenos">218</span></a>            <span class="n">coprocessor_name</span>
-</span><span id="fslvbm_3_proc-219"><a href="#fslvbm_3_proc-219"><span class="linenos">219</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-220"><a href="#fslvbm_3_proc-220"><span class="linenos">220</span></a>    <span class="k">if</span> <span class="n">has_queues</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-221"><a href="#fslvbm_3_proc-221"><span class="linenos">221</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--has_queues&quot;</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-222"><a href="#fslvbm_3_proc-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-223"><a href="#fslvbm_3_proc-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-224"><a href="#fslvbm_3_proc-224"><span class="linenos">224</span></a>            <span class="s2">&quot;--project&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-225"><a href="#fslvbm_3_proc-225"><span class="linenos">225</span></a>            <span class="n">project</span>
-</span><span id="fslvbm_3_proc-226"><a href="#fslvbm_3_proc-226"><span class="linenos">226</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-227"><a href="#fslvbm_3_proc-227"><span class="linenos">227</span></a>    <span class="k">if</span> <span class="n">submit_scheduler</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-228"><a href="#fslvbm_3_proc-228"><span class="linenos">228</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-S&quot;</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-229"><a href="#fslvbm_3_proc-229"><span class="linenos">229</span></a>    <span class="k">if</span> <span class="n">runtime_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-230"><a href="#fslvbm_3_proc-230"><span class="linenos">230</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-231"><a href="#fslvbm_3_proc-231"><span class="linenos">231</span></a>            <span class="s2">&quot;-T&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-232"><a href="#fslvbm_3_proc-232"><span class="linenos">232</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">runtime_limit</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-233"><a href="#fslvbm_3_proc-233"><span class="linenos">233</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-234"><a href="#fslvbm_3_proc-234"><span class="linenos">234</span></a>    <span class="k">if</span> <span class="n">show_config</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-235"><a href="#fslvbm_3_proc-235"><span class="linenos">235</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--show_config&quot;</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-236"><a href="#fslvbm_3_proc-236"><span class="linenos">236</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-237"><a href="#fslvbm_3_proc-237"><span class="linenos">237</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-238"><a href="#fslvbm_3_proc-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-239"><a href="#fslvbm_3_proc-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-V&quot;</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-240"><a href="#fslvbm_3_proc-240"><span class="linenos">240</span></a>    <span class="k">if</span> <span class="n">config_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslvbm_3_proc-241"><a href="#fslvbm_3_proc-241"><span class="linenos">241</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslvbm_3_proc-242"><a href="#fslvbm_3_proc-242"><span class="linenos">242</span></a>            <span class="s2">&quot;-z&quot;</span><span class="p">,</span>
-</span><span id="fslvbm_3_proc-243"><a href="#fslvbm_3_proc-243"><span class="linenos">243</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-244"><a href="#fslvbm_3_proc-244"><span class="linenos">244</span></a>        <span class="p">])</span>
-</span><span id="fslvbm_3_proc-245"><a href="#fslvbm_3_proc-245"><span class="linenos">245</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Fslvbm3ProcOutputs</span><span class="p">(</span>
-</span><span id="fslvbm_3_proc-246"><a href="#fslvbm_3_proc-246"><span class="linenos">246</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fslvbm_3_proc-247"><a href="#fslvbm_3_proc-247"><span class="linenos">247</span></a>        <span class="n">output_directory</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;fslvbm3a&quot;</span><span class="p">),</span>
-</span><span id="fslvbm_3_proc-248"><a href="#fslvbm_3_proc-248"><span class="linenos">248</span></a>    <span class="p">)</span>
-</span><span id="fslvbm_3_proc-249"><a href="#fslvbm_3_proc-249"><span class="linenos">249</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fslvbm_3_proc-250"><a href="#fslvbm_3_proc-250"><span class="linenos">250</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fslvbm_3_proc-68"><a href="#fslvbm_3_proc-68"><span class="linenos"> 68</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="fslvbm_3_proc-69"><a href="#fslvbm_3_proc-69"><span class="linenos"> 69</span></a><span class="sd">    </span>
+</span><span id="fslvbm_3_proc-70"><a href="#fslvbm_3_proc-70"><span class="linenos"> 70</span></a><span class="sd">    Args:</span>
+</span><span id="fslvbm_3_proc-71"><a href="#fslvbm_3_proc-71"><span class="linenos"> 71</span></a><span class="sd">        arch: Specify architecture.</span>
+</span><span id="fslvbm_3_proc-72"><a href="#fslvbm_3_proc-72"><span class="linenos"> 72</span></a><span class="sd">        coprocessor: Specify coprocessor.</span>
+</span><span id="fslvbm_3_proc-73"><a href="#fslvbm_3_proc-73"><span class="linenos"> 73</span></a><span class="sd">        coprocessor_multi: Specify multiple coprocessors.</span>
+</span><span id="fslvbm_3_proc-74"><a href="#fslvbm_3_proc-74"><span class="linenos"> 74</span></a><span class="sd">        coprocessor_class: Specify coprocessor class.</span>
+</span><span id="fslvbm_3_proc-75"><a href="#fslvbm_3_proc-75"><span class="linenos"> 75</span></a><span class="sd">        coprocessor_class_strict: Use strict class matching for coprocessor.</span>
+</span><span id="fslvbm_3_proc-76"><a href="#fslvbm_3_proc-76"><span class="linenos"> 76</span></a><span class="sd">        coprocessor_toolkit: Specify coprocessor toolkit.</span>
+</span><span id="fslvbm_3_proc-77"><a href="#fslvbm_3_proc-77"><span class="linenos"> 77</span></a><span class="sd">        not_requeueable: Do not requeue the job.</span>
+</span><span id="fslvbm_3_proc-78"><a href="#fslvbm_3_proc-78"><span class="linenos"> 78</span></a><span class="sd">        jobhold: Job to hold.</span>
+</span><span id="fslvbm_3_proc-79"><a href="#fslvbm_3_proc-79"><span class="linenos"> 79</span></a><span class="sd">        array_hold: Array hold.</span>
+</span><span id="fslvbm_3_proc-80"><a href="#fslvbm_3_proc-80"><span class="linenos"> 80</span></a><span class="sd">        logdir: Specify log directory.</span>
+</span><span id="fslvbm_3_proc-81"><a href="#fslvbm_3_proc-81"><span class="linenos"> 81</span></a><span class="sd">        mailoptions: Specify mail options.</span>
+</span><span id="fslvbm_3_proc-82"><a href="#fslvbm_3_proc-82"><span class="linenos"> 82</span></a><span class="sd">        mailto: Specify mail recipient.</span>
+</span><span id="fslvbm_3_proc-83"><a href="#fslvbm_3_proc-83"><span class="linenos"> 83</span></a><span class="sd">        name: Job name.</span>
+</span><span id="fslvbm_3_proc-84"><a href="#fslvbm_3_proc-84"><span class="linenos"> 84</span></a><span class="sd">        priority: Job priority.</span>
+</span><span id="fslvbm_3_proc-85"><a href="#fslvbm_3_proc-85"><span class="linenos"> 85</span></a><span class="sd">        queue_: Queue to submit to.</span>
+</span><span id="fslvbm_3_proc-86"><a href="#fslvbm_3_proc-86"><span class="linenos"> 86</span></a><span class="sd">        resource_: Resource identifier.</span>
+</span><span id="fslvbm_3_proc-87"><a href="#fslvbm_3_proc-87"><span class="linenos"> 87</span></a><span class="sd">        delete_job: Delete specified job.</span>
+</span><span id="fslvbm_3_proc-88"><a href="#fslvbm_3_proc-88"><span class="linenos"> 88</span></a><span class="sd">        memory_gb: Memory (GB).</span>
+</span><span id="fslvbm_3_proc-89"><a href="#fslvbm_3_proc-89"><span class="linenos"> 89</span></a><span class="sd">        parallel_env_threads: Parallel environment and threads.</span>
+</span><span id="fslvbm_3_proc-90"><a href="#fslvbm_3_proc-90"><span class="linenos"> 90</span></a><span class="sd">        array_task: Array task file.</span>
+</span><span id="fslvbm_3_proc-91"><a href="#fslvbm_3_proc-91"><span class="linenos"> 91</span></a><span class="sd">        array_native: Array native specification.</span>
+</span><span id="fslvbm_3_proc-92"><a href="#fslvbm_3_proc-92"><span class="linenos"> 92</span></a><span class="sd">        number_jobscripts: Keep number of job scripts.</span>
+</span><span id="fslvbm_3_proc-93"><a href="#fslvbm_3_proc-93"><span class="linenos"> 93</span></a><span class="sd">        keep_jobscript: Keep job script.</span>
+</span><span id="fslvbm_3_proc-94"><a href="#fslvbm_3_proc-94"><span class="linenos"> 94</span></a><span class="sd">        coprocessor_name: Specify coprocessor name.</span>
+</span><span id="fslvbm_3_proc-95"><a href="#fslvbm_3_proc-95"><span class="linenos"> 95</span></a><span class="sd">        has_queues: Specify queues.</span>
+</span><span id="fslvbm_3_proc-96"><a href="#fslvbm_3_proc-96"><span class="linenos"> 96</span></a><span class="sd">        project: Specify project name.</span>
+</span><span id="fslvbm_3_proc-97"><a href="#fslvbm_3_proc-97"><span class="linenos"> 97</span></a><span class="sd">        submit_scheduler: Submit to Scheduler.</span>
+</span><span id="fslvbm_3_proc-98"><a href="#fslvbm_3_proc-98"><span class="linenos"> 98</span></a><span class="sd">        runtime_limit: Specify runtime limit in minutes.</span>
+</span><span id="fslvbm_3_proc-99"><a href="#fslvbm_3_proc-99"><span class="linenos"> 99</span></a><span class="sd">        show_config: Show configuration.</span>
+</span><span id="fslvbm_3_proc-100"><a href="#fslvbm_3_proc-100"><span class="linenos">100</span></a><span class="sd">        verbose: Verbose output.</span>
+</span><span id="fslvbm_3_proc-101"><a href="#fslvbm_3_proc-101"><span class="linenos">101</span></a><span class="sd">        version: Version information.</span>
+</span><span id="fslvbm_3_proc-102"><a href="#fslvbm_3_proc-102"><span class="linenos">102</span></a><span class="sd">        config_file: Specify configuration file.</span>
+</span><span id="fslvbm_3_proc-103"><a href="#fslvbm_3_proc-103"><span class="linenos">103</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fslvbm_3_proc-104"><a href="#fslvbm_3_proc-104"><span class="linenos">104</span></a><span class="sd">    Returns:</span>
+</span><span id="fslvbm_3_proc-105"><a href="#fslvbm_3_proc-105"><span class="linenos">105</span></a><span class="sd">        NamedTuple of outputs (described in `Fslvbm3ProcOutputs`).</span>
+</span><span id="fslvbm_3_proc-106"><a href="#fslvbm_3_proc-106"><span class="linenos">106</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fslvbm_3_proc-107"><a href="#fslvbm_3_proc-107"><span class="linenos">107</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fslvbm_3_proc-108"><a href="#fslvbm_3_proc-108"><span class="linenos">108</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSLVBM_3_PROC_METADATA</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-109"><a href="#fslvbm_3_proc-109"><span class="linenos">109</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fslvbm_3_proc-110"><a href="#fslvbm_3_proc-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fslvbm_3_proc&quot;</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-111"><a href="#fslvbm_3_proc-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">arch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-112"><a href="#fslvbm_3_proc-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-113"><a href="#fslvbm_3_proc-113"><span class="linenos">113</span></a>            <span class="s2">&quot;-a&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-114"><a href="#fslvbm_3_proc-114"><span class="linenos">114</span></a>            <span class="n">arch</span>
+</span><span id="fslvbm_3_proc-115"><a href="#fslvbm_3_proc-115"><span class="linenos">115</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-116"><a href="#fslvbm_3_proc-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">coprocessor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-117"><a href="#fslvbm_3_proc-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-118"><a href="#fslvbm_3_proc-118"><span class="linenos">118</span></a>            <span class="s2">&quot;-c&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-119"><a href="#fslvbm_3_proc-119"><span class="linenos">119</span></a>            <span class="n">coprocessor</span>
+</span><span id="fslvbm_3_proc-120"><a href="#fslvbm_3_proc-120"><span class="linenos">120</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-121"><a href="#fslvbm_3_proc-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">coprocessor_multi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-122"><a href="#fslvbm_3_proc-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-123"><a href="#fslvbm_3_proc-123"><span class="linenos">123</span></a>            <span class="s2">&quot;--coprocessor_multi&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-124"><a href="#fslvbm_3_proc-124"><span class="linenos">124</span></a>            <span class="n">coprocessor_multi</span>
+</span><span id="fslvbm_3_proc-125"><a href="#fslvbm_3_proc-125"><span class="linenos">125</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-126"><a href="#fslvbm_3_proc-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">coprocessor_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-127"><a href="#fslvbm_3_proc-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-128"><a href="#fslvbm_3_proc-128"><span class="linenos">128</span></a>            <span class="s2">&quot;--coprocessor_class&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-129"><a href="#fslvbm_3_proc-129"><span class="linenos">129</span></a>            <span class="n">coprocessor_class</span>
+</span><span id="fslvbm_3_proc-130"><a href="#fslvbm_3_proc-130"><span class="linenos">130</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-131"><a href="#fslvbm_3_proc-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">coprocessor_class_strict</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-132"><a href="#fslvbm_3_proc-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--coprocessor_class_strict&quot;</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-133"><a href="#fslvbm_3_proc-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">coprocessor_toolkit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-134"><a href="#fslvbm_3_proc-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-135"><a href="#fslvbm_3_proc-135"><span class="linenos">135</span></a>            <span class="s2">&quot;--coprocessor_toolkit&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-136"><a href="#fslvbm_3_proc-136"><span class="linenos">136</span></a>            <span class="n">coprocessor_toolkit</span>
+</span><span id="fslvbm_3_proc-137"><a href="#fslvbm_3_proc-137"><span class="linenos">137</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-138"><a href="#fslvbm_3_proc-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">not_requeueable</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-139"><a href="#fslvbm_3_proc-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-F&quot;</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-140"><a href="#fslvbm_3_proc-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">jobhold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-141"><a href="#fslvbm_3_proc-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-142"><a href="#fslvbm_3_proc-142"><span class="linenos">142</span></a>            <span class="s2">&quot;-j&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-143"><a href="#fslvbm_3_proc-143"><span class="linenos">143</span></a>            <span class="n">jobhold</span>
+</span><span id="fslvbm_3_proc-144"><a href="#fslvbm_3_proc-144"><span class="linenos">144</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-145"><a href="#fslvbm_3_proc-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">array_hold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-146"><a href="#fslvbm_3_proc-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-147"><a href="#fslvbm_3_proc-147"><span class="linenos">147</span></a>            <span class="s2">&quot;--array_hold&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-148"><a href="#fslvbm_3_proc-148"><span class="linenos">148</span></a>            <span class="n">array_hold</span>
+</span><span id="fslvbm_3_proc-149"><a href="#fslvbm_3_proc-149"><span class="linenos">149</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-150"><a href="#fslvbm_3_proc-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">logdir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-151"><a href="#fslvbm_3_proc-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-152"><a href="#fslvbm_3_proc-152"><span class="linenos">152</span></a>            <span class="s2">&quot;-l&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-153"><a href="#fslvbm_3_proc-153"><span class="linenos">153</span></a>            <span class="n">logdir</span>
+</span><span id="fslvbm_3_proc-154"><a href="#fslvbm_3_proc-154"><span class="linenos">154</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-155"><a href="#fslvbm_3_proc-155"><span class="linenos">155</span></a>    <span class="k">if</span> <span class="n">mailoptions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-156"><a href="#fslvbm_3_proc-156"><span class="linenos">156</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-157"><a href="#fslvbm_3_proc-157"><span class="linenos">157</span></a>            <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-158"><a href="#fslvbm_3_proc-158"><span class="linenos">158</span></a>            <span class="n">mailoptions</span>
+</span><span id="fslvbm_3_proc-159"><a href="#fslvbm_3_proc-159"><span class="linenos">159</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-160"><a href="#fslvbm_3_proc-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">mailto</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-161"><a href="#fslvbm_3_proc-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-162"><a href="#fslvbm_3_proc-162"><span class="linenos">162</span></a>            <span class="s2">&quot;-M&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-163"><a href="#fslvbm_3_proc-163"><span class="linenos">163</span></a>            <span class="n">mailto</span>
+</span><span id="fslvbm_3_proc-164"><a href="#fslvbm_3_proc-164"><span class="linenos">164</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-165"><a href="#fslvbm_3_proc-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-166"><a href="#fslvbm_3_proc-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-167"><a href="#fslvbm_3_proc-167"><span class="linenos">167</span></a>            <span class="s2">&quot;-N&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-168"><a href="#fslvbm_3_proc-168"><span class="linenos">168</span></a>            <span class="n">name</span>
+</span><span id="fslvbm_3_proc-169"><a href="#fslvbm_3_proc-169"><span class="linenos">169</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-170"><a href="#fslvbm_3_proc-170"><span class="linenos">170</span></a>    <span class="k">if</span> <span class="n">priority</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-171"><a href="#fslvbm_3_proc-171"><span class="linenos">171</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-172"><a href="#fslvbm_3_proc-172"><span class="linenos">172</span></a>            <span class="s2">&quot;-p&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-173"><a href="#fslvbm_3_proc-173"><span class="linenos">173</span></a>            <span class="n">priority</span>
+</span><span id="fslvbm_3_proc-174"><a href="#fslvbm_3_proc-174"><span class="linenos">174</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-175"><a href="#fslvbm_3_proc-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">queue_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-176"><a href="#fslvbm_3_proc-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-177"><a href="#fslvbm_3_proc-177"><span class="linenos">177</span></a>            <span class="s2">&quot;-q&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-178"><a href="#fslvbm_3_proc-178"><span class="linenos">178</span></a>            <span class="n">queue_</span>
+</span><span id="fslvbm_3_proc-179"><a href="#fslvbm_3_proc-179"><span class="linenos">179</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-180"><a href="#fslvbm_3_proc-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">resource_</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-181"><a href="#fslvbm_3_proc-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-182"><a href="#fslvbm_3_proc-182"><span class="linenos">182</span></a>            <span class="s2">&quot;-r&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-183"><a href="#fslvbm_3_proc-183"><span class="linenos">183</span></a>            <span class="n">resource_</span>
+</span><span id="fslvbm_3_proc-184"><a href="#fslvbm_3_proc-184"><span class="linenos">184</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-185"><a href="#fslvbm_3_proc-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">delete_job</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-186"><a href="#fslvbm_3_proc-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-187"><a href="#fslvbm_3_proc-187"><span class="linenos">187</span></a>            <span class="s2">&quot;--delete_job&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-188"><a href="#fslvbm_3_proc-188"><span class="linenos">188</span></a>            <span class="n">delete_job</span>
+</span><span id="fslvbm_3_proc-189"><a href="#fslvbm_3_proc-189"><span class="linenos">189</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-190"><a href="#fslvbm_3_proc-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">memory_gb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-191"><a href="#fslvbm_3_proc-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-192"><a href="#fslvbm_3_proc-192"><span class="linenos">192</span></a>            <span class="s2">&quot;-R&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-193"><a href="#fslvbm_3_proc-193"><span class="linenos">193</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">memory_gb</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-194"><a href="#fslvbm_3_proc-194"><span class="linenos">194</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-195"><a href="#fslvbm_3_proc-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">parallel_env_threads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-196"><a href="#fslvbm_3_proc-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-197"><a href="#fslvbm_3_proc-197"><span class="linenos">197</span></a>            <span class="s2">&quot;-s&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-198"><a href="#fslvbm_3_proc-198"><span class="linenos">198</span></a>            <span class="n">parallel_env_threads</span>
+</span><span id="fslvbm_3_proc-199"><a href="#fslvbm_3_proc-199"><span class="linenos">199</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-200"><a href="#fslvbm_3_proc-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">array_task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-201"><a href="#fslvbm_3_proc-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-202"><a href="#fslvbm_3_proc-202"><span class="linenos">202</span></a>            <span class="s2">&quot;-t&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-203"><a href="#fslvbm_3_proc-203"><span class="linenos">203</span></a>            <span class="n">array_task</span>
+</span><span id="fslvbm_3_proc-204"><a href="#fslvbm_3_proc-204"><span class="linenos">204</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-205"><a href="#fslvbm_3_proc-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">array_native</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-206"><a href="#fslvbm_3_proc-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-207"><a href="#fslvbm_3_proc-207"><span class="linenos">207</span></a>            <span class="s2">&quot;--array_native&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-208"><a href="#fslvbm_3_proc-208"><span class="linenos">208</span></a>            <span class="n">array_native</span>
+</span><span id="fslvbm_3_proc-209"><a href="#fslvbm_3_proc-209"><span class="linenos">209</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-210"><a href="#fslvbm_3_proc-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">number_jobscripts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-211"><a href="#fslvbm_3_proc-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-212"><a href="#fslvbm_3_proc-212"><span class="linenos">212</span></a>            <span class="s2">&quot;-x&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-213"><a href="#fslvbm_3_proc-213"><span class="linenos">213</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">number_jobscripts</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-214"><a href="#fslvbm_3_proc-214"><span class="linenos">214</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-215"><a href="#fslvbm_3_proc-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">keep_jobscript</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-216"><a href="#fslvbm_3_proc-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--keep_jobscript&quot;</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-217"><a href="#fslvbm_3_proc-217"><span class="linenos">217</span></a>    <span class="k">if</span> <span class="n">coprocessor_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-218"><a href="#fslvbm_3_proc-218"><span class="linenos">218</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-219"><a href="#fslvbm_3_proc-219"><span class="linenos">219</span></a>            <span class="s2">&quot;--has_coprocessor&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-220"><a href="#fslvbm_3_proc-220"><span class="linenos">220</span></a>            <span class="n">coprocessor_name</span>
+</span><span id="fslvbm_3_proc-221"><a href="#fslvbm_3_proc-221"><span class="linenos">221</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-222"><a href="#fslvbm_3_proc-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">has_queues</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-223"><a href="#fslvbm_3_proc-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--has_queues&quot;</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-224"><a href="#fslvbm_3_proc-224"><span class="linenos">224</span></a>    <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-225"><a href="#fslvbm_3_proc-225"><span class="linenos">225</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-226"><a href="#fslvbm_3_proc-226"><span class="linenos">226</span></a>            <span class="s2">&quot;--project&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-227"><a href="#fslvbm_3_proc-227"><span class="linenos">227</span></a>            <span class="n">project</span>
+</span><span id="fslvbm_3_proc-228"><a href="#fslvbm_3_proc-228"><span class="linenos">228</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-229"><a href="#fslvbm_3_proc-229"><span class="linenos">229</span></a>    <span class="k">if</span> <span class="n">submit_scheduler</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-230"><a href="#fslvbm_3_proc-230"><span class="linenos">230</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-S&quot;</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-231"><a href="#fslvbm_3_proc-231"><span class="linenos">231</span></a>    <span class="k">if</span> <span class="n">runtime_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-232"><a href="#fslvbm_3_proc-232"><span class="linenos">232</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-233"><a href="#fslvbm_3_proc-233"><span class="linenos">233</span></a>            <span class="s2">&quot;-T&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-234"><a href="#fslvbm_3_proc-234"><span class="linenos">234</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">runtime_limit</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-235"><a href="#fslvbm_3_proc-235"><span class="linenos">235</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-236"><a href="#fslvbm_3_proc-236"><span class="linenos">236</span></a>    <span class="k">if</span> <span class="n">show_config</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-237"><a href="#fslvbm_3_proc-237"><span class="linenos">237</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--show_config&quot;</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-238"><a href="#fslvbm_3_proc-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-239"><a href="#fslvbm_3_proc-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-240"><a href="#fslvbm_3_proc-240"><span class="linenos">240</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-241"><a href="#fslvbm_3_proc-241"><span class="linenos">241</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-V&quot;</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-242"><a href="#fslvbm_3_proc-242"><span class="linenos">242</span></a>    <span class="k">if</span> <span class="n">config_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslvbm_3_proc-243"><a href="#fslvbm_3_proc-243"><span class="linenos">243</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslvbm_3_proc-244"><a href="#fslvbm_3_proc-244"><span class="linenos">244</span></a>            <span class="s2">&quot;-z&quot;</span><span class="p">,</span>
+</span><span id="fslvbm_3_proc-245"><a href="#fslvbm_3_proc-245"><span class="linenos">245</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-246"><a href="#fslvbm_3_proc-246"><span class="linenos">246</span></a>        <span class="p">])</span>
+</span><span id="fslvbm_3_proc-247"><a href="#fslvbm_3_proc-247"><span class="linenos">247</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">Fslvbm3ProcOutputs</span><span class="p">(</span>
+</span><span id="fslvbm_3_proc-248"><a href="#fslvbm_3_proc-248"><span class="linenos">248</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fslvbm_3_proc-249"><a href="#fslvbm_3_proc-249"><span class="linenos">249</span></a>        <span class="n">output_directory</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;fslvbm3a&quot;</span><span class="p">),</span>
+</span><span id="fslvbm_3_proc-250"><a href="#fslvbm_3_proc-250"><span class="linenos">250</span></a>    <span class="p">)</span>
+</span><span id="fslvbm_3_proc-251"><a href="#fslvbm_3_proc-251"><span class="linenos">251</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fslvbm_3_proc-252"><a href="#fslvbm_3_proc-252"><span class="linenos">252</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Pipeline for voxel-based morphometry analysis using FSL tools.</p>
 
-<p>Author: Oxford Centre for Functional MRI of the Brain (FMRIB)</p>
+<p>Author: FMRIB Analysis Group, University of Oxford</p>
+
+<p>URL: <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

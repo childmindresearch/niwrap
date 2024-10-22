@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">V__RADIAL_CORRELATE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;74d27aaff9d6afe1498873e5bf33128e594a606f.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1cbb44d20d4e3ca23ba7981bb4c49932fce75bf0.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;@radial_correlate&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -124,137 +124,136 @@
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    Check datasets for correlation artifacts.</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    </span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    </span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    URL:</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@radial_correlate.html</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    </span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    Args:</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        input_files: A list of EPI datasets.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        results_dir: Results directory for correlations.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        do_corr: Create correlation volumes (yes/no).</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        do_clust: Cluster correlation volumes (yes/no).</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        mask_dset: Specify a mask dataset to replace automask.</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        cthresh: Threshold on correlation values.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        frac_limit: Minimum mask fraction surviving cluster.</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        sphere_rad: Generate correlations within voxel spheres.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        use_3dmerge: Use 3dmerge rather than 3dLocalstat (yes/no).</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        percentile: Percentile to use as threshold.</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        min_thr: Minimum percentile threshold to be considered.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        nfirst: Number of initial TRs to remove.</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        ver: Show version number.</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        verbose: Make verbose: set echo.</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        help_: Show help.</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        hist: Show modification history.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        corr_mask: Mask time series before correlation blurring (yes/no).</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        do_clean: Clean up at end, leaving only correlations (yes/no).</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        polort: Detrend time series with given polynomial degree.</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        merge_frad: Specify a radius fraction for 3dmerge blurring.</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    Returns:</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        NamedTuple of outputs (described in `VRadialCorrelateOutputs`).</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__RADIAL_CORRELATE_METADATA</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@radial_correlate&quot;</span><span class="p">)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">])</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">results_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;-rdir&quot;</span><span class="p">,</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="n">results_dir</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">do_corr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;-do_corr&quot;</span><span class="p">,</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="n">do_corr</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">do_clust</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-do_clust&quot;</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="n">do_clust</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="p">])</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">mask_dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_dset</span><span class="p">)</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="p">])</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">cthresh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="s2">&quot;-cthresh&quot;</span><span class="p">,</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cthresh</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="p">])</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">frac_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="s2">&quot;-frac_limit&quot;</span><span class="p">,</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">frac_limit</span><span class="p">)</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="p">])</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">sphere_rad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="s2">&quot;-sphere_rad&quot;</span><span class="p">,</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sphere_rad</span><span class="p">)</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="p">])</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">use_3dmerge</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>            <span class="s2">&quot;-use_3dmerge&quot;</span><span class="p">,</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="n">use_3dmerge</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="p">])</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">percentile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">percentile</span><span class="p">)</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="p">])</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">min_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="s2">&quot;-min_thr&quot;</span><span class="p">,</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_thr</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="p">])</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">nfirst</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="s2">&quot;-nfirst&quot;</span><span class="p">,</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nfirst</span><span class="p">)</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="p">])</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">ver</span><span class="p">:</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">hist</span><span class="p">:</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hist&quot;</span><span class="p">)</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">corr_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>            <span class="s2">&quot;-corr_mask&quot;</span><span class="p">,</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>            <span class="n">corr_mask</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="p">])</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">if</span> <span class="n">do_clean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>            <span class="s2">&quot;-do_clean&quot;</span><span class="p">,</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>            <span class="n">do_clean</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="p">])</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">polort</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>            <span class="s2">&quot;-polort&quot;</span><span class="p">,</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">polort</span><span class="p">)</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="p">])</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">merge_frad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>            <span class="s2">&quot;-merge_frad&quot;</span><span class="p">,</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">merge_frad</span><span class="p">)</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="p">])</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VRadialCorrelateOutputs</span><span class="p">(</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>        <span class="n">corr_volumes</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">results_dir</span> <span class="o">+</span> <span class="s2">&quot;/correlation_volumes&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">results_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="p">)</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Args:</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        input_files: A list of EPI datasets.</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">        results_dir: Results directory for correlations.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        do_corr: Create correlation volumes (yes/no).</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        do_clust: Cluster correlation volumes (yes/no).</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        mask_dset: Specify a mask dataset to replace automask.</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">        cthresh: Threshold on correlation values.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        frac_limit: Minimum mask fraction surviving cluster.</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        sphere_rad: Generate correlations within voxel spheres.</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        use_3dmerge: Use 3dmerge rather than 3dLocalstat (yes/no).</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        percentile: Percentile to use as threshold.</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        min_thr: Minimum percentile threshold to be considered.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        nfirst: Number of initial TRs to remove.</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        ver: Show version number.</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        verbose: Make verbose: set echo.</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        help_: Show help.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        hist: Show modification history.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        corr_mask: Mask time series before correlation blurring (yes/no).</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        do_clean: Clean up at end, leaving only correlations (yes/no).</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        polort: Detrend time series with given polynomial degree.</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        merge_frad: Specify a radius fraction for 3dmerge blurring.</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    Returns:</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        NamedTuple of outputs (described in `VRadialCorrelateOutputs`).</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__RADIAL_CORRELATE_METADATA</span><span class="p">)</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@radial_correlate&quot;</span><span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">])</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">results_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;-rdir&quot;</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="n">results_dir</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">do_corr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;-do_corr&quot;</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="n">do_corr</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">do_clust</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-do_clust&quot;</span><span class="p">,</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="n">do_clust</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="p">])</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">mask_dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_dset</span><span class="p">)</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="p">])</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">cthresh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="s2">&quot;-cthresh&quot;</span><span class="p">,</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cthresh</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="p">])</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">frac_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-frac_limit&quot;</span><span class="p">,</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">frac_limit</span><span class="p">)</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="p">])</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">sphere_rad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="s2">&quot;-sphere_rad&quot;</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sphere_rad</span><span class="p">)</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="p">])</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">use_3dmerge</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>            <span class="s2">&quot;-use_3dmerge&quot;</span><span class="p">,</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>            <span class="n">use_3dmerge</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="p">])</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">percentile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">percentile</span><span class="p">)</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="p">])</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">min_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>            <span class="s2">&quot;-min_thr&quot;</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_thr</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="p">])</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">nfirst</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>            <span class="s2">&quot;-nfirst&quot;</span><span class="p">,</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nfirst</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="p">])</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">ver</span><span class="p">:</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">hist</span><span class="p">:</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hist&quot;</span><span class="p">)</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">corr_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>            <span class="s2">&quot;-corr_mask&quot;</span><span class="p">,</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>            <span class="n">corr_mask</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="p">])</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="k">if</span> <span class="n">do_clean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>            <span class="s2">&quot;-do_clean&quot;</span><span class="p">,</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>            <span class="n">do_clean</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="p">])</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">polort</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>            <span class="s2">&quot;-polort&quot;</span><span class="p">,</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">polort</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="p">])</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">merge_frad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>            <span class="s2">&quot;-merge_frad&quot;</span><span class="p">,</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">merge_frad</span><span class="p">)</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="p">])</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VRadialCorrelateOutputs</span><span class="p">(</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="n">corr_volumes</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">results_dir</span> <span class="o">+</span> <span class="s2">&quot;/correlation_volumes&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">results_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="p">)</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>
 </span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="s2">&quot;VRadialCorrelateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="s2">&quot;V__RADIAL_CORRELATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="s2">&quot;v__radial_correlate&quot;</span><span class="p">,</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="p">]</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="s2">&quot;VRadialCorrelateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="s2">&quot;V__RADIAL_CORRELATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="s2">&quot;v__radial_correlate&quot;</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -330,7 +329,7 @@
                     <div class="attr variable">
             <span class="name">V__RADIAL_CORRELATE_METADATA</span>        =
 <input id="V__RADIAL_CORRELATE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V__RADIAL_CORRELATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;74d27aaff9d6afe1498873e5bf33128e594a606f.boutiques&#39;, name=&#39;@radial_correlate&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V__RADIAL_CORRELATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1cbb44d20d4e3ca23ba7981bb4c49932fce75bf0.boutiques&#39;, name=&#39;@radial_correlate&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -376,139 +375,137 @@
 </span><span id="v__radial_correlate-51"><a href="#v__radial_correlate-51"><span class="linenos"> 51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="v__radial_correlate-52"><a href="#v__radial_correlate-52"><span class="linenos"> 52</span></a><span class="sd">    Check datasets for correlation artifacts.</span>
 </span><span id="v__radial_correlate-53"><a href="#v__radial_correlate-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
-</span><span id="v__radial_correlate-54"><a href="#v__radial_correlate-54"><span class="linenos"> 54</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="v__radial_correlate-54"><a href="#v__radial_correlate-54"><span class="linenos"> 54</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="v__radial_correlate-55"><a href="#v__radial_correlate-55"><span class="linenos"> 55</span></a><span class="sd">    </span>
-</span><span id="v__radial_correlate-56"><a href="#v__radial_correlate-56"><span class="linenos"> 56</span></a><span class="sd">    URL:</span>
-</span><span id="v__radial_correlate-57"><a href="#v__radial_correlate-57"><span class="linenos"> 57</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@radial_correlate.html</span>
-</span><span id="v__radial_correlate-58"><a href="#v__radial_correlate-58"><span class="linenos"> 58</span></a><span class="sd">    </span>
-</span><span id="v__radial_correlate-59"><a href="#v__radial_correlate-59"><span class="linenos"> 59</span></a><span class="sd">    Args:</span>
-</span><span id="v__radial_correlate-60"><a href="#v__radial_correlate-60"><span class="linenos"> 60</span></a><span class="sd">        input_files: A list of EPI datasets.</span>
-</span><span id="v__radial_correlate-61"><a href="#v__radial_correlate-61"><span class="linenos"> 61</span></a><span class="sd">        results_dir: Results directory for correlations.</span>
-</span><span id="v__radial_correlate-62"><a href="#v__radial_correlate-62"><span class="linenos"> 62</span></a><span class="sd">        do_corr: Create correlation volumes (yes/no).</span>
-</span><span id="v__radial_correlate-63"><a href="#v__radial_correlate-63"><span class="linenos"> 63</span></a><span class="sd">        do_clust: Cluster correlation volumes (yes/no).</span>
-</span><span id="v__radial_correlate-64"><a href="#v__radial_correlate-64"><span class="linenos"> 64</span></a><span class="sd">        mask_dset: Specify a mask dataset to replace automask.</span>
-</span><span id="v__radial_correlate-65"><a href="#v__radial_correlate-65"><span class="linenos"> 65</span></a><span class="sd">        cthresh: Threshold on correlation values.</span>
-</span><span id="v__radial_correlate-66"><a href="#v__radial_correlate-66"><span class="linenos"> 66</span></a><span class="sd">        frac_limit: Minimum mask fraction surviving cluster.</span>
-</span><span id="v__radial_correlate-67"><a href="#v__radial_correlate-67"><span class="linenos"> 67</span></a><span class="sd">        sphere_rad: Generate correlations within voxel spheres.</span>
-</span><span id="v__radial_correlate-68"><a href="#v__radial_correlate-68"><span class="linenos"> 68</span></a><span class="sd">        use_3dmerge: Use 3dmerge rather than 3dLocalstat (yes/no).</span>
-</span><span id="v__radial_correlate-69"><a href="#v__radial_correlate-69"><span class="linenos"> 69</span></a><span class="sd">        percentile: Percentile to use as threshold.</span>
-</span><span id="v__radial_correlate-70"><a href="#v__radial_correlate-70"><span class="linenos"> 70</span></a><span class="sd">        min_thr: Minimum percentile threshold to be considered.</span>
-</span><span id="v__radial_correlate-71"><a href="#v__radial_correlate-71"><span class="linenos"> 71</span></a><span class="sd">        nfirst: Number of initial TRs to remove.</span>
-</span><span id="v__radial_correlate-72"><a href="#v__radial_correlate-72"><span class="linenos"> 72</span></a><span class="sd">        ver: Show version number.</span>
-</span><span id="v__radial_correlate-73"><a href="#v__radial_correlate-73"><span class="linenos"> 73</span></a><span class="sd">        verbose: Make verbose: set echo.</span>
-</span><span id="v__radial_correlate-74"><a href="#v__radial_correlate-74"><span class="linenos"> 74</span></a><span class="sd">        help_: Show help.</span>
-</span><span id="v__radial_correlate-75"><a href="#v__radial_correlate-75"><span class="linenos"> 75</span></a><span class="sd">        hist: Show modification history.</span>
-</span><span id="v__radial_correlate-76"><a href="#v__radial_correlate-76"><span class="linenos"> 76</span></a><span class="sd">        corr_mask: Mask time series before correlation blurring (yes/no).</span>
-</span><span id="v__radial_correlate-77"><a href="#v__radial_correlate-77"><span class="linenos"> 77</span></a><span class="sd">        do_clean: Clean up at end, leaving only correlations (yes/no).</span>
-</span><span id="v__radial_correlate-78"><a href="#v__radial_correlate-78"><span class="linenos"> 78</span></a><span class="sd">        polort: Detrend time series with given polynomial degree.</span>
-</span><span id="v__radial_correlate-79"><a href="#v__radial_correlate-79"><span class="linenos"> 79</span></a><span class="sd">        merge_frad: Specify a radius fraction for 3dmerge blurring.</span>
-</span><span id="v__radial_correlate-80"><a href="#v__radial_correlate-80"><span class="linenos"> 80</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v__radial_correlate-81"><a href="#v__radial_correlate-81"><span class="linenos"> 81</span></a><span class="sd">    Returns:</span>
-</span><span id="v__radial_correlate-82"><a href="#v__radial_correlate-82"><span class="linenos"> 82</span></a><span class="sd">        NamedTuple of outputs (described in `VRadialCorrelateOutputs`).</span>
-</span><span id="v__radial_correlate-83"><a href="#v__radial_correlate-83"><span class="linenos"> 83</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v__radial_correlate-84"><a href="#v__radial_correlate-84"><span class="linenos"> 84</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v__radial_correlate-85"><a href="#v__radial_correlate-85"><span class="linenos"> 85</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__RADIAL_CORRELATE_METADATA</span><span class="p">)</span>
-</span><span id="v__radial_correlate-86"><a href="#v__radial_correlate-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="v__radial_correlate-87"><a href="#v__radial_correlate-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@radial_correlate&quot;</span><span class="p">)</span>
-</span><span id="v__radial_correlate-88"><a href="#v__radial_correlate-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">])</span>
-</span><span id="v__radial_correlate-89"><a href="#v__radial_correlate-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">results_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-90"><a href="#v__radial_correlate-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-91"><a href="#v__radial_correlate-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;-rdir&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-92"><a href="#v__radial_correlate-92"><span class="linenos"> 92</span></a>            <span class="n">results_dir</span>
-</span><span id="v__radial_correlate-93"><a href="#v__radial_correlate-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-94"><a href="#v__radial_correlate-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">do_corr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-95"><a href="#v__radial_correlate-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-96"><a href="#v__radial_correlate-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;-do_corr&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-97"><a href="#v__radial_correlate-97"><span class="linenos"> 97</span></a>            <span class="n">do_corr</span>
-</span><span id="v__radial_correlate-98"><a href="#v__radial_correlate-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-99"><a href="#v__radial_correlate-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">do_clust</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-100"><a href="#v__radial_correlate-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-101"><a href="#v__radial_correlate-101"><span class="linenos">101</span></a>            <span class="s2">&quot;-do_clust&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-102"><a href="#v__radial_correlate-102"><span class="linenos">102</span></a>            <span class="n">do_clust</span>
-</span><span id="v__radial_correlate-103"><a href="#v__radial_correlate-103"><span class="linenos">103</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-104"><a href="#v__radial_correlate-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">mask_dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-105"><a href="#v__radial_correlate-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-106"><a href="#v__radial_correlate-106"><span class="linenos">106</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-107"><a href="#v__radial_correlate-107"><span class="linenos">107</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_dset</span><span class="p">)</span>
-</span><span id="v__radial_correlate-108"><a href="#v__radial_correlate-108"><span class="linenos">108</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-109"><a href="#v__radial_correlate-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">cthresh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-110"><a href="#v__radial_correlate-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-111"><a href="#v__radial_correlate-111"><span class="linenos">111</span></a>            <span class="s2">&quot;-cthresh&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-112"><a href="#v__radial_correlate-112"><span class="linenos">112</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cthresh</span><span class="p">)</span>
-</span><span id="v__radial_correlate-113"><a href="#v__radial_correlate-113"><span class="linenos">113</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-114"><a href="#v__radial_correlate-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">frac_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-115"><a href="#v__radial_correlate-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-116"><a href="#v__radial_correlate-116"><span class="linenos">116</span></a>            <span class="s2">&quot;-frac_limit&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-117"><a href="#v__radial_correlate-117"><span class="linenos">117</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">frac_limit</span><span class="p">)</span>
-</span><span id="v__radial_correlate-118"><a href="#v__radial_correlate-118"><span class="linenos">118</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-119"><a href="#v__radial_correlate-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">sphere_rad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-120"><a href="#v__radial_correlate-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-121"><a href="#v__radial_correlate-121"><span class="linenos">121</span></a>            <span class="s2">&quot;-sphere_rad&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-122"><a href="#v__radial_correlate-122"><span class="linenos">122</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sphere_rad</span><span class="p">)</span>
-</span><span id="v__radial_correlate-123"><a href="#v__radial_correlate-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-124"><a href="#v__radial_correlate-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">use_3dmerge</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-125"><a href="#v__radial_correlate-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-126"><a href="#v__radial_correlate-126"><span class="linenos">126</span></a>            <span class="s2">&quot;-use_3dmerge&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-127"><a href="#v__radial_correlate-127"><span class="linenos">127</span></a>            <span class="n">use_3dmerge</span>
-</span><span id="v__radial_correlate-128"><a href="#v__radial_correlate-128"><span class="linenos">128</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-129"><a href="#v__radial_correlate-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">percentile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-130"><a href="#v__radial_correlate-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-131"><a href="#v__radial_correlate-131"><span class="linenos">131</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-132"><a href="#v__radial_correlate-132"><span class="linenos">132</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">percentile</span><span class="p">)</span>
-</span><span id="v__radial_correlate-133"><a href="#v__radial_correlate-133"><span class="linenos">133</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-134"><a href="#v__radial_correlate-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">min_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-135"><a href="#v__radial_correlate-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-136"><a href="#v__radial_correlate-136"><span class="linenos">136</span></a>            <span class="s2">&quot;-min_thr&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-137"><a href="#v__radial_correlate-137"><span class="linenos">137</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_thr</span><span class="p">)</span>
-</span><span id="v__radial_correlate-138"><a href="#v__radial_correlate-138"><span class="linenos">138</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-139"><a href="#v__radial_correlate-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">nfirst</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-140"><a href="#v__radial_correlate-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-141"><a href="#v__radial_correlate-141"><span class="linenos">141</span></a>            <span class="s2">&quot;-nfirst&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-142"><a href="#v__radial_correlate-142"><span class="linenos">142</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nfirst</span><span class="p">)</span>
-</span><span id="v__radial_correlate-143"><a href="#v__radial_correlate-143"><span class="linenos">143</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-144"><a href="#v__radial_correlate-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">ver</span><span class="p">:</span>
-</span><span id="v__radial_correlate-145"><a href="#v__radial_correlate-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
-</span><span id="v__radial_correlate-146"><a href="#v__radial_correlate-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-</span><span id="v__radial_correlate-147"><a href="#v__radial_correlate-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
-</span><span id="v__radial_correlate-148"><a href="#v__radial_correlate-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="v__radial_correlate-149"><a href="#v__radial_correlate-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="v__radial_correlate-150"><a href="#v__radial_correlate-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">hist</span><span class="p">:</span>
-</span><span id="v__radial_correlate-151"><a href="#v__radial_correlate-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hist&quot;</span><span class="p">)</span>
-</span><span id="v__radial_correlate-152"><a href="#v__radial_correlate-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">corr_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-153"><a href="#v__radial_correlate-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-154"><a href="#v__radial_correlate-154"><span class="linenos">154</span></a>            <span class="s2">&quot;-corr_mask&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-155"><a href="#v__radial_correlate-155"><span class="linenos">155</span></a>            <span class="n">corr_mask</span>
-</span><span id="v__radial_correlate-156"><a href="#v__radial_correlate-156"><span class="linenos">156</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-157"><a href="#v__radial_correlate-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">do_clean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-158"><a href="#v__radial_correlate-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-159"><a href="#v__radial_correlate-159"><span class="linenos">159</span></a>            <span class="s2">&quot;-do_clean&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-160"><a href="#v__radial_correlate-160"><span class="linenos">160</span></a>            <span class="n">do_clean</span>
-</span><span id="v__radial_correlate-161"><a href="#v__radial_correlate-161"><span class="linenos">161</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-162"><a href="#v__radial_correlate-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">polort</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-163"><a href="#v__radial_correlate-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-164"><a href="#v__radial_correlate-164"><span class="linenos">164</span></a>            <span class="s2">&quot;-polort&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-165"><a href="#v__radial_correlate-165"><span class="linenos">165</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">polort</span><span class="p">)</span>
-</span><span id="v__radial_correlate-166"><a href="#v__radial_correlate-166"><span class="linenos">166</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-167"><a href="#v__radial_correlate-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">merge_frad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v__radial_correlate-168"><a href="#v__radial_correlate-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v__radial_correlate-169"><a href="#v__radial_correlate-169"><span class="linenos">169</span></a>            <span class="s2">&quot;-merge_frad&quot;</span><span class="p">,</span>
-</span><span id="v__radial_correlate-170"><a href="#v__radial_correlate-170"><span class="linenos">170</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">merge_frad</span><span class="p">)</span>
-</span><span id="v__radial_correlate-171"><a href="#v__radial_correlate-171"><span class="linenos">171</span></a>        <span class="p">])</span>
-</span><span id="v__radial_correlate-172"><a href="#v__radial_correlate-172"><span class="linenos">172</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VRadialCorrelateOutputs</span><span class="p">(</span>
-</span><span id="v__radial_correlate-173"><a href="#v__radial_correlate-173"><span class="linenos">173</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v__radial_correlate-174"><a href="#v__radial_correlate-174"><span class="linenos">174</span></a>        <span class="n">corr_volumes</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">results_dir</span> <span class="o">+</span> <span class="s2">&quot;/correlation_volumes&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">results_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="v__radial_correlate-175"><a href="#v__radial_correlate-175"><span class="linenos">175</span></a>    <span class="p">)</span>
-</span><span id="v__radial_correlate-176"><a href="#v__radial_correlate-176"><span class="linenos">176</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v__radial_correlate-177"><a href="#v__radial_correlate-177"><span class="linenos">177</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v__radial_correlate-56"><a href="#v__radial_correlate-56"><span class="linenos"> 56</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v__radial_correlate-57"><a href="#v__radial_correlate-57"><span class="linenos"> 57</span></a><span class="sd">    </span>
+</span><span id="v__radial_correlate-58"><a href="#v__radial_correlate-58"><span class="linenos"> 58</span></a><span class="sd">    Args:</span>
+</span><span id="v__radial_correlate-59"><a href="#v__radial_correlate-59"><span class="linenos"> 59</span></a><span class="sd">        input_files: A list of EPI datasets.</span>
+</span><span id="v__radial_correlate-60"><a href="#v__radial_correlate-60"><span class="linenos"> 60</span></a><span class="sd">        results_dir: Results directory for correlations.</span>
+</span><span id="v__radial_correlate-61"><a href="#v__radial_correlate-61"><span class="linenos"> 61</span></a><span class="sd">        do_corr: Create correlation volumes (yes/no).</span>
+</span><span id="v__radial_correlate-62"><a href="#v__radial_correlate-62"><span class="linenos"> 62</span></a><span class="sd">        do_clust: Cluster correlation volumes (yes/no).</span>
+</span><span id="v__radial_correlate-63"><a href="#v__radial_correlate-63"><span class="linenos"> 63</span></a><span class="sd">        mask_dset: Specify a mask dataset to replace automask.</span>
+</span><span id="v__radial_correlate-64"><a href="#v__radial_correlate-64"><span class="linenos"> 64</span></a><span class="sd">        cthresh: Threshold on correlation values.</span>
+</span><span id="v__radial_correlate-65"><a href="#v__radial_correlate-65"><span class="linenos"> 65</span></a><span class="sd">        frac_limit: Minimum mask fraction surviving cluster.</span>
+</span><span id="v__radial_correlate-66"><a href="#v__radial_correlate-66"><span class="linenos"> 66</span></a><span class="sd">        sphere_rad: Generate correlations within voxel spheres.</span>
+</span><span id="v__radial_correlate-67"><a href="#v__radial_correlate-67"><span class="linenos"> 67</span></a><span class="sd">        use_3dmerge: Use 3dmerge rather than 3dLocalstat (yes/no).</span>
+</span><span id="v__radial_correlate-68"><a href="#v__radial_correlate-68"><span class="linenos"> 68</span></a><span class="sd">        percentile: Percentile to use as threshold.</span>
+</span><span id="v__radial_correlate-69"><a href="#v__radial_correlate-69"><span class="linenos"> 69</span></a><span class="sd">        min_thr: Minimum percentile threshold to be considered.</span>
+</span><span id="v__radial_correlate-70"><a href="#v__radial_correlate-70"><span class="linenos"> 70</span></a><span class="sd">        nfirst: Number of initial TRs to remove.</span>
+</span><span id="v__radial_correlate-71"><a href="#v__radial_correlate-71"><span class="linenos"> 71</span></a><span class="sd">        ver: Show version number.</span>
+</span><span id="v__radial_correlate-72"><a href="#v__radial_correlate-72"><span class="linenos"> 72</span></a><span class="sd">        verbose: Make verbose: set echo.</span>
+</span><span id="v__radial_correlate-73"><a href="#v__radial_correlate-73"><span class="linenos"> 73</span></a><span class="sd">        help_: Show help.</span>
+</span><span id="v__radial_correlate-74"><a href="#v__radial_correlate-74"><span class="linenos"> 74</span></a><span class="sd">        hist: Show modification history.</span>
+</span><span id="v__radial_correlate-75"><a href="#v__radial_correlate-75"><span class="linenos"> 75</span></a><span class="sd">        corr_mask: Mask time series before correlation blurring (yes/no).</span>
+</span><span id="v__radial_correlate-76"><a href="#v__radial_correlate-76"><span class="linenos"> 76</span></a><span class="sd">        do_clean: Clean up at end, leaving only correlations (yes/no).</span>
+</span><span id="v__radial_correlate-77"><a href="#v__radial_correlate-77"><span class="linenos"> 77</span></a><span class="sd">        polort: Detrend time series with given polynomial degree.</span>
+</span><span id="v__radial_correlate-78"><a href="#v__radial_correlate-78"><span class="linenos"> 78</span></a><span class="sd">        merge_frad: Specify a radius fraction for 3dmerge blurring.</span>
+</span><span id="v__radial_correlate-79"><a href="#v__radial_correlate-79"><span class="linenos"> 79</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v__radial_correlate-80"><a href="#v__radial_correlate-80"><span class="linenos"> 80</span></a><span class="sd">    Returns:</span>
+</span><span id="v__radial_correlate-81"><a href="#v__radial_correlate-81"><span class="linenos"> 81</span></a><span class="sd">        NamedTuple of outputs (described in `VRadialCorrelateOutputs`).</span>
+</span><span id="v__radial_correlate-82"><a href="#v__radial_correlate-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v__radial_correlate-83"><a href="#v__radial_correlate-83"><span class="linenos"> 83</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v__radial_correlate-84"><a href="#v__radial_correlate-84"><span class="linenos"> 84</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V__RADIAL_CORRELATE_METADATA</span><span class="p">)</span>
+</span><span id="v__radial_correlate-85"><a href="#v__radial_correlate-85"><span class="linenos"> 85</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="v__radial_correlate-86"><a href="#v__radial_correlate-86"><span class="linenos"> 86</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;@radial_correlate&quot;</span><span class="p">)</span>
+</span><span id="v__radial_correlate-87"><a href="#v__radial_correlate-87"><span class="linenos"> 87</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">])</span>
+</span><span id="v__radial_correlate-88"><a href="#v__radial_correlate-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">results_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-89"><a href="#v__radial_correlate-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-90"><a href="#v__radial_correlate-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;-rdir&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-91"><a href="#v__radial_correlate-91"><span class="linenos"> 91</span></a>            <span class="n">results_dir</span>
+</span><span id="v__radial_correlate-92"><a href="#v__radial_correlate-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-93"><a href="#v__radial_correlate-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">do_corr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-94"><a href="#v__radial_correlate-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-95"><a href="#v__radial_correlate-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;-do_corr&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-96"><a href="#v__radial_correlate-96"><span class="linenos"> 96</span></a>            <span class="n">do_corr</span>
+</span><span id="v__radial_correlate-97"><a href="#v__radial_correlate-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-98"><a href="#v__radial_correlate-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">do_clust</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-99"><a href="#v__radial_correlate-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-100"><a href="#v__radial_correlate-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-do_clust&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-101"><a href="#v__radial_correlate-101"><span class="linenos">101</span></a>            <span class="n">do_clust</span>
+</span><span id="v__radial_correlate-102"><a href="#v__radial_correlate-102"><span class="linenos">102</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-103"><a href="#v__radial_correlate-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">mask_dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-104"><a href="#v__radial_correlate-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-105"><a href="#v__radial_correlate-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-mask&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-106"><a href="#v__radial_correlate-106"><span class="linenos">106</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_dset</span><span class="p">)</span>
+</span><span id="v__radial_correlate-107"><a href="#v__radial_correlate-107"><span class="linenos">107</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-108"><a href="#v__radial_correlate-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">cthresh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-109"><a href="#v__radial_correlate-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-110"><a href="#v__radial_correlate-110"><span class="linenos">110</span></a>            <span class="s2">&quot;-cthresh&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-111"><a href="#v__radial_correlate-111"><span class="linenos">111</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">cthresh</span><span class="p">)</span>
+</span><span id="v__radial_correlate-112"><a href="#v__radial_correlate-112"><span class="linenos">112</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-113"><a href="#v__radial_correlate-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">frac_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-114"><a href="#v__radial_correlate-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-115"><a href="#v__radial_correlate-115"><span class="linenos">115</span></a>            <span class="s2">&quot;-frac_limit&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-116"><a href="#v__radial_correlate-116"><span class="linenos">116</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">frac_limit</span><span class="p">)</span>
+</span><span id="v__radial_correlate-117"><a href="#v__radial_correlate-117"><span class="linenos">117</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-118"><a href="#v__radial_correlate-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">sphere_rad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-119"><a href="#v__radial_correlate-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-120"><a href="#v__radial_correlate-120"><span class="linenos">120</span></a>            <span class="s2">&quot;-sphere_rad&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-121"><a href="#v__radial_correlate-121"><span class="linenos">121</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sphere_rad</span><span class="p">)</span>
+</span><span id="v__radial_correlate-122"><a href="#v__radial_correlate-122"><span class="linenos">122</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-123"><a href="#v__radial_correlate-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">use_3dmerge</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-124"><a href="#v__radial_correlate-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-125"><a href="#v__radial_correlate-125"><span class="linenos">125</span></a>            <span class="s2">&quot;-use_3dmerge&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-126"><a href="#v__radial_correlate-126"><span class="linenos">126</span></a>            <span class="n">use_3dmerge</span>
+</span><span id="v__radial_correlate-127"><a href="#v__radial_correlate-127"><span class="linenos">127</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-128"><a href="#v__radial_correlate-128"><span class="linenos">128</span></a>    <span class="k">if</span> <span class="n">percentile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-129"><a href="#v__radial_correlate-129"><span class="linenos">129</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-130"><a href="#v__radial_correlate-130"><span class="linenos">130</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-131"><a href="#v__radial_correlate-131"><span class="linenos">131</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">percentile</span><span class="p">)</span>
+</span><span id="v__radial_correlate-132"><a href="#v__radial_correlate-132"><span class="linenos">132</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-133"><a href="#v__radial_correlate-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">min_thr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-134"><a href="#v__radial_correlate-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-135"><a href="#v__radial_correlate-135"><span class="linenos">135</span></a>            <span class="s2">&quot;-min_thr&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-136"><a href="#v__radial_correlate-136"><span class="linenos">136</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">min_thr</span><span class="p">)</span>
+</span><span id="v__radial_correlate-137"><a href="#v__radial_correlate-137"><span class="linenos">137</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-138"><a href="#v__radial_correlate-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">nfirst</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-139"><a href="#v__radial_correlate-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-140"><a href="#v__radial_correlate-140"><span class="linenos">140</span></a>            <span class="s2">&quot;-nfirst&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-141"><a href="#v__radial_correlate-141"><span class="linenos">141</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nfirst</span><span class="p">)</span>
+</span><span id="v__radial_correlate-142"><a href="#v__radial_correlate-142"><span class="linenos">142</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-143"><a href="#v__radial_correlate-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">ver</span><span class="p">:</span>
+</span><span id="v__radial_correlate-144"><a href="#v__radial_correlate-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ver&quot;</span><span class="p">)</span>
+</span><span id="v__radial_correlate-145"><a href="#v__radial_correlate-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+</span><span id="v__radial_correlate-146"><a href="#v__radial_correlate-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-verb&quot;</span><span class="p">)</span>
+</span><span id="v__radial_correlate-147"><a href="#v__radial_correlate-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="v__radial_correlate-148"><a href="#v__radial_correlate-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="v__radial_correlate-149"><a href="#v__radial_correlate-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">hist</span><span class="p">:</span>
+</span><span id="v__radial_correlate-150"><a href="#v__radial_correlate-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-hist&quot;</span><span class="p">)</span>
+</span><span id="v__radial_correlate-151"><a href="#v__radial_correlate-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">corr_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-152"><a href="#v__radial_correlate-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-153"><a href="#v__radial_correlate-153"><span class="linenos">153</span></a>            <span class="s2">&quot;-corr_mask&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-154"><a href="#v__radial_correlate-154"><span class="linenos">154</span></a>            <span class="n">corr_mask</span>
+</span><span id="v__radial_correlate-155"><a href="#v__radial_correlate-155"><span class="linenos">155</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-156"><a href="#v__radial_correlate-156"><span class="linenos">156</span></a>    <span class="k">if</span> <span class="n">do_clean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-157"><a href="#v__radial_correlate-157"><span class="linenos">157</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-158"><a href="#v__radial_correlate-158"><span class="linenos">158</span></a>            <span class="s2">&quot;-do_clean&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-159"><a href="#v__radial_correlate-159"><span class="linenos">159</span></a>            <span class="n">do_clean</span>
+</span><span id="v__radial_correlate-160"><a href="#v__radial_correlate-160"><span class="linenos">160</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-161"><a href="#v__radial_correlate-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">polort</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-162"><a href="#v__radial_correlate-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-163"><a href="#v__radial_correlate-163"><span class="linenos">163</span></a>            <span class="s2">&quot;-polort&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-164"><a href="#v__radial_correlate-164"><span class="linenos">164</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">polort</span><span class="p">)</span>
+</span><span id="v__radial_correlate-165"><a href="#v__radial_correlate-165"><span class="linenos">165</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-166"><a href="#v__radial_correlate-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">merge_frad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v__radial_correlate-167"><a href="#v__radial_correlate-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__radial_correlate-168"><a href="#v__radial_correlate-168"><span class="linenos">168</span></a>            <span class="s2">&quot;-merge_frad&quot;</span><span class="p">,</span>
+</span><span id="v__radial_correlate-169"><a href="#v__radial_correlate-169"><span class="linenos">169</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">merge_frad</span><span class="p">)</span>
+</span><span id="v__radial_correlate-170"><a href="#v__radial_correlate-170"><span class="linenos">170</span></a>        <span class="p">])</span>
+</span><span id="v__radial_correlate-171"><a href="#v__radial_correlate-171"><span class="linenos">171</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VRadialCorrelateOutputs</span><span class="p">(</span>
+</span><span id="v__radial_correlate-172"><a href="#v__radial_correlate-172"><span class="linenos">172</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v__radial_correlate-173"><a href="#v__radial_correlate-173"><span class="linenos">173</span></a>        <span class="n">corr_volumes</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">results_dir</span> <span class="o">+</span> <span class="s2">&quot;/correlation_volumes&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">results_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="v__radial_correlate-174"><a href="#v__radial_correlate-174"><span class="linenos">174</span></a>    <span class="p">)</span>
+</span><span id="v__radial_correlate-175"><a href="#v__radial_correlate-175"><span class="linenos">175</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v__radial_correlate-176"><a href="#v__radial_correlate-176"><span class="linenos">176</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Check datasets for correlation artifacts.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/@radial_correlate.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/@radial_correlate.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">MORPH_KERNEL_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5db7dcc534478f0d7a3d9cd9d56ec7cf51322eb3.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;b5e34aadd63d240709e701255ae209fe23159e92.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;morph_kernel&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
@@ -106,34 +106,36 @@
 </span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">    Tool to generate morphological kernels.</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">    </span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    Author: Author Name</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    </span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    Args:</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">        cube_side_length: Side length of the cube (e.g., 11).</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">        sphere_radius: Radius of the sphere (e.g., 5.5).</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    Returns:</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        NamedTuple of outputs (described in `MorphKernelOutputs`).</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MORPH_KERNEL_METADATA</span><span class="p">)</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;morph_kernel&quot;</span><span class="p">)</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cube_side_length</span><span class="p">))</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sphere_radius</span><span class="p">))</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MorphKernelOutputs</span><span class="p">(</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>        <span class="n">morph_kernel_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;sphere[OUTPUT_PREFIX].ker&quot;</span><span class="p">),</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="p">)</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="s2">&quot;MORPH_KERNEL_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="s2">&quot;MorphKernelOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="s2">&quot;morph_kernel&quot;</span><span class="p">,</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="p">]</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Args:</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">        cube_side_length: Side length of the cube (e.g., 11).</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        sphere_radius: Radius of the sphere (e.g., 5.5).</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    Returns:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        NamedTuple of outputs (described in `MorphKernelOutputs`).</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MORPH_KERNEL_METADATA</span><span class="p">)</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;morph_kernel&quot;</span><span class="p">)</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cube_side_length</span><span class="p">))</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sphere_radius</span><span class="p">))</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MorphKernelOutputs</span><span class="p">(</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>        <span class="n">morph_kernel_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;sphere[OUTPUT_PREFIX].ker&quot;</span><span class="p">),</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="s2">&quot;MORPH_KERNEL_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="s2">&quot;MorphKernelOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="s2">&quot;morph_kernel&quot;</span><span class="p">,</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -142,7 +144,7 @@
                     <div class="attr variable">
             <span class="name">MORPH_KERNEL_METADATA</span>        =
 <input id="MORPH_KERNEL_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MORPH_KERNEL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5db7dcc534478f0d7a3d9cd9d56ec7cf51322eb3.boutiques&#39;, name=&#39;morph_kernel&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MORPH_KERNEL_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;b5e34aadd63d240709e701255ae209fe23159e92.boutiques&#39;, name=&#39;morph_kernel&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -237,33 +239,37 @@
 </span><span id="morph_kernel-33"><a href="#morph_kernel-33"><span class="linenos">33</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="morph_kernel-34"><a href="#morph_kernel-34"><span class="linenos">34</span></a><span class="sd">    Tool to generate morphological kernels.</span>
 </span><span id="morph_kernel-35"><a href="#morph_kernel-35"><span class="linenos">35</span></a><span class="sd">    </span>
-</span><span id="morph_kernel-36"><a href="#morph_kernel-36"><span class="linenos">36</span></a><span class="sd">    Author: Author Name</span>
+</span><span id="morph_kernel-36"><a href="#morph_kernel-36"><span class="linenos">36</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="morph_kernel-37"><a href="#morph_kernel-37"><span class="linenos">37</span></a><span class="sd">    </span>
-</span><span id="morph_kernel-38"><a href="#morph_kernel-38"><span class="linenos">38</span></a><span class="sd">    Args:</span>
-</span><span id="morph_kernel-39"><a href="#morph_kernel-39"><span class="linenos">39</span></a><span class="sd">        cube_side_length: Side length of the cube (e.g., 11).</span>
-</span><span id="morph_kernel-40"><a href="#morph_kernel-40"><span class="linenos">40</span></a><span class="sd">        sphere_radius: Radius of the sphere (e.g., 5.5).</span>
-</span><span id="morph_kernel-41"><a href="#morph_kernel-41"><span class="linenos">41</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="morph_kernel-42"><a href="#morph_kernel-42"><span class="linenos">42</span></a><span class="sd">    Returns:</span>
-</span><span id="morph_kernel-43"><a href="#morph_kernel-43"><span class="linenos">43</span></a><span class="sd">        NamedTuple of outputs (described in `MorphKernelOutputs`).</span>
-</span><span id="morph_kernel-44"><a href="#morph_kernel-44"><span class="linenos">44</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="morph_kernel-45"><a href="#morph_kernel-45"><span class="linenos">45</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="morph_kernel-46"><a href="#morph_kernel-46"><span class="linenos">46</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MORPH_KERNEL_METADATA</span><span class="p">)</span>
-</span><span id="morph_kernel-47"><a href="#morph_kernel-47"><span class="linenos">47</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="morph_kernel-48"><a href="#morph_kernel-48"><span class="linenos">48</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;morph_kernel&quot;</span><span class="p">)</span>
-</span><span id="morph_kernel-49"><a href="#morph_kernel-49"><span class="linenos">49</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cube_side_length</span><span class="p">))</span>
-</span><span id="morph_kernel-50"><a href="#morph_kernel-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sphere_radius</span><span class="p">))</span>
-</span><span id="morph_kernel-51"><a href="#morph_kernel-51"><span class="linenos">51</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MorphKernelOutputs</span><span class="p">(</span>
-</span><span id="morph_kernel-52"><a href="#morph_kernel-52"><span class="linenos">52</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="morph_kernel-53"><a href="#morph_kernel-53"><span class="linenos">53</span></a>        <span class="n">morph_kernel_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;sphere[OUTPUT_PREFIX].ker&quot;</span><span class="p">),</span>
-</span><span id="morph_kernel-54"><a href="#morph_kernel-54"><span class="linenos">54</span></a>    <span class="p">)</span>
-</span><span id="morph_kernel-55"><a href="#morph_kernel-55"><span class="linenos">55</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="morph_kernel-56"><a href="#morph_kernel-56"><span class="linenos">56</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="morph_kernel-38"><a href="#morph_kernel-38"><span class="linenos">38</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="morph_kernel-39"><a href="#morph_kernel-39"><span class="linenos">39</span></a><span class="sd">    </span>
+</span><span id="morph_kernel-40"><a href="#morph_kernel-40"><span class="linenos">40</span></a><span class="sd">    Args:</span>
+</span><span id="morph_kernel-41"><a href="#morph_kernel-41"><span class="linenos">41</span></a><span class="sd">        cube_side_length: Side length of the cube (e.g., 11).</span>
+</span><span id="morph_kernel-42"><a href="#morph_kernel-42"><span class="linenos">42</span></a><span class="sd">        sphere_radius: Radius of the sphere (e.g., 5.5).</span>
+</span><span id="morph_kernel-43"><a href="#morph_kernel-43"><span class="linenos">43</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="morph_kernel-44"><a href="#morph_kernel-44"><span class="linenos">44</span></a><span class="sd">    Returns:</span>
+</span><span id="morph_kernel-45"><a href="#morph_kernel-45"><span class="linenos">45</span></a><span class="sd">        NamedTuple of outputs (described in `MorphKernelOutputs`).</span>
+</span><span id="morph_kernel-46"><a href="#morph_kernel-46"><span class="linenos">46</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="morph_kernel-47"><a href="#morph_kernel-47"><span class="linenos">47</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="morph_kernel-48"><a href="#morph_kernel-48"><span class="linenos">48</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MORPH_KERNEL_METADATA</span><span class="p">)</span>
+</span><span id="morph_kernel-49"><a href="#morph_kernel-49"><span class="linenos">49</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="morph_kernel-50"><a href="#morph_kernel-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;morph_kernel&quot;</span><span class="p">)</span>
+</span><span id="morph_kernel-51"><a href="#morph_kernel-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cube_side_length</span><span class="p">))</span>
+</span><span id="morph_kernel-52"><a href="#morph_kernel-52"><span class="linenos">52</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sphere_radius</span><span class="p">))</span>
+</span><span id="morph_kernel-53"><a href="#morph_kernel-53"><span class="linenos">53</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MorphKernelOutputs</span><span class="p">(</span>
+</span><span id="morph_kernel-54"><a href="#morph_kernel-54"><span class="linenos">54</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="morph_kernel-55"><a href="#morph_kernel-55"><span class="linenos">55</span></a>        <span class="n">morph_kernel_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;sphere[OUTPUT_PREFIX].ker&quot;</span><span class="p">),</span>
+</span><span id="morph_kernel-56"><a href="#morph_kernel-56"><span class="linenos">56</span></a>    <span class="p">)</span>
+</span><span id="morph_kernel-57"><a href="#morph_kernel-57"><span class="linenos">57</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="morph_kernel-58"><a href="#morph_kernel-58"><span class="linenos">58</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Tool to generate morphological kernels.</p>
 
-<p>Author: Author Name</p>
+<p>Author: FMRIB Analysis Group, University of Oxford</p>
+
+<p>URL: <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

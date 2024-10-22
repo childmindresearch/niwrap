@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SET_STRUCTURE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c358723c5bec9997601290d17f92d51ecb3e8419.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4fb006cb7e9f63ff08468f1d6422ef6ce0b36411.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;set-structure&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -161,49 +161,51 @@
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    PIAL</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    .</span>
 </span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    </span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    </span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    Args:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        data_file: the file to set the structure of.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        structure: the structure to set the file to.</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        opt_surface_type_type: set the type of a surface (only used if file is\</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">            a surface file): name of surface type.</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        opt_surface_secondary_type_secondary_type: set the secondary type of a\</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">            surface (only used if file is a surface file): name of surface\</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            secondary type.</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    Returns:</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        NamedTuple of outputs (described in `SetStructureOutputs`).</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SET_STRUCTURE_METADATA</span><span class="p">)</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-set-structure&quot;</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">structure</span><span class="p">)</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">opt_surface_type_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="s2">&quot;-surface-type&quot;</span><span class="p">,</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>            <span class="n">opt_surface_type_type</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="p">])</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">opt_surface_secondary_type_secondary_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="s2">&quot;-surface-secondary-type&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="n">opt_surface_secondary_type_secondary_type</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SetStructureOutputs</span><span class="p">(</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="s2">&quot;SET_STRUCTURE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="s2">&quot;SetStructureOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="s2">&quot;set_structure&quot;</span><span class="p">,</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="p">]</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    </span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">    Args:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        data_file: the file to set the structure of.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        structure: the structure to set the file to.</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        opt_surface_type_type: set the type of a surface (only used if file is\</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">            a surface file): name of surface type.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        opt_surface_secondary_type_secondary_type: set the secondary type of a\</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            surface (only used if file is a surface file): name of surface\</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">            secondary type.</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    Returns:</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        NamedTuple of outputs (described in `SetStructureOutputs`).</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SET_STRUCTURE_METADATA</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-set-structure&quot;</span><span class="p">)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">structure</span><span class="p">)</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">opt_surface_type_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="s2">&quot;-surface-type&quot;</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="n">opt_surface_type_type</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="p">])</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">opt_surface_secondary_type_secondary_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>            <span class="s2">&quot;-surface-secondary-type&quot;</span><span class="p">,</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>            <span class="n">opt_surface_secondary_type_secondary_type</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="p">])</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SetStructureOutputs</span><span class="p">(</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="p">)</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="s2">&quot;SET_STRUCTURE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="s2">&quot;SetStructureOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="s2">&quot;set_structure&quot;</span><span class="p">,</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -212,7 +214,7 @@
                     <div class="attr variable">
             <span class="name">SET_STRUCTURE_METADATA</span>        =
 <input id="SET_STRUCTURE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SET_STRUCTURE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;c358723c5bec9997601290d17f92d51ecb3e8419.boutiques&#39;, name=&#39;set-structure&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SET_STRUCTURE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4fb006cb7e9f63ff08468f1d6422ef6ce0b36411.boutiques&#39;, name=&#39;set-structure&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -352,42 +354,44 @@
 </span><span id="set_structure-91"><a href="#set_structure-91"><span class="linenos"> 91</span></a><span class="sd">    PIAL</span>
 </span><span id="set_structure-92"><a href="#set_structure-92"><span class="linenos"> 92</span></a><span class="sd">    .</span>
 </span><span id="set_structure-93"><a href="#set_structure-93"><span class="linenos"> 93</span></a><span class="sd">    </span>
-</span><span id="set_structure-94"><a href="#set_structure-94"><span class="linenos"> 94</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="set_structure-94"><a href="#set_structure-94"><span class="linenos"> 94</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="set_structure-95"><a href="#set_structure-95"><span class="linenos"> 95</span></a><span class="sd">    </span>
-</span><span id="set_structure-96"><a href="#set_structure-96"><span class="linenos"> 96</span></a><span class="sd">    Args:</span>
-</span><span id="set_structure-97"><a href="#set_structure-97"><span class="linenos"> 97</span></a><span class="sd">        data_file: the file to set the structure of.</span>
-</span><span id="set_structure-98"><a href="#set_structure-98"><span class="linenos"> 98</span></a><span class="sd">        structure: the structure to set the file to.</span>
-</span><span id="set_structure-99"><a href="#set_structure-99"><span class="linenos"> 99</span></a><span class="sd">        opt_surface_type_type: set the type of a surface (only used if file is\</span>
-</span><span id="set_structure-100"><a href="#set_structure-100"><span class="linenos">100</span></a><span class="sd">            a surface file): name of surface type.</span>
-</span><span id="set_structure-101"><a href="#set_structure-101"><span class="linenos">101</span></a><span class="sd">        opt_surface_secondary_type_secondary_type: set the secondary type of a\</span>
-</span><span id="set_structure-102"><a href="#set_structure-102"><span class="linenos">102</span></a><span class="sd">            surface (only used if file is a surface file): name of surface\</span>
-</span><span id="set_structure-103"><a href="#set_structure-103"><span class="linenos">103</span></a><span class="sd">            secondary type.</span>
-</span><span id="set_structure-104"><a href="#set_structure-104"><span class="linenos">104</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="set_structure-105"><a href="#set_structure-105"><span class="linenos">105</span></a><span class="sd">    Returns:</span>
-</span><span id="set_structure-106"><a href="#set_structure-106"><span class="linenos">106</span></a><span class="sd">        NamedTuple of outputs (described in `SetStructureOutputs`).</span>
-</span><span id="set_structure-107"><a href="#set_structure-107"><span class="linenos">107</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="set_structure-108"><a href="#set_structure-108"><span class="linenos">108</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="set_structure-109"><a href="#set_structure-109"><span class="linenos">109</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SET_STRUCTURE_METADATA</span><span class="p">)</span>
-</span><span id="set_structure-110"><a href="#set_structure-110"><span class="linenos">110</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="set_structure-111"><a href="#set_structure-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="set_structure-112"><a href="#set_structure-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-set-structure&quot;</span><span class="p">)</span>
-</span><span id="set_structure-113"><a href="#set_structure-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-</span><span id="set_structure-114"><a href="#set_structure-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">structure</span><span class="p">)</span>
-</span><span id="set_structure-115"><a href="#set_structure-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">opt_surface_type_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="set_structure-116"><a href="#set_structure-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="set_structure-117"><a href="#set_structure-117"><span class="linenos">117</span></a>            <span class="s2">&quot;-surface-type&quot;</span><span class="p">,</span>
-</span><span id="set_structure-118"><a href="#set_structure-118"><span class="linenos">118</span></a>            <span class="n">opt_surface_type_type</span>
-</span><span id="set_structure-119"><a href="#set_structure-119"><span class="linenos">119</span></a>        <span class="p">])</span>
-</span><span id="set_structure-120"><a href="#set_structure-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">opt_surface_secondary_type_secondary_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="set_structure-121"><a href="#set_structure-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="set_structure-122"><a href="#set_structure-122"><span class="linenos">122</span></a>            <span class="s2">&quot;-surface-secondary-type&quot;</span><span class="p">,</span>
-</span><span id="set_structure-123"><a href="#set_structure-123"><span class="linenos">123</span></a>            <span class="n">opt_surface_secondary_type_secondary_type</span>
-</span><span id="set_structure-124"><a href="#set_structure-124"><span class="linenos">124</span></a>        <span class="p">])</span>
-</span><span id="set_structure-125"><a href="#set_structure-125"><span class="linenos">125</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SetStructureOutputs</span><span class="p">(</span>
-</span><span id="set_structure-126"><a href="#set_structure-126"><span class="linenos">126</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="set_structure-127"><a href="#set_structure-127"><span class="linenos">127</span></a>    <span class="p">)</span>
-</span><span id="set_structure-128"><a href="#set_structure-128"><span class="linenos">128</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="set_structure-129"><a href="#set_structure-129"><span class="linenos">129</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="set_structure-96"><a href="#set_structure-96"><span class="linenos"> 96</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="set_structure-97"><a href="#set_structure-97"><span class="linenos"> 97</span></a><span class="sd">    </span>
+</span><span id="set_structure-98"><a href="#set_structure-98"><span class="linenos"> 98</span></a><span class="sd">    Args:</span>
+</span><span id="set_structure-99"><a href="#set_structure-99"><span class="linenos"> 99</span></a><span class="sd">        data_file: the file to set the structure of.</span>
+</span><span id="set_structure-100"><a href="#set_structure-100"><span class="linenos">100</span></a><span class="sd">        structure: the structure to set the file to.</span>
+</span><span id="set_structure-101"><a href="#set_structure-101"><span class="linenos">101</span></a><span class="sd">        opt_surface_type_type: set the type of a surface (only used if file is\</span>
+</span><span id="set_structure-102"><a href="#set_structure-102"><span class="linenos">102</span></a><span class="sd">            a surface file): name of surface type.</span>
+</span><span id="set_structure-103"><a href="#set_structure-103"><span class="linenos">103</span></a><span class="sd">        opt_surface_secondary_type_secondary_type: set the secondary type of a\</span>
+</span><span id="set_structure-104"><a href="#set_structure-104"><span class="linenos">104</span></a><span class="sd">            surface (only used if file is a surface file): name of surface\</span>
+</span><span id="set_structure-105"><a href="#set_structure-105"><span class="linenos">105</span></a><span class="sd">            secondary type.</span>
+</span><span id="set_structure-106"><a href="#set_structure-106"><span class="linenos">106</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="set_structure-107"><a href="#set_structure-107"><span class="linenos">107</span></a><span class="sd">    Returns:</span>
+</span><span id="set_structure-108"><a href="#set_structure-108"><span class="linenos">108</span></a><span class="sd">        NamedTuple of outputs (described in `SetStructureOutputs`).</span>
+</span><span id="set_structure-109"><a href="#set_structure-109"><span class="linenos">109</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="set_structure-110"><a href="#set_structure-110"><span class="linenos">110</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="set_structure-111"><a href="#set_structure-111"><span class="linenos">111</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SET_STRUCTURE_METADATA</span><span class="p">)</span>
+</span><span id="set_structure-112"><a href="#set_structure-112"><span class="linenos">112</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="set_structure-113"><a href="#set_structure-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="set_structure-114"><a href="#set_structure-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-set-structure&quot;</span><span class="p">)</span>
+</span><span id="set_structure-115"><a href="#set_structure-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+</span><span id="set_structure-116"><a href="#set_structure-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">structure</span><span class="p">)</span>
+</span><span id="set_structure-117"><a href="#set_structure-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">opt_surface_type_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="set_structure-118"><a href="#set_structure-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="set_structure-119"><a href="#set_structure-119"><span class="linenos">119</span></a>            <span class="s2">&quot;-surface-type&quot;</span><span class="p">,</span>
+</span><span id="set_structure-120"><a href="#set_structure-120"><span class="linenos">120</span></a>            <span class="n">opt_surface_type_type</span>
+</span><span id="set_structure-121"><a href="#set_structure-121"><span class="linenos">121</span></a>        <span class="p">])</span>
+</span><span id="set_structure-122"><a href="#set_structure-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">opt_surface_secondary_type_secondary_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="set_structure-123"><a href="#set_structure-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="set_structure-124"><a href="#set_structure-124"><span class="linenos">124</span></a>            <span class="s2">&quot;-surface-secondary-type&quot;</span><span class="p">,</span>
+</span><span id="set_structure-125"><a href="#set_structure-125"><span class="linenos">125</span></a>            <span class="n">opt_surface_secondary_type_secondary_type</span>
+</span><span id="set_structure-126"><a href="#set_structure-126"><span class="linenos">126</span></a>        <span class="p">])</span>
+</span><span id="set_structure-127"><a href="#set_structure-127"><span class="linenos">127</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SetStructureOutputs</span><span class="p">(</span>
+</span><span id="set_structure-128"><a href="#set_structure-128"><span class="linenos">128</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="set_structure-129"><a href="#set_structure-129"><span class="linenos">129</span></a>    <span class="p">)</span>
+</span><span id="set_structure-130"><a href="#set_structure-130"><span class="linenos">130</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="set_structure-131"><a href="#set_structure-131"><span class="linenos">131</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -451,7 +455,9 @@ MIDTHICKNESS
 PIAL
 .</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

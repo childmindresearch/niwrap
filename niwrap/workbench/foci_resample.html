@@ -135,7 +135,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FOCI_RESAMPLE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a44a1e656dac192f3d9fc53cc05d57a91f7c697d.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;bcfe37d43c3a12f94abd7701c344fc6cc73dae4d.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;foci-resample&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -258,55 +258,57 @@
 </span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">    registered spheres and the options -discard-distance-from-surface and</span>
 </span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    -restore-xyz.</span>
 </span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    </span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    </span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    Args:</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">        foci_in: the input foci file.</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">        foci_out: the output foci file.</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">        left_surfaces: the left surfaces for resampling.</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        right_surfaces: the right surfaces for resampling.</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        cerebellum_surfaces: the cerebellum surfaces for resampling.</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">        opt_discard_distance_from_surface: ignore the distance the foci are\</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">            above or below the current surface.</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">        opt_restore_xyz: put the original xyz coordinates into the foci, rather\</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">            than the coordinates obtained from unprojection.</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    Returns:</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        NamedTuple of outputs (described in `FociResampleOutputs`).</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOCI_RESAMPLE_METADATA</span><span class="p">)</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-foci-resample&quot;</span><span class="p">)</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">foci_in</span><span class="p">))</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">foci_out</span><span class="p">)</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">if</span> <span class="n">left_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">right_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">cerebellum_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">opt_discard_distance_from_surface</span><span class="p">:</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-discard-distance-from-surface&quot;</span><span class="p">)</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">opt_restore_xyz</span><span class="p">:</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-restore-xyz&quot;</span><span class="p">)</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FociResampleOutputs</span><span class="p">(</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>        <span class="n">foci_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">foci_out</span><span class="p">),</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="p">)</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="s2">&quot;FOCI_RESAMPLE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="s2">&quot;FociResampleCerebellumSurfaces&quot;</span><span class="p">,</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="s2">&quot;FociResampleLeftSurfaces&quot;</span><span class="p">,</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="s2">&quot;FociResampleOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="s2">&quot;FociResampleRightSurfaces&quot;</span><span class="p">,</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="s2">&quot;foci_resample&quot;</span><span class="p">,</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="p">]</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    </span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    Args:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">        foci_in: the input foci file.</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">        foci_out: the output foci file.</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        left_surfaces: the left surfaces for resampling.</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">        right_surfaces: the right surfaces for resampling.</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        cerebellum_surfaces: the cerebellum surfaces for resampling.</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">        opt_discard_distance_from_surface: ignore the distance the foci are\</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">            above or below the current surface.</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">        opt_restore_xyz: put the original xyz coordinates into the foci, rather\</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">            than the coordinates obtained from unprojection.</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    Returns:</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        NamedTuple of outputs (described in `FociResampleOutputs`).</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOCI_RESAMPLE_METADATA</span><span class="p">)</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-foci-resample&quot;</span><span class="p">)</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">foci_in</span><span class="p">))</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">foci_out</span><span class="p">)</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="k">if</span> <span class="n">left_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="k">if</span> <span class="n">right_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">cerebellum_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">opt_discard_distance_from_surface</span><span class="p">:</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-discard-distance-from-surface&quot;</span><span class="p">)</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">opt_restore_xyz</span><span class="p">:</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-restore-xyz&quot;</span><span class="p">)</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FociResampleOutputs</span><span class="p">(</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>        <span class="n">foci_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">foci_out</span><span class="p">),</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>    <span class="p">)</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="s2">&quot;FOCI_RESAMPLE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>    <span class="s2">&quot;FociResampleCerebellumSurfaces&quot;</span><span class="p">,</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="s2">&quot;FociResampleLeftSurfaces&quot;</span><span class="p">,</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="s2">&quot;FociResampleOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="s2">&quot;FociResampleRightSurfaces&quot;</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="s2">&quot;foci_resample&quot;</span><span class="p">,</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -315,7 +317,7 @@
                     <div class="attr variable">
             <span class="name">FOCI_RESAMPLE_METADATA</span>        =
 <input id="FOCI_RESAMPLE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FOCI_RESAMPLE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a44a1e656dac192f3d9fc53cc05d57a91f7c697d.boutiques&#39;, name=&#39;foci-resample&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FOCI_RESAMPLE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;bcfe37d43c3a12f94abd7701c344fc6cc73dae4d.boutiques&#39;, name=&#39;foci-resample&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -820,45 +822,47 @@
 </span><span id="foci_resample-131"><a href="#foci_resample-131"><span class="linenos">131</span></a><span class="sd">    registered spheres and the options -discard-distance-from-surface and</span>
 </span><span id="foci_resample-132"><a href="#foci_resample-132"><span class="linenos">132</span></a><span class="sd">    -restore-xyz.</span>
 </span><span id="foci_resample-133"><a href="#foci_resample-133"><span class="linenos">133</span></a><span class="sd">    </span>
-</span><span id="foci_resample-134"><a href="#foci_resample-134"><span class="linenos">134</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="foci_resample-134"><a href="#foci_resample-134"><span class="linenos">134</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="foci_resample-135"><a href="#foci_resample-135"><span class="linenos">135</span></a><span class="sd">    </span>
-</span><span id="foci_resample-136"><a href="#foci_resample-136"><span class="linenos">136</span></a><span class="sd">    Args:</span>
-</span><span id="foci_resample-137"><a href="#foci_resample-137"><span class="linenos">137</span></a><span class="sd">        foci_in: the input foci file.</span>
-</span><span id="foci_resample-138"><a href="#foci_resample-138"><span class="linenos">138</span></a><span class="sd">        foci_out: the output foci file.</span>
-</span><span id="foci_resample-139"><a href="#foci_resample-139"><span class="linenos">139</span></a><span class="sd">        left_surfaces: the left surfaces for resampling.</span>
-</span><span id="foci_resample-140"><a href="#foci_resample-140"><span class="linenos">140</span></a><span class="sd">        right_surfaces: the right surfaces for resampling.</span>
-</span><span id="foci_resample-141"><a href="#foci_resample-141"><span class="linenos">141</span></a><span class="sd">        cerebellum_surfaces: the cerebellum surfaces for resampling.</span>
-</span><span id="foci_resample-142"><a href="#foci_resample-142"><span class="linenos">142</span></a><span class="sd">        opt_discard_distance_from_surface: ignore the distance the foci are\</span>
-</span><span id="foci_resample-143"><a href="#foci_resample-143"><span class="linenos">143</span></a><span class="sd">            above or below the current surface.</span>
-</span><span id="foci_resample-144"><a href="#foci_resample-144"><span class="linenos">144</span></a><span class="sd">        opt_restore_xyz: put the original xyz coordinates into the foci, rather\</span>
-</span><span id="foci_resample-145"><a href="#foci_resample-145"><span class="linenos">145</span></a><span class="sd">            than the coordinates obtained from unprojection.</span>
-</span><span id="foci_resample-146"><a href="#foci_resample-146"><span class="linenos">146</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="foci_resample-147"><a href="#foci_resample-147"><span class="linenos">147</span></a><span class="sd">    Returns:</span>
-</span><span id="foci_resample-148"><a href="#foci_resample-148"><span class="linenos">148</span></a><span class="sd">        NamedTuple of outputs (described in `FociResampleOutputs`).</span>
-</span><span id="foci_resample-149"><a href="#foci_resample-149"><span class="linenos">149</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="foci_resample-150"><a href="#foci_resample-150"><span class="linenos">150</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="foci_resample-151"><a href="#foci_resample-151"><span class="linenos">151</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOCI_RESAMPLE_METADATA</span><span class="p">)</span>
-</span><span id="foci_resample-152"><a href="#foci_resample-152"><span class="linenos">152</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="foci_resample-153"><a href="#foci_resample-153"><span class="linenos">153</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="foci_resample-154"><a href="#foci_resample-154"><span class="linenos">154</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-foci-resample&quot;</span><span class="p">)</span>
-</span><span id="foci_resample-155"><a href="#foci_resample-155"><span class="linenos">155</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">foci_in</span><span class="p">))</span>
-</span><span id="foci_resample-156"><a href="#foci_resample-156"><span class="linenos">156</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">foci_out</span><span class="p">)</span>
-</span><span id="foci_resample-157"><a href="#foci_resample-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">left_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="foci_resample-158"><a href="#foci_resample-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="foci_resample-159"><a href="#foci_resample-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">right_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="foci_resample-160"><a href="#foci_resample-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="foci_resample-161"><a href="#foci_resample-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">cerebellum_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="foci_resample-162"><a href="#foci_resample-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="foci_resample-163"><a href="#foci_resample-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">opt_discard_distance_from_surface</span><span class="p">:</span>
-</span><span id="foci_resample-164"><a href="#foci_resample-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-discard-distance-from-surface&quot;</span><span class="p">)</span>
-</span><span id="foci_resample-165"><a href="#foci_resample-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">opt_restore_xyz</span><span class="p">:</span>
-</span><span id="foci_resample-166"><a href="#foci_resample-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-restore-xyz&quot;</span><span class="p">)</span>
-</span><span id="foci_resample-167"><a href="#foci_resample-167"><span class="linenos">167</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FociResampleOutputs</span><span class="p">(</span>
-</span><span id="foci_resample-168"><a href="#foci_resample-168"><span class="linenos">168</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="foci_resample-169"><a href="#foci_resample-169"><span class="linenos">169</span></a>        <span class="n">foci_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">foci_out</span><span class="p">),</span>
-</span><span id="foci_resample-170"><a href="#foci_resample-170"><span class="linenos">170</span></a>    <span class="p">)</span>
-</span><span id="foci_resample-171"><a href="#foci_resample-171"><span class="linenos">171</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="foci_resample-172"><a href="#foci_resample-172"><span class="linenos">172</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="foci_resample-136"><a href="#foci_resample-136"><span class="linenos">136</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="foci_resample-137"><a href="#foci_resample-137"><span class="linenos">137</span></a><span class="sd">    </span>
+</span><span id="foci_resample-138"><a href="#foci_resample-138"><span class="linenos">138</span></a><span class="sd">    Args:</span>
+</span><span id="foci_resample-139"><a href="#foci_resample-139"><span class="linenos">139</span></a><span class="sd">        foci_in: the input foci file.</span>
+</span><span id="foci_resample-140"><a href="#foci_resample-140"><span class="linenos">140</span></a><span class="sd">        foci_out: the output foci file.</span>
+</span><span id="foci_resample-141"><a href="#foci_resample-141"><span class="linenos">141</span></a><span class="sd">        left_surfaces: the left surfaces for resampling.</span>
+</span><span id="foci_resample-142"><a href="#foci_resample-142"><span class="linenos">142</span></a><span class="sd">        right_surfaces: the right surfaces for resampling.</span>
+</span><span id="foci_resample-143"><a href="#foci_resample-143"><span class="linenos">143</span></a><span class="sd">        cerebellum_surfaces: the cerebellum surfaces for resampling.</span>
+</span><span id="foci_resample-144"><a href="#foci_resample-144"><span class="linenos">144</span></a><span class="sd">        opt_discard_distance_from_surface: ignore the distance the foci are\</span>
+</span><span id="foci_resample-145"><a href="#foci_resample-145"><span class="linenos">145</span></a><span class="sd">            above or below the current surface.</span>
+</span><span id="foci_resample-146"><a href="#foci_resample-146"><span class="linenos">146</span></a><span class="sd">        opt_restore_xyz: put the original xyz coordinates into the foci, rather\</span>
+</span><span id="foci_resample-147"><a href="#foci_resample-147"><span class="linenos">147</span></a><span class="sd">            than the coordinates obtained from unprojection.</span>
+</span><span id="foci_resample-148"><a href="#foci_resample-148"><span class="linenos">148</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="foci_resample-149"><a href="#foci_resample-149"><span class="linenos">149</span></a><span class="sd">    Returns:</span>
+</span><span id="foci_resample-150"><a href="#foci_resample-150"><span class="linenos">150</span></a><span class="sd">        NamedTuple of outputs (described in `FociResampleOutputs`).</span>
+</span><span id="foci_resample-151"><a href="#foci_resample-151"><span class="linenos">151</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="foci_resample-152"><a href="#foci_resample-152"><span class="linenos">152</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="foci_resample-153"><a href="#foci_resample-153"><span class="linenos">153</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FOCI_RESAMPLE_METADATA</span><span class="p">)</span>
+</span><span id="foci_resample-154"><a href="#foci_resample-154"><span class="linenos">154</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="foci_resample-155"><a href="#foci_resample-155"><span class="linenos">155</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="foci_resample-156"><a href="#foci_resample-156"><span class="linenos">156</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-foci-resample&quot;</span><span class="p">)</span>
+</span><span id="foci_resample-157"><a href="#foci_resample-157"><span class="linenos">157</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">foci_in</span><span class="p">))</span>
+</span><span id="foci_resample-158"><a href="#foci_resample-158"><span class="linenos">158</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">foci_out</span><span class="p">)</span>
+</span><span id="foci_resample-159"><a href="#foci_resample-159"><span class="linenos">159</span></a>    <span class="k">if</span> <span class="n">left_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="foci_resample-160"><a href="#foci_resample-160"><span class="linenos">160</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="foci_resample-161"><a href="#foci_resample-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">right_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="foci_resample-162"><a href="#foci_resample-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="foci_resample-163"><a href="#foci_resample-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">cerebellum_surfaces</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="foci_resample-164"><a href="#foci_resample-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cerebellum_surfaces</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="foci_resample-165"><a href="#foci_resample-165"><span class="linenos">165</span></a>    <span class="k">if</span> <span class="n">opt_discard_distance_from_surface</span><span class="p">:</span>
+</span><span id="foci_resample-166"><a href="#foci_resample-166"><span class="linenos">166</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-discard-distance-from-surface&quot;</span><span class="p">)</span>
+</span><span id="foci_resample-167"><a href="#foci_resample-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">opt_restore_xyz</span><span class="p">:</span>
+</span><span id="foci_resample-168"><a href="#foci_resample-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-restore-xyz&quot;</span><span class="p">)</span>
+</span><span id="foci_resample-169"><a href="#foci_resample-169"><span class="linenos">169</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FociResampleOutputs</span><span class="p">(</span>
+</span><span id="foci_resample-170"><a href="#foci_resample-170"><span class="linenos">170</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="foci_resample-171"><a href="#foci_resample-171"><span class="linenos">171</span></a>        <span class="n">foci_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">foci_out</span><span class="p">),</span>
+</span><span id="foci_resample-172"><a href="#foci_resample-172"><span class="linenos">172</span></a>    <span class="p">)</span>
+</span><span id="foci_resample-173"><a href="#foci_resample-173"><span class="linenos">173</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="foci_resample-174"><a href="#foci_resample-174"><span class="linenos">174</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -870,7 +874,9 @@ surface, use anatomical surfaces. If the foci should be on the surface, use
 registered spheres and the options -discard-distance-from-surface and
 -restore-xyz.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

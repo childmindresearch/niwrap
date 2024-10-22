@@ -129,7 +129,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TCKCONVERT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1497f8a28932c6eece4197131a420ab0d6b5258e.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;e099f163628c4f4e1f744a964fec71d2c4cd255c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tckconvert&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -263,132 +263,129 @@
 </span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    </span>
 </span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    .</span>
 </span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    </span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    Author: Daan Christiaens (daan.christiaens@kcl.ac.uk), J-Donald Tournier</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    (jdtournier@gmail.com), Philip Broser (philip.broser@me.com), Daniel Blezek</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    (daniel.blezek@gmail.com).</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">    </span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
 </span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">    </span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    URL:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/tckconvert.html</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    </span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">    Args:</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">        input_: the input track file.</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">        output: the output track file.</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        scanner2voxel: if specified, the properties of this image will be used\</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    Args:</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        input_: the input track file.</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        output: the output track file.</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        scanner2voxel: if specified, the properties of this image will be used\</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">            to convert track point positions from real (scanner) coordinates into\</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">            voxel coordinates.</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        scanner2image: if specified, the properties of this image will be used\</span>
 </span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">            to convert track point positions from real (scanner) coordinates into\</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">            voxel coordinates.</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        scanner2image: if specified, the properties of this image will be used\</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">            to convert track point positions from real (scanner) coordinates into\</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">            image coordinates (in mm).</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">        voxel2scanner: if specified, the properties of this image will be used\</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">            to convert track point positions from voxel coordinates into real\</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">            (scanner) coordinates.</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        image2scanner: if specified, the properties of this image will be used\</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">            to convert track point positions from image coordinates (in mm) into\</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">            real (scanner) coordinates.</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        sides: number of sides for streamlines.</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        increment: generate streamline points at every (increment) points.</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        dec: add DEC as a primvar.</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        radius: radius of the streamlines.</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        ascii_: write an ASCII VTK file (this is the default).</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        binary: write a binary VTK file.</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a><span class="sd">    Returns:</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a><span class="sd">        NamedTuple of outputs (described in `TckconvertOutputs`).</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKCONVERT_METADATA</span><span class="p">)</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckconvert&quot;</span><span class="p">)</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">scanner2voxel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>            <span class="s2">&quot;-scanner2voxel&quot;</span><span class="p">,</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scanner2voxel</span><span class="p">)</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="p">])</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">scanner2image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="s2">&quot;-scanner2image&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scanner2image</span><span class="p">)</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="p">])</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">voxel2scanner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>            <span class="s2">&quot;-voxel2scanner&quot;</span><span class="p">,</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">voxel2scanner</span><span class="p">)</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="p">])</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">image2scanner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>            <span class="s2">&quot;-image2scanner&quot;</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">image2scanner</span><span class="p">)</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="p">])</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">sides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>            <span class="s2">&quot;-sides&quot;</span><span class="p">,</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sides</span><span class="p">)</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>        <span class="p">])</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="k">if</span> <span class="n">increment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>            <span class="s2">&quot;-increment&quot;</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">increment</span><span class="p">)</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>        <span class="p">])</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">dec</span><span class="p">:</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dec&quot;</span><span class="p">)</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="k">if</span> <span class="n">radius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>            <span class="s2">&quot;-radius&quot;</span><span class="p">,</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>        <span class="p">])</span>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>    <span class="k">if</span> <span class="n">ascii_</span><span class="p">:</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ascii&quot;</span><span class="p">)</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>    <span class="k">if</span> <span class="n">binary</span><span class="p">:</span>
-</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-binary&quot;</span><span class="p">)</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="p">])</span>
-</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckconvertOutputs</span><span class="p">(</span>
-</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>    <span class="p">)</span>
-</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>
-</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>
-</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="s2">&quot;TCKCONVERT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="s2">&quot;TckconvertConfig&quot;</span><span class="p">,</span>
-</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="s2">&quot;TckconvertOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a>    <span class="s2">&quot;TckconvertVariousFile&quot;</span><span class="p">,</span>
-</span><span id="L-267"><a href="#L-267"><span class="linenos">267</span></a>    <span class="s2">&quot;TckconvertVariousString&quot;</span><span class="p">,</span>
-</span><span id="L-268"><a href="#L-268"><span class="linenos">268</span></a>    <span class="s2">&quot;tckconvert&quot;</span><span class="p">,</span>
-</span><span id="L-269"><a href="#L-269"><span class="linenos">269</span></a><span class="p">]</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">            image coordinates (in mm).</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">        voxel2scanner: if specified, the properties of this image will be used\</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">            to convert track point positions from voxel coordinates into real\</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">            (scanner) coordinates.</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">        image2scanner: if specified, the properties of this image will be used\</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">            to convert track point positions from image coordinates (in mm) into\</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">            real (scanner) coordinates.</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        sides: number of sides for streamlines.</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        increment: generate streamline points at every (increment) points.</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        dec: add DEC as a primvar.</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">        radius: radius of the streamlines.</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        ascii_: write an ASCII VTK file (this is the default).</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        binary: write a binary VTK file.</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a><span class="sd">    Returns:</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a><span class="sd">        NamedTuple of outputs (described in `TckconvertOutputs`).</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKCONVERT_METADATA</span><span class="p">)</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckconvert&quot;</span><span class="p">)</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">scanner2voxel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>            <span class="s2">&quot;-scanner2voxel&quot;</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scanner2voxel</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="p">])</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">scanner2image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>            <span class="s2">&quot;-scanner2image&quot;</span><span class="p">,</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scanner2image</span><span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="p">])</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">voxel2scanner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>            <span class="s2">&quot;-voxel2scanner&quot;</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">voxel2scanner</span><span class="p">)</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="p">])</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">image2scanner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>            <span class="s2">&quot;-image2scanner&quot;</span><span class="p">,</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">image2scanner</span><span class="p">)</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="p">])</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>    <span class="k">if</span> <span class="n">sides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>            <span class="s2">&quot;-sides&quot;</span><span class="p">,</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sides</span><span class="p">)</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="p">])</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">increment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>            <span class="s2">&quot;-increment&quot;</span><span class="p">,</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">increment</span><span class="p">)</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>        <span class="p">])</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="k">if</span> <span class="n">dec</span><span class="p">:</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dec&quot;</span><span class="p">)</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>    <span class="k">if</span> <span class="n">radius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>            <span class="s2">&quot;-radius&quot;</span><span class="p">,</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>        <span class="p">])</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="k">if</span> <span class="n">ascii_</span><span class="p">:</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ascii&quot;</span><span class="p">)</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="k">if</span> <span class="n">binary</span><span class="p">:</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-binary&quot;</span><span class="p">)</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-235"><a href="#L-235"><span class="linenos">235</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-236"><a href="#L-236"><span class="linenos">236</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-237"><a href="#L-237"><span class="linenos">237</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-238"><a href="#L-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-239"><a href="#L-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-240"><a href="#L-240"><span class="linenos">240</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-241"><a href="#L-241"><span class="linenos">241</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-242"><a href="#L-242"><span class="linenos">242</span></a>        <span class="p">])</span>
+</span><span id="L-243"><a href="#L-243"><span class="linenos">243</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-244"><a href="#L-244"><span class="linenos">244</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-250"><a href="#L-250"><span class="linenos">250</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="L-251"><a href="#L-251"><span class="linenos">251</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckconvertOutputs</span><span class="p">(</span>
+</span><span id="L-252"><a href="#L-252"><span class="linenos">252</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-253"><a href="#L-253"><span class="linenos">253</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="L-254"><a href="#L-254"><span class="linenos">254</span></a>    <span class="p">)</span>
+</span><span id="L-255"><a href="#L-255"><span class="linenos">255</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-256"><a href="#L-256"><span class="linenos">256</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>
+</span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>
+</span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a>    <span class="s2">&quot;TCKCONVERT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>    <span class="s2">&quot;TckconvertConfig&quot;</span><span class="p">,</span>
+</span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a>    <span class="s2">&quot;TckconvertOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a>    <span class="s2">&quot;TckconvertVariousFile&quot;</span><span class="p">,</span>
+</span><span id="L-264"><a href="#L-264"><span class="linenos">264</span></a>    <span class="s2">&quot;TckconvertVariousString&quot;</span><span class="p">,</span>
+</span><span id="L-265"><a href="#L-265"><span class="linenos">265</span></a>    <span class="s2">&quot;tckconvert&quot;</span><span class="p">,</span>
+</span><span id="L-266"><a href="#L-266"><span class="linenos">266</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -397,7 +394,7 @@
                     <div class="attr variable">
             <span class="name">TCKCONVERT_METADATA</span>        =
 <input id="TCKCONVERT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TCKCONVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1497f8a28932c6eece4197131a420ab0d6b5258e.boutiques&#39;, name=&#39;tckconvert&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TCKCONVERT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;e099f163628c4f4e1f744a964fec71d2c4cd255c.boutiques&#39;, name=&#39;tckconvert&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -879,122 +876,119 @@
 </span><span id="tckconvert-142"><a href="#tckconvert-142"><span class="linenos">142</span></a><span class="sd">    </span>
 </span><span id="tckconvert-143"><a href="#tckconvert-143"><span class="linenos">143</span></a><span class="sd">    .</span>
 </span><span id="tckconvert-144"><a href="#tckconvert-144"><span class="linenos">144</span></a><span class="sd">    </span>
-</span><span id="tckconvert-145"><a href="#tckconvert-145"><span class="linenos">145</span></a><span class="sd">    Author: Daan Christiaens (daan.christiaens@kcl.ac.uk), J-Donald Tournier</span>
-</span><span id="tckconvert-146"><a href="#tckconvert-146"><span class="linenos">146</span></a><span class="sd">    (jdtournier@gmail.com), Philip Broser (philip.broser@me.com), Daniel Blezek</span>
-</span><span id="tckconvert-147"><a href="#tckconvert-147"><span class="linenos">147</span></a><span class="sd">    (daniel.blezek@gmail.com).</span>
+</span><span id="tckconvert-145"><a href="#tckconvert-145"><span class="linenos">145</span></a><span class="sd">    Author: MRTrix3 Developers</span>
+</span><span id="tckconvert-146"><a href="#tckconvert-146"><span class="linenos">146</span></a><span class="sd">    </span>
+</span><span id="tckconvert-147"><a href="#tckconvert-147"><span class="linenos">147</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
 </span><span id="tckconvert-148"><a href="#tckconvert-148"><span class="linenos">148</span></a><span class="sd">    </span>
-</span><span id="tckconvert-149"><a href="#tckconvert-149"><span class="linenos">149</span></a><span class="sd">    URL:</span>
-</span><span id="tckconvert-150"><a href="#tckconvert-150"><span class="linenos">150</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/tckconvert.html</span>
-</span><span id="tckconvert-151"><a href="#tckconvert-151"><span class="linenos">151</span></a><span class="sd">    </span>
-</span><span id="tckconvert-152"><a href="#tckconvert-152"><span class="linenos">152</span></a><span class="sd">    Args:</span>
-</span><span id="tckconvert-153"><a href="#tckconvert-153"><span class="linenos">153</span></a><span class="sd">        input_: the input track file.</span>
-</span><span id="tckconvert-154"><a href="#tckconvert-154"><span class="linenos">154</span></a><span class="sd">        output: the output track file.</span>
-</span><span id="tckconvert-155"><a href="#tckconvert-155"><span class="linenos">155</span></a><span class="sd">        scanner2voxel: if specified, the properties of this image will be used\</span>
+</span><span id="tckconvert-149"><a href="#tckconvert-149"><span class="linenos">149</span></a><span class="sd">    Args:</span>
+</span><span id="tckconvert-150"><a href="#tckconvert-150"><span class="linenos">150</span></a><span class="sd">        input_: the input track file.</span>
+</span><span id="tckconvert-151"><a href="#tckconvert-151"><span class="linenos">151</span></a><span class="sd">        output: the output track file.</span>
+</span><span id="tckconvert-152"><a href="#tckconvert-152"><span class="linenos">152</span></a><span class="sd">        scanner2voxel: if specified, the properties of this image will be used\</span>
+</span><span id="tckconvert-153"><a href="#tckconvert-153"><span class="linenos">153</span></a><span class="sd">            to convert track point positions from real (scanner) coordinates into\</span>
+</span><span id="tckconvert-154"><a href="#tckconvert-154"><span class="linenos">154</span></a><span class="sd">            voxel coordinates.</span>
+</span><span id="tckconvert-155"><a href="#tckconvert-155"><span class="linenos">155</span></a><span class="sd">        scanner2image: if specified, the properties of this image will be used\</span>
 </span><span id="tckconvert-156"><a href="#tckconvert-156"><span class="linenos">156</span></a><span class="sd">            to convert track point positions from real (scanner) coordinates into\</span>
-</span><span id="tckconvert-157"><a href="#tckconvert-157"><span class="linenos">157</span></a><span class="sd">            voxel coordinates.</span>
-</span><span id="tckconvert-158"><a href="#tckconvert-158"><span class="linenos">158</span></a><span class="sd">        scanner2image: if specified, the properties of this image will be used\</span>
-</span><span id="tckconvert-159"><a href="#tckconvert-159"><span class="linenos">159</span></a><span class="sd">            to convert track point positions from real (scanner) coordinates into\</span>
-</span><span id="tckconvert-160"><a href="#tckconvert-160"><span class="linenos">160</span></a><span class="sd">            image coordinates (in mm).</span>
-</span><span id="tckconvert-161"><a href="#tckconvert-161"><span class="linenos">161</span></a><span class="sd">        voxel2scanner: if specified, the properties of this image will be used\</span>
-</span><span id="tckconvert-162"><a href="#tckconvert-162"><span class="linenos">162</span></a><span class="sd">            to convert track point positions from voxel coordinates into real\</span>
-</span><span id="tckconvert-163"><a href="#tckconvert-163"><span class="linenos">163</span></a><span class="sd">            (scanner) coordinates.</span>
-</span><span id="tckconvert-164"><a href="#tckconvert-164"><span class="linenos">164</span></a><span class="sd">        image2scanner: if specified, the properties of this image will be used\</span>
-</span><span id="tckconvert-165"><a href="#tckconvert-165"><span class="linenos">165</span></a><span class="sd">            to convert track point positions from image coordinates (in mm) into\</span>
-</span><span id="tckconvert-166"><a href="#tckconvert-166"><span class="linenos">166</span></a><span class="sd">            real (scanner) coordinates.</span>
-</span><span id="tckconvert-167"><a href="#tckconvert-167"><span class="linenos">167</span></a><span class="sd">        sides: number of sides for streamlines.</span>
-</span><span id="tckconvert-168"><a href="#tckconvert-168"><span class="linenos">168</span></a><span class="sd">        increment: generate streamline points at every (increment) points.</span>
-</span><span id="tckconvert-169"><a href="#tckconvert-169"><span class="linenos">169</span></a><span class="sd">        dec: add DEC as a primvar.</span>
-</span><span id="tckconvert-170"><a href="#tckconvert-170"><span class="linenos">170</span></a><span class="sd">        radius: radius of the streamlines.</span>
-</span><span id="tckconvert-171"><a href="#tckconvert-171"><span class="linenos">171</span></a><span class="sd">        ascii_: write an ASCII VTK file (this is the default).</span>
-</span><span id="tckconvert-172"><a href="#tckconvert-172"><span class="linenos">172</span></a><span class="sd">        binary: write a binary VTK file.</span>
-</span><span id="tckconvert-173"><a href="#tckconvert-173"><span class="linenos">173</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="tckconvert-174"><a href="#tckconvert-174"><span class="linenos">174</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="tckconvert-175"><a href="#tckconvert-175"><span class="linenos">175</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="tckconvert-176"><a href="#tckconvert-176"><span class="linenos">176</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="tckconvert-177"><a href="#tckconvert-177"><span class="linenos">177</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="tckconvert-178"><a href="#tckconvert-178"><span class="linenos">178</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="tckconvert-179"><a href="#tckconvert-179"><span class="linenos">179</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="tckconvert-180"><a href="#tckconvert-180"><span class="linenos">180</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="tckconvert-181"><a href="#tckconvert-181"><span class="linenos">181</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="tckconvert-182"><a href="#tckconvert-182"><span class="linenos">182</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="tckconvert-183"><a href="#tckconvert-183"><span class="linenos">183</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="tckconvert-184"><a href="#tckconvert-184"><span class="linenos">184</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="tckconvert-185"><a href="#tckconvert-185"><span class="linenos">185</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="tckconvert-186"><a href="#tckconvert-186"><span class="linenos">186</span></a><span class="sd">    Returns:</span>
-</span><span id="tckconvert-187"><a href="#tckconvert-187"><span class="linenos">187</span></a><span class="sd">        NamedTuple of outputs (described in `TckconvertOutputs`).</span>
-</span><span id="tckconvert-188"><a href="#tckconvert-188"><span class="linenos">188</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="tckconvert-189"><a href="#tckconvert-189"><span class="linenos">189</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="tckconvert-190"><a href="#tckconvert-190"><span class="linenos">190</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKCONVERT_METADATA</span><span class="p">)</span>
-</span><span id="tckconvert-191"><a href="#tckconvert-191"><span class="linenos">191</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="tckconvert-192"><a href="#tckconvert-192"><span class="linenos">192</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckconvert&quot;</span><span class="p">)</span>
-</span><span id="tckconvert-193"><a href="#tckconvert-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">scanner2voxel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckconvert-194"><a href="#tckconvert-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckconvert-195"><a href="#tckconvert-195"><span class="linenos">195</span></a>            <span class="s2">&quot;-scanner2voxel&quot;</span><span class="p">,</span>
-</span><span id="tckconvert-196"><a href="#tckconvert-196"><span class="linenos">196</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scanner2voxel</span><span class="p">)</span>
-</span><span id="tckconvert-197"><a href="#tckconvert-197"><span class="linenos">197</span></a>        <span class="p">])</span>
-</span><span id="tckconvert-198"><a href="#tckconvert-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">scanner2image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckconvert-199"><a href="#tckconvert-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckconvert-200"><a href="#tckconvert-200"><span class="linenos">200</span></a>            <span class="s2">&quot;-scanner2image&quot;</span><span class="p">,</span>
-</span><span id="tckconvert-201"><a href="#tckconvert-201"><span class="linenos">201</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scanner2image</span><span class="p">)</span>
-</span><span id="tckconvert-202"><a href="#tckconvert-202"><span class="linenos">202</span></a>        <span class="p">])</span>
-</span><span id="tckconvert-203"><a href="#tckconvert-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">voxel2scanner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckconvert-204"><a href="#tckconvert-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckconvert-205"><a href="#tckconvert-205"><span class="linenos">205</span></a>            <span class="s2">&quot;-voxel2scanner&quot;</span><span class="p">,</span>
-</span><span id="tckconvert-206"><a href="#tckconvert-206"><span class="linenos">206</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">voxel2scanner</span><span class="p">)</span>
-</span><span id="tckconvert-207"><a href="#tckconvert-207"><span class="linenos">207</span></a>        <span class="p">])</span>
-</span><span id="tckconvert-208"><a href="#tckconvert-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">image2scanner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckconvert-209"><a href="#tckconvert-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckconvert-210"><a href="#tckconvert-210"><span class="linenos">210</span></a>            <span class="s2">&quot;-image2scanner&quot;</span><span class="p">,</span>
-</span><span id="tckconvert-211"><a href="#tckconvert-211"><span class="linenos">211</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">image2scanner</span><span class="p">)</span>
-</span><span id="tckconvert-212"><a href="#tckconvert-212"><span class="linenos">212</span></a>        <span class="p">])</span>
-</span><span id="tckconvert-213"><a href="#tckconvert-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">sides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckconvert-214"><a href="#tckconvert-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckconvert-215"><a href="#tckconvert-215"><span class="linenos">215</span></a>            <span class="s2">&quot;-sides&quot;</span><span class="p">,</span>
-</span><span id="tckconvert-216"><a href="#tckconvert-216"><span class="linenos">216</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sides</span><span class="p">)</span>
-</span><span id="tckconvert-217"><a href="#tckconvert-217"><span class="linenos">217</span></a>        <span class="p">])</span>
-</span><span id="tckconvert-218"><a href="#tckconvert-218"><span class="linenos">218</span></a>    <span class="k">if</span> <span class="n">increment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckconvert-219"><a href="#tckconvert-219"><span class="linenos">219</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckconvert-220"><a href="#tckconvert-220"><span class="linenos">220</span></a>            <span class="s2">&quot;-increment&quot;</span><span class="p">,</span>
-</span><span id="tckconvert-221"><a href="#tckconvert-221"><span class="linenos">221</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">increment</span><span class="p">)</span>
-</span><span id="tckconvert-222"><a href="#tckconvert-222"><span class="linenos">222</span></a>        <span class="p">])</span>
-</span><span id="tckconvert-223"><a href="#tckconvert-223"><span class="linenos">223</span></a>    <span class="k">if</span> <span class="n">dec</span><span class="p">:</span>
-</span><span id="tckconvert-224"><a href="#tckconvert-224"><span class="linenos">224</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dec&quot;</span><span class="p">)</span>
-</span><span id="tckconvert-225"><a href="#tckconvert-225"><span class="linenos">225</span></a>    <span class="k">if</span> <span class="n">radius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckconvert-226"><a href="#tckconvert-226"><span class="linenos">226</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckconvert-227"><a href="#tckconvert-227"><span class="linenos">227</span></a>            <span class="s2">&quot;-radius&quot;</span><span class="p">,</span>
-</span><span id="tckconvert-228"><a href="#tckconvert-228"><span class="linenos">228</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
-</span><span id="tckconvert-229"><a href="#tckconvert-229"><span class="linenos">229</span></a>        <span class="p">])</span>
-</span><span id="tckconvert-230"><a href="#tckconvert-230"><span class="linenos">230</span></a>    <span class="k">if</span> <span class="n">ascii_</span><span class="p">:</span>
-</span><span id="tckconvert-231"><a href="#tckconvert-231"><span class="linenos">231</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ascii&quot;</span><span class="p">)</span>
-</span><span id="tckconvert-232"><a href="#tckconvert-232"><span class="linenos">232</span></a>    <span class="k">if</span> <span class="n">binary</span><span class="p">:</span>
-</span><span id="tckconvert-233"><a href="#tckconvert-233"><span class="linenos">233</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-binary&quot;</span><span class="p">)</span>
-</span><span id="tckconvert-234"><a href="#tckconvert-234"><span class="linenos">234</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="tckconvert-235"><a href="#tckconvert-235"><span class="linenos">235</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="tckconvert-236"><a href="#tckconvert-236"><span class="linenos">236</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="tckconvert-237"><a href="#tckconvert-237"><span class="linenos">237</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="tckconvert-238"><a href="#tckconvert-238"><span class="linenos">238</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="tckconvert-239"><a href="#tckconvert-239"><span class="linenos">239</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="tckconvert-240"><a href="#tckconvert-240"><span class="linenos">240</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="tckconvert-241"><a href="#tckconvert-241"><span class="linenos">241</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="tckconvert-242"><a href="#tckconvert-242"><span class="linenos">242</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckconvert-243"><a href="#tckconvert-243"><span class="linenos">243</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tckconvert-244"><a href="#tckconvert-244"><span class="linenos">244</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="tckconvert-245"><a href="#tckconvert-245"><span class="linenos">245</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="tckconvert-246"><a href="#tckconvert-246"><span class="linenos">246</span></a>        <span class="p">])</span>
-</span><span id="tckconvert-247"><a href="#tckconvert-247"><span class="linenos">247</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tckconvert-248"><a href="#tckconvert-248"><span class="linenos">248</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="tckconvert-249"><a href="#tckconvert-249"><span class="linenos">249</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="tckconvert-250"><a href="#tckconvert-250"><span class="linenos">250</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="tckconvert-251"><a href="#tckconvert-251"><span class="linenos">251</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="tckconvert-252"><a href="#tckconvert-252"><span class="linenos">252</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="tckconvert-253"><a href="#tckconvert-253"><span class="linenos">253</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="tckconvert-254"><a href="#tckconvert-254"><span class="linenos">254</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="tckconvert-255"><a href="#tckconvert-255"><span class="linenos">255</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckconvertOutputs</span><span class="p">(</span>
-</span><span id="tckconvert-256"><a href="#tckconvert-256"><span class="linenos">256</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="tckconvert-257"><a href="#tckconvert-257"><span class="linenos">257</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="tckconvert-258"><a href="#tckconvert-258"><span class="linenos">258</span></a>    <span class="p">)</span>
-</span><span id="tckconvert-259"><a href="#tckconvert-259"><span class="linenos">259</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="tckconvert-260"><a href="#tckconvert-260"><span class="linenos">260</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="tckconvert-157"><a href="#tckconvert-157"><span class="linenos">157</span></a><span class="sd">            image coordinates (in mm).</span>
+</span><span id="tckconvert-158"><a href="#tckconvert-158"><span class="linenos">158</span></a><span class="sd">        voxel2scanner: if specified, the properties of this image will be used\</span>
+</span><span id="tckconvert-159"><a href="#tckconvert-159"><span class="linenos">159</span></a><span class="sd">            to convert track point positions from voxel coordinates into real\</span>
+</span><span id="tckconvert-160"><a href="#tckconvert-160"><span class="linenos">160</span></a><span class="sd">            (scanner) coordinates.</span>
+</span><span id="tckconvert-161"><a href="#tckconvert-161"><span class="linenos">161</span></a><span class="sd">        image2scanner: if specified, the properties of this image will be used\</span>
+</span><span id="tckconvert-162"><a href="#tckconvert-162"><span class="linenos">162</span></a><span class="sd">            to convert track point positions from image coordinates (in mm) into\</span>
+</span><span id="tckconvert-163"><a href="#tckconvert-163"><span class="linenos">163</span></a><span class="sd">            real (scanner) coordinates.</span>
+</span><span id="tckconvert-164"><a href="#tckconvert-164"><span class="linenos">164</span></a><span class="sd">        sides: number of sides for streamlines.</span>
+</span><span id="tckconvert-165"><a href="#tckconvert-165"><span class="linenos">165</span></a><span class="sd">        increment: generate streamline points at every (increment) points.</span>
+</span><span id="tckconvert-166"><a href="#tckconvert-166"><span class="linenos">166</span></a><span class="sd">        dec: add DEC as a primvar.</span>
+</span><span id="tckconvert-167"><a href="#tckconvert-167"><span class="linenos">167</span></a><span class="sd">        radius: radius of the streamlines.</span>
+</span><span id="tckconvert-168"><a href="#tckconvert-168"><span class="linenos">168</span></a><span class="sd">        ascii_: write an ASCII VTK file (this is the default).</span>
+</span><span id="tckconvert-169"><a href="#tckconvert-169"><span class="linenos">169</span></a><span class="sd">        binary: write a binary VTK file.</span>
+</span><span id="tckconvert-170"><a href="#tckconvert-170"><span class="linenos">170</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="tckconvert-171"><a href="#tckconvert-171"><span class="linenos">171</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="tckconvert-172"><a href="#tckconvert-172"><span class="linenos">172</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="tckconvert-173"><a href="#tckconvert-173"><span class="linenos">173</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="tckconvert-174"><a href="#tckconvert-174"><span class="linenos">174</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="tckconvert-175"><a href="#tckconvert-175"><span class="linenos">175</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="tckconvert-176"><a href="#tckconvert-176"><span class="linenos">176</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="tckconvert-177"><a href="#tckconvert-177"><span class="linenos">177</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="tckconvert-178"><a href="#tckconvert-178"><span class="linenos">178</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="tckconvert-179"><a href="#tckconvert-179"><span class="linenos">179</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="tckconvert-180"><a href="#tckconvert-180"><span class="linenos">180</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="tckconvert-181"><a href="#tckconvert-181"><span class="linenos">181</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="tckconvert-182"><a href="#tckconvert-182"><span class="linenos">182</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="tckconvert-183"><a href="#tckconvert-183"><span class="linenos">183</span></a><span class="sd">    Returns:</span>
+</span><span id="tckconvert-184"><a href="#tckconvert-184"><span class="linenos">184</span></a><span class="sd">        NamedTuple of outputs (described in `TckconvertOutputs`).</span>
+</span><span id="tckconvert-185"><a href="#tckconvert-185"><span class="linenos">185</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="tckconvert-186"><a href="#tckconvert-186"><span class="linenos">186</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="tckconvert-187"><a href="#tckconvert-187"><span class="linenos">187</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCKCONVERT_METADATA</span><span class="p">)</span>
+</span><span id="tckconvert-188"><a href="#tckconvert-188"><span class="linenos">188</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="tckconvert-189"><a href="#tckconvert-189"><span class="linenos">189</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tckconvert&quot;</span><span class="p">)</span>
+</span><span id="tckconvert-190"><a href="#tckconvert-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">scanner2voxel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckconvert-191"><a href="#tckconvert-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckconvert-192"><a href="#tckconvert-192"><span class="linenos">192</span></a>            <span class="s2">&quot;-scanner2voxel&quot;</span><span class="p">,</span>
+</span><span id="tckconvert-193"><a href="#tckconvert-193"><span class="linenos">193</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scanner2voxel</span><span class="p">)</span>
+</span><span id="tckconvert-194"><a href="#tckconvert-194"><span class="linenos">194</span></a>        <span class="p">])</span>
+</span><span id="tckconvert-195"><a href="#tckconvert-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">scanner2image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckconvert-196"><a href="#tckconvert-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckconvert-197"><a href="#tckconvert-197"><span class="linenos">197</span></a>            <span class="s2">&quot;-scanner2image&quot;</span><span class="p">,</span>
+</span><span id="tckconvert-198"><a href="#tckconvert-198"><span class="linenos">198</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">scanner2image</span><span class="p">)</span>
+</span><span id="tckconvert-199"><a href="#tckconvert-199"><span class="linenos">199</span></a>        <span class="p">])</span>
+</span><span id="tckconvert-200"><a href="#tckconvert-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">voxel2scanner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckconvert-201"><a href="#tckconvert-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckconvert-202"><a href="#tckconvert-202"><span class="linenos">202</span></a>            <span class="s2">&quot;-voxel2scanner&quot;</span><span class="p">,</span>
+</span><span id="tckconvert-203"><a href="#tckconvert-203"><span class="linenos">203</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">voxel2scanner</span><span class="p">)</span>
+</span><span id="tckconvert-204"><a href="#tckconvert-204"><span class="linenos">204</span></a>        <span class="p">])</span>
+</span><span id="tckconvert-205"><a href="#tckconvert-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">image2scanner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckconvert-206"><a href="#tckconvert-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckconvert-207"><a href="#tckconvert-207"><span class="linenos">207</span></a>            <span class="s2">&quot;-image2scanner&quot;</span><span class="p">,</span>
+</span><span id="tckconvert-208"><a href="#tckconvert-208"><span class="linenos">208</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">image2scanner</span><span class="p">)</span>
+</span><span id="tckconvert-209"><a href="#tckconvert-209"><span class="linenos">209</span></a>        <span class="p">])</span>
+</span><span id="tckconvert-210"><a href="#tckconvert-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">sides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckconvert-211"><a href="#tckconvert-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckconvert-212"><a href="#tckconvert-212"><span class="linenos">212</span></a>            <span class="s2">&quot;-sides&quot;</span><span class="p">,</span>
+</span><span id="tckconvert-213"><a href="#tckconvert-213"><span class="linenos">213</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">sides</span><span class="p">)</span>
+</span><span id="tckconvert-214"><a href="#tckconvert-214"><span class="linenos">214</span></a>        <span class="p">])</span>
+</span><span id="tckconvert-215"><a href="#tckconvert-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">increment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckconvert-216"><a href="#tckconvert-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckconvert-217"><a href="#tckconvert-217"><span class="linenos">217</span></a>            <span class="s2">&quot;-increment&quot;</span><span class="p">,</span>
+</span><span id="tckconvert-218"><a href="#tckconvert-218"><span class="linenos">218</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">increment</span><span class="p">)</span>
+</span><span id="tckconvert-219"><a href="#tckconvert-219"><span class="linenos">219</span></a>        <span class="p">])</span>
+</span><span id="tckconvert-220"><a href="#tckconvert-220"><span class="linenos">220</span></a>    <span class="k">if</span> <span class="n">dec</span><span class="p">:</span>
+</span><span id="tckconvert-221"><a href="#tckconvert-221"><span class="linenos">221</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-dec&quot;</span><span class="p">)</span>
+</span><span id="tckconvert-222"><a href="#tckconvert-222"><span class="linenos">222</span></a>    <span class="k">if</span> <span class="n">radius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckconvert-223"><a href="#tckconvert-223"><span class="linenos">223</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckconvert-224"><a href="#tckconvert-224"><span class="linenos">224</span></a>            <span class="s2">&quot;-radius&quot;</span><span class="p">,</span>
+</span><span id="tckconvert-225"><a href="#tckconvert-225"><span class="linenos">225</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+</span><span id="tckconvert-226"><a href="#tckconvert-226"><span class="linenos">226</span></a>        <span class="p">])</span>
+</span><span id="tckconvert-227"><a href="#tckconvert-227"><span class="linenos">227</span></a>    <span class="k">if</span> <span class="n">ascii_</span><span class="p">:</span>
+</span><span id="tckconvert-228"><a href="#tckconvert-228"><span class="linenos">228</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-ascii&quot;</span><span class="p">)</span>
+</span><span id="tckconvert-229"><a href="#tckconvert-229"><span class="linenos">229</span></a>    <span class="k">if</span> <span class="n">binary</span><span class="p">:</span>
+</span><span id="tckconvert-230"><a href="#tckconvert-230"><span class="linenos">230</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-binary&quot;</span><span class="p">)</span>
+</span><span id="tckconvert-231"><a href="#tckconvert-231"><span class="linenos">231</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="tckconvert-232"><a href="#tckconvert-232"><span class="linenos">232</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="tckconvert-233"><a href="#tckconvert-233"><span class="linenos">233</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="tckconvert-234"><a href="#tckconvert-234"><span class="linenos">234</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="tckconvert-235"><a href="#tckconvert-235"><span class="linenos">235</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="tckconvert-236"><a href="#tckconvert-236"><span class="linenos">236</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="tckconvert-237"><a href="#tckconvert-237"><span class="linenos">237</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="tckconvert-238"><a href="#tckconvert-238"><span class="linenos">238</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="tckconvert-239"><a href="#tckconvert-239"><span class="linenos">239</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckconvert-240"><a href="#tckconvert-240"><span class="linenos">240</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tckconvert-241"><a href="#tckconvert-241"><span class="linenos">241</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="tckconvert-242"><a href="#tckconvert-242"><span class="linenos">242</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="tckconvert-243"><a href="#tckconvert-243"><span class="linenos">243</span></a>        <span class="p">])</span>
+</span><span id="tckconvert-244"><a href="#tckconvert-244"><span class="linenos">244</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tckconvert-245"><a href="#tckconvert-245"><span class="linenos">245</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="tckconvert-246"><a href="#tckconvert-246"><span class="linenos">246</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="tckconvert-247"><a href="#tckconvert-247"><span class="linenos">247</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="tckconvert-248"><a href="#tckconvert-248"><span class="linenos">248</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="tckconvert-249"><a href="#tckconvert-249"><span class="linenos">249</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="tckconvert-250"><a href="#tckconvert-250"><span class="linenos">250</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="tckconvert-251"><a href="#tckconvert-251"><span class="linenos">251</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="tckconvert-252"><a href="#tckconvert-252"><span class="linenos">252</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TckconvertOutputs</span><span class="p">(</span>
+</span><span id="tckconvert-253"><a href="#tckconvert-253"><span class="linenos">253</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="tckconvert-254"><a href="#tckconvert-254"><span class="linenos">254</span></a>        <span class="n">output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="tckconvert-255"><a href="#tckconvert-255"><span class="linenos">255</span></a>    <span class="p">)</span>
+</span><span id="tckconvert-256"><a href="#tckconvert-256"><span class="linenos">256</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="tckconvert-257"><a href="#tckconvert-257"><span class="linenos">257</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -1018,12 +1012,9 @@ example:</p>
 
 <p>.</p>
 
-<p>Author: Daan Christiaens (daan.christiaens@kcl.ac.uk), J-Donald Tournier
-(jdtournier@gmail.com), Philip Broser (philip.broser@me.com), Daniel Blezek
-(daniel.blezek@gmail.com).</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/tckconvert.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/tckconvert.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

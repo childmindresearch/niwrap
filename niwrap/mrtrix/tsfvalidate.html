@@ -96,7 +96,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TSFVALIDATE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d28ca26eb235589fbfbc7fc1f5f5041ada24dad1.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;9cbd2feb99692133f28747c96ab73eb720860a6a.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tsfvalidate&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;mrtrix&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mrtrix3/mrtrix3:3.0.4&quot;</span><span class="p">,</span>
@@ -162,68 +162,67 @@
 </span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">    </span>
 </span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    .</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    </span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    </span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    URL:</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfvalidate.html</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    </span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    Args:</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        tsf: the input track scalar file.</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        tracks: the track file on which the TSF is based.</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">    Returns:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        NamedTuple of outputs (described in `TsfvalidateOutputs`).</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TSFVALIDATE_METADATA</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tsfvalidate&quot;</span><span class="p">)</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="p">])</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tsf</span><span class="p">))</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tracks</span><span class="p">))</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TsfvalidateOutputs</span><span class="p">(</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="p">)</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    </span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    Args:</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        tsf: the input track scalar file.</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        tracks: the track file on which the TSF is based.</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    Returns:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        NamedTuple of outputs (described in `TsfvalidateOutputs`).</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TSFVALIDATE_METADATA</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tsfvalidate&quot;</span><span class="p">)</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="p">])</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tsf</span><span class="p">))</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tracks</span><span class="p">))</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TsfvalidateOutputs</span><span class="p">(</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="p">)</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>
 </span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="s2">&quot;TSFVALIDATE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="s2">&quot;TsfvalidateConfig&quot;</span><span class="p">,</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="s2">&quot;TsfvalidateOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="s2">&quot;tsfvalidate&quot;</span><span class="p">,</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="p">]</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="s2">&quot;TSFVALIDATE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="s2">&quot;TsfvalidateConfig&quot;</span><span class="p">,</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="s2">&quot;TsfvalidateOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="s2">&quot;tsfvalidate&quot;</span><span class="p">,</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -232,7 +231,7 @@
                     <div class="attr variable">
             <span class="name">TSFVALIDATE_METADATA</span>        =
 <input id="TSFVALIDATE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TSFVALIDATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d28ca26eb235589fbfbc7fc1f5f5041ada24dad1.boutiques&#39;, name=&#39;tsfvalidate&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TSFVALIDATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;9cbd2feb99692133f28747c96ab73eb720860a6a.boutiques&#39;, name=&#39;tsfvalidate&#39;, package=&#39;mrtrix&#39;, citations=None, container_image_tag=&#39;mrtrix3/mrtrix3:3.0.4&#39;)</span>
 
         
     </div>
@@ -459,60 +458,59 @@
 </span><span id="tsfvalidate-74"><a href="#tsfvalidate-74"><span class="linenos"> 74</span></a><span class="sd">    </span>
 </span><span id="tsfvalidate-75"><a href="#tsfvalidate-75"><span class="linenos"> 75</span></a><span class="sd">    .</span>
 </span><span id="tsfvalidate-76"><a href="#tsfvalidate-76"><span class="linenos"> 76</span></a><span class="sd">    </span>
-</span><span id="tsfvalidate-77"><a href="#tsfvalidate-77"><span class="linenos"> 77</span></a><span class="sd">    Author: Robert E. Smith (robert.smith@florey.edu.au)</span>
+</span><span id="tsfvalidate-77"><a href="#tsfvalidate-77"><span class="linenos"> 77</span></a><span class="sd">    Author: MRTrix3 Developers</span>
 </span><span id="tsfvalidate-78"><a href="#tsfvalidate-78"><span class="linenos"> 78</span></a><span class="sd">    </span>
-</span><span id="tsfvalidate-79"><a href="#tsfvalidate-79"><span class="linenos"> 79</span></a><span class="sd">    URL:</span>
-</span><span id="tsfvalidate-80"><a href="#tsfvalidate-80"><span class="linenos"> 80</span></a><span class="sd">    https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfvalidate.html</span>
-</span><span id="tsfvalidate-81"><a href="#tsfvalidate-81"><span class="linenos"> 81</span></a><span class="sd">    </span>
-</span><span id="tsfvalidate-82"><a href="#tsfvalidate-82"><span class="linenos"> 82</span></a><span class="sd">    Args:</span>
-</span><span id="tsfvalidate-83"><a href="#tsfvalidate-83"><span class="linenos"> 83</span></a><span class="sd">        tsf: the input track scalar file.</span>
-</span><span id="tsfvalidate-84"><a href="#tsfvalidate-84"><span class="linenos"> 84</span></a><span class="sd">        tracks: the track file on which the TSF is based.</span>
-</span><span id="tsfvalidate-85"><a href="#tsfvalidate-85"><span class="linenos"> 85</span></a><span class="sd">        info: display information messages.</span>
-</span><span id="tsfvalidate-86"><a href="#tsfvalidate-86"><span class="linenos"> 86</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
-</span><span id="tsfvalidate-87"><a href="#tsfvalidate-87"><span class="linenos"> 87</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
-</span><span id="tsfvalidate-88"><a href="#tsfvalidate-88"><span class="linenos"> 88</span></a><span class="sd">            environment variable to a non-empty string.</span>
-</span><span id="tsfvalidate-89"><a href="#tsfvalidate-89"><span class="linenos"> 89</span></a><span class="sd">        debug: display debugging messages.</span>
-</span><span id="tsfvalidate-90"><a href="#tsfvalidate-90"><span class="linenos"> 90</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
-</span><span id="tsfvalidate-91"><a href="#tsfvalidate-91"><span class="linenos"> 91</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
-</span><span id="tsfvalidate-92"><a href="#tsfvalidate-92"><span class="linenos"> 92</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
-</span><span id="tsfvalidate-93"><a href="#tsfvalidate-93"><span class="linenos"> 93</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
-</span><span id="tsfvalidate-94"><a href="#tsfvalidate-94"><span class="linenos"> 94</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
-</span><span id="tsfvalidate-95"><a href="#tsfvalidate-95"><span class="linenos"> 95</span></a><span class="sd">        help_: display this information page and exit.</span>
-</span><span id="tsfvalidate-96"><a href="#tsfvalidate-96"><span class="linenos"> 96</span></a><span class="sd">        version: display version information and exit.</span>
-</span><span id="tsfvalidate-97"><a href="#tsfvalidate-97"><span class="linenos"> 97</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="tsfvalidate-98"><a href="#tsfvalidate-98"><span class="linenos"> 98</span></a><span class="sd">    Returns:</span>
-</span><span id="tsfvalidate-99"><a href="#tsfvalidate-99"><span class="linenos"> 99</span></a><span class="sd">        NamedTuple of outputs (described in `TsfvalidateOutputs`).</span>
-</span><span id="tsfvalidate-100"><a href="#tsfvalidate-100"><span class="linenos">100</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="tsfvalidate-101"><a href="#tsfvalidate-101"><span class="linenos">101</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="tsfvalidate-102"><a href="#tsfvalidate-102"><span class="linenos">102</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TSFVALIDATE_METADATA</span><span class="p">)</span>
-</span><span id="tsfvalidate-103"><a href="#tsfvalidate-103"><span class="linenos">103</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="tsfvalidate-104"><a href="#tsfvalidate-104"><span class="linenos">104</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tsfvalidate&quot;</span><span class="p">)</span>
-</span><span id="tsfvalidate-105"><a href="#tsfvalidate-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
-</span><span id="tsfvalidate-106"><a href="#tsfvalidate-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
-</span><span id="tsfvalidate-107"><a href="#tsfvalidate-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span id="tsfvalidate-108"><a href="#tsfvalidate-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
-</span><span id="tsfvalidate-109"><a href="#tsfvalidate-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="tsfvalidate-110"><a href="#tsfvalidate-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
-</span><span id="tsfvalidate-111"><a href="#tsfvalidate-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-</span><span id="tsfvalidate-112"><a href="#tsfvalidate-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
-</span><span id="tsfvalidate-113"><a href="#tsfvalidate-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tsfvalidate-114"><a href="#tsfvalidate-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="tsfvalidate-115"><a href="#tsfvalidate-115"><span class="linenos">115</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
-</span><span id="tsfvalidate-116"><a href="#tsfvalidate-116"><span class="linenos">116</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
-</span><span id="tsfvalidate-117"><a href="#tsfvalidate-117"><span class="linenos">117</span></a>        <span class="p">])</span>
-</span><span id="tsfvalidate-118"><a href="#tsfvalidate-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="tsfvalidate-119"><a href="#tsfvalidate-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="tsfvalidate-120"><a href="#tsfvalidate-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="tsfvalidate-121"><a href="#tsfvalidate-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="tsfvalidate-122"><a href="#tsfvalidate-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
-</span><span id="tsfvalidate-123"><a href="#tsfvalidate-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
-</span><span id="tsfvalidate-124"><a href="#tsfvalidate-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tsf</span><span class="p">))</span>
-</span><span id="tsfvalidate-125"><a href="#tsfvalidate-125"><span class="linenos">125</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tracks</span><span class="p">))</span>
-</span><span id="tsfvalidate-126"><a href="#tsfvalidate-126"><span class="linenos">126</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TsfvalidateOutputs</span><span class="p">(</span>
-</span><span id="tsfvalidate-127"><a href="#tsfvalidate-127"><span class="linenos">127</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="tsfvalidate-128"><a href="#tsfvalidate-128"><span class="linenos">128</span></a>    <span class="p">)</span>
-</span><span id="tsfvalidate-129"><a href="#tsfvalidate-129"><span class="linenos">129</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="tsfvalidate-130"><a href="#tsfvalidate-130"><span class="linenos">130</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="tsfvalidate-79"><a href="#tsfvalidate-79"><span class="linenos"> 79</span></a><span class="sd">    URL: https://www.mrtrix.org/</span>
+</span><span id="tsfvalidate-80"><a href="#tsfvalidate-80"><span class="linenos"> 80</span></a><span class="sd">    </span>
+</span><span id="tsfvalidate-81"><a href="#tsfvalidate-81"><span class="linenos"> 81</span></a><span class="sd">    Args:</span>
+</span><span id="tsfvalidate-82"><a href="#tsfvalidate-82"><span class="linenos"> 82</span></a><span class="sd">        tsf: the input track scalar file.</span>
+</span><span id="tsfvalidate-83"><a href="#tsfvalidate-83"><span class="linenos"> 83</span></a><span class="sd">        tracks: the track file on which the TSF is based.</span>
+</span><span id="tsfvalidate-84"><a href="#tsfvalidate-84"><span class="linenos"> 84</span></a><span class="sd">        info: display information messages.</span>
+</span><span id="tsfvalidate-85"><a href="#tsfvalidate-85"><span class="linenos"> 85</span></a><span class="sd">        quiet: do not display information messages or progress status;\</span>
+</span><span id="tsfvalidate-86"><a href="#tsfvalidate-86"><span class="linenos"> 86</span></a><span class="sd">            alternatively, this can be achieved by setting the MRTRIX_QUIET\</span>
+</span><span id="tsfvalidate-87"><a href="#tsfvalidate-87"><span class="linenos"> 87</span></a><span class="sd">            environment variable to a non-empty string.</span>
+</span><span id="tsfvalidate-88"><a href="#tsfvalidate-88"><span class="linenos"> 88</span></a><span class="sd">        debug: display debugging messages.</span>
+</span><span id="tsfvalidate-89"><a href="#tsfvalidate-89"><span class="linenos"> 89</span></a><span class="sd">        force: force overwrite of output files (caution: using the same file as\</span>
+</span><span id="tsfvalidate-90"><a href="#tsfvalidate-90"><span class="linenos"> 90</span></a><span class="sd">            input and output might cause unexpected behaviour).</span>
+</span><span id="tsfvalidate-91"><a href="#tsfvalidate-91"><span class="linenos"> 91</span></a><span class="sd">        nthreads: use this number of threads in multi-threaded applications\</span>
+</span><span id="tsfvalidate-92"><a href="#tsfvalidate-92"><span class="linenos"> 92</span></a><span class="sd">            (set to 0 to disable multi-threading).</span>
+</span><span id="tsfvalidate-93"><a href="#tsfvalidate-93"><span class="linenos"> 93</span></a><span class="sd">        config: temporarily set the value of an MRtrix config file entry.</span>
+</span><span id="tsfvalidate-94"><a href="#tsfvalidate-94"><span class="linenos"> 94</span></a><span class="sd">        help_: display this information page and exit.</span>
+</span><span id="tsfvalidate-95"><a href="#tsfvalidate-95"><span class="linenos"> 95</span></a><span class="sd">        version: display version information and exit.</span>
+</span><span id="tsfvalidate-96"><a href="#tsfvalidate-96"><span class="linenos"> 96</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="tsfvalidate-97"><a href="#tsfvalidate-97"><span class="linenos"> 97</span></a><span class="sd">    Returns:</span>
+</span><span id="tsfvalidate-98"><a href="#tsfvalidate-98"><span class="linenos"> 98</span></a><span class="sd">        NamedTuple of outputs (described in `TsfvalidateOutputs`).</span>
+</span><span id="tsfvalidate-99"><a href="#tsfvalidate-99"><span class="linenos"> 99</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="tsfvalidate-100"><a href="#tsfvalidate-100"><span class="linenos">100</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="tsfvalidate-101"><a href="#tsfvalidate-101"><span class="linenos">101</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TSFVALIDATE_METADATA</span><span class="p">)</span>
+</span><span id="tsfvalidate-102"><a href="#tsfvalidate-102"><span class="linenos">102</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="tsfvalidate-103"><a href="#tsfvalidate-103"><span class="linenos">103</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tsfvalidate&quot;</span><span class="p">)</span>
+</span><span id="tsfvalidate-104"><a href="#tsfvalidate-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+</span><span id="tsfvalidate-105"><a href="#tsfvalidate-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-info&quot;</span><span class="p">)</span>
+</span><span id="tsfvalidate-106"><a href="#tsfvalidate-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span id="tsfvalidate-107"><a href="#tsfvalidate-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-quiet&quot;</span><span class="p">)</span>
+</span><span id="tsfvalidate-108"><a href="#tsfvalidate-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="tsfvalidate-109"><a href="#tsfvalidate-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-debug&quot;</span><span class="p">)</span>
+</span><span id="tsfvalidate-110"><a href="#tsfvalidate-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+</span><span id="tsfvalidate-111"><a href="#tsfvalidate-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-force&quot;</span><span class="p">)</span>
+</span><span id="tsfvalidate-112"><a href="#tsfvalidate-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tsfvalidate-113"><a href="#tsfvalidate-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="tsfvalidate-114"><a href="#tsfvalidate-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-nthreads&quot;</span><span class="p">,</span>
+</span><span id="tsfvalidate-115"><a href="#tsfvalidate-115"><span class="linenos">115</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+</span><span id="tsfvalidate-116"><a href="#tsfvalidate-116"><span class="linenos">116</span></a>        <span class="p">])</span>
+</span><span id="tsfvalidate-117"><a href="#tsfvalidate-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="tsfvalidate-118"><a href="#tsfvalidate-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">config</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="tsfvalidate-119"><a href="#tsfvalidate-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="tsfvalidate-120"><a href="#tsfvalidate-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="tsfvalidate-121"><a href="#tsfvalidate-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+</span><span id="tsfvalidate-122"><a href="#tsfvalidate-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-version&quot;</span><span class="p">)</span>
+</span><span id="tsfvalidate-123"><a href="#tsfvalidate-123"><span class="linenos">123</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tsf</span><span class="p">))</span>
+</span><span id="tsfvalidate-124"><a href="#tsfvalidate-124"><span class="linenos">124</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">tracks</span><span class="p">))</span>
+</span><span id="tsfvalidate-125"><a href="#tsfvalidate-125"><span class="linenos">125</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">TsfvalidateOutputs</span><span class="p">(</span>
+</span><span id="tsfvalidate-126"><a href="#tsfvalidate-126"><span class="linenos">126</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="tsfvalidate-127"><a href="#tsfvalidate-127"><span class="linenos">127</span></a>    <span class="p">)</span>
+</span><span id="tsfvalidate-128"><a href="#tsfvalidate-128"><span class="linenos">128</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="tsfvalidate-129"><a href="#tsfvalidate-129"><span class="linenos">129</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -522,10 +520,9 @@
 
 <p>.</p>
 
-<p>Author: Robert E. Smith (robert.smith@florey.edu.au)</p>
+<p>Author: MRTrix3 Developers</p>
 
-<p>URL:
-<a href="https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfvalidate.html">https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfvalidate.html</a></p>
+<p>URL: <a href="https://www.mrtrix.org/">https://www.mrtrix.org/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

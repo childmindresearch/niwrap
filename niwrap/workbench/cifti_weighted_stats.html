@@ -126,7 +126,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CIFTI_WEIGHTED_STATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;05ac317792e4964ce1a97593a366626541fba245.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;edeab170e531d01e9aebad488e0d30cf55eb5085.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cifti-weighted-stats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -274,76 +274,78 @@
 </span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">    respect to area and volume. When the input is binary ROIs, this will</span>
 </span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">    therefore output the area or volume of each ROI.</span>
 </span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    </span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    </span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    Args:</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">        cifti_in: the input cifti.</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">        spatial_weights: use vertex area and voxel volume as weights.</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        opt_cifti_weights_weight_cifti: use a cifti file containing weights:\</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">            the weights to use, as a cifti file.</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        opt_column_column: only display output for one column: the column to\</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">            use (1-based).</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        roi: only consider data inside an roi.</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        opt_stdev: compute weighted standard deviation.</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        opt_sample: estimate population stdev from the sample.</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">            find, must be between 0 and 100.</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    Returns:</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiWeightedStatsOutputs`).</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-weighted-stats&quot;</span><span class="p">)</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">spatial_weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">spatial_weights</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">opt_cifti_weights_weight_cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>            <span class="s2">&quot;-cifti-weights&quot;</span><span class="p">,</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_cifti_weights_weight_cifti</span><span class="p">)</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="p">])</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_column_column</span><span class="p">)</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="p">])</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">opt_stdev</span><span class="p">:</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">opt_sample</span><span class="p">:</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
-</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>        <span class="p">])</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
-</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
-</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiWeightedStatsOutputs</span><span class="p">(</span>
-</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="p">)</span>
-</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>    <span class="s2">&quot;CIFTI_WEIGHTED_STATS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>    <span class="s2">&quot;CiftiWeightedStatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="s2">&quot;CiftiWeightedStatsRoi&quot;</span><span class="p">,</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="s2">&quot;CiftiWeightedStatsSpatialWeights&quot;</span><span class="p">,</span>
-</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="s2">&quot;cifti_weighted_stats&quot;</span><span class="p">,</span>
-</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="p">]</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="sd">    </span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="sd">    Args:</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="sd">        cifti_in: the input cifti.</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="sd">        spatial_weights: use vertex area and voxel volume as weights.</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="sd">        opt_cifti_weights_weight_cifti: use a cifti file containing weights:\</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="sd">            the weights to use, as a cifti file.</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a><span class="sd">        opt_column_column: only display output for one column: the column to\</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="sd">            use (1-based).</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="sd">        roi: only consider data inside an roi.</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="sd">        opt_stdev: compute weighted standard deviation.</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">        opt_sample: estimate population stdev from the sample.</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">            find, must be between 0 and 100.</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    Returns:</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiWeightedStatsOutputs`).</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-weighted-stats&quot;</span><span class="p">)</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">spatial_weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">spatial_weights</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">opt_cifti_weights_weight_cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>            <span class="s2">&quot;-cifti-weights&quot;</span><span class="p">,</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_cifti_weights_weight_cifti</span><span class="p">)</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="p">])</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_column_column</span><span class="p">)</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="p">])</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>    <span class="k">if</span> <span class="n">opt_stdev</span><span class="p">:</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
+</span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>    <span class="k">if</span> <span class="n">opt_sample</span><span class="p">:</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>        <span class="p">])</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
+</span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiWeightedStatsOutputs</span><span class="p">(</span>
+</span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>    <span class="p">)</span>
+</span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>
+</span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>    <span class="s2">&quot;CIFTI_WEIGHTED_STATS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a>    <span class="s2">&quot;CiftiWeightedStatsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="s2">&quot;CiftiWeightedStatsRoi&quot;</span><span class="p">,</span>
+</span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>    <span class="s2">&quot;CiftiWeightedStatsSpatialWeights&quot;</span><span class="p">,</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>    <span class="s2">&quot;cifti_weighted_stats&quot;</span><span class="p">,</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -352,7 +354,7 @@
                     <div class="attr variable">
             <span class="name">CIFTI_WEIGHTED_STATS_METADATA</span>        =
 <input id="CIFTI_WEIGHTED_STATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CIFTI_WEIGHTED_STATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;05ac317792e4964ce1a97593a366626541fba245.boutiques&#39;, name=&#39;cifti-weighted-stats&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CIFTI_WEIGHTED_STATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;edeab170e531d01e9aebad488e0d30cf55eb5085.boutiques&#39;, name=&#39;cifti-weighted-stats&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -859,67 +861,69 @@ cerebellum vertex areas</p>
 </span><span id="cifti_weighted_stats-156"><a href="#cifti_weighted_stats-156"><span class="linenos">156</span></a><span class="sd">    respect to area and volume. When the input is binary ROIs, this will</span>
 </span><span id="cifti_weighted_stats-157"><a href="#cifti_weighted_stats-157"><span class="linenos">157</span></a><span class="sd">    therefore output the area or volume of each ROI.</span>
 </span><span id="cifti_weighted_stats-158"><a href="#cifti_weighted_stats-158"><span class="linenos">158</span></a><span class="sd">    </span>
-</span><span id="cifti_weighted_stats-159"><a href="#cifti_weighted_stats-159"><span class="linenos">159</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="cifti_weighted_stats-159"><a href="#cifti_weighted_stats-159"><span class="linenos">159</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="cifti_weighted_stats-160"><a href="#cifti_weighted_stats-160"><span class="linenos">160</span></a><span class="sd">    </span>
-</span><span id="cifti_weighted_stats-161"><a href="#cifti_weighted_stats-161"><span class="linenos">161</span></a><span class="sd">    Args:</span>
-</span><span id="cifti_weighted_stats-162"><a href="#cifti_weighted_stats-162"><span class="linenos">162</span></a><span class="sd">        cifti_in: the input cifti.</span>
-</span><span id="cifti_weighted_stats-163"><a href="#cifti_weighted_stats-163"><span class="linenos">163</span></a><span class="sd">        spatial_weights: use vertex area and voxel volume as weights.</span>
-</span><span id="cifti_weighted_stats-164"><a href="#cifti_weighted_stats-164"><span class="linenos">164</span></a><span class="sd">        opt_cifti_weights_weight_cifti: use a cifti file containing weights:\</span>
-</span><span id="cifti_weighted_stats-165"><a href="#cifti_weighted_stats-165"><span class="linenos">165</span></a><span class="sd">            the weights to use, as a cifti file.</span>
-</span><span id="cifti_weighted_stats-166"><a href="#cifti_weighted_stats-166"><span class="linenos">166</span></a><span class="sd">        opt_column_column: only display output for one column: the column to\</span>
-</span><span id="cifti_weighted_stats-167"><a href="#cifti_weighted_stats-167"><span class="linenos">167</span></a><span class="sd">            use (1-based).</span>
-</span><span id="cifti_weighted_stats-168"><a href="#cifti_weighted_stats-168"><span class="linenos">168</span></a><span class="sd">        roi: only consider data inside an roi.</span>
-</span><span id="cifti_weighted_stats-169"><a href="#cifti_weighted_stats-169"><span class="linenos">169</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
-</span><span id="cifti_weighted_stats-170"><a href="#cifti_weighted_stats-170"><span class="linenos">170</span></a><span class="sd">        opt_stdev: compute weighted standard deviation.</span>
-</span><span id="cifti_weighted_stats-171"><a href="#cifti_weighted_stats-171"><span class="linenos">171</span></a><span class="sd">        opt_sample: estimate population stdev from the sample.</span>
-</span><span id="cifti_weighted_stats-172"><a href="#cifti_weighted_stats-172"><span class="linenos">172</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
-</span><span id="cifti_weighted_stats-173"><a href="#cifti_weighted_stats-173"><span class="linenos">173</span></a><span class="sd">            find, must be between 0 and 100.</span>
-</span><span id="cifti_weighted_stats-174"><a href="#cifti_weighted_stats-174"><span class="linenos">174</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
-</span><span id="cifti_weighted_stats-175"><a href="#cifti_weighted_stats-175"><span class="linenos">175</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
-</span><span id="cifti_weighted_stats-176"><a href="#cifti_weighted_stats-176"><span class="linenos">176</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="cifti_weighted_stats-177"><a href="#cifti_weighted_stats-177"><span class="linenos">177</span></a><span class="sd">    Returns:</span>
-</span><span id="cifti_weighted_stats-178"><a href="#cifti_weighted_stats-178"><span class="linenos">178</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiWeightedStatsOutputs`).</span>
-</span><span id="cifti_weighted_stats-179"><a href="#cifti_weighted_stats-179"><span class="linenos">179</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cifti_weighted_stats-180"><a href="#cifti_weighted_stats-180"><span class="linenos">180</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="cifti_weighted_stats-181"><a href="#cifti_weighted_stats-181"><span class="linenos">181</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-182"><a href="#cifti_weighted_stats-182"><span class="linenos">182</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="cifti_weighted_stats-183"><a href="#cifti_weighted_stats-183"><span class="linenos">183</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-184"><a href="#cifti_weighted_stats-184"><span class="linenos">184</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-weighted-stats&quot;</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-185"><a href="#cifti_weighted_stats-185"><span class="linenos">185</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
-</span><span id="cifti_weighted_stats-186"><a href="#cifti_weighted_stats-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">spatial_weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_weighted_stats-187"><a href="#cifti_weighted_stats-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">spatial_weights</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_weighted_stats-188"><a href="#cifti_weighted_stats-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">opt_cifti_weights_weight_cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_weighted_stats-189"><a href="#cifti_weighted_stats-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_weighted_stats-190"><a href="#cifti_weighted_stats-190"><span class="linenos">190</span></a>            <span class="s2">&quot;-cifti-weights&quot;</span><span class="p">,</span>
-</span><span id="cifti_weighted_stats-191"><a href="#cifti_weighted_stats-191"><span class="linenos">191</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_cifti_weights_weight_cifti</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-192"><a href="#cifti_weighted_stats-192"><span class="linenos">192</span></a>        <span class="p">])</span>
-</span><span id="cifti_weighted_stats-193"><a href="#cifti_weighted_stats-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_weighted_stats-194"><a href="#cifti_weighted_stats-194"><span class="linenos">194</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_weighted_stats-195"><a href="#cifti_weighted_stats-195"><span class="linenos">195</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
-</span><span id="cifti_weighted_stats-196"><a href="#cifti_weighted_stats-196"><span class="linenos">196</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_column_column</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-197"><a href="#cifti_weighted_stats-197"><span class="linenos">197</span></a>        <span class="p">])</span>
-</span><span id="cifti_weighted_stats-198"><a href="#cifti_weighted_stats-198"><span class="linenos">198</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_weighted_stats-199"><a href="#cifti_weighted_stats-199"><span class="linenos">199</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="cifti_weighted_stats-200"><a href="#cifti_weighted_stats-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
-</span><span id="cifti_weighted_stats-201"><a href="#cifti_weighted_stats-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-202"><a href="#cifti_weighted_stats-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">opt_stdev</span><span class="p">:</span>
-</span><span id="cifti_weighted_stats-203"><a href="#cifti_weighted_stats-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-204"><a href="#cifti_weighted_stats-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">opt_sample</span><span class="p">:</span>
-</span><span id="cifti_weighted_stats-205"><a href="#cifti_weighted_stats-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-206"><a href="#cifti_weighted_stats-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="cifti_weighted_stats-207"><a href="#cifti_weighted_stats-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="cifti_weighted_stats-208"><a href="#cifti_weighted_stats-208"><span class="linenos">208</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
-</span><span id="cifti_weighted_stats-209"><a href="#cifti_weighted_stats-209"><span class="linenos">209</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-210"><a href="#cifti_weighted_stats-210"><span class="linenos">210</span></a>        <span class="p">])</span>
-</span><span id="cifti_weighted_stats-211"><a href="#cifti_weighted_stats-211"><span class="linenos">211</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
-</span><span id="cifti_weighted_stats-212"><a href="#cifti_weighted_stats-212"><span class="linenos">212</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-213"><a href="#cifti_weighted_stats-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
-</span><span id="cifti_weighted_stats-214"><a href="#cifti_weighted_stats-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-215"><a href="#cifti_weighted_stats-215"><span class="linenos">215</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiWeightedStatsOutputs</span><span class="p">(</span>
-</span><span id="cifti_weighted_stats-216"><a href="#cifti_weighted_stats-216"><span class="linenos">216</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="cifti_weighted_stats-217"><a href="#cifti_weighted_stats-217"><span class="linenos">217</span></a>    <span class="p">)</span>
-</span><span id="cifti_weighted_stats-218"><a href="#cifti_weighted_stats-218"><span class="linenos">218</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="cifti_weighted_stats-219"><a href="#cifti_weighted_stats-219"><span class="linenos">219</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="cifti_weighted_stats-161"><a href="#cifti_weighted_stats-161"><span class="linenos">161</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="cifti_weighted_stats-162"><a href="#cifti_weighted_stats-162"><span class="linenos">162</span></a><span class="sd">    </span>
+</span><span id="cifti_weighted_stats-163"><a href="#cifti_weighted_stats-163"><span class="linenos">163</span></a><span class="sd">    Args:</span>
+</span><span id="cifti_weighted_stats-164"><a href="#cifti_weighted_stats-164"><span class="linenos">164</span></a><span class="sd">        cifti_in: the input cifti.</span>
+</span><span id="cifti_weighted_stats-165"><a href="#cifti_weighted_stats-165"><span class="linenos">165</span></a><span class="sd">        spatial_weights: use vertex area and voxel volume as weights.</span>
+</span><span id="cifti_weighted_stats-166"><a href="#cifti_weighted_stats-166"><span class="linenos">166</span></a><span class="sd">        opt_cifti_weights_weight_cifti: use a cifti file containing weights:\</span>
+</span><span id="cifti_weighted_stats-167"><a href="#cifti_weighted_stats-167"><span class="linenos">167</span></a><span class="sd">            the weights to use, as a cifti file.</span>
+</span><span id="cifti_weighted_stats-168"><a href="#cifti_weighted_stats-168"><span class="linenos">168</span></a><span class="sd">        opt_column_column: only display output for one column: the column to\</span>
+</span><span id="cifti_weighted_stats-169"><a href="#cifti_weighted_stats-169"><span class="linenos">169</span></a><span class="sd">            use (1-based).</span>
+</span><span id="cifti_weighted_stats-170"><a href="#cifti_weighted_stats-170"><span class="linenos">170</span></a><span class="sd">        roi: only consider data inside an roi.</span>
+</span><span id="cifti_weighted_stats-171"><a href="#cifti_weighted_stats-171"><span class="linenos">171</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
+</span><span id="cifti_weighted_stats-172"><a href="#cifti_weighted_stats-172"><span class="linenos">172</span></a><span class="sd">        opt_stdev: compute weighted standard deviation.</span>
+</span><span id="cifti_weighted_stats-173"><a href="#cifti_weighted_stats-173"><span class="linenos">173</span></a><span class="sd">        opt_sample: estimate population stdev from the sample.</span>
+</span><span id="cifti_weighted_stats-174"><a href="#cifti_weighted_stats-174"><span class="linenos">174</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
+</span><span id="cifti_weighted_stats-175"><a href="#cifti_weighted_stats-175"><span class="linenos">175</span></a><span class="sd">            find, must be between 0 and 100.</span>
+</span><span id="cifti_weighted_stats-176"><a href="#cifti_weighted_stats-176"><span class="linenos">176</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
+</span><span id="cifti_weighted_stats-177"><a href="#cifti_weighted_stats-177"><span class="linenos">177</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
+</span><span id="cifti_weighted_stats-178"><a href="#cifti_weighted_stats-178"><span class="linenos">178</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="cifti_weighted_stats-179"><a href="#cifti_weighted_stats-179"><span class="linenos">179</span></a><span class="sd">    Returns:</span>
+</span><span id="cifti_weighted_stats-180"><a href="#cifti_weighted_stats-180"><span class="linenos">180</span></a><span class="sd">        NamedTuple of outputs (described in `CiftiWeightedStatsOutputs`).</span>
+</span><span id="cifti_weighted_stats-181"><a href="#cifti_weighted_stats-181"><span class="linenos">181</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cifti_weighted_stats-182"><a href="#cifti_weighted_stats-182"><span class="linenos">182</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="cifti_weighted_stats-183"><a href="#cifti_weighted_stats-183"><span class="linenos">183</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CIFTI_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-184"><a href="#cifti_weighted_stats-184"><span class="linenos">184</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="cifti_weighted_stats-185"><a href="#cifti_weighted_stats-185"><span class="linenos">185</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-186"><a href="#cifti_weighted_stats-186"><span class="linenos">186</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-cifti-weighted-stats&quot;</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-187"><a href="#cifti_weighted_stats-187"><span class="linenos">187</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">cifti_in</span><span class="p">))</span>
+</span><span id="cifti_weighted_stats-188"><a href="#cifti_weighted_stats-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">spatial_weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_weighted_stats-189"><a href="#cifti_weighted_stats-189"><span class="linenos">189</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">spatial_weights</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_weighted_stats-190"><a href="#cifti_weighted_stats-190"><span class="linenos">190</span></a>    <span class="k">if</span> <span class="n">opt_cifti_weights_weight_cifti</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_weighted_stats-191"><a href="#cifti_weighted_stats-191"><span class="linenos">191</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_weighted_stats-192"><a href="#cifti_weighted_stats-192"><span class="linenos">192</span></a>            <span class="s2">&quot;-cifti-weights&quot;</span><span class="p">,</span>
+</span><span id="cifti_weighted_stats-193"><a href="#cifti_weighted_stats-193"><span class="linenos">193</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_cifti_weights_weight_cifti</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-194"><a href="#cifti_weighted_stats-194"><span class="linenos">194</span></a>        <span class="p">])</span>
+</span><span id="cifti_weighted_stats-195"><a href="#cifti_weighted_stats-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_weighted_stats-196"><a href="#cifti_weighted_stats-196"><span class="linenos">196</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_weighted_stats-197"><a href="#cifti_weighted_stats-197"><span class="linenos">197</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
+</span><span id="cifti_weighted_stats-198"><a href="#cifti_weighted_stats-198"><span class="linenos">198</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_column_column</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-199"><a href="#cifti_weighted_stats-199"><span class="linenos">199</span></a>        <span class="p">])</span>
+</span><span id="cifti_weighted_stats-200"><a href="#cifti_weighted_stats-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_weighted_stats-201"><a href="#cifti_weighted_stats-201"><span class="linenos">201</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="cifti_weighted_stats-202"><a href="#cifti_weighted_stats-202"><span class="linenos">202</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
+</span><span id="cifti_weighted_stats-203"><a href="#cifti_weighted_stats-203"><span class="linenos">203</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-204"><a href="#cifti_weighted_stats-204"><span class="linenos">204</span></a>    <span class="k">if</span> <span class="n">opt_stdev</span><span class="p">:</span>
+</span><span id="cifti_weighted_stats-205"><a href="#cifti_weighted_stats-205"><span class="linenos">205</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-206"><a href="#cifti_weighted_stats-206"><span class="linenos">206</span></a>    <span class="k">if</span> <span class="n">opt_sample</span><span class="p">:</span>
+</span><span id="cifti_weighted_stats-207"><a href="#cifti_weighted_stats-207"><span class="linenos">207</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-208"><a href="#cifti_weighted_stats-208"><span class="linenos">208</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="cifti_weighted_stats-209"><a href="#cifti_weighted_stats-209"><span class="linenos">209</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="cifti_weighted_stats-210"><a href="#cifti_weighted_stats-210"><span class="linenos">210</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
+</span><span id="cifti_weighted_stats-211"><a href="#cifti_weighted_stats-211"><span class="linenos">211</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-212"><a href="#cifti_weighted_stats-212"><span class="linenos">212</span></a>        <span class="p">])</span>
+</span><span id="cifti_weighted_stats-213"><a href="#cifti_weighted_stats-213"><span class="linenos">213</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
+</span><span id="cifti_weighted_stats-214"><a href="#cifti_weighted_stats-214"><span class="linenos">214</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-215"><a href="#cifti_weighted_stats-215"><span class="linenos">215</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
+</span><span id="cifti_weighted_stats-216"><a href="#cifti_weighted_stats-216"><span class="linenos">216</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-217"><a href="#cifti_weighted_stats-217"><span class="linenos">217</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CiftiWeightedStatsOutputs</span><span class="p">(</span>
+</span><span id="cifti_weighted_stats-218"><a href="#cifti_weighted_stats-218"><span class="linenos">218</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="cifti_weighted_stats-219"><a href="#cifti_weighted_stats-219"><span class="linenos">219</span></a>    <span class="p">)</span>
+</span><span id="cifti_weighted_stats-220"><a href="#cifti_weighted_stats-220"><span class="linenos">220</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="cifti_weighted_stats-221"><a href="#cifti_weighted_stats-221"><span class="linenos">221</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -940,7 +944,9 @@ containing weights of similar meaning) is equivalent to integrating with
 respect to area and volume. When the input is binary ROIs, this will
 therefore output the area or volume of each ROI.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

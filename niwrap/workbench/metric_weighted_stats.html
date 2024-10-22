@@ -96,7 +96,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">METRIC_WEIGHTED_STATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;db2a150409d1a471dfc038782f82192d9cbfe592.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;220f94c0250172e4ed4a65e6476cbe2eb805b411.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;metric-weighted-stats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -172,79 +172,81 @@
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    $ wb_command -metric-weighted-stats roi.func.gii -sum -area-surface</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    midthickness.surf.gii.</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    </span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    Args:</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        metric_in: the input metric.</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        opt_area_surface_area_surface: use vertex areas as weights: the surface\</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">            to use for vertex areas.</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        opt_weight_metric_weight_metric: use weights from a metric file: metric\</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">            file containing the weights.</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        opt_column_column: only display output for one column: the column\</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">            number or name.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        roi: only consider data inside an roi.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        opt_stdev: compute weighted standard deviation.</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        opt_sample: estimate population stdev from the sample.</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">            find, must be between 0 and 100.</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    Returns:</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        NamedTuple of outputs (described in `MetricWeightedStatsOutputs`).</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-weighted-stats&quot;</span><span class="p">)</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">metric_in</span><span class="p">))</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">opt_area_surface_area_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="s2">&quot;-area-surface&quot;</span><span class="p">,</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_area_surface_area_surface</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="p">])</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">opt_weight_metric_weight_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="s2">&quot;-weight-metric&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_weight_metric_weight_metric</span><span class="p">)</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="n">opt_column_column</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="p">])</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">opt_stdev</span><span class="p">:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">opt_sample</span><span class="p">:</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="p">])</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricWeightedStatsOutputs</span><span class="p">(</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="p">)</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="s2">&quot;METRIC_WEIGHTED_STATS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="s2">&quot;MetricWeightedStatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="s2">&quot;MetricWeightedStatsRoi&quot;</span><span class="p">,</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="s2">&quot;metric_weighted_stats&quot;</span><span class="p">,</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="p">]</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    </span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    Args:</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        metric_in: the input metric.</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        opt_area_surface_area_surface: use vertex areas as weights: the surface\</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">            to use for vertex areas.</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        opt_weight_metric_weight_metric: use weights from a metric file: metric\</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">            file containing the weights.</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        opt_column_column: only display output for one column: the column\</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">            number or name.</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        roi: only consider data inside an roi.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        opt_stdev: compute weighted standard deviation.</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        opt_sample: estimate population stdev from the sample.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            find, must be between 0 and 100.</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    Returns:</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">        NamedTuple of outputs (described in `MetricWeightedStatsOutputs`).</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-weighted-stats&quot;</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">metric_in</span><span class="p">))</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">opt_area_surface_area_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="s2">&quot;-area-surface&quot;</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_area_surface_area_surface</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="p">])</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">opt_weight_metric_weight_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>            <span class="s2">&quot;-weight-metric&quot;</span><span class="p">,</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_weight_metric_weight_metric</span><span class="p">)</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="p">])</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>            <span class="n">opt_column_column</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="p">])</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">opt_stdev</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">opt_sample</span><span class="p">:</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="p">])</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricWeightedStatsOutputs</span><span class="p">(</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="p">)</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="s2">&quot;METRIC_WEIGHTED_STATS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="s2">&quot;MetricWeightedStatsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="s2">&quot;MetricWeightedStatsRoi&quot;</span><span class="p">,</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="s2">&quot;metric_weighted_stats&quot;</span><span class="p">,</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -253,7 +255,7 @@
                     <div class="attr variable">
             <span class="name">METRIC_WEIGHTED_STATS_METADATA</span>        =
 <input id="METRIC_WEIGHTED_STATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="METRIC_WEIGHTED_STATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;db2a150409d1a471dfc038782f82192d9cbfe592.boutiques&#39;, name=&#39;metric-weighted-stats&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="METRIC_WEIGHTED_STATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;220f94c0250172e4ed4a65e6476cbe2eb805b411.boutiques&#39;, name=&#39;metric-weighted-stats&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -492,71 +494,73 @@
 </span><span id="metric_weighted_stats-84"><a href="#metric_weighted_stats-84"><span class="linenos"> 84</span></a><span class="sd">    $ wb_command -metric-weighted-stats roi.func.gii -sum -area-surface</span>
 </span><span id="metric_weighted_stats-85"><a href="#metric_weighted_stats-85"><span class="linenos"> 85</span></a><span class="sd">    midthickness.surf.gii.</span>
 </span><span id="metric_weighted_stats-86"><a href="#metric_weighted_stats-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
-</span><span id="metric_weighted_stats-87"><a href="#metric_weighted_stats-87"><span class="linenos"> 87</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="metric_weighted_stats-87"><a href="#metric_weighted_stats-87"><span class="linenos"> 87</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="metric_weighted_stats-88"><a href="#metric_weighted_stats-88"><span class="linenos"> 88</span></a><span class="sd">    </span>
-</span><span id="metric_weighted_stats-89"><a href="#metric_weighted_stats-89"><span class="linenos"> 89</span></a><span class="sd">    Args:</span>
-</span><span id="metric_weighted_stats-90"><a href="#metric_weighted_stats-90"><span class="linenos"> 90</span></a><span class="sd">        metric_in: the input metric.</span>
-</span><span id="metric_weighted_stats-91"><a href="#metric_weighted_stats-91"><span class="linenos"> 91</span></a><span class="sd">        opt_area_surface_area_surface: use vertex areas as weights: the surface\</span>
-</span><span id="metric_weighted_stats-92"><a href="#metric_weighted_stats-92"><span class="linenos"> 92</span></a><span class="sd">            to use for vertex areas.</span>
-</span><span id="metric_weighted_stats-93"><a href="#metric_weighted_stats-93"><span class="linenos"> 93</span></a><span class="sd">        opt_weight_metric_weight_metric: use weights from a metric file: metric\</span>
-</span><span id="metric_weighted_stats-94"><a href="#metric_weighted_stats-94"><span class="linenos"> 94</span></a><span class="sd">            file containing the weights.</span>
-</span><span id="metric_weighted_stats-95"><a href="#metric_weighted_stats-95"><span class="linenos"> 95</span></a><span class="sd">        opt_column_column: only display output for one column: the column\</span>
-</span><span id="metric_weighted_stats-96"><a href="#metric_weighted_stats-96"><span class="linenos"> 96</span></a><span class="sd">            number or name.</span>
-</span><span id="metric_weighted_stats-97"><a href="#metric_weighted_stats-97"><span class="linenos"> 97</span></a><span class="sd">        roi: only consider data inside an roi.</span>
-</span><span id="metric_weighted_stats-98"><a href="#metric_weighted_stats-98"><span class="linenos"> 98</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
-</span><span id="metric_weighted_stats-99"><a href="#metric_weighted_stats-99"><span class="linenos"> 99</span></a><span class="sd">        opt_stdev: compute weighted standard deviation.</span>
-</span><span id="metric_weighted_stats-100"><a href="#metric_weighted_stats-100"><span class="linenos">100</span></a><span class="sd">        opt_sample: estimate population stdev from the sample.</span>
-</span><span id="metric_weighted_stats-101"><a href="#metric_weighted_stats-101"><span class="linenos">101</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
-</span><span id="metric_weighted_stats-102"><a href="#metric_weighted_stats-102"><span class="linenos">102</span></a><span class="sd">            find, must be between 0 and 100.</span>
-</span><span id="metric_weighted_stats-103"><a href="#metric_weighted_stats-103"><span class="linenos">103</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
-</span><span id="metric_weighted_stats-104"><a href="#metric_weighted_stats-104"><span class="linenos">104</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
-</span><span id="metric_weighted_stats-105"><a href="#metric_weighted_stats-105"><span class="linenos">105</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="metric_weighted_stats-106"><a href="#metric_weighted_stats-106"><span class="linenos">106</span></a><span class="sd">    Returns:</span>
-</span><span id="metric_weighted_stats-107"><a href="#metric_weighted_stats-107"><span class="linenos">107</span></a><span class="sd">        NamedTuple of outputs (described in `MetricWeightedStatsOutputs`).</span>
-</span><span id="metric_weighted_stats-108"><a href="#metric_weighted_stats-108"><span class="linenos">108</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="metric_weighted_stats-109"><a href="#metric_weighted_stats-109"><span class="linenos">109</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="metric_weighted_stats-110"><a href="#metric_weighted_stats-110"><span class="linenos">110</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-111"><a href="#metric_weighted_stats-111"><span class="linenos">111</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="metric_weighted_stats-112"><a href="#metric_weighted_stats-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-113"><a href="#metric_weighted_stats-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-weighted-stats&quot;</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-114"><a href="#metric_weighted_stats-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">metric_in</span><span class="p">))</span>
-</span><span id="metric_weighted_stats-115"><a href="#metric_weighted_stats-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">opt_area_surface_area_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="metric_weighted_stats-116"><a href="#metric_weighted_stats-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="metric_weighted_stats-117"><a href="#metric_weighted_stats-117"><span class="linenos">117</span></a>            <span class="s2">&quot;-area-surface&quot;</span><span class="p">,</span>
-</span><span id="metric_weighted_stats-118"><a href="#metric_weighted_stats-118"><span class="linenos">118</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_area_surface_area_surface</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-119"><a href="#metric_weighted_stats-119"><span class="linenos">119</span></a>        <span class="p">])</span>
-</span><span id="metric_weighted_stats-120"><a href="#metric_weighted_stats-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">opt_weight_metric_weight_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="metric_weighted_stats-121"><a href="#metric_weighted_stats-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="metric_weighted_stats-122"><a href="#metric_weighted_stats-122"><span class="linenos">122</span></a>            <span class="s2">&quot;-weight-metric&quot;</span><span class="p">,</span>
-</span><span id="metric_weighted_stats-123"><a href="#metric_weighted_stats-123"><span class="linenos">123</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_weight_metric_weight_metric</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-124"><a href="#metric_weighted_stats-124"><span class="linenos">124</span></a>        <span class="p">])</span>
-</span><span id="metric_weighted_stats-125"><a href="#metric_weighted_stats-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="metric_weighted_stats-126"><a href="#metric_weighted_stats-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="metric_weighted_stats-127"><a href="#metric_weighted_stats-127"><span class="linenos">127</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
-</span><span id="metric_weighted_stats-128"><a href="#metric_weighted_stats-128"><span class="linenos">128</span></a>            <span class="n">opt_column_column</span>
-</span><span id="metric_weighted_stats-129"><a href="#metric_weighted_stats-129"><span class="linenos">129</span></a>        <span class="p">])</span>
-</span><span id="metric_weighted_stats-130"><a href="#metric_weighted_stats-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="metric_weighted_stats-131"><a href="#metric_weighted_stats-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="metric_weighted_stats-132"><a href="#metric_weighted_stats-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
-</span><span id="metric_weighted_stats-133"><a href="#metric_weighted_stats-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-134"><a href="#metric_weighted_stats-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">opt_stdev</span><span class="p">:</span>
-</span><span id="metric_weighted_stats-135"><a href="#metric_weighted_stats-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-136"><a href="#metric_weighted_stats-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">opt_sample</span><span class="p">:</span>
-</span><span id="metric_weighted_stats-137"><a href="#metric_weighted_stats-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-138"><a href="#metric_weighted_stats-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="metric_weighted_stats-139"><a href="#metric_weighted_stats-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="metric_weighted_stats-140"><a href="#metric_weighted_stats-140"><span class="linenos">140</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
-</span><span id="metric_weighted_stats-141"><a href="#metric_weighted_stats-141"><span class="linenos">141</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-142"><a href="#metric_weighted_stats-142"><span class="linenos">142</span></a>        <span class="p">])</span>
-</span><span id="metric_weighted_stats-143"><a href="#metric_weighted_stats-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
-</span><span id="metric_weighted_stats-144"><a href="#metric_weighted_stats-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-145"><a href="#metric_weighted_stats-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
-</span><span id="metric_weighted_stats-146"><a href="#metric_weighted_stats-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-147"><a href="#metric_weighted_stats-147"><span class="linenos">147</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricWeightedStatsOutputs</span><span class="p">(</span>
-</span><span id="metric_weighted_stats-148"><a href="#metric_weighted_stats-148"><span class="linenos">148</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="metric_weighted_stats-149"><a href="#metric_weighted_stats-149"><span class="linenos">149</span></a>    <span class="p">)</span>
-</span><span id="metric_weighted_stats-150"><a href="#metric_weighted_stats-150"><span class="linenos">150</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="metric_weighted_stats-151"><a href="#metric_weighted_stats-151"><span class="linenos">151</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="metric_weighted_stats-89"><a href="#metric_weighted_stats-89"><span class="linenos"> 89</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="metric_weighted_stats-90"><a href="#metric_weighted_stats-90"><span class="linenos"> 90</span></a><span class="sd">    </span>
+</span><span id="metric_weighted_stats-91"><a href="#metric_weighted_stats-91"><span class="linenos"> 91</span></a><span class="sd">    Args:</span>
+</span><span id="metric_weighted_stats-92"><a href="#metric_weighted_stats-92"><span class="linenos"> 92</span></a><span class="sd">        metric_in: the input metric.</span>
+</span><span id="metric_weighted_stats-93"><a href="#metric_weighted_stats-93"><span class="linenos"> 93</span></a><span class="sd">        opt_area_surface_area_surface: use vertex areas as weights: the surface\</span>
+</span><span id="metric_weighted_stats-94"><a href="#metric_weighted_stats-94"><span class="linenos"> 94</span></a><span class="sd">            to use for vertex areas.</span>
+</span><span id="metric_weighted_stats-95"><a href="#metric_weighted_stats-95"><span class="linenos"> 95</span></a><span class="sd">        opt_weight_metric_weight_metric: use weights from a metric file: metric\</span>
+</span><span id="metric_weighted_stats-96"><a href="#metric_weighted_stats-96"><span class="linenos"> 96</span></a><span class="sd">            file containing the weights.</span>
+</span><span id="metric_weighted_stats-97"><a href="#metric_weighted_stats-97"><span class="linenos"> 97</span></a><span class="sd">        opt_column_column: only display output for one column: the column\</span>
+</span><span id="metric_weighted_stats-98"><a href="#metric_weighted_stats-98"><span class="linenos"> 98</span></a><span class="sd">            number or name.</span>
+</span><span id="metric_weighted_stats-99"><a href="#metric_weighted_stats-99"><span class="linenos"> 99</span></a><span class="sd">        roi: only consider data inside an roi.</span>
+</span><span id="metric_weighted_stats-100"><a href="#metric_weighted_stats-100"><span class="linenos">100</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
+</span><span id="metric_weighted_stats-101"><a href="#metric_weighted_stats-101"><span class="linenos">101</span></a><span class="sd">        opt_stdev: compute weighted standard deviation.</span>
+</span><span id="metric_weighted_stats-102"><a href="#metric_weighted_stats-102"><span class="linenos">102</span></a><span class="sd">        opt_sample: estimate population stdev from the sample.</span>
+</span><span id="metric_weighted_stats-103"><a href="#metric_weighted_stats-103"><span class="linenos">103</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
+</span><span id="metric_weighted_stats-104"><a href="#metric_weighted_stats-104"><span class="linenos">104</span></a><span class="sd">            find, must be between 0 and 100.</span>
+</span><span id="metric_weighted_stats-105"><a href="#metric_weighted_stats-105"><span class="linenos">105</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
+</span><span id="metric_weighted_stats-106"><a href="#metric_weighted_stats-106"><span class="linenos">106</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
+</span><span id="metric_weighted_stats-107"><a href="#metric_weighted_stats-107"><span class="linenos">107</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="metric_weighted_stats-108"><a href="#metric_weighted_stats-108"><span class="linenos">108</span></a><span class="sd">    Returns:</span>
+</span><span id="metric_weighted_stats-109"><a href="#metric_weighted_stats-109"><span class="linenos">109</span></a><span class="sd">        NamedTuple of outputs (described in `MetricWeightedStatsOutputs`).</span>
+</span><span id="metric_weighted_stats-110"><a href="#metric_weighted_stats-110"><span class="linenos">110</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="metric_weighted_stats-111"><a href="#metric_weighted_stats-111"><span class="linenos">111</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="metric_weighted_stats-112"><a href="#metric_weighted_stats-112"><span class="linenos">112</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">METRIC_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-113"><a href="#metric_weighted_stats-113"><span class="linenos">113</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="metric_weighted_stats-114"><a href="#metric_weighted_stats-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-115"><a href="#metric_weighted_stats-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-metric-weighted-stats&quot;</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-116"><a href="#metric_weighted_stats-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">metric_in</span><span class="p">))</span>
+</span><span id="metric_weighted_stats-117"><a href="#metric_weighted_stats-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">opt_area_surface_area_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="metric_weighted_stats-118"><a href="#metric_weighted_stats-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="metric_weighted_stats-119"><a href="#metric_weighted_stats-119"><span class="linenos">119</span></a>            <span class="s2">&quot;-area-surface&quot;</span><span class="p">,</span>
+</span><span id="metric_weighted_stats-120"><a href="#metric_weighted_stats-120"><span class="linenos">120</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_area_surface_area_surface</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-121"><a href="#metric_weighted_stats-121"><span class="linenos">121</span></a>        <span class="p">])</span>
+</span><span id="metric_weighted_stats-122"><a href="#metric_weighted_stats-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">opt_weight_metric_weight_metric</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="metric_weighted_stats-123"><a href="#metric_weighted_stats-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="metric_weighted_stats-124"><a href="#metric_weighted_stats-124"><span class="linenos">124</span></a>            <span class="s2">&quot;-weight-metric&quot;</span><span class="p">,</span>
+</span><span id="metric_weighted_stats-125"><a href="#metric_weighted_stats-125"><span class="linenos">125</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">opt_weight_metric_weight_metric</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-126"><a href="#metric_weighted_stats-126"><span class="linenos">126</span></a>        <span class="p">])</span>
+</span><span id="metric_weighted_stats-127"><a href="#metric_weighted_stats-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">opt_column_column</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="metric_weighted_stats-128"><a href="#metric_weighted_stats-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="metric_weighted_stats-129"><a href="#metric_weighted_stats-129"><span class="linenos">129</span></a>            <span class="s2">&quot;-column&quot;</span><span class="p">,</span>
+</span><span id="metric_weighted_stats-130"><a href="#metric_weighted_stats-130"><span class="linenos">130</span></a>            <span class="n">opt_column_column</span>
+</span><span id="metric_weighted_stats-131"><a href="#metric_weighted_stats-131"><span class="linenos">131</span></a>        <span class="p">])</span>
+</span><span id="metric_weighted_stats-132"><a href="#metric_weighted_stats-132"><span class="linenos">132</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="metric_weighted_stats-133"><a href="#metric_weighted_stats-133"><span class="linenos">133</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="metric_weighted_stats-134"><a href="#metric_weighted_stats-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
+</span><span id="metric_weighted_stats-135"><a href="#metric_weighted_stats-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-136"><a href="#metric_weighted_stats-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">opt_stdev</span><span class="p">:</span>
+</span><span id="metric_weighted_stats-137"><a href="#metric_weighted_stats-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-138"><a href="#metric_weighted_stats-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">opt_sample</span><span class="p">:</span>
+</span><span id="metric_weighted_stats-139"><a href="#metric_weighted_stats-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-140"><a href="#metric_weighted_stats-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="metric_weighted_stats-141"><a href="#metric_weighted_stats-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="metric_weighted_stats-142"><a href="#metric_weighted_stats-142"><span class="linenos">142</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
+</span><span id="metric_weighted_stats-143"><a href="#metric_weighted_stats-143"><span class="linenos">143</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-144"><a href="#metric_weighted_stats-144"><span class="linenos">144</span></a>        <span class="p">])</span>
+</span><span id="metric_weighted_stats-145"><a href="#metric_weighted_stats-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
+</span><span id="metric_weighted_stats-146"><a href="#metric_weighted_stats-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-147"><a href="#metric_weighted_stats-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
+</span><span id="metric_weighted_stats-148"><a href="#metric_weighted_stats-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-149"><a href="#metric_weighted_stats-149"><span class="linenos">149</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MetricWeightedStatsOutputs</span><span class="p">(</span>
+</span><span id="metric_weighted_stats-150"><a href="#metric_weighted_stats-150"><span class="linenos">150</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="metric_weighted_stats-151"><a href="#metric_weighted_stats-151"><span class="linenos">151</span></a>    <span class="p">)</span>
+</span><span id="metric_weighted_stats-152"><a href="#metric_weighted_stats-152"><span class="linenos">152</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="metric_weighted_stats-153"><a href="#metric_weighted_stats-153"><span class="linenos">153</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -576,7 +580,9 @@ example, if you want to find the surface area within an roi, do this:</p>
 <p>$ wb_command -metric-weighted-stats roi.func.gii -sum -area-surface
 midthickness.surf.gii.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

@@ -108,7 +108,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">LABEL_TO_VOLUME_MAPPING_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3bba08ec366947b533a5d4e2659fb376a3ed626b.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;9c0c4841cabe7d1062d8fceb605c98dddc1761ca.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;label-to-volume-mapping&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -189,51 +189,53 @@
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    uses the same method as in -volume-to-surface-mapping, then uses the weights</span>
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    in reverse, with popularity logic to decide on a label to use.</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    </span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    </span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    Args:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        label: the input label file.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        surface: the surface to use coordinates from.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        volume_space: a volume file in the desired output volume space.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        volume_out: the output volume file.</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        opt_nearest_vertex_distance: use the label from the vertex closest to\</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">            the voxel center: how far from the surface to map labels to voxels, in\</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">            mm.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        ribbon_constrained: use ribbon constrained mapping algorithm.</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    Returns:</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        NamedTuple of outputs (described in `LabelToVolumeMappingOutputs`).</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_TO_VOLUME_MAPPING_METADATA</span><span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-to-volume-mapping&quot;</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_space</span><span class="p">))</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">opt_nearest_vertex_distance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>            <span class="s2">&quot;-nearest-vertex&quot;</span><span class="p">,</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_nearest_vertex_distance</span><span class="p">)</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="p">])</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">ribbon_constrained</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ribbon_constrained</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelToVolumeMappingOutputs</span><span class="p">(</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="p">)</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="s2">&quot;LABEL_TO_VOLUME_MAPPING_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="s2">&quot;LabelToVolumeMappingOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="s2">&quot;LabelToVolumeMappingRibbonConstrained&quot;</span><span class="p">,</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="s2">&quot;label_to_volume_mapping&quot;</span><span class="p">,</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="p">]</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    </span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    Args:</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        label: the input label file.</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        surface: the surface to use coordinates from.</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        volume_space: a volume file in the desired output volume space.</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        volume_out: the output volume file.</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        opt_nearest_vertex_distance: use the label from the vertex closest to\</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">            the voxel center: how far from the surface to map labels to voxels, in\</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">            mm.</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">        ribbon_constrained: use ribbon constrained mapping algorithm.</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    Returns:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">        NamedTuple of outputs (described in `LabelToVolumeMappingOutputs`).</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_TO_VOLUME_MAPPING_METADATA</span><span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-to-volume-mapping&quot;</span><span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_space</span><span class="p">))</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">opt_nearest_vertex_distance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>            <span class="s2">&quot;-nearest-vertex&quot;</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_nearest_vertex_distance</span><span class="p">)</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="p">])</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">ribbon_constrained</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ribbon_constrained</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelToVolumeMappingOutputs</span><span class="p">(</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="p">)</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="s2">&quot;LABEL_TO_VOLUME_MAPPING_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="s2">&quot;LabelToVolumeMappingOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="s2">&quot;LabelToVolumeMappingRibbonConstrained&quot;</span><span class="p">,</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="s2">&quot;label_to_volume_mapping&quot;</span><span class="p">,</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -242,7 +244,7 @@
                     <div class="attr variable">
             <span class="name">LABEL_TO_VOLUME_MAPPING_METADATA</span>        =
 <input id="LABEL_TO_VOLUME_MAPPING_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="LABEL_TO_VOLUME_MAPPING_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3bba08ec366947b533a5d4e2659fb376a3ed626b.boutiques&#39;, name=&#39;label-to-volume-mapping&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="LABEL_TO_VOLUME_MAPPING_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;9c0c4841cabe7d1062d8fceb605c98dddc1761ca.boutiques&#39;, name=&#39;label-to-volume-mapping&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -550,43 +552,45 @@ behavior)</p>
 </span><span id="label_to_volume_mapping-89"><a href="#label_to_volume_mapping-89"><span class="linenos"> 89</span></a><span class="sd">    uses the same method as in -volume-to-surface-mapping, then uses the weights</span>
 </span><span id="label_to_volume_mapping-90"><a href="#label_to_volume_mapping-90"><span class="linenos"> 90</span></a><span class="sd">    in reverse, with popularity logic to decide on a label to use.</span>
 </span><span id="label_to_volume_mapping-91"><a href="#label_to_volume_mapping-91"><span class="linenos"> 91</span></a><span class="sd">    </span>
-</span><span id="label_to_volume_mapping-92"><a href="#label_to_volume_mapping-92"><span class="linenos"> 92</span></a><span class="sd">    Author: Washington University School of Medicin</span>
+</span><span id="label_to_volume_mapping-92"><a href="#label_to_volume_mapping-92"><span class="linenos"> 92</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
 </span><span id="label_to_volume_mapping-93"><a href="#label_to_volume_mapping-93"><span class="linenos"> 93</span></a><span class="sd">    </span>
-</span><span id="label_to_volume_mapping-94"><a href="#label_to_volume_mapping-94"><span class="linenos"> 94</span></a><span class="sd">    Args:</span>
-</span><span id="label_to_volume_mapping-95"><a href="#label_to_volume_mapping-95"><span class="linenos"> 95</span></a><span class="sd">        label: the input label file.</span>
-</span><span id="label_to_volume_mapping-96"><a href="#label_to_volume_mapping-96"><span class="linenos"> 96</span></a><span class="sd">        surface: the surface to use coordinates from.</span>
-</span><span id="label_to_volume_mapping-97"><a href="#label_to_volume_mapping-97"><span class="linenos"> 97</span></a><span class="sd">        volume_space: a volume file in the desired output volume space.</span>
-</span><span id="label_to_volume_mapping-98"><a href="#label_to_volume_mapping-98"><span class="linenos"> 98</span></a><span class="sd">        volume_out: the output volume file.</span>
-</span><span id="label_to_volume_mapping-99"><a href="#label_to_volume_mapping-99"><span class="linenos"> 99</span></a><span class="sd">        opt_nearest_vertex_distance: use the label from the vertex closest to\</span>
-</span><span id="label_to_volume_mapping-100"><a href="#label_to_volume_mapping-100"><span class="linenos">100</span></a><span class="sd">            the voxel center: how far from the surface to map labels to voxels, in\</span>
-</span><span id="label_to_volume_mapping-101"><a href="#label_to_volume_mapping-101"><span class="linenos">101</span></a><span class="sd">            mm.</span>
-</span><span id="label_to_volume_mapping-102"><a href="#label_to_volume_mapping-102"><span class="linenos">102</span></a><span class="sd">        ribbon_constrained: use ribbon constrained mapping algorithm.</span>
-</span><span id="label_to_volume_mapping-103"><a href="#label_to_volume_mapping-103"><span class="linenos">103</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="label_to_volume_mapping-104"><a href="#label_to_volume_mapping-104"><span class="linenos">104</span></a><span class="sd">    Returns:</span>
-</span><span id="label_to_volume_mapping-105"><a href="#label_to_volume_mapping-105"><span class="linenos">105</span></a><span class="sd">        NamedTuple of outputs (described in `LabelToVolumeMappingOutputs`).</span>
-</span><span id="label_to_volume_mapping-106"><a href="#label_to_volume_mapping-106"><span class="linenos">106</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="label_to_volume_mapping-107"><a href="#label_to_volume_mapping-107"><span class="linenos">107</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="label_to_volume_mapping-108"><a href="#label_to_volume_mapping-108"><span class="linenos">108</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_TO_VOLUME_MAPPING_METADATA</span><span class="p">)</span>
-</span><span id="label_to_volume_mapping-109"><a href="#label_to_volume_mapping-109"><span class="linenos">109</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="label_to_volume_mapping-110"><a href="#label_to_volume_mapping-110"><span class="linenos">110</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="label_to_volume_mapping-111"><a href="#label_to_volume_mapping-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-to-volume-mapping&quot;</span><span class="p">)</span>
-</span><span id="label_to_volume_mapping-112"><a href="#label_to_volume_mapping-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
-</span><span id="label_to_volume_mapping-113"><a href="#label_to_volume_mapping-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
-</span><span id="label_to_volume_mapping-114"><a href="#label_to_volume_mapping-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_space</span><span class="p">))</span>
-</span><span id="label_to_volume_mapping-115"><a href="#label_to_volume_mapping-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
-</span><span id="label_to_volume_mapping-116"><a href="#label_to_volume_mapping-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">opt_nearest_vertex_distance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="label_to_volume_mapping-117"><a href="#label_to_volume_mapping-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="label_to_volume_mapping-118"><a href="#label_to_volume_mapping-118"><span class="linenos">118</span></a>            <span class="s2">&quot;-nearest-vertex&quot;</span><span class="p">,</span>
-</span><span id="label_to_volume_mapping-119"><a href="#label_to_volume_mapping-119"><span class="linenos">119</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_nearest_vertex_distance</span><span class="p">)</span>
-</span><span id="label_to_volume_mapping-120"><a href="#label_to_volume_mapping-120"><span class="linenos">120</span></a>        <span class="p">])</span>
-</span><span id="label_to_volume_mapping-121"><a href="#label_to_volume_mapping-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">ribbon_constrained</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="label_to_volume_mapping-122"><a href="#label_to_volume_mapping-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ribbon_constrained</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="label_to_volume_mapping-123"><a href="#label_to_volume_mapping-123"><span class="linenos">123</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelToVolumeMappingOutputs</span><span class="p">(</span>
-</span><span id="label_to_volume_mapping-124"><a href="#label_to_volume_mapping-124"><span class="linenos">124</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="label_to_volume_mapping-125"><a href="#label_to_volume_mapping-125"><span class="linenos">125</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
-</span><span id="label_to_volume_mapping-126"><a href="#label_to_volume_mapping-126"><span class="linenos">126</span></a>    <span class="p">)</span>
-</span><span id="label_to_volume_mapping-127"><a href="#label_to_volume_mapping-127"><span class="linenos">127</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="label_to_volume_mapping-128"><a href="#label_to_volume_mapping-128"><span class="linenos">128</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="label_to_volume_mapping-94"><a href="#label_to_volume_mapping-94"><span class="linenos"> 94</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="label_to_volume_mapping-95"><a href="#label_to_volume_mapping-95"><span class="linenos"> 95</span></a><span class="sd">    </span>
+</span><span id="label_to_volume_mapping-96"><a href="#label_to_volume_mapping-96"><span class="linenos"> 96</span></a><span class="sd">    Args:</span>
+</span><span id="label_to_volume_mapping-97"><a href="#label_to_volume_mapping-97"><span class="linenos"> 97</span></a><span class="sd">        label: the input label file.</span>
+</span><span id="label_to_volume_mapping-98"><a href="#label_to_volume_mapping-98"><span class="linenos"> 98</span></a><span class="sd">        surface: the surface to use coordinates from.</span>
+</span><span id="label_to_volume_mapping-99"><a href="#label_to_volume_mapping-99"><span class="linenos"> 99</span></a><span class="sd">        volume_space: a volume file in the desired output volume space.</span>
+</span><span id="label_to_volume_mapping-100"><a href="#label_to_volume_mapping-100"><span class="linenos">100</span></a><span class="sd">        volume_out: the output volume file.</span>
+</span><span id="label_to_volume_mapping-101"><a href="#label_to_volume_mapping-101"><span class="linenos">101</span></a><span class="sd">        opt_nearest_vertex_distance: use the label from the vertex closest to\</span>
+</span><span id="label_to_volume_mapping-102"><a href="#label_to_volume_mapping-102"><span class="linenos">102</span></a><span class="sd">            the voxel center: how far from the surface to map labels to voxels, in\</span>
+</span><span id="label_to_volume_mapping-103"><a href="#label_to_volume_mapping-103"><span class="linenos">103</span></a><span class="sd">            mm.</span>
+</span><span id="label_to_volume_mapping-104"><a href="#label_to_volume_mapping-104"><span class="linenos">104</span></a><span class="sd">        ribbon_constrained: use ribbon constrained mapping algorithm.</span>
+</span><span id="label_to_volume_mapping-105"><a href="#label_to_volume_mapping-105"><span class="linenos">105</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="label_to_volume_mapping-106"><a href="#label_to_volume_mapping-106"><span class="linenos">106</span></a><span class="sd">    Returns:</span>
+</span><span id="label_to_volume_mapping-107"><a href="#label_to_volume_mapping-107"><span class="linenos">107</span></a><span class="sd">        NamedTuple of outputs (described in `LabelToVolumeMappingOutputs`).</span>
+</span><span id="label_to_volume_mapping-108"><a href="#label_to_volume_mapping-108"><span class="linenos">108</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="label_to_volume_mapping-109"><a href="#label_to_volume_mapping-109"><span class="linenos">109</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="label_to_volume_mapping-110"><a href="#label_to_volume_mapping-110"><span class="linenos">110</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">LABEL_TO_VOLUME_MAPPING_METADATA</span><span class="p">)</span>
+</span><span id="label_to_volume_mapping-111"><a href="#label_to_volume_mapping-111"><span class="linenos">111</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="label_to_volume_mapping-112"><a href="#label_to_volume_mapping-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="label_to_volume_mapping-113"><a href="#label_to_volume_mapping-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-label-to-volume-mapping&quot;</span><span class="p">)</span>
+</span><span id="label_to_volume_mapping-114"><a href="#label_to_volume_mapping-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
+</span><span id="label_to_volume_mapping-115"><a href="#label_to_volume_mapping-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface</span><span class="p">))</span>
+</span><span id="label_to_volume_mapping-116"><a href="#label_to_volume_mapping-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_space</span><span class="p">))</span>
+</span><span id="label_to_volume_mapping-117"><a href="#label_to_volume_mapping-117"><span class="linenos">117</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_out</span><span class="p">)</span>
+</span><span id="label_to_volume_mapping-118"><a href="#label_to_volume_mapping-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">opt_nearest_vertex_distance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="label_to_volume_mapping-119"><a href="#label_to_volume_mapping-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="label_to_volume_mapping-120"><a href="#label_to_volume_mapping-120"><span class="linenos">120</span></a>            <span class="s2">&quot;-nearest-vertex&quot;</span><span class="p">,</span>
+</span><span id="label_to_volume_mapping-121"><a href="#label_to_volume_mapping-121"><span class="linenos">121</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_nearest_vertex_distance</span><span class="p">)</span>
+</span><span id="label_to_volume_mapping-122"><a href="#label_to_volume_mapping-122"><span class="linenos">122</span></a>        <span class="p">])</span>
+</span><span id="label_to_volume_mapping-123"><a href="#label_to_volume_mapping-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">ribbon_constrained</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="label_to_volume_mapping-124"><a href="#label_to_volume_mapping-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">ribbon_constrained</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="label_to_volume_mapping-125"><a href="#label_to_volume_mapping-125"><span class="linenos">125</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">LabelToVolumeMappingOutputs</span><span class="p">(</span>
+</span><span id="label_to_volume_mapping-126"><a href="#label_to_volume_mapping-126"><span class="linenos">126</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="label_to_volume_mapping-127"><a href="#label_to_volume_mapping-127"><span class="linenos">127</span></a>        <span class="n">volume_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">volume_out</span><span class="p">),</span>
+</span><span id="label_to_volume_mapping-128"><a href="#label_to_volume_mapping-128"><span class="linenos">128</span></a>    <span class="p">)</span>
+</span><span id="label_to_volume_mapping-129"><a href="#label_to_volume_mapping-129"><span class="linenos">129</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="label_to_volume_mapping-130"><a href="#label_to_volume_mapping-130"><span class="linenos">130</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -598,7 +602,9 @@ from the vertex closest to the voxel center. The -ribbon-constrained method
 uses the same method as in -volume-to-surface-mapping, then uses the weights
 in reverse, with popularity logic to decide on a label to use.</p>
 
-<p>Author: Washington University School of Medicin</p>
+<p>Author: Connectome Workbench Developers</p>
+
+<p>URL: <a href="https://github.com/Washington-University/workbench">https://github.com/Washington-University/workbench</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

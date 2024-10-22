@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V_3D_KRUSKAL_WALLIS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5080047819136bf7ee4c9b16179180cf5ae64cf2.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d8f52138ea0ac2f25d27a21c1fd03e57b216b428.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dKruskalWallis&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -110,63 +110,62 @@
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    This program performs nonparametric Kruskal-Wallis test for comparison of</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    multiple treatments.</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    URL:</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dKruskalWallis.html</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    </span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        levels: Number of treatments.</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        datasets: Data set for treatment #1 through to treatment #s. Specify\</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">            sub-brick if more than one present.</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        output: Kruskal-Wallis statistics are written to file prefixname.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        workmem: Number of megabytes of RAM to use for statistical workspace.</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        voxel: Screen output for voxel # num.</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">    Returns:</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        NamedTuple of outputs (described in `V3dKruskalWallisOutputs`).</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">levels</span><span class="p">):</span> 
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;levels&#39; must be greater than 2 &lt;= x but was </span><span class="si">{</span><span class="n">levels</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_KRUSKAL_WALLIS_METADATA</span><span class="p">)</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dKruskalWallis&quot;</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="s2">&quot;-levels&quot;</span><span class="p">,</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="p">])</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="s2">&quot;-dset&quot;</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="o">*</span><span class="n">datasets</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="p">])</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">workmem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>            <span class="s2">&quot;-workmem&quot;</span><span class="p">,</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">workmem</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="p">])</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">voxel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>            <span class="s2">&quot;-voxel&quot;</span><span class="p">,</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">voxel</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="p">])</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="s2">&quot;-out&quot;</span><span class="p">,</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>        <span class="n">output</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="p">])</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dKruskalWallisOutputs</span><span class="p">(</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>        <span class="n">outfile_prefix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;+tlrc&quot;</span><span class="p">),</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="p">)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        levels: Number of treatments.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        datasets: Data set for treatment #1 through to treatment #s. Specify\</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">            sub-brick if more than one present.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        output: Kruskal-Wallis statistics are written to file prefixname.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        workmem: Number of megabytes of RAM to use for statistical workspace.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        voxel: Screen output for voxel # num.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">    Returns:</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        NamedTuple of outputs (described in `V3dKruskalWallisOutputs`).</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">levels</span><span class="p">):</span> 
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;levels&#39; must be greater than 2 &lt;= x but was </span><span class="si">{</span><span class="n">levels</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_KRUSKAL_WALLIS_METADATA</span><span class="p">)</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dKruskalWallis&quot;</span><span class="p">)</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>        <span class="s2">&quot;-levels&quot;</span><span class="p">,</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="p">])</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="s2">&quot;-dset&quot;</span><span class="p">,</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="o">*</span><span class="n">datasets</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="p">])</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">workmem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>            <span class="s2">&quot;-workmem&quot;</span><span class="p">,</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">workmem</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="p">])</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">voxel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>            <span class="s2">&quot;-voxel&quot;</span><span class="p">,</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">voxel</span><span class="p">)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="p">])</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>        <span class="s2">&quot;-out&quot;</span><span class="p">,</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">output</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="p">])</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dKruskalWallisOutputs</span><span class="p">(</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>        <span class="n">outfile_prefix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;+tlrc&quot;</span><span class="p">),</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>
 </span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>
-</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>
-</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>    <span class="s2">&quot;V3dKruskalWallisOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a>    <span class="s2">&quot;V_3D_KRUSKAL_WALLIS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a>    <span class="s2">&quot;v_3d_kruskal_wallis&quot;</span><span class="p">,</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos">95</span></a><span class="p">]</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>    <span class="s2">&quot;V3dKruskalWallisOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>    <span class="s2">&quot;V_3D_KRUSKAL_WALLIS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a>    <span class="s2">&quot;v_3d_kruskal_wallis&quot;</span><span class="p">,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -242,7 +241,7 @@
                     <div class="attr variable">
             <span class="name">V_3D_KRUSKAL_WALLIS_METADATA</span>        =
 <input id="V_3D_KRUSKAL_WALLIS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V_3D_KRUSKAL_WALLIS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5080047819136bf7ee4c9b16179180cf5ae64cf2.boutiques&#39;, name=&#39;3dKruskalWallis&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V_3D_KRUSKAL_WALLIS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d8f52138ea0ac2f25d27a21c1fd03e57b216b428.boutiques&#39;, name=&#39;3dKruskalWallis&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -274,66 +273,64 @@
 </span><span id="v_3d_kruskal_wallis-37"><a href="#v_3d_kruskal_wallis-37"><span class="linenos">37</span></a><span class="sd">    This program performs nonparametric Kruskal-Wallis test for comparison of</span>
 </span><span id="v_3d_kruskal_wallis-38"><a href="#v_3d_kruskal_wallis-38"><span class="linenos">38</span></a><span class="sd">    multiple treatments.</span>
 </span><span id="v_3d_kruskal_wallis-39"><a href="#v_3d_kruskal_wallis-39"><span class="linenos">39</span></a><span class="sd">    </span>
-</span><span id="v_3d_kruskal_wallis-40"><a href="#v_3d_kruskal_wallis-40"><span class="linenos">40</span></a><span class="sd">    Author: AFNI Team</span>
+</span><span id="v_3d_kruskal_wallis-40"><a href="#v_3d_kruskal_wallis-40"><span class="linenos">40</span></a><span class="sd">    Author: AFNI Developers</span>
 </span><span id="v_3d_kruskal_wallis-41"><a href="#v_3d_kruskal_wallis-41"><span class="linenos">41</span></a><span class="sd">    </span>
-</span><span id="v_3d_kruskal_wallis-42"><a href="#v_3d_kruskal_wallis-42"><span class="linenos">42</span></a><span class="sd">    URL:</span>
-</span><span id="v_3d_kruskal_wallis-43"><a href="#v_3d_kruskal_wallis-43"><span class="linenos">43</span></a><span class="sd">    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dKruskalWallis.html</span>
-</span><span id="v_3d_kruskal_wallis-44"><a href="#v_3d_kruskal_wallis-44"><span class="linenos">44</span></a><span class="sd">    </span>
-</span><span id="v_3d_kruskal_wallis-45"><a href="#v_3d_kruskal_wallis-45"><span class="linenos">45</span></a><span class="sd">    Args:</span>
-</span><span id="v_3d_kruskal_wallis-46"><a href="#v_3d_kruskal_wallis-46"><span class="linenos">46</span></a><span class="sd">        levels: Number of treatments.</span>
-</span><span id="v_3d_kruskal_wallis-47"><a href="#v_3d_kruskal_wallis-47"><span class="linenos">47</span></a><span class="sd">        datasets: Data set for treatment #1 through to treatment #s. Specify\</span>
-</span><span id="v_3d_kruskal_wallis-48"><a href="#v_3d_kruskal_wallis-48"><span class="linenos">48</span></a><span class="sd">            sub-brick if more than one present.</span>
-</span><span id="v_3d_kruskal_wallis-49"><a href="#v_3d_kruskal_wallis-49"><span class="linenos">49</span></a><span class="sd">        output: Kruskal-Wallis statistics are written to file prefixname.</span>
-</span><span id="v_3d_kruskal_wallis-50"><a href="#v_3d_kruskal_wallis-50"><span class="linenos">50</span></a><span class="sd">        workmem: Number of megabytes of RAM to use for statistical workspace.</span>
-</span><span id="v_3d_kruskal_wallis-51"><a href="#v_3d_kruskal_wallis-51"><span class="linenos">51</span></a><span class="sd">        voxel: Screen output for voxel # num.</span>
-</span><span id="v_3d_kruskal_wallis-52"><a href="#v_3d_kruskal_wallis-52"><span class="linenos">52</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="v_3d_kruskal_wallis-53"><a href="#v_3d_kruskal_wallis-53"><span class="linenos">53</span></a><span class="sd">    Returns:</span>
-</span><span id="v_3d_kruskal_wallis-54"><a href="#v_3d_kruskal_wallis-54"><span class="linenos">54</span></a><span class="sd">        NamedTuple of outputs (described in `V3dKruskalWallisOutputs`).</span>
-</span><span id="v_3d_kruskal_wallis-55"><a href="#v_3d_kruskal_wallis-55"><span class="linenos">55</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="v_3d_kruskal_wallis-56"><a href="#v_3d_kruskal_wallis-56"><span class="linenos">56</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">levels</span><span class="p">):</span> 
-</span><span id="v_3d_kruskal_wallis-57"><a href="#v_3d_kruskal_wallis-57"><span class="linenos">57</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;levels&#39; must be greater than 2 &lt;= x but was </span><span class="si">{</span><span class="n">levels</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="v_3d_kruskal_wallis-58"><a href="#v_3d_kruskal_wallis-58"><span class="linenos">58</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="v_3d_kruskal_wallis-59"><a href="#v_3d_kruskal_wallis-59"><span class="linenos">59</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_KRUSKAL_WALLIS_METADATA</span><span class="p">)</span>
-</span><span id="v_3d_kruskal_wallis-60"><a href="#v_3d_kruskal_wallis-60"><span class="linenos">60</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="v_3d_kruskal_wallis-61"><a href="#v_3d_kruskal_wallis-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dKruskalWallis&quot;</span><span class="p">)</span>
-</span><span id="v_3d_kruskal_wallis-62"><a href="#v_3d_kruskal_wallis-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_kruskal_wallis-63"><a href="#v_3d_kruskal_wallis-63"><span class="linenos">63</span></a>        <span class="s2">&quot;-levels&quot;</span><span class="p">,</span>
-</span><span id="v_3d_kruskal_wallis-64"><a href="#v_3d_kruskal_wallis-64"><span class="linenos">64</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
-</span><span id="v_3d_kruskal_wallis-65"><a href="#v_3d_kruskal_wallis-65"><span class="linenos">65</span></a>    <span class="p">])</span>
-</span><span id="v_3d_kruskal_wallis-66"><a href="#v_3d_kruskal_wallis-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_kruskal_wallis-67"><a href="#v_3d_kruskal_wallis-67"><span class="linenos">67</span></a>        <span class="s2">&quot;-dset&quot;</span><span class="p">,</span>
-</span><span id="v_3d_kruskal_wallis-68"><a href="#v_3d_kruskal_wallis-68"><span class="linenos">68</span></a>        <span class="o">*</span><span class="n">datasets</span>
-</span><span id="v_3d_kruskal_wallis-69"><a href="#v_3d_kruskal_wallis-69"><span class="linenos">69</span></a>    <span class="p">])</span>
-</span><span id="v_3d_kruskal_wallis-70"><a href="#v_3d_kruskal_wallis-70"><span class="linenos">70</span></a>    <span class="k">if</span> <span class="n">workmem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_kruskal_wallis-71"><a href="#v_3d_kruskal_wallis-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_kruskal_wallis-72"><a href="#v_3d_kruskal_wallis-72"><span class="linenos">72</span></a>            <span class="s2">&quot;-workmem&quot;</span><span class="p">,</span>
-</span><span id="v_3d_kruskal_wallis-73"><a href="#v_3d_kruskal_wallis-73"><span class="linenos">73</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">workmem</span><span class="p">)</span>
-</span><span id="v_3d_kruskal_wallis-74"><a href="#v_3d_kruskal_wallis-74"><span class="linenos">74</span></a>        <span class="p">])</span>
-</span><span id="v_3d_kruskal_wallis-75"><a href="#v_3d_kruskal_wallis-75"><span class="linenos">75</span></a>    <span class="k">if</span> <span class="n">voxel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="v_3d_kruskal_wallis-76"><a href="#v_3d_kruskal_wallis-76"><span class="linenos">76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_kruskal_wallis-77"><a href="#v_3d_kruskal_wallis-77"><span class="linenos">77</span></a>            <span class="s2">&quot;-voxel&quot;</span><span class="p">,</span>
-</span><span id="v_3d_kruskal_wallis-78"><a href="#v_3d_kruskal_wallis-78"><span class="linenos">78</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">voxel</span><span class="p">)</span>
-</span><span id="v_3d_kruskal_wallis-79"><a href="#v_3d_kruskal_wallis-79"><span class="linenos">79</span></a>        <span class="p">])</span>
-</span><span id="v_3d_kruskal_wallis-80"><a href="#v_3d_kruskal_wallis-80"><span class="linenos">80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="v_3d_kruskal_wallis-81"><a href="#v_3d_kruskal_wallis-81"><span class="linenos">81</span></a>        <span class="s2">&quot;-out&quot;</span><span class="p">,</span>
-</span><span id="v_3d_kruskal_wallis-82"><a href="#v_3d_kruskal_wallis-82"><span class="linenos">82</span></a>        <span class="n">output</span>
-</span><span id="v_3d_kruskal_wallis-83"><a href="#v_3d_kruskal_wallis-83"><span class="linenos">83</span></a>    <span class="p">])</span>
-</span><span id="v_3d_kruskal_wallis-84"><a href="#v_3d_kruskal_wallis-84"><span class="linenos">84</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dKruskalWallisOutputs</span><span class="p">(</span>
-</span><span id="v_3d_kruskal_wallis-85"><a href="#v_3d_kruskal_wallis-85"><span class="linenos">85</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v_3d_kruskal_wallis-86"><a href="#v_3d_kruskal_wallis-86"><span class="linenos">86</span></a>        <span class="n">outfile_prefix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;+tlrc&quot;</span><span class="p">),</span>
-</span><span id="v_3d_kruskal_wallis-87"><a href="#v_3d_kruskal_wallis-87"><span class="linenos">87</span></a>    <span class="p">)</span>
-</span><span id="v_3d_kruskal_wallis-88"><a href="#v_3d_kruskal_wallis-88"><span class="linenos">88</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v_3d_kruskal_wallis-89"><a href="#v_3d_kruskal_wallis-89"><span class="linenos">89</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v_3d_kruskal_wallis-42"><a href="#v_3d_kruskal_wallis-42"><span class="linenos">42</span></a><span class="sd">    URL: https://afni.nimh.nih.gov/</span>
+</span><span id="v_3d_kruskal_wallis-43"><a href="#v_3d_kruskal_wallis-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="v_3d_kruskal_wallis-44"><a href="#v_3d_kruskal_wallis-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
+</span><span id="v_3d_kruskal_wallis-45"><a href="#v_3d_kruskal_wallis-45"><span class="linenos">45</span></a><span class="sd">        levels: Number of treatments.</span>
+</span><span id="v_3d_kruskal_wallis-46"><a href="#v_3d_kruskal_wallis-46"><span class="linenos">46</span></a><span class="sd">        datasets: Data set for treatment #1 through to treatment #s. Specify\</span>
+</span><span id="v_3d_kruskal_wallis-47"><a href="#v_3d_kruskal_wallis-47"><span class="linenos">47</span></a><span class="sd">            sub-brick if more than one present.</span>
+</span><span id="v_3d_kruskal_wallis-48"><a href="#v_3d_kruskal_wallis-48"><span class="linenos">48</span></a><span class="sd">        output: Kruskal-Wallis statistics are written to file prefixname.</span>
+</span><span id="v_3d_kruskal_wallis-49"><a href="#v_3d_kruskal_wallis-49"><span class="linenos">49</span></a><span class="sd">        workmem: Number of megabytes of RAM to use for statistical workspace.</span>
+</span><span id="v_3d_kruskal_wallis-50"><a href="#v_3d_kruskal_wallis-50"><span class="linenos">50</span></a><span class="sd">        voxel: Screen output for voxel # num.</span>
+</span><span id="v_3d_kruskal_wallis-51"><a href="#v_3d_kruskal_wallis-51"><span class="linenos">51</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="v_3d_kruskal_wallis-52"><a href="#v_3d_kruskal_wallis-52"><span class="linenos">52</span></a><span class="sd">    Returns:</span>
+</span><span id="v_3d_kruskal_wallis-53"><a href="#v_3d_kruskal_wallis-53"><span class="linenos">53</span></a><span class="sd">        NamedTuple of outputs (described in `V3dKruskalWallisOutputs`).</span>
+</span><span id="v_3d_kruskal_wallis-54"><a href="#v_3d_kruskal_wallis-54"><span class="linenos">54</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="v_3d_kruskal_wallis-55"><a href="#v_3d_kruskal_wallis-55"><span class="linenos">55</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">levels</span><span class="p">):</span> 
+</span><span id="v_3d_kruskal_wallis-56"><a href="#v_3d_kruskal_wallis-56"><span class="linenos">56</span></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;levels&#39; must be greater than 2 &lt;= x but was </span><span class="si">{</span><span class="n">levels</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="v_3d_kruskal_wallis-57"><a href="#v_3d_kruskal_wallis-57"><span class="linenos">57</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="v_3d_kruskal_wallis-58"><a href="#v_3d_kruskal_wallis-58"><span class="linenos">58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_KRUSKAL_WALLIS_METADATA</span><span class="p">)</span>
+</span><span id="v_3d_kruskal_wallis-59"><a href="#v_3d_kruskal_wallis-59"><span class="linenos">59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="v_3d_kruskal_wallis-60"><a href="#v_3d_kruskal_wallis-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dKruskalWallis&quot;</span><span class="p">)</span>
+</span><span id="v_3d_kruskal_wallis-61"><a href="#v_3d_kruskal_wallis-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_kruskal_wallis-62"><a href="#v_3d_kruskal_wallis-62"><span class="linenos">62</span></a>        <span class="s2">&quot;-levels&quot;</span><span class="p">,</span>
+</span><span id="v_3d_kruskal_wallis-63"><a href="#v_3d_kruskal_wallis-63"><span class="linenos">63</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+</span><span id="v_3d_kruskal_wallis-64"><a href="#v_3d_kruskal_wallis-64"><span class="linenos">64</span></a>    <span class="p">])</span>
+</span><span id="v_3d_kruskal_wallis-65"><a href="#v_3d_kruskal_wallis-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_kruskal_wallis-66"><a href="#v_3d_kruskal_wallis-66"><span class="linenos">66</span></a>        <span class="s2">&quot;-dset&quot;</span><span class="p">,</span>
+</span><span id="v_3d_kruskal_wallis-67"><a href="#v_3d_kruskal_wallis-67"><span class="linenos">67</span></a>        <span class="o">*</span><span class="n">datasets</span>
+</span><span id="v_3d_kruskal_wallis-68"><a href="#v_3d_kruskal_wallis-68"><span class="linenos">68</span></a>    <span class="p">])</span>
+</span><span id="v_3d_kruskal_wallis-69"><a href="#v_3d_kruskal_wallis-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">workmem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_kruskal_wallis-70"><a href="#v_3d_kruskal_wallis-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_kruskal_wallis-71"><a href="#v_3d_kruskal_wallis-71"><span class="linenos">71</span></a>            <span class="s2">&quot;-workmem&quot;</span><span class="p">,</span>
+</span><span id="v_3d_kruskal_wallis-72"><a href="#v_3d_kruskal_wallis-72"><span class="linenos">72</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">workmem</span><span class="p">)</span>
+</span><span id="v_3d_kruskal_wallis-73"><a href="#v_3d_kruskal_wallis-73"><span class="linenos">73</span></a>        <span class="p">])</span>
+</span><span id="v_3d_kruskal_wallis-74"><a href="#v_3d_kruskal_wallis-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">voxel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="v_3d_kruskal_wallis-75"><a href="#v_3d_kruskal_wallis-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_kruskal_wallis-76"><a href="#v_3d_kruskal_wallis-76"><span class="linenos">76</span></a>            <span class="s2">&quot;-voxel&quot;</span><span class="p">,</span>
+</span><span id="v_3d_kruskal_wallis-77"><a href="#v_3d_kruskal_wallis-77"><span class="linenos">77</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">voxel</span><span class="p">)</span>
+</span><span id="v_3d_kruskal_wallis-78"><a href="#v_3d_kruskal_wallis-78"><span class="linenos">78</span></a>        <span class="p">])</span>
+</span><span id="v_3d_kruskal_wallis-79"><a href="#v_3d_kruskal_wallis-79"><span class="linenos">79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v_3d_kruskal_wallis-80"><a href="#v_3d_kruskal_wallis-80"><span class="linenos">80</span></a>        <span class="s2">&quot;-out&quot;</span><span class="p">,</span>
+</span><span id="v_3d_kruskal_wallis-81"><a href="#v_3d_kruskal_wallis-81"><span class="linenos">81</span></a>        <span class="n">output</span>
+</span><span id="v_3d_kruskal_wallis-82"><a href="#v_3d_kruskal_wallis-82"><span class="linenos">82</span></a>    <span class="p">])</span>
+</span><span id="v_3d_kruskal_wallis-83"><a href="#v_3d_kruskal_wallis-83"><span class="linenos">83</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">V3dKruskalWallisOutputs</span><span class="p">(</span>
+</span><span id="v_3d_kruskal_wallis-84"><a href="#v_3d_kruskal_wallis-84"><span class="linenos">84</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v_3d_kruskal_wallis-85"><a href="#v_3d_kruskal_wallis-85"><span class="linenos">85</span></a>        <span class="n">outfile_prefix</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="s2">&quot;+tlrc&quot;</span><span class="p">),</span>
+</span><span id="v_3d_kruskal_wallis-86"><a href="#v_3d_kruskal_wallis-86"><span class="linenos">86</span></a>    <span class="p">)</span>
+</span><span id="v_3d_kruskal_wallis-87"><a href="#v_3d_kruskal_wallis-87"><span class="linenos">87</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v_3d_kruskal_wallis-88"><a href="#v_3d_kruskal_wallis-88"><span class="linenos">88</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>This program performs nonparametric Kruskal-Wallis test for comparison of
 multiple treatments.</p>
 
-<p>Author: AFNI Team</p>
+<p>Author: AFNI Developers</p>
 
-<p>URL:
-<a href="https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dKruskalWallis.html">https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dKruskalWallis.html</a></p>
+<p>URL: <a href="https://afni.nimh.nih.gov/">https://afni.nimh.nih.gov/</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 

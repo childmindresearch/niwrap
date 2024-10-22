@@ -387,7 +387,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FSLMATHS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a47c11680059cf929d2235fc331b9f353c8eb026.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d1e240dcb4083c8cbc352336a654976549e5f323.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fslmaths&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
@@ -966,49 +966,51 @@
 </span><span id="L-586"><a href="#L-586"><span class="linenos">586</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-587"><a href="#L-587"><span class="linenos">587</span></a><span class="sd">    FSL utility for image arithmetic, statistics, and mathematical operations.</span>
 </span><span id="L-588"><a href="#L-588"><span class="linenos">588</span></a><span class="sd">    </span>
-</span><span id="L-589"><a href="#L-589"><span class="linenos">589</span></a><span class="sd">    Author: FSL Team</span>
+</span><span id="L-589"><a href="#L-589"><span class="linenos">589</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="L-590"><a href="#L-590"><span class="linenos">590</span></a><span class="sd">    </span>
-</span><span id="L-591"><a href="#L-591"><span class="linenos">591</span></a><span class="sd">    Args:</span>
-</span><span id="L-592"><a href="#L-592"><span class="linenos">592</span></a><span class="sd">        input_files: Input images for processing.</span>
-</span><span id="L-593"><a href="#L-593"><span class="linenos">593</span></a><span class="sd">        operations: Operations to perform on input images.</span>
-</span><span id="L-594"><a href="#L-594"><span class="linenos">594</span></a><span class="sd">        output: Output image file.</span>
-</span><span id="L-595"><a href="#L-595"><span class="linenos">595</span></a><span class="sd">        datatype_internal: Datatype used internally for calculations.</span>
-</span><span id="L-596"><a href="#L-596"><span class="linenos">596</span></a><span class="sd">        output_datatype: Datatype used for the output image.</span>
-</span><span id="L-597"><a href="#L-597"><span class="linenos">597</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-598"><a href="#L-598"><span class="linenos">598</span></a><span class="sd">    Returns:</span>
-</span><span id="L-599"><a href="#L-599"><span class="linenos">599</span></a><span class="sd">        NamedTuple of outputs (described in `FslmathsOutputs`).</span>
-</span><span id="L-600"><a href="#L-600"><span class="linenos">600</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-601"><a href="#L-601"><span class="linenos">601</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-602"><a href="#L-602"><span class="linenos">602</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSLMATHS_METADATA</span><span class="p">)</span>
-</span><span id="L-603"><a href="#L-603"><span class="linenos">603</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-604"><a href="#L-604"><span class="linenos">604</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fslmaths&quot;</span><span class="p">)</span>
-</span><span id="L-605"><a href="#L-605"><span class="linenos">605</span></a>    <span class="k">if</span> <span class="n">datatype_internal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-606"><a href="#L-606"><span class="linenos">606</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-607"><a href="#L-607"><span class="linenos">607</span></a>            <span class="s2">&quot;-dt&quot;</span><span class="p">,</span>
-</span><span id="L-608"><a href="#L-608"><span class="linenos">608</span></a>            <span class="n">datatype_internal</span>
-</span><span id="L-609"><a href="#L-609"><span class="linenos">609</span></a>        <span class="p">])</span>
-</span><span id="L-610"><a href="#L-610"><span class="linenos">610</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">])</span>
-</span><span id="L-611"><a href="#L-611"><span class="linenos">611</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">operations</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-612"><a href="#L-612"><span class="linenos">612</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="L-613"><a href="#L-613"><span class="linenos">613</span></a>    <span class="k">if</span> <span class="n">output_datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-614"><a href="#L-614"><span class="linenos">614</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-615"><a href="#L-615"><span class="linenos">615</span></a>            <span class="s2">&quot;-odt&quot;</span><span class="p">,</span>
-</span><span id="L-616"><a href="#L-616"><span class="linenos">616</span></a>            <span class="n">output_datatype</span>
-</span><span id="L-617"><a href="#L-617"><span class="linenos">617</span></a>        <span class="p">])</span>
-</span><span id="L-618"><a href="#L-618"><span class="linenos">618</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslmathsOutputs</span><span class="p">(</span>
-</span><span id="L-619"><a href="#L-619"><span class="linenos">619</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-620"><a href="#L-620"><span class="linenos">620</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="L-621"><a href="#L-621"><span class="linenos">621</span></a>    <span class="p">)</span>
-</span><span id="L-622"><a href="#L-622"><span class="linenos">622</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-623"><a href="#L-623"><span class="linenos">623</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-624"><a href="#L-624"><span class="linenos">624</span></a>
-</span><span id="L-625"><a href="#L-625"><span class="linenos">625</span></a>
-</span><span id="L-626"><a href="#L-626"><span class="linenos">626</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-627"><a href="#L-627"><span class="linenos">627</span></a>    <span class="s2">&quot;FSLMATHS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-628"><a href="#L-628"><span class="linenos">628</span></a>    <span class="s2">&quot;FslmathsOperation&quot;</span><span class="p">,</span>
-</span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a>    <span class="s2">&quot;FslmathsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a>    <span class="s2">&quot;fslmaths&quot;</span><span class="p">,</span>
-</span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a><span class="p">]</span>
+</span><span id="L-591"><a href="#L-591"><span class="linenos">591</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="L-592"><a href="#L-592"><span class="linenos">592</span></a><span class="sd">    </span>
+</span><span id="L-593"><a href="#L-593"><span class="linenos">593</span></a><span class="sd">    Args:</span>
+</span><span id="L-594"><a href="#L-594"><span class="linenos">594</span></a><span class="sd">        input_files: Input images for processing.</span>
+</span><span id="L-595"><a href="#L-595"><span class="linenos">595</span></a><span class="sd">        operations: Operations to perform on input images.</span>
+</span><span id="L-596"><a href="#L-596"><span class="linenos">596</span></a><span class="sd">        output: Output image file.</span>
+</span><span id="L-597"><a href="#L-597"><span class="linenos">597</span></a><span class="sd">        datatype_internal: Datatype used internally for calculations.</span>
+</span><span id="L-598"><a href="#L-598"><span class="linenos">598</span></a><span class="sd">        output_datatype: Datatype used for the output image.</span>
+</span><span id="L-599"><a href="#L-599"><span class="linenos">599</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-600"><a href="#L-600"><span class="linenos">600</span></a><span class="sd">    Returns:</span>
+</span><span id="L-601"><a href="#L-601"><span class="linenos">601</span></a><span class="sd">        NamedTuple of outputs (described in `FslmathsOutputs`).</span>
+</span><span id="L-602"><a href="#L-602"><span class="linenos">602</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-603"><a href="#L-603"><span class="linenos">603</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-604"><a href="#L-604"><span class="linenos">604</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSLMATHS_METADATA</span><span class="p">)</span>
+</span><span id="L-605"><a href="#L-605"><span class="linenos">605</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-606"><a href="#L-606"><span class="linenos">606</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fslmaths&quot;</span><span class="p">)</span>
+</span><span id="L-607"><a href="#L-607"><span class="linenos">607</span></a>    <span class="k">if</span> <span class="n">datatype_internal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-608"><a href="#L-608"><span class="linenos">608</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-609"><a href="#L-609"><span class="linenos">609</span></a>            <span class="s2">&quot;-dt&quot;</span><span class="p">,</span>
+</span><span id="L-610"><a href="#L-610"><span class="linenos">610</span></a>            <span class="n">datatype_internal</span>
+</span><span id="L-611"><a href="#L-611"><span class="linenos">611</span></a>        <span class="p">])</span>
+</span><span id="L-612"><a href="#L-612"><span class="linenos">612</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">])</span>
+</span><span id="L-613"><a href="#L-613"><span class="linenos">613</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">operations</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-614"><a href="#L-614"><span class="linenos">614</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="L-615"><a href="#L-615"><span class="linenos">615</span></a>    <span class="k">if</span> <span class="n">output_datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-616"><a href="#L-616"><span class="linenos">616</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-617"><a href="#L-617"><span class="linenos">617</span></a>            <span class="s2">&quot;-odt&quot;</span><span class="p">,</span>
+</span><span id="L-618"><a href="#L-618"><span class="linenos">618</span></a>            <span class="n">output_datatype</span>
+</span><span id="L-619"><a href="#L-619"><span class="linenos">619</span></a>        <span class="p">])</span>
+</span><span id="L-620"><a href="#L-620"><span class="linenos">620</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslmathsOutputs</span><span class="p">(</span>
+</span><span id="L-621"><a href="#L-621"><span class="linenos">621</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-622"><a href="#L-622"><span class="linenos">622</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="L-623"><a href="#L-623"><span class="linenos">623</span></a>    <span class="p">)</span>
+</span><span id="L-624"><a href="#L-624"><span class="linenos">624</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-625"><a href="#L-625"><span class="linenos">625</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-626"><a href="#L-626"><span class="linenos">626</span></a>
+</span><span id="L-627"><a href="#L-627"><span class="linenos">627</span></a>
+</span><span id="L-628"><a href="#L-628"><span class="linenos">628</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-629"><a href="#L-629"><span class="linenos">629</span></a>    <span class="s2">&quot;FSLMATHS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-630"><a href="#L-630"><span class="linenos">630</span></a>    <span class="s2">&quot;FslmathsOperation&quot;</span><span class="p">,</span>
+</span><span id="L-631"><a href="#L-631"><span class="linenos">631</span></a>    <span class="s2">&quot;FslmathsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-632"><a href="#L-632"><span class="linenos">632</span></a>    <span class="s2">&quot;fslmaths&quot;</span><span class="p">,</span>
+</span><span id="L-633"><a href="#L-633"><span class="linenos">633</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -1017,7 +1019,7 @@
                     <div class="attr variable">
             <span class="name">FSLMATHS_METADATA</span>        =
 <input id="FSLMATHS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FSLMATHS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a47c11680059cf929d2235fc331b9f353c8eb026.boutiques&#39;, name=&#39;fslmaths&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FSLMATHS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d1e240dcb4083c8cbc352336a654976549e5f323.boutiques&#39;, name=&#39;fslmaths&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -3446,47 +3448,51 @@ probably demean first)</p>
 </span><span id="fslmaths-587"><a href="#fslmaths-587"><span class="linenos">587</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="fslmaths-588"><a href="#fslmaths-588"><span class="linenos">588</span></a><span class="sd">    FSL utility for image arithmetic, statistics, and mathematical operations.</span>
 </span><span id="fslmaths-589"><a href="#fslmaths-589"><span class="linenos">589</span></a><span class="sd">    </span>
-</span><span id="fslmaths-590"><a href="#fslmaths-590"><span class="linenos">590</span></a><span class="sd">    Author: FSL Team</span>
+</span><span id="fslmaths-590"><a href="#fslmaths-590"><span class="linenos">590</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
 </span><span id="fslmaths-591"><a href="#fslmaths-591"><span class="linenos">591</span></a><span class="sd">    </span>
-</span><span id="fslmaths-592"><a href="#fslmaths-592"><span class="linenos">592</span></a><span class="sd">    Args:</span>
-</span><span id="fslmaths-593"><a href="#fslmaths-593"><span class="linenos">593</span></a><span class="sd">        input_files: Input images for processing.</span>
-</span><span id="fslmaths-594"><a href="#fslmaths-594"><span class="linenos">594</span></a><span class="sd">        operations: Operations to perform on input images.</span>
-</span><span id="fslmaths-595"><a href="#fslmaths-595"><span class="linenos">595</span></a><span class="sd">        output: Output image file.</span>
-</span><span id="fslmaths-596"><a href="#fslmaths-596"><span class="linenos">596</span></a><span class="sd">        datatype_internal: Datatype used internally for calculations.</span>
-</span><span id="fslmaths-597"><a href="#fslmaths-597"><span class="linenos">597</span></a><span class="sd">        output_datatype: Datatype used for the output image.</span>
-</span><span id="fslmaths-598"><a href="#fslmaths-598"><span class="linenos">598</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="fslmaths-599"><a href="#fslmaths-599"><span class="linenos">599</span></a><span class="sd">    Returns:</span>
-</span><span id="fslmaths-600"><a href="#fslmaths-600"><span class="linenos">600</span></a><span class="sd">        NamedTuple of outputs (described in `FslmathsOutputs`).</span>
-</span><span id="fslmaths-601"><a href="#fslmaths-601"><span class="linenos">601</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="fslmaths-602"><a href="#fslmaths-602"><span class="linenos">602</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="fslmaths-603"><a href="#fslmaths-603"><span class="linenos">603</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSLMATHS_METADATA</span><span class="p">)</span>
-</span><span id="fslmaths-604"><a href="#fslmaths-604"><span class="linenos">604</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="fslmaths-605"><a href="#fslmaths-605"><span class="linenos">605</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fslmaths&quot;</span><span class="p">)</span>
-</span><span id="fslmaths-606"><a href="#fslmaths-606"><span class="linenos">606</span></a>    <span class="k">if</span> <span class="n">datatype_internal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslmaths-607"><a href="#fslmaths-607"><span class="linenos">607</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslmaths-608"><a href="#fslmaths-608"><span class="linenos">608</span></a>            <span class="s2">&quot;-dt&quot;</span><span class="p">,</span>
-</span><span id="fslmaths-609"><a href="#fslmaths-609"><span class="linenos">609</span></a>            <span class="n">datatype_internal</span>
-</span><span id="fslmaths-610"><a href="#fslmaths-610"><span class="linenos">610</span></a>        <span class="p">])</span>
-</span><span id="fslmaths-611"><a href="#fslmaths-611"><span class="linenos">611</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">])</span>
-</span><span id="fslmaths-612"><a href="#fslmaths-612"><span class="linenos">612</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">operations</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="fslmaths-613"><a href="#fslmaths-613"><span class="linenos">613</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span id="fslmaths-614"><a href="#fslmaths-614"><span class="linenos">614</span></a>    <span class="k">if</span> <span class="n">output_datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fslmaths-615"><a href="#fslmaths-615"><span class="linenos">615</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fslmaths-616"><a href="#fslmaths-616"><span class="linenos">616</span></a>            <span class="s2">&quot;-odt&quot;</span><span class="p">,</span>
-</span><span id="fslmaths-617"><a href="#fslmaths-617"><span class="linenos">617</span></a>            <span class="n">output_datatype</span>
-</span><span id="fslmaths-618"><a href="#fslmaths-618"><span class="linenos">618</span></a>        <span class="p">])</span>
-</span><span id="fslmaths-619"><a href="#fslmaths-619"><span class="linenos">619</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslmathsOutputs</span><span class="p">(</span>
-</span><span id="fslmaths-620"><a href="#fslmaths-620"><span class="linenos">620</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fslmaths-621"><a href="#fslmaths-621"><span class="linenos">621</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="fslmaths-622"><a href="#fslmaths-622"><span class="linenos">622</span></a>    <span class="p">)</span>
-</span><span id="fslmaths-623"><a href="#fslmaths-623"><span class="linenos">623</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fslmaths-624"><a href="#fslmaths-624"><span class="linenos">624</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fslmaths-592"><a href="#fslmaths-592"><span class="linenos">592</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="fslmaths-593"><a href="#fslmaths-593"><span class="linenos">593</span></a><span class="sd">    </span>
+</span><span id="fslmaths-594"><a href="#fslmaths-594"><span class="linenos">594</span></a><span class="sd">    Args:</span>
+</span><span id="fslmaths-595"><a href="#fslmaths-595"><span class="linenos">595</span></a><span class="sd">        input_files: Input images for processing.</span>
+</span><span id="fslmaths-596"><a href="#fslmaths-596"><span class="linenos">596</span></a><span class="sd">        operations: Operations to perform on input images.</span>
+</span><span id="fslmaths-597"><a href="#fslmaths-597"><span class="linenos">597</span></a><span class="sd">        output: Output image file.</span>
+</span><span id="fslmaths-598"><a href="#fslmaths-598"><span class="linenos">598</span></a><span class="sd">        datatype_internal: Datatype used internally for calculations.</span>
+</span><span id="fslmaths-599"><a href="#fslmaths-599"><span class="linenos">599</span></a><span class="sd">        output_datatype: Datatype used for the output image.</span>
+</span><span id="fslmaths-600"><a href="#fslmaths-600"><span class="linenos">600</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="fslmaths-601"><a href="#fslmaths-601"><span class="linenos">601</span></a><span class="sd">    Returns:</span>
+</span><span id="fslmaths-602"><a href="#fslmaths-602"><span class="linenos">602</span></a><span class="sd">        NamedTuple of outputs (described in `FslmathsOutputs`).</span>
+</span><span id="fslmaths-603"><a href="#fslmaths-603"><span class="linenos">603</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="fslmaths-604"><a href="#fslmaths-604"><span class="linenos">604</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="fslmaths-605"><a href="#fslmaths-605"><span class="linenos">605</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSLMATHS_METADATA</span><span class="p">)</span>
+</span><span id="fslmaths-606"><a href="#fslmaths-606"><span class="linenos">606</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="fslmaths-607"><a href="#fslmaths-607"><span class="linenos">607</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;fslmaths&quot;</span><span class="p">)</span>
+</span><span id="fslmaths-608"><a href="#fslmaths-608"><span class="linenos">608</span></a>    <span class="k">if</span> <span class="n">datatype_internal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslmaths-609"><a href="#fslmaths-609"><span class="linenos">609</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslmaths-610"><a href="#fslmaths-610"><span class="linenos">610</span></a>            <span class="s2">&quot;-dt&quot;</span><span class="p">,</span>
+</span><span id="fslmaths-611"><a href="#fslmaths-611"><span class="linenos">611</span></a>            <span class="n">datatype_internal</span>
+</span><span id="fslmaths-612"><a href="#fslmaths-612"><span class="linenos">612</span></a>        <span class="p">])</span>
+</span><span id="fslmaths-613"><a href="#fslmaths-613"><span class="linenos">613</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">])</span>
+</span><span id="fslmaths-614"><a href="#fslmaths-614"><span class="linenos">614</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">operations</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="fslmaths-615"><a href="#fslmaths-615"><span class="linenos">615</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="fslmaths-616"><a href="#fslmaths-616"><span class="linenos">616</span></a>    <span class="k">if</span> <span class="n">output_datatype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fslmaths-617"><a href="#fslmaths-617"><span class="linenos">617</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fslmaths-618"><a href="#fslmaths-618"><span class="linenos">618</span></a>            <span class="s2">&quot;-odt&quot;</span><span class="p">,</span>
+</span><span id="fslmaths-619"><a href="#fslmaths-619"><span class="linenos">619</span></a>            <span class="n">output_datatype</span>
+</span><span id="fslmaths-620"><a href="#fslmaths-620"><span class="linenos">620</span></a>        <span class="p">])</span>
+</span><span id="fslmaths-621"><a href="#fslmaths-621"><span class="linenos">621</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FslmathsOutputs</span><span class="p">(</span>
+</span><span id="fslmaths-622"><a href="#fslmaths-622"><span class="linenos">622</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fslmaths-623"><a href="#fslmaths-623"><span class="linenos">623</span></a>        <span class="n">output_file</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="fslmaths-624"><a href="#fslmaths-624"><span class="linenos">624</span></a>    <span class="p">)</span>
+</span><span id="fslmaths-625"><a href="#fslmaths-625"><span class="linenos">625</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fslmaths-626"><a href="#fslmaths-626"><span class="linenos">626</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>FSL utility for image arithmetic, statistics, and mathematical operations.</p>
 
-<p>Author: FSL Team</p>
+<p>Author: FMRIB Analysis Group, University of Oxford</p>
+
+<p>URL: <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</a></p>
 
 <h6 id="arguments">Arguments:</h6>
 
