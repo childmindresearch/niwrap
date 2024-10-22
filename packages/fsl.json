@@ -70,6 +70,11 @@
         "status": "missing"
       },
       {
+        "target": "atlasquery",
+        "status": "done",
+        "descriptor": "descriptors/fsl/atlasquery.json"
+      },
+      {
         "target": "autoaq",
         "status": "missing"
       },
@@ -188,8 +193,9 @@
         "descriptor": "descriptors/fsl/checkFEAT.json"
       },
       {
-        "target": "cluster",
-        "status": "missing"
+        "target": "fsl-cluster",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fsl-cluster.json"
       },
       {
         "target": "cluster2html",
@@ -287,9 +293,19 @@
         "status": "missing"
       },
       {
+        "target": "eddy_quad",
+        "status": "done",
+        "descriptor": "descriptors/fsl/eddy_quad.json"
+      },
+      {
         "target": "epi_reg",
         "status": "done",
         "descriptor": "descriptors/fsl/epi_reg.json"
+      },
+      {
+        "target": "eddy_squad",
+        "status": "done",
+        "descriptor": "descriptors/fsl/eddy_squad.json"
       },
       {
         "target": "estimate_metric_distortion",
@@ -342,6 +358,11 @@
         "target": "fabber_dwi",
         "status": "done",
         "descriptor": "descriptors/fsl/fabber_dwi.json"
+      },
+      {
+        "target": "fabber_pet",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fabber_pet.json"
       },
       {
         "target": "fabber_qbold",
@@ -455,7 +476,8 @@
       },
       {
         "target": "first_utils",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/fsl/first_utils.json"
       },
       {
         "target": "flameo",
@@ -463,7 +485,8 @@
       },
       {
         "target": "flirt",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/fsl/flirt.json"
       },
       {
         "target": "flirt_average",
@@ -510,9 +533,19 @@
         "descriptor": "descriptors/fsl/fsl_deface.json"
       },
       {
+        "target": "fsl_ents",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fsl_ents.json"
+      },
+      {
         "target": "fsl_gen_3D",
         "status": "done",
         "descriptor": "descriptors/fsl/fsl_gen_3D.json"
+      },
+      {
+        "target": "fsl_get_standard",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fsl_get_standard.json"
       },
       {
         "target": "fsl_glm",
@@ -530,9 +563,34 @@
         "descriptor": "descriptors/fsl/fsl_motion_outliers.json"
       },
       {
+        "target": "fsl_mrs",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fsl_mrs.json"
+      },
+      {
+        "target": "fsl_mrsi",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fsl_mrsi.json"
+      },
+      {
+        "target": "fsl_mrs_proc",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fsl_mrs_proc.json"
+      },
+      {
+        "target": "fsl_mrs_sim",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fsl_mrs_sim.json"
+      },
+      {
         "target": "fsl_mvlm",
         "status": "done",
         "descriptor": "descriptors/fsl/fsl_mvlm.json"
+      },
+      {
+        "target": "fsl_mrs_preproc",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fsl_mrs_preproc.json"
       },
       {
         "target": "fsl_prepare_fieldmap",
@@ -563,6 +621,16 @@
         "target": "fsl_sub",
         "status": "done",
         "descriptor": "descriptors/fsl/fsl_sub.json"
+      },
+      {
+        "target": "fsl_sub_config",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fsl_sub_config.json"
+      },
+      {
+        "target": "fsl_sub_report",
+        "status": "done",
+        "descriptor": "descriptors/fsl/fsl_sub_report.json"
       },
       {
         "target": "fsl_tsplot",
@@ -830,9 +898,24 @@
         "descriptor": "descriptors/fsl/img2stdcoord.json"
       },
       {
+        "target": "imcp",
+        "status": "done",
+        "descriptor": "descriptors/fsl/imcp.json"
+      },
+      {
+        "target": "imglob",
+        "status": "done",
+        "descriptor": "descriptors/fsl/imglob.json"
+      },
+      {
         "target": "imln",
         "status": "done",
         "descriptor": "descriptors/fsl/imln.json"
+      },
+      {
+        "target": "immv",
+        "status": "done",
+        "descriptor": "descriptors/fsl/immv.json"
       },
       {
         "target": "imrm",
@@ -903,7 +986,8 @@
       },
       {
         "target": "mcflirt",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/fsl/mcflirt.json"
       },
       {
         "target": "mean",
@@ -919,6 +1003,11 @@
         "target": "melodic",
         "status": "done",
         "descriptor": "descriptors/fsl/melodic.json"
+      },
+      {
+        "target": "merge_mrs_reports",
+        "status": "done",
+        "descriptor": "descriptors/fsl/merge_mrs_reports.json"
       },
       {
         "target": "merge_parts_gpu",
@@ -966,8 +1055,14 @@
         "descriptor": "descriptors/fsl/morph_kernel.json"
       },
       {
-        "target": "mp_diffpow.sh",
-        "status": "missing"
+        "target": "mp_diffpow",
+        "status": "done",
+        "descriptor": "descriptors/fsl/mp_diffpow.json"
+      },
+      {
+        "target": "mrsi_segment",
+        "status": "done",
+        "descriptor": "descriptors/fsl/mrsi_segment.json"
       },
       {
         "target": "msm",
@@ -1002,7 +1097,8 @@
       },
       {
         "target": "overlay",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/fsl/overlay.json"
       },
       {
         "target": "oxford_asl",
@@ -1061,8 +1157,9 @@
         "status": "missing"
       },
       {
-        "target": "possum_interpmot.py",
-        "status": "missing"
+        "target": "possum_interpmot",
+        "status": "done",
+        "descriptor": "descriptors/fsl/possum_interpmot.json"
       },
       {
         "target": "possum_matrix",
@@ -1070,8 +1167,9 @@
         "descriptor": "descriptors/fsl/possum_matrix.json"
       },
       {
-        "target": "possum_plot.py",
-        "status": "missing"
+        "target": "possum_plot",
+        "status": "done",
+        "descriptor": "descriptors/fsl/possum_plot.json"
       },
       {
         "target": "possum_sum",
@@ -1148,7 +1246,8 @@
       },
       {
         "target": "randomise",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/fsl/randomise.json"
       },
       {
         "target": "randomise_parallel",
@@ -1250,7 +1349,8 @@
       },
       {
         "target": "slicer",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/fsl/slicer.json"
       },
       {
         "target": "slices",
@@ -1491,6 +1591,11 @@
       {
         "target": "xtract",
         "status": "missing"
+      },
+      {
+        "target": "xtract_blueprint",
+        "status": "done",
+        "descriptor": "descriptors/fsl/xtract_blueprint.json"
       },
       {
         "target": "xtract_stats",
