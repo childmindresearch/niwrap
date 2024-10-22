@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NSIZE_METADATA = Metadata(
-    id="9fbb08b5d158aa769d7d4e342aa51ddd8254e7ed.boutiques",
+    id="d61eb0714ab51aec00c025a2f54aab55318f6b55.boutiques",
     name="nsize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def nsize(
     """
     Zero pads an input image to the nearest larger NxN dimensions.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/nsize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         image_in: Input image file.

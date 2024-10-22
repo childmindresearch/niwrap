@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ANOVA2_METADATA = Metadata(
-    id="5feaa731f359e7684787c727e2e09c1a06de44b3.boutiques",
+    id="6aabc2d723b550f25dba0bfb60752185a653b6b0.boutiques",
     name="3dANOVA2",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -82,9 +82,9 @@ def v_3d_anova2(
     """
     This program performs a two-factor Analysis of Variance (ANOVA) on 3D datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dANOVA2.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         type_: Type of ANOVA model to be used: 1=fixed, 2=random, 3=mixed.

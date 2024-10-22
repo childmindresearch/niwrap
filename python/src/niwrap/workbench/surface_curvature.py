@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CURVATURE_METADATA = Metadata(
-    id="2504b15bc1ec1bebe9f157d99ecaf66b1f5987f8.boutiques",
+    id="692b4b3494445fb3298c99e4ea875d6763542149.boutiques",
     name="surface-curvature",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -41,7 +41,9 @@ def surface_curvature(
     Interactive Texture Mapping by J. Maillot, Yahia, and Verroust, 1993.
     ACM-0-98791-601-8/93/008.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to compute the curvature of.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ABIDS_TOOL_METADATA = Metadata(
-    id="82cf9f82198e00f8a124c6cb9a9e60d172c8a007.boutiques",
+    id="98dc76918d7cdf3c8fc51ace8cb8e94abe757b0e.boutiques",
     name="abids_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def abids_tool(
     dcm2niix, mainly to pull information from the matching JSON file and refit the
     input dataset using 3drefit.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_tool.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: At least one 3d+time dataset in NIFTI format.

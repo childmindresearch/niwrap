@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DKMEANS_METADATA = Metadata(
-    id="8026f5899ec290d8f584097432ba2b09c27322b1.boutiques",
+    id="4536293f2db1b50ebead4293161f46a508afd8a7.boutiques",
     name="3dkmeans",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -61,9 +61,9 @@ def v_3dkmeans(
     """
     3d+t Clustering segmentation based on The C clustering library.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dkmeans.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Input data to be clustered. You can specify multiple filenames\

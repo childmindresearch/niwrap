@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BALLOON_METADATA = Metadata(
-    id="620bcacf21b1e78ebeb89d8125cf748ada8652bf.boutiques",
+    id="d51a9a16b7b5ef48e2f34c8e205b9eb2d6df6b2a.boutiques",
     name="balloon",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def balloon(
     Simulation of haemodynamic response using the balloon model. Based on the
     theoretical model proposed by Buxton et al. (1998).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/balloon.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         tr: Scan repetition time in seconds (TR), the interval at which the\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_4D_SLICES_TO_3D_VOL_METADATA = Metadata(
-    id="0afbc0363e392f4340b1280a3d038fc4032fc8f8.boutiques",
+    id="8d8b25bb61f82477360f8ede43990dc80402d458.boutiques",
     name="@djunct_4d_slices_to_3d_vol",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,10 +31,9 @@ def v__djunct_4d_slices_to_3d_vol(
     """
     Tool description goes here.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_4d_slices_to_3d_vol.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         do_something: Do something really useful.

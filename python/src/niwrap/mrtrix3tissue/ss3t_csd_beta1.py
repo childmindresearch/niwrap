@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SS3T_CSD_BETA1_METADATA = Metadata(
-    id="fc8b634243cf21fec7a199527850898424e281bf.boutiques",
+    id="3d7ce53d5c0f3941cd5c3621352793549ea67b37.boutiques",
     name="ss3t_csd_beta1",
     package="mrtrix3tissue",
     container_image_tag="brainlife/3tissue:5.2.8",
@@ -133,9 +133,9 @@ def ss3t_csd_beta1(
     benefits of multi-tissue CSD from just single-shell (+b=0) diffusion MRI
     data. Proc Intl Soc Mag Reson Med, 2016, 3010.
     
-    Author: Thijs Dhollander (thijs.dhollander@gmail.com)
+    Author: MRTrix3Tissue Developers
     
-    URL: https://3tissue.github.io/doc/ss3t-csd.html
+    URL: https://3tissue.github.io/
     
     Args:
         dwi: the input diffusion-weighted image.

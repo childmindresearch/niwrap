@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LME_METADATA = Metadata(
-    id="69bbf50b72489ba414d02b11079edef5793cd723.boutiques",
+    id="55c6778eace87b7e1ae56e342faa35268707bee1.boutiques",
     name="3dLME",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -60,9 +60,9 @@ def v_3d_lme(
     """
     AFNI Group Analysis Program with Linear Mixed-Effects Modeling Approach.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLME.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for output files.

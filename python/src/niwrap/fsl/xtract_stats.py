@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XTRACT_STATS_METADATA = Metadata(
-    id="f4e5e97bb4e53d159170f50f0562556e5349aa95.boutiques",
+    id="3256fcfd07718669e8375ba97f267615afe6e12e.boutiques",
     name="xtract_stats",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,9 +33,9 @@ def xtract_stats(
     """
     Quantitative evaluation tool of XTRACT results in neuroimaging.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         folder_basename: Path to microstructure folder and basename of data\

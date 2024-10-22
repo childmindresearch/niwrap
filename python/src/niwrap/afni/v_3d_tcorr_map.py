@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TCORR_MAP_METADATA = Metadata(
-    id="263e3c987f63bd1d708f95aefeebc26e3bbe7c0b.boutiques",
+    id="197d89aea57496a500d08e514c10454efb723051.boutiques",
     name="3dTcorrMap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,9 +45,9 @@ def v_3d_tcorr_map(
     """
     AFNI program to compute correlation maps of input time series data.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorrMap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Read 3D+time dataset 'dd'. This provides the time series to be\

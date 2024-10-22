@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF2_VOL_COORD_METADATA = Metadata(
-    id="f5047300ff7846a53a9f52a981cf4cfdfe8e90e7.boutiques",
+    id="10021b8805c4eb1593a3c873a3dc81eb8ed6a6d1.boutiques",
     name="Surf2VolCoord",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def surf2_vol_coord(
     Relates node indices to coordinates given x y z coordinates and returns the
     nodes closest to them.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/Surf2VolCoord.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         surface: Specify input surface.

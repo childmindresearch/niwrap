@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUSAN_METADATA = Metadata(
-    id="ad5574f1e66f3d05f161d3fc757790b7cac29eb9.boutiques",
+    id="55628b8c2b402f3b965f186d8941cfff6e80bf82.boutiques",
     name="susan",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -41,9 +41,9 @@ def susan(
     """
     Non-linear noise reduction filtering tool.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SUSAN
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input image file.

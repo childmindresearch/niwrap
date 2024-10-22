@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_BASED_SMOOTHING_METADATA = Metadata(
-    id="54b2f342b78002c8629051dfa51b4241d2aa0f9b.boutiques",
+    id="0f212837e6cfdb7d79585c7f58fe041aca5a9ef1.boutiques",
     name="SurfaceBasedSmoothing",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -36,7 +36,7 @@ def surface_based_smoothing(
     Surface-based smoothing applied to ImageToSmooth using a geodesic neighbourhood
     defined by sigma and the surface image.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

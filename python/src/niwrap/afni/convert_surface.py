@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_SURFACE_METADATA = Metadata(
-    id="d45984417fcb26ca16b592c2cc24823134cda49d.boutiques",
+    id="0c666db0cc394b6bd84fde9a52f4bed0c71ffdd6.boutiques",
     name="ConvertSurface",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def convert_surface(
     Reads in a surface and writes it out in another format. Only fields pertinent to
     SUMA are preserved.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvertSurface.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_surface: Specifies the input surface.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLCPGEOM_METADATA = Metadata(
-    id="c5f07d9dca882853adfb9fb5f5f1643eba0a60f1.boutiques",
+    id="7fdd8120e0cd7f1ee6f26a150786ce786b1e6d6d.boutiques",
     name="fslcpgeom",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,9 +31,9 @@ def fslcpgeom(
     """
     FSL tool to copy image geometry from one file to another.
     
-    Author: FMRIB Centre
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#FSL-Extended-Utilities
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         source_file: Source image file (e.g. img1.nii.gz).

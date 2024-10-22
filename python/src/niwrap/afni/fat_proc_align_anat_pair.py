@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_ALIGN_ANAT_PAIR_METADATA = Metadata(
-    id="0d73c8a1ab173689e037fbb0eff95e5ad1958e27.boutiques",
+    id="b8144a4b5ca2e9d93de3ee16481095c9a8a388b0.boutiques",
     name="fat_proc_align_anat_pair",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,10 +46,9 @@ def fat_proc_align_anat_pair(
     A tool for aligning a T1w anatomical image to a T2w anatomical image using
     solid-body parameters (translation and rotation).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_align_anat_pair.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_t1w: T1-weighted volume.

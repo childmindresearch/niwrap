@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_MESH_UTILS_METADATA = Metadata(
-    id="81dd15d0b8d878045c3e7c5b559acdbb407ac87f.boutiques",
+    id="fac0a28093dd9804f33c46b097dcca3b9246540c.boutiques",
     name="run_mesh_utils",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,7 +35,9 @@ def run_mesh_utils(
     """
     A tool for various mesh operations as part of FSL.
     
-    Author: University of Oxford (Brian Patenaude)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         base_mesh: Filename of base mesh.

@@ -70,21 +70,13 @@
     {
       "description": "Compulsory arguments.",
       "id": "compulsory_arguments",
-      "members": [
-        "input_image",
-        "mask_image",
-        "output_image"
-      ],
+      "members": ["input_image", "mask_image", "output_image"],
       "name": "Compulsory Arguments"
     },
     {
       "description": "Optional arguments.",
       "id": "optional_arguments",
-      "members": [
-        "number_of_iterations",
-        "debug_flag",
-        "verbose_flag"
-      ],
+      "members": ["number_of_iterations", "debug_flag", "verbose_flag"],
       "name": "Optional Arguments"
     }
   ],

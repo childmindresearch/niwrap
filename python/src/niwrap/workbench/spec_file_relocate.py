@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPEC_FILE_RELOCATE_METADATA = Metadata(
-    id="343df0156cccccb7732447a63224c25638129722.boutiques",
+    id="c50b381a094ead7a9084b9a3a76bdd8bc66b346c.boutiques",
     name="spec-file-relocate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -35,7 +35,9 @@ def spec_file_relocate(
     command makes a modified copy of the spec file, changing the relative paths
     to refer to the new relative locations of the files.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         input_spec: the spec file to use.

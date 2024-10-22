@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCK2CONNECTOME_METADATA = Metadata(
-    id="05925ba13fd0cebdea367651aa4f7ab4e2499b54.boutiques",
+    id="d7266b72589a1c26b9abb6847aa3a2ba49db356b.boutiques",
     name="tck2connectome",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -104,10 +104,9 @@ def tck2connectome(
     Mapping the Structural Core of Human Cerebral Cortex. PLoS Biology 6(7),
     e159.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tck2connectome.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tracks_in: the input track file.

@@ -18,10 +18,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        2,
-        3
-      ],
+      "value-choices": [2, 3],
       "command-line-flag": "--image-dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, DiReCT tries to infer the dimensionality from the input image."
     },
@@ -113,10 +110,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--use-bspline-smoothing",
       "description": "Sets the option for B-spline smoothing of the velocity field. Default = false."
     },
@@ -127,10 +121,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--use-masked-smoothing",
       "description": "Sets the option for masked-based smoothing of the velocity field. Default = false."
     },
@@ -150,10 +141,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--restrict-deformation",
       "description": "Restrict the last dimension's deformation. Meant for use with multiple time points. Default = false."
     },
@@ -193,10 +181,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--verbose",
       "description": "Verbose output."
     }

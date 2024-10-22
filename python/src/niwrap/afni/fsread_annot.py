@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSREAD_ANNOT_METADATA = Metadata(
-    id="98488125e95a3c2435c82935272f0f494eccefca.boutiques",
+    id="d6cd0f7bce55789b13d629787f5523d58b155de7.boutiques",
     name="FSread_annot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def fsread_annot(
     Reads a FreeSurfer annotation file and outputs an equivalent ROI file and/or a
     colormap file for use with SUMA.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/FSread_annot.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Binary formatted FreeSurfer annotation file.

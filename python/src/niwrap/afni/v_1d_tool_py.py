@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_TOOL_PY_METADATA = Metadata(
-    id="3fa41dd1bca0cd548d36d10ae38dd77cf843863b.boutiques",
+    id="14f0b3bf351835bacda04353b7e54c019220ebc2.boutiques",
     name="1d_tool.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,9 +43,9 @@ def v_1d_tool_py(
     """
     A tool for manipulating and evaluating 1D files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1d_tool.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input 1D file.

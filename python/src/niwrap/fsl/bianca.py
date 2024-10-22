@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BIANCA_METADATA = Metadata(
-    id="0e70dfbfa086d1857390f82e5d31ccf312ee0d3b.boutiques",
+    id="329ee204e12e1b349c3aa34003ca87add077aa35.boutiques",
     name="bianca",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -45,9 +45,9 @@ def bianca(
     """
     BIANCA: Brain Intensity AbNormality Classification Algorithm.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BIANCA
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         master_file: Name of the master file.

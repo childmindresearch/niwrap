@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRSTATS_METADATA = Metadata(
-    id="d6b6130eadba4cd34c792009b27a777f19edbda6.boutiques",
+    id="ac3503467263b1605cd6395c44e756384ef84457.boutiques",
     name="mrstats",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -112,9 +112,9 @@ def mrstats(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mrstats.html
+    URL: https://www.mrtrix.org/
     
     Args:
         image: the input image from which statistics will be computed.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_JOINT_LABEL_FUSION_SH_METADATA = Metadata(
-    id="5fd4d76d18cbad9021df7e33c92c5d7d123c248c.boutiques",
+    id="6ba42b66044013522b649e617a637341a1022d80.boutiques",
     name="antsJointLabelFusion.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -43,7 +43,7 @@ def ants_joint_label_fusion_sh(
     The antsJointLabelFusion script is used for performing label fusion using
     multiple atlases to improve segmentation accuracy.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 I_MATH_METADATA = Metadata(
-    id="fe31e452a5266b32b2e5e22ffbb63f2ff9cf99e1.boutiques",
+    id="58ac5a6e6eaabd0c15c3cb9cd300ac49330f2a22.boutiques",
     name="iMath",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -36,7 +36,7 @@ def i_math(
     iMath is a tool for performing various image mathematical operations on medical
     images, specifically supporting operations on 2D, 3D, and 4D data.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

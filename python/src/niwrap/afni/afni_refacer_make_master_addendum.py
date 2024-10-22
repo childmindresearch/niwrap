@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_REFACER_MAKE_MASTER_ADDENDUM_METADATA = Metadata(
-    id="590fffbd650eae844b473362f87ff3ca6d063c00.boutiques",
+    id="e30e20c7bc7d0ea07a74a8e54ffb3a406c826955.boutiques",
     name="afni_refacer_make_master_addendum",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,10 +30,9 @@ def afni_refacer_make_master_addendum(
     """
     Adjunct program for AFNI refacer, takes no command line arguments.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_make_master_addendum.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         help_: Display the help message.

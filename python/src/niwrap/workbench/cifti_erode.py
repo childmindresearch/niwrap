@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_ERODE_METADATA = Metadata(
-    id="d3b8b44bdde6181bba5681dd1a66c8288edb477e.boutiques",
+    id="a904e7bb86148cc21c4fe0470b676ba65b2f5a17.boutiques",
     name="cifti-erode",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -150,7 +150,9 @@ def cifti_erode(
     The -*-corrected-areas options are intended for eroding on group average
     surfaces, but it is only an approximate correction.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the input cifti file.

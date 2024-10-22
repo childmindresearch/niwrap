@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CHANGE_MAPPING_METADATA = Metadata(
-    id="da339d3c08d4279ef6a380aa5740bde17635dae4.boutiques",
+    id="dd4ff188aebb35e73ec802d22b51a17671d9f3f2.boutiques",
     name="cifti-change-mapping",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -113,7 +113,9 @@ def cifti_change_mapping(
     METER
     RADIAN.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         data_cifti: the cifti file to use the data from.

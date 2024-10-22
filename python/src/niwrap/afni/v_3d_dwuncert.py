@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DWUNCERT_METADATA = Metadata(
-    id="b37f117e6159da25d2b3d2d220475028e7d5a176.boutiques",
+    id="e5435aa32b153e592fc54fcb544b034d7d4ed2ac.boutiques",
     name="3dDWUncert",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3d_dwuncert(
     Use jackknifing to estimate uncertainty of DTI parameters, important for
     probabilistic tractography.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDWUncert.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input file with b0 and DWI subbricks.

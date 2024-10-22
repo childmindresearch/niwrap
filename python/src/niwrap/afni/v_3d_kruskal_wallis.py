@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_KRUSKAL_WALLIS_METADATA = Metadata(
-    id="5080047819136bf7ee4c9b16179180cf5ae64cf2.boutiques",
+    id="d8f52138ea0ac2f25d27a21c1fd03e57b216b428.boutiques",
     name="3dKruskalWallis",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,10 +36,9 @@ def v_3d_kruskal_wallis(
     This program performs nonparametric Kruskal-Wallis test for comparison of
     multiple treatments.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dKruskalWallis.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         levels: Number of treatments.

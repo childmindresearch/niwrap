@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ROW_FILLIN_METADATA = Metadata(
-    id="158fd7d95663e5c19513977841919692e17daad5.boutiques",
+    id="216cbd8c6bdc4939ecc4b570de017d7e915867b9.boutiques",
     name="3dRowFillin",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3d_row_fillin(
     """
     Fills in blank regions in 1D rows extracted from a 3D dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRowFillin.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input 3D dataset (e.g., dataset+orig).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIRST_FLIRT_METADATA = Metadata(
-    id="8e66c0e39113bc613121a2c1d40e021e8d142ec8.boutiques",
+    id="c2e2ec8d9960fdd9b588a942b0f7b948fa641056.boutiques",
     name="first_flirt",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -43,7 +43,9 @@ def first_flirt(
     FLIRT-based image registration tool with additional options for brain extraction
     and weighting masks.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Input image (e.g. subject10rawT1.nii.gz).

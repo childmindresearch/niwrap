@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_INTRACRANIAL_METADATA = Metadata(
-    id="9fa3ac80b0a74be0ff2b130a1522990d5d89a98f.boutiques",
+    id="23015e339767dba4b46f464166abf3f72e4cb644.boutiques",
     name="3dIntracranial",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v_3d_intracranial(
     """
     Performs automatic segmentation of intracranial region.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dIntracranial.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Filename of anat dataset to be segmented.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MEPFM_METADATA = Metadata(
-    id="d7d16947a2045612b84972ca23df8747949155b1.boutiques",
+    id="7de39809ee1b6e1e9f7322fe43a0788c7c86dca9.boutiques",
     name="3dMEPFM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,9 +50,9 @@ def v_3d_mepfm(
     of changes in transverse relaxation (DR2*) and optionally, net magnetization
     (DS0).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMEPFM.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Dataset to analyze with Multiecho Paradigm Free Mapping,\

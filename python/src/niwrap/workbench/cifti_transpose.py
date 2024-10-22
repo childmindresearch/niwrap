@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_TRANSPOSE_METADATA = Metadata(
-    id="bad0ac28802bd6ed2124bca3340dbec662bef3cf.boutiques",
+    id="b386c4fba43f697603de9eca1a7ee18ee7dd5334.boutiques",
     name="cifti-transpose",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -36,7 +36,9 @@ def cifti_transpose(
     The input must be a 2-dimensional cifti file. The output is a cifti file
     where every row in the input is a column in the output.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the input cifti file.

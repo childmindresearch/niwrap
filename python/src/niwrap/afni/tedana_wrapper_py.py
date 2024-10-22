@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TEDANA_WRAPPER_PY_METADATA = Metadata(
-    id="51bd95c6e1c16d0abe694ad2bbf2991b358b3612.boutiques",
+    id="e2c7a15939ce625753fa86861a1e32ee93aeb877.boutiques",
     name="tedana_wrapper.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,10 +43,9 @@ def tedana_wrapper_py(
     """
     Internal wrapper to run tedana.py, typically used within afni_proc.py.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/tedana_wrapper.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: 4D dataset for each echo.

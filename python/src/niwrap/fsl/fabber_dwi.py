@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_DWI_METADATA = Metadata(
-    id="4306045246c45c711ee6b0840d34c2a54ffb9450.boutiques",
+    id="48bc1dbed9c58992f58411ca4559975a0c16e090.boutiques",
     name="fabber_dwi",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -67,9 +67,9 @@ def fabber_dwi(
     Fabber diffusion-weighted imaging tool for model-based analysis using forward
     models and different inference methods.
     
-    Author: Release Team
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://www.fmrib.ox.ac.uk/fabber_dwi
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_dir: Directory for output files (including logfile).

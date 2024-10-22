@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSELECTVOLS_METADATA = Metadata(
-    id="4f8a5dc6b32bbda598a8404cf188e6ac52fa62ef.boutiques",
+    id="7f899bfe46bbe227e4975da18690673e5551fc22.boutiques",
     name="fslselectvols",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,9 +35,9 @@ def fslselectvols(
     """
     Select volumes from a 4D time series and output a subset 4D volume.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input file name (4D image).

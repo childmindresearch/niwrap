@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INVFEATREG_METADATA = Metadata(
-    id="ec6c695b85ee8f30eca8a86da04b682aec916c23.boutiques",
+    id="9378320ffd8a0ac424c55b2728e87a7b5b8d8475.boutiques",
     name="invfeatreg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def invfeatreg(
     """
     Inverse warp image using FNIRT.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         warp_file: Input warp file (e.g., highres2standard_warp).

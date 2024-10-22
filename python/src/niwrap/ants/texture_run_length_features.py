@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TEXTURE_RUN_LENGTH_FEATURES_METADATA = Metadata(
-    id="93841963426de55081b54885e14970fb87ec6bd6.boutiques",
+    id="99c3089b305255bec7d6249a4c2fc94894071c52.boutiques",
     name="TextureRunLengthFeatures",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -53,7 +53,7 @@ def texture_run_length_features(
     """
     A tool to calculate texture run length features on an input image.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

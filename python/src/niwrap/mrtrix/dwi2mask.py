@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWI2MASK_METADATA = Metadata(
-    id="bbb2af83b7ab6ae65e15c9fe6e0fe8ca671044b4.boutiques",
+    id="e651be545db3db1ef7ebcf19117cf1ddd7e6b8f2.boutiques",
     name="dwi2mask",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -124,11 +124,9 @@ def dwi2mask(
     co-registered T1 image. ISMRM Workshop on Breaking the Barriers of Diffusion
     MRI, 2016, 5.
     
-    Author: David Raffelt (david.raffelt@florey.edu.au), Thijs Dhollander
-    (thijs.dhollander@gmail.com) and Ben Jeurissen (ben.jeurissen@uantwerpen.be)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2mask.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input DWI image containing volumes that are both diffusion\

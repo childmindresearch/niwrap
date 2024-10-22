@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TSFSMOOTH_METADATA = Metadata(
-    id="692cd9e45a20a87f16544a9bcdc8641c7d382464.boutiques",
+    id="1bd18089dd58ce974ce680ff8776c1dbf16317a9.boutiques",
     name="tsfsmooth",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -76,10 +76,9 @@ def tsfsmooth(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfsmooth.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input track scalar file.

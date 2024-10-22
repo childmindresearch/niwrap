@@ -108,11 +108,7 @@
               "value-key": "[ALG_WM_ALGO]",
               "description": "Use external dwi2response algorithm for WM single-fibre voxel selection (options: fa, tax, tournier) (default: built-in Dhollander 2019)",
               "type": "String",
-              "value-choices": [
-                "fa",
-                "tax",
-                "tournier"
-              ],
+              "value-choices": ["fa", "tax", "tournier"],
               "optional": true
             }
           ],
@@ -327,11 +323,7 @@
               "value-key": "[ALG_WM_ALGO]",
               "description": "algorithm dwi2response algorithm to use for WM single-fibre voxel selection (options: fa, tax, tournier; default: tournier)",
               "type": "String",
-              "value-choices": [
-                "fa",
-                "tax",
-                "tournier"
-              ],
+              "value-choices": ["fa", "tax", "tournier"],
               "optional": true
             },
             {

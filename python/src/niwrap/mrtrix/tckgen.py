@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKGEN_METADATA = Metadata(
-    id="e047044bf2af6d7a9beff7adbb5b8dfd89665967.boutiques",
+    id="5b475b82cef330ab1e3018809589d1f9c95a6a94.boutiques",
     name="tckgen",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -713,10 +713,9 @@ def tckgen(
     dense quantitative assessment of brain white matter connectivity using
     streamlines tractography. NeuroImage, 2015, 119, 338-351.
     
-    Author: J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith
-    (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/tckgen.html
+    URL: https://www.mrtrix.org/
     
     Args:
         source: The image containing the source data. The type of image data\
@@ -779,7 +778,7 @@ def tckgen(
             method itself.
         seeds: set the number of seeds that tckgen will attempt to track from.\
             If this option is NOT provided, the default number of seeds is set to\
-            1000× the number of selected streamlines. If -select is NOT also\
+            1000Ã— the number of selected streamlines. If -select is NOT also\
             specified, tckgen will continue tracking until this number of seeds has\
             been attempted. However, if -select is also specified, tckgen will stop\
             when the number of seeds attempted reaches the number specified here,\

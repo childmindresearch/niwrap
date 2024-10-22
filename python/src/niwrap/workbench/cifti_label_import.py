@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_IMPORT_METADATA = Metadata(
-    id="f1c93a2f7d859903cc8fa56581a9d03e8962c274.boutiques",
+    id="1c8327dc3a5d99daae1a6309d6fa9c38ef26ee9d.boutiques",
     name="cifti-label-import",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -60,7 +60,9 @@ def cifti_label_import(
     values encountered that are not mentioned in the list file, specify
     -discard-others to instead set these values to the "unlabeled" key.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         input_: the input cifti file.

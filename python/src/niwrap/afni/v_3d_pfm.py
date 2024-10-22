@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_PFM_METADATA = Metadata(
-    id="aa3a0f796c8daf75c7dc58292088177e76e9fa4f.boutiques",
+    id="cec8821f067dfc16b0664eaec6c122f081fa4c1b.boutiques",
     name="3dPFM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -83,9 +83,9 @@ def v_3d_pfm(
     Program for identifying brief BOLD events in fMRI time series using Paradigm
     Free Mapping.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPFM.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         runner: Command runner.

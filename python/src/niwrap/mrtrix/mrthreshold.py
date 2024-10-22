@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRTHRESHOLD_METADATA = Metadata(
-    id="8568f1089ad54701e2d4499f7f58937f1bed960c.boutiques",
+    id="5f0e00d650d7ff4c22350347b81985e0b496eddf.boutiques",
     name="mrthreshold",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -121,11 +121,9 @@ def mrthreshold(
     C. Issues with threshold masking in voxel-based morphometry of atrophied
     brains. NeuroImage, 2009, 44, 99-111.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au) and J-Donald Tournier
-    (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrthreshold.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image to be thresholded.

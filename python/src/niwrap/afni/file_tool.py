@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FILE_TOOL_METADATA = Metadata(
-    id="a8bfa8a779c49aece7b9f917ff80d53e71e7fa3a.boutiques",
+    id="a338b51bc00f0441446c6ca843266cef70008a68.boutiques",
     name="file_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -72,9 +72,9 @@ def file_tool(
     """
     Program to display or modify sections of a file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/file_tool.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infiles: Specify input files to display or modify.

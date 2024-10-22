@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_REDUCE_METADATA = Metadata(
-    id="2d36c37c9f388a1ce675c711774b23b7d1f31511.boutiques",
+    id="6c1344ed2a748778ed583290e8204e33c03c212f.boutiques",
     name="volume-reduce",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -86,7 +86,9 @@ def volume_reduce(
     COUNT_NONZERO: the number of nonzero elements in the data
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the volume file to reduce.

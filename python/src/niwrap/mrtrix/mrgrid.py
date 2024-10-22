@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRGRID_METADATA = Metadata(
-    id="f87015bd670e2dd0d7821f4cc2428e1b4c2148b3.boutiques",
+    id="38b5784d2ea0ffb125cf48797846326fbc4d3517.boutiques",
     name="mrgrid",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -211,10 +211,9 @@ def mrgrid(
     
     .
     
-    Author: Max Pietsch (maximilian.pietsch@kcl.ac.uk) & David Raffelt
-    (david.raffelt@florey.edu.au) & Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mrgrid.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: input image to be regridded.

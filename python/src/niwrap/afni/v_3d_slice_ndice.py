@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SLICE_NDICE_METADATA = Metadata(
-    id="8ccf047f16d1ba8b1a3d47de84307e15981d5c06.boutiques",
+    id="d342ea12e7304645ed3af49b8a60039dae05237d.boutiques",
     name="3dSliceNDice",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_slice_ndice(
     """
     Calculates the Dice coefficient between two volumes on a slice-by-slice basis.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSliceNDice.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile_a: Input dataset A (e.g. mask_1.nii.gz).

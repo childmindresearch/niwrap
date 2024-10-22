@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LMER_METADATA = Metadata(
-    id="ca39bd1d94793042dfbe51d7aeecbcb2e51a0573.boutiques",
+    id="13444732534ac79fb85190ab7da824160851b3be.boutiques",
     name="3dLMEr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -54,9 +54,9 @@ def v_3d_lmer(
     """
     Program for Voxelwise Linear Mixed-Effects (LME) Analysis.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLMEr.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         data_table: List the data structure with a header as the first line.

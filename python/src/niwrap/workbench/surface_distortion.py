@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_DISTORTION_METADATA = Metadata(
-    id="e97276a061c7333c75d0177ca285e8b2fa28ba0c.boutiques",
+    id="adabb3446affb9f9a83b9e8ab8fa3c3f422fdf26.boutiques",
     name="surface-distortion",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -88,7 +88,9 @@ def surface_distortion(
     anisotropic strain. These are calculated by an affine transform between
     matching triangles, and then averaged across the triangles of a vertex.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface_reference: the reference surface.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_EXTREMA_METADATA = Metadata(
-    id="9e7499496b90bc55ce78c7099fff5c33d5bb32b6.boutiques",
+    id="ea60e519b9c12d08c3f674e58c468ec8833bae07.boutiques",
     name="volume-extrema",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -121,7 +121,9 @@ def volume_extrema(
     to specify a single subvolume to use, and -presmooth to smooth the input
     before finding the extrema.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: volume file to find the extrema of.

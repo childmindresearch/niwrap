@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WARP_TENSOR_IMAGE_MULTI_TRANSFORM_METADATA = Metadata(
-    id="9649d272b7eb6d14e06ea8971a7adada4ae8cf4d.boutiques",
+    id="14d19d5d0cd63cddc6a5dbd0cf982ba44c0b6d8b.boutiques",
     name="WarpTensorImageMultiTransform",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -40,7 +40,7 @@ def warp_tensor_image_multi_transform(
     deformation fields to an image, supporting various interpolation techniques,
     image header reslicing, and compatibility with ANTS-generated transformations.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

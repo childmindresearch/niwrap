@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXELCONVERT_METADATA = Metadata(
-    id="1ac7ab9c001179ea88e0999f4923d5c38edae521.boutiques",
+    id="61e22f7f494e1cc9061508aaffc5a41839e5a5fa.boutiques",
     name="fixelconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -168,11 +168,9 @@ def fixelconvert(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith
-    (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelconvert.html
+    URL: https://www.mrtrix.org/
     
     Args:
         fixel_in: the input fixel file / directory.

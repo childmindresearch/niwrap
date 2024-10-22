@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DEDGE3_METADATA = Metadata(
-    id="48cb8e7efc676464570990fd48f699c59072f3dd.boutiques",
+    id="313abf8e7b3a12af92fa8fc519ae8bca1a87eaf0.boutiques",
     name="3dedge3",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v_3dedge3(
     """
     Does 3D Edge detection using the library 3DEdge.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dedge3.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input dataset.

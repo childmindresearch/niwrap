@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRDEGIBBS_METADATA = Metadata(
-    id="c70f7de6a27013ac4607923d82d2016cfc151b82.boutiques",
+    id="07aa2daa1ce97b2b9113590497c38c7cb9570763.boutiques",
     name="mrdegibbs",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -96,13 +96,11 @@ def mrdegibbs(
     
     Kellner, E; Dhital, B; Kiselev, V.G & Reisert, M. Gibbs-ringing artifact
     removal based on local subvoxel-shifts. Magnetic Resonance in Medicine,
-    2016, 76, 1574–1581.
+    2016, 76, 1574â€“1581.
     
-    Author: Ben Jeurissen (ben.jeurissen@uantwerpen.be) & J-Donald Tournier
-    (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrdegibbs.html
+    URL: https://www.mrtrix.org/
     
     Args:
         in_: the input image.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MESH2VOXEL_METADATA = Metadata(
-    id="9e4021b6e7a42b704e87020a118c921c2ba7a8fa.boutiques",
+    id="28b90b1b324afdb41ad9cab0242950bac08d3bdd.boutiques",
     name="mesh2voxel",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -79,10 +79,9 @@ def mesh2voxel(
     tractography through effective use of anatomical information. NeuroImage,
     2012, 62, 1924-1938.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mesh2voxel.html
+    URL: https://www.mrtrix.org/
     
     Args:
         source: the mesh file; note vertices must be defined in realspace\

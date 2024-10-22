@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NLFIM_METADATA = Metadata(
-    id="bff7130ae07196990e6e0ba7771fb91511e7c0f7.boutiques",
+    id="a4c9f15cadc6347edfbee179e6d7966fdba5f370.boutiques",
     name="3dNLfim",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -59,9 +59,9 @@ def v_3d_nlfim(
     """
     Nonlinear regression for each voxel of the input AFNI 3d+time data set.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNLfim.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Filename of 3d+time data file for input.

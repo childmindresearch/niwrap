@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FIND_AFNI_DSET_PATH_METADATA = Metadata(
-    id="09e9a0de3a1fbb029f0896d64132e5963f08db2a.boutiques",
+    id="dd1fcbc6d020074e2a73ad6f104cf658c6f5188f.boutiques",
     name="@FindAfniDsetPath",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def v__find_afni_dset_path(
     """
     Searches various AFNI directories for a specified dataset and returns its path.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FindAfniDsetPath.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dsetname: Name of the dataset to search for.

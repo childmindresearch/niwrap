@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TSPLOT_METADATA = Metadata(
-    id="9b69e33c8f61f1146dbcc656dc580d78c80db650.boutiques",
+    id="924a5d29dfc4a745479d0e01f171d22a353a3f5f.boutiques",
     name="tsplot",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -39,9 +39,9 @@ def tsplot(
     """
     Time series plotting tool for FSL.
     
-    Author: FMRIB
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/tsplot
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_directory: Input FEAT directory (e.g. feat_directory.feat).

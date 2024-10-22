@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_TO_SURF_METADATA = Metadata(
-    id="d7883d4a13357cfd0fed7ad1d5beb66474b05d0e.boutiques",
+    id="a2c971cd7bb0ee914e8be7cd7e5159482c16cc13.boutiques",
     name="SurfToSurf",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,9 +43,9 @@ def surf_to_surf(
     """
     Interpolate data from one surface to another.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfToSurf.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_surface_1: First input surface file (S1).

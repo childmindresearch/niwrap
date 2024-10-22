@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WARPCONVERT_METADATA = Metadata(
-    id="ba8ec2e9a192d14925b19411076f4ef6e5aa7e4f.boutiques",
+    id="aa820be224a359dcdb4d3911882f1ee399c31903.boutiques",
     name="warpconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -84,10 +84,9 @@ def warpconvert(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/warpconvert.html
+    URL: https://www.mrtrix.org/
     
     Args:
         in_: the input warp image.

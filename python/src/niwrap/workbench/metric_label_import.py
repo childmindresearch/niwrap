@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_LABEL_IMPORT_METADATA = Metadata(
-    id="80c7113c196b19fff26c8b6cb6ea6f43139d6154.boutiques",
+    id="5fa08ba8ced8918b2922f6141e5a9c05a68cf778.boutiques",
     name="metric-label-import",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -61,7 +61,9 @@ def metric_label_import(
     values encountered that are not mentioned in the list file, specify
     -discard-others to instead set these values to the "unlabeled" key.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         input_: the input metric file.

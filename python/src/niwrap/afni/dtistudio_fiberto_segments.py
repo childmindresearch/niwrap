@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DTISTUDIO_FIBERTO_SEGMENTS_METADATA = Metadata(
-    id="3af004da7dceeafdf7d648e011b0d4788bfd2bd3.boutiques",
+    id="3f18eb1cd61025f3b6f243c49c95ab75c9ad86a9.boutiques",
     name="DTIStudioFibertoSegments",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def dtistudio_fiberto_segments(
     """
     Convert a DTIStudio Fiber file to a SUMA segment file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/DTIStudioFibertoSegments.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset file.

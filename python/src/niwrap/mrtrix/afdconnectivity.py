@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFDCONNECTIVITY_METADATA = Metadata(
-    id="429f23959d4722a6ab83e4728cf25f38407f7bda.boutiques",
+    id="3290302704162d6eadb785f29be4535da532166f.boutiques",
     name="afdconnectivity",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -109,11 +109,9 @@ def afdconnectivity(
     Streamlines Tractography: Methods and Inter-Subject Normalisation. Open
     Science Framework, https://doi.org/10.31219/osf.io/c67kn.
     
-    Author: David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith
-    (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/afdconnectivity.html
+    URL: https://www.mrtrix.org/
     
     Args:
         image: the input FOD image.

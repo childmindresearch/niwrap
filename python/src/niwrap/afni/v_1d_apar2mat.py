@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_APAR2MAT_METADATA = Metadata(
-    id="45ae047ae44ecf95685982336344529ab852602d.boutiques",
+    id="ca46e845c2aeb2bfc0d1ca66f53ca7adef2d7e64.boutiques",
     name="1dApar2mat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_1d_apar2mat(
     Computes the affine transformation matrix from the set of 3dAllineate
     parameters.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dApar2mat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         x_shift: x-shift in mm.

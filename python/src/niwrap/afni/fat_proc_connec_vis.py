@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_CONNEC_VIS_METADATA = Metadata(
-    id="87549de894cd895593c53c5a3828c1369279574b.boutiques",
+    id="3c0e03aae455fbd21d6ab5bd41865b6565e23556.boutiques",
     name="fat_proc_connec_vis",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,10 +49,9 @@ def fat_proc_connec_vis(
     separate white matter connection maps (WMCs) which can be viewed simultaneously
     in 3D with SUMA.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_connec_vis.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_rois: List of separate files, each with a single ROI volume mask;\

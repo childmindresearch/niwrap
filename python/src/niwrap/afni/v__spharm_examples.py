@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SPHARM_EXAMPLES_METADATA = Metadata(
-    id="4e0cfd08072915ed372892853cb57b3f45c5d67f.boutiques",
+    id="7b9dbc8f033f538b7638320e8d57980c476bb1cc.boutiques",
     name="@Spharm.examples",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,10 +35,9 @@ def v__spharm_examples(
     A script to demonstrate the usage of spherical harmonics decomposition with
     SUMA.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Spharm.examples.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         help_web: Open webpage with help for this program.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMCP_METADATA = Metadata(
-    id="4c8d6b3e7e8e931e5a4519149846c8c8c3901d6a.boutiques",
+    id="7981025822d38b9a7a5bbcb573c141f9222d5492.boutiques",
     name="imcp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,7 +32,9 @@ def imcp(
     """
     Copy images from one location to another.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infiles: Input image files (e.g. img1.nii.gz, img2.nii.gz).

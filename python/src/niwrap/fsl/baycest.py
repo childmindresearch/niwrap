@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BAYCEST_METADATA = Metadata(
-    id="795753b1e84a6fd7866195155e777c5b4987a6c0.boutiques",
+    id="b2b31c78e0d4e829ca2c94fb1da6a8c4890ade65.boutiques",
     name="baycest",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,7 +38,9 @@ def baycest(
     """
     Bayesian analysis for chemical exchange saturation transfer z-spectra.
     
-    Author: Bayesian Analysis Group
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         data_file: Specify data file (nifti image).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FSLABEL2DSET_METADATA = Metadata(
-    id="cb2261fa9de6873de2dded9da7bf8a398f3eebe4.boutiques",
+    id="d0c250b2d9ce4006072d80b03d43f73189a4ea50.boutiques",
     name="@FSlabel2dset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v__fslabel2dset(
     A script to convert a FreeSurfer ASCII label file into a SUMA dataset and a SUMA
     ROI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FSlabel2dset.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         fs_label_file: Specify the ASCII label file from FreeSurfer.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIND_THE_BIGGEST_METADATA = Metadata(
-    id="4223284ffaa6be319c644e5d1daaee7e360a61dc.boutiques",
+    id="d42e690a2afd6d3557004a9b4c42dfd87e70847b.boutiques",
     name="find_the_biggest",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,7 +32,9 @@ def find_the_biggest(
     """
     Tool to find the largest volume or surface from a set of inputs.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         volumes_surfaces: List of input volumes or surfaces.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AUTO_TCORRELATE_METADATA = Metadata(
-    id="a0c1dd4e9b6592b13c3f8c83f41e4cfcb83baebb.boutiques",
+    id="54f323538871e62136cb28afd7fdc9c55ace001b.boutiques",
     name="3dAutoTcorrelate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,10 +48,9 @@ def v_3d_auto_tcorrelate(
     Computes the correlation coefficient between the time series of each pair of
     voxels in the input dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutoTcorrelate.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset.

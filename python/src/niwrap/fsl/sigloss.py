@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIGLOSS_METADATA = Metadata(
-    id="a3785476c0878982dcb302a4852172d4266c3be5.boutiques",
+    id="d8727c906d42af8ef98b3bfe8945de45d9847bdd.boutiques",
     name="sigloss",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def sigloss(
     """
     Estimates signal loss from a field map (in rad/s).
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/sigloss
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_b0map: Input b0 map image filename (in rad/s).

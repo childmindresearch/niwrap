@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZCAT_METADATA = Metadata(
-    id="e6d777c9d55e0fc3f1c3e73512bc351a33d970e1.boutiques",
+    id="a00d1d033ba00163e081549b0d7b74b2c667d65a.boutiques",
     name="3dZcat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v_3d_zcat(
     """
     Concatenates datasets in the slice (z) direction.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZcat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input datasets.

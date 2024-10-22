@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ANOVA3_METADATA = Metadata(
-    id="9848d10813d27662b8bd1fcf297dabbe1fca2a7a.boutiques",
+    id="6d54bc36377a2a039a659783b44df3ecbd6b1534.boutiques",
     name="3dANOVA3",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -55,9 +55,9 @@ def v_3d_anova3(
     """
     Performs three-factor ANOVA on 3D data sets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dANOVA3.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         type_: Type of ANOVA model to be used. k = 1: A,B,C fixed; AxBxC, k =\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_PARCELLATE_METADATA = Metadata(
-    id="faa296e4989aab7b981c3fd32d34fde6bb9f46f3.boutiques",
+    id="b960075732e728abfd0133d029cf4d46ab8a10d6.boutiques",
     name="cifti-parcellate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -183,7 +183,9 @@ def cifti_parcellate(
     (default), SUM, STDEV, SAMPSTDEV, VARIANCE, MEDIAN, or MODE (default for
     label data).
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the cifti file to parcellate.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POINTFLIRT_METADATA = Metadata(
-    id="ee1b22cf597ec9ee03dbc9e66058c8eb17f83276.boutiques",
+    id="d623edc39ad4244494c18399e7ec9d14e598e763.boutiques",
     name="pointflirt",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,9 +38,9 @@ def pointflirt(
     A tool to align point coordinates between volumes and compute affine
     transformation matrices.
     
-    Author: Mark Jenkinson, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         invol_coords: Filename of input volume coordinates.

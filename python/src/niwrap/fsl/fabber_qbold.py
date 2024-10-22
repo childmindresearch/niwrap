@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_QBOLD_METADATA = Metadata(
-    id="41f0282e4be0c41291d4130b8b261684de108bb1.boutiques",
+    id="6bbed246485424cb176eb731f1489c7a89903d38.boutiques",
     name="fabber_qbold",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -89,9 +89,9 @@ def fabber_qbold(
     """
     Fabber - a flexible BaYesian modeling framework for FMRI and MRI analysis.
     
-    Author: FSL
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fabber
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_dir: Directory for output files (including logfile).

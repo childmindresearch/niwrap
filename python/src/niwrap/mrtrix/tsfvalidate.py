@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TSFVALIDATE_METADATA = Metadata(
-    id="d28ca26eb235589fbfbc7fc1f5f5041ada24dad1.boutiques",
+    id="9cbd2feb99692133f28747c96ab73eb720860a6a.boutiques",
     name="tsfvalidate",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -73,10 +73,9 @@ def tsfvalidate(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfvalidate.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tsf: the input track scalar file.

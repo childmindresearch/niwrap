@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UBER_SKEL_METADATA = Metadata(
-    id="5293f1842f7c3c8b8ef88fa00ea2d56b36dab3db.boutiques",
+    id="4eeab6ea6a3b8ac4136bb3e6f7d7957f9674c110.boutiques",
     name="uber_skel",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def uber_skel(
     Sample uber processing program for initializing user and control variables, with
     options for both GUI and non-GUI modes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_skel.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         qt_options: Pass PyQt4 options directly to the GUI.

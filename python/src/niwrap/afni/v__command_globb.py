@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__COMMAND_GLOBB_METADATA = Metadata(
-    id="fe166d4e4facdfa0bbed6bb9048b39209678fa1b.boutiques",
+    id="3fcaa2b9f57f4c3a8e88b6f2a4841a766c684dcf.boutiques",
     name="@CommandGlobb",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v__command_globb(
     A command-line tool to execute a specified program command line on a list of
     input bricks.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@CommandGlobb.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         program_command: The entire command line for the program desired. The\

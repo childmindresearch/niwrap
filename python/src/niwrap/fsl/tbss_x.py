@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_X_METADATA = Metadata(
-    id="582c24e736807594d96e54b5b8e8b34c1a775937.boutiques",
+    id="53137c6927809a097a52f7a1a2493521fa2aeb61.boutiques",
     name="tbss_x",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,9 +30,9 @@ def tbss_x(
     """
     TBSS cross-subject script for processing scalar and vector directories.
     
-    Author: FMRIB Software Library (FSL)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         scalar_dirs: List of scalar directories (e.g., F1, F2).

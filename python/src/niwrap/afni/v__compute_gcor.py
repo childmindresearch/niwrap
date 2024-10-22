@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__COMPUTE_GCOR_METADATA = Metadata(
-    id="b94ef87dbf1368c4e5a1039cde31a45efb508360.boutiques",
+    id="d9410dfe3cb0b268e03a4b833a2d567c23593843.boutiques",
     name="@compute_gcor",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v__compute_gcor(
     """
     Compute GCOR, the global correlation.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@compute_gcor.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Specify input dataset to compute the GCOR over.

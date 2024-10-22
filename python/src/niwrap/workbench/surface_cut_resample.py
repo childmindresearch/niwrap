@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CUT_RESAMPLE_METADATA = Metadata(
-    id="93215402a87998c91a070948ea0ca99c7c211f17.boutiques",
+    id="6daec17f454cecf8572083be06472f92c4f913b2.boutiques",
     name="surface-cut-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -38,7 +38,9 @@ def surface_cut_resample(
     Barycentric resampling is used, because it is usually better for resampling
     surfaces, and because it is needed to figure out the new topology anyway.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface_in: the surface file to resample.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIENA_DIFF_METADATA = Metadata(
-    id="216bf3ce45f1e54242617d4b44133c1c163b5360.boutiques",
+    id="093be6fabc3c673c5fb136d00112d9d8c5c73744.boutiques",
     name="siena_diff",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,9 +36,9 @@ def siena_diff(
     """
     SIENA_diff: Analysis of longitudinal brain image differences.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SIENA
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input1_basename: Input image 1 basename.

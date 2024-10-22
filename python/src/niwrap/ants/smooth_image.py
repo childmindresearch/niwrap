@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SMOOTH_IMAGE_METADATA = Metadata(
-    id="f36f1136b83bc679597e94b149242a4ae543df30.boutiques",
+    id="c743ecca2407454064c39d3994944e2822b5560a.boutiques",
     name="SmoothImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -37,7 +37,7 @@ def smooth_image(
     SmoothImage allows smoothing of images with adjustable sigma values, offering
     optional median filtering functionality.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

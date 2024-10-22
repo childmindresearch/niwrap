@@ -92,14 +92,7 @@
       "command-line-flag-separator": "=",
       "description": "'x' or 'y' or 'z' or '-x' or '-y' or '-z'. Phase encoding direction, dir = x/y/z/-x/-y/-z.",
       "optional": true,
-      "value-choices": [
-        "x",
-        "y",
-        "z",
-        "-x",
-        "-y",
-        "-z"
-      ]
+      "value-choices": ["x", "y", "z", "-x", "-y", "-z"]
     },
     {
       "id": "t1_brain",

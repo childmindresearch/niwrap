@@ -41,13 +41,7 @@
       "optional": false,
       "id": "stat",
       "name": "Statistic to compute",
-      "value-choices": [
-        "mean",
-        "mode",
-        "num",
-        "FWHM",
-        "ALL"
-      ]
+      "value-choices": ["mean", "mode", "num", "FWHM", "ALL"]
     },
     {
       "command-line-flag": "-input",

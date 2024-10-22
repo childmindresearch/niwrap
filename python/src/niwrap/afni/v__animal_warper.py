@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ANIMAL_WARPER_METADATA = Metadata(
-    id="f373bc7e1633539a38d1306872d0f169bc4fc59c.boutiques",
+    id="fbfd5141036c3d4c34d77b297dba5dfe5ac37787.boutiques",
     name="@animal_warper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -76,9 +76,9 @@ def v__animal_warper(
     Align a subject structural dataset to a template and perform several
     post-alignment operations.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@animal_warper.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: input dataset to align to base template.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_UNDUMP_METADATA = Metadata(
-    id="739057a97effc44c38e6c2e089efe987f53b5056.boutiques",
+    id="f2538bc9ff4b0df64cd201f00d892051a11fe2c2.boutiques",
     name="3dUndump",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,9 +45,9 @@ def v_3d_undump(
     """
     Assembles a 3D dataset from an ASCII list of coordinates and optionally values.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dUndump.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input ASCII file(s), with one voxel specification per\

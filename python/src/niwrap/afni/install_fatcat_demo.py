@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_FATCAT_DEMO_METADATA = Metadata(
-    id="b78c2a9d954b123e1a24167492b9243e55ec269d.boutiques",
+    id="00c8c91106f8ca9345d8a56ae637c6407ffb3b9d.boutiques",
     name="Install_FATCAT_DEMO",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,10 +30,9 @@ def install_fatcat_demo(
     """
     Installs the demo archive for Paul Taylor's tractography tools.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_FATCAT_DEMO.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         wget: Use wget to download archive. Script chooses by default with\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCAT_METADATA = Metadata(
-    id="21885e76d810f08df4364284639c8ed0bfacf428.boutiques",
+    id="b3de92bc09aeac701d99649eaea82387c297125a.boutiques",
     name="mrcat",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -78,10 +78,9 @@ def mrcat(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith
-    (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcat.html
+    URL: https://www.mrtrix.org/
     
     Args:
         image1: the first input image.

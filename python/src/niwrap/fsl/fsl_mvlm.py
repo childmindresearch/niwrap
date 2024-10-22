@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MVLM_METADATA = Metadata(
-    id="1a8f691f76268ff455d3f6b68dcdfb98ad1cb04c.boutiques",
+    id="758c144b1e0d69edbd57bf49adf3a469b947a597.boutiques",
     name="fsl_mvlm",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -48,9 +48,9 @@ def fsl_mvlm(
     Multivariate Linear Model regression on time courses and/or 3D/4D images using
     SVD (PCA), PLS, normalised PLS, CVA, SVD-CVA or MLM.
     
-    Author: Christian F. Beckmann
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input file (text matrix or 3D/4D image file).

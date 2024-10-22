@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APQC_MAKE_TCSH_PY_METADATA = Metadata(
-    id="91be2a7730e3b24b6c82f3600552fd6ab87466dc.boutiques",
+    id="c8d624bec143f90b5f81c15e748a8504fff3f7c8.boutiques",
     name="apqc_make_tcsh.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,10 +37,9 @@ def apqc_make_tcsh_py(
     '@ss_review_html' which generates images and text for the afni_proc.py quality
     control (APQC) HTML.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/apqc_make_tcsh.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         uvar_json: Text file of user variables created by gen_ss_review.py that\

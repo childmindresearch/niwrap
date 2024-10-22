@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_FDR_METADATA = Metadata(
-    id="455e991e6fc8b7d57aae157ffd2294a4ca4ed068.boutiques",
+    id="3ac9a33caf8649adfa21c37c4ff26a8483e8935a.boutiques",
     name="3dFDR",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def v_3d_fdr(
     A tool for applying False Discovery Rate (FDR) thresholding to voxelwise
     statistics in 3D functional datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFDR.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input 3D functional dataset filename.

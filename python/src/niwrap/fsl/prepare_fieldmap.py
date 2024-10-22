@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PREPARE_FIELDMAP_METADATA = Metadata(
-    id="a569aedce4cc243da931fd06a84a4422e0b750a6.boutiques",
+    id="f619a52567c4eacea75eb8d4a647f2702a521acf.boutiques",
     name="PrepareFieldmap",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -41,7 +41,9 @@ def prepare_fieldmap(
     rad/s format (e.g. ```fsl_prepare_fieldmap SIEMENS
     images_3_gre_field_mapping images_4_gre_field_mapping fmap_rads 2.65```).
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_phase: Phase difference map, in siemens format range from 0-4096 or\

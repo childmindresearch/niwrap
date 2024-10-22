@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PEAKS2AMP_METADATA = Metadata(
-    id="0f0769f37a7be0bea0d73d448945bb0f5aaeb864.boutiques",
+    id="90ed8fa8022a8bb67e41e995c1aaf7cea334db02.boutiques",
     name="peaks2amp",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -75,10 +75,9 @@ def peaks2amp(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/peaks2amp.html
+    URL: https://www.mrtrix.org/
     
     Args:
         directions: the input directions image. Each volume corresponds to the\

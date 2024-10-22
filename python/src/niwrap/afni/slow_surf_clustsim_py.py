@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLOW_SURF_CLUSTSIM_PY_METADATA = Metadata(
-    id="02c04d297739789391184ee70d481a01f91215f0.boutiques",
+    id="d0f65569329873ee3b5d627e2e983fb33e8b87f3.boutiques",
     name="slow_surf_clustsim.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,10 +39,9 @@ def slow_surf_clustsim_py(
     """
     Generate a tcsh script to run clustsim on surface.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/slow_surf_clustsim.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         on_surface: Start from noise on the surface (so no volume data is\

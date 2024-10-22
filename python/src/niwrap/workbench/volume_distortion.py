@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_DISTORTION_METADATA = Metadata(
-    id="f11e01118d74f77b36d19ae43059ba4817caebaf.boutiques",
+    id="cc3333cf6865ebf0c4fdb6f911a5c17fc423856f.boutiques",
     name="volume-distortion",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -48,7 +48,9 @@ def volume_distortion(
     x-values of points on a circle 120 degrees apart, finds the circle's
     diameter, and transforms that back to a ratio.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         warpfield: the warpfield to compute the distortion of.

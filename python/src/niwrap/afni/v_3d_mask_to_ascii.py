@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MASK_TO_ASCII_METADATA = Metadata(
-    id="63ff90109b39c45888c83d4ff4ec5e6513c745f2.boutiques",
+    id="dfc4f64758548d800895c3bbc28a5d63199e3174.boutiques",
     name="3dMaskToASCII",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def v_3d_mask_to_ascii(
     """
     Converts a byte-valued 0/1 dataset into an ASCII string, or vice versa.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMaskToASCII.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset (e.g. mask.nii.gz).

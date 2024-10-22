@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_RUN_R_METADATA = Metadata(
-    id="9367ed6e6ae67224e294e4c4a5ed10b2813d0ea9.boutiques",
+    id="c25de8aaab9b4faa0067fa6c9d3361eb1f13f7bf.boutiques",
     name="afni_run_R",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def afni_run_r(
     """
     Run an R script with the specified arguments.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_run_R.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         r_script: R script to be executed.

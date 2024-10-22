@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRHISTOGRAM_METADATA = Metadata(
-    id="7709fa02d5156e931706236070e64c6a048ddf37.boutiques",
+    id="5dad6acd1b74d4b31384e0d780f065448cd007b5.boutiques",
     name="mrhistogram",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -80,10 +80,9 @@ def mrhistogram(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrhistogram.html
+    URL: https://www.mrtrix.org/
     
     Args:
         image: the input image from which the histogram will be computed.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLREORIENT2STD_METADATA = Metadata(
-    id="0ab323644b24b7a80ded7cca60e0bc892bf71509.boutiques",
+    id="b31bdf2dc4462cf0562bb44493472978d7722cb6.boutiques",
     name="fslreorient2std",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,9 +36,9 @@ def fslreorient2std(
     A tool for reorienting an image to match the approximate orientation of standard
     template images (MNI152).
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#fslreorient2std
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Input image to be reoriented (NIfTI format, e.g.\

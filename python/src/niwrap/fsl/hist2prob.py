@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 HIST2PROB_METADATA = Metadata(
-    id="0e330ba8ae70a3d2b120d37dc884ef9aca2c5f3a.boutiques",
+    id="76a4f5ad84c9d3c49f133a3ac9009d32fa97da35.boutiques",
     name="hist2prob",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,6 +33,10 @@ def hist2prob(
 ) -> Hist2probOutputs:
     """
     Converts a histogram image to a probability map based on specified thresholds.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         image: Input histogram image.

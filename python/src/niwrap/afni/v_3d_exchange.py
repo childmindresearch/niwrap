@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EXCHANGE_METADATA = Metadata(
-    id="ff08399e96ffe173e79ce9b878f7d0071de5c7d6.boutiques",
+    id="93070f9755d67a6df7e13c005e486486c48dd1b7.boutiques",
     name="3dExchange",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3d_exchange(
     """
     Replaces voxel values using a mapping file with specified columns.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dExchange.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output prefix.

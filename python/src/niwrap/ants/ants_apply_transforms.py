@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
-    id="e40f11fc955191d42a23be225ac2b4c2c3a42561.boutiques",
+    id="1e2c5690e55a56e5a6fd164d9abf7d68ef0554d2.boutiques",
     name="antsApplyTransforms",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -508,7 +508,9 @@ def ants_apply_transforms(
     antsApplyTransforms, applied to an input image, transforms it according to a
     reference image and a transform (or a set of transforms).
     
-    Author: Advanced Normalization Tools (ANTs) Contributors
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
     
     Args:
         input_image: Currently, the only input objects supported are image\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_ERODE_METADATA = Metadata(
-    id="10a4eb40c2a7f0a9ed7b519b27c5709c07c5bc8b.boutiques",
+    id="36301e41e341104e27f3c26b137016f734f38118.boutiques",
     name="volume-erode",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -39,7 +39,9 @@ def volume_erode(
     surrounding voxels are all face neighbors and all voxels within the
     specified distance (center to center).
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume: the volume to erode.

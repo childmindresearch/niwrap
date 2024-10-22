@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__BUILD_AFNI_XLIB_METADATA = Metadata(
-    id="761ccb33a4a689df8a3ed7ccbf142f33194db2a2.boutiques",
+    id="121cbb94304d7b6be810fff619244ff26d2a3235.boutiques",
     name="@build_afni_Xlib",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def v__build_afni_xlib(
     """
     Compile and install lesstif, openmotif, and/or libXt.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@build_afni_Xlib.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         packages: Packages to compile and install (e.g., lesstif, openmotif,\

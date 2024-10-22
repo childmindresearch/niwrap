@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 C3D_METADATA = Metadata(
-    id="58e07723e7477ee290e9447fb17235326c45f8c8.boutiques",
+    id="2fd805b886703d905dbdaa3b379abc89e94dfe54.boutiques",
     name="c3d",
     package="c3d",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
@@ -8804,7 +8804,9 @@ def c3d_(
     """
     C3D is a command-line tool for medical image processing.
     
-    Author: ITK-Snap Team
+    Author: Convert3D Developers
+    
+    URL: http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D
     
     Args:
         input_: The input image to process.

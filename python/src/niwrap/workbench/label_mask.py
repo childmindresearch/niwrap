@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_MASK_METADATA = Metadata(
-    id="c800dbf5e18e0d79c62bcbe9addf92ea1b420b84.boutiques",
+    id="510b114c9d816b586c513c4364b51f8a110a2b28.boutiques",
     name="label-mask",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -39,7 +39,9 @@ def label_mask(
     specified, the output contains only one column, the masked version of the
     specified input column.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label: the label file to mask.

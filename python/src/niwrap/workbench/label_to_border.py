@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_TO_BORDER_METADATA = Metadata(
-    id="6283a756b635b22e20fe2df1e148bdcf0d92d100.boutiques",
+    id="1a229df2c262a83cd706992f1fd9759f39fb10c2.boutiques",
     name="label-to-border",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def label_to_border(
     columns in the input file, using the map name as the class name for the
     border.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to use for neighbor information.

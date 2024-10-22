@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_PROBABILITY_METADATA = Metadata(
-    id="fc29cc0dc8f5a8121f3307010f5444b65ec68ccc.boutiques",
+    id="8baf0d48a9f3424d3a2160cf5a39202f29b7da5f.boutiques",
     name="cifti-label-probability",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def cifti_label_probability(
     where the value is how many of the input maps had that label at that
     vertex/voxel, divided by the number of input maps.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_maps: cifti dlabel file containing individual label maps from\

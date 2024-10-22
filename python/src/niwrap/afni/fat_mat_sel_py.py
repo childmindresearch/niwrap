@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MAT_SEL_PY_METADATA = Metadata(
-    id="dad9b0e13e4e654fe381728f3aeb02e4aa81ff4c.boutiques",
+    id="2dbd312d736f7cb02342c5c6ae41fc2d1aac7035.boutiques",
     name="fat_mat_sel.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,9 +58,9 @@ def fat_mat_sel_py(
     Perform simple matrix plotting operations from outputs of FATCAT programs
     3dNetCorr and 3dTrackID.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_sel.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         parameters: Supply names of parameters, separated by whitespace, for\

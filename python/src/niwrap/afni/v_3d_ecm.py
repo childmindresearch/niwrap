@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ECM_METADATA = Metadata(
-    id="44c6a60ac060c4ce8eb6c9f327ae7672557ef517.boutiques",
+    id="91d8d58fa4639faaf4600f4e74c107adf466aacc.boutiques",
     name="3dECM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def v_3d_ecm(
     Performs degree centrality on a dataset using a given maskfile via the 3dECM
     command.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dECM.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3decm.

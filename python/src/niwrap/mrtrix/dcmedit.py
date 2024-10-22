@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DCMEDIT_METADATA = Metadata(
-    id="d829a602d8b0ae7db1422fb208af58fe0bfe5b6c.boutiques",
+    id="01158fce9a81a53a1cc2f81c6577cb2f6210d5a8.boutiques",
     name="dcmedit",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -112,9 +112,9 @@ def dcmedit(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/dcmedit.html
+    URL: https://www.mrtrix.org/
     
     Args:
         file: the DICOM file to be edited.

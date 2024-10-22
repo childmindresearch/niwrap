@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_TSORT_METADATA = Metadata(
-    id="310e5cf7cdd899aa9f25717a2f61e86e6223b21c.boutiques",
+    id="ab14a7e62a8b710af2d1fe9b369ef04e44e6defe.boutiques",
     name="1dTsort",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def v_1d_tsort(
     """
     Sorts each column of the input 1D file and writes result to stdout.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dTsort.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input 1D file to be sorted.

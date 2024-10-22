@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__GRAD_FLIP_TEST_METADATA = Metadata(
-    id="9d0fc0de1e554a35c574767a25f1d88ddcf067e2.boutiques",
+    id="210fc606c6595f8a6ddeb4428fbcf9ed120ad2c4.boutiques",
     name="@GradFlipTest",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,9 +46,9 @@ def v__grad_flip_test(
     """
     Script to test the correct flip for a data set when using 1dDW_Grad_o_Mat++.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GradFlipTest.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dwi: Set of DWIs (N total volumes).

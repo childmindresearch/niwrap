@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PLUGOUT_IJK_METADATA = Metadata(
-    id="80af6135dfbf8a4f2607f20e73f5dc9f0efe6e66.boutiques",
+    id="546af73f34fcb7f296f73da1cc63ae4ec231fec2.boutiques",
     name="plugout_ijk",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def plugout_ijk(
     """
     Connects to AFNI and sends (i,j,k) dataset indices to control the viewpoint.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_ijk.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         host: Connect to AFNI running on the specified computer using TCP/IP.

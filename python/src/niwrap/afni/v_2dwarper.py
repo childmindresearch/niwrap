@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_2DWARPER_METADATA = Metadata(
-    id="a0d97212df1051f5312b9612b91220aceae3fd60.boutiques",
+    id="56035632ed72a11c4f0837818362de9c89ce9f9a.boutiques",
     name="2dwarper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v_2dwarper(
     """
     2D image warping tool.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@2dwarper.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset (e.g., image to be warped).

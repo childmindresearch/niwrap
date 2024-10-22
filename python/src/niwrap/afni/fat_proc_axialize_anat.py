@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_AXIALIZE_ANAT_METADATA = Metadata(
-    id="b86a6a48e22e26b80edb4f392c2ab3237c9be3cb.boutiques",
+    id="e138eb56e5029d03d449b78987c687adf3579333.boutiques",
     name="fat_proc_axialize_anat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,10 +56,9 @@ def fat_proc_axialize_anat(
     Helps align the major axes of an anatomical volume to those of the volumetric
     field of view.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_axialize_anat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input anatomical volume full name.

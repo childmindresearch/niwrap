@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_PV_METADATA = Metadata(
-    id="5a4dd17581bf7f9db5f05e1dee49e9447f190886.boutiques",
+    id="54b08b1e61d1a55edf0eba3e25c0aa1254ece60a.boutiques",
     name="3dLocalPV",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,9 +47,9 @@ def v_3d_local_pv(
     neighborhood of each voxel in a 3D+time dataset, which serves as a smoothing
     method for the dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalPV.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input time series dataset.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_QUAL_METADATA = Metadata(
-    id="44a6751267f223ef409d44998132ca463821a0d8.boutiques",
+    id="26998942504c3f8916ff5647525cc6689776bf8d.boutiques",
     name="SurfQual",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,9 +50,9 @@ def surf_qual(
     """
     A program to check the quality of surfaces.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfQual.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         spec_file: Spec file containing input surfaces.

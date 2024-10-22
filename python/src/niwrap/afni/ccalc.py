@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CCALC_METADATA = Metadata(
-    id="a05d87fa78c6c1673017e42f1fb96f2c26608f02.boutiques",
+    id="e76d49ddb6fb2569c3e43954471845bd902d1d58.boutiques",
     name="ccalc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def ccalc(
     """
     Command line calculator with formatted output options.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/ccalc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         expr: Evaluate an expression specified on command line, return answer\

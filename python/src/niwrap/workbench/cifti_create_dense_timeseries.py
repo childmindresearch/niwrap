@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_DENSE_TIMESERIES_METADATA = Metadata(
-    id="5456f1c9282ce73af081351a9260762fc07d7440.boutiques",
+    id="c91dd63989818f2a45cdda95e77601aa400631d7.boutiques",
     name="cifti-create-dense-timeseries",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -215,7 +215,9 @@ def cifti_create_dense_timeseries(
     METER
     RADIAN.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_out: the output cifti file.

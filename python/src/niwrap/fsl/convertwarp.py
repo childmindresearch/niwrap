@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERTWARP_METADATA = Metadata(
-    id="983054b869b8b16732f3b84c7ede2a83472acbf5.boutiques",
+    id="c112c7b0b026f049dbc3d96144407172042e85e6.boutiques",
     name="convertwarp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -50,9 +50,9 @@ def convertwarp(
     """
     Use FSL convertwarp for combining multiple transforms into one.
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: http://fsl.fmrib.ox.ac.uk/fsl/fsl-4.1.9/fnirt/warp_utils.html
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         reference: Name of a file in target space of the full transform.

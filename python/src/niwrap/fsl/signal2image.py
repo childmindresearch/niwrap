@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIGNAL2IMAGE_METADATA = Metadata(
-    id="ee51e599579afe1ad9e1eb37382cd7781755836a.boutiques",
+    id="4378b9595f20e3569e2b9d46f8bc2994669782ef.boutiques",
     name="signal2image",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -45,9 +45,9 @@ def signal2image(
     A tool for converting MR signal data to images using specified k-space
     coordinates and pulse sequences.
     
-    Author: University of Oxford (Mark Jenkinson & Ivana Drobnjak)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         pulse_sequence: 8-column pulse_sequence matrix. Expects to find all\

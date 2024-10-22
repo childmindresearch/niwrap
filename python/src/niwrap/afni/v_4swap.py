@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_4SWAP_METADATA = Metadata(
-    id="de1fab95c80baec88325f4b441eaa797236f84a6.boutiques",
+    id="a08537876585898a9e19a9d024e3c6d15fdcf425.boutiques",
     name="4swap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v_4swap(
     """
     Swaps byte quadruples on the listed files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/4swap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         files: List of files to process.

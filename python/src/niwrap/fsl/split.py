@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPLIT_METADATA = Metadata(
-    id="2ec178f81b0b24045f415bcb92c5d398ac335c3d.boutiques",
+    id="5ddc0266f8381091fd786249d724d90b736062ef.boutiques",
     name="Split",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,9 +33,9 @@ def split(
     """
     split a 4D file into lots of 3D files (eg for inputting to SPM).
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Input image to split along dimension (default: time).

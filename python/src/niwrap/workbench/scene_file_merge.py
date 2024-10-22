@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SCENE_FILE_MERGE_METADATA = Metadata(
-    id="c5a86083ec4db99dc4360c618252324b7f95a8a1.boutiques",
+    id="1069d56cdf4e0f25ceaf721f9d160e75c0033c31.boutiques",
     name="scene-file-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -129,7 +129,9 @@ def scene_file_merge(
     This example would take the first scene from first.scene, followed by all
     scenes from second.scene, and write these scenes to out.scene.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         scene_file_out: output - the output scene file.

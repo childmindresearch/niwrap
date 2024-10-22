@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NWARP_CAT_METADATA = Metadata(
-    id="c34b27345b5662d5255d72d5b42d79c401a41ba7.boutiques",
+    id="e3b5978ed235b04f0d1559137f70db255a2b539c.boutiques",
     name="3dNwarpCat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_nwarp_cat(
     """
     Catenates (composes) 3D warps defined on a grid or via a matrix.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpCat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         output_prefix: Prefix name for the output dataset that holds the warp.

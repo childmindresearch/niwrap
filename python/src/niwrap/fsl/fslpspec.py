@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLPSPEC_METADATA = Metadata(
-    id="4b4cc225281182b5c12fd765ae91de54dedb1cb2.boutiques",
+    id="2328aa3fb9f4eb863c2ea8ab9de6ed0a137ea08a.boutiques",
     name="fslpspec",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,9 +32,9 @@ def fslpspec(
     """
     Estimate the power spectrum of 4D fMRI time series data.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input 4D fMRI time series image (e.g. fMRI_data.nii.gz).

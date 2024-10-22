@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_TO_VOLUME_MAPPING_METADATA = Metadata(
-    id="3bba08ec366947b533a5d4e2659fb376a3ed626b.boutiques",
+    id="9c0c4841cabe7d1062d8fceb605c98dddc1761ca.boutiques",
     name="label-to-volume-mapping",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -88,7 +88,9 @@ def label_to_volume_mapping(
     uses the same method as in -volume-to-surface-mapping, then uses the weights
     in reverse, with popularity logic to decide on a label to use.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label: the input label file.

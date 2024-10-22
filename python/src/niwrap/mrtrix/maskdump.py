@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MASKDUMP_METADATA = Metadata(
-    id="81345fb4732dfcf6db2b3efeadc0684f0e3ba96b.boutiques",
+    id="34b4c195e55cf0cebd30b2aa1175071f9fc41338.boutiques",
     name="maskdump",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -76,10 +76,9 @@ def maskdump(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/maskdump.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image.

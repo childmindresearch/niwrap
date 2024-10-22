@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLHD_METADATA = Metadata(
-    id="946dad538ed0466ae2e4ee9c00ce491f95dedb6d.boutiques",
+    id="f2b370f14969e475214ad34ac666a34c16c4f661.boutiques",
     name="fslhd",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,9 +30,9 @@ def fslhd(
     """
     Display header information from a NIFTI file.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#FSLHD
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input NIFTI file.

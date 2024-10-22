@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ADD_EDGE_METADATA = Metadata(
-    id="b9a062e931d5a2f77c72dc95ba6a67aa1066da42.boutiques",
+    id="cc6bd7e8e964e6139e3ad4af63985ce234097620.boutiques",
     name="@AddEdge",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,9 +53,9 @@ def v__add_edge(
     A script to create composite edge-enhanced datasets and drive the AFNI interface
     to display the results.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AddEdge.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input datasets.

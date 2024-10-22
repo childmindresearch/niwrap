@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__AUTO_TLRC_METADATA = Metadata(
-    id="325e373135ba824b7d91a6cd3ab1dc0967fc2a98.boutiques",
+    id="22feaa9f6bac760643cabb253973d50074192acb.boutiques",
     name="@auto_tlrc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -73,9 +73,9 @@ def v__auto_tlrc(
     template and to apply the same TLRC transform obtained with @auto_tlrc in Usage
     1 mode to other datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@auto_tlrc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         base_template: Reference anatomical volume. Usually this volume is in\

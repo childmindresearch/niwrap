@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_TFCE_METADATA = Metadata(
-    id="175a196c8172c1394704595034e0dbfdaa37a2c6.boutiques",
+    id="7f8022ebd9d2224cc981277bcaf5fb760fad7d78.boutiques",
     name="volume-tfce",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -114,7 +114,9 @@ def volume_tfce(
     localisation in cluster inference." Neuroimage. 2009 Jan 1;44(1):83-98.
     PMID: 18501637.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the volume to run TFCE on.

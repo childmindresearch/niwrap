@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_CONVERT_DCM_DWIS_METADATA = Metadata(
-    id="2a067d01b93bba5c4c51c11313a480d82f694625.boutiques",
+    id="9b9610517874019289f1b6f2dec8529be62fcd51.boutiques",
     name="fat_proc_convert_dcm_dwis",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -63,10 +63,9 @@ def fat_proc_convert_dcm_dwis(
     Convert sets of DWIs in DICOM format into 'nicer' volume+grad format, reorient
     volumetric data, and glue together multiple sessions/directories of data.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_convert_dcm_dwis.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dicom_dir: Directory of DICOM files of the DWI data with 'AP' phase\

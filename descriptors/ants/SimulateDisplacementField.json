@@ -18,10 +18,7 @@
       "name": "Displacement Field Type",
       "value-key": "[DISPLACEMENT_FIELD_TYPE]",
       "type": "String",
-      "value-choices": [
-        "BSpline",
-        "Exponential"
-      ],
+      "value-choices": ["BSpline", "Exponential"],
       "description": "Type of displacement field to simulate."
     },
     {

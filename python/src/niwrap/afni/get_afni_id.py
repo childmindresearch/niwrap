@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GET_AFNI_ID_METADATA = Metadata(
-    id="133ce3447e15c1c10c2ba2ac29fc87894d03a5bc.boutiques",
+    id="2266d7ce54816cb01f9ac995c131801600b8c8a4.boutiques",
     name="GetAfniID",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def get_afni_id(
     """
     Returns the unique identifier of a dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniID.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset: Dataset for which the unique identifier is to be returned.

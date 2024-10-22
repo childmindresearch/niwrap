@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EPI_REG_METADATA = Metadata(
-    id="34fef22f93551d0f4b6ff6e880c97fd91c9d9107.boutiques",
+    id="49c9bdcbc5854d3580fe7ce3e74411301d9a635f.boutiques",
     name="epi_reg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -69,9 +69,9 @@ def epi_reg(
     """
     Runs FSL epi_reg script for simultaneous coregistration and fieldmap unwarping.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/UserGuide#epi_reg
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         epi: EPI Nifti image.

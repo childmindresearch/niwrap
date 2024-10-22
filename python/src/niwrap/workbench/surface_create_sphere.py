@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CREATE_SPHERE_METADATA = Metadata(
-    id="d7ea9b52cca7eb135786a71518cf6110255d688e.boutiques",
+    id="6c5e3be2b2a9fec8ba27221cfebfe665f91a6471.boutiques",
     name="surface-create-sphere",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -44,7 +44,9 @@ def surface_create_sphere(
     $ wb_command -set-structure Sphere.6k.R.surf.gii CORTEX_RIGHT
     $ wb_command -set-structure Sphere.6k.L.surf.gii CORTEX_LEFT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         num_vertices: desired number of vertices.

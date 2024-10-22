@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MVM_SCRIPTER_PY_METADATA = Metadata(
-    id="061530a260892f736df8c1fc4efc89e60f1c0032.boutiques",
+    id="82b72a127567ec2077a59b2fc40c92cb4cb7aea9.boutiques",
     name="fat_mvm_scripter.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,10 +46,9 @@ def fat_mvm_scripter_py(
     """
     Automated tool to create command scripts for 3dMVM statistical modeling.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mvm_scripter.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output prefix for the script file, which will ultimately create\

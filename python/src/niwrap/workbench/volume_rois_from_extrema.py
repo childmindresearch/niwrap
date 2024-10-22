@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_ROIS_FROM_EXTREMA_METADATA = Metadata(
-    id="0f968f3b0729a5577a4cafa3e2c2438ddfd523b3.boutiques",
+    id="5110f58c0f62b8e53a0b5ed966df06e1a9ec1e36.boutiques",
     name="volume-rois-from-extrema",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -46,7 +46,9 @@ def volume_rois_from_extrema(
     different seed vertex. EXCLUDE means that ROIs may not overlap, and that any
     vertex within range of more than one ROI does not belong to any ROI.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the input volume.

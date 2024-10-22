@@ -12,10 +12,7 @@
       "value-key": "[DIMENSIONALITY]",
       "type": "Number",
       "integer": true,
-      "value-choices": [
-        2,
-        3
-      ],
+      "value-choices": [2, 3],
       "optional": true,
       "command-line-flag": "--dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, the program tries to infer the dimensionality from the input image."
@@ -45,10 +42,7 @@
       "value-key": "[USE_FIXED_REFERENCE_IMAGE]",
       "type": "Number",
       "integer": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "optional": true,
       "command-line-flag": "--useFixedReferenceImage",
       "description": "Use a fixed reference image to correct all volumes, instead of correcting each image to the prior volume in the time series."
@@ -131,10 +125,7 @@
       "value-key": "[USE_HISTOGRAM_MATCHING]",
       "type": "Number",
       "integer": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "optional": true,
       "command-line-flag": "--use-histogram-matching",
       "description": "Histogram match the moving images to the reference image."
@@ -175,10 +166,7 @@
       "value-key": "[VERBOSE]",
       "type": "Number",
       "integer": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "optional": true,
       "command-line-flag": "--verbose",
       "description": "Verbose output."

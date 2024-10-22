@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SCENE_CAPTURE_IMAGE_METADATA = Metadata(
-    id="55d87fcc4b6adbb55baa0675a7b66817d03985d7.boutiques",
+    id="0fd1d3e81b8889faaadb1f2b89e2de7a77df23c8.boutiques",
     name="scene-capture-image",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -222,7 +222,9 @@ def scene_capture_image(
     available in the Linux and MacOS versions.
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         scene_file: scene file.

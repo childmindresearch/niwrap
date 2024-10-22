@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_MATRIX_METADATA = Metadata(
-    id="56cc1f935af40890ed7af2d0f4171e791e0df5cb.boutiques",
+    id="941e3955991e908123051140fcbc47f249ad5d18.boutiques",
     name="possum_matrix",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -37,9 +37,9 @@ def possum_matrix(
     """
     Event matrix generator for POSSUM simulation in FSL.
     
-    Author: University of Oxford (Ivana Drobnjak)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         pulse_sequence: Pulse sequence - all additional files with extensions\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FEATQUERY_METADATA = Metadata(
-    id="48d3bb328fb85a7ab5b9bd0b9f9cd3f9f25fc4cc.boutiques",
+    id="e0857c89efe3dc65e9e7c5ae1d214d90f31388fc.boutiques",
     name="featquery",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -44,9 +44,9 @@ def featquery(
     """
     Tool to extract statistics and/or time series from FEAT directories.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         n_featdirs: Number of feat directories.

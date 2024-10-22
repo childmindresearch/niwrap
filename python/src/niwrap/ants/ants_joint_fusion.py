@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_JOINT_FUSION_METADATA = Metadata(
-    id="3aa0db836e2214bedf02efff24faaa74cdc1d56b.boutiques",
+    id="e3c0355412de6dbc842f99d135c2be7604cb670d.boutiques",
     name="antsJointFusion",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -53,7 +53,7 @@ def ants_joint_fusion(
     implementation and Brian's ANTsR implementation. The original label fusion
     framework was extended to accommodate intensities.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

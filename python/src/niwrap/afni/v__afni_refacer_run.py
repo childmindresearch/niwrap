@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__AFNI_REFACER_RUN_METADATA = Metadata(
-    id="199fdd53bee9a4f018fe31df30c5f175273c29d2.boutiques",
+    id="468955e38481aae9c781599f1f8a7945f4d29bc2.boutiques",
     name="@afni_refacer_run",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,10 +49,9 @@ def v__afni_refacer_run(
     This script re-faces one input dataset, using a master shell dataset to write
     over the subject's 'face' region.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_run.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Name of input dataset; can contain path information.

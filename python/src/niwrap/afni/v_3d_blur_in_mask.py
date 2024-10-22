@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BLUR_IN_MASK_METADATA = Metadata(
-    id="10eaa7f7c0bc988ac314b0241fd6fd1313a5502d.boutiques",
+    id="54e83754ace4243a2e468e019f4934e172656ca3.boutiques",
     name="3dBlurInMask",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_blur_in_mask(
     """
     Blurs a dataset spatially inside a mask.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurInMask.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Dataset to be smoothed and output.

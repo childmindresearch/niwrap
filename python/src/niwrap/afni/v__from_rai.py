@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FROM_RAI_METADATA = Metadata(
-    id="4c4541fb95f3a90a933837e752e6809ba6b027ac.boutiques",
+    id="56d1cf4aa050e32c8eaaa4d15256aa1725dd125d.boutiques",
     name="@FromRAI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v__from_rai(
     """
     Changes the RAI coordinates to the specified orientation.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FromRAI.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         rai_coordinates: RAI coordinates X, Y, and Z.

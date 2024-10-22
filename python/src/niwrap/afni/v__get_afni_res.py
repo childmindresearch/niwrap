@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__GET_AFNI_RES_METADATA = Metadata(
-    id="ab3b2f28632d6ed50f1a051c81d4bb9f9530aea0.boutiques",
+    id="7f4762e356d51415e08e98ceebe347dba4909961.boutiques",
     name="@GetAfniRes",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v__get_afni_res(
     """
     Tool to return the voxel resolution of a dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniRes.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset.

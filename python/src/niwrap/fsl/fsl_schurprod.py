@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_SCHURPROD_METADATA = Metadata(
-    id="b6df5ac8adcff7ee9b0b2fb96144e8303530b6c3.boutiques",
+    id="ca12ec7f7f8174a7f7db38c0f340010b291391dc.boutiques",
     name="fsl_schurprod",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -39,7 +39,9 @@ def fsl_schurprod(
     Generates element-wise matrix products or product of matrices against vectors
     from 4D data.
     
-    Author: Christian F. Beckmann
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input file name (4D image file).

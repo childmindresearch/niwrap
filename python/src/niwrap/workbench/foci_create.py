@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FOCI_CREATE_METADATA = Metadata(
-    id="29a375b1d213f296c96bdcb440571f2935012540.boutiques",
+    id="f5842f187d605468508f925fd8e525038dc42ea4.boutiques",
     name="foci-create",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -83,7 +83,9 @@ def foci_create(
     All foci within one text file must be associated with the structure
     contained in the <surface> parameter and are projected to that surface.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         output: the output foci file.

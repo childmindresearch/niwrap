@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MVM_GRIDCONV_PY_METADATA = Metadata(
-    id="ef7d5d60f4e5e8e6153631aaf3edcfce1478c2fd.boutiques",
+    id="92d9fdaa8fac36c122e4e79e18057d88e1e6a26f.boutiques",
     name="fat_mvm_gridconv.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def fat_mvm_gridconv_py(
     """
     Preprocess 'old school' *.grid files for statistical modeling using 3dMVM.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mvm_gridconv.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         matrix_files: Provide the set of matrix (*.grid) files as a searchable\

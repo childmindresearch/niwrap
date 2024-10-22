@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIMPLE_SYN_REGISTRATION_METADATA = Metadata(
-    id="e7d31310c8840e6c218afef331bbeecee6671ffc.boutiques",
+    id="8bdec8bc3a221887858c098adc61e63838dc3139.boutiques",
     name="simpleSynRegistration",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -36,7 +36,7 @@ def simple_syn_registration(
     """
     A simple SyN registration tool.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BRAIN_SKIN_METADATA = Metadata(
-    id="415edd6d3850d9f5c9473cdb97d435d17cef3bb4.boutiques",
+    id="e13998cf44d59de6a5506224ec54d47b70b3bdd7.boutiques",
     name="BrainSkin",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -64,9 +64,9 @@ def brain_skin(
     A program to create an unfolded surface that wraps the brain (skin) and
     Gyrification Indices.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/BrainSkin.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         surface: Surface to smooth or the domain over which DSET is defined.

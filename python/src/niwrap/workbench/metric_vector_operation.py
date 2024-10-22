@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_VECTOR_OPERATION_METADATA = Metadata(
-    id="0922b527e8db9bf3086e719024c3de526dace5c1.boutiques",
+    id="c5d403c9f523b66a11653a3c174e7e585250458a.boutiques",
     name="metric-vector-operation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -50,7 +50,9 @@ def metric_vector_operation(
     ADD
     SUBTRACT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         vectors_a: first vector input file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__4_DAVERAGE_METADATA = Metadata(
-    id="ba3901e216b33f7527ed78d8041df8aa00991c26.boutiques",
+    id="539f6118b726725db3041382540750353fc522e5.boutiques",
     name="@4Daverage",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,9 +29,9 @@ def v__4_daverage(
     """
     Script for computing average 3D+time bricks using 3Dcalc.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@4Daverage.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         output_prefix: Prefix for the output 3D+t brick.

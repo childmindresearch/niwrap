@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRANSFORMCONVERT_METADATA = Metadata(
-    id="3a4a3ef4828a481fc9cdaa05890cd0cad5c5f34a.boutiques",
+    id="75054a4be3e9dc5460e5441d97e2350d859886dd.boutiques",
     name="transformconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -78,10 +78,9 @@ def transformconvert(
     
     .
     
-    Author: Max Pietsch (maximilian.pietsch@kcl.ac.uk)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/transformconvert.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input(s) for the specified operation.

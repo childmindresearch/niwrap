@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TIMING_TOOL_PY_METADATA = Metadata(
-    id="25577a5512b46992894c5f085a8f1b16fa62fa2c.boutiques",
+    id="e72448a163610156059a44280593b8076536b24a.boutiques",
     name="timing_tool.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,9 +51,9 @@ def timing_tool_py(
     """
     Tool for manipulating and evaluating stimulus timing files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/timing_tool.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         timing_file: Specify a stimulus timing file to load.

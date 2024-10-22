@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVEX_HULL_TRIANGULATION_METADATA = Metadata(
-    id="b2c74f697512947ea41aad542950374ef7951d35.boutiques",
+    id="053d25130ae280f1de3b6aef39aed71fe15ed6f0.boutiques",
     name="ConvexHullTriangulation",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,9 +47,9 @@ def convex_hull_triangulation(
     A program to find the convex hull, or perform a Delaunay triangulation of a set
     of points.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvexHull.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         vol: Input AFNI (or AFNI readable) volume.

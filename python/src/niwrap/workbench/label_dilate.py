@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_DILATE_METADATA = Metadata(
-    id="498db5fc8253994ef6b739a0c725f875bb441406.boutiques",
+    id="6aa2da85bf2298655baa1e302491d37e0c0f6583.boutiques",
     name="label-dilate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -43,7 +43,9 @@ def label_dilate(
     vertices with a positive value in the ROI. If it is not specified, only
     vertices with the unlabeled key are bad.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label: the input label.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PROBTRACKX_METADATA = Metadata(
-    id="d8ed864f3f248f7a0c5824b61c7b149bf1b81041.boutiques",
+    id="1ace7eee1da994b3fb1c582ab87354e51881eb42.boutiques",
     name="probtrackx",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -62,9 +62,9 @@ def probtrackx(
     """
     Streamlines tracking algorithm for probabilistic tractography.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         samples: Basename for samples files.

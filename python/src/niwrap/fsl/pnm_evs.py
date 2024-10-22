@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PNM_EVS_METADATA = Metadata(
-    id="415a4b0e63f6c87fa510da1a15528fc5136f88c7.boutiques",
+    id="2a185a62390701d7a3bbaa58e962c981b92165ed.boutiques",
     name="pnm_evs",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -50,9 +50,9 @@ def pnm_evs(
     """
     PNM EVs: Generates physiological noise regressors for fMRI data.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PNM
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input image filename (4D functional/EPI data).

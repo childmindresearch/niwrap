@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ISO_SURFACE_METADATA = Metadata(
-    id="1b4fab1def9b59b93f9ee7bf2f6b2a0dcbd0cf95.boutiques",
+    id="ae4f55d6aa3df9abb44d283d9623f609eefee601.boutiques",
     name="IsoSurface",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def iso_surface(
     """
     A program to perform isosurface extraction from a volume.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/IsoSurface.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_vol: Input volume file.

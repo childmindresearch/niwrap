@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_WARP_METADATA = Metadata(
-    id="274373e4ce98f7b2884dd886fb6749d0dbd8381d.boutiques",
+    id="88d290dfb4d4ef49e72b5e10be676165a5596dc2.boutiques",
     name="3dWarp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,9 +29,9 @@ def v_3d_warp(
     """
     Warp (spatially transform) one 3D dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWarp.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset to be warped.

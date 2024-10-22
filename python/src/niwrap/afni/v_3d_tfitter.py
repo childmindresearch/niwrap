@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TFITTER_METADATA = Metadata(
-    id="f3d5178628e47231bdb332ee3088bf437392e6ad.boutiques",
+    id="8451a7cd8aa8de8047fb4bbe324982a2fbf6f94a.boutiques",
     name="3dTfitter",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,9 +58,9 @@ def v_3d_tfitter(
     L2, L1, and L2+L1 (LASSO) regression solvers, and allows you
     to impose sign constraints on the solution parameters.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTfitter.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         rhs: Specifies the right-hand-side 3D+time dataset. ('rset' can also be\

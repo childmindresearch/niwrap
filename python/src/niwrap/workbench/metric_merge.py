@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_MERGE_METADATA = Metadata(
-    id="b20e665ab170420a89d49fa4becc85244a5eb213.boutiques",
+    id="dd8d3d3b23815c48239913b689934f4e90fe57bb.boutiques",
     name="metric-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -132,7 +132,9 @@ def metric_merge(
     This example would take the first column from first.func.gii, followed by
     all columns from second.func.gii, and write these columns to out.func.gii.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric_out: the output metric.

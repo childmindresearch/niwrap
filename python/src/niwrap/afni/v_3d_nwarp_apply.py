@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NWARP_APPLY_METADATA = Metadata(
-    id="d6ed27b236dba6fea4084d113f6cb6e0d3525ce1.boutiques",
+    id="0a5385bf1fc9acdee0016adc133f63a8ec8a4e36.boutiques",
     name="3dNwarpApply",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,9 +47,9 @@ def v_3d_nwarp_apply(
     Program to apply a nonlinear 3D warp saved from 3dQwarp (or 3dNwarpCat, etc.) to
     a 3D dataset, to produce a warped version of the source dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpApply.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         nwarp: The name of the 3D warp dataset. Multiple warps can be\

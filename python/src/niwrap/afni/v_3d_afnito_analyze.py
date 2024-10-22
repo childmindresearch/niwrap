@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AFNITO_ANALYZE_METADATA = Metadata(
-    id="078b0d47c754d9e5e5a6e7315be398d458c4d3bd.boutiques",
+    id="148bd389172590c5159d3af3816f81ff4b847248.boutiques",
     name="3dAFNItoANALYZE",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,10 +40,9 @@ def v_3d_afnito_analyze(
     """
     Writes AFNI dataset to ANALYZE 7.5 format .hdr/.img file pairs.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoANALYZE.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         output_name: Output ANALYZE file base name (e.g., aname).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FLOAT_FIX_METADATA = Metadata(
-    id="38e670c67a4f335c69819469b6c1f05a91fb5331.boutiques",
+    id="69c8566d3c52dcfb93a135adaaa38398077c4bc6.boutiques",
     name="@float_fix",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v__float_fix(
     Check whether the input files have any IEEE floating point numbers for illegal
     values: infinities and not-a-number (NaN) values.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@float_fix.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input files to be checked for illegal IEEE floating point\

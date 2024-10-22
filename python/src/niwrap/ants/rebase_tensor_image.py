@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REBASE_TENSOR_IMAGE_METADATA = Metadata(
-    id="3277d5efa9c6f4fec86900a4ecd7e4d48561eda1.boutiques",
+    id="cb7dc4431e44610b96f7d5021a64651fd63ad535.boutiques",
     name="RebaseTensorImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,7 +35,7 @@ def rebase_tensor_image(
     """
     Rebase Tensor Image using specified dimensionality and method.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

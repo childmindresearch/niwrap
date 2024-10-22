@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ATROPOS_METADATA = Metadata(
-    id="fcbcf85a21858e55b589fcf2ffc8c7032fd27c4d.boutiques",
+    id="4530aeaa8993b5f6c6337cb784311667ed8f0bbf.boutiques",
     name="Atropos",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -54,7 +54,7 @@ def atropos(
     prior constraints including a prior label image, prior probability images,
     and/or an MRF prior to enforce spatial smoothing of the labels.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

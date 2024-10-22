@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_SKELETON_METADATA = Metadata(
-    id="b3536192ee277c4ed0da9bf4ac02fb1dc6ca0192.boutiques",
+    id="ea2fae88ee29e5e64fedc6db7ee3a900549af78f.boutiques",
     name="tbss_skeleton",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -46,9 +46,9 @@ def tbss_skeleton(
     A tool for defining a 'skeleton' of white matter tracts in the brain to help
     compare them across subjects.
     
-    Author: University of Oxford (Stephen Smith)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Input image.

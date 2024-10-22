@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="3e9e975ebe915117d571b9514f44747025005713.boutiques",
+    id="1b5575fbe0bb251f8f3f25f8e018587149a575cc.boutiques",
     name="volume-label-modify-keys",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -48,7 +48,9 @@ def volume_label_modify_keys(
     change the appearance of the file when displayed, as it will change the key
     values in the data at the same time.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the input volume label file.

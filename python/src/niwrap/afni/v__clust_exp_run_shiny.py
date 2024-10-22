@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__CLUST_EXP_RUN_SHINY_METADATA = Metadata(
-    id="964dd45dcb23038010a4e9b76e280522facd2af6.boutiques",
+    id="e53b2b78817a474292cc479044cd6b22d354c3ef.boutiques",
     name="@ClustExp_run_shiny",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,10 +30,9 @@ def v__clust_exp_run_shiny(
     """
     Launch a shiny app that was created by ClustExp_StatParse.py.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ClustExp_run_shiny.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         directory: Folder created by ClustExp_StatParse.py.

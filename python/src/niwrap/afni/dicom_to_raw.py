@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DICOM_TO_RAW_METADATA = Metadata(
-    id="57202ccf61b9eef7e0c9458513cbe37783f26115.boutiques",
+    id="7eb027b7c5690d1e6ebc29a721254ed558470f1d.boutiques",
     name="dicom_to_raw",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def dicom_to_raw(
     """
     Reads images from DICOM file and writes them to raw file(s).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/dicom_to_raw.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dicom: Input DICOM file.

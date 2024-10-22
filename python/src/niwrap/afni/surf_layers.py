@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_LAYERS_METADATA = Metadata(
-    id="604623c15444cbe34d0c899c05275654059b94ce.boutiques",
+    id="3f46cd6dc74745711c02167e428a901a79f7affc.boutiques",
     name="SurfLayers",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -44,9 +44,9 @@ def surf_layers(
     """
     Compute intermediate equi-distant surfaces between two boundary surfaces.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfLayers.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         spec_dset: Dataset that is the SUMA specification file describing input\

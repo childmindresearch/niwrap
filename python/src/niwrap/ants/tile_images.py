@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TILE_IMAGES_METADATA = Metadata(
-    id="e7f3c2d6d2e9347f0b86a417fd0017cf2fb6803e.boutiques",
+    id="8a5ab10347c4822ca1b9a1ace149a5ab531d4186.boutiques",
     name="TileImages",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -36,7 +36,7 @@ def tile_images(
     single output image. The input images must have a dimension less than or equal
     to the specified output image dimension.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ABIDS_JSON_INFO_PY_METADATA = Metadata(
-    id="37a03272e1ec07271b8984d53cd795de38925181.boutiques",
+    id="29b15b0c3b3b92b7936e8e79bd8f79411f0e65a4.boutiques",
     name="abids_json_info.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,10 +36,9 @@ def abids_json_info_py(
     """
     A tool to extract information from BIDS formatted json files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_json_info.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         json_files: Specify .json file(s).

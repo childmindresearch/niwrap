@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_DILATE_METADATA = Metadata(
-    id="a0cc77e029a17feca7009ae856be1f20bac8d8a1.boutiques",
+    id="8dd62945250935d06e5be37046dda0c87c95479e.boutiques",
     name="volume-dilate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -89,7 +89,9 @@ def volume_dilate(
     NEAREST - use the value from the nearest good voxel
     WEIGHTED - use a weighted average based on distance.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume: the volume to dilate.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BASIL_VAR_METADATA = Metadata(
-    id="d964c408698f9386bc268a5bbac3e26eba78054e.boutiques",
+    id="430c88be51caa74718f63e1d1babdb28f5399cb8.boutiques",
     name="basil_var",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,9 +30,9 @@ def basil_var(
     """
     Variance calculator for BASIL.
     
-    Author: FMRIB Software Library (FSL)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BASIL
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         results_dir: BASIL results directory.

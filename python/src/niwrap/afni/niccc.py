@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NICCC_METADATA = Metadata(
-    id="55f49c1247acd8c5767fbe0fd5fec8bee1c170e9.boutiques",
+    id="ecc865fc2143792b2c5c1c0adc6ffbd967c02c7f.boutiques",
     name="niccc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,9 +43,9 @@ def niccc(
     A program for conducting certain NIML tests on input from streamspec and write
     the results to stderr.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/niccc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         streamspec: A string defining a NIML stream.

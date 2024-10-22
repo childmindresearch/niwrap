@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_MATCH_METADATA = Metadata(
-    id="330c57fce06aa19748b12179001f129235288d0e.boutiques",
+    id="1adbf7641d223b6c453cc098b76dada2164d90a8.boutiques",
     name="surface-match",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -34,7 +34,9 @@ def surface_match(
     The Input Surface File will be transformed so that its coordinate ranges
     (bounding box) match that of the Match Surface File.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         match_surface_file: Match (Reference) Surface.

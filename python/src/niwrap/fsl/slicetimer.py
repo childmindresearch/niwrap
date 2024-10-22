@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICETIMER_METADATA = Metadata(
-    id="c87f6c6c3ff9550c72ebcc20d0eff16d365e1524.boutiques",
+    id="c15a8d53fadb89c0d2dbc5fd3ae1d91b3a08a3d2.boutiques",
     name="slicetimer",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -40,9 +40,9 @@ def slicetimer(
     """
     FMRIB's Interpolation for Slice Timing.
     
-    Author: University of Oxford, FMRIB
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Slicetimer
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Filename of input timeseries.

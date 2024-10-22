@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSORT_METADATA = Metadata(
-    id="c6a7c18dabcbb7f2f94ef090dbd4a2a836fa72c1.boutiques",
+    id="9582bd99d8599dfb4a866ed6cf00ba5f5a847ebe.boutiques",
     name="3dTsort",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3d_tsort(
     """
     Sorts each voxel in a dataset and produces a new dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTsort.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input dataset to be sorted.

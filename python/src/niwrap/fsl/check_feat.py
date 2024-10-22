@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CHECK_FEAT_METADATA = Metadata(
-    id="88315ec54afacdeb331bb12bda2509e0741bd892.boutiques",
+    id="0f95d17ab4e00accd936e59cb2f5b230a7514e00.boutiques",
     name="checkFEAT",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def check_feat(
     """
     Perform checks on FEAT analysis results.
     
-    Author: YourName
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: http://example.com/checkFEAT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         report_file: Path to the HTML report.

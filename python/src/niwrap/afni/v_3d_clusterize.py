@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CLUSTERIZE_METADATA = Metadata(
-    id="5bc26198ecd1ed079d05ba6875036e96b7ea8faf.boutiques",
+    id="e57f2a4921df42477e28df98e2a64dd9155599d0.boutiques",
     name="3dClusterize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,9 +58,9 @@ def v_3d_clusterize(
     """
     A tool for voxelwise thresholding and clusterizing of datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClusterize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inset: Load in a dataset for thresholding and clusterizing.

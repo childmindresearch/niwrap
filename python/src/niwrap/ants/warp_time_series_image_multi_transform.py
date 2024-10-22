@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WARP_TIME_SERIES_IMAGE_MULTI_TRANSFORM_METADATA = Metadata(
-    id="d4c0d6df08b13dece0f45acae976fd2db0cfb89c.boutiques",
+    id="4bc360e4981268f29e28fda77231c303fd363337.boutiques",
     name="WarpTimeSeriesImageMultiTransform",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -38,7 +38,7 @@ def warp_time_series_image_multi_transform(
     transformations to a time series image, either forward or reverse, using affine
     transforms and warps.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

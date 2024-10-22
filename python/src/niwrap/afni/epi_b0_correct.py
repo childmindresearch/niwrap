@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EPI_B0_CORRECT_METADATA = Metadata(
-    id="132c7d28ce2ce857e2c268d2de811eea94f37f48.boutiques",
+    id="690e7b1a6986e67ced0f065ca6d025cd2006e8eb.boutiques",
     name="epi_b0_correct",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -62,10 +62,9 @@ def epi_b0_correct(
     """
     B0 distortion correction tool using an acquired frequency (phase) image.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/epi_b0_correct.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix of output files; can include path.

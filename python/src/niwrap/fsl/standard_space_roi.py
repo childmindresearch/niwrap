@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 STANDARD_SPACE_ROI_METADATA = Metadata(
-    id="9e35445d93826b3dede29dbe499d382d5e6dae42.boutiques",
+    id="ea288b57fcbd9465ffd78f4d09e3907701e3edec.boutiques",
     name="standard_space_roi",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -43,7 +43,9 @@ def standard_space_roi(
     Masks input and/or reduces its FOV based on a standard space image or mask,
     transformed into the space of the input image.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input image.

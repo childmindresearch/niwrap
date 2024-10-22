@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DTO_XDATASET_METADATA = Metadata(
-    id="9011efe4c33ad7bf18deb6c5c1803fd3a072d632.boutiques",
+    id="659cded4451a7073e735922b9f1fad33b442c502.boutiques",
     name="3dtoXdataset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def v_3dto_xdataset(
     """
     Convert input datasets to the format needed for 3dClustSimX.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dtoXdataset.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for the output file.

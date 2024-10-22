@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_5TT2VIS_METADATA = Metadata(
-    id="1a385dca084925fdcb46354bb1a7052eadd52166.boutiques",
+    id="702b49a5b25df0d2069fb4f29ba6316bbc4674e9.boutiques",
     name="5tt2vis",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -82,9 +82,9 @@ def v_5tt2vis(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/5tt2vis.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input 4D tissue-segmented image.

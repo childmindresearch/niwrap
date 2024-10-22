@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EXTREMA_METADATA = Metadata(
-    id="5ac881fa6c2cea8b9186981d23d77e4ec3bd7b85.boutiques",
+    id="b1468c4ee8a8b4bb488d1ae8001ff3228a3171fd.boutiques",
     name="3dExtrema",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,9 +52,9 @@ def v_3d_extrema(
     """
     Find local extrema (minima or maxima) in 3D datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dExtrema.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset (e.g. dataset+tlrc'[sub-brick]').

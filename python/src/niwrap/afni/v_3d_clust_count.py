@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CLUST_COUNT_METADATA = Metadata(
-    id="e8b2820f68919f26d73b5dcf571b7b8f9a4e84a9.boutiques",
+    id="98fcc8c7fba23c3985c9517555b10b2b9741fa23.boutiques",
     name="3dClustCount",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v_3d_clust_count(
     This program takes as input 1 or more datasets, thresholds them at various
     levels, and counts up the number of clusters of various sizes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClustCount.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datasets: Input datasets to be processed.

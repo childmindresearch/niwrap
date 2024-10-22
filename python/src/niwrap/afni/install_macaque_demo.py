@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_MACAQUE_DEMO_METADATA = Metadata(
-    id="750f2fb2be92a0f7dccdad67c5cbb0ff37ec8842.boutiques",
+    id="8a4a84598418e92917cea1b678ddc7c4e6ebd684.boutiques",
     name="Install_MACAQUE_DEMO",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,10 +30,9 @@ def install_macaque_demo(
     """
     Installs the demo archive for AFNI's macaque-analysis demo.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MACAQUE_DEMO.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         wget: Use wget to download archive. Script chooses by default with\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MERGE_METADATA = Metadata(
-    id="a3d578d60d0ba6605cbb203ead006c07e9103a74.boutiques",
+    id="5fcf0b363d5c77746e4ad131cc93d1b2cb3ffc4c.boutiques",
     name="Merge",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -39,9 +39,9 @@ def merge(
     over) must be the same in all input images. For example, this can be used to
     take multiple 3D files (eg as output by SPM) and create a single 4D image file.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         merged_file: Merged output file.

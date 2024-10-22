@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__RENAME_PANGA_METADATA = Metadata(
-    id="51f0ff41c0be1ae9dd7de0ea5bf011309bce0477.boutiques",
+    id="914311314765b2437055f3aa454e935f0c2186ed.boutiques",
     name="@RenamePanga",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -44,9 +44,9 @@ def v__rename_panga(
     """
     Creates AFNI bricks from RealTime GE EPI series.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@RenamePanga.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dir_number: The directory number where the first image of the series is\

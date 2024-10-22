@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_JSON_VALUE_METADATA = Metadata(
-    id="f6787747ffc763360b47d97e4e8a5201da324374.boutiques",
+    id="4c1f70aedb2c31842eee295cd6c5e57c03f44033.boutiques",
     name="adjunct_json_value",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,10 +34,9 @@ def adjunct_json_value(
     A supplementary tool for manipulating JSON values in conjunction with AFNI's
     apqc_py.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_json_value.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         json_file: Input JSON file.

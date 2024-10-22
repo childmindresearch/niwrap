@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_DENSE_SCALAR_METADATA = Metadata(
-    id="9b8cd37bb018039e267d697f4e368abc03ba2233.boutiques",
+    id="9448de07d07be5cf7e7c1db0a682c95c092182e5.boutiques",
     name="cifti-create-dense-scalar",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -206,7 +206,9 @@ def cifti_create_dense_scalar(
     THALAMUS_LEFT
     THALAMUS_RIGHT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_out: the output cifti file.

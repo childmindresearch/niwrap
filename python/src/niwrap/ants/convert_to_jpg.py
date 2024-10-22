@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_TO_JPG_METADATA = Metadata(
-    id="8f45f969030630cda3f023c28835d21a89d58210.boutiques",
+    id="31b6355945c3546a7d864a64fbe9afa58d72247b.boutiques",
     name="ConvertToJpg",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -32,7 +32,7 @@ def convert_to_jpg(
     """
     A tool to convert NIfTI images to JPG format.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

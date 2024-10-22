@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_INSTA_CORR_DEMO_METADATA = Metadata(
-    id="1310d99bc3e2727fa77156c744b571d73879c628.boutiques",
+    id="e1895643d8f47b7d5e0eaf075bdeed5156edf2bb.boutiques",
     name="Install_InstaCorr_Demo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def install_insta_corr_demo(
     """
     Installs and sets up AFNI's InstaCorr demo archive.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_InstaCorr_Demo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         wget: Use wget to download archive. Script chooses by default with\

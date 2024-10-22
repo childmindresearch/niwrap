@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DVOLREG_METADATA = Metadata(
-    id="259956354a40c61b125725baa7c7c29e2ae9b6a3.boutiques",
+    id="087e3e120bd964570162eccb6ea11ca03ce6e7d4.boutiques",
     name="3dvolreg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -55,9 +55,9 @@ def v_3dvolreg(
     """
     Register input volumes to a base volume using AFNI 3dvolreg command.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dvolreg.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dvolreg.

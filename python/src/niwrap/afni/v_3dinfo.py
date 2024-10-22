@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DINFO_METADATA = Metadata(
-    id="48d144541b300ef7df0d7275d82101ebfd41b357.boutiques",
+    id="616677dc5c795aa5868596f1b7559dd21a0f20c6.boutiques",
     name="3dinfo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -141,9 +141,9 @@ def v_3dinfo(
     """
     Prints out sort-of-useful information from a 3D dataset's header.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dinfo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Datasets to retrieve information from.

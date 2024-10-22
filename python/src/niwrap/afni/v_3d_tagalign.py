@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TAGALIGN_METADATA = Metadata(
-    id="1b5da928e7b84ee537b6b95fcd1994bb00ddc6dc.boutiques",
+    id="72f062732ebd3946f6103ba90212bf73566a6b67.boutiques",
     name="3dTagalign",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,9 +50,9 @@ def v_3d_tagalign(
     Rotates/translates dataset 'dset' to be aligned with the master using the
     tagsets embedded in their .HEAD files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTagalign.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset to align.

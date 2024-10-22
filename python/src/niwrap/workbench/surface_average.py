@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_AVERAGE_METADATA = Metadata(
-    id="a25b902d43dd15de7365d1cee60e024b418193a8.boutiques",
+    id="8366d26b27cba64a73e6f9e401479f653cb07e95.boutiques",
     name="surface-average",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -82,7 +82,9 @@ def surface_average(
     When weights are used, the 3D sample standard deviation treats them as
     reliability weights.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface_out: the output averaged surface.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SHCONV_METADATA = Metadata(
-    id="2763ad6db27e39a7c0eb5218740b8885f1a762a3.boutiques",
+    id="3c84c5743ea66d880048dc5dc975db440966a75e.boutiques",
     name="shconv",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -138,10 +138,9 @@ def shconv(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier
-    (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/shconv.html
+    URL: https://www.mrtrix.org/
     
     Args:
         odf_response: pairs of input ODF image and corresponding responses.

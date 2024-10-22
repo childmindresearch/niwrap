@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSIZE_METADATA = Metadata(
-    id="0aa7e6fbb81dbdb0e85b1f0d56cc9743a42d862e.boutiques",
+    id="48fa747ae2aa8fa35c4b2ab994c0c06d8db6ec3d.boutiques",
     name="fslsize",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,7 +30,9 @@ def fslsize(
     """
     Tool to output the size of an image file in FSL.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input image file.

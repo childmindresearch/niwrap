@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_STATS_METADATA = Metadata(
-    id="1b1c2999ec76acc4fdea893271799c145ae7b176.boutiques",
+    id="0f784385a2ccbc1fcb6c16f86211be2285046de1.boutiques",
     name="volume-stats",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -92,7 +92,9 @@ def volume_stats(
     COUNT_NONZERO: the number of nonzero elements in the data
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the input volume.

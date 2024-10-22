@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DICOM_HINFO_METADATA = Metadata(
-    id="5ea1bb33f7ee89c2be57f4fd42ad48d1af53ccde.boutiques",
+    id="b4e332870ec766036b07e84e159257d3b9ab3eb2.boutiques",
     name="dicom_hinfo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def dicom_hinfo(
     """
     Prints selected information from one or more DICOM files to stdout.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/dicom_hinfo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         tag: Specify one or more DICOM tags to print, in the format aaaa,bbbb\

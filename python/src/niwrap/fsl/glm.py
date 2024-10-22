@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GLM_METADATA = Metadata(
-    id="7e848f30c89b09af2c0612c7a02e83992295889b.boutiques",
+    id="8af32bd47234361888a1bc77b7b1670521bbb95f.boutiques",
     name="GLM",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -76,7 +76,9 @@ def glm(
     """
     FSL GLM.
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         design: File name of the glm design matrix (text time courses for\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FOD2DEC_METADATA = Metadata(
-    id="aac2ac1ce7621d3fce08d22d3e9b29354906d5f9.boutiques",
+    id="464092d0c46e0f6d44851c80e38f43548c357c00.boutiques",
     name="fod2dec",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -92,9 +92,9 @@ def fod2dec(
     FOD-based DEC maps by structural T1 information. Proc Intl Soc Mag Reson
     Med, 2015, 23, 566.
     
-    Author: Thijs Dhollander (thijs.dhollander@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/fod2dec.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: The input FOD image (spherical harmonic coefficients).

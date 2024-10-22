@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TFIM_METADATA = Metadata(
-    id="f9d86bdf5cf10a36e699668b74a4b740da9e6364.boutiques",
+    id="e112b845a4c25dd82a06881f7a7a51dae6274c19.boutiques",
     name="tfim",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def tfim(
     """
     MCW TFIM: t-tests on sets of functional images.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/tfim.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         set1_images: First set of image files.

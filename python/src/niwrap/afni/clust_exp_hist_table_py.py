@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CLUST_EXP_HIST_TABLE_PY_METADATA = Metadata(
-    id="7088967f0f8d5a6e21a431e2f326b94a70618ad0.boutiques",
+    id="65bf8cf819db98a9fbc8b570e9306335fa8356d5.boutiques",
     name="ClustExp_HistTable.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,10 +35,9 @@ def clust_exp_hist_table_py(
     Script to extract the data table from history of datasets from 3dttest++, 3dMVM,
     or 3dLME.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ClustExp_HistTable.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         stat_dset: Statistics dataset.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MOVE_TO_SERIES_DIRS_METADATA = Metadata(
-    id="dc6ff1a770cb3786d342b15d28d86433f73ffb87.boutiques",
+    id="43e65ff4ccb7c662ae1bcaef0b7fb14c99b76809.boutiques",
     name="@move.to.series.dirs",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,10 +37,9 @@ def v__move_to_series_dirs(
     Partition DICOM files into series directories by copying or moving them to new
     series directories.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@move.to.series.dirs.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dicom_files: Specify input DICOM files (e.g., IMG*).

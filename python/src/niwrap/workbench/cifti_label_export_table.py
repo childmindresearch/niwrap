@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_EXPORT_TABLE_METADATA = Metadata(
-    id="480dd0137517732f0ae55ea01b03ffcb005c7342.boutiques",
+    id="72f5fa81676239a259a91a6847c2c38aab51ef92.boutiques",
     name="cifti-label-export-table",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -34,7 +34,9 @@ def cifti_label_export_table(
     Takes the label table from the cifti label map, and writes it to a text
     format matching what is expected by -cifti-label-import.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input cifti label file.

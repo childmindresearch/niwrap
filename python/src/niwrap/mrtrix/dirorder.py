@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DIRORDER_METADATA = Metadata(
-    id="02f825c0911227b0733cbc2197ad559c6d9826bb.boutiques",
+    id="822332bcb7593b804c24d6da3c7da0a1eb44ba1a.boutiques",
     name="dirorder",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -78,10 +78,9 @@ def dirorder(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/dirorder.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input directions file.

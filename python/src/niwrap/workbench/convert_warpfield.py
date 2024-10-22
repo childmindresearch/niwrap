@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_WARPFIELD_METADATA = Metadata(
-    id="9768c5b8a2b0b93c74f620913899953ee44d703c.boutiques",
+    id="0937c7d6adefab5e08113d11c925c07c6b3f9cb3.boutiques",
     name="convert-warpfield",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -139,7 +139,9 @@ def convert_warpfield(
     You must specify exactly one -from option, but you may specify multiple -to
     options, and -to-fnirt may be specified more than once.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         from_world: input is a NIFTI 'world' warpfield.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_UNIFIZE_METADATA = Metadata(
-    id="8291a3972c9b5065786c6dbee5698f8f56813c7a.boutiques",
+    id="15f1fc4af844d2f3848e6e3527f1534179ded986.boutiques",
     name="3dLocalUnifize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_local_unifize(
     the local neighborhood of each voxel and using that to scale each voxel's
     brightness.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalUnifize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Input dataset.

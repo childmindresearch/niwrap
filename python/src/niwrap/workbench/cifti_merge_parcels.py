@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_MERGE_PARCELS_METADATA = Metadata(
-    id="4f67f18da0f35c62840e3cfd43ba85cbd7ae8679.boutiques",
+    id="ca3945c749c56aa496a363dbd34b461f1ca4910e.boutiques",
     name="cifti-merge-parcels",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -64,7 +64,9 @@ def cifti_merge_parcels(
     The direction can be either an integer starting from 1, or the strings 'ROW'
     or 'COLUMN'.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         direction: which dimension to merge along (integer, 'ROW', or 'COLUMN').

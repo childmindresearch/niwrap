@@ -60,20 +60,13 @@
     {
       "description": "Required input description and list of files",
       "id": "required_params_group",
-      "members": [
-        "input_files",
-        "dataset_description"
-      ],
+      "members": ["input_files", "dataset_description"],
       "name": "Required Parameters"
     },
     {
       "description": "Optional output parameters",
       "id": "optional_output_params_group",
-      "members": [
-        "output_folder",
-        "output_filename",
-        "delete_flag"
-      ],
+      "members": ["output_folder", "output_filename", "delete_flag"],
       "name": "Optional Parameters"
     }
   ],

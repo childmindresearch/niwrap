@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MM_METADATA = Metadata(
-    id="9036076571a84b7a198c22c99e9cf365ec2ae3a2.boutiques",
+    id="96069efc2761a4f827d9bae2c68f2f151dd8baa3.boutiques",
     name="mm",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -45,9 +45,9 @@ def mm(
     """
     FSL's MM: mixture modelling.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MM
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         spatial_data_file: Spatial map data file.

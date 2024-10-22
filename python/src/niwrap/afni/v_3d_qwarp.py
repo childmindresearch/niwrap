@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_QWARP_METADATA = Metadata(
-    id="1954e260f585075fec9612b08bcb8ffeb56ed87f.boutiques",
+    id="b31e14a7b7123e83340819abf222feefbe217a71.boutiques",
     name="3dQwarp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -54,9 +54,9 @@ def v_3d_qwarp(
     """
     Computes a nonlinearly warped version of source_dataset to match base_dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dQwarp.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         base_dataset: Base dataset.

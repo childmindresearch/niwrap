@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PVMFIT_METADATA = Metadata(
-    id="5a8e526ca13ed2dae6d5a4c185e4c029ff2b448b.boutiques",
+    id="b8d0ef967be4d8b5cbc7c5cc5275de2fe4e76ca6.boutiques",
     name="pvmfit",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -48,9 +48,9 @@ def pvmfit(
     """
     Fits diffusion models to multishell DWI data.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         data_file: Data file.

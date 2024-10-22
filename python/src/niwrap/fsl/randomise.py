@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RANDOMISE_METADATA = Metadata(
-    id="e79f744baf01b5fada5d9f1db3e56c890f624683.boutiques",
+    id="7c88f00870d28004baf9e29327e2f520942680d3.boutiques",
     name="Randomise",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -69,7 +69,9 @@ def randomise(
     FSL Randomise: feeds the 4D projected FA data into GLM modelling and
     thresholding in order to find voxels which correlate with your model.
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: 4d input file.

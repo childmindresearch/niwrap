@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NOTES_METADATA = Metadata(
-    id="53682729e36019e38e5cec4e59bd809825f01661.boutiques",
+    id="940bc1c01a30bd95a8de66900c6eff7191dde7e1.boutiques",
     name="3dNotes",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v_3d_notes(
     """
     A program to add, delete and show notes for AFNI datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNotes.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: AFNI compatible dataset [required].

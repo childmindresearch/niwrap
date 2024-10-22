@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MELODIC_METADATA = Metadata(
-    id="4b6dda2312045e92c10db2c5f386f803e67ebcf9.boutiques",
+    id="71735f16eab17ed7504259e3c0ebde2a4ef9af6f.boutiques",
     name="melodic",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -88,9 +88,9 @@ def melodic(
     Multivariate Exploratory Linear Optimised Decomposition into Independent
     Components.
     
-    Author: Christian F. Beckmann, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MELODIC
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input file names (either single file name or\

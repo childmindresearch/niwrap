@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_2SWAP_METADATA = Metadata(
-    id="1e62c85edeb2251274dcf751c3aac90766f7d061.boutiques",
+    id="728c4876a96d25e9c23842571e532226995c4d5f.boutiques",
     name="2swap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v_2swap(
     """
     Swaps byte pairs on the files listed.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/2swap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input files.

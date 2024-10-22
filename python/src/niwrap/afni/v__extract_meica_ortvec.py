@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__EXTRACT_MEICA_ORTVEC_METADATA = Metadata(
-    id="9f778c740cfff0a23c70061f3c0c887ed2766f95.boutiques",
+    id="fac98a48e14c87361c42bae79b0be7419401be47.boutiques",
     name="@extract_meica_ortvec",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,10 +36,9 @@ def v__extract_meica_ortvec(
     """
     Project good MEICA components out of bad ones.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@extract_meica_ortvec.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Name for output 1D ortvec file.

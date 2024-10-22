@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_LOCAL_STAT_METADATA = Metadata(
-    id="bcf894a0b33f90b64b034eb56e175e5167eb56af.boutiques",
+    id="2b7eeee2dd047b080808536600a152ac4ca47630.boutiques",
     name="SurfLocalStat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def surf_local_stat(
     """
     Compute local statistics on a surface mesh.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfLocalstat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix of output data set.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MVM_METADATA = Metadata(
-    id="f9b6c1adae03ff8547ed0f7bd736d82969fa192b.boutiques",
+    id="41e1dd222d8dc8d40a7419dbf4444dad608de47a.boutiques",
     name="3dMVM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,9 +47,9 @@ def v_3d_mvm(
     """
     AFNI Group Analysis Program with Multi-Variate Modeling Approach.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMVM.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output file name prefix.

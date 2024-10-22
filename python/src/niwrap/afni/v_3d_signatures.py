@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SIGNATURES_METADATA = Metadata(
-    id="2b341af415f403aafe08628a486de9e313d26e1f.boutiques",
+    id="3a8c36dbe73fad66aa2f0bc3b1c2c29ec32ab76b.boutiques",
     name="3dSignatures",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_signatures(
     """
     3dSignatures analysis tool for 3D genome organization.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSignatures.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input file containing 3D genome data (e.g. genome_data.txt).

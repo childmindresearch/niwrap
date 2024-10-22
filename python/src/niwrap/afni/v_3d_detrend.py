@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DETREND_METADATA = Metadata(
-    id="2d48d85baca7dde3b260dd05abe42486cb369e4e.boutiques",
+    id="60647b5333bef9ee86bcc873fe7fe2fe2f22589e.boutiques",
     name="3dDetrend",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v_3d_detrend(
     This program removes components from voxel time series using linear least
     squares.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDetrend.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3ddetrend.

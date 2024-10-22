@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FILMBABESCRIPT_METADATA = Metadata(
-    id="9ab884875e83253614c3c611f6bada1f6ecbb988.boutiques",
+    id="169e45446d6a4f44c7e969c501d8405dee3e0e62.boutiques",
     name="filmbabescript",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,9 +30,9 @@ def filmbabescript(
     """
     A tool/script for processing FEAT directories and FLOBs directories.
     
-    Author: Author Unknown
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: URL not provided
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         feat_dir: Input FEAT directory.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAGE_INTENSITY_STATISTICS_METADATA = Metadata(
-    id="e5ad7e0bcc53b0cc16facd2edf8c815aab17a9f9.boutiques",
+    id="ba7ab9e8e494076bff274459f3f86dfd1563d5d9.boutiques",
     name="ImageIntensityStatistics",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -34,7 +34,7 @@ def image_intensity_statistics(
     This tool computes intensity statistics of an input image, optionally given a
     label image.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

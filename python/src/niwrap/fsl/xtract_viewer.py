@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XTRACT_VIEWER_METADATA = Metadata(
-    id="bd76f729ac54b26b22e247a3422cd7082ceff910.boutiques",
+    id="22fdff4741f6f5105c57bb770d3826d89812f155.boutiques",
     name="xtract_viewer",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,9 +33,9 @@ def xtract_viewer(
     """
     Viewer tool for XTRACT output.
     
-    Author: FMRIB Centre, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/XTRACT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         xtract_dir: Path to XTRACT output folder.

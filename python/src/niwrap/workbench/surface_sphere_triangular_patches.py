@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA = Metadata(
-    id="d60e74b6c01ae1d563f381b30959216cadf62ff2.boutiques",
+    id="cf5e1de7b6567680a60ad682a310a3d86b617588.boutiques",
     name="surface-sphere-triangular-patches",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -34,7 +34,9 @@ def surface_sphere_triangular_patches(
     Divide the given undistorted sphere into equally-sized triangular patches.
     Patches overlap by a border of 1 vertex.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         sphere: an undistorted, regularly divided icosahedral sphere.

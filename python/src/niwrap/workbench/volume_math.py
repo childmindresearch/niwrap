@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_MATH_METADATA = Metadata(
-    id="4f0dfc1f8d7053b7b6b34b2c51ab186504118861.boutiques",
+    id="e0d05a153008ce4988e5ff02cbd258e5d5980be5.boutiques",
     name="volume-math",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -143,7 +143,9 @@ def volume_math(
     clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         expression: the expression to evaluate, in quotes.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SH2RESPONSE_METADATA = Metadata(
-    id="2ac3ba8ab50d4cf9227f875454b7446510342d3c.boutiques",
+    id="73af982ff7a9439d2a7181a0cb546efa4f302105.boutiques",
     name="sh2response",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -85,10 +85,9 @@ def sh2response(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2response.html
+    URL: https://www.mrtrix.org/
     
     Args:
         sh: the spherical harmonic decomposition of the diffusion-weighted\

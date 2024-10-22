@@ -27,10 +27,7 @@
       "value-key": "[TRANSFORM_TYPE]",
       "type": "String",
       "optional": false,
-      "value-choices": [
-        "rigid",
-        "affine"
-      ],
+      "value-choices": ["rigid", "affine"],
       "description": "Type of transform to be extracted. Can be 'rigid' or 'affine'."
     },
     {

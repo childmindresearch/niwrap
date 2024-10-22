@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_DCE_METADATA = Metadata(
-    id="6c3537137e5ff366fb5fd77854d206f08197c365.boutiques",
+    id="e4344b9b20a2716d0bcce834086d1083e8026cb9.boutiques",
     name="fabber_dce",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -69,7 +69,7 @@ def fabber_dce(
     
     Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fabber-core.readthedocs.io/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_directory: Directory for output files (including logfile).

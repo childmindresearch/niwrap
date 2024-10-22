@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_METADATA = Metadata(
-    id="f3f7d066622fecc8cfcf9263a62c7eb81bc6e7fa.boutiques",
+    id="9b4801e7e3b720f0591a2b526cd78b167ed49de3.boutiques",
     name="fabber",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -89,9 +89,9 @@ def fabber(
     """
     Fabber is a tool for model-based Bayesian analysis of time-series data.
     
-    Author: FSL Community
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fabber
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output: Directory for output files (including logfile).

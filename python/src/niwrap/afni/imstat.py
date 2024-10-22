@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMSTAT_METADATA = Metadata(
-    id="5a2fc627e7cf8c4aa28c0a21abd32f066d07dc79.boutiques",
+    id="3e706f8dd2b4c3dcc2445da624da2cd01f51f304.boutiques",
     name="imstat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def imstat(
     """
     Calculation of statistics of one or more images.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imstat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         image_files: Input image file(s).

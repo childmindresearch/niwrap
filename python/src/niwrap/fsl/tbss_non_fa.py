@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_NON_FA_METADATA = Metadata(
-    id="42842b80c786bb821cbe4b3edd83c464130f2f3f.boutiques",
+    id="25a202049724dfb96895b8d09b466399e59d631a.boutiques",
     name="tbss_non_FA",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,9 +35,9 @@ def tbss_non_fa(
     """
     TBSS processing for non-FA images.
     
-    Author: FMRIB, Oxford Centre for Functional MRI of the Brain
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_file: Output file for merged images.

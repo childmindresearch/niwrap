@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_RSFMRI_MOTION_GROUP_DEMO_METADATA = Metadata(
-    id="c578fb676b10549cf752ee4c993f431b02021d44.boutiques",
+    id="df3e938409986890aec3704877c4b5f0ab93b6cf.boutiques",
     name="Install_RSFMRI_Motion_Group_Demo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def install_rsfmri_motion_group_demo(
     Installs and sets up an AFNI InstaCorr demo archive, based on 190 Cambridge
     subjects from FCON_1000.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_RSFMRI_Motion_Group_Demo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         output_dir: Directory where the AFNI_Demo_Motion_Groups will be set up.

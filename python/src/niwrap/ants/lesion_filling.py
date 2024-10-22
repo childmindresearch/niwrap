@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LESION_FILLING_METADATA = Metadata(
-    id="36c70e65f470991536aa7957ccc379cca40ae9fa.boutiques",
+    id="e67424ecd9a0c5e13dd9b069bccb2e63e4348726.boutiques",
     name="LesionFilling",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -34,7 +34,7 @@ def lesion_filling(
     """
     A tool for filling lesions in T1 images using a mask.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

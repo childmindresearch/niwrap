@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FS_ROI_LABEL_METADATA = Metadata(
-    id="bb0f29897218abed7c1d1903fa1a1efea589bbc6.boutiques",
+    id="1309e970f178ba30ffa735edd056d5c550b135f1.boutiques",
     name="@FS_roi_label",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v__fs_roi_label(
     Tool to get labels associated with FreeSurfer's parcellation and annotation
     files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FS_roi_label.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         label_int: Integer labeled area in FreeSurfer's parcellation.

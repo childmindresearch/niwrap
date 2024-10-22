@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUMA_CHANGE_SPEC_METADATA = Metadata(
-    id="68f77383092cc1d2b7a1e285a0e6c96d95a74202.boutiques",
+    id="4bf222ffae950010f81275acc0be3c92fdd2d01c.boutiques",
     name="suma_change_spec",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def suma_change_spec(
     """
     This program changes SUMA's surface specification (Spec) files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/suma_change_spec.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: SUMA Spec file to change.

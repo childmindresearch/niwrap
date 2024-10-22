@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AMP_TO_RSFC_METADATA = Metadata(
-    id="b9bf49dca1e5d2a5e6ce2f0549030ff5861c63de.boutiques",
+    id="8f1035f559364c8aba66040e805e441ea060e9fe.boutiques",
     name="3dAmpToRSFC",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,9 +46,9 @@ def v_3d_amp_to_rsfc(
     """
     Convert spectral amplitudes into standard RSFC parameters.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAmpToRSFC.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output file prefix; file names will be: PREFIX_ALFF,\

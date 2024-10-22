@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="9ff865ab32a6d52e18e83024b7ea8f597a6457f7.boutiques",
+    id="998ffdbeca84e053536b708ad67c4ba1b2607345.boutiques",
     name="label-modify-keys",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -48,7 +48,9 @@ def label_modify_keys(
     change the appearance of the file when displayed, as it will change the key
     values in the data at the same time.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input label file.

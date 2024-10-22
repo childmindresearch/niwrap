@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_HISTOGRAM_METADATA = Metadata(
-    id="638f2122d8d3e6caff2fdf9b5525d96de9e63599.boutiques",
+    id="9cad9425f7f0f05315ac9660736804eee9f97c0e.boutiques",
     name="fsl_histogram",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -43,7 +43,9 @@ def fsl_histogram(
     """
     Histogram plotting tool for FSL.
     
-    Author: University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file_duplicate: Input file name.

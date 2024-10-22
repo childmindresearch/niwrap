@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_BPORT_METADATA = Metadata(
-    id="01b482fa8f60ea7e37aea665b40cbc47eab52f74.boutiques",
+    id="79bac243ab40da21c48aba385d1738323fa2e271.boutiques",
     name="1dBport",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v_1d_bport(
     """
     Creates a set of columns of sines and cosines for bandpassing via regression.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dBport.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         band: Specify lowest and highest frequencies in the passband.

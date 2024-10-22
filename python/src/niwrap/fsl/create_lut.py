@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_LUT_METADATA = Metadata(
-    id="9f5316c7886385051e5fff290fb582380333101b.boutiques",
+    id="f5c8f6c368b2d93f8314fb443bdc263294ea4108.boutiques",
     name="create_lut",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,6 +30,10 @@ def create_lut(
 ) -> CreateLutOutputs:
     """
     A tool to create lookup tables.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_file_root: The root name of the output file to be generated.

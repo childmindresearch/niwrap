@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CLUST_EXP_STAT_PARSE_PY_METADATA = Metadata(
-    id="5722f63fe412fec07ef18b10adae7246e4c062b4.boutiques",
+    id="ea140a29445ae8cf4f0dcd37868ab11f8f883921.boutiques",
     name="ClustExp_StatParse.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -60,10 +60,9 @@ def clust_exp_stat_parse_py(
     Parser for statistical data sets and subject data sets, generating several
     outputs for further analysis.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/ClustExp_StatParse.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         statdset: Statistics dataset.

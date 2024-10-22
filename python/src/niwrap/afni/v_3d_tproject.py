@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TPROJECT_METADATA = Metadata(
-    id="80e7d33c9d974c9bcdca5fb76c12aefdb8c4718f.boutiques",
+    id="9de8d2fa7cd54923a6ee13c1f64cf49bd6c80920.boutiques",
     name="3dTproject",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,9 +50,9 @@ def v_3d_tproject(
     way, you can bandpass time-censored data, and at the same time, remove other
     time series of no interest (e.g., physiological estimates, motion parameters).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTproject.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dtproject.

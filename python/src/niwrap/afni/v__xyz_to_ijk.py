@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__XYZ_TO_IJK_METADATA = Metadata(
-    id="014408a0c3580b9c28de243d9d3424b180fe652e.boutiques",
+    id="19759dbb81f9560426ecb6ea27ee2b763e341085.boutiques",
     name="@xyz_to_ijk",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v__xyz_to_ijk(
     Helper script to convert (x, y, z) coordinates to (i, j, k) indices for a
     volumetric dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@xyz_to_ijk.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inset: Volumetric file name (e.g. FILE.nii.gz).

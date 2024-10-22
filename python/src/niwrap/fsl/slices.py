@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICES_METADATA = Metadata(
-    id="b0ae9062166812e83e354ab105fc69d1012c011a.boutiques",
+    id="cfa281b497c9dce56a3d24ab148bbe359215e059.boutiques",
     name="slices",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,7 +34,9 @@ def slices(
     Generate a set of slices from an image, possibly with some scaling and intensity
     range options, and save as a GIF.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         primary_input: Primary input image file (e.g. img1.nii.gz).

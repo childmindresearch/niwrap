@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OLD_BETALL_METADATA = Metadata(
-    id="0d125dc9864a4d2198c262c8290fdf39973062f4.boutiques",
+    id="f799591c8ef735951976e2fe3efdccaf8a088ec1.boutiques",
     name="old_betall",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,7 +34,9 @@ def old_betall(
     """
     Automated brain extraction tool for FSL involving both T1 and T2 images.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         t1_filerout: Input T1 image file root (e.g. img_t1.nii.gz).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METADATA_STRING_REPLACE_METADATA = Metadata(
-    id="1e9a9700045983874866c60a6a64cc275614b03c.boutiques",
+    id="4e9f48385131d0851fe097d2ac095a633797775b.boutiques",
     name="metadata-string-replace",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -36,7 +36,9 @@ def metadata_string_replace(
     Replaces all occurrences of <find-string> in the metadata and map names of
     <input-file> with <replace-string>.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         input_file: the file to replace metadata in.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIRST_METADATA = Metadata(
-    id="5b6bb70b2b98ddae647d2c2cd52a91d828611c33.boutiques",
+    id="ddf6cf743091da93ed52ab4eab8180db8f20ac3a.boutiques",
     name="first",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -46,9 +46,9 @@ def first(
     A command-line tool for segmenting subcortical structures in MRI images using
     models and transformations.
     
-    Author: Brian Patenaude, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Filename of input image to be segmented.

@@ -36,11 +36,7 @@
       "optional": true,
       "id": "datum",
       "name": "Output Data Type",
-      "value-choices": [
-        "byte",
-        "short",
-        "float"
-      ]
+      "value-choices": ["byte", "short", "float"]
     },
     {
       "command-line-flag": "-sep_dsets",

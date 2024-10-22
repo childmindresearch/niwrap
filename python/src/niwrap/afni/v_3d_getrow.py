@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GETROW_METADATA = Metadata(
-    id="a77775fc37289c2c570d66e31819c1456ad4a367.boutiques",
+    id="d22ec4eb4bbd666f8edad727a5f0b3e13111b433.boutiques",
     name="3dGetrow",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v_3d_getrow(
     """
     Program to extract 1 row from a dataset and write it as a .1D file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGetrow.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         xrow: Extract row along the x-direction at fixed y-index of j and fixed\

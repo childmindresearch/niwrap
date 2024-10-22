@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CURVATURE_METADATA = Metadata(
-    id="6c98c9fb47cf69dc1900bf9db9dba8b166e80c42.boutiques",
+    id="f51ecb142f0e101ca04c2a1dc64c730be65cd0a3.boutiques",
     name="SurfaceCurvature",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,7 +35,7 @@ def surface_curvature(
     The Shape Operator for Differential Analysis of Images. It can operate on binary
     or gray scale images with various modes to see different effects.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

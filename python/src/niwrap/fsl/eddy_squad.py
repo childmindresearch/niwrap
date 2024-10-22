@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_SQUAD_METADATA = Metadata(
-    id="5131fc8c8f2867839f8346cc3868a07861ed18a6.boutiques",
+    id="e081dd7a5f22eb3b0ff58395b16c73ff5f91860a.boutiques",
     name="eddy_squad",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,9 +35,9 @@ def eddy_squad(
     """
     Study-wise QC for dMRI data.
     
-    Author: FMRIB Software Library (FSL)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy/UsersGuide#EDDY_QC
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         subject_list: List of subject IDs for the QC.

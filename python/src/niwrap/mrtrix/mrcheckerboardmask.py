@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCHECKERBOARDMASK_METADATA = Metadata(
-    id="1a575e3cb25176fde85bc5ffa5c124b40734a061.boutiques",
+    id="d3e361c565ddae09545311ba3dafc739a0f94a5f.boutiques",
     name="mrcheckerboardmask",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -78,10 +78,9 @@ def mrcheckerboardmask(
     
     .
     
-    Author: Max Pietsch (maximilian.pietsch@kcl.ac.uk)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcheckerboardmask.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image to be used as a template.

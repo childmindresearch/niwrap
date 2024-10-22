@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__RETINO_PROC_METADATA = Metadata(
-    id="46fbfa4b9c34ab2e6154a91d0f6c54e8f7767855.boutiques",
+    id="0836ad099b5ae0ebd794fce9bafc7b29723fb572.boutiques",
     name="@RetinoProc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -69,9 +69,9 @@ def v__retino_proc(
     A script to process retinotopic FMRI data, using AFNI's 3dRetinoPhase and
     SurfRetinMap.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@RetinoProc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         tr: TR, in seconds, of retinotopic scans.

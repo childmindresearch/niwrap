@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_DTICOHORT_METADATA = Metadata(
-    id="492039e0007ff191fafa5c3a48f3e61135f029cb.boutiques",
+    id="b6d3b7b7d3095a9db5e406c42360be21bbfd0ce5.boutiques",
     name="CreateDTICohort",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -43,7 +43,7 @@ def create_dticohort(
     population and for the output population) are assumed to take place outside of
     this program.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

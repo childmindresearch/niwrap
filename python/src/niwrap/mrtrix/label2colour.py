@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL2COLOUR_METADATA = Metadata(
-    id="8dcef63685396283ea04342f1c8a20e1acd5cc72.boutiques",
+    id="c1884f48e15f2a0255f7742d85904c1e94ec1214.boutiques",
     name="label2colour",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -78,10 +78,9 @@ def label2colour(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/label2colour.html
+    URL: https://www.mrtrix.org/
     
     Args:
         nodes_in: the input node parcellation image.

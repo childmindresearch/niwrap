@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DIFF_METADATA = Metadata(
-    id="a194a2e3904bf89fe5eee2f867c6c095e389a795.boutiques",
+    id="5b96180172979184a8e38d0680d5f070bb647cfa.boutiques",
     name="3dDiff",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_diff(
     """
     A program to examine element-wise differences between two images.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDiff.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset_a: First input dataset for comparison.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UBER_ALIGN_TEST_PY_METADATA = Metadata(
-    id="c3ac6b6878bd377b29b2324d4b4ba248e5bd6c7c.boutiques",
+    id="1cdb35a694ecfd6f154d70ecf75d0b5138262e0f.boutiques",
     name="uber_align_test.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def uber_align_test_py(
     """
     Generate script to test anatomical/EPI alignment.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_align_test.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         no_gui: Run without the graphical user interface (GUI).

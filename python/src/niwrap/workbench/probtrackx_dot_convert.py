@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PROBTRACKX_DOT_CONVERT_METADATA = Metadata(
-    id="a201bc3a69528e33dacfdb445199682b851e03b1.boutiques",
+    id="33c9ec58b6dce1ed0e9cf2a04405bc0e985b082e.boutiques",
     name="probtrackx-dot-convert",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -204,7 +204,9 @@ def probtrackx_dot_convert(
     THALAMUS_LEFT
     THALAMUS_RIGHT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         dot_file: input .dot file.

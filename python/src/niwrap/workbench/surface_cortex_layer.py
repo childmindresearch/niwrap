@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CORTEX_LAYER_METADATA = Metadata(
-    id="c079a74feb3895cec5a487f25290a97e00d693cb.boutiques",
+    id="65eabda37d8acfd1a597307c0bc9c6c7bef14ae4.boutiques",
     name="surface-cortex-layer",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -45,7 +45,9 @@ def surface_cortex_layer(
     surfaces (i.e., specifying 0 would give the white surface, 1 would give the
     pial surface). .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         white_surface: the white matter surface.

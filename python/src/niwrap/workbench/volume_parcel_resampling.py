@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_PARCEL_RESAMPLING_METADATA = Metadata(
-    id="3a64f15234617b08fd43ca4d964fd2b1aa355b36.boutiques",
+    id="878b59dfb914e8cb471301693edd8cd66f736b3b.boutiques",
     name="volume-parcel-resampling",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -49,7 +49,9 @@ def volume_parcel_resampling(
     Note: all volumes must have the same dimensions and spacing. To use a
     different output space, see -volume-parcel-resampling-generic.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the input data volume.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_PAIRWISE_CORRELATION_METADATA = Metadata(
-    id="df423945fb398876763bf3f54f287e041e7abe8c.boutiques",
+    id="1554d8d704a76819fecfa21dcfcf250489741702.boutiques",
     name="cifti-pairwise-correlation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -38,7 +38,9 @@ def cifti_pairwise_correlation(
     For each row in <cifti-a>, correlate it with the same row in <cifti-b>, and
     put the result in the same row of <cifti-out>, which has only one column.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_a: first input cifti file.

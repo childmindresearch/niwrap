@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_TOOL_METADATA = Metadata(
-    id="e017f7527466ec9e9d0a36bc5767ec58a8dc0a44.boutiques",
+    id="fc2e3e53992537d6ba3769a1e46c322268b0206f.boutiques",
     name="cifti_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def cifti_tool(
     """
     Example tool for reading/writing CIFTI-2 datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/cifti_tool.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Specify input dataset.

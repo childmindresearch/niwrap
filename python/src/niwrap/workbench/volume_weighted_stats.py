@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_WEIGHTED_STATS_METADATA = Metadata(
-    id="c06596379628abdee63db6d79768d43568386f38.boutiques",
+    id="583ea5db0d7c2050d6bdc18334caa1a662a04dc2.boutiques",
     name="volume-weighted-stats",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -111,7 +111,9 @@ def volume_weighted_stats(
     Using -sum without -weight-volume is equivalent to integrating with respect
     to volume.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the input volume.

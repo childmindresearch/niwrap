@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GIFTI_LABEL_ADD_PREFIX_METADATA = Metadata(
-    id="ed01f9a59d50f60535d33290b3b651ef5ce9e90c.boutiques",
+    id="1a432385b763865b11adac0ed783854f99adce10.boutiques",
     name="gifti-label-add-prefix",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -35,7 +35,9 @@ def gifti_label_add_prefix(
     
     For each label other than '???', prepend <prefix> to the label name.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input label file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_DILATE_METADATA = Metadata(
-    id="d6ee42ca2dc5dd57d27838233939dd6c2c9f0597.boutiques",
+    id="bee1a95949f25431b46be253b21cb6f6454d0b2a.boutiques",
     name="metric-dilate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -61,7 +61,9 @@ def metric_dilate(
     To get the behavior of version 1.3.2 or earlier, use '-legacy-cutoff
     -exponent 2'.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric: the metric to dilate.

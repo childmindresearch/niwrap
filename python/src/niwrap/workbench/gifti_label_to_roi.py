@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GIFTI_LABEL_TO_ROI_METADATA = Metadata(
-    id="402716cee6e734704e8f8623a552690053fb85be.boutiques",
+    id="0357abeabd7df654c7266b828885c543a69a2a4d.boutiques",
     name="gifti-label-to-roi",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def gifti_label_to_roi(
     value of 1, and all other locations are given 0. Exactly one of -name and
     -key must be specified. Specify -map to use only one map from <label-in>.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input gifti label file.

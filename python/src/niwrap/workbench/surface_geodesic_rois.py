@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_GEODESIC_ROIS_METADATA = Metadata(
-    id="7bc1ad5c94477de7322dce3c02d510228788c414.boutiques",
+    id="9cf06e2ba1e176d35fb90dbd3ef3e83aff71c2fe.boutiques",
     name="surface-geodesic-rois",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -51,7 +51,9 @@ def surface_geodesic_rois(
     seed vertex. EXCLUDE means that ROIs may not overlap, and that any vertex
     within range of more than one ROI does not belong to any ROI.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to draw on.

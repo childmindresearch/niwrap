@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMERGE_METADATA = Metadata(
-    id="0cbb2af73cad715e36a0230029c498c4ce2e2119.boutiques",
+    id="7f1c2ca1745d4893ae0eaf6d19b9cf828f0a6f25.boutiques",
     name="3dmerge",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,9 +43,9 @@ def v_3dmerge(
     3dmerge edits and merges 3D datasets by applying various operations like
     thresholding, blurring, clustering, and more.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmerge.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input dataset files.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CAT_MATVEC_METADATA = Metadata(
-    id="4a0fc2ef1f9e373552cdbe62d1a6bf70fa5b3987.boutiques",
+    id="a2e1e224a82974ccf7750fe559ce685c6d44f16c.boutiques",
     name="cat_matvec",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def cat_matvec(
     """
     Catenates 3D rotation+shift matrix+vector transformations.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/cat_matvec.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         matvec_spec: Specifies the matrix transformation. Can take forms\

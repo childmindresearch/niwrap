@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_GRADIENT_METADATA = Metadata(
-    id="216ceddd1af371fb04990774f70565f6d76255a0.boutiques",
+    id="be502063183585fe8d5a2e2109e4755ca9821f9c.boutiques",
     name="cifti-gradient",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -153,7 +153,9 @@ def cifti_gradient(
     faster, and is the direction that works on dtseries. For dconn, you probably
     want ROW, unless you are using -average-output.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti: the input cifti.

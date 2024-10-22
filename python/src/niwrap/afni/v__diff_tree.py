@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DIFF_TREE_METADATA = Metadata(
-    id="3dbe2eca541263b5786d164d13244368f1041377.boutiques",
+    id="11a09e53b48435f523465bdd52c5dc27b5e1cb04.boutiques",
     name="@diff.tree",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,9 +46,9 @@ def v__diff_tree(
     """
     Show file differences between 2 directories.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@diff.tree.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         new_dir: New directory to compare.

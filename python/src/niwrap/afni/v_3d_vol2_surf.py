@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_VOL2_SURF_METADATA = Metadata(
-    id="337f8e7f9052239b7ef2c502c662774291c16cc1.boutiques",
+    id="c02eb3df673097f601aee76ef3ab0760f92ddec8.boutiques",
     name="3dVol2Surf",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -76,9 +76,9 @@ def v_3d_vol2_surf(
     """
     Map data from a volume domain to a surface domain.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dVol2Surf.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         spec_file: SUMA spec file.

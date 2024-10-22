@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_PALETTE_METADATA = Metadata(
-    id="2014a34ebb156bc2c6f5e682060664c5a4f430b5.boutiques",
+    id="0387aaa81ed266da683a30f730f54c04094c8424.boutiques",
     name="metric-palette",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -269,7 +269,9 @@ def metric_palette(
     POSITIVE_NEGATIVE_SEPARATE
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric: the metric to modify.

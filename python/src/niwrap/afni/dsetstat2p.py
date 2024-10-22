@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DSETSTAT2P_METADATA = Metadata(
-    id="ed9eb51fe358c9554d3224bb89356e67ecbcfa05.boutiques",
+    id="c5c1a464fb7aea2f28d11cf8382423aa8937d801.boutiques",
     name="dsetstat2p",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def dsetstat2p(
     """
     Converts a statistic to a p-value with reference to a particular dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/dsetstat2p.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Specify a dataset DDD and, if it has multiple sub-bricks, the\

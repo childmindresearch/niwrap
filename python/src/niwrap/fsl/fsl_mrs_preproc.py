@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MRS_PREPROC_METADATA = Metadata(
-    id="0f0110662e5f9a2d36ffc142dea1f2713f975785.boutiques",
+    id="38847a7433a8945576a25be550a20785d6e26348.boutiques",
     name="fsl_mrs_preproc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -44,9 +44,9 @@ def fsl_mrs_preproc(
     """
     FSL Magnetic Resonance Spectroscopy - Complete non-edited SVS Preprocessing.
     
-    Author: FMRIB Analysis Group, Oxford University
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         data: Input file(s).

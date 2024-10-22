@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CLIP_VOLUME_METADATA = Metadata(
-    id="56f45ed717c8ee61bb40740f5f539a242810b311.boutiques",
+    id="d87ba82f5ffa3dfe85d17af4d3bfe9e7ecc4931a.boutiques",
     name="clip_volume",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,9 +51,9 @@ def clip_volume(
     A tool to clip regions of a volume in various ways, such as above/below certain
     coordinates or within a specified box.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@clip_volume.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_volume: Volume to clip.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUMA_METADATA = Metadata(
-    id="cb3c0ca18ccfb05342082cc2dc0588e6b2776654.boutiques",
+    id="e8bcb13f787fa10a2afe180ac5e247a1f8b299e9.boutiques",
     name="suma",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,9 +53,9 @@ def suma(
     """
     SUMA: Surface Mapper for visualization and analysis of brain data.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/suma.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         spec_file: Surface specification file.

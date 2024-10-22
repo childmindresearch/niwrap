@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_THREETO_RGB_METADATA = Metadata(
-    id="0abd4702361734556eb2c268434532c58629b34a.boutiques",
+    id="c2dc1030d39780e10c75c90a735a91d0208be497.boutiques",
     name="3dThreetoRGB",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3d_threeto_rgb(
     """
     Converts 3 sub-bricks of input to an RGB-valued dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dThreetoRGB.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset or first dataset if three datasets are\

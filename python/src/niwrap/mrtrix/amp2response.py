@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AMP2RESPONSE_METADATA = Metadata(
-    id="333417acbc4400d2f027a5765d8cc04968437cab.boutiques",
+    id="45d8955b40d231d0262470246ab11182cd79fcb5.boutiques",
     name="amp2response",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -93,11 +93,9 @@ def amp2response(
     estimation of anisotropic response function for spherical deconvolution.
     ISMRM Workshop on Breaking the Barriers of Diffusion MRI, 23.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au) and J-Donald Tournier
-    (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/amp2response.html
+    URL: https://www.mrtrix.org/
     
     Args:
         amps: the amplitudes image.

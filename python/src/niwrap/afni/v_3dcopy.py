@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DCOPY_METADATA = Metadata(
-    id="1b27da400aa04f2f27f858030bb37596c2016e09.boutiques",
+    id="4b8187d004c6f4ba95518e709ad1f9b3eb4ed322.boutiques",
     name="3dcopy",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v_3dcopy(
     """
     3dcopy copies datasets with or without altering prefixes and converting formats.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcopy.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         verbose: Print progress reports.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PAIRREG_METADATA = Metadata(
-    id="8107f07a5a681ee7ce20b9004ac2037129388509.boutiques",
+    id="2868fdb6d6d68f437a2b53a92efc49e1d97ccd35.boutiques",
     name="pairreg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,9 +36,9 @@ def pairreg(
     """
     Pairwise registration tool.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         brain1: Brain image 1 (used as -ref internally).

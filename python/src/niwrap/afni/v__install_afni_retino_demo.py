@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_AFNI_RETINO_DEMO_METADATA = Metadata(
-    id="1899f0af35d9fd5f3da22643ad090264cbb802f7.boutiques",
+    id="5dbef157317cc90cea8ee0450cfe0bc36d25ff46.boutiques",
     name="@Install_AfniRetinoDemo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,10 +31,9 @@ def v__install_afni_retino_demo(
     """
     Installs and runs demo script for the retinotopy pipeline demo.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_AfniRetinoDemo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         output_dir: Output directory where the demo will be installed and run.

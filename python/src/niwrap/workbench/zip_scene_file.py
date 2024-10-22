@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ZIP_SCENE_FILE_METADATA = Metadata(
-    id="9273cf82395710f7e1b888c1bbc72ca235cad823.boutiques",
+    id="6891f26ec6ffa567471a2a53f493d27c444b8a4c.boutiques",
     name="zip-scene-file",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -39,7 +39,9 @@ def zip_scene_file(
     directory containing all files. The scene file must contain only relative
     paths, and no data files may be outside the base directory.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         scene_file: the scene file to make the zip file from.

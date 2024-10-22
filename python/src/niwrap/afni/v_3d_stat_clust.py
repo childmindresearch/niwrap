@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_STAT_CLUST_METADATA = Metadata(
-    id="6cc4b65bef495946fbca9e274e0767efd92ceee3.boutiques",
+    id="6a70f7b418a765318fd3dcc97f525db45ce69ab8.boutiques",
     name="3dStatClust",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_stat_clust(
     sub-bricks, for all voxels whose threshold statistic is above a user specified
     value.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dStatClust.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         thresh: Threshold statistic from file tname. Only voxels whose\

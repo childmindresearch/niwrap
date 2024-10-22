@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FATCAT_MATPLOT_METADATA = Metadata(
-    id="6c76a16c1c64f9d17e99b60413144fd110dedb16.boutiques",
+    id="085b4167b85a1cc4f21c43adeefb80758ae946b1.boutiques",
     name="FATCAT_matplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def fatcat_matplot(
     """
     Launch a shiny app to visualize .netcc and/or .grid files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/FATCAT_matplot.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         directory: Path to a folder containing .netcc and/or .grid files.

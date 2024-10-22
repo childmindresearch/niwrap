@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TORTOISETO_HERE_METADATA = Metadata(
-    id="face4ad09f678714416dfda6cb399110cbb37e83.boutiques",
+    id="83f372724dc58e7674ba98fc48a12133c4132934.boutiques",
     name="3dTORTOISEtoHere",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def v_3d_tortoiseto_here(
     Convert standard TORTOISE DTs (diagonal-first format) to standard AFNI (lower
     triangular, row-wise) format.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTORTOISEtoHere.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dt_tort: Diffusion tensor file with six bricks of DT components ordered\

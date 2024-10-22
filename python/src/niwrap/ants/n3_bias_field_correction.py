@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 N3_BIAS_FIELD_CORRECTION_METADATA = Metadata(
-    id="4e83de770b59bdbac2f2d60c407571d41cc394da.boutiques",
+    id="12e6ca015aa736902ad4369af67b842768a91549.boutiques",
     name="N3BiasFieldCorrection",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -49,7 +49,7 @@ def n3_bias_field_correction(
     the intensities, and then spatially smoothing this result by a B-spline modeling
     of the bias field itself.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

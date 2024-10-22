@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MSM_METADATA = Metadata(
-    id="5610be5b5ab6ee9fca03d6770ef7f566c0f406d4.boutiques",
+    id="4b2785bb52bc127c8e19af287f84f6c5362a18e1.boutiques",
     name="msm",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -47,9 +47,9 @@ def msm(
     MSM (Multimodal Surface Matching) is a tool for aligning brain surface scans
     based on their cortical folding patterns or functional/structural data.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MSM
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         inmesh: Input mesh (available formats: VTK, ASCII, GIFTI). Needs to be\

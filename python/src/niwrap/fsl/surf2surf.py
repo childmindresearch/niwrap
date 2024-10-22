@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF2SURF_METADATA = Metadata(
-    id="ff7fa1b803632391867b9ed36a0ed6abe6803beb.boutiques",
+    id="f04d013a8dfed9725f2aa61d23bdd94cecf6db6c.boutiques",
     name="surf2surf",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,6 +38,8 @@ def surf2surf(
     Conversions between surface formats and/or conventions.
     
     Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_surface: Input surface.

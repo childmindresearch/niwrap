@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCK2FIXEL_METADATA = Metadata(
-    id="eb214376a576e7c83be8a1981030f92f0a68cd9f.boutiques",
+    id="0ebab309539e07f49a62d79a33984c3cbda69b88.boutiques",
     name="tck2fixel",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -76,10 +76,9 @@ def tck2fixel(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tck2fixel.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tracks: the input tracks.

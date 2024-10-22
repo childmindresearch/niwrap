@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AVSCALE_METADATA = Metadata(
-    id="8bd76f70c784fda5a69e220aece68818a17d6b2c.boutiques",
+    id="b8dcf898d8ff8d6a8ace083e5446a0c93805a45b.boutiques",
     name="avscale",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,7 +34,9 @@ def avscale(
     """
     A command line tool for computing affine transformations.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         matrix_file: The path to the matrix file.

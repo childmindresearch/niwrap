@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DCAT_METADATA = Metadata(
-    id="fccc1c7d5fbfcf69218c3e7e018a8b4b14239221.boutiques",
+    id="6497fba75068a5e9c7d3930e26c7a5f42390e7b0.boutiques",
     name="1dcat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v_1dcat(
     """
     Concatenates columns of multiple 1D or TSV/CSV files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dcat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input 1D or TSV/CSV files to concatenate.

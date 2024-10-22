@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METADATA_REMOVE_PROVENANCE_METADATA = Metadata(
-    id="c5bc75037043254e1dde58120d23c4681f39cbe2.boutiques",
+    id="ed3e4c11d87ffd187f88153cb41cf0961e3cd8ff.boutiques",
     name="metadata-remove-provenance",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -32,7 +32,9 @@ def metadata_remove_provenance(
     
     Removes the provenance metadata fields added by workbench during processing.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         input_file: the file to remove provenance information from.

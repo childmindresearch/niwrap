@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MAT2D_PLOT_PY_METADATA = Metadata(
-    id="faf3dcecd4504060e361faea2cc9dc8b2fe3c590.boutiques",
+    id="4a1c04bfb1114a4c4dfde20fda4aea87cabad529.boutiques",
     name="fat_mat2d_plot.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,10 +56,9 @@ def fat_mat2d_plot_py(
     """
     Plots simple matrices output from 3dNetCorr (*.netcc) and 3dTrackID (*.grid).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat2d_plot.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Name of *.netcc or *.grid file with matrices to be plotted.

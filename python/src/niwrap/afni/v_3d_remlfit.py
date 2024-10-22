@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_REMLFIT_METADATA = Metadata(
-    id="9fb81de20c23d0c04b8b45344a5e91f20b4ba1b5.boutiques",
+    id="90e07df8872d257e94b52e0a2439cbfa1131aa4d.boutiques",
     name="3dREMLfit",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,9 +52,9 @@ def v_3d_remlfit(
     Generalized least squares time series fit, with REML estimation of the temporal
     auto-correlation structure.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dREMLfit.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Read time series dataset.

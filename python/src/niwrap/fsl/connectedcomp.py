@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONNECTEDCOMP_METADATA = Metadata(
-    id="4d630a5c9dd96234ed4b80fc339005c5f4b78137.boutiques",
+    id="198baab99dc1e30c6ef2ed85d96c76e79d3cd947.boutiques",
     name="connectedcomp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,7 +33,9 @@ def connectedcomp(
     """
     Connected component analysis tool.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_volume: Input image volume.

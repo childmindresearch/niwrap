@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_ICOSAHEDRON_METADATA = Metadata(
-    id="1eef39b3e34b28503111a2db48cdd364d34121c1.boutiques",
+    id="1b17cec756a725d6453bb5c0f89f105427f4d2ca.boutiques",
     name="CreateIcosahedron",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def create_icosahedron(
     """
     Tool to create an icosahedron with optional tessellation.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/CreateIcosahedron.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         rad: Size of icosahedron.

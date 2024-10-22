@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__EXAMINE_GEN_FEAT_DISTS_METADATA = Metadata(
-    id="dd1cfdf548e36bdd39bd8d7122ae39677180eed3.boutiques",
+    id="6b3d157756489370507f007809e7269fb611df4b.boutiques",
     name="@ExamineGenFeatDists",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,10 +37,9 @@ def v__examine_gen_feat_dists(
     """
     Examine histograms produced by 3dGenFeatDists.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ExamineGenFeatDists.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         features_dir: Output directory of 3dGenFeatDists.

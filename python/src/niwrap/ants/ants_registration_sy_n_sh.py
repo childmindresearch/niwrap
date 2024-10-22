@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_REGISTRATION_SY_N_SH_METADATA = Metadata(
-    id="6c7ab2b69447cd9b3ed021045caa50d7edf54f39.boutiques",
+    id="029fb8014cb72b8e3e10e60f5b05a9adf14dc918.boutiques",
     name="antsRegistrationSyN.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -50,9 +50,9 @@ def ants_registration_sy_n_sh(
     """
     Script for simplified symmetric image registration using ANTs.
     
-    Author: Brian B. Avants, Nick Tustison, and Gang Song
+    Author: ANTs Developers
     
-    URL: https://github.com/ANTsX/ANTs/
+    URL: https://github.com/ANTsX/ANTs
     
     Args:
         image_dimension: Image dimension: 2 or 3 (for 2 or 3-dimensional\

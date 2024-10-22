@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSHIFT_METADATA = Metadata(
-    id="e6daf7fd1d369d984a73a62978b1a2876a62d221.boutiques",
+    id="da659a82f35577017cc02e2a49aea005b4e38e2f.boutiques",
     name="3dTshift",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,9 +50,9 @@ def v_3d_tshift(
     Shifts voxel time series from input so that separate slices are aligned to the
     same temporal origin.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTshift.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dtshift.

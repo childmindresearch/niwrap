@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MVM_VALIDATOR_METADATA = Metadata(
-    id="0601b05e81ffa9f9f3ce50fb67a24c92b62aeba3.boutiques",
+    id="922fe2d0a794693ed3858b8e880aa7f811995c48.boutiques",
     name="3dMVM_validator",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def v_3d_mvm_validator(
     """
     Launch the 3dMVM model validation shiny app in a web browser.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMVM_validator.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datatable: A file containing a data table formatted like the 3dMVM\

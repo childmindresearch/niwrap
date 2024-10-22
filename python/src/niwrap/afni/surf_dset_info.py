@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_DSET_INFO_METADATA = Metadata(
-    id="1014e17e49000d73bf5c53021f20ee17b86ad042.boutiques",
+    id="0eea0d47be8d446fa32a71638d9796998abd8047.boutiques",
     name="SurfDsetInfo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,9 +47,9 @@ def surf_dset_info(
     """
     Provides information about surface datasets (DSET).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfDsetInfo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dsets: Input dataset.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_REGISTRATION_SY_NQUICK_SH_METADATA = Metadata(
-    id="7013f14218af5095ae35a843b334875409dfcdd3.boutiques",
+    id="ab71ee72023869bc5c9a87f26d5c5b38a4e1bed0.boutiques",
     name="antsRegistrationSyNQuick.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -42,7 +42,7 @@ def ants_registration_sy_nquick_sh(
     A script to quickly compute a SyN-based registration between two images using
     ANTS.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

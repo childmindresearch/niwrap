@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_VECTOR_TOWARD_ROI_METADATA = Metadata(
-    id="685141a970a934c93282eada97a659baeaf4e5ac.boutiques",
+    id="b62b15accb75a619c6112b0fe3506548b92021ce.boutiques",
     name="metric-vector-toward-roi",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def metric_vector_toward_roi(
     At each vertex, compute the vector along the start of the shortest path to
     the ROI.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to compute on.

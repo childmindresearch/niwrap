@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPEC_FILE_MERGE_METADATA = Metadata(
-    id="f0e3e9bb1efb3e9b587c3e4d1c09c8775e48d3a6.boutiques",
+    id="7332808e0e0e50da3e67f8dfd40679874f8f957e.boutiques",
     name="spec-file-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -34,7 +34,9 @@ def spec_file_merge(
     The output spec file contains every file that is in either of the input spec
     files.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         spec_1: first spec file to merge.

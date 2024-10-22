@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 HALFCOSBASIS_METADATA = Metadata(
-    id="dd4f8ba7f704df6d44cb6defab93127cf525dbd0.boutiques",
+    id="37af6834e2787f96dc353ec76d4035fbb9eaad3d.boutiques",
     name="halfcosbasis",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -37,9 +37,9 @@ def halfcosbasis(
     """
     Tool for handling half-cosine basis functions in FSL.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         hrf_param_file_hf: Half cosine HRF parameter ranges file.

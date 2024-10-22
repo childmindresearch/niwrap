@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_REGFILT_METADATA = Metadata(
-    id="1d22daa0d6dc96918384b288068f4ad37cfed726.boutiques",
+    id="4cdf854b4cdabdf7c1b809c9ae50e562d4277d38.boutiques",
     name="fsl_regfilt",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -54,9 +54,9 @@ def fsl_regfilt(
     Data de-noising by regressing out part of a design matrix using simple OLS
     regression on 4D images.
     
-    Author: Christian F. Beckmann
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslRegfilt
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input file name (4D image).

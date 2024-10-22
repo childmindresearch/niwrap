@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SWE_METADATA = Metadata(
-    id="890402fb30c936b580dc288da72eed8929f08db8.boutiques",
+    id="3bea029db30ea292f744ff4a386c4be8044b308c.boutiques",
     name="swe",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -78,9 +78,9 @@ def swe(
     """
     SwE (summary statistics and voxelwise statistical analyses tool for FSL).
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: 4D input image.

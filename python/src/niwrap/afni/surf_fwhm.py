@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_FWHM_METADATA = Metadata(
-    id="34840e1bbf88f386954becc95ba3a4074cff6110.boutiques",
+    id="820e2cdba66aaf5cb57d0db2242d410c19f6020f.boutiques",
     name="SurfFWHM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,9 +50,9 @@ def surf_fwhm(
     """
     A program for calculating local and global FWHM.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfFWHM.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Dataset for which the FWHM is to be calculated.

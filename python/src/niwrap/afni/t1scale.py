@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 T1SCALE_METADATA = Metadata(
-    id="66077b2546ac365947c037a8b5dd7d4334d73c5e.boutiques",
+    id="2151c4bdd3e2095f97662f9395dd39a60d031db4.boutiques",
     name="T1scale",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,9 +49,9 @@ def t1scale(
     Fix bias field shading in T1 by scaling it with PD image. You can also get a
     decent result even without the PD volume.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@T1scale.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         t1_volume: The T1 volume.

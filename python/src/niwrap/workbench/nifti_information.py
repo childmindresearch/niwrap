@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NIFTI_INFORMATION_METADATA = Metadata(
-    id="3670afb5bf0423fff751f00b9b31c3bc3363791f.boutiques",
+    id="c5f70fe530c3400e36ca5e05e7b163ec18a1a149.boutiques",
     name="nifti-information",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -36,7 +36,9 @@ def nifti_information(
     
     You must specify at least one -print-* option.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         nifti_file: the nifti/cifti file to examine.

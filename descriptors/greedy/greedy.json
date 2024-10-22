@@ -82,10 +82,7 @@
       "command-line-flag": "-moments",
       "value-key": "[MOMENTS]",
       "optional": true,
-      "value-choices": [
-        1,
-        2
-      ],
+      "value-choices": [1, 2],
       "description": "Perform moments of inertia rigid alignment of given order (1 or 2)"
     },
     {
@@ -256,13 +253,7 @@
             "id": "metric_type",
             "name": "Metric Type",
             "type": "String",
-            "value-choices": [
-              "SSD",
-              "MI",
-              "NMI",
-              "NCC",
-              "MAHAL"
-            ],
+            "value-choices": ["SSD", "MI", "NMI", "NCC", "MAHAL"],
             "description": "Type of metric to use",
             "value-key": "[METRIC_TYPE]"
           },
@@ -392,11 +383,7 @@
       "type": "String",
       "command-line-flag": "-tscale",
       "optional": true,
-      "value-choices": [
-        "CONST",
-        "SCALE",
-        "SCALEDOWN"
-      ],
+      "value-choices": ["CONST", "SCALE", "SCALEDOWN"],
       "description": "Time step behavior mode",
       "value-key": "[TIME_STEP_MODE]"
     },
@@ -579,10 +566,7 @@
       "integer": true,
       "command-line-flag": "-ia-moments",
       "optional": true,
-      "value-choices": [
-        1,
-        2
-      ],
+      "value-choices": [1, 2],
       "description": "Initialize affine matrix based on matching moments of inertia",
       "value-key": "[IA_MOMENTS]"
     },
@@ -593,11 +577,7 @@
       "value-key": "[AFFINE_DOF]",
       "integer": true,
       "command-line-flag": "-dof",
-      "value-choices": [
-        6,
-        7,
-        12
-      ],
+      "value-choices": [6, 7, 12],
       "optional": true,
       "description": "Degrees of freedom for affine registration. 6=rigid, 7=similarity, 12=affine"
     },
@@ -653,10 +633,7 @@
       "integer": true,
       "command-line-flag": "-det",
       "optional": true,
-      "value-choices": [
-        -1,
-        1
-      ],
+      "value-choices": [-1, 1],
       "description": "Force the determinant of transform to be either 1 (no flip) or -1 (flip)",
       "value-key": "[DET]"
     },
@@ -756,11 +733,7 @@
       "type": "String",
       "command-line-flag": "-ri",
       "optional": true,
-      "value-choices": [
-        "NN",
-        "LINEAR",
-        "LABEL"
-      ],
+      "value-choices": ["NN", "LINEAR", "LABEL"],
       "description": "Interpolation for the next pair (NN, LINEAR*, LABEL sigma)",
       "value-key": "[INTERPOLATION]"
     },
@@ -963,11 +936,7 @@
       "integer": true,
       "command-line-flag": "-V",
       "optional": true,
-      "value-choices": [
-        0,
-        1,
-        2
-      ],
+      "value-choices": [0, 1, 2],
       "description": "Verbosity level (0: none, 1: default, 2: verbose)"
     }
   ],

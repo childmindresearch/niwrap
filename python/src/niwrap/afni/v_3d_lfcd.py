@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LFCD_METADATA = Metadata(
-    id="78e0028fff0fb684fc287761f15fc595f239533e.boutiques",
+    id="addfa17bcea1fe82f0ee83c5d035f7c71933d3ea.boutiques",
     name="3dLFCD",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3d_lfcd(
     Performs degree centrality on a dataset using a given maskfile via the 3dLFCD
     command.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLFCD.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dlfcd.

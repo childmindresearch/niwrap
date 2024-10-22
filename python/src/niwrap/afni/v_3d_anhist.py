@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ANHIST_METADATA = Metadata(
-    id="c5a8bc2df4e27276351e63f83dd18e2136b73956.boutiques",
+    id="a861594cf05d4476be6b171236514f1bcdbb8be4.boutiques",
     name="3dAnhist",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3d_anhist(
     """
     Tool to analyze histogram peaks in a T1-weighted high-res brain image dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAnhist.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset, should be T1-weighted high-res brain image\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_DWI_TO_DT_METADATA = Metadata(
-    id="8ed37d189533bd1e9a2b1990a953bb8f2ba02e67.boutiques",
+    id="c5a2942f4ac3b0a68c89864b914dd62d776684d1.boutiques",
     name="fat_proc_dwi_to_dt",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -60,10 +60,9 @@ def fat_proc_dwi_to_dt(
     This program fits tensors and DT parameters, as well as the uncertainty of DT
     parameters needed for tractography.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_dwi_to_dt.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_dwi: 4D volume of N DWIs. Required.

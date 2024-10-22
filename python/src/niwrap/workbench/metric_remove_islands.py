@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_REMOVE_ISLANDS_METADATA = Metadata(
-    id="ccfb20f350c974adee896baa3f5aa1a71a238a25.boutiques",
+    id="43d9d70ec6a894502941689d671c0c172e24efce.boutiques",
     name="metric-remove-islands",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def metric_remove_islands(
     Finds all connected areas in the ROI, and zeros out all but the largest one,
     in terms of surface area.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to use for neighbor information.

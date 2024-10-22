@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_GLUE_IMGS_VERT_METADATA = Metadata(
-    id="c527b9a25c5fefb28134df18e1b3e3200c59330a.boutiques",
+    id="20717d26235dae136c4114195f90ba4e33d24544.boutiques",
     name="adjunct_glue_imgs_vert",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,10 +36,9 @@ def adjunct_glue_imgs_vert(
     """
     This script helps in gluing two images together vertically.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_glue_imgs_vert.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         bottom_image: Bottom image file.

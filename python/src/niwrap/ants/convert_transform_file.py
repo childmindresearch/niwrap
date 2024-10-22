@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_TRANSFORM_FILE_METADATA = Metadata(
-    id="beabf728c4723b7b2748c24c1383f4f514b8dbe7.boutiques",
+    id="224c137774aff43d94d1fecb5c8b4a19ae81816c.boutiques",
     name="ConvertTransformFile",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -34,7 +34,7 @@ def convert_transform_file(
     Without any options, the output filename extension must be .txt or .tfm to
     signify a text-formatted transform file.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

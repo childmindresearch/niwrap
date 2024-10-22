@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_CREATE_METADATA = Metadata(
-    id="5d7086a20f40e1369099258732e008fa1d902dda.boutiques",
+    id="f8cc4765bcdbff21d356e59b4422607a10cf1c6d.boutiques",
     name="volume-create",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -143,7 +143,9 @@ def volume_create(
     Creates a volume file full of zeros. Exactly one of -plumb or -sform must be
     specified.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         i_dim: length of first dimension.

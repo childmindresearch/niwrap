@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 STATAUXCODE_METADATA = Metadata(
-    id="5d6c7ed748aacd0f260645dc0f2d718d2d89e7ea.boutiques",
+    id="19e770f9b399ba02404b522463345d065626e58c.boutiques",
     name="statauxcode",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def statauxcode(
     """
     Returns the name or number of a statistics code based on specified mappings.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@statauxcode.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         code_: The statistical code or its numerical equivalent to be\

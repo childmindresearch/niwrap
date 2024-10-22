@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SH2AMP_METADATA = Metadata(
-    id="392ae46eb2d92b24d451f55d682e80b44763c820.boutiques",
+    id="b88a6fe01eede507fd3fd0ee64c193a8f9c85310.boutiques",
     name="sh2amp",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -192,10 +192,9 @@ def sh2amp(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier
-    (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2amp.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image consisting of spherical harmonic (SH)\

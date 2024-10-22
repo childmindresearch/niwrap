@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CRUISETO_AFNI_METADATA = Metadata(
-    id="266ddc4425a874ee1c8771e0619754766c96120c.boutiques",
+    id="4e08f5a3a9cbf98ac93af642e1c17b50a9c78a24.boutiques",
     name="3dCRUISEtoAFNI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_cruiseto_afni(
     """
     Converts a CRUISE dataset defined by a header in OpenDX format.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCRUISEtoAFNI.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Input CRUISE header file in OpenDX format.

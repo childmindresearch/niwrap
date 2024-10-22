@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_MESH_METADATA = Metadata(
-    id="c1c2ac544cf83af0c22e7e11b93ff2bf6adf9fd9.boutiques",
+    id="aba9dc7cdd5795dd83c2c7deb8fe8088d1965d12.boutiques",
     name="SurfMesh",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def surf_mesh(
     """
     Surface mesh manipulation tool.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfMesh.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_surface: Input surface file with specified type.

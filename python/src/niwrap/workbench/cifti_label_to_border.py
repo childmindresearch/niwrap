@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_TO_BORDER_METADATA = Metadata(
-    id="24550691899c0b838cd728d5ff8d9552ad95c330.boutiques",
+    id="cfa090287e94127e183f28bd42aeab765397cb2c.boutiques",
     name="cifti-label-to-border",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -96,7 +96,9 @@ def cifti_label_to_border(
     borders around the labels. Use -column to only draw borders around one label
     map.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the input cifti dlabel file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DIRFLIP_METADATA = Metadata(
-    id="e215c0593de69b76857a69ebc324ea09095a9dee.boutiques",
+    id="86336786511bfdfa104481617aa49c18d390fff0.boutiques",
     name="dirflip",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -80,9 +80,9 @@ def dirflip(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/dirflip.html
+    URL: https://www.mrtrix.org/
     
     Args:
         in_: the input files for the directions.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RETINO_PHASE_METADATA = Metadata(
-    id="29da170aac7b7d38be8a603b127b74d28ebecea8.boutiques",
+    id="3db78d8b872cbcd25d2278819aa85d3e6ecbba57.boutiques",
     name="3dRetinoPhase",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,9 +53,9 @@ def v_3d_retino_phase(
     Process time series from retinotopy stimuli to create phase datasets and visual
     field angle datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRetinoPhase.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix of output datasets.

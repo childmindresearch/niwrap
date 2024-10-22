@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UBER_SUBJECT_PY_METADATA = Metadata(
-    id="c08bea9fc49ee4b52e05720eb39523686578098d.boutiques",
+    id="d4f27b8c1311827036baefee6a5e5f22311c1cf3.boutiques",
     name="uber_subject.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -71,10 +71,9 @@ def uber_subject_py(
     """
     Graphical interface to afni_proc.py.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_subject.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         qt_opts: Pass options to PyQt4.

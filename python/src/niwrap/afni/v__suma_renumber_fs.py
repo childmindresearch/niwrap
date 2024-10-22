@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SUMA_RENUMBER_FS_METADATA = Metadata(
-    id="a48575aafa7a4ed8a303e652499041bd300af665.boutiques",
+    id="8a49623824c67c6e033a941294f1334c45b7499b.boutiques",
     name="@SUMA_renumber_FS",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,10 +53,9 @@ def v__suma_renumber_fs(
     This script processes FreeSurfer-generated parcellation files and produces
     various derived datasets and segmentation maps.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_renumber_FS.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         sumadir: Path to the 'SUMA/' directory created by @SUMA_Make_Spec_FS.

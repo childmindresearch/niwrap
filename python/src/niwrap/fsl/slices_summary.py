@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICES_SUMMARY_METADATA = Metadata(
-    id="bcfb859e6121ad5b718e68a1d1cc66158c82e918.boutiques",
+    id="a68b8a0d95d4daa9d4db32507d98e87d2b96ca61.boutiques",
     name="slices_summary",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -41,6 +41,10 @@ def slices_summary(
 ) -> SlicesSummaryOutputs:
     """
     Generate summary PNG images for 4D neuroimaging data.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         v_4d_input_file: 4D input image (e.g., melodic_IC).

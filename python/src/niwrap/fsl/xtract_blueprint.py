@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XTRACT_BLUEPRINT_METADATA = Metadata(
-    id="12c9da2a50607aa30a35175ee2d6a342e25c7048.boutiques",
+    id="27b55748f34876bdc8cdaef8c7f5e0a07b8fb32b.boutiques",
     name="xtract_blueprint",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -47,9 +47,9 @@ def xtract_blueprint(
     """
     Blueprint extraction tool using XTRACT and bedpostx folders.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         bpx_folder: Path to bedpostx folder.

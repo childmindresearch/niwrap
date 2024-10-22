@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_METADATA = Metadata(
-    id="d3cc6c444e68d4ec7e9ee813e5257bb74c9f7027.boutiques",
+    id="40dab3442f2e18227072a94a9827898d65dc4372.boutiques",
     name="afni",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -55,9 +55,9 @@ def afni_(
     """
     Tool for reading in sessions of 3D datasets and visualizing them.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         session_directories: Input session directories containing the datasets.

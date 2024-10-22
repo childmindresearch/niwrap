@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SKULL_STRIP_TOUCH_UP_METADATA = Metadata(
-    id="51b46d6e6f2f24c8b7822210349a52ed8df3d90e.boutiques",
+    id="c803b7c3e18cf11101f928ee0b08cbc52d5011e4.boutiques",
     name="@SkullStrip_TouchUp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def v__skull_strip_touch_up(
     Helper program to touch up failed skull stripping by resampling data, allowing
     manual edits, and outputting corrected data.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SkullStrip_TouchUp.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output file and folder name.

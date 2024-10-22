@@ -78,10 +78,7 @@
       "description": "Specify T1 or anatomical directory",
       "mutually-exclusive": true,
       "id": "input_choice_group",
-      "members": [
-        "t1_file",
-        "anat_dir"
-      ],
+      "members": ["t1_file", "anat_dir"],
       "name": "Input choice"
     }
   ],

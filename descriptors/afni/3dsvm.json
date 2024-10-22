@@ -82,10 +82,7 @@
       "optional": true,
       "id": "type",
       "name": "Type",
-      "value-choices": [
-        "classification",
-        "regression"
-      ]
+      "value-choices": ["classification", "regression"]
     },
     {
       "command-line-flag": "-c",
@@ -113,12 +110,7 @@
       "optional": true,
       "id": "kernel",
       "name": "Kernel function",
-      "value-choices": [
-        "linear",
-        "polynomial",
-        "rbf",
-        "sigmoid"
-      ]
+      "value-choices": ["linear", "polynomial", "rbf", "sigmoid"]
     },
     {
       "command-line-flag": "-d",
@@ -245,10 +237,7 @@
       "optional": true,
       "id": "multiclass",
       "name": "Multiclass type",
-      "value-choices": [
-        "DAG",
-        "vote"
-      ]
+      "value-choices": ["DAG", "vote"]
     },
     {
       "command-line-flag": "-help",

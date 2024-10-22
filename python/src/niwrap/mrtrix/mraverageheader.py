@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRAVERAGEHEADER_METADATA = Metadata(
-    id="b801a707f3ed2c058aecf4b7046515d22da3c81e.boutiques",
+    id="a78748366d0d3cfec49f44fdcdebe26755e40891.boutiques",
     name="mraverageheader",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -79,10 +79,9 @@ def mraverageheader(
     
     .
     
-    Author: Maximilian Pietsch (maximilian.pietsch@kcl.ac.uk)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mraverageheader.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image(s).

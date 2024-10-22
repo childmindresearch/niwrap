@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 HELP_FORMAT_METADATA = Metadata(
-    id="764aeb23d87c0e64d32e52e8042c9227256ea584.boutiques",
+    id="2c2e44d1845d44d18c53666d3810111107853205.boutiques",
     name="help_format",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def help_format(
     """
     Formats text by converting URLs into HTML hyperlinks.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/help_format.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         stdin: Standard input text to be formatted.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QHULL_METADATA = Metadata(
-    id="94673ad745f5be254aee73da6ead715f4c5746a7.boutiques",
+    id="c66bd98623328e49e50c28ca6d4ac9a47c26c314.boutiques",
     name="qhull",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,9 +51,9 @@ def qhull(
     """
     Tool to compute convex hulls and related structures.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/qhull.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_coords: Dimension, number of points, and point coordinates\

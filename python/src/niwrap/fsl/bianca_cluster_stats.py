@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BIANCA_CLUSTER_STATS_METADATA = Metadata(
-    id="423d2c0db4c16353a60f313d20a887bcdbff6e8b.boutiques",
+    id="f0aa43fa3f8aff7c9e7b6e70f953a21145d140cb.boutiques",
     name="bianca_cluster_stats",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,6 +31,10 @@ def bianca_cluster_stats(
 ) -> BiancaClusterStatsOutputs:
     """
     Calculate number of clusters and WMH volume in a BIANCA output map.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         bianca_output_map: BIANCA output map file.

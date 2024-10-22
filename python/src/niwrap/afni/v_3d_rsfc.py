@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RSFC_METADATA = Metadata(
-    id="fa2a2e88a32d0866032d1e3102d72ccee5a0fdad.boutiques",
+    id="6ce9640d970ae6c3fe9057ee6cdd1cbb5363c7cb.boutiques",
     name="3dRSFC",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_rsfc(
     Program to calculate common resting state functional connectivity (RSFC)
     parameters.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRSFC.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         fbot: Lowest frequency in the passband, in Hz.

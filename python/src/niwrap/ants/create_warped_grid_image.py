@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_WARPED_GRID_IMAGE_METADATA = Metadata(
-    id="08920c0176c3ddba53a8ad386cb2b1c8cbcfc38f.boutiques",
+    id="43b75b2bbf1de43489ea85a551208078dcde662b.boutiques",
     name="CreateWarpedGridImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -36,7 +36,7 @@ def create_warped_grid_image(
     """
     Create a warped grid image based on the specified deformation field.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

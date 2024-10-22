@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXELREORIENT_METADATA = Metadata(
-    id="7be2d5220e46f4ccbe84989d75dbfad0138a3943.boutiques",
+    id="131439582b6a79c991d4bdc5b5ebe9896e2ee937.boutiques",
     name="fixelreorient",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -81,10 +81,9 @@ def fixelreorient(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelreorient.html
+    URL: https://www.mrtrix.org/
     
     Args:
         fixel_in: the input fixel directory.

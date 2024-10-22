@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PERFUSION_SUBTRACT_METADATA = Metadata(
-    id="72b1727c444d9ce207028e9b06eb26a5a5d3c2b1.boutiques",
+    id="269fbb4bbaaddd093b9ed276b0377ca7d130fbab.boutiques",
     name="perfusion_subtract",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,6 +32,10 @@ def perfusion_subtract(
 ) -> PerfusionSubtractOutputs:
     """
     Subtract control images from tag images in 4D perfusion data.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         four_d_input: Input 4D perfusion image (e.g. perfusion.nii.gz).

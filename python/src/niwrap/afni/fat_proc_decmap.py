@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_DECMAP_METADATA = Metadata(
-    id="160ec619653edbedd5d71497f683c40fb1bb99a1.boutiques",
+    id="5d4b32a54bdd18b7bea855a52f4b838de1b32088.boutiques",
     name="fat_proc_decmap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -54,10 +54,9 @@ def fat_proc_decmap(
     """
     This program makes a directionally encoded color (DEC) map for DTI results.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_decmap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_fa: Input FA (scalar) map.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MBA_METADATA = Metadata(
-    id="759d552c8331c6f9674ba94b1244b4b902aa52b4.boutiques",
+    id="cee08b6858733246df01cc8fbb1acb20fffe47a7.boutiques",
     name="MBA",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,9 +49,9 @@ def mba(
     """
     Matrix-Based Analysis Program through Bayesian Multilevel Modeling.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/MBA.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for output file names.

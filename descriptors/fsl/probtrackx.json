@@ -345,12 +345,7 @@
     {
       "description": "Optional miscellaneous parameters when running probtrackx",
       "id": "compulsory_params_group",
-      "members": [
-        "samples",
-        "mask",
-        "seed",
-        "out"
-      ],
+      "members": ["samples", "mask", "seed", "out"],
       "name": "Compulsory Arguments Group"
     },
     {

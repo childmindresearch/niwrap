@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RTFEEDME_METADATA = Metadata(
-    id="9d6db57915f39f4a3a1277e650c6c7bc72fb2728.boutiques",
+    id="32964e0c08bfc25e6c4f6eca5347bfc95b91dd98.boutiques",
     name="rtfeedme",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def rtfeedme(
     """
     Test the real-time plugin by sending all the bricks in 'dataset' to AFNI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/rtfeedme.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datasets: List of datasets to send to AFNI, specified as paths to\

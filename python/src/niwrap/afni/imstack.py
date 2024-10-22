@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMSTACK_METADATA = Metadata(
-    id="d9773a0d9f7ba95b29bbf436cd06818e5ff885f9.boutiques",
+    id="4d6200fa2e1b9b6bfc0d03b2731f1be8201a7a22.boutiques",
     name="imstack",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def imstack(
     """
     Stacks up a set of 2D images into one big file (a la MGH).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imstack.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         image_files: Input image filenames.

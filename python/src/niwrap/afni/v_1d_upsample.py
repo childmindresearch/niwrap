@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_UPSAMPLE_METADATA = Metadata(
-    id="994f90098f887f5f9885ca987566d2c77365ab7e.boutiques",
+    id="785c941f30822b63c7729e1d98eaabc08cf4608f.boutiques",
     name="1dUpsample",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def v_1d_upsample(
     """
     Upsamples a 1D time series to a finer time grid.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dUpsample.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         upsample_factor: Upsample factor (integer from 2..32).

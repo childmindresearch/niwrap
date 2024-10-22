@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TSFDIVIDE_METADATA = Metadata(
-    id="7f25174a66395585bb631c223e73f5fe4356fc1d.boutiques",
+    id="4ccdf692559c43f81a4682ec0171e369f074e7b7.boutiques",
     name="tsfdivide",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -76,10 +76,9 @@ def tsfdivide(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfdivide.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input1: the first input track scalar file.

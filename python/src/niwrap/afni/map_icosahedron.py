@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAP_ICOSAHEDRON_METADATA = Metadata(
-    id="be4e81f8b9dd55bb279e975e97185066123ab6d5.boutiques",
+    id="1d9e7bc123810e1827523a4f31aefece32f411e6.boutiques",
     name="MapIcosahedron",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def map_icosahedron(
     """
     Creates new versions of original-mesh surfaces using the mesh of an icosahedron.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/MapIcosahedron.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         spec_file: Spec file containing original-mesh surfaces.

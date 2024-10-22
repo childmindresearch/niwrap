@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DNORM_METADATA = Metadata(
-    id="85ac78d3087d1fc1190e45816d231afdc13d8612.boutiques",
+    id="ea6e83597c9dc8fb3895db8c36d06ddc6f559447.boutiques",
     name="1dnorm",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_1dnorm(
     """
     Normalize columns of a 1D file (AFNI ASCII list of numbers).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dnorm.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input AFNI *.1D file (ASCII list of numbers arranged in\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EG_MAIN_CHRONO_METADATA = Metadata(
-    id="17ad055299d88a7273936ef1290cb3281d161793.boutiques",
+    id="f0b98587fc27a26e49af4c54624b2f2fd82f84c3.boutiques",
     name="eg_main_chrono",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def eg_main_chrono(
     """
     A sample main Python program to run on top of some library.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/eg_main_chrono.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         help_: Show help message.

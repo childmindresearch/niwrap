@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKDFC_METADATA = Metadata(
-    id="51a5b1e93e640f64e9fa324dd21b00dc35eab082.boutiques",
+    id="9ecab23d43de088c2cabc9280d7379293cf1dc28.boutiques",
     name="tckdfc",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -144,9 +144,9 @@ def tckdfc(
     study time-resolved functional connectivity. Brain Struct Funct, 2017, doi:
     10.1007/s00429-017-1431-1.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/tckdfc.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tracks: the input track file.

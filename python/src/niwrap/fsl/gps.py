@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GPS_METADATA = Metadata(
-    id="ffc05ee9eb9b555ac41dd5f033c00b8438e33e25.boutiques",
+    id="72e57b133fd0d34be489c791364e230fba5169ac.boutiques",
     name="gps",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,9 +38,9 @@ def gps(
     """
     Generate set of diffusion gradient directions.
     
-    Author: University of Oxford (Jesper Andersson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         ndir: Number of directions.

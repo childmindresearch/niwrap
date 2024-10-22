@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_GET_STANDARD_METADATA = Metadata(
-    id="ff1d680aaa25c24537aacd55f170f3dcacf76df6.boutiques",
+    id="728c316a44d42029a6f3db7d477d865274c0fac1.boutiques",
     name="fsl_get_standard",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,6 +31,10 @@ def fsl_get_standard(
 ) -> FslGetStandardOutputs:
     """
     Generate paths to FSL standard space images.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         image_type: Image type - one of 'whole_head' (the default), 'brain', or\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DIRGEN_METADATA = Metadata(
-    id="6da7616f93c7a8e91ce3448e95decf8bd9d67709.boutiques",
+    id="111662ebc02bd748b7609e8b39562fb928767bbb.boutiques",
     name="dirgen",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -93,9 +93,9 @@ def dirgen(
     Carpenter, T. Minimal gradient encoding for robust estimation of diffusion
     anisotropy. Magnetic Resonance Imaging, 2000, 18: 671-679.
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/dirgen.html
+    URL: https://www.mrtrix.org/
     
     Args:
         ndir: the number of directions to generate.

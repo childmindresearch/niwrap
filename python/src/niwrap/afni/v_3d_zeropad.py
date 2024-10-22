@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZEROPAD_METADATA = Metadata(
-    id="254fe5645abbaedd7631c19b129a13fe832e6def.boutiques",
+    id="69b80943bdd6b997541b13be76f096b8bce260d4.boutiques",
     name="3dZeropad",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def v_3d_zeropad(
     Adds planes of zeros to a dataset (i.e., pads it out). Negative 'add' count
     means to cut a dataset down in size.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZeropad.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_CONVERT_DCM_ANAT_METADATA = Metadata(
-    id="a46282c979e903aabee720bb6345481c73b1902e.boutiques",
+    id="0177f4c891bb01f1d16cc7a255fd2d69587e47e9.boutiques",
     name="fat_proc_convert_dcm_anat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,10 +40,9 @@ def fat_proc_convert_dcm_anat(
     Converts an anatomical dataset from DICOM files into a volume, specifically
     designed to fit in line with other processing such as DTI analysis.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_convert_dcm_anat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Set prefix (and path) for output data.

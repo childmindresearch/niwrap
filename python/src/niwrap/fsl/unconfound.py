@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UNCONFOUND_METADATA = Metadata(
-    id="15eb9fd545daea054e512faf9fe43e4f920e55e0.boutiques",
+    id="73dc2b6a0b2daca3ed1a6acc6b9d1b19b5af77e1.boutiques",
     name="unconfound",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,9 +33,9 @@ def unconfound(
     """
     Removing confounds from 4D fMRI data.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in4d: Input 4D fMRI data (e.g., in4d.nii.gz).

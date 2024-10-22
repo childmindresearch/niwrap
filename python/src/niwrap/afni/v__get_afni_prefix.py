@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__GET_AFNI_PREFIX_METADATA = Metadata(
-    id="319f4b6f23c4fb2f22807441a53e5648683d8b96.boutiques",
+    id="ae0f36ac76fa0ee57fb99900eaf3197e4b29bbf6.boutiques",
     name="@GetAfniPrefix",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v__get_afni_prefix(
     """
     A tool to extract AFNI prefix from a given file path.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniPrefix.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         name: Input file path for which the AFNI prefix will be extracted.

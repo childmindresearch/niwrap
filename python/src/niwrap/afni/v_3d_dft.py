@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DFT_METADATA = Metadata(
-    id="f3c398865c0d36e2508a7a15a6689b6d4d1f2ba9.boutiques",
+    id="0f3070685dbac59868921707a751cb9ad68c75ea.boutiques",
     name="3dDFT",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3d_dft(
     Performs Discrete Fourier Transform (DFT) along the time axis of a complex- or
     float-valued dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDFT.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input dataset (complex- or float-valued).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VECWARP_METADATA = Metadata(
-    id="6c6580748aa2429883f7174bbcdc1a5eed33de73.boutiques",
+    id="66d797ff1f24b0ac64a1a1ccdd71bdfbf2d06237.boutiques",
     name="Vecwarp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def vecwarp(
     Transforms (warps) a list of 3-vectors into another list of 3-vectors according
     to the specified options.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/Vecwarp.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Read input 3-vectors from the file 'iii' (from stdin if 'iii'\

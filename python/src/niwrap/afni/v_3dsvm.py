@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DSVM_METADATA = Metadata(
-    id="4ea91c6c2d4f770f46c5ddaf534d18dae6ba5758.boutiques",
+    id="561addc870b41a8529b3ab4135131a6bc7b9089a.boutiques",
     name="3dsvm",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -63,9 +63,9 @@ def v_3dsvm(
     """
     Support vector machine analysis of brain data using the SVM-light package.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dsvm.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         model: The basename for the model brik containing the SVM model during\

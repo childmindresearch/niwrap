@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCALC_METADATA = Metadata(
-    id="5d8a0e08306a2d60d3c1d38bcdb8857d6fff4a86.boutiques",
+    id="969bb6585a0e4e1f36259285fc5062f473cc26bd.boutiques",
     name="tcalc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -47,7 +47,9 @@ def tcalc(
     """
     Resample a 4D phantom for theoretical calculations.
     
-    Author: Tejas Pendse
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Input image (4D phantom for theoretical calculations).

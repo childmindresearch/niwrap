@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MULTIPLY_IMAGES_METADATA = Metadata(
-    id="07a0cf2f70ba316f304bac73e0b1224b44034aba.boutiques",
+    id="c6da8ec5d4fa8b085a1135287a18f750b9fc74b7.boutiques",
     name="MultiplyImages",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -37,7 +37,7 @@ def multiply_images(
     and program will act accordingly -- i.e. read as a number. Program handles
     vector and tensor images as well.
     
-    Author: Advanced Normalization Tools (ANTs) Contributors
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

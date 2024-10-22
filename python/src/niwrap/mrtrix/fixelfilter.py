@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXELFILTER_METADATA = Metadata(
-    id="78842b51be89a3840bbb410c2b7545b0ffec7a31.boutiques",
+    id="de612300fec8260dbe9407acf8595be232354182.boutiques",
     name="fixelfilter",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -172,10 +172,9 @@ def fixelfilter(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelfilter.html
+    URL: https://www.mrtrix.org/
     
     Args:
         matrix: provide a fixel-fixel connectivity matrix for filtering\

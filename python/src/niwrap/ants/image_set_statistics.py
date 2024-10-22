@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAGE_SET_STATISTICS_METADATA = Metadata(
-    id="6c602432258fdd4467e9219f0c4376d4d62b4c9f.boutiques",
+    id="9329b484e2f67dba69c548b9b9a373ea2a072aa8.boutiques",
     name="ImageSetStatistics",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -38,7 +38,7 @@ def image_set_statistics(
     option defines the type of statistic to compute, ranging from median to
     similarity-weighted metrics.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLCREATEHD_METADATA = Metadata(
-    id="7dcf72c3aee92c0bb2c1d638cd3df70d10c15b39.boutiques",
+    id="f4a50160a54151092dae471db664457799adcf7e.boutiques",
     name="fslcreatehd",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -44,9 +44,9 @@ def fslcreatehd(
     """
     Tool to create a new NIfTI header.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLUtils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         xsize: Size of the image in the x dimension.

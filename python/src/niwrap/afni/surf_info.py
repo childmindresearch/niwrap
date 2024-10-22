@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_INFO_METADATA = Metadata(
-    id="98adb2ab56264228c422fbe7734ffc0681c92698.boutiques",
+    id="d2662d0789ce0ce3e69fb658348261cec5de9136.boutiques",
     name="SurfInfo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def surf_info(
     """
     Tool to gather information about surface files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfInfo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         surface: Input surface file.

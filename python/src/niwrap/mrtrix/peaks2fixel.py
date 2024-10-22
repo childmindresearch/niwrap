@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PEAKS2FIXEL_METADATA = Metadata(
-    id="c1523351de48625e5753adec1b4cd6457a6ed8ef.boutiques",
+    id="d7a45807f5df2a3ff0f6456f9bc36be6cdae2250.boutiques",
     name="peaks2fixel",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -76,10 +76,9 @@ def peaks2fixel(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/peaks2fixel.html
+    URL: https://www.mrtrix.org/
     
     Args:
         directions: the input directions image; each volume corresponds to the\

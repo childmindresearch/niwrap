@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMCAT_METADATA = Metadata(
-    id="f86d118bcc00a36af36a781d6ccef05ffa6fdea3.boutiques",
+    id="aaf3852ed2e5487ca6e742c661a53a14976a9a76.boutiques",
     name="imcat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -55,9 +55,9 @@ def imcat(
     """
     Assembles a set of images into an image matrix (IM) montage of NX by NY images.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input image files.

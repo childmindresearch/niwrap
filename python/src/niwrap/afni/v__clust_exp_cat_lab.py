@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__CLUST_EXP_CAT_LAB_METADATA = Metadata(
-    id="062293bd763412973304a9323416570f6ed5de3e.boutiques",
+    id="e7f57e6679bc4f1f5b1d6785c2f9a75f5472a1b4.boutiques",
     name="@ClustExp_CatLab",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def v__clust_exp_cat_lab(
     """
     Helper script to concatenate and label a group of data sets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ClustExp_CatLab.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output file name.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRMATH_METADATA = Metadata(
-    id="165b4b5851ffbe934da7dc8316112680495a04a9.boutiques",
+    id="51b59bbaad9ca5110175fd6f6f0765499d38c928.boutiques",
     name="mrmath",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -91,9 +91,9 @@ def mrmath(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mrmath.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image(s).

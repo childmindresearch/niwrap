@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAP_TRACK_ID_METADATA = Metadata(
-    id="fdc74c47b97b026a45eb5a2e8e2ac8080fcc1087.boutiques",
+    id="b7b386b4448e9a7ba850519cb7c0ac387a865bbf.boutiques",
     name="map_TrackID",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def map_track_id(
     Maps the track file (*.trk) output of 3dTrackID to another space using the
     1Dmatrix_save info of 3dAllineate.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/map_TrackID.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for the output track file.

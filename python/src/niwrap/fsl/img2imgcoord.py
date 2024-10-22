@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMG2IMGCOORD_METADATA = Metadata(
-    id="b43b593aecc1dad3d9dfbc66bf4a782d771b0dae.boutiques",
+    id="d5aad95041e12d14f412a16326ba2c7bd80dcdcb.boutiques",
     name="img2imgcoord",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,9 +38,9 @@ def img2imgcoord(
     """
     Tool for transforming coordinates between images.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         coordinates_file: Filename containing coordinates.

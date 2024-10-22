@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__CHECK_FOR_AFNI_DSET_METADATA = Metadata(
-    id="63f03e9c1f062ce0a3b8a0284f14b04123c77b67.boutiques",
+    id="fe3233871c90874d4e2c2e24abac6304db035192.boutiques",
     name="@CheckForAfniDset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,10 +31,9 @@ def v__check_for_afni_dset(
     """
     Check for the existence of AFNI datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@CheckForAfniDset.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset_name: Path to the AFNI dataset (e.g.,\

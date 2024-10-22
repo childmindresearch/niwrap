@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SURF_MASK_METADATA = Metadata(
-    id="ce1f43c2918a7269881b6d701bf6be490c4d97d3.boutiques",
+    id="55dc0c4e1d7ff3d126a0dfcd22e6d94d6ee4130c.boutiques",
     name="3dSurfMask",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def v_3d_surf_mask(
     Creates volumetric datasets marking voxels based on their location relative to a
     surface.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSurfMask.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         surface_type: Specify input surface.

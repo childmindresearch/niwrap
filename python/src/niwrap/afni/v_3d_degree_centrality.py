@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DEGREE_CENTRALITY_METADATA = Metadata(
-    id="736d442b69d1db6d290086fa95aa30515ed19148.boutiques",
+    id="1a5722d6aac4349ec026c10e117c0cc27e3fcea9.boutiques",
     name="3dDegreeCentrality",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,10 +45,9 @@ def v_3d_degree_centrality(
     reflects the strength and extent of the correlation of a voxel with every other
     voxel in the brain. .
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDegreeCentrality.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3ddegreecentrality.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NEURO_DECONVOLVE_PY_METADATA = Metadata(
-    id="ea023431386088245b3e959a0753d9b2581057ac.boutiques",
+    id="7deab2368a36fa0ebe35904371306494cb49280c.boutiques",
     name="neuro_deconvolve.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,10 +45,9 @@ def neuro_deconvolve_py(
     Generate a script to apply 3dTfitter to deconvolve an MRI signal (BOLD response
     curve) into a neuro response curve.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/neuro_deconvolve.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Set the data to deconvolve.

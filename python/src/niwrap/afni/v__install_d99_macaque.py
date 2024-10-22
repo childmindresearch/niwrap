@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_D99_MACAQUE_METADATA = Metadata(
-    id="11b48efb49cea8ca46bf421bd6a126147413494b.boutiques",
+    id="2216d7ecf248ca9af239faba0e70e32b9d21421a.boutiques",
     name="@Install_D99_macaque",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,10 +35,9 @@ def v__install_d99_macaque(
     Installs the D99 macaque version 2 atlases for subcortical regions in the
     macaque monkey.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_D99_macaque.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         wget_download: Use wget to download archive. Script chooses by default\

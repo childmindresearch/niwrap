@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 B0CALC_METADATA = Metadata(
-    id="1372960ea266d118a26cbc4c615737ea241423e2.boutiques",
+    id="563e6534994f6e3ce0be3cf8543111688a3e38cd.boutiques",
     name="b0calc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -50,9 +50,9 @@ def b0calc(
     """
     B0 field calculation program.
     
-    Author: University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE/Guide#fieldmapcreation
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Filename of input image (usually a tissue/air segmentation).

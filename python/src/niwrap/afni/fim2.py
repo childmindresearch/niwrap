@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIM2_METADATA = Metadata(
-    id="395af7e9a20a04775f26a3079b0c3fe990a26dae.boutiques",
+    id="dc4766ddbc19de164de7f967033e9406b2958bcf.boutiques",
     name="fim2",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -63,9 +63,9 @@ def fim2(
     """
     Functional Imaging Mapping Tool.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/fim2.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         image_files: Input MRI image files.

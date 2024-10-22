@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_TOOLS_METADATA = Metadata(
-    id="8bf4e740f2ac7414b43e404dbbfdd4ff20327bbf.boutiques",
+    id="3e18e50b235aa655b72adf47cc036da50a6b041c.boutiques",
     name="reg_tools",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -32,7 +32,7 @@ def reg_tools(
     """
     A versatile tool for manipulating and processing medical images.
     
-    Author: Marc Modat
+    Author: NiftyReg Developers
     
     URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     

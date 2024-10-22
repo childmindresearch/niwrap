@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIBER_DOT_PRODUCTS_METADATA = Metadata(
-    id="2b1bb65a01491d04d74ebeca003acd1eba81f885.boutiques",
+    id="0622e8031d320756f7b6813054c9b81da3a5504f.boutiques",
     name="fiber-dot-products",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -46,7 +46,9 @@ def fiber_dot_products(
     surface, outside the surface, or to not care which direction it is from the
     surface. Each fiber population is output in a separate metric column.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         white_surf: the white/gray boundary surface.

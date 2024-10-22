@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_METADATA = Metadata(
-    id="4dc02e8989829e6c92552d32263456bd7c5b24d7.boutiques",
+    id="8f466b46846f19a611c06f1d0834a8091de316fd.boutiques",
     name="eddy",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -114,9 +114,9 @@ def eddy(
     """
     A tool for correcting eddy currents and movements in diffusion data.
     
-    Author: Jesper Andersson (University of Oxford)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         imain: File containing all the images to estimate distortions for.

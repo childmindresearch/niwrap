@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DSUM_METADATA = Metadata(
-    id="094c4ab4df94b01aa474f31b45c9f63a0a1ab91f.boutiques",
+    id="bc19d515e82be4f6b3c9c9f81c1a201e83b798ea.boutiques",
     name="1dsum",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_1dsum(
     """
     Sum or average columns of ASCII files with numbers arranged in rows and columns.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dsum.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input ASCII files with numbers arranged in rows and\

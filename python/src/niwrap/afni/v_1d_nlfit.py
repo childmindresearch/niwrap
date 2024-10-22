@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_NLFIT_METADATA = Metadata(
-    id="2b9be7d506110a346f2427566552f2ef8767ba95.boutiques",
+    id="c1d5cfe0184660d0c6c860cf8aab83a105f64fe9.boutiques",
     name="1dNLfit",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_1d_nlfit(
     Program to fit a model to a vector of data. The model is given by a symbolic
     expression, with parameters to be estimated.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dNLfit.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         expression: The expression for the fit. It must contain one symbol from\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TOKENS_METADATA = Metadata(
-    id="b7eb83c68f44a8e1e5f94df55e43d6e53bb675ee.boutiques",
+    id="3ea97bfd7ad70145baf8725309d723e73b54f8c9.boutiques",
     name="tokens",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def tokens(
     """
     Token counting tool.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/tokens.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Specify input file (stdin if none).

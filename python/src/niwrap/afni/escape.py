@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ESCAPE_METADATA = Metadata(
-    id="f00e956355c4813826bacb5a175b4e862e311a9e.boutiques",
+    id="0c5f78433f852c5b3475fc8e56bb3cb2edc2aef2.boutiques",
     name="escape",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,9 +29,9 @@ def escape(
     """
     A hypothetical command line tool for escaping sequences.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@escape-.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         help_: Display the help message.

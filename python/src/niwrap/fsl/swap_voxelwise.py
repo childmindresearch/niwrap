@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SWAP_VOXELWISE_METADATA = Metadata(
-    id="9b5cc90d920f5944b09401fde0c03e77da02a373.boutiques",
+    id="05f789c598386ac6160bcda86def15193dd2c92e.boutiques",
     name="swap_voxelwise",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -37,9 +37,9 @@ def swap_voxelwise(
     """
     Reordering of vectors with direction preservation.
     
-    Author: FMRIB Software Library (FSL)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         vectors_file_list: Text file containing list of vectors.

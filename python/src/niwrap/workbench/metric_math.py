@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_MATH_METADATA = Metadata(
-    id="dc07516afa612a64f752715f1bdec0c3ee8f33a2.boutiques",
+    id="755bfa65c61775e5e8100f93d8a5819f0f4119aa.boutiques",
     name="metric-math",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -144,7 +144,9 @@ def metric_math(
     clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         expression: the expression to evaluate, in quotes.

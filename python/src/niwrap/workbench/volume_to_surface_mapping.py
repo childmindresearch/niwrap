@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_TO_SURFACE_MAPPING_METADATA = Metadata(
-    id="82c18c63d4c8c2982d7b26a1537225793cbb2729.boutiques",
+    id="d90ba68bb19444c770492330fa89f81a3feba7b9.boutiques",
     name="volume-to-surface-mapping",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -312,7 +312,9 @@ def volume_to_surface_mapping(
     had only the tangential cutoff and a bounding box intended to be larger than
     where the cylinder cutoff should have been.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume: the volume to map data from.

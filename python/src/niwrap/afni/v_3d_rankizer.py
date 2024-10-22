@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RANKIZER_METADATA = Metadata(
-    id="513896b35d5b88f645a731146b7a584e7bff7b3f.boutiques",
+    id="e854a99a853a99ed471d7da08fb007bec90426d2.boutiques",
     name="3dRankizer",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3d_rankizer(
     Tool to rank each voxel as sorted into increasing value. Ties get the average
     rank.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRankizer.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input MRI dataset.

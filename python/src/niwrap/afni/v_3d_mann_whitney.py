@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MANN_WHITNEY_METADATA = Metadata(
-    id="bc4e85f7d5f25d592e756262956031e23953be5a.boutiques",
+    id="f9a86facbfabfbc66d0561e25e3ef982299809ea.boutiques",
     name="3dMannWhitney",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_mann_whitney(
     """
     Performs nonparametric Mann-Whitney two-sample test.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMannWhitney.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset1_x: Data set for X observations. Must specify 1 and only 1\

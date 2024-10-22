@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPHERICAL_HARMONICS_RECONSTRUCTION_METADATA = Metadata(
-    id="6da108110370af608987060526d60a1ceb0ef846.boutiques",
+    id="92daef805896f44a202fca674cda95c915b0f105.boutiques",
     name="Spherical Harmonics Reconstruction",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def spherical_harmonics_reconstruction(
     Spherical Harmonics Reconstruction from a set of harmonics and their
     corresponding coefficients.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SpharmReco.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_surface: Surface that provides the topology of the mesh (nodes'\

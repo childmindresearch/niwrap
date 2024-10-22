@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ANOVA_METADATA = Metadata(
-    id="f9fc4d5325a4ca9e892a587455e7ce9e4e198618.boutiques",
+    id="5e344a331305443b719b1dede3ddeb0a8eab25b7.boutiques",
     name="3dANOVA",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -62,9 +62,9 @@ def v_3d_anova(
     """
     Performs single-factor Analysis of Variance (ANOVA) on 3D datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dANOVA.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         levels: Number of factor levels.

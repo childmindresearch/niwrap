@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMGLOB_METADATA = Metadata(
-    id="04388dd1ed84da67a1aac9da7d9b7d85a0f8a49c.boutiques",
+    id="29433532ba28e784aab34a80b0c90f13808f442a.boutiques",
     name="imglob",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,7 +30,9 @@ def imglob(
     """
     Tool for generating image lists with specific extensions.
     
-    Author: Software Author
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_list: List of image names or file paths.

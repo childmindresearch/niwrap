@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TSFMULT_METADATA = Metadata(
-    id="0e2dd10d2eda6443966edb35f09e2aeafaf6e00e.boutiques",
+    id="d0fb73aa277ae97112d7fea63372b505b054a24f.boutiques",
     name="tsfmult",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -76,9 +76,9 @@ def tsfmult(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfmult.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input1: the second input track scalar file.

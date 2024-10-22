@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CORRELATION_METADATA = Metadata(
-    id="6b13ee63bec9a1d87cb7c4bef5f66a5497074145.boutiques",
+    id="34db20390305195e5ede196990346a6789a7b890.boutiques",
     name="cifti-correlation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -111,7 +111,9 @@ def cifti_correlation(
     to be an integer, you may also specify 0 to calculate a single output row at
     a time (this may be very slow).
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti: input cifti file.

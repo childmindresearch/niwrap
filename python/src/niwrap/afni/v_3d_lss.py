@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LSS_METADATA = Metadata(
-    id="f6d853234efa271fa17191b29772f76f70728dd2.boutiques",
+    id="d9d964f3581d7546843bb8930c57337b07b0140b.boutiques",
     name="3dLSS",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3d_lss(
     Least-Squares-Sum (LSS) estimation tool from a -stim_times_IM matrix for
     multivoxel pattern classification analyses.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLSS.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         runner: Command runner.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSTAT_METADATA = Metadata(
-    id="e4d4cccd7df4f11cabc21e0c81b0c3d5903a017f.boutiques",
+    id="a4a735ff0a0504c29b4133276ff755cc4b6eaa8f.boutiques",
     name="3dTstat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3d_tstat(
     """
     Compute voxel-wise statistics using AFNI 3dTstat command.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTstat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dtstat.

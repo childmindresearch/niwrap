@@ -105,10 +105,7 @@
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": [
-        "absolute",
-        "relative"
-      ],
+      "members": ["absolute", "relative"],
       "mutually-exclusive": true
     }
   ],

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLANIMATE_METADATA = Metadata(
-    id="0c9b52cf6ff1f6b9170640b9650385ae43ab9954.boutiques",
+    id="778345c59844ad158d9df340a388ca2d5d4243ad.boutiques",
     name="fslanimate",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,7 +33,7 @@ def fslanimate(
     """
     Tool for creating animations from imaging data.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     

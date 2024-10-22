@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BRAIN_VOYAGERTO_AFNI_METADATA = Metadata(
-    id="d851f4492ffa3dbe3f101c2727427dd0686e2fdb.boutiques",
+    id="6e57612e994ff9fb4392a1ea7a2df2f7bddd8e62.boutiques",
     name="3dBRAIN_VOYAGERtoAFNI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,10 +47,9 @@ def v_3d_brain_voyagerto_afni(
     Converts a BrainVoyager vmr dataset to AFNI's BRIK format based on information
     from BrainVoyager's website.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBRAIN_VOYAGERtoAFNI.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input BrainVoyager VMR file.

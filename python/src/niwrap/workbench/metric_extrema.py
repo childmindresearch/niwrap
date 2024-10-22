@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_EXTREMA_METADATA = Metadata(
-    id="9b02bc7c03e50fa47831e22217ded7b576db2959.boutiques",
+    id="e4bbeab2b543258cb2affc5b8c0aa5a736ec951c.boutiques",
     name="metric-extrema",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -127,7 +127,9 @@ def metric_extrema(
     specify a single column to use, and -presmooth to smooth the input before
     finding the extrema.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to use for distance information.

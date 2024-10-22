@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DCMINFO_METADATA = Metadata(
-    id="aea6ec78977aa717ae14895f9f5b8a1f4bbab798.boutiques",
+    id="2f0ac96cc78649201507f26a2cd825cd37394362.boutiques",
     name="dcminfo",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -108,9 +108,9 @@ def dcminfo(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/dcminfo.html
+    URL: https://www.mrtrix.org/
     
     Args:
         file: the DICOM file to be scanned.

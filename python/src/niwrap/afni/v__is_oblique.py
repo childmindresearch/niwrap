@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__IS_OBLIQUE_METADATA = Metadata(
-    id="924387264e7f608c333f6ae3550c7968bcb680ba.boutiques",
+    id="54857cd8a0a9212b334725fe8970cb7791379363.boutiques",
     name="@isOblique",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v__is_oblique(
     """
     Determine if a file is oblique or plumb.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@isOblique.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input file (e.g., Hello+orig.HEAD).

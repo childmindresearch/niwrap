@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_PROC_PY_METADATA = Metadata(
-    id="3170e1ab340efc6516e14a75717754fcf9c76b92.boutiques",
+    id="8fefd4e99e329e9d8b01b6efcda3bcc2c4a10756.boutiques",
     name="afni_proc.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def afni_proc_py(
     """
     Generate a tcsh script for an AFNI single subject processing stream.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_proc.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dsets: Specify the EPI dataset files. (e.g. epi_run1+orig,\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIENA_FLIRT_METADATA = Metadata(
-    id="43c7f5fc0eb419d283af74ab74f219134df428d4.boutiques",
+    id="a0b112ee1446184c171b8f8f11be2823fc00c79a.boutiques",
     name="siena_flirt",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,7 +34,9 @@ def siena_flirt(
     """
     Wrapper for FLIRT image registration within the SIENA framework.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input1_fileroot: First input file root (e.g. first time-point image\

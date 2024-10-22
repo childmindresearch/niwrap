@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__AFNI_REFACER_MAKE_ONEBIG_A12_METADATA = Metadata(
-    id="62807fe560fff2e1b847649411a05eb509a98cd8.boutiques",
+    id="385413dfddf67125c769d1505e8d24529d5a0ed5.boutiques",
     name="@afni_refacer_make_onebigA12",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def v__afni_refacer_make_onebig_a12(
     Script to align a single T1w dataset to the MNI template and expand it to a
     'big' grid.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_make_onebigA12.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         t1w_dataset: Input T1w dataset name.

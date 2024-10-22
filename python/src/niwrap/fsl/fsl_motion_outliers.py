@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MOTION_OUTLIERS_METADATA = Metadata(
-    id="eeaf3a58a08372c2bc62e13b7e1e8c46742557a1.boutiques",
+    id="cc144fa9402125011dbbbd226fc324872e16e435.boutiques",
     name="fsl_motion_outliers",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -49,9 +49,9 @@ def fsl_motion_outliers(
     """
     FSL tool used to calculate motion outliers in 4D image data.
     
-    Author: FMRIB Analysis Group
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLMotionOutliers
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_4d_image: Input 4D image (e.g. 4D.nii.gz).

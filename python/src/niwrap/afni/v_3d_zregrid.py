@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZREGRID_METADATA = Metadata(
-    id="583bc31cb0a63645cc46045fc858a11419ef47bc.boutiques",
+    id="b6a8ac20dbb69c9f1827ab515948687aad33cc26.boutiques",
     name="3dZregrid",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_zregrid(
     """
     Alters the input dataset's slice thickness and/or number.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZregrid.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input dataset.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FEAT_METADATA = Metadata(
-    id="fca63626fe460177f422bd26f22e7798537ed128.boutiques",
+    id="5759133f31bad7a301e55061d5ca9fe1bd574506.boutiques",
     name="feat",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,9 +31,9 @@ def feat(
     """
     fMRI Expert Analysis Tool.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         design_file: FEAT design file (e.g. design.fsf).

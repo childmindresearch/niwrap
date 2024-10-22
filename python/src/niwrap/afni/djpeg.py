@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DJPEG_METADATA = Metadata(
-    id="b7ffa6abde3ae2a7b55c06d37e3a20293d2ead2a.boutiques",
+    id="c95201e76f8579869e021a74a6d5d17f69dd1c84.boutiques",
     name="djpeg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def djpeg(
     """
     Decompress a JPEG file to an image file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/djpeg.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input JPEG file (e.g. image.jpg).

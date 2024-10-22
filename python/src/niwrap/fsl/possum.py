@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_METADATA = Metadata(
-    id="a507ee408166c36b6618885ff2bc905e203f70b3.boutiques",
+    id="18338a27d367b8723313875c4fe3e3bbbc891135.boutiques",
     name="possum",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -54,9 +54,9 @@ def possum(
     """
     Positron emission tomography (PET) simulation tool as part of FSL suite.
     
-    Author: University of Oxford (Ivana Drobnjak)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_volume: Input 4D volume filename.

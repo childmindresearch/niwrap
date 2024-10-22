@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NET_CORR_METADATA = Metadata(
-    id="5990317130f7d840690ce681e6279ce513c9b810.boutiques",
+    id="958c7038de682b846c408cbd34ee6146fe058e26.boutiques",
     name="3dNetCorr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -63,9 +63,9 @@ def v_3d_net_corr(
     """
     Compute correlation matrix of a set of ROIs based on mean time series.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNetCorr.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output file name prefix.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_5TTCHECK_METADATA = Metadata(
-    id="6892c2ac6937d1acdec1587d238c2a124ef2b0e5.boutiques",
+    id="81b3e0b2961a573a6a802146cca2c10ffb8d0868.boutiques",
     name="5ttcheck",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -74,10 +74,9 @@ def v_5ttcheck(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/5ttcheck.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the 5TT image(s) to be tested.

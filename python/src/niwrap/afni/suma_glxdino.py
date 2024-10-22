@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUMA_GLXDINO_METADATA = Metadata(
-    id="02ab6f18ff4f92881679815a097a59e685328a87.boutiques",
+    id="ecd47b551f3a043c06c9cdcc9b01baa6d371a1b0.boutiques",
     name="SUMA_glxdino",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def suma_glxdino(
     A simple openGL test program using GLX. If it does not run, then SUMA certainly
     won't.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SUMA_glxdino.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         verbose: Switch on diagnostic messages.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TSFTHRESHOLD_METADATA = Metadata(
-    id="9f2b6d460e04e0cdb680c50341661efb12b982f3.boutiques",
+    id="28e31eb9711dccf2b69c1a3082ba0162d297e12d.boutiques",
     name="tsfthreshold",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -77,10 +77,9 @@ def tsfthreshold(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfthreshold.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input track scalar file.

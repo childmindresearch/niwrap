@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_IBT_DATASETS_METADATA = Metadata(
-    id="6542e905806778c5edb0c28f4e1b38655fba8e25.boutiques",
+    id="2c8de1bc53a3e49039530b6f43ad26a4da032940.boutiques",
     name="Install_IBT_DATASETS",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,10 +30,9 @@ def install_ibt_datasets(
     """
     Installs the demo archive for AFNI's macaque-analysis demo.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_IBT_DATASETS.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         wget_flag: Use wget to download archive. Script chooses by default with\

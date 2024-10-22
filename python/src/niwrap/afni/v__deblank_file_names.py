@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DEBLANK_FILE_NAMES_METADATA = Metadata(
-    id="6f39b8d488881aac62ed37ca763073c7b3589f37.boutiques",
+    id="f8ade1cbfe9a1ee930f5bb24bfe83955ccad0cf1.boutiques",
     name="@DeblankFileNames",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def v__deblank_file_names(
     """
     A script to remove blanks and other annoying characters ([], ()) from filenames.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DeblankFileNames.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         move: Actually rename the files (opposite of -dry_run).

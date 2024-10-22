@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BLUR_TO_FWHM_METADATA = Metadata(
-    id="84a2f4ff72731bca1e97bcf0c381632082538a2c.boutiques",
+    id="48e6ee8deafc60e001f0e39b991e7d7b95a40948.boutiques",
     name="3dBlurToFWHM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3d_blur_to_fwhm(
     Blurs a 'master' dataset until it reaches a specified FWHM smoothness
     (approximately).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: The dataset that will be smoothed.

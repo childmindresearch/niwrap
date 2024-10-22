@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_SIMPLIFY_COST_METADATA = Metadata(
-    id="7c34ece95d374aecd2392b9cde058359e1305169.boutiques",
+    id="0291c293f6b2eaf6626f15fdc0c7c7079ef500e7.boutiques",
     name="adjunct_simplify_cost",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,10 +29,9 @@ def adjunct_simplify_cost(
     """
     Simplifies a cost function name by removing the '+' and anything following it.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_simplify_cost.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         cost_function: The cost function name to be simplified.

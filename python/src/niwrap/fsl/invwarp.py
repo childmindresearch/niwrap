@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INVWARP_METADATA = Metadata(
-    id="34100193070afb6dfc3eae6373eb6e248a4f515e.boutiques",
+    id="66b01770f473a9c7d4eb5932fbf6151e11ebb56b.boutiques",
     name="invwarp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -43,7 +43,9 @@ def invwarp(
     
     Use FSL Invwarp to invert a FNIRT warp.
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         warp: Filename for warp/shiftmap transform (volume).

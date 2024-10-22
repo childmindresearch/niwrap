@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_FIRST_METADATA = Metadata(
-    id="f6433113c41496029bfddb8322e805b4e5730fa1.boutiques",
+    id="41dfbfa0a6fde9539cdb1743873ecd8c6a8049b7.boutiques",
     name="run_first",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -39,9 +39,9 @@ def run_first(
     """
     A tool to run FSL's FIRST for subcortical segmentation.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Input image file (e.g. img.nii.gz).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSWAPDIM_EXE_METADATA = Metadata(
-    id="93c7959520f237ffe1f1d4f37145c2da413b31cf.boutiques",
+    id="9138b6b31ee19f32a7634e41b5eee6141a777575.boutiques",
     name="fslswapdim_exe",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,7 +36,9 @@ def fslswapdim_exe(
     """
     Tool to swap the x, y, z axes dimensions of an image.
     
-    Author: FMRIB Centre, Oxford University
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input image file (e.g., input.nii.gz).

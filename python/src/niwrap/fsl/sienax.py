@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIENAX_METADATA = Metadata(
-    id="931f38e911c30e3bcdcfd92c1fbcde8da5cd8b46.boutiques",
+    id="6fc7cd42cc7b336227147d1a73cf60457a71e5c2.boutiques",
     name="sienax",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -44,9 +44,9 @@ def sienax(
     A tool to estimate brain tissue volume from a single MR image and to compare it
     to an external standard.
     
-    Author: FMRIB Centre, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SIENA/SienaX
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input image (e.g. img.nii.gz).

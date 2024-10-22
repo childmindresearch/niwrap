@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_ADJACENCY_METADATA = Metadata(
-    id="73b8f697c09de73b22005706eab881ce18e7cad1.boutiques",
+    id="0a86602f8ddd7d1d7f0f827f292b34148b3b7f3d.boutiques",
     name="cifti-label-adjacency",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def cifti_label_adjacency(
     parcellated connectivity file, with the diagonal being zero. This gives a
     rough estimate of how long or expansive the border between two labels is.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input cifti label file.

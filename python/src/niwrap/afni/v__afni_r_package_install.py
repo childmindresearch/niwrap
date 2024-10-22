@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__AFNI_R_PACKAGE_INSTALL_METADATA = Metadata(
-    id="d2742cfafc4d7add5aa17b9cf162572247208a8a.boutiques",
+    id="eed9df9300a8edee772f45decbc84c556498020e.boutiques",
     name="@afni_R_package_install",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,10 +37,9 @@ def v__afni_r_package_install(
     """
     Helper script to install R packages for various afni-ish purposes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_R_package_install.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         afni: Install AFNI related R packages.

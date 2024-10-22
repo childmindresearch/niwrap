@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FILE_CONVERT_METADATA = Metadata(
-    id="a181c8fc965358072253814b8c8623961abda904.boutiques",
+    id="8254f11f85227ab4a5c657398fb070b63473ee1f.boutiques",
     name="file-convert",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -137,7 +137,9 @@ def file_convert(
     
     You may only specify one top-level option.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         border_version_convert: write a border file with a different version.

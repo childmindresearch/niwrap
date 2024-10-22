@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLINFO_METADATA = Metadata(
-    id="6c0d5e1739216d9fa5819a6924339a92e1f8253f.boutiques",
+    id="22daf800aafa8618174133fb47bc15a2a4ea5454.boutiques",
     name="fslinfo",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -29,9 +29,9 @@ def fslinfo(
     """
     Display information about NIFTI-1 image file.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         filename: Input NIFTI-1 image file (e.g. img.nii.gz).

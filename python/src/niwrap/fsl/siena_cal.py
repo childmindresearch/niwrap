@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIENA_CAL_METADATA = Metadata(
-    id="2cf194de913172fc9e47db4e96bd27ad4a38dbe1.boutiques",
+    id="ad77313ae95f12b0565d492e1d2c0d0d2b4d901f.boutiques",
     name="siena_cal",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,7 +35,9 @@ def siena_cal(
     SIENA is part of FSL (FMRIB Software Library), which performs a two-timepoint
     brain volume change analysis.
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SIENA
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input1_file: First input image file root (e.g., baseline image root).

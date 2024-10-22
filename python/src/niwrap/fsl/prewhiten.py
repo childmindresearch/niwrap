@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PREWHITEN_METADATA = Metadata(
-    id="93a98add87a31c04e0e49053a0e4eb6908676f51.boutiques",
+    id="d31a9a1e7ac35eb21c804d75c03d7fccb8b566c8.boutiques",
     name="prewhiten",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,6 +31,10 @@ def prewhiten(
 ) -> PrewhitenOutputs:
     """
     Prewhitening tool for FEAT directories.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         feat_directory: Input FEAT directory.

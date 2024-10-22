@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLROI_METADATA = Metadata(
-    id="1a43cdbac23b3c8516c756db039e660882a2daba.boutiques",
+    id="00e29bb44c1bad43dabef44ccab4fb8493d655dc.boutiques",
     name="fslroi",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -40,9 +40,9 @@ def fslroi(
     """
     Extracts a region of interest (ROI) from an image.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input image file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPHARM_RM_METADATA = Metadata(
-    id="3471ff0ec6dbd4a22174fb3104b742b5fc9fd86b.boutiques",
+    id="6fa8f88209c484aa648473ffee540c0fda59044c.boutiques",
     name="spharm_rm",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,7 +35,9 @@ def spharm_rm(
     """
     Part of FSL - Spherical harmonics removal tool to process neuroimaging data.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input image filename.

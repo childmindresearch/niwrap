@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DIRMERGE_METADATA = Metadata(
-    id="3ce611683ba7275413635b52cfd65e02dc5a3ec7.boutiques",
+    id="92c50a190c4f14115f8c861044c931f1316999ca.boutiques",
     name="dirmerge",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -80,10 +80,9 @@ def dirmerge(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/dirmerge.html
+    URL: https://www.mrtrix.org/
     
     Args:
         subsets: the number of subsets (eg. phase encoding directions) per\

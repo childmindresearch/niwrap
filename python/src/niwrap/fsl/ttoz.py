@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TTOZ_METADATA = Metadata(
-    id="2fd3ff40a0a94383f946c29b5284870363bf0a26.boutiques",
+    id="b8ed2fedaeca51ab65d1ad8eaa4d7b49ff418329.boutiques",
     name="ttoz",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,6 +34,10 @@ def ttoz(
 ) -> TtozOutputs:
     """
     Tool to convert a T-statistic image to a Z-statistic image.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         varsfile: Input variables file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MATCH_METADATA = Metadata(
-    id="776b6479db1702d65ad4f7fa5e0459ec4fc1c302.boutiques",
+    id="5e79a849f1f76bbe598dfba4e01f90d83d62deb0.boutiques",
     name="3dMatch",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def v_3d_match(
     Find similar subbricks and rearrange order to ease comparison. Part of FATCAT in
     AFNI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMatch.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inset: File with M subbricks of data to match against another file.

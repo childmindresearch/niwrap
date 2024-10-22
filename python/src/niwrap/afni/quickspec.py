@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QUICKSPEC_METADATA = Metadata(
-    id="a4dc6b2824e00812a1be3ac274aee38b4e92e8bb.boutiques",
+    id="0a985ab38a04ef53341c98e04d446660dcd3c0c6.boutiques",
     name="quickspec",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def quickspec(
     A quick and dirty way of loading a surface into SUMA or command line programs
     using a spec file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/quickspec.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         tn: Specify surface type and name.

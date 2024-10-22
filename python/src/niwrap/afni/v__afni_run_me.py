@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__AFNI_RUN_ME_METADATA = Metadata(
-    id="a0ef6bc5ab58213f9f0034e519ca3c9c2d92bfb3.boutiques",
+    id="48d4641b6ea60cfbc0c8108552ea5e637c57a409.boutiques",
     name="@afni.run.me",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v__afni_run_me(
     """
     A tool to execute a specific command.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni.run.me.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         go: Execute the work.

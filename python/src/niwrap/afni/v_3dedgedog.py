@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DEDGEDOG_METADATA = Metadata(
-    id="1634123744989b994f446d274d64312bfb722afa.boutiques",
+    id="9e99566b54cfbbe32a2b727088bdd1879b2a5924.boutiques",
     name="3dedgedog",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,9 +51,9 @@ def v_3dedgedog(
     Calculate edges in an image using the Difference of Gaussians (DOG) method with
     extensions/tweaks of the Marr-Hildreth algorithm.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dedgedog.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Input dataset.

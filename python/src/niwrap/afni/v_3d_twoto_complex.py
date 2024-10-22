@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TWOTO_COMPLEX_METADATA = Metadata(
-    id="9ae153d2eca25804911c825850e61d4c3ed4a2b7.boutiques",
+    id="bf9493b3c937b76d0584de14a9b270a71cce9ca0.boutiques",
     name="3dTwotoComplex",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_twoto_complex(
     """
     Converts 2 sub-bricks of input to a complex-valued dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTwotoComplex.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset1: Input dataset (either as 1 dataset with 2 sub-bricks or 2\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MULTI_THRESH_METADATA = Metadata(
-    id="8a808dea67d973d1eec80bc82de6c89937172058.boutiques",
+    id="ac6c6a539a206612134e8a96c0fd7291780ddc36.boutiques",
     name="3dMultiThresh",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,9 +46,9 @@ def v_3d_multi_thresh(
     """
     Program to apply a multi-threshold (mthresh) dataset to an input dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMultiThresh.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         mthresh_file: Multi-threshold dataset from 3dXClustSim, usually via\

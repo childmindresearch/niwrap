@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_PERIODOGRAM_METADATA = Metadata(
-    id="55241a6d873d3c17ce9b9bd2b05e34541dafe1a3.boutiques",
+    id="14a644a1a26ab708ddcace9516dff73c6c2b3ad6.boutiques",
     name="3dPeriodogram",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3d_periodogram(
     Computes the periodogram of each voxel time series. The periodogram is a crude
     estimate of the power spectrum.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPeriodogram.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset.

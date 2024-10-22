@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_SEM_METADATA = Metadata(
-    id="7ece5c988136c06fa11babb83d522cb64a11016b.boutiques",
+    id="8936d4c2b543a7a7fe17bbe75468cd8d13f99b52.boutiques",
     name="1dSEM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v_1d_sem(
     Computes path coefficients for connection matrix in Structural Equation Modeling
     (SEM).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dSEM.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         theta: Connection matrix 1D file with initial representation.

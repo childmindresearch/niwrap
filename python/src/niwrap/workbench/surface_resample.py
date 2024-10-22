@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_RESAMPLE_METADATA = Metadata(
-    id="37492368d85050d4a156315600c6bc3e1a4b7e68.boutiques",
+    id="4168972491f06e1a32e3a77db8ca8f8d951f800f.boutiques",
     name="surface-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -115,7 +115,9 @@ def surface_resample(
     BARYCENTRIC
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface_in: the surface file to resample.

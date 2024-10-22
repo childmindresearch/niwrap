@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_TO_SURFACE_3D_DISTANCE_METADATA = Metadata(
-    id="e33e6343f7475491e22212a58e6255062c514798.boutiques",
+    id="1d9c92578d5199ba4ce6b7913f70bfe12ae30bbd.boutiques",
     name="surface-to-surface-3d-distance",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -41,7 +41,9 @@ def surface_to_surface_3d_distance(
     same index, as (comp - ref), and output the magnitudes, and optionally the
     displacement vectors.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface_comp: the surface to compare to the reference.

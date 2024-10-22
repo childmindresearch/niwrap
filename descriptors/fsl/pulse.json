@@ -263,10 +263,7 @@
     {
       "description": "Compulsory arguments for pulse",
       "id": "compulsory_args_group",
-      "members": [
-        "input_file",
-        "output_base"
-      ],
+      "members": ["input_file", "output_base"],
       "name": "Compulsory Arguments"
     },
     {

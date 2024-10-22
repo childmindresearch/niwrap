@@ -19,11 +19,7 @@
       "description": "This option forces the image to be treated as a specified-dimensional image. if not specified, antswarp tries to infer the dimensionality from the input image.",
       "optional": true,
       "integer": true,
-      "value-choices": [
-        2,
-        3,
-        4
-      ]
+      "value-choices": [2, 3, 4]
     },
     {
       "id": "input_image_type",
@@ -34,14 +30,7 @@
       "description": "Option specifying the input image type of scalar (default), vector, tensor, time series, or multi-channel. A time series image is a scalar image defined by an additional dimension for the time component whereas a multi-channel image is a vector image with only spatial dimensions. Five-dimensional images are e.g., AFNI stats image.",
       "optional": true,
       "integer": true,
-      "value-choices": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5
-      ]
+      "value-choices": [0, 1, 2, 3, 4, 5]
     },
     {
       "id": "input_image",
@@ -115,10 +104,7 @@
               "value-key": "[PRINT_OUT_COMPOSITE_WARP_FILE]",
               "description": "Output a composite warp file instead of a transformed image.",
               "optional": true,
-              "value-choices": [
-                0,
-                1
-              ]
+              "value-choices": [0, 1]
             }
           ],
           "output-files": [
@@ -153,10 +139,7 @@
               "value-key": "[CALCULATE_INVERSE]",
               "description": "Calculate the inverse of the affine transform.",
               "optional": true,
-              "value-choices": [
-                0,
-                1
-              ]
+              "value-choices": [0, 1]
             }
           ],
           "output-files": [
@@ -395,10 +378,7 @@
       "command-line-flag": "--float",
       "description": "Use float instead of double for computations.",
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "integer": true
     },
     {
@@ -409,10 +389,7 @@
       "command-line-flag": "--verbose",
       "description": "Verbose output.",
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "integer": true
     }
   ],

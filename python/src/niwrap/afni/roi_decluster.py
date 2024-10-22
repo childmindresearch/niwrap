@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROI_DECLUSTER_METADATA = Metadata(
-    id="bf2c852040434e2fbbdf28ec56e27f651de038e0.boutiques",
+    id="410294ea3a285d00e233f31b000eb1bd4e758cb5.boutiques",
     name="ROI decluster",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def roi_decluster(
     """
     Script to remove small clusters or standalone voxels from an ROI/atlas dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_decluster.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dset: Required input dataset. This dataset should be set of\

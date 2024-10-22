@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRANSFORMCOMPOSE_METADATA = Metadata(
-    id="a2fc6d9d3b3dd64b855cd95ce39872475de0addc.boutiques",
+    id="8e378625408e1058e736b1bc94ac29bb3d2555e8.boutiques",
     name="transformcompose",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -134,10 +134,9 @@ def transformcompose(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/transformcompose.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input transforms (either linear or non-linear warps).

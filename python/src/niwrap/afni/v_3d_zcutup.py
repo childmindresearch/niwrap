@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZCUTUP_METADATA = Metadata(
-    id="c61d24783be1adbc79d37ee978ea155b21a463fd.boutiques",
+    id="8c920bae16b4f66fede4e699038867e56e5e2b1d.boutiques",
     name="3dZcutup",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v_3d_zcutup(
     """
     Cut slices off a dataset in its z-direction and write a new dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZcutup.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         keep_slices: Keep slices numbered 'b' through 't', inclusive. This is a\

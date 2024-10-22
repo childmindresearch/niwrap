@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BUILD_AFNI_PY_METADATA = Metadata(
-    id="15022deeb9a84b540d3047b4527c330db92cb89d.boutiques",
+    id="ee4b7185c56e742278b295803c7a5885f8b4523b.boutiques",
     name="build_afni.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,9 +45,9 @@ def build_afni_py(
     """
     Compile an AFNI package from the git repository.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/build_afni.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         build_root: Root directory to use for git and building.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_ROIS_FROM_EXTREMA_METADATA = Metadata(
-    id="0b54d0b3137e3cf72ea0d8a305aec68166794966.boutiques",
+    id="87c0c522e81c78dd063d10ffd88b95db1101db58.boutiques",
     name="cifti-rois-from-extrema",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -79,7 +79,9 @@ def cifti_rois_from_extrema(
     different seed vertex. EXCLUDE means that ROIs may not overlap, and that any
     vertex within range of more than one ROI does not belong to any ROI.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti: the input cifti.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_MOTION_CORR_DIFFUSION_DIRECTION_METADATA = Metadata(
-    id="ab3e72c9f8b432f751d5dadcde3acef13f2a3e5a.boutiques",
+    id="3f81491f1faf2e11f2fe0e69121f28544825a2d4.boutiques",
     name="antsMotionCorrDiffusionDirection",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,7 +35,7 @@ def ants_motion_corr_diffusion_direction(
     """
     This tool adjusts the diffusion scheme for motion correction.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

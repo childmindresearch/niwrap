@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_APPLY_AFFINE_METADATA = Metadata(
-    id="254c7fc5163039c9944a1695a599e75bc077568e.boutiques",
+    id="bc7bedf2247f5ce1c3534b41ffc51edcdb4ffba5.boutiques",
     name="surface-apply-affine",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -69,7 +69,9 @@ def surface_apply_affine(
     affine, which can be obtained with the -convert-affine command, or aff_conv
     from the 4dfp suite.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         in_surf: the surface to transform.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MREDIT_METADATA = Metadata(
-    id="650053b3c82bc4013a3d760c56f510d5e652b49d.boutiques",
+    id="930fabdd0dfa28ab193511318650c392dd3867c2.boutiques",
     name="mredit",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -176,9 +176,9 @@ def mredit(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mredit.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image.

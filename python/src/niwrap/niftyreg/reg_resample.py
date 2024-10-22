@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_RESAMPLE_METADATA = Metadata(
-    id="c8dab446c9ba4372528994e3d9d6d042ba9089bb.boutiques",
+    id="19210b37dbbae177e286437544751ca3c5a0e1ec.boutiques",
     name="reg_resample",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -35,7 +35,7 @@ def reg_resample(
     Tool for resampling floating images to the reference image space using different
     transformations.
     
-    Author: Marc Modat
+    Author: NiftyReg Developers
     
     URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     

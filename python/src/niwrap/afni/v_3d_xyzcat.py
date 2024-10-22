@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_XYZCAT_METADATA = Metadata(
-    id="67f42fa386d9d8b7c0ce29a5eefb7066d6a13ca5.boutiques",
+    id="8a4860f37963febfdb2c89e484f03c649d9a4d4b.boutiques",
     name="3dXYZcat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_xyzcat(
     """
     Catenates datasets spatially.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dXYZcat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datasets: Input datasets to concatenate.

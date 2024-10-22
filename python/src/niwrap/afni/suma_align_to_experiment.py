@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUMA_ALIGN_TO_EXPERIMENT_METADATA = Metadata(
-    id="0c934a7200ebdc27a0199428f3e95bdc7cc8a785.boutiques",
+    id="b9531d1625d51f17d58e21b1594b17284c5dc8bc.boutiques",
     name="SUMA_AlignToExperiment",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,10 +52,9 @@ def suma_align_to_experiment(
     """
     Creates a version of Surface Anatomy that is registered to Experiment Anatomy.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_AlignToExperiment.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         exp_anat: Name of high resolution anatomical data set in register with\

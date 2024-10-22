@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CLUST_SIM_METADATA = Metadata(
-    id="16811f65c4072246fda842bcc5c0f6ff69259752.boutiques",
+    id="83de2ab5d958ac816560b23c9f06a1204e67508e.boutiques",
     name="3dClustSim",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def v_3d_clust_sim(
     """
     Program to estimate the probability of false positive (noise-only) clusters.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClustSim.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         runner: Command runner.

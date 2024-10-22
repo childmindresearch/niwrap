@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 COMPARE_SURFACES_METADATA = Metadata(
-    id="5e9572f48ee61452099e956945950a7fda3d2d6f.boutiques",
+    id="1e4adc71975e9cacfb4dd4b6b68d24185052774f.boutiques",
     name="CompareSurfaces",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,10 +48,9 @@ def compare_surfaces(
     Calculates distance at each node in Surface 1 (S1) to Surface 2 (S2) along the
     local surface normal at each node in S1. Superseded by SurfToSurf.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/CompareSurfaces.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         spec_file: File containing surface specification.

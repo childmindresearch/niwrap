@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANALYZE_TRACE_METADATA = Metadata(
-    id="dc7fb2ce882654510768cdfb05715c9277593f22.boutiques",
+    id="3d880a6da4a3639545433e9f6739d09c2df6cf76.boutiques",
     name="AnalyzeTrace",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def analyze_trace(
     A program to analyze SUMA (and AFNI's perhaps) stack output for functions that
     return with RETURN without bothering to go on the stack.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/AnalyzeTrace.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         tracefile: Trace output file obtained by redirecting the program’s\

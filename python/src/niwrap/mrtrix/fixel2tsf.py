@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXEL2TSF_METADATA = Metadata(
-    id="1b17fa8078b265e7ee0b6d92bf26cb34537176de.boutiques",
+    id="0bbc1887f97398283810259c9bfc2ba108df6a97.boutiques",
     name="fixel2tsf",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -78,10 +78,9 @@ def fixel2tsf(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixel2tsf.html
+    URL: https://www.mrtrix.org/
     
     Args:
         fixel_in: the input fixel data file (within the fixel directory).

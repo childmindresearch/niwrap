@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LRFLIP_METADATA = Metadata(
-    id="c3f6b742b4b8f6c12d86c2d85c9ab1073114c0a3.boutiques",
+    id="da9ae489ee4907f481f368db8441cc0a2eb8cfa1.boutiques",
     name="3dLRflip",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3d_lrflip(
     Flips the rows of a dataset along one of the three axes to correct dataset
     direction labeling errors.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLRflip.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datasets: Datasets to flip.

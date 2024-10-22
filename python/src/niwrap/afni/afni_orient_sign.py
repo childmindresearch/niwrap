@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_ORIENT_SIGN_METADATA = Metadata(
-    id="9819fe9ad827a24280f9af1d2c28183132d38248.boutiques",
+    id="00274662998dcb521547fcdff2a1a41db4f7d529.boutiques",
     name="AfniOrientSign",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,10 +31,9 @@ def afni_orient_sign(
     """
     A tool within the AFNI suite to determine the orientation signs of datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AfniOrientSign.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input image file to determine orientation.

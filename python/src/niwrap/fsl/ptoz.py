@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PTOZ_METADATA = Metadata(
-    id="83cf3188521a93de48419a7ce77e274ee8127ed5.boutiques",
+    id="9ff6130a888c3654fa8d73ea02bbd6d0588a27b9.boutiques",
     name="ptoz",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,7 +31,9 @@ def ptoz(
     """
     Convert p-values to z-values.
     
-    Author: Statistical Parametric Mapping (SPM)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         p_value: p-value to convert.

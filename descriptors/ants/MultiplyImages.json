@@ -19,10 +19,7 @@
       "description": "3 or 2. Image dimension (2 or 3).",
       "optional": false,
       "integer": true,
-      "value-choices": [
-        3,
-        2
-      ]
+      "value-choices": [3, 2]
     },
     {
       "id": "first_input",
@@ -80,10 +77,7 @@
     {
       "id": "second_input_group",
       "name": "Second input group",
-      "members": [
-        "second_input",
-        "second_input_2"
-      ],
+      "members": ["second_input", "second_input_2"],
       "mutually-exclusive": true
     }
   ]

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DDOT_METADATA = Metadata(
-    id="aa51748c9d30700fc5dcc899416611f014bf30b6.boutiques",
+    id="05f41fc608bd0bdd44c1329f183132f4def01256.boutiques",
     name="1ddot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v_1ddot(
     Computes the correlation matrix of the input 1D files and their inverse
     correlation matrix.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1ddot.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input 1D files.

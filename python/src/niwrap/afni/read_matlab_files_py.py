@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 READ_MATLAB_FILES_PY_METADATA = Metadata(
-    id="d5eead2f2619eb7dff6f98607b865946af6fc29c.boutiques",
+    id="228461aad9e4f1abdf8c4f6cdf4dda42da06fc96.boutiques",
     name="read_matlab_files.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,10 +36,9 @@ def read_matlab_files_py(
     """
     Describe or convert MATLAB files (.mat) to 1D format.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/read_matlab_files.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infiles: Input MATLAB files to be processed.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PRELUDE_METADATA = Metadata(
-    id="d74e328e367c992d35060821c2f0e3728edeb849.boutiques",
+    id="4b2fd99ae5656e53cc7399d76d711fc82f062ebe.boutiques",
     name="prelude",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -66,9 +66,9 @@ def prelude(
     """
     Phase Region Expanding Labeller for Unwrapping Discrete Estimates.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PRELUDE
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_unwrap: Filename for saving the unwrapped phase output.

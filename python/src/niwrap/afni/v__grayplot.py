@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__GRAYPLOT_METADATA = Metadata(
-    id="c51c2abee9ded82353bfcdde7febbca96fac089b.boutiques",
+    id="a79d52434d1f28bc1368da93681c4dcd66c5d2fd.boutiques",
     name="@grayplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v__grayplot(
     grayplot from the errts dataset(s), combined with a motion magnitude indicator
     graph.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@grayplot.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dirname: Directory containing afni_proc.py results.

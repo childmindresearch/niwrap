@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BALL_MATCH_METADATA = Metadata(
-    id="394e22f98c4aaf8e3565031b19591d6521a408fe.boutiques",
+    id="fe3fd0a09e1cb0531678dcf999710e6d7163d194.boutiques",
     name="3dBallMatch",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_ball_match(
     A tool to find a good match between a ball (filled sphere) of the given radius
     and a dataset to determine a crude approximate center of the brain quickly.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBallMatch.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset (e.g., Fred.nii).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_SCALAR_IMAGE_TO_RGB_METADATA = Metadata(
-    id="f148a075e1d05646f1600fbe19691b71d8652302.boutiques",
+    id="bd90be2304f55e5624a9a746b1b00f9df35ab8d6.boutiques",
     name="ConvertScalarImageToRGB",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -42,7 +42,7 @@ def convert_scalar_image_to_rgb(
     Converts a scalar image to an RGB image using specified parameters. Supports
     multiple colormap options and customization.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TNORM_METADATA = Metadata(
-    id="feb62476df05b3fdc5808b22ba1b4ef520fd81aa.boutiques",
+    id="3ab7928628832800408347f169adeb33cff9fd8f.boutiques",
     name="3dTnorm",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_tnorm(
     """
     Normalizes each voxel time series by multiplicative scaling.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTnorm.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset (e.g. data.nii).

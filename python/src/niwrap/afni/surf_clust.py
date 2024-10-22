@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_CLUST_METADATA = Metadata(
-    id="8297e35c9a1d6de4b062799badc996e66b5ab1e8.boutiques",
+    id="2346425eb197f04f33322dea847636dd74a3b8a3.boutiques",
     name="SurfClust",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -73,9 +73,9 @@ def surf_clust(
     """
     A program to perform clustering analysis surfaces.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfClust.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: The input dataset and the index of the datacolumn to use\

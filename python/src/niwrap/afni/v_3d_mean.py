@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MEAN_METADATA = Metadata(
-    id="0b99275d60c5b15f7048436c6ac107ea174bbbb5.boutiques",
+    id="80356df561331ccb8b8dcf4fa5be1f9056ff0d89.boutiques",
     name="3dMean",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,9 +50,9 @@ def v_3d_mean(
     Takes the voxel-by-voxel mean of all input datasets; designed to be faster than
     3dcalc.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMean.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input datasets.

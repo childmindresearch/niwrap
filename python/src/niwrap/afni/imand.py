@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAND_METADATA = Metadata(
-    id="8174e8640bed07d6b502d4469223b8e978cb29b1.boutiques",
+    id="c48ca42cf72c91b13a658c727dcfb9f75ba40bf0.boutiques",
     name="imand",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def imand(
     Image AND operation tool. Only pixels nonzero in all input images (and above the
     threshold, if given) will be output.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imand.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_images: Input images to be processed. Multiple input images can\

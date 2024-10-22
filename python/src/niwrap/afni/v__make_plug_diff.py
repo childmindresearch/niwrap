@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MAKE_PLUG_DIFF_METADATA = Metadata(
-    id="860833daa362c18ad9ef4feed44997f022b01dae.boutiques",
+    id="04657da55e97a5ef906b2bfec20e16f6d1e28b7b.boutiques",
     name="@make_plug_diff",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,10 +35,9 @@ def v__make_plug_diff(
     """
     Compiles AFNI's diffusion plugin.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@make_plug_diff.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         vtk_dir: Directory where vtk is installed.

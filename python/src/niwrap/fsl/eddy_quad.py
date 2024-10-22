@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_QUAD_METADATA = Metadata(
-    id="07bf0cd817acb0fca02346f67b74c2d11ff9d717.boutiques",
+    id="2b43d5f88d216170816b086ba58085d6518ac92f.boutiques",
     name="eddy_quad",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -40,7 +40,9 @@ def eddy_quad(
     """
     QUality Assessment for DMRI.
     
-    Author: FMRIB Software Library
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         eddy_base: Basename (including path) specified when running EDDY.

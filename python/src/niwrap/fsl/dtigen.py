@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DTIGEN_METADATA = Metadata(
-    id="31555654262ada785889f37cdfaee9a64450483a.boutiques",
+    id="6ea607eac1ba994726ca05216bbd34156b6fbcef.boutiques",
     name="dtigen",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -40,7 +40,9 @@ def dtigen(
     """
     Generate diffusion data using tensor model.
     
-    Author: FSL
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         tensor: Input tensor file.

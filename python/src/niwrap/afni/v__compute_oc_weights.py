@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__COMPUTE_OC_WEIGHTS_METADATA = Metadata(
-    id="5e3f682a30f5996c6391430edd011c5417a938ae.boutiques",
+    id="4427220e56bd9be0b0fb6b294b7d2992dca6669c.boutiques",
     name="@compute_OC_weights",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,10 +39,9 @@ def v__compute_oc_weights(
     """
     Compute optimal combined weights dataset for multi-echo EPI data.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@compute_OC_weights.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         echo_dsets: Specify one run of multi-echo EPI data.

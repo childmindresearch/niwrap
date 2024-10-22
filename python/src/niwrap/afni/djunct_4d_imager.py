@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DJUNCT_4D_IMAGER_METADATA = Metadata(
-    id="379d96882520afec2de2876d4787863e7ffa33aa.boutiques",
+    id="2c98a9645db36005df3cd15d2aae1a0e8412be39.boutiques",
     name="djunct_4d_imager",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,10 +47,9 @@ def djunct_4d_imager(
     The program is useful for viewing the same slice across the 'time' dimension of
     a 4D data set.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_4d_imager.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inset: ULay dataset, probably 4D (required).

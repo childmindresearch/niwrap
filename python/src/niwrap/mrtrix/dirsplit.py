@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DIRSPLIT_METADATA = Metadata(
-    id="80e9aed4b71bb01534689c5552661d069223b664.boutiques",
+    id="d82959d6cce8aae6cb5eceb8d9601a41289f41a7.boutiques",
     name="dirsplit",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -78,10 +78,9 @@ def dirsplit(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/dirsplit.html
+    URL: https://www.mrtrix.org/
     
     Args:
         dirs: the text file containing the directions.

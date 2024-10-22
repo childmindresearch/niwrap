@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FAT_TRACT_COLORIZE_METADATA = Metadata(
-    id="cd2411388e9f2c6afdfb7b7a71f502c1c2a3db63.boutiques",
+    id="419b2426fef682d260fe27e3825ba60780b27064.boutiques",
     name="@fat_tract_colorize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,10 +45,9 @@ def v__fat_tract_colorize(
     Visualize tractographic output from 3dTrackID, particularly in probabilistic
     mode.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fat_tract_colorize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_fa: FA values of the DT fitting, used to modulate the brightness of\

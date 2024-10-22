@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIRST_ROI_SLICESDIR_METADATA = Metadata(
-    id="e88bcb78f430d93578062447bcf9710d9aaf9023.boutiques",
+    id="d30a80dc6e523f324fbf809d8398b2900dd7690e.boutiques",
     name="first_roi_slicesdir",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,7 +34,9 @@ def first_roi_slicesdir(
     """
     A utility for generating slice directories for FIRST-ROI.
     
-    Author: FMRIB Centre, Oxford University
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_t1_images: Input T1-weighted images of the brain\

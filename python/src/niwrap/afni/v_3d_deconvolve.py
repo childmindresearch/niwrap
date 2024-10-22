@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DECONVOLVE_METADATA = Metadata(
-    id="d5c9a2dbc50b2016f9d050d445fc372aa381e111.boutiques",
+    id="3c5bd8bab8c9c3f4b4586c2e6fc553ef1b03f1e4.boutiques",
     name="3dDeconvolve",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -54,9 +54,9 @@ def v_3d_deconvolve(
     Program to calculate the deconvolution of a measurement 3D+time dataset with a
     specified input stimulus time series.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDeconvolve.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Filename of 3D+time input dataset.

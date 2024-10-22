@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PLUGOUT_TT_METADATA = Metadata(
-    id="45542c1e4d6e42e4f524aacafcd6ff7e1bcf91c4.boutiques",
+    id="d510b7ebed31b891771c37d3c963ffa43b94825e.boutiques",
     name="plugout_tt",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def plugout_tt(
     This program connects to AFNI and receives notification whenever the user
     changes Talairach coordinates.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_tt.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         host: Name of the host computer to connect to AFNI on. The default is\

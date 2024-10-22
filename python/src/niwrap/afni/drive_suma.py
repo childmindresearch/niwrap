@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DRIVE_SUMA_METADATA = Metadata(
-    id="e19d41c6120dbb514fceb82abd622d0fb53ab85c.boutiques",
+    id="926f692f4116a5424cd5bd01a3b09ea3e0539288.boutiques",
     name="DriveSuma",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -59,9 +59,9 @@ def drive_suma(
     """
     A program to drive suma from the command line.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/DriveSuma.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         command: Command to be sent to SUMA.

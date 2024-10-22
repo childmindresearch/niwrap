@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SH2POWER_METADATA = Metadata(
-    id="1ab49e4ed2dfe080fcbd257db71a6d4309225297.boutiques",
+    id="536779908dfe6a15e2ec1a07b45bd1fe2e688ccd.boutiques",
     name="sh2power",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -81,10 +81,9 @@ def sh2power(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2power.html
+    URL: https://www.mrtrix.org/
     
     Args:
         sh: the input spherical harmonics coefficients image.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CONFORMIST_METADATA = Metadata(
-    id="15141634690a78a5c0a6bffba07fd6c47fe903f8.boutiques",
+    id="f609f1b815cd20fa63c94e47456124184827cae8.boutiques",
     name="3dConformist",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v_3d_conformist(
     """
     Program to conform a collection of datasets to the same size by zero padding.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dConformist.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input datasets to be zero padded to the same size.

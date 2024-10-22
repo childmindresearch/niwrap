@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMATCALC_METADATA = Metadata(
-    id="005be9a1c54f172b8c36597f9d1993ea3ec79c14.boutiques",
+    id="4a12ce66d0030ed964e44d50ee57940da8cb40ca.boutiques",
     name="3dmatcalc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3dmatcalc(
     """
     Apply a matrix to a dataset, voxel-by-voxel, to produce a new dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmatcalc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset to be processed.

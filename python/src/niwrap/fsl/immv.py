@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMMV_METADATA = Metadata(
-    id="36c60ed06eb8cb00f4d31f9c69cf56412092ddb0.boutiques",
+    id="9f29c6834abe8e42348d262ec765d6de69ba6c9e.boutiques",
     name="immv",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,7 +30,9 @@ def immv(
     """
     Moves images from one file or directory to another.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         source_files: Source files to be moved. Recognized file extensions:\

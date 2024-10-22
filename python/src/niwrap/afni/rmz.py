@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RMZ_METADATA = Metadata(
-    id="6b7bfd257d51dec2f12da456189674a0ac1ddd7e.boutiques",
+    id="aa236a73a237e5aa1c1315e0d74d586b582f45f0.boutiques",
     name="rmz",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def rmz(
     """
     Zeros out files before removing them.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/rmz.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         filenames: Files to zero out and remove.

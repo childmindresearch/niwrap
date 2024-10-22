@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DNVALS_METADATA = Metadata(
-    id="3edd0f8ad710e604d6ab66b3c34f8c322da85538.boutiques",
+    id="d7ef1cfaf0a24a61ba64fc6419199d6758fdcf7a.boutiques",
     name="3dnvals",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v_3dnvals(
     """
     Tool to print the number of sub-bricks in a 3D dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dnvals.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datasets: Input 3D dataset(s).

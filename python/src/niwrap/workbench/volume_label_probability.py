@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_LABEL_PROBABILITY_METADATA = Metadata(
-    id="e916036e8cf68eacd80295c183be5d38ecc5427c.boutiques",
+    id="21bac59981e45fafa0ef214f9423542efcda1726.boutiques",
     name="volume-label-probability",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def volume_label_probability(
     where the value is how many of the input maps had that label at that voxel,
     divided by the number of input maps.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_maps: volume label file containing individual label maps from\

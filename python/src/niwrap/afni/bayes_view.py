@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BAYES_VIEW_METADATA = Metadata(
-    id="96c15bb399c588707c5490ad8979f968cc5aa7c4.boutiques",
+    id="715b094d6153a447f9e56944e21b8af66039438f.boutiques",
     name="bayes_view",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def bayes_view(
     Launch a shiny app to visualize RBA output files. The files must have the .RData
     extension.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/bayes_view.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_folder: Path to a folder containing .RData files.

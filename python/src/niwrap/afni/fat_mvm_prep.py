@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MVM_PREP_METADATA = Metadata(
-    id="c2333e72ba34640c24317dc2d7e42d8c4b4879ad.boutiques",
+    id="5bf0c33d9c0b9125f8451128b5f455d6591d70aa.boutiques",
     name="fat_mvm_prep",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,10 +39,9 @@ def fat_mvm_prep(
     """
     Combine FATCAT output with CSV data for statistical modeling.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mvm_prep.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for output files.

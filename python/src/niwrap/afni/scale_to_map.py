@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SCALE_TO_MAP_METADATA = Metadata(
-    id="4a1d74a930d355aa079195294527818a83948e47.boutiques",
+    id="7269958c24dcc82fa2e2dff154a02b583fd43e93.boutiques",
     name="ScaleToMap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,9 +58,9 @@ def scale_to_map(
     """
     Tool to scale values to a color map.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/ScaleToMap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input file in 1D formatted ascii containing node values.

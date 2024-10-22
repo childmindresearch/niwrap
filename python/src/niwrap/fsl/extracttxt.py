@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXTRACTTXT_METADATA = Metadata(
-    id="e05d836b193dfad17142ca596860e221c5181d48.boutiques",
+    id="975c3865f15fece65ddd57bfc221355df33ed3f7.boutiques",
     name="extracttxt",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,7 +34,9 @@ def extracttxt(
     """
     Extracts text from a file based on a search word.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         search_word: The word to search for in the file.

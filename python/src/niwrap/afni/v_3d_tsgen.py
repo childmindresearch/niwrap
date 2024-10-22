@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSGEN_METADATA = Metadata(
-    id="410ba1425e90c9f623bd605b045f173958077c32.boutiques",
+    id="99758b64781663ffd508cccdf61b5f963c784b4a.boutiques",
     name="3dTSgen",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_tsgen(
     This program generates an AFNI 3d+time data set based on user-specified signal
     and noise models for each voxel.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTSgen.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Filename of prototype 3d + time data file.

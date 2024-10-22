@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="0f6ea8b27a35d05248ce7cf9e5b3318c7359a543.boutiques",
+    id="8c925e7799aad3a95a94daddcb1f200335733bdb.boutiques",
     name="volume-all-labels-to-rois",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def volume_all_labels_to_rois(
     other than the ??? label, each of which contains an ROI of all voxels that
     are set to the corresponding label.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input volume label file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MRS_PROC_METADATA = Metadata(
-    id="e62daa9beaa26a320312c7a121d8f5ba8e43b85e.boutiques",
+    id="ee7fe9fea5da3526fb48ddaf00f2cd5bbd90934b.boutiques",
     name="fsl_mrs_proc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,9 +31,9 @@ def fsl_mrs_proc(
     """
     FSL Magnetic Resonance Spectroscopy - Preprocessing.
     
-    Author: FMRIB Centre, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         subcommand: The subcommand to run.

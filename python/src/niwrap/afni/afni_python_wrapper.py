@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_PYTHON_WRAPPER_METADATA = Metadata(
-    id="4161e95bdbc15596c80fc69b4723c65aec5a6845.boutiques",
+    id="ffbf9156ea551b7a5df9616d8db68547b7c02e0f.boutiques",
     name="afni_python_wrapper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,10 +37,9 @@ def afni_python_wrapper(
     """
     Python wrapper to call AFNI functions from the shell.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_python_wrapper.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         module: Specify the python module to import.

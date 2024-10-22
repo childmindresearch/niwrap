@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_TORT_READ_DP_ALIGN_METADATA = Metadata(
-    id="336b17b39a158c5e3a7cfad25b946bfcc915ab71.boutiques",
+    id="9f95905d7918d8c820753ff800eeccae7f243106.boutiques",
     name="adjunct_tort_read_dp_align",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,10 +34,9 @@ def adjunct_tort_read_dp_align(
     Extract the 3 translation (in mm) and 3 rotation (in deg) parameters estimated
     by TORTOISE's DIFF_PREP tool during DWI processing.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_tort_read_dp_align.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input *_transformations.txt file output by TORTOISE's\

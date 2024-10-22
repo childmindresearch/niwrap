@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKMAP_METADATA = Metadata(
-    id="fb4285e4f154fff35ba48c7c3829ab7115453547.boutiques",
+    id="20fc0eb1cf1e5881a0131f8a9755f1e2d22946f9.boutiques",
     name="tckmap",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -172,10 +172,9 @@ def tckmap(
     Spherical-deconvolution informed filtering of tractograms. NeuroImage, 2013,
     67, 298-312 (Appendix 3).
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au) and J-Donald Tournier
-    (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/tckmap.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tracks: the input track file.

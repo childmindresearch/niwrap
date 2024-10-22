@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_DBSPROC_METADATA = Metadata(
-    id="e54b59f5d531dda5bd6b6d34b3ff764e31d79ba4.boutiques",
+    id="676e20bce8e969ce2abbdbfba88c2b274f27988f.boutiques",
     name="Install_DBSproc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,10 +30,9 @@ def install_dbsproc(
     """
     Installs the demo archive for DBS processing tools.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_DBSproc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         use_wget: Use wget to download archive. Script chooses by default with\

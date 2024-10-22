@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DESIGN_TTEST2_METADATA = Metadata(
-    id="1aac8635c8fa937d56e12e982bc15b5f166c599f.boutiques",
+    id="6af4c41c8c6f782e607bdfb65325f4acaaf84c9f.boutiques",
     name="design_ttest2",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,7 +32,9 @@ def design_ttest2(
     """
     Command for generating group mean contrasts for a two-sample t-test design.
     
-    Author: Analysis Group, FMRIB, Oxford, UK
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         design_files_rootname: Root name for design files.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SHBASIS_METADATA = Metadata(
-    id="707c36ba783241cb02f7ec460fd290130572ea03.boutiques",
+    id="0f5caf03dc726e74e9825e60ca3aa4026a22a7e2.boutiques",
     name="shbasis",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -92,9 +92,9 @@ def shbasis(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/shbasis.html
+    URL: https://www.mrtrix.org/
     
     Args:
         sh: the input image(s) of SH coefficients.

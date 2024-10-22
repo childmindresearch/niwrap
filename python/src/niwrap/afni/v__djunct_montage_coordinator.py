@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_MONTAGE_COORDINATOR_METADATA = Metadata(
-    id="9334f9ba509c4429fa9b5cd5573bb0523c2d77bd.boutiques",
+    id="f3048da50feab9a5431a35d3b1470ddb44c8feb7.boutiques",
     name="@djunct_montage_coordinator",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,10 +37,9 @@ def v__djunct_montage_coordinator(
     Small program to calculate how to evenly space a certain number of slices within
     each view plane of a dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_montage_coordinator.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Name of input dataset.

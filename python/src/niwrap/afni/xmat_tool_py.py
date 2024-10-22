@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XMAT_TOOL_PY_METADATA = Metadata(
-    id="4b94463278ab4a58788f4e96808b817f9c5901eb.boutiques",
+    id="3a6bcb8aee2e7ab05a9a212e21f7dfef419b3b43.boutiques",
     name="xmat_tool.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,9 +51,9 @@ def xmat_tool_py(
     """
     A tool for evaluating an AFNI X-matrix.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/xmat_tool.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         no_gui: Do not start the GUI.

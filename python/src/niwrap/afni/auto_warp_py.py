@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AUTO_WARP_PY_METADATA = Metadata(
-    id="991ef18315e37d7887a5bb0048caaf474cfd252d.boutiques",
+    id="717d1503884b0d326e79a7885336787157442069.boutiques",
     name="auto_warp.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -61,9 +61,9 @@ def auto_warp_py(
     """
     Nonlinear registration tool.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/auto_warp.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         base: Name of reference or template volume.

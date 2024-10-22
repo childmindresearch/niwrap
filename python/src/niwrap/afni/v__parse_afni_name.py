@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__PARSE_AFNI_NAME_METADATA = Metadata(
-    id="a2cbd7d347bfb654030e66dc1761febac9475890.boutiques",
+    id="6b460b863377f6ef2cf8dd2bc95819c049ae8246.boutiques",
     name="@parse_afni_name",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def v__parse_afni_name(
     A script to parse an AFNI name, outputting the path, prefix, view, and sub-brick
     selection string.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@parse_afni_name.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         afni_name: The AFNI name to be parsed.

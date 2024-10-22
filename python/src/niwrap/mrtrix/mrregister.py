@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRREGISTER_METADATA = Metadata(
-    id="4bce13eb5fbbd96692b058d0897d2db5df05b140.boutiques",
+    id="8bd7ed4526083be2350c2edade3ae34d8bed4865.boutiques",
     name="mrregister",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -383,7 +383,7 @@ def mrregister(
     force reorientation off if required.
     
     Non-linear registration computes warps to map from both image1->image2 and
-    image2->image1. Similar to Avants (2008) Med Image Anal. 12(1): 26–41,
+    image2->image1. Similar to Avants (2008) Med Image Anal. 12(1): 26â€“41,
     registration is performed by matching both the image1 and image2 in a
     'midway space'. Warps can be saved as two deformation fields that map
     directly between image1->image2 and image2->image1, or if using
@@ -407,11 +407,9 @@ def mrregister(
     Reorientation of fiber orientation distributions using apodized point spread
     functions. Magnetic Resonance in Medicine, 2012, 67, 844-855.
     
-    Author: David Raffelt (david.raffelt@florey.edu.au) & Max Pietsch
-    (maximilian.pietsch@kcl.ac.uk)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrregister.html
+    URL: https://www.mrtrix.org/
     
     Args:
         image1_image2: input image 1 ('moving') and input image 2 ('template').

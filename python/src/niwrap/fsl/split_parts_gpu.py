@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPLIT_PARTS_GPU_METADATA = Metadata(
-    id="71e2866ff20511dbd2491b8e598c537de5bba7fb.boutiques",
+    id="f26d0a4660688ec49138643fd986dcc94b083dad.boutiques",
     name="split_parts_gpu",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,7 +38,9 @@ def split_parts_gpu(
     """
     Splits parts of data for GPU processing.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         datafile: Input data file.

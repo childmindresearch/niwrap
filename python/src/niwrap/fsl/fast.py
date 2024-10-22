@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAST_METADATA = Metadata(
-    id="ea3782de983ce088a9fbd87043027a7111fd16cd.boutiques",
+    id="e0764df809b11cd37f4991b89d9c46c12be040a3.boutiques",
     name="fast",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -68,9 +68,9 @@ def fast(
     reliable, compared to most finite mixture model-based methods, which are
     sensitive to noise.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FAST
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_files: Image, or multi-channel set of images, to be segmented.

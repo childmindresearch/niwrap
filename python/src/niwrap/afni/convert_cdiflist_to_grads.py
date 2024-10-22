@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_CDIFLIST_TO_GRADS_METADATA = Metadata(
-    id="e624c6e32cad36ca8753ec0d3fa74310d7309e66.boutiques",
+    id="ea130b033404a9cbd6779270e1ab5a04fbc1255c.boutiques",
     name="convert_cdiflist_to_grads",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,10 +42,9 @@ def convert_cdiflist_to_grads(
     This program reads in a GE cdiflist and outputs gradient file and file of
     bvalues for subsequent processing.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/convert_cdiflist_to_grads.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         cdiflist: Name(s) of cdiflist text file output by GE scanners when\

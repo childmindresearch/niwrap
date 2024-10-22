@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMAXIMA_METADATA = Metadata(
-    id="fee3684c2867dd64812bd02d2d5686a10328207b.boutiques",
+    id="a3267c6a7bbfdd552d053f3793bb3dee1493afcc.boutiques",
     name="3dmaxima",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,9 +50,9 @@ def v_3dmaxima(
     """
     Locate extrema in a functional dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaxima.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Specify input dataset (e.g. func+orig'[7]').

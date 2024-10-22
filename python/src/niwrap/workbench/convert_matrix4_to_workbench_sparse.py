@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_MATRIX4_TO_WORKBENCH_SPARSE_METADATA = Metadata(
-    id="0d93062b100e7eda194ad45e1addcb3124867191.boutiques",
+    id="e09d1561a4c7e942e0acf7f231434f767b40717e.boutiques",
     name="convert-matrix4-to-workbench-sparse",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -68,7 +68,9 @@ def convert_matrix4_to_workbench_sparse(
     Converts the matrix 4 output of probtrackx to workbench sparse file format.
     Exactly one of -surface-seeds and -volume-seeds must be specified.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         matrix4_1: the first matrix4 file.

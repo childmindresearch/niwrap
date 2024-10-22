@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TCORRELATE_METADATA = Metadata(
-    id="c048d3f41fb07e4828e7da7245da56d7997be55b.boutiques",
+    id="e35a4444ebb5f5f897c35530d7a2130f0b8193cd.boutiques",
     name="3dTCorrelate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,9 +47,9 @@ def v_3d_tcorrelate(
     3dTCorrelate. Computes the correlation coefficient between corresponding voxel
     time series in two input 3D+time datasets 'xset' and 'yset'.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorrelate.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         xset: Input xset.

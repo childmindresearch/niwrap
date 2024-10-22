@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTSINTEGRATE_VECTOR_FIELD_METADATA = Metadata(
-    id="acbb23a446bd600840f94e9ba967d6f6c15861e2.boutiques",
+    id="25eaf01e25105beba3ae7eb2187714401340f8d4.boutiques",
     name="ANTSIntegrateVectorField",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -38,7 +38,7 @@ def antsintegrate_vector_field(
     interest (ROI) mask. The ROI mask controls where the integration is performed
     and specifies the starting point region.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

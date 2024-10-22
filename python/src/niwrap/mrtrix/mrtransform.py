@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRTRANSFORM_METADATA = Metadata(
-    id="c8a1d4f0f23f656d6f96e7e6321ab03d23181518.boutiques",
+    id="faaa07c120c0bcc84911ab27778920e0d881a5ea.boutiques",
     name="mrtransform",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -283,11 +283,9 @@ def mrtransform(
     measure for the analysis of diffusion-weighted magnetic resonance images.
     NeuroImage, 2012, 15;59(4), 3976-94.
     
-    Author: J-Donald Tournier (jdtournier@gmail.com) and David Raffelt
-    (david.raffelt@florey.edu.au) and Max Pietsch (maximilian.pietsch@kcl.ac.uk)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrtransform.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: input image to be transformed.

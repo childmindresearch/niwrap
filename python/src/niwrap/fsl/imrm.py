@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMRM_METADATA = Metadata(
-    id="4baaab2f1f3694642eaa2ba934022c444a043ffa.boutiques",
+    id="37a7550b283bc0e07beaca683f980f0347ac052a.boutiques",
     name="imrm",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -29,9 +29,9 @@ def imrm(
     """
     Remove specified image files.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         images_to_remove: List of image names to remove. Filenames can be\

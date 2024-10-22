@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLMODHD_METADATA = Metadata(
-    id="c377516716e63434edaaade17d503b4291aee0c5.boutiques",
+    id="96fec4aae3c9982f9a617f483096a8db6c48e424.boutiques",
     name="fslmodhd",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,9 +31,9 @@ def fslmodhd(
     """
     A tool for modifying header information of NIfTI images.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         image: Input image file (e.g. image.nii.gz).

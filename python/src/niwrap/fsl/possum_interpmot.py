@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_INTERPMOT_METADATA = Metadata(
-    id="4ca0ea9a800707082a716f008fc67bd2495446e9.boutiques",
+    id="3e05be8cec5cb94098ed64d0efdec9c72c935e59.boutiques",
     name="possum_interpmot",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -37,9 +37,9 @@ def possum_interpmot(
     """
     Position Interpolation for Movers and Shakers.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         motion_type: Type of motion: 0 for continuous, 1 for between slices, 2\

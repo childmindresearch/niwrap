@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ALIGN_EPI_ANAT_METADATA = Metadata(
-    id="4d5de62d7b35dd4ff2d2a339b1d7418c7abf5487.boutiques",
+    id="6f2f314d27c0c8aed24a51761df0416bc12de9a1.boutiques",
     name="align_epi_anat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,10 +49,9 @@ def align_epi_anat(
     """
     Align EPI to anatomical datasets or vice versa.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/align_epi_anat.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         epi: EPI dataset to align or to which to align.

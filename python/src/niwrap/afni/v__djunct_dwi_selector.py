@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_DWI_SELECTOR_METADATA = Metadata(
-    id="fdab2c0990349ae768a7338ed844b09828998238.boutiques",
+    id="3ab1f3bb5500d0670396b2a14d983a9190c9a33f.boutiques",
     name="@djunct_dwi_selector",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def v__djunct_dwi_selector(
     """
     Selects DWI data and creates a representative image.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_dwi_selector.tcsh.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dwi: Input DWI file.

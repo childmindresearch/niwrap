@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UBER_PROC_PY_METADATA = Metadata(
-    id="36e6d5db2ea98de96052bdf63be621bc71fbff06.boutiques",
+    id="810164b90b5470d8a01aa9ff880068dc2dfc8cc0.boutiques",
     name="uber_proc.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,9 +29,9 @@ def uber_proc_py(
     """
     Uber processing tool - work in progress.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_proc.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         results_dir: Directory where results will be placed. Default is a new\

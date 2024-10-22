@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ICC_METADATA = Metadata(
-    id="2f04f1351aa6871ec205758e1754b90e4b3d32ce.boutiques",
+    id="c36b2e699621f93d8018a24c3d6ec49dbb41d10c.boutiques",
     name="3dICC",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3d_icc(
     """
     AFNI Program for IntraClass Correlatin (ICC) Analysis.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dICC.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         model: Model structure for all the variables. The expression FORMULA\

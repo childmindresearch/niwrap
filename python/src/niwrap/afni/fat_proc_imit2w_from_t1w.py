@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_IMIT2W_FROM_T1W_METADATA = Metadata(
-    id="fc3069f8d7108345ed43b7712ad5b1e939ab4beb.boutiques",
+    id="6e7211eeaf18937b51ec873d5287062ff3f44746.boutiques",
     name="fat_proc_imit2w_from_t1w",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,10 +46,9 @@ def fat_proc_imit2w_from_t1w(
     """
     Process T1w anatomical images to generate an imitation T2w-contrast image.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_imit2w_from_t1w.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         t1_file: Full name of the input T1w volume.

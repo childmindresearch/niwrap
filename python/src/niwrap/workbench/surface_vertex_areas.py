@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_VERTEX_AREAS_METADATA = Metadata(
-    id="f99539e6c03e9d952d920096d6ea72347bfef0d1.boutiques",
+    id="ac71ad99b7c50792380048b77c5c4040375fc8be.boutiques",
     name="surface-vertex-areas",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -35,7 +35,9 @@ def surface_vertex_areas(
     Each vertex gets one third of the area of each triangle it is a part of.
     Units are mm^2.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to measure.

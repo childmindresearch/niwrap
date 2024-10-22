@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ALIGN_PARTIAL_OBLIQUE_METADATA = Metadata(
-    id="9c906bd62d81a77ceaad5461012f659acd913a83.boutiques",
+    id="6972a40122eb255cb7faab42312dcbea8ad1c3c1.boutiques",
     name="@align_partial_oblique",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,10 +41,9 @@ def v__align_partial_oblique(
     partial coverage T1 weighted non-oblique dataset. Alignment is done with a
     rotation and shift (6 parameters) transform only.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@align_partial_oblique.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         base: Reference anatomical full coverage volume.

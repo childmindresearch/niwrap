@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RETRO_TS_PY_METADATA = Metadata(
-    id="3a8f942af6b333e80cee0dd94a9b9a446d4fee85.boutiques",
+    id="4b4fd46f34f41420988b7752ca2ffee1afb20006.boutiques",
     name="RetroTS.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -57,9 +57,9 @@ def retro_ts_py(
     respiration, and respiration volume per time using independent data files or
     BIDS formatted files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/RetroTS.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         num_slices: Number of slices.

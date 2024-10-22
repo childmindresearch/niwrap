@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DSVD_METADATA = Metadata(
-    id="1e845a4ea67d4f4390b3cc2a7cdf74c42dcccaf5.boutiques",
+    id="a1518e76606dbfed112adeb737310758011efc67.boutiques",
     name="1dsvd",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def v_1dsvd(
     Computes SVD of the matrix formed by the 1D file(s) and outputs the result on
     stdout.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dsvd.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input 1D file(s) for SVD computation.

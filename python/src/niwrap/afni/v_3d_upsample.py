@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_UPSAMPLE_METADATA = Metadata(
-    id="bacdcc37f2395a4c7001b1977887b1d356a36a4a.boutiques",
+    id="e15a35601ca3dbf1d8bf47d2d707df818a6560ac.boutiques",
     name="3dUpsample",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_upsample(
     """
     Upsamples a 3D+time dataset in the time direction by a specified factor.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dUpsample.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         upsample_factor: Upsampling factor; must be between 2 and 320\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DEMO_PROMPT_METADATA = Metadata(
-    id="d7d11524aa7bc99fbed5409167986014f1d0c85b.boutiques",
+    id="28759d07ed8faa73243bb8713758a156bb9ca999.boutiques",
     name="@demo_prompt",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v__demo_prompt(
     """
     Prompts user with a message and waits for acknowledgment.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@demo_prompt.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         message: The message to display in the prompt.

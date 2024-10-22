@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MCCUTUP_METADATA = Metadata(
-    id="067357f05344c17e6464cefd08598714222304ec.boutiques",
+    id="550fe345e830980221ec6194b0b0c8479f3cf793.boutiques",
     name="mccutup",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def mccutup(
     """
     FSL mccutup tool.
     
-    Author: FSL
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_: Input file.

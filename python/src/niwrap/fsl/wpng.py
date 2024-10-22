@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WPNG_METADATA = Metadata(
-    id="ee9dea3a500047fdb3f87be5f712f960d7183717.boutiques",
+    id="ca21ffdb19e09a9507e79b0f6e8067c70b0e28f2.boutiques",
     name="wpng",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,7 +36,9 @@ def wpng(
     """
     Simple PGM/PPM/PAM to PNG Converter.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input PNM file (binary PGM 'P5', PPM 'P6' or PAM 'P8').

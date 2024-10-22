@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VIENA_QUANT_METADATA = Metadata(
-    id="6554e85f79dd801fb966ca52ff7b8589fc6ea6b4.boutiques",
+    id="edd4c4fe5c167228901a0dbcd37d4674aa35f546.boutiques",
     name="viena_quant",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,7 +33,9 @@ def viena_quant(
     """
     Automated brain ventricle quantification tool.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input1: Input image 1 (e.g. img1.nii.gz).

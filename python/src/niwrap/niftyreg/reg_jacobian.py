@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_JACOBIAN_METADATA = Metadata(
-    id="e0b54148f03bbce672bfc24966b15e2f4a38745b.boutiques",
+    id="235ec9ff93ed75c965eca2bf21da45d4db1dc09d.boutiques",
     name="reg_jacobian",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -36,7 +36,7 @@ def reg_jacobian(
     Tool to compute the Jacobian determinant map from a deformation field or control
     point lattice.
     
-    Author: Marc Modat
+    Author: NiftyReg Developers
     
     URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     

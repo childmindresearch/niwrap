@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SPACE_TIME_CORR_METADATA = Metadata(
-    id="b0ec9131465906bbbb276caa42352d6789463dbb.boutiques",
+    id="e49ac047acfb7ca32e517432f948534977777fb0.boutiques",
     name="3dSpaceTimeCorr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def v_3d_space_time_corr(
     Calculates correlation coefficients between two 4D datasets using space+time
     patterns.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSpaceTimeCorr.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inset_a: First 4D data set.

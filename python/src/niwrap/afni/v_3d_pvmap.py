@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_PVMAP_METADATA = Metadata(
-    id="ca326adf1dd7d41638d78bfdc3c00db26775efb9.boutiques",
+    id="700496e9e3cf92a89b9939044ee84ddeec463b04.boutiques",
     name="3dPVmap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3d_pvmap(
     then outputs the R-squared coefficient of each voxel time series with these
     first two components.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPVmap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inputdataset: Input dataset (e.g., fred.nii).

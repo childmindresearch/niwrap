@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_SCALAR_SERIES_METADATA = Metadata(
-    id="731ab0e93ff863505c9e8a32b724b941eadf5abd.boutiques",
+    id="9bc9fb4ed8ef764f72136d7a868abc7b9f44c9bd.boutiques",
     name="cifti-create-scalar-series",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -78,7 +78,9 @@ def cifti_create_scalar_series(
     METER
     RADIAN.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         input_: input file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SVS_SEGMENT_METADATA = Metadata(
-    id="e55c5368e033ea1e2bc461214bfcbbcca79268de.boutiques",
+    id="aa72e295c30cdecf348d62c98b9fbbe412cd89ed.boutiques",
     name="svs_segment",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -40,7 +40,9 @@ def svs_segment(
     FSL Magnetic Resonance Spectroscopy tool to construct mask in T1 space of an SVS
     voxel and generate a tissue segmentation file.
     
-    Author: FSL Development Team
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         svs_file: SVS nifti file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_MASK_METADATA = Metadata(
-    id="8b0c7834f326fc5492985a67883c6b3a2ba9c186.boutiques",
+    id="3f4a5cd83b237eea67e276c2fdf10505fa6d29a9.boutiques",
     name="metric-mask",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -39,7 +39,9 @@ def metric_mask(
     output contains only one column, the masked version of the specified input
     column.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric: the input metric.

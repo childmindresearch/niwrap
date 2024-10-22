@@ -125,11 +125,7 @@
       "optional": true,
       "id": "view",
       "name": "View Type",
-      "value-choices": [
-        "orig",
-        "acpc",
-        "tlrc"
-      ]
+      "value-choices": ["orig", "acpc", "tlrc"]
     },
     {
       "command-line-flag": "-time:zt",
@@ -159,14 +155,7 @@
       "optional": true,
       "id": "tr_units",
       "name": "TR Units",
-      "value-choices": [
-        "ms",
-        "msec",
-        "s",
-        "sec",
-        "Hz",
-        "Hertz"
-      ]
+      "value-choices": ["ms", "msec", "s", "sec", "Hz", "Hertz"]
     },
     {
       "command-line-flag": "-Torg",
@@ -248,12 +237,7 @@
       "optional": true,
       "id": "data_type",
       "name": "Data Type",
-      "value-choices": [
-        "short",
-        "float",
-        "byte",
-        "complex"
-      ]
+      "value-choices": ["short", "float", "byte", "complex"]
     },
     {
       "command-line-flag": "-gsfac",

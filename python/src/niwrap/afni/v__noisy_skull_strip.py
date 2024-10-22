@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__NOISY_SKULL_STRIP_METADATA = Metadata(
-    id="424a8e2725cafc4259973f4b7671d5998718c27d.boutiques",
+    id="c7ff4d34b7c1585d06f46e9b52322c91389d58c8.boutiques",
     name="@NoisySkullStrip",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,10 +39,9 @@ def v__noisy_skull_strip(
     """
     Strips the skull of anatomical datasets with low SNR.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoisySkullStrip.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: The anatomical dataset.

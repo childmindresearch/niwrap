@@ -42,10 +42,7 @@
     {
       "description": "Optional parameters for specifying extension options",
       "id": "optional_params_group",
-      "members": [
-        "single_extension",
-        "multiple_extensions"
-      ],
+      "members": ["single_extension", "multiple_extensions"],
       "name": "Extension Parameters",
       "mutually-exclusive": true
     }

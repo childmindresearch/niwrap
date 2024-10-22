@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCENTROID_METADATA = Metadata(
-    id="d838bdc531d825fa969ebc2de82ef3b919eb2624.boutiques",
+    id="d45d49e8b930b948a798b910b254792bd30544a6.boutiques",
     name="mrcentroid",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -74,10 +74,9 @@ def mrcentroid(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcentroid.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_PAR2_AFNI_METADATA = Metadata(
-    id="40eb063d43505871adac0ab85670a3f4c0920845.boutiques",
+    id="e92512bdf2e346ba0c9b1a7896712c24816e8dc7.boutiques",
     name="3dPAR2AFNI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3d_par2_afni(
     """
     Convert Philips PAR/REC files to AFNI's BRIK/HEAD, NIfTI, or ANALYZE format.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPAR2AFNI.pl.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input PAR file (e.g., subject1.PAR).

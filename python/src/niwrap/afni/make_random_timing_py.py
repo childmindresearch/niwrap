@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_RANDOM_TIMING_PY_METADATA = Metadata(
-    id="f9e5d7966bb63da34f53d77f70c1b42ed4e7952b.boutiques",
+    id="015b2b1c66a3f929dc8b7bc80bb3691f68a641ef.boutiques",
     name="make_random_timing.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -55,10 +55,9 @@ def make_random_timing_py(
     """
     Create random stimulus timing files for use with AFNI 3dDeconvolve.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/make_random_timing.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         num_runs: Set the number of runs.

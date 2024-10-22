@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_NMT_METADATA = Metadata(
-    id="04c5baba0a5a984e6abe4fda72509edfad447d66.boutiques",
+    id="9052a023ac764219801e3841505d13b87cdadae7.boutiques",
     name="Install_NMT",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def install_nmt(
     Installs the NIMH Macaque Template (NMT) with the accompanying Cortical
     Hierarchy Atlas of the Rhesus Macaque (CHARM).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_NMT.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         install_dir: The install location for the NMT.

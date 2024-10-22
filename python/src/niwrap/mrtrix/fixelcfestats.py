@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXELCFESTATS_METADATA = Metadata(
-    id="ee3bb73a1251abf2131550881e972d6232152783.boutiques",
+    id="85b1cb9bb9525faf62a80ea0820d52c7ae94777f.boutiques",
     name="fixelcfestats",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -212,11 +212,9 @@ def fixelcfestats(
     nonstationarity in cluster-based and TFCE inference. NeuroImage, 2011,
     54(3), 2006-19.
     
-    Author: David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith
-    (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcfestats.html
+    URL: https://www.mrtrix.org/
     
     Args:
         in_fixel_directory: the fixel directory containing the data files for\

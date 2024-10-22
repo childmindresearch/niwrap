@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_REMOVE_ISLANDS_METADATA = Metadata(
-    id="084bad58202e9e9fb402a13dbc455d0bdb7e9a3f.boutiques",
+    id="2280490d5511475f92da4664c5d1d511533b9e59.boutiques",
     name="volume-remove-islands",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -35,7 +35,9 @@ def volume_remove_islands(
     Finds all face-connected parts of the ROI, and zeros out all but the largest
     one.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the input ROI volume.

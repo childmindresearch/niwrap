@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GEN_SS_REVIEW_SCRIPTS_METADATA = Metadata(
-    id="f015174f4b6981be46e5bbeeb4391e8a3c9df815.boutiques",
+    id="ab7e530400ce4430e3ed11416d4b0595a3ca7bd5.boutiques",
     name="gen_ss_review_scripts",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,10 +53,9 @@ def gen_ss_review_scripts(
     """
     Generate single subject analysis review scripts.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_ss_review_scripts.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         subject_id: Subject ID.

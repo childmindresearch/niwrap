@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIRT_UTILS_METADATA = Metadata(
-    id="922585fd22c2f9a2d8f63fa04eaebde075957ede.boutiques",
+    id="3c43f5cc948b4f787c5323e740b175c124303e95.boutiques",
     name="firt_utils",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -60,7 +60,9 @@ def firt_utils(
     """
     Utilities for handling FIRST's input and output files.
     
-    Author: University of Oxford (Brian Patenaude)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Filename of input image/mesh/bvars.

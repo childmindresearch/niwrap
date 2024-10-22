@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_CONVERT_METADATA = Metadata(
-    id="1e779534088fcd161aaabcf0b181dd8df7dea118.boutiques",
+    id="ecaca4f2fe19e25bfbebf123fcb413a64d79f59f.boutiques",
     name="metric-convert",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -155,7 +155,9 @@ def metric_convert(
     that gifti-unaware programs can operate on the data. You must specify
     exactly one of the options.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         to_nifti: convert metric to nifti.

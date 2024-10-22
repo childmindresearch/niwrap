@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKSIFT2_METADATA = Metadata(
-    id="d7481a621dcc1c55eb2b1d9041f033c4a9f61311.boutiques",
+    id="399c2a04022ba3cedcda7e35cf69c1dae578656c.boutiques",
     name="tcksift2",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -115,10 +115,9 @@ def tcksift2(
     Tractography: Methods and Inter-Subject Normalisation. Open Science
     Framework, https://doi.org/10.31219/osf.io/c67kn.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tcksift2.html
+    URL: https://www.mrtrix.org/
     
     Args:
         in_tracks: the input track file.

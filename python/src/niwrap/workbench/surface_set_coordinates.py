@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_SET_COORDINATES_METADATA = Metadata(
-    id="10e4622894f35be8d799c6136071fb0e1a9d5ed1.boutiques",
+    id="c89652b2369ae6bf4e056844cff53c0054b4608a.boutiques",
     name="surface-set-coordinates",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -39,7 +39,9 @@ def surface_set_coordinates(
     See -surface-coordinates-to-metric for how to get surface coordinates as a
     metric file, such that you can then modify them via metric commands, etc.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface_in: the surface to use for the topology.

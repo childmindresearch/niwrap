@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TFILTER_METADATA = Metadata(
-    id="21d0dff6b6f912ff702a39c6b134874a7ad0bc34.boutiques",
+    id="0604d522cb0075ad07593c0f28482b95f959239c.boutiques",
     name="3dTfilter",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3d_tfilter(
     3dTfilter filters the time series in each voxel according to the user-specified
     filter functions.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTfilter.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inputdataset: Input dataset.

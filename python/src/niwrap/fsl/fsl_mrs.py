@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MRS_METADATA = Metadata(
-    id="00847a495adc2e0e69dfce6d1d732fdf079b343b.boutiques",
+    id="d80204b557139acdcc98d0c5bde0734e2d60b693.boutiques",
     name="fsl_mrs",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -62,9 +62,9 @@ def fsl_mrs(
     """
     FSL Magnetic Resonance Spectroscopy Wrapper Script.
     
-    Author: FMRIB Centre, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         data: Input FID file.

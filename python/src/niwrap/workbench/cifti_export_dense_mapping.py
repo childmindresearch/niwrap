@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_EXPORT_DENSE_MAPPING_METADATA = Metadata(
-    id="0baf20bcaa27992634929adc19d8e5d830f94e1c.boutiques",
+    id="c4952b5aa78363bc02a20a1749a2cca27b7db43c.boutiques",
     name="cifti-export-dense-mapping",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -179,7 +179,9 @@ def cifti_export_dense_mapping(
     THALAMUS_LEFT
     THALAMUS_RIGHT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti: the cifti file.

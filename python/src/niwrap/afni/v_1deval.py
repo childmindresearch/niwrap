@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DEVAL_METADATA = Metadata(
-    id="2ed76551181b3017cc88ad182afeaee3af0db125.boutiques",
+    id="b5dd462ea1c62542686cd5c2108f06b5f28820b2.boutiques",
     name="1deval",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_1deval(
     Evaluates an expression that may include columns of data from one or more text
     files and writes the result to stdout.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1deval.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         expression: Expression to evaluate.

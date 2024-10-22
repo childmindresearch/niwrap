@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ESTNOISE_METADATA = Metadata(
-    id="2c8a4ee6ccd87d75e1631dbf9205191f803cbb5f.boutiques",
+    id="247bc904d1a615a10768ac4443a9384138e2eb9a.boutiques",
     name="estnoise",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def estnoise(
     """
     Estimate noise in 4D fMRI data.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_4d_data: Input 4D fMRI data (e.g., fmri_data.nii.gz).

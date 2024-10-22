@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NWARP_FUNCS_METADATA = Metadata(
-    id="902fe0ee182e6718b00f67b363f21031d064f103.boutiques",
+    id="048fa4b745e8fa4f529a924ccc5e550b16a79b2f.boutiques",
     name="3dNwarpFuncs",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3d_nwarp_funcs(
     Compute functions of 3D warp displacements, such as bulk volume change, shear
     energy, and vorticity energy.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpFuncs.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_warp: 'www' is the name of the 3D warp dataset (mandatory\

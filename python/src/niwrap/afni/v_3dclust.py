@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DCLUST_METADATA = Metadata(
-    id="a0154641b9d6ade9b112d80d977627b8ad5026c3.boutiques",
+    id="3ce8cefee5cef3ba7b1a972b0fcad6cd5a2fd94f.boutiques",
     name="3dclust",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,9 +52,9 @@ def v_3dclust(
     """
     Performs simple-minded cluster detection in 3D datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dclust.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datasets: Input dataset(s). More than one allowed, but only the first\

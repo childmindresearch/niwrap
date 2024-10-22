@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFF2RIGID_METADATA = Metadata(
-    id="6a4fe2b1580c1e86111e4b2f175216d1182a533d.boutiques",
+    id="487d7bb2a880d88a0bff71f30ee3afe417fb2b9b.boutiques",
     name="aff2rigid",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,7 +30,9 @@ def aff2rigid(
     """
     Tool for converting affine transformations to rigid transformations.
     
-    Author: FMRIB, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_transform: Input FLIRT transform (12 DOF) from the input image to\

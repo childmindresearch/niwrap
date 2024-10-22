@@ -80,11 +80,7 @@
     {
       "description": "Compulsory arguments for running possum_matrix",
       "id": "compulsory_params_group",
-      "members": [
-        "pulse_sequence",
-        "motion_matrix",
-        "output_matrix"
-      ],
+      "members": ["pulse_sequence", "motion_matrix", "output_matrix"],
       "name": "Compulsory Parameters"
     },
     {

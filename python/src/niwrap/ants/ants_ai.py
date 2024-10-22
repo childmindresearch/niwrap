@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_AI_METADATA = Metadata(
-    id="9b934aa7e2ce49067191577cf4a1002cdf1cc2fb.boutiques",
+    id="694c77fb3122e7ae7609dc66837caa7834538472.boutiques",
     name="antsAI",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -43,7 +43,7 @@ def ants_ai(
     Program to calculate the optimal linear transform parameters for aligning two
     images.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

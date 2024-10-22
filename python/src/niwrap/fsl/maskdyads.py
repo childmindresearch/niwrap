@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MASKDYADS_METADATA = Metadata(
-    id="ea58a17c33524012fe4bc13adefad07c0f3a7e06.boutiques",
+    id="4d35052ff8b9a5e3184bd0d4a83971871495971e.boutiques",
     name="maskdyads",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,7 +31,9 @@ def maskdyads(
     """
     Tool to mask dyads with threshold.
     
-    Author: Author Name
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         dyads: Input dyads file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAVER_METADATA = Metadata(
-    id="3251542a62df461a6a7151ca506b64c9358fa1cf.boutiques",
+    id="d40eed47338fed1128a04d1c60c1e336c6bcfad8.boutiques",
     name="imaver",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def imaver(
     Computes the mean and standard deviation, pixel-by-pixel, of a whole bunch of
     images.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imaver.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_images: Input image files for processing.

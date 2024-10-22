@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AMP2SH_METADATA = Metadata(
-    id="1795ac527db5a4193030be4d9cd638dba2f20f3f.boutiques",
+    id="739c6dd01d401b453eb41eade05065e6c9fd17b3.boutiques",
     name="amp2sh",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -179,9 +179,9 @@ def amp2sh(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/amp2sh.html
+    URL: https://www.mrtrix.org/
     
     Args:
         amp: the input amplitude image.

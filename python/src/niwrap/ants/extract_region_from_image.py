@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXTRACT_REGION_FROM_IMAGE_METADATA = Metadata(
-    id="99a054cfe2aed987b8f2bc795342aebd68063b8b.boutiques",
+    id="ae946f4d1bb246c4c0e1a26e1d18d3d6f5ce930d.boutiques",
     name="ExtractRegionFromImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -131,7 +131,7 @@ def extract_region_from_image(
     ExtractRegionFromImage can be used to extract a specific region from a given
     image. The region can be specified via indices, label, or another domain image.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

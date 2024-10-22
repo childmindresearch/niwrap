@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCALC_METADATA = Metadata(
-    id="e7890e4db04dced212f653ea298129a9d4812d5e.boutiques",
+    id="4abff4f051d8a436c35f7a012c41ca90bb2f4df0.boutiques",
     name="mrcalc",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -1344,9 +1344,9 @@ def mrcalc(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcalc.html
+    URL: https://www.mrtrix.org/
     
     Args:
         operand: an input image, intensity value, or the special keywords\

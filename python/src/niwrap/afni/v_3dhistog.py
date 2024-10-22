@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DHISTOG_METADATA = Metadata(
-    id="bfd4918fae843909c6c6092087c446f3406f08d4.boutiques",
+    id="e7bd0d2e8a320bbb6bd63ecc03a72a5a7207b971.boutiques",
     name="3dhistog",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def v_3dhistog(
     """
     Compute histogram of a 3D dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dhistog.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset.

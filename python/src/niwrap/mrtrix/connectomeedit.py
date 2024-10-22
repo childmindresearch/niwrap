@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONNECTOMEEDIT_METADATA = Metadata(
-    id="46d14a97fe46db3a4133300232b730e4fe70c6d0.boutiques",
+    id="3bcd90abe0516012da5aeed95591c6ac56e14c72.boutiques",
     name="connectomeedit",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -74,10 +74,9 @@ def connectomeedit(
     
     .
     
-    Author: Matteo Frigo (matteo.frigo@inria.fr)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/connectomeedit.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input connectome.

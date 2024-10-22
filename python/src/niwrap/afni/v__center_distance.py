@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__CENTER_DISTANCE_METADATA = Metadata(
-    id="b83f2a2ca9fa497ea99ff4923cf2b21f95c3dee6.boutiques",
+    id="4b982bfe6d3c78b30fa9e3ce7498dab0a904c2d6.boutiques",
     name="@Center_Distance",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def v__center_distance(
     """
     Tool to calculate the distance between the centers of two datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Center_Distance.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset1: First dataset file (e.g. file1.nii.gz).

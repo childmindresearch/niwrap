@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ASL_FILE_METADATA = Metadata(
-    id="28db3b82c65c8920bf2c0aca64477d1ff9c01fbc.boutiques",
+    id="90e06eb0157594c71539815de218874ae63b6e04.boutiques",
     name="asl_file",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -57,9 +57,9 @@ def asl_file(
     """
     ASL data manipulation tool for FSL.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/AslFile
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         datafile: ASL data file.

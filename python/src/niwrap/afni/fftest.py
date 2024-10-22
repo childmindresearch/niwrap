@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FFTEST_METADATA = Metadata(
-    id="adb332c4d453963a3cbe42d90b66afd866626a79.boutiques",
+    id="d36ef0d937165dece9dda123ca931abfcf2bf0b0.boutiques",
     name="fftest",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def fftest(
     """
     A command line tool for testing purposes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/fftest.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         length: Length of the test.

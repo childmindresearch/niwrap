@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DSVM_LINPREDICT_METADATA = Metadata(
-    id="3fdaae0593270d9b309619b792c8a7adfa5a3502.boutiques",
+    id="41d6146f64fde809082dbfe5904945de3b4fec01.boutiques",
     name="3dsvm_linpredict",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def v_3dsvm_linpredict(
     """
     Linear prediction for weights from 3dsvm.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dsvm_linpredict.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         weight_vector: Weight vector dataset.

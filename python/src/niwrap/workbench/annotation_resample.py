@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANNOTATION_RESAMPLE_METADATA = Metadata(
-    id="97a1012c1e236672dd4a3e38c6d31fbee2a10f0f.boutiques",
+    id="ec8dab8bfc7b347eca133ddede8bb1571a0de02f.boutiques",
     name="annotation-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -67,7 +67,9 @@ def annotation_resample(
     annotations in other spaces. The -surface-pair option may be repeated for
     additional structures used by surface space annotations.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         annotation_in: the annotation file to resample.

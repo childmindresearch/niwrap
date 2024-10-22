@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CJPEG_METADATA = Metadata(
-    id="a49b4743941d580378318603d348234457958be7.boutiques",
+    id="c91bb799815c3c2fc8e175c9c148e01746ecf0ae.boutiques",
     name="cjpeg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def cjpeg(
     """
     Compresses an image file to a JPEG file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/cjpeg.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         outfile: Output JPEG file.

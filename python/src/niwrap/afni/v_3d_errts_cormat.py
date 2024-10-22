@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ERRTS_CORMAT_METADATA = Metadata(
-    id="31f9dcb32deb4e71a9b8cc83f26f056807e380ef.boutiques",
+    id="2f4cd813e00c21c8ed95885addacf3502e722a23.boutiques",
     name="3dErrtsCormat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3d_errts_cormat(
     Computes the correlation matrix corresponding to the residual (or error) time
     series in 'dset'.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dErrtsCormat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset: Dataset to read, usually the '-errts' output from 3dDeconvolve.

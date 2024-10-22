@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SIMULATE_MOTION_METADATA = Metadata(
-    id="9c3855ae88b531191bb5b009bfc9249f141f5d80.boutiques",
+    id="5fc17ce508dbb62923e813f5cff61e70e1accb2d.boutiques",
     name="@simulate_motion",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,10 +47,9 @@ def v__simulate_motion(
     Create simulated motion time series in an EPI dataset based on the provided
     motion parameters and an input volume.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@simulate_motion.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         epi: Input EPI volume or time series (only a volreg base is needed,\

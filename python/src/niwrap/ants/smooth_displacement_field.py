@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SMOOTH_DISPLACEMENT_FIELD_METADATA = Metadata(
-    id="f409475066f5802ee44856eaa2766c9ef413ce5d.boutiques",
+    id="74242e4a08e876a4821008fd823b0b832ab0e019.boutiques",
     name="SmoothDisplacementField",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -43,7 +43,7 @@ def smooth_displacement_field(
     specified number of levels with optional parameters for spline order, inverse
     estimation, and confidence image output.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

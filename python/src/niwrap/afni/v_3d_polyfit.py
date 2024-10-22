@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_POLYFIT_METADATA = Metadata(
-    id="b4fcbc58d25c305f53c2841ba6da8fe1f09e1d9d.boutiques",
+    id="2a45fc385abe30812b6c5994dee4e52581730825.boutiques",
     name="3dPolyfit",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,9 +49,9 @@ def v_3d_polyfit(
     Fits a polynomial in space to the input dataset and outputs that fitted dataset.
     You can also add your own basis datasets to the fitting mix.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPolyfit.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset (e.g., data.nii.gz).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DAXIALIZE_METADATA = Metadata(
-    id="c2a1cdfdabbd834e50d57ce4a3eb2d55f0e41421.boutiques",
+    id="bcc8e30177064f95c8a4e5b95029e8dd46cb1692.boutiques",
     name="3daxialize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3daxialize(
     """
     Read and write dataset as new dataset with data brick oriented as axial slices.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3daxialize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Dataset to be axially oriented.

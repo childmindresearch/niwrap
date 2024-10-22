@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIMULATE_DISPLACEMENT_FIELD_METADATA = Metadata(
-    id="78355b54f30ba2e2a1f1cddee38ce81732988df6.boutiques",
+    id="b4b4d74766ee9ec6eddb1c050e1dc66d6fc3cd4d.boutiques",
     name="SimulateDisplacementField",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -89,7 +89,7 @@ def simulate_displacement_field(
     Simulate displacement fields using various methods such as BSpline or
     Exponential.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUMA_REPREFIXIZE_SPEC_METADATA = Metadata(
-    id="75763587aacf7af5450211ee07cdd438cedd8299.boutiques",
+    id="872607d14c229cb4a55d3f8434458d0aac546fe2.boutiques",
     name="suma_reprefixize_spec",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,10 +35,9 @@ def suma_reprefixize_spec(
     """
     A tool for prefixing and working with SUMA specification files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@suma_reprefixize_spec.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input SUMA specification file.

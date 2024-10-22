@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SERIAL_HELPER_METADATA = Metadata(
-    id="037aa5cc9aba30145b7d295e5dad7fbd7b41f600.boutiques",
+    id="4df7ea7f38a6767c1aba72a89599b9e5c022108c.boutiques",
     name="serial_helper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def serial_helper(
     """
     Passes motion parameters from socket to serial port.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/serial_helper.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         serial_port: Output serial port filename.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SUMA_MAKE_SPEC_SF_METADATA = Metadata(
-    id="b1c13cc55ebf52cb4a7ddb1b6fdd18dcbdc95ccc.boutiques",
+    id="90885679016acaa65216974003bd8aae196276f4.boutiques",
     name="@SUMA_Make_Spec_SF",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def v__suma_make_spec_sf(
     """
     Prepare for surface viewing in SUMA.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_Make_Spec_SF.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         subject_id: Required subject ID for file naming.

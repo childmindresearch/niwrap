@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FEATREGAPPLY_METADATA = Metadata(
-    id="ecc4d8bc1420977ba4ea6155fcc9948cbb914005.boutiques",
+    id="acc546fa729030324367fa579a95f284d71474b6.boutiques",
     name="featregapply",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -37,9 +37,9 @@ def featregapply(
     """
     Apply registration from FEAT analysis to other images.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         feat_directory: FEAT directory from which registration will be taken.

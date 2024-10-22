@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_EDGY_ALIGN_CHECK_METADATA = Metadata(
-    id="c032b5b574d793a5fef13dcf90b64d32e86d71c1.boutiques",
+    id="6e6402be94f04390f2f7e2dd812c1c7ccc881b97.boutiques",
     name="@djunct_edgy_align_check",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,10 +46,9 @@ def v__djunct_edgy_align_check(
     Helper script for various tasks, heavily modeled on RW Cox's '@snapshot_volreg'
     script.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_edgy_align_check.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         ulay: ULAY dataset.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 N4_BIAS_FIELD_CORRECTION_METADATA = Metadata(
-    id="e480e55f2abcc11c727ccf849e851b70c28f14ee.boutiques",
+    id="58505f193fc8a195b3b5d96b9ba5a60657a77e6d.boutiques",
     name="N4BiasFieldCorrection",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -148,9 +148,9 @@ def n4_bias_field_correction(
     the intensities, and then spatially smoothing this result by a B-spline modeling
     of the bias field itself.
     
-    Author: Advanced Normalization Tools (ANTs) Contributors
+    Author: ANTs Developers
     
-    URL: https://github.com/ANTsX/ANTs/wiki/N4BiasFieldCorrection
+    URL: https://github.com/ANTsX/ANTs
     
     Args:
         input_image: -i, --input-image inputImageFilename. A scalar image is\

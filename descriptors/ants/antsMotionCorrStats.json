@@ -55,10 +55,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "-f",
       "description": "Do framewise summary stats."
     },
@@ -87,10 +84,7 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [
-        0,
-        1
-      ],
+      "value-choices": [0, 1],
       "command-line-flag": "--help",
       "description": "Print the help menu. Short version with -h."
     }

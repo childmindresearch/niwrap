@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_FIND_CLUSTERS_METADATA = Metadata(
-    id="0bded5a79750b4b6439b0a638ace9eb0194bb652.boutiques",
+    id="8ea724f14e6c768b23ff1ef8df7ee43562c634e5.boutiques",
     name="cifti-find-clusters",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -218,7 +218,9 @@ def cifti_find_clusters(
     matching the mapping of the chosen direction in the input file. Data outside
     the ROI is ignored.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti: the input cifti.

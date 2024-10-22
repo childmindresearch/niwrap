@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TOY_PROG_METADATA = Metadata(
-    id="934dc3c73ea4650c6222a38e301d8228a6bf1cdb.boutiques",
+    id="1311a81e171aae35dd519b54379bb3bfad692a46.boutiques",
     name="3dToyProg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def v_3d_toy_prog(
     """
     A program to illustrate dataset creation and manipulation in C using AFNI's API.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dToyProg.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Reference dataset.

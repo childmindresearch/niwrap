@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SET_SPACING_METADATA = Metadata(
-    id="5684b833f66ec23a3ac7bb5e06663e0dfae53f34.boutiques",
+    id="b77674b8a0a6a1121f61d0814da8fcf1ba54b3f8.boutiques",
     name="SetSpacing",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -34,7 +34,7 @@ def set_spacing(
     """
     A tool to set the spacing of an image in each dimension.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

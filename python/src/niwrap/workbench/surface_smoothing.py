@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_SMOOTHING_METADATA = Metadata(
-    id="319b96fa1a49eafcf799a92cf9d29e576ce50d4e.boutiques",
+    id="c1bedfe431bf5011c8cb46f37e166893c8350088.boutiques",
     name="surface-smoothing",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def surface_smoothing(
     Smooths a surface by averaging vertex coordinates with those of the
     neighboring vertices.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface_in: the surface file to smooth.

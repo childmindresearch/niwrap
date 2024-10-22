@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EIGS_TO_DT_METADATA = Metadata(
-    id="121ef3bfc3e25286f4257322744aad85b76dc8ef.boutiques",
+    id="277228059bce43b644e4c5cf8ab984d713a0f026.boutiques",
     name="3dEigsToDT",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_eigs_to_dt(
     Convert set of DTI eigenvectors and eigenvalues to a diffusion tensor, with
     optional value-scaling and vector-flipping.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dEigsToDT.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         eig_vals: Searchable descriptor for finding all three required\

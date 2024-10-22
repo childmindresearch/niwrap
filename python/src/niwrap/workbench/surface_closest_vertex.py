@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CLOSEST_VERTEX_METADATA = Metadata(
-    id="715f1128956c8b8db48c116f7ba91ed896751881.boutiques",
+    id="cbc6a68b8607b5bde36b161793287a20f7544603.boutiques",
     name="surface-closest-vertex",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -38,7 +38,9 @@ def surface_closest_vertex(
     20 30 25
     30 -20 10.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to use.

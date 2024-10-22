@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SETUP_GROUP_IN_CORR_METADATA = Metadata(
-    id="04f2ad6c6af130d2932b9a260063ac504553dd42.boutiques",
+    id="de29e68b50548580e79210d656042b141dbd77c7.boutiques",
     name="3dSetupGroupInCorr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,10 +41,9 @@ def v_3d_setup_group_in_corr(
     """
     Pre-process a collection of AFNI 3D+time datasets for use with Group InstaCorr.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSetupGroupInCorr.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datasets: AFNI 3D+time datasets to be processed.

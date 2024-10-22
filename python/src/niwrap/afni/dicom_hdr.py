@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DICOM_HDR_METADATA = Metadata(
-    id="9aa37a8d41ffaded60413eca2ef1e81ddf44069b.boutiques",
+    id="f1dd7c5e97c664a21c6f4e09518ffc5513e4e54f.boutiques",
     name="dicom_hdr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def dicom_hdr(
     """
     A tool to print DICOM file information to stdout.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/dicom_hdr.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         files: DICOM file(s) to read.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_STATS_METADATA = Metadata(
-    id="a744b74e89cb50c393286b6158b8a9b6c27f74b7.boutiques",
+    id="c4efdf89a02a76f061c6ab70e1413c0cc565a2cf.boutiques",
     name="metric-stats",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -91,7 +91,9 @@ def metric_stats(
     COUNT_NONZERO: the number of nonzero elements in the data
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric_in: the input metric.

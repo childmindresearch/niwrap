@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKEDIT_METADATA = Metadata(
-    id="e0d60a64ebd5a2f43651dde2df0b76a52029e94f.boutiques",
+    id="e2f6cba90c1172611cb544017f9c4f8e312c397d.boutiques",
     name="tckedit",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -348,9 +348,9 @@ def tckedit(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/tckedit.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tracks_in: the input track file(s).

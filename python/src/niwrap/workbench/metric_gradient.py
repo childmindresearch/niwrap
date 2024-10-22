@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_GRADIENT_METADATA = Metadata(
-    id="e6d7b3765c937638ae5184fba532a06fbd8adccd.boutiques",
+    id="d8cd368fb944447435a02d10e0ed11ef43d78535.boutiques",
     name="metric-gradient",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -130,7 +130,9 @@ def metric_gradient(
     The vector output metric is organized such that the X, Y, and Z components
     from a single input column are consecutive columns.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to compute the gradient on.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UBER_TTEST_METADATA = Metadata(
-    id="9c0199920b48372b90c58cf9ce758de0acfa91cb.boutiques",
+    id="a73e093f5a37572dc0088aa515c27b84ef10f305.boutiques",
     name="uber_ttest",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,9 +50,9 @@ def uber_ttest(
     """
     GUI for group t-test analysis.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_ttest.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         qt_opts: Pass PyQt4 options directly to the GUI.

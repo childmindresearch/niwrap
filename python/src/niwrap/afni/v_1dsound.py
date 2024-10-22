@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DSOUND_METADATA = Metadata(
-    id="f27567816bb64cb79e092571f9328714ebfc27bc.boutiques",
+    id="27afe9539a9fa717bc8a3162d9645362879cc57c.boutiques",
     name="1dsound",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_1dsound(
     """
     Program to create a sound file from a 1D file (column of numbers).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dsound.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         tsfile: The input 1D time series file containing the data to transform\

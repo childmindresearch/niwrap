@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_SKELETON_METADATA = Metadata(
-    id="964224a75752deee356a86c05d66f7f00a1b912b.boutiques",
+    id="ff2b03e2e8e2886c7d5354476e983ba5ce6bccb6.boutiques",
     name="afni_skeleton",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def afni_skeleton(
     """
     Skeleton of a basic python program example.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_skeleton.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infiles: Specify input files.

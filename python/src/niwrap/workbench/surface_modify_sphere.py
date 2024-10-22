@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_MODIFY_SPHERE_METADATA = Metadata(
-    id="aff69e366c1b6613836caf86002be671427562ca.boutiques",
+    id="f50da339a4a1828c4f0604a430147caa4919515a.boutiques",
     name="surface-modify-sphere",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -43,7 +43,9 @@ def surface_modify_sphere(
     If <sphere-in> is not close to spherical, or not centered around the origin
     and -recenter is not used, a warning is printed.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         sphere_in: the sphere to modify.

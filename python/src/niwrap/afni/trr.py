@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRR_METADATA = Metadata(
-    id="fa558271c9da9bb419e2a1146021b4c1c11a0615.boutiques",
+    id="1b3c1e99291c33c3c4ba5b8a06a1cdc93b98a900.boutiques",
     name="TRR",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,9 +53,9 @@ def trr(
     """
     Test-Retest Reliability Program through Bayesian Multilevel Modeling.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/TRR.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for output file names.

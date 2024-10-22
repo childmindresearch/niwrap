@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ZEROPAD_METADATA = Metadata(
-    id="dc7ff5df7b78374a3e83684ba9e7a5734ffacc12.boutiques",
+    id="6b270d62e20a95b19281ded727f3259fe3f2552a.boutiques",
     name="zeropad",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,9 +32,9 @@ def zeropad(
     """
     Tool for zero-padding numbers to a specified length.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: Unknown
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_number: Input number to be zero-padded.

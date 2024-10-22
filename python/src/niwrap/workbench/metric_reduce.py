@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_REDUCE_METADATA = Metadata(
-    id="a408282fc6d4477e3c5c5028213af0a286b38e35.boutiques",
+    id="e7a44bfc39b9bc01b1af1d8176f8d65d22178740.boutiques",
     name="metric-reduce",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -86,7 +86,9 @@ def metric_reduce(
     COUNT_NONZERO: the number of nonzero elements in the data
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric_in: the metric to reduce.

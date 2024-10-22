@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__TO_RAI_METADATA = Metadata(
-    id="a5928a7802c900149c65ca42635f83f7f475b18e.boutiques",
+    id="1a5cc8a5a702a9f62a7296e2f91329b3a241311d.boutiques",
     name="@ToRAI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -28,9 +28,9 @@ def v__to_rai(
     """
     Tool to change the ORIENT coordinates to RAI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ToRAI.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         runner: Command runner.

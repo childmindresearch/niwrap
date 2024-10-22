@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_HISTOG_METADATA = Metadata(
-    id="15de7373d7efff509716e5d6e31df5725696bf4a.boutiques",
+    id="99e523db7c9f0a8693eaccdee82264a6659dc278.boutiques",
     name="3dLocalHistog",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_local_histog(
     """
     This program computes a local histogram at each voxel in the input datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalHistog.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Use string 'ppp' as the prefix for the output dataset.

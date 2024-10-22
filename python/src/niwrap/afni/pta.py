@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PTA_METADATA = Metadata(
-    id="d9f63e36aafd8371cada695ede0d9af6d689a660.boutiques",
+    id="4e961b6423dd3c4934a447dbf22ed74e7465c3df.boutiques",
     name="PTA",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def pta(
     Program for Profile Tracking Analysis - estimates nonlinear trajectories through
     smoothing splines.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/PTA.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for output files.

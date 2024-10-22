@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_AFFINE_REGRESSION_METADATA = Metadata(
-    id="8628d865acfbc050b0c5c40cd99459fb70408626.boutiques",
+    id="e0129b9ce4df57c8c3c842837fa666878dbdcf53.boutiques",
     name="surface-affine-regression",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def surface_affine_regression(
     being warped. The output is written as a NIFTI 'world' matrix, see
     -convert-affine to convert it for use in other software.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         source: the surface to warp.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_2DCAT_METADATA = Metadata(
-    id="51e1e8e18c789431807f6cae992aff3e895e386a.boutiques",
+    id="86c841e523ad32a9e63fcb9b28fa7555580ced48.boutiques",
     name="2dcat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,9 +58,9 @@ def v_2dcat(
     """
     Puts a set of images into an image matrix montage of NX by NY images.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/2dcat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         filenames: List of input image files.

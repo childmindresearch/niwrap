@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_ROI_ROW_METADATA = Metadata(
-    id="78a4e48dbc62c00ee3c0fe377d5a2f7d0da7e056.boutiques",
+    id="f5083921ef214a1b40041c4bf19809f2f02371e8.boutiques",
     name="fat_roi_row",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def fat_roi_row(
     Select a single ROI's row out of a connectivity matrix file (*.grid or *.netcc)
     for viewing and/or further analysis.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_roi_row.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         roi: Specify which ROI's row of connectivity you want to select out. If\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_DW_GRAD_O_MAT___METADATA = Metadata(
-    id="c03700bb437fe9f0386382f47f16c8585e6d1a9b.boutiques",
+    id="46eee009ed5251cf0654dc7e2305bcbaecf3782b.boutiques",
     name="1dDW_Grad_o_Mat++",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,10 +56,9 @@ def v_1d_dw_grad_o_mat__(
     Manipulation of diffusion-weighted (DW) gradient vector files, b-value files,
     and b- or g-matrices with various input and output configurations.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dDW_Grad_o_Mat++.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_row_vec: Input file of 3 rows of gradients (e.g., dcm2nii-format\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAGES_EQUAL_METADATA = Metadata(
-    id="e6efd23a2cb77ec28fc6536e6778852525b7e0c8.boutiques",
+    id="830357495ce35a09c03740c89847cea1c8976199.boutiques",
     name="images_equal",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def images_equal(
     """
     A simple program to test if two 2D images are identical.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/images_equal.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         file_a: First image file to compare.

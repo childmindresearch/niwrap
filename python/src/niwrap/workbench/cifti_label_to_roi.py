@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_TO_ROI_METADATA = Metadata(
-    id="18df99171956ab73119979f4dddfdc6394147a1b.boutiques",
+    id="0136a0a56ee9198541386a0c0217ddbdf540dd5a.boutiques",
     name="cifti-label-to-roi",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def cifti_label_to_roi(
     value of 1, and all other locations are given 0. Exactly one of -name and
     -key must be specified. Specify -map to use only one map from <label-in>.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input cifti label file.

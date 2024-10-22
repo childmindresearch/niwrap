@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DINFILL_METADATA = Metadata(
-    id="57a5175c599d3f9a4e9324fb3db651b36dcd194e.boutiques",
+    id="fbd1b7cc59f1f5f4fa7e41073958d3e52dfad929.boutiques",
     name="3dinfill",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3dinfill(
     """
     A program to fill holes in volumes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dinfill.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Fill volume dataset.

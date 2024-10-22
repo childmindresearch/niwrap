@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TRFIX_METADATA = Metadata(
-    id="92993d180d096fd8c02ca5246a1f6bcc8544e559.boutiques",
+    id="63787e0b442f5bc7d31aadfce8d88397d77c286e.boutiques",
     name="3dTRfix",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_trfix(
     Re-sample dataset with irregular time grid to regular time grid via linear
     interpolation.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTRfix.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input dataset.

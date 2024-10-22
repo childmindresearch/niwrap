@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_UNIFIZE_METADATA = Metadata(
-    id="2afa37bdd9128d321f1baf7a4a3f5a791022e86f.boutiques",
+    id="4939198692fcd53c992cee61612265ccd7c9ddca.boutiques",
     name="3dUnifize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -64,9 +64,9 @@ def v_3d_unifize(
     is no longer maintained and may sublimate at any moment. (In other words, we
     do not recommend the use of 3dUniformize.).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dUnifize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dunifize.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WAVER_METADATA = Metadata(
-    id="ed524dad0a84a2c19dac4c318e2d5f4dcea055ce.boutiques",
+    id="853f5c7b1276e654db54518623370e48705e17ef.boutiques",
     name="waver",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,9 +52,9 @@ def waver(
     """
     Creates an ideal waveform timeseries file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/waver.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         wav: Sets waveform to Cox special [default].
