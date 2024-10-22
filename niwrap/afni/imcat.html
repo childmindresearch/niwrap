@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">IMCAT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a8839645803abd5da112dc9b7ab306fe767f6e96.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f86d118bcc00a36af36a781d6ccef05ffa6fdea3.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;imcat&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -191,7 +191,7 @@
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">IMCAT_METADATA</span><span class="p">)</span>
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;2dcat&quot;</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;imcat&quot;</span><span class="p">)</span>
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">])</span>
 </span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">scale_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
@@ -310,7 +310,7 @@
                     <div class="attr variable">
             <span class="name">IMCAT_METADATA</span>        =
 <input id="IMCAT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="IMCAT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a8839645803abd5da112dc9b7ab306fe767f6e96.boutiques&#39;, name=&#39;imcat&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="IMCAT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f86d118bcc00a36af36a781d6ccef05ffa6fdea3.boutiques&#39;, name=&#39;imcat&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -490,7 +490,7 @@
 </span><span id="imcat-118"><a href="#imcat-118"><span class="linenos">118</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="imcat-119"><a href="#imcat-119"><span class="linenos">119</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">IMCAT_METADATA</span><span class="p">)</span>
 </span><span id="imcat-120"><a href="#imcat-120"><span class="linenos">120</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="imcat-121"><a href="#imcat-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;2dcat&quot;</span><span class="p">)</span>
+</span><span id="imcat-121"><a href="#imcat-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;imcat&quot;</span><span class="p">)</span>
 </span><span id="imcat-122"><a href="#imcat-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">input_files</span><span class="p">])</span>
 </span><span id="imcat-123"><a href="#imcat-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">scale_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="imcat-124"><a href="#imcat-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
