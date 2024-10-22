@@ -1,70 +1,85 @@
 {
-  "name": "ResampleImage",
-  "command-line": "ResampleImage [IMAGE_DIMENSION] [INPUT_IMAGE] [OUTPUT_IMAGE] [SIZE_SPACING] [INTERPOLATE_TYPE] [PIXELTYPE]",
-  "author": "ANTs developers",
-  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
-  "url": "https://github.com/ANTsX/ANTs",
-  "tool-version": "2.5.3",
-  "schema-version": "0.5",
-  "inputs": [
-    {
-      "id": "image_dimension",
-      "name": "Image Dimension",
-      "value-key": "[IMAGE_DIMENSION]",
-      "type": "Number",
-      "integer": true,
-      "description": "Dimension of the image to be resampled."
-    },
-    {
-      "id": "input_image",
-      "name": "Input Image",
-      "value-key": "[INPUT_IMAGE]",
-      "type": "File",
-      "description": "The image file to be resampled."
-    },
-    {
-      "id": "output_image",
-      "name": "Output Image",
-      "value-key": "[OUTPUT_IMAGE]",
-      "type": "File",
-      "description": "The output image file after resampling."
-    },
-    {
-      "id": "size_spacing",
-      "name": "Size and Spacing",
-      "value-key": "[SIZE_SPACING]",
-      "type": "String",
-      "description": "Resampling size and spacing specification, e.g., 'MxNxO'."
-    },
-    {
-      "id": "interpolate_type",
-      "name": "Interpolation Type",
-      "value-key": "[INTERPOLATE_TYPE]",
-      "type": "String",
-      "optional": true,
-      "value-choices": ["0", "1", "2", "3", "4"],
-      "description": "Specifies the interpolation type. 0: linear (default), 1: nearest-neighbor, 2: gaussian, 3: windowedSinc, 4: B-Spline."
-    },
-    {
-      "id": "pixeltype",
-      "name": "Pixel Type",
-      "value-key": "[PIXELTYPE]",
-      "type": "String",
-      "optional": true,
-      "value-choices": ["0", "1", "2", "3", "4", "5", "6", "7"],
-      "description": "Specifies the pixel type of the output image. 0: char, 1: unsigned char, 2: short, 3: unsigned short, 4: int, 5: unsigned int, 6: float (default), 7: double."
+    "name": "ResampleImage",
+    "command-line": "ResampleImage [IMAGE_DIMENSION] [INPUT_IMAGE] [OUTPUT_IMAGE] [SIZE_SPACING] [INTERPOLATE_TYPE] [PIXELTYPE]",
+    "author": "ANTs developers",
+    "description": "ResampleImage is a tool used to resample images to specified sizes and spacings, using various interpolation methods and pixel types.",
+    "url": "https://github.com/ANTsX/ANTs",
+    "tool-version": "2.5.3",
+    "schema-version": "0.5",
+    "inputs": [
+        {
+            "id": "image_dimension",
+            "name": "Image Dimension",
+            "value-key": "[IMAGE_DIMENSION]",
+            "type": "Number",
+            "integer": true,
+            "description": "Dimension of the image to be resampled."
+        },
+        {
+            "id": "input_image",
+            "name": "Input Image",
+            "value-key": "[INPUT_IMAGE]",
+            "type": "File",
+            "description": "The image file to be resampled."
+        },
+        {
+            "id": "output_image",
+            "name": "Output Image",
+            "value-key": "[OUTPUT_IMAGE]",
+            "type": "File",
+            "description": "The output image file after resampling."
+        },
+        {
+            "id": "size_spacing",
+            "name": "Size and Spacing",
+            "value-key": "[SIZE_SPACING]",
+            "type": "String",
+            "description": "Resampling size and spacing specification, e.g., 'MxNxO'."
+        },
+        {
+            "id": "interpolate_type",
+            "name": "Interpolation Type",
+            "value-key": "[INTERPOLATE_TYPE]",
+            "type": "String",
+            "optional": true,
+            "value-choices": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "description": "Specifies the interpolation type. 0: linear (default), 1: nearest-neighbor, 2: gaussian, 3: windowedSinc, 4: B-Spline."
+        },
+        {
+            "id": "pixeltype",
+            "name": "Pixel Type",
+            "value-key": "[PIXELTYPE]",
+            "type": "String",
+            "optional": true,
+            "value-choices": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7"
+            ],
+            "description": "Specifies the pixel type of the output image. 0: char, 1: unsigned char, 2: short, 3: unsigned short, 4: int, 5: unsigned int, 6: float (default), 7: double."
+        }
+    ],
+    "output-files": [
+        {
+            "id": "resampled_output_image",
+            "name": "Resampled Output Image",
+            "description": "The resultant image after resampling.",
+            "path-template": "[OUTPUT_IMAGE]"
+        }
+    ],
+    "container-image": {
+        "type": "docker",
+        "image": "antsx/ants:v2.5.3"
     }
-  ],
-  "output-files": [
-    {
-      "id": "resampled_output_image",
-      "name": "Resampled Output Image",
-      "description": "The resultant image after resampling.",
-      "path-template": "[OUTPUT_IMAGE]"
-    }
-  ],
-  "container-image": {
-    "type": "docker",
-    "image": "antsx/ants:v2.5.3"
-  }
 }

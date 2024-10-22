@@ -1,75 +1,84 @@
 {
-  "name": "ImageSetStatistics",
-  "command-line": "ImageSetStatistics [IMAGE_DIMENSION] [CONTROLS_LIST] [OUTPUT_IMAGE] [WHICH_STAT] [ROI] [IMAGELIST2]",
-  "author": "ANTs developers",
-  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
-  "url": "https://github.com/ANTsX/ANTs",
-  "tool-version": "2.5.3",
-  "schema-version": "0.5",
-  "container-image": {
-    "type": "docker",
-    "image": "antsx/ants:v2.5.3"
-  },
-  "inputs": [
-    {
-      "id": "image_dimension",
-      "name": "Image Dimension",
-      "value-key": "[IMAGE_DIMENSION]",
-      "type": "Number",
-      "integer": true,
-      "description": "The dimensionality of the images to be processed by ImageSetStatistics."
+    "name": "ImageSetStatistics",
+    "command-line": "ImageSetStatistics [IMAGE_DIMENSION] [CONTROLS_LIST] [OUTPUT_IMAGE] [WHICH_STAT] [ROI] [IMAGELIST2]",
+    "author": "ANTs developers",
+    "description": "ImageSetStatistics computes statistics from a set of images. The whichstat option defines the type of statistic to compute, ranging from median to similarity-weighted metrics.",
+    "url": "https://github.com/ANTsX/ANTs",
+    "tool-version": "2.5.3",
+    "schema-version": "0.5",
+    "container-image": {
+        "type": "docker",
+        "image": "antsx/ants:v2.5.3"
     },
-    {
-      "id": "controls_list",
-      "name": "Controls List",
-      "value-key": "[CONTROLS_LIST]",
-      "type": "File",
-      "command-line-flag": "[CONTROLS_LIST]",
-      "description": "Text file containing the list of control images."
-    },
-    {
-      "id": "output_image",
-      "name": "Output Image",
-      "value-key": "[OUTPUT_IMAGE]",
-      "type": "String",
-      "command-line-flag": "[OUTPUT_IMAGE]",
-      "description": "The output image file where the computed statistics are stored."
-    },
-    {
-      "id": "which_stat",
-      "name": "Which Stat",
-      "value-key": "[WHICH_STAT]",
-      "type": "Number",
-      "integer": true,
-      "command-line-flag": "[WHICH_STAT]",
-      "description": "Choice of statistic to compute: 0 for median, 1 for max probability appearance, 2 for weighted mean appearance, 3 for trimmed mean, 4 for max value, 5 for similarity-weighted (requires imagelist2), 6 for best local match label, 7 for max value from ROI.",
-      "value-choices": [0, 1, 2, 3, 4, 5, 6, 7]
-    },
-    {
-      "id": "roi",
-      "name": "ROI Image",
-      "value-key": "[ROI]",
-      "type": "File",
-      "optional": true,
-      "command-line-flag": "[ROI]",
-      "description": "Region of interest image file, optional depending on the whichstat option."
-    },
-    {
-      "id": "imagelist2",
-      "name": "Image List 2",
-      "value-key": "[IMAGELIST2]",
-      "type": "File",
-      "optional": true,
-      "command-line-flag": "[IMAGELIST2]",
-      "description": "List of similarity images used for similarity-weighted statistics. Required if whichstat equals 5 or 6."
-    }
-  ],
-  "output-files": [
-    {
-      "id": "computed_statistics_image",
-      "name": "Computed Statistics Image",
-      "description": "The output image containing the computed statistics.",
-      "path-template": "[OUTPUT_IMAGE]"
-    }
-  ]
+    "inputs": [
+        {
+            "id": "image_dimension",
+            "name": "Image Dimension",
+            "value-key": "[IMAGE_DIMENSION]",
+            "type": "Number",
+            "integer": true,
+            "description": "The dimensionality of the images to be processed by ImageSetStatistics."
+        },
+        {
+            "id": "controls_list",
+            "name": "Controls List",
+            "value-key": "[CONTROLS_LIST]",
+            "type": "File",
+            "command-line-flag": "[CONTROLS_LIST]",
+            "description": "Text file containing the list of control images."
+        },
+        {
+            "id": "output_image",
+            "name": "Output Image",
+            "value-key": "[OUTPUT_IMAGE]",
+            "type": "String",
+            "command-line-flag": "[OUTPUT_IMAGE]",
+            "description": "The output image file where the computed statistics are stored."
+        },
+        {
+            "id": "which_stat",
+            "name": "Which Stat",
+            "value-key": "[WHICH_STAT]",
+            "type": "Number",
+            "integer": true,
+            "command-line-flag": "[WHICH_STAT]",
+            "description": "Choice of statistic to compute: 0 for median, 1 for max probability appearance, 2 for weighted mean appearance, 3 for trimmed mean, 4 for max value, 5 for similarity-weighted (requires imagelist2), 6 for best local match label, 7 for max value from ROI.",
+            "value-choices": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        },
+        {
+            "id": "roi",
+            "name": "ROI Image",
+            "value-key": "[ROI]",
+            "type": "File",
+            "optional": true,
+            "command-line-flag": "[ROI]",
+            "description": "Region of interest image file, optional depending on the whichstat option."
+        },
+        {
+            "id": "imagelist2",
+            "name": "Image List 2",
+            "value-key": "[IMAGELIST2]",
+            "type": "File",
+            "optional": true,
+            "command-line-flag": "[IMAGELIST2]",
+            "description": "List of similarity images used for similarity-weighted statistics. Required if whichstat equals 5 or 6."
+        }
+    ],
+    "output-files": [
+        {
+            "id": "computed_statistics_image",
+            "name": "Computed Statistics Image",
+            "description": "The output image containing the computed statistics.",
+            "path-template": "[OUTPUT_IMAGE]"
+        }
+    ]
 }

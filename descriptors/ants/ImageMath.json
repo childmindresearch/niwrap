@@ -1,65 +1,69 @@
 {
-  "name": "ImageMath",
-  "command-line": "ImageMath [ImageDimension] [OutputImage] [operations and inputs] [Image1] [Image2]",
-  "author": "ANTs developers",
-  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
-  "url": "https://github.com/ANTsX/ANTs",
-  "tool-version": "2.5.3",
-  "schema-version": "0.5",
-  "container-image": {
-    "type": "docker",
-    "image": "antsx/ants:v2.5.3"
-  },
-  "inputs": [
-    {
-      "id": "image_dimension",
-      "name": "Image Dimension",
-      "value-key": "[ImageDimension]",
-      "type": "Number",
-      "integer": true,
-      "optional": false,
-      "value-choices": [2, 3, 4],
-      "description": "The dimensionality of the image. Use 2 or 3 for spatial images, and 4 for 4D images like time-series data."
+    "name": "ImageMath",
+    "command-line": "ImageMath [ImageDimension] [OutputImage] [operations and inputs] [Image1] [Image2]",
+    "author": "ANTs developers",
+    "description": "A versatile tool for performing various mathematical and manipulation operations on images.",
+    "url": "https://github.com/ANTsX/ANTs",
+    "tool-version": "2.5.3",
+    "schema-version": "0.5",
+    "container-image": {
+        "type": "docker",
+        "image": "antsx/ants:v2.5.3"
     },
-    {
-      "id": "operations_and_inputs",
-      "name": "Operations and Inputs",
-      "value-key": "[operations and inputs]",
-      "type": "String",
-      "optional": false,
-      "description": "Mathematical operations and inputs to be applied on the images."
-    },
-    {
-      "id": "output_image",
-      "name": "Output Image",
-      "value-key": "[OutputImage]",
-      "type": "File",
-      "optional": false,
-      "description": "The output image file resulting from the operations."
-    },
-    {
-      "id": "image1",
-      "name": "Image 1",
-      "value-key": "[Image1]",
-      "type": "File",
-      "optional": false,
-      "description": "The first input image for the operation."
-    },
-    {
-      "id": "image2",
-      "name": "Image 2",
-      "value-key": "[Image2]",
-      "type": "File",
-      "optional": true,
-      "description": "The second input image for the operation, if required."
-    }
-  ],
-  "output-files": [
-    {
-      "id": "output_image",
-      "name": "Output Image",
-      "description": "The resulting image after processing.",
-      "path-template": "[OutputImage]"
-    }
-  ]
+    "inputs": [
+        {
+            "id": "image_dimension",
+            "name": "Image Dimension",
+            "value-key": "[ImageDimension]",
+            "type": "Number",
+            "integer": true,
+            "optional": false,
+            "value-choices": [
+                2,
+                3,
+                4
+            ],
+            "description": "The dimensionality of the image. Use 2 or 3 for spatial images, and 4 for 4D images like time-series data."
+        },
+        {
+            "id": "operations_and_inputs",
+            "name": "Operations and Inputs",
+            "value-key": "[operations and inputs]",
+            "type": "String",
+            "optional": false,
+            "description": "Mathematical operations and inputs to be applied on the images."
+        },
+        {
+            "id": "output_image",
+            "name": "Output Image",
+            "value-key": "[OutputImage]",
+            "type": "File",
+            "optional": false,
+            "description": "The output image file resulting from the operations."
+        },
+        {
+            "id": "image1",
+            "name": "Image 1",
+            "value-key": "[Image1]",
+            "type": "File",
+            "optional": false,
+            "description": "The first input image for the operation."
+        },
+        {
+            "id": "image2",
+            "name": "Image 2",
+            "value-key": "[Image2]",
+            "type": "File",
+            "optional": true,
+            "description": "The second input image for the operation, if required."
+        }
+    ],
+    "output-files": [
+        {
+            "id": "output_image",
+            "name": "Output Image",
+            "description": "The resulting image after processing.",
+            "path-template": "[OutputImage]"
+        }
+    ]
 }

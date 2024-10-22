@@ -1,61 +1,64 @@
 {
-  "name": "RebaseTensorImage",
-  "command-line": "RebaseTensorImage [DIMENSION] [INFILE] [OUTFILE] [METHOD] [REFERENCE]",
-  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
-  "schema-version": "0.5",
-  "tool-version": "2.5.3",
-  "inputs": [
-    {
-      "id": "dimension",
-      "name": "Dimension",
-      "type": "Number",
-      "integer": true,
-      "value-key": "[DIMENSION]",
-      "description": "The dimensionality of the input image."
-    },
-    {
-      "id": "infile",
-      "name": "Input File",
-      "type": "File",
-      "value-key": "[INFILE]",
-      "description": "The input image file."
-    },
-    {
-      "id": "outfile",
-      "name": "Output File",
-      "type": "File",
-      "value-key": "[OUTFILE]",
-      "description": "The output image file."
-    },
-    {
-      "id": "method",
-      "name": "Method",
-      "type": "String",
-      "value-key": "[METHOD]",
-      "value-choices": ["PHYSICAL", "LOCAL"],
-      "description": "Method of rebasing the tensor image."
-    },
-    {
-      "id": "reference",
-      "name": "Reference Image",
-      "type": "File",
-      "optional": true,
-      "value-key": "[REFERENCE]",
-      "description": "Reference image file (required if PHYSICAL or LOCAL method is chosen)."
+    "name": "RebaseTensorImage",
+    "command-line": "RebaseTensorImage [DIMENSION] [INFILE] [OUTFILE] [METHOD] [REFERENCE]",
+    "description": "Rebase Tensor Image using specified dimensionality and method.",
+    "schema-version": "0.5",
+    "tool-version": "2.5.3",
+    "inputs": [
+        {
+            "id": "dimension",
+            "name": "Dimension",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[DIMENSION]",
+            "description": "The dimensionality of the input image."
+        },
+        {
+            "id": "infile",
+            "name": "Input File",
+            "type": "File",
+            "value-key": "[INFILE]",
+            "description": "The input image file."
+        },
+        {
+            "id": "outfile",
+            "name": "Output File",
+            "type": "File",
+            "value-key": "[OUTFILE]",
+            "description": "The output image file."
+        },
+        {
+            "id": "method",
+            "name": "Method",
+            "type": "String",
+            "value-key": "[METHOD]",
+            "value-choices": [
+                "PHYSICAL",
+                "LOCAL"
+            ],
+            "description": "Method of rebasing the tensor image."
+        },
+        {
+            "id": "reference",
+            "name": "Reference Image",
+            "type": "File",
+            "optional": true,
+            "value-key": "[REFERENCE]",
+            "description": "Reference image file (required if PHYSICAL or LOCAL method is chosen)."
+        }
+    ],
+    "output-files": [
+        {
+            "id": "rebased_image",
+            "name": "Rebased Image",
+            "description": "The rebased tensor image.",
+            "path-template": "[OUTFILE]"
+        }
+    ],
+    "author": "ANTs developers",
+    "url": "https://github.com/ANTsX/ANTs",
+    "container-image": {
+        "type": "docker",
+        "image": "antsx/ants:v2.5.3"
     }
-  ],
-  "output-files": [
-    {
-      "id": "rebased_image",
-      "name": "Rebased Image",
-      "description": "The rebased tensor image.",
-      "path-template": "[OUTFILE]"
-    }
-  ],
-  "author": "ANTs developers",
-  "url": "https://github.com/ANTsX/ANTs",
-  "container-image": {
-    "type": "docker",
-    "image": "antsx/ants:v2.5.3"
-  }
 }

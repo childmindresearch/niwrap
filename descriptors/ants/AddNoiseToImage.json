@@ -1,73 +1,85 @@
 {
-  "name": "AddNoiseToImage",
-  "command-line": "AddNoiseToImage [IMAGE_DIMENSIONALITY] [INPUT_IMAGE] [NOISE_MODEL] [OUTPUT] [VERBOSE]",
-  "author": "ANTs developers",
-  "description": "Advanced Normalization Tools (ANTs) is a C++ library available through the command line that computes high-dimensional mappings to capture the statistics of brain structure and function. It allows one to organize, visualize and statistically explore large biomedical image sets. Additionally, it integrates imaging modalities in space + time and works across species or organ systems with minimal customization.\n\nThe ANTs library is considered a state-of-the-art medical image registration and segmentation toolkit which depends on the Insight ToolKit, a widely used medical image processing library to which ANTs developers contribute. ANTs-related tools have also won several international, unbiased competitions such as MICCAI, BRATS, and STACOM.",
-  "url": "https://github.com/ANTsX/ANTs",
-  "tool-version": "2.5.3",
-  "schema-version": "0.5",
-  "container-image": {
-    "type": "docker",
-    "image": "antsx/ants:v2.5.3"
-  },
-  "inputs": [
-    {
-      "id": "image_dimensionality",
-      "name": "Image Dimensionality",
-      "value-key": "[IMAGE_DIMENSIONALITY]",
-      "type": "Number",
-      "integer": true,
-      "optional": true,
-      "value-choices": [2, 3, 4],
-      "command-line-flag": "--image-dimensionality",
-      "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, the program tries to infer the dimensionality from the input image."
+    "name": "AddNoiseToImage",
+    "command-line": "AddNoiseToImage [IMAGE_DIMENSIONALITY] [INPUT_IMAGE] [NOISE_MODEL] [OUTPUT] [VERBOSE]",
+    "author": "ANTs developers",
+    "description": "Add various types of noise to an image.",
+    "url": "https://github.com/ANTsX/ANTs",
+    "tool-version": "2.5.3",
+    "schema-version": "0.5",
+    "container-image": {
+        "type": "docker",
+        "image": "antsx/ants:v2.5.3"
     },
-    {
-      "id": "input_image",
-      "name": "Input Image",
-      "value-key": "[INPUT_IMAGE]",
-      "type": "File",
-      "optional": false,
-      "command-line-flag": "--input-image",
-      "description": "A scalar image is expected as input for noise correction."
-    },
-    {
-      "id": "noise_model",
-      "name": "Noise Model",
-      "value-key": "[NOISE_MODEL]",
-      "type": "String",
-      "optional": false,
-      "command-line-flag": "--noise-model",
-      "value-choices": ["AdditiveGaussian", "SaltAndPepper", "Shot", "Speckle"],
-      "description": "Use different noise models each with its own (default) parameters."
-    },
-    {
-      "id": "output",
-      "name": "Output",
-      "value-key": "[OUTPUT]",
-      "type": "File",
-      "optional": false,
-      "command-line-flag": "--output",
-      "description": "The output consists of the noise corrupted version of the input image."
-    },
-    {
-      "id": "verbose",
-      "name": "Verbose",
-      "value-key": "[VERBOSE]",
-      "type": "Number",
-      "integer": true,
-      "optional": true,
-      "value-choices": [0, 1],
-      "command-line-flag": "--verbose",
-      "description": "Verbose output."
-    }
-  ],
-  "output-files": [
-    {
-      "id": "noise_corrupted_image",
-      "name": "Noise Corrupted Image",
-      "description": "The output is the noise corrupted version of the input image.",
-      "path-template": "[OUTPUT]"
-    }
-  ]
+    "inputs": [
+        {
+            "id": "image_dimensionality",
+            "name": "Image Dimensionality",
+            "value-key": "[IMAGE_DIMENSIONALITY]",
+            "type": "Number",
+            "integer": true,
+            "optional": true,
+            "value-choices": [
+                2,
+                3,
+                4
+            ],
+            "command-line-flag": "--image-dimensionality",
+            "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, the program tries to infer the dimensionality from the input image."
+        },
+        {
+            "id": "input_image",
+            "name": "Input Image",
+            "value-key": "[INPUT_IMAGE]",
+            "type": "File",
+            "optional": false,
+            "command-line-flag": "--input-image",
+            "description": "A scalar image is expected as input for noise correction."
+        },
+        {
+            "id": "noise_model",
+            "name": "Noise Model",
+            "value-key": "[NOISE_MODEL]",
+            "type": "String",
+            "optional": false,
+            "command-line-flag": "--noise-model",
+            "value-choices": [
+                "AdditiveGaussian",
+                "SaltAndPepper",
+                "Shot",
+                "Speckle"
+            ],
+            "description": "Use different noise models each with its own (default) parameters."
+        },
+        {
+            "id": "output",
+            "name": "Output",
+            "value-key": "[OUTPUT]",
+            "type": "File",
+            "optional": false,
+            "command-line-flag": "--output",
+            "description": "The output consists of the noise corrupted version of the input image."
+        },
+        {
+            "id": "verbose",
+            "name": "Verbose",
+            "value-key": "[VERBOSE]",
+            "type": "Number",
+            "integer": true,
+            "optional": true,
+            "value-choices": [
+                0,
+                1
+            ],
+            "command-line-flag": "--verbose",
+            "description": "Verbose output."
+        }
+    ],
+    "output-files": [
+        {
+            "id": "noise_corrupted_image",
+            "name": "Noise Corrupted Image",
+            "description": "The output is the noise corrupted version of the input image.",
+            "path-template": "[OUTPUT]"
+        }
+    ]
 }
