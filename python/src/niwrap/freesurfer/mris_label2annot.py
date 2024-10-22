@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_LABEL2ANNOT_METADATA = Metadata(
-    id="a1c897c25fe364975d43ba0590799d61aaef828c.boutiques",
+    id="309aa10d5d50d91939a3c03401839603d080c4ac.boutiques",
     name="mris_label2annot",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -50,7 +50,7 @@ def mris_label2annot(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_LABEL2ANNOT_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_label2annot")
+    cargs.append("mris_label2annot")
     cargs.append("--s")
     cargs.append(subject)
     cargs.append("--h")

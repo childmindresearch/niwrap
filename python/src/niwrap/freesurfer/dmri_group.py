@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_GROUP_METADATA = Metadata(
-    id="e5ec3db5be6e0f21860d305c10cff62ba996fae6.boutiques",
+    id="751632d3a26bd5810a43b06c00cdcdfaa9c3e389.boutiques",
     name="dmri_group",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -56,7 +56,7 @@ def dmri_group(
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_GROUP_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/dmri_group")
+    cargs.append("dmri_group")
     cargs.append("--list")
     cargs.extend([
         "--list",

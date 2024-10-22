@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_LABEL_AREA_METADATA = Metadata(
-    id="7b9464d4ed1d014fd10ea300aee02a3fd3a3c5d3.boutiques",
+    id="f2ce24c690585cc179535f88f53aedadc9b3b8fa.boutiques",
     name="mris_label_area",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -57,7 +57,7 @@ def mris_label_area(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_LABEL_AREA_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_label_area")
+    cargs.append("mris_label_area")
     if pct_flag:
         cargs.append("-p")
     if log_file is not None:

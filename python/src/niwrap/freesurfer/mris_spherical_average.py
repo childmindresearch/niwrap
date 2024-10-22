@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_SPHERICAL_AVERAGE_METADATA = Metadata(
-    id="81dfde8f0cedf6fd2cb747c9b86c87c7afa0a594.boutiques",
+    id="723dc623726aa4424592db34ebfc97ca7d6c5fcb.boutiques",
     name="mris_spherical_average",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -55,7 +55,7 @@ def mris_spherical_average(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SPHERICAL_AVERAGE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_spherical_average")
+    cargs.append("mris_spherical_average")
     if summary_statistics is not None:
         cargs.extend([
             "-s",

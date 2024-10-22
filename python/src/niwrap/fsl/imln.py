@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMLN_METADATA = Metadata(
-    id="4b4884300dc6ab7d89b870b2a177b605d3067d47.boutiques",
+    id="a4704c5816c7753dcb74f87bd33f7b0717677a74.boutiques",
     name="imln",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -46,7 +46,7 @@ def imln(
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMLN_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/imln")
+    cargs.append("imln")
     cargs.append(execution.input_file(input_file))
     cargs.append(link_name)
     ret = ImlnOutputs(

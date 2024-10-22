@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_PAINT_METADATA = Metadata(
-    id="e947923a83f6efe232d3eced544e999382dc59d9.boutiques",
+    id="94ed5e1e748c4ada386a538bb73117795aa707a7.boutiques",
     name="mri_paint",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -54,7 +54,7 @@ def mri_paint(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_PAINT_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_paint")
+    cargs.append("mri_paint")
     cargs.append(execution.input_file(input_volume))
     cargs.append(execution.input_file(input_surface))
     cargs.append(execution.input_file(registration_file))

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_PATHS_METADATA = Metadata(
-    id="01719516cee96b791dd3af20cfe4bfc912c69233.boutiques",
+    id="74db8fa4455da035e0f2e7fd073f2984b980d7ec.boutiques",
     name="dmri_paths",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -120,7 +120,7 @@ def dmri_paths(
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_PATHS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/dmri_paths")
+    cargs.append("dmri_paths")
     if indir is not None:
         cargs.extend([
             "--indir",

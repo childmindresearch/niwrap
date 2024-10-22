@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_THICKNESS_METADATA = Metadata(
-    id="a94a44b85bf20b151cbe0d0490831ff15a7d0491.boutiques",
+    id="cd2edaf332d32cc9049f177ed45446c657329389.boutiques",
     name="mris_thickness",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -64,7 +64,7 @@ def mris_thickness(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_THICKNESS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_thickness")
+    cargs.append("mris_thickness")
     cargs.append(subject_name)
     cargs.append(hemi)
     cargs.append(thickness_file)

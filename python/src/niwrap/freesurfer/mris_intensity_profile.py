@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_INTENSITY_PROFILE_METADATA = Metadata(
-    id="b6fc8edf5b4f02eed557f8f9fe73b731b6c14f68.boutiques",
+    id="4503435a83a78998ccb884fce0c0c30ed9f78d3b.boutiques",
     name="mris_intensity_profile",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -76,7 +76,7 @@ def mris_intensity_profile(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_INTENSITY_PROFILE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_intensity_profile")
+    cargs.append("mris_intensity_profile")
     cargs.append(subject_name)
     cargs.append(hemi)
     cargs.append(execution.input_file(volume))

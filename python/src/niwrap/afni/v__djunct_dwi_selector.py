@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_DWI_SELECTOR_METADATA = Metadata(
-    id="3ab1f3bb5500d0670396b2a14d983a9190c9a33f.boutiques",
+    id="322cd55e91869cfd3befcc11394010a6d10dddc6.boutiques",
     name="@djunct_dwi_selector",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,7 +48,7 @@ def v__djunct_dwi_selector(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__DJUNCT_DWI_SELECTOR_METADATA)
     cargs = []
-    cargs.append("/opt/afni/src/../install/@djunct_dwi_selector.tcsh")
+    cargs.append("@djunct_dwi_selector.tcsh")
     cargs.append(execution.input_file(dwi))
     cargs.append(execution.input_file(png))
     cargs.append(outfile)

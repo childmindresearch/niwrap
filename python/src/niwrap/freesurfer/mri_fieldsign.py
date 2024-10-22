@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_FIELDSIGN_METADATA = Metadata(
-    id="0d9ee8b174ea6abd501f463716d9b3b549109685.boutiques",
+    id="9bc16b1bb19ca4514e704bfb53dbd978d525d69a.boutiques",
     name="mri_fieldsign",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -88,7 +88,7 @@ def mri_fieldsign(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FIELDSIGN_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_fieldsign")
+    cargs.append("mri_fieldsign")
     cargs.extend([
         "--fs",
         fieldsign_file

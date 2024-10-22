@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SEGHEAD_METADATA = Metadata(
-    id="39507fb5eca6e6f162de4d3d95c11cf5fd4d907c.boutiques",
+    id="fe342266e38393fea67ceeb5e64e55f4e16c393e.boutiques",
     name="mri_seghead",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -74,7 +74,7 @@ def mri_seghead(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SEGHEAD_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_seghead")
+    cargs.append("mri_seghead")
     cargs.extend([
         "--invol",
         input_volume

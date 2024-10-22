@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_TRANSLATE_ANNOTATION_METADATA = Metadata(
-    id="049fec11cdb2920a2cee1cfb96ac2269d02b1dff.boutiques",
+    id="d032fa992bc89b8d397cfa5c1c3735e9bf0447e6.boutiques",
     name="mris_translate_annotation",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,7 +52,7 @@ def mris_translate_annotation(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_TRANSLATE_ANNOTATION_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_translate_annotation")
+    cargs.append("mris_translate_annotation")
     cargs.append(subject)
     cargs.append(hemi)
     cargs.append(execution.input_file(in_annot))

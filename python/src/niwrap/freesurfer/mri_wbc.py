@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_WBC_METADATA = Metadata(
-    id="82553326eade4a14bc4748b5a777701e959a7a2c.boutiques",
+    id="8629fe8a2fe8735dc519dc6ec4aef1b93d27777e.boutiques",
     name="mri_wbc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -74,7 +74,7 @@ def mri_wbc(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_WBC_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_wbc")
+    cargs.append("mri_wbc")
     cargs.extend([
         "--fvol",
         execution.input_file(functional_volume)

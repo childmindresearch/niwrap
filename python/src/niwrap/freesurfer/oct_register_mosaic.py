@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OCT_REGISTER_MOSAIC_METADATA = Metadata(
-    id="dca39ea9fd08910c55c8ce14cceb1ca7fd14a97a.boutiques",
+    id="c8534c8b796c0aaac4b39681cd9d67d492f481e8.boutiques",
     name="oct_register_mosaic",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,7 +52,7 @@ def oct_register_mosaic(
     runner = runner or get_global_runner()
     execution = runner.start_execution(OCT_REGISTER_MOSAIC_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/oct_register_mosaic")
+    cargs.append("oct_register_mosaic")
     cargs.extend(tiles_or_mosaic_list)
     cargs.append(output_volume)
     if downsample is not None:

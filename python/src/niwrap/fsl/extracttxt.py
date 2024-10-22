@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXTRACTTXT_METADATA = Metadata(
-    id="975c3865f15fece65ddd57bfc221355df33ed3f7.boutiques",
+    id="85d99ac7184db7c2bcd8ef8097a8328d840ad3f6.boutiques",
     name="extracttxt",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -51,7 +51,7 @@ def extracttxt(
     runner = runner or get_global_runner()
     execution = runner.start_execution(EXTRACTTXT_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/extracttxt")
+    cargs.append("extracttxt")
     cargs.append(search_word)
     cargs.append(execution.input_file(file))
     if num_trailing_lines is not None:

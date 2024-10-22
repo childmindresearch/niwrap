@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_INIT_GLOBAL_TRACTOGRAPHY_METADATA = Metadata(
-    id="fb88726a2a13f24887bb4d6fd534324cb122cb4a.boutiques",
+    id="67eb4585ff3c986788ed4212a3618bb647f3bf08.boutiques",
     name="mris_init_global_tractography",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -46,7 +46,7 @@ def mris_init_global_tractography(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_INIT_GLOBAL_TRACTOGRAPHY_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_init_global_tractography")
+    cargs.append("mris_init_global_tractography")
     cargs.append(subject)
     cargs.append(parcellation)
     cargs.append(output_volume)

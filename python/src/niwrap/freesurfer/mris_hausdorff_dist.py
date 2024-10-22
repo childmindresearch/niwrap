@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_HAUSDORFF_DIST_METADATA = Metadata(
-    id="1db4f6d6da6e4ba76178154efd908bacc5ffb772.boutiques",
+    id="c8c6f8e737d084817096cd5c6491a8218fa2f1ee.boutiques",
     name="mris_hausdorff_dist",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -51,7 +51,7 @@ def mris_hausdorff_dist(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_HAUSDORFF_DIST_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_hausdorff_dist")
+    cargs.append("mris_hausdorff_dist")
     cargs.append(execution.input_file(surface))
     cargs.append(execution.input_file(label1))
     cargs.append(execution.input_file(label2))

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_DEFACER_METADATA = Metadata(
-    id="3c8d5dc16159896313ad0c7af5bbd306d64085a0.boutiques",
+    id="b7a1aaf9b5947804211cdf0360ab244cd298666a.boutiques",
     name="mri_defacer",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -56,7 +56,7 @@ def mri_defacer(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DEFACER_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_defacer")
+    cargs.append("mri_defacer")
     cargs.append("--i")
     cargs.append(execution.input_file(input_volume))
     cargs.append("--hm")

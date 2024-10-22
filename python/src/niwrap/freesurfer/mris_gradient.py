@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_GRADIENT_METADATA = Metadata(
-    id="8a3963a5286efe9681117c3b59f9af7c79a97b6e.boutiques",
+    id="4e76ee59424b712977309da37bac35a8195a7230.boutiques",
     name="mris_gradient",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -50,7 +50,7 @@ def mris_gradient(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_GRADIENT_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_gradient")
+    cargs.append("mris_gradient")
     cargs.append(execution.input_file(input_surface))
     cargs.append(execution.input_file(input_vector_field))
     cargs.append(output_gradient_file)

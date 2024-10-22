@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_THRESHOLD_METADATA = Metadata(
-    id="909195d89ea0a5790cfe04930d986321a3bd0765.boutiques",
+    id="9dce0b624cb80a7e41c263be353787aa9f13a509.boutiques",
     name="mri_threshold",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -55,7 +55,7 @@ def mri_threshold(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_THRESHOLD_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_threshold")
+    cargs.append("mri_threshold")
     cargs.append(execution.input_file(input_vol))
     cargs.append(str(threshold))
     cargs.append(output_vol)

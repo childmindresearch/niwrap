@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MAKE_BEM_SURFACES_METADATA = Metadata(
-    id="231918d52a55bb48b605f72a0b573c541e6b22de.boutiques",
+    id="991d0fd0e24d64260bc9d9bb27cd91c24fb07fb0.boutiques",
     name="mri_make_bem_surfaces",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,7 @@ def mri_make_bem_surfaces(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MAKE_BEM_SURFACES_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_make_bem_surfaces")
+    cargs.append("mri_make_bem_surfaces")
     cargs.append(name)
     if mfile is not None:
         cargs.append(execution.input_file(mfile))

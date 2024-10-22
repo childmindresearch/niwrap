@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_RELABEL_HYPOINTENSITIES_METADATA = Metadata(
-    id="be546de3f699bdd3a41f7853548bbe26e17a5b42.boutiques",
+    id="fdccbcea8d0b7d6372e7bb2e7e4ef70fd6f7ab26.boutiques",
     name="mri_relabel_hypointensities",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,7 @@ def mri_relabel_hypointensities(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RELABEL_HYPOINTENSITIES_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_relabel_hypointensities")
+    cargs.append("mri_relabel_hypointensities")
     cargs.append(execution.input_file(input_aseg))
     cargs.append(surface_directory)
     cargs.append(output_aseg)

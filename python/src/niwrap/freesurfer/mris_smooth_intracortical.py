@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_SMOOTH_INTRACORTICAL_METADATA = Metadata(
-    id="071e81019bcc2c41758de39c253dfa00854677db.boutiques",
+    id="fa51e46d7070ae7b9edd61c08dae2845a41a7d81.boutiques",
     name="mris_smooth_intracortical",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -71,7 +71,7 @@ def mris_smooth_intracortical(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SMOOTH_INTRACORTICAL_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_smooth_intracortical")
+    cargs.append("mris_smooth_intracortical")
     cargs.append("--surf_dir")
     cargs.extend([
         "--surf_dir",

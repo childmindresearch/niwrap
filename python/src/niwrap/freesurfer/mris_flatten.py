@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_FLATTEN_METADATA = Metadata(
-    id="19220382a071e7607618a1847c724a542d40ab3a.boutiques",
+    id="f431fb9af94bfcc3b43fb9a4f10b98d42f72858f.boutiques",
     name="mris_flatten",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -61,7 +61,7 @@ def mris_flatten(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_FLATTEN_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_flatten")
+    cargs.append("mris_flatten")
     cargs.append(execution.input_file(input_patch))
     cargs.append(output_patch)
     if iterations is not None:

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_XVOLAVG_METADATA = Metadata(
-    id="96792cf19b065d3b8ad853bca27c7e5dbdc70339.boutiques",
+    id="e2b387da93b7e43f34900f7a401a357632dd8603.boutiques",
     name="mri_xvolavg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,7 +52,7 @@ def mri_xvolavg(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_XVOLAVG_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_xvolavg")
+    cargs.append("mri_xvolavg")
     cargs.extend([
         "--vol",
         *[execution.input_file(f) for f in input_volumes]

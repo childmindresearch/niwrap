@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_RF_TRAIN_METADATA = Metadata(
-    id="fae0cc4bfa79774fa814c7793c2ddff5215fa4b4.boutiques",
+    id="6c5095a98c3c20255b1b3bd109f05d8ee64b4328.boutiques",
     name="mri_rf_train",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -57,7 +57,7 @@ def mri_rf_train(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RF_TRAIN_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_rf_train")
+    cargs.append("mri_rf_train")
     cargs.extend([
         "-seg",
         seg_volume

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_CNR_METADATA = Metadata(
-    id="6b61c29143762e906837607ac309bb9bc947817a.boutiques",
+    id="e426f06fe9ac260492b56203731c6940db9a022d.boutiques",
     name="mri_cnr",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -65,7 +65,7 @@ def mri_cnr(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CNR_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_cnr")
+    cargs.append("mri_cnr")
     cargs.append(surf_dir)
     cargs.extend([execution.input_file(f) for f in volume_files])
     if slope is not None:

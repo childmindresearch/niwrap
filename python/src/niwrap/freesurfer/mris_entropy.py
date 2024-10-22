@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_ENTROPY_METADATA = Metadata(
-    id="8fdcf1695c52124c1611443a80362f485922be1c.boutiques",
+    id="96975acc0702b2b912016ada5d7b678c623e094f.boutiques",
     name="mris_entropy",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -55,7 +55,7 @@ def mris_entropy(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ENTROPY_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_entropy")
+    cargs.append("mris_entropy")
     cargs.append(subject)
     cargs.append(hemi)
     cargs.append(execution.input_file(wfile))

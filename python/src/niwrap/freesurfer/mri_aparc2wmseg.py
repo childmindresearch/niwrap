@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_APARC2WMSEG_METADATA = Metadata(
-    id="c2e9c2849e05b5f380308de9898034c3b156e9af.boutiques",
+    id="d0b9cbf37ca99bbbaf0ec7b14030af5a35970525.boutiques",
     name="mri_aparc2wmseg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -49,7 +49,7 @@ def mri_aparc2wmseg(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_APARC2WMSEG_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_aparc2wmseg")
+    cargs.append("mri_aparc2wmseg")
     cargs.append("--s")
     cargs.extend([
         "--s",

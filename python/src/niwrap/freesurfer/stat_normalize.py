@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 STAT_NORMALIZE_METADATA = Metadata(
-    id="66174f99afa3005341aa4118c67f0e947b828db8.boutiques",
+    id="8f7cdbd11149e9374f79034222936da63d116040.boutiques",
     name="stat_normalize",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -59,7 +59,7 @@ def stat_normalize(
     runner = runner or get_global_runner()
     execution = runner.start_execution(STAT_NORMALIZE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/stat_normalize")
+    cargs.append("stat_normalize")
     cargs.append(input_sv_prefix)
     cargs.append(output_sv_prefix)
     if resolution is not None:

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_SEGMENT_SUBFIELDS_T1_LONGITUDINAL_SH_METADATA = Metadata(
-    id="0a2bd8248200c3668da2fa1c56124a160ce7159d.boutiques",
+    id="ee354f3c8bf703b37a87ce46efa290b9f59f1c0d.boutiques",
     name="run_SegmentSubfieldsT1Longitudinal.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -46,7 +46,7 @@ def run_segment_subfields_t1_longitudinal_sh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SEGMENT_SUBFIELDS_T1_LONGITUDINAL_SH_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/run_SegmentSubfieldsT1Longitudinal.sh")
+    cargs.append("run_SegmentSubfieldsT1Longitudinal.sh")
     cargs.append(deployed_mcr_root)
     if additional_args is not None:
         cargs.append(additional_args)

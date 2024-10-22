@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_DISTANCE_MAP_METADATA = Metadata(
-    id="1fc3d4c162e6a0cac37ae1a7c1d197cb01178010.boutiques",
+    id="3d8e889c4b656344736f94614b767e1d77d78242.boutiques",
     name="mris_distance_map",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -47,7 +47,7 @@ def mris_distance_map(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_DISTANCE_MAP_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_distance_map")
+    cargs.append("mris_distance_map")
     cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(input_surface_file))
     cargs.append(output_scalar_field)

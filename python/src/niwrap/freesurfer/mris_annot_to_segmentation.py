@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_ANNOT_TO_SEGMENTATION_METADATA = Metadata(
-    id="d7334016aa8382e5199a453b16d67ebbb12c1f76.boutiques",
+    id="a6fe77811c128028277a69a99f1e7f945cb0ac57.boutiques",
     name="mris_annot_to_segmentation",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -54,7 +54,7 @@ def mris_annot_to_segmentation(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ANNOT_TO_SEGMENTATION_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_annot_to_segmentation")
+    cargs.append("mris_annot_to_segmentation")
     cargs.append(subject_name)
     cargs.append(hemi)
     cargs.append(surface)

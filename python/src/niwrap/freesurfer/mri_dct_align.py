@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_DCT_ALIGN_METADATA = Metadata(
-    id="0f79f9582f99d0b199e955a29e0302469fae165e.boutiques",
+    id="b7dec03c65e4f45076247b5423830965c663feaa.boutiques",
     name="mri_dct_align",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,7 @@ def mri_dct_align(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DCT_ALIGN_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_dct_align")
+    cargs.append("mri_dct_align")
     cargs.append(execution.input_file(source))
     cargs.append(execution.input_file(destination))
     cargs.append(output_xform)

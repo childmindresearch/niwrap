@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PREDICT_V1_SH_METADATA = Metadata(
-    id="7d4fe3ab5edd5b6b222e9d346051a814f591318d.boutiques",
+    id="266b3d482e8fcc018a3a49ac732646a4e248144e.boutiques",
     name="predict_v1.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -51,7 +51,7 @@ def predict_v1_sh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(PREDICT_V1_SH_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/predict_v1.sh")
+    cargs.append("predict_v1.sh")
     if template is not None:
         cargs.extend([
             "-t",

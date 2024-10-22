@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_ANATOMI_CUTS_METADATA = Metadata(
-    id="bd5ea8417db77e4ddbeb6fb4a332f7bfbfcd3752.boutiques",
+    id="dbe848e2f3320cf638cebef16bcbb3621a9b6ce0.boutiques",
     name="dmri_AnatomiCuts",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -57,7 +57,7 @@ def dmri_anatomi_cuts(
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_ANATOMI_CUTS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/dmri_AnatomiCuts")
+    cargs.append("dmri_AnatomiCuts")
     cargs.append("-s")
     cargs.extend([
         "-s",

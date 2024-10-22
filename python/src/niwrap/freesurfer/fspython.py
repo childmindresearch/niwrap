@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSPYTHON_METADATA = Metadata(
-    id="dfe661e4b95df49bda1a5aa1bf490874896a0fea.boutiques",
+    id="23096e3277bf49054379bbe89af988e4bc7089d3.boutiques",
     name="fspython",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -42,7 +42,7 @@ def fspython(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSPYTHON_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/python/bin/python3")
+    cargs.append("python3")
     cargs.append("[OPTION]")
     if args is not None:
         cargs.extend(args)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL2PATCH_METADATA = Metadata(
-    id="4be15af9e7384c4c574e474c26c1566847f3a1ea.boutiques",
+    id="8601a1e893cb65aeeb33fb8c7d1708008a1a6062.boutiques",
     name="label2patch",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -62,7 +62,7 @@ def label2patch(
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABEL2PATCH_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/label2patch")
+    cargs.append("label2patch")
     cargs.append(subject_name)
     cargs.append(hemisphere)
     cargs.append(execution.input_file(label_file))

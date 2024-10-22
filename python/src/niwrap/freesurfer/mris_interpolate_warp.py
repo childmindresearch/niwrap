@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_INTERPOLATE_WARP_METADATA = Metadata(
-    id="21fc308bbdd634362cf90e9334791c12bca8d886.boutiques",
+    id="4c3b574c8d475695ef29da0c89214dc574282c1e.boutiques",
     name="mris_interpolate_warp",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -46,7 +46,7 @@ def mris_interpolate_warp(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_INTERPOLATE_WARP_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_interpolate_warp")
+    cargs.append("mris_interpolate_warp")
     cargs.append(execution.input_file(start_surface))
     cargs.append(execution.input_file(end_surface))
     cargs.append(execution.input_file(warp_field))

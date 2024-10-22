@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_WATERSHED_METADATA = Metadata(
-    id="9a83ea93f5a076342b24e15d530ba987b9017a6b.boutiques",
+    id="9a2bd956b5f350b8c0603b62d7b760dba26dc82d.boutiques",
     name="mris_watershed",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -54,7 +54,7 @@ def mris_watershed(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_WATERSHED_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_watershed")
+    cargs.append("mris_watershed")
     cargs.append(execution.input_file(input_surface))
     cargs.append(execution.input_file(input_gradient_field))
     cargs.append(output_annotation)

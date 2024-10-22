@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_WM_VOLUME_METADATA = Metadata(
-    id="8675ce17066c37c10966de0b53fc7ff35c131832.boutiques",
+    id="cd8ee3956fb942c0515e51ca9fb8bf312d197274.boutiques",
     name="mris_wm_volume",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -53,7 +53,7 @@ def mris_wm_volume(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_WM_VOLUME_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_wm_volume")
+    cargs.append("mris_wm_volume")
     cargs.append(subject)
     cargs.append(hemi)
     if subjects_dir is not None:

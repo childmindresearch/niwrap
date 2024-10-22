@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_SPLINE_METADATA = Metadata(
-    id="147cf2fa25cf664351d7ee8b7800a23afd573987.boutiques",
+    id="af3dc29fc0f60175d085662514f5caef235f333d.boutiques",
     name="dmri_spline",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -69,7 +69,7 @@ def dmri_spline(
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_SPLINE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/dmri_spline")
+    cargs.append("dmri_spline")
     cargs.append("--cpts")
     cargs.extend([
         "--cpts",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_ROTATE_METADATA = Metadata(
-    id="02658ca2645da8aa6c6f56838c7a76485c5913c6.boutiques",
+    id="426e3c6a4d9db019355c54683b71e81146bc1e52.boutiques",
     name="mris_rotate",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -57,7 +57,7 @@ def mris_rotate(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_ROTATE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_rotate")
+    cargs.append("mris_rotate")
     cargs.append(execution.input_file(input_surface))
     cargs.append(str(alpha_deg))
     cargs.append(str(beta_deg))

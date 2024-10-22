@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_NUDGE_METADATA = Metadata(
-    id="b7c7d9a6037e2b0a7c31ab93a7610acefbbc0613.boutiques",
+    id="6f298ed7d045a2ce709015d0cecce0980607d9d6.boutiques",
     name="mris_nudge",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,7 +52,7 @@ def mris_nudge(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_NUDGE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_nudge")
+    cargs.append("mris_nudge")
     cargs.append(execution.input_file(input_surface))
     cargs.append(execution.input_file(input_volume))
     cargs.append(str(vertex))

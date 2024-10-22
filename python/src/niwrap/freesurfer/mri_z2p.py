@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_Z2P_METADATA = Metadata(
-    id="10c94c64f2f337faf567a19d1bc9be19d2d1d255.boutiques",
+    id="7c2f7d7748d3ceeea4ce6843fc98d676b0a2bf95.boutiques",
     name="mri_z2p",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -69,7 +69,7 @@ def mri_z2p(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_Z2P_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_z2p")
+    cargs.append("mri_z2p")
     cargs.extend([
         "--z",
         execution.input_file(z_volume)

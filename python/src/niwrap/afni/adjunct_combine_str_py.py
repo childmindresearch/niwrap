@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_COMBINE_STR_PY_METADATA = Metadata(
-    id="092009815bc3192163a1f0e35bd36dffeea8d4f3.boutiques",
+    id="a45fe06c2fd58fe9e7783f5a93c6f6403e1fcec4.boutiques",
     name="adjunct_combine_str.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,7 +51,7 @@ def adjunct_combine_str_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_COMBINE_STR_PY_METADATA)
     cargs = []
-    cargs.append("/opt/afni/src/../install/adjunct_combine_str.py")
+    cargs.append("adjunct_combine_str.py")
     cargs.append(output_file)
     cargs.append(str(upper_index))
     cargs.extend(string_selectors)

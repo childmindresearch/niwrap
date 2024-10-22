@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_VOLCLUSTER_METADATA = Metadata(
-    id="0c938964bc3e0657a9cbcc38cec91cc851bc39e8.boutiques",
+    id="5e770e63f43f8b5f3bb2cef7aae10f248937d902.boutiques",
     name="mri_volcluster",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -145,7 +145,7 @@ def mri_volcluster(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_VOLCLUSTER_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_volcluster")
+    cargs.append("mri_volcluster")
     cargs.extend([
         "--in",
         execution.input_file(input_file)

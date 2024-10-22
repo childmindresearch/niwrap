@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BIANCA_OVERLAP_MEASURES_METADATA = Metadata(
-    id="b0fafebeb7e00e0998cbe17fc3f4cad011993c9f.boutiques",
+    id="313a4e82f2a26e442b04a690bd7c48b1522071a4.boutiques",
     name="bianca_overlap_measures",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -62,7 +62,7 @@ def bianca_overlap_measures(
     runner = runner or get_global_runner()
     execution = runner.start_execution(BIANCA_OVERLAP_MEASURES_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/bianca_overlap_measures")
+    cargs.append("bianca_overlap_measures")
     cargs.append(execution.input_file(lesion_mask))
     cargs.append(execution.input_file(manual_mask))
     cargs.append(output_dir)

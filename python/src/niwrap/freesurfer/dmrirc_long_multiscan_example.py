@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRIRC_LONG_MULTISCAN_EXAMPLE_METADATA = Metadata(
-    id="c4aeac99e90ccef569c461ba98891765fe011977.boutiques",
+    id="27e8e8126ade948919f10de74a69b6d6ae7bde56.boutiques",
     name="dmrirc.long.multiscan.example",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -49,7 +49,7 @@ def dmrirc_long_multiscan_example(
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRIRC_LONG_MULTISCAN_EXAMPLE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/dmrirc.long.multiscan.example")
+    cargs.append("dmrirc.long.multiscan.example")
     cargs.extend(subject_list)
     if other_options is not None:
         cargs.append(other_options)

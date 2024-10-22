@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 HIAM_REGISTER_METADATA = Metadata(
-    id="7e50600fe760d54b3014eb2c20405257028752ba.boutiques",
+    id="44d0a11f2a96d3babdb3cdeabdf7fd3e2408cf2f.boutiques",
     name="hiam_register",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -49,7 +49,7 @@ def hiam_register(
     runner = runner or get_global_runner()
     execution = runner.start_execution(HIAM_REGISTER_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/hiam_register")
+    cargs.append("hiam_register")
     cargs.append(execution.input_file(input_surface))
     cargs.append(execution.input_file(average_surface))
     cargs.append(output_surface)

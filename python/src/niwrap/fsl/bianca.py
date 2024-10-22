@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BIANCA_METADATA = Metadata(
-    id="329ee204e12e1b349c3aa34003ca87add077aa35.boutiques",
+    id="1307037e13218079aa3db3ba4d81ea6069d08b24.boutiques",
     name="bianca",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -83,7 +83,7 @@ def bianca(
     runner = runner or get_global_runner()
     execution = runner.start_execution(BIANCA_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/bianca")
+    cargs.append("bianca")
     cargs.append("--singlefile=" + execution.input_file(master_file))
     cargs.append("--labelfeaturenum=" + str(label_feature_num))
     cargs.append("--brainmaskfeaturenum=" + str(brain_mask_feature_num))

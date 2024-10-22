@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 HISTO_COMPUTE_JOINT_DENSITY_METADATA = Metadata(
-    id="acc5cd34ec68334e9d431b77d2325105ce26ce6f.boutiques",
+    id="f724dcdabbfe196e5a6d9bc856c3b1b0e765be9b.boutiques",
     name="histo_compute_joint_density",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,7 @@ def histo_compute_joint_density(
     runner = runner or get_global_runner()
     execution = runner.start_execution(HISTO_COMPUTE_JOINT_DENSITY_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/histo_compute_joint_density")
+    cargs.append("histo_compute_joint_density")
     cargs.append(execution.input_file(volume1))
     cargs.append(execution.input_file(volume2))
     cargs.append(joint_density_file)

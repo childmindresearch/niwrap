@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QUANTIFY_HASUBREGIONS_SH_METADATA = Metadata(
-    id="f13142174113b626afcd17c7d932b4aef8a28755.boutiques",
+    id="8a7d22d89bc26dd7cd779b97c6dca84d73c2672d.boutiques",
     name="quantifyHAsubregions.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -51,7 +51,7 @@ def quantify_hasubregions_sh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUANTIFY_HASUBREGIONS_SH_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/quantifyHAsubregions.sh")
+    cargs.append("quantifyHAsubregions.sh")
     cargs.append(prefix)
     cargs.append(suffix)
     cargs.append(output_file)

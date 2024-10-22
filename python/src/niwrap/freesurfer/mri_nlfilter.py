@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_NLFILTER_METADATA = Metadata(
-    id="1fb7ea203c2b42b337341d3e502bbb4e1a30373f.boutiques",
+    id="d3dfceb1a6cbacd0800d717bc9c25ad25148c0de.boutiques",
     name="mri_nlfilter",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -71,7 +71,7 @@ def mri_nlfilter(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_NLFILTER_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_nlfilter")
+    cargs.append("mri_nlfilter")
     cargs.append(execution.input_file(input_image))
     cargs.append(output_image)
     if blur_sigma is not None:

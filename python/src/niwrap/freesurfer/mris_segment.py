@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_SEGMENT_METADATA = Metadata(
-    id="2c7ebb8c1a0e016453acdedc6f5a7644fffe7ed1.boutiques",
+    id="874f399dc8d69d96d209aceed20b75e4de0707c9.boutiques",
     name="mris_segment",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,7 @@ def mris_segment(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SEGMENT_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_segment")
+    cargs.append("mris_segment")
     cargs.extend(subjects)
     cargs.append(output_subject)
     cargs.append(output_file)

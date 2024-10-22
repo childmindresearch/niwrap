@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QUANTIFY_THALAMIC_NUCLEI_SH_METADATA = Metadata(
-    id="80cf4f7356337d8b138722e57a9f44dad33e5fef.boutiques",
+    id="aaf013aeff2159b03ba2d771e4eb0280b2ab0744.boutiques",
     name="quantifyThalamicNuclei.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,7 @@ def quantify_thalamic_nuclei_sh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUANTIFY_THALAMIC_NUCLEI_SH_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/quantifyThalamicNuclei.sh")
+    cargs.append("quantifyThalamicNuclei.sh")
     cargs.append(output_file)
     cargs.append(analysis_id)
     if subjects_directory is not None:

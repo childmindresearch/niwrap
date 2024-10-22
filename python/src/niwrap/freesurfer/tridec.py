@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRIDEC_METADATA = Metadata(
-    id="f98a4752e4e129c36f1b09284180865e81a574d8.boutiques",
+    id="8f7bd0a6993abb2339230891eb8c52ffadaa9441.boutiques",
     name="tridec",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -50,7 +50,7 @@ def tridec(
     runner = runner or get_global_runner()
     execution = runner.start_execution(TRIDEC_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/tridec")
+    cargs.append("tridec")
     cargs.append(subject_name)
     cargs.append(execution.input_file(fine_file))
     cargs.append(execution.input_file(ico_file))

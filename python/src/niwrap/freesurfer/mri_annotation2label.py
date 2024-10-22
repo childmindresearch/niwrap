@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_ANNOTATION2LABEL_METADATA = Metadata(
-    id="d624c991d0542dcb51f0f7cbe860fec787ff55bf.boutiques",
+    id="90b6d8bcd55a8d08f2bccdf11454197b855e2864.boutiques",
     name="mri_annotation2label",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -81,7 +81,7 @@ def mri_annotation2label(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_ANNOTATION2LABEL_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_annotation2label")
+    cargs.append("mri_annotation2label")
     cargs.extend([
         "--subject",
         subject

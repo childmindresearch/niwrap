@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_RF_LABEL_METADATA = Metadata(
-    id="a73f43fe45c858ec90d429f72f24dc23c28cfdb9.boutiques",
+    id="7f1e3e28634018fe4c2b21e53465fa3c07f2cb04.boutiques",
     name="mris_rf_label",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -50,7 +50,7 @@ def mris_rf_label(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_RF_LABEL_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_rf_label")
+    cargs.append("mris_rf_label")
     cargs.append(subject)
     cargs.append(rf_classifier)
     cargs.append(output_name)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_AVERAGE_METADATA = Metadata(
-    id="21fbbe4e3b576b4e4aad0f4d41cf0669afd99c03.boutiques",
+    id="3b815cdee593ef1228d75db79a3212915649d7ec.boutiques",
     name="mri_average",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -85,7 +85,7 @@ def mri_average(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_AVERAGE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_average")
+    cargs.append("mri_average")
     cargs.extend([execution.input_file(f) for f in input_volumes])
     cargs.append(output_volume)
     if rigid_alignment:

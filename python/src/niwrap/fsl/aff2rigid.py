@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFF2RIGID_METADATA = Metadata(
-    id="487d7bb2a880d88a0bff71f30ee3afe417fb2b9b.boutiques",
+    id="84088cc9ad46455087738bbb38853c7f02c1de28.boutiques",
     name="aff2rigid",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -46,7 +46,7 @@ def aff2rigid(
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFF2RIGID_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/aff2rigid")
+    cargs.append("aff2rigid")
     cargs.append(execution.input_file(input_transform))
     cargs.append(output_transform)
     ret = Aff2rigidOutputs(

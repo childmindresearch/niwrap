@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_EXVIVO_SURFACES_METADATA = Metadata(
-    id="1e883fe5ca90fd01f77d8f06cc3f474ea3ac1f0c.boutiques",
+    id="6ee358b0bc9b61642ed7fb396bccdc7e00f0143d.boutiques",
     name="mris_exvivo_surfaces",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -69,7 +69,7 @@ def mris_exvivo_surfaces(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_EXVIVO_SURFACES_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_exvivo_surfaces")
+    cargs.append("mris_exvivo_surfaces")
     cargs.append(subject_name)
     cargs.append(hemisphere)
     if omit_self_intersection:

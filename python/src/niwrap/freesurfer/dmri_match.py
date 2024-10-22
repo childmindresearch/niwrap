@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_MATCH_METADATA = Metadata(
-    id="6d72e88766a7ad23cda20f64b42a1bace26d18b6.boutiques",
+    id="f1a5fe1edf2082de0817d00373a356ec2b8bb8e5.boutiques",
     name="dmri_match",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -66,7 +66,7 @@ def dmri_match(
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_MATCH_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/dmri_match")
+    cargs.append("dmri_match")
     cargs.append("-s1")
     cargs.extend([
         "-s1",

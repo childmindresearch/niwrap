@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_OR_METADATA = Metadata(
-    id="b902c3cf90e637660295e0f6776ee5673b6951dd.boutiques",
+    id="5d53c822e756c9144e7731f0546b21597a710f82.boutiques",
     name="mri_or",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -43,7 +43,7 @@ def mri_or(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_OR_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_or")
+    cargs.append("mri_or")
     cargs.append("[OPTIONS]")
     cargs.extend([execution.input_file(f) for f in input_files])
     ret = MriOrOutputs(

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_SELECT_STR_PY_METADATA = Metadata(
-    id="f2bb90308c31e2b8fa45573c0f2201da8c5ca476.boutiques",
+    id="51bd0c93e4c33858ebe75938263e1d88647851a7.boutiques",
     name="adjunct_select_str.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,7 +46,7 @@ def adjunct_select_str_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_SELECT_STR_PY_METADATA)
     cargs = []
-    cargs.append("/opt/afni/src/../install/adjunct_select_str.py")
+    cargs.append("adjunct_select_str.py")
     cargs.append(execution.input_file(input_file))
     cargs.append(str(num_bricks))
     cargs.append(output_file)

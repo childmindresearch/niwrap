@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_FILL_METADATA = Metadata(
-    id="cbe935ae24b602437472400ce298dc3aeea3c8dc.boutiques",
+    id="82f74f8c28db73acf4065c72f1ee4ae910a7e04c.boutiques",
     name="mris_fill",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,7 +52,7 @@ def mris_fill(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_FILL_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_fill")
+    cargs.append("mris_fill")
     if resolution is not None:
         cargs.extend([
             "-r",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_COMPUTE_VOLUME_FRACTIONS_METADATA = Metadata(
-    id="06095972b970322ee7d7a1f736890f5ec788b034.boutiques",
+    id="429b91941a940c380af6a8d1e254ef56f8ea7183.boutiques",
     name="mri_compute_volume_fractions",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -107,7 +107,7 @@ def mri_compute_volume_fractions(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_COMPUTE_VOLUME_FRACTIONS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_compute_volume_fractions")
+    cargs.append("mri_compute_volume_fractions")
     cargs.extend([
         "--o",
         output_stem

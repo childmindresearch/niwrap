@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_FIT_BIAS_METADATA = Metadata(
-    id="4af7e5a47f306a42679f9f1c9e7fc5791ba335cd.boutiques",
+    id="cf8d10003f869e3e7ca124a53deaebc1f5c089d0.boutiques",
     name="mri_fit_bias",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -70,7 +70,7 @@ def mri_fit_bias(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_FIT_BIAS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_fit_bias")
+    cargs.append("mri_fit_bias")
     cargs.append("--i")
     cargs.extend([
         "--i",

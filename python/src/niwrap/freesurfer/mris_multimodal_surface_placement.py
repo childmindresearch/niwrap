@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_MULTIMODAL_SURFACE_PLACEMENT_METADATA = Metadata(
-    id="850dfe9200c90f9f3580f93b0c691569e28d7d29.boutiques",
+    id="0cfb3e00bbd6f85769e241237d86c23951a65897.boutiques",
     name="mris_multimodal_surface_placement",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -72,7 +72,7 @@ def mris_multimodal_surface_placement(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MULTIMODAL_SURFACE_PLACEMENT_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_multimodal_surface_placement")
+    cargs.append("mris_multimodal_surface_placement")
     cargs.extend([
         "-i",
         execution.input_file(input_surface)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_REFINE_SURFACES_METADATA = Metadata(
-    id="64424db80544dadde4b54a013c16524ecbca8c95.boutiques",
+    id="d856cd4b870c57d17ceed96acbb2956b306b4ee9.boutiques",
     name="mris_refine_surfaces",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -61,7 +61,7 @@ def mris_refine_surfaces(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REFINE_SURFACES_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_refine_surfaces")
+    cargs.append("mris_refine_surfaces")
     cargs.append(subject_name)
     cargs.append(hemi)
     cargs.append(hires_volume)

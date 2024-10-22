@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_AVERAGE_CURVATURE_METADATA = Metadata(
-    id="f64fc2f72c5fd1eb09a344a1936632ce80728770.boutiques",
+    id="e0e2f0072de1c47b7c82a45931a68142836e7e75.boutiques",
     name="mris_average_curvature",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -58,7 +58,7 @@ def mris_average_curvature(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_AVERAGE_CURVATURE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_average_curvature")
+    cargs.append("mris_average_curvature")
     cargs.append(execution.input_file(input_curvature_file))
     cargs.append(hemi)
     cargs.append(surface)

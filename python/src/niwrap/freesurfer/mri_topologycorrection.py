@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_TOPOLOGYCORRECTION_METADATA = Metadata(
-    id="060a0f05fa15b417d814a2ee78c2e331a66f7f53.boutiques",
+    id="dcdd9e01fdcc4804e6a57923dcfc3e74d22d3518.boutiques",
     name="mri_topologycorrection",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,7 @@ def mri_topologycorrection(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_TOPOLOGYCORRECTION_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_topologycorrection")
+    cargs.append("mri_topologycorrection")
     if options is not None:
         cargs.extend(options)
     cargs.append(execution.input_file(input_orig_file))

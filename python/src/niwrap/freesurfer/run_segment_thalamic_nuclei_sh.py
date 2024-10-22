@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_SEGMENT_THALAMIC_NUCLEI_SH_METADATA = Metadata(
-    id="236516407ceaf7c0034dd20a1eae44c1a0c91478.boutiques",
+    id="a47e394ab20e3256a8c14213b58e4244be08780c.boutiques",
     name="run_SegmentThalamicNuclei.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -45,7 +45,7 @@ def run_segment_thalamic_nuclei_sh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SEGMENT_THALAMIC_NUCLEI_SH_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/run_SegmentThalamicNuclei.sh")
+    cargs.append("run_SegmentThalamicNuclei.sh")
     cargs.append(mcr_root)
     if args is not None:
         cargs.extend(args)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PAIRREG_METADATA = Metadata(
-    id="2868fdb6d6d68f437a2b53a92efc49e1d97ccd35.boutiques",
+    id="83d31bfa1313a4147fd8ae200f20bd0adc33ba17.boutiques",
     name="pairreg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -54,7 +54,7 @@ def pairreg(
     runner = runner or get_global_runner()
     execution = runner.start_execution(PAIRREG_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/pairreg")
+    cargs.append("pairreg")
     cargs.append(execution.input_file(brain1))
     cargs.append(execution.input_file(brain2))
     cargs.append(execution.input_file(skull1))

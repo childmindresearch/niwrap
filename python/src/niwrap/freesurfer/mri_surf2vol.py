@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SURF2VOL_METADATA = Metadata(
-    id="2ba5f1064cee1731baf3ff783d19cd7904a478ab.boutiques",
+    id="b536f4224339f33b063ca9bc15eb59e4bb464334.boutiques",
     name="mri_surf2vol",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -103,7 +103,7 @@ def mri_surf2vol(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_SURF2VOL_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_surf2vol")
+    cargs.append("mri_surf2vol")
     if surface_overlay is not None:
         cargs.extend([
             "--so",

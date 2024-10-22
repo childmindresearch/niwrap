@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_POLV_METADATA = Metadata(
-    id="5fdbff6b6d2996099987a7242c346945f45c3271.boutiques",
+    id="5b2e1dfad71b72d62e5550dacd56c30b855b9f8b.boutiques",
     name="mri_polv",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -44,7 +44,7 @@ def mri_polv(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_POLV_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_polv")
+    cargs.append("mri_polv")
     if window_size is not None:
         cargs.extend([
             "-w",

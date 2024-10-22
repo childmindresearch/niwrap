@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_PLOT_METADATA = Metadata(
-    id="835b2be5867d0c6f836c5a7e863478bb41e44193.boutiques",
+    id="9b9b94d94d852f66553f8d7b6f2b65ef395dd9af.boutiques",
     name="possum_plot",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -47,7 +47,7 @@ def possum_plot(
     runner = runner or get_global_runner()
     execution = runner.start_execution(POSSUM_PLOT_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/possum_plot.py")
+    cargs.append("possum_plot.py")
     cargs.append(execution.input_file(input_file))
     cargs.append(output_basename)
     ret = PossumPlotOutputs(

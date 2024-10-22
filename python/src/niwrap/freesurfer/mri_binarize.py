@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_BINARIZE_METADATA = Metadata(
-    id="97e37d2eb690a5a8992a2d101f133c67b3abb7c2.boutiques",
+    id="73ca95dcb18523d9a884fbe42a2266cf48e4a834.boutiques",
     name="mri_binarize",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -115,7 +115,7 @@ def mri_binarize(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_BINARIZE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_binarize")
+    cargs.append("mri_binarize")
     cargs.extend([
         "--i",
         execution.input_file(input_volume)

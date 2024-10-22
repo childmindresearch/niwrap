@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_DIFF_METADATA = Metadata(
-    id="7af6221ce1f32e851c0a61a25905ed0002e319bd.boutiques",
+    id="aa978202a93d5b4da2d9f4887f29c1fd37c27007.boutiques",
     name="mri_diff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -116,7 +116,7 @@ def mri_diff(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_DIFF_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_diff")
+    cargs.append("mri_diff")
     cargs.append(execution.input_file(vol1file))
     cargs.append(execution.input_file(vol2file))
     if resolution_check:

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_RELABEL_NONWM_HYPOS_METADATA = Metadata(
-    id="714403d5c2988e328237d577a6ad220f4dfe9301.boutiques",
+    id="f4d3c2e26fe40380f1d54108e2c51f3bf49837c2.boutiques",
     name="mri_relabel_nonwm_hypos",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -56,7 +56,7 @@ def mri_relabel_nonwm_hypos(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_RELABEL_NONWM_HYPOS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_relabel_nonwm_hypos")
+    cargs.append("mri_relabel_nonwm_hypos")
     cargs.append("--i")
     cargs.append(execution.input_file(inputseg))
     cargs.append("--o")

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_SIMULATE_ATROPHY_METADATA = Metadata(
-    id="18cf15fa3c6866876336538786633213214e404e.boutiques",
+    id="9e01b9ada9b0b4569fbd5e16610a336ed0c78036.boutiques",
     name="mris_simulate_atrophy",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -56,7 +56,7 @@ def mris_simulate_atrophy(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_SIMULATE_ATROPHY_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_simulate_atrophy")
+    cargs.append("mris_simulate_atrophy")
     cargs.append(subject)
     cargs.append(hemi)
     cargs.append(label)

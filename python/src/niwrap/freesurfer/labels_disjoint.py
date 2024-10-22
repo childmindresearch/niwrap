@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABELS_DISJOINT_METADATA = Metadata(
-    id="11fec6ec5247ddc07c6f081b573e8949ae1b1402.boutiques",
+    id="0053bad0da3df3d89f08c41248c8b88f9f33fb32.boutiques",
     name="labels_disjoint",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -51,7 +51,7 @@ def labels_disjoint(
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELS_DISJOINT_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/labels_disjoint")
+    cargs.append("labels_disjoint")
     cargs.append(execution.input_file(label1))
     cargs.append(execution.input_file(label2))
     cargs.append(outputname)

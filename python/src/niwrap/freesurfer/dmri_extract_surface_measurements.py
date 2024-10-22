@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_EXTRACT_SURFACE_MEASUREMENTS_METADATA = Metadata(
-    id="7726d1af898b3b11f7109b24e92d20267020c5e4.boutiques",
+    id="5c3e47585ef0378e96fbd04709e50c8b784ef061.boutiques",
     name="dmri_extractSurfaceMeasurements",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -68,7 +68,7 @@ def dmri_extract_surface_measurements(
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_EXTRACT_SURFACE_MEASUREMENTS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/dmri_extractSurfaceMeasurements")
+    cargs.append("dmri_extractSurfaceMeasurements")
     cargs.append("-i")
     cargs.extend([
         "-i",

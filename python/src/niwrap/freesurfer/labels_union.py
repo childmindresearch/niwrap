@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABELS_UNION_METADATA = Metadata(
-    id="fb699b034b6e4528bd47fce3f6de069cc987b8c7.boutiques",
+    id="d5aa9c97375874b3bcbc62e4722154356911d0ad.boutiques",
     name="labels_union",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -49,7 +49,7 @@ def labels_union(
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELS_UNION_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/labels_union")
+    cargs.append("labels_union")
     cargs.append(execution.input_file(label1))
     cargs.append(execution.input_file(label2))
     cargs.append(outputname)

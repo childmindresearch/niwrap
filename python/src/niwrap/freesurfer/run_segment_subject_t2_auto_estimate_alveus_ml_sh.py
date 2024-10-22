@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_SEGMENT_SUBJECT_T2_AUTO_ESTIMATE_ALVEUS_ML_SH_METADATA = Metadata(
-    id="00879fe1dbd2da4955ce618164a708f746627849.boutiques",
+    id="2a8c1490dc550d5a8ebdcd5a722be9a6d0cb534c.boutiques",
     name="run_segmentSubjectT2_autoEstimateAlveusML.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,7 @@ def run_segment_subject_t2_auto_estimate_alveus_ml_sh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(RUN_SEGMENT_SUBJECT_T2_AUTO_ESTIMATE_ALVEUS_ML_SH_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/run_segmentSubjectT2_autoEstimateAlveusML.sh")
+    cargs.append("run_segmentSubjectT2_autoEstimateAlveusML.sh")
     cargs.append(deployed_mcr_root)
     if arguments is not None:
         cargs.extend(arguments)

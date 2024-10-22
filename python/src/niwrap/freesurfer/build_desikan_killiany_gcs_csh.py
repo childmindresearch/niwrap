@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BUILD_DESIKAN_KILLIANY_GCS_CSH_METADATA = Metadata(
-    id="c4d336371f2a3b6c133ae5393f4150eed28f5458.boutiques",
+    id="533d45cdbfae4bc58aadf050a7461db1dc6a6914.boutiques",
     name="build_desikan_killiany_gcs.csh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -43,7 +43,7 @@ def build_desikan_killiany_gcs_csh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(BUILD_DESIKAN_KILLIANY_GCS_CSH_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/build_desikan_killiany_gcs.csh")
+    cargs.append("build_desikan_killiany_gcs.csh")
     cargs.append(hemi)
     ret = BuildDesikanKillianyGcsCshOutputs(
         root=execution.output_file("."),

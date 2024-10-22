@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TKREGISTER2_CMDL_METADATA = Metadata(
-    id="fc4f92e6893bc6065deea81a7c1e60eb7faa5bbe.boutiques",
+    id="a084019981b8c19c88bf65a10695c9febf690ada.boutiques",
     name="tkregister2_cmdl",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -166,7 +166,7 @@ def tkregister2_cmdl(
     runner = runner or get_global_runner()
     execution = runner.start_execution(TKREGISTER2_CMDL_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/tkregister2_cmdl")
+    cargs.append("tkregister2_cmdl")
     cargs.extend([
         "--mov",
         execution.input_file(movable_volume)

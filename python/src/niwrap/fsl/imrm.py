@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMRM_METADATA = Metadata(
-    id="37a7550b283bc0e07beaca683f980f0347ac052a.boutiques",
+    id="7ed774d99122252fe21b20d64ad7b792a6821791.boutiques",
     name="imrm",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -43,7 +43,7 @@ def imrm(
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMRM_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/imrm")
+    cargs.append("imrm")
     cargs.extend(images_to_remove)
     ret = ImrmOutputs(
         root=execution.output_file("."),

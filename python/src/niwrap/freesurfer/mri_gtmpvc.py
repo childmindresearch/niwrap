@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_GTMPVC_METADATA = Metadata(
-    id="a73b27a2fad91c32c7ef79ec378db70d9877bccf.boutiques",
+    id="17d1e033ff27fd98e5b881ace96a388e011247c8.boutiques",
     name="mri_gtmpvc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -194,7 +194,7 @@ def mri_gtmpvc(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_GTMPVC_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_gtmpvc")
+    cargs.append("mri_gtmpvc")
     cargs.extend([
         "--i",
         execution.input_file(input_volume)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABELS_INTERSECT_METADATA = Metadata(
-    id="178b5231cddc65409f78e3f5fb2fab877a5c3a4b.boutiques",
+    id="1e2c55cb0005072264aed23aaa37a59486e7c119.boutiques",
     name="labels_intersect",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,7 +48,7 @@ def labels_intersect(
     runner = runner or get_global_runner()
     execution = runner.start_execution(LABELS_INTERSECT_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/labels_intersect")
+    cargs.append("labels_intersect")
     cargs.append(execution.input_file(label1))
     cargs.append(execution.input_file(label2))
     cargs.append(outputname)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BEDPOSTX_DATACHECK_METADATA = Metadata(
-    id="71e8d4411c851d05c239523f13b5b5d52899aba8.boutiques",
+    id="d85daad2081acbf2abf07b33a494632cbd0b1664.boutiques",
     name="bedpostx_datacheck",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -42,7 +42,7 @@ def bedpostx_datacheck(
     runner = runner or get_global_runner()
     execution = runner.start_execution(BEDPOSTX_DATACHECK_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/bedpostx_datacheck")
+    cargs.append("bedpostx_datacheck")
     cargs.append(data_dir)
     ret = BedpostxDatacheckOutputs(
         root=execution.output_file("."),

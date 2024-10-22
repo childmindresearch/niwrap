@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_MAP_CUTS_METADATA = Metadata(
-    id="baee09b931becbd1d306f92908c8ea2a99640082.boutiques",
+    id="779b9e3d194c64fbf7ebe1bfe928f56ccdd44441.boutiques",
     name="mris_map_cuts",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -44,7 +44,7 @@ def mris_map_cuts(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MAP_CUTS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_map_cuts")
+    cargs.append("mris_map_cuts")
     cargs.append("[OPTIONS]")
     cargs.append(execution.input_file(input_patch))
     cargs.append(output_patch)

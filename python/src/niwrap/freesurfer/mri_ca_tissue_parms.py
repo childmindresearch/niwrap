@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_CA_TISSUE_PARMS_METADATA = Metadata(
-    id="0e35e5eaf4a2d13e62427eeb251e06a16c4b6eb1.boutiques",
+    id="1d6429470b2b62de7212566259b4407543b03a79.boutiques",
     name="mri_ca_tissue_parms",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -50,7 +50,7 @@ def mri_ca_tissue_parms(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_CA_TISSUE_PARMS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_ca_tissue_parms")
+    cargs.append("mri_ca_tissue_parms")
     cargs.extend(subjects)
     cargs.append(output_file)
     if spacing_flag:

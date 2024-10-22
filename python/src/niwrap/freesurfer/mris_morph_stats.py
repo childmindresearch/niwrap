@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_MORPH_STATS_METADATA = Metadata(
-    id="b405cc5ffb90e515ceb439a36b0470a45161f459.boutiques",
+    id="099da71ba5e21f2b547c57eee2eaadeb2784a79c.boutiques",
     name="mris_morph_stats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,7 +52,7 @@ def mris_morph_stats(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MORPH_STATS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_morph_stats")
+    cargs.append("mris_morph_stats")
     cargs.append(subject_name)
     cargs.append(hemisphere)
     cargs.append(execution.input_file(morphed_surface))

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA = Metadata(
-    id="ad673b97416cc9429e34e8b128b20a2efe9f92f2.boutiques",
+    id="a22785dcd6a5f1a8653a62de11c6b89177cc48a8.boutiques",
     name="adjunct_aw_tableize_roi_info.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,7 +58,7 @@ def adjunct_aw_tableize_roi_info_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA)
     cargs = []
-    cargs.append("/opt/afni/src/../install/adjunct_aw_tableize_roi_info.py")
+    cargs.append("adjunct_aw_tableize_roi_info.py")
     cargs.append(output_file)
     cargs.append(execution.input_file(warped_atlas))
     cargs.append(execution.input_file(warped_mask))

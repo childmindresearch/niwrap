@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_TRK2TRK_METADATA = Metadata(
-    id="b816b98bf35fa91e6d950ed6560d2f32cb5baa59.boutiques",
+    id="32f2ff7402623edac036b0c2d9f59bfb593b242c.boutiques",
     name="dmri_trk2trk",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -106,7 +106,7 @@ def dmri_trk2trk(
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_TRK2TRK_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/dmri_trk2trk")
+    cargs.append("dmri_trk2trk")
     cargs.extend([
         "--in",
         *[execution.input_file(f) for f in in_trk]

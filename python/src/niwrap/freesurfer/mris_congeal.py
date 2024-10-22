@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_CONGEAL_METADATA = Metadata(
-    id="97590d5933c66d79473340dbbd96f6c23dd420cf.boutiques",
+    id="fa0f40776aa3fda2ba4fb3e5ddf05cf95f903e6f.boutiques",
     name="mris_congeal",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -79,7 +79,7 @@ def mris_congeal(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_CONGEAL_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_congeal")
+    cargs.append("mris_congeal")
     cargs.append(input_surface_name)
     cargs.append(hemi)
     cargs.append(" ".join(subjects) + "...")

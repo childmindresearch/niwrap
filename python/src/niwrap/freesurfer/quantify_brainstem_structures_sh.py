@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QUANTIFY_BRAINSTEM_STRUCTURES_SH_METADATA = Metadata(
-    id="58930cd56797a15490ab3b262e74d78cac6a9425.boutiques",
+    id="bb094a739a47e09361aec760ca2b87105ebeb041.boutiques",
     name="quantifyBrainstemStructures.sh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -49,7 +49,7 @@ def quantify_brainstem_structures_sh(
     runner = runner or get_global_runner()
     execution = runner.start_execution(QUANTIFY_BRAINSTEM_STRUCTURES_SH_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/quantifyBrainstemStructures.sh")
+    cargs.append("quantifyBrainstemStructures.sh")
     cargs.append(output_file)
     if subjects_directory is not None:
         cargs.append(subjects_directory)

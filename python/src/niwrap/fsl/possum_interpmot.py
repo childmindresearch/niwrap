@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_INTERPMOT_METADATA = Metadata(
-    id="3e05be8cec5cb94098ed64d0efdec9c72c935e59.boutiques",
+    id="eb7cf031d69fdfa871dfe0101844d8da29040a31.boutiques",
     name="possum_interpmot",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -59,7 +59,7 @@ def possum_interpmot(
     runner = runner or get_global_runner()
     execution = runner.start_execution(POSSUM_INTERPMOT_METADATA)
     cargs = []
-    cargs.append("/usr/local/fsl/bin/possum_interpmot.py")
+    cargs.append("possum_interpmot.py")
     cargs.append(str(motion_type))
     cargs.append(str(tr))
     cargs.append(str(tr_slice))

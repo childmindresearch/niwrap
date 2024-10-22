@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_TRAIN_METADATA = Metadata(
-    id="db484189d72dacf061968fedbf8ee1e5e1318e32.boutiques",
+    id="813952c1ec5a866c05dcd797951dba894391ce06.boutiques",
     name="dmri_train",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -97,7 +97,7 @@ def dmri_train(
     runner = runner or get_global_runner()
     execution = runner.start_execution(DMRI_TRAIN_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/dmri_train")
+    cargs.append("dmri_train")
     cargs.extend([
         "--slist",
         execution.input_file(slist)

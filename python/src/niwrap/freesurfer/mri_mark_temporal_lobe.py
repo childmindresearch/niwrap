@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MARK_TEMPORAL_LOBE_METADATA = Metadata(
-    id="99daa640afa4ba9f38ddfa2098d7d3bb2a7a16a9.boutiques",
+    id="f07d940428b89bbd9a64f6e52c83bf14309918c5.boutiques",
     name="mri_mark_temporal_lobe",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -50,7 +50,7 @@ def mri_mark_temporal_lobe(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_MARK_TEMPORAL_LOBE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_mark_temporal_lobe")
+    cargs.append("mri_mark_temporal_lobe")
     if spacing is not None:
         cargs.extend([
             "-spacing",

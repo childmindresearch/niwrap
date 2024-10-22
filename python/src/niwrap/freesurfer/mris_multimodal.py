@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_MULTIMODAL_METADATA = Metadata(
-    id="541fec7a1c0546a156b0854c6763c4684bd881a9.boutiques",
+    id="5ea3bb028d4f416812a4635db5e70c0c093edcbb.boutiques",
     name="mris_multimodal",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -68,7 +68,7 @@ def mris_multimodal(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_MULTIMODAL_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_multimodal")
+    cargs.append("mris_multimodal")
     cargs.append("-i")
     cargs.append(execution.input_file(input_surface))
     cargs.append("-t")

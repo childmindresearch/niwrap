@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_LABEL_VALS_METADATA = Metadata(
-    id="3dd6da647f83472c4da63c65af1f8495067c90c6.boutiques",
+    id="f676fd9e1e255bdfcf8e5d6db1b8b8906a5d7a0e.boutiques",
     name="mri_label_vals",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -49,7 +49,7 @@ def mri_label_vals(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRI_LABEL_VALS_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mri_label_vals")
+    cargs.append("mri_label_vals")
     cargs.append(execution.input_file(volume))
     cargs.append(execution.input_file(label_file))
     if cras_flag:

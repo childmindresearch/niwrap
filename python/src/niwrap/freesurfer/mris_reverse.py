@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_REVERSE_METADATA = Metadata(
-    id="1d0121c5ccc73394f0fed09f2988ac3befe52f6a.boutiques",
+    id="ecda44ba479fe2843ae6e0aa5b415f74e9dbf9f9.boutiques",
     name="mris_reverse",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -46,7 +46,7 @@ def mris_reverse(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_REVERSE_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_reverse")
+    cargs.append("mris_reverse")
     cargs.append(execution.input_file(input_surface))
     cargs.append(output_surface)
     ret = MrisReverseOutputs(

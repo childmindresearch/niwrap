@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 HISTO_REGISTER_BLOCK_METADATA = Metadata(
-    id="e977d8df22331db56ca2c8309b1ee2e9afa10ed2.boutiques",
+    id="a9ce2e4f5a3f5c4fa13464f62cf2766ed76dbba2.boutiques",
     name="histo_register_block",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -56,7 +56,7 @@ def histo_register_block(
     runner = runner or get_global_runner()
     execution = runner.start_execution(HISTO_REGISTER_BLOCK_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/histo_register_block")
+    cargs.append("histo_register_block")
     cargs.append(execution.input_file(seg_time1))
     cargs.append(execution.input_file(seg_time2))
     cargs.append(execution.input_file(transform1))

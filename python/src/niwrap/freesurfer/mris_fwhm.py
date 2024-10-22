@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_FWHM_METADATA = Metadata(
-    id="69d44d9d1441be79bb9f69de181d4da440a46442.boutiques",
+    id="3df5d08538916b5e720d481edb2f9270d2c60c51.boutiques",
     name="mris_fwhm",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -105,7 +105,7 @@ def mris_fwhm(
     runner = runner or get_global_runner()
     execution = runner.start_execution(MRIS_FWHM_METADATA)
     cargs = []
-    cargs.append("/usr/local/freesurfer/bin/mris_fwhm")
+    cargs.append("mris_fwhm")
     cargs.extend([
         "--i",
         execution.input_file(input_file)

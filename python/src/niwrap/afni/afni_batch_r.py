@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_BATCH_R_METADATA = Metadata(
-    id="930f91d60fc6acd414cb67c0a05d61f2cb008573.boutiques",
+    id="e896a78243318c296dc1ffb8231df6aaa614c0da.boutiques",
     name="AFNI_Batch_R",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,7 +51,7 @@ def afni_batch_r(
     runner = runner or get_global_runner()
     execution = runner.start_execution(AFNI_BATCH_R_METADATA)
     cargs = []
-    cargs.append("/opt/afni/src/../install/AFNI_Batch_R")
+    cargs.append("AFNI_Batch_R")
     cargs.append("R")
     cargs.append("CMD")
     cargs.append("BATCH")
