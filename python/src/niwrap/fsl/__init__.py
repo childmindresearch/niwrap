@@ -101,7 +101,6 @@ from .first_flirt import *
 from .first_mult_bcorr import *
 from .first_roi_slicesdir import *
 from .firt_utils import *
-from .flameo import *
 from .flirt import *
 from .flirt_average import *
 from .fnirt import *

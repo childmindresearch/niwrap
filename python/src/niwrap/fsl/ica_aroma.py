@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ICA_AROMA_METADATA = Metadata(
-    id="ddcb7362f654c7198ea9ea860cc4cb83e30b4299.boutiques",
+    id="068247c1b91b6921a39d631270d137a1e79fb52f.boutiques",
     name="ICA_AROMA",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -142,8 +142,8 @@ def ica_aroma(
     ])
     ret = IcaAromaOutputs(
         root=execution.output_file("."),
-        aggr_denoised_file=execution.output_file("out\denoised_func_data_aggr.nii.gz"),
-        nonaggr_denoised_file=execution.output_file("out\denoised_func_data_nonaggr.nii.gz"),
+        aggr_denoised_file=execution.output_file("out/denoised_func_data_aggr.nii.gz"),
+        nonaggr_denoised_file=execution.output_file("out/denoised_func_data_nonaggr.nii.gz"),
         out_dir_outfile=execution.output_file("out"),
     )
     execution.run(cargs)
