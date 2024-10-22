@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 N3_BIAS_FIELD_CORRECTION_METADATA = Metadata(
-    id="fd745cd8cbbe6bb510e5abcf6e5b6a6a079c43b8.boutiques",
+    id="4e83de770b59bdbac2f2d60c407571d41cc394da.boutiques",
     name="N3BiasFieldCorrection",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -41,18 +41,13 @@ def n3_bias_field_correction(
     runner: Runner | None = None,
 ) -> N3BiasFieldCorrectionOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    This N3 is a variant of the popular N3 (nonparametric nonuniform normalization)
+    retrospective bias correction algorithm. Based on the assumption that the
+    corruption of the low frequency bias field can be modeled as a convolution of
+    the intensity histogram by a Gaussian, the basic algorithmic protocol is to
+    iterate between deconvolving the intensity histogram by a Gaussian, remapping
+    the intensities, and then spatially smoothing this result by a B-spline modeling
+    of the bias field itself.
     
     Author: ANTs developers
     

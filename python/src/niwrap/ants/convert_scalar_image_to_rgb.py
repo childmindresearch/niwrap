@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_SCALAR_IMAGE_TO_RGB_METADATA = Metadata(
-    id="8e941d90a298bf84b0c2980db9795b8ba8a4a1a6.boutiques",
+    id="f148a075e1d05646f1600fbe19691b71d8652302.boutiques",
     name="ConvertScalarImageToRGB",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -39,18 +39,8 @@ def convert_scalar_image_to_rgb(
     runner: Runner | None = None,
 ) -> ConvertScalarImageToRgbOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Converts a scalar image to an RGB image using specified parameters. Supports
+    multiple colormap options and customization.
     
     Author: ANTs developers
     

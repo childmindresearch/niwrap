@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_WARPED_GRID_IMAGE_METADATA = Metadata(
-    id="c10eb2efec61ddaec2e047a3e4c5da156b508d43.boutiques",
+    id="08920c0176c3ddba53a8ad386cb2b1c8cbcfc38f.boutiques",
     name="CreateWarpedGridImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -34,18 +34,7 @@ def create_warped_grid_image(
     runner: Runner | None = None,
 ) -> CreateWarpedGridImageOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Create a warped grid image based on the specified deformation field.
     
     Author: ANTs developers
     

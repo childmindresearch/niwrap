@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PASTE_IMAGE_INTO_IMAGE_METADATA = Metadata(
-    id="5aad5254b6d267466198714a5eae7a334cf43547.boutiques",
+    id="7dd866c2eb1b752c7629503c84b64a395d4183cd.boutiques",
     name="PasteImageIntoImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -36,18 +36,8 @@ def paste_image_into_image(
     runner: Runner | None = None,
 ) -> PasteImageIntoImageOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Paste the input image into the input canvas image. Depending on parameters, it
+    can replace or merge existing voxel values.
     
     Author: ANTs developers
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTSUSE_LANDMARK_IMAGES_TO_GET_BSPLINE_DISPLACEMENT_FIELD_METADATA = Metadata(
-    id="3bcbc6fb24c2c5c95f6c303f87126fadb355b501.boutiques",
+    id="d8979ff3d07b5a8e1e6d1fc984a20b6569a36bd2.boutiques",
     name="ANTSUseLandmarkImagesToGetBSplineDisplacementField",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -36,18 +36,13 @@ def antsuse_landmark_images_to_get_bspline_displacement_field(
     runner: Runner | None = None,
 ) -> AntsuseLandmarkImagesToGetBsplineDisplacementFieldOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    We expect the input images to be (1) N-ary (2) in the same physical space as the
+    images you want to register and (3) to have the same landmark points defined
+    within them. Landmarks will be defined from the center of mass of the labels in
+    the input images. You can use ITK-snap to generate the label images. The
+    optional landmarks weights are read from a text file where each row is either:
+    "label,labelWeight" or "labelWeight". If the latter format is used, the label
+    weights are assumed to be arranged in ascending order by label.
     
     Author: ANTs developers
     

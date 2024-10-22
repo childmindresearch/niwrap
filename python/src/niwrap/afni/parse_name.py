@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 PARSE_NAME_METADATA_ = Metadata(
-    id="a67788b0c0514057052216aadee90c72b904dbb1.boutiques",
-    name="ParseName",
+    id="5b223a3dd4beb53a9e61bc168f6c4b6b860b38c1.boutiques",
+    name="parse_name",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
@@ -20,19 +20,27 @@ class ParseNameOutputs_(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
+    output_path: OutputPathType
+    """The path of the filename"""
+    output_prefix: OutputPathType
+    """The prefix of the filename"""
+    output_extension: OutputPathType
+    """The extension of the filename"""
 
 
 def parse_name_(
+    name: str,
     runner: Runner | None = None,
 ) -> ParseNameOutputs_:
     """
-    Parses filename into components useful for AFNI.
+    A script to parse a filename into path, prefix, and extension strings.
     
     Author: AFNI Team
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/ParseName.html
+    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@parse_name.html
     
     Args:
+        name: The filename to parse.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ParseNameOutputs_`).
@@ -40,11 +48,13 @@ def parse_name_(
     runner = runner or get_global_runner()
     execution = runner.start_execution(PARSE_NAME_METADATA_)
     cargs = []
-    cargs.append("ParseName")
-    cargs.append("[OPTIONAL_PARAMETERS]")
-    cargs.append("<FName>")
+    cargs.append("parse_name")
+    cargs.append(name)
     ret = ParseNameOutputs_(
         root=execution.output_file("."),
+        output_path=execution.output_file(name + "_path"),
+        output_prefix=execution.output_file(name + "_prefix"),
+        output_extension=execution.output_file(name + "_extension"),
     )
     execution.run(cargs)
     return ret

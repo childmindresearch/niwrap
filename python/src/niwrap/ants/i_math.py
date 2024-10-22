@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 I_MATH_METADATA = Metadata(
-    id="f2c51dcb0dc14ec909861e54ab28a918709f1baa.boutiques",
+    id="fe31e452a5266b32b2e5e22ffbb63f2ff9cf99e1.boutiques",
     name="iMath",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -33,18 +33,8 @@ def i_math(
     runner: Runner | None = None,
 ) -> IMathOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    iMath is a tool for performing various image mathematical operations on medical
+    images, specifically supporting operations on 2D, 3D, and 4D data.
     
     Author: ANTs developers
     

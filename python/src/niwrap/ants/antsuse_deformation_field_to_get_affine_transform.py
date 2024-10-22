@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTSUSE_DEFORMATION_FIELD_TO_GET_AFFINE_TRANSFORM_METADATA = Metadata(
-    id="62df6dcc2e8929cf364151ce5f0691c9c9be4310.boutiques",
+    id="b7ce0463e1489cf1bdf59838ee0d6e965bb7fabe.boutiques",
     name="ANTSUseDeformationFieldToGetAffineTransform",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -33,18 +33,9 @@ def antsuse_deformation_field_to_get_affine_transform(
     runner: Runner | None = None,
 ) -> AntsuseDeformationFieldToGetAffineTransformOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Extracts an affine transform from a deformation field. The input deformation
+    field is expected to be in the same physical space as the images you want to
+    transform.
     
     Author: ANTs developers
     

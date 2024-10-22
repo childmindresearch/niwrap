@@ -6,7 +6,7 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-MRI_BINARIZE_METADATA_ = Metadata(
+MRI_BINARIZE_METADATA = Metadata(
     id="97e37d2eb690a5a8992a2d101f133c67b3abb7c2.boutiques",
     name="mri_binarize",
     package="freesurfer",
@@ -14,9 +14,9 @@ MRI_BINARIZE_METADATA_ = Metadata(
 )
 
 
-class MriBinarizeOutputs_(typing.NamedTuple):
+class MriBinarizeOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `mri_binarize_(...)`.
+    Output object returned when calling `mri_binarize(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -24,7 +24,7 @@ class MriBinarizeOutputs_(typing.NamedTuple):
     """The resulting binarized volume."""
 
 
-def mri_binarize_(
+def mri_binarize(
     input_volume: InputPathType,
     output_volume: str,
     min_threshold: float | None = None,
@@ -60,7 +60,7 @@ def mri_binarize_(
     noverbose_flag: bool = False,
     debug_flag: bool = False,
     runner: Runner | None = None,
-) -> MriBinarizeOutputs_:
+) -> MriBinarizeOutputs:
     """
     A program to binarize a volume or volume-encoded surface file, with options to
     merge and manipulate binarized output.
@@ -110,10 +110,10 @@ def mri_binarize_(
         debug_flag: Enable debugging output.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `MriBinarizeOutputs_`).
+        NamedTuple of outputs (described in `MriBinarizeOutputs`).
     """
     runner = runner or get_global_runner()
-    execution = runner.start_execution(MRI_BINARIZE_METADATA_)
+    execution = runner.start_execution(MRI_BINARIZE_METADATA)
     cargs = []
     cargs.append("/usr/local/freesurfer/bin/mri_binarize")
     cargs.extend([
@@ -242,7 +242,7 @@ def mri_binarize_(
         cargs.append("--noverbose")
     if debug_flag:
         cargs.append("--debug")
-    ret = MriBinarizeOutputs_(
+    ret = MriBinarizeOutputs(
         root=execution.output_file("."),
         out_volume=execution.output_file(output_volume),
     )
@@ -251,7 +251,7 @@ def mri_binarize_(
 
 
 __all__ = [
-    "MRI_BINARIZE_METADATA_",
-    "MriBinarizeOutputs_",
-    "mri_binarize_",
+    "MRI_BINARIZE_METADATA",
+    "MriBinarizeOutputs",
+    "mri_binarize",
 ]

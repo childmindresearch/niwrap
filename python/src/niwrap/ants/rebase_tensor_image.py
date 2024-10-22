@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REBASE_TENSOR_IMAGE_METADATA = Metadata(
-    id="295b7bdab3ed650bcb6c9dc048ff0783ad1954f3.boutiques",
+    id="3277d5efa9c6f4fec86900a4ecd7e4d48561eda1.boutiques",
     name="RebaseTensorImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -33,18 +33,7 @@ def rebase_tensor_image(
     runner: Runner | None = None,
 ) -> RebaseTensorImageOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Rebase Tensor Image using specified dimensionality and method.
     
     Author: ANTs developers
     

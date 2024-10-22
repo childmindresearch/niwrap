@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_MOTION_CORR_STATS_METADATA = Metadata(
-    id="8e0a32cbffc273335495a2514dc805b34872be58.boutiques",
+    id="c6c9fd8ac828f762c99b5202938ad6095e186f96.boutiques",
     name="antsMotionCorrStats",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,18 +35,11 @@ def ants_motion_corr_stats(
     runner: Runner | None = None,
 ) -> AntsMotionCorrStatsOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Create summary measures of the parameters that are output by antsMotionCorr.
+    Currently only works for linear transforms. Outputs the mean and max
+    displacements for the voxels within a provided mask, at each time point. By
+    default the displacements are relative to the reference space, but the framewise
+    option may be used to provide displacements between consecutive time points.
     
     Author: ANTs developers
     

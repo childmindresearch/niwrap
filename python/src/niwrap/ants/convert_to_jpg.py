@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_TO_JPG_METADATA = Metadata(
-    id="af0aa589c07577d7d3e04e3eb468ca02dbf5642d.boutiques",
+    id="8f45f969030630cda3f023c28835d21a89d58210.boutiques",
     name="ConvertToJpg",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -30,18 +30,7 @@ def convert_to_jpg(
     runner: Runner | None = None,
 ) -> ConvertToJpgOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    A tool to convert NIfTI images to JPG format.
     
     Author: ANTs developers
     

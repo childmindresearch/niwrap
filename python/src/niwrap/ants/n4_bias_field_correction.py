@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 N4_BIAS_FIELD_CORRECTION_METADATA = Metadata(
-    id="bead743325d69574c42fd1acfe77effb97b9087b.boutiques",
+    id="e480e55f2abcc11c727ccf849e851b70c28f14ee.boutiques",
     name="N4BiasFieldCorrection",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -146,10 +146,7 @@ def n4_bias_field_correction(
     the intensity histogram by a Gaussian, the basic algorithmic protocol is to
     iterate between deconvolving the intensity histogram by a Gaussian, remapping
     the intensities, and then spatially smoothing this result by a B-spline modeling
-    of the bias field itself. The modifications from and improvements obtained over
-    the original N3 algorithm are described in the following paper: N. Tustison et
-    al., N4ITK: Improved N3 Bias Correction, IEEE Transactions on Medical Imaging,
-    29(6):1310-1320, June 2010.
+    of the bias field itself.
     
     Author: Advanced Normalization Tools (ANTs) Contributors
     

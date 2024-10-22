@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_REGISTRATION_SY_N_SH_METADATA = Metadata(
-    id="aef8d588f8160d69ff15edafcdf192e3cc4b1241.boutiques",
+    id="6c7ab2b69447cd9b3ed021045caa50d7edf54f39.boutiques",
     name="antsRegistrationSyN.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -48,11 +48,7 @@ def ants_registration_sy_n_sh(
     runner: Runner | None = None,
 ) -> AntsRegistrationSyNShOutputs:
     """
-    This script performs image registration using the SyN transform from the ANTs
-    suite. The user can specify the dimensionality of the images, the fixed and
-    moving images, and the output prefix. It supports various types of
-    transformations and optional parameters such as initial transforms, gradient
-    step size, mask usage, and more.
+    Script for simplified symmetric image registration using ANTs.
     
     Author: Brian B. Avants, Nick Tustison, and Gang Song
     

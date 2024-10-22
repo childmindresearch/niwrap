@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_DTICOHORT_METADATA = Metadata(
-    id="5d666d6591727ff7e5a4d7d227d55ab3fba7eccd.boutiques",
+    id="492039e0007ff191fafa5c3a48f3e61135f029cb.boutiques",
     name="CreateDTICohort",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -38,18 +38,10 @@ def create_dticohort(
     runner: Runner | None = None,
 ) -> CreateDticohortOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    CreateDTICohort implements the work of Van Hecke et al. to create simulated DTI
+    data sets. The only difference is that all registrations (both for the input
+    population and for the output population) are assumed to take place outside of
+    this program.
     
     Author: ANTs developers
     

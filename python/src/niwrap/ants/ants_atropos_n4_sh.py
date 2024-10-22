@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_ATROPOS_N4_SH_METADATA = Metadata(
-    id="e0a917d4895ca884fd4793321914cc8bd03feab3.boutiques",
+    id="7d80c202069d259a29876ac9d06a95654ed71e7b.boutiques",
     name="antsAtroposN4.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -87,7 +87,8 @@ def ants_atropos_n4_sh(
     runner: Runner | None = None,
 ) -> AntsAtroposN4ShOutputs:
     """
-    Iterates between N4 <-> Atropos to improve segmentation results.
+    antsAtroposN4.sh iterates between N4 <-> Atropos to improve segmentation
+    results.
     
     Author: Advanced Normalization Tools (ANTs) Contributors
     

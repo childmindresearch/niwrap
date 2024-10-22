@@ -28,7 +28,6 @@ from .aparcstats2table import *
 from .aparcstatsdiff import *
 from .apas2aseg import *
 from .apply_morph import *
-from .apply_vol_transform import *
 from .aseg2feat import *
 from .asegstats2table import *
 from .asegstatsdiff import *
@@ -259,7 +258,6 @@ from .mri_aparc2aseg import *
 from .mri_aparc2wmseg import *
 from .mri_apply_bias import *
 from .mri_average import *
-from .mri_binarize import *
 from .mri_binarize import *
 from .mri_brain_volume import *
 from .mri_brainvol_stats import *
@@ -601,7 +599,6 @@ from .rca_config2csh import *
 from .rca_fix_ento import *
 from .rca_long_tp_init import *
 from .rcbf_prep import *
-from .recon_all import *
 from .recon_all import *
 from .recon_all_clinical_sh import *
 from .recon_all_exvivo import *

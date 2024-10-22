@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 KELLY_KAPOWSKI_METADATA = Metadata(
-    id="693ec186f4fab36d85dfcc1ec597e1dbc6bc7b87.boutiques",
+    id="05022c7b295fc399399da18d1e6de86249a3be96.boutiques",
     name="KellyKapowski",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -46,18 +46,9 @@ def kelly_kapowski(
     runner: Runner | None = None,
 ) -> KellyKapowskiOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    DiReCT is a registration based estimate of cortical thickness. It was published
+    in S. R. Das, B. B. Avants, M. Grossman, and J. C. Gee, Registration based
+    cortical thickness measurement, Neuroimage 2009, 45:867--879.
     
     Author: ANTs developers
     

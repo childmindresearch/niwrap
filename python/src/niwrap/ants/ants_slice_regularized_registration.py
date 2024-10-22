@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_SLICE_REGULARIZED_REGISTRATION_METADATA = Metadata(
-    id="78a4ec0f5db795857aa033bdcf191b7a9a3432cd.boutiques",
+    id="69743077b44aed29658d8f89290ab7fb83d6285f.boutiques",
     name="antsSliceRegularizedRegistration",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -40,18 +40,14 @@ def ants_slice_regularized_registration(
     runner: Runner | None = None,
 ) -> AntsSliceRegularizedRegistrationOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    This program is a user-level application for slice-by-slice translation
+    registration. Results are regularized in z using polynomial regression. The
+    program is targeted at spinal cord MRI. Only one stage is supported where a
+    stage consists of a transform; an image metric; and iterations, shrink factors,
+    and smoothing sigmas for each level. Specialized for 3D data: fixed image is 3D,
+    moving image is 3D. Registration is performed slice-by-slice then regularized in
+    z. The parameter -p controls the polynomial degree. -p 0 means no
+    regularization.
     
     Author: ANTs developers
     

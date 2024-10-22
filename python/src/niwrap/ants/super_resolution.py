@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUPER_RESOLUTION_METADATA = Metadata(
-    id="a019b58430d84ebba665dbfb520cc7e1970a74d2.boutiques",
+    id="fb3d6e9a218076d2900299200970564b94093ab0.boutiques",
     name="SuperResolution",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,18 +35,10 @@ def super_resolution(
     runner: Runner | None = None,
 ) -> SuperResolutionOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    The SuperResolution tool enhances the spatial resolution of input images. The
+    'gradientSigma' parameter is used in calculating the gradient magnitude of the
+    input images for weighting the voxel points during fitting. If a negative
+    'gradient' sigma is specified then no weighting is used.
     
     Author: ANTs developers
     

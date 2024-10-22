@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTSINTEGRATE_VECTOR_FIELD_METADATA = Metadata(
-    id="62274e6e097c89814e615c2d815b37a99fddaa06.boutiques",
+    id="acbb23a446bd600840f94e9ba967d6f6c15861e2.boutiques",
     name="ANTSIntegrateVectorField",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -34,18 +34,9 @@ def antsintegrate_vector_field(
     runner: Runner | None = None,
 ) -> AntsintegrateVectorFieldOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    This tool integrates a vector field, where vectors are voxels, using a region of
+    interest (ROI) mask. The ROI mask controls where the integration is performed
+    and specifies the starting point region.
     
     Author: ANTs developers
     

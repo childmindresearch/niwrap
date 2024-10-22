@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_TRANSFORM_FILE_METADATA = Metadata(
-    id="589d4738cfe22567b9b41d628a0bc089760821c1.boutiques",
+    id="beabf728c4723b7b2748c24c1383f4f514b8dbe7.boutiques",
     name="ConvertTransformFile",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -29,18 +29,10 @@ def convert_transform_file(
     runner: Runner | None = None,
 ) -> ConvertTransformFileOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Utility to read in a transform file (presumed to be in binary format) and output
+    it in various formats. Default output is legacy human-readable text format.
+    Without any options, the output filename extension must be .txt or .tfm to
+    signify a text-formatted transform file.
     
     Author: ANTs developers
     

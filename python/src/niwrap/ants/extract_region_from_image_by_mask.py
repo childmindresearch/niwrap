@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXTRACT_REGION_FROM_IMAGE_BY_MASK_METADATA = Metadata(
-    id="494bf54d316552377447c15445e07e53aff21a93.boutiques",
+    id="d2b60449ac2d9953f7bf4183cb4e7e9f294fb6c8.boutiques",
     name="ExtractRegionFromImageByMask",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -32,18 +32,8 @@ def extract_region_from_image_by_mask(
     runner: Runner | None = None,
 ) -> ExtractRegionFromImageByMaskOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Extract a sub-region from an image using the bounding box from a label image,
+    with an optional padding radius.
     
     Author: ANTs developers
     

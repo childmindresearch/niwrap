@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADD_NOISE_TO_IMAGE_METADATA = Metadata(
-    id="6f86dcbc97bfaf0a93c707131487f5221836cacf.boutiques",
+    id="aee6e337d2376b447bd69dfd2552c6049d319f52.boutiques",
     name="AddNoiseToImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -33,18 +33,7 @@ def add_noise_to_image(
     runner: Runner | None = None,
 ) -> AddNoiseToImageOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Add various types of noise to an image.
     
     Author: ANTs developers
     

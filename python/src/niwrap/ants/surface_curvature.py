@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CURVATURE_METADATA = Metadata(
-    id="482b00331e94de9e1383eb55346fc20f14c0c35d.boutiques",
+    id="6c98c9fb47cf69dc1900bf9db9dba8b166e80c42.boutiques",
     name="SurfaceCurvature",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -32,18 +32,8 @@ def surface_curvature(
     runner: Runner | None = None,
 ) -> SurfaceCurvatureOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    The Shape Operator for Differential Analysis of Images. It can operate on binary
+    or gray scale images with various modes to see different effects.
     
     Author: ANTs developers
     

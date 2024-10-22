@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_BRAIN_EXTRACTION_SH_METADATA = Metadata(
-    id="ca3041d6babf173fade41799bd55fb9cdb79c2aa.boutiques",
+    id="aa5351d9f1b034b7c59b0281a0bffdb374557b4d.boutiques",
     name="antsBrainExtraction.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -47,8 +47,7 @@ def ants_brain_extraction_sh(
     runner: Runner | None = None,
 ) -> AntsBrainExtractionShOutputs:
     """
-    antsBrainExtraction.sh is a script from Advanced Normalization Tools (ANTs) for
-    template-based brain extraction.
+    antsBrainExtraction.sh performs template-based brain extraction.
     
     Author: Advanced Normalization Tools (ANTs) Contributors
     

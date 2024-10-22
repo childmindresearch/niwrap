@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 THRESHOLD_IMAGE_METADATA = Metadata(
-    id="ae6818cb1a515b381fb339d5c856d62e0e227e9e.boutiques",
+    id="bce52a3371b55f0bdad3240a49b478ee149c51ab.boutiques",
     name="ThresholdImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -38,18 +38,9 @@ def threshold_image(
     runner: Runner | None = None,
 ) -> ThresholdImageOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Image thresholding utility that applies different thresholding techniques to an
+    input image. It can use fixed thresholds, Otsu method, or K-means for
+    thresholding.
     
     Author: ANTs developers
     

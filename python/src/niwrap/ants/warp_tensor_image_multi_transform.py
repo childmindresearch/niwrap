@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WARP_TENSOR_IMAGE_MULTI_TRANSFORM_METADATA = Metadata(
-    id="ddb6d9ec5d1dad31783e356ecb28a5db5ab8874d.boutiques",
+    id="9649d272b7eb6d14e06ea8971a7adada4ae8cf4d.boutiques",
     name="WarpTensorImageMultiTransform",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -36,18 +36,9 @@ def warp_tensor_image_multi_transform(
     runner: Runner | None = None,
 ) -> WarpTensorImageMultiTransformOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    WarpImageMultiTransform is used to apply transformations including affine and
+    deformation fields to an image, supporting various interpolation techniques,
+    image header reslicing, and compatibility with ANTS-generated transformations.
     
     Author: ANTs developers
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA = Metadata(
-    id="48ddfea0fe1554eac35385e37a3576c94d8aa9d0.boutiques",
+    id="b92af4f573cc2a43c90c6d1a8354f1ff326749bc.boutiques",
     name="antsApplyTransformsToPoints",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -75,18 +75,11 @@ def ants_apply_transforms_to_points(
     runner: Runner | None = None,
 ) -> AntsApplyTransformsToPointsOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    antsApplyTransformsToPoints, applied to an input image, transforms it according
+    to a reference image and a transform (or a set of transforms). It reads in a CSV
+    file with the first D columns defining the spatial location where the spatial
+    location is defined in physical coordinates. The CSV file should have a header
+    row.
     
     Author: ANTs developers
     

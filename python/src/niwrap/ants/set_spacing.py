@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SET_SPACING_METADATA = Metadata(
-    id="182d3111ef3c0344da581e1ab0e17ef1eecba1d1.boutiques",
+    id="5684b833f66ec23a3ac7bb5e06663e0dfae53f34.boutiques",
     name="SetSpacing",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -32,18 +32,7 @@ def set_spacing(
     runner: Runner | None = None,
 ) -> SetSpacingOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    A tool to set the spacing of an image in each dimension.
     
     Author: ANTs developers
     

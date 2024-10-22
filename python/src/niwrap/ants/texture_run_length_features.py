@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TEXTURE_RUN_LENGTH_FEATURES_METADATA = Metadata(
-    id="6774f0ed35c2101a2cff1085358a6ae8d756614e.boutiques",
+    id="93841963426de55081b54885e14970fb87ec6bd6.boutiques",
     name="TextureRunLengthFeatures",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -51,18 +51,7 @@ def texture_run_length_features(
     runner: Runner | None = None,
 ) -> TextureRunLengthFeaturesOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    A tool to calculate texture run length features on an input image.
     
     Author: ANTs developers
     

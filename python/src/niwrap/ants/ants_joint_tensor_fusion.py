@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_JOINT_TENSOR_FUSION_METADATA = Metadata(
-    id="333e583fbde53fabf588df4d734c8e571e1171d2.boutiques",
+    id="7d56a77ae6c0ab1a62b898c84f5077f8f99051b6.boutiques",
     name="antsJointTensorFusion",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -51,18 +51,11 @@ def ants_joint_tensor_fusion(
     runner: Runner | None = None,
 ) -> AntsJointTensorFusionOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    antsJointTensorFusion is an image fusion algorithm developed by Hongzhi Wang and
+    Paul Yushkevich which won segmentation challenges at MICCAI 2012 and MICCAI
+    2013. The original label fusion framework was extended to accommodate
+    intensities by Brian Avants. This implementation is based on the original
+    ITK-style implementation and ANTsR implementation.
     
     Author: ANTs developers
     

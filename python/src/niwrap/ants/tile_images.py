@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TILE_IMAGES_METADATA = Metadata(
-    id="8b69dcf0199a40aa1094771bfdbb91af755bdd13.boutiques",
+    id="e7f3c2d6d2e9347f0b86a417fd0017cf2fb6803e.boutiques",
     name="TileImages",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -32,18 +32,9 @@ def tile_images(
     runner: Runner | None = None,
 ) -> TileImagesOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    TileImages allows assembling images into a multi-dimensional array, producing a
+    single output image. The input images must have a dimension less than or equal
+    to the specified output image dimension.
     
     Author: ANTs developers
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_DISPLACEMENT_FIELD_METADATA = Metadata(
-    id="dda0ab12c674f37562ffe12d6a57619838b34619.boutiques",
+    id="f31aab764e07d12987a50a4b593617b99c684fb3.boutiques",
     name="CreateDisplacementField",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -33,18 +33,13 @@ def create_displacement_field(
     runner: Runner | None = None,
 ) -> CreateDisplacementFieldOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Create an itkImage of itkVector pixels (NOT an itkVectorImage), using each
+    scalar input component image for each vector component. An itkImage of
+    itkVectors is the standard type for displacement fields in ITK. All component
+    images (up to 8) are assumed to have the same size, offset, origin, and spacing.
+    The 'EnforceZeroBoundaryFlag' option will create zero-valued vectors along the
+    borders when enabled (pass 1), and is recommended for better displacement field
+    behavior.
     
     Author: ANTs developers
     

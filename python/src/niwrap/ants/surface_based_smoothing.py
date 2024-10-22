@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_BASED_SMOOTHING_METADATA = Metadata(
-    id="42e2b4bf087050f4d1b10763aa440177849f5ad7.boutiques",
+    id="54b2f342b78002c8629051dfa51b4241d2aa0f9b.boutiques",
     name="SurfaceBasedSmoothing",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -33,18 +33,8 @@ def surface_based_smoothing(
     runner: Runner | None = None,
 ) -> SurfaceBasedSmoothingOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Surface-based smoothing applied to ImageToSmooth using a geodesic neighbourhood
+    defined by sigma and the surface image.
     
     Author: ANTs developers
     

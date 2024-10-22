@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTSJACOBIAN_METADATA = Metadata(
-    id="2f585f0fbfc44e9e8ec6ebf0d7aff5789777ba74.boutiques",
+    id="60c6bb1a4675dd91011fe6c460c36f2f3132206a.boutiques",
     name="ANTSJacobian",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,18 +35,9 @@ def antsjacobian(
     runner: Runner | None = None,
 ) -> AntsjacobianOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Calculate the Jacobian determinant of a transformation using ANTs. WARNING:
+    ANTSJacobian may not be working correctly; see CreateJacobianDeterminantImage
+    for an alternative method.
     
     Author: ANTs developers
     

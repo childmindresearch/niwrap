@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LESION_FILLING_METADATA = Metadata(
-    id="2473bb3852ba6da8aa6ea1d80ff6c61bbbb72ae2.boutiques",
+    id="36c70e65f470991536aa7957ccc379cca40ae9fa.boutiques",
     name="LesionFilling",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -32,18 +32,7 @@ def lesion_filling(
     runner: Runner | None = None,
 ) -> LesionFillingOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    A tool for filling lesions in T1 images using a mask.
     
     Author: ANTs developers
     

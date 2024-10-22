@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NON_LOCAL_SUPER_RESOLUTION_METADATA = Metadata(
-    id="678a9144935fb066759a42b1ddac68b3ba315d0e.boutiques",
+    id="7cdec609ff8d8f0b2b4a534d04026935d073ca54.boutiques",
     name="NonLocalSuperResolution",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -40,18 +40,8 @@ def non_local_super_resolution(
     runner: Runner | None = None,
 ) -> NonLocalSuperResolutionOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    Non-local super resolution described in the papers by JV Manjon et al., focusing
+    on MRI superresolution using self-similarity and image priors.
     
     Author: ANTs developers
     

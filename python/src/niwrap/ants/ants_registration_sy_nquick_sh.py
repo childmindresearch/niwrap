@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_REGISTRATION_SY_NQUICK_SH_METADATA = Metadata(
-    id="f3ba96caba30b8f77db52de97a1d268de189e177.boutiques",
+    id="7013f14218af5095ae35a843b334875409dfcdd3.boutiques",
     name="antsRegistrationSyNQuick.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -39,18 +39,8 @@ def ants_registration_sy_nquick_sh(
     runner: Runner | None = None,
 ) -> AntsRegistrationSyNquickShOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    A script to quickly compute a SyN-based registration between two images using
+    ANTS.
     
     Author: ANTs developers
     

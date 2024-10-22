@@ -6,183 +6,397 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-RECON_ALL_METADATA_ = Metadata(
-    id="773eade9a7d8dbfdc4fded9fef5895e8cf103d2f.boutiques",
-    name="ReconAll",
+RECON_ALL_METADATA = Metadata(
+    id="80e6e5897b9239e0bfdb40a5e3deab75cbeca1c5.boutiques",
+    name="recon-all",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
 
 
-class ReconAllOutputs_(typing.NamedTuple):
+class ReconAllOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `recon_all_(...)`.
+    Output object returned when calling `recon_all(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    subjects_dir_outfile: OutputPathType
-    """file or string representing an existing directory. Freesurfer subjects
-    directory."""
+    logfile: OutputPathType
+    """Log file of the recon-all process"""
+    statusfile: OutputPathType
+    """Status file of the recon-all process"""
 
 
-def recon_all_(
-    subjects_dir: InputPathType,
-    directive: typing.Literal["all", "autorecon1", "autorecon2", "autorecon2-volonly", "autorecon2-perhemi", "autorecon2-inflate1", "autorecon2-cp", "autorecon2-wm", "autorecon3", "autorecon3-T2pial", "autorecon-pial", "autorecon-hemi", "localGI", "qcache"] | None = "all",
-    flair_file: InputPathType | None = None,
-    t1_files: list[InputPathType] | None = None,
-    t2_file: InputPathType | None = None,
-    big_ventricles: bool = False,
-    brainstem: bool = False,
-    expert: InputPathType | None = None,
-    flags: list[InputPathType] | None = None,
-    hemi: typing.Literal["lh", "rh"] | None = None,
-    hippocampal_subfields_t1: bool = False,
-    hippocampal_subfields_t2: list[str] | None = None,
-    hires: bool = False,
+def recon_all(
+    subjid: str,
+    autorecon3_flag: bool = False,
+    hemi: str | None = None,
+    pons_crs: list[float] | None = None,
+    cc_crs: list[float] | None = None,
+    lh_crs: list[float] | None = None,
+    rh_crs: list[float] | None = None,
+    nofill: bool = False,
+    watershed: str | None = None,
+    external_brain_mask: InputPathType | None = None,
+    wsless: bool = False,
+    wsmore: bool = False,
+    wsatlas: bool = False,
+    no_wsatlas: bool = False,
+    no_wsgcaatlas: bool = False,
+    wsthresh: float | None = None,
+    wsseed: list[float] | None = None,
+    norm_3d_iters: float | None = None,
+    norm_max_grad: float | None = None,
+    norm1_b: float | None = None,
+    norm2_b: float | None = None,
+    norm1_n: float | None = None,
+    norm2_n: float | None = None,
+    cm: bool = False,
+    no_fix_with_ga: bool = False,
+    fix_diag_only: bool = False,
+    seg_wlo: float | None = None,
+    seg_ghi: float | None = None,
+    nothicken: bool = False,
+    no_ca_align_after: bool = False,
+    no_ca_align: bool = False,
+    deface: bool = False,
+    expert_file: InputPathType | None = None,
+    xopts_use: bool = False,
+    xopts_clean: bool = False,
+    xopts_overwrite: bool = False,
+    termscript_file: InputPathType | None = None,
     mprage: bool = False,
-    openmp: int | None = None,
-    parallel: bool = False,
-    subject_id: str | None = "recon_all",
-    talairach: str | None = None,
-    use_flair: bool = False,
-    use_t2: bool = False,
-    xopts: typing.Literal["use", "clean", "overwrite"] | None = None,
+    washu_mprage: bool = False,
+    schwartzya3t_atlas: bool = False,
+    threads: float | None = None,
+    waitfor_file: InputPathType | None = None,
+    notify_file: InputPathType | None = None,
+    log_file: InputPathType | None = None,
+    status_file: InputPathType | None = None,
+    noappend: bool = False,
+    no_isrunning: bool = False,
+    hippocampal_subfields_t1: bool = False,
+    hippocampal_subfields_t2: str | None = None,
+    hippocampal_subfields_t1t2: str | None = None,
+    brainstem_structures: bool = False,
+    subjects_dir: str | None = None,
+    mail_user: str | None = None,
+    umask: str | None = None,
+    group_id: str | None = None,
+    only_versions: bool = False,
+    debug: bool = False,
+    allow_coredump: bool = False,
+    dontrun: bool = False,
+    version: bool = False,
+    help_: bool = False,
     runner: Runner | None = None,
-) -> ReconAllOutputs_:
+) -> ReconAllOutputs:
     """
     Performs all, or any part of, the FreeSurfer cortical reconstruction process.
     
-    Author: Members of the Laboratories for Computational Neuroimaging (LCN) at
-    the Athinoula A. Martinos Center for Biomedical Imaging
+    Author: FreeSurfer Developers
     
-    URL: https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all
+    URL: https://github.com/freesurfer/freesurfer
     
     Args:
-        subjects_dir: file or string representing an existing directory. Path\
-            to subjects directory.
-        directive: 'all' or 'autorecon1' or 'autorecon2' or\
-            'autorecon2-volonly' or 'autorecon2-perhemi' or 'autorecon2-inflate1'\
-            or 'autorecon2-cp' or 'autorecon2-wm' or 'autorecon3' or\
-            'autorecon3-t2pial' or 'autorecon-pial' or 'autorecon-hemi' or\
-            'localgi' or 'qcache'. Process directive.
-        flair_file: Convert flair image to orig directory.
-        t1_files: Name of t1 file to process.
-        t2_file: Convert t2 image to orig directory.
-        big_ventricles: For use in subjects with enlarged ventricles.
-        brainstem: Segment brainstem structures.
-        expert: Set parameters using expert file.
-        flags: A list of items which are a string. Additional parameters.
-        hemi: 'lh' or 'rh'. Hemisphere to process.
-        hippocampal_subfields_t1: Segment hippocampal subfields using input t1\
-            scan.
-        hippocampal_subfields_t2: (file or string, a string). Segment\
-            hippocampal subfields using t2 scan, identified by id (may be combined\
-            with hippocampal_subfields_t1).
-        hires: Conform to minimum voxel size (for voxels < 1mm).
-        mprage: Assume scan parameters are mgh mp-rage protocol, which produces\
-            darker gray matter.
-        openmp: Number of processors to use in parallel.
-        parallel: Enable parallel execution.
-        subject_id: Subject name.
-        talairach: Flags to pass to talairach commands.
-        use_flair: Use flair image to refine the pial surface.
-        use_t2: Use t2 image to refine the pial surface.
-        xopts: 'use' or 'clean' or 'overwrite'. Use, delete or overwrite\
-            existing expert options file.
+        subjid: Subject ID for the FreeSurfer analysis.
+        autorecon3_flag: Process stages 24-34.
+        hemi: Specify hemisphere ('lh' or 'rh').
+        pons_crs: Specify CRS for pons during fill operation.
+        cc_crs: Specify CRS for corpus callosum during fill operation.
+        lh_crs: Specify CRS for left hemisphere during fill operation.
+        rh_crs: Specify CRS for right hemisphere during fill operation.
+        nofill: Do not use automatic subcortical seg to fill.
+        watershed: Control skull stripping/watershed program.
+        external_brain_mask: Custom external brain mask file.
+        wsless: Decrease watershed threshold.
+        wsmore: Increase watershed threshold.
+        wsatlas: Use atlas when skull stripping.
+        no_wsatlas: Do not use atlas when skull stripping.
+        no_wsgcaatlas: Do not use GCA atlas when skull stripping.
+        wsthresh: Explicitly set watershed threshold.
+        wsseed: Identify an index (C, R, S) point in the skull.
+        norm_3d_iters: Number of 3D iterations for mri_normalize.
+        norm_max_grad: Max grad for mri_normalize.
+        norm1_b: First usage of mri_normalize with control point intensity N\
+            below target.
+        norm2_b: Second usage of mri_normalize with control point intensity N\
+            below target.
+        norm1_n: First usage of mri_normalize, number of iterations.
+        norm2_n: Second usage of mri_normalize, number of iterations.
+        cm: Conform volumes to the min voxel size.
+        no_fix_with_ga: Do not use genetic algorithm when fixing topology.
+        fix_diag_only: Topology fixer runs until ?h.defect_labels files are\
+            created.
+        seg_wlo: Set WLO value for mri_segment and mris_make_surfaces.
+        seg_ghi: Set GHI value for mri_segment and mris_make_surfaces.
+        nothicken: Pass '-thicken 0' to mri_segment.
+        no_ca_align_after: Turn off '-align-after' with mri_ca_register.
+        no_ca_align: Turn off '-align' with mri_ca_label.
+        deface: Deface subject, written to orig_defaced.mgz.
+        expert_file: Read-in expert options file.
+        xopts_use: Use pre-existing expert options file.
+        xopts_clean: Delete pre-existing expert options file.
+        xopts_overwrite: Overwrite pre-existing expert options file.
+        termscript_file: Run script before exiting.
+        mprage: Assume scan parameters are MGH MP-RAGE protocol.
+        washu_mprage: Assume scan parameters are Wash.U. MP-RAGE protocol.
+        schwartzya3t_atlas: Use special young adult 3T atlas for tal reg.
+        threads: Set number of threads to use.
+        waitfor_file: Wait for file to appear before beginning.
+        notify_file: Create this file after finishing.
+        log_file: Specify log file.
+        status_file: Specify status file.
+        noappend: Start new log and status files instead of appending.
+        no_isrunning: Do not check whether this subject is currently being\
+            processed.
+        hippocampal_subfields_t1: Segmentation of hippocampal subfields using\
+            input T1 scan.
+        hippocampal_subfields_t2: Segmentation using an additional scan and\
+            input T2 scan.
+        hippocampal_subfields_t1t2: Segmentation using additional scan and\
+            input T1.
+        brainstem_structures: Segmentation of brainstem structures.
+        subjects_dir: Specify subjects directory.
+        mail_user: Mail user when done.
+        umask: Set unix file permission mask.
+        group_id: Check that current group is alpha group.
+        only_versions: Print version of each binary and exit.
+        debug: Print out lots of info.
+        allow_coredump: Set coredump limit to unlimited.
+        dontrun: Do everything but execute each command.
+        version: Print version of this script and exit.
+        help_: Display help message and exit.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `ReconAllOutputs_`).
+        NamedTuple of outputs (described in `ReconAllOutputs`).
     """
-    if hippocampal_subfields_t2 is not None and (len(hippocampal_subfields_t2) != 2): 
-        raise ValueError(f"Length of 'hippocampal_subfields_t2' must be 2 but was {len(hippocampal_subfields_t2)}")
     runner = runner or get_global_runner()
-    execution = runner.start_execution(RECON_ALL_METADATA_)
+    execution = runner.start_execution(RECON_ALL_METADATA)
     cargs = []
-    cargs.append("ReconAll")
-    if directive is not None:
-        cargs.extend([
-            "-",
-            directive
-        ])
-    if flair_file is not None:
-        cargs.extend([
-            "-FLAIR",
-            execution.input_file(flair_file)
-        ])
-    if t1_files is not None:
-        cargs.extend([
-            "-i",
-            *[execution.input_file(f) for f in t1_files]
-        ])
-    if t2_file is not None:
-        cargs.extend([
-            "-T2",
-            execution.input_file(t2_file)
-        ])
-    if big_ventricles:
-        cargs.append("-bigventricles")
-    if brainstem:
-        cargs.append("-brainstem-structures")
-    if expert is not None:
-        cargs.extend([
-            "-expert",
-            execution.input_file(expert)
-        ])
-    if flags is not None:
-        cargs.extend([execution.input_file(f) for f in flags])
+    cargs.append("recon-all")
+    cargs.append("-subjid")
+    cargs.append(subjid)
+    if autorecon3_flag:
+        cargs.append("-autorecon3")
     if hemi is not None:
         cargs.extend([
             "-hemi",
             hemi
         ])
+    if pons_crs is not None:
+        cargs.extend([
+            "-pons-crs",
+            *map(str, pons_crs)
+        ])
+    if cc_crs is not None:
+        cargs.extend([
+            "-cc-crs",
+            *map(str, cc_crs)
+        ])
+    if lh_crs is not None:
+        cargs.extend([
+            "-lh-crs",
+            *map(str, lh_crs)
+        ])
+    if rh_crs is not None:
+        cargs.extend([
+            "-rh-crs",
+            *map(str, rh_crs)
+        ])
+    if nofill:
+        cargs.append("-nofill")
+    if watershed is not None:
+        cargs.extend([
+            "-watershed",
+            watershed
+        ])
+    if external_brain_mask is not None:
+        cargs.extend([
+            "-xmask",
+            execution.input_file(external_brain_mask)
+        ])
+    if wsless:
+        cargs.append("-wsless")
+    if wsmore:
+        cargs.append("-wsmore")
+    if wsatlas:
+        cargs.append("-wsatlas")
+    if no_wsatlas:
+        cargs.append("-no-wsatlas")
+    if no_wsgcaatlas:
+        cargs.append("-no-wsgcaatlas")
+    if wsthresh is not None:
+        cargs.extend([
+            "-wsthresh",
+            str(wsthresh)
+        ])
+    if wsseed is not None:
+        cargs.extend([
+            "-wsseed",
+            *map(str, wsseed)
+        ])
+    if norm_3d_iters is not None:
+        cargs.extend([
+            "-norm3diters",
+            str(norm_3d_iters)
+        ])
+    if norm_max_grad is not None:
+        cargs.extend([
+            "-normmaxgrad",
+            str(norm_max_grad)
+        ])
+    if norm1_b is not None:
+        cargs.extend([
+            "-norm1-b",
+            str(norm1_b)
+        ])
+    if norm2_b is not None:
+        cargs.extend([
+            "-norm2-b",
+            str(norm2_b)
+        ])
+    if norm1_n is not None:
+        cargs.extend([
+            "-norm1-n",
+            str(norm1_n)
+        ])
+    if norm2_n is not None:
+        cargs.extend([
+            "-norm2-n",
+            str(norm2_n)
+        ])
+    if cm:
+        cargs.append("-cm")
+    if no_fix_with_ga:
+        cargs.append("-no-fix-with-ga")
+    if fix_diag_only:
+        cargs.append("-fix-diag-only")
+    if seg_wlo is not None:
+        cargs.extend([
+            "-seg-wlo",
+            str(seg_wlo)
+        ])
+    if seg_ghi is not None:
+        cargs.extend([
+            "-seg-ghi",
+            str(seg_ghi)
+        ])
+    if nothicken:
+        cargs.append("-nothicken")
+    if no_ca_align_after:
+        cargs.append("-no-ca-align-after")
+    if no_ca_align:
+        cargs.append("-no-ca-align")
+    if deface:
+        cargs.append("-deface")
+    if expert_file is not None:
+        cargs.extend([
+            "-expert",
+            execution.input_file(expert_file)
+        ])
+    if xopts_use:
+        cargs.append("-xopts-use")
+    if xopts_clean:
+        cargs.append("-xopts-clean")
+    if xopts_overwrite:
+        cargs.append("-xopts-overwrite")
+    if termscript_file is not None:
+        cargs.extend([
+            "-termscript",
+            execution.input_file(termscript_file)
+        ])
+    if mprage:
+        cargs.append("-mprage")
+    if washu_mprage:
+        cargs.append("-washu_mprage")
+    if schwartzya3t_atlas:
+        cargs.append("-schwartzya3t-atlas")
+    if threads is not None:
+        cargs.extend([
+            "-threads",
+            str(threads)
+        ])
+    if waitfor_file is not None:
+        cargs.extend([
+            "-waitfor",
+            execution.input_file(waitfor_file)
+        ])
+    if notify_file is not None:
+        cargs.extend([
+            "-notify",
+            execution.input_file(notify_file)
+        ])
+    if log_file is not None:
+        cargs.extend([
+            "-log",
+            execution.input_file(log_file)
+        ])
+    if status_file is not None:
+        cargs.extend([
+            "-status",
+            execution.input_file(status_file)
+        ])
+    if noappend:
+        cargs.append("-noappend")
+    if no_isrunning:
+        cargs.append("-no-isrunning")
     if hippocampal_subfields_t1:
         cargs.append("-hippocampal-subfields-T1")
     if hippocampal_subfields_t2 is not None:
         cargs.extend([
             "-hippocampal-subfields-T2",
-            *hippocampal_subfields_t2
+            hippocampal_subfields_t2
         ])
-    if hires:
-        cargs.append("-hires")
-    if mprage:
-        cargs.append("-mprage")
-    if openmp is not None:
+    if hippocampal_subfields_t1t2 is not None:
         cargs.extend([
-            "-openmp",
-            str(openmp)
+            "-hippocampal-subfields-T1T2",
+            hippocampal_subfields_t1t2
         ])
-    if parallel:
-        cargs.append("-parallel")
-    if subject_id is not None:
+    if brainstem_structures:
+        cargs.append("-brainstem-structures")
+    if subjects_dir is not None:
         cargs.extend([
-            "-subjid",
-            subject_id
+            "-sd",
+            subjects_dir
         ])
-    cargs.extend([
-        "-sd",
-        execution.input_file(subjects_dir)
-    ])
-    if talairach is not None:
-        cargs.append(talairach)
-    if use_flair:
-        cargs.append("-FLAIRpial")
-    if use_t2:
-        cargs.append("-T2pial")
-    if xopts is not None:
+    if mail_user is not None:
         cargs.extend([
-            "-xopts-",
-            xopts
+            "-mail",
+            mail_user
         ])
-    ret = ReconAllOutputs_(
+    if umask is not None:
+        cargs.extend([
+            "-umask",
+            umask
+        ])
+    if group_id is not None:
+        cargs.extend([
+            "-grp",
+            group_id
+        ])
+    if only_versions:
+        cargs.append("-onlyversions")
+    if debug:
+        cargs.append("-debug")
+    if allow_coredump:
+        cargs.append("-allowcoredump")
+    if dontrun:
+        cargs.append("-dontrun")
+    if version:
+        cargs.append("-version")
+    if help_:
+        cargs.append("-help")
+    ret = ReconAllOutputs(
         root=execution.output_file("."),
-        subjects_dir_outfile=execution.output_file("file"),
+        logfile=execution.output_file(subjid + "/scripts/recon-all.log"),
+        statusfile=execution.output_file(subjid + "/scripts/recon-all-status.log"),
     )
     execution.run(cargs)
     return ret
 
 
 __all__ = [
-    "RECON_ALL_METADATA_",
-    "ReconAllOutputs_",
-    "recon_all_",
+    "RECON_ALL_METADATA",
+    "ReconAllOutputs",
+    "recon_all",
 ]

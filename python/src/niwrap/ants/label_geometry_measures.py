@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_GEOMETRY_MEASURES_METADATA = Metadata(
-    id="5440303fc5aad0a732d9de45cce4a4df0e716aa2.boutiques",
+    id="0af7eb4da10c37d8a86e209fcb446cee7e45bfd7.boutiques",
     name="LabelGeometryMeasures",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -32,18 +32,8 @@ def label_geometry_measures(
     runner: Runner | None = None,
 ) -> LabelGeometryMeasuresOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    This tool computes various geometry measures on a label image, optionally using
+    an intensity image, and outputs the results to a CSV file.
     
     Author: ANTs developers
     

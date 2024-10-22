@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTSUSE_LANDMARK_IMAGES_TO_GET_AFFINE_TRANSFORM_METADATA = Metadata(
-    id="de0a97ee512e7d859ed0be055747315b257fed2c.boutiques",
+    id="40ddcb39272ebf1431cc93d348bbf1503a8fc9f6.boutiques",
     name="ANTSUseLandmarkImagesToGetAffineTransform",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -32,18 +32,11 @@ def antsuse_landmark_images_to_get_affine_transform(
     runner: Runner | None = None,
 ) -> AntsuseLandmarkImagesToGetAffineTransformOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    This tool computes an affine transform (rigid or affine) from labeled landmark
+    images. It requires input images to be N-ary, in the same physical space as the
+    images you want to register, and to have the same landmark points defined within
+    them. Landmarks are defined from the center of mass of the labels in the input
+    images. ITK-snap can be used to generate the label images.
     
     Author: ANTs developers
     

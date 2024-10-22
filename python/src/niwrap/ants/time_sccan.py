@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TIME_SCCAN_METADATA = Metadata(
-    id="b192813f49c6f4ccecccba51e809469949ce79ae.boutiques",
+    id="939578ef6dfde7cdb8baff6fd69dcfa7e8a7a3cb.boutiques",
     name="TimeSCCAN",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -113,18 +113,7 @@ def time_sccan(
     runner: Runner | None = None,
 ) -> TimeSccanOutputs:
     """
-    Advanced Normalization Tools (ANTs) is a C++ library available through the
-    command line that computes high-dimensional mappings to capture the statistics
-    of brain structure and function. It allows one to organize, visualize and
-    statistically explore large biomedical image sets. Additionally, it integrates
-    imaging modalities in space + time and works across species or organ systems
-    with minimal customization.
-    
-    The ANTs library is considered a state-of-the-art medical image registration
-    and segmentation toolkit which depends on the Insight ToolKit, a widely used
-    medical image processing library to which ANTs developers contribute.
-    ANTs-related tools have also won several international, unbiased
-    competitions such as MICCAI, BRATS, and STACOM.
+    A tool for sparse statistical analysis on connectivity within a subject.
     
     Author: ANTs developers
     
