@@ -150,22 +150,26 @@
       "description": "Brain extracted image",
       "id": "brain_extracted_image",
       "name": "Brain Extracted Image",
-      "path-template": "[OUTPUT_PREFIX]BrainExtractionBrain.nii.gz"
+      "path-template": "[OUTPUT_PREFIX]_BrainExtractionBrain.nii.gz"
     },
     {
       "description": "Brain mask",
       "id": "brain_mask",
       "name": "Brain Mask",
-      "path-template": "[OUTPUT_PREFIX]BrainExtractionMask.nii.gz"
+      "path-template": "[OUTPUT_PREFIX]_BrainExtractionMask.nii.gz"
     },
     {
       "description": "Brain probability mask",
       "id": "brain_probability_mask",
       "name": "Brain Probability Mask",
-      "path-template": "[OUTPUT_PREFIX]BrainExtractionPrior0GenericAffine.mat"
+      "path-template": "[OUTPUT_PREFIX]_BrainExtractionPrior0GenericAffine.mat"
     }
   ],
   "tags": {
-    "domain": ["neuroinformatics", "mri", "brain extraction"]
+    "domain": [
+      "neuroinformatics",
+      "mri",
+      "brain extraction"
+    ]
   }
 }
