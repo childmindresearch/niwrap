@@ -45,6 +45,7 @@ jobs:
             mkdir -p python/src/niwrap/
             poetry --directory styx run python build.py
             git add python/
+            git add packages/
             git add README.md
             git diff --quiet HEAD || git commit -m "Compile"
             git push
