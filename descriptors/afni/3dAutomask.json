@@ -1,6 +1,6 @@
 {
   "name": "3dAutomask",
-  "command-line": "3dAutomask [PREFIX] [APPLY_PREFIX] [CLFRAC] [DILATE] [ERODE] [IN_FILE] [OUTPUTTYPE]",
+  "command-line": "3dAutomask [PREFIX] [APPLY_PREFIX] [CLFRAC] [DILATE] [ERODE] [OUTPUTTYPE] [IN_FILE]",
   "author": "AFNI Team",
   "description": "Create a brain-only mask of the image using AFNI 3dAutomask command.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html",

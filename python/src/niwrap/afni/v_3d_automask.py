@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AUTOMASK_METADATA = Metadata(
-    id="e1d89bf718dc8bc220181732ef85422c677bd613.boutiques",
+    id="9f838eb42fec10c949682a352e9566a4223be300.boutiques",
     name="3dAutomask",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -86,9 +86,9 @@ def v_3d_automask(
             "-erode",
             str(erode)
         ])
-    cargs.append(execution.input_file(in_file))
     if outputtype is not None:
         cargs.append(outputtype)
+    cargs.append(execution.input_file(in_file))
     ret = V3dAutomaskOutputs(
         root=execution.output_file("."),
         brain_file=execution.output_file(apply_prefix) if (apply_prefix is not None) else None,
