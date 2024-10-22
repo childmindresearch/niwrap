@@ -168,6 +168,11 @@
         "descriptor": "descriptors/fsl/bianca_overlap_measures.json"
       },
       {
+        "target": "bianca_perivent_deep",
+        "status": "done",
+        "descriptor": "descriptors/fsl/bianca_perivent_deep.json"
+      },
+      {
         "target": "calc_grad_perc_dev",
         "status": "done",
         "descriptor": "descriptors/fsl/calc_grad_perc_dev.json"
@@ -780,7 +785,8 @@
       },
       {
         "target": "fugue",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/fsl/fugue.json"
       },
       {
         "target": "generateConfounds",
@@ -1328,6 +1334,11 @@
         "target": "susan",
         "status": "done",
         "descriptor": "descriptors/fsl/susan.json"
+      },
+      {
+        "target": "svs_segment",
+        "status": "done",
+        "descriptor": "descriptors/fsl/svs_segment.json"
       },
       {
         "target": "swap_subjectwise",
