@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_RESAMPLE_DCONN_MEMORY_METADATA = Metadata(
-    id="213b1ea57fe176bbedf4a979b2355dc46730e5f4.boutiques",
+    id="98844562bac76e58ba082e79e4c0318036c65373.boutiques",
     name="cifti-resample-dconn-memory",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -596,7 +596,9 @@ def cifti_resample_dconn_memory(
     BARYCENTRIC
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the cifti file to resample.

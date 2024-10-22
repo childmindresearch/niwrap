@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TIME_SCCAN_METADATA = Metadata(
-    id="939578ef6dfde7cdb8baff6fd69dcfa7e8a7a3cb.boutiques",
+    id="c29edfffbdbeee9e02e8801bed3cb5f939e9ea50.boutiques",
     name="TimeSCCAN",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -115,7 +115,7 @@ def time_sccan(
     """
     A tool for sparse statistical analysis on connectivity within a subject.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

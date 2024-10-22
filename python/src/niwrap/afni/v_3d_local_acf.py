@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_ACF_METADATA = Metadata(
-    id="41fc746205a0ec34a851e89c0203f7c993a4bd84.boutiques",
+    id="f028a3db36733d5d221d8a591e5ff6f090858574.boutiques",
     name="3dLocalACF",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_local_acf(
     Estimate the spatial AutoCorrelation Function (ACF) locally in a neighborhood
     around each voxel.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalACF.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for output dataset.

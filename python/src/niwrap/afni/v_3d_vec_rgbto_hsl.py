@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_VEC_RGBTO_HSL_METADATA = Metadata(
-    id="511b5dc8d72fa1cb7da1c9d53ea30551d0755f93.boutiques",
+    id="232ebab54a001ae268cd3c9f605929ce3a7b7267.boutiques",
     name="3dVecRGBtoHSL",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,10 +35,9 @@ def v_3d_vec_rgbto_hsl(
     Convert a 3-brick RGB (red, green, blue) data set to an HSL (hue, saturation,
     luminance) one.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dVecRGB_to_HSL.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output file name part.

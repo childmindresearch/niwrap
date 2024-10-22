@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_SMOOTHING_METADATA = Metadata(
-    id="53cd9fec297a09fa4da27a74fc01e46d28ae22ee.boutiques",
+    id="f15c510506565633546827912633f27a02a2a791.boutiques",
     name="metric-smoothing",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -114,7 +114,9 @@ def metric_smoothing(
     areas). The GEO_GAUSS method is not recommended, it exists mainly to
     replicate methods of studies done with caret5's geodesic smoothing.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to smooth on.

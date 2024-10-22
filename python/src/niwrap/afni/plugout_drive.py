@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PLUGOUT_DRIVE_METADATA = Metadata(
-    id="22300b13070d9730d869d6a2398b779c0bc9a168.boutiques",
+    id="e1cb039cf6cd9c8eda885b4de1361558d90e3b37.boutiques",
     name="plugout_drive",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def plugout_drive(
     This program connects to AFNI and sends commands that the user specifies
     interactively or on command line over to AFNI to be executed.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_drive.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         host: Connect to AFNI running on the specified host using TCP/IP.\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_VECTOR_OPERATION_METADATA = Metadata(
-    id="7c1f405bd1a985d92bb063f6eae91a16ce69cc85.boutiques",
+    id="ca094c16fcd0e79a47ee05e852def2be3bdee6df.boutiques",
     name="cifti-vector-operation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -50,7 +50,9 @@ def cifti_vector_operation(
     ADD
     SUBTRACT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         vectors_a: first vector input file.

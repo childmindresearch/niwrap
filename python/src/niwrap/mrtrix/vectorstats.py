@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VECTORSTATS_METADATA = Metadata(
-    id="be9fccc3c0e65f405594311c49164b4307c526e5.boutiques",
+    id="a8a67c93f9ad1cdf03ad2a1e473010538e53830b.boutiques",
     name="vectorstats",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -132,10 +132,9 @@ def vectorstats(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/vectorstats.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: a text file listing the file names of the input subject data.

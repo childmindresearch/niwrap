@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_MERGE_METADATA = Metadata(
-    id="c568c787cebc1c7c46fadef250499da718cf4302.boutiques",
+    id="0dea4709b5a4ec93a8f2c1b608c2d7f986ed9416.boutiques",
     name="cifti-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -139,7 +139,9 @@ def cifti_merge(
     by all columns from second.dtseries.nii, and write these columns to
     out.dtseries.nii. .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_out: output cifti file.

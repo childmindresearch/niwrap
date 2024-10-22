@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_INFLATION_METADATA = Metadata(
-    id="e150331abc2dc987286543f4111c1444aa76fe0d.boutiques",
+    id="430765c43e524e5e9fdd483cf427c1b19e6b0ba1.boutiques",
     name="surface-inflation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def surface_inflation(
     Inflate a surface by performing cycles that consist of smoothing followed by
     inflation (to correct shrinkage caused by smoothing).
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         anatomical_surface_in: the anatomical surface.

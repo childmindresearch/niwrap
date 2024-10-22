@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RMSDIFF_METADATA = Metadata(
-    id="86bb049e323d6e902f9becb2e66f142557ef308b.boutiques",
+    id="4c9ef3222cef730b6dcc1ef14f9c2fa6d48996a4.boutiques",
     name="rmsdiff",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,6 +31,10 @@ def rmsdiff(
 ) -> RmsdiffOutputs:
     """
     Outputs RMS deviation between matrices (in mm).
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         matrixfile1: First matrix file.

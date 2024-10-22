@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLMERGE_METADATA = Metadata(
-    id="ef048ed2cfafa159d4abdde743e604efb694c7e4.boutiques",
+    id="65b1eef48cc8bcd33882984b5ff1664d2f0ee5ea.boutiques",
     name="fslmerge",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def fslmerge(
     """
     FSL tool to concatenate images in various dimensions.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_file: Output concatenated image file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ACOST_METADATA = Metadata(
-    id="989123a5cb8fa3fdba93e5b466ad4510a4e3746c.boutiques",
+    id="0ff6573e114cd6d142c6db98eac6125eecf4d8dc.boutiques",
     name="3dAcost",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_acost(
     """
     Allineate dataset to a base dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAcost.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input dataset for allineation.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SHARPEN_METADATA = Metadata(
-    id="d3cfa1f87b784b7ee4fdb186b74a1433beba4a22.boutiques",
+    id="44eead3d035544b0d1ef18d1ea40f5df1b442bcb.boutiques",
     name="3dSharpen",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3d_sharpen(
     Applies a simple 3D sharpening filter to the positive values in the #0 volume of
     the input dataset, and writes out a new dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSharpen.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset (e.g., input.nii.gz).

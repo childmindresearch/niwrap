@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__1D_DIFF_MAG_METADATA = Metadata(
-    id="bd7e56bef2922c77f7836179b5ca66d811594b02.boutiques",
+    id="ccbd06979574a6fa073f5c90b06eebc4b39093fe.boutiques",
     name="@1dDiffMag",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v__1d_diff_mag(
     """
     Computes a magnitude estimate of the first differences of a 1D file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@1dDiffMag.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: 1D input file to compute the magnitude estimate of the first\

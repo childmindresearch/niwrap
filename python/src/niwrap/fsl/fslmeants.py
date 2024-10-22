@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLMEANTS_METADATA = Metadata(
-    id="5c194ad689e328cd9c467d521eb74d5f693b5d49.boutiques",
+    id="c62f023e024c117bb6c12d781c21199cf7d64502.boutiques",
     name="fslmeants",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -43,9 +43,9 @@ def fslmeants(
     """
     Prints average timeseries (intensities) to the screen (or saves to a file).
     
-    Author: University of Oxford (Mark Jenkinson, Christian F. Beckmann)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Input 4D image.

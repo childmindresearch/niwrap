@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__NO_POUND_METADATA = Metadata(
-    id="e8966af56389c1235a2a32ff16269adde3aec8d4.boutiques",
+    id="27d35f86a77d04034e08074da72efd10ccb9fa51.boutiques",
     name="@NoPound",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,9 +29,9 @@ def v__no_pound(
     """
     Replaces all # characters in AFNI filenames with a -.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoPound.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         afni_files: List of AFNI files where # characters should be replaced\

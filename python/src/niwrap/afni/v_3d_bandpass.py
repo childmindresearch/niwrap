@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BANDPASS_METADATA = Metadata(
-    id="360f073bdccce90b97d79e61b67ac476260d7564.boutiques",
+    id="c411bed68642a28de02059c05daf1e8275470fca.boutiques",
     name="3dBandpass",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,9 +49,9 @@ def v_3d_bandpass(
     Program to lowpass and/or highpass each voxel time series in a dataset, offering
     more/different options than Fourier.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         highpass: Highpass.

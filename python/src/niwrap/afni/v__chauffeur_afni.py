@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__CHAUFFEUR_AFNI_METADATA = Metadata(
-    id="156b32bc2ae285398a04b90d562966dd0cfac2d3.boutiques",
+    id="1c876be7c5930cd8b1fe92c47fded0de8c44feca.boutiques",
     name="@chauffeur_afni",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,10 +37,9 @@ def v__chauffeur_afni(
     """
     Automated QC snapshots generator in AFNI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@chauffeur_afni.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         ulay: Name of underlay dataset (required); can be 3D or 4D set.

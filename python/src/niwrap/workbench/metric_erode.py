@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_ERODE_METADATA = Metadata(
-    id="7cdb17adaebb86dbc53994e44de30f4ce1b3fbd6.boutiques",
+    id="68642278486795aca12dea4555e295464095795a.boutiques",
     name="metric-erode",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -44,7 +44,9 @@ def metric_erode(
     Note that the -corrected-areas option uses an approximate correction for
     distance along the surface.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric: the metric file to erode.

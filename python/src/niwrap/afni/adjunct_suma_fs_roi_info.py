@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_SUMA_FS_ROI_INFO_METADATA = Metadata(
-    id="671e6ddb16b18d728e86051ee9166763f6d74855.boutiques",
+    id="88ddfb0a9b419a5d6b16e3d7b3d95644d89bfd80.boutiques",
     name="adjunct_suma_fs_roi_info",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,10 +42,9 @@ def adjunct_suma_fs_roi_info(
     Script for making ROI stats for the SUMA/ directory created by
     @SUMA_Make_Spec_FS after running FreeSurfer's recon-all.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_suma_fs_roi_info.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         subject_id: Subject ID.

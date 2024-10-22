@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_REORIENT_METADATA = Metadata(
-    id="1afac12c05724e2c743ea9a8c888ea025d603263.boutiques",
+    id="72059e5574169b84e392a1de56c31f070c119937.boutiques",
     name="volume-reorient",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -43,7 +43,9 @@ def volume_reorient(
     I inferior to superior
     S superior to inferior.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume: the volume to reorient.

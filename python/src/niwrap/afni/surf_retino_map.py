@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_RETINO_MAP_METADATA = Metadata(
-    id="aff6b86a9d314504b57fccc1c8f1fdd5cad6213c.boutiques",
+    id="f282168d578a8fb61be6e59e5e58d7129fbfa5b1.boutiques",
     name="SurfRetinoMap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def surf_retino_map(
     """
     Tool for retinotopic mapping on cortical surfaces.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfRetinoMap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         surface: Surface on which distances are computed. See 'Specifying input\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__GET_AFNI_VERSION_METADATA = Metadata(
-    id="56611723ba1430ed14090e4baa4797933ee9f2bf.boutiques",
+    id="00b4038dc7dd30e795e94e467e6a777717d8d741.boutiques",
     name="@get.afni.version",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def v__get_afni_version(
     """
     Downloads the source code for a specified AFNI version.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@get.afni.version.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         version: AFNI version number to get (e.g., 16.0.01).

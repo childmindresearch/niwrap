@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_SSW_INTERMED_EDGE_IMGS_METADATA = Metadata(
-    id="d2d8a138e3c9ac7e43de45867b6cfda67508d0da.boutiques",
+    id="2bca379c9dd8353dbea05fedc86aa2835a2f2819.boutiques",
     name="@djunct_ssw_intermed_edge_imgs",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,10 +41,9 @@ def v__djunct_ssw_intermed_edge_imgs(
     """
     Helper script to generate intermediate edge images for SSW-related processing.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_ssw_intermed_edge_imgs.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for generated output files.

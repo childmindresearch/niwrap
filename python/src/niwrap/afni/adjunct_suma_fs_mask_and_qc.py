@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_SUMA_FS_MASK_AND_QC_METADATA = Metadata(
-    id="a4c82b241b36b54438771cd4deddcd1b90cbd554.boutiques",
+    id="9044663584933a336f19e159c18976b332d51c34.boutiques",
     name="adjunct_suma_fs_mask_and_qc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,10 +50,9 @@ def adjunct_suma_fs_mask_and_qc(
     Script for quickly making some QC images for the SUMA/ directory created by
     @SUMA_Make_Spec_FS after running FreeSurfer's recon-all.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_suma_fs_mask_and_qc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         subj_id: Subject ID.

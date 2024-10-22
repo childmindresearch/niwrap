@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_REPLACE_STRUCTURE_METADATA = Metadata(
-    id="7780641a00d19b64e740214a6e21ca25e3012574.boutiques",
+    id="5fd15b7aa78dbd1773492e8a06c96bb7c7919177.boutiques",
     name="cifti-replace-structure",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -203,7 +203,9 @@ def cifti_replace_structure(
     THALAMUS_LEFT
     THALAMUS_RIGHT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti: the cifti to modify.

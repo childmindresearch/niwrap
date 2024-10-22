@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXEL2VOXEL_METADATA = Metadata(
-    id="bc28496ec9561711086ef06f1ce67d3fd2201b97.boutiques",
+    id="5fccec41beac5ebb945c548f352825b1de7de1ba.boutiques",
     name="fixel2voxel",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -103,11 +103,9 @@ def fixel2voxel(
     Fractional Anisotropy: Extraction of bundle-specific structural metrics from
     crossing fibre models. NeuroImage, 2014, 100, 176-191.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au) & David Raffelt
-    (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixel2voxel.html
+    URL: https://www.mrtrix.org/
     
     Args:
         fixel_in: the input fixel data file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DRIVE_AFNI_METADATA = Metadata(
-    id="33cd9ea05edb3d0348d44985e787232fd5c5a1ee.boutiques",
+    id="cd98331a7490b69af1ed32154452c87d4115b6ab.boutiques",
     name="DriveAfni",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def drive_afni(
     """
     A demo program for driving 'afni' from a script.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DriveAfni.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         runner: Command runner.

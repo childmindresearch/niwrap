@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QBOOT_METADATA = Metadata(
-    id="719956ac6e06444e87fb8bebc3ba3438af528fd3.boutiques",
+    id="5e36ed0ed567e9bbeeaf01b15e9fc0ab7b2d4d26.boutiques",
     name="qboot",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -51,9 +51,9 @@ def qboot(
     """
     Tool for computing q-ball ODFs using bootstrap samples.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         data_file: Data file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKEROT_METADATA = Metadata(
-    id="9a981a11e2223cd905b1614487915c846c532dcf.boutiques",
+    id="50a219082fe22aa0bb97ef18740853d5f81b69d7.boutiques",
     name="makerot",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -37,7 +37,9 @@ def makerot(
     """
     Tool to create a rotation matrix for a given angle and axis of rotation.
     
-    Author: Mark Jenkinson, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         theta: Angle of rotation (in degrees).

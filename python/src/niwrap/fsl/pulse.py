@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PULSE_METADATA = Metadata(
-    id="c8f4c651eec9c8bbc074a1e1452ba93dbd7c213f.boutiques",
+    id="1f72e157bdf5cf3245c3ad80d36759935cdf929f.boutiques",
     name="pulse",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -55,9 +55,9 @@ def pulse(
     """
     Generates a pulse sequence matrix for a given digital brain image.
     
-    Author: University of Oxford (Ivana Drobnjak and Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Pulse
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: 4D digital brain, resolution can be any.

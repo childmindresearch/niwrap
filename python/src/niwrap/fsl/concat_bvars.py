@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONCAT_BVARS_METADATA = Metadata(
-    id="6a9bf9f25c132f92894f26ddadc2707ebb8f44eb.boutiques",
+    id="f357bfc28e3ab7f24fff72ec83769cc945a6b2e4.boutiques",
     name="concat_bvars",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,7 +31,9 @@ def concat_bvars(
     """
     Concatenate multiple .bvars files into a single .bvars file.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_bvars: Output .bvars file.

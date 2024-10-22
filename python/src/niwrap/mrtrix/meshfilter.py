@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MESHFILTER_METADATA = Metadata(
-    id="ec71318141eed6fc264716fddad90a1fa6d802cf.boutiques",
+    id="60786a8c6290d7bdf51b9e5b7367257fed09c188.boutiques",
     name="meshfilter",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -80,10 +80,9 @@ def meshfilter(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/meshfilter.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input mesh file.

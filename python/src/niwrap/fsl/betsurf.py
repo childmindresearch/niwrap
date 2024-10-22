@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BETSURF_METADATA = Metadata(
-    id="b1da5e0b3c30d8559e0471373ff118e1c9906ed8.boutiques",
+    id="b1d4fa1b4d844bb3a83fb85f111513675007cf86.boutiques",
     name="betsurf",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -46,9 +46,9 @@ def betsurf(
     """
     BET Surface Finder to extract brain surfaces using T1 and T2 images.
     
-    Author: FMRIB Analysis Group, Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         t1_image: T1-weighted MRI image.

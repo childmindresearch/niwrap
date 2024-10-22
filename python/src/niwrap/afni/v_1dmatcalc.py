@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DMATCALC_METADATA = Metadata(
-    id="e6d002dffc94c6e5ac26f600399471ff7e3b57fb.boutiques",
+    id="363bd7932d82bc77c3f5fe6e0307d7efddad15de.boutiques",
     name="1dmatcalc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def v_1dmatcalc(
     A tool to evaluate space-delimited RPN (Reverse Polish Notation) matrix-valued
     expressions.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dmatcalc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         expression: Expression to evaluate the RPN matrix-valued operations.

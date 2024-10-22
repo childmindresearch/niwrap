@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ATTRIBUTE_METADATA = Metadata(
-    id="79267a31ef398396138d6285a5996d3b484388a8.boutiques",
+    id="07185f589357b6d2c84b335e833e86a619976b6b.boutiques",
     name="3dAttribute",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_attribute(
     """
     Prints the value of the attribute 'aname' from the header of the dataset 'dset'.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAttribute.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         aname: Attribute name to be printed from the dataset.

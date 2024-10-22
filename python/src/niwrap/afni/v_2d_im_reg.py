@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_2D_IM_REG_METADATA = Metadata(
-    id="eb09199ec4bc407db9b8b93db9712dbe484d6202.boutiques",
+    id="e128fa199e792a2b55b540ec32be59c11d9b8749.boutiques",
     name="2dImReg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,9 +53,9 @@ def v_2d_im_reg(
     2D image registration tool for 3D+time datasets, aligning images on a
     slice-by-slice basis to a specified base image.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/2dImReg.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Filename of input 3d+time dataset to process.

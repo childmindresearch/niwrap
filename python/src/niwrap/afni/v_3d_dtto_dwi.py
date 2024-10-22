@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DTTO_DWI_METADATA = Metadata(
-    id="16a01d170f3a18ef30f0842dca53d4e12846ca65.boutiques",
+    id="7152649faabf944b7f991d88bc2a8df46f5b5bd7.boutiques",
     name="3dDTtoDWI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3d_dtto_dwi(
     Tool to compute multiple gradient images from tensors and gradient vector
     coordinates applied to the I0-dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDTtoDWI.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         gradient_file: 1D file containing the gradient vectors (ASCII floats)\

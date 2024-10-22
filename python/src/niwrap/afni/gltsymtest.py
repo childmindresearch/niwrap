@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GLTSYMTEST_METADATA = Metadata(
-    id="332931d9c4a4e4a6d9609bf286d3aa59c1c5917b.boutiques",
+    id="8b69853d0f4540d3f47435c31725118e2911c6f2.boutiques",
     name="GLTsymtest",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def gltsymtest(
     A tool to test the validity of '-gltsym' strings for use with 3dDeconvolve or
     3dREMLfit.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/GLTsymtest.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         varlist: A list of allowed variable names in the expression, separated\

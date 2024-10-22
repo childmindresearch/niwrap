@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_24SWAP_METADATA = Metadata(
-    id="36522de60f2db30203ed34354f5c2bb34bc52aca.boutiques",
+    id="6078cfba70268f01f74a8921a77d80e46d21cf23.boutiques",
     name="24swap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v_24swap(
     """
     Swaps bytes pairs and/or quadruples on the files listed.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/24swap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input file(s) to swap bytes.

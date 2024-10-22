@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CALC_GRAD_PERC_DEV_METADATA = Metadata(
-    id="41712174e5d5a8cc5a54c8270f4e1d40beda5c6d.boutiques",
+    id="948f0ea1badb8e7359a898f070838504615ccf19.boutiques",
     name="calc_grad_perc_dev",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,9 +33,9 @@ def calc_grad_perc_dev(
     Compute the gradient percent deviation based on a full warp image from
     gradient_unwarp.py.
     
-    Author: Mark Jenkinson, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         fullwarp_image: Full warp image from gradient_unwarp.py.

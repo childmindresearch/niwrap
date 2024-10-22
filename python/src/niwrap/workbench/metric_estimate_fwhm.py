@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_ESTIMATE_FWHM_METADATA = Metadata(
-    id="742556a08415c28c3256b8b5211382b5fcb3d725.boutiques",
+    id="76907803c2f1aed8ab98dc0e854e6d8c507004d4.boutiques",
     name="metric-estimate-fwhm",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def metric_estimate_fwhm(
     Estimates the smoothness of the metric columns, printing the estimates to
     standard output. These estimates ignore variation in vertex spacing.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to use for distance and neighbor information.

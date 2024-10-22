@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICE_METADATA = Metadata(
-    id="9bb3500c48eb190211fa707bd9f7f488ab0d5bea.boutiques",
+    id="f71a1a10052c96f6d549130064fdecff0de60fb9.boutiques",
     name="Slice",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,7 +33,9 @@ def slice_(
     """
     Use fslslice to split a 3D file into lots of 2D files (along z-axis).
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Input filename.

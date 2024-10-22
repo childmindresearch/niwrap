@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DGEN_ARMA11_METADATA = Metadata(
-    id="7b838c83e4c23203ca0f84f7d610ed7d7272008f.boutiques",
+    id="eec5da6e665ce89463e9d156358a3805c810fa76.boutiques",
     name="1dgenARMA11",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def v_1dgen_arma11(
     Program to generate an ARMA(1,1) time series, for simulation studies. Results
     are written to stdout.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dgenARMA11.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         length_alt: Specify the length of the time series vector to generate\

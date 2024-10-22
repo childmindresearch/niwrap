@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUPER_RESOLUTION_METADATA = Metadata(
-    id="fb3d6e9a218076d2900299200970564b94093ab0.boutiques",
+    id="971ff863d798c743fcbcf153281a68f737955b2e.boutiques",
     name="SuperResolution",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -40,7 +40,7 @@ def super_resolution(
     input images for weighting the voxel points during fitting. If a negative
     'gradient' sigma is specified then no weighting is used.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

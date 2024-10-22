@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_APMULTI_DEMO2_REALTIME_METADATA = Metadata(
-    id="35a4473905976e57395c02879ed22abe1b49a7c1.boutiques",
+    id="87f1e50e0d43631cd9fca2d0f1ea6b2083580762.boutiques",
     name="@Install_APMULTI_Demo2_realtime",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,10 +30,9 @@ def v__install_apmulti_demo2_realtime(
     Fetches the demo data and scripts corresponding to AFNI's Demo #2 for
     experimenting with AFNI's real-time system.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_APMULTI_Demo2_realtime.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         curl: Use curl to download the archive. By default, the script prefers\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMDUMP_METADATA = Metadata(
-    id="147ec8537b1090ad813c52a82a8dfdddcb77d39d.boutiques",
+    id="7f8451c2da7ec8cbf2c32a069270cdd298deaee7.boutiques",
     name="imdump",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def imdump(
     """
     Prints out nonzero pixels in an image.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imdump.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_image: Input image file to be processed.

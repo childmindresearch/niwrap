@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOXEL2FIXEL_METADATA = Metadata(
-    id="3ee38fc4c944bbf53830a1ae211114adba9f0623.boutiques",
+    id="5eac19f16617dbecc2080fd5f4f07d1eac6e92da.boutiques",
     name="voxel2fixel",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -76,10 +76,9 @@ def voxel2fixel(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/voxel2fixel.html
+    URL: https://www.mrtrix.org/
     
     Args:
         image_in: the input image.

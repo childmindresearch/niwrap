@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DFRACTIONIZE_METADATA = Metadata(
-    id="9acaac469a33da6b65a1a097f14422f59f763c36.boutiques",
+    id="700df8ed70958c3087524da2a286d3508d1bd05d.boutiques",
     name="3dfractionize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3dfractionize(
     For each voxel in the output dataset, computes the fraction of it that is
     occupied by nonzero voxels from the input.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dfractionize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         template: Use dataset as a template for the output. The output dataset\

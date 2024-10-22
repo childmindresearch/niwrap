@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROTCOM_METADATA = Metadata(
-    id="82b02b85ea72d222e3f150bd7d5de9edb4b1ec75.boutiques",
+    id="65366e1283781ddcf84d07b0c61d20c1cdbf07ba.boutiques",
     name="rotcom",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def rotcom(
     Prints to stdout the 4x3 transformation matrix+vector that would be applied by
     3drotate to the given dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/rotcom.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         rotate_ashift: Combination of rotate and ashift options in a single\

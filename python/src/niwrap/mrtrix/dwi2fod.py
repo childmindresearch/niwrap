@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWI2FOD_METADATA = Metadata(
-    id="9087cff6223dc77b02d41f6884e9988ef1646226.boutiques",
+    id="9a7e655a0db0138d987e71f2ed64a274b8c286e0.boutiques",
     name="dwi2fod",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -247,10 +247,9 @@ def dwi2fod(
     estimation of the fiber orientation density function from diffusion-weighted
     MRI data using spherical deconvolution. NeuroImage, 2004, 23, 1176-1185.
     
-    Author: J-Donald Tournier (jdtournier@gmail.com) and Ben Jeurissen
-    (ben.jeurissen@uantwerpen.be)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2fod.html
+    URL: https://www.mrtrix.org/
     
     Args:
         algorithm: the algorithm to use for FOD estimation. (options are:\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL2MESH_METADATA = Metadata(
-    id="b444580cf3e1cf7e180659ffb6dcb8e97e567318.boutiques",
+    id="cb0fa03ae9a00660e6162ac41aa144e77599bd59.boutiques",
     name="label2mesh",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -76,10 +76,9 @@ def label2mesh(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/label2mesh.html
+    URL: https://www.mrtrix.org/
     
     Args:
         nodes_in: the input node parcellation image.

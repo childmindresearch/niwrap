@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SCALE_VOLUME_METADATA = Metadata(
-    id="1b124f97989c7d3cf8a57b1ad749fc7f7c70f43e.boutiques",
+    id="6e46cf21f8a20a776ceb86c492abbe680f609ab9.boutiques",
     name="@ScaleVolume",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v__scale_volume(
     """
     A tool to scale the volume of datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ScaleVolume.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         val_clip: Min and Max of output dataset. Default V0 = 0 and V1 = 255.

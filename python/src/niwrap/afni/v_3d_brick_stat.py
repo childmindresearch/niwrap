@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BRICK_STAT_METADATA = Metadata(
-    id="654dd6bd8a547dab56163970e62d42501e74b0d2.boutiques",
+    id="2171879e0c09931b6800be575110e0354a0a8e86.boutiques",
     name="3dBrickStat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -60,9 +60,9 @@ def v_3d_brick_stat(
     """
     Compute voxel statistics of an input dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBrickStat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset.

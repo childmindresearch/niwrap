@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCALSTAT_METADATA = Metadata(
-    id="f5563d13ec35a34f367617ae3e6da859f6fd19b9.boutiques",
+    id="f927c9d4ad8b0ef0fa566fe0b9648789d0b3eb44.boutiques",
     name="3dLocalstat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,9 +51,9 @@ def v_3d_localstat(
     This program computes statistics at each voxel, based on a local neighborhood of
     that voxel.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalstat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset.

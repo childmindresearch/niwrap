@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__AFNI_REFACER_MAKE_MASTER_METADATA = Metadata(
-    id="d2b95955add5ec1c7ee9c902b86d10ff4ae67032.boutiques",
+    id="5d171c695cab39d1411b8652cb05c15ab1caaa20.boutiques",
     name="@afni_refacer_make_master",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def v__afni_refacer_make_master(
     This script makes a new mask/shell dataset for use with @afni_refacer_run by
     averaging 'faces' (non-brain tissue) from input datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_make_master.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_datasets: List of T1-weighted datasets that have NOT been\

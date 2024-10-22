@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BET2_METADATA = Metadata(
-    id="6bcfc8bdc0fc44adf89ff8cf7019e09f35b72640.boutiques",
+    id="38f5c8f77d7483222eebf2191421893830d19531.boutiques",
     name="bet2",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -52,9 +52,9 @@ def bet2(
     """
     Automated brain extraction tool for FSL.
     
-    Author: FMRIB Analysis Group, Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_fileroot: Input file root (e.g. img).

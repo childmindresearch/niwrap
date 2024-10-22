@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_SIGNED_DISTANCE_VOLUME_METADATA = Metadata(
-    id="409d5bc1e76d84b983e4f6bc7abab2d2ed04fbe6.boutiques",
+    id="2530d1efe6350c2b71222045d5059db4d156917f.boutiques",
     name="create-signed-distance-volume",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -61,7 +61,9 @@ def create_signed_distance_volume(
     crossings of a vertical ray from the point, then counts as inside if the
     total is odd, negative, or nonzero, respectively.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the input surface.

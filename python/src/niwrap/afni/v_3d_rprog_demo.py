@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RPROG_DEMO_METADATA = Metadata(
-    id="5ce780ab5c2c379531f58a2ea53a0c7f40452f77.boutiques",
+    id="0022cdac85c42f7bbf65ae09bb726c5230da1a47.boutiques",
     name="3dRprogDemo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def v_3d_rprog_demo(
     Template program to help users write their own R processing routines on MRI
     volumes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRprogDemo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dsets: Input dataset(s) to be scaled.

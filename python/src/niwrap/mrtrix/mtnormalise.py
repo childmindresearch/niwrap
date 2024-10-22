@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MTNORMALISE_METADATA = Metadata(
-    id="3f2c8053a316dd7b7f0318315a1d28f67845229a.boutiques",
+    id="3709b0ca1455372ea3dda75e22e31168270b187c.boutiques",
     name="mtnormalise",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -170,13 +170,9 @@ def mtnormalise(
     inhomogeneity normalisation for quantitative apparent fibre density. In
     Proc. ISMRM, 2021, 29, 2472.
     
-    Author: Thijs Dhollander (thijs.dhollander@gmail.com), Rami Tabbara
-    (rami.tabbara@florey.edu.au), David Raffelt (david.raffelt@florey.edu.au),
-    Jonas Rosnarho-Tornstrand (jonas.rosnarho-tornstrand@kcl.ac.uk) and J-Donald
-    Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mtnormalise.html
+    URL: https://www.mrtrix.org/
     
     Args:
         mask: the mask defines the data used to compute the intensity\

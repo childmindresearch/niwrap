@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MESHCONVERT_METADATA = Metadata(
-    id="344abcc95b32eaabe4fe4d2f639ad46cf81609a6.boutiques",
+    id="762c9b5d3b33c0ecdebcfabfcf5bf55092f9fed9.boutiques",
     name="meshconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -111,10 +111,9 @@ def meshconvert(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/meshconvert.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input mesh file.

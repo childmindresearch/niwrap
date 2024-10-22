@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROIGROW_METADATA = Metadata(
-    id="007840d4a74054aef08cec624f60f28b6fc4d9ba.boutiques",
+    id="e86b42392e60416adb9d12f0b2877f5c053d5768.boutiques",
     name="ROIgrow",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def roigrow(
     """
     A program to expand an ROI on the surface.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/ROIgrow.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_surface: Specify input surface. You can also use -t* and -spec\

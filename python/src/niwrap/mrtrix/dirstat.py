@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DIRSTAT_METADATA = Metadata(
-    id="81367cbd380c9eea51f87eee3f809373eef1723f.boutiques",
+    id="b222674c205e6c5c5726d0d3c896ce48287bbceb.boutiques",
     name="dirstat",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -147,9 +147,9 @@ def dirstat(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/dirstat.html
+    URL: https://www.mrtrix.org/
     
     Args:
         dirs: the text file or image containing the directions.

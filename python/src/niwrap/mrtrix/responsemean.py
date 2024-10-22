@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RESPONSEMEAN_METADATA = Metadata(
-    id="a646b9ed3033e9f04553d4f8bb569118b11d0eba.boutiques",
+    id="a8fd34348625b3b1fa9e865a3af1f57c9158d343.boutiques",
     name="responsemean",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -44,10 +44,9 @@ def responsemean(
     """
     Calculate the mean response function from a set of text files.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au) & David Raffelt
-    (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: http://www.mrtrix.org/
+    URL: https://www.mrtrix.org/
     
     Args:
         input_response: Input response functions.

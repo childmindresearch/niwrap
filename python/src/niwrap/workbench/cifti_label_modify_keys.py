@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_MODIFY_KEYS_METADATA = Metadata(
-    id="00850cda6744d4909ec98ffb63aa4182f407d2a9.boutiques",
+    id="e51db4e430603a3bd3c284a2dd3316afa0f68226.boutiques",
     name="cifti-label-modify-keys",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -48,7 +48,9 @@ def cifti_label_modify_keys(
     change the appearance of the file when displayed, as it will change the key
     values in the data at the same time.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the input dlabel file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_COPY_EXTENSIONS_METADATA = Metadata(
-    id="672195e2565d266a45ebc56d42331bbbda2f500d.boutiques",
+    id="c585cf3d37f5b6c64243576c9f05530847f22f02.boutiques",
     name="volume-copy-extensions",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -39,7 +39,9 @@ def volume_copy_extensions(
     settings, label tables. If -drop-unknown is not specified, it also copies
     similar kinds of information set by other software.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         data_volume: the volume file containing the voxel data to use.

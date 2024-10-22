@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ROI_CORR_MAT_METADATA = Metadata(
-    id="e16851a35d38405e8a0cce3c6874be2c5dcbd52a.boutiques",
+    id="d27741a76bf8e8edaca6216979d5f299279d17c6.boutiques",
     name="@ROI_Corr_Mat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def v__roi_corr_mat(
     """
     Script to produce an NxN ROI correlation matrix of N ROIs.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_Corr_Mat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         ts_vol: Time series volume.

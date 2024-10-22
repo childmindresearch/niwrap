@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANATOMICAL_AVERAGE_METADATA = Metadata(
-    id="2b908ef64c2c0b72cb4df499007558d7ee24bc8a.boutiques",
+    id="9af82ad00938d7d5dcc31655738f6a41b8027bed.boutiques",
     name="AnatomicalAverage",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -39,9 +39,9 @@ def anatomical_average(
     """
     Tool to create an anatomical average of input brain images.
     
-    Author: Brain Imaging Center
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://example.com/anatomicalaverage
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_basename: Output basename.

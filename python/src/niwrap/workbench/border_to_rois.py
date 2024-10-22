@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BORDER_TO_ROIS_METADATA = Metadata(
-    id="50b6b6d322e3f21131ee608811ba66d07360cf6a.boutiques",
+    id="9e8595cdba935b7d8eda9315531c3fdead93a7f4.boutiques",
     name="border-to-rois",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -39,7 +39,9 @@ def border_to_rois(
     By default, draws ROIs inside all borders in the border file, as separate
     metric columns.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface the borders are drawn on.

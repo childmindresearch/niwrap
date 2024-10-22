@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FOCI_GET_PROJECTION_VERTEX_METADATA = Metadata(
-    id="5fcf94c378c9d18a1d8f02757543cb80d6f34ebd.boutiques",
+    id="0b9aa06c5f3cd3836136b51e3565cfc937c6fa94.boutiques",
     name="foci-get-projection-vertex",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -38,7 +38,9 @@ def foci_get_projection_vertex(
     most influence on its projection is assigned a value of 1 in that column,
     with all other vertices 0. If -name is used, only one focus will be used.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         foci: the foci file.

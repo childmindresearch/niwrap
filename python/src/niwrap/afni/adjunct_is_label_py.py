@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_IS_LABEL_PY_METADATA = Metadata(
-    id="eafecccdb4a8d1c355d24efe255d4120da84d75c.boutiques",
+    id="3e0e8d04a186b3f9ae56d87ca56ef42ac5b38c81.boutiques",
     name="adjunct_is_label.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,10 +30,9 @@ def adjunct_is_label_py(
     """
     A subsidiary script of the chauffeur_afni suite for label functionalities.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_is_label.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input file for the adjunct_is_label script.

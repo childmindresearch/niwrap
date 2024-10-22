@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWIEXTRACT_METADATA = Metadata(
-    id="523b6b7652a8696dd8707ee5f35400e2f15e5a2a.boutiques",
+    id="5b00b542225211d60f5d1b333fb8c27f5a4730f1.boutiques",
     name="dwiextract",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -271,12 +271,9 @@ def dwiextract(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au) and Thijs Dhollander
-    (thijs.dhollander@gmail.com) and Robert E. Smith
-    (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/dwiextract.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input DW image.

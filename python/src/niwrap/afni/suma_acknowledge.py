@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUMA_ACKNOWLEDGE_METADATA = Metadata(
-    id="8dd5aae823ddb94a1bff1289096ac9acc5a77d75.boutiques",
+    id="1a28dea98d3ee22c07a6ec9a5b4d94941581dca5.boutiques",
     name="suma_acknowledge",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def suma_acknowledge(
     Demo script to create a graph dataset to show names of individuals and groups,
     potentially useful for acknowledgements in a talk.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@suma_acknowledge.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Required input text file with format for each line: first\

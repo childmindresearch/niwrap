@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NON_LOCAL_SUPER_RESOLUTION_METADATA = Metadata(
-    id="7cdec609ff8d8f0b2b4a534d04026935d073ca54.boutiques",
+    id="6ff1af6734242879ff8b30bf0db9b599017faa19.boutiques",
     name="NonLocalSuperResolution",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -43,7 +43,7 @@ def non_local_super_resolution(
     Non-local super resolution described in the papers by JV Manjon et al., focusing
     on MRI superresolution using self-similarity and image priors.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

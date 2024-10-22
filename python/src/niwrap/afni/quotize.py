@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QUOTIZE_METADATA = Metadata(
-    id="93af064dd7cd0278549e21976a1175303256c727.boutiques",
+    id="ad50821aafd97f95bcd0363a536ab23ce971bcff.boutiques",
     name="quotize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def quotize(
     Turns a text file into a C array of strings initialized into an array 'char
     *name[]'.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/quotize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         name: The name to be used for the array of strings.

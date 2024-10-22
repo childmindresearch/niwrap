@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMROTATE_METADATA = Metadata(
-    id="76fb5fd7b19f95e296fb4a6cefd08339575f2215.boutiques",
+    id="b624ef735952148868b7e81bfcbe37097f08c38e.boutiques",
     name="imrotate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def imrotate(
     """
     Shifts and rotates an image.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imrotate.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dx: Pixels to shift rightwards (can be non-integer).

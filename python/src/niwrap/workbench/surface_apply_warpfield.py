@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_APPLY_WARPFIELD_METADATA = Metadata(
-    id="67ba61243171e08e3d07b2b4b11b13a3e9115358.boutiques",
+    id="0f1859354559b220fdab8cac315b3df2803ebaa2.boutiques",
     name="surface-apply-warpfield",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -42,7 +42,9 @@ def surface_apply_warpfield(
     If the -fnirt option is not present, the warpfield must be a nifti 'world'
     warpfield, which can be obtained with the -convert-warpfield command.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         in_surf: the surface to transform.

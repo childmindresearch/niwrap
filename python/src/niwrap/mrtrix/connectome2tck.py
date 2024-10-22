@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONNECTOME2TCK_METADATA = Metadata(
-    id="9b8f76e3780a04a62382dbfad738ea0d57198eda.boutiques",
+    id="68591f4f9a13309e07f97bb4a65436101f61042f.boutiques",
     name="connectome2tck",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -89,10 +89,9 @@ def connectome2tck(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/connectome2tck.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tracks_in: the input track file.

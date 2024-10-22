@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_RESAMPLE_METADATA = Metadata(
-    id="db7a5fff5d08c274fa06f41a4fba497acd7e7ce6.boutiques",
+    id="d9de18391e46872074ba620926306049da73159b.boutiques",
     name="volume-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -202,7 +202,9 @@ def volume_resample(
     ENCLOSING_VOXEL
     TRILINEAR.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: volume to resample.

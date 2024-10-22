@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_GEOMETRY_MEASURES_METADATA = Metadata(
-    id="0af7eb4da10c37d8a86e209fcb446cee7e45bfd7.boutiques",
+    id="e7ce3202e62bc39e7b15a1562ae20a5cef322440.boutiques",
     name="LabelGeometryMeasures",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,7 +35,7 @@ def label_geometry_measures(
     This tool computes various geometry measures on a label image, optionally using
     an intensity image, and outputs the results to a CSV file.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

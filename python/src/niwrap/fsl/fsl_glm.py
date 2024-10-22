@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_GLM_METADATA = Metadata(
-    id="1c4d05f5c199ab578b87cdb2f914668e6d4d8a2e.boutiques",
+    id="0754115abc02c9f970c8fddc751fee4fdf201367.boutiques",
     name="fsl_glm",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -78,9 +78,9 @@ def fsl_glm(
     Simple GLM allowing temporal or spatial regression on either text data or
     images.
     
-    Author: Christian F. Beckmann
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input file name (text matrix or 3D/4D image file).

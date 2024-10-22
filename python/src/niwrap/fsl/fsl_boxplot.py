@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_BOXPLOT_METADATA = Metadata(
-    id="4746059f6bffa2c7da480b65c8879ee373bfee04.boutiques",
+    id="035b49602b983eb3414c27e04cc2441ca81c874a.boutiques",
     name="fsl_boxplot",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,7 +38,7 @@ def fsl_boxplot(
     """
     Tool for creating boxplot images from ASCII text matrices.
     
-    Author: University of Oxford (Christian F. Beckmann)
+    Author: FMRIB Analysis Group, University of Oxford
     
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     

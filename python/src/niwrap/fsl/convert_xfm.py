@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_XFM_METADATA = Metadata(
-    id="33725cbe84b723f9171fabf007a4747024370859.boutiques",
+    id="89a50e490966ae466be8a6bd70b5f7d19584fc4f.boutiques",
     name="convert_xfm",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,9 +38,9 @@ def convert_xfm(
     addition, it can be used to concatenate two transforms (using -concat with the
     second transform) or to find the inverse transformation (using -inverse).
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/UserGuide#convert_xfm
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Input transformation matrix.

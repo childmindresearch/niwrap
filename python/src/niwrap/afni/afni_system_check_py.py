@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_SYSTEM_CHECK_PY_METADATA = Metadata(
-    id="71028244373f1158e23080eb94656a703bc50f0a.boutiques",
+    id="707dd8a3faf114c94899a8373ea46705cdf40480.boutiques",
     name="afni_system_check.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def afni_system_check_py(
     """
     Perform various system checks for figuring out AFNI installation issues.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_system_check.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         check_all: Perform all system checks.

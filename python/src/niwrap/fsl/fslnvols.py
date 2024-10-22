@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLNVOLS_METADATA = Metadata(
-    id="3a2d3f7f4ac51c2cdbc37faf865b81554d950f93.boutiques",
+    id="61445af1874a392f2254040cc6582bfa3ceb8007.boutiques",
     name="fslnvols",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -29,7 +29,9 @@ def fslnvols(
     """
     Retrieve the number of volumes in a 4D NIfTI file.
     
-    Author: FMRIB Centre, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input NIfTI file (e.g., fmri.nii.gz).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CONVOLVE_METADATA = Metadata(
-    id="ff0b579532efd672514820c906ac0bdc7220511d.boutiques",
+    id="7ff5260374d99f320496bbeba5fe202f34334415.boutiques",
     name="3dConvolve",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def v_3d_convolve(
     """
     3dConvolve is no longer supported in AFNI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dConvolve.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input file for 3dConvolve.

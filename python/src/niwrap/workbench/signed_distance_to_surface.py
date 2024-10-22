@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIGNED_DISTANCE_TO_SURFACE_METADATA = Metadata(
-    id="ca080327da573762030330c67e81844f7c3c6d74.boutiques",
+    id="fec2000571b272c5cb7f2f20e7d1de5d579862c5.boutiques",
     name="signed-distance-to-surface",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -52,7 +52,9 @@ def signed_distance_to_surface(
     crossings of a vertical ray from the point, then counts as inside if the
     total is odd, negative, or nonzero, respectively.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface_comp: the comparison surface to measure the signed distance on.

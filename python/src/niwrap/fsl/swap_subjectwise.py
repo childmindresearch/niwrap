@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SWAP_SUBJECTWISE_METADATA = Metadata(
-    id="f5e42521ce2540eedd0f0af2e09e4dae876c0955.boutiques",
+    id="80172020ad37441e5b8552af95dc831e5dd1bdbe.boutiques",
     name="swap_subjectwise",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,7 +38,7 @@ def swap_subjectwise(
     
     Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         dyads: List of list of dyads.

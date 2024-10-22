@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FLIRT_AVERAGE_METADATA = Metadata(
-    id="62d2397bf5aa779cedf7bb8e4fa2e04058e106f8.boutiques",
+    id="a80971a49614fa049352157fdb827a050ab784de.boutiques",
     name="flirt_average",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,9 +36,9 @@ def flirt_average(
     """
     Averages multiple input images after linear registration (FLIRT).
     
-    Author: FMRIB Analysis Group, Oxford Centre for Functional MRI of the Brain
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         ninputs: Number of input images.

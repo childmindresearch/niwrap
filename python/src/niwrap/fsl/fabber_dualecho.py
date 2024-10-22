@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_DUALECHO_METADATA = Metadata(
-    id="5c2326924038c0979ee7f34535218a21f50eb2ea.boutiques",
+    id="9783d40ec5fa5f7001daa28a7a70afc90490d01f.boutiques",
     name="fabber_dualecho",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -68,7 +68,7 @@ def fabber_dualecho(
     
     Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fabber
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_directory: Directory for output files (including logfile).

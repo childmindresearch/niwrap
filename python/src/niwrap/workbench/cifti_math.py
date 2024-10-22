@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_MATH_METADATA = Metadata(
-    id="188984db3df21c2432e2acaa0b10177523c8ec1a.boutiques",
+    id="af8ddf7bb2855f0ea327237e490e7633e24cf303.boutiques",
     name="cifti-math",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -174,7 +174,9 @@ def cifti_math(
     clamp: 3 arguments, clamp(x, low, high) = min(max(x, low), high)
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         expression: the expression to evaluate, in quotes.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FNIRTFILEUTILS_METADATA = Metadata(
-    id="131118713d967308bf86031ae825e470b7a7a8a5.boutiques",
+    id="44b9c01f83a5825080519d917786cf4ae31dd12c.boutiques",
     name="fnirtfileutils",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -46,7 +46,9 @@ def fnirtfileutils(
     FNIRT file utilities for FSL - Converts FNIRT warp field coefficients to other
     formats.
     
-    Author: University of Oxford (Jesper Andersson)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_coefs: Filename of input coefficient volume to be converted.

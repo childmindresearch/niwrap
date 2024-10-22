@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_TORT_PLOT_DP_ALIGN_METADATA = Metadata(
-    id="618d7b822054094255c11f8d40e4e17ed180621a.boutiques",
+    id="e97404ae1ad4852f95795d417d56b26d0b94534a.boutiques",
     name="adjunct_tort_plot_dp_align",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -44,10 +44,9 @@ def adjunct_tort_plot_dp_align(
     Tool to display the rigid-body alignment parameters from TORTOISE's DIFFPREP,
     useful for analyzing subject motion in DWI data.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_tort_plot_dp_align.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Name of DIFFPREP-produced file to parse, probably ending in\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FEAT_MODEL_METADATA = Metadata(
-    id="fc17fd0e3d064d3ee3d8b2f284af9132f7aaef7e.boutiques",
+    id="687f2a808a5b2244bfaae8333e0e3597fd0457c4.boutiques",
     name="feat_model",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,9 +30,9 @@ def feat_model(
     """
     Generate design matrices for use by FEAT.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         design_name_root: Design name root.

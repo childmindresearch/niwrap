@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_SLICE_SPACE_METADATA = Metadata(
-    id="ce83dc702925c346c0f5a71e34109734e16d3839.boutiques",
+    id="5305861dda9c3754eb6168adb64a351683433bbe.boutiques",
     name="adjunct_slice_space",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def adjunct_slice_space(
     A tiny adjunct program for @chauffeur_afni to calculate how to evenly space a
     number of slices within each view plane of a dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_slice_space.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inset: Name of input dataset.

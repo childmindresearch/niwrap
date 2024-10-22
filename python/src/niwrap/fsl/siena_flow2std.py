@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIENA_FLOW2STD_METADATA = Metadata(
-    id="5c1a16e6112cdc424ccf2cc9d634a11727d98160.boutiques",
+    id="95c5d5a1826317151c146775cc945b1ca2fdec14.boutiques",
     name="siena_flow2std",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,7 +32,9 @@ def siena_flow2std(
     """
     Convert edge flow to standard space.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         fileroot1: Input file root 1.

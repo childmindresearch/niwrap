@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__NO_EXT_METADATA = Metadata(
-    id="84fa9021525d936ebb2ee226e0c7d91875883fdc.boutiques",
+    id="c6cf8e39158c82ff94f016b9c38f20ee91c053de.boutiques",
     name="@NoExt",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v__no_ext(
     """
     Tool for removing specified extensions from filenames.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoExt.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         extensions: Extensions to be removed.

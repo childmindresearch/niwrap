@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSPEC_METADATA = Metadata(
-    id="8b4982198616126758279eb8952fb78096cd1ed7.boutiques",
+    id="ac68ea5451eb1e5a829cefef7c709de41948f32a.boutiques",
     name="inspec",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def inspec(
     """
     Outputs information found from specfile.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/inspec.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         specfile: Spec file to be read.

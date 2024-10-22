@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SHIFT_VOLUME_METADATA = Metadata(
-    id="74cc7f5b4b4c977a5d553dd3ba667df5187c0d1f.boutiques",
+    id="af4e15d866ae0d50eb3f57375c0c808595d179da.boutiques",
     name="Shift_Volume",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def shift_volume(
     Tool to shift a dataset in the RAI coordinate system or between MNI anatomical
     space and MNI space.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Shift_Volume.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset: Input dataset, typically an anatomical dataset to be aligned to\

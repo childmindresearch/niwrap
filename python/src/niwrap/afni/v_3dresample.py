@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DRESAMPLE_METADATA = Metadata(
-    id="ea0c513a2d156e6330a984e0be435ad5f0e9922d.boutiques",
+    id="c83781747d57d6711aacd279863d94d024042037.boutiques",
     name="3dresample",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3dresample(
     """
     Resample or reorient an image using AFNI 3dresample command.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dresample.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dresample.

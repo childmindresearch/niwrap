@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_FALSE_CORRELATION_METADATA = Metadata(
-    id="eb6fa73dd94811c09e9340bc49b135265141f29b.boutiques",
+    id="85c619c95ad0c5562adbfcea7150c6ceffdf04d6.boutiques",
     name="metric-false-correlation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -45,7 +45,9 @@ def metric_false_correlation(
     distance. The output file contains the ratio between these correlations, and
     some additional maps to help explain the ratio.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to compute geodesic and 3D distance with.

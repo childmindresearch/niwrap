@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SURF_TO_VOL_SPACKLE_METADATA = Metadata(
-    id="736d03c526aac5fe42e84164c37cd8561fee460d.boutiques",
+    id="011021ae78f812031308eb2fb155f5817de8a3a0.boutiques",
     name="@surf_to_vol_spackle",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,10 +45,9 @@ def v__surf_to_vol_spackle(
     Project data from a surface dataset into a volume primarily using 3dSurf2Vol but
     then filling any holes with an iterative smoothing procedure.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@surf_to_vol_spackle.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         maskset: Mask dataset in which to project surface measures.

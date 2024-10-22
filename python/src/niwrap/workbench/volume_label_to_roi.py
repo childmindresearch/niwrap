@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_LABEL_TO_ROI_METADATA = Metadata(
-    id="b48fe3112e079caf404995806d2f99d43019c60e.boutiques",
+    id="f0412920e3408ebd4a5291f640a2eab1dcdfc450.boutiques",
     name="volume-label-to-roi",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def volume_label_to_roi(
     value of 1, and all other locations are given 0. Exactly one of -name and
     -key must be specified. Specify -map to use only one map from <label-in>.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input volume label file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_SPHERE_PROJECT_UNPROJECT_METADATA = Metadata(
-    id="aa4f9643dc31da16347181ca07c1e4031d1a62f5.boutiques",
+    id="d8f632b8bb06dad43a9bfe9937a7752ac0d165db.boutiques",
     name="surface-sphere-project-unproject",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -89,7 +89,9 @@ def surface_sphere_project_unproject(
     <sphere-project-to> and <sphere-unproject-from> must have the same topology
     as each other, but <sphere-in> may have any topology.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         sphere_in: a sphere with the desired output mesh.

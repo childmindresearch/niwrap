@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_VECTOR_OPERATION_METADATA = Metadata(
-    id="86d275d89e0001e84eac4c95f54e278645f08566.boutiques",
+    id="f109b2cafb1f47728c23aae11f489a1e7fa64bb1.boutiques",
     name="volume-vector-operation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -50,7 +50,9 @@ def volume_vector_operation(
     ADD
     SUBTRACT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         vectors_a: first vector input file.

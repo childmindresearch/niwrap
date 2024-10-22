@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GREEDY_METADATA = Metadata(
-    id="7912037fdab9e4f2ea26c839b76d89ea7992021e.boutiques",
+    id="bdf63b0b114e4f00f30606e939a8de01f22bc05b.boutiques",
     name="greedy",
     package="greedy",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
@@ -569,6 +569,10 @@ def greedy_(
 ) -> GreedyOutputs:
     """
     Paul's greedy diffeomorphic registration implementation.
+    
+    Author: Greedy Developers
+    
+    URL: https://sites.google.com/view/greedyreg/about
     
     Args:
         dimensions: Number of image dimensions.

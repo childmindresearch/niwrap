@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DPLOT_METADATA = Metadata(
-    id="f06d8da91588c2282ee50b204dad7b770ee96665.boutiques",
+    id="8a73ee3a42ebaf653aef47adb6f3fa781e513997.boutiques",
     name="1dplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -83,9 +83,9 @@ def v_1dplot(
     Graphs the columns of a *.1D time series file to the X11 screen, or to an image
     file (.jpg or .png).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dplot.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         tsfiles: Input time series files (*.1D) to be plotted.

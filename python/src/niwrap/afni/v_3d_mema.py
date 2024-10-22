@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MEMA_METADATA = Metadata(
-    id="9704205d5716ad1713ae4a9a6c863fde409c0007.boutiques",
+    id="ec08101954b2600252127fccf6a38e224829a161.boutiques",
     name="3dMEMA",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v_3d_mema(
     3dMEMA is a program for performing Mixed Effects Meta Analysis at group level
     that models both within- and across-subjects variability.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMEMA.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         runner: Command runner.

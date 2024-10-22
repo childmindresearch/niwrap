@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WHIRLGIF_METADATA = Metadata(
-    id="6846a97a6c952eb63e8583cf75ede7ff7cf53f9e.boutiques",
+    id="36f99e4c603427a41d99dee32a8bfe60a5827d92.boutiques",
     name="whirlgif",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def whirlgif(
     A quick program that reads a series of GIF files and produces a single GIF file
     composed of those images.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/whirlgif.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         gif_files: Input GIF files to be combined into a single GIF file.

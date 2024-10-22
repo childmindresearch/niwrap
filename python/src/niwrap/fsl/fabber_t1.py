@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_T1_METADATA = Metadata(
-    id="58748eb014c601b9c7d55f9500da099115359f91.boutiques",
+    id="226e046a747617a247e8a3d9c7a9094ffb89ebb4.boutiques",
     name="fabber_t1",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -84,7 +84,9 @@ def fabber_t1(
     Fabber is a tool for performing model-based analysis of fMRI data, using
     advanced Bayesian inference techniques.
     
-    Author: FMRIB Analysis Group
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output: Directory for output files (including logfile).

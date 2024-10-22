@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTSUSE_LANDMARK_IMAGES_TO_GET_AFFINE_TRANSFORM_METADATA = Metadata(
-    id="40ddcb39272ebf1431cc93d348bbf1503a8fc9f6.boutiques",
+    id="c11dd7c0d9840d40017d52a654120cd6141ec439.boutiques",
     name="ANTSUseLandmarkImagesToGetAffineTransform",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -38,7 +38,7 @@ def antsuse_landmark_images_to_get_affine_transform(
     them. Landmarks are defined from the center of mass of the labels in the input
     images. ITK-snap can be used to generate the label images.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

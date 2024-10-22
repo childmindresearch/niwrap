@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_CORRELATE_METADATA = Metadata(
-    id="bc0a1b16f11fccd44b88079e012921935b8dc003.boutiques",
+    id="98a6695a8bc372660a7916494450722774fd95c4.boutiques",
     name="1dCorrelate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_1d_correlate(
     1dCorrelate calculates the correlation coefficients between columns of input 1D
     files along with confidence intervals via a bootstrap procedure.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dCorrelate.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input 1D files.

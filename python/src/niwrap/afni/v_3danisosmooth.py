@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DANISOSMOOTH_METADATA = Metadata(
-    id="a49065ad5dc64c8a866655e246bc8f0f55c20c7f.boutiques",
+    id="0f940845485d0f2e6aa4a1bbafdccc58018a21a2.boutiques",
     name="3danisosmooth",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -69,9 +69,9 @@ def v_3danisosmooth(
     """
     Smooths a dataset using an anisotropic smoothing technique.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3danisosmooth.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset to be smoothed.

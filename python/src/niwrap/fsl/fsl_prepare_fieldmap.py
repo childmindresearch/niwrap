@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_PREPARE_FIELDMAP_METADATA = Metadata(
-    id="6b22511c0f991a159ff6fb3ceff68a57bc1d3fe6.boutiques",
+    id="3bf0b52185ef624d588b5e2f9b1ed89fb73508df.boutiques",
     name="fsl_prepare_fieldmap",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -37,9 +37,9 @@ def fsl_prepare_fieldmap(
     Prepares a fieldmap suitable for FEAT from SIEMENS data and saves output in
     rad/s format.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PrepareFieldmap
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         scanner: Scanner type (must be SIEMENS).

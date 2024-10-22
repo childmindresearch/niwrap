@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__NP_METADATA = Metadata(
-    id="6a550274134fb45c8a0bbb1e42e5e8aba7b41891.boutiques",
+    id="19475e309cca046197768d1ade01d7e521898bd3.boutiques",
     name="@np",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def v__np(
     directory. It automatically creates a valid prefix when you are repeatedly
     running similar commands but do not want to delete previous output.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@np.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: The prefix to be checked.

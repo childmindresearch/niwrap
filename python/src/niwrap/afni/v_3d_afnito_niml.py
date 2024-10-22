@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AFNITO_NIML_METADATA = Metadata(
-    id="25c69326c9eeba8dd4ee92b5e0553faacd74f4e6.boutiques",
+    id="fa55e6421659dfc0a2252aa9f27a9bf2e6c19dfc.boutiques",
     name="3dAFNItoNIML",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v_3d_afnito_niml(
     Dumps AFNI dataset header information to stdout in NIML format. Mostly for
     debugging and testing purposes!.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoNIML.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset: AFNI dataset.

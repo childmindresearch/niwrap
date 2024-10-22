@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__THICKNESS_MASTER_METADATA = Metadata(
-    id="20b162e688278463f4b5c90904b0af9c799c8222.boutiques",
+    id="ba36d5a86743210981b04629a836f5e001bb1b00.boutiques",
     name="@thickness_master",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,10 +37,9 @@ def v__thickness_master(
     """
     Compute cortical thickness using mask and surface datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@thickness_master.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         maskset: Mask dataset to find thickness.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_SUB_CONFIG_METADATA = Metadata(
-    id="3b3de08dcd5e5833bd8d4dae3144cd6e7d370567.boutiques",
+    id="a12a2b0d79584fa9a2530b2e6ee9858bc59cbd7d.boutiques",
     name="fsl_sub_config",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,7 +30,9 @@ def fsl_sub_config(
     """
     FSL cluster submission configuration examples.
     
-    Author: FMRIB Software Library (FSL)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         cluster_system: Choice of cluster system configuration example to\

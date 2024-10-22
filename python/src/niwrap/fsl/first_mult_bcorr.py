@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIRST_MULT_BCORR_METADATA = Metadata(
-    id="4dac584773c01eaae0963dfff244a6a9305be125.boutiques",
+    id="2ec010dcf028d280aba6d8e13a59a9ce1d83403c.boutiques",
     name="first_mult_bcorr",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,9 +36,9 @@ def first_mult_bcorr(
     Part of FSL (ID: 6.0.5:9e026117), first_mult_bcorr converts label images to an
     output image.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Filename of original T1 input image.

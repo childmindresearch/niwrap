@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_COMPARE_AFFINE_METADATA = Metadata(
-    id="6f92cb7cc1ea0e741ad430c32fc673e77fa97bc6.boutiques",
+    id="05a5d8e8f58b82dd3d94b8878f12307d386f682c.boutiques",
     name="3dCompareAffine",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,10 +34,9 @@ def v_3d_compare_affine(
     Compares two (or more) affine spatial transformations on a dataset and outputs
     measurements of their differences in spatial displacements.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCompareAffine.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         mask: Dataset containing non-zero voxels used as the region over which\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FROM3D_METADATA = Metadata(
-    id="864634840f0f6786ab607ffcdd49ef22b22f25d8.boutiques",
+    id="f1fd9173af972349aa65df96d4aeba216307ee59.boutiques",
     name="from3d",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def from3d(
     """
     Extract 2D image files from a 3D AFNI dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/from3d.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Read 3D dataset from file 'fname'.

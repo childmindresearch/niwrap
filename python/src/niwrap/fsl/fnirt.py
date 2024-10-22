@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FNIRT_METADATA = Metadata(
-    id="8e9c1e6bdd8ca4e5a389d0c82f26708e8c3c3aab.boutiques",
+    id="8cd994d5dbab794e1237f9488a588aa5b1ed325e.boutiques",
     name="fnirt",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -51,9 +51,9 @@ def fnirt(
     """
     FSL non-linear registration.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Name of input image.

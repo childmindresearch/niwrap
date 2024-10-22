@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_PALETTE_METADATA = Metadata(
-    id="f570bc0703eb6b0341b022b06117dc2175ee23ae.boutiques",
+    id="76cafc6fe3e669b9d166f01089cc02c465222952.boutiques",
     name="cifti-palette",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -273,7 +273,9 @@ def cifti_palette(
     POSITIVE_NEGATIVE_SEPARATE
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the cifti input.

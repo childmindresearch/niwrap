@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TRACK_ID_METADATA = Metadata(
-    id="fb441399648279316e788fa41baa9aba71a3e4bb.boutiques",
+    id="8ab0520e610553f06eae7348796632b2a5eda40e.boutiques",
     name="3dTrackID",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -90,9 +90,9 @@ def v_3d_track_id(
     """
     FACTID-based tractography code for AFNI, part of FATCAT.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTrackID.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         mode: The mode of tracking: DET, MINIP, or PROB.

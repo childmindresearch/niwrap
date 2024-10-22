@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWIBIASCORRECT_METADATA = Metadata(
-    id="88e757ea770edcd39a486a4232696e9152b5005d.boutiques",
+    id="e83d9f4b1c64834e7ce4b8084fa8aefaad7cc322.boutiques",
     name="dwibiascorrect",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -92,9 +92,9 @@ def dwibiascorrect(
     Perform B1 field inhomogeneity correction for a DWI volume series using either
     ANTs or FSL.
     
-    Author: Robert E. Smith
+    Author: MRTrix3 Developers
     
-    URL: http://www.mrtrix.org/
+    URL: https://www.mrtrix.org/
     
     Args:
         algorithm: Select the algorithm to be used for bias correction. Options\

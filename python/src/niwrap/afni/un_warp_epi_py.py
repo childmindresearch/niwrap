@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UN_WARP_EPI_PY_METADATA = Metadata(
-    id="108a1f73f3e184e54f69ea8ebe47acc68251fc95.boutiques",
+    id="64490c716682191e7b0bb31a5b8428c65b5c5a38.boutiques",
     name="unWarpEPI.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def un_warp_epi_py(
     """
     Routine to unwarp EPI data set using another data set with opposite polarity.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/unWarpEPI.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         forward: Calibration matching data to be corrected.

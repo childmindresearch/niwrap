@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMATMULT_METADATA = Metadata(
-    id="dff1864113c4b4b6bff1ac3ff99294dd454bf75c.boutiques",
+    id="bea93458f5d83ed6c92115a4be77dc317657f789.boutiques",
     name="3dmatmult",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v_3dmatmult(
     """
     Multiply AFNI datasets slice-by-slice as matrices.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmatmult.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_a: Specify first (matrix) dataset.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_REGRESSION_METADATA = Metadata(
-    id="5295042a0973d8e0d26bd6976ece94daeb907e50.boutiques",
+    id="bfbe78f65749a2895fff532c5ef2c8f4ed9cc6b1.boutiques",
     name="metric-regression",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -108,7 +108,9 @@ def metric_regression(
     multiplied with their respective regressor maps, and these are subtracted
     from the input map.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric_in: the metric to regress from.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRSI_SEGMENT_METADATA = Metadata(
-    id="fb0ac4f550284449e091dede3fcdb75946018a99.boutiques",
+    id="fa8bbd92fdf2c6b686b55ba040db56f0042cb763.boutiques",
     name="mrsi_segment",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,7 +35,9 @@ def mrsi_segment(
     """
     FSL Magnetic Resonance Spectroscopy - register fast segmentation to MRSI.
     
-    Author: FSL Team
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         mrsi_file: MRSI nifti file.

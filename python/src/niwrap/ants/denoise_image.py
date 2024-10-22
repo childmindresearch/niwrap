@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DENOISE_IMAGE_METADATA = Metadata(
-    id="812b16035dda74471c3f2faec64f41f9d125ce7e.boutiques",
+    id="9cd7501fd7ace5efdaa42362d19437b6007309ac.boutiques",
     name="DenoiseImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -45,7 +45,7 @@ def denoise_image(
     Non-Local Means Denoising of MR Images With Spatially Varying Noise Levels,
     Journal of Magnetic Resonance Imaging, 31:192-203, June 2010.
     
-    Author: Advanced Normalization Tools (ANTs) Contributors
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

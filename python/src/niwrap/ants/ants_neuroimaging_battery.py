@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_NEUROIMAGING_BATTERY_METADATA = Metadata(
-    id="b3bb2811282fe45fd5742e7e178d63217c981b66.boutiques",
+    id="8d5f7d9ec665c8a4728e1d76b9ae72be2a9a3489.boutiques",
     name="antsNeuroimagingBattery",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,7 +35,7 @@ def ants_neuroimaging_battery(
     """
     Align MR modalities to a common within-subject (and optional template) space.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

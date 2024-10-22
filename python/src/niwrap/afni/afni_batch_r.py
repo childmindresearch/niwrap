@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_BATCH_R_METADATA = Metadata(
-    id="58eaf579cadf280b0a770416bff7f89183ec4670.boutiques",
+    id="930f91d60fc6acd414cb67c0a05d61f2cb008573.boutiques",
     name="AFNI_Batch_R",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def afni_batch_r(
     """
     Batch mode for executing R scripts in the AFNI environment.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/AFNI_Batch_R.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         no_restore: Do not restore anything in the R workspace at startup.

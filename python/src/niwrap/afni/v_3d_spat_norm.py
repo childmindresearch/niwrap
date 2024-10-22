@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SPAT_NORM_METADATA = Metadata(
-    id="2caf2eaf6542260133d8c92873986b520046151b.boutiques",
+    id="d614dd87f9e1a9bb874634386657b6651c14bbe6.boutiques",
     name="3dSpatNorm",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_spat_norm(
     """
     An obsolete tool for spatial normalization.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSpatNorm.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset.

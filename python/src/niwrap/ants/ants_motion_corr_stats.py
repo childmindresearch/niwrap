@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_MOTION_CORR_STATS_METADATA = Metadata(
-    id="c6c9fd8ac828f762c99b5202938ad6095e186f96.boutiques",
+    id="d29996fec64fd395bafc8947a76eea2b5d1ba04c.boutiques",
     name="antsMotionCorrStats",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -41,7 +41,7 @@ def ants_motion_corr_stats(
     default the displacements are relative to the reference space, but the framewise
     option may be used to provide displacements between consecutive time points.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_MERGE_METADATA = Metadata(
-    id="a42f8dcc8ea4f46550036b6ec4e5724d3633e516.boutiques",
+    id="f9925036d88ed1fe2ec6f57eef8564ae297bd2a1.boutiques",
     name="label-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -132,7 +132,9 @@ def label_merge(
     This example would take the first column from first.label.gii and all
     subvolumes from second.label.gii, and write these to out.label.gii.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_out: the output label.

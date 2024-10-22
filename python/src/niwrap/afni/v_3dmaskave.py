@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMASKAVE_METADATA = Metadata(
-    id="3c2914d74af3e5b2bab84e631296c02efdeda1ec.boutiques",
+    id="f042c07e22593dec9c151337660698f3bafa0f2a.boutiques",
     name="3dmaskave",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3dmaskave(
     Computes average of all voxels in the input dataset which satisfy the criterion
     in the options list.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskave.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dmaskave.

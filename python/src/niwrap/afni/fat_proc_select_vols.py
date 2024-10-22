@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_SELECT_VOLS_METADATA = Metadata(
-    id="222d5c71dc9e688c8a3e2410fa4b1dc5b5b84158.boutiques",
+    id="423b3bdef1ce58c3541799a5887c14712d5adc04.boutiques",
     name="fat_proc_select_vols",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def fat_proc_select_vols(
     """
     Tool for building a selector string for AFNI subbricks and/or 1D text files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_select_vols.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dwi_input: Input DWI dataset.

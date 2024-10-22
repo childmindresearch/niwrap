@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_REGISTRATION_METADATA = Metadata(
-    id="c36a254569506468345c2cd181126e2439afecde.boutiques",
+    id="4acaef29989a404d5d21fd8f132f21f4fc28563d.boutiques",
     name="antsRegistration",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -908,7 +908,7 @@ def ants_registration(
     dimensionality, metric, transform, output, convergence, shrink-factors, and
     smoothing-sigmas parameters is mandatory.
     
-    Author: Advanced Normalization Tools (ANTs) Contributors
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

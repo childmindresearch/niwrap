@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_PVAL_METADATA = Metadata(
-    id="e9df4660b4c38e2a7270c77e7a3b30cc69937000.boutiques",
+    id="46c925a4b50a70594f3798bcdbc07a858aad1fa6.boutiques",
     name="3dPval",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_pval(
     Convert a dataset's statistical sub-bricks to p-values or other statistical
     representations.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPval.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset (e.g., InputDataset.nii).

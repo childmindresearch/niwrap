@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_BANDPASS_METADATA = Metadata(
-    id="370f2f8e5f4775e0e4f482227ed0d8806886b342.boutiques",
+    id="69b4e08ff33a85a01f56df929195839c7c7f9208.boutiques",
     name="1dBandpass",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v_1d_bandpass(
     """
     Bandpass filtering of time series data in AFNI *.1D files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dBandpass.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         fbot: Lowest frequency in the passband, in Hz (must be greater than or\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DGRAYPLOT_METADATA = Metadata(
-    id="935e3e616df7a8e0e270575bc8ae078cc75a53bc.boutiques",
+    id="9f1dfb91ea2888caae64e3a7a65f59bb59e4f314.boutiques",
     name="1dgrayplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v_1dgrayplot(
     """
     Graphs the columns of a *.1D type time series file to the screen in grayscale.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dgrayplot.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         tsfile: Input time series file (*.1D format).

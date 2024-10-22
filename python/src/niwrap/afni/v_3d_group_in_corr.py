@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GROUP_IN_CORR_METADATA = Metadata(
-    id="67d139f33261f26102f0eb19ee1a1d050c9566d3.boutiques",
+    id="409c8785c271784a304ce25d717eab688051ad5e.boutiques",
     name="3dGroupInCorr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,9 +58,9 @@ def v_3d_group_in_corr(
     """
     Functional connectivity analysis in group of subjects.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGroupInCorr.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         set_a: Setup file describing the first dataset collection.

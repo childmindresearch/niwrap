@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_REG_METADATA = Metadata(
-    id="fa899f6f488c1db24bf97c2552e452f45a1a6d51.boutiques",
+    id="f8e22723ee6e5f78f851c2cc94e6a41ff69c4a77.boutiques",
     name="fsl_reg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,9 +38,9 @@ def fsl_reg(
     """
     Image registration using FSL tools.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input image file.

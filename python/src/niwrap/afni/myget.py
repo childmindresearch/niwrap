@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MYGET_METADATA = Metadata(
-    id="e8a29e400e9b37502f7bf7a702dd9ec2cf21565a.boutiques",
+    id="c9b4fcca61f5094a804dc14dd52979b5c3e3888c.boutiques",
     name="myget",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def myget(
     """
     A simple file downloader from a URL.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/myget.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         url: The URL to download the file from.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TQUAL_METADATA = Metadata(
-    id="b935200842cd3c77607cc450261bd474899cea23.boutiques",
+    id="a5953b420d22f8f6c2b20824e280582d44af991c.boutiques",
     name="3dTqual",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_tqual(
     """
     Computes a quality index for each sub-brick in a 3D+time dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTqual.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input 3D+time dataset.

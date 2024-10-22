@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_INTERMODALITY_INTRASUBJECT_SH_METADATA = Metadata(
-    id="4be1609a23e5b224c301727bc73e405239889a61.boutiques",
+    id="a6448dff8e3e5a29418463f13e74dadaaf6941ee.boutiques",
     name="antsIntermodalityIntrasubject.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -46,7 +46,7 @@ def ants_intermodality_intrasubject_sh(
     """
     Performs registration between a scalar image and a T1 image.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MASKFILTER_METADATA = Metadata(
-    id="f16e59f20a14c709055886bfe4283083d9ab7079.boutiques",
+    id="0f58b29a006fb07347957237ea8b1bd75f33ff41.boutiques",
     name="maskfilter",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -129,12 +129,9 @@ def maskfilter(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au), David Raffelt
-    (david.raffelt@florey.edu.au), Thijs Dhollander (thijs.dhollander@gmail.com)
-    and J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/maskfilter.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image.

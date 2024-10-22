@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MEAN_METADATA = Metadata(
-    id="1424870e91d19288bcbeea39891f90d34a006af4.boutiques",
+    id="09e3e1188547068face0e4fd27b1d4d92387dc1f.boutiques",
     name="mean",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -48,9 +48,9 @@ def mean(
     """
     Diagnostic tool for analyzing and computing mean values for FSL data.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         datafile: Regressor data file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_DEPROJECT_METADATA = Metadata(
-    id="071338a9ae1e4f6e137a3571842bc4372b0d81e3.boutiques",
+    id="7bc5fe192a848f4b271f82140a09cefbf1596da0.boutiques",
     name="tbss_deproject",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,6 +34,10 @@ def tbss_deproject(
 ) -> TbssDeprojectOutputs:
     """
     Tool to deproject images from skeleton space to final space.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         skeleton_space_input_image: Skeleton space input image.

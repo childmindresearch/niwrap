@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLVBM_3_PROC_METADATA = Metadata(
-    id="4cb5537fa85014828cc336ad97bf5529986236a4.boutiques",
+    id="3fedac2cfadb8c999bef2fe05c6d87fa5fde3bc0.boutiques",
     name="fslvbm_3_proc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -62,7 +62,9 @@ def fslvbm_3_proc(
     """
     Pipeline for voxel-based morphometry analysis using FSL tools.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         arch: Specify architecture.

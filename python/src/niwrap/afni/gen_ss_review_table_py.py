@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GEN_SS_REVIEW_TABLE_PY_METADATA = Metadata(
-    id="2eed26037407d30bdf3146dce11fd2d467eb9649.boutiques",
+    id="3ce921bee704f32f3fa43ac197d4d35b07490bf8.boutiques",
     name="gen_ss_review_table.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,10 +46,9 @@ def gen_ss_review_table_py(
     """
     Generate a table from ss_review_basic output files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_ss_review_table.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infiles: Input ss_review_basic output text files to process.

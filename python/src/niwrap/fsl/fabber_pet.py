@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_PET_METADATA = Metadata(
-    id="198dff3b635a25f1b3eef008d20a21dccaa73cb6.boutiques",
+    id="dc233628c244f68c9daaccec6c44dea4a0b21abe.boutiques",
     name="fabber_pet",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -95,9 +95,9 @@ def fabber_pet(
     """
     Fabber Bayesian Model Fitting Tool.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fabber
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output: Directory for output files (including logfile).

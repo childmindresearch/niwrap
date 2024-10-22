@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SNAPSHOT_VOLREG_METADATA = Metadata(
-    id="e41cf6ba6d044ca81ae9c6d2ad2f6e1d5280c6d3.boutiques",
+    id="e11a34b276acc0a9b81802237e6fe33d1478ea13.boutiques",
     name="@snapshot_volreg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,10 +36,9 @@ def v__snapshot_volreg(
     Create a JPEG image showing the edges of an EPI dataset overlayed on an
     anatomical dataset to judge 3D registration quality.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@snapshot_volreg.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         anatdataset: Anatomical dataset file.

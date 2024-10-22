@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 THRESHOLD_IMAGE_METADATA = Metadata(
-    id="bce52a3371b55f0bdad3240a49b478ee149c51ab.boutiques",
+    id="21280b87f93b4982f5b7173d35c9223a6b16962d.boutiques",
     name="ThresholdImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -42,7 +42,7 @@ def threshold_image(
     input image. It can use fixed thresholds, Otsu method, or K-means for
     thresholding.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

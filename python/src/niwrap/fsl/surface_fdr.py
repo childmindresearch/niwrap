@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_FDR_METADATA = Metadata(
-    id="e3f2716c2c747715a5066abd81fbb3a10e2b7040.boutiques",
+    id="fb780af55bce1d458bb10de965f252f10db543d9.boutiques",
     name="surface_fdr",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,7 +35,9 @@ def surface_fdr(
     """
     Tool to calculate surface FDR correction for vertex analysis.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_vtk: Input VTK file from vertex analysis.

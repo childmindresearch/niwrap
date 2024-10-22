@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DDOT_METADATA = Metadata(
-    id="7091346555bb298f2153a316f7217d0565546321.boutiques",
+    id="4d259267b87f75dc1b81e232092499e6d326d8fd.boutiques",
     name="3ddot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,9 +45,9 @@ def v_3ddot(
     """
     Computes correlation coefficients between sub-brick pairs.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddot.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_datasets: List of input datasets to be used (e.g. img1+orig,\

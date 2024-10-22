@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXELCROP_METADATA = Metadata(
-    id="fced4ecf8fb2e9fffc3bf27ac47a64772ef6c066.boutiques",
+    id="df585f30c2a7738dc8886c2e7c7172b7e6cdc09c.boutiques",
     name="fixelcrop",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -77,11 +77,9 @@ def fixelcrop(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au) & Rami Tabarra
-    (rami.tabarra@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcrop.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_fixel_directory: input fixel directory, all data files and\

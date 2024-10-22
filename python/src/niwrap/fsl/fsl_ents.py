@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_ENTS_METADATA = Metadata(
-    id="a85e0030a33186a476c2d27acf15e33ab604d49a.boutiques",
+    id="d57daf70f6cc330fdb2867d5f93cf443fddf9ca8.boutiques",
     name="fsl_ents",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,6 +34,10 @@ def fsl_ents(
 ) -> FslEntsOutputs:
     """
     Extract component time series from a MELODIC .ica directory.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         icadir: .ica directory to extract time series from.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DPLOT_PY_METADATA = Metadata(
-    id="6793f01c4f802a37b22a076d9cabdbb387bee525.boutiques",
+    id="9a09a3b646afa4ae694c267932f8acdb6bcb6eec.boutiques",
     name="1dplot.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -63,9 +63,9 @@ def v_1dplot_py(
     This program is for making images to visualize columns of numbers from 1D text
     files. It uses Python, particularly matplotlib, to create plots.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dplot.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infiles: One or more file names of text files. Each column in this file\

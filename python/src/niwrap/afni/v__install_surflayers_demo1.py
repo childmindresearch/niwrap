@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_SURFLAYERS_DEMO1_METADATA = Metadata(
-    id="96992a1608117a9aed2d18e498316b838723c21d.boutiques",
+    id="3ee9ce84f9965b145d9d22f06d87ab3d47dab990.boutiques",
     name="@Install_SURFLAYERS_DEMO1",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,10 +31,9 @@ def v__install_surflayers_demo1(
     Fetches 6 driver scripts for 3 datasets as demonstrated in the 2021 OHBM poster
     and demo video about SurfLayers.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_SURFLAYERS_DEMO1.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         use_wget: Use wget to download archive. Script chooses by default with\

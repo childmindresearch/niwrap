@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PNGAPPEND_METADATA = Metadata(
-    id="4411b6d37915e58f561527f34913fc3b997e325e.boutiques",
+    id="249cfd48546f9ae4dc955fd7417c34492eff2132.boutiques",
     name="pngappend",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,7 +30,9 @@ def pngappend(
     """
     Append PNG files horizontally and/or vertically into a new PNG (or GIF) file.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_files_and_options: List of input files and options for appending\

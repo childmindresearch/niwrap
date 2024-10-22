@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_CAPTURE_PLANE_METADATA = Metadata(
-    id="f3289e179c140d1b4b5deb27330886589e31b536.boutiques",
+    id="86c811afb22220fe4a27dd7e8be96c1f60f2ccf4.boutiques",
     name="volume-capture-plane",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -55,7 +55,9 @@ def volume_capture_plane(
     ENCLOSING_VOXEL
     TRILINEAR.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume: the volume file to interpolate from.

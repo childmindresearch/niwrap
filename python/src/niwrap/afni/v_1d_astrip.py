@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_ASTRIP_METADATA = Metadata(
-    id="0bda90c457a2e2721725b1986736e0f298f1aa67.boutiques",
+    id="ea5f26ed07e83433aaff1882a3ae80d4c15231c8.boutiques",
     name="1dAstrip",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v_1d_astrip(
     """
     Strips non-numeric characters from a file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dAstrip.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input file from which non-numeric characters will be stripped.

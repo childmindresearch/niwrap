@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GEN_PRIORS_METADATA = Metadata(
-    id="b11d62e18bd832dd284192ccfd2f58cffccc18af.boutiques",
+    id="6bcbee0f81b8c6ac92070bd494e66a14fcbbd130.boutiques",
     name="3dGenPriors",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,9 +58,9 @@ def v_3d_gen_priors(
     """
     Produces classification priors based on voxel signatures.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGenPriors.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         sigs: Signatures dataset. A dataset with F features per voxel.

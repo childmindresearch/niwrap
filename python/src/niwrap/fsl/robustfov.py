@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROBUSTFOV_METADATA = Metadata(
-    id="d1582227b9334f6ff311ef46e9a3dd8da13c98bd.boutiques",
+    id="86c6c733255b5d8fd0be3d911b11fd7318499f9b.boutiques",
     name="robustfov",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,9 +38,9 @@ def robustfov(
     """
     Reduce FOV of image to remove lower head and neck.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/robustfov
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input image file.

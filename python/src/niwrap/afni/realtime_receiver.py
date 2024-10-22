@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REALTIME_RECEIVER_METADATA = Metadata(
-    id="0ebc43686ce12fabe7a649275c9b898addbcb1d2.boutiques",
+    id="2c28c3cc99310e4f83462fd252818743c9fb534c.boutiques",
     name="realtime_receiver",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,10 +40,9 @@ def realtime_receiver(
     """
     Program to receive and display real-time plugin data from AFNI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/realtime_receiver.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         show_data: Display incoming data in terminal window.

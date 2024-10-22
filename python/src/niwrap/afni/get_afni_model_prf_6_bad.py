@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GET_AFNI_MODEL_PRF_6_BAD_METADATA = Metadata(
-    id="aa2d4b0ea5e05410ab7994132e6a58c3ef1e7581.boutiques",
+    id="f7614b8ced72773ab9bfd46ff569ff9a092b84e3.boutiques",
     name="get_afni_model_PRF_6_BAD",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,10 +34,9 @@ def get_afni_model_prf_6_bad(
     """
     Command line tool for obtaining AFNI pRF model.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF_6_BAD.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         amplitude: Amplitude parameter A.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NICAT_METADATA = Metadata(
-    id="046a40e8fda5b8e729e3e9be296b7a8a9112b449.boutiques",
+    id="73c164cef1e5f1ef78d5ba447429f7192095a87b.boutiques",
     name="nicat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def nicat(
     """
     Copies stdin to the NIML stream, which will be opened for writing.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/nicat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         stream_spec: Stream specification (e.g., tcp:localhost:4444).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADD_TO_SPEC_FILE_METADATA = Metadata(
-    id="9d601dcc9fbde5aa3e282edf8994d4b73bdbf81c.boutiques",
+    id="e74a9dd460040286cf01f68d7b7374006dea2085.boutiques",
     name="add-to-spec-file",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -70,7 +70,9 @@ def add_to_spec_file(
     THALAMUS_RIGHT
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         specfile: the specification file to add to.

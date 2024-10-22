@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSLICE_METADATA = Metadata(
-    id="1bc1eb0a73e5e3780a13b5155779a622d15c4695.boutiques",
+    id="b42706882730f8a03df25ca0981d16ab5b466e5f.boutiques",
     name="fslslice",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,9 +32,9 @@ def fslslice(
     """
     Tool to extract all slices from a 3D volume and store as 2D images.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         volume: Input 3D volume (e.g. volume.nii.gz).

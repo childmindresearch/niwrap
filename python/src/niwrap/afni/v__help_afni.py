@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__HELP_AFNI_METADATA = Metadata(
-    id="0214c80f5cb49a07f4161ff946462041a359c727.boutiques",
+    id="0da8970548aba50182152f89948bd1dc8d152c37.boutiques",
     name="@help.AFNI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -28,9 +28,9 @@ def v__help_afni(
     """
     A script to retrieve and search AFNI's help page for all programs.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@help.AFNI.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         runner: Command runner.

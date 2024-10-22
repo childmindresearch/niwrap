@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AVW2FSL_METADATA = Metadata(
-    id="6479814483f675cd9a81864d47619be0cefb478c.boutiques",
+    id="bdc7b9fc25e41de73c9923ff22b270c84b6d9c2f.boutiques",
     name="avw2fsl",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -66,9 +66,9 @@ def avw2fsl(
     """
     Processing script to copy files and directories.
     
-    Author: GNU coreutils
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: http://www.gnu.org/software/coreutils/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         source: Source file(s) or directory to copy.

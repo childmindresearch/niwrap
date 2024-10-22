@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CLUSTER_METADATA = Metadata(
-    id="754261b5c945cd88813dd579c569c921a134590d.boutiques",
+    id="fd2ff77c066ff8af6a520d9b94d3a02680241060.boutiques",
     name="Cluster",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -70,7 +70,9 @@ def cluster(
     """
     Uses FSL cluster to perform clustering on statistical output.
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Input volume.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DBUCKET_METADATA = Metadata(
-    id="4d9ab6014d4c5897e74c03e8431120785a6e5125.boutiques",
+    id="a07bb3d6d6114eb899f05be41e593f262e6cd274.boutiques",
     name="3dbucket",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3dbucket(
     """
     Concatenate sub-bricks from input datasets into one big bucket dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dbucket.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input datasets with optional sub-brick selection.

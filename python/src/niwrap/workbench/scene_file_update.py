@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SCENE_FILE_UPDATE_METADATA = Metadata(
-    id="2d9e50fb08f67a4b590bfd4ee5c042bed31e3408.boutiques",
+    id="78840defda2458450cfa349c7fbab89dea8aa7cf.boutiques",
     name="scene-file-update",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -156,7 +156,9 @@ def scene_file_update(
     listed after the command finishes.
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         input_scene_file: the input scene file.

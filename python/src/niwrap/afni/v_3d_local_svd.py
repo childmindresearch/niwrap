@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_SVD_METADATA = Metadata(
-    id="aed6779200e92eb218c76d6808e8c777494643bf.boutiques",
+    id="aa9242eacfb8563948c633af4cce28ff22487e6c.boutiques",
     name="3dLocalSVD",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_local_svd(
     """
     Computes the SVD of time series from a neighborhood of each voxel.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalSVD.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input time series dataset file.

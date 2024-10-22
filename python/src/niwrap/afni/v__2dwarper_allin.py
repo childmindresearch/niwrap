@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__2DWARPER_ALLIN_METADATA = Metadata(
-    id="59f85590207146a4fd772e0ae6253a445bb7a49c.boutiques",
+    id="025f4fd73449077a7f27f71bce48a9a34a8bfe9d.boutiques",
     name="@2dwarper.Allin",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,10 +36,9 @@ def v__2dwarper_allin(
     Perform 2D registration on each slice of a 3D+time dataset, and combine the
     results.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@2dwarper.Allin.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_prefix: Prefix for the input 3D+time dataset.

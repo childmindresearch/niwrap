@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_ANAT_METADATA = Metadata(
-    id="cb686fad53ea1e7ceaf745a5bc0b6fe0da721d3a.boutiques",
+    id="0da53b490ed48b917206d952e52a45d300617d44.boutiques",
     name="fsl_anat",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -48,9 +48,9 @@ def fsl_anat(
     """
     A wrapper for FSL tools to process anatomical scans.
     
-    Author: FMRIB Software Library (FSL) developers
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/fsl_anat
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         structural_image: Filename of input image (for one image only).

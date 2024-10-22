@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSMOOTHFILL_METADATA = Metadata(
-    id="b3282d7b9bef7977695fb57d86ac3897b13dc5f0.boutiques",
+    id="6bed9d1a53792627a501c6aba8464e9c8c8c71ee.boutiques",
     name="fslsmoothfill",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,7 +35,9 @@ def fslsmoothfill(
     Smoothfill is a tool designed to fill in holes in images by smoothly
     interpolating the pixel values.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Filename of the input image.

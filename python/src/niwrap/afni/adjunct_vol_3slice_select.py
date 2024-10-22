@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_VOL_3SLICE_SELECT_METADATA = Metadata(
-    id="4b1b47cbf26bf0d86550161271c90e6ec8df951c.boutiques",
+    id="d87450945a3a21e9af03e7d6fc99f2aadb69979e.boutiques",
     name="adjunct_vol_3slice_select",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,10 +36,9 @@ def adjunct_vol_3slice_select(
     dataset. It will return an error if any indices are outside the dataset's
     matrix.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_vol_3slice_select.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset_file: The name of the dataset file.

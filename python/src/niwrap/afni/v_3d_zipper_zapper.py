@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZIPPER_ZAPPER_METADATA = Metadata(
-    id="042789412d0abd60c98ba23fababe48904ad9cff.boutiques",
+    id="2ba2cdb11947ea00198430901e3d2367101ee603.boutiques",
     name="3dZipperZapper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -55,9 +55,9 @@ def v_3d_zipper_zapper(
     A basic program to highlight problematic volumes in data sets, especially
     EPI/DWI data sets with interleaved acquisition.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZipperZapper.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input 3D+time file of DWIs or EPIs.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_5TT2GMWMI_METADATA = Metadata(
-    id="5e6be0e8d2d77946c8326a477cc65c226f37e2c4.boutiques",
+    id="0ee6033ccf738011cdec5b8ea67b162a89b7d0c3.boutiques",
     name="5tt2gmwmi",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -80,10 +80,9 @@ def v_5tt2gmwmi(
     tractography through effective use of anatomical information. NeuroImage,
     2012, 62, 1924-1938.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/5tt2gmwmi.html
+    URL: https://www.mrtrix.org/
     
     Args:
         v_5tt_in: the input 5TT segmented anatomical image.

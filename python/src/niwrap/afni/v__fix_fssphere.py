@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FIX_FSSPHERE_METADATA = Metadata(
-    id="54feb594544c3c39e172eb57620da5307e519517.boutiques",
+    id="b742177d5b0ebe3a73650e2f92bfe87238f0bcca.boutiques",
     name="@fix_FSsphere",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v__fix_fssphere(
     """
     Tool for fixing errors in FreeSurfer spherical surfaces.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fix_FSsphere.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         spec_file: Spec file.

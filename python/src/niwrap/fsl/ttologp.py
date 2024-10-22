@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TTOLOGP_METADATA = Metadata(
-    id="d56b4f759499ab9e273cfd6dcdecd2230c338c62.boutiques",
+    id="3cd52f1b30649cc20df3124bb2a2415b137d1a4d.boutiques",
     name="ttologp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,7 +35,9 @@ def ttologp(
     """
     Tool for computing logp.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         varsfile: Path to the vars file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCONVERT_METADATA = Metadata(
-    id="da7602335ef567974f12a1be6aff2b4aa020d52c.boutiques",
+    id="698958e49f436a4dfeb7113aafd856076c1a7be7.boutiques",
     name="mrconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -558,11 +558,9 @@ def mrconvert(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith
-    (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrconvert.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image.

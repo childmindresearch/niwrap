@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BAYESIAN_GROUP_ANA_METADATA = Metadata(
-    id="a1ce8090cf80ecc5ea4041a617ea91e6c7b82df4.boutiques",
+    id="bfb4788715bd936df0d62faf1de35d992538411f.boutiques",
     name="BayesianGroupAna",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,10 +53,9 @@ def bayesian_group_ana(
     interest (ROIs). Compared to the conventional univariate GLM, BGA pools and
     shares the information across the ROIs in a multilevel system.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/BayesianGroupAna.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         data_table: Input text file containing the data table.

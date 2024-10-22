@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_COLOR_MAP_METADATA = Metadata(
-    id="e98ace893d421d148c9b3f4085c363b1351eb95e.boutiques",
+    id="20feab346cace5f8666142aaf08be813c7020806.boutiques",
     name="MakeColorMap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,9 +53,9 @@ def make_color_map(
     Utility for creating and modifying colormaps with various formats and fiducial
     points.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/MakeColorMap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         fiducials_ncol: Fiducial colors and their indices in the color map are\

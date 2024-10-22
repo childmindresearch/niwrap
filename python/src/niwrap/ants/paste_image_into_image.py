@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PASTE_IMAGE_INTO_IMAGE_METADATA = Metadata(
-    id="7dd866c2eb1b752c7629503c84b64a395d4183cd.boutiques",
+    id="473380596b87ce0da9928dabd1961225e23dd0a4.boutiques",
     name="PasteImageIntoImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -39,7 +39,7 @@ def paste_image_into_image(
     Paste the input image into the input canvas image. Depending on parameters, it
     can replace or merge existing voxel values.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

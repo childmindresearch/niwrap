@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TEXTURE_COOCCURRENCE_FEATURES_METADATA = Metadata(
-    id="fcc8ccd335d7597c69c5381c1cdeda8519d8864d.boutiques",
+    id="91591f77263330ed7a5bfa1c36e1edb089c3c166.boutiques",
     name="TextureCooccurrenceFeatures",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -38,7 +38,7 @@ def texture_cooccurrence_features(
     Difference Moment, Inertia, Cluster Shade, and Cluster Prominence from an input
     image.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

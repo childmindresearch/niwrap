@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FILMBABE_METADATA = Metadata(
-    id="5aeaa63a2b4af0df1c495362f58a31832031b867.boutiques",
+    id="9bbcff9d9fe0e9c52df41372de3907bf80b01450.boutiques",
     name="filmbabe",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -48,9 +48,9 @@ def filmbabe(
     """
     FILM with MCMC-based Bayesian Analysis for fMRI.
     
-    Author: FMRIB Analysis Group, Oxford University, UK
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         datafile_alias: Data file.

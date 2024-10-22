@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DNEWID_METADATA = Metadata(
-    id="9480e9aa85e871aa4073be8542ee367beae41a16.boutiques",
+    id="acbbcc60d614fe39bf285beddcf6984090e82ecf.boutiques",
     name="3dnewid",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3dnewid(
     """
     Assigns a new ID code to a dataset, ensuring internal ID codes remain unique.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dnewid.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datasets: Input datasets to assign new ID codes.

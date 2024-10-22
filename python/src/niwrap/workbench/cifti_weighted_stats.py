@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_WEIGHTED_STATS_METADATA = Metadata(
-    id="05ac317792e4964ce1a97593a366626541fba245.boutiques",
+    id="edeab170e531d01e9aebad488e0d30cf55eb5085.boutiques",
     name="cifti-weighted-stats",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -155,7 +155,9 @@ def cifti_weighted_stats(
     respect to area and volume. When the input is binary ROIs, this will
     therefore output the area or volume of each ROI.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the input cifti.

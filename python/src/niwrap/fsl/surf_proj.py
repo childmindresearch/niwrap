@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_PROJ_METADATA = Metadata(
-    id="2a6272192f85292c974216d3be1022d72c56f3ad.boutiques",
+    id="8dcc20431c906d3fc3e7ffb28c881b81fb4a1234.boutiques",
     name="surf_proj",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -42,8 +42,9 @@ def surf_proj(
     """
     Projects data onto a surface mesh using specified parameters.
     
-    Author: FMRIB Analysis Group, Oxford Centre for Functional MRI of the Brain
-    (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         data: Data to project onto surface.

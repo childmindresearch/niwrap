@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMASKDUMP_METADATA = Metadata(
-    id="a2e72fa41277c99897c62aab9ca5edfaf4607cbe.boutiques",
+    id="9cb4c849a9357c37ec67fbe234f23f59f3a3a158.boutiques",
     name="3dmaskdump",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,9 +51,9 @@ def v_3dmaskdump(
     Outputs voxel values from AFNI datasets satisfying mask criteria to an ASCII
     file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskdump.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input datasets to dump voxel values.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_MULTIVARIATE_TEMPLATE_CONSTRUCTION2_SH_METADATA = Metadata(
-    id="bf1f922a5f56d8885ee7320b48cd146cf75ba0ef.boutiques",
+    id="f693ac4ad31f1a6eadc3feb7c36e205aa70b2373.boutiques",
     name="antsMultivariateTemplateConstruction2.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -33,7 +33,7 @@ def ants_multivariate_template_construction2_sh(
     Normalization Tools (ANTs) suite. It is used for constructing multivariate
     templates.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

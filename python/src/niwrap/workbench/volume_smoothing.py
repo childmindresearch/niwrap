@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_SMOOTHING_METADATA = Metadata(
-    id="851dd3843d1be827eaf3ed7ed82c046936b9a10d.boutiques",
+    id="04214b770647acf66bb0b754e686da4008897235.boutiques",
     name="volume-smoothing",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -49,7 +49,9 @@ def volume_smoothing(
     zeros that indicate lack of information, preventing them from pulling down
     the intensity of nearby voxels, while giving the zero an extrapolated value.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the volume to smooth.

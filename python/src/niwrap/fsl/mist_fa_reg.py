@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MIST_FA_REG_METADATA = Metadata(
-    id="a9f1bc288265f12b7ebca035eb5d80204b814136.boutiques",
+    id="e11bd61cc0145bf87617238015d6adddbbffa234.boutiques",
     name="mist_FA_reg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,7 +34,9 @@ def mist_fa_reg(
     """
     Tool for registering FA volumes to a reference T1 volume.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         fa_volume: The FA volume to be registered.

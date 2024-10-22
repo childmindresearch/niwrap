@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_FFT_METADATA = Metadata(
-    id="e982a14c1de6acf6547e62b3e4603bc9aa9c8bb1.boutiques",
+    id="129f53095c989415a22c05c680edc2acfb61ba7f.boutiques",
     name="3dFFT",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,9 +43,9 @@ def v_3d_fft(
     Performs the FFT of the input dataset in 3 directions (x, y, z) and produces the
     output dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFFT.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset (e.g., dataset.nii).

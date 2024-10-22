@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BIANCA_PERIVENT_DEEP_METADATA = Metadata(
-    id="b4075edf8e76b937e80559712e3fd8686875ca35.boutiques",
+    id="50c5d9d679a2cbf4bf90678603939c7bc8ca98c3.boutiques",
     name="bianca_perivent_deep",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -41,7 +41,9 @@ def bianca_perivent_deep(
     Separates WMH into periventricular and deep WMH, saves two separate binary
     images, and calculates volume of total and separate WMHs.
     
-    Author: BIANCA Development Team
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         thresholded_binarised_wmh_map: Thresholded and binarized WMH map\

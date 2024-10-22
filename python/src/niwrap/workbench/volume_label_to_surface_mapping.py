@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_LABEL_TO_SURFACE_MAPPING_METADATA = Metadata(
-    id="ed347a0c13330043429633da76510254e06a655b.boutiques",
+    id="c62eefce295e8803db17e46982b7ad09a6c74f3d.boutiques",
     name="volume-label-to-surface-mapping",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -100,7 +100,9 @@ def volume_label_to_surface_mapping(
     you have very large voxels, consider increasing this if you get unexpected
     unlabeled vertices in your output.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume: the volume to map data from.

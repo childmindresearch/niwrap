@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWI2ADC_METADATA = Metadata(
-    id="35bdd526d5d1026f77b87b17c4274fc8d6432d78.boutiques",
+    id="1ddf7b2c6bfbca7b535b58b3a0e9ad2e95b300d3.boutiques",
     name="dwi2adc",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -115,9 +115,9 @@ def dwi2adc(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2adc.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image.

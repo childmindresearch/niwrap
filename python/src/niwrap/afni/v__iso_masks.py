@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ISO_MASKS_METADATA = Metadata(
-    id="5e08bfc1c4611e9acd94b8f91b895e983973e1ef.boutiques",
+    id="b73304663d5c985016c46fca12dbb67249f9bdf2.boutiques",
     name="@IsoMasks",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v__iso_masks(
     """
     Creates isosurfaces from isovolume envelopes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@IsoMasks.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset for creating isosurfaces.

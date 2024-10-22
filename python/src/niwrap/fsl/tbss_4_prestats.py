@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_4_PRESTATS_METADATA = Metadata(
-    id="6d72a9e868ac4e6fa0f862c6199672dd62007438.boutiques",
+    id="d670cd7905f01b395cb6391ce2db79cb338171df.boutiques",
     name="tbss_4_prestats",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -29,9 +29,9 @@ def tbss_4_prestats(
     """
     A tool for thresholding the Mean FA Skeleton in TBSS analysis.
     
-    Author: FMRIB Software Library
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         threshold: Thresholding value for the Mean FA Skeleton; recommended\

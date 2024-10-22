@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIND_VARIANCE_LINES_METADATA = Metadata(
-    id="60d5734b6c7dbc8075648027a077aef82c50b620.boutiques",
+    id="42c06cfd520ba57c9217cb9ca4881b1f7e5ccb80.boutiques",
     name="find_variance_lines",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,10 +52,9 @@ def find_variance_lines(
     Look for bars of high variance that might suggest scanner interference in EPI
     datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/find_variance_lines.tcsh.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input EPI datasets.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAST_ROI_METADATA = Metadata(
-    id="da28b32a528c83a9fa68805e184755226e2a59e6.boutiques",
+    id="67d84fc9347c6d1d3a9b2eb48efadf4b265fb0e4.boutiques",
     name="fast_roi",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def fast_roi(
     Creates Atlas-based ROI masked in ANAT's original space. The script executes
     rapidly for realtime fMRI applications.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fast_roi.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         region: Symbolic atlas-based region name. Use repeated instances to\

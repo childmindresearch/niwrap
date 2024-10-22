@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DEPTH_MAP_METADATA = Metadata(
-    id="27cbb890be2e331d9f687e682dff30b644447384.boutiques",
+    id="4a6704d8156d9e0a414515196af7b7f69ca298eb.boutiques",
     name="3dDepthMap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,9 +45,9 @@ def v_3d_depth_map(
     computation of ROI depth maps and applying various adjustments like masking and
     rimification.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDepthMap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset.

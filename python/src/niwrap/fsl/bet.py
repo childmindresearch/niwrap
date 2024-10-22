@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BET_METADATA = Metadata(
-    id="0a7819f0c98ae5620097d3a5297b51a33edc1d6e.boutiques",
+    id="3d70adf574d6fecc2ecbe553136313d8259f55a8.boutiques",
     name="bet",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -79,9 +79,9 @@ def bet(
     """
     Automated brain extraction tool for FSL.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input image (e.g. img.nii.gz).

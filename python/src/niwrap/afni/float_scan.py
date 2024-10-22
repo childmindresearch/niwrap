@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FLOAT_SCAN_METADATA = Metadata(
-    id="ff43e34ccfb6d75bca9b732f0b330b522d1218c2.boutiques",
+    id="7f0b4871d3f11c7378179da06f7acc8b8434976f.boutiques",
     name="float_scan",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def float_scan(
     Scans the input file of IEEE floating point numbers for illegal values:
     infinities and not-a-number (NaN) values.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/float_scan.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input file containing IEEE floating point numbers.

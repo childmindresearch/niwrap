@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MCFLIRT_METADATA = Metadata(
-    id="c0d08df419189940a76fe2a17ae13e9229615d1d.boutiques",
+    id="4d12e7c19eb74e1eee6a817af4b24f432d936cd0.boutiques",
     name="MCFLIRT",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -67,9 +67,9 @@ def mcflirt(
     fully automated robust and accurate tool for linear (affine) inter- and
     inter-modal brain image registration.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Timeseries to motion-correct.

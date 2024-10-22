@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKSIFT_METADATA = Metadata(
-    id="09acae3fadd64e1baed640a1115307f0f8c72d92.boutiques",
+    id="156a082e7c712bee84c59b6e5b4b9d3ea89cf95f.boutiques",
     name="tcksift",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -102,9 +102,9 @@ def tcksift(
     Spherical-deconvolution informed filtering of tractograms. NeuroImage, 2013,
     67, 298-312.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/tcksift.html
+    URL: https://www.mrtrix.org/
     
     Args:
         in_tracks: the input track file.

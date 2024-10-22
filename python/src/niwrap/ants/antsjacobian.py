@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTSJACOBIAN_METADATA = Metadata(
-    id="60c6bb1a4675dd91011fe6c460c36f2f3132206a.boutiques",
+    id="4c1495ce17166625b172b3fbe727bd30b17f079f.boutiques",
     name="ANTSJacobian",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -39,7 +39,7 @@ def antsjacobian(
     ANTSJacobian may not be working correctly; see CreateJacobianDeterminantImage
     for an alternative method.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

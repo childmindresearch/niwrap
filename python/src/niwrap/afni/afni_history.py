@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_HISTORY_METADATA = Metadata(
-    id="da43f31273d61fd565f54cc5310535709792c830.boutiques",
+    id="edc666d49dee4472b0b1cf696b099e8783b9115e.boutiques",
     name="afni_history",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,9 +49,9 @@ def afni_history(
     """
     Show AFNI updates per user, dates, or levels.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_history.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         verb_level: Request verbose output (LEVEL is from 0-6).

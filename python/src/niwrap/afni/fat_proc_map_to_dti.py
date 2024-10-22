@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_MAP_TO_DTI_METADATA = Metadata(
-    id="ee78feae0990bd37d34d68c063edc4b3b4071179.boutiques",
+    id="474924386097dcd7df273db530cc8e0549474d04.boutiques",
     name="fat_proc_map_to_dti",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,10 +41,9 @@ def fat_proc_map_to_dti(
     A program for mapping data sets into DWI space, suitable for aligning anatomical
     ROI maps or EPI data to a DWI reference volume.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_map_to_dti.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         source: T1w volume file (source volume).

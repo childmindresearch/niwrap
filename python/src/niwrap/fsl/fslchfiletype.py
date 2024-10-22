@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLCHFILETYPE_METADATA = Metadata(
-    id="1d31f3c460cabb5d7f9442a7a8923cfcb593ed4f.boutiques",
+    id="e5da91ed052295c7eb624ffec87c6d89c4506faf.boutiques",
     name="fslchfiletype",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,9 +33,9 @@ def fslchfiletype(
     """
     Tool to change the file type of an image file or copy it to a new file.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#FSL_UTILITIES
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         filetype: The type of the file to convert to. Valid values include:\

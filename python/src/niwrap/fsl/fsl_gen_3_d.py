@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_GEN_3_D_METADATA = Metadata(
-    id="d6a1b04c2539278c0b8f6aab60e709c659b6127a.boutiques",
+    id="74614f1cd12ab495fccd75fc3c0a35dc4de58768.boutiques",
     name="fsl_gen_3D",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,9 +32,9 @@ def fsl_gen_3_d(
     """
     Tool to generate a 3D snapshot of a structural image.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input structural image (e.g. input.nii.gz).

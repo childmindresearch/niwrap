@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DO_EXAMPLES_METADATA = Metadata(
-    id="a5f5babbb2f0bb51da55277761894b52baf0592c.boutiques",
+    id="538eacefe9e5af2072fbb4d26ece78b45d00afab.boutiques",
     name="@DO.examples",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v__do_examples(
     """
     A script to illustrate the use of Displayable Objects in SUMA.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DO.examples.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         auto_test: Run this script in test mode where user prompts are timed\

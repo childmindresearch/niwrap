@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ABOVERLAP_METADATA = Metadata(
-    id="d5433909c1e76c4f0433d35de6c3434c53d46b1f.boutiques",
+    id="ce33e10c4b1ac12e30e9f2905df1b25512061469.boutiques",
     name="3dABoverlap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3d_aboverlap(
     Counts various metrics about how the automasks of datasets A and B overlap or
     don't overlap.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dABoverlap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset_a: First input dataset.

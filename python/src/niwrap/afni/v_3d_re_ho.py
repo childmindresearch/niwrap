@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RE_HO_METADATA = Metadata(
-    id="4907b9dfed49d3b0df7f50cea93389d02339c14e.boutiques",
+    id="dda32945e21f34bdcf109d39ffa140b210c47ae4.boutiques",
     name="3dReHo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,9 +52,9 @@ def v_3d_re_ho(
     3dReHo calculates Kendall's W per voxel using neighborhood voxels from 4D time
     series data set.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dReHo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output file name part.

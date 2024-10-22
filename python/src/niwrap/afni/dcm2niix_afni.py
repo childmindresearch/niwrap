@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DCM2NIIX_AFNI_METADATA = Metadata(
-    id="3383de2437c0051596b4454348bb01994bf4c301.boutiques",
+    id="2b048e6ed8405f5110cc5399162aab212faa5c72.boutiques",
     name="dcm2niix_afni",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -59,9 +59,9 @@ def dcm2niix_afni(
     """
     DICOM to NIfTI converter optimized for AFNI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/dcm2niix_afni.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_folder: Folder containing DICOM files.

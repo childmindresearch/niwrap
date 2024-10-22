@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_INTRODUCTION_SH_METADATA = Metadata(
-    id="6760d523262bf7133073ad13549f8305e1704616.boutiques",
+    id="d2cd2290031399860c753b700fceb3b68d1916e4.boutiques",
     name="antsIntroduction.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -39,7 +39,7 @@ def ants_introduction_sh(
     """
     Script for registration using ANTS with compulsory and optional arguments.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

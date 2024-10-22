@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_MOTION_CORR_METADATA = Metadata(
-    id="59942b812118681f9d03fcfc2798e612f4604968.boutiques",
+    id="101179d7b402b3245503ed337e9b9c5479b1f966.boutiques",
     name="antsMotionCorr",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -51,7 +51,7 @@ def ants_motion_corr(
     ANTS Motion Correction application to perform motion correction on 4D time
     series data.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

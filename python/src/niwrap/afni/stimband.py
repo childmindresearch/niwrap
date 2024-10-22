@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 STIMBAND_METADATA = Metadata(
-    id="7bd05876dcbc4bbd12d354c3223c5e1a586e364f.boutiques",
+    id="464e80031a1b4a970344b72621a7160776336ad8.boutiques",
     name="stimband",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def stimband(
     Determines frequency band covering at least 90% of the 'power' (|FFT|^2) of
     stimulus columns from X.nocensor.xmat.1D files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/stimband.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         verbose_flag: Print the power band for each individual stimulus column\

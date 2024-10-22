@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFMATHS_METADATA = Metadata(
-    id="b8ae24d5ed4caf90d6715b600edc707e3ecce266.boutiques",
+    id="43b2b33ef46ba625eef0b1956d42ed1ec499038e.boutiques",
     name="surfmaths",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,6 +33,10 @@ def surfmaths(
     """
     A command-line tool for performing various mathematical operations on surface
     files.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         first_input: First input surface file.

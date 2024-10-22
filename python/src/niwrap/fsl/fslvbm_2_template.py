@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLVBM_2_TEMPLATE_METADATA = Metadata(
-    id="8a40fdf48fb3338ede75e045234244bb059fadea.boutiques",
+    id="da1bae20368434d9414ce021122c55a5d82da9c5.boutiques",
     name="fslvbm_2_template",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -52,9 +52,9 @@ def fslvbm_2_template(
     """
     FSL-VBM is a Voxel-Based Morphometry style analysis tool for FSL.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         arch: Specify architecture.

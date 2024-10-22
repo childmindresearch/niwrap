@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLCOMPLEX_METADATA = Metadata(
-    id="d0abd5c90beb6b4521e36e45a88d9bccbc714d09.boutiques",
+    id="981c1dd34758ccbc322050f7df2128718d632406.boutiques",
     name="fslcomplex",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,9 +35,9 @@ def fslcomplex(
     """
     Tool for manipulating complex-valued MR data.
     
-    Author: FMRIB Analysis Group, Oxford University, UK
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input volume (e.g. complexvol.nii.gz).

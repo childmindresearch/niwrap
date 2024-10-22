@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SHOW_DYNAMIC_RANGE_METADATA = Metadata(
-    id="ae955b1e7dcbaf4bdd38e7b2e4796f6f5ab7a221.boutiques",
+    id="dc41f5524a202264bc60fdb2351846a4eb837ed6.boutiques",
     name="ShowDynamicRange",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,10 +36,9 @@ def show_dynamic_range(
     The script checks the dynamic range of the time series data at locations inside
     the brain.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ShowDynamicRange.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input EPI time series dataset (e.g. epi.nii.gz).

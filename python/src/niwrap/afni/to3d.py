@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TO3D_METADATA = Metadata(
-    id="e0b1a8079bd8c845d68df128a96c8155a51e0e19.boutiques",
+    id="fe584b79ebf34b39a3967101b0ec0845d5dc5f6d.boutiques",
     name="to3d",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -74,9 +74,9 @@ def to3d(
     """
     Creates 3D datasets for use with AFNI from 2D image files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/to3d.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input 2D image files.

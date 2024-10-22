@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWI2RESPONSE_METADATA = Metadata(
-    id="edddbe80993b644221e1465a2dd0d5c280ed0192.boutiques",
+    id="783031dadad04a0c0a13f937e1015a6d4ff7ac7f.boutiques",
     name="dwi2response",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -669,17 +669,15 @@ def dwi2response(
     Estimate response function(s) for spherical deconvolution.
     dwi2response offers different algorithms for performing various types of
     response function estimation. The name of the algorithm must appear as the
-    first argument on the command-line after ‘dwi2response’. The subsequent
+    first argument on the command-line after â€˜dwi2responseâ€™. The subsequent
     arguments and options depend on the particular algorithm being invoked.
     Each algorithm available has its own help page, including necessary
     references; e.g. to see the help page of the 'fa' algorithm, type
     'dwi2response fa'.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au) & Thijs Dhollander
-    (thijs.dhollander@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/3.0.4/reference/commands/dwi2response.html
+    URL: https://www.mrtrix.org/
     
     Args:
         algorithm: Select the algorithm to be used to complete the script\

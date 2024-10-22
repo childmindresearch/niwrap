@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLORIENT_METADATA = Metadata(
-    id="3db0f2ea413348594ebb2a3a46459edace358fe2.boutiques",
+    id="50f22a37a0885cb959c0f4cbf7f9c488654220a1.boutiques",
     name="fslorient",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,9 +30,9 @@ def fslorient(
     """
     FSL tool to manipulate NIfTI header orientation information.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         filename: Filename of the image to operate on (e.g. img.nii.gz).

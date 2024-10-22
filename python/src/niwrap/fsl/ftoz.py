@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FTOZ_METADATA = Metadata(
-    id="f01afa9b8431b1163d41919afd62f2c7b9f742dd.boutiques",
+    id="868fb5bf7f46339ab0ac56a142dca88f7d9a1f2b.boutiques",
     name="ftoz",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,7 +34,9 @@ def ftoz(
     """
     Convert F-statistics to Z-scores.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: File containing F-statistics.

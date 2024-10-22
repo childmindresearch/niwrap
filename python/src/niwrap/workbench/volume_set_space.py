@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_SET_SPACE_METADATA = Metadata(
-    id="644c144fc79521282c1695ea02e9c2099bb1ae50.boutiques",
+    id="2145ec6614918f4b201194caabb6431a56e76e74.boutiques",
     name="volume-set-space",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -172,7 +172,9 @@ def volume_set_space(
     change the volume indexing order and reorder the voxels to match. Exactly
     one of -plumb, -sform, or -file must be specified.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the input volume.

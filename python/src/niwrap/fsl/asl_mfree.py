@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ASL_MFREE_METADATA = Metadata(
-    id="3df5c70b713c669c2cd52fa754362efc300e770e.boutiques",
+    id="8d2da0dde0fd1bca8d57a5eb2958e9ab555f18b1.boutiques",
     name="asl_mfree",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -50,7 +50,9 @@ def asl_mfree(
     """
     ASL model-free analysis tool.
     
-    Author: FMRIB Centre, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         datafile: ASL data file.

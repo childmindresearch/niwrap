@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_SUB_REPORT_METADATA = Metadata(
-    id="eb8510c3b806ac58765c03007c0d81c141d06c5f.boutiques",
+    id="888685cac913f1d7418452ea8e9b5db638375fea.boutiques",
     name="fsl_sub_report",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,7 +31,9 @@ def fsl_sub_report(
     """
     FSL cluster job reporting tool.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         job_id: Report job details for this job ID.

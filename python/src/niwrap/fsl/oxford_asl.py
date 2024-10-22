@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OXFORD_ASL_METADATA = Metadata(
-    id="1225d433fbe151420738b535aab2a7687f83e294.boutiques",
+    id="3a874236118d6c333c7d91fd94b75bc41d3f5815.boutiques",
     name="oxford_asl",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,9 +32,9 @@ def oxford_asl(
     """
     Calculate perfusion maps from ASL data.
     
-    Author: FMRIB Centre, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/oxford_asl
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         asl_data: Input ASL data.

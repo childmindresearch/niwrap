@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TOUTCOUNT_METADATA = Metadata(
-    id="f245780f5a83aba3ba5e5257f1ac866e424d9e1d.boutiques",
+    id="b726a8742694b4a0acfdfd929608a00118e5b42b.boutiques",
     name="3dToutcount",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def v_3d_toutcount(
     """
     Calculates the number of 'outliers' in a 3D+time dataset at each time point.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dToutcount.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input 3D+time dataset (e.g. dataset+orig).

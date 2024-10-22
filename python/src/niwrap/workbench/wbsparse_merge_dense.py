@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WBSPARSE_MERGE_DENSE_METADATA = Metadata(
-    id="6eb20685f4c22c6b65becfd09a6b95edde9c4769.boutiques",
+    id="cae2bf831289ff834f3dae672f38c06d76e48875.boutiques",
     name="wbsparse-merge-dense",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -61,7 +61,9 @@ def wbsparse_merge_dense(
     specified, and the mapping along the specified direction must be brain
     models.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         direction: which dimension to merge along, ROW or COLUMN.

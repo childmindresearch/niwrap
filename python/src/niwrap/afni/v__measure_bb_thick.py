@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MEASURE_BB_THICK_METADATA = Metadata(
-    id="30e00fda87c675225a811b0f3e8ba20b8c2068e7.boutiques",
+    id="cfc08b06be4be34dbe86515a4f42ca26d14b7282.boutiques",
     name="@measure_bb_thick",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -58,10 +58,9 @@ def v__measure_bb_thick(
     """
     Compute thickness of mask using ball and box method.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@measure_bb_thick.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         maskset: Mask dataset for input.

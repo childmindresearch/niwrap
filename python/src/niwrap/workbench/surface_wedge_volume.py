@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_WEDGE_VOLUME_METADATA = Metadata(
-    id="2d72a72882b2565f0b41eca27d7216402a57fa1e.boutiques",
+    id="f7bf6fac859764e2acb2113e16dd2bedba55acaf.boutiques",
     name="surface-wedge-volume",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def surface_wedge_volume(
     surfaces must have vertex correspondence, and have consistent triangle
     orientation.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         inner_surface: the inner surface.

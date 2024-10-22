@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_TSPLOT_METADATA = Metadata(
-    id="37113a4977b8132fb2f361cd4579cba1b0b1c6d5.boutiques",
+    id="74959e380e03556502d187ee8f03e6d04a539ca7.boutiques",
     name="fsl_tsplot",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -46,9 +46,9 @@ def fsl_tsplot(
     """
     Timeseries plotting tool from FSL.
     
-    Author: University of Oxford (Christian F. Beckmann)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_files: Comma-separated list of input file names (ASCII text\

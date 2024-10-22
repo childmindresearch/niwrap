@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ABIDS_JSON_TOOL_PY_METADATA = Metadata(
-    id="ba629457f4bbbc55e86c18fafc477c41efec681f.boutiques",
+    id="163838a0b8b6666cb97988dadc53cf5a09505323.boutiques",
     name="abids_json_tool.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def abids_json_tool_py(
     """
     This script helps to manipulate json files in various ways.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/abids_json_tool.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: One file to convert. Enter NULL with -add_json to create\

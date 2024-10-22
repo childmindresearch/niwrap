@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ISC_METADATA = Metadata(
-    id="be9383ab5bca6321c3dc965034e684802c2fb435.boutiques",
+    id="6c9916869e62ba9cb0b03f15916de7329295e2a7.boutiques",
     name="3dISC",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def v_3d_isc(
     Program for Voxelwise Inter-Subject Correlation (ISC) Analysis using linear
     mixed-effects modeling.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dISC.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         outfile_prefix: Output file name. For AFNI format, provide prefix only,\

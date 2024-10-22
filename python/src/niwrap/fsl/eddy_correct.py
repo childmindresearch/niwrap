@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_CORRECT_METADATA = Metadata(
-    id="a10ffaf77e8183d3b1942b8df6692377004eca30.boutiques",
+    id="4d638d6e1c6df468f677eb23bc2f3d58a105171a.boutiques",
     name="eddy_correct",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def eddy_correct(
     """
     Eddy current correction tool for FSL.
     
-    Author: FMRIB
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/EDDY
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         v_4d_input: Input 4D image file (e.g., dti.nii.gz).

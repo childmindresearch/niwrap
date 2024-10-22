@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_MARRY_METADATA = Metadata(
-    id="21678eac5c4a4fb600e56bb53d02f9bbffcc95d4.boutiques",
+    id="f9f4039bb8ba124f894ee17e087388280263a504.boutiques",
     name="1dMarry",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_1d_marry(
     -stim_times_AM2, or breaks up 1 married file into 2 (or more) single-valued
     files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dMarry.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         files: Input file(s) to be married or divorced.

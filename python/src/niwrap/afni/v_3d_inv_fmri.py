@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_INV_FMRI_METADATA = Metadata(
-    id="cb27e0de727e2a1295bb09c0a66d6ab3481186c2.boutiques",
+    id="61c795f9e8fbcd27d184c27174d9a665a918cd0f.boutiques",
     name="3dInvFMRI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def v_3d_inv_fmri(
     Program to compute stimulus time series, given a 3D+time dataset and an
     activation map (the inverse of the usual FMRI analysis problem).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dInvFMRI.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input 3D+time dataset.

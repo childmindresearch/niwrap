@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PROMPT_POPUP_METADATA = Metadata(
-    id="7518dc8a00d72b77b36f749f20f87fefe2a98560.boutiques",
+    id="86851443966e9bfb5766658bc6ca87fa7bd600d7.boutiques",
     name="prompt_popup",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def prompt_popup(
     A command-line tool that pops up a window prompting user interaction with a
     message and buttons.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/prompt_popup.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         message_pause: Same as -message to match the old prompt_user.

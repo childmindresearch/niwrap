@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BEDPOSTX_DATACHECK_METADATA = Metadata(
-    id="f845cf6122ea726e2a835e5800129c5170746b41.boutiques",
+    id="71e8d4411c851d05c239523f13b5b5d52899aba8.boutiques",
     name="bedpostx_datacheck",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -29,7 +29,9 @@ def bedpostx_datacheck(
     """
     Check the data directory for BEDPOSTX compatibility.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         data_dir: Data directory to check for BEDPOSTX compatibility.

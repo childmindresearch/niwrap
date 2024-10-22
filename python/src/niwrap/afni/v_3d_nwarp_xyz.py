@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NWARP_XYZ_METADATA = Metadata(
-    id="39acc6806ae751e967e1a41bdfd3fa44c32ceb39.boutiques",
+    id="4315d32044436ed76f66a6f11a8a6a58677a9969.boutiques",
     name="3dNwarpXYZ",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def v_3d_nwarp_xyz(
     Transforms the DICOM xyz coordinates in the input XYZfile.1D based on specified
     warp.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpXYZ.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         xyzfile: XYZ coordinate file containing 3 columns.

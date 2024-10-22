@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_SMOOTHING_METADATA = Metadata(
-    id="b4300c9ee0a42249cb5d5f1c7e92863362e036ff.boutiques",
+    id="46a2853381943b0cd19dca6241961ce6d9ed36a5.boutiques",
     name="cifti-smoothing",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -163,7 +163,9 @@ def cifti_smoothing(
     columns, exactly matching the mapping of the chosen direction in the input
     file. Data outside the ROI is ignored.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti: the input cifti.

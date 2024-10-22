@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_EXTREMA_METADATA = Metadata(
-    id="559cda037dd05375e303c0e3226813b4366b2fa3.boutiques",
+    id="878c450ead99de06c9173d0159c8e69a49c74d62.boutiques",
     name="SurfExtrema",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def surf_extrema(
     """
     A program finding the local extrema in a dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfExtrema.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for the output datasets.

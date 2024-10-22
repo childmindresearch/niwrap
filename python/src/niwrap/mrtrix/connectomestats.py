@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONNECTOMESTATS_METADATA = Metadata(
-    id="a133a8de6ede1c498219fbf0a214b2217592e27b.boutiques",
+    id="a535681290f66c0887d4200e46496cba897c8f9a.boutiques",
     name="connectomestats",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -165,10 +165,9 @@ def connectomestats(
     nonstationarity in cluster-based and TFCE inference.
     Neuroimage, 2011, 54(3), 2006-19.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/connectomestats.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: a text file listing the file names of the input connectomes.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MATCH_SMOOTHING_METADATA = Metadata(
-    id="20a70dcd32bab58a0d1eb3bf58ebd82cb6e4b303.boutiques",
+    id="6db9122eee94308e6db8d6972c9b13fce652d811.boutiques",
     name="match_smoothing",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,6 +32,10 @@ def match_smoothing(
     """
     Computes the smoothing sigma needed to be applied to structural data to match a
     given functional data smoothing level.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         example_func: Path to the example functional image file.

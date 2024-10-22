@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSTATS_METADATA = Metadata(
-    id="6806dfa396b5b798ea5437257ad47b89b142e4dd.boutiques",
+    id="016440e3fb016cdcb22ca2ec304960d4e4b83af3.boutiques",
     name="fslstats",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -58,9 +58,9 @@ def fslstats(
     """
     FSL tool for calculating statistics on image data.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input image file (e.g., image.nii.gz).

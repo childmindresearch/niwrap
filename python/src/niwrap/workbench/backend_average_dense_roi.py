@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BACKEND_AVERAGE_DENSE_ROI_METADATA = Metadata(
-    id="6b2e34efffe465091e8b7e6ed3878b97dc25248e.boutiques",
+    id="ca7ae300b4dda4380cb9ce2876fcfb2d785dfe41.boutiques",
     name="backend-average-dense-roi",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -35,7 +35,9 @@ def backend_average_dense_roi(
     standard input, and writes its output as little endian, 32-bit integer of
     row size followed by the row as 32-bit floats.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         index_list: comma separated list of cifti indexes to average.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_CEST_METADATA = Metadata(
-    id="c0cb81f648d45be47a3dd9319d3856fb8761009b.boutiques",
+    id="d0c794144f9c1291cd815f24506dde4e858126c8.boutiques",
     name="fabber_cest",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -52,9 +52,9 @@ def fabber_cest(
     """
     Fabber Model-based Analysis.
     
-    Author: FMRIB Centre, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fabber.gitlab.io
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         runner: Command runner.

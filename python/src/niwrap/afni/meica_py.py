@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MEICA_PY_METADATA = Metadata(
-    id="2f2085cdf1dc498e1f0961ccc02af9f3e6bfe321.boutiques",
+    id="5ae02d926937c9c63f30c373b905edbe3696ed5f.boutiques",
     name="meica.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def meica_py(
     """
     Multi-Echo Independent Component Analysis for fMRI denoising.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/meica.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input image dataset (e.g. dataset.nii.gz).

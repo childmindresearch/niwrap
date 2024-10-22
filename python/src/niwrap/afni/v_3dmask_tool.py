@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMASK_TOOL_METADATA = Metadata(
-    id="1bc307eefd31b0449ff4b0c5b372b0fdec869dfa.boutiques",
+    id="e7bb0d5afe6f71d2fb57613d5c39c83b7fb4876f.boutiques",
     name="3dmask_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,9 +45,9 @@ def v_3dmask_tool(
     """
     3dmask_tool - for combining/dilating/eroding/filling masks.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmask_tool.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dmask_tool.

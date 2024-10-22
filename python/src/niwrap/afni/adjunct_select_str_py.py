@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_SELECT_STR_PY_METADATA = Metadata(
-    id="edf90a625a50ba02dc94acf4f7ed5a86797fc178.boutiques",
+    id="f2bb90308c31e2b8fa45573c0f2201da8c5ca476.boutiques",
     name="adjunct_select_str.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,10 +31,9 @@ def adjunct_select_str_py(
     """
     A simple helper function for the fat_proc* scripts.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_select_str.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: File containing a list of integers.

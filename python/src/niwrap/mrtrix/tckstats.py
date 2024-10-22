@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKSTATS_METADATA = Metadata(
-    id="2e6f7d19387564d069ab548694fef288498b97ad.boutiques",
+    id="3760b66b1fa3a72514876d654c267f0868d2d468.boutiques",
     name="tckstats",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -111,10 +111,9 @@ def tckstats(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tckstats.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tracks_in: the input track file.

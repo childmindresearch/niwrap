@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WARP2METRIC_METADATA = Metadata(
-    id="2fd5850bcb7f32a9c9c10cc3635b0b1b82152cda.boutiques",
+    id="7c25f1be081ec7621f562b1f88e03c6ae513109c.boutiques",
     name="warp2metric",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -128,10 +128,9 @@ def warp2metric(
     using Fixel-Based Analysis. Neuroimage, 2017, 144, 58-73, doi:
     10.1016/j.neuroimage.2016.09.029.
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/warp2metric.html
+    URL: https://www.mrtrix.org/
     
     Args:
         in_: the input deformation field.

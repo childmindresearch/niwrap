@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_FLIP_LR_METADATA = Metadata(
-    id="be7ac8c956bb50120ee359df4df51ce488e5b406.boutiques",
+    id="09bf00218cd786b2b4530d05f4af140cb6ea192e.boutiques",
     name="surface-flip-lr",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -38,7 +38,9 @@ def surface_flip_lr(
     original surface. That is, if the input surface has normals facing outward,
     the output surface will also have normals facing outward.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to flip.

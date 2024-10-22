@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CCOPS_METADATA = Metadata(
-    id="d13d3a936916df026552bbb1fd6cbd9626c410f8.boutiques",
+    id="02cadac1d2601928d606350802d28649e4f52a10.boutiques",
     name="ccops",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -44,9 +44,9 @@ def ccops(
     """
     ccops - Clustering of Connectomes Using Probabilistic Tractography.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         basename: Output basename.

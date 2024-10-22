@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXELCORRESPONDENCE_METADATA = Metadata(
-    id="e504e8529648fd4befb8831d2415e0de7107e1d1.boutiques",
+    id="fad1be9b8243f83bbbf677ed7d4db5308a7e3c5d.boutiques",
     name="fixelcorrespondence",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -79,10 +79,9 @@ def fixelcorrespondence(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcorrespondence.html
+    URL: https://www.mrtrix.org/
     
     Args:
         subject_data: the input subject fixel data file. This should be a file\

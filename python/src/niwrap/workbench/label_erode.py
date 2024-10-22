@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_ERODE_METADATA = Metadata(
-    id="b9387c47c7669f9d00906200f2d4943badcd9bd5.boutiques",
+    id="96698eee814cdf47c6a1793175ac7e31e942a69d.boutiques",
     name="label-erode",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -44,7 +44,9 @@ def label_erode(
     Note that the -corrected-areas option uses an approximate correction for
     distance along the surface.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label: the input label.

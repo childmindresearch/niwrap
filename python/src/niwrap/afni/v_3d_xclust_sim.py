@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_XCLUST_SIM_METADATA = Metadata(
-    id="56860ad5ffbaa0bd9bb33e1b03cac2b121ed79ff.boutiques",
+    id="8ab2d50a137adbe81fde33f72be07849436f466b.boutiques",
     name="3dXClustSim",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def v_3d_xclust_sim(
     """
     ETAC processing tool to find cluster figure of merit (FOM) thresholds.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dXClustSim.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inset: Mask sdata file (from 3dtoXdataset or 3dttest++).

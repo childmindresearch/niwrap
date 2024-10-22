@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DDELAY_METADATA = Metadata(
-    id="7507c9110b505056676cecc587845fd4335d9ef8.boutiques",
+    id="1b3372c0560d1ae26e638ccf8c8abca50668017f.boutiques",
     name="3ddelay",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -61,9 +61,9 @@ def v_3ddelay(
     Estimates the time delay between each voxel time series in a 3D+time dataset and
     a reference time series.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddelay.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Filename of the input 3D+time dataset.

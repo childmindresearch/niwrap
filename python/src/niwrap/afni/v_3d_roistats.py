@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ROISTATS_METADATA = Metadata(
-    id="837cb344ffaa7fe7aa684a462d2ab5e156a15242.boutiques",
+    id="42c325b0e5191cea0a53e686cc2eaab286bb4cf2.boutiques",
     name="3dROIstats",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,9 +46,9 @@ def v_3d_roistats(
     """
     Display statistics over masked regions.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dROIstats.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input dataset.

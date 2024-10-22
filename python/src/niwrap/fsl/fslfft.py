@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLFFT_METADATA = Metadata(
-    id="31b0f974fa6340f6c9757e025d96c7c62a1daee6.boutiques",
+    id="b12582411a777f07e2cfc475cd8c759166ea2350.boutiques",
     name="fslfft",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def fslfft(
     A tool to compute the Fourier transform of an input volume and save the result
     in an output volume.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_volume: Input volume file (e.g. invol.nii.gz).

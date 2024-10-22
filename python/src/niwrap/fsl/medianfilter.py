@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MEDIANFILTER_METADATA = Metadata(
-    id="9bff8d4194c7d3b94129c2b9f5d6d9444cf980b8.boutiques",
+    id="8b47dce57166a45911be10b2829253e49842bfd9.boutiques",
     name="medianfilter",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,7 +32,9 @@ def medianfilter(
     """
     A tool to perform 26 neighbourhood median filtering on an input image.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input image file to be filtered (e.g., img.nii.gz).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APQC_MAKE_HTML_METADATA = Metadata(
-    id="4a3b1cfb06dfbad0514daf29c92785c1118709a0.boutiques",
+    id="07c116f696d041aa0735cff7c774be94af315e97.boutiques",
     name="apqc_make_html",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,10 +29,9 @@ def apqc_make_html(
     """
     Tool to generate HTML reports.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/apqc_make_html.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         qc_dir: Directory where QC files will be saved.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__INSTALL_APMULTI_DEMO1_REST_METADATA = Metadata(
-    id="9510080ae4b21f2c8148393bd87c237242730359.boutiques",
+    id="67ee41d319b3699e09aba05f6d2960afa86010a5.boutiques",
     name="@Install_APMULTI_Demo1_rest",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,10 +31,9 @@ def v__install_apmulti_demo1_rest(
     This script fetches the demo data and scripts corresponding to AFNI's Demo #1
     for processing multi-echo FMRI data (rest).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_APMULTI_Demo1_rest.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         wget: Use wget to download archive. Script chooses by default with\

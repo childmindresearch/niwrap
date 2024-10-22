@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PRINT_HEADER_METADATA = Metadata(
-    id="7eb71bb1e0f89550f690cadbd4faf8fb61335f09.boutiques",
+    id="514e4dbae6f3b5a425925fca62d2ade89ff0b0c2.boutiques",
     name="PrintHeader",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -32,7 +32,7 @@ def print_header(
     """
     A utility to print header information from an image file.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

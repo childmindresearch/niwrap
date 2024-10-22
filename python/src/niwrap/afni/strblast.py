@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 STRBLAST_METADATA = Metadata(
-    id="8767ef40044074fc92c6bfae61216e489dd7c549.boutiques",
+    id="a2cee2c629b430408b17d4c3a5b48c6d60070e17.boutiques",
     name="strblast",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def strblast(
     Finds exact copies of the target string in each of the input files, and replaces
     all characters with some junk string.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/strblast.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         targetstring: Target string to search for in the input files.

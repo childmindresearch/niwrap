@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XFIBRES_METADATA = Metadata(
-    id="41dc3f88f6c683ba17bd5db120e425e73f5ccbf8.boutiques",
+    id="2efa6e1a2bf6d99605a85d602a328e56c07e1dcd.boutiques",
     name="xfibres",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -57,9 +57,9 @@ def xfibres(
     """
     Part of FSL - estimates diffusion parameters for multiple fibres per voxel.
     
-    Author: FMRIB Centre, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         datafile: Data file (e.g., diffusion data).

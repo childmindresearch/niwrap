@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCOLOUR_METADATA = Metadata(
-    id="13304bc23ae97d64cedc37fef80da355a36e5b22.boutiques",
+    id="5c34d1664fe214212552914265860aab8fddd651.boutiques",
     name="mrcolour",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -88,10 +88,9 @@ def mrcolour(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrcolour.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="2d16c8760004aef52593ed5e3781e8eefcf45fca.boutiques",
+    id="138d55df6e41806c01407f888e6e03dcf7e15eb0.boutiques",
     name="cifti-all-labels-to-rois",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def cifti_all_labels_to_rois(
     Most of the time, specifying '1' for the <map> argument will do what is
     desired.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input cifti label file.

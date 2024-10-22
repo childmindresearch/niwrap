@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APPLYWARP_METADATA = Metadata(
-    id="8139e4041d6e0958010a358cd7464a250d36e6bc.boutiques",
+    id="fbc17e5f2db88059383823941bf2a7dd172e8234.boutiques",
     name="applywarp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -44,7 +44,9 @@ def applywarp(
     """
     Apply warps estimated by FNIRT (or some other software) to some image.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Image to be warped.

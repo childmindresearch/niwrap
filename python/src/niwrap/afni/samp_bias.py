@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SAMP_BIAS_METADATA = Metadata(
-    id="9480cbad7a38a99f1c7cad718271beff5166df8e.boutiques",
+    id="1bc09ad1dce154d1fd68f57703b503d806026a9f.boutiques",
     name="SampBias",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def samp_bias(
     SampBias is a tool for sampling bias resultant segments between paired nodes on
     anatomical surfaces.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SampBias.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         specfile: Spec file containing input surfaces.

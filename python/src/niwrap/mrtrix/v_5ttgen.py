@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_5TTGEN_METADATA = Metadata(
-    id="e1c8721cf951c39ed38887df51b196592e09eda2.boutiques",
+    id="8d0c791a0a22a9714aac8b71be2ed57e61cce2de.boutiques",
     name="5ttgen",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -366,9 +366,9 @@ def v_5ttgen(
     references; e.g. to see the help page of the 'fsl' algorithm, type '5ttgen
     fsl'.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/3.0.4/reference/commands/5ttgen.html
+    URL: https://www.mrtrix.org/
     
     Args:
         algorithm: Select the algorithm to be used to complete the script\

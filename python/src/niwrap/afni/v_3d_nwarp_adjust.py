@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NWARP_ADJUST_METADATA = Metadata(
-    id="ee4cbdd25169603ea1b6e9cced25880bc521d2e6.boutiques",
+    id="0c3ecbaf201c4034c9ca75f6bc8b7c5f5190cfaf.boutiques",
     name="3dNwarpAdjust",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v_3d_nwarp_adjust(
     average, optionally warping input datasets and generating an output mean
     dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpAdjust.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_warps: List of input 3D warp datasets (at least 5).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTSUSE_DEFORMATION_FIELD_TO_GET_AFFINE_TRANSFORM_METADATA = Metadata(
-    id="b7ce0463e1489cf1bdf59838ee0d6e965bb7fabe.boutiques",
+    id="a114d5c9bfbab1242b558e6ff3e44480841f6e38.boutiques",
     name="ANTSUseDeformationFieldToGetAffineTransform",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -37,7 +37,7 @@ def antsuse_deformation_field_to_get_affine_transform(
     field is expected to be in the same physical space as the images you want to
     transform.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

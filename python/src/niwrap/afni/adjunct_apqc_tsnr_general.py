@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_APQC_TSNR_GENERAL_METADATA = Metadata(
-    id="52d8a6529a6759105a59df20145b6f6b438b0124.boutiques",
+    id="a70654cb187bdb9991d41a1bcb7827db58a9c4b0.boutiques",
     name="adjunct_apqc_tsnr_general",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,10 +51,9 @@ def adjunct_apqc_tsnr_general(
     """
     An adjunct program for making TSNR plots for APQC.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_apqc_tsnr_general.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         montgap: Specify montage gap.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_FILL_METADATA = Metadata(
-    id="b813c2cceec3eb809fcd5f6ea45b514c72fdadcf.boutiques",
+    id="7017823848d50e17e75b17f5d9718126eae8a1a8.boutiques",
     name="tbss_fill",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,9 +35,9 @@ def tbss_fill(
     """
     Tool for filling skeletonized FA images in TBSS.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         stats_image: Stats image.

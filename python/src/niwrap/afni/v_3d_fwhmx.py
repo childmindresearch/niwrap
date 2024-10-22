@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_FWHMX_METADATA = Metadata(
-    id="f47d1eb7ee05c44b288128e5fb15f252f017d16a.boutiques",
+    id="27449a1dcd931f8aae9d15520a0f627e5b7d94bd.boutiques",
     name="3dFWHMx",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,9 +46,9 @@ def v_3d_fwhmx(
     Compute Full Width at Half Maximum (FWHM) for FMRI datasets using
     AutoCorrelation Function (ACF).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFWHMx.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input dataset.

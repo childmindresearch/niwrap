@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_ROIS_FROM_EXTREMA_METADATA = Metadata(
-    id="22d4b693c7a190ef47818e464febb05d21924891.boutiques",
+    id="a5b4eaa66a127ce2051bf0e437f0d368228dfb3a.boutiques",
     name="metric-rois-from-extrema",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -47,7 +47,9 @@ def metric_rois_from_extrema(
     different seed vertex. EXCLUDE means that ROIs may not overlap, and that any
     vertex within range of more than one ROI does not belong to any ROI.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to use for geodesic distance.

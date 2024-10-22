@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FEAT_GM_PREPARE_METADATA = Metadata(
-    id="69f99581f8df035a15b8bd30c71217642ca4c191.boutiques",
+    id="c5466f76988cce6b29cfe8b2d4ce15c5062b2852.boutiques",
     name="feat_gm_prepare",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,9 +30,9 @@ def feat_gm_prepare(
     """
     Prepare 4D grey matter files for higher-level analysis in FEAT.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         gm_output: 4D grey matter output file.

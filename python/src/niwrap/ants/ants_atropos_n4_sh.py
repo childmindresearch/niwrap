@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_ATROPOS_N4_SH_METADATA = Metadata(
-    id="7d80c202069d259a29876ac9d06a95654ed71e7b.boutiques",
+    id="26f6c01fef89c147f9f9fc215073f4d86231d70b.boutiques",
     name="antsAtroposN4.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -90,7 +90,9 @@ def ants_atropos_n4_sh(
     antsAtroposN4.sh iterates between N4 <-> Atropos to improve segmentation
     results.
     
-    Author: Advanced Normalization Tools (ANTs) Contributors
+    Author: ANTs Developers
+    
+    URL: https://github.com/ANTsX/ANTs
     
     Args:
         image_dimension: 2 or 3, for 2- or 3-dimensional image.

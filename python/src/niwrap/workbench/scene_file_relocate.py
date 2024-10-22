@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SCENE_FILE_RELOCATE_METADATA = Metadata(
-    id="4d700f02f34718e6045e900587b1667273a38197.boutiques",
+    id="73a7d3e349a9cb752986630b6f3184263c08e4ec.boutiques",
     name="scene-file-relocate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -35,7 +35,9 @@ def scene_file_relocate(
     command makes a modified copy of the scene file, changing the relative paths
     to refer to the new relative locations of the files.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         input_scene: the scene file to use.

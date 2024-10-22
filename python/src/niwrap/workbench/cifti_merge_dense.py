@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_MERGE_DENSE_METADATA = Metadata(
-    id="00f701d21942a962666b6b3ef46f75a7ac89d730.boutiques",
+    id="c07846f7ec6e365acb0850a975af15334fd9d94a.boutiques",
     name="cifti-merge-dense",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -64,7 +64,9 @@ def cifti_merge_dense(
     specified, and the mapping along the specified direction must be brain
     models.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         direction: which dimension to merge along, ROW or COLUMN.

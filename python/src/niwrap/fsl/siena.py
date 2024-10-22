@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIENA_METADATA = Metadata(
-    id="f563d34242a20a59b19c40b577e68df6fe81618c.boutiques",
+    id="881a5a4dec8a31ff1a9ee58a31c3b204c4ccab40.boutiques",
     name="siena",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -46,9 +46,9 @@ def siena(
     Structural Image Evaluation, using Normalization, of Atrophy tool for evaluating
     brain atrophy between two timepoints.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SIENA
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input1: First input image (e.g. timepoint 1 image, img1.nii.gz).

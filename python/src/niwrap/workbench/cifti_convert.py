@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CONVERT_METADATA = Metadata(
-    id="f620818fd4e7449f16b3a3864a16b31df547c1e9.boutiques",
+    id="7e23e84599368a4841b4bc691c9c71501873e4d5.boutiques",
     name="cifti-convert",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -569,7 +569,9 @@ def cifti_convert(
     METER
     RADIAN.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         to_gifti_ext: convert to GIFTI external binary.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AFNITO_NIFTI_METADATA = Metadata(
-    id="fb3d635db1319933a6531cd04ac8e966302fa609.boutiques",
+    id="c2219650fbe1d83f01eda91dff81cc7a82f46430.boutiques",
     name="3dAFNItoNIFTI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_3d_afnito_nifti(
     """
     Converts an AFNI dataset to a NIfTI-1.1 file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoNIFTI.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input AFNI dataset.

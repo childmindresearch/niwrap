@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_BIANCA_MASK_METADATA = Metadata(
-    id="55e552f300d1bc0ca46b262d842a09ae80e55c31.boutiques",
+    id="b510ffa550b31d035777c543152ddfaa5089a518.boutiques",
     name="make_bianca_mask",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -50,6 +50,10 @@ def make_bianca_mask(
 ) -> MakeBiancaMaskOutputs:
     """
     A script for generating BIANCA masks.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Input image.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__UPDATE_AFNI_BINARIES_METADATA = Metadata(
-    id="1188231a95870386895c303bd78dc5e7a691fcb6.boutiques",
+    id="893694dbbccc046a97eb3b039a42a123a05bfc8f.boutiques",
     name="@update.afni.binaries",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,10 +52,9 @@ def v__update_afni_binaries(
     """
     Install or update AFNI binaries.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@update.afni.binaries.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         defaults_flag: Install current package into abin.

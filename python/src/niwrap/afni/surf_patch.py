@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_PATCH_METADATA = Metadata(
-    id="566d4472c66f5c20b703ca66b695510f18a20c4b.boutiques",
+    id="1b9f54ccf622083c532013b3e22205e01ab00c46.boutiques",
     name="SurfPatch",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,9 +56,9 @@ def surf_patch(
     Creates a patch of surface formed by nodes in a nodefile and optionally
     calculates the volume between the same patch on two isotopic surfaces.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfPatch.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         spec_file: Spec file containing input surfaces.

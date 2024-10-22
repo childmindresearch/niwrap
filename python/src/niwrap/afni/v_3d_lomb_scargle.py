@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOMB_SCARGLE_METADATA = Metadata(
-    id="e84bc852bc7ffd66a800f3fec8a70f1cfb023718.boutiques",
+    id="4a8cb9c44f40d39fa20b61bfcaa0f24045676f26.boutiques",
     name="3dLombScargle",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,9 +47,9 @@ def v_3d_lomb_scargle(
     Make a periodogram or amplitude-spectrum of a time series that has a
     non-constant sampling rate.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLombScargle.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output prefix name for data volume, time point 1D file, and\

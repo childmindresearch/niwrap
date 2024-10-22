@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__REORDER_METADATA = Metadata(
-    id="ee3a36bbe53e8a1533ae673f6e2bcde12fb19bcc.boutiques",
+    id="a4930cc004546fe6ae9b0d7fcb027aaf3f005ee2.boutiques",
     name="@Reorder",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,9 +37,9 @@ def v__reorder(
     Reorder sub-bricks of a dataset based on event mapping. Works similarly to the
     Reorder plugin.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Reorder.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset to reorder (e.g. EPI+tlrc).

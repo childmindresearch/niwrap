@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RSFGEN_METADATA = Metadata(
-    id="63dc6b208f20ff51a3f9e49017f8e567a26eda71.boutiques",
+    id="42de4c95300ddfa6a27f2ddbc5b6d9dc63cdd292.boutiques",
     name="RSFgen",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -44,9 +44,9 @@ def rsfgen(
     """
     Program to generate random stimulus functions.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/RSFgen.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         length: Length of time series.

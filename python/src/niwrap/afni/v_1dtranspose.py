@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DTRANSPOSE_METADATA = Metadata(
-    id="fc94a17e9915d6fe592d2778f8c12462cf246455.boutiques",
+    id="9f114085767119818f875df6af7d69bffca16b30.boutiques",
     name="1dtranspose",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def v_1dtranspose(
     """
     Transpose an AFNI *.1D file (ASCII list of numbers arranged in columns).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dtranspose.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input file (e.g. data.1D).

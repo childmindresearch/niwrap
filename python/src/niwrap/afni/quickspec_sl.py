@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QUICKSPEC_SL_METADATA = Metadata(
-    id="59a0575a50ec6f6d664ffdaa52b5bc20a12a51c6.boutiques",
+    id="889040e44332ca29004fb5b3b94e878babda4bd4.boutiques",
     name="quickspecSL",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def quickspec_sl(
     generated with SurfLayers. It can also make a *.spec file that relates inflated
     surfaces to anatomically-correct surfaces.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/quickspecSL.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         surf_a: Inner (anatomically-correct) boundary surface dataset (e.g.\

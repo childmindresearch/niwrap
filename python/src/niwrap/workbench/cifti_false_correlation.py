@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_FALSE_CORRELATION_METADATA = Metadata(
-    id="3baaab7ec58d4ecf17080e5a45547fdfdb634af1.boutiques",
+    id="44f0e310bc1ec2add16f3916f9a7447f60a1ee0b.boutiques",
     name="cifti-false-correlation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -144,7 +144,9 @@ def cifti_false_correlation(
     distance. The output file contains the ratio between these correlations, and
     some additional maps to help explain the ratio.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the cifti file to use for correlation.

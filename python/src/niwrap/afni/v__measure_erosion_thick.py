@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MEASURE_EROSION_THICK_METADATA = Metadata(
-    id="b6a8c4aa07127613bf960024c046b21cc74c0f1f.boutiques",
+    id="744d10f8875a0e0bb50de2078a93479596a98437.boutiques",
     name="@measure_erosion_thick",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,10 +56,9 @@ def v__measure_erosion_thick(
     """
     Compute thickness of mask using erosion method.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@measure_erosion_thick.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         maskset: Mask dataset for input.

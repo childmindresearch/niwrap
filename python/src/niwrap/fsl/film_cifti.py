@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FILM_CIFTI_METADATA = Metadata(
-    id="22269a4481a2fb1ccfa0138931cf5367c9b75cbc.boutiques",
+    id="b68ac553c58a920b71bdd949cf04d22d8f7c644d.boutiques",
     name="film_cifti",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -39,7 +39,9 @@ def film_cifti(
     """
     A tool for statistical analysis of CIFTI files using FILM.
     
-    Author: FSL Community
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_filename: Input CIFTI file.

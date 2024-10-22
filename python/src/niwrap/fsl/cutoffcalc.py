@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CUTOFFCALC_METADATA = Metadata(
-    id="9714ed35004136e0a3b4c57d222df3ed14bb182c.boutiques",
+    id="0c0f2a7cca14577f16d26279115479b5a33b9897.boutiques",
     name="cutoffcalc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,7 +38,7 @@ def cutoffcalc(
     Calculates the minimal period for the highpass filter that still preserves a
     specified amount of variance in all the design matrix regressors.
     
-    Author: University of Oxford (Mark Jenkinson and Matthew Webster)
+    Author: FMRIB Analysis Group, University of Oxford
     
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     

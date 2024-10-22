@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GET_AFNI_MODEL_PRF_6_METADATA = Metadata(
-    id="52cb0a55d1f2788fd55b3d4192849d204281ef6c.boutiques",
+    id="a1644a25504c74d6961d86251212dfc9c7f6fb99.boutiques",
     name="get_afni_model_PRF_6",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,10 +35,9 @@ def get_afni_model_prf_6(
     """
     A command to invoke AFNI's population receptive field (pRF) model.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF_6.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         nt_: Number of time points of the stimulus dataset.

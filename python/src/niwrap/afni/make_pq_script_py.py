@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_PQ_SCRIPT_PY_METADATA = Metadata(
-    id="2e44222ffa661bbbd3fe92eb28fb4f0520058b65.boutiques",
+    id="a615a94a90a33ebcd0b428159142b2d1a4947946.boutiques",
     name="make_pq_script.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,10 +34,9 @@ def make_pq_script_py(
     """
     Creates a script to compute p-value and q-value curves.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/make_pq_script.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset (no sub-brick selectors).

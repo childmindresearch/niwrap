@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_FILTER_DWIS_METADATA = Metadata(
-    id="86718d3428b86f0362c6c1cec00292a683a411f2.boutiques",
+    id="f1ab079defa2b7a6a0437c119ce099f8d81cc812.boutiques",
     name="fat_proc_filter_dwis",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,10 +45,9 @@ def fat_proc_filter_dwis(
     """
     Filter out user-found and user-defined bad volumes from DWI data sets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_filter_dwis.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dwi: Name of a 4D file of DWIs (required).

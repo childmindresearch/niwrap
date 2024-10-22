@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BRAIN_SYNC_METADATA = Metadata(
-    id="34c16d0296c24d255230514a3531f5fb753d9005.boutiques",
+    id="5b4873a7460d63bb6ab8b2f718571646d6b0ba3b.boutiques",
     name="3dBrainSync",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,9 +46,9 @@ def v_3d_brain_sync(
     'Synchronizes' the -inset2 dataset to match the -inset1 dataset, using
     orthogonal or permutation transformation.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBrainSync.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inset1: Reference dataset.

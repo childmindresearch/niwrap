@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRHISTMATCH_METADATA = Metadata(
-    id="8c231ab9b747c81c1c318e1f07f8edfa1b7e8bf8.boutiques",
+    id="82971ece0a248809e6ac4741b981b24094fbed5d.boutiques",
     name="mrhistmatch",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -85,10 +85,9 @@ def mrhistmatch(
     images based on inverse contrast normalization. NeuroImage, 2015, 115,
     269-280.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrhistmatch.html
+    URL: https://www.mrtrix.org/
     
     Args:
         type_: type of histogram matching to perform; options are:\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRMETRIC_METADATA = Metadata(
-    id="c25b48d0d6d3868ff9ebc87c1b01c90451c93731.boutiques",
+    id="68993bab707571cc9c043c8d06d2a16330445585.boutiques",
     name="mrmetric",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -80,11 +80,9 @@ def mrmetric(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au) and Max Pietsch
-    (maximilian.pietsch@kcl.ac.uk)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrmetric.html
+    URL: https://www.mrtrix.org/
     
     Args:
         image1: the first input image.

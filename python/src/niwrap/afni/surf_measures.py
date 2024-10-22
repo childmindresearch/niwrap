@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_MEASURES_METADATA = Metadata(
-    id="a1253dede6f867929a16d0d073fa44d6e86d8dc4.boutiques",
+    id="21378ea7d8b0e920275d5e4fab477aa23c434ab4.boutiques",
     name="SurfMeasures",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,9 +50,9 @@ def surf_measures(
     """
     Compute measures from surface dataset(s).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfMeasures.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         spec_file: SUMA spec file containing a list of related surfaces.

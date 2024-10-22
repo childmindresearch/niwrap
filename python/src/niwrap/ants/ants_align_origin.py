@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_ALIGN_ORIGIN_METADATA = Metadata(
-    id="d432b59c1987ee0c43404da56830da219c933055.boutiques",
+    id="6857aca2f492ef8646affc2ca57d3ca2675b0b13.boutiques",
     name="antsAlignOrigin",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,7 +35,7 @@ def ants_align_origin(
     antsAlignOrigin, applied to an input image, transforms it according to a
     reference image and a transform (or a set of transforms).
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

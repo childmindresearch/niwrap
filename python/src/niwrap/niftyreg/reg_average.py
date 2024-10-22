@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_AVERAGE_METADATA = Metadata(
-    id="1f7c3b11cba221df2cf597e36ec48fc51c2e4500.boutiques",
+    id="61e1f607541cf2b120dd32fdab5918c08f2dda1a.boutiques",
     name="reg_average",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -32,7 +32,7 @@ def reg_average(
     """
     Command line program to average either images or affine transformations.
     
-    Author: Marc Modat, Pankaj Daga
+    Author: NiftyReg Developers
     
     URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     

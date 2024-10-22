@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FOCI_RESAMPLE_METADATA = Metadata(
-    id="a44a1e656dac192f3d9fc53cc05d57a91f7c697d.boutiques",
+    id="bcfe37d43c3a12f94abd7701c344fc6cc73dae4d.boutiques",
     name="foci-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -130,7 +130,9 @@ def foci_resample(
     registered spheres and the options -discard-distance-from-surface and
     -restore-xyz.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         foci_in: the input foci file.

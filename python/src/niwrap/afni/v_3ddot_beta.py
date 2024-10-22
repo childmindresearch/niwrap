@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DDOT_BETA_METADATA = Metadata(
-    id="a2c6b419e5021ee83955e8440e5538da08222a79.boutiques",
+    id="150f193e49f2c831ea62fc4bf529ec24ba411853.boutiques",
     name="3ddot_beta",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v_3ddot_beta(
     Beta version of updating 3ddot, currently only performing eta2 tests and
     outputting a full matrix to a text file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddot_beta.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input file with N bricks.

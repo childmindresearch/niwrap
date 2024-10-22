@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_DENSE_FROM_TEMPLATE_METADATA = Metadata(
-    id="ba32a6697b9193077ca2d238347c41df5b88a8ab.boutiques",
+    id="3cd94bb8a57ca4abb1b48fe47c79be2662abe926.boutiques",
     name="cifti-create-dense-from-template",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -280,7 +280,9 @@ def cifti_create_dense_from_template(
     METER
     RADIAN.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         template_cifti: file to match brainordinates of.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CLIP_LEVEL_METADATA = Metadata(
-    id="c23a579dad9a9581f23ce9b71593013c72c41021.boutiques",
+    id="cbab385648affc3f2118e85fff0817d898233dad.boutiques",
     name="3dClipLevel",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v_3d_clip_level(
     Estimates the value at which to clip the anatomical dataset so that background
     regions are set to zero.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClipLevel.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset (e.g. dataset.nii.gz).

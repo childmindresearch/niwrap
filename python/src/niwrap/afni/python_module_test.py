@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PYTHON_MODULE_TEST_METADATA = Metadata(
-    id="5208e47281e84c85c0f529393d4450cd72d9d84a.boutiques",
+    id="33b086e8091aecc5a93980f9ffae9265a98b4d2b.boutiques",
     name="python_module_test",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,10 +39,9 @@ def python_module_test(
     Test the loading of Python modules, specifically designed to ensure
     compatibility with AFNI software.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/python_module_test.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         full_test: Perform all of the standard tests.

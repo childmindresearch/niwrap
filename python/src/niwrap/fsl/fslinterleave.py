@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLINTERLEAVE_METADATA = Metadata(
-    id="0233ea4118d65eb47c310757e7da308f61ff294e.boutiques",
+    id="979eeef620de1e23d663063c21f86ed84e5daada.boutiques",
     name="fslinterleave",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def fslinterleave(
     """
     Interleaves two input images slice-by-slice to produce an output image.
     
-    Author: FMRIB Software Library (FSL)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile1: First input image.

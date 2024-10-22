@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMUPSAM_METADATA = Metadata(
-    id="45e930f339f99778bb5f8aa271d0f6a4e2746405.boutiques",
+    id="156965091ca5242419f26a19463380332f6a9731.boutiques",
     name="imupsam",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def imupsam(
     """
     Upsamples a 2D image by a specified factor.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imupsam.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         factor: Upsampling factor; must be an integer in the range 2 to 30.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMAXDISP_METADATA = Metadata(
-    id="93f9379f1dcd0849d53a93c3567a7f4855883383.boutiques",
+    id="a49e0f7320d7281bb7e55504f4a58566bf8a8b49.boutiques",
     name="3dmaxdisp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3dmaxdisp(
     Reads in a 3D dataset and a DICOM-based affine matrix to output the average and
     maximum displacement applied to the edge voxels of the 3D dataset's automask.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaxdisp.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inset: Input dataset file used to form the mask over which\

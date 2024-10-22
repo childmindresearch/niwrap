@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DIFF_FILES_METADATA = Metadata(
-    id="86b01c9b099264803ec45d4a6fb7bec5b0a8c1d8.boutiques",
+    id="edd2d42b0097cf74079def4a47b5ad005afd8f78.boutiques",
     name="@diff.files",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v__diff_files(
     """
     Show file differences (between specified files and those in another directory).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@diff.files.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         files: List of files to compare.

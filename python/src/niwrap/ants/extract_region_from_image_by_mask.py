@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXTRACT_REGION_FROM_IMAGE_BY_MASK_METADATA = Metadata(
-    id="d2b60449ac2d9953f7bf4183cb4e7e9f294fb6c8.boutiques",
+    id="aec2f60db8048987a495410600ad2f857750da61.boutiques",
     name="ExtractRegionFromImageByMask",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,7 +35,7 @@ def extract_region_from_image_by_mask(
     Extract a sub-region from an image using the bounding box from a label image,
     with an optional padding radius.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

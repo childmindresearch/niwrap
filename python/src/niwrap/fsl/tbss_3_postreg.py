@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_3_POSTREG_METADATA = Metadata(
-    id="0ed8f15e58535abcb1bc048d461360a1a1b59351.boutiques",
+    id="261ea35c5244aa34ee26f621b3e91264e1399a64.boutiques",
     name="tbss_3_postreg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,9 +30,9 @@ def tbss_3_postreg(
     """
     TBSS post-registration processing.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide#tbss_3_postreg
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         derive_mean_from_study: Derive mean_FA and mean_FA_skeleton from mean\

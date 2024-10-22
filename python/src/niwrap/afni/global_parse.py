@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GLOBAL_PARSE_METADATA = Metadata(
-    id="188acc1a4e1934142d9561c26ee2dfc301a8cf8e.boutiques",
+    id="b60b73cdd2ed064f165b63b604cba9c7e77e2c7f.boutiques",
     name="global_parse",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def global_parse(
     """
     Script to parse global help options for other scripts.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@global_parse.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         program_name: The name of the program whose help output is sought.

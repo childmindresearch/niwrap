@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_3D_PFM_DEMO_METADATA = Metadata(
-    id="61518e35085d79a543f32d504a662edd4694504c.boutiques",
+    id="b63e6980af69869c16da2a38efe308262e4e39c3.boutiques",
     name="Install_3dPFM_Demo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,10 +31,9 @@ def install_3d_pfm_demo(
     """
     Installs the demo archive for the 3dPFM function.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_3dPFM_Demo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         output_directory: Output directory where the demo archive will be\

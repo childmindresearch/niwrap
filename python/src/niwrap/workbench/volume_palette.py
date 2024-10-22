@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_PALETTE_METADATA = Metadata(
-    id="5e2254d46991e07765d704934794c73c0822e3cb.boutiques",
+    id="e32ba7bc157286501ab1957a9029105612746560.boutiques",
     name="volume-palette",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -269,7 +269,9 @@ def volume_palette(
     POSITIVE_NEGATIVE_SEPARATE
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume: the volume file to modify.

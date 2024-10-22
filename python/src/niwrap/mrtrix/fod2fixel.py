@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FOD2FIXEL_METADATA = Metadata(
-    id="0f495be6ac07c3442550036e3ffcf4914a2efeca.boutiques",
+    id="4748cd2237541a5061a51ecd86840055b92d34ff.boutiques",
     name="fod2fixel",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -104,10 +104,9 @@ def fod2fixel(
     measure for the analysis of diffusion-weighted magnetic resonance
     images.Neuroimage, 2012, 15;59(4), 3976-94.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fod2fixel.html
+    URL: https://www.mrtrix.org/
     
     Args:
         fod: the input fod image.

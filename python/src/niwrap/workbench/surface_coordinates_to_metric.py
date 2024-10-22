@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_COORDINATES_TO_METRIC_METADATA = Metadata(
-    id="b5f9d857e4da9eaee4f4d47edd03a799151c7100.boutiques",
+    id="3cc68c4335af3e1f6f59a9bcb7fcf07acdca4680.boutiques",
     name="surface-coordinates-to-metric",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -34,7 +34,9 @@ def surface_coordinates_to_metric(
     
     Puts the coordinates of the surface into a 3-map metric file, as x, y, z.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to use the coordinates of.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SCCAN_METADATA = Metadata(
-    id="e029a9a87a1344389a96c5f6cb96909e318bc72f.boutiques",
+    id="71a35247d8acdc6b81550ffbec697f0dc7665a22.boutiques",
     name="sccan",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -56,7 +56,7 @@ def sccan(
     A tool for sparse statistical analysis on images : scca, pscca (with options),
     mscca. Can also convert an imagelist/mask pair to a binary matrix image.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

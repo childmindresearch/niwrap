@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_HIST_METADATA = Metadata(
-    id="0a85823b47a9d3b6d8b14c1e118e1ff0ae97cc39.boutiques",
+    id="5c60bca543a8218316ce5c5d5d1a704a09668ad0.boutiques",
     name="3dHist",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,9 +47,9 @@ def v_3d_hist(
     """
     Computes histograms using functions for generating priors.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dHist.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Dataset providing values for histogram.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_FIBER_ORIENTATIONS_METADATA = Metadata(
-    id="b82b32f7078784d7898cbb90201df3ef89134e4d.boutiques",
+    id="6600ad75d90523bfc9a521774dc1537ecc3e45c5.boutiques",
     name="convert-fiber-orientations",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -116,7 +116,9 @@ def convert_fiber_orientations(
     THALAMUS_LEFT
     THALAMUS_RIGHT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_volume: volume of cifti structure labels.

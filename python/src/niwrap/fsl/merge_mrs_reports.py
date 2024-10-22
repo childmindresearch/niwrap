@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MERGE_MRS_REPORTS_METADATA = Metadata(
-    id="46e7fcc93e4f7333a7cd394c4e03c2819a40016b.boutiques",
+    id="8be79717cb2abf4ca938b51d612545f15f95e77f.boutiques",
     name="merge_mrs_reports",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,7 +36,9 @@ def merge_mrs_reports(
     FSL Magnetic Resonance Spectroscopy - Merge HTML reports based on filename in
     directory.
     
-    Author: FSL
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_files: List of input files.

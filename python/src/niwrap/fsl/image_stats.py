@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAGE_STATS_METADATA = Metadata(
-    id="2a596ffe70bc0ce00860ebb112f1c55c1e5cd531.boutiques",
+    id="e9c8953a1ff0df76630358481fd6fb61fd92bba6.boutiques",
     name="ImageStats",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,10 +36,9 @@ def image_stats(
     """
     Use FSL fslstats command to calculate stats from images.
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL:
-    http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Input file to generate stats of.

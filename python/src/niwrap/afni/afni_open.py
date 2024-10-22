@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_OPEN_METADATA = Metadata(
-    id="0c5da29bcfc814a8360f5d2204c5ccde38104b0b.boutiques",
+    id="011cf64aad17ae870a6340e6c6714d18cd8c6e43.boutiques",
     name="afni_open",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,9 +43,9 @@ def afni_open(
     """
     A program to open various AFNI/SUMA files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_open.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         files: Input file(s) to be opened.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DJUNCT_MODAL_SMOOTHING_WITH_REP_METADATA = Metadata(
-    id="7ce8f00a0663e8e363a006c68d976f77c6a6d043.boutiques",
+    id="1718cfea631bfe3ef56bde89c9999754eeb8e658.boutiques",
     name="djunct_modal_smoothing_with_rep",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,10 +42,9 @@ def djunct_modal_smoothing_with_rep(
     If any ROIs are eliminated during smoothing, they are restored, potentially in a
     degraded form.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_modal_smoothing_with_rep.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input dataset (assumes < 10^5 subbricks).

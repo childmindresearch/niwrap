@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWIDENOISE_METADATA = Metadata(
-    id="ac75ec95a6bf52e9f1d06b0d02179b586926589a.boutiques",
+    id="ed89d7a30761400bc9f73bcffb1319ae9ec84397.boutiques",
     name="dwidenoise",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -111,11 +111,9 @@ def dwidenoise(
     general noise models. NeuroImage, 2019, 200, 391-404, doi:
     10.1016/j.neuroimage.2019.06.039.
     
-    Author: Daan Christiaens (daan.christiaens@kcl.ac.uk) & Jelle Veraart
-    (jelle.veraart@nyumc.org) & J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/dwidenoise.html
+    URL: https://www.mrtrix.org/
     
     Args:
         dwi: the input diffusion-weighted image.

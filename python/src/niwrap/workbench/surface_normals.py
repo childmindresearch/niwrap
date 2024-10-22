@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_NORMALS_METADATA = Metadata(
-    id="96471f695d3e52f9282beafec9212ca6c3363098.boutiques",
+    id="9d2897ca7549ee98420aa24f6eed14f3148a1a2c.boutiques",
     name="surface-normals",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -35,7 +35,9 @@ def surface_normals(
     Computes the normal vectors of the surface file, and outputs them as a 3
     column metric file.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to output the normals of.

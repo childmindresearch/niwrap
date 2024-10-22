@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMCALC_METADATA = Metadata(
-    id="82a404f51d14db5165e2e9cc63af89f51c1a65a0.boutiques",
+    id="619429e3eb3a18d69af5e0d47edb5f5289323a19.boutiques",
     name="imcalc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def imcalc(
     """
     Tool for arithmetic operations on 2D images, pixel-by-pixel.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcalc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         expression: Apply the expression within quotes to the input images, one\

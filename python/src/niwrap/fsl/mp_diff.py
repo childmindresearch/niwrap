@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MP_DIFF_METADATA = Metadata(
-    id="b9fb35064a1aa1d56c72652cc56c283ce72ac177.boutiques",
+    id="884cfc5d90c21df0b9ccd0897c4e4923aeae8673.boutiques",
     name="mp_diff",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,7 +35,9 @@ def mp_diff(
     accounting for 'spin history' effects and other variations not accounted for by
     motion correction.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         reg_file: Input file containing registration parameters (e.g.,\

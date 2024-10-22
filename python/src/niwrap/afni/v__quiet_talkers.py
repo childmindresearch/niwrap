@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__QUIET_TALKERS_METADATA = Metadata(
-    id="06f1546c117f6a9365c579c884ad4811af88db65.boutiques",
+    id="86ed5dd2f27f074888e57e7b970f449c289482ab.boutiques",
     name="@Quiet_Talkers",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v__quiet_talkers(
     """
     A script to find and kill AFNI processes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Quiet_Talkers.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         sudo: Invoke higher powers to kill processes that you do not own.

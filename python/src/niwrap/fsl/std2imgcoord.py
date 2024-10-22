@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 STD2IMGCOORD_METADATA = Metadata(
-    id="5b6418036f4339cb2ab82b1c41afc0e7f54c7651.boutiques",
+    id="249cea33f0673f5b3a548a71376094e92bbe4ebf.boutiques",
     name="std2imgcoord",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,9 +38,9 @@ def std2imgcoord(
     """
     Convert standard space coordinates to image space coordinates.
     
-    Author: FMRIB Centre
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         filename_coordinates: Path to the filename containing coordinates or\

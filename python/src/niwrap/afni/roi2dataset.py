@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROI2DATASET_METADATA = Metadata(
-    id="7cfcfa37193185cb6fd3e236878fe1b564de3263.boutiques",
+    id="c994458c150bdc96a6edfd6a62cc84bbf9e38f61.boutiques",
     name="ROI2dataset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def roi2dataset(
     """
     Transforms a series of ROI files to a node dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/ROI2dataset.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix of output dataset.

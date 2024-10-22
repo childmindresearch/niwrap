@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UNIQ_IMAGES_METADATA = Metadata(
-    id="670d22d3017ad96917743645ee4b5352db443373.boutiques",
+    id="78da67a816d6d0b1ae55b072a61c7cc76bbe87da.boutiques",
     name="uniq_images",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def uniq_images(
     unique images inside, and echo out only a list of the filenames with unique
     images.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/uniq_images.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: List of image filenames to be processed.

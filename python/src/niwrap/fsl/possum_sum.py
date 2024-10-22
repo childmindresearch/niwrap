@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_SUM_METADATA = Metadata(
-    id="df02755d9fffb908d0384df82b32a7f5dac53aaa.boutiques",
+    id="46cdd0b1f4a3ba6ef291b09c6aeec5a8c6c5d7d9.boutiques",
     name="possum_sum",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,7 +34,9 @@ def possum_sum(
     """
     Sum of output signals from multiple possum processors.
     
-    Author: Ivana Drobnjak, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_signal: Input signal for one processor (possum output matrix).

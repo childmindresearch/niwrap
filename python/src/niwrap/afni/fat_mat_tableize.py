@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MAT_TABLEIZE_METADATA = Metadata(
-    id="331b88af40e4cbd6d235bf78ff986066742cced7.boutiques",
+    id="baa338d5cf5d41f07da4761e56ac490eac0fc6ad.boutiques",
     name="fat_mat_tableize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,10 +45,9 @@ def fat_mat_tableize(
     3dTrackID (*.grid) outputs, with optional additional subject information from
     CSV files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_tableize.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_matrices: Names of *.netcc or *.grid files with matrices to be\

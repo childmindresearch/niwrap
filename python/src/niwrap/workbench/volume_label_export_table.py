@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_LABEL_EXPORT_TABLE_METADATA = Metadata(
-    id="332b46b9d467110a8ac850fd413efac79dcc7910.boutiques",
+    id="2bc71e52464527b216f1d8355e2707641fbf0ba2.boutiques",
     name="volume-label-export-table",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -34,7 +34,9 @@ def volume_label_export_table(
     Takes the label table from the volume label map, and writes it to a text
     format matching what is expected by -volume-label-import.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input volume label file.

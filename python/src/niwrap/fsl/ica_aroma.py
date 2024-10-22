@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ICA_AROMA_METADATA = Metadata(
-    id="f5d8206ce8e4ffeacbd030baed96b3ff03221baa.boutiques",
+    id="ddcb7362f654c7198ea9ea860cc4cb83e30b4299.boutiques",
     name="ICA_AROMA",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -53,9 +53,9 @@ def ica_aroma(
     of theoretically motivated features, preventing the need for classifier
     re-training and therefore providing direct and easy applicability.
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://github.com/rhr-pruim/ICA-AROMA
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         feat_dir: file or string representing an existing directory. If a feat\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SYNTHESIZE_METADATA = Metadata(
-    id="29d8f43636535bf139062994b99ace9ec5c393e0.boutiques",
+    id="1b7574324cf89a065c709504493c7ed745313d61.boutiques",
     name="3dSynthesize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_synthesize(
     Reads a '-cbucket' dataset and a '.xmat.1D' matrix from 3dDeconvolve, and
     synthesizes a fit dataset using selected sub-bricks and matrix columns.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSynthesize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         c_bucket: Input dataset from 3dDeconvolve via the '-cbucket' option.

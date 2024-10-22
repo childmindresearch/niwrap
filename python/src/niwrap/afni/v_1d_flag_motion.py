@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_FLAG_MOTION_METADATA = Metadata(
-    id="12ffa6b4e618d89798e3c857043643e105256e61.boutiques",
+    id="efc64bd39dbf6f50e88a48eb1a0be3834e4162f6.boutiques",
     name="1dFlagMotion",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_1d_flag_motion(
     Produces a list of time points with excessive motion relative to the previous
     time point.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dFlagMotion.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_motion_file: Input file with EXACTLY 6 columns: roll pitch yaw\

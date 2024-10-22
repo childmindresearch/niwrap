@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_AFFINE_METADATA = Metadata(
-    id="7a81c98e6ffb9e99458da7102f3f7f507d10fe49.boutiques",
+    id="4491ff10b3f39e57dcb42052a9a8a1ad2e550313.boutiques",
     name="convert-affine",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -170,7 +170,9 @@ def convert_affine(
     You must specify exactly one -from option, but you may specify multiple -to
     options, and -to-flirt may be specified more than once.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         from_world: input is a NIFTI 'world' affine.

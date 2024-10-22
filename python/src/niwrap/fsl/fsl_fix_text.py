@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_FIX_TEXT_METADATA = Metadata(
-    id="707d01f618f5b3907a4ea2c996343b05c4b0098b.boutiques",
+    id="aa9eddd9b0e541149f607ac4cbdf929434c7377f.boutiques",
     name="fslFixText",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,7 +32,9 @@ def fsl_fix_text(
     """
     Ensures standard UNIX line endings in the output text file.
     
-    Author: FMRIB Software Library (FSL)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_text_file: Input text file.

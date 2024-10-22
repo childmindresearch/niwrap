@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SUMA_MAKE_SPEC_CARET_METADATA = Metadata(
-    id="8c6f3aa111c11c7a242ae6472a6f47b5ce90b4d9.boutiques",
+    id="d6c8f4a4c9a4bdbf869e9c12beaa446f3b1adfdb.boutiques",
     name="@SUMA_Make_Spec_Caret",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def v__suma_make_spec_caret(
     """
     Prepare surfaces for viewing in SUMA, tested with Caret-5.2 surfaces.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_Make_Spec_Caret.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         subject_id: Subject ID for file naming.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__AFNI_ENV_METADATA = Metadata(
-    id="a7eec19a30a5bec4602fa19a99a661eeda5e0114.boutiques",
+    id="16f129198419674aa6c4039e01dd5d599fafb94f.boutiques",
     name="@AfniEnv",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v__afni_env(
     """
     Script to set or unset an AFNI environment variable in your .afnirc file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AfniEnv.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         set_flag: Set environment variable NAME to value VALUE.

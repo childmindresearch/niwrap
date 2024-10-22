@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DICE_METRIC_METADATA = Metadata(
-    id="9bbb98dbfac0b58d3a256ec8e465d90648872857.boutiques",
+    id="ce7547e49f36deb620867bdddcd49d28cf822476.boutiques",
     name="@DiceMetric",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v__dice_metric(
     """
     Computes Dice Metric between BASE and each of the DSET volumes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DiceMetric.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         base: Name of base (reference) segmentation.

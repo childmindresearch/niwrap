@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_TRANSFORM_INFO_METADATA = Metadata(
-    id="1bfdf944f1c4e80b0af9321a16a6fbe0cc4305cc.boutiques",
+    id="86ecedc218eb7fb64f3c1c30b997395d9f5005ca.boutiques",
     name="antsTransformInfo",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -31,7 +31,7 @@ def ants_transform_info(
     """
     Provide information about an ITK transform file.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

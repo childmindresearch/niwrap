@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DPC_METADATA = Metadata(
-    id="1762699b4a6d14d740951c3bbbb3de44d61d81fc.boutiques",
+    id="987590dc34e13c6e990d98f4bc903e998e6cb77f.boutiques",
     name="3dpc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,9 +53,9 @@ def v_3dpc(
     """
     Principal Component Analysis of 3D Datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dpc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datasets: Input dataset(s) with sub-brick selector list support.

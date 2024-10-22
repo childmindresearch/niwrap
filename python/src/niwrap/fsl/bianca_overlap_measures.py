@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BIANCA_OVERLAP_MEASURES_METADATA = Metadata(
-    id="f7c829d009f21c015e3d92bf615b7727e0971a20.boutiques",
+    id="b0fafebeb7e00e0998cbe17fc3f4cad011993c9f.boutiques",
     name="bianca_overlap_measures",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -47,7 +47,9 @@ def bianca_overlap_measures(
     """
     BIANCA overlap measures script for FSL.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         lesion_mask: Lesion mask image file.

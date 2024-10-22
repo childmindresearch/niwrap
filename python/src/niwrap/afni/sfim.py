@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SFIM_METADATA = Metadata(
-    id="26f38e6fddfd29e4dca46231a155961cda0209f1.boutiques",
+    id="860745fb4f5f8d4a5b2deb3bf7f0e0fff5352b56.boutiques",
     name="sfim",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def sfim(
     """
     Stepwise Functional IMages.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/sfim.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         sfint_file: Filename which contains the interval definitions. Default\

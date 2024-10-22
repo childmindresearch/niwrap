@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TSFINFO_METADATA = Metadata(
-    id="c6f148fcd0593b5d5c2e9034d846ebb579dc9636.boutiques",
+    id="93e8dd3a8bf3a767eaca6532b13d53b4050811a0.boutiques",
     name="tsfinfo",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -74,9 +74,9 @@ def tsfinfo(
     
     .
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfinfo.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tracks: the input track scalar file.

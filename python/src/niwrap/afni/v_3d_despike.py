@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DESPIKE_METADATA = Metadata(
-    id="b61fc39b031e2b6a8702631e821ddf4c58fa8f21.boutiques",
+    id="baa2169d318e0fa4cf31680f73c753efdfa10d5e.boutiques",
     name="3dDespike",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def v_3d_despike(
     Removes 'spikes' from the 3D+time input dataset and writes a new dataset with
     the spike values replaced by something more pleasing to the eye.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDespike.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3ddespike.

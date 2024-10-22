@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL2SURF_METADATA = Metadata(
-    id="315ef032b1536f62bbbd41475d45ef54234a6d4e.boutiques",
+    id="723142b12cf0b4d8b19f94df4d155ee623c90323.boutiques",
     name="label2surf",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,9 +35,9 @@ def label2surf(
     """
     Transform a group of labels into a surface.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_surface: Input surface file.

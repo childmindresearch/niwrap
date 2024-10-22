@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BORDER_RESAMPLE_METADATA = Metadata(
-    id="dd380b1e5e4fe1855828015b5097f5b06fb67827.boutiques",
+    id="28f367c98e72b0b1b6839c0ea8bd5b00307928a4.boutiques",
     name="border-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -38,7 +38,9 @@ def border_resample(
     Only borders that have the same structure as current-sphere will be
     resampled.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         border_in: the border file to resample.

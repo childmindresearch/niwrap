@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSWAPDIM_METADATA = Metadata(
-    id="3a2f4f099d72c1eac28d03d542e8eff1c68e2239.boutiques",
+    id="ec7ac5d640fb3b5bb21355ccaddbd7af25fea79e.boutiques",
     name="fslswapdim",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,9 +35,9 @@ def fslswapdim(
     """
     Swap dimensions of an image volume.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input image (e.g. img.nii.gz).

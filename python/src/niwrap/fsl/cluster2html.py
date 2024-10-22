@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CLUSTER2HTML_METADATA = Metadata(
-    id="b70bb6520b5d33f9d586ec00acad339b7b15f08c.boutiques",
+    id="0302d69d12d10f8a4ad376f7b3783ed3dd38698e.boutiques",
     name="cluster2html",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,7 +31,9 @@ def cluster2html(
     """
     Generates an HTML report from cluster-based FEAT analysis.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         featdir: Directory containing the FEAT analysis results.

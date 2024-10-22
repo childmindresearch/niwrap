@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_1_PREPROC_METADATA = Metadata(
-    id="f2dd0c380c6872e5ea77ebe7d1faadb8f4e92824.boutiques",
+    id="33ad6b20b7f0a66de43070f5ea9793f91cdf4750.boutiques",
     name="tbss_1_preproc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -29,9 +29,9 @@ def tbss_1_preproc(
     """
     TBSS (Tract-Based Spatial Statistics) - Step 1: Preprocessing.
     
-    Author: FSL (FMRIB Software Library)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         images: List of input images (e.g. subj1_FA.nii.gz subj2_FA.nii.gz ...).

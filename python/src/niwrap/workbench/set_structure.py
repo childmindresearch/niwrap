@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SET_STRUCTURE_METADATA = Metadata(
-    id="c358723c5bec9997601290d17f92d51ecb3e8419.boutiques",
+    id="4fb006cb7e9f63ff08468f1d6422ef6ce0b36411.boutiques",
     name="set-structure",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -90,7 +90,9 @@ def set_structure(
     PIAL
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         data_file: the file to set the structure of.

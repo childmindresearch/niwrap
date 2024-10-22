@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICER_METADATA = Metadata(
-    id="f271d4a101ecc58a66bc771b7e382dfeb187365e.boutiques",
+    id="a1e177481cffde614ca2b4ddf9da342b6baa0244.boutiques",
     name="Slicer",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -64,9 +64,9 @@ def slicer(
     (-x, -y and -z) produce single slice pictures. The more advanced options (-a, -A
     and -S) produce montages of various slices. slicer outputs PPM format pictures.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Miscvis
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Input volume.

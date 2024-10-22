@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_DEFACE_METADATA = Metadata(
-    id="b6261c9135b3623f1c6872f0eb75a11a6c82ea31.boutiques",
+    id="b85437120e52343635f1e36f81d8f677ab0593d8.boutiques",
     name="fsl_deface",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -57,7 +57,9 @@ def fsl_deface(
     """
     Tool to deface a structural T1w image.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input T1w image.

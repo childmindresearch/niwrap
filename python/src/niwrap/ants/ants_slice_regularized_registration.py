@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_SLICE_REGULARIZED_REGISTRATION_METADATA = Metadata(
-    id="69743077b44aed29658d8f89290ab7fb83d6285f.boutiques",
+    id="f5c4948fa2560385a828a453a54af7e3a4ab4be7.boutiques",
     name="antsSliceRegularizedRegistration",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -49,7 +49,7 @@ def ants_slice_regularized_registration(
     z. The parameter -p controls the polynomial degree. -p 0 means no
     regularization.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

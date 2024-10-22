@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QDELAUNAY_METADATA = Metadata(
-    id="dbfa3d44ffdb0c751d7b58091a6396468d887131.boutiques",
+    id="6ffd24be5e49d65ad58c48581dbc1c38e779c71c.boutiques",
     name="qdelaunay",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -61,9 +61,9 @@ def qdelaunay(
     """
     Compute the Delaunay triangulation using Qhull.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/qdelaunay.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input file containing point coordinates.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ANATICOR_METADATA = Metadata(
-    id="3db66aed89c32fcb65e127aa5c1e9c35942e3278.boutiques",
+    id="19a07ddcd930ceba8e3715284916aa97a383d5bb.boutiques",
     name="@ANATICOR",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -44,9 +44,9 @@ def v__anaticor(
     """
     Script to produce a residual time series cleaned by ANATICOR model.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ANATICOR.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         ts: Time series volume which should have already undergone\

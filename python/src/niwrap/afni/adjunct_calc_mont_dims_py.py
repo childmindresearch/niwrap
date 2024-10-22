@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_CALC_MONT_DIMS_PY_METADATA = Metadata(
-    id="67d2e4ec2a43842f9a349e0f86a01cfef07aa5ea.boutiques",
+    id="f162a7b77e1f09f79b7724743697de50b8aa20ae.boutiques",
     name="adjunct_calc_mont_dims.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,10 +29,9 @@ def adjunct_calc_mont_dims_py(
     """
     A helper function for the fat_proc* scripts.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_calc_mont_dims.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         help_: Display help information.

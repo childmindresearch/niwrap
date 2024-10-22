@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_2_REG_METADATA = Metadata(
-    id="78d677674458a188108b543b5cb2786a37f4a911.boutiques",
+    id="76682c28caba59bb9343477269e5ef0cac854497.boutiques",
     name="tbss_2_reg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,9 +32,9 @@ def tbss_2_reg(
     TBSS utility for target selection and registration for Tract-Based Spatial
     Statistics (TBSS) analysis.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         use_fmrib58_fa_1mm: Use FMRIB58_FA_1mm as the target for nonlinear\

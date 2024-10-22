@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DWIGRADCHECK_METADATA = Metadata(
-    id="67e14ebf5539cb7f455e1a68f45cb43ba740de0c.boutiques",
+    id="bb74671ccd6fa59a51829fa34812108f525873cb.boutiques",
     name="dwigradcheck",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -155,9 +155,9 @@ def dwigradcheck(
     """
     Check the orientation of the diffusion gradient table.
     
-    Author: Ben Jeurrisen
+    Author: MRTrix3 Developers
     
-    URL: http://www.mrtrix.org/
+    URL: https://www.mrtrix.org/
     
     Args:
         input_image: The input DWI series to be checked.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_FILL_HOLES_METADATA = Metadata(
-    id="3577f22c0298598a28a1bbfc750c5a532803260c.boutiques",
+    id="278f9aea77ede4c32b8a60e5b93fad04b1fb9ba9.boutiques",
     name="volume-fill-holes",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -35,7 +35,9 @@ def volume_fill_holes(
     Finds all face-connected parts that are not included in the ROI, and fills
     all but the largest one with ones.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the input ROI volume.

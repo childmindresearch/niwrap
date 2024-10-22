@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_TO_VOLUME_MAPPING_METADATA = Metadata(
-    id="9d8f8f073cc183066cda45f63e4572dc70180d1b.boutiques",
+    id="81cf1a86ff7c9a49ab254ec0fe8316e4455f1b46.boutiques",
     name="metric-to-volume-mapping",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -90,7 +90,9 @@ def metric_to_volume_mapping(
     lower resolutions than the mesh may require a larger -voxel-subdiv value in
     order to have all of the surface data participate.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric: the input metric file.

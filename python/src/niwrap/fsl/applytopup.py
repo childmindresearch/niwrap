@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APPLYTOPUP_METADATA = Metadata(
-    id="796c87a5699f7d6e7a6f4c3d38e953899925bbd6.boutiques",
+    id="368987080adc3ad436b253274328b55409600465.boutiques",
     name="applytopup",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -40,7 +40,9 @@ def applytopup(
     applytopup applies corrections to images using the field estimates produced by
     topup.
     
-    Author: University of Oxford (Jesper Andersson)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         imain: Comma separated list of names of input image (to be corrected).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APPLYXFM4_D_METADATA = Metadata(
-    id="589ce1a495f4b6b5b1c9c49ad166dfe4742dc738.boutiques",
+    id="9bf59d1b6639fb572dab3434b6507a850e7d4415.boutiques",
     name="applyxfm4D",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,7 +34,9 @@ def applyxfm4_d(
     """
     Applies 4D transformation matrices to 4D volumes.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_volume: Input 4D volume (e.g. img.nii.gz).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APSEARCH_METADATA = Metadata(
-    id="c8e28de39b4ea46a3190b75b8d6dca022d6d597d.boutiques",
+    id="daa8fa19d4d15fe37e1fd44af2f41bbb1e0649d7.boutiques",
     name="apsearch",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def apsearch(
     """
     A tool for searching applications.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/apsearch.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         search_term: Term to search.

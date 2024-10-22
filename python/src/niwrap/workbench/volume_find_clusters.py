@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_FIND_CLUSTERS_METADATA = Metadata(
-    id="dac2e87226b16270d6273c41ff81d771b3a29f01.boutiques",
+    id="60cb1388cc67924e2b9c32ccfce573e0661d5add.boutiques",
     name="volume-find-clusters",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -49,7 +49,9 @@ def volume_find_clusters(
     the threshold. To apply this as a mask to the data, or to do more
     complicated thresholding, see -volume-math.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the input volume.

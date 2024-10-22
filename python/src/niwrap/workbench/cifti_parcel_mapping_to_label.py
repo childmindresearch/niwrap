@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_PARCEL_MAPPING_TO_LABEL_METADATA = Metadata(
-    id="32140024ca7b96c0d11ae8c7eb35cc233f5f818a.boutiques",
+    id="9254970016e8f171ce9b95a348315a70b0881360.boutiques",
     name="cifti-parcel-mapping-to-label",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def cifti_parcel_mapping_to_label(
     For ptseries, pscalar, plabel, pconn, and pdconn, using COLUMN for
     <direction> will work.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the input parcellated file.

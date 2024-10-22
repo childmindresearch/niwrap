@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1D_RPLOT_METADATA = Metadata(
-    id="69347b14900f09196c57788d82a5341a202ee054.boutiques",
+    id="c9aa3010cca9653f0537f0f1895ec50024c5afb8.boutiques",
     name="1dRplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v_1d_rplot(
     """
     Program for plotting a 1D file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dRplot.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input 1D file to plot.

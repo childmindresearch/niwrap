@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 C3D_AFFINE_TOOL_METADATA = Metadata(
-    id="7ea823a818cb74f4dad96d412b2cbb7f6bb4c5f1.boutiques",
+    id="6b866352e9b556eb1381835bc90e95b78d4328de.boutiques",
     name="c3d_affine_tool",
     package="c3d",
     container_image_tag="pyushkevich/itksnap:v3.8.2",
@@ -51,7 +51,9 @@ def c3d_affine_tool(
     """
     RAS affine transform tool.
     
-    Author: ITK-Snap Team
+    Author: Convert3D Developers
+    
+    URL: http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D
     
     Args:
         transform_file: file or string representing the transform.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DFIM__METADATA = Metadata(
-    id="8a412bf901dbbd97f8f0abe1f8ec327a5068e873.boutiques",
+    id="bc809f4b3edfb691248a034084e93881b2cf1fd0.boutiques",
     name="3dfim+",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,9 +49,9 @@ def v_3dfim_(
     Program to calculate the cross-correlation of an ideal reference waveform with
     the measured FMRI time series for each voxel.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dfim+.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Filename of input 3d+time dataset.

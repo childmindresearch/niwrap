@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMCUTUP_METADATA = Metadata(
-    id="ae7436cecf52feb92be9f38fea9b36005b397005.boutiques",
+    id="763cc3153f2643aeee624c066590a03d172b8915.boutiques",
     name="imcutup",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def imcutup(
     """
     Breaks up larger images into smaller image files of user-defined size.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcutup.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         nx: Number of pixels along the x-dimension for the smaller images.

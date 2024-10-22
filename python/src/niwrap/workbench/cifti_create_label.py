@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_LABEL_METADATA = Metadata(
-    id="c16faa6d82dae5c71b93360cd3d7fa8ab4005fa2.boutiques",
+    id="5664afbf0dbdcf06bdcc7098d037ed907b858b6b.boutiques",
     name="cifti-create-label",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -211,7 +211,9 @@ def cifti_create_label(
     THALAMUS_LEFT
     THALAMUS_RIGHT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_out: the output cifti file.

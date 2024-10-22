@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AIV_METADATA = Metadata(
-    id="f6a4a8c2d8a083ca2bf4a79422d1cd1d2d587d97.boutiques",
+    id="f1e32a1eded3e5ce036f0f095565af93c241ab76.boutiques",
     name="aiv",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def aiv(
     AFNI Image Viewer program. Shows the 2D images on the command line in an
     AFNI-like image viewer.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/aiv.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_images: Input image files (e.g., img1.jpg, img2.bmp).

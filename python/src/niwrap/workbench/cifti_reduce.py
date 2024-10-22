@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_REDUCE_METADATA = Metadata(
-    id="a8cd00cd04d3bf53913e9cffde69c005d2bf8e0f.boutiques",
+    id="a385b737d9e437dd461ee6a8672e254938bbe3ba.boutiques",
     name="cifti-reduce",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -87,7 +87,9 @@ def cifti_reduce(
     COUNT_NONZERO: the number of nonzero elements in the data
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the cifti file to reduce.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GEN_EPI_REVIEW_PY_METADATA = Metadata(
-    id="bbc8926a0be6073b01e1287564d5c251bccf3681.boutiques",
+    id="4fec13541e12c24be0f1212f2da80b15e3aa36b4.boutiques",
     name="gen_epi_review.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def gen_epi_review_py(
     """
     Generate an AFNI processing script to review EPI data.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_epi_review.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         datasets: Specify input datasets for processing.

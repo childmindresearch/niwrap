@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SUMA_FSVOL_TO_BRIK_METADATA = Metadata(
-    id="65c780599e8b6e655d648c0bd3e1ad0585158730.boutiques",
+    id="3d5ebd15a917d161abed5f816fb4b96cab8c5168.boutiques",
     name="SUMA_FSvolToBRIK",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,10 +34,9 @@ def suma_fsvol_to_brik(
     """
     A script to convert COR- or .mgz files from FreeSurfer to BRIK format.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_FSvolToBRIK.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         fs_vol_data: Input FreeSurfer volume data (e.g. COR- images or .mgz\

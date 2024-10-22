@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MEASURE_IN2OUT_METADATA = Metadata(
-    id="e686c3d1def3136323009906869a206046303967.boutiques",
+    id="4a0fafb32ed5b72823a2f2c3620ce2533eb5d2af.boutiques",
     name="@measure_in2out",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,10 +56,9 @@ def v__measure_in2out(
     """
     Compute thickness of mask using in2out method.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@measure_in2out.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         maskset: Mask dataset for input.

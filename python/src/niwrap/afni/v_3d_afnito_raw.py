@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AFNITO_RAW_METADATA = Metadata(
-    id="0fed16039678c03357db0062a25a6814aa7acf53.boutiques",
+    id="67bff5ed68a691d8da5e7aa97ecf946e7772101e.boutiques",
     name="3dAFNItoRaw",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def v_3d_afnito_raw(
     Convert an AFNI brik file with multiple sub-briks to a raw file with each
     sub-brik voxel concatenated voxel-wise.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoRaw.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input AFNI dataset with possible modifiers for sub-brick and\

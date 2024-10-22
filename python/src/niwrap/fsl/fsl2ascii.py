@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL2ASCII_METADATA = Metadata(
-    id="4148252e7c8dae4324e50749f3366f693fc6020c.boutiques",
+    id="62a7613c787c88ed622d06aa489bfc066503953e.boutiques",
     name="fsl2ascii",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,9 +32,9 @@ def fsl2ascii(
     """
     Convert NIfTI image or analyze 7.5 format file to ASCII text file.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input NIfTI (or analyze 7.5 format) image.

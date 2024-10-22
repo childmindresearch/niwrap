@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FLAMEO_METADATA = Metadata(
-    id="3aa190083717981ae59a72b24eb07fc29346770e.boutiques",
+    id="dae6f5f62cb24ed4372b2ccdff3e6e23a1684d60.boutiques",
     name="FLAMEO",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -28,6 +28,10 @@ def flameo(
 ) -> FlameoOutputs:
     """
     Automatic nipype2boutiques conversion failed.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         runner: Command runner.

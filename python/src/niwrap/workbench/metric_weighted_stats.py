@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_WEIGHTED_STATS_METADATA = Metadata(
-    id="db2a150409d1a471dfc038782f82192d9cbfe592.boutiques",
+    id="220f94c0250172e4ed4a65e6476cbe2eb805b411.boutiques",
     name="metric-weighted-stats",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -83,7 +83,9 @@ def metric_weighted_stats(
     $ wb_command -metric-weighted-stats roi.func.gii -sum -area-surface
     midthickness.surf.gii.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric_in: the input metric.

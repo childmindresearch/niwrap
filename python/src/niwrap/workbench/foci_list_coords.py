@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FOCI_LIST_COORDS_METADATA = Metadata(
-    id="1d1153d544f899101dc7b1ef349276d95203d8ef.boutiques",
+    id="b988c32249158b479fc3d0672cfc8d8a7de854fe.boutiques",
     name="foci-list-coords",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -34,7 +34,9 @@ def foci_list_coords(
     Output the coordinates for every focus in the foci file, and optionally the
     focus names in a second text file.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         foci_file: input foci file.

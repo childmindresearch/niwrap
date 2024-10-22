@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_PARCEL_SMOOTHING_METADATA = Metadata(
-    id="f27c64a6c0852328393dc55d6325df0de41f496c.boutiques",
+    id="7eefac88fcbb74e5870d917f1b75469ca9ca4be0.boutiques",
     name="volume-parcel-smoothing",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -42,7 +42,9 @@ def volume_parcel_smoothing(
     matching each label separately, then adding the resulting volumes, but
     faster.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         data_volume: the volume to smooth.

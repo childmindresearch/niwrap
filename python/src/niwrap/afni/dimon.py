@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DIMON_METADATA = Metadata(
-    id="e9b06cbb339b9122dc473bf602c4d150560f4746.boutiques",
+    id="47141d28c3f7ccd9b2aa834d602f55feeab89023.boutiques",
     name="Dimon",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def dimon(
     """
     Monitor real-time acquisition of DICOM image files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/Dimon.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile_prefix: Prefix matching input files.

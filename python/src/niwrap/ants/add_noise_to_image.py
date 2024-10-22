@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADD_NOISE_TO_IMAGE_METADATA = Metadata(
-    id="aee6e337d2376b447bd69dfd2552c6049d319f52.boutiques",
+    id="e8efbf11871081a5ad3301baf672f8de93471bd0.boutiques",
     name="AddNoiseToImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,7 +35,7 @@ def add_noise_to_image(
     """
     Add various types of noise to an image.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SSWARPER_METADATA = Metadata(
-    id="7652b67468573ef8ef6d9c21e7f226c3034bc562.boutiques",
+    id="1cb5786a5affefb03cc2e65aca5873657f0dfd5b.boutiques",
     name="@SSwarper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -83,9 +83,9 @@ def v__sswarper(
     Dual purposes for processing a given subject's anatomical volume: skull-strip
     the brain and calculate the warp to a reference template/standard space.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SSwarper.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: An anatomical dataset, not skull-stripped, with about 1 mm\

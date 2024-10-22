@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DTTEST___METADATA = Metadata(
-    id="57807f7b4e9fe795f6de3e29ea366f62016e09c1.boutiques",
+    id="9816ba0be883f397c48e16a5a699629ad3d438ae.boutiques",
     name="3dttest++",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,9 +53,9 @@ def v_3dttest__(
     """
     Gosset (Student) t-test of sets of 3D datasets in AFNI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dttest++.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         set_a: Set A in short form, e.g., 'a+tlrc[3]' b+tlrc[3] ...'.

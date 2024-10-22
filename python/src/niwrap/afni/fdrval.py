@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FDRVAL_METADATA = Metadata(
-    id="7e0ff4e3a6270239c390c70809a6691b7b206058.boutiques",
+    id="f92df9dc9c7bd351f5f06439c97a5434e22b31b8.boutiques",
     name="fdrval",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def fdrval(
     """
     Computes q-values from FDR curve data stored in dataset headers.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/fdrval.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset: Input dataset.

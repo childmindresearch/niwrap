@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_AVERAGE_DENSE_ROI_METADATA = Metadata(
-    id="c4e840874826cfe093198a63d8044f319d7c2e7e.boutiques",
+    id="d9ca6f85767188dfdc34983f4358124cc0505bf9.boutiques",
     name="cifti-average-dense-roi",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -103,7 +103,9 @@ def cifti_average_dense_roi(
     -vol-roi must not be specified. If multiple non-cifti ROI files are
     specified, they must have the same number of columns.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_out: output cifti dscalar file.

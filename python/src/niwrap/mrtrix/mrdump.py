@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRDUMP_METADATA = Metadata(
-    id="72143b13267a2d4630514d2fb7c746bfc55b6a4a.boutiques",
+    id="e5986855c45bf7b67212dd583f998650804933d1.boutiques",
     name="mrdump",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -77,9 +77,9 @@ def mrdump(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mrdump.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image.

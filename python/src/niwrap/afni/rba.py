@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RBA_METADATA = Metadata(
-    id="2e2d3c0609d2dd89f839da84b1f13546e7903d2b.boutiques",
+    id="e398b3a57e7258897bfc2032d62fb4854a2e607c.boutiques",
     name="RBA",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -59,9 +59,9 @@ def rba(
     """
     Region-Based Analysis Program through Bayesian Multilevel Modeling.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/RBA.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix for output file names.

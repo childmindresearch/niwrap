@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_COMBINE_METADATA = Metadata(
-    id="db7603668c046fb6fd5779660a9255000bc5c8af.boutiques",
+    id="aa2d0e7da083e64645f8e0c64569807c7c39fc5b.boutiques",
     name="eddy_combine",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -45,7 +45,9 @@ def eddy_combine(
     Combines diffusion data sets with opposite phase encoding directions for use
     with FSL's EDDY.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         pos_data: Path to the positive phase-encoded data file (e.g.\

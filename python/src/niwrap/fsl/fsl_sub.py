@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_SUB_METADATA = Metadata(
-    id="129ed694f20451a35d5435a78fea052167730486.boutiques",
+    id="ed9eec07360863ac291e397c7ff35c8b0d2d78b5.boutiques",
     name="fsl_sub",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -62,9 +62,9 @@ def fsl_sub(
     """
     FSL cluster submission tool.
     
-    Author: FMRIB (Oxford University)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslSub
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         arch: Architectures not available.

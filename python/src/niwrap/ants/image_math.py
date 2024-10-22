@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMAGE_MATH_METADATA = Metadata(
-    id="052c1ac1153dd70acc4761019f14bff073172224.boutiques",
+    id="2c72bece75928eecfab8863dce2bbf80261ecbe6.boutiques",
     name="ImageMath",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -35,7 +35,7 @@ def image_math(
     A versatile tool for performing various mathematical and manipulation operations
     on images.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

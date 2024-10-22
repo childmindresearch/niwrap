@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__TIME_DIFF_METADATA = Metadata(
-    id="b38252f9c6c0c4ee87e2811d53f4e7a593acdab2.boutiques",
+    id="7889ba0aeecc01a9a55b923b84e149e7cec9417e.boutiques",
     name="@TimeDiff",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v__time_diff(
     """
     A tool to compare the modification times of two files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@TimeDiff.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         file1: First file to compare (e.g., file1.txt).

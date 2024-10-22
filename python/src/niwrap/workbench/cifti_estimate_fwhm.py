@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_ESTIMATE_FWHM_METADATA = Metadata(
-    id="669f50c438f0cc89d7bb56b4ba829f4bddddf3ef.boutiques",
+    id="d8860b9f3e0c5246015f448b033cee0e5f302945.boutiques",
     name="cifti-estimate-fwhm",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -103,7 +103,9 @@ def cifti_estimate_fwhm(
     THALAMUS_LEFT
     THALAMUS_RIGHT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti: the input cifti file.

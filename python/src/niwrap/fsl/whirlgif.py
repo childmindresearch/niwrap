@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WHIRLGIF_METADATA = Metadata(
-    id="02193ac52a0ec72f0e559460a3928eea0e8579e6.boutiques",
+    id="d618ea8874abb6d5811a176d6f980a640be132dd.boutiques",
     name="whirlgif",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,9 +36,9 @@ def whirlgif(
     """
     GIF animation tool.
     
-    Author: Hans Dinsen-Hansen, Kevin Kadow, Mark Podlipec
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: http://members.aol.com/royalef/gifanim.htm
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_files: Input image files for the animation.

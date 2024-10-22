@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_STIM_TIMES_PY_METADATA = Metadata(
-    id="10a9a0b8255c3a6827c96f89181ab95d17e57c15.boutiques",
+    id="f75208d0c600ab0dda24250c27a9d53502ab9290.boutiques",
     name="make_stim_times.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,10 +47,9 @@ def make_stim_times_py(
     Convert a set of 0/1 stim files into a set of stim_times files, or convert
     real-valued files into those for use with -stim_times_AM2.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/make_stim_times.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         files: Specify stim files.

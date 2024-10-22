@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_ROI_AVERAGE_METADATA = Metadata(
-    id="d2015ae2696777e1b813419d73b194bb861eaaf7.boutiques",
+    id="2f1efe69f14fc857dd861079f262919cf204921a.boutiques",
     name="cifti-roi-average",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def cifti_roi_average(
     specified, -left-roi, -right-roi, -cerebellum-roi, and -vol-roi must not be
     specified.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the cifti file to average rows from.

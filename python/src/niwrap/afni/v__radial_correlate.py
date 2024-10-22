@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__RADIAL_CORRELATE_METADATA = Metadata(
-    id="74d27aaff9d6afe1498873e5bf33128e594a606f.boutiques",
+    id="1cbb44d20d4e3ca23ba7981bb4c49932fce75bf0.boutiques",
     name="@radial_correlate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,10 +50,9 @@ def v__radial_correlate(
     """
     Check datasets for correlation artifacts.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@radial_correlate.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: A list of EPI datasets.

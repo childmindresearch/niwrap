@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKRESAMPLE_METADATA = Metadata(
-    id="92eb43aed1f66b6143f9c1161cf3bd81cec6b574.boutiques",
+    id="985698dc2451e564202878939f3e4388fbe9d151.boutiques",
     name="tckresample",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -177,11 +177,9 @@ def tckresample(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au) and J-Donald Tournier
-    (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tckresample.html
+    URL: https://www.mrtrix.org/
     
     Args:
         in_tracks: the input track file.

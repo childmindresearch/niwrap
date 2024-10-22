@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RESAMPLE_IMAGE_METADATA = Metadata(
-    id="385c190c178b8eccda12c72058ea39c98b740a4f.boutiques",
+    id="09cbfa81905a40fb69e7164887ae36302a83bb75.boutiques",
     name="ResampleImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -37,7 +37,7 @@ def resample_image(
     ResampleImage is a tool used to resample images to specified sizes and spacings,
     using various interpolation methods and pixel types.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__TO_MNI_AWARP_METADATA = Metadata(
-    id="ffebc7ffeb996641e6fb0d40d8564f7f6f556946.boutiques",
+    id="93b77f09cd479bf6a950c0693a066eccc0f62501.boutiques",
     name="@toMNI_Awarp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def v__to_mni_awarp(
     Transforms skull-stripped datasets to 1x1x1 mm MNI space using an affine
     transformation.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@toMNI_Awarp.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         directory: Name of the directory to be created where results will be\

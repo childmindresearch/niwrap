@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABELCONVERT_METADATA = Metadata(
-    id="3db410dd632103500180036cae7b0e8d0ef3fcf6.boutiques",
+    id="70b1b32bfcb741c07b8d256b92dbe12ed0418e5f.boutiques",
     name="labelconvert",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -84,10 +84,9 @@ def labelconvert(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/labelconvert.html
+    URL: https://www.mrtrix.org/
     
     Args:
         path_in: the input image.

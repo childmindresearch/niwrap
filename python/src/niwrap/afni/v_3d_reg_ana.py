@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_REG_ANA_METADATA = Metadata(
-    id="bab7e1ba4329b0bad7cda3bc45885b0f26b38196.boutiques",
+    id="8af9eec0649daeefe16e2e2f175d5a50fcc2daf0.boutiques",
     name="3dRegAna",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -53,9 +53,9 @@ def v_3d_reg_ana(
     """
     Multiple linear regression analysis for AFNI datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRegAna.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         rows: Number of input datasets.

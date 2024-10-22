@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PROJ_THRESH_METADATA = Metadata(
-    id="e3776dfaa76fb62791a030b9053716c89b7c328b.boutiques",
+    id="64614fd1f63029e169816fc8e855d4b4fbdc880c.boutiques",
     name="proj_thresh",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,7 +30,9 @@ def proj_thresh(
     """
     A tool to apply a threshold to either volumes or surfaces.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_paths: Paths to volume or surface files. Please use either\

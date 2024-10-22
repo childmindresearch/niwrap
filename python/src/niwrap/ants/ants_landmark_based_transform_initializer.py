@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_LANDMARK_BASED_TRANSFORM_INITIALIZER_METADATA = Metadata(
-    id="54b61ed5646763f4228dea9c3453bdf423663f6e.boutiques",
+    id="e680d25c4b1661ea27d0968828f088b5d76779fa.boutiques",
     name="antsLandmarkBasedTransformInitializer",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -41,7 +41,7 @@ def ants_landmark_based_transform_initializer(
     This tool initializes a transform between two images based on corresponding
     landmarks.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

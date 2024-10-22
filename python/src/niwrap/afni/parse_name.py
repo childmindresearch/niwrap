@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PARSE_NAME_METADATA_ = Metadata(
-    id="5b223a3dd4beb53a9e61bc168f6c4b6b860b38c1.boutiques",
+    id="3147e545e3c1de045c7cb8d1040e88621574619e.boutiques",
     name="parse_name",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def parse_name_(
     """
     A script to parse a filename into path, prefix, and extension strings.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@parse_name.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         name: The filename to parse.

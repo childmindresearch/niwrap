@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 R_FUNCLIST_METADATA = Metadata(
-    id="2c1e1d78cde1fe373e42a1c830bfe72d16d5044f.boutiques",
+    id="f9fed17eca606cf05a12fef3740670489145a67d.boutiques",
     name="R_funclist",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,9 +29,9 @@ def r_funclist(
     """
     A quick list of functions defined in AFNI's .R files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@R_funclist.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         r_files: R file(s) to be processed. If no files are specified, all .R\

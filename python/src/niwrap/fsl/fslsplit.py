@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSPLIT_METADATA = Metadata(
-    id="0437d7a80ec1e0e35ca9e21fabd9655c69b443b2.boutiques",
+    id="11f8b49545c1d11011272305368ed7bd5f50f1f0.boutiques",
     name="fslsplit",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,9 +33,9 @@ def fslsplit(
     """
     Split a 4D image into separate volumes or a 3D image into separate slices.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input image (e.g. img.nii.gz).

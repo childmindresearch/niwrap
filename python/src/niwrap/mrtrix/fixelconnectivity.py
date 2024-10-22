@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXELCONNECTIVITY_METADATA = Metadata(
-    id="9c0aa46c302eaa38e8041b448650732830a3d850.boutiques",
+    id="811fe5b2580b330dbeded0c16e56819fd86331a7.boutiques",
     name="fixelconnectivity",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -81,10 +81,9 @@ def fixelconnectivity(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelconnectivity.html
+    URL: https://www.mrtrix.org/
     
     Args:
         fixel_directory: the directory containing the fixels between which\

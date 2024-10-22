@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EASYTHRESH_METADATA = Metadata(
-    id="32b5ee8e8b0a64ace7242c55a2fa378fc76a967b.boutiques",
+    id="964d60bef3f5e8cab6996118080b004fcda05373.boutiques",
     name="easythresh",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -37,9 +37,9 @@ def easythresh(
     """
     Cluster-based statistical thresholding tool from FSL.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Easythresh
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         raw_zstat_input: Input raw z-statistics image.

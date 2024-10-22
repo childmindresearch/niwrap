@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_ESTIMATE_FWHM_METADATA = Metadata(
-    id="57f1cf3d50223eccac1e8b093a8e04564691f4d4.boutiques",
+    id="fd00905a81ea0512b8490658b794b006a8adab56.boutiques",
     name="volume-estimate-fwhm",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -38,7 +38,9 @@ def volume_estimate_fwhm(
     -subvolume or -whole-file are not specified, each subvolume is estimated and
     displayed separately.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume: the input volume.

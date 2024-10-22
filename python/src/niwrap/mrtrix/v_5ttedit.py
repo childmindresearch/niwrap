@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_5TTEDIT_METADATA = Metadata(
-    id="f8c473c8650a4af0acf87684b92167ea28c8158e.boutiques",
+    id="5adde2b592e9e0431b8a338ae66dce3c82eee77e.boutiques",
     name="5ttedit",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -82,9 +82,9 @@ def v_5ttedit(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/5ttedit.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the 5TT image to be modified.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PARSE_FS_LT_LOG_PY_METADATA = Metadata(
-    id="4d3a9d80e34629170e64e5c99a643d72a1019166.boutiques",
+    id="268d4ee0e1a275627c35202711852c46337de68c.boutiques",
     name="parse_fs_lt_log.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def parse_fs_lt_log_py(
     """
     Parses FreeSurfer labeltable log file and retrieves labeltable indices.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/parse_fs_lt_log.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         logfile: Specify rank log file.

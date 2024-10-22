@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_EXTREMA_METADATA = Metadata(
-    id="464baa942d98c4b291d1f1775c9b6d09d9928789.boutiques",
+    id="20477f65355e9f632c945ddf952641fdf056a370.boutiques",
     name="cifti-extrema",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -82,7 +82,9 @@ def cifti_extrema(
     direction. COLUMN is the direction that works on dtseries and dscalar. For
     dconn, if it is symmetric use COLUMN, otherwise use ROW.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti: the input cifti.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_SMOOTH_METADATA = Metadata(
-    id="ff78abe6a6fbceb953687fc929f58909c68d6499.boutiques",
+    id="9567232249acc1b0e69c280f3ce45f44bb256c86.boutiques",
     name="SurfSmooth",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,9 +46,9 @@ def surf_smooth(
     """
     Tool for smoothing data on surfaces using various methods.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfSmooth.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         surface: Option for specifying the surface to smooth or the domain over\

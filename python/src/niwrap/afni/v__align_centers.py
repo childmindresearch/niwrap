@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ALIGN_CENTERS_METADATA = Metadata(
-    id="d5e025b526c5550c43cc62b76dfb21381e4ebd71.boutiques",
+    id="f29fbec7d33b88a11144d9ab1edf49dc32ae31cf.boutiques",
     name="@Align_Centers",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -49,9 +49,9 @@ def v__align_centers(
     Moves the center of a dataset (DSET) to the center of a base volume (BASE) and
     optionally creates a transform matrix.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Align_Centers.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         base: Base volume, typically a template. Can also specify RAI\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__GET_AFNI_ORIENT_METADATA = Metadata(
-    id="94fd396fa00e7aa0bcbbe20772f79445c4ed3584.boutiques",
+    id="eb6a37f8f5592ce57e59b803920fbfd554fdd7f2.boutiques",
     name="@GetAfniOrient",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def v__get_afni_orient(
     """
     Returns the orient code of AFNI datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniOrient.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input AFNI dataset (e.g. Hello+orig.HEAD).

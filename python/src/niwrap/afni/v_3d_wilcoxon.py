@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_WILCOXON_METADATA = Metadata(
-    id="1ddbc2035d19f145ab6100e67855886ee6882f0b.boutiques",
+    id="55a623ddd594ec6685ecd7e70c06f3041abe13f4.boutiques",
     name="3dWilcoxon",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def v_3d_wilcoxon(
     """
     Nonparametric Wilcoxon signed-rank test for paired comparisons of two samples.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWilcoxon.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset1_x: Data set for X observations. The user must specify 1 and only\

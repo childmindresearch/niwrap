@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MSE_METADATA = Metadata(
-    id="b74f6f494637c16d5078c837bc3d468846ae086a.boutiques",
+    id="ff2e9633405885aec7920f250dba5893cb5b6dda.boutiques",
     name="3dMSE",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_mse(
     """
     Computes voxelwise multi-scale entropy.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMSE.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset: Input dataset (e.g., dset.nii.gz).

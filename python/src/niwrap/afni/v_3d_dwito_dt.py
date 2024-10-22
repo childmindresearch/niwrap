@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DWITO_DT_METADATA = Metadata(
-    id="d1811a14a58f688bde5a2105bba055bbe29914e0.boutiques",
+    id="8960cd4bae08bae6a1b6d48945e70aab4aa70b33.boutiques",
     name="3dDWItoDT",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,9 +33,9 @@ def v_3d_dwito_dt(
     Computes 6 principal direction tensors from multiple gradient vectors and
     corresponding DTI image volumes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDWItoDT.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         gradient_file: A 1D file of the gradient vectors with lines of ASCII\

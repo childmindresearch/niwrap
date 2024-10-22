@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BORDER_EXPORT_COLOR_TABLE_METADATA = Metadata(
-    id="731f1fc5b0c0ca46d740510ab287e981975ddd70.boutiques",
+    id="3966f569de8f1ccc31260fe6b34cfe2c5bf74c20.boutiques",
     name="border-export-color-table",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -36,7 +36,9 @@ def border_export_color_table(
     border name, specify -class-colors to color them by class instead. The key
     values start at 1 and follow the order of the borders in the file.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         border_file: the input border file.

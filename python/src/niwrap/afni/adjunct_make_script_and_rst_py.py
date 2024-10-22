@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_MAKE_SCRIPT_AND_RST_PY_METADATA = Metadata(
-    id="a90c364d18d38ed1214007f21054f30fed769d7f.boutiques",
+    id="daadacfd82293995379763ced20e0264a0572dbb.boutiques",
     name="adjunct_make_script_and_rst.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,10 +40,9 @@ def adjunct_make_script_and_rst_py(
     Program to take a script with some special markup and turn it into both an RST
     page and a script for the online Sphinx documentation.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_make_script_and_rst.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_script: Input script file with special markup.

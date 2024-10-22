@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_CM_METADATA = Metadata(
-    id="7736e53f66b944167dbd4d619f8ddc3f036d05f9.boutiques",
+    id="77803dd85b550ca349853a4b4282fd1640db43b6.boutiques",
     name="3dCM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v_3d_cm(
     """
     Tool for computing the center of mass of a dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCM.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset: Input dataset.

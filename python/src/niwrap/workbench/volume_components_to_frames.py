@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_COMPONENTS_TO_FRAMES_METADATA = Metadata(
-    id="e45133eca7d56860fb9bc6a395802c220898015d.boutiques",
+    id="c1ef45215817d43b9b5d3a47c8896f1d66dc2617.boutiques",
     name="volume-components-to-frames",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -35,7 +35,9 @@ def volume_components_to_frames(
     RGB and complex datatypes are not always well supported, this command allows
     separating them into standard subvolumes for better support.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         input_: the RGB/complex-type volume.

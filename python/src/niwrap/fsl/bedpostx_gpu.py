@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BEDPOSTX_GPU_METADATA = Metadata(
-    id="1b7bc98054c569d66c0ab265626948c131ff30cd.boutiques",
+    id="d60189eb2c838a8f20c913057b4048995c48717b.boutiques",
     name="bedpostx_gpu",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -38,9 +38,9 @@ def bedpostx_gpu(
     """
     Probabilistic tractography and diffusion MRI fitting tool.
     
-    Author: FMRIB Software Library (FSL)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/Bedpostx
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         subject_dir: Directory containing the subject's DWI data and associated\

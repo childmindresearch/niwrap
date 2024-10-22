@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QUICK_ALPHA_VALS_PY_METADATA = Metadata(
-    id="ed5c29d1849d5d08aef7cc64a2336c02bab2e572.boutiques",
+    id="467c10597885378ee65e5261792a6d6f5203efb5.boutiques",
     name="quick.alpha.vals.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def quick_alpha_vals_py(
     """
     Generate an alpha table from slow_surf_clustsim.py results.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/quick.alpha.vals.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         max_file: File containing maximum z values.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_SBCA_METADATA = Metadata(
-    id="25d92c66964ffe4d07c075bac3fdbeb9bc5af9b6.boutiques",
+    id="788f377877494a39134583ae5b5c66416f622b64.boutiques",
     name="fsl_sbca",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -54,9 +54,9 @@ def fsl_sbca(
     Performs seed-based correlation analysis on FMRI data using either a single seed
     coordinate or a seed mask.
     
-    Author: Christian F. Beckmann
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SBCA
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input file name (4D image file).

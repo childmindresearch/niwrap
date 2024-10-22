@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRCLUSTERSTATS_METADATA = Metadata(
-    id="82c87f74c578c712d0e7eaa04e77402c4dabbebd.boutiques",
+    id="d4ce456953cb970b38068a8fa7e2ea3ed5a6da0c.boutiques",
     name="mrclusterstats",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -145,10 +145,9 @@ def mrclusterstats(
     nonstationarity in cluster-based and TFCE inference. Neuroimage, 2011,
     54(3), 2006-19.
     
-    Author: David Raffelt (david.raffelt@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrclusterstats.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: a text file containing the file names of the input images, one\

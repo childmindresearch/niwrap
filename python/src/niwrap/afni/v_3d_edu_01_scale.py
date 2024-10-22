@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EDU_01_SCALE_METADATA = Metadata(
-    id="c66287a408ad22ad53962773e55f53c7ce868763.boutiques",
+    id="421ae3b97be6019b8194c6bf2db5b0b7024dbd25.boutiques",
     name="3dEdu_01_scale",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_edu_01_scale(
     Educational program to create a new AFNI program. Scales and masks dataset
     volumes.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dEdu_01_scale.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Input dataset.

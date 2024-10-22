@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MIDTRANS_METADATA = Metadata(
-    id="da0102c2272d79e33cb048e46a2cf9e6780a8cdd.boutiques",
+    id="a0139bf628c1027615d9cda20a08ebab2c29e712.boutiques",
     name="midtrans",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def midtrans(
     """
     Calculate the midpoint transform from a series of input transforms.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         transforms: List of input transform files (e.g. transform1.mat\

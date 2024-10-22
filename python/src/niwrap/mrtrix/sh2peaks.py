@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SH2PEAKS_METADATA = Metadata(
-    id="0d3b563504c253ffc16efd251fe2c480de2ffcac.boutiques",
+    id="dc59048f9a978e195396202a13dd54ccebc30173.boutiques",
     name="sh2peaks",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -123,10 +123,9 @@ def sh2peaks(
     tissue with diffusion magnetic resonance imaging. Human Brain Mapping, 2013,
     34(11), 2747-2766.
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2peaks.html
+    URL: https://www.mrtrix.org/
     
     Args:
         sh: the input image of SH coefficients.

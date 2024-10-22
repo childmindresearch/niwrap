@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKTRANSFORM_METADATA = Metadata(
-    id="fd857754d3587aef353548c4859541730b2f8518.boutiques",
+    id="d38d01b169eafd9a714d3a74f684943531dcd044.boutiques",
     name="tcktransform",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -76,10 +76,9 @@ def tcktransform(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tcktransform.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tracks: the input track file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_EXPORT_TABLE_METADATA = Metadata(
-    id="e6ffb015df82a0d94657f22347b6a146708f08dc.boutiques",
+    id="ea755047191df649f2ed70988c280b361932d59c.boutiques",
     name="label-export-table",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -33,7 +33,9 @@ def label_export_table(
     Takes the label table from the gifti label file, and writes it to a text
     format matching what is expected by -metric-label-import.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input label file.

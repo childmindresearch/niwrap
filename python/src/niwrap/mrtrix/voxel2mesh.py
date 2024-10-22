@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOXEL2MESH_METADATA = Metadata(
-    id="9bf6ef38f2f75e5b53e06330bf429ad908be414a.boutiques",
+    id="61319a325faead4ced930defcbdd82b99a6a72af.boutiques",
     name="voxel2mesh",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -86,10 +86,9 @@ def voxel2mesh(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/voxel2mesh.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image.

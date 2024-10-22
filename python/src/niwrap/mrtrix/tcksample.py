@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKSAMPLE_METADATA = Metadata(
-    id="9d2660066e4dc832900f3f73e4f6b37e621d3c8b.boutiques",
+    id="0fd3b8818e87fff260e091a14a0639a496a49125.boutiques",
     name="tcksample",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -85,10 +85,9 @@ def tcksample(
     Connelly, A. SIFT: Spherical-deconvolution informed filtering of
     tractograms. NeuroImage, 2013, 67, 298-312.
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tcksample.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tracks: the input track file.

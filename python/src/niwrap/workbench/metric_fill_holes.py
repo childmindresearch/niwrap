@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_FILL_HOLES_METADATA = Metadata(
-    id="01f9f706378f6ba0092f279b104ef0c8e161e9ce.boutiques",
+    id="a7ef76aef9bd4a00aef3290f4b43815537d65bbc.boutiques",
     name="metric-fill-holes",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def metric_fill_holes(
     Finds all connected areas that are not included in the ROI, and writes ones
     into all but the largest one, in terms of surface area.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to use for neighbor information.

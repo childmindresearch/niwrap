@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FUGUE_METADATA = Metadata(
-    id="43b69a2bab9418241dbdb1a364bc32119a800495.boutiques",
+    id="0d5e56a1480fef260425c99248ccd24a15460f59.boutiques",
     name="FUGUE",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -74,9 +74,9 @@ def fugue(
     changes.
     FUGUE is designed to deal only with the first case - improving registration.
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         asym_se_time: Set the fieldmap asymmetric spin echo time (sec).

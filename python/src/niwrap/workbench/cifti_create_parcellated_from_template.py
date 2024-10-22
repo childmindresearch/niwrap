@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_PARCELLATED_FROM_TEMPLATE_METADATA = Metadata(
-    id="657532228e4ff9b257d004b5fcf11301a8580011.boutiques",
+    id="e656354e166a5de954d9eec01fb2b38d945752dc.boutiques",
     name="cifti-create-parcellated-from-template",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -67,7 +67,9 @@ def cifti_create_parcellated_from_template(
     other dimensions. The direction can be either an integer starting from 1, or
     the strings 'ROW' or 'COLUMN'.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_template: a cifti file with the template parcel mapping along\

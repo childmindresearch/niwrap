@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BORDER_TO_VERTICES_METADATA = Metadata(
-    id="ef85d72b651123aaab1303a1b2178fe6a4152b01.boutiques",
+    id="93230465305f7c320f6c868a5969db012e683ccd.boutiques",
     name="border-to-vertices",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def border_to_vertices(
     Outputs a metric with 1s on vertices that follow a border, and 0s elsewhere.
     By default, a separate metric column is created for each border.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface the borders are drawn on.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TENSOR2METRIC_METADATA = Metadata(
-    id="a30ad610df4836f7db35faabbd6f28aed9a40034.boutiques",
+    id="ce3b6c1eb5966c84af85ddfef969868689c115fb.boutiques",
     name="tensor2metric",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -113,11 +113,9 @@ def tensor2metric(
     Geometrical diffusion measures for MRI from tensor basis analysis. Proc Intl
     Soc Mag Reson Med, 1997, 5, 1742.
     
-    Author: Thijs Dhollander (thijs.dhollander@gmail.com) & Ben Jeurissen
-    (ben.jeurissen@uantwerpen.be) & J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tensor2metric.html
+    URL: https://www.mrtrix.org/
     
     Args:
         tensor: the input tensor image.

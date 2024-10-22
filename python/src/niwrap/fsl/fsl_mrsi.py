@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MRSI_METADATA = Metadata(
-    id="f461c421877519ddf8d20249fc983f727dc48f55.boutiques",
+    id="0f95738c0b57c63d59386ea1ec9b42cf3ad4d691.boutiques",
     name="fsl_mrsi",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -62,9 +62,9 @@ def fsl_mrsi(
     """
     FSL Magnetic Resonance Spectroscopy Imaging Wrapper Script.
     
-    Author: FMRIB Centre
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         data: Input NIFTI file.

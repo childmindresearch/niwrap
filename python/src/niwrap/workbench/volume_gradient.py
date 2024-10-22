@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_GRADIENT_METADATA = Metadata(
-    id="c972908adbaf99c093acf2f28d161ea3ff7c2d96.boutiques",
+    id="43deb44789ab9ad9e655d3e64c90650d2035d044.boutiques",
     name="volume-gradient",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -76,7 +76,9 @@ def volume_gradient(
     output. If specified, the volume vector output is arranged with the x, y,
     and z components from a subvolume as consecutive subvolumes.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_in: the input volume.

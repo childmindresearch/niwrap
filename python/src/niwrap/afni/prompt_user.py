@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PROMPT_USER_METADATA = Metadata(
-    id="d5cc0d98febf2b18fee05a2473b234e097968d34.boutiques",
+    id="782279d082f08241e6d04420d5c1a420777073d0.boutiques",
     name="prompt_user",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def prompt_user(
     """
     Tool that prompts a window requesting user input with a custom message.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/prompt_user.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         pause_message: Pops a window prompting the user with MESSAGE. If\

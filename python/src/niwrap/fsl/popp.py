@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POPP_METADATA = Metadata(
-    id="96625b73bbe6f0d1df4a3577607528c52c89e842.boutiques",
+    id="a9a1fc6b46ce9d74be89210270bdf1744282f185.boutiques",
     name="popp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -69,9 +69,9 @@ def popp(
     """
     Physiological data processing tool of FSL.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Popp
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input physiological data filename (text format).

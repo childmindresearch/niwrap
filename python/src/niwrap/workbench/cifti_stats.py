@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_STATS_METADATA = Metadata(
-    id="fbdd0a4ca0b7aec8ecfdf82d03714a4a60d492a0.boutiques",
+    id="29882b8e94359fc90e4767c1c2666e66ff03485c.boutiques",
     name="cifti-stats",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -91,7 +91,9 @@ def cifti_stats(
     COUNT_NONZERO: the number of nonzero elements in the data
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the input cifti.

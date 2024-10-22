@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_2PERM_METADATA = Metadata(
-    id="1f3ac057af6953120bc3c77e4df34915e0c80018.boutiques",
+    id="59e66117db737fe0417f8f2ec096b420131bb96a.boutiques",
     name="2perm",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,9 +38,9 @@ def v_2perm(
     """
     Generates two random non-overlapping subsets of a given set of integers.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/2perm.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         bottom_int: Bottom integer of the range.

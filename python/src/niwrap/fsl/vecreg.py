@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VECREG_METADATA = Metadata(
-    id="6c7d48cef02fef3fe66c2282a3eb56099599fdb5.boutiques",
+    id="32e5fbc92819964449acfdb57ecf1640400a59be.boutiques",
     name="vecreg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -41,9 +41,9 @@ def vecreg(
     """
     Vector Affine/NonLinear Transformation with Orientation Preservation.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Filename for input vector or tensor field.

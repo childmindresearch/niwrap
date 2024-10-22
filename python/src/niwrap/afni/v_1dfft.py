@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DFFT_METADATA = Metadata(
-    id="bfbe0649f04d4738ad777521fd804d6932aecfa7.boutiques",
+    id="1b882371fd5c103972dacb7d40e09d3d66d4ad04.boutiques",
     name="1dfft",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v_1dfft(
     """
     Compute the absolute value of the FFT of input columns from an AFNI 1D file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dfft.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Input .1D file containing an ASCII list of numbers arranged in\

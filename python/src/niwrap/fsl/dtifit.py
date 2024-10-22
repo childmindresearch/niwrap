@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DTIFIT_METADATA = Metadata(
-    id="858641733e0be47decba4ee39f2f398f251415c6.boutiques",
+    id="595a287e9a985e8d7700cf87e55dd277108a7b15.boutiques",
     name="dtifit",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -60,9 +60,9 @@ def dtifit(
     """
     DTIFIT - Fit a diffusion tensor model at each voxel.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#DTIFIT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         data_file: DTI data file.

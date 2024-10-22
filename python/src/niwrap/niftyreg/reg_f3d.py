@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_F3D_METADATA = Metadata(
-    id="2bb4b67c73d488ef6c20b58357b368c5399e015c.boutiques",
+    id="c8a37c6ccb56a7ea1afbb54537cdf194a4acfa9d.boutiques",
     name="reg_f3d",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -35,7 +35,7 @@ def reg_f3d(
     Fast Free-Form Deformation algorithm for non-rigid registration based on
     Rueckert's 99 TMI work.
     
-    Author: Marc Modat
+    Author: NiftyReg Developers
     
     URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     

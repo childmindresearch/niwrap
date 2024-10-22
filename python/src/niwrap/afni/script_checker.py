@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SCRIPT_CHECKER_METADATA = Metadata(
-    id="e2aa93fc3f80f4097fc9ac1c3236a80a91ec530f.boutiques",
+    id="b676da5635617f306a774cf6b85f988c88713b8c.boutiques",
     name="ScriptChecker",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def script_checker(
     """
     Checks scripts for improperly terminated lines and optionally cleans them.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ScriptCheck.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         scripts: Scripts to be checked for improperly terminated lines.

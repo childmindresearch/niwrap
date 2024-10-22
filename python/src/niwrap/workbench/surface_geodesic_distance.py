@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_GEODESIC_DISTANCE_METADATA = Metadata(
-    id="038ac8f87c3b794812e70bdbc5c8d11e3e8caddf.boutiques",
+    id="56dcec8111c3113e7a99ad05b54eb0e01027d791.boutiques",
     name="surface-geodesic-distance",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -52,7 +52,9 @@ def surface_geodesic_distance(
     but also neighbors derived from crawling across pairs of triangles that
     share an edge.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to compute on.

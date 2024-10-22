@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DRENAME_METADATA = Metadata(
-    id="b0285c183586ba4a78541b10fe878ba3fba50dd4.boutiques",
+    id="3c508d8f5e6d69689dd267857ef13efbf3693249.boutiques",
     name="3drename",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v_3drename(
     """
     Tool to rename AFNI datasets by changing the dataset prefix.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drename.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         old_prefix: Old prefix of the datasets to rename.

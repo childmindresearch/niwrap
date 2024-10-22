@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_GENERATE_INFLATED_METADATA = Metadata(
-    id="17e8da7db349737a98da21aa71b658ec556dbf86.boutiques",
+    id="c2c97078aa66951d34c1f21005690c73a90f7d20.boutiques",
     name="surface-generate-inflated",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -42,7 +42,9 @@ def surface_generate_inflated(
     contains a large number of vertices (150,000), try an iterations-scale of
     2.5.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         anatomical_surface_in: the anatomical surface.

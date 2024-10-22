@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BORDER_MERGE_METADATA = Metadata(
-    id="1d200d400a3bde437012659361326bb4479ca32b.boutiques",
+    id="ea6b8aa0765aec103156164a61850aa8d4e5cb39.boutiques",
     name="border-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -131,7 +131,9 @@ def border_merge(
     This example would take the first border from first.border, followed by all
     borders from second.border, and write these to out.border.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         border_file_out: the output border file.

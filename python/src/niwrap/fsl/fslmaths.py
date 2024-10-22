@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLMATHS_METADATA = Metadata(
-    id="a47c11680059cf929d2235fc331b9f353c8eb026.boutiques",
+    id="d1e240dcb4083c8cbc352336a654976549e5f323.boutiques",
     name="fslmaths",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -586,7 +586,9 @@ def fslmaths(
     """
     FSL utility for image arithmetic, statistics, and mathematical operations.
     
-    Author: FSL Team
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_files: Input images for processing.

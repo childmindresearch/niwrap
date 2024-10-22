@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_ASL_METADATA = Metadata(
-    id="95a1fbbed1b207edac9e7706f2d8b5b822b79f62.boutiques",
+    id="03a103f125d1d2eee79cbee76f450d50f59fef74.boutiques",
     name="fabber_asl",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -84,9 +84,9 @@ def fabber_asl(
     """
     Fabber is a tool for automated model fitting of time series data.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fabber_tool.website
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output: Directory for output files (including logfile).

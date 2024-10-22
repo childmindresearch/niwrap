@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TTO1_D_METADATA = Metadata(
-    id="34773d441ed44846b090d0f5a9ac36294f1cb73a.boutiques",
+    id="cad19c8c36d58b1690c78ef0d6c215e09c7e7cce.boutiques",
     name="3dTto1D",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_tto1_d(
     """
     Collapse a 4D time series to a 1D time series.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTto1D.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Specify input dataset. This should be a set of 3D time\

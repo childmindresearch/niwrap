@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_PROBABILITY_METADATA = Metadata(
-    id="c24551593f7de64068eb6e790580b066cfad3526.boutiques",
+    id="b2f5704732f9b3382402cd967489df06d20de400.boutiques",
     name="label-probability",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def label_probability(
     where the value is how many of the input maps had that label at that vertex,
     divided by the number of input maps.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_maps: label file containing individual label maps from many\

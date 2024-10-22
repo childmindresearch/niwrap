@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_RESAMPLE_METADATA = Metadata(
-    id="b1912269948fd60cbfa4b6bac064915aca2e5a13.boutiques",
+    id="f77fedd915dc4d7b3146090ed4d10cff2d7532ac.boutiques",
     name="label-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -124,7 +124,9 @@ def label_resample(
     BARYCENTRIC
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the label file to resample.

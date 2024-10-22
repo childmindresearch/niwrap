@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CROSS_CORRELATION_METADATA = Metadata(
-    id="4c7c2681bca3ea30eea358f6794f230da3a4e6da.boutiques",
+    id="22031efe575311962103cb8ab829373f17516a01.boutiques",
     name="cifti-cross-correlation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -45,7 +45,9 @@ def cifti_cross_correlation(
     Restricting the memory usage will make it calculate the output in chunks, by
     reading through <cifti-b> multiple times.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_a: first input cifti file.

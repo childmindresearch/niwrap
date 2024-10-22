@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_DYADIC_VECTORS_METADATA = Metadata(
-    id="b4de8521b0d728a2cfd51b34e8ee2f002547c807.boutiques",
+    id="67f4c0d9c7195c1019d094d8a0a7b14650e07b5c.boutiques",
     name="make_dyadic_vectors",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,7 +35,9 @@ def make_dyadic_vectors(
     """
     Generate dyadic vectors from theta and phi volumes.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         theta_vol: Theta volume input file.

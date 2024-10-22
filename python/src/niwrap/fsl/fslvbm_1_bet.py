@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLVBM_1_BET_METADATA = Metadata(
-    id="ff01cd0bf1ddb86e2118893dad969cdff93f5a82.boutiques",
+    id="91773795bb39828f53ef3f2a8be5b4ba5a170dd9.boutiques",
     name="fslvbm_1_bet",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,9 +30,9 @@ def fslvbm_1_bet(
     """
     Brain extraction for VBM using FSL BET.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         increased_robustness: Increased robustness in the brain extraction when\

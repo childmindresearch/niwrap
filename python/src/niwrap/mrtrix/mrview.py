@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRVIEW_METADATA = Metadata(
-    id="4ce7d35747ee662736f728a44e85b943c9b0c0a1.boutiques",
+    id="98fbf46f61e6645b9efe4b663808e5a5f135d43e.boutiques",
     name="mrview",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -1639,13 +1639,9 @@ def mrview(
     Tournier, J.-D.; Calamante, F. & Connelly, A. MRtrix: Diffusion tractography
     in crossing fiber regions. Int. J. Imaging Syst. Technol., 2012, 22, 53-66.
     
-    Author: J-Donald Tournier (jdtournier@gmail.com), Dave Raffelt
-    (david.raffelt@florey.edu.au), Robert E. Smith (robert.smith@florey.edu.au),
-    Rami Tabbara (rami.tabbara@florey.edu.au), Max Pietsch
-    (maximilian.pietsch@kcl.ac.uk), Thijs Dhollander
-    (thijs.dhollander@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mrview.html
+    URL: https://www.mrtrix.org/
     
     Args:
         mode: Switch to view mode specified by the integer index, as per the\

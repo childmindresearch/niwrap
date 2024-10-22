@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_OVERLAP_CHECK_METADATA = Metadata(
-    id="31d0ff98f05bcbcb5c574dfa5f7b499cb51c8722.boutiques",
+    id="61eef1d6dc1535a1dc4452ab3c3b8b5da02a1e6d.boutiques",
     name="@djunct_overlap_check",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,10 +52,9 @@ def v__djunct_overlap_check(
     """
     A helper script for visualizing overlap between datasets in AFNI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_overlap_check.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         ulay: Dataset to use as the underlay (background).

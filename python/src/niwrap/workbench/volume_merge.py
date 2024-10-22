@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_MERGE_METADATA = Metadata(
-    id="511518c9b9fab21f202bab4c023c973275bfe85b.boutiques",
+    id="e3c64a5ec248eee2d5906b756a02002ee2e6c991.boutiques",
     name="volume-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -132,7 +132,9 @@ def volume_merge(
     This example would take the first subvolume from first.nii, followed by all
     subvolumes from second.nii, and write these to out.nii.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         volume_out: the output volume file.

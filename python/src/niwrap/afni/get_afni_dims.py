@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GET_AFNI_DIMS_METADATA = Metadata(
-    id="70e2be037d0bae6a39920eb40150f9444f4dfafa.boutiques",
+    id="6cda6d2d778ae7fa76728ef0174566006c7d6a7d.boutiques",
     name="GetAfniDims",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def get_afni_dims(
     """
     A utility tool to return dimensions of AFNI dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniDims.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dset: Input AFNI dataset.

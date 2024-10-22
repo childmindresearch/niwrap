@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DCALC_METADATA = Metadata(
-    id="6d107ea547d33891e84b9aa91504ccf23d38dc2d.boutiques",
+    id="66f28a66a111cc3612e13fb86d7e368e7be0a5a2.boutiques",
     name="3dcalc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -39,9 +39,9 @@ def v_3dcalc(
     """
     AFNI's calculator program.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         expr: Expr.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROIMAKER_METADATA = Metadata(
-    id="d0a2d7efa621e9352e3545a2e564b95b717b6529.boutiques",
+    id="c274c916a91e14dc17c328a69af9482f7133e607.boutiques",
     name="ROIMaker",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -54,9 +54,9 @@ def roimaker(
     Create a labelled set of ROIs from input data, useful in combining functional
     and tractographic/structural data.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dROIMaker.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         inset: 3D volume(s) of values, especially functionally-derived\

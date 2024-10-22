@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_WARPFIELD_AFFINE_REGRESSION_METADATA = Metadata(
-    id="c63f9b0bec7114ce88d8f37926dbe8b308501be2.boutiques",
+    id="b6c3926ffdfa49e8895d603568ab0c0e8e9c1284.boutiques",
     name="volume-warpfield-affine-regression",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -71,7 +71,9 @@ def volume_warpfield_affine_regression(
     space). If you are using FSL-created files and utilities, specify -fnirt and
     -flirt as needed, as their coordinate conventions are different.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         warpfield: the input warpfield.

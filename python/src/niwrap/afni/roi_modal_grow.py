@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROI_MODAL_GROW_METADATA = Metadata(
-    id="bf225aae5f4a73080d8a0a41020ba697931c6439.boutiques",
+    id="76b12819d76b89a4c6be2901d45be0595700f561.boutiques",
     name="ROI_modal_grow",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,10 +36,9 @@ def roi_modal_grow(
     """
     Script to grow a set of regions in a volumetric dataset using modal smoothing.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_modal_grow.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dset: Required input dataset. This dataset should be a set of\

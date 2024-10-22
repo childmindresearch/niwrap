@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTSUSE_LANDMARK_IMAGES_TO_GET_BSPLINE_DISPLACEMENT_FIELD_METADATA = Metadata(
-    id="d8979ff3d07b5a8e1e6d1fc984a20b6569a36bd2.boutiques",
+    id="7af4a9a784989ddd8ff76f3225c25b7355e86a75.boutiques",
     name="ANTSUseLandmarkImagesToGetBSplineDisplacementField",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -44,7 +44,7 @@ def antsuse_landmark_images_to_get_bspline_displacement_field(
     "label,labelWeight" or "labelWeight". If the latter format is used, the label
     weights are assumed to be arranged in ascending order by label.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

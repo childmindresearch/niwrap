@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_DILATE_METADATA = Metadata(
-    id="4f892acd3a820a270e25b98c3fd28edcaee9017e.boutiques",
+    id="0057aea9a69539bb8eac6eaeceaa49cbf242cda7.boutiques",
     name="cifti-dilate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -160,7 +160,9 @@ def cifti_dilate(
     value zero, are good, except for locations with a positive value in the ROI.
     If it is not specified, only values equal to zero are bad.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the input cifti file.

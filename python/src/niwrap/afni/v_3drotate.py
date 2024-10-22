@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DROTATE_METADATA = Metadata(
-    id="19bda326f6413ef9d03c0f7c09cb63ea1b22b062.boutiques",
+    id="dae9478b93184d9121e61e24d56f3c564e520ade.boutiques",
     name="3drotate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -57,9 +57,9 @@ def v_3drotate(
     """
     Rotates and/or translates all bricks from an AFNI dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drotate.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input AFNI dataset, may contain a sub-brick selector list.

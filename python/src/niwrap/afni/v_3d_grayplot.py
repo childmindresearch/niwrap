@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GRAYPLOT_METADATA = Metadata(
-    id="e6df087d202a81513d4e360d45cd0ccda58ae7f2.boutiques",
+    id="6d17ab08ae2c6bafb3bb5a4bc0dd707aa3956213.boutiques",
     name="3dGrayplot",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,9 +45,9 @@ def v_3d_grayplot(
     Make a grayplot from a 3D+time dataset, like a carpet plot. Result is saved to a
     PNG image.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGrayplot.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Input dataset.

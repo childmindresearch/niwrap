@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SURF_SMOOTH_HEAT_07_EXAMPLES_METADATA = Metadata(
-    id="8cd6363e3627678005d5a6020f811901335c73ef.boutiques",
+    id="2f39cb563418dd26fe545f29aab0a8d0154170db.boutiques",
     name="@SurfSmooth.HEAT_07.examples",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,10 +29,9 @@ def v__surf_smooth_heat_07_examples(
     """
     A script to illustrate controlled blurring of data on the surface.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SurfSmooth.HEAT_07.examples.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         path_to_suma_demo: Path to SUMA demo directory.

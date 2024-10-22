@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRFILTER_METADATA = Metadata(
-    id="0a5130f18b4c89a425a5f41a84a9ceaf901da40c.boutiques",
+    id="3bb2ab8375a99185acaeac0f9e608829bff091ac.boutiques",
     name="mrfilter",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -145,11 +145,9 @@ def mrfilter(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au), David Raffelt
-    (david.raffelt@florey.edu.au) and J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/mrfilter.html
+    URL: https://www.mrtrix.org/
     
     Args:
         input_: the input image.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AUTOBOX_METADATA = Metadata(
-    id="cb59992f4ec4d434248144323328230a163e219b.boutiques",
+    id="614b8e391ea136b04b4fe49d62f798c0eada766e.boutiques",
     name="3dAutobox",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,9 +43,9 @@ def v_3d_autobox(
     Computes size of a box that fits around the volume. Can also be used to crop the
     volume to that box.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutobox.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Input dataset.

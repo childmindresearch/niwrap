@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EXTRACT_GROUP_IN_CORR_METADATA = Metadata(
-    id="cfdb60d4e19cfd7030757b3ccd1491a0216bfebe.boutiques",
+    id="589ed658ff74e91ed944c55e458a7888b478c333.boutiques",
     name="3dExtractGroupInCorr",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def v_3d_extract_group_in_corr(
     This program breaks the collection of images from a GroupInCorr file back into
     individual AFNI 3D+time datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dExtractGroupInCorr.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         group_in_corr_file: GroupInCorr file to extract datasets from (e.g.\

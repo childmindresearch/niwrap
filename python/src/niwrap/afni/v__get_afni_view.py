@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__GET_AFNI_VIEW_METADATA = Metadata(
-    id="4292a6b6f888f770d08953380d9fb8548bf04018.boutiques",
+    id="b44ca052f95999a3103f1c034eafbccc904bf06c.boutiques",
     name="@GetAfniView",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v__get_afni_view(
     """
     A tool to retrieve the AFNI view of a given dataset name.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniView.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset_name: Name of the dataset (including path) from which to\

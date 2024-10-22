@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_MRS_SIM_METADATA = Metadata(
-    id="d8751192080281b952d5e68a6abe3ed8ca8d7fdd.boutiques",
+    id="0adf5a05708d3aaaa723352088e31a4d2f528d26.boutiques",
     name="fsl_mrs_sim",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -44,9 +44,9 @@ def fsl_mrs_sim(
     """
     FSL Magnetic Resonance Spectroscopy Simulation Tool.
     
-    Author: FSL
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/fsl_mrs
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         sequence_file: Pulse sequence file or previous results file.

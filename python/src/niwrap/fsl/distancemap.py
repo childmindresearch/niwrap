@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DISTANCEMAP_METADATA = Metadata(
-    id="c04424531085e48a92e6cfe17b7b71f11e148497.boutiques",
+    id="f3283b740af6cab9c785386d79f6d400fd840fdd.boutiques",
     name="distancemap",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -44,9 +44,9 @@ def distancemap(
     """
     A tool to calculate distance maps using FSL.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Input image filename (calc distance to non-zero voxels).

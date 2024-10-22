@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="8feb86a09b900110a8e744140ee2ac040e44f3bb.boutiques",
+    id="60eaa9acb356ea705224e792500bef28fa47cb0a.boutiques",
     name="gifti-all-labels-to-rois",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -37,7 +37,9 @@ def gifti_all_labels_to_rois(
     map, other than the ??? label, each of which contains an ROI of all vertices
     that are set to the corresponding label.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         label_in: the input gifti label file.

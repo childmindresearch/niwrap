@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF_DIST_METADATA = Metadata(
-    id="ba51dd4f5e28dff9f90eeed0a06742c5cbdeb475.boutiques",
+    id="72e073419f09d40df9016fa6050521df038dab85.boutiques",
     name="SurfDist",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def surf_dist(
     """
     Calculate shortest distance between node pairs on a surface mesh.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfDist.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         surface: Surface on which distances are computed.

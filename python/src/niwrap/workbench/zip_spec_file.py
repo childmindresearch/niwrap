@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ZIP_SPEC_FILE_METADATA = Metadata(
-    id="b648eb124c037c04f29cb50aa9718436909680bc.boutiques",
+    id="48762cb7ec1f70aa4acd73f7b3e6f00fd2c16f9a.boutiques",
     name="zip-spec-file",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def zip_spec_file(
     checked for what files they reference, ensure that all data files referenced
     by the scene files are also referenced by the spec file.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         spec_file: the specification file to add to zip file.

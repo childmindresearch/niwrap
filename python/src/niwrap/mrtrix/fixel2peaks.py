@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIXEL2PEAKS_METADATA = Metadata(
-    id="3776190660e082114fdd340db7d9713f2022095c.boutiques",
+    id="06bfc4edb74f24e1df62b484f707ec9d4d317d85.boutiques",
     name="fixel2peaks",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -124,10 +124,9 @@ def fixel2peaks(
     
     .
     
-    Author: Robert E. Smith (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/fixel2peaks.html
+    URL: https://www.mrtrix.org/
     
     Args:
         in_: the input fixel information.

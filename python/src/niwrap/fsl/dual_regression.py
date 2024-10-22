@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DUAL_REGRESSION_METADATA = Metadata(
-    id="f9e939c2a550726e0b5bec8d4eed7e80301f86d9.boutiques",
+    id="7af22bb9ad60d96cc2edeade6942b8786e2c77d2.boutiques",
     name="dual_regression",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -44,9 +44,9 @@ def dual_regression(
     """
     Dual regression algorithm to investigate group-ICA results.
     
-    Author: FMRIB Analysis Group
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         group_ic_maps: 4D image containing spatial IC maps (melodic_IC) from\

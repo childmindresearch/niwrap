@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_RESTRICT_DENSE_MAP_METADATA = Metadata(
-    id="0096271236e57f87ae0d3c7cfa277102d1b81283.boutiques",
+    id="d0e8d5efe2b59198ac37c89eb97a20f0ba519644.boutiques",
     name="cifti-restrict-dense-map",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -45,7 +45,9 @@ def cifti_restrict_dense_map(
     -cifti-roi, any -*-roi options not present will discard the relevant
     structure, if present in the input file.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: the input cifti.

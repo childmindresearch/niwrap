@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ATLASQUERY_METADATA = Metadata(
-    id="c806e559bdaf9dce3217e442c8ecb3503c24d609.boutiques",
+    id="4ca8afe20e458edf9236a565872d69c0c0c9b1bd.boutiques",
     name="atlasquery",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def atlasquery(
     """
     Structural lookup tool for FSL atlases.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlasquery
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         dumpatlases_flag: Dump a list of available atlases.

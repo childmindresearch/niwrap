@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MORPH_KERNEL_METADATA = Metadata(
-    id="5db7dcc534478f0d7a3d9cd9d56ec7cf51322eb3.boutiques",
+    id="b5e34aadd63d240709e701255ae209fe23159e92.boutiques",
     name="morph_kernel",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,7 +32,9 @@ def morph_kernel(
     """
     Tool to generate morphological kernels.
     
-    Author: Author Name
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         cube_side_length: Side length of the cube (e.g., 11).

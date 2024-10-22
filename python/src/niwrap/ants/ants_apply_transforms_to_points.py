@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_APPLY_TRANSFORMS_TO_POINTS_METADATA = Metadata(
-    id="b92af4f573cc2a43c90c6d1a8354f1ff326749bc.boutiques",
+    id="1ba8745cbb78f985d998ca462d13cc2627bbcd68.boutiques",
     name="antsApplyTransformsToPoints",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -81,7 +81,7 @@ def ants_apply_transforms_to_points(
     location is defined in physical coordinates. The CSV file should have a header
     row.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

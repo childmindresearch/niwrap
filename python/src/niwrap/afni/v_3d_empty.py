@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_EMPTY_METADATA = Metadata(
-    id="f76f729bfa0fb632c284231c284a8460fc942151.boutiques",
+    id="730ad3720777756112dc40869e7f93318748f6b6.boutiques",
     name="3dEmpty",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3d_empty(
     """
     Tool to create an 'empty' dataset .HEAD file.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dEmpty.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix name for output file (default = 'Empty').

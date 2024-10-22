@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RBOX_METADATA = Metadata(
-    id="8ee67e27b639db12dcf69b7fcd70c8699ae8a6f6.boutiques",
+    id="80319d4648d635c07c7e3bce7e954e3b8fe64128.boutiques",
     name="rbox",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def rbox(
     """
     Generate various point distributions. Default is random in cube.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/rbox.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         number_points: Number of random points in cube, lens, spiral, sphere or\

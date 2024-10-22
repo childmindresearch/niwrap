@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 KELLY_KAPOWSKI_METADATA = Metadata(
-    id="05022c7b295fc399399da18d1e6de86249a3be96.boutiques",
+    id="8cf867e1228b8566e73919051e43b36f34a80495.boutiques",
     name="KellyKapowski",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -50,7 +50,7 @@ def kelly_kapowski(
     in S. R. Das, B. B. Avants, M. Grossman, and J. C. Gee, Registration based
     cortical thickness measurement, Neuroimage 2009, 45:867--879.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

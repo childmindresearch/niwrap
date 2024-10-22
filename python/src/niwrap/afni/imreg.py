@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMREG_METADATA = Metadata(
-    id="9eb7e2d86ad67ffd9b28c2a3619d573a48d1975b.boutiques",
+    id="4ed217ec6db0c1ed0ca85263b118a5554ebb437a.boutiques",
     name="imreg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,9 +56,9 @@ def imreg(
     """
     Registers each 2D image in 'image_sequence' to 'base_image'.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/imreg.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         base_image: Base image or method to determine base image ('+AVER' or\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_PLOT_METADATA = Metadata(
-    id="ee3809c794c025e6afc233b6b31feb3dc2f252a5.boutiques",
+    id="835b2be5867d0c6f836c5a7e863478bb41e44193.boutiques",
     name="possum_plot",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,9 +32,9 @@ def possum_plot(
     """
     Tool for plotting results from POSSUM simulations in FSL.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input file from POSSUM simulation (e.g.\

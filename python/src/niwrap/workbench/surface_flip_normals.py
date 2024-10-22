@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_FLIP_NORMALS_METADATA = Metadata(
-    id="4435a2734d7103caa7988672c849cb2be5c821f0.boutiques",
+    id="8ebc2567b3fd0b04bbf4b012612a19b03950dfc1.boutiques",
     name="surface-flip-normals",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -39,7 +39,9 @@ def surface_flip_normals(
     inwards, which may have display problems. Using this command will solve that
     problem.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to flip the normals of.

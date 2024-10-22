@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NIFTI_TOOL_METADATA = Metadata(
-    id="a0155d8ed61bef27efd10999555ea0606dd5ae10.boutiques",
+    id="38a2d9449adee7d6233168e977d87d95385ebe37.boutiques",
     name="nifti_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def nifti_tool(
     """
     Display, modify, or compare nifti headers.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/nifti_tool.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         action: Action type that defines what nifti_tool will do.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_LABEL_IMPORT_METADATA = Metadata(
-    id="afdb9c939dd9c4bb4086e13619d8dd021a06ab58.boutiques",
+    id="513e1bd59f75cd4c5f07261a35800af9846d7e17.boutiques",
     name="volume-label-import",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -63,7 +63,9 @@ def volume_label_import(
     values encountered that are not mentioned in the list file, specify
     -discard-others to instead set these values to the "unlabeled" key.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         input_: the input volume file.

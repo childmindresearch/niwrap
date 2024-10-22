@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GEN_GROUP_COMMAND_METADATA = Metadata(
-    id="67823690df42bd729e9d7cec82ad20a89992b5be.boutiques",
+    id="84476d7f3e352594b93819bece78045452309dbd.boutiques",
     name="gen_group_command",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,10 +43,9 @@ def gen_group_command(
     Generate group analysis command scripts by parsing wildcard-based lists of input
     datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_group_command.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         command_name: Resulting command, such as 3dttest++.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ALLINEATE_METADATA = Metadata(
-    id="b58343e3d9d84ea59377cc89670444e7a204694b.boutiques",
+    id="9e9b34eca4cf79e9ab56b274a89a3cd8dc932bed.boutiques",
     name="3dAllineate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,9 +51,9 @@ def v_3d_allineate(
     Program to align one dataset (the 'source') to a 'base' dataset using an affine
     (matrix) transformation of space.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAllineate.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         source: Source dataset file.

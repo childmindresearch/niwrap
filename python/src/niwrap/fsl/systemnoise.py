@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SYSTEMNOISE_METADATA = Metadata(
-    id="715593f2b0b5de50543fbec32315f71ba6d87293.boutiques",
+    id="36a85b7eef51fcd88e563eb598c362e64e44f5c2.boutiques",
     name="systemnoise",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,9 +36,9 @@ def systemnoise(
     """
     Tool for adding system noise to a given signal using FSL's utilities.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SystemNoise
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_signal: Input signal (possum output matrix).

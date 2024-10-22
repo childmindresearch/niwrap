@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ZTOP_METADATA = Metadata(
-    id="e4c30ece98812c62571d5c880c34f6fd9b46b17f.boutiques",
+    id="a9653e7f5a03ea32202785d7e6150cf96e61896b.boutiques",
     name="ztop",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -31,6 +31,10 @@ def ztop(
 ) -> ZtopOutputs:
     """
     Converts a z-score to a p-value.
+    
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         z_score: Input z-score.

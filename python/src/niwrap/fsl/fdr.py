@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FDR_METADATA = Metadata(
-    id="2a1c4a9f5cb4a550c5161a4d2b7bef57ce14f259.boutiques",
+    id="af86793b029f4cfb1ba668877b215ed2fb870f6c.boutiques",
     name="fdr",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -46,7 +46,7 @@ def fdr(
     """
     False Discovery Rate (FDR) correction tool from FSL.
     
-    Author: University of Oxford (Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     

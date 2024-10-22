@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__PURIFY_1_D_METADATA = Metadata(
-    id="813b07d61e5f245a5171c379d84ac0cea433dad8.boutiques",
+    id="f151d6221d30e4482e4401cc1da254b8c8b2ea5b.boutiques",
     name="@Purify_1D",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v__purify_1_d(
     """
     Purifies a series of 1D files for faster I/O into matlab.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Purify_1D.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input 1D dataset files.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICEANIMATE_METADATA = Metadata(
-    id="099af2c06ac54016e7c1bbb4fcea54e66d3d7c2d.boutiques",
+    id="6ddd968c8f0c86e4bd48ca20420dd4f3010929dd.boutiques",
     name="sliceanimate",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,7 +32,9 @@ def sliceanimate(
     """
     A tool for animating slices of an image using whirlgif.
     
-    Author: Various Authors (Hans Dinsen-Hansen, Kevin Kadow, Mark Podlipec)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_file: Output animated GIF file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GET_AFNI_MODEL_PRF_METADATA = Metadata(
-    id="ce67383da69c27834bac935d2fc73a96701ca109.boutiques",
+    id="7a7ca6195cf6a819e836aae382d360e001286f3d.boutiques",
     name="get_afni_model_PRF",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def get_afni_model_prf(
     """
     A tool to get AFNI model parameters assuming a PRF framework.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         amplitude: Amplitude for the AFNI model.

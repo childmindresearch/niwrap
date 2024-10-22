@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_AVERAGE_ROI_CORRELATION_METADATA = Metadata(
-    id="3aded0c49183eb66eb4d545b512477ffb87bfef2.boutiques",
+    id="a8b48d29dcfaeeb1d9fb721d93d523b9c3fef2be.boutiques",
     name="cifti-average-roi-correlation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -105,7 +105,9 @@ def cifti_average_roi_correlation(
     -vol-roi must not be specified. If multiple non-cifti ROI files are
     specified, they must have the same number of columns.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_out: output cifti file.

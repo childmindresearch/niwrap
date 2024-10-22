@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_MSS_METADATA = Metadata(
-    id="121bc2fa9d402372cae4610a91a167c407c33ae3.boutiques",
+    id="ecd8c02c668a204a461a0151f5ebbf32fbc74dce.boutiques",
     name="3dMSS",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def v_3d_mss(
     """
     Voxelwise Multilevel Smoothing Spline (MSS) Analysis.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMSS.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Output file name. For AFNI format, provide prefix only, with no\

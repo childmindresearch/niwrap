@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DTTO_NOISY_DWI_METADATA = Metadata(
-    id="1f9c6cce1e7c92c074084b6f96cfe0a950460a02.boutiques",
+    id="0ef5fe03a8b952b27e737adb59a395ac94790601.boutiques",
     name="3dDTtoNoisyDWI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3d_dtto_noisy_dwi(
     Generate a synthetic set of DWI measures with a given SNR from an AFNI-style DT
     file and a set of gradients. This can be useful for simulations and testing.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDTtoNoisyDWI.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dt_file: Diffusion tensor file with six bricks of DT components ordered\

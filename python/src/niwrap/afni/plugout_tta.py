@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PLUGOUT_TTA_METADATA = Metadata(
-    id="eed1ec955438438ba757fc77c80cf0639ea64da3.boutiques",
+    id="b80e1c976f7ff785517ce071f360a3f1c30742db.boutiques",
     name="plugout_tta",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def plugout_tta(
     coordinates, then drives Netscape to display the closest figures from the
     Talairach-Tournoux atlas.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_tta.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         host: Connect to AFNI running on the specified computer using TCP/IP.\

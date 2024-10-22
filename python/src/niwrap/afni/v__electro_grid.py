@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ELECTRO_GRID_METADATA = Metadata(
-    id="e96e56b5c35e6ba78f495a1428af3488a7379b68.boutiques",
+    id="8d964e948445e43b1078948d73794b4d6f87e09a.boutiques",
     name="@ElectroGrid",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v__electro_grid(
     """
     Creates a mesh representation of an electrode grid for use with SUMA.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ElectroGrid.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         strip: Make an Nx strip (array) of electrodes.

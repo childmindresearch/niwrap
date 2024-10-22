@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__MAKE_LABEL_TABLE_METADATA = Metadata(
-    id="ba501279943e273e6d9544d2c74cff547830260c.boutiques",
+    id="ed5ca968ee83794fda1307ebaf226a6eedebf580.boutiques",
     name="@MakeLabelTable",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -70,10 +70,9 @@ def v__make_label_table(
     """
     Script used to create, modify, and transform label tables.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@MakeLabelTable.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         labeltable: Name of output label table.

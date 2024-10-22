@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AUTOMASK_METADATA = Metadata(
-    id="9ca5b0d76c62816d4beeca149e7b86fd6591865b.boutiques",
+    id="ba13d99448c3e02722a06bb4c0bceafb30dbc0f2.boutiques",
     name="3dAutomask",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_automask(
     """
     Create a brain-only mask of the image using AFNI 3dAutomask command.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dautomask.

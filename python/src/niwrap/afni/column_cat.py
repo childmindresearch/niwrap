@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 COLUMN_CAT_METADATA = Metadata(
-    id="27786d9bfa7cd4bd2749d24c7c42d600bd9a2b10.boutiques",
+    id="3a134043c87d0163c9100245c6b67189ec396c2d.boutiques",
     name="column_cat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def column_cat(
     current line from the input files, all on the same line, separated by a space or
     a user-defined separator.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/column_cat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input files to be concatenated.

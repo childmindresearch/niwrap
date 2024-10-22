@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_INFORMATION_METADATA = Metadata(
-    id="8d554b2b29119c90a684a0c31a5ebeab511ca5b7.boutiques",
+    id="058927b17431214d769419e9557676462439cb8f.boutiques",
     name="surface-information",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -32,7 +32,9 @@ def surface_information(
     Information about surface is displayed including vertices,
     triangles, bounding box, and spacing.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface_file: Surface for which information is displayed.

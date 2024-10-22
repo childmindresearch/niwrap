@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLVAL_METADATA = Metadata(
-    id="6702c1f18f6fd097e54c88bdbc672f8c2039bf7c.boutiques",
+    id="21f0b4d3724668b6e1032f50eae6aef128e41b94.boutiques",
     name="fslval",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -32,9 +32,9 @@ def fslval(
     """
     Tool for printing out header information from NIfTI image files.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_file: Input NIfTI image file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_MACAQUE_DEMO_REST_METADATA = Metadata(
-    id="d8ad8f5bb1d7bc0e2e08e703883ee10fa7da5042.boutiques",
+    id="9be95b5a549f31f4d8ad4607f5e456c7ea549471.boutiques",
     name="Install_MACAQUE_DEMO_REST",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -33,10 +33,9 @@ def install_macaque_demo_rest(
     """
     Installs the demo archive for AFNI's resting state FMRI macaque-analysis demo.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MACAQUE_DEMO_REST.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         wget_flag: Use wget to download archive. Script chooses by default with\

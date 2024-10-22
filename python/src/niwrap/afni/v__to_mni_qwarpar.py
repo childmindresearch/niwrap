@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__TO_MNI_QWARPAR_METADATA = Metadata(
-    id="131654d97cc05cd5094369e35dc295516e4f329d.boutiques",
+    id="04e45eb40a57d1fc1e8c94957315562ee18d3086.boutiques",
     name="@toMNI_Qwarpar",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -31,9 +31,9 @@ def v__to_mni_qwarpar(
     Transforms datasets to MNI space, then collectively re-transforms them to
     produce a refined average.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@toMNI_Qwarpar.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         runner: Command runner.

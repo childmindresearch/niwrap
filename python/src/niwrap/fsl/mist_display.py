@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MIST_DISPLAY_METADATA = Metadata(
-    id="a3dfab2cb8ff840618615f7b6468256b6544fad3.boutiques",
+    id="36223b271b62afdca3dde0aa6e399e6006d5e2da.boutiques",
     name="mist_display",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -30,7 +30,9 @@ def mist_display(
     """
     Tool to show scalars on mesh.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         mode: Mode for displaying scalars on mesh.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_MBM_MARMOSET_METADATA = Metadata(
-    id="eddeae997cf598c4fa8e72be036616de792633f0.boutiques",
+    id="14f5b05c8f2c1029c53c7d8bf0fd25e62762d638.boutiques",
     name="Install_MBM_Marmoset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,10 +30,9 @@ def install_mbm_marmoset(
     """
     Installs the NIH marmoset template and atlases.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MBM_Marmoset.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         wget: Use wget to download archive. Script chooses by default with\

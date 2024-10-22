@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLADD_METADATA = Metadata(
-    id="296fc8cd9627bd33d78bcb09e3e55336f873c087.boutiques",
+    id="c2eec24d849d9e842603815017d8f40a6488cd56.boutiques",
     name="fsladd",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def fsladd(
     """
     Tool for adding or averaging multiple input volumes.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         output_file: Output volume file.

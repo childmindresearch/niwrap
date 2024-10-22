@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_RESAMPLE_METADATA = Metadata(
-    id="5e7483c2072fc7367c47eae4f6c3d880468b38fd.boutiques",
+    id="bf1d1b8e931d8cfd8a8fdaf8e0a27f6ec25c38a3.boutiques",
     name="metric-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -126,7 +126,9 @@ def metric_resample(
     BARYCENTRIC
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         metric_in: the metric file to resample.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GIFTI_CONVERT_METADATA = Metadata(
-    id="818658fd0bfdb72a8ab808a5c9f52e8dcc19f1bc.boutiques",
+    id="05a530082e8bbf552845138de55e26c7acb255ee.boutiques",
     name="gifti-convert",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -38,7 +38,9 @@ def gifti_convert(
     GZIP_BASE64_BINARY
     EXTERNAL_FILE_BINARY.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         gifti_encoding: what the output encoding should be.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ESTIMATE_FIBER_BINGHAMS_METADATA = Metadata(
-    id="4f5460773358994ad9446baaa6f31bc1cd5c7f51.boutiques",
+    id="8a6835ea2f55b0899fb311ae48506db1025bafdb.boutiques",
     name="estimate-fiber-binghams",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -80,7 +80,9 @@ def estimate_fiber_binghams(
     THALAMUS_LEFT
     THALAMUS_RIGHT.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         merged_f1samples: fiber 1 strength samples.

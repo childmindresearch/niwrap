@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSMOOTH_METADATA = Metadata(
-    id="651ac825a63303df58038dd0e5e23199bf6814bb.boutiques",
+    id="b237186199e1da14b990e2891bc27f1f59ceede0.boutiques",
     name="3dTsmooth",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,9 +45,9 @@ def v_3d_tsmooth(
     Smooths each voxel time series in a 3D+time dataset and produces as output a new
     3D+time dataset (e.g., lowpass filter in time).
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTsmooth.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: The input 3D+time dataset.

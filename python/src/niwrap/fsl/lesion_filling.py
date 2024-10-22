@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LESION_FILLING_METADATA = Metadata(
-    id="78bb5280744f758c0c0f77125c36ae42ccd208cb.boutiques",
+    id="ce8518e0f9f1ee85b54c8d19623c94ff807ef951.boutiques",
     name="lesion_filling",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,9 +36,9 @@ def lesion_filling(
     """
     Lesion filling tool as part of FSL.
     
-    Author: University of Oxford (Mark Jenkinson & Taylor Hanayik)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/LESION_FILLING
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input image filename (e.g., T1w image).

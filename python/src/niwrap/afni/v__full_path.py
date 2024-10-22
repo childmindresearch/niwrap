@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FULL_PATH_METADATA = Metadata(
-    id="55bb0db57c89c2fd7e600f678ea6686fbb3e35f7.boutiques",
+    id="8ecdd08202531bf20b252c36020ea453dc500e38.boutiques",
     name="@FullPath",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,9 +29,9 @@ def v__full_path(
     """
     Changes relative path to absolute one.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@FullPath.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_file: Input file with relative path.

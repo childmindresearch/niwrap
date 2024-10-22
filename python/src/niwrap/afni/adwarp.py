@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADWARP_METADATA = Metadata(
-    id="6eb2fb61fb45950fe888ea103e9b10e689eec21e.boutiques",
+    id="22410e65c1361d9cb6b13a0fd56cc72bae69129b.boutiques",
     name="adwarp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -42,9 +42,9 @@ def adwarp(
     Resamples a 'data parent' dataset to the grid defined by an 'anat parent'
     dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/adwarp.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         apar: Set the anat parent dataset (nonoptional).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_DSET_METADATA = Metadata(
-    id="6bd1deb568ef762ac56d38696eaf539412de3cda.boutiques",
+    id="844cbaec7e78b76addf8794c6d75de087e117e30.boutiques",
     name="ConvertDset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,9 +51,9 @@ def convert_dset(
     """
     Converts a surface dataset from one format to another.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvertDset.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         output_type: Type of output datasets.

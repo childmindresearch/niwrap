@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SHVIEW_METADATA = Metadata(
-    id="486abeae45db60cfe57dccc395b48d4d93c2c1b2.boutiques",
+    id="d9054786b59c85b33741dc471a883e6fe40a2205.boutiques",
     name="shview",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -73,9 +73,9 @@ def shview(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/shview.html
+    URL: https://www.mrtrix.org/
     
     Args:
         response: assume SH coefficients file only contains m=0 terms (zonal\

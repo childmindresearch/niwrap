@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_WINSOR_METADATA = Metadata(
-    id="14eef9e3bbd704e0f76d5d49b3f5be8c610834d1.boutiques",
+    id="9dc1eb891036fda34b014deb117eea532cef4f42.boutiques",
     name="3dWinsor",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -41,9 +41,9 @@ def v_3d_winsor(
     """
     Apply a 3D 'Winsorizing' filter to a short-valued dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWinsor.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset to apply the filter on.

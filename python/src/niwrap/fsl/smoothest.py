@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SMOOTHEST_METADATA = Metadata(
-    id="fb498b95a3c31c8c8d35f61d5b89cff969e10b95.boutiques",
+    id="29c18d0b5a935db1e685f16ca2717e76aaedefbb.boutiques",
     name="smoothest",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,9 +33,9 @@ def smoothest(
     """
     Tool to estimate smoothness of data from FSL.
     
-    Author: University of Oxford (Dave Flitney and Mark Jenkinson)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Smoothest
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         mask: Brain mask volume.

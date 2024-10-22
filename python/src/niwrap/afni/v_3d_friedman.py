@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_FRIEDMAN_METADATA = Metadata(
-    id="50b5a51e373a17a7d68d2d9d197174d06b3db11b.boutiques",
+    id="39739dbe60149a8c929fe468d57b937cc221945c.boutiques",
     name="3dFriedman",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_friedman(
     Performs nonparametric Friedman test for randomized complete block design
     experiments.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFriedman.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         levels: Number of treatments.

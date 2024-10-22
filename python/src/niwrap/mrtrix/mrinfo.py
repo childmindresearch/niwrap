@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRINFO_METADATA = Metadata(
-    id="1a85852eaad4b28e7ec279a82e8e478eaa7037b1.boutiques",
+    id="640aec1bccae29356c89f4af6bea995bd8e6eee5.boutiques",
     name="mrinfo",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -337,10 +337,9 @@ def mrinfo(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com) and Robert E. Smith
-    (robert.smith@florey.edu.au)
+    Author: MRTrix3 Developers
     
-    URL: https://mrtrix.readthedocs.io/en/latest/reference/commands/mrinfo.html
+    URL: https://www.mrtrix.org/
     
     Args:
         image: the input image(s).

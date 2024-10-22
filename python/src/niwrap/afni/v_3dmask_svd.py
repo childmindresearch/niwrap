@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DMASK_SVD_METADATA = Metadata(
-    id="4c1694efeb80a10fd4c315f78b980a80336e0952.boutiques",
+    id="35a41f546084a553fd9cc0738b19f404d7380c06.boutiques",
     name="3dmaskSVD",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def v_3dmask_svd(
     Computes the principal singular vector of the time series vectors extracted from
     the input dataset over the input mask.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmaskSVD.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset.

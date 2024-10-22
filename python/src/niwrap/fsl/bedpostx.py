@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BEDPOSTX_METADATA = Metadata(
-    id="e158f79c10af9acc81b8a87118987a2fd47fc3ec.boutiques",
+    id="d478c7c0cdee221ca862e357c744bca84b03a44a.boutiques",
     name="bedpostx",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -41,9 +41,9 @@ def bedpostx(
     Bayesian Estimation of Diffusion Parameters Obtained using Sampling Techniques
     (BEDPOST) for modeling multiple fibers per voxel.
     
-    Author: FMRIB Centre
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#BEDPOSTX
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         subject_dir: Input subject directory which contains bvals, bvecs, data,\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_ALADIN_METADATA = Metadata(
-    id="1227cc0a0d5e046b2918bf100a840232317434d0.boutiques",
+    id="68d08c449f4515e60a9e0fff1ea1167acecf02b3.boutiques",
     name="reg_aladin",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -44,7 +44,7 @@ def reg_aladin(
     Block Matching algorithm for global registration based on "Reconstructing a 3D
     structure from serial histological sections", Image and Vision Computing, 2001.
     
-    Author: Marc Modat, Pankaj Daga
+    Author: NiftyReg Developers
     
     URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     

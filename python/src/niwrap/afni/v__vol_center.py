@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__VOL_CENTER_METADATA = Metadata(
-    id="9937026b44a9f1b535cc79485b75a3fad96b7a74.boutiques",
+    id="4ce13662130110b3fd50b4a405a5d296faf47380.boutiques",
     name="@VolCenter",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v__vol_center(
     """
     Tool to return the center of volume for a given dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@VolCenter.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset: Input volume dataset.

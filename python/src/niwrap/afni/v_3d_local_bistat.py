@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_BISTAT_METADATA = Metadata(
-    id="b85d3da1398fef0f6b5bbd999047bab426018b83.boutiques",
+    id="5b350e2de3b46f339f4193bdf88828d0f13c5833.boutiques",
     name="3dLocalBistat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,9 +45,9 @@ def v_3d_local_bistat(
     Compute statistics between 2 datasets at each voxel based on a local
     neighborhood.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalBistat.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         nbhd: Specifies the neighborhood around each voxel for statistics\

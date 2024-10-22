@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INSTALL_MEICA_DEMO_METADATA = Metadata(
-    id="6f730f1b23805b68435905ad6cd0b5998f5edd5a.boutiques",
+    id="96c59e8b1a485e904076505707782503d1da62de.boutiques",
     name="Install_MEICA_Demo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def install_meica_demo(
     Installs the demo archive for Prantik Kundu MEICA denoising tools. After the
     archive is downloaded and unpacked, see its README.txt for details.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_MEICA_Demo.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         demo_archive: Demo archive to install (e.g. meica_demo.zip).

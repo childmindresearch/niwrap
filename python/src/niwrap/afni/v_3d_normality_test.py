@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NORMALITY_TEST_METADATA = Metadata(
-    id="0c4fc6300ae871742266f64fa61a03d97788ba70.boutiques",
+    id="4b9b077168b2f91f1b97f263797faaf18f2fa6ec.boutiques",
     name="3dNormalityTest",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,10 +35,9 @@ def v_3d_normality_test(
     This program tests the input values at each voxel for normality using the
     Anderson-Darling method.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNormalityTest.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Specifies the input dataset.

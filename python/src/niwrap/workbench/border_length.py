@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BORDER_LENGTH_METADATA = Metadata(
-    id="ce4d7fc98ecedfeee917036d8fd0ab85e22f1fd4.boutiques",
+    id="4341a16a7b71616f3b737a9a269e239c561d9e83.boutiques",
     name="border-length",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -41,7 +41,9 @@ def border_length(
     meaningfully measurable on individual surfaces, it is only an approximate
     correction for the reduction in structure of a group average surface.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         border: the input border file.

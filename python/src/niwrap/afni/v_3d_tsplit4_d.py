@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSPLIT4_D_METADATA = Metadata(
-    id="5a04daac3d657703ec64cbb67c939f7d6d500d88.boutiques",
+    id="501ddadcbbb7f97f47c1b740f0aae3aed7a2a8c3.boutiques",
     name="3dTsplit4D",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,9 +34,9 @@ def v_3d_tsplit4_d(
     """
     Convert a 3D+time dataset into multiple 3D single-brick files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTsplit4D.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         prefix: Prefix of the output datasets (e.g., out/epi).

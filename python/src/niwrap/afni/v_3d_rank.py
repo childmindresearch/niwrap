@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_RANK_METADATA = Metadata(
-    id="57ff9c12b996e33fc3f13d508aa4bc4e55ce74fd.boutiques",
+    id="f24b152482b10fa0b6611d0411ec1b16078a8ea8.boutiques",
     name="3dRank",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -40,9 +40,9 @@ def v_3d_rank(
     Replaces voxel values by their rank in the set of values collected over all
     voxels in all input datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRank.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_datasets: Input datasets. Acceptable data types are: byte, short,\

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_ROIS_TO_BORDER_METADATA = Metadata(
-    id="8d400be39afd206112c3a44682f93602ade1198f.boutiques",
+    id="2e203685c08f322e892f2ac0edec363a2f646c26.boutiques",
     name="metric-rois-to-border",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -40,7 +40,9 @@ def metric_rois_to_border(
     the ROI, and draws borders through them. By default, this is done on all
     columns in the input file, using the map name as the name for the border.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to use for neighbor information.

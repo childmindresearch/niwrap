@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_TILED_MOSAIC_METADATA = Metadata(
-    id="b1a344f0103b54b206d7442556f087aa7dd67b27.boutiques",
+    id="62ba9b499dd56904d0e9344bc41632c426e55fc9.boutiques",
     name="CreateTiledMosaic",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -42,7 +42,7 @@ def create_tiled_mosaic(
     """
     Render a 3-D image volume with optional Rgb overlay.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

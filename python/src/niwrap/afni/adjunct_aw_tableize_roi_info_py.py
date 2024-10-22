@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_AW_TABLEIZE_ROI_INFO_PY_METADATA = Metadata(
-    id="f3b1d8f86fae63b736e5c4974abc3020bd5bced1.boutiques",
+    id="ad673b97416cc9429e34e8b128b20a2efe9f92f2.boutiques",
     name="adjunct_aw_tableize_roi_info.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -37,10 +37,9 @@ def adjunct_aw_tableize_roi_info_py(
     A simple helper function for the fat_proc scripts that generates a text file
     containing ROI count/size information based on provided atlases and masks.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_aw_tableize_roi_info.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         output_file: Output file name.

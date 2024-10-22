@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NIML_FEEDME_METADATA = Metadata(
-    id="7f483849f0f83a7dd1b4a3421d219ca448a0fa5f.boutiques",
+    id="fb1cdc6646a98c2a55bf5ec641a55cf82a23e490.boutiques",
     name="niml_feedme",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def niml_feedme(
     """
     Sends volumes from the dataset to AFNI via the NIML socket interface.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/niml_feedme.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: Input dataset to be sent to AFNI.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_TFCE_METADATA = Metadata(
-    id="2eac9b3d3a169c659c733896823193bf97d6213d.boutiques",
+    id="e8323f7101ef5224b4143a5f87536e7600870d30.boutiques",
     name="metric-tfce",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -122,7 +122,9 @@ def metric_tfce(
     and localisation in cluster inference." Neuroimage. 2009 Jan 1;44(1):83-98.
     PMID: 18501637.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to compute on.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DRETROICOR_METADATA = Metadata(
-    id="a27ef36b6b1d7b90090bd7a13abba8443b822898.boutiques",
+    id="0b8e3bbd9eaa6f16498a0393158cdcd367502347.boutiques",
     name="3dretroicor",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -44,9 +44,9 @@ def v_3dretroicor(
     Performs Retrospective Image Correction for physiological motion effects using a
     modified RETROICOR algorithm.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dretroicor.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dataset: 3D+time dataset to process.

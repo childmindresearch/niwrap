@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FLIRT_METADATA = Metadata(
-    id="e0de8af14ddd7cd44046822c27ab00b478eb985e.boutiques",
+    id="3c4cc6103732c2c7c75152692aba3304b679ec12.boutiques",
     name="FLIRT",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -77,9 +77,9 @@ def flirt(
     accurate tool for linear (affine) intra- and inter-modal brain image
     registration.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Input file.

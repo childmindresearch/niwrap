@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SWAP_DIMENSIONS_METADATA = Metadata(
-    id="13798b0ac4d3e3a1706fe5ab9d0007d0e63abab6.boutiques",
+    id="a5cbd10dcc75221d3974745440c436de7792a18c.boutiques",
     name="SwapDimensions",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -42,9 +42,9 @@ def swap_dimensions(
     radiological/neurological convention) will be maintained as long as no warning
     is printed.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         in_file: Input image to swap dimensions of.

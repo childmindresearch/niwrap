@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__DJUNCT_ANONYMIZE_METADATA = Metadata(
-    id="9a450a0287ce14449d13fa7c3823eea8007f3332.boutiques",
+    id="08092598b752b9fd2011da8ce44ca2cb1929ac90.boutiques",
     name="@djunct_anonymize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,10 +32,9 @@ def v__djunct_anonymize(
     """
     Helper program to anonymize files.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_anonymize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_: Input dataset.

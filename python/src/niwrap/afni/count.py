@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 COUNT_METADATA = Metadata(
-    id="bdf98b2e74fd41200d8349408e13afe54ff61c2a.boutiques",
+    id="d518eb3cafe76c3d60b5e88beee05f05e59c9422.boutiques",
     name="count",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,9 +43,9 @@ def count(
     Numbered copies generator with custom format support and random sequence
     options.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/count.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         bot: Starting number or character.

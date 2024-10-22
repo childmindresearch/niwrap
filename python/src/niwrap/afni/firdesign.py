@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIRDESIGN_METADATA = Metadata(
-    id="58685f4256348e8cd595afc832ef014b8d4fab18.boutiques",
+    id="a74504adf0b49ec5a0615bc609bf67d8b73823f0.boutiques",
     name="FIRdesign",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def firdesign(
     filter; results are written to stdout in an unadorned (no header) column of
     numbers.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/FIRdesign.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         fbot: Lowest frequency in the pass band.

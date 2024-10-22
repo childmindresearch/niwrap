@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_CORTICAL_THICKNESS_SH_METADATA = Metadata(
-    id="0a10b7e23a3c9e1d4243bf894e5f437502efe6e5.boutiques",
+    id="a3debb9e7548d8b061c55b2110e40e13a1ee68ec.boutiques",
     name="antsCorticalThickness.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -44,7 +44,7 @@ def ants_cortical_thickness_sh(
     brain n-tissue segmentation, cortical thickness estimation, and optional
     registration to a template.
     
-    Author: ANTs developers
+    Author: ANTs Developers
     
     URL: https://github.com/ANTsX/ANTs
     

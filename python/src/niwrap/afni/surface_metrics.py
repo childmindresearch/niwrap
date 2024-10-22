@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_METRICS_METADATA = Metadata(
-    id="c59049c739f9ba7662814f7553a8e090a7ea63aa.boutiques",
+    id="334f413c508897323e181314a6d4e06fdc8dc4a4.boutiques",
     name="SurfaceMetrics",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,9 +51,9 @@ def surface_metrics(
     """
     Outputs information about a surface's mesh.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfaceMetrics.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         surf1: Specifies the input surface.

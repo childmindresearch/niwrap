@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLASCII2IMG_METADATA = Metadata(
-    id="05f4f1fe8989e2b97f3ccc41cb0004a9c7d240be.boutiques",
+    id="28cf812071a28856007709757d196563ef9269f2.boutiques",
     name="fslascii2img",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -40,9 +40,9 @@ def fslascii2img(
     """
     Convert data from ASCII format to NIfTI format.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input ASCII file.

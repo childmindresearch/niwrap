@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_TRANSFORM_METADATA = Metadata(
-    id="6c64fbb5ab15f44e615628373fe6cb0c895c027d.boutiques",
+    id="b16a633cb3977926bda4e2d62bda15bc648e14be.boutiques",
     name="reg_transform",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -57,9 +57,9 @@ def reg_transform(
     including control point to deformation conversion, composition of
     transformations, and converting between deformation and displacement fields.
     
-    Author: Marc Modat
+    Author: NiftyReg Developers
     
-    URL: https://example.com/reg_transform_docs
+    URL: http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg
     
     Args:
         reference_image: Filename of the reference image.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_GEN_FEATURE_DIST_METADATA = Metadata(
-    id="199bdb69edfe9e06ea3902546ede4dde87cb2831.boutiques",
+    id="da95cd4ad99ed473c7cd10c18b299096e78c2557.boutiques",
     name="3dGenFeatureDist",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -38,10 +38,9 @@ def v_3d_gen_feature_dist(
     """
     3dGenFeatureDist produces histogram volume (hives) from input data.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGenFeatureDist.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         features_string: FEATURES_STRING is a semicolon delimited string of\

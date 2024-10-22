@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICESMASK_METADATA = Metadata(
-    id="640ba5ea73920106e5860ec2243290d406631e43.boutiques",
+    id="72d02679c65afccc9554c983c2425bd1cd8b4d12.boutiques",
     name="slicesmask",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -33,7 +33,9 @@ def slicesmask(
     """
     Tool for masking slices from an image using a mask.
     
-    Author: Unknown
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         image: Input image file.

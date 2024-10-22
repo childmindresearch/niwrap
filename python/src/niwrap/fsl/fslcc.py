@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLCC_METADATA = Metadata(
-    id="fdac683ed1b6cc2dfb8d023926091ca64a782436.boutiques",
+    id="c6343c6ed9736c731fc4f97d3df86ce3e8d443ba.boutiques",
     name="fslcc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -35,9 +35,9 @@ def fslcc(
     """
     Cross-correlate two time-series, timepoint by timepoint.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         first_input: First input time-series.

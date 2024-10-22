@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SKULL_STRIP_METADATA = Metadata(
-    id="46b24c514a7b2ea417731ff7f0aefe836541a429.boutiques",
+    id="9ff59b0414e6f85087ff55c31a85f270361e0af9.boutiques",
     name="3dSkullStrip",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def v_3d_skull_strip(
     A program to extract the brain from surrounding tissue from MRI T1-weighted
     images.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSkullStrip.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         in_file: Input file to 3dskullstrip.

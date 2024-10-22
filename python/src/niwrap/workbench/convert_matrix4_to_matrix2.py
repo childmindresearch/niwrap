@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_MATRIX4_TO_MATRIX2_METADATA = Metadata(
-    id="ff3f9f755a9674f89a4af46ef4df75239803f74f.boutiques",
+    id="aafdb1925827a58e699fa2c5b92de5075402b4a9.boutiques",
     name="convert-matrix4-to-matrix2",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -111,7 +111,9 @@ def convert_matrix4_to_matrix2(
     approximate fractions, so the output of -individual-fibers will contain
     nonintegers.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         matrix4_wbsparse: a wbsparse matrix4 file.

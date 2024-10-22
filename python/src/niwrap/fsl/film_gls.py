@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FILM_GLS_METADATA = Metadata(
-    id="13325ae4e46130f047acd6b312c79334f8766b7b.boutiques",
+    id="5c7bd7c642bfdd25c9d2df96ff41f3e2fe36811a.boutiques",
     name="film_gls",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -57,9 +57,9 @@ def film_gls(
     """
     General Linear Model fitting with autocorrelation in FMRI.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FILM
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         infile: Input data file (NIFTI for volumetric, GIFTI for surface).

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_FIRST_ALL_METADATA = Metadata(
-    id="3ff68b6fa9e7b0f99ef830ac8b11ae006c1452c2.boutiques",
+    id="1bbbdc8ac9d9fa07c6d15f3e9b3e8972075d91a3.boutiques",
     name="run_first_all",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -40,9 +40,9 @@ def run_first_all(
     FIRST - FMRIB's Integrated Registration and Segmentation Tool for subcortical
     brain structures.
     
-    Author: FMRIB Software Library (FSL)
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         input_image: Input image file.

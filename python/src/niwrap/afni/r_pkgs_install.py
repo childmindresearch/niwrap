@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 R_PKGS_INSTALL_METADATA = Metadata(
-    id="e944ace6db297dbe3c8e4b9fe18b2ec5ef707881.boutiques",
+    id="2bb05babb0a5ddfa993973f35b1e4cabcb308e30.boutiques",
     name="rPkgsInstall",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def r_pkgs_install(
     """
     A tool for installing, checking, updating, or removing R packages for AFNI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/rPkgsInstall.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         packages: List of R packages to install, update, or remove. Use 'ALL'\

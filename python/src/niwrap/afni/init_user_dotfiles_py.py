@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INIT_USER_DOTFILES_PY_METADATA = Metadata(
-    id="46bf1c58977e7bced1c1fbd2f6c4642aa3fe2ecd.boutiques",
+    id="5fba872c5a2b8244bb6731f68100cd2208946051.boutiques",
     name="init_user_dotfiles.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -46,10 +46,9 @@ def init_user_dotfiles_py(
     Initialize or evaluate user dot files (.cshrc, .bashrc, ...) for system
     settings.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/init_user_dotfiles.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         help_: Show this help.

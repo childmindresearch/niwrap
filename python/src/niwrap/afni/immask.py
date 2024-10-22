@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMMASK_METADATA = Metadata(
-    id="736fb27ce6a63e852c9e158e0972076796e4fb0a.boutiques",
+    id="7d98077e608ff5474eccfea876c99ed053c8f0cb.boutiques",
     name="immask",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -35,9 +35,9 @@ def immask(
     """
     Masks the input image based on specified criteria and produces the output image.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/immask.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_image: Input image to be masked.

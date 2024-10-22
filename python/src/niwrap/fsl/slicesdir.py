@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICESDIR_METADATA = Metadata(
-    id="d0d33e48a4c39100315cb0c896f14f3ba8c38489.boutiques",
+    id="f9f4f4713d5e38cd7a81f0e511839ec4001a5b5d.boutiques",
     name="slicesdir",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -34,9 +34,9 @@ def slicesdir(
     slicesdir generates a directory containing orthogonal slices through a set of
     images.
     
-    Author: FMRIB Centre, University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#SLICESDIR
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         filelist: List of image files to process.

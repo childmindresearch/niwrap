@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GIFTI_TOOL_METADATA = Metadata(
-    id="9b1d31e795e8536d906743811a53fef66c1b76eb.boutiques",
+    id="4946ede9cc84ec22d01a494ff249ccac8104538c.boutiques",
     name="gifti_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,9 +52,9 @@ def gifti_tool(
     """
     Tool for creating, displaying, modifying, or comparing GIFTI datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/gifti_tool.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         infile: Specify one or more GIFTI datasets as input.

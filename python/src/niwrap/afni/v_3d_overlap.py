@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_OVERLAP_METADATA = Metadata(
-    id="c493562e25ba20b204f5212fbc903c89024431d5.boutiques",
+    id="7c4a09783f392121942ba5ea273c38f8724e341b.boutiques",
     name="3dOverlap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def v_3d_overlap(
     """
     Counts the number of voxels that are nonzero in all input datasets.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dOverlap.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         runner: Command runner.

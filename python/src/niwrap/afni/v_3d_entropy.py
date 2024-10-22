@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ENTROPY_METADATA = Metadata(
-    id="ba0b400208b43652def46a212186d923d64d996a.boutiques",
+    id="17b92837a5e015c4028579e4399a89934e214cb1.boutiques",
     name="3dEntropy",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -30,9 +30,9 @@ def v_3d_entropy(
     """
     Computes entropy for a 3D dataset.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dEntropy.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset (stored as 16 bit shorts).

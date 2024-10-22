@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCKGLOBAL_METADATA = Metadata(
-    id="9a2dbc3f27bab5e95b5061f6292c2ac390832c5c.boutiques",
+    id="83ed2ed5059d206686d68bca5253e7191f588b5d.boutiques",
     name="tckglobal",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -154,10 +154,9 @@ def tckglobal(
     Maes, F. Global tractography of multi-shell diffusion-weighted imaging data
     using a multi-tissue model. NeuroImage, 2015, 123, 89-101.
     
-    Author: Daan Christiaens (daan.christiaens@kcl.ac.uk)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/tckglobal.html
+    URL: https://www.mrtrix.org/
     
     Args:
         source: the image containing the raw DWI data.

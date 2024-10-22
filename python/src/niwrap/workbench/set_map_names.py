@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SET_MAP_NAMES_METADATA = Metadata(
-    id="b84e64ed99a4d53eca7499a7b67fae1ad3f6a9af.boutiques",
+    id="abf064eeca7b946476da65d693798937bf8af804.boutiques",
     name="set-map-names",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -66,7 +66,9 @@ def set_map_names(
     -from-data-file, or at least one -map option. The three option types are
     mutually exclusive.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         data_file: the file to set the map names of.

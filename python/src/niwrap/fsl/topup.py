@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TOPUP_METADATA = Metadata(
-    id="d2018874d8c39fcdb4d692dff1529e2ea871e2a5.boutiques",
+    id="838cc836a85c648c3cb3ec86450f96b407116377.boutiques",
     name="topup",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -62,7 +62,9 @@ def topup(
     topup is part of FSL and is used to estimate and correct for
     susceptibility-induced distortions in echo planar imaging (EPI) data.
     
-    Author: University of Oxford
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         imain: Name of 4D file with images.

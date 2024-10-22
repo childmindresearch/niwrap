@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IM2NIML_METADATA = Metadata(
-    id="9364e714dd8ceb0f4963c1355441d90a0ee17f46.boutiques",
+    id="3c92592db9d506b4424ac028f92405630d2fda18.boutiques",
     name="im2niml",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -32,9 +32,9 @@ def im2niml(
     Converts the input image(s) to a text-based NIML element and writes the result
     to stdout.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/im2niml.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_files: Input image file(s) (e.g. image.jpg).

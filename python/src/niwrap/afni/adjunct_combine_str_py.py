@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_COMBINE_STR_PY_METADATA = Metadata(
-    id="5bc025c6de9a8249da89efd8216e74953b3f77ce.boutiques",
+    id="092009815bc3192163a1f0e35bd36dffeea8d4f3.boutiques",
     name="adjunct_combine_str.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -34,10 +34,9 @@ def adjunct_combine_str_py(
     A simple helper function for fat_proc* scripts that processes string selectors
     and outputs a new string selector.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL:
-    https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_combine_str.py.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         output_file: An output file name.

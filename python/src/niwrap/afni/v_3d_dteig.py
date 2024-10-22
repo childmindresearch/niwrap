@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DTEIG_METADATA = Metadata(
-    id="9d65af6b89493c3e3ad9a7df287cf8119c11fc9f.boutiques",
+    id="5c446bf21775547faf60f0fa1576969e859e8381.boutiques",
     name="3dDTeig",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -43,9 +43,9 @@ def v_3d_dteig(
     """
     Computes eigenvalues and eigenvectors for an input dataset of tensors.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDTeig.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         input_dataset: Input dataset of Dxx, Dxy, Dyy, Dxz, Dyz, Dzz sub-bricks.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FILE_INFORMATION_METADATA = Metadata(
-    id="f864ba42ad5e68fac32ba7e06c7a8d85190c2331.boutiques",
+    id="4f3efe631f7525173d2f9ead98a75886c062437a.boutiques",
     name="file-information",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -82,7 +82,9 @@ def file_information(
     Volume: nii, nii.gz
     .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         data_file: data file.

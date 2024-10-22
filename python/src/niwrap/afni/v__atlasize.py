@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ATLASIZE_METADATA = Metadata(
-    id="bc4f70e692b7a16b78622accb0dbe28ae536eace.boutiques",
+    id="f51d59e8bc780f981002a3321567e77ca2e2ade3.boutiques",
     name="@Atlasize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -48,9 +48,9 @@ def v__atlasize(
     """
     Script to turn a volumetric dataset into an AFNI atlas.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Atlasize.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         dset: Make DSET an atlas.

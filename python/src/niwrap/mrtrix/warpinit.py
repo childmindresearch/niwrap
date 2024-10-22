@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WARPINIT_METADATA = Metadata(
-    id="0cf983822e74a7718795e3b8f63a7f4ed0c42808.boutiques",
+    id="4b6c806f701cb5bc6b23937491e0dab59feb77ec.boutiques",
     name="warpinit",
     package="mrtrix",
     container_image_tag="mrtrix3/mrtrix3:3.0.4",
@@ -87,10 +87,9 @@ def warpinit(
     
     .
     
-    Author: J-Donald Tournier (jdtournier@gmail.com)
+    Author: MRTrix3 Developers
     
-    URL:
-    https://mrtrix.readthedocs.io/en/latest/reference/commands/warpinit.html
+    URL: https://www.mrtrix.org/
     
     Args:
         template: the input template image.

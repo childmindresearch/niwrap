@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPHARM_DECO_METADATA = Metadata(
-    id="51591fb6b3a75858245dc4c93223e8af9df669a7.boutiques",
+    id="6d15519a5c1313333c559fb924ae8964f9b076e5.boutiques",
     name="SpharmDeco",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -36,9 +36,9 @@ def spharm_deco(
     """
     Spherical Harmonics Decomposition of a surface's coordinates or data.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/SpharmDeco.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         debug: Debug levels (1-3).

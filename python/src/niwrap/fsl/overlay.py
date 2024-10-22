@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OVERLAY_METADATA = Metadata(
-    id="3fca46e12ea6d49606719aa3e117622f94b69e1d.boutiques",
+    id="941f4186a659ea9e59d587524908bacf26b7c613.boutiques",
     name="Overlay",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -43,7 +43,9 @@ def overlay(
     Use FSL's overlay command to combine background and statistical images into one
     volume.
     
-    Author: Nipype (interface)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         background_image: Image to use as background.

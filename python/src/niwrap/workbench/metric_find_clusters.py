@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_FIND_CLUSTERS_METADATA = Metadata(
-    id="f1ed2685fac54f7a72182b79108c33d27b255c24.boutiques",
+    id="5bfb24c9f6b693315454fc4ff224b769c7c3f6b9.boutiques",
     name="metric-find-clusters",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -51,7 +51,9 @@ def metric_find_clusters(
     the threshold. To apply this as a mask to the data, or to do more
     complicated thresholding, see -metric-math.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         surface: the surface to compute on.

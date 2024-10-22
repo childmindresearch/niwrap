@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BORDER_FILE_EXPORT_TO_CARET5_METADATA = Metadata(
-    id="9ffbf7cf99c11004cb0ea971687cc61eb7a32eec.boutiques",
+    id="b3d3242dff6c74222d893494d40c2c367153290f.boutiques",
     name="border-file-export-to-caret5",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -82,7 +82,9 @@ def border_file_export_to_caret5(
     When writing new files, this command will overwrite a file with the same
     name. .
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         border_file: workbench border file.

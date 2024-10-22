@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SMOOTH_ESTIMATE_METADATA = Metadata(
-    id="db35730728549b322353980c7c4f80e9b60ca48e.boutiques",
+    id="b2965b10b24c0c3b18cd3bf04968e6f924850375.boutiques",
     name="SmoothEstimate",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -36,7 +36,9 @@ def smooth_estimate(
     """
     Estimates the smoothness of an image.
     
-    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
+    Author: FMRIB Analysis Group, University of Oxford
+    
+    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
         mask_file: Brain mask volume.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_REORDER_METADATA = Metadata(
-    id="99290b5497c22077215e5388634353b6a67904bc.boutiques",
+    id="6b88f2ce53762769fba99658dd617739092a8aa8.boutiques",
     name="cifti-reorder",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -43,7 +43,9 @@ def cifti_reorder(
     order is 'A B C D', and the desired order is 'D A B C', the text file should
     contain '4 1 2 3'.
     
-    Author: Washington University School of Medicin
+    Author: Connectome Workbench Developers
+    
+    URL: https://github.com/Washington-University/workbench
     
     Args:
         cifti_in: input cifti file.

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AFNI_CHECK_OMP_METADATA = Metadata(
-    id="5590758fc8874a83053de43d314f6e090fd6b815.boutiques",
+    id="6453e60521723604a0b8ebb13d5840014b923b27.boutiques",
     name="afni_check_omp",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -29,9 +29,9 @@ def afni_check_omp(
     """
     Tool to check the OpenMP multi-threading environment for AFNI.
     
-    Author: AFNI Team
+    Author: AFNI Developers
     
-    URL: https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_check_omp.html
+    URL: https://afni.nimh.nih.gov/
     
     Args:
         iterations: Number of iterations to run.
