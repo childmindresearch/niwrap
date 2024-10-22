@@ -156,7 +156,69 @@ def build_package_overview_table():
     return buf
 
 
+def update_endpoint_lists():
+    package_dir = "packages"
+    descriptors_dir = "descriptors"
+    changes_summary = []
+
+    # Iterate through all JSON files in the packages directory
+    for package_file in os.listdir(package_dir):
+        if package_file.endswith(".json"):
+            package_path = os.path.join(package_dir, package_file)
+            
+            # Load the package JSON file
+            with open(package_path, 'r', encoding='utf-8') as f:
+                package_data = json.load(f)
+            
+            package_id = package_data.get('id')
+            if not package_id:
+                print(f"Missing 'id' in {package_file}")
+                continue
+            
+            # Check each endpoint's descriptor
+            updated = False
+            for endpoint in package_data.get('api', {}).get('endpoints', []):
+                target = endpoint.get('target')
+                target = target.removeprefix("wb_command -")
+                status = endpoint.get('status')
+                if not target:
+                    continue
+
+                descriptor_path = os.path.join(descriptors_dir, package_id, f"{target}.json")
+                
+                # Check if the descriptor file exists
+                if os.path.exists(descriptor_path):
+                    if status != 'done':
+                        endpoint['status'] = 'done'
+                        endpoint['descriptor'] = descriptor_path.replace('\\', '/')
+                        updated = True
+                else:
+                    if status == 'ignore':
+                        continue  # Skip if status is 'ignore'
+                    if status != 'missing':
+                        endpoint['status'] = 'missing'
+                        endpoint.pop('descriptor', None)  # Remove descriptor if missing
+                        updated = True
+            
+            # If updates were made, save the updated package file
+            if updated:
+                with open(package_path, 'w', encoding='utf-8') as f:
+                    json.dump(package_data, f, indent=2)
+                
+                changes_summary.append(f"Updated {package_file}")
+
+    # Print the summary of changes
+    if changes_summary:
+        print("Summary of changes:")
+        for change in changes_summary:
+            print(f"  {change}")
+    else:
+        print("No changes made.")
+
+
 def update_readme():
+    print("Update endpoint lists")
+    update_endpoint_lists()
     print("Update repo readme")
     patch_section(
         file=Path("README.md"),

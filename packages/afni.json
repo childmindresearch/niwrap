@@ -1,12 +1,13 @@
 {
-  "id": "afni",
   "name": "AFNI",
+  "author": "AFNI Developers",
   "url": "https://afni.nimh.nih.gov/",
   "approach": "Manual",
   "status": "In progress",
   "container": "afni/afni_make_build:AFNI_24.2.06",
   "version": "24.2.06",
   "description": "AFNI (Analysis of Functional NeuroImages) is a leading software suite of C, Python, R programs and shell scripts primarily developed for the analysis and display of multiple MRI modalities: anatomical, functional MRI (FMRI) and diffusion weighted (DW) data. It is freely available (both as open source code and as precompiled binaries) for research purposes. The software is made to run on virtually any Unix system with X11 and Motif displays. Binary packages are provided for MacOS and Linux systems such as Fedora, CentOS/Red Hat and Ubuntu (which includes the Windows Subsystem for Linux).",
+  "id": "afni",
   "api": {
     "endpoints": [
       {
@@ -58,6 +59,10 @@
         "target": "1dRplot",
         "status": "done",
         "descriptor": "descriptors/afni/1dRplot.json"
+      },
+      {
+        "target": "1dRplot.R",
+        "status": "missing"
       },
       {
         "target": "1dSEM",
@@ -221,12 +226,13 @@
       },
       {
         "target": "3dAcost",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/3dAcost.json"
       },
       {
         "target": "3dAllineate",
         "status": "done",
-        "descriptor": "descriptors/afni/3dAcost.json"
+        "descriptor": "descriptors/afni/3dAllineate.json"
       },
       {
         "target": "3dAmpToRSFC",
@@ -464,6 +470,10 @@
         "descriptor": "descriptors/afni/3dFriedman.json"
       },
       {
+        "target": "3dGC.R",
+        "status": "missing"
+      },
+      {
         "target": "3dGenFeatureDist",
         "status": "done",
         "descriptor": "descriptors/afni/3dGenFeatureDist.json"
@@ -494,14 +504,26 @@
         "descriptor": "descriptors/afni/3dHist.json"
       },
       {
+        "target": "3dICA.R",
+        "status": "missing"
+      },
+      {
         "target": "3dICC",
         "status": "done",
         "descriptor": "descriptors/afni/3dICC.json"
       },
       {
+        "target": "3dICC.R",
+        "status": "missing"
+      },
+      {
         "target": "3dISC",
         "status": "done",
         "descriptor": "descriptors/afni/3dISC.json"
+      },
+      {
+        "target": "3dISC.R",
+        "status": "missing"
       },
       {
         "target": "3dIntracranial",
@@ -529,9 +551,25 @@
         "descriptor": "descriptors/afni/3dLME.json"
       },
       {
+        "target": "3dLME.R",
+        "status": "missing"
+      },
+      {
+        "target": "3dLME2",
+        "status": "missing"
+      },
+      {
+        "target": "3dLME2.R",
+        "status": "missing"
+      },
+      {
         "target": "3dLMEr",
         "status": "done",
         "descriptor": "descriptors/afni/3dLMEr.json"
+      },
+      {
+        "target": "3dLMEr.R",
+        "status": "missing"
       },
       {
         "target": "3dLRflip",
@@ -589,6 +627,10 @@
         "descriptor": "descriptors/afni/3dMEMA.json"
       },
       {
+        "target": "3dMEMA.R",
+        "status": "missing"
+      },
+      {
         "target": "3dMEPFM",
         "status": "done",
         "descriptor": "descriptors/afni/3dMEPFM.json"
@@ -607,6 +649,10 @@
         "target": "3dMVM",
         "status": "done",
         "descriptor": "descriptors/afni/3dMVM.json"
+      },
+      {
+        "target": "3dMVM.R",
+        "status": "missing"
       },
       {
         "target": "3dMVM_validator",
@@ -738,8 +784,7 @@
       },
       {
         "target": "3dROIMaker",
-        "status": "done",
-        "descriptor": "descriptors/afni/3dROIMaker.json"
+        "status": "missing"
       },
       {
         "target": "3dROIstats",
@@ -787,6 +832,10 @@
         "descriptor": "descriptors/afni/3dRprogDemo.json"
       },
       {
+        "target": "3dRprogDemo.R",
+        "status": "missing"
+      },
+      {
         "target": "3dSeg",
         "status": "done",
         "descriptor": "descriptors/afni/3dSeg.json"
@@ -805,6 +854,10 @@
         "target": "3dSignatures",
         "status": "done",
         "descriptor": "descriptors/afni/3dSignatures.json"
+      },
+      {
+        "target": "3dSignatures.R",
+        "status": "missing"
       },
       {
         "target": "3dSkullStrip",
@@ -883,7 +936,8 @@
       },
       {
         "target": "3dTcorrelate",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/3dTcorrelate.json"
       },
       {
         "target": "3dTfilter",
@@ -1221,7 +1275,8 @@
       },
       {
         "target": "3dsvm_linpredict",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/3dsvm_linpredict.json"
       },
       {
         "target": "3dtoXdataset",
@@ -1451,8 +1506,7 @@
       },
       {
         "target": "@Install_FATCAT_DEMO",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_FATCAT_DEMO.json"
+        "status": "missing"
       },
       {
         "target": "@Install_FATCAT_DEMO2",
@@ -1469,8 +1523,7 @@
       },
       {
         "target": "@Install_InstaCorr_Demo",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_InstaCorr_Demo.json"
+        "status": "missing"
       },
       {
         "target": "@Install_MACAQUE_DEMO",
@@ -1482,8 +1535,7 @@
       },
       {
         "target": "@Install_MBM_Marmoset",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_MBM_Marmoset.json"
+        "status": "missing"
       },
       {
         "target": "@Install_MEICA_Demo",
@@ -1491,17 +1543,23 @@
       },
       {
         "target": "@Install_NIH_Marmoset",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_NIH_Marmoset.json"
+        "status": "missing"
       },
       {
         "target": "@Install_NMT",
         "status": "missing"
       },
       {
+        "target": "@Install_RAT_DEMO_REST",
+        "status": "missing"
+      },
+      {
         "target": "@Install_RSFMRI_Motion_Group_Demo",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_RSFMRI_Motion_Group_Demo.json"
+        "status": "missing"
+      },
+      {
+        "target": "@Install_SAM_marmoset",
+        "status": "missing"
       },
       {
         "target": "@Install_SURFLAYERS_DEMO1",
@@ -1554,18 +1612,15 @@
       },
       {
         "target": "@ROI_decluster",
-        "status": "done",
-        "descriptor": "descriptors/afni/@ROI_decluster.json"
+        "status": "missing"
       },
       {
         "target": "@ROI_modal_grow",
-        "status": "done",
-        "descriptor": "descriptors/afni/@ROI_modal_grow.json"
+        "status": "missing"
       },
       {
         "target": "@R_funclist",
-        "status": "done",
-        "descriptor": "descriptors/afni/@R_funclist.json"
+        "status": "missing"
       },
       {
         "target": "@RenamePanga",
@@ -1589,13 +1644,11 @@
       },
       {
         "target": "@SUMA_AlignToExperiment",
-        "status": "done",
-        "descriptor": "descriptors/afni/@SUMA_AlignToExperiment.json"
+        "status": "missing"
       },
       {
         "target": "@SUMA_FSvolToBRIK",
-        "status": "done",
-        "descriptor": "descriptors/afni/@SUMA_FSvolToBRIK.json"
+        "status": "missing"
       },
       {
         "target": "@SUMA_Make_Spec_Caret",
@@ -1624,18 +1677,15 @@
       },
       {
         "target": "@ScriptCheck",
-        "status": "done",
-        "descriptor": "descriptors/afni/@ScriptCheck.json"
+        "status": "missing"
       },
       {
         "target": "@Shift_Volume",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Shift_Volume.json"
+        "status": "missing"
       },
       {
         "target": "@ShowDynamicRange",
-        "status": "done",
-        "descriptor": "descriptors/afni/@ShowDynamicRange.json"
+        "status": "missing"
       },
       {
         "target": "@SkullStrip_TouchUp",
@@ -1654,8 +1704,7 @@
       },
       {
         "target": "@T1scale",
-        "status": "done",
-        "descriptor": "descriptors/afni/@T1scale.json"
+        "status": "missing"
       },
       {
         "target": "@TimeDiff",
@@ -1708,7 +1757,8 @@
       },
       {
         "target": "@animal_warper",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@animal_warper.json"
       },
       {
         "target": "@auto_tlrc",
@@ -1731,8 +1781,7 @@
       },
       {
         "target": "@clip_volume",
-        "status": "done",
-        "descriptor": "descriptors/afni/@clip_volume.json"
+        "status": "missing"
       },
       {
         "target": "@compute_OC_weights",
@@ -1761,8 +1810,7 @@
       },
       {
         "target": "@djunct_4d_imager",
-        "status": "done",
-        "descriptor": "descriptors/afni/@djunct_4d_imager.json"
+        "status": "missing"
       },
       {
         "target": "@djunct_4d_slices_to_3d_vol",
@@ -1907,8 +1955,7 @@
       },
       {
         "target": "@parse_name",
-        "status": "done",
-        "descriptor": "descriptors/afni/@parse_name.json"
+        "status": "missing"
       },
       {
         "target": "@radial_correlate",
@@ -1927,13 +1974,11 @@
       },
       {
         "target": "@statauxcode",
-        "status": "done",
-        "descriptor": "descriptors/afni/@statauxcode.json"
+        "status": "missing"
       },
       {
         "target": "@suma_acknowledge",
-        "status": "done",
-        "descriptor": "descriptors/afni/@suma_acknowledge.json"
+        "status": "missing"
       },
       {
         "target": "@suma_reprefixize_spec",
@@ -1971,12 +2016,17 @@
       },
       {
         "target": "AFNI_Batch_R",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/AFNI_Batch_R.json"
       },
       {
         "target": "AnalyzeTrace",
         "status": "done",
         "descriptor": "descriptors/afni/AnalyzeTrace.json"
+      },
+      {
+        "target": "BayesianGroupAna.R",
+        "status": "missing"
       },
       {
         "target": "BayesianGroupAna.py",
@@ -2042,6 +2092,10 @@
         "descriptor": "descriptors/afni/ExamineXmat.json"
       },
       {
+        "target": "ExamineXmat.R",
+        "status": "missing"
+      },
+      {
         "target": "FATCAT_matplot",
         "status": "done",
         "descriptor": "descriptors/afni/FATCAT_matplot.json"
@@ -2080,6 +2134,10 @@
         "descriptor": "descriptors/afni/MBA.json"
       },
       {
+        "target": "MBA.R",
+        "status": "missing"
+      },
+      {
         "target": "MakeColorMap",
         "status": "done",
         "descriptor": "descriptors/afni/MakeColorMap.json"
@@ -2095,6 +2153,10 @@
         "descriptor": "descriptors/afni/PTA.json"
       },
       {
+        "target": "PTA.R",
+        "status": "missing"
+      },
+      {
         "target": "ParseName",
         "status": "done",
         "descriptor": "descriptors/afni/ParseName.json"
@@ -2103,6 +2165,10 @@
         "target": "RBA",
         "status": "done",
         "descriptor": "descriptors/afni/RBA.json"
+      },
+      {
+        "target": "RBA.R",
+        "status": "missing"
       },
       {
         "target": "ROI2dataset",
@@ -2154,8 +2220,7 @@
       },
       {
         "target": "SpharmReco",
-        "status": "done",
-        "descriptor": "descriptors/afni/SpharmReco.json"
+        "status": "missing"
       },
       {
         "target": "Surf2VolCoord",
@@ -2248,17 +2313,23 @@
         "descriptor": "descriptors/afni/TRR.json"
       },
       {
+        "target": "TRR.R",
+        "status": "missing"
+      },
+      {
         "target": "Vecwarp",
         "status": "done",
         "descriptor": "descriptors/afni/Vecwarp.json"
       },
       {
         "target": "abids_json_info.py",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/abids_json_info.py.json"
       },
       {
         "target": "abids_json_tool.py",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/abids_json_tool.py.json"
       },
       {
         "target": "abids_tool.py",
@@ -2270,15 +2341,26 @@
         "descriptor": "descriptors/afni/adjunct_apqc_tsnr_general.json"
       },
       {
-        "target": "adjunct_aw_tableize_roi_info.py",
+        "target": "adjunct_atlas_points_to_labeltable",
         "status": "missing"
+      },
+      {
+        "target": "adjunct_aw_tableize_roi_info.py",
+        "status": "done",
+        "descriptor": "descriptors/afni/adjunct_aw_tableize_roi_info.py.json"
       },
       {
         "target": "adjunct_calc_mont_dims.py",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/adjunct_calc_mont_dims.py.json"
       },
       {
         "target": "adjunct_combine_str.py",
+        "status": "done",
+        "descriptor": "descriptors/afni/adjunct_combine_str.py.json"
+      },
+      {
+        "target": "adjunct_deob_around_origin",
         "status": "missing"
       },
       {
@@ -2292,13 +2374,17 @@
         "descriptor": "descriptors/afni/adjunct_make_script_and_rst.py.json"
       },
       {
-        "target": "adjunct_select_str.py",
+        "target": "adjunct_middle_pair_mask",
         "status": "missing"
       },
       {
-        "target": "adjunct_simplify_cost.py",
+        "target": "adjunct_select_str.py",
         "status": "done",
-        "descriptor": "descriptors/afni/adjunct_simplify_cost.py.json"
+        "descriptor": "descriptors/afni/adjunct_select_str.py.json"
+      },
+      {
+        "target": "adjunct_simplify_cost.py",
+        "status": "missing"
       },
       {
         "target": "adjunct_suma_fs_mask_and_qc",
@@ -2351,8 +2437,7 @@
       },
       {
         "target": "afni_python_wrapper.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/afni_python_wrapper.py.json"
+        "status": "missing"
       },
       {
         "target": "afni_run_R",
@@ -2361,8 +2446,7 @@
       },
       {
         "target": "afni_skeleton.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/afni_skeleton.py.json"
+        "status": "missing"
       },
       {
         "target": "afni_system_check.py",
@@ -2380,18 +2464,19 @@
       },
       {
         "target": "align_epi_anat.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/align_epi_anat.py.json"
+        "status": "missing"
       },
       {
         "target": "ap_run_simple_rest.tcsh",
-        "status": "done",
-        "descriptor": "descriptors/afni/ap_run_simple_rest.tcsh.json"
+        "status": "missing"
+      },
+      {
+        "target": "ap_run_simple_rest_me.tcsh",
+        "status": "missing"
       },
       {
         "target": "apqc_make_html.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/apqc_make_html.py.json"
+        "status": "missing"
       },
       {
         "target": "apqc_make_tcsh.py",
@@ -2457,9 +2542,12 @@
         "descriptor": "descriptors/afni/column_cat.json"
       },
       {
+        "target": "compute_ROI_stats.tcsh",
+        "status": "missing"
+      },
+      {
         "target": "convert_cdiflist_to_grads.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/convert_cdiflist_to_grads.py.json"
+        "status": "missing"
       },
       {
         "target": "count",
@@ -2467,9 +2555,17 @@
         "descriptor": "descriptors/afni/count.json"
       },
       {
+        "target": "count_afni",
+        "status": "missing"
+      },
+      {
         "target": "dcm2niix_afni",
         "status": "done",
         "descriptor": "descriptors/afni/dcm2niix_afni.json"
+      },
+      {
+        "target": "desphinxify",
+        "status": "missing"
       },
       {
         "target": "dicom_hdr",
@@ -2498,13 +2594,11 @@
       },
       {
         "target": "eg_main_chrono.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/eg_main_chrono.py.json"
+        "status": "missing"
       },
       {
         "target": "epi_b0_correct.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/epi_b0_correct.py.json"
+        "status": "missing"
       },
       {
         "target": "fat_mat2d_plot.py",
@@ -2518,8 +2612,7 @@
       },
       {
         "target": "fat_mat_tableize.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/fat_mat_tableize.py.json"
+        "status": "missing"
       },
       {
         "target": "fat_mvm_gridconv.py",
@@ -2528,8 +2621,7 @@
       },
       {
         "target": "fat_mvm_prep.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/fat_mvm_prep.py.json"
+        "status": "missing"
       },
       {
         "target": "fat_mvm_scripter.py",
@@ -2593,8 +2685,7 @@
       },
       {
         "target": "fat_roi_row.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/fat_roi_row.py.json"
+        "status": "missing"
       },
       {
         "target": "fdrval",
@@ -2618,8 +2709,7 @@
       },
       {
         "target": "find_variance_lines.tcsh",
-        "status": "done",
-        "descriptor": "descriptors/afni/find_variance_lines.tcsh.json"
+        "status": "missing"
       },
       {
         "target": "float_scan",
@@ -2632,19 +2722,21 @@
         "descriptor": "descriptors/afni/from3d.json"
       },
       {
+        "target": "gen_cluster_table",
+        "status": "missing"
+      },
+      {
         "target": "gen_epi_review.py",
         "status": "done",
         "descriptor": "descriptors/afni/gen_epi_review.py.json"
       },
       {
         "target": "gen_group_command.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/gen_group_command.py.json"
+        "status": "missing"
       },
       {
         "target": "gen_ss_review_scripts.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/gen_ss_review_scripts.py.json"
+        "status": "missing"
       },
       {
         "target": "gen_ss_review_table.py",
@@ -2703,7 +2795,8 @@
       },
       {
         "target": "imcat",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/imcat.json"
       },
       {
         "target": "imcutup",
@@ -2780,6 +2873,10 @@
         "descriptor": "descriptors/afni/map_TrackID.json"
       },
       {
+        "target": "map_ap_to_deriv.py",
+        "status": "missing"
+      },
+      {
         "target": "meica.py",
         "status": "done",
         "descriptor": "descriptors/afni/meica.py.json"
@@ -2832,6 +2929,10 @@
         "descriptor": "descriptors/afni/nsize.json"
       },
       {
+        "target": "open_apqc.py",
+        "status": "missing"
+      },
+      {
         "target": "p2dsetstat",
         "status": "done",
         "descriptor": "descriptors/afni/p2dsetstat.json"
@@ -2840,6 +2941,10 @@
         "target": "parse_fs_lt_log.py",
         "status": "done",
         "descriptor": "descriptors/afni/parse_fs_lt_log.py.json"
+      },
+      {
+        "target": "physio_calc.py",
+        "status": "missing"
       },
       {
         "target": "plugout_drive",
@@ -2873,8 +2978,7 @@
       },
       {
         "target": "python_module_test.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/python_module_test.py.json"
+        "status": "missing"
       },
       {
         "target": "qdelaunay",
@@ -2923,13 +3027,16 @@
       },
       {
         "target": "realtime_receiver.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/realtime_receiver.py.json"
+        "status": "missing"
       },
       {
         "target": "rmz",
         "status": "done",
         "descriptor": "descriptors/afni/rmz.json"
+      },
+      {
+        "target": "roi_stats_warnings.py",
+        "status": "missing"
       },
       {
         "target": "rotcom",
@@ -2957,6 +3064,14 @@
         "descriptor": "descriptors/afni/slow_surf_clustsim.py.json"
       },
       {
+        "target": "smooth.R",
+        "status": "missing"
+      },
+      {
+        "target": "sswarper2",
+        "status": "missing"
+      },
+      {
         "target": "stimband",
         "status": "done",
         "descriptor": "descriptors/afni/stimband.json"
@@ -2978,6 +3093,11 @@
       },
       {
         "target": "tedana_wrapper.py",
+        "status": "done",
+        "descriptor": "descriptors/afni/tedana_wrapper.py.json"
+      },
+      {
+        "target": "test_afni_prog_help.tcsh",
         "status": "missing"
       },
       {
@@ -3012,8 +3132,7 @@
       },
       {
         "target": "uber_skel.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/uber_skel.py.json"
+        "status": "missing"
       },
       {
         "target": "uber_subject.py",
@@ -3022,8 +3141,7 @@
       },
       {
         "target": "uber_ttest.py",
-        "status": "done",
-        "descriptor": "descriptors/afni/uber_ttest.py.json"
+        "status": "missing"
       },
       {
         "target": "unWarpEPI.py",
@@ -3042,6 +3160,10 @@
       },
       {
         "target": "whereami",
+        "status": "missing"
+      },
+      {
+        "target": "whereami_afni",
         "status": "missing"
       },
       {

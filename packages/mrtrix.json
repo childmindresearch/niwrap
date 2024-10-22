@@ -154,7 +154,8 @@
       },
       {
         "target": "dwigradcheck",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/mrtrix/dwigradcheck.json"
       },
       {
         "target": "dwinormalise",

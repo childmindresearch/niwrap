@@ -238,7 +238,8 @@
       },
       {
         "target": "MultiplyImages",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/ants/MultiplyImages.json"
       },
       {
         "target": "N3BiasFieldCorrection",
