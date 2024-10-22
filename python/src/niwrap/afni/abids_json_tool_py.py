@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ABIDS_JSON_TOOL_PY_METADATA = Metadata(
-    id="92fbc78c41545381998a932198e70285b3eb391c.boutiques",
+    id="ba629457f4bbbc55e86c18fafc477c41efec681f.boutiques",
     name="abids_json_tool.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,7 +51,7 @@ def abids_json_tool_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(ABIDS_JSON_TOOL_PY_METADATA)
     cargs = []
-    cargs.append("/opt/afni/src/../install/abids_json_tool.py")
+    cargs.append("abids_json_tool.py")
     cargs.append("-input")
     cargs.append(execution.input_file(input_file))
     cargs.append("-prefix")

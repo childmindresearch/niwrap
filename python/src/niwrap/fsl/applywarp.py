@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APPLYWARP_METADATA = Metadata(
-    id="feff959ede39bc32c46956ed391232146e709478.boutiques",
+    id="8139e4041d6e0958010a358cd7464a250d36e6bc.boutiques",
     name="applywarp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -20,29 +20,51 @@ class ApplywarpOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    warped_output_file: OutputPathType
-    """Warped output image"""
+    out_file_outfile: OutputPathType | None
+    """Warped output file."""
 
 
 def applywarp(
-    input_file: InputPathType,
-    output_file: str,
-    reference_file: InputPathType,
-    warp_coeff_file: InputPathType | None = None,
+    in_file: InputPathType,
+    ref_file: InputPathType,
+    interp: typing.Literal["nn", "trilinear", "sinc", "spline"] | None = None,
+    out_file: InputPathType | None = None,
+    relwarp: bool = False,
+    abswarp: bool = False,
+    datatype: typing.Literal["char", "short", "int", "float", "double"] | None = None,
+    field_file: InputPathType | None = None,
+    mask_file: InputPathType | None = None,
+    output_type: typing.Literal["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"] | None = None,
+    postmat: InputPathType | None = None,
+    premat: InputPathType | None = None,
+    superlevel_2: int | None = None,
+    supersample: bool = False,
     runner: Runner | None = None,
 ) -> ApplywarpOutputs:
     """
-    Apply a warp to an image using FSL's applywarp utility.
+    Apply warps estimated by FNIRT (or some other software) to some image.
     
-    Author: University of Oxford (Jesper Andersson)
-    
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT/Applywarp
+    Author: Oxford Centre for Functional MRI of the Brain (FMRIB)
     
     Args:
-        input_file: Filename of input image (to be warped).
-        output_file: Filename for output (warped) image.
-        reference_file: Filename for reference image.
-        warp_coeff_file: Filename for warp/coefficient (volume).
+        in_file: Image to be warped.
+        ref_file: Reference image.
+        interp: 'nn' or 'trilinear' or 'sinc' or 'spline'. Interpolation\
+            method.
+        out_file: Output filename.
+        relwarp: Treat warp field as relative: x' = x + w(x).
+        abswarp: Treat warp field as absolute: x' = w(x).
+        datatype: 'char' or 'short' or 'int' or 'float' or 'double'. Force\
+            output data type [char short int float double].
+        field_file: File containing warp field.
+        mask_file: Filename for mask image (in reference space).
+        output_type: 'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'.\
+            Fsl output type.
+        postmat: Filename for post-transform (affine matrix).
+        premat: Filename for pre-transform (affine matrix).
+        superlevel_2: 'a' or an integer. Level of intermediary supersampling, a\
+            for 'automatic' or integer level. default = 2.
+        supersample: Intermediary supersampling of output, default is off.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `ApplywarpOutputs`).
@@ -51,31 +73,35 @@ def applywarp(
     execution = runner.start_execution(APPLYWARP_METADATA)
     cargs = []
     cargs.append("applywarp")
-    cargs.append("-i")
-    cargs.extend([
-        "-i",
-        execution.input_file(input_file)
-    ])
-    cargs.append("-o")
-    cargs.extend([
-        "-o",
-        output_file
-    ])
-    cargs.append("-r")
-    cargs.extend([
-        "-r",
-        execution.input_file(reference_file)
-    ])
-    cargs.append("-w")
-    if warp_coeff_file is not None:
-        cargs.extend([
-            "-w",
-            execution.input_file(warp_coeff_file)
-        ])
-    cargs.append("--usesqform")
+    if interp is not None:
+        cargs.append("--interp=" + interp)
+    cargs.append("--in=" + execution.input_file(in_file))
+    cargs.append("--ref=" + execution.input_file(ref_file))
+    if out_file is not None:
+        cargs.append("--out=" + execution.input_file(out_file))
+    if relwarp:
+        cargs.append("--rel")
+    if abswarp:
+        cargs.append("--abs")
+    if datatype is not None:
+        cargs.append("--datatype=" + datatype)
+    if field_file is not None:
+        cargs.append("--warp=" + execution.input_file(field_file))
+    if mask_file is not None:
+        cargs.append("--mask=" + execution.input_file(mask_file))
+    if output_type is not None:
+        cargs.append(output_type)
+    if postmat is not None:
+        cargs.append("--postmat=" + execution.input_file(postmat))
+    if premat is not None:
+        cargs.append("--premat=" + execution.input_file(premat))
+    if superlevel_2 is not None:
+        cargs.append("--superlevel=" + str(superlevel_2))
+    if supersample:
+        cargs.append("--super")
     ret = ApplywarpOutputs(
         root=execution.output_file("."),
-        warped_output_file=execution.output_file(output_file + ".nii.gz"),
+        out_file_outfile=execution.output_file(pathlib.Path(out_file).name) if (out_file is not None) else None,
     )
     execution.run(cargs)
     return ret

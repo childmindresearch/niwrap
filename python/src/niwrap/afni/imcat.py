@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMCAT_METADATA = Metadata(
-    id="a8839645803abd5da112dc9b7ab306fe767f6e96.boutiques",
+    id="f86d118bcc00a36af36a781d6ccef05ffa6fdea3.boutiques",
     name="imcat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -117,7 +117,7 @@ def imcat(
     runner = runner or get_global_runner()
     execution = runner.start_execution(IMCAT_METADATA)
     cargs = []
-    cargs.append("2dcat")
+    cargs.append("imcat")
     cargs.extend([execution.input_file(f) for f in input_files])
     if scale_image is not None:
         cargs.extend([

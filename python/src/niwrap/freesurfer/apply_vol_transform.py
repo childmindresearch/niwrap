@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 APPLY_VOL_TRANSFORM_METADATA = Metadata(
-    id="a82b808f6b4e768b499b6b610c1ffe9a7fcd19a1.boutiques",
-    name="apply_vol_transform",
+    id="738edcadc3e2543a62071d1fb8d29ca4ae246746.boutiques",
+    name="ApplyVolTransform",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )

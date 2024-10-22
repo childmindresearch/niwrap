@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 SMOOTH_ESTIMATE_METADATA = Metadata(
-    id="9874feac324ba1b8cf757cbd7cf867830eef7cee.boutiques",
-    name="smooth_estimate",
+    id="db35730728549b322353980c7c4f80e9b60ca48e.boutiques",
+    name="SmoothEstimate",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

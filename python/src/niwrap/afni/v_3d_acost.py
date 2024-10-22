@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ACOST_METADATA = Metadata(
-    id="1737f9d56187aa62310ebc3c2f7a7a8e89596299.boutiques",
+    id="989123a5cb8fa3fdba93e5b466ad4510a4e3746c.boutiques",
     name="3dAcost",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,7 +52,7 @@ def v_3d_acost(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_ACOST_METADATA)
     cargs = []
-    cargs.append("3dAllineate")
+    cargs.append("3dAcost")
     cargs.append(execution.input_file(infile))
     cargs.extend([
         "-base",

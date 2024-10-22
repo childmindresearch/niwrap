@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TEDANA_WRAPPER_PY_METADATA = Metadata(
-    id="d6c5a3ec49020146985dd43c3c2921059545cbf9.boutiques",
+    id="51bd95c6e1c16d0abe694ad2bbf2991b358b3612.boutiques",
     name="tedana_wrapper.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -72,7 +72,7 @@ def tedana_wrapper_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(TEDANA_WRAPPER_PY_METADATA)
     cargs = []
-    cargs.append("/opt/afni/src/../install/tedana_wrapper.py")
+    cargs.append("tedana_wrapper.py")
     cargs.extend([
         "-input",
         *[execution.input_file(f) for f in input_files]

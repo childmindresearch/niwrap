@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 IMAGE_STATS_METADATA = Metadata(
-    id="8b0a590062a6a49fc4c40efc1e083385dbf3e12c.boutiques",
-    name="image_stats",
+    id="2a596ffe70bc0ce00860ebb112f1c55c1e5cd531.boutiques",
+    name="ImageStats",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

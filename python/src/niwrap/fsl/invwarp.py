@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INVWARP_METADATA = Metadata(
-    id="778bad288efe828813a147cbd6f4c4be14fad8ca.boutiques",
+    id="34100193070afb6dfc3eae6373eb6e248a4f515e.boutiques",
     name="invwarp",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -20,42 +20,43 @@ class InvwarpOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_volume: OutputPathType
-    """Output inverse warped volume"""
+    inverse_warp: OutputPathType
+    """Name of output file, containing warps that are the "reverse" of those in
+    --warp. this will be a field-file (rather than a file of spline
+    coefficients), and it will have any affine component included as part of the
+    displacements."""
 
 
 def invwarp(
-    warpvol: InputPathType,
-    outvol: str,
-    refvol: InputPathType,
-    relflag: bool = False,
-    absflag: bool = False,
-    noconstraintflag: bool = False,
-    jmin: float | None = 0.01,
-    jmax: float | None = 100.0,
-    debugflag: bool = False,
-    verboseflag: bool = False,
+    warp: InputPathType,
+    out_img: str,
+    ref_img: InputPathType,
+    absolute: bool = False,
+    relative: bool = False,
+    noconstraint: bool = False,
+    jacobian_min: float | None = None,
+    jacobian_max: float | None = None,
+    debug: bool = False,
     runner: Runner | None = None,
 ) -> InvwarpOutputs:
     """
-    Inverse warp tool from FSL suite.
     
-    Author: University of Oxford (Jesper Andersson)
+    Use FSL Invwarp to invert a FNIRT warp.
     
-    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT
+    Author: Nipype (interface)
     
     Args:
-        warpvol: Filename for warp/shiftmap transform (volume).
-        outvol: Filename for output (inverse warped) image.
-        refvol: Filename for new reference image, i.e., what was originally the\
-            input image (determines inverse warpvol's FOV and pixdims).
-        relflag: Use relative warp convention: x' = x + w(x).
-        absflag: Use absolute warp convention (default): x' = w(x).
-        noconstraintflag: Do not apply the Jacobian constraint.
-        jmin: Minimum acceptable Jacobian value for constraint (default 0.01).
-        jmax: Maximum acceptable Jacobian value for constraint (default 100.0).
-        debugflag: Turn on debugging output.
-        verboseflag: Switch on diagnostic messages.
+        warp: Filename for warp/shiftmap transform (volume).
+        out_img: Filename for output (inverse warped) image.
+        ref_img: Filename for new reference image.
+        absolute: Use absolute warp convention (default): x' = w(x).
+        relative: Use relative warp convention (default): x' = x + w(x).
+        noconstraint: Do not apply jacobian constraint.
+        jacobian_min: Minimum acceptable jacobian value for constraint (default\
+            0.01).
+        jacobian_max: Maximum acceptable jacobian value for constraint (default\
+            100.0).
+        debug: Turn on debugging output.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `InvwarpOutputs`).
@@ -64,44 +65,24 @@ def invwarp(
     execution = runner.start_execution(INVWARP_METADATA)
     cargs = []
     cargs.append("invwarp")
-    cargs.append("-w")
-    cargs.extend([
-        "-w",
-        execution.input_file(warpvol)
-    ])
-    cargs.append("-o")
-    cargs.extend([
-        "-o",
-        outvol
-    ])
-    cargs.append("-r")
-    cargs.extend([
-        "-r",
-        execution.input_file(refvol)
-    ])
-    if relflag:
-        cargs.append("--rel")
-    if absflag:
+    cargs.append("--warp=" + execution.input_file(warp))
+    cargs.append("--out=" + out_img)
+    cargs.append("--ref=" + execution.input_file(ref_img))
+    if absolute:
         cargs.append("--abs")
-    if noconstraintflag:
+    if relative:
+        cargs.append("--rel")
+    if noconstraint:
         cargs.append("--noconstraint")
-    if jmin is not None:
-        cargs.extend([
-            "--jmin",
-            str(jmin)
-        ])
-    if jmax is not None:
-        cargs.extend([
-            "--jmax",
-            str(jmax)
-        ])
-    if debugflag:
+    if jacobian_min is not None:
+        cargs.append("--jmin=" + str(jacobian_min))
+    if jacobian_max is not None:
+        cargs.append("--jmax=" + str(jacobian_max))
+    if debug:
         cargs.append("--debug")
-    if verboseflag:
-        cargs.append("-v")
     ret = InvwarpOutputs(
         root=execution.output_file("."),
-        out_volume=execution.output_file(outvol),
+        inverse_warp=execution.output_file(out_img),
     )
     execution.run(cargs)
     return ret

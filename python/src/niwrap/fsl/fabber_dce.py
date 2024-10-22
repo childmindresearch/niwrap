@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_DCE_METADATA = Metadata(
-    id="bee5cfc0626389cbaafd1107342203d7f6e8391b.boutiques",
+    id="6c3537137e5ff366fb5fd77854d206f08197c365.boutiques",
     name="fabber_dce",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -135,8 +135,7 @@ def fabber_dce(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_DCE_METADATA)
     cargs = []
-    cargs.append("Fabber")
-    cargs.append("DCE")
+    cargs.append("fabber_dce")
     cargs.extend([
         "--output",
         output_directory

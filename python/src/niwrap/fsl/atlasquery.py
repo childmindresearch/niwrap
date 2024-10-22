@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ATLASQUERY_METADATA = Metadata(
-    id="01942ea09300720e7fb04693272806c8ad89763b.boutiques",
+    id="c806e559bdaf9dce3217e442c8ecb3503c24d609.boutiques",
     name="atlasquery",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -52,8 +52,7 @@ def atlasquery(
     runner = runner or get_global_runner()
     execution = runner.start_execution(ATLASQUERY_METADATA)
     cargs = []
-    cargs.append("atlasq")
-    cargs.append("ohi")
+    cargs.append("atlasquery")
     if dumpatlases_flag:
         cargs.append("--dumpatlases")
     if atlas is not None:

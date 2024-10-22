@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 SWAP_DIMENSIONS_METADATA = Metadata(
-    id="5074336f62d998f92810467aec377bad67fd3b99.boutiques",
-    name="swap_dimensions",
+    id="13798b0ac4d3e3a1706fe5ab9d0007d0e63abab6.boutiques",
+    name="SwapDimensions",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )

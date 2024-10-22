@@ -29,7 +29,6 @@ URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
 
 from .aff2rigid import *
 from .anatomical_average import *
-from .apply_warp import *
 from .applytopup import *
 from .applywarp import *
 from .applyxfm4_d import *
@@ -44,7 +43,6 @@ from .baycest import *
 from .bedpostx import *
 from .bedpostx_datacheck import *
 from .bedpostx_gpu import *
-from .bedpostx_single_slice_sh import *
 from .bet import *
 from .bet2 import *
 from .betsurf import *
@@ -59,7 +57,6 @@ from .cluster import *
 from .cluster2html import *
 from .concat_bvars import *
 from .connectedcomp import *
-from .convert_warp import *
 from .convert_xfm import *
 from .convertwarp import *
 from .create_lut import *
@@ -82,7 +79,6 @@ from .fabber import *
 from .fabber_asl import *
 from .fabber_cest import *
 from .fabber_dce import *
-from .fabber_dsc import *
 from .fabber_dualecho import *
 from .fabber_dwi import *
 from .fabber_pet import *
@@ -104,7 +100,7 @@ from .first import *
 from .first_flirt import *
 from .first_mult_bcorr import *
 from .first_roi_slicesdir import *
-from .first_utils import *
+from .firt_utils import *
 from .flameo import *
 from .flirt import *
 from .flirt_average import *
@@ -171,7 +167,6 @@ from .fslvbm_2_template import *
 from .fslvbm_3_proc import *
 from .ftoz import *
 from .fugue import *
-from .generate_brain import *
 from .glm import *
 from .gps import *
 from .halfcosbasis import *
@@ -185,10 +180,8 @@ from .imglob import *
 from .imln import *
 from .immv import *
 from .imrm import *
-from .inv_warp import *
 from .invfeatreg import *
 from .invwarp import *
-from .invwarp_exe import *
 from .label2surf import *
 from .lesion_filling import *
 from .make_bianca_mask import *
@@ -208,7 +201,7 @@ from .mist_display import *
 from .mist_fa_reg import *
 from .mm import *
 from .morph_kernel import *
-from .mp_diffpow_sh import *
+from .mp_diff import *
 from .mrsi_segment import *
 from .msm import *
 from .new_invwarp import *
@@ -219,13 +212,12 @@ from .pairreg import *
 from .perfusion_subtract import *
 from .pngappend import *
 from .pnm_evs import *
-from .pnm_stage1 import *
 from .pointflirt import *
 from .popp import *
 from .possum import *
-from .possum_interpmot_py import *
+from .possum_interpmot import *
 from .possum_matrix import *
-from .possum_plot_py import *
+from .possum_plot import *
 from .possum_sum import *
 from .prelude import *
 from .prepare_fieldmap import *
@@ -239,7 +231,6 @@ from .qboot import *
 from .randomise import *
 from .rmsdiff import *
 from .robustfov import *
-from .roi import *
 from .run_first import *
 from .run_first_all import *
 from .run_mesh_utils import *
@@ -285,7 +276,6 @@ from .tbss_deproject import *
 from .tbss_fill import *
 from .tbss_non_fa import *
 from .tbss_skeleton import *
-from .tbss_sym import *
 from .tbss_x import *
 from .tcalc import *
 from .topup import *

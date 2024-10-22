@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 PREPARE_FIELDMAP_METADATA = Metadata(
-    id="dad6607f2a51e3a9698a27e3d3875a0624021638.boutiques",
-    name="prepare_fieldmap",
+    id="a569aedce4cc243da931fd06a84a4422e0b750a6.boutiques",
+    name="PrepareFieldmap",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )
