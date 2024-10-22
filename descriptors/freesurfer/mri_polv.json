@@ -1,0 +1,40 @@
+{
+  "name": "mri_polv",
+  "command-line": "/usr/local/freesurfer/bin/mri_polv [WINDOW_SIZE] <input image> <output image>",
+  "description": "Calculate an image specifying the plane of least variance at each point in the input image.",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "input_image",
+      "name": "Input Image",
+      "type": "File",
+      "description": "The input image file for processing.",
+      "value-key": "<input image>",
+      "optional": false
+    },
+    {
+      "id": "output_image",
+      "name": "Output Image",
+      "type": "File",
+      "description": "The output image file specifying the plane of least variance.",
+      "value-key": "<output image>",
+      "optional": false
+    },
+    {
+      "id": "window_size",
+      "name": "Window Size",
+      "type": "Number",
+      "description": "Specify the window size to be used in the calculation of the central plane of least variance (default=5).",
+      "value-key": "[WINDOW_SIZE]",
+      "command-line-flag": "-w",
+      "optional": true
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,23 @@
+{
+  "tool-version": "7.4.1",
+  "name": "run-qdec-glm",
+  "description": "QDEC GLM (General Linear Model) execution tool for statistical analysis.",
+  "command-line": "run-qdec-glm [QDECDIR]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Directory containing QDEC data",
+      "value-key": "[QDECDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "qdec_directory",
+      "name": "QDEC Directory"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

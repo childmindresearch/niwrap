@@ -1,0 +1,85 @@
+{
+  "name": "seg2filled",
+  "tool-version": "7.4.1",
+  "description": "Creates a filled.mgz from an aseg-style segmentation using SAMSEG segmentation.",
+  "command-line": "seg2filled --seg [SEG_FILE] --norm [NORM_FILE] --o [OUTPUT_FILE] [DILATION_FLAG] [CAVITY_FLAG] [SURF_NAME] [SURF_DIR]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "seg_file",
+      "name": "Segmentation File",
+      "type": "File",
+      "value-key": "[SEG_FILE]",
+      "description": "Input aseg-style segmentation file (e.g., seg.mgz)",
+      "optional": false
+    },
+    {
+      "id": "norm_file",
+      "name": "Normalization File",
+      "type": "File",
+      "value-key": "[NORM_FILE]",
+      "description": "Normalization file (e.g., norm.mgz)",
+      "optional": false
+    },
+    {
+      "id": "output_file",
+      "name": "Output File",
+      "type": "String",
+      "value-key": "[OUTPUT_FILE]",
+      "description": "Filled output file (e.g., filled.mgz)",
+      "optional": false
+    },
+    {
+      "command-line-flag": "--ndil",
+      "id": "ndil",
+      "name": "Dilation Value",
+      "type": "Number",
+      "integer": true,
+      "value-key": "[DILATION_FLAG]",
+      "description": "Number of iterations for dilation used to speed cavity detection.",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--cavity",
+      "id": "cavity_flag",
+      "name": "Cavity Simulation Flag",
+      "type": "Flag",
+      "value-key": "[CAVITY_FLAG]",
+      "description": "Simulate a cavity to test the filling operation.",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--surf",
+      "id": "surf_name",
+      "name": "Surface Name",
+      "type": "String",
+      "value-key": "[SURF_NAME]",
+      "description": "Name for the surface output (creates ?h.surfname).",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--surfdir",
+      "id": "surf_dir",
+      "name": "Surface Directory",
+      "type": "String",
+      "value-key": "[SURF_DIR]",
+      "description": "Directory to put the surface (default is same as filled).",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "name": "Output Filled MGZ",
+      "description": "The output filled MGZ file.",
+      "optional": false,
+      "id": "out_filled_mgz"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,191 @@
+{
+  "tool-version": "7.4.1",
+  "name": "aparcstats2table",
+  "author": "FreeSurfer Developers",
+  "description": "Converts a cortical stats file into a table format with subjects as rows and parcellations as columns.",
+  "command-line": "aparcstats2table [SUBJECTS] [SUBJECTSFILE] [QDEC] [QDEC_LONG] [H] [OUTPUTFILE] [PARC] [MEASURE] [DELIMITER] [SKIP_FLAG] [PARCID_ONLY_FLAG] [COMMON_PARCS_FLAG] [PARCS_FROM_FILE] [REPORT_ROIS_FLAG] [TRANSPOSE_FLAG] [DEBUG_FLAG] [ETIV_FLAG] [SCALE]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--subjects",
+      "description": "List of subject IDs.",
+      "value-key": "[SUBJECTS]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "subjects",
+      "name": "Subjects"
+    },
+    {
+      "command-line-flag": "--subjectsfile",
+      "description": "File containing list of subjects (one per line).",
+      "value-key": "[SUBJECTSFILE]",
+      "type": "File",
+      "optional": true,
+      "id": "subjectsfile",
+      "name": "Subjects File"
+    },
+    {
+      "command-line-flag": "--qdec",
+      "description": "QDEC table file with subject IDs.",
+      "value-key": "[QDEC]",
+      "type": "File",
+      "optional": true,
+      "id": "qdec",
+      "name": "QDEC Table"
+    },
+    {
+      "command-line-flag": "--qdec-long",
+      "description": "Longitudinal QDEC table with subject templates.",
+      "value-key": "[QDEC_LONG]",
+      "type": "File",
+      "optional": true,
+      "id": "qdec_long",
+      "name": "Longitudinal QDEC Table"
+    },
+    {
+      "command-line-flag": "--hemi",
+      "description": "Hemisphere being analyzed (lh or rh required).",
+      "value-key": "[H]",
+      "type": "String",
+      "optional": false,
+      "id": "hemi",
+      "name": "Hemisphere"
+    },
+    {
+      "command-line-flag": "-t",
+      "description": "Output table file.",
+      "value-key": "[OUTPUTFILE]",
+      "type": "File",
+      "optional": false,
+      "id": "tablefile",
+      "name": "Output Table File"
+    },
+    {
+      "command-line-flag": "--parc",
+      "description": "Parcellation atlas (default: aparc).",
+      "value-key": "[PARC]",
+      "type": "String",
+      "optional": true,
+      "default-value": "aparc",
+      "id": "parcellation",
+      "name": "Parcellation Atlas"
+    },
+    {
+      "command-line-flag": "-m",
+      "description": "Measure type (e.g., area, volume, thickness).",
+      "value-key": "[MEASURE]",
+      "type": "String",
+      "optional": true,
+      "default-value": "area",
+      "id": "measure",
+      "name": "Measurement Type"
+    },
+    {
+      "command-line-flag": "-d",
+      "description": "Delimiter between measures in the table (default: tab).",
+      "value-key": "[DELIMITER]",
+      "type": "String",
+      "optional": true,
+      "default-value": "tab",
+      "id": "delimiter",
+      "name": "Delimiter"
+    },
+    {
+      "command-line-flag": "--skip",
+      "description": "Skip subjects if input is not found.",
+      "value-key": "[SKIP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "skip_missing",
+      "name": "Skip Missing Subjects"
+    },
+    {
+      "command-line-flag": "--parcid-only",
+      "description": "Write only ROI names without pre/appended hemi/measure.",
+      "value-key": "[PARCID_ONLY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "parcid_only",
+      "name": "Parcellation ID Only"
+    },
+    {
+      "command-line-flag": "--common-parcs",
+      "description": "Output only common parcellations across all subjects.",
+      "value-key": "[COMMON_PARCS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "common_parcs",
+      "name": "Common Parcellations"
+    },
+    {
+      "command-line-flag": "--parcs-from-file",
+      "description": "File specifying which parcellations to output.",
+      "value-key": "[PARCS_FROM_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "parcs_file",
+      "name": "Parcellations File"
+    },
+    {
+      "command-line-flag": "--report-rois",
+      "description": "Print ROI information for each subject.",
+      "value-key": "[REPORT_ROIS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "report_rois",
+      "name": "Report ROIs"
+    },
+    {
+      "command-line-flag": "--transpose",
+      "description": "Transpose the table (subjects in columns).",
+      "value-key": "[TRANSPOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "transpose",
+      "name": "Transpose Table"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Increase verbosity.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Mode"
+    },
+    {
+      "command-line-flag": "--etiv",
+      "description": "Report volume as percent estimated total intracranial volume.",
+      "value-key": "[ETIV_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "etiv",
+      "name": "Estimated Total Intracranial Volume"
+    },
+    {
+      "command-line-flag": "--scale",
+      "description": "Scale factor for output values.",
+      "value-key": "[SCALE]",
+      "type": "Number",
+      "optional": true,
+      "default-value": 1,
+      "id": "scale",
+      "name": "Scale Factor"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUTFILE]",
+      "description": "Output table file with processed data.",
+      "optional": false,
+      "id": "output_table",
+      "name": "Output Table"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

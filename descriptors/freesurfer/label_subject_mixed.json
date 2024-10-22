@@ -1,0 +1,65 @@
+{
+  "tool-version": "7.4.1",
+  "name": "label_subject_mixed",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://surfer.nmr.mgh.harvard.edu",
+  "description": "Automatic labeling of brain regions using a Gaussian classifier array.",
+  "command-line": "mri_ca_label -mask [BRAIN_MASK] [NORM_VOLUME] [TRANSFORM] [GCA] [ASEG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Brain mask to be used for final labeling",
+      "value-key": "[BRAIN_MASK]",
+      "type": "File",
+      "optional": false,
+      "id": "brain_mask",
+      "name": "Brain Mask"
+    },
+    {
+      "description": "Normalized volume",
+      "value-key": "[NORM_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "norm_volume",
+      "name": "Normalized Volume"
+    },
+    {
+      "description": "Transform file in LTA format",
+      "value-key": "[TRANSFORM]",
+      "type": "File",
+      "optional": false,
+      "id": "transform",
+      "name": "Transform File"
+    },
+    {
+      "description": "Gaussian classifier array (GCA) file",
+      "value-key": "[GCA]",
+      "type": "File",
+      "optional": false,
+      "id": "gca_file",
+      "name": "GCA File"
+    },
+    {
+      "description": "Output aseg file",
+      "value-key": "[ASEG]",
+      "type": "String",
+      "optional": false,
+      "id": "aseg_output",
+      "name": "Aseg Output"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[ASEG]",
+      "description": "Labeled segmentation output",
+      "optional": false,
+      "id": "output_aseg",
+      "name": "Output Aseg File"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

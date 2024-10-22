@@ -1,0 +1,62 @@
+{
+  "tool-version": "7.4.1",
+  "name": "beta2sxa",
+  "author": "FreeSurfer Developers",
+  "description": "A script to create files for plotting in tkmedit or tksurfer based on tabular data.",
+  "command-line": "beta2sxa [BETA] [NC] [NPER] [SXA_OUTPUT]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--b",
+      "description": "Input beta files, e.g., data.nii",
+      "value-key": "[BETA]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "beta_files",
+      "name": "Beta Files"
+    },
+    {
+      "command-line-flag": "--nc",
+      "description": "Number of groups or conditions",
+      "value-key": "[NC]",
+      "type": "Number",
+      "optional": false,
+      "id": "number_of_conditions",
+      "name": "Number of Conditions"
+    },
+    {
+      "command-line-flag": "--nper",
+      "description": "Number of subjects per group",
+      "value-key": "[NPER]",
+      "type": "Number",
+      "optional": false,
+      "id": "number_of_per_subjects",
+      "name": "Number of Per Subjects"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Output sxa file. Default is h.beta",
+      "value-key": "[SXA_OUTPUT]",
+      "type": "String",
+      "optional": true,
+      "id": "sxa_output",
+      "name": "Sxa Output",
+      "default-value": "h.beta"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "h.[MASK].nii",
+      "description": "Output file for tkmedit or tksurfer visualization.",
+      "optional": true,
+      "id": "sxa_output_file",
+      "name": "Sxa Output File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

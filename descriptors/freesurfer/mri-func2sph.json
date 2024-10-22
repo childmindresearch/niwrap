@@ -1,0 +1,93 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri-func2sph",
+  "description": "Maps functional data from volume space to spherical surface space.",
+  "command-line": "mri-func2sph [INSTEM] [OUTSTEM] [HEMI] [FVITDIR] [NITERS] [ICOSIZE] [INTYPE] [UMASK]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "-i",
+      "description": "Input file stem",
+      "value-key": "[INSTEM]",
+      "type": "String",
+      "optional": false,
+      "id": "instem",
+      "name": "Input Stem"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Output file stem",
+      "value-key": "[OUTSTEM]",
+      "type": "String",
+      "optional": false,
+      "id": "outstem",
+      "name": "Output Stem"
+    },
+    {
+      "command-line-flag": "-hemi",
+      "description": "Hemisphere to process, can be 'lh' or 'rh'",
+      "value-key": "[HEMI]",
+      "type": "String",
+      "optional": false,
+      "id": "hemisphere",
+      "name": "Hemisphere",
+      "value-choices": [
+        "lh",
+        "rh"
+      ]
+    },
+    {
+      "command-line-flag": "-fvitdir",
+      "description": "Functional vertex information directory",
+      "value-key": "[FVITDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "fvitdir",
+      "name": "Functional VIT Directory"
+    },
+    {
+      "command-line-flag": "-niters",
+      "description": "Number of hole-filling iterations",
+      "value-key": "[NITERS]",
+      "type": "Number",
+      "optional": true,
+      "default-value": 100,
+      "id": "hole_filling_iters",
+      "name": "Hole-Filling Iterations"
+    },
+    {
+      "command-line-flag": "-icosize",
+      "description": "Size of the icosahedron",
+      "value-key": "[ICOSIZE]",
+      "type": "Number",
+      "optional": true,
+      "default-value": 10242,
+      "id": "icosahedron_size",
+      "name": "Icosahedron Size"
+    },
+    {
+      "command-line-flag": "-intype",
+      "description": "Type of input data, will be auto-detected if not specified",
+      "value-key": "[INTYPE]",
+      "type": "String",
+      "optional": true,
+      "id": "input_type",
+      "name": "Input Type"
+    },
+    {
+      "command-line-flag": "-umask",
+      "description": "New umask value",
+      "value-key": "[UMASK]",
+      "type": "String",
+      "optional": true,
+      "id": "umask",
+      "name": "UMask"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

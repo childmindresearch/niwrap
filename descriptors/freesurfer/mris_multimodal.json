@@ -1,0 +1,132 @@
+{
+  "name": "mris_multimodal",
+  "description": "A FreeSurfer tool for processing multimodal surface data.",
+  "command-line": "/usr/local/freesurfer/bin/mris_multimodal -i [INPUT_SURFACE] -t [TARGET_SURFACE] -o [OUTPUT_SURFACE] [FILL_HOLES_FLAG] [CURVATURE_FLAG] [THICKNESS_FLAG] -a [ANNOTATION_OUTPUT] -v [OVERLAY_OUTPUT] -c [CSV_OUTPUT] [VTK_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input surface file.",
+      "value-key": "[INPUT_SURFACE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_surface",
+      "name": "Input Surface"
+    },
+    {
+      "description": "Target surface file.",
+      "value-key": "[TARGET_SURFACE]",
+      "type": "File",
+      "optional": false,
+      "id": "target_surface",
+      "name": "Target Surface"
+    },
+    {
+      "description": "Output surface file.",
+      "value-key": "[OUTPUT_SURFACE]",
+      "type": "File",
+      "optional": false,
+      "id": "output_surface",
+      "name": "Output Surface"
+    },
+    {
+      "command-line-flag": "-fillHoles",
+      "description": "Flag to fill holes in the surface.",
+      "value-key": "[FILL_HOLES_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "fill_holes",
+      "name": "Fill Holes Flag"
+    },
+    {
+      "command-line-flag": "--curvature",
+      "description": "Flag to process curvature data.",
+      "value-key": "[CURVATURE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "curvature",
+      "name": "Curvature Flag"
+    },
+    {
+      "command-line-flag": "--thickness",
+      "description": "Flag to process thickness data.",
+      "value-key": "[THICKNESS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "thickness",
+      "name": "Thickness Flag"
+    },
+    {
+      "command-line-flag": "-a",
+      "description": "Output file for annotation data.",
+      "value-key": "[ANNOTATION_OUTPUT]",
+      "type": "File",
+      "optional": false,
+      "id": "annotation_output",
+      "name": "Annotation Output"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Output file for overlay data.",
+      "value-key": "[OVERLAY_OUTPUT]",
+      "type": "File",
+      "optional": false,
+      "id": "overlay_output",
+      "name": "Overlay Output"
+    },
+    {
+      "command-line-flag": "-c",
+      "description": "Output CSV file.",
+      "value-key": "[CSV_OUTPUT]",
+      "type": "File",
+      "optional": false,
+      "id": "csv_output",
+      "name": "CSV Output"
+    },
+    {
+      "command-line-flag": "-vtk",
+      "description": "Flag to output VTK file format.",
+      "value-key": "[VTK_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "vtk_output",
+      "name": "VTK Output Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_SURFACE]",
+      "description": "Processed output surface file.",
+      "optional": false,
+      "id": "processed_output_surface",
+      "name": "Processed Output Surface"
+    },
+    {
+      "path-template": "[ANNOTATION_OUTPUT]",
+      "description": "Output file containing annotation data.",
+      "optional": false,
+      "id": "annotation_output_file",
+      "name": "Annotation Output File"
+    },
+    {
+      "path-template": "[OVERLAY_OUTPUT]",
+      "description": "Output file containing overlay data.",
+      "optional": false,
+      "id": "overlay_output_file",
+      "name": "Overlay Output File"
+    },
+    {
+      "path-template": "[CSV_OUTPUT]",
+      "description": "Output CSV file.",
+      "optional": false,
+      "id": "csv_output_file",
+      "name": "CSV Output File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

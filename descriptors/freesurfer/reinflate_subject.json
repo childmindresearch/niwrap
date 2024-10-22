@@ -1,0 +1,23 @@
+{
+  "tool-version": "7.4.1",
+  "name": "reinflate_subject",
+  "author": "FreeSurfer Developers",
+  "description": "Tool for reinflating brain surfaces.",
+  "command-line": "reinflate_subject [ARGS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Arguments for reinflate_subject",
+      "value-key": "[ARGS]",
+      "type": "String",
+      "optional": true,
+      "id": "args",
+      "name": "arguments"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

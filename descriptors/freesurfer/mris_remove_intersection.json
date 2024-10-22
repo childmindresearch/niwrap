@@ -1,0 +1,73 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mris_remove_intersection",
+  "author": "FreeSurfer Developers",
+  "description": "Tool to remove intersections in surface files.",
+  "command-line": "mris_remove_intersection [SURFACE_IN_FILE] [CORRECTED_SURFACE_OUT_FILE] [FILL_HOLES_FLAG] [MAP_OPTION] [DIST_MM]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input surface file.",
+      "value-key": "[SURFACE_IN_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "surface_in_file",
+      "name": "Surface In File"
+    },
+    {
+      "description": "Corrected output surface file.",
+      "value-key": "[CORRECTED_SURFACE_OUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "corrected_surface_out_file",
+      "name": "Corrected Surface Out File"
+    },
+    {
+      "command-line-flag": "-fill-holes",
+      "description": "Fill any holes in the intersection mark map and include them in the fix.",
+      "value-key": "[FILL_HOLES_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "fill_holes",
+      "name": "Fill Holes Flag"
+    },
+    {
+      "command-line-flag": "-map",
+      "description": "Create a binary map of intersections.",
+      "value-key": "[MAP_OPTION]",
+      "type": "File",
+      "optional": true,
+      "id": "map_option",
+      "name": "Surface Map File"
+    },
+    {
+      "description": "Projection distance in mm when using -map option.",
+      "value-key": "[DIST_MM]",
+      "type": "Number",
+      "optional": true,
+      "id": "projdistmm",
+      "name": "Projection Distance (mm)"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[CORRECTED_SURFACE_OUT_FILE]",
+      "description": "Corrected surface output file.",
+      "optional": false,
+      "id": "out_corrected_surface",
+      "name": "Corrected Surface File"
+    },
+    {
+      "path-template": "[MAP_OPTION]",
+      "description": "Binary map of intersections.",
+      "optional": true,
+      "id": "out_map_file",
+      "name": "Output Map File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

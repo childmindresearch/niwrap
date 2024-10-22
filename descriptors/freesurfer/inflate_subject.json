@@ -1,0 +1,32 @@
+{
+  "name": "inflate_subject",
+  "tool-version": "7.4.1",
+  "description": "Inflate subject script for FreeSurfer",
+  "command-line": "inflate_subject [ARGS]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Arguments for the inflate_subject command",
+      "value-key": "[ARGS]",
+      "type": "String",
+      "optional": true,
+      "id": "args",
+      "name": "Command-line arguments"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[ARGS]_output.txt",
+      "description": "Output of inflate_subject command",
+      "optional": true,
+      "id": "output_file",
+      "name": "Output file"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

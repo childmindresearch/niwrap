@@ -1,0 +1,96 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_make_uchar",
+  "author": "FreeSurfer Developers",
+  "description": "Tool to adjust intensity of brain MRI images using a Talairach transformation.",
+  "command-line": "mri_make_uchar [INPUT_VOLUME] [TALAIRACH_XFORM] [OUTPUT_VOLUME] [FIRST_PERCENTILE] [WM_PERCENTILE] [MAX_R] [CUMULATIVE_HISTO] [VRADVOL]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input volume file.",
+      "value-key": "[INPUT_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "input_volume",
+      "name": "Input Volume"
+    },
+    {
+      "description": "Talairach transformation file.",
+      "value-key": "[TALAIRACH_XFORM]",
+      "type": "File",
+      "optional": false,
+      "id": "talairach_xform",
+      "name": "Talairach Xform"
+    },
+    {
+      "description": "Output volume file.",
+      "value-key": "[OUTPUT_VOLUME]",
+      "type": "String",
+      "optional": false,
+      "id": "output_volume",
+      "name": "Output Volume"
+    },
+    {
+      "command-line-flag": "-f",
+      "description": "First percentile for histogram calculation (default 0.01).",
+      "value-key": "[FIRST_PERCENTILE]",
+      "type": "Number",
+      "default-value": 0.01,
+      "optional": true,
+      "id": "first_percentile",
+      "name": "First Percentile"
+    },
+    {
+      "command-line-flag": "-w",
+      "description": "White matter percentile for histogram calculation (default 0.9).",
+      "value-key": "[WM_PERCENTILE]",
+      "type": "Number",
+      "default-value": 0.9,
+      "optional": true,
+      "id": "wm_percentile",
+      "name": "White Matter Percentile"
+    },
+    {
+      "command-line-flag": "-r",
+      "description": "Maximum radius for voxel consideration (default 50).",
+      "value-key": "[MAX_R]",
+      "type": "Number",
+      "default-value": 50,
+      "optional": true,
+      "id": "max_radius",
+      "name": "Max Radius"
+    },
+    {
+      "command-line-flag": "-h",
+      "description": "Cumulative histogram file.",
+      "value-key": "[CUMULATIVE_HISTO]",
+      "type": "String",
+      "optional": true,
+      "id": "cumulative_histo",
+      "name": "Cumulative Histogram"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Volume file where everything outside MAX_R is set to 0.",
+      "value-key": "[VRADVOL]",
+      "type": "String",
+      "optional": true,
+      "id": "vradvol",
+      "name": "VRad Volume"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_VOLUME]",
+      "description": "Output volume from mri_make_uchar processing",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output Volume File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

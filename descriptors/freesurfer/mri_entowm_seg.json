@@ -1,0 +1,272 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_entowm_seg",
+  "author": "FreeSurfer Developers",
+  "description": "Segment white matter near gyrus ambiens entorhinal cortex using a deep learning model.",
+  "command-line": "mri_entowm_seg [INPUT_IMAGE] [OUTPUT_SEGMENTATION] [RECON_SUBJECTS] [SUBJECTS_DIR] [OTHER_OPTIONS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "-i",
+      "description": "T1-weighted image(s) to segment. Can be a path to a single image or a directory of images.",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": true,
+      "id": "input_image",
+      "name": "Input Image"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Segmentation output file or directory (required if --i is provided).",
+      "value-key": "[OUTPUT_SEGMENTATION]",
+      "type": "File",
+      "optional": true,
+      "id": "output_segmentation",
+      "name": "Output Segmentation"
+    },
+    {
+      "command-line-flag": "-s",
+      "description": "Process a series of FreeSurfer recon-all subjects, enables subject-mode.",
+      "value-key": "[RECON_SUBJECTS]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "recon_subjects",
+      "name": "Recon Subjects"
+    },
+    {
+      "command-line-flag": "--sd",
+      "description": "Set the subjects directory, overrides the SUBJECTS_DIR env variable.",
+      "value-key": "[SUBJECTS_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "subjects_directory",
+      "name": "Subjects Directory"
+    },
+    {
+      "command-line-flag": "--conform",
+      "description": "Resample input to 1mm-iso; results will be put back in native resolution.",
+      "value-key": "[CONFORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "conform",
+      "name": "Conform Flag"
+    },
+    {
+      "command-line-flag": "--etiv",
+      "description": "Include eTIV in volume stats (enabled by default in subject-mode and with --tal).",
+      "value-key": "[ETIV_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "etiv",
+      "name": "eTIV Flag"
+    },
+    {
+      "command-line-flag": "--tal",
+      "description": "Alternative talairach xfm transform for estimating TIV, can be file or suffix (for multiple inputs).",
+      "value-key": "[TAL]",
+      "type": "String",
+      "optional": true,
+      "id": "tal",
+      "name": "Talairach Transform"
+    },
+    {
+      "command-line-flag": "--write_posteriors",
+      "description": "Save the label posteriors.",
+      "value-key": "[WRITE_POSTERIORS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "write_posteriors",
+      "name": "Write Posteriors Flag"
+    },
+    {
+      "command-line-flag": "--write_volumes",
+      "description": "Save label volume stats (enabled by default in subject-mode).",
+      "value-key": "[WRITE_VOLUMES_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "write_volumes",
+      "name": "Write Volumes Flag"
+    },
+    {
+      "command-line-flag": "--write_qa_stats",
+      "description": "Save QA stats (z and confidence).",
+      "value-key": "[WRITE_QA_STATS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "write_qa_stats",
+      "name": "Write QA Stats Flag"
+    },
+    {
+      "command-line-flag": "--exclude",
+      "description": "List of label IDs to exclude in any output stats files.",
+      "value-key": "[EXCLUDE]",
+      "type": "String",
+      "list": true,
+      "optional": true,
+      "id": "exclude_labels",
+      "name": "Exclude Labels"
+    },
+    {
+      "command-line-flag": "--keep_ac",
+      "description": "Explicitly keep anterior commissure in the volume/QA files.",
+      "value-key": "[KEEP_AC_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "keep_ac",
+      "name": "Keep Anterior Commissure"
+    },
+    {
+      "command-line-flag": "--vox-count-volumes",
+      "description": "Use discrete voxel count for label volumes.",
+      "value-key": "[VOX_COUNT_VOLUMES_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "vox_count_volumes",
+      "name": "Voxel Count Volumes"
+    },
+    {
+      "command-line-flag": "--model",
+      "description": "Alternative model weights to load.",
+      "value-key": "[MODEL]",
+      "type": "String",
+      "optional": true,
+      "id": "model_weights",
+      "name": "Model Weights"
+    },
+    {
+      "command-line-flag": "--ctab",
+      "description": "Alternative color lookup table to embed in segmentation. Must be minimal, including 0, and sorted.",
+      "value-key": "[CTAB]",
+      "type": "String",
+      "optional": true,
+      "id": "color_table",
+      "name": "Color Table"
+    },
+    {
+      "command-line-flag": "--population-stats",
+      "description": "Alternative population volume stats for QA output.",
+      "value-key": "[POPULATION_STATS]",
+      "type": "String",
+      "optional": true,
+      "id": "population_stats",
+      "name": "Population Stats"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Enable debug logging.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Flag"
+    },
+    {
+      "command-line-flag": "--vmp",
+      "description": "Enable printing of vmpeak at the end.",
+      "value-key": "[VMP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "vmp",
+      "name": "VMP Flag"
+    },
+    {
+      "command-line-flag": "--threads",
+      "description": "Number of threads to use. Default is 1.",
+      "value-key": "[THREADS]",
+      "type": "Number",
+      "optional": true,
+      "id": "threads",
+      "name": "Threads"
+    },
+    {
+      "command-line-flag": "--7T",
+      "description": "Preprocess 7T images (just sets percentile to 99.9).",
+      "value-key": "[7T_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "seven_tesla",
+      "name": "7T Preprocessing"
+    },
+    {
+      "command-line-flag": "--percentile",
+      "description": "Use intensity percentile threshold for normalization.",
+      "value-key": "[PERCENTILE]",
+      "type": "Number",
+      "optional": true,
+      "id": "percentile",
+      "name": "Percentile"
+    },
+    {
+      "command-line-flag": "--cuda-device",
+      "description": "CUDA device for GPU support.",
+      "value-key": "[CUDA_DEVICE]",
+      "type": "String",
+      "optional": true,
+      "id": "cuda_device",
+      "name": "CUDA Device"
+    },
+    {
+      "command-line-flag": "--output-base",
+      "description": "String to use in output file name; default is sclimbic.",
+      "value-key": "[OUTPUT_BASE]",
+      "type": "String",
+      "optional": true,
+      "id": "output_base",
+      "name": "Output Base"
+    },
+    {
+      "command-line-flag": "--no-cite-sclimbic",
+      "description": "Do not cite sclimbic paper at the end.",
+      "value-key": "[NO_CITE_SCLIMBIC_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_cite_sclimbic",
+      "name": "No Cite Sclimbic"
+    },
+    {
+      "command-line-flag": "--nchannels",
+      "description": "Number of channels.",
+      "value-key": "[NCHANNELS]",
+      "type": "Number",
+      "optional": true,
+      "id": "nchannels",
+      "name": "Number of Channels"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_SEGMENTATION]",
+      "description": "Segmentation output file",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output Segmentation File"
+    },
+    {
+      "path-template": "[OUTPUT_BASE]_posterior.mgz",
+      "description": "Label posterior probabilities",
+      "optional": true,
+      "id": "label_posteriors",
+      "name": "Label Posterior File"
+    },
+    {
+      "path-template": "[OUTPUT_BASE]_volumes.txt",
+      "description": "Volume statistics",
+      "optional": true,
+      "id": "volume_stats",
+      "name": "Volume Statistics File"
+    },
+    {
+      "path-template": "[OUTPUT_BASE]_qa_stats.txt",
+      "description": "Quality assurance statistics",
+      "optional": true,
+      "id": "qa_stats",
+      "name": "QA Statistics File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

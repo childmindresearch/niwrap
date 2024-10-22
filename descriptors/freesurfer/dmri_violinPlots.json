@@ -1,0 +1,42 @@
+{
+  "name": "dmri_violinPlots",
+  "description": "Generate violin plots for dMRI data",
+  "command-line": "dmri_violinPlots -i [INPUT_DIRECTORY] -l [LABELS] -s [STRUCTURE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "-i",
+      "description": "Directory with all subjects",
+      "value-key": "[INPUT_DIRECTORY]",
+      "type": "String",
+      "optional": false,
+      "id": "input_directory",
+      "name": "Input Directory"
+    },
+    {
+      "command-line-flag": "-l",
+      "description": "CSV file with group labels",
+      "value-key": "[LABELS]",
+      "type": "File",
+      "optional": false,
+      "id": "labels",
+      "name": "Labels CSV"
+    },
+    {
+      "command-line-flag": "-s",
+      "description": "Name of the structure",
+      "value-key": "[STRUCTURE]",
+      "type": "String",
+      "optional": false,
+      "id": "structure",
+      "name": "Structure Name"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

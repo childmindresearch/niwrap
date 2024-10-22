@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SYNTHSTRIP_METADATA = Metadata(
-    id="fb880e3e88b019dc0ec0078b71a89815251f3260.boutiques",
+    id="db013dafdfd94df70d7e7d500b15ac5adac454dd.boutiques",
     name="mri_synthstrip",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -20,43 +20,37 @@ class MriSynthstripOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_image_file: OutputPathType | None
-    """File containing the stripped image"""
-    mask_image_file: OutputPathType | None
-    """File containing the binary brain mask"""
-    sdt_image_file: OutputPathType | None
-    """File containing the distance transform"""
+    output_image_file: OutputPathType | None
+    """Stripped brain image output."""
+    output_mask_file: OutputPathType | None
+    """Binary brain mask output."""
 
 
 def mri_synthstrip(
-    input_image: InputPathType,
-    out_file: str | None = None,
-    mask_file: str | None = None,
-    sdt_file: str | None = None,
-    gpu_flag: bool = False,
-    border_threshold: float | None = None,
-    num_threads: float | None = None,
-    no_csf_flag: bool = False,
-    model_file: InputPathType | None = None,
+    image: InputPathType,
+    output_image: InputPathType | None = None,
+    mask: InputPathType | None = None,
+    gpu: bool = False,
+    border: float | None = 1,
+    exclude_csf: bool = False,
+    model_weights: InputPathType | None = None,
     runner: Runner | None = None,
 ) -> MriSynthstripOutputs:
     """
     Robust, universal skull-stripping for brain images of any type.
     
-    Author: Unknown
+    Author: FreeSurfer Developers
     
-    URL: https://example.com/universal_skullstrip_docs
+    URL: https://github.com/freesurfer/freesurfer
     
     Args:
-        input_image: Input image to skullstrip.
-        out_file: Filename to save the stripped image.
-        mask_file: Filename to save the binary brain mask.
-        sdt_file: Filename to save the distance transform.
-        gpu_flag: Use the GPU.
-        border_threshold: Mask border threshold in mm, defaults to 1.
-        num_threads: PyTorch CPU threads; uses PyTorch default if unset.
-        no_csf_flag: Exclude CSF from the brain border.
-        model_file: Alternative model weights.
+        image: Input image to skullstrip.
+        output_image: Save stripped image to path.
+        mask: Save binary brain mask to path.
+        gpu: Use the GPU.
+        border: Mask border threshold in mm. Default is 1.
+        exclude_csf: Exclude CSF from brain border.
+        model_weights: Alternative model weights.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MriSynthstripOutputs`).
@@ -65,49 +59,45 @@ def mri_synthstrip(
     execution = runner.start_execution(MRI_SYNTHSTRIP_METADATA)
     cargs = []
     cargs.append("mri_synthstrip")
+    cargs.append("-i")
     cargs.extend([
         "-i",
-        execution.input_file(input_image)
+        execution.input_file(image)
     ])
-    if out_file is not None:
+    cargs.append("[-o")
+    if output_image is not None:
         cargs.extend([
             "-o",
-            out_file
+            execution.input_file(output_image) + "]"
         ])
-    if mask_file is not None:
+    cargs.append("[-m")
+    if mask is not None:
         cargs.extend([
             "-m",
-            mask_file
+            execution.input_file(mask) + "]"
         ])
-    if sdt_file is not None:
-        cargs.extend([
-            "-d",
-            sdt_file
-        ])
-    if gpu_flag:
-        cargs.append("-g")
-    if border_threshold is not None:
+    cargs.append("[-g")
+    if gpu:
+        cargs.append("-g" + "]")
+    cargs.append("[-b")
+    if border is not None:
         cargs.extend([
             "-b",
-            str(border_threshold)
+            str(border) + "]"
         ])
-    if num_threads is not None:
-        cargs.extend([
-            "-t",
-            str(num_threads)
-        ])
-    if no_csf_flag:
-        cargs.append("--no-csf")
-    if model_file is not None:
+    cargs.append("[--no-csf")
+    if exclude_csf:
+        cargs.append("--no-csf" + "]")
+    cargs.append("[--model")
+    if model_weights is not None:
         cargs.extend([
             "--model",
-            execution.input_file(model_file)
+            execution.input_file(model_weights) + "]"
         ])
     ret = MriSynthstripOutputs(
         root=execution.output_file("."),
-        out_image_file=execution.output_file(out_file) if (out_file is not None) else None,
-        mask_image_file=execution.output_file(mask_file) if (mask_file is not None) else None,
-        sdt_image_file=execution.output_file(sdt_file) if (sdt_file is not None) else None,
+        output_image_file=execution.output_file(pathlib.Path(output_image).name) if (output_image is not None) else None,
+        output_mask_file=execution.output_file(pathlib.Path(mask).name) if (mask is not None) else None,
     )
     execution.run(cargs)
     return ret

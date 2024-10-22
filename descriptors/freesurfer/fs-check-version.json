@@ -1,0 +1,87 @@
+{
+  "tool-version": "7.4.1",
+  "name": "fs-check-version",
+  "author": "FreeSurfer Developers",
+  "description": "Script to manage which version of FreeSurfer can be used to analyze data ensuring consistency with the desired version.",
+  "command-line": "fs-check-version --sd [SUBJECTS_DIR] --o [OUTFILE] [SUBJECT] [REQUIRE_MATCH_FLAG] [TEST_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--sd",
+      "description": "Subjects directory path",
+      "value-key": "[SUBJECTS_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "subjects_dir",
+      "name": "Subjects Directory"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Output file path where result of version check will be written",
+      "value-key": "[OUTFILE]",
+      "type": "String",
+      "optional": false,
+      "id": "outfile",
+      "name": "Output File"
+    },
+    {
+      "command-line-flag": "--s",
+      "description": "Subject name (optional)",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": true,
+      "id": "subject",
+      "name": "Subject"
+    },
+    {
+      "command-line-flag": "--require-match",
+      "description": "Set REQUIRE_FS_MATCH for testing",
+      "value-key": "[REQUIRE_MATCH_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "require_match",
+      "name": "Require Match Flag"
+    },
+    {
+      "command-line-flag": "--no-require-match",
+      "description": "Unset REQUIRE_FS_MATCH for testing",
+      "value-key": "[REQUIRE_MATCH_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_require_match",
+      "name": "No Require Match Flag"
+    },
+    {
+      "command-line-flag": "--test",
+      "description": "Go through permutations for testing",
+      "value-key": "[TEST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "test",
+      "name": "Test Flag"
+    },
+    {
+      "command-line-flag": "--test-debug",
+      "description": "Go through permutations for debugging",
+      "value-key": "[TEST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "test_debug",
+      "name": "Test Debug Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTFILE]",
+      "description": "Output text file with a 1 if the version matches, otherwise 0",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output Version Match File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

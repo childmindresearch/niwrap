@@ -1,0 +1,48 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_dct_align_binary",
+  "author": "FreeSurfer Developers",
+  "description": "A binary tool for aligning MRI images using DCT.",
+  "command-line": "/usr/local/freesurfer/bin/mri_dct_align_binary [SOURCE] [DESTINATION] [OUTPUT_XFORM]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Source image for alignment",
+      "value-key": "[SOURCE]",
+      "type": "File",
+      "optional": false,
+      "id": "source_image",
+      "name": "Source Image"
+    },
+    {
+      "description": "Destination image for alignment",
+      "value-key": "[DESTINATION]",
+      "type": "File",
+      "optional": false,
+      "id": "destination_image",
+      "name": "Destination Image"
+    },
+    {
+      "description": "Output transformation file",
+      "value-key": "[OUTPUT_XFORM]",
+      "type": "String",
+      "optional": false,
+      "id": "output_transformation",
+      "name": "Output Transformation"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_XFORM]",
+      "description": "The resulting transformation from the alignment",
+      "optional": false,
+      "id": "output_transformation_file",
+      "name": "Output Transformation File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

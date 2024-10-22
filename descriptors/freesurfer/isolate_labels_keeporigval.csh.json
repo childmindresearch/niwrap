@@ -1,0 +1,69 @@
+{
+  "name": "isolate_labels_keeporigval.csh",
+  "description": "Separates out a particular or all labels into individual binary files keeping the original label values for subsequent shape analysis.",
+  "command-line": "isolate_labels_keeporigval.csh --vol [LABELVOL] --outprefix [OUTPREFIX] [LABEL] [VERSION_FLAG] [HELP_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Label volume to be analyzed",
+      "value-key": "[LABELVOL]",
+      "type": "File",
+      "optional": false,
+      "id": "vol",
+      "name": "Label volume",
+      "command-line-flag": "--vol"
+    },
+    {
+      "description": "Prefix for output binary label file(s)",
+      "value-key": "[OUTPREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "outprefix",
+      "name": "Output prefix",
+      "command-line-flag": "--outprefix"
+    },
+    {
+      "description": "The particular label to be analyzed. By default, it is ALL labels in the volume.",
+      "value-key": "[LABEL]",
+      "type": "String",
+      "optional": true,
+      "id": "label",
+      "name": "Label",
+      "command-line-flag": "--l"
+    },
+    {
+      "command-line-flag": "--version",
+      "description": "Print version and exit",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Print help and exit",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPREFIX]_label*.nii.gz",
+      "description": "Output binary label file(s)",
+      "optional": false,
+      "id": "output_label_files",
+      "name": "Binary label files"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

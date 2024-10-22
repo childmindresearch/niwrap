@@ -1,0 +1,33 @@
+{
+  "name": "fs_tutorial_data",
+  "tool-version": "7.4.1",
+  "author": "FreeSurfer Developers",
+  "description": "Tool to download and install FreeSurfer tutorial data.",
+  "command-line": "fs_tutorial_data [RSYNC_OPTIONS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Additional rsync options for downloading tutorial data.",
+      "value-key": "[RSYNC_OPTIONS]",
+      "type": "String",
+      "optional": true,
+      "list": true,
+      "id": "rsync_options",
+      "name": "Rsync Options"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "/usr/local/freesurfer/subjects/tutorial_data",
+      "description": "Directory where tutorial data will be downloaded and installed.",
+      "optional": false,
+      "id": "tutorial_data_dir",
+      "name": "Tutorial Data Directory"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

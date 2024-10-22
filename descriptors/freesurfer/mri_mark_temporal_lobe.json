@@ -1,0 +1,61 @@
+{
+  "name": "mri_mark_temporal_lobe",
+  "tool-version": "7.4.1",
+  "description": "A tool for marking the temporal lobe in MRI images.",
+  "command-line": "/usr/local/freesurfer/bin/mri_mark_temporal_lobe [SPACING] [USE_GRADIENT_FLAG] [SUBJECTS] [OUTPUT]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "The spacing of classifiers in canonical space",
+      "command-line-flag": "-spacing",
+      "value-key": "[SPACING]",
+      "type": "String",
+      "optional": true,
+      "id": "spacing",
+      "name": "Spacing"
+    },
+    {
+      "description": "Flag to use intensity gradient as input to classifier",
+      "command-line-flag": "-gradient",
+      "value-key": "[USE_GRADIENT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "use_gradient",
+      "name": "Use Intensity Gradient Flag"
+    },
+    {
+      "description": "Subject MRI images",
+      "command-line-flag": "",
+      "value-key": "[SUBJECTS]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "subjects",
+      "name": "Subject Files"
+    },
+    {
+      "description": "Output file for marked temporal lobes",
+      "command-line-flag": "",
+      "value-key": "[OUTPUT]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT]",
+      "description": "Marked temporal lobe output file",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

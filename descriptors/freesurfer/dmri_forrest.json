@@ -1,0 +1,98 @@
+{
+  "tool-version": "7.4.1",
+  "name": "dmri_forrest",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "Not provided",
+  "description": "dmri_forrest is a tool for processing diffusion MRI data using a random forest-based method.",
+  "command-line": "/usr/local/freesurfer/bin/dmri_forrest --test [TEST_DIR] --train [TRAIN_FILE] --mask [MASK_FILE] --tract [TRACT_FILES] [SEG_FILE] [DIFF_FILE] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Directory containing the test subject data",
+      "value-key": "[TEST_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "test_dir",
+      "name": "Test subject directory",
+      "command-line-flag": "--test"
+    },
+    {
+      "description": "File listing training subject directories, one per line",
+      "value-key": "[TRAIN_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "train_file",
+      "name": "Training file",
+      "command-line-flag": "--train"
+    },
+    {
+      "description": "Input brain mask volume name, relative to subject directory",
+      "value-key": "[MASK_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "mask_file",
+      "name": "Brain mask file",
+      "command-line-flag": "--mask"
+    },
+    {
+      "description": "Input tract label volume(s), relative to subject directory",
+      "value-key": "[TRACT_FILES]",
+      "type": "File",
+      "list": true,
+      "optional": false,
+      "id": "tract_files",
+      "name": "Tract label volumes",
+      "command-line-flag": "--tract"
+    },
+    {
+      "description": "Input aparc+aseg volume name, relative to subject directory",
+      "value-key": "[SEG_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "seg_file",
+      "name": "Segmentation file",
+      "command-line-flag": "--seg"
+    },
+    {
+      "description": "Input diffusion orientation volume name, relative to subject directory",
+      "value-key": "[DIFF_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "diff_file",
+      "name": "Diffusion orientation file",
+      "command-line-flag": "--diff"
+    },
+    {
+      "description": "Turn on debugging mode",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug flag",
+      "command-line-flag": "--debug"
+    },
+    {
+      "description": "Only check options and exit",
+      "value-key": "[CHECKOPTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "checkopts",
+      "name": "Check options flag",
+      "command-line-flag": "--checkopts"
+    },
+    {
+      "description": "Display help information",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag",
+      "command-line-flag": "--help"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,159 @@
+{
+  "name": "test_tutorials.sh",
+  "description": "A script to run various tutorial commands, with options for skipping GUI components and focusing on specific tutorials.",
+  "command-line": "test_tutorials.sh [ALL_FLAG] [QUICK_FLAG] [AUTO_QUIT_FREEVIEW_FLAG] [SKIP_ALL_GUIS_FLAG] [SKIP_TK_GUIS_FLAG] [SKIP_QDEC_GUIS_FLAG] [INDIVIDUAL_SUBJECT_FLAG] [TROUBLESHOOTING_FLAG] [GROUP_ANALYSIS_FLAG] [QDEC_FLAG] [LONGITUDINAL_FLAG] [ROI_ANALYSIS_FLAG] [DIFFUSION_FLAG] [TRACULA_FLAG] [FSFAST_FLAG] [MULTIMODAL_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "-all",
+      "description": "Run all tutorials",
+      "value-key": "[ALL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "all_tutorials",
+      "name": "All Tutorials Flag"
+    },
+    {
+      "command-line-flag": "-quick",
+      "description": "Perform a quick subset of commands",
+      "value-key": "[QUICK_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "quick_test",
+      "name": "Quick Test Flag"
+    },
+    {
+      "command-line-flag": "-auto_quit_freeview",
+      "description": "Automatically closes freeview after opening",
+      "value-key": "[AUTO_QUIT_FREEVIEW_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "auto_quit_freeview",
+      "name": "Auto Quit Freeview Flag"
+    },
+    {
+      "command-line-flag": "-skip_all_guis",
+      "description": "Skips all commands that open a GUI",
+      "value-key": "[SKIP_ALL_GUIS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "skip_all_guis",
+      "name": "Skip All GUIs Flag"
+    },
+    {
+      "command-line-flag": "-skip_tk_guis",
+      "description": "Skips commands that open a tk GUI (tkmedit, tksurfer, etc)",
+      "value-key": "[SKIP_TK_GUIS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "skip_tk_guis",
+      "name": "Skip TK GUIs Flag"
+    },
+    {
+      "command-line-flag": "-skip_qdec_guis",
+      "description": "Skips commands that open qdec",
+      "value-key": "[SKIP_QDEC_GUIS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "skip_qdec_guis",
+      "name": "Skip QDEC GUIs Flag"
+    },
+    {
+      "command-line-flag": "-individual_subject",
+      "description": "Do Interaction with Individual Subject Data tutorial",
+      "value-key": "[INDIVIDUAL_SUBJECT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "individual_subject",
+      "name": "Individual Subject Tutorial Flag"
+    },
+    {
+      "command-line-flag": "-troubleshooting",
+      "description": "Do Troubleshooting tutorial",
+      "value-key": "[TROUBLESHOOTING_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "troubleshooting",
+      "name": "Troubleshooting Tutorial Flag"
+    },
+    {
+      "command-line-flag": "-group_analysis",
+      "description": "Do Group Analysis tutorial",
+      "value-key": "[GROUP_ANALYSIS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "group_analysis",
+      "name": "Group Analysis Tutorial Flag"
+    },
+    {
+      "command-line-flag": "-qdec",
+      "description": "Do QDEC tutorial",
+      "value-key": "[QDEC_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "qdec",
+      "name": "QDEC Tutorial Flag"
+    },
+    {
+      "command-line-flag": "-longitudinal",
+      "description": "Do Longitudinal tutorial",
+      "value-key": "[LONGITUDINAL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "longitudinal",
+      "name": "Longitudinal Tutorial Flag"
+    },
+    {
+      "command-line-flag": "-roi_analysis",
+      "description": "Do ROI Analysis tutorial",
+      "value-key": "[ROI_ANALYSIS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "roi_analysis",
+      "name": "ROI Analysis Tutorial Flag"
+    },
+    {
+      "command-line-flag": "-diffusion",
+      "description": "Do Diffusion tutorial",
+      "value-key": "[DIFFUSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "diffusion",
+      "name": "Diffusion Tutorial Flag"
+    },
+    {
+      "command-line-flag": "-tracula",
+      "description": "Do TRACULA tutorial",
+      "value-key": "[TRACULA_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "tracula",
+      "name": "TRACULA Tutorial Flag"
+    },
+    {
+      "command-line-flag": "-fsfast",
+      "description": "Do FSFASt tutorial",
+      "value-key": "[FSFAST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "fsfast",
+      "name": "FSFASt Tutorial Flag"
+    },
+    {
+      "command-line-flag": "-multimodal",
+      "description": "Do Mulimodal tutorial",
+      "value-key": "[MULTIMODAL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "multimodal",
+      "name": "Multimodal Tutorial Flag"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,49 @@
+{
+  "tool-version": "7.4.1",
+  "name": "sphere_subject",
+  "author": "FreeSurfer Developers",
+  "description": "A FreeSurfer tool for processing subject data.",
+  "command-line": "sphere_subject [INPUT_FILE] [OUTPUT_FILE] [LICENSE_FILE]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input subject directory",
+      "value-key": "[INPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "input_dir",
+      "name": "Input Directory"
+    },
+    {
+      "description": "Output file for results",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    },
+    {
+      "description": "Path to FreeSurfer license file",
+      "value-key": "[LICENSE_FILE]",
+      "type": "String",
+      "optional": true,
+      "id": "license_file",
+      "name": "License File",
+      "default-value": "/usr/local/freesurfer/.license"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Output of the sphere_subject execution.",
+      "optional": false,
+      "id": "output_result",
+      "name": "Result File"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

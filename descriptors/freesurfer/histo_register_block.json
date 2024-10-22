@@ -1,0 +1,82 @@
+{
+  "name": "histo_register_block",
+  "tool-version": "7.4.1",
+  "description": "A tool to align a histological slice with a block face image.",
+  "command-line": "/usr/local/freesurfer/bin/histo_register_block [SEG_TIME1] [SEG_TIME2] [TRANSFORM1] [TRANSFORM2] [OUTPUT_FILE] [OUT_LIKE] [INVERT_TRANSFORM]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Segmented image at time point 1",
+      "value-key": "[SEG_TIME1]",
+      "type": "File",
+      "optional": false,
+      "id": "seg_time1",
+      "name": "Segmented Time 1"
+    },
+    {
+      "description": "Segmented image at time point 2",
+      "value-key": "[SEG_TIME2]",
+      "type": "File",
+      "optional": false,
+      "id": "seg_time2",
+      "name": "Segmented Time 2"
+    },
+    {
+      "description": "Transformation file for time point 1",
+      "value-key": "[TRANSFORM1]",
+      "type": "File",
+      "optional": false,
+      "id": "transform1",
+      "name": "Transform 1"
+    },
+    {
+      "description": "Transformation file for time point 2",
+      "value-key": "[TRANSFORM2]",
+      "type": "File",
+      "optional": false,
+      "id": "transform2",
+      "name": "Transform 2"
+    },
+    {
+      "description": "Output file name for the aligned image",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    },
+    {
+      "command-line-flag": "-out_like",
+      "description": "Set output volume parameters like the reference volume",
+      "value-key": "[OUT_LIKE]",
+      "type": "File",
+      "optional": true,
+      "id": "out_like",
+      "name": "Reference Volume"
+    },
+    {
+      "command-line-flag": "-I",
+      "description": "Invert transform coordinates",
+      "value-key": "[INVERT_TRANSFORM]",
+      "type": "Flag",
+      "optional": true,
+      "id": "invert_transform",
+      "name": "Invert Transform Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Aligned output file",
+      "optional": false,
+      "id": "aligned_output",
+      "name": "Aligned Output File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

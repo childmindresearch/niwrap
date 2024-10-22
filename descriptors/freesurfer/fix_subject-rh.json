@@ -1,0 +1,32 @@
+{
+  "name": "fix_subject-rh",
+  "command-line": "fix_subject-rh [INPUT_DIRECTORY] [FLAG]",
+  "description": "A tool from FreeSurfer that performs operations on the right hemisphere data within a specified directory.",
+  "inputs": [
+    {
+      "id": "input_directory",
+      "name": "Input Directory",
+      "type": "String",
+      "description": "Directory where the subject's right hemisphere data is located.",
+      "value-key": "[INPUT_DIRECTORY]",
+      "optional": false
+    },
+    {
+      "command-line-flag": "--help",
+      "id": "help_flag",
+      "name": "Help Flag",
+      "type": "Flag",
+      "description": "Displays help information for fix_subject-rh.",
+      "value-key": "[FLAG]",
+      "optional": true
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

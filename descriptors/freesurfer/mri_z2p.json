@@ -1,0 +1,175 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_z2p",
+  "author": "FreeSurfer Developers",
+  "description": "Converts Z-statistic volumes to P-value volumes.",
+  "command-line": "/usr/local/freesurfer/bin/mri_z2p [Z_VOLUME] [P_VOLUME] [SIG_VOLUME] [MASK_VOLUME] [TWO_SIDED_FLAG] [ONE_SIDED_FLAG] [SIGNED_FLAG] [FEATDIR] [FEAT_EXT] [FORMAT_FLAG] [DEBUG_FLAG] [CHECK_OPTS_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--z",
+      "description": "Z volume file",
+      "value-key": "[Z_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "z_volume",
+      "name": "Z Volume"
+    },
+    {
+      "command-line-flag": "--p",
+      "description": "P volume file",
+      "value-key": "[P_VOLUME]",
+      "type": "String",
+      "optional": false,
+      "id": "p_volume",
+      "name": "P Volume"
+    },
+    {
+      "command-line-flag": "--log10p",
+      "description": "Significance volume file",
+      "value-key": "[SIG_VOLUME]",
+      "type": "String",
+      "optional": false,
+      "id": "sig_volume",
+      "name": "Significance Volume"
+    },
+    {
+      "command-line-flag": "--mask",
+      "description": "Mask volume file",
+      "value-key": "[MASK_VOLUME]",
+      "type": "File",
+      "optional": true,
+      "id": "mask_volume",
+      "name": "Mask Volume"
+    },
+    {
+      "command-line-flag": "--two-sided",
+      "description": "Assume a two-sided, unsigned test (keeps sign of input).",
+      "value-key": "[TWO_SIDED_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "two_sided",
+      "name": "Two-sided Flag"
+    },
+    {
+      "command-line-flag": "--one-sided",
+      "description": "Assume a one-sided, signed test.",
+      "value-key": "[ONE_SIDED_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "one_sided",
+      "name": "One-sided Flag"
+    },
+    {
+      "command-line-flag": "--signed",
+      "description": "Two-sided/signed p-value (p = 2*(1-p)).",
+      "value-key": "[SIGNED_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "signed",
+      "name": "Signed Flag"
+    },
+    {
+      "command-line-flag": "--feat",
+      "description": "Convert all z-stats and zf-stats to sigs in the specified directory.",
+      "value-key": "[FEATDIR]",
+      "type": "String",
+      "optional": true,
+      "id": "feat",
+      "name": "Feat Directory"
+    },
+    {
+      "command-line-flag": "--featfmt",
+      "description": "Use specified format for output (e.g., nii, nii.gz, mgh).",
+      "value-key": "[FEAT_EXT]",
+      "type": "String",
+      "optional": true,
+      "id": "feat_format",
+      "name": "Feat Format"
+    },
+    {
+      "command-line-flag": "--nii",
+      "description": "Use NIfTI output format.",
+      "value-key": "[FORMAT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nii_format",
+      "name": "NIfTI Format Flag"
+    },
+    {
+      "command-line-flag": "--nii.gz",
+      "description": "Use compressed NIfTI output format.",
+      "value-key": "[FORMAT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "niigz_format",
+      "name": "NIfTI GZ Format Flag"
+    },
+    {
+      "command-line-flag": "--mgh",
+      "description": "Use MGH output format.",
+      "value-key": "[FORMAT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mgh_format",
+      "name": "MGH Format Flag"
+    },
+    {
+      "command-line-flag": "--mgz",
+      "description": "Use MGZ output format.",
+      "value-key": "[FORMAT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "mgz_format",
+      "name": "MGZ Format Flag"
+    },
+    {
+      "command-line-flag": "--img",
+      "description": "Use Analyze output format.",
+      "value-key": "[FORMAT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "img_format",
+      "name": "IMG Format Flag"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Turn on debugging.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Flag"
+    },
+    {
+      "command-line-flag": "--checkopts",
+      "description": "Don't run anything, just check options and exit.",
+      "value-key": "[CHECK_OPTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "check_opts",
+      "name": "Check Options Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[P_VOLUME]",
+      "description": "Output P volume file.",
+      "optional": false,
+      "id": "output_p_volume",
+      "name": "Output P Volume"
+    },
+    {
+      "path-template": "[SIG_VOLUME]",
+      "description": "Output significance volume file.",
+      "optional": false,
+      "id": "output_sig_volume",
+      "name": "Output Significance Volume"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

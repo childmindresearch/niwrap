@@ -6,7 +6,7 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-RECON_ALL_METADATA = Metadata(
+RECON_ALL_METADATA_ = Metadata(
     id="773eade9a7d8dbfdc4fded9fef5895e8cf103d2f.boutiques",
     name="ReconAll",
     package="freesurfer",
@@ -14,9 +14,9 @@ RECON_ALL_METADATA = Metadata(
 )
 
 
-class ReconAllOutputs(typing.NamedTuple):
+class ReconAllOutputs_(typing.NamedTuple):
     """
-    Output object returned when calling `recon_all(...)`.
+    Output object returned when calling `recon_all_(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -25,7 +25,7 @@ class ReconAllOutputs(typing.NamedTuple):
     directory."""
 
 
-def recon_all(
+def recon_all_(
     subjects_dir: InputPathType,
     directive: typing.Literal["all", "autorecon1", "autorecon2", "autorecon2-volonly", "autorecon2-perhemi", "autorecon2-inflate1", "autorecon2-cp", "autorecon2-wm", "autorecon3", "autorecon3-T2pial", "autorecon-pial", "autorecon-hemi", "localGI", "qcache"] | None = "all",
     flair_file: InputPathType | None = None,
@@ -48,7 +48,7 @@ def recon_all(
     use_t2: bool = False,
     xopts: typing.Literal["use", "clean", "overwrite"] | None = None,
     runner: Runner | None = None,
-) -> ReconAllOutputs:
+) -> ReconAllOutputs_:
     """
     Performs all, or any part of, the FreeSurfer cortical reconstruction process.
     
@@ -91,12 +91,12 @@ def recon_all(
             existing expert options file.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `ReconAllOutputs`).
+        NamedTuple of outputs (described in `ReconAllOutputs_`).
     """
     if hippocampal_subfields_t2 is not None and (len(hippocampal_subfields_t2) != 2): 
         raise ValueError(f"Length of 'hippocampal_subfields_t2' must be 2 but was {len(hippocampal_subfields_t2)}")
     runner = runner or get_global_runner()
-    execution = runner.start_execution(RECON_ALL_METADATA)
+    execution = runner.start_execution(RECON_ALL_METADATA_)
     cargs = []
     cargs.append("ReconAll")
     if directive is not None:
@@ -173,7 +173,7 @@ def recon_all(
             "-xopts-",
             xopts
         ])
-    ret = ReconAllOutputs(
+    ret = ReconAllOutputs_(
         root=execution.output_file("."),
         subjects_dir_outfile=execution.output_file("file"),
     )
@@ -182,7 +182,7 @@ def recon_all(
 
 
 __all__ = [
-    "RECON_ALL_METADATA",
-    "ReconAllOutputs",
-    "recon_all",
+    "RECON_ALL_METADATA_",
+    "ReconAllOutputs_",
+    "recon_all_",
 ]

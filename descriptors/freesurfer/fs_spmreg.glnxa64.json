@@ -1,0 +1,41 @@
+{
+  "tool-version": "7.4.1",
+  "name": "fs_spmreg.glnxa64",
+  "author": "FreeSurfer Developers",
+  "description": "fs_spmreg is a tool for registration using SPM within FreeSurfer.",
+  "command-line": "fs_spmreg [OPTIONS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input anatomical volume",
+      "value-key": "[INPUT_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "input_volume",
+      "name": "Input Volume"
+    },
+    {
+      "description": "Output registration matrix",
+      "value-key": "[OUTPUT_MATRIX]",
+      "type": "String",
+      "optional": false,
+      "id": "output_matrix",
+      "name": "Output Matrix",
+      "default-value": "output.mat"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_MATRIX]",
+      "description": "Output registration matrix file",
+      "optional": false,
+      "id": "output_matrix_file",
+      "name": "Output Matrix File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

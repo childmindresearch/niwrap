@@ -1,0 +1,39 @@
+{
+  "tool-version": "7.4.1",
+  "name": "rca-base-init",
+  "author": "FreeSurfer Developers",
+  "description": "Initialize base subject for recon-all processing",
+  "command-line": "rca-base-init [LOG_FILE] [STATUS_FILE] [CMD_FILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Path to the local log file for output.",
+      "value-key": "[LOG_FILE]",
+      "type": "String",
+      "optional": true,
+      "id": "log_file",
+      "name": "Log File"
+    },
+    {
+      "description": "Path to the status file to append logs.",
+      "value-key": "[STATUS_FILE]",
+      "type": "String",
+      "optional": true,
+      "id": "status_file",
+      "name": "Status File"
+    },
+    {
+      "description": "Path to the command file to append execution commands.",
+      "value-key": "[CMD_FILE]",
+      "type": "String",
+      "optional": true,
+      "id": "cmd_file",
+      "name": "Command File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

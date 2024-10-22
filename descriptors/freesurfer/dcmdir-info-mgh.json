@@ -1,0 +1,67 @@
+{
+  "name": "dcmdir-info-mgh",
+  "description": "Scans a DICOM directory and extracts information about each series.",
+  "command-line": "dcmdir-info-mgh [DICOMDIR] [UNPACKDIR] [VERSION_FLAG] [HELP_FLAG] [NOPRE_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input DICOM directory.",
+      "value-key": "[DICOMDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "dicomdir",
+      "name": "DICOM Directory"
+    },
+    {
+      "description": "Directory where the unpacked data will be stored (optional). If specified, DICOM files are converted to MGZ format.",
+      "value-key": "[UNPACKDIR]",
+      "type": "String",
+      "optional": true,
+      "id": "unpackdir",
+      "name": "Unpack Directory"
+    },
+    {
+      "command-line-flag": "--version",
+      "description": "Print version and exit",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Print help and exit",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    },
+    {
+      "command-line-flag": "--nopre",
+      "description": "Do not assume filenames use the NNNNNN- prefix convention",
+      "value-key": "[NOPRE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nopre",
+      "name": "No Prefix flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "sequencename_run*.mgz",
+      "description": "Converted DICOM files to MGZ format with naming sequencename_runR.mgz, where R is the run number",
+      "optional": true,
+      "id": "converted_mgz_files",
+      "name": "Converted MGZ Files"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

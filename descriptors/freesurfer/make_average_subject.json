@@ -1,0 +1,216 @@
+{
+  "tool-version": "7.4.1",
+  "name": "make_average_subject",
+  "author": "FreeSurfer Developers",
+  "description": "Creates an average subject by averaging surfaces, curvatures, and volumes from a set of subjects.",
+  "command-line": "make_average_subject [SUBJECTS] [FSGD_FILE] [SUBJECT_LIST_FILE] [OUTPUT_NAME] [SD_OUT] [NO_LINK_FLAG] [SDIR] [ICO_ORDER] [XFORM_FILE] [SURF_REG] [NO_SURF_FLAG] [NO_VOL_FLAG] [FORCE_FLAG] [KEEP_ALL_ORIG_FLAG] [NO_SYMLINK_FLAG] [NO_RIBBON_FLAG] [NO_SURF2SURF_FLAG] [RCA_THREADS] [HELP_FLAG] [VERSION_FLAG] [ECHO_FLAG] [DEBUG_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--subjects",
+      "description": "List of subject names",
+      "value-key": "[SUBJECTS]",
+      "type": "String",
+      "list": true,
+      "optional": false,
+      "id": "subjects",
+      "name": "Subjects"
+    },
+    {
+      "command-line-flag": "--fsgd",
+      "description": "Get subject list from a FreeSurfer Group Descriptor file",
+      "value-key": "[FSGD_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "fsgd_file",
+      "name": "FSGD file"
+    },
+    {
+      "command-line-flag": "--f",
+      "description": "Text file containing all subject names",
+      "value-key": "[SUBJECT_LIST_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "subject_list_file",
+      "name": "Subject list file"
+    },
+    {
+      "command-line-flag": "--out",
+      "description": "Name of the average subject",
+      "value-key": "[OUTPUT_NAME]",
+      "type": "String",
+      "optional": false,
+      "id": "average_subject_name",
+      "name": "Average subject name"
+    },
+    {
+      "command-line-flag": "--sd-out",
+      "description": "Directory to put output under instead of SUBJECTS_DIR",
+      "value-key": "[SD_OUT]",
+      "type": "String",
+      "optional": true,
+      "id": "sd_out",
+      "name": "Output directory"
+    },
+    {
+      "command-line-flag": "--no-link",
+      "description": "Do not link back to the original SUBJECTS_DIR with --sd-out",
+      "value-key": "[NO_LINK_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_link",
+      "name": "No link flag"
+    },
+    {
+      "command-line-flag": "--sdir",
+      "description": "Use an alternative SUBJECTS_DIR instead of the default one in the environment",
+      "value-key": "[SDIR]",
+      "type": "String",
+      "optional": true,
+      "id": "sdir",
+      "name": "Subjects directory"
+    },
+    {
+      "command-line-flag": "--ico",
+      "description": "Change order of icosahedron",
+      "value-key": "[ICO_ORDER]",
+      "type": "Number",
+      "optional": true,
+      "id": "ico_order",
+      "name": "Icosahedron order",
+      "default-value": 7
+    },
+    {
+      "command-line-flag": "--xform",
+      "description": "Filename of transform file",
+      "value-key": "[XFORM_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "transform_file",
+      "name": "Transform file"
+    },
+    {
+      "command-line-flag": "--surf-reg",
+      "description": "Alternative registration surface name",
+      "value-key": "[SURF_REG]",
+      "type": "String",
+      "optional": true,
+      "id": "surface_registration",
+      "name": "Surface registration",
+      "default-value": "sphere.reg"
+    },
+    {
+      "command-line-flag": "--no-surf",
+      "description": "Do not make average surfaces",
+      "value-key": "[NO_SURF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_surfaces",
+      "name": "No surfaces flag"
+    },
+    {
+      "command-line-flag": "--no-vol",
+      "description": "Do not make average volumes",
+      "value-key": "[NO_VOL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_volumes",
+      "name": "No volumes flag"
+    },
+    {
+      "command-line-flag": "--force",
+      "description": "Overwrite existing average subject data",
+      "value-key": "[FORCE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "force",
+      "name": "Force flag"
+    },
+    {
+      "command-line-flag": "--keep-all-orig",
+      "description": "Concatenate all original volumes into mri/orig.all.mgz",
+      "value-key": "[KEEP_ALL_ORIG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "keep_all_orig",
+      "name": "Keep all original flag"
+    },
+    {
+      "command-line-flag": "--no-symlink",
+      "description": "Do not use symbolic links with surfaces, copy files instead",
+      "value-key": "[NO_SYMLINK_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_symlink",
+      "name": "No symlink flag"
+    },
+    {
+      "command-line-flag": "--no-ribbon",
+      "description": "Do not create ribbon.mgz and aparc+aseg.mgz files",
+      "value-key": "[NO_RIBBON_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_ribbon",
+      "name": "No ribbon flag"
+    },
+    {
+      "command-line-flag": "--no-surf2surf",
+      "description": "Use old parametric surface mapping method",
+      "value-key": "[NO_SURF2SURF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_surf2surf",
+      "name": "No surf2surf flag"
+    },
+    {
+      "command-line-flag": "--rca-threads",
+      "description": "Number of threads to pass to recon-all",
+      "value-key": "[RCA_THREADS]",
+      "type": "Number",
+      "optional": true,
+      "id": "rca_threads",
+      "name": "RCA threads"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Show short descriptive help",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    },
+    {
+      "command-line-flag": "--version",
+      "description": "Show script version info",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version flag"
+    },
+    {
+      "command-line-flag": "--echo",
+      "description": "Enable command echo for debugging",
+      "value-key": "[ECHO_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "echo",
+      "name": "Echo flag"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Enable debug mode, same as --echo",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug flag"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

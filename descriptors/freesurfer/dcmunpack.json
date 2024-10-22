@@ -1,0 +1,360 @@
+{
+  "tool-version": "7.4.1",
+  "name": "dcmunpack",
+  "description": "Sorts and converts a directory of DICOM files (Siemens, GE, Philips) into an output hierarchy with nifti (nii), mgh, mgz, or analyze output formats.",
+  "command-line": "dcmunpack [SOURCE_DIRECTORY] [TARGET_DIRECTORY] [RUN] [AUTO_RUNSEQ] [KEEP_SCOUTS_FLAG] [SCANONLY] [ONE_PER_DIR_FLAG] [EXTENSION] [PREFIX] [PATTERN] [NO_INFODUMP_FLAG] [GENERIC_FLAG] [COPY_ONLY_FLAG] [NO_CONVERT_FLAG] [FORCE_UPDATE_FLAG] [MAX_FLAG] [BASE_FLAG] [KEY] [INDEX_OUT] [INDEX_IN] [ITDICOM_FLAG] [NO_EXIT_ON_ERROR_FLAG] [RUN_SKIP] [NO_RESCALE_DICOM_FLAG] [RESCALE_DICOM_FLAG] [NO_DWI_FLAG] [IID] [IJD] [IKD] [EXTRA_INFO_FLAG] [FIRST_DICOM_FLAG] [NO_DCM2NIIX_FLAG] [PHASE_FLAG] [FIPS] [FIPS_RUN] [XML_ONLY_FLAG] [LOG] [DEBUG_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Dicom source directory. You can specify more than one.",
+      "value-key": "[SOURCE_DIRECTORY]",
+      "type": "String",
+      "optional": false,
+      "id": "src",
+      "name": "Source Directory",
+      "command-line-flag": "-src"
+    },
+    {
+      "description": "Output directory. Do not need to include when just getting information about what is in the directory.",
+      "value-key": "[TARGET_DIRECTORY]",
+      "type": "String",
+      "optional": true,
+      "id": "targ",
+      "name": "Target Directory",
+      "command-line-flag": "-targ"
+    },
+    {
+      "description": "Specify unpacking rules for a given run (series). Eg, \"-run 3 bold nii f.nii\".",
+      "value-key": "[RUN]",
+      "type": "String",
+      "optional": true,
+      "id": "run",
+      "name": "Run Specification",
+      "command-line-flag": "-run"
+    },
+    {
+      "description": "Save all scans in the targetdir as runo.seqname.format.",
+      "value-key": "[AUTO_RUNSEQ]",
+      "type": "String",
+      "optional": true,
+      "id": "auto_runseq",
+      "name": "Auto Run Sequence",
+      "command-line-flag": "-auto-runseq"
+    },
+    {
+      "description": "Unpack series with 'scout' or 'setter' in the name.",
+      "value-key": "[KEEP_SCOUTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "keep_scouts",
+      "name": "Keep Scouts Flag",
+      "command-line-flag": "-keep-scouts"
+    },
+    {
+      "description": "Only scan the directory and put result in file.",
+      "value-key": "[SCANONLY]",
+      "type": "String",
+      "optional": true,
+      "id": "scanonly",
+      "name": "Scan Only",
+      "command-line-flag": "-scanonly"
+    },
+    {
+      "description": "Assume that there is only one dicom series in each subdir.",
+      "value-key": "[ONE_PER_DIR_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "one_per_dir",
+      "name": "One Per Directory Flag",
+      "command-line-flag": "-one-per-dir"
+    },
+    {
+      "description": "Input extension (eg, dcm).",
+      "value-key": "[EXTENSION]",
+      "type": "String",
+      "optional": true,
+      "id": "ext",
+      "name": "File Extension",
+      "command-line-flag": "-ext"
+    },
+    {
+      "description": "Input prefix (i.e., input file name init string).",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "pre",
+      "name": "File Prefix",
+      "command-line-flag": "-pre"
+    },
+    {
+      "description": "Input pattern (i.e., string that occurs in the middle of file name).",
+      "value-key": "[PATTERN]",
+      "type": "String",
+      "optional": true,
+      "id": "pat",
+      "name": "File Pattern",
+      "command-line-flag": "-pat"
+    },
+    {
+      "description": "Do not create the fname-infodump.dat file.",
+      "value-key": "[NO_INFODUMP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_infodump",
+      "name": "No Infodump Flag",
+      "command-line-flag": "-no-infodump"
+    },
+    {
+      "description": "Do not use FSFAST hierarchy.",
+      "value-key": "[GENERIC_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "generic",
+      "name": "Generic Flag",
+      "command-line-flag": "-generic"
+    },
+    {
+      "description": "Only copy dicom files to output directory (implies -no-convert).",
+      "value-key": "[COPY_ONLY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "copy_only",
+      "name": "Copy Only Flag",
+      "command-line-flag": "-copy-only"
+    },
+    {
+      "description": "Do not convert to output format.",
+      "value-key": "[NO_CONVERT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_convert",
+      "name": "No Convert Flag",
+      "command-line-flag": "-no-convert"
+    },
+    {
+      "description": "Convert even if output is newer than the input dicom.",
+      "value-key": "[FORCE_UPDATE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "force_update",
+      "name": "Force Update Flag",
+      "command-line-flag": "-force-update"
+    },
+    {
+      "description": "Print out max in given dicom file.",
+      "value-key": "[MAX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "max",
+      "name": "Max Flag",
+      "command-line-flag": "-max"
+    },
+    {
+      "description": "Report filename without path.",
+      "value-key": "[BASE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "base",
+      "name": "Base Flag",
+      "command-line-flag": "-base"
+    },
+    {
+      "description": "Put keystring before each run line (good for searching).",
+      "value-key": "[KEY]",
+      "type": "String",
+      "optional": true,
+      "id": "key_string",
+      "name": "Key String",
+      "command-line-flag": "-key"
+    },
+    {
+      "description": "Save index of files to index.out.dat (for re-use).",
+      "value-key": "[INDEX_OUT]",
+      "type": "String",
+      "optional": true,
+      "id": "index_out",
+      "name": "Index Out",
+      "command-line-flag": "-index-out"
+    },
+    {
+      "description": "Read index of files (can make things much faster on 2nd run).",
+      "value-key": "[INDEX_IN]",
+      "type": "String",
+      "optional": true,
+      "id": "index_in",
+      "name": "Index In",
+      "command-line-flag": "-index-in"
+    },
+    {
+      "description": "Add -it dicom to mri_convert cmd line.",
+      "value-key": "[ITDICOM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "it_dicom",
+      "name": "IT DICOM Flag",
+      "command-line-flag": "-itdicom"
+    },
+    {
+      "description": "Continue to unpack data even if there is an error in conversion.",
+      "value-key": "[NO_EXIT_ON_ERROR_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_exit_on_error",
+      "name": "No Exit on Error Flag",
+      "command-line-flag": "-no-exit-on-error"
+    },
+    {
+      "description": "Skip a given run (good when using -auto-runseq).",
+      "value-key": "[RUN_SKIP]",
+      "type": "String",
+      "optional": true,
+      "id": "run_skip",
+      "name": "Run Skip",
+      "command-line-flag": "-run-skip"
+    },
+    {
+      "description": "Turn off DICOM rescaling based on tags (0028,1052) (0028,1053).",
+      "value-key": "[NO_RESCALE_DICOM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_rescale_dicom",
+      "name": "No Rescale DICOM Flag",
+      "command-line-flag": "-no-rescale-dicom"
+    },
+    {
+      "description": "Turn DICOM rescaling on.",
+      "value-key": "[RESCALE_DICOM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "rescale_dicom",
+      "name": "Rescale DICOM Flag",
+      "command-line-flag": "-rescale-dicom"
+    },
+    {
+      "description": "Turn off trying to read DWI parameters.",
+      "value-key": "[NO_DWI_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_dwi",
+      "name": "No DWI Flag",
+      "command-line-flag": "-no-dwi"
+    },
+    {
+      "description": "Set -iid to mri_convert.",
+      "value-key": "[IID]",
+      "type": "Number",
+      "list": true,
+      "optional": true,
+      "id": "iid",
+      "name": "IID",
+      "command-line-flag": "-iid"
+    },
+    {
+      "description": "Set -ijd to mri_convert.",
+      "value-key": "[IJD]",
+      "type": "Number",
+      "list": true,
+      "optional": true,
+      "id": "ijd",
+      "name": "IJD",
+      "command-line-flag": "-ijd"
+    },
+    {
+      "description": "Set -ikd to mri_convert.",
+      "value-key": "[IKD]",
+      "type": "Number",
+      "list": true,
+      "optional": true,
+      "id": "ikd",
+      "name": "IKD",
+      "command-line-flag": "-ikd"
+    },
+    {
+      "description": "Add session info to each line of the info file (pat, date, man, scan, field, serno).",
+      "value-key": "[EXTRA_INFO_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "extra_info",
+      "name": "Extra Info Flag",
+      "command-line-flag": "-extra-info"
+    },
+    {
+      "description": "Copy first dicom file into output folder.",
+      "value-key": "[FIRST_DICOM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "first_dicom",
+      "name": "First DICOM Flag",
+      "command-line-flag": "-first-dicom"
+    },
+    {
+      "description": "Turn off dcm2niix conversion.",
+      "value-key": "[NO_DCM2NIIX_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_dcm2niix",
+      "name": "No DCM2NIIX Flag",
+      "command-line-flag": "-no-dcm2niix"
+    },
+    {
+      "description": "Add the string _phase to volumes that are phase images based on ImageType.",
+      "value-key": "[PHASE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "phase",
+      "name": "Phase Flag",
+      "command-line-flag": "-phase"
+    },
+    {
+      "description": "Fips parameters: project, site, birnid, visit.",
+      "value-key": "[FIPS]",
+      "type": "String",
+      "optional": true,
+      "id": "fips",
+      "name": "Fips Fields",
+      "command-line-flag": "-fips"
+    },
+    {
+      "description": "Fips-run parameters: run paradigm.",
+      "value-key": "[FIPS_RUN]",
+      "type": "String",
+      "optional": true,
+      "id": "fips_run",
+      "name": "Fips Run",
+      "command-line-flag": "-fips-run"
+    },
+    {
+      "description": "For fips, only create xml file, do not convert to output.",
+      "value-key": "[XML_ONLY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "xml_only",
+      "name": "XML Only Flag",
+      "command-line-flag": "-xml-only"
+    },
+    {
+      "description": "Log output to a file.",
+      "value-key": "[LOG]",
+      "type": "String",
+      "optional": true,
+      "id": "log",
+      "name": "Log File",
+      "command-line-flag": "-log"
+    },
+    {
+      "description": "Enable debug mode.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Flag",
+      "command-line-flag": "-debug"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "morph_only_subject",
+  "description": "A placeholder descriptor for morph_only_subject tool as help content is unavailable.",
+  "command-line": "morph_only_subject [ARGS]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Placeholder input argument for morph_only_subject tool.",
+      "value-key": "[ARGS]",
+      "type": "String",
+      "optional": true,
+      "id": "placeholder_input",
+      "name": "Input Arguments"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,85 @@
+{
+  "name": "map_to_base",
+  "description": "Maps an image or surface from a time point directory (either cross-sectional or longitudinal) to the base space and outputs it in the appropriate base directory.",
+  "command-line": "map_to_base [BASE_ID] [TP_ID] [INPUT] [RESAMPLE_TYPE] [CROSS_SECTIONAL]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Identifier of the base.",
+      "value-key": "[BASE_ID]",
+      "type": "String",
+      "optional": false,
+      "id": "baseid",
+      "name": "Base ID"
+    },
+    {
+      "description": "Identifier of the time point, without the '.long.baseid' suffix.",
+      "value-key": "[TP_ID]",
+      "type": "String",
+      "optional": false,
+      "id": "tpid",
+      "name": "Time Point ID"
+    },
+    {
+      "description": "Input image, e.g., norm.mgz, aseg.mgz, lh.white.",
+      "value-key": "[INPUT]",
+      "type": "String",
+      "optional": false,
+      "id": "input_image",
+      "name": "Input Image"
+    },
+    {
+      "description": "Resample type. 'interpolate' for norm, T1, orig; 'nearest' for aseg; 'surface' for surfaces.",
+      "value-key": "[RESAMPLE_TYPE]",
+      "type": "String",
+      "optional": false,
+      "id": "resample_type",
+      "name": "Resample Type"
+    },
+    {
+      "description": "If '1', input is from cross sectionals; default is to use longitudinal directories.",
+      "value-key": "[CROSS_SECTIONAL]",
+      "type": "String",
+      "optional": true,
+      "id": "cross",
+      "name": "Cross Sectional Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[BASE_ID]/mri/[TP_ID]-long.[INPUT]",
+      "description": "Output in base/mri directory when mapped from a longitudinal directory.",
+      "optional": true,
+      "id": "output_long_mri",
+      "name": "Output Longitudinal MRI"
+    },
+    {
+      "path-template": "[BASE_ID]/surf/[TP_ID]-long.[INPUT]",
+      "description": "Output in base/surf directory when mapped from a longitudinal directory.",
+      "optional": true,
+      "id": "output_long_surf",
+      "name": "Output Longitudinal Surface"
+    },
+    {
+      "path-template": "[BASE_ID]/mri/[TP_ID]-cross.[INPUT]",
+      "description": "Output in base/mri directory when mapped from a cross-sectional directory.",
+      "optional": true,
+      "id": "output_cross_mri",
+      "name": "Output Cross-sectional MRI"
+    },
+    {
+      "path-template": "[BASE_ID]/surf/[TP_ID]-cross.[INPUT]",
+      "description": "Output in base/surf directory when mapped from a cross-sectional directory.",
+      "optional": true,
+      "id": "output_cross_surf",
+      "name": "Output Cross-sectional Surface"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

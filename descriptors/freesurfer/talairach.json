@@ -1,0 +1,59 @@
+{
+  "tool-version": "7.4.1",
+  "name": "talairach",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/minc_talairach.json",
+  "description": "Front-end for MINC's mritotal to compute the Talairach transform mapping the input volume to the MNI305.",
+  "command-line": "mri_nu_correct.mni --i [INPUT_VOLUME] --xfm [OUTPUT_XFM] [LOG_FLAG] [DEBUG_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input volume.",
+      "value-key": "[INPUT_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "input_volume",
+      "name": "Input Volume"
+    },
+    {
+      "description": "Output transform file (xfm).",
+      "value-key": "[OUTPUT_XFM]",
+      "type": "String",
+      "optional": false,
+      "id": "output_transform",
+      "name": "Output Transform File"
+    },
+    {
+      "command-line-flag": "--log",
+      "description": "Specify log file. Default is outdir/talarach.log.",
+      "value-key": "[LOG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "log_flag",
+      "name": "Log Flag"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Turn on debugging.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug_flag",
+      "name": "Debug Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_XFM]",
+      "description": "Output transformation file.",
+      "optional": false,
+      "id": "xfm_output",
+      "name": "Output Transform File"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

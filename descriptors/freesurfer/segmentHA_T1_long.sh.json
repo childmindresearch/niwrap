@@ -1,0 +1,40 @@
+{
+  "tool-version": "7.4.1",
+  "name": "segmentHA_T1_long.sh",
+  "author": "FreeSurfer Developers",
+  "description": "A script for longitudinal segmentation of the hippocampal/amygdala regions",
+  "command-line": "segmentHA_T1_long.sh [SUBJECT_DIR] [SUBJECT_ID]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Directory containing subject data",
+      "value-key": "[SUBJECT_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_dir",
+      "name": "Subject Directory"
+    },
+    {
+      "description": "Identifier for the subject within the subject directory",
+      "value-key": "[SUBJECT_ID]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_id",
+      "name": "Subject ID"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[SUBJECT_DIR]/[SUBJECT_ID]_long_segment/output",
+      "description": "Output directory containing segmentation results",
+      "optional": false,
+      "id": "output_dir",
+      "name": "Segmentation Output"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,25 @@
+{
+  "tool-version": "7.4.1",
+  "name": "segmentSubjectT2_autoEstimateAlveusML",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "unknown",
+  "description": "A Freesurfer tool to segment T2 subjects with automatic alveus ML estimation.",
+  "command-line": "segmentSubjectT2_autoEstimateAlveusML",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "The tool could not be executed due to a missing shared library: libmwlaunchermain.so",
+      "value-key": "[MISSING_LIBRARY_ERROR]",
+      "type": "String",
+      "optional": false,
+      "id": "missing_library",
+      "name": "Error Message",
+      "default-value": "libmwlaunchermain.so: cannot open shared object file"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

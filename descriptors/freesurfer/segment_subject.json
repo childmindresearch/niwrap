@@ -1,0 +1,79 @@
+{
+  "tool-version": "7.4.1",
+  "name": "segment_subject",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://github.com/freesurfer/freesurfer",
+  "description": "Front-end for MINCs mritotal to compute the Talairach transform that maps the input volume to the MNI305 space.",
+  "command-line": "mri_nu_correct.mni [INPUT_VOLUME] [OUTPUT_XFM] [LOG_FILE] [HELP_FLAG] [DEBUG_FLAG] [VERSION_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--i",
+      "description": "Input volume",
+      "value-key": "[INPUT_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "input_volume",
+      "name": "Input Volume"
+    },
+    {
+      "command-line-flag": "--xfm",
+      "description": "Output transformation file",
+      "value-key": "[OUTPUT_XFM]",
+      "type": "String",
+      "optional": false,
+      "id": "output_xfm",
+      "name": "Output Transformation"
+    },
+    {
+      "command-line-flag": "--log",
+      "description": "Log file. Default is outdir/talarach.log",
+      "value-key": "[LOG_FILE]",
+      "type": "String",
+      "optional": true,
+      "id": "log_file",
+      "name": "Log File"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Print help and exit",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help_flag",
+      "name": "Help Flag"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Turn on debugging",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug_flag",
+      "name": "Debug Flag"
+    },
+    {
+      "command-line-flag": "--version",
+      "description": "Print version and exit",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version_flag",
+      "name": "Version Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_XFM]",
+      "description": "Output transformation file",
+      "optional": false,
+      "id": "output_xfm_file",
+      "name": "Output XFM"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

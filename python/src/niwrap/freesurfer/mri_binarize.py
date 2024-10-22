@@ -6,215 +6,252 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-MRI_BINARIZE_METADATA = Metadata(
-    id="3c4b8de29e44ee505769a551bde465c753fbc4c9.boutiques",
-    name="mri binarize",
+MRI_BINARIZE_METADATA_ = Metadata(
+    id="97e37d2eb690a5a8992a2d101f133c67b3abb7c2.boutiques",
+    name="mri_binarize",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
 )
 
 
-class MriBinarizeOutputs(typing.NamedTuple):
+class MriBinarizeOutputs_(typing.NamedTuple):
     """
-    Output object returned when calling `mri_binarize(...)`.
+    Output object returned when calling `mri_binarize_(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    binary_file_outfile: OutputPathType
-    """Binarized output volume."""
+    out_volume: OutputPathType
+    """The resulting binarized volume."""
 
 
-def mri_binarize(
-    binary_file: InputPathType,
-    in_file: InputPathType,
-    abs_: bool = False,
-    bin_col_num: bool = False,
-    bin_val: int | None = None,
-    bin_val_not: int | None = None,
-    count_file_2: InputPathType | None = None,
-    dilate: int | None = None,
-    erode: int | None = None,
-    erode2d: int | None = None,
-    frame_no: int | None = None,
-    invert: bool = False,
-    mask_file: InputPathType | None = None,
-    mask_thresh: float | None = None,
-    match: list[int] | None = None,
-    max_: float | None = None,
-    merge_file: InputPathType | None = None,
-    min_: float | None = None,
-    out_type: typing.Literal["nii", "nii.gz", "mgz"] | None = None,
-    rmax: float | None = None,
+def mri_binarize_(
+    input_volume: InputPathType,
+    output_volume: str,
+    min_threshold: float | None = None,
+    max_threshold: float | None = None,
+    pct_threshold: float | None = None,
     rmin: float | None = None,
-    subjects_dir: InputPathType | None = None,
-    ventricles: bool = False,
-    wm: bool = False,
-    wm_ven_csf: bool = False,
-    zero_edges: bool = False,
-    zero_slice_edge: bool = False,
+    rmax: float | None = None,
+    fdr_threshold: float | None = None,
+    match_values: list[float] | None = None,
+    replace_values: list[float] | None = None,
+    binval: float | None = None,
+    binval_not: float | None = None,
+    frame: float | None = None,
+    merge_volume: InputPathType | None = None,
+    mask_volume: InputPathType | None = None,
+    mask_threshold: float | None = None,
+    surf_name: str | None = None,
+    surf_smooth: float | None = None,
+    threads: float | None = None,
+    ctx_wm_flag: bool = False,
+    all_wm_flag: bool = False,
+    ventricles_flag: bool = False,
+    wm_vcsf_flag: bool = False,
+    gm_flag: bool = False,
+    subcort_gm_flag: bool = False,
+    scm_lh_flag: bool = False,
+    scm_rh_flag: bool = False,
+    zero_edges_flag: bool = False,
+    zero_slice_edges_flag: bool = False,
+    dilate_vertex: str | None = None,
+    remove_islands_flag: bool = False,
+    fill_holes_flag: bool = False,
+    noverbose_flag: bool = False,
+    debug_flag: bool = False,
     runner: Runner | None = None,
-) -> MriBinarizeOutputs:
+) -> MriBinarizeOutputs_:
     """
-    Program to binarize a volume (or volume-encoded surface file). Can also be used
-    to merge with other binarizations. Binarization can be done based on threshold
-    or on matched values.
+    A program to binarize a volume or volume-encoded surface file, with options to
+    merge and manipulate binarized output.
     
-    Author: Members of the Laboratories for Computational Neuroimaging (LCN) at
-    the Athinoula A. Martinos Center for Biomedical Imaging
+    Author: FreeSurfer Developers
     
-    URL: https://surfer.nmr.mgh.harvard.edu/fswiki/mri_binarize
+    URL: https://github.com/freesurfer/freesurfer
     
     Args:
-        binary_file: Binary output volume.
-        in_file: Input volume.
-        abs_: Take abs of invol first (ie, make unsigned).
-        bin_col_num: Set binarized voxel value to its column number.
-        bin_val: Set vox within thresh to val (default is 1).
-        bin_val_not: Set vox outside range to val (default is 0).
-        count_file_2: A boolean or file. Save number of hits in ascii file\
-            (hits, ntotvox, pct).
-        dilate: Niters: dilate binarization in 3d.
-        erode: Nerode: erode binarization in 3d (after any dilation).
-        erode2d: Nerode2d: erode binarization in 2d (after any 3d erosion).
-        frame_no: Use 0-based frame of input (default is 0).
-        invert: Set binval=0, binvalnot=1.
-        mask_file: Must be within mask.
-        mask_thresh: Set thresh for mask.
-        match: Match instead of threshold.
-        max_: Max thresh.
-        merge_file: Merge with mergevol.
-        min_: Min thresh.
-        out_type: 'nii' or 'nii.gz' or 'mgz'. Output file type.
-        rmax: Compute max based on rmax*globalmean.
-        rmin: Compute min based on rmin*globalmean.
-        subjects_dir: file or string representing an existing directory.\
-            Subjects directory.
-        ventricles: Set match vals those for aseg ventricles+choroid (not 4th).
-        wm: Set match vals to 2 and 41 (aseg for cerebral wm).
-        wm_ven_csf: Wm and ventricular csf, including choroid (not 4th).
-        zero_edges: Zero the edge voxels.
-        zero_slice_edge: Zero the edge slice voxels.
+        input_volume: Input volume to be binarized.
+        output_volume: Path to output volume.
+        min_threshold: Minimum threshold (default is -inf).
+        max_threshold: Maximum threshold (default is +inf).
+        pct_threshold: Set threshold to capture top P% of voxels.
+        rmin: Compute min threshold based on rmin times global mean.
+        rmax: Compute max threshold based on rmax times global mean.
+        fdr_threshold: Compute min threshold based on FDR.
+        match_values: Binarize based on matching values.
+        replace_values: Replace voxels with specified values. Format: V1 V2.
+        binval: Set voxel value within threshold to specified value (default is\
+            1).
+        binval_not: Set voxel value outside threshold range to specified value\
+            (default is 0).
+        frame: Use specific frame of the input. 0-based index.
+        merge_volume: Merge with another volume. Must be the same dimensions as\
+            input volume.
+        mask_volume: Mask input with a specified mask volume.
+        mask_threshold: Set threshold for mask volume (default is 0.5).
+        surf_name: Create a surface mesh from the binarization.
+        surf_smooth: Smooth the surface mesh iteratively, specifying the number\
+            of iterations.
+        threads: Specify number of threads to use.
+        ctx_wm_flag: Set match values for cerebral white matter.
+        all_wm_flag: Set match values for all white matter.
+        ventricles_flag: Set match values for ventricles and choroid.
+        wm_vcsf_flag: Match for WM and ventricular CSF.
+        gm_flag: Match for all WM, VCSF and background, then invert.
+        subcort_gm_flag: Match for subcortical gray matter.
+        scm_lh_flag: Subcortical mass for left hemisphere.
+        scm_rh_flag: Subcortical mass for right hemisphere.
+        zero_edges_flag: Set edge voxels to zero.
+        zero_slice_edges_flag: Set edge slice voxels to zero.
+        dilate_vertex: Dilate vertex to a specific target area.
+        remove_islands_flag: Remove islands in the mask.
+        fill_holes_flag: Remove holes in the mask.
+        noverbose_flag: Suppress verbose output.
+        debug_flag: Enable debugging output.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `MriBinarizeOutputs`).
+        NamedTuple of outputs (described in `MriBinarizeOutputs_`).
     """
     runner = runner or get_global_runner()
-    execution = runner.start_execution(MRI_BINARIZE_METADATA)
+    execution = runner.start_execution(MRI_BINARIZE_METADATA_)
     cargs = []
-    cargs.append("mri_binarize")
-    if abs_:
-        cargs.append("--abs")
-    if bin_col_num:
-        cargs.append("--bincol")
-    if bin_val is not None:
-        cargs.extend([
-            "--binval",
-            str(bin_val)
-        ])
-    if bin_val_not is not None:
-        cargs.extend([
-            "--binvalnot",
-            str(bin_val_not)
-        ])
-    cargs.extend([
-        "--o",
-        execution.input_file(binary_file)
-    ])
-    if count_file_2 is not None:
-        cargs.extend([
-            "--count",
-            execution.input_file(count_file_2)
-        ])
-    if dilate is not None:
-        cargs.extend([
-            "--dilate",
-            str(dilate)
-        ])
-    if erode is not None:
-        cargs.extend([
-            "--erode",
-            str(erode)
-        ])
-    if erode2d is not None:
-        cargs.extend([
-            "--erode2d",
-            str(erode2d)
-        ])
-    if frame_no is not None:
-        cargs.extend([
-            "--frame",
-            str(frame_no)
-        ])
+    cargs.append("/usr/local/freesurfer/bin/mri_binarize")
     cargs.extend([
         "--i",
-        execution.input_file(in_file)
+        execution.input_file(input_volume)
     ])
-    if invert:
-        cargs.append("--inv")
-    if mask_file is not None:
-        cargs.extend([
-            "--mask maskvol",
-            execution.input_file(mask_file)
-        ])
-    if mask_thresh is not None:
-        cargs.extend([
-            "--mask-thresh",
-            str(mask_thresh)
-        ])
-    if match is not None:
-        cargs.extend([
-            "--match",
-            *map(str, match)
-        ])
-    if max_ is not None:
-        cargs.extend([
-            "--max",
-            str(max_)
-        ])
-    if merge_file is not None:
-        cargs.extend([
-            "--merge",
-            execution.input_file(merge_file)
-        ])
-    if min_ is not None:
+    cargs.extend([
+        "--o",
+        output_volume
+    ])
+    if min_threshold is not None:
         cargs.extend([
             "--min",
-            str(min_)
+            str(min_threshold)
         ])
-    if out_type is not None:
-        cargs.append(out_type)
-    if rmax is not None:
+    if max_threshold is not None:
         cargs.extend([
-            "--rmax",
-            str(rmax)
+            "--max",
+            str(max_threshold)
+        ])
+    if pct_threshold is not None:
+        cargs.extend([
+            "--pct",
+            str(pct_threshold)
         ])
     if rmin is not None:
         cargs.extend([
             "--rmin",
             str(rmin)
         ])
-    if subjects_dir is not None:
-        cargs.append(execution.input_file(subjects_dir))
-    if ventricles:
+    if rmax is not None:
+        cargs.extend([
+            "--rmax",
+            str(rmax)
+        ])
+    if fdr_threshold is not None:
+        cargs.extend([
+            "--fdr",
+            str(fdr_threshold)
+        ])
+    if match_values is not None:
+        cargs.extend([
+            "--match",
+            *map(str, match_values)
+        ])
+    if replace_values is not None:
+        cargs.extend([
+            "--replace",
+            *map(str, replace_values)
+        ])
+    if binval is not None:
+        cargs.extend([
+            "--binval",
+            str(binval)
+        ])
+    if binval_not is not None:
+        cargs.extend([
+            "--binvalnot",
+            str(binval_not)
+        ])
+    if frame is not None:
+        cargs.extend([
+            "--frame",
+            str(frame)
+        ])
+    if merge_volume is not None:
+        cargs.extend([
+            "--merge",
+            execution.input_file(merge_volume)
+        ])
+    if mask_volume is not None:
+        cargs.extend([
+            "--mask",
+            execution.input_file(mask_volume)
+        ])
+    if mask_threshold is not None:
+        cargs.extend([
+            "--mask-thresh",
+            str(mask_threshold)
+        ])
+    if surf_name is not None:
+        cargs.extend([
+            "--surf",
+            surf_name
+        ])
+    if surf_smooth is not None:
+        cargs.extend([
+            "--surf-smooth",
+            str(surf_smooth)
+        ])
+    if threads is not None:
+        cargs.extend([
+            "--threads",
+            str(threads)
+        ])
+    if ctx_wm_flag:
+        cargs.append("--ctx-wm")
+    if all_wm_flag:
+        cargs.append("--all-wm")
+    if ventricles_flag:
         cargs.append("--ventricles")
-    if wm:
-        cargs.append("--wm")
-    if wm_ven_csf:
+    if wm_vcsf_flag:
         cargs.append("--wm+vcsf")
-    if zero_edges:
+    if gm_flag:
+        cargs.append("--gm")
+    if subcort_gm_flag:
+        cargs.append("--subcort-gm")
+    if scm_lh_flag:
+        cargs.append("--scm-lh")
+    if scm_rh_flag:
+        cargs.append("--scm-rh")
+    if zero_edges_flag:
         cargs.append("--zero-edges")
-    if zero_slice_edge:
+    if zero_slice_edges_flag:
         cargs.append("--zero-slice-edges")
-    ret = MriBinarizeOutputs(
+    if dilate_vertex is not None:
+        cargs.extend([
+            "--dilate-vertex",
+            dilate_vertex
+        ])
+    if remove_islands_flag:
+        cargs.append("--remove-islands")
+    if fill_holes_flag:
+        cargs.append("--fill-holes")
+    if noverbose_flag:
+        cargs.append("--noverbose")
+    if debug_flag:
+        cargs.append("--debug")
+    ret = MriBinarizeOutputs_(
         root=execution.output_file("."),
-        binary_file_outfile=execution.output_file(pathlib.Path(binary_file).name),
+        out_volume=execution.output_file(output_volume),
     )
     execution.run(cargs)
     return ret
 
 
 __all__ = [
-    "MRI_BINARIZE_METADATA",
-    "MriBinarizeOutputs",
-    "mri_binarize",
+    "MRI_BINARIZE_METADATA_",
+    "MriBinarizeOutputs_",
+    "mri_binarize_",
 ]

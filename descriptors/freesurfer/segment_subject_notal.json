@@ -1,0 +1,23 @@
+{
+  "name": "segment_subject_notal",
+  "description": "A script to segment subjects (notal)",
+  "command-line": "segment_subject_notal [SUBJECT_PATH]",
+  "inputs": [
+    {
+      "description": "Path to the subject's directory",
+      "value-key": "[SUBJECT_PATH]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_path",
+      "name": "Subject Path"
+    }
+  ],
+  "tool-version": "7.4.1",
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "author": "FreeSurfer Developers",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "mris_talairach",
+  "tool-version": "7.4.1",
+  "description": "Transforms an MRI surface into Talairach space.",
+  "command-line": "mris_talairach [INPUT_IMAGE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input image file to be transformed into Talairach space",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_image",
+      "name": "Input Image File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

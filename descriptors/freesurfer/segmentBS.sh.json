@@ -1,0 +1,24 @@
+{
+  "tool-version": "7.4.1",
+  "name": "segmentBS.sh",
+  "author": "FreeSurfer Developers",
+  "description": "Segmentation tool for hippocampal/amygdala and brainstem modules",
+  "command-line": "segmentBS.sh [MATLAB_RUNTIME_PATH]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Path to the Matlab 2019b runtime environment; necessary for running the segmentation tool.",
+      "value-key": "[MATLAB_RUNTIME_PATH]",
+      "type": "String",
+      "optional": true,
+      "id": "matlab_runtime",
+      "name": "Matlab Runtime Path",
+      "default-value": "/usr/local/freesurfer/MCRv97"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,130 @@
+{
+  "tool-version": "7.4.1",
+  "name": "wmsaseg",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://surfer.nmr.mgh.harvard.edu/",
+  "description": "White Matter Hyperintensity Segmentation Tool",
+  "command-line": "wmsaseg --s [SUBJECT] [SOURCE_ORIG] [SOURCE_LONG] [OUTPUT_SUB_DIR] [GCA_FILE] [NO_REG_FLAG] [NO_CANORM_FLAG] [INIT_SPM_FLAG] [REG_ONLY_FLAG] [HALO1_FLAG] [HALO2_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Subject identifier",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": false,
+      "id": "subject",
+      "name": "Subject"
+    },
+    {
+      "command-line-flag": "--s+orig",
+      "description": "Use T2 and PD images from original subject",
+      "value-key": "[SOURCE_ORIG]",
+      "type": "String",
+      "optional": true,
+      "id": "source_orig",
+      "name": "Source original"
+    },
+    {
+      "command-line-flag": "--s+long",
+      "description": "Use T2 and PD images from longitudinal subject",
+      "value-key": "[SOURCE_LONG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "source_long",
+      "name": "Source long"
+    },
+    {
+      "command-line-flag": "--sub",
+      "description": "Output subdirectory name (default is wmsa)",
+      "value-key": "[OUTPUT_SUB_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "output_subdir",
+      "name": "Output subdirectory"
+    },
+    {
+      "command-line-flag": "--gca",
+      "description": "GCA file path",
+      "value-key": "[GCA_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "gca_file",
+      "name": "GCA file"
+    },
+    {
+      "command-line-flag": "--no-reg",
+      "description": "Do not register mode to anatomical image",
+      "value-key": "[NO_REG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_reg",
+      "name": "No registration"
+    },
+    {
+      "command-line-flag": "--no-canorm",
+      "description": "Do not run mri_ca_normalize",
+      "value-key": "[NO_CANORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_canorm",
+      "name": "No CA normalization"
+    },
+    {
+      "command-line-flag": "--init-spm",
+      "description": "Initialize SPM (default is FSL)",
+      "value-key": "[INIT_SPM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "init_spm",
+      "name": "Initialize SPM"
+    },
+    {
+      "command-line-flag": "--reg-only",
+      "description": "Only perform registration",
+      "value-key": "[REG_ONLY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "reg_only",
+      "name": "Register only"
+    },
+    {
+      "command-line-flag": "--halo1",
+      "description": "Halo 1 option",
+      "value-key": "[HALO1_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "halo1",
+      "name": "Halo 1"
+    },
+    {
+      "command-line-flag": "--halo2",
+      "description": "Halo 2 option",
+      "value-key": "[HALO2_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "halo2",
+      "name": "Halo 2"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_SUB_DIR]/T1.canorm.mgz",
+      "description": "CA normalized T1 output",
+      "optional": true,
+      "id": "t1_canorm",
+      "name": "T1 CA Norm"
+    },
+    {
+      "path-template": "[OUTPUT_SUB_DIR]/wmsa.lta",
+      "description": "Linear transform to average space",
+      "optional": true,
+      "id": "wmsa_lta",
+      "name": "WMSA LTA file"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

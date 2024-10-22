@@ -1,0 +1,93 @@
+{
+  "tool-version": "7.4.1",
+  "name": "rcbf-prep",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://surfer.nmr.mgh.harvard.edu/fswiki/RcbfProc",
+  "description": "Performs integration of rCBF as produced by Siemens scanners with FreeSurfer analysis in preparation for group analysis.",
+  "command-line": "rcbf-prep [OUTDIR] [RCBFVOL] [SUBJECT] [ROITAB] [REGISTER] [TEMPLATE]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--o",
+      "description": "Output directory where results will be stored.",
+      "value-key": "[OUTDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "outdir",
+      "name": "Output directory"
+    },
+    {
+      "command-line-flag": "--rcbf",
+      "description": "Input rCBF volume to be registered to the FreeSurfer anatomical.",
+      "value-key": "[RCBFVOL]",
+      "type": "File",
+      "optional": false,
+      "id": "rcbfvol",
+      "name": "rCBF volume"
+    },
+    {
+      "command-line-flag": "--s",
+      "description": "Subject identifier for FreeSurfer anatomical registration.",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": true,
+      "id": "subject",
+      "name": "Subject"
+    },
+    {
+      "command-line-flag": "--roitab",
+      "description": "ROI table specifying which ROIs will be summarized, e.g., FreeSurferColorLUT.txt.",
+      "value-key": "[ROITAB]",
+      "type": "File",
+      "optional": true,
+      "id": "roitab",
+      "name": "ROI table"
+    },
+    {
+      "command-line-flag": "--reg",
+      "description": "Registration data file instead of a subject.",
+      "value-key": "[REGISTER]",
+      "type": "File",
+      "optional": true,
+      "id": "register",
+      "name": "Register file"
+    },
+    {
+      "command-line-flag": "--t",
+      "description": "Template file used instead of rCBF itself.",
+      "value-key": "[TEMPLATE]",
+      "type": "File",
+      "optional": true,
+      "id": "template",
+      "name": "Template file"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTDIR]/?h.rcbf.mgh",
+      "description": "Registered and resampled rCBF volume for both hemispheres.",
+      "optional": true,
+      "id": "hemisphere_rcbf",
+      "name": "Hemisphere rCBF"
+    },
+    {
+      "path-template": "[OUTDIR]/rcbf.mni305.nii",
+      "description": "rCBF volume resampled to MNI305 space.",
+      "optional": true,
+      "id": "mni305_rcbf",
+      "name": "MNI305 rCBF"
+    },
+    {
+      "path-template": "[OUTDIR]/roi.dat",
+      "description": "Stats file summarizing the ROIs.",
+      "optional": true,
+      "id": "roi_stats",
+      "name": "ROI statistics"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

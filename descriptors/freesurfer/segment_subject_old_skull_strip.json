@@ -1,0 +1,84 @@
+{
+  "name": "segment_subject_old_skull_strip",
+  "description": "Front-end for MINCs mritotal for computing the talairach transform that maps the input volume to the MNI305.",
+  "tool-version": "7.4.1",
+  "command-line": "mri_nu_correct.mni --i [INPUT_VOLUME] --xfm [OUTPUT_XFM] [LOG_FILE] [HELP_FLAG] [DEBUG_FLAG] [VERSION_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "input_volume",
+      "name": "Input Volume",
+      "description": "Input volume file",
+      "type": "File",
+      "value-key": "[INPUT_VOLUME]",
+      "optional": false
+    },
+    {
+      "id": "output_xfm",
+      "name": "Output XFM File",
+      "description": "Output xfm file",
+      "type": "String",
+      "value-key": "[OUTPUT_XFM]",
+      "optional": false
+    },
+    {
+      "id": "log_file",
+      "name": "Log File",
+      "description": "Log file. Default is outdir/talarach.log",
+      "type": "String",
+      "value-key": "[LOG_FILE]",
+      "command-line-flag": "--log",
+      "optional": true
+    },
+    {
+      "id": "help_flag",
+      "name": "Help",
+      "description": "Print help and exit",
+      "type": "Flag",
+      "value-key": "[HELP_FLAG]",
+      "command-line-flag": "--help",
+      "optional": true
+    },
+    {
+      "id": "debug_flag",
+      "name": "Debug",
+      "description": "Turn on debugging",
+      "type": "Flag",
+      "value-key": "[DEBUG_FLAG]",
+      "command-line-flag": "--debug",
+      "optional": true
+    },
+    {
+      "id": "version_flag",
+      "name": "Version",
+      "description": "Print version and exit",
+      "type": "Flag",
+      "value-key": "[VERSION_FLAG]",
+      "command-line-flag": "--version",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_xfm_file",
+      "name": "Output XFM",
+      "description": "Resulting output xfm file",
+      "path-template": "[OUTPUT_XFM]",
+      "optional": false
+    },
+    {
+      "id": "log_output_file",
+      "name": "Log Output",
+      "description": "Generated log file",
+      "path-template": "[LOG_FILE]",
+      "optional": true
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://www.bic.mni.mcgill.ca/users/louis/MNI_AUTOREG_home/readme/node1.html",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

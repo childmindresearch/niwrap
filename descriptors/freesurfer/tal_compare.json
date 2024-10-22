@@ -1,0 +1,57 @@
+{
+  "name": "tal_compare",
+  "description": "Tool for comparing TAL databases",
+  "command-line": "tal_compare [REF_FILE] [MOVING_FILE] [OUTPUT_FILE] [VERBOSE_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Reference TAL database file.",
+      "value-key": "[REF_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "ref_file",
+      "name": "Reference File"
+    },
+    {
+      "description": "Moving TAL database file to compare against the reference.",
+      "value-key": "[MOVING_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "moving_file",
+      "name": "Moving File"
+    },
+    {
+      "description": "Output file to store comparison results.",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    },
+    {
+      "command-line-flag": "-v",
+      "description": "Enable verbose output.",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose",
+      "name": "Verbose Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Comparison results output file.",
+      "optional": false,
+      "id": "comparison_results",
+      "name": "Comparison Results Output File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

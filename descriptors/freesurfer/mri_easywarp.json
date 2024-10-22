@@ -1,0 +1,70 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_easywarp",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "N/A",
+  "description": "EasyReg: deep learning registration simple and easy",
+  "command-line": "mri_easywarp [INPUT_IMAGE] [OUTPUT_IMAGE] [DEFORMATION_FIELD] [NEAREST_FLAG] [THREADS]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input image",
+      "value-key": "[INPUT_IMAGE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_image",
+      "name": "Input image",
+      "command-line-flag": "--i"
+    },
+    {
+      "description": "Output (deformed) image",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_image",
+      "name": "Output image",
+      "command-line-flag": "--o"
+    },
+    {
+      "description": "Deformation field",
+      "value-key": "[DEFORMATION_FIELD]",
+      "type": "File",
+      "optional": true,
+      "id": "deformation_field",
+      "name": "Deformation field",
+      "command-line-flag": "--field"
+    },
+    {
+      "command-line-flag": "--nearest",
+      "description": "Use nearest neighbor (rather than linear) interpolation",
+      "value-key": "[NEAREST_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nearest_neighbor",
+      "name": "Nearest neighbor flag"
+    },
+    {
+      "command-line-flag": "--threads",
+      "description": "Number of cores to be used. Default is 1. You can use -1 to use all available cores",
+      "value-key": "[THREADS]",
+      "type": "Number",
+      "optional": true,
+      "id": "num_threads",
+      "name": "Threads"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_IMAGE].nii.gz",
+      "description": "Output deformed image",
+      "optional": false,
+      "id": "output_deformed_image",
+      "name": "Output deformed image"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,134 @@
+{
+  "name": "mri_stopmask",
+  "description": "This program creates a mask used to stop the search for the maximum gradient in mris_place_surface, preventing the surface from wandering into areas it should not.",
+  "command-line": "mri_stopmask --o [OUTPUT_MASK] --filled [FILLED_AUTO_MGZ] [FILLED_MGZ] --aseg [ASEG_PRESURF_MGZ] [LATERAL_VENTRICLES_FLAG] [WMSA_ERODE_MM] [WM_MGZ] [BRAIN_FINALSURFS_MGZ] [NO_FILLED_FLAG] [NO_LV_FLAG] [NO_WMSA_FLAG] [NO_WM_FLAG] [NO_BFS_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--o",
+      "description": "Output stop mask in volume format",
+      "value-key": "[OUTPUT_MASK]",
+      "type": "String",
+      "optional": false,
+      "id": "output_mask",
+      "name": "Output Mask"
+    },
+    {
+      "command-line-flag": "--filled",
+      "description": "Include voxels edited fill voxels that are set in the filled.mgz",
+      "value-key": "[FILLED_AUTO_MGZ] [FILLED_MGZ]",
+      "type": "File",
+      "list": true,
+      "max-list-entries": 2,
+      "optional": false,
+      "id": "filled",
+      "name": "Filled Volume Files"
+    },
+    {
+      "command-line-flag": "--aseg",
+      "description": "Used with --lv and/or --wmsa; Note: must be aseg.presurf.mgz, not aseg.mgz",
+      "value-key": "[ASEG_PRESURF_MGZ]",
+      "type": "File",
+      "optional": false,
+      "id": "aseg_presurf",
+      "name": "ASEG presurf file"
+    },
+    {
+      "command-line-flag": "--lv",
+      "description": "Add lateral ventricles and choroid plexus to the mask (needs --aseg)",
+      "value-key": "[LATERAL_VENTRICLES_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "lateral_ventricles",
+      "name": "Lateral Ventricles Flag"
+    },
+    {
+      "command-line-flag": "--wmsa",
+      "description": "Add WM hypointensities to the mask (needs --aseg); erode by given distance away from any adjacent cortex",
+      "value-key": "[WMSA_ERODE_MM]",
+      "type": "Number",
+      "optional": true,
+      "id": "wmsa",
+      "name": "WMSA Erode mm"
+    },
+    {
+      "command-line-flag": "--wm",
+      "description": "Include voxels that =255 from wm.mgz",
+      "value-key": "[WM_MGZ]",
+      "type": "File",
+      "optional": true,
+      "id": "wm_voxels",
+      "name": "WM Voxels File"
+    },
+    {
+      "command-line-flag": "--bfs",
+      "description": "Include voxels that =255 from brain.finalsurfs.mgz",
+      "value-key": "[BRAIN_FINALSURFS_MGZ]",
+      "type": "File",
+      "optional": true,
+      "id": "brain_final_surfs",
+      "name": "Brain Final Surfaces File"
+    },
+    {
+      "command-line-flag": "--no-filled",
+      "description": "Turns off --filled option",
+      "value-key": "[NO_FILLED_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_filled",
+      "name": "No Filled Flag"
+    },
+    {
+      "command-line-flag": "--no-lv",
+      "description": "Turns off --lv option",
+      "value-key": "[NO_LV_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_lv",
+      "name": "No LV Flag"
+    },
+    {
+      "command-line-flag": "--no-wmsa",
+      "description": "Turns off --wmsa option",
+      "value-key": "[NO_WMSA_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_wmsa",
+      "name": "No WMSA Flag"
+    },
+    {
+      "command-line-flag": "--no-wm",
+      "description": "Turns off --wm option",
+      "value-key": "[NO_WM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_wm",
+      "name": "No WM Flag"
+    },
+    {
+      "command-line-flag": "--no-bfs",
+      "description": "Turns off --bfs option",
+      "value-key": "[NO_BFS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_bfs",
+      "name": "No BFS Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_MASK]",
+      "description": "The generated stop mask output file",
+      "optional": false,
+      "id": "generated_mask",
+      "name": "Generated Mask File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "mri_and",
+  "author": "FreeSurfer Developers",
+  "description": "Performs a logical voxel-wise AND on a series of volumes",
+  "command-line": "/usr/local/freesurfer/bin/mri_and [INPUT_FILES]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input volume files",
+      "value-key": "[INPUT_FILES]",
+      "type": "File",
+      "optional": false,
+      "id": "input_files",
+      "name": "Input files",
+      "list": true
+    }
+  ],
+  "tool-version": "7.4.1",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

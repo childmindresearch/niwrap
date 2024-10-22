@@ -1,0 +1,48 @@
+{
+  "name": "compute_vox2vox",
+  "author": "FreeSurfer Developers",
+  "description": "Tool for computing voxel-to-voxel transformations.",
+  "command-line": "compute_vox2vox [SOURCE] [T4FILE] [TARGET]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "source",
+      "name": "Source File",
+      "type": "File",
+      "value-key": "[SOURCE]",
+      "description": "Input 4dfp source file.",
+      "optional": false
+    },
+    {
+      "id": "t4file",
+      "name": "T4 File",
+      "type": "File",
+      "value-key": "[T4FILE]",
+      "description": "T4 transformation matrix file.",
+      "optional": false
+    },
+    {
+      "id": "target",
+      "name": "Target File",
+      "type": "File",
+      "value-key": "[TARGET]",
+      "description": "Input 4dfp target file.",
+      "optional": false
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output",
+      "name": "Transformed Output",
+      "path-template": "<replace_with_output_path_pattern>",
+      "description": "The resulting transformed voxel-to-voxel 4dfp output file.",
+      "optional": true
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "tool-version": "7.4.1",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

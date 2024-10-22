@@ -1,0 +1,40 @@
+{
+  "name": "run_SegmentSubject.sh",
+  "command-line": "run_SegmentSubject.sh [MCRROOT] [ARGS]",
+  "description": "A command-line tool for subject segmentation in Freesurfer.",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "deployedMCRroot",
+      "name": "Deployed MCR Root",
+      "type": "String",
+      "description": "The root directory of the deployed MATLAB Compiler Runtime.",
+      "value-key": "[MCRROOT]",
+      "optional": false
+    },
+    {
+      "id": "arguments",
+      "name": "Arguments",
+      "type": "String",
+      "description": "Additional arguments to be passed to the SegmentSubject script.",
+      "value-key": "[ARGS]",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output",
+      "name": "Output file",
+      "description": "The generated output file from the segmentation process.",
+      "path-template": "outputFileName",
+      "optional": true
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

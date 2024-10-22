@@ -1,0 +1,221 @@
+{
+  "name": "dmri_pathstats",
+  "description": "Compute path statistics for diffusion MRI data based on input .trk file and optional various measures.",
+  "command-line": "./dmri_pathstats [IN_TRK] [ROIS] [IN_TRC] [MEAS] [MEAS_NAME] [DT_BASE] [PATH_NAME] [SUBJ_NAME] [OUT_FILE] [OUT_VOX_FILE] [MEDIAN_FILE] [ENDS_BASE] [REF_FILE] [PTHR] [FTHR] [DEBUG_FLAG] [CHECKOPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "value-key": "[IN_TRK]",
+      "type": "File",
+      "description": "Input .trk file",
+      "optional": false,
+      "id": "intrk",
+      "name": "Input TRK file",
+      "command-line-flag": "--intrk"
+    },
+    {
+      "value-key": "[ROIS]",
+      "type": "File",
+      "description": "Input labeling ROIs for .trk file (optional)",
+      "optional": true,
+      "id": "rois",
+      "name": "ROIs file",
+      "command-line-flag": "--rois",
+      "list": true,
+      "min-list-entries": 0
+    },
+    {
+      "value-key": "[IN_TRC]",
+      "type": "File",
+      "description": "Input tracula directory",
+      "optional": false,
+      "id": "intrc",
+      "name": "Input tracula directory",
+      "command-line-flag": "--intrc"
+    },
+    {
+      "value-key": "[MEAS]",
+      "type": "File",
+      "description": "Input microstructural measure volume(s) (optional)",
+      "optional": true,
+      "id": "meas",
+      "name": "Microstructural measure volumes",
+      "command-line-flag": "--meas",
+      "list": true,
+      "min-list-entries": 0
+    },
+    {
+      "value-key": "[MEAS_NAME]",
+      "type": "String",
+      "description": "Name(s) of microstructural measure(s) (as many as volumes)",
+      "optional": true,
+      "id": "measname",
+      "name": "Measure names",
+      "command-line-flag": "--measname",
+      "list": true,
+      "min-list-entries": 0
+    },
+    {
+      "value-key": "[DT_BASE]",
+      "type": "String",
+      "description": "Base name of input dtifit volumes (optional)",
+      "optional": true,
+      "id": "dtbase",
+      "name": "DTI base name",
+      "command-line-flag": "--dtbase"
+    },
+    {
+      "value-key": "[PATH_NAME]",
+      "type": "String",
+      "description": "Name of pathway (optional, written to output files)",
+      "optional": true,
+      "id": "path",
+      "name": "Pathway name",
+      "command-line-flag": "--path"
+    },
+    {
+      "value-key": "[SUBJ_NAME]",
+      "type": "String",
+      "description": "Name of subject (optional, written to output files)",
+      "optional": true,
+      "id": "subj",
+      "name": "Subject name",
+      "command-line-flag": "--subj"
+    },
+    {
+      "value-key": "[OUT_FILE]",
+      "type": "String",
+      "description": "Output text file for overall path measures",
+      "optional": true,
+      "id": "out",
+      "name": "Overall path measures file",
+      "command-line-flag": "--out"
+    },
+    {
+      "value-key": "[OUT_VOX_FILE]",
+      "type": "String",
+      "description": "Output text file for voxel-by-voxel measures along path (optional)",
+      "optional": true,
+      "id": "outvox",
+      "name": "Voxel-by-voxel measures file",
+      "command-line-flag": "--outvox"
+    },
+    {
+      "value-key": "[MEDIAN_FILE]",
+      "type": "File",
+      "description": "Output .trk file of median streamline (optional)",
+      "optional": true,
+      "id": "median",
+      "name": "Median streamline file",
+      "command-line-flag": "--median"
+    },
+    {
+      "value-key": "[ENDS_BASE]",
+      "type": "String",
+      "description": "Base name of output volumes of streamline ends (optional)",
+      "optional": true,
+      "id": "ends",
+      "name": "Ends base name",
+      "command-line-flag": "--ends"
+    },
+    {
+      "value-key": "[REF_FILE]",
+      "type": "File",
+      "description": "Reference volume (needed only if using --ends without --dtbase)",
+      "optional": true,
+      "id": "ref",
+      "name": "Reference volume",
+      "command-line-flag": "--ref"
+    },
+    {
+      "value-key": "[PTHR]",
+      "type": "Number",
+      "description": "Lower threshold on path posterior distribution, as a portion of the maximum (range: 0-1, default: 0.2)",
+      "optional": true,
+      "id": "pthr",
+      "name": "Path posterior threshold",
+      "command-line-flag": "--pthr",
+      "minimum": 0,
+      "maximum": 1,
+      "integer": false
+    },
+    {
+      "value-key": "[FTHR]",
+      "type": "Number",
+      "description": "Lower threshold on FA (range: 0-1, default: no threshold)",
+      "optional": true,
+      "id": "fthr",
+      "name": "FA threshold",
+      "command-line-flag": "--fthr",
+      "minimum": 0,
+      "maximum": 1,
+      "integer": false
+    },
+    {
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "description": "Turn on debugging",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug",
+      "command-line-flag": "--debug"
+    },
+    {
+      "value-key": "[CHECKOPTS_FLAG]",
+      "type": "Flag",
+      "description": "Don't run anything, just check options and exit",
+      "optional": true,
+      "id": "checkopts",
+      "name": "Check options flag",
+      "command-line-flag": "--checkopts"
+    },
+    {
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "description": "Print out information on how to use this program",
+      "optional": true,
+      "id": "help",
+      "name": "Help",
+      "command-line-flag": "--help"
+    },
+    {
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "description": "Print out version and exit",
+      "optional": true,
+      "id": "version",
+      "name": "Version",
+      "command-line-flag": "--version"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUT_FILE]",
+      "description": "Text file for overall path measures",
+      "optional": true,
+      "id": "out_file",
+      "name": "Output file"
+    },
+    {
+      "path-template": "[OUT_VOX_FILE]",
+      "description": "Text file for voxel-by-voxel measures along path",
+      "optional": true,
+      "id": "out_vox_file",
+      "name": "Output voxel file"
+    },
+    {
+      "path-template": "[MEDIAN_FILE]",
+      "description": ".trk file of median streamline",
+      "optional": true,
+      "id": "median_file",
+      "name": "Median file"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

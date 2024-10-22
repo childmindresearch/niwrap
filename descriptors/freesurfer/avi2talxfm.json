@@ -1,0 +1,57 @@
+{
+  "tool-version": "7.4.1",
+  "name": "avi2talxfm",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "http://example.com/avi2talxfm.json",
+  "description": "Convert voxel-to-voxel transform to MNI transform.",
+  "command-line": "avi2talxfm [INPUT_VOLUME] [TARGET_VOLUME] [VOX2VOX_TRANSFORM] [OUTPUT_XFM]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input volume file",
+      "value-key": "[INPUT_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "input_volume",
+      "name": "Input volume"
+    },
+    {
+      "description": "Target volume file",
+      "value-key": "[TARGET_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "target_volume",
+      "name": "Target volume"
+    },
+    {
+      "description": "Voxel-to-voxel transform file",
+      "value-key": "[VOX2VOX_TRANSFORM]",
+      "type": "File",
+      "optional": false,
+      "id": "vox2vox_transform",
+      "name": "Voxel-to-voxel transform"
+    },
+    {
+      "description": "Output MNI transform file",
+      "value-key": "[OUTPUT_XFM]",
+      "type": "String",
+      "optional": false,
+      "id": "output_xfm",
+      "name": "Output XFM file"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_XFM]",
+      "description": "Resulting MNI transform file",
+      "optional": false,
+      "id": "output_xfm_file",
+      "name": "Output XFM file"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

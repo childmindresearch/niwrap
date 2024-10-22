@@ -1,0 +1,65 @@
+{
+  "name": "imgreg_4dfp",
+  "author": "FreeSurfer Developers",
+  "description": "Image registration utility using 4dfp",
+  "command-line": "imgreg_4dfp [TARGET_IMAG] [TARGET_MASK] [SOURCE_IMAG] [SOURCE_MASK] [T4FILE] [MODE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Target image",
+      "value-key": "[TARGET_IMAG]",
+      "type": "File",
+      "optional": false,
+      "id": "target_image",
+      "name": "Target Image"
+    },
+    {
+      "description": "Target mask",
+      "value-key": "[TARGET_MASK]",
+      "type": "String",
+      "optional": false,
+      "id": "target_mask",
+      "name": "Target Mask",
+      "default-value": "none"
+    },
+    {
+      "description": "Source image",
+      "value-key": "[SOURCE_IMAG]",
+      "type": "File",
+      "optional": false,
+      "id": "source_image",
+      "name": "Source Image"
+    },
+    {
+      "description": "Source mask",
+      "value-key": "[SOURCE_MASK]",
+      "type": "String",
+      "optional": false,
+      "id": "source_mask",
+      "name": "Source Mask",
+      "default-value": "none"
+    },
+    {
+      "description": "Transformation file",
+      "value-key": "[T4FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "t4file",
+      "name": "T4 File"
+    },
+    {
+      "description": "Mode of operation",
+      "value-key": "[MODE]",
+      "type": "String",
+      "optional": false,
+      "id": "mode",
+      "name": "Mode"
+    }
+  ],
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

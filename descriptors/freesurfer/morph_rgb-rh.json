@@ -1,0 +1,24 @@
+{
+  "name": "morph_rgb-rh",
+  "description": "Morphs RGB values onto a FreeSurfer right hemisphere surface",
+  "schema-version": "0.5",
+  "command-line": "morph_rgb-rh [SUBJECT_ID]",
+  "inputs": [
+    {
+      "description": "Subject ID for which the RGB morphing should be performed.",
+      "value-key": "[SUBJECT_ID]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_id",
+      "name": "Subject ID"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "descriptor-url": "https://yourrepo/descriptors/morph_rgb-rh.json",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

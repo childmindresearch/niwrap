@@ -1,0 +1,132 @@
+{
+  "tool-version": "7.4.1",
+  "name": "train-gcs-atlas",
+  "author": "FreeSurfer Developers",
+  "description": "Script to train a surface-based gaussian classifier for cortical surface parcellation.",
+  "command-line": "train-gcs-atlas [MANUAL_PARCELLATION] [SUBJECT_LIST_FILE] [HEMI_FLAG] [OUTPUT_FILE] [REG_FLAG] [COLOR_TABLE] [EXCLUDE_SUBJ] [JACKKNIFE_FLAG] [ASEG_NAME] [THREADS_NUM]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--man",
+      "description": "Manual parcellation; default is aparc_edited",
+      "value-key": "[MANUAL_PARCELLATION]",
+      "type": "String",
+      "optional": true,
+      "id": "manual_parcellation",
+      "name": "Manual Parcellation"
+    },
+    {
+      "command-line-flag": "--f",
+      "description": "File containing the list of subjects",
+      "value-key": "[SUBJECT_LIST_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "subjlist_file",
+      "name": "Subject List File"
+    },
+    {
+      "command-line-flag": "--lh",
+      "description": "Left hemisphere processing",
+      "value-key": "[HEMI_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "left_hemi",
+      "name": "Left Hemisphere Flag"
+    },
+    {
+      "command-line-flag": "--rh",
+      "description": "Right hemisphere processing",
+      "value-key": "[HEMI_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "right_hemi",
+      "name": "Right Hemisphere Flag"
+    },
+    {
+      "command-line-flag": "--hemi",
+      "description": "Specify hemisphere for processing",
+      "value-key": "[HEMI_FLAG]",
+      "type": "String",
+      "optional": true,
+      "id": "hemi_spec",
+      "name": "Hemisphere Specification"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Output GCS file",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "output_gcs",
+      "name": "Output GCS File"
+    },
+    {
+      "command-line-flag": "--reg",
+      "description": "Surface registration file; default is sphere.reg",
+      "value-key": "[REG_FLAG]",
+      "type": "File",
+      "optional": true,
+      "id": "surf_reg",
+      "name": "Surface Registration File"
+    },
+    {
+      "command-line-flag": "--ctab",
+      "description": "Color table file",
+      "value-key": "[COLOR_TABLE]",
+      "type": "File",
+      "optional": true,
+      "id": "color_table",
+      "name": "Color Table File"
+    },
+    {
+      "command-line-flag": "--x",
+      "description": "Exclude a subject from the atlas",
+      "value-key": "[EXCLUDE_SUBJ]",
+      "type": "String",
+      "optional": true,
+      "id": "exclude_subject",
+      "name": "Exclude Subject"
+    },
+    {
+      "command-line-flag": "--jackknife",
+      "description": "Submit a job for each subject excluding it",
+      "value-key": "[JACKKNIFE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "jackknife_flag",
+      "name": "Jackknife Flag"
+    },
+    {
+      "command-line-flag": "--aseg",
+      "description": "Aseg filename; default is aseg.auto.mgz",
+      "value-key": "[ASEG_NAME]",
+      "type": "String",
+      "optional": true,
+      "id": "aseg_filename",
+      "name": "Aseg Filename"
+    },
+    {
+      "command-line-flag": "--threads",
+      "description": "Number of threads to use",
+      "value-key": "[THREADS_NUM]",
+      "type": "Number",
+      "optional": true,
+      "id": "threads",
+      "name": "Threads"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Output GCS file produced by training",
+      "optional": false,
+      "id": "output_gcs_file",
+      "name": "GCS Output File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

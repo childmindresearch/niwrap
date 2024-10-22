@@ -1,0 +1,42 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mkima_index.tcl",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://example.com/mkima_index_descriptor.json",
+  "description": "A command-line tool for handling mkima index operations.",
+  "command-line": "mkima_index.tcl [INPUT] [OUTPUT_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input file for mkima index operations.",
+      "value-key": "[INPUT]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input File"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Flag to specify output for mkima index operation.",
+      "value-key": "[OUTPUT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "output_flag",
+      "name": "Output Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[INPUT]_index_output",
+      "description": "Output file resulting from mkima index operations.",
+      "optional": true,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

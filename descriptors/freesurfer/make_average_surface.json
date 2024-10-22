@@ -1,0 +1,218 @@
+{
+  "tool-version": "7.4.1",
+  "name": "make_average_surface",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/main/scripts/make_average_surface",
+  "description": "Creates average surfaces and curvatures from a set of subjects.",
+  "command-line": "make_average_surface [SUBJECTS] [FSGD_FILE] [OUT_NAME] [SUBJECTS_DIR] [SD_OUT_DIR] [TRANSFORM_FILE] [ICOSA_NUMBER] [SURF_REG] [LH_FLAG] [RH_FLAG] [FORCE_FLAG] [ANNOT_TEMPLATE_FLAG] [TEMPLATE_ONLY_FLAG] [NO_TEMPLATE_ONLY_FLAG] [NO_ANNOT_FLAG] [NO_CORTEX_LABEL_FLAG] [ANNOT_LIST] [MEAS_LIST] [NO_SURF2SURF_FLAG] [NO_SYMLINK_FLAG] [VERSION_FLAG] [ECHO_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "List of subject names",
+      "value-key": "[SUBJECTS]",
+      "type": "String",
+      "optional": false,
+      "id": "subjects",
+      "name": "Subjects",
+      "list": true
+    },
+    {
+      "description": "File from which to get the subject list",
+      "command-line-flag": "--fsgd",
+      "value-key": "[FSGD_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "fsgd_file",
+      "name": "FSGD file"
+    },
+    {
+      "description": "Average subject name",
+      "command-line-flag": "--out",
+      "value-key": "[OUT_NAME]",
+      "type": "String",
+      "optional": true,
+      "id": "average_subject_name",
+      "name": "Output name",
+      "default-value": "average"
+    },
+    {
+      "description": "Directory for SUBJECTS_DIR (if different from the environment variable)",
+      "command-line-flag": "--sdir",
+      "value-key": "[SUBJECTS_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "subjects_dir",
+      "name": "Subjects directory"
+    },
+    {
+      "description": "Directory to put output data",
+      "command-line-flag": "--sd-out",
+      "value-key": "[SD_OUT_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "sd_out_dir",
+      "name": "SD_out directory"
+    },
+    {
+      "description": "Filename of the transform file",
+      "command-line-flag": "--xform",
+      "value-key": "[TRANSFORM_FILE]",
+      "type": "String",
+      "optional": true,
+      "id": "transform_file",
+      "name": "Transform file"
+    },
+    {
+      "description": "Specify icosahedron number",
+      "command-line-flag": "--ico",
+      "value-key": "[ICOSA_NUMBER]",
+      "type": "Number",
+      "optional": true,
+      "id": "icosahedron_number",
+      "name": "Icosahedron number",
+      "default-value": 7
+    },
+    {
+      "description": "Alternative registration surface name",
+      "command-line-flag": "--surf-reg",
+      "value-key": "[SURF_REG]",
+      "type": "String",
+      "optional": true,
+      "id": "surf_reg",
+      "name": "Surface registration"
+    },
+    {
+      "description": "Only process the left hemisphere",
+      "command-line-flag": "--lh",
+      "value-key": "[LH_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "left_hemi",
+      "name": "Left hemisphere flag"
+    },
+    {
+      "description": "Only process the right hemisphere",
+      "command-line-flag": "--rh",
+      "value-key": "[RH_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "right_hemi",
+      "name": "Right hemisphere flag"
+    },
+    {
+      "description": "Overwrite existing average subject data",
+      "command-line-flag": "--force",
+      "value-key": "[FORCE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "force",
+      "name": "Force overwrite flag"
+    },
+    {
+      "description": "Use annotation when making tif",
+      "command-line-flag": "--annot-template",
+      "value-key": "[ANNOT_TEMPLATE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "annot_template",
+      "name": "Annotation template flag"
+    },
+    {
+      "description": "Useful when creating iterative atlases",
+      "command-line-flag": "--template-only",
+      "value-key": "[TEMPLATE_ONLY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "template_only",
+      "name": "Template only flag"
+    },
+    {
+      "description": "Turns off --template-only",
+      "command-line-flag": "--no-template-only",
+      "value-key": "[NO_TEMPLATE_ONLY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_template_only",
+      "name": "No template only flag"
+    },
+    {
+      "description": "Do not create average annotations",
+      "command-line-flag": "--no-annot",
+      "value-key": "[NO_ANNOT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_annot",
+      "name": "No annot flag"
+    },
+    {
+      "description": "Do not create ?h.cortex.label",
+      "command-line-flag": "--no-cortex-label",
+      "value-key": "[NO_CORTEX_LABEL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_cortex_label",
+      "name": "No cortex label flag"
+    },
+    {
+      "description": "List of annotations to use",
+      "command-line-flag": "--annot",
+      "value-key": "[ANNOT_LIST]",
+      "type": "String",
+      "optional": true,
+      "id": "annot_list",
+      "name": "Annotations list",
+      "list": true
+    },
+    {
+      "description": "List of measurements to use",
+      "command-line-flag": "--meas",
+      "value-key": "[MEAS_LIST]",
+      "type": "String",
+      "optional": true,
+      "id": "meas_list",
+      "name": "Measurements list",
+      "list": true
+    },
+    {
+      "description": "Use old parametric surface method",
+      "command-line-flag": "--no-surf2surf",
+      "value-key": "[NO_SURF2SURF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_surf2surf",
+      "name": "No surf2surf flag"
+    },
+    {
+      "description": "Do not use symbolic links, just copy files",
+      "command-line-flag": "--no-symlink",
+      "value-key": "[NO_SYMLINK_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_symlink",
+      "name": "No symlink flag"
+    },
+    {
+      "description": "Script version information",
+      "command-line-flag": "--version",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version flag"
+    },
+    {
+      "description": "Enable command echo for debugging",
+      "command-line-flag": "--echo",
+      "value-key": "[ECHO_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "echo",
+      "name": "Echo flag"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

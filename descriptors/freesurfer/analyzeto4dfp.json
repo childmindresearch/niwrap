@@ -1,0 +1,80 @@
+{
+  "name": "analyzeto4dfp",
+  "command-line": "analyzeto4dfp [ANALYZE_IMAGE] [ROIS_SCALE_FLAG] [FLIP_X_FLAG] [FLIP_Y_FLAG] [FLIP_Z_FLAG] [ENDIANNESS] [ORIENTATION]",
+  "description": "Convert ANALYZE image format to 4dfp format with various options",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "analyze_image",
+      "name": "Analyze Image",
+      "type": "File",
+      "value-key": "[ANALYZE_IMAGE]",
+      "description": "Input ANALYZE image file",
+      "optional": false
+    },
+    {
+      "command-line-flag": "-s",
+      "id": "rois_scale",
+      "name": "ROIS Scale Factor",
+      "type": "Flag",
+      "value-key": "[ROIS_SCALE_FLAG]",
+      "description": "Apply ROIScaleFactor",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-x",
+      "id": "flip_x",
+      "name": "Flip First Axis",
+      "type": "Flag",
+      "value-key": "[FLIP_X_FLAG]",
+      "description": "Flip first axis",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-y",
+      "id": "flip_y",
+      "name": "Flip Second Axis",
+      "type": "Flag",
+      "value-key": "[FLIP_Y_FLAG]",
+      "description": "Flip second axis",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-z",
+      "id": "flip_z",
+      "name": "Flip Third Axis",
+      "type": "Flag",
+      "value-key": "[FLIP_Z_FLAG]",
+      "description": "Flip third axis",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-@",
+      "id": "endian",
+      "name": "Output Endianness",
+      "type": "String",
+      "value-key": "[ENDIANNESS]",
+      "description": "Output big or little endian (default CPU endian)",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-O",
+      "id": "orientation",
+      "name": "Orientation Code",
+      "type": "Number",
+      "value-key": "[ORIENTATION]",
+      "description": "Supply orientation code (in range [0-5])",
+      "optional": true,
+      "minimum": 0,
+      "maximum": 5,
+      "integer": true
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

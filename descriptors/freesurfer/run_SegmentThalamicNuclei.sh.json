@@ -1,0 +1,32 @@
+{
+  "name": "run_SegmentThalamicNuclei.sh",
+  "command-line": "/usr/local/freesurfer/bin/run_SegmentThalamicNuclei.sh [MCR_ROOT] [ARGS...]",
+  "description": "Script for segmenting thalamic nuclei using FreeSurfer",
+  "inputs": [
+    {
+      "id": "mcr_root",
+      "name": "Deployed MCR root",
+      "type": "String",
+      "description": "The root directory of the deployed MATLAB Compiler Runtime (MCR)",
+      "value-key": "[MCR_ROOT]",
+      "optional": false
+    },
+    {
+      "id": "args",
+      "name": "Arguments",
+      "type": "String",
+      "list": true,
+      "description": "Additional arguments for the script",
+      "value-key": "[ARGS...]",
+      "optional": true
+    }
+  ],
+  "schema-version": "0.5",
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

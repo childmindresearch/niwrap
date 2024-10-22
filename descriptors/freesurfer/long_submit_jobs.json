@@ -1,0 +1,240 @@
+{
+  "name": "long_submit_jobs",
+  "command-line": "long_submit_jobs [--qdec] [--cdir] [--bdir] [--ldir] [--scriptsdir] [--cross] [--base] [--long] [--cflags] [--bflags] [--lflags] [--affine] [--force] [--simulate] [--simfiles] [--skip] [--skiperror] [--check] [--update-recon-all] [--use-recon-all] [--pause] [--max] [--queue] [--cmem] [--bmem] [--lmem] [--cnodes] [--bnodes] [--lnodes]",
+  "description": "Submits longitudinal processing jobs to the NMR cluster (seychelles or launchpad).",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "qdec",
+      "name": "QDEC Table File",
+      "type": "File",
+      "value-key": "[--qdec]",
+      "description": "QDEC table file specifying the subjects and time points.",
+      "command-line-flag": "--qdec",
+      "optional": false
+    },
+    {
+      "id": "cdir",
+      "name": "Cross Subjects Directory",
+      "type": "String",
+      "value-key": "[--cdir]",
+      "description": "Directory for cross-sectional subjects (inherited by base and long).",
+      "command-line-flag": "--cdir",
+      "optional": false
+    },
+    {
+      "id": "bdir",
+      "name": "Base Subjects Directory",
+      "type": "String",
+      "value-key": "[--bdir]",
+      "description": "Directory for base runs (default: inherit from cross).",
+      "command-line-flag": "--bdir",
+      "optional": true
+    },
+    {
+      "id": "ldir",
+      "name": "Longitudinal Subjects Directory",
+      "type": "String",
+      "value-key": "[--ldir]",
+      "description": "Directory for longitudinal runs (default: inherit from base).",
+      "command-line-flag": "--ldir",
+      "optional": true
+    },
+    {
+      "id": "scriptsdir",
+      "name": "Scripts Directory",
+      "type": "String",
+      "value-key": "[--scriptsdir]",
+      "description": "Location to save submitted scripts (default: <cdir,bdir,ldir>/scripts_submitted).",
+      "command-line-flag": "--scriptsdir",
+      "optional": true
+    },
+    {
+      "id": "cross",
+      "name": "Cross Sectionals",
+      "type": "Flag",
+      "value-key": "[--cross]",
+      "description": "Process cross-sectional streams.",
+      "command-line-flag": "--cross",
+      "optional": true
+    },
+    {
+      "id": "base",
+      "name": "Base",
+      "type": "Flag",
+      "value-key": "[--base]",
+      "description": "Process base streams.",
+      "command-line-flag": "--base",
+      "optional": true
+    },
+    {
+      "id": "long",
+      "name": "Longitudinals",
+      "type": "Flag",
+      "value-key": "[--long]",
+      "description": "Process longitudinal streams.",
+      "command-line-flag": "--long",
+      "optional": true
+    },
+    {
+      "id": "cflags",
+      "name": "Cross Flags",
+      "type": "String",
+      "value-key": "[--cflags]",
+      "description": "Manual flags for cross processing (e.g., '-all -cw256').",
+      "command-line-flag": "--cflags",
+      "optional": true
+    },
+    {
+      "id": "bflags",
+      "name": "Base Flags",
+      "type": "String",
+      "value-key": "[--bflags]",
+      "description": "Manual flags for base processing (default: '-all').",
+      "command-line-flag": "--bflags",
+      "optional": true
+    },
+    {
+      "id": "lflags",
+      "name": "Long Flags",
+      "type": "String",
+      "value-key": "[--lflags]",
+      "description": "Manual flags for long processing (default: '-all').",
+      "command-line-flag": "--lflags",
+      "optional": true
+    },
+    {
+      "id": "affine",
+      "name": "Affine Registration",
+      "type": "Flag",
+      "value-key": "[--affine]",
+      "description": "Use affine registration for base.",
+      "command-line-flag": "--affine",
+      "optional": true
+    },
+    {
+      "id": "force",
+      "name": "Force Reprocessing",
+      "type": "Flag",
+      "value-key": "[--force]",
+      "description": "Force reprocessing of jobs even if marked as done.",
+      "command-line-flag": "--force",
+      "optional": true
+    },
+    {
+      "id": "simulate",
+      "name": "Simulate Submission",
+      "type": "Flag",
+      "value-key": "[--simulate]",
+      "description": "Simulate submission only, without executing.",
+      "command-line-flag": "--simulate",
+      "optional": true
+    },
+    {
+      "id": "simfiles",
+      "name": "Simulate Command Files",
+      "type": "Flag",
+      "value-key": "[--simfiles]",
+      "description": "Simulate command file creation only, without executing.",
+      "command-line-flag": "--simfiles",
+      "optional": true
+    },
+    {
+      "id": "check",
+      "name": "Check Completion",
+      "type": "Flag",
+      "value-key": "[--check]",
+      "description": "Check if all longitudinal processing is complete.",
+      "command-line-flag": "--check",
+      "optional": true
+    },
+    {
+      "id": "pause",
+      "name": "Pause Between Submissions",
+      "type": "Number",
+      "value-key": "[--pause]",
+      "description": "Pause duration (in seconds) between submissions (default: 13).",
+      "command-line-flag": "--pause",
+      "optional": true
+    },
+    {
+      "id": "max",
+      "name": "Max Jobs",
+      "type": "Number",
+      "value-key": "[--max]",
+      "description": "Maximum number of jobs per user (default: 100).",
+      "command-line-flag": "--max",
+      "optional": true
+    },
+    {
+      "id": "queue",
+      "name": "Queue",
+      "type": "String",
+      "value-key": "[--queue]",
+      "description": "Queue to submit jobs.",
+      "command-line-flag": "--queue",
+      "optional": true
+    },
+    {
+      "id": "cmem",
+      "name": "Cross RAM",
+      "type": "Number",
+      "value-key": "[--cmem]",
+      "description": "RAM (in GB) requested for cross (default: 7).",
+      "command-line-flag": "--cmem",
+      "optional": true
+    },
+    {
+      "id": "bmem",
+      "name": "Base RAM",
+      "type": "Number",
+      "value-key": "[--bmem]",
+      "description": "RAM (in GB) requested for base (default: 7).",
+      "command-line-flag": "--bmem",
+      "optional": true
+    },
+    {
+      "id": "lmem",
+      "name": "Long RAM",
+      "type": "Number",
+      "value-key": "[--lmem]",
+      "description": "RAM (in GB) requested for long (default: 7).",
+      "command-line-flag": "--lmem",
+      "optional": true
+    },
+    {
+      "id": "cnodes",
+      "name": "Cross Nodes",
+      "type": "Number",
+      "value-key": "[--cnodes]",
+      "description": "Number of nodes for cross runs (default: 1).",
+      "command-line-flag": "--cnodes",
+      "optional": true
+    },
+    {
+      "id": "bnodes",
+      "name": "Base Nodes",
+      "type": "Number",
+      "value-key": "[--bnodes]",
+      "description": "Number of nodes for base runs (default: 1).",
+      "command-line-flag": "--bnodes",
+      "optional": true
+    },
+    {
+      "id": "lnodes",
+      "name": "Long Nodes",
+      "type": "Number",
+      "value-key": "[--lnodes]",
+      "description": "Number of nodes for long runs (default: 1).",
+      "command-line-flag": "--lnodes",
+      "optional": true
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

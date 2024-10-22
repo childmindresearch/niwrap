@@ -1,0 +1,40 @@
+{
+  "name": "mris_rescale",
+  "tool-version": "7.4.1",
+  "description": "This program will rescale a surface representation",
+  "command-line": "mris_rescale [INPUT_SURF] [OUTPUT_SURF]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "input_surface",
+      "name": "Input Surface File",
+      "type": "File",
+      "optional": false,
+      "value-key": "[INPUT_SURF]",
+      "description": "The input surface file to be rescaled."
+    },
+    {
+      "id": "output_surface",
+      "name": "Output Surface File",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OUTPUT_SURF]",
+      "description": "The output surface file after rescaling."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "rescaled_output_surface",
+      "name": "Rescaled Output Surface",
+      "optional": false,
+      "path-template": "[OUTPUT_SURF]",
+      "description": "The file containing the rescaled surface."
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

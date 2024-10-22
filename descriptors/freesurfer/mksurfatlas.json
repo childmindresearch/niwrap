@@ -1,0 +1,108 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mksurfatlas",
+  "author": "FreeSurfer Developers",
+  "description": "Creates an atlas using mris_make_template. The atlas can then be used to create the surface registration for each subject based on this atlas.",
+  "command-line": "mksurfatlas [ATLAS] [HEMI] [SUBJECTS] [SURFVAL] [SURFVAL_DIR] [REGSURF] [DEBUG_FLAG] [VERSION_FLAG] [HELP_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--a",
+      "description": "Save results to this file (tif file).",
+      "value-key": "[ATLAS]",
+      "type": "String",
+      "optional": false,
+      "id": "atlas",
+      "name": "Atlas file"
+    },
+    {
+      "command-line-flag": "--h",
+      "description": "Hemisphere to process.",
+      "value-key": "[HEMI]",
+      "type": "String",
+      "optional": false,
+      "id": "hemi",
+      "name": "Hemisphere"
+    },
+    {
+      "command-line-flag": "--s",
+      "description": "Subject(s) to process. Multiple subjects can be specified by repeating the flag.",
+      "value-key": "[SUBJECTS]",
+      "type": "String",
+      "optional": false,
+      "list": true,
+      "id": "subjects",
+      "name": "Subjects"
+    },
+    {
+      "command-line-flag": "--v",
+      "description": "Surface values file. Looks for subject/surfvaldir/hemi.surfval.",
+      "value-key": "[SURFVAL]",
+      "type": "String",
+      "optional": false,
+      "id": "surfval",
+      "name": "Surface values file"
+    },
+    {
+      "command-line-flag": "--d",
+      "description": "Directory for surface values; default is 'label'.",
+      "value-key": "[SURFVAL_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "surfvaldir",
+      "name": "Surface values directory",
+      "default-value": "label"
+    },
+    {
+      "command-line-flag": "--r",
+      "description": "Registration surface; default is 'sphere'.",
+      "value-key": "[REGSURF]",
+      "type": "String",
+      "optional": true,
+      "id": "regsurf",
+      "name": "Registration surface",
+      "default-value": "sphere"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Turn on debugging.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug flag"
+    },
+    {
+      "command-line-flag": "--version",
+      "description": "Print version and exit.",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Print help and exit.",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[ATLAS]",
+      "description": "Resulting atlas file in TIFF format.",
+      "optional": false,
+      "id": "output_atlas",
+      "name": "Output Atlas File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

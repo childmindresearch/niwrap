@@ -1,0 +1,41 @@
+{
+  "name": "quantifyBrainstemStructures.sh",
+  "description": "A script to gather results from FreeSurfer brainstem processing and write them to an output file.",
+  "schema-version": "0.5",
+  "command-line": "/usr/local/freesurfer/bin/quantifyBrainstemStructures.sh [OUTPUT_FILE] [SUBJECTS_DIRECTORY]",
+  "inputs": [
+    {
+      "description": "The path to the output file where results should be written.",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    },
+    {
+      "description": "The directory containing subject data. Defaults to '/usr/local/freesurfer/subjects' if not provided.",
+      "value-key": "[SUBJECTS_DIRECTORY]",
+      "type": "String",
+      "optional": true,
+      "id": "subjects_directory",
+      "name": "Subjects Directory",
+      "default-value": "/usr/local/freesurfer/subjects"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Output file containing the gathered results.",
+      "optional": false,
+      "id": "results_file",
+      "name": "Results File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

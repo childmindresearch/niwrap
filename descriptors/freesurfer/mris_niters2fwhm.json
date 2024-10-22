@@ -1,0 +1,96 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mris_niters2fwhm",
+  "author": "FreeSurfer Developers",
+  "description": "Convert number of iterations to full width at half maximum (FWHM) for surface.",
+  "command-line": "mris_niters2fwhm [SUBJECT] [HEMI] [SURF] [DOF] [NITERS] [DEBUG_FLAG] [CHECKOPTS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--s",
+      "description": "Subject identifier",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": false,
+      "id": "subject",
+      "name": "Subject"
+    },
+    {
+      "command-line-flag": "--h",
+      "description": "Hemisphere (e.g., lh or rh)",
+      "value-key": "[HEMI]",
+      "type": "String",
+      "optional": false,
+      "id": "hemi",
+      "name": "Hemisphere"
+    },
+    {
+      "command-line-flag": "--surf",
+      "description": "Surface type (e.g., white, pial)",
+      "value-key": "[SURF]",
+      "type": "String",
+      "optional": false,
+      "id": "surf",
+      "name": "Surface"
+    },
+    {
+      "command-line-flag": "--dof",
+      "description": "Degrees of Freedom",
+      "value-key": "[DOF]",
+      "type": "Number",
+      "optional": false,
+      "id": "dof",
+      "name": "Degrees of Freedom"
+    },
+    {
+      "command-line-flag": "--niters",
+      "description": "Maximum number of iterations",
+      "value-key": "[NITERS]",
+      "type": "Number",
+      "optional": false,
+      "id": "niters",
+      "name": "Number of Iterations"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Turn on debugging",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Flag"
+    },
+    {
+      "command-line-flag": "--checkopts",
+      "description": "Don't run anything, just check options and exit",
+      "value-key": "[CHECKOPTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "checkopts",
+      "name": "Checkopts Flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Print out information on how to use this program",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    },
+    {
+      "command-line-flag": "--version",
+      "description": "Print out version and exit",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version Flag"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

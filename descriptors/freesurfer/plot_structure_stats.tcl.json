@@ -1,0 +1,40 @@
+{
+  "name": "plot_structure_stats.tcl",
+  "tool-version": "7.4.1",
+  "description": "Script to plot structural statistics",
+  "command-line": "plot_structure_stats [INPUT_FILE] [OUTPUT_FILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input stats file",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "input_file",
+      "name": "Input File"
+    },
+    {
+      "description": "Output plot file",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE].png",
+      "description": "Generated plot",
+      "optional": false,
+      "id": "plot_file",
+      "name": "Plot File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

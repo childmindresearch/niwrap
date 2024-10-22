@@ -1,0 +1,78 @@
+{
+  "tool-version": "7.4.1",
+  "name": "fsdcmdecompress",
+  "author": "FreeSurfer Developers",
+  "description": "A tool for decompressing DICOM files using GDCM or DCMTK.",
+  "command-line": "fsdcmdecompress [INPUT_DCM] [OUTPUT_DCM] [DCMTK_FLAG] [JPEG_FLAG] [RLE_FLAG] [GDCM_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input DICOM file to decompress",
+      "value-key": "[INPUT_DCM]",
+      "type": "File",
+      "optional": false,
+      "id": "indcmfile",
+      "name": "Input DICOM file",
+      "command-line-flag": "--i"
+    },
+    {
+      "description": "Output decompressed DICOM file",
+      "value-key": "[OUTPUT_DCM]",
+      "type": "String",
+      "optional": false,
+      "id": "outdcmfile",
+      "name": "Output DICOM file",
+      "command-line-flag": "--o"
+    },
+    {
+      "command-line-flag": "--dcmtk",
+      "description": "Use DCMTK for decompression (either dcmdrle.fs or dcmdjpeg.fs)",
+      "value-key": "[DCMTK_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dcmtk",
+      "name": "DCMTK Flag"
+    },
+    {
+      "command-line-flag": "--jpeg",
+      "description": "DICOM is JPEG compressed (ignored without --dcmtk)",
+      "value-key": "[JPEG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "jpeg",
+      "name": "JPEG Compressed Flag"
+    },
+    {
+      "command-line-flag": "--rle",
+      "description": "DICOM is RLE compressed (ignored without --dcmtk)",
+      "value-key": "[RLE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "rle",
+      "name": "RLE Compressed Flag"
+    },
+    {
+      "command-line-flag": "--gdcm",
+      "description": "Use GDCM for decompression (default)",
+      "value-key": "[GDCM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "gdcm",
+      "name": "GDCM Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_DCM]",
+      "description": "The decompressed DICOM file",
+      "optional": false,
+      "id": "out_file",
+      "name": "Output decompressed file"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

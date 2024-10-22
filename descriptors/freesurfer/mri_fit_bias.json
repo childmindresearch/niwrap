@@ -1,0 +1,141 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_fit_bias",
+  "author": "FreeSurfer Developers",
+  "description": "A tool for intensity normalization and bias correction in MRI images.",
+  "command-line": "/usr/local/freesurfer/bin/mri_fit_bias --i [INPUT_VOL] --cutoff [LPF_CUTOFF] --seg [SEG_VOL] --mask [MASK_VOL] --o [OUT_VOL] --bias [BIAS_FIELD] --dct [DCT_VOL] --thresh [THRESH_VAL] --erode [N_ERODE] --threads [THREADS] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--i",
+      "description": "Input volume for intensity normalization",
+      "value-key": "[INPUT_VOL]",
+      "type": "File",
+      "optional": false,
+      "id": "inputvol",
+      "name": "Input Volume"
+    },
+    {
+      "command-line-flag": "--cutoff",
+      "description": "Low-pass filter cutoff in mm (default is 23.000000)",
+      "value-key": "[LPF_CUTOFF]",
+      "type": "Number",
+      "optional": true,
+      "default-value": 23.0,
+      "id": "lpf_cutoff",
+      "name": "Low-pass Filter Cutoff"
+    },
+    {
+      "command-line-flag": "--seg",
+      "description": "Segmentation volume to define WM and Cortex (e.g., aseg.presurf.mgz)",
+      "value-key": "[SEG_VOL]",
+      "type": "File",
+      "optional": false,
+      "id": "segvol",
+      "name": "Segmentation Volume"
+    },
+    {
+      "command-line-flag": "--mask",
+      "description": "Mask volume; zero everything outside of the mask (e.g., brainmask.mgz)",
+      "value-key": "[MASK_VOL]",
+      "type": "File",
+      "optional": false,
+      "id": "maskvol",
+      "name": "Mask Volume"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Bias corrected output volume",
+      "value-key": "[OUT_VOL]",
+      "type": "String",
+      "optional": false,
+      "id": "outvol",
+      "name": "Output Volume"
+    },
+    {
+      "command-line-flag": "--bias",
+      "description": "Output bias field",
+      "value-key": "[BIAS_FIELD]",
+      "type": "String",
+      "optional": false,
+      "id": "biasfield",
+      "name": "Bias Field"
+    },
+    {
+      "command-line-flag": "--dct",
+      "description": "DCT fields file for debugging",
+      "value-key": "[DCT_VOL]",
+      "type": "String",
+      "optional": true,
+      "id": "dctvol",
+      "name": "DCT Volume"
+    },
+    {
+      "command-line-flag": "--thresh",
+      "description": "Mask out anything <= threshold value",
+      "value-key": "[THRESH_VAL]",
+      "type": "Number",
+      "optional": true,
+      "id": "threshold",
+      "name": "Threshold Value"
+    },
+    {
+      "command-line-flag": "--erode",
+      "description": "3D erode segmentation by n steps (default is 1)",
+      "value-key": "[N_ERODE]",
+      "type": "Number",
+      "optional": true,
+      "default-value": 1,
+      "id": "nerode",
+      "name": "Erode Steps"
+    },
+    {
+      "command-line-flag": "--threads",
+      "description": "Number of threads to use",
+      "value-key": "[THREADS]",
+      "type": "Number",
+      "optional": true,
+      "id": "nthreads",
+      "name": "Threads"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Turn on debugging mode",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Flag"
+    },
+    {
+      "command-line-flag": "--checkopts",
+      "description": "Don't run anything, just check options and exit",
+      "value-key": "[CHECKOPTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "checkopts",
+      "name": "Check Options Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUT_VOL]",
+      "description": "Bias corrected output volume",
+      "optional": false,
+      "id": "corrected_output",
+      "name": "Corrected Output Volume"
+    },
+    {
+      "path-template": "[BIAS_FIELD]",
+      "description": "Generated bias field",
+      "optional": false,
+      "id": "generated_bias_field",
+      "name": "Bias Field Output"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

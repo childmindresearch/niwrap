@@ -1,0 +1,121 @@
+{
+  "tool-version": "7.4.1",
+  "name": "fsr-import",
+  "author": "FreeSurfer Developers",
+  "description": "Copies/converts data into a directory structure for samseg-expected format",
+  "command-line": "fsr-import [OUTDIR] [T1W...] [T2W...] [FLAIR...] [CUSTOM_MODES...] [FORCE_UPDATE_FLAG] [NO_CONFORM_FLAG] [HIRES_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--o",
+      "description": "Root directory for output data",
+      "value-key": "[OUTDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "outdir",
+      "name": "Output directory"
+    },
+    {
+      "command-line-flag": "--t1w",
+      "description": "Input T1-weighted image files",
+      "value-key": "[T1W]",
+      "type": "File",
+      "optional": true,
+      "list": true,
+      "id": "t1w_input",
+      "name": "T1-weighted images"
+    },
+    {
+      "command-line-flag": "--t2w",
+      "description": "Input T2-weighted image files",
+      "value-key": "[T2W]",
+      "type": "File",
+      "optional": true,
+      "list": true,
+      "id": "t2w_input",
+      "name": "T2-weighted images"
+    },
+    {
+      "command-line-flag": "--flair",
+      "description": "Input FLAIR image files",
+      "value-key": "[FLAIR]",
+      "type": "File",
+      "optional": true,
+      "list": true,
+      "id": "flair_input",
+      "name": "FLAIR images"
+    },
+    {
+      "command-line-flag": "--mode",
+      "description": "Custom modality image file with specified mode name (not t1w, t2w, or flair)",
+      "value-key": "[CUSTOM_MODES]",
+      "type": "String",
+      "optional": true,
+      "list": true,
+      "id": "custom_mode_input",
+      "name": "Custom modality images"
+    },
+    {
+      "command-line-flag": "--force-update",
+      "description": "Update files regardless of timestamp",
+      "value-key": "[FORCE_UPDATE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "force_update",
+      "name": "Force update flag"
+    },
+    {
+      "command-line-flag": "--no-conform",
+      "description": "Do not conform inputs to 1mm, 256 dimensions",
+      "value-key": "[NO_CONFORM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_conform",
+      "name": "No conform flag"
+    },
+    {
+      "command-line-flag": "--hires",
+      "description": "Same as --no-conform",
+      "value-key": "[HIRES_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "hires",
+      "name": "High resolution flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTDIR]/t1w/*.mgz",
+      "description": "Output directory for T1-weighted images",
+      "optional": false,
+      "id": "out_t1w",
+      "name": "Output T1-weighted directory"
+    },
+    {
+      "path-template": "[OUTDIR]/t2w/*.mgz",
+      "description": "Output directory for T2-weighted images",
+      "optional": false,
+      "id": "out_t2w",
+      "name": "Output T2-weighted directory"
+    },
+    {
+      "path-template": "[OUTDIR]/flair/*.mgz",
+      "description": "Output directory for FLAIR images",
+      "optional": false,
+      "id": "out_flair",
+      "name": "Output FLAIR directory"
+    },
+    {
+      "path-template": "[OUTDIR]/*/*.mgz",
+      "description": "Output directory for custom modality images based on mode",
+      "optional": true,
+      "id": "out_custom_modes",
+      "name": "Output custom modalities directory"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

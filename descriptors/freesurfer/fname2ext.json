@@ -1,0 +1,32 @@
+{
+  "name": "fname2ext",
+  "description": "Converts the name of a file to its extension.",
+  "command-line": "fname2ext [FILENAME]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "The name of the file for which to extract the extension. The file does not need to exist.",
+      "value-key": "[FILENAME]",
+      "type": "String",
+      "optional": false,
+      "id": "filename",
+      "name": "Filename"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "extension.txt",
+      "description": "Extracted file extension",
+      "optional": false,
+      "id": "file_extension",
+      "name": "File Extension Output"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,142 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_nu_correct.mni",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "N/A",
+  "description": "Wrapper for nu_correct, used for correcting intensity non-uniformity (bias fields).",
+  "command-line": "mri_nu_correct.mni [INPUT_VOLUME] [OUTPUT_VOLUME] [ITERATIONS] [PROTO_ITERS] [MASK] [THRESHOLD] [TAL_XFM] [ANTS_N3_FLAG] [ANTS_N4_FLAG] [NO_UCHAR_FLAG] [ANTS_N4_REPLACE_ZEROS_FLAG] [CM_FLAG] [DEBUG_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--i",
+      "description": "Input volume. Can be any format accepted by mri_convert.",
+      "value-key": "[INPUT_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "input_volume",
+      "name": "Input Volume"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Output volume. Can be any format accepted by mri_convert.",
+      "value-key": "[OUTPUT_VOLUME]",
+      "type": "String",
+      "optional": false,
+      "id": "output_volume",
+      "name": "Output Volume"
+    },
+    {
+      "command-line-flag": "--n",
+      "description": "Number of iterations to run nu_correct. Default is 4.",
+      "value-key": "[ITERATIONS]",
+      "type": "Number",
+      "optional": false,
+      "id": "iterations",
+      "name": "Number of Iterations"
+    },
+    {
+      "command-line-flag": "--proto-iters",
+      "description": "Passes as argument of the -iterations flag of nu_correct.",
+      "value-key": "[PROTO_ITERS]",
+      "type": "Number",
+      "optional": true,
+      "id": "proto_iterations",
+      "name": "Prototype Iterations"
+    },
+    {
+      "command-line-flag": "--mask",
+      "description": "Brainmask volume. Can be any format accepted by mri_convert.",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask_volume",
+      "name": "Mask Volume"
+    },
+    {
+      "command-line-flag": "--stop",
+      "description": "Threshold for stopping iteration. Suggest values between 0.01 to 0.0001.",
+      "value-key": "[THRESHOLD]",
+      "type": "Number",
+      "optional": true,
+      "id": "stop_threshold",
+      "name": "Stop Threshold"
+    },
+    {
+      "command-line-flag": "--uchar",
+      "description": "Use mri_make_uchar instead of conforming.",
+      "value-key": "[TAL_XFM]",
+      "type": "File",
+      "optional": true,
+      "id": "uchar_transform",
+      "name": "UChar Transform"
+    },
+    {
+      "command-line-flag": "--no-uchar",
+      "description": "Do not use mri_make_uchar (default).",
+      "value-key": "[NO_UCHAR_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_uchar",
+      "name": "No UChar Flag"
+    },
+    {
+      "command-line-flag": "--ants-n3",
+      "description": "Run N3 using ANTS N3BiasFieldCorrection.",
+      "value-key": "[ANTS_N3_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ants_n3",
+      "name": "ANTS N3 Flag"
+    },
+    {
+      "command-line-flag": "--ants-n4",
+      "description": "Run N4 using ANTS N4BiasFieldCorrection.",
+      "value-key": "[ANTS_N4_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ants_n4",
+      "name": "ANTS N4 Flag"
+    },
+    {
+      "command-line-flag": "--ants-n4-replace-zeros",
+      "description": "Replace 0s with small random numbers then remove after nu correction.",
+      "value-key": "[ANTS_N4_REPLACE_ZEROS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ants_n4_replace_zeros",
+      "name": "ANTS N4 Replace Zeros Flag"
+    },
+    {
+      "command-line-flag": "--cm",
+      "description": "For use with data that is higher than 1mm resolution.",
+      "value-key": "[CM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "cm_flag",
+      "name": "CM Flag"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Turn on debugging.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug_flag",
+      "name": "Debug Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_VOLUME]",
+      "description": "Corrected output volume.",
+      "optional": false,
+      "id": "corrected_output",
+      "name": "Corrected Output Volume"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

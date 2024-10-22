@@ -1,0 +1,129 @@
+{
+  "name": "stattablediff",
+  "description": "Creates a table of the differences between two stats tables.",
+  "command-line": "stattablediff [T1] [T2] [OUTPUT] [PERCENT_DIFF_FLAG] [PERCENT_DIFF_T1_FLAG] [PERCENT_DIFF_T2_FLAG] [MULTIPLY_VALUE] [DIVIDE_VALUE] [COMMON_FLAG] [REMOVE_EXVIVO_FLAG] [DIFF_SUBJECTS_FLAG] [NOREPLACE53_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "t1",
+      "name": "Input Table 1",
+      "description": "Input table 1 (output of asegstats2table or aparcstats2table)",
+      "value-key": "[T1]",
+      "type": "File",
+      "optional": false
+    },
+    {
+      "id": "t2",
+      "name": "Input Table 2",
+      "description": "Input table 2 (output of asegstats2table or aparcstats2table)",
+      "value-key": "[T2]",
+      "type": "File",
+      "optional": false
+    },
+    {
+      "id": "output",
+      "name": "Output File",
+      "description": "Output file for the table of differences",
+      "value-key": "[OUTPUT]",
+      "type": "String",
+      "optional": false
+    },
+    {
+      "id": "percent_diff",
+      "name": "Percent Difference",
+      "command-line-flag": "--percent",
+      "description": "Compute percent difference with respect to mean of tables",
+      "value-key": "[PERCENT_DIFF_FLAG]",
+      "type": "Flag",
+      "optional": true
+    },
+    {
+      "id": "percent_diff_t1",
+      "name": "Percent Difference Table 1",
+      "command-line-flag": "--percent1",
+      "description": "Compute percent difference with respect to table 1",
+      "value-key": "[PERCENT_DIFF_T1_FLAG]",
+      "type": "Flag",
+      "optional": true
+    },
+    {
+      "id": "percent_diff_t2",
+      "name": "Percent Difference Table 2",
+      "command-line-flag": "--percent2",
+      "description": "Compute percent difference with respect to table 2",
+      "value-key": "[PERCENT_DIFF_T2_FLAG]",
+      "type": "Flag",
+      "optional": true
+    },
+    {
+      "id": "multiply",
+      "name": "Multiply",
+      "command-line-flag": "--mul",
+      "description": "Multiply by mulval",
+      "value-key": "[MULTIPLY_VALUE]",
+      "type": "Number",
+      "optional": true
+    },
+    {
+      "id": "divide",
+      "name": "Divide",
+      "command-line-flag": "--div",
+      "description": "Divide by divval",
+      "value-key": "[DIVIDE_VALUE]",
+      "type": "Number",
+      "optional": true
+    },
+    {
+      "id": "common",
+      "name": "Common Segments",
+      "command-line-flag": "--common",
+      "description": "Compute difference on common segments (may reorder)",
+      "value-key": "[COMMON_FLAG]",
+      "type": "Flag",
+      "optional": true
+    },
+    {
+      "id": "remove_exvivo",
+      "name": "Remove Exvivo",
+      "command-line-flag": "--rm-exvivo",
+      "description": "Remove the string '_exvivo' from the column header",
+      "value-key": "[REMOVE_EXVIVO_FLAG]",
+      "type": "Flag",
+      "optional": true
+    },
+    {
+      "id": "diff_subjects",
+      "name": "Different Subjects",
+      "command-line-flag": "--diff-subjs",
+      "description": "Compare subjects with different names",
+      "value-key": "[DIFF_SUBJECTS_FLAG]",
+      "type": "Flag",
+      "optional": true
+    },
+    {
+      "id": "noreplace53",
+      "name": "No Replace 5.3 Names",
+      "command-line-flag": "--noreplace53",
+      "description": "Do not replace 5.3 structure names with later names",
+      "value-key": "[NOREPLACE53_FLAG]",
+      "type": "Flag",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_diff_table",
+      "name": "Output Difference Table",
+      "description": "Generated table of differences",
+      "path-template": "[OUTPUT]",
+      "optional": true
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,49 @@
+{
+  "name": "mri_topologycorrection",
+  "command-line": "/usr/local/freesurfer/bin/mri_topologycorrection [OPTIONS] [INPUT_ORIG_FILE] [INPUT_SEGMENTED_FILE] [OUTPUT_FOLDER]",
+  "schema-version": "0.5",
+  "description": "Corrects the topology of segmented MRI images.",
+  "inputs": [
+    {
+      "id": "input_orig_file",
+      "name": "Input Original File",
+      "type": "File",
+      "optional": false,
+      "value-key": "[INPUT_ORIG_FILE]",
+      "description": "Path to the original image file."
+    },
+    {
+      "id": "input_segmented_file",
+      "name": "Input Segmented File",
+      "type": "File",
+      "optional": false,
+      "value-key": "[INPUT_SEGMENTED_FILE]",
+      "description": "Path to the segmented image file."
+    },
+    {
+      "id": "options",
+      "name": "Options",
+      "type": "String",
+      "optional": true,
+      "value-key": "[OPTIONS]",
+      "list": true,
+      "description": "Additional options for the mri_topologycorrection command."
+    }
+  ],
+  "output-files": [
+    {
+      "id": "output_folder",
+      "name": "Output Folder",
+      "path-template": "[OUTPUT_FOLDER]",
+      "optional": false,
+      "description": "Directory where output files will be stored."
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

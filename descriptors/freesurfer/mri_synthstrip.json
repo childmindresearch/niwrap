@@ -1,115 +1,95 @@
 {
+  "tool-version": "7.4.1",
   "name": "mri_synthstrip",
-  "tool-version": "1.0",
-  "author": "Unknown",
+  "author": "FreeSurfer Developers",
   "description": "Robust, universal skull-stripping for brain images of any type.",
-  "url": "https://example.com/universal_skullstrip_docs",
-  "command-line": "mri_synthstrip [INPUT_IMAGE] [OUT_FILE] [MASK_FILE] [SDT_FILE] [GPU_FLAG] [BORDER_THRESHOLD] [NUM_THREADS] [NO_CSF_FLAG] [MODEL_FILE]",
+  "command-line": "mri_synthstrip -i [IMAGE] [-o [OUT]] [-m [MASK]] [-g [GPU_FLAG]] [-b [BORDER]] [--no-csf [NO_CSF_FLAG]] [--model [MODEL]]",
   "schema-version": "0.5",
   "inputs": [
     {
-      "id": "input_image",
-      "name": "Input Image",
-      "type": "File",
-      "value-key": "[INPUT_IMAGE]",
       "command-line-flag": "-i",
-      "description": "Input image to skullstrip",
-      "optional": false
-    },
-    {
-      "id": "out_file",
-      "name": "Output File",
-      "type": "String",
-      "value-key": "[OUT_FILE]",
-      "command-line-flag": "-o",
-      "description": "Filename to save the stripped image",
-      "optional": true
-    },
-    {
-      "id": "mask_file",
-      "name": "Mask File",
-      "type": "String",
-      "value-key": "[MASK_FILE]",
-      "command-line-flag": "-m",
-      "description": "Filename to save the binary brain mask",
-      "optional": true
-    },
-    {
-      "id": "sdt_file",
-      "name": "SDT File",
-      "type": "String",
-      "value-key": "[SDT_FILE]",
-      "command-line-flag": "-d",
-      "description": "Filename to save the distance transform",
-      "optional": true
-    },
-    {
-      "id": "gpu_flag",
-      "name": "Use GPU",
-      "type": "Flag",
-      "value-key": "[GPU_FLAG]",
-      "command-line-flag": "-g",
-      "description": "Use the GPU",
-      "optional": true
-    },
-    {
-      "id": "border_threshold",
-      "name": "Border Threshold",
-      "type": "Number",
-      "value-key": "[BORDER_THRESHOLD]",
-      "command-line-flag": "-b",
-      "description": "Mask border threshold in mm, defaults to 1",
-      "optional": true
-    },
-    {
-      "id": "num_threads",
-      "name": "Number of Threads",
-      "type": "Number",
-      "value-key": "[NUM_THREADS]",
-      "command-line-flag": "-t",
-      "description": "PyTorch CPU threads; uses PyTorch default if unset",
-      "optional": true
-    },
-    {
-      "id": "no_csf_flag",
-      "name": "Exclude CSF",
-      "type": "Flag",
-      "value-key": "[NO_CSF_FLAG]",
-      "command-line-flag": "--no-csf",
-      "description": "Exclude CSF from the brain border",
-      "optional": true
-    },
-    {
-      "id": "model_file",
-      "name": "Model File",
+      "description": "Input image to skullstrip.",
+      "value-key": "[IMAGE]",
       "type": "File",
-      "value-key": "[MODEL_FILE]",
+      "optional": false,
+      "id": "image",
+      "name": "Input image"
+    },
+    {
+      "command-line-flag": "-o",
+      "description": "Save stripped image to path.",
+      "value-key": "[OUT]",
+      "type": "File",
+      "optional": true,
+      "id": "output_image",
+      "name": "Output image"
+    },
+    {
+      "command-line-flag": "-m",
+      "description": "Save binary brain mask to path.",
+      "value-key": "[MASK]",
+      "type": "File",
+      "optional": true,
+      "id": "mask",
+      "name": "Output brain mask"
+    },
+    {
+      "command-line-flag": "-g",
+      "description": "Use the GPU.",
+      "value-key": "[GPU_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "gpu",
+      "name": "Use GPU"
+    },
+    {
+      "command-line-flag": "-b",
+      "description": "Mask border threshold in mm. Default is 1.",
+      "value-key": "[BORDER]",
+      "type": "Number",
+      "optional": true,
+      "id": "border",
+      "name": "Mask border threshold",
+      "default-value": 1
+    },
+    {
+      "command-line-flag": "--no-csf",
+      "description": "Exclude CSF from brain border.",
+      "value-key": "[NO_CSF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "exclude_csf",
+      "name": "Exclude CSF"
+    },
+    {
       "command-line-flag": "--model",
-      "description": "Alternative model weights",
-      "optional": true
+      "description": "Alternative model weights.",
+      "value-key": "[MODEL]",
+      "type": "File",
+      "optional": true,
+      "id": "model_weights",
+      "name": "Model weights"
     }
   ],
   "output-files": [
     {
-      "id": "out_image_file",
-      "name": "Stripped Image File",
-      "path-template": "[OUT_FILE]",
-      "description": "File containing the stripped image",
-      "optional": true
+      "path-template": "[OUT]",
+      "description": "Stripped brain image output.",
+      "optional": true,
+      "id": "output_image_file",
+      "name": "Output image file"
     },
     {
-      "id": "mask_image_file",
-      "name": "Binary Brain Mask File",
-      "path-template": "[MASK_FILE]",
-      "description": "File containing the binary brain mask",
-      "optional": true
-    },
-    {
-      "id": "sdt_image_file",
-      "name": "Distance Transform File",
-      "path-template": "[SDT_FILE]",
-      "description": "File containing the distance transform",
-      "optional": true
+      "path-template": "[MASK]",
+      "description": "Binary brain mask output.",
+      "optional": true,
+      "id": "output_mask_file",
+      "name": "Output mask file"
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
 }

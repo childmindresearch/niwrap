@@ -1,0 +1,74 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mris_label_calc",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://example.com/descriptors/mris_label_calc.json",
+  "description": "Tool for surface label calculations",
+  "command-line": "mris_label_calc [COMMAND] [INPUT1] [INPUT2] [OUTPUT]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Command to perform on input labels",
+      "id": "command",
+      "name": "Command",
+      "type": "String",
+      "value-choices": [
+        "union",
+        "intersect",
+        "invert",
+        "erode",
+        "dilate"
+      ],
+      "optional": false,
+      "value-key": "[COMMAND]"
+    },
+    {
+      "description": "First input label file",
+      "id": "input1",
+      "name": "Input1",
+      "type": "File",
+      "optional": false,
+      "value-key": "[INPUT1]"
+    },
+    {
+      "description": "Second input label file (used for 'invert', 'erode', 'dilate' operations)",
+      "id": "input2",
+      "name": "Input2",
+      "type": "File",
+      "optional": false,
+      "value-key": "[INPUT2]"
+    },
+    {
+      "description": "Output label file",
+      "id": "output",
+      "name": "Output",
+      "type": "String",
+      "optional": false,
+      "value-key": "[OUTPUT]"
+    },
+    {
+      "command-line-flag": "<n>",
+      "description": "Number of times to erode or dilate label",
+      "id": "iterations",
+      "name": "Iterations",
+      "type": "Number",
+      "optional": true,
+      "integer": true,
+      "value-key": "[N]"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT].label",
+      "description": "The resulting label file after operation",
+      "optional": false,
+      "id": "output_label",
+      "name": "Output Label"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

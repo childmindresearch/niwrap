@@ -1,0 +1,23 @@
+{
+  "name": "csvprint",
+  "description": "Command-line tool for printing CSV files",
+  "command-line": "csvprint [INPUT_FILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input CSV file to be printed",
+      "value-key": "[INPUT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "infile",
+      "name": "Input CSV file"
+    }
+  ],
+  "tool-version": "7.4.1",
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,94 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_voldiff",
+  "author": "FreeSurfer Developers",
+  "description": "Determines whether two volumes are different in terms of pixel data, dimension, precision, resolution, or geometry.",
+  "command-line": "/usr/local/freesurfer/bin/mri_voldiff --v1 [VOLUME1] --v2 [VOLUME2] [VOX2RAS_THRESH] [PIX_THRESH] [ALLOW_PREC_FLAG] [ALLOW_RES_FLAG] [ALLOW_VOX2RAS_FLAG] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "First input volume",
+      "value-key": "[VOLUME1]",
+      "type": "File",
+      "optional": false,
+      "id": "volume1",
+      "name": "First Volume"
+    },
+    {
+      "description": "Second input volume",
+      "value-key": "[VOLUME2]",
+      "type": "File",
+      "optional": false,
+      "id": "volume2",
+      "name": "Second Volume"
+    },
+    {
+      "command-line-flag": "--vox2ras",
+      "description": "Vox2RAS threshold value",
+      "value-key": "[VOX2RAS_THRESH]",
+      "type": "Number",
+      "optional": true,
+      "id": "vox2ras_thresh",
+      "name": "Vox2RAS Threshold"
+    },
+    {
+      "command-line-flag": "--pix",
+      "description": "Pixel threshold value",
+      "value-key": "[PIX_THRESH]",
+      "type": "Number",
+      "optional": true,
+      "id": "pix_thresh",
+      "name": "Pixel Threshold"
+    },
+    {
+      "command-line-flag": "--allow-prec",
+      "description": "Allow differences in precision",
+      "value-key": "[ALLOW_PREC_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "allow_precision",
+      "name": "Allow Precision Differences"
+    },
+    {
+      "command-line-flag": "--allow-res",
+      "description": "Allow differences in resolution",
+      "value-key": "[ALLOW_RES_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "allow_resolution",
+      "name": "Allow Resolution Differences"
+    },
+    {
+      "command-line-flag": "--allow-vox2ras",
+      "description": "Allow differences in Vox2RAS",
+      "value-key": "[ALLOW_VOX2RAS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "allow_vox2ras",
+      "name": "Allow Vox2RAS Differences"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Turn on debugging",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Flag"
+    },
+    {
+      "command-line-flag": "--checkopts",
+      "description": "Don't run anything, just check options and exit",
+      "value-key": "[CHECKOPTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "checkopts",
+      "name": "Check Options Flag"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

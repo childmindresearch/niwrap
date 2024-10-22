@@ -1,0 +1,92 @@
+{
+  "name": "trk_tools",
+  "tool-version": "7.4.1",
+  "description": "Tool for processing TRK files",
+  "command-line": "/usr/local/freesurfer/bin/trk_tools -i [REFERENCE_IMAGE] -f [INPUT_TRK] [OUTPUT_TRK] [OUTPUT_IMAGE] [UPDATE_HEADER] [OUTPUT_VTK]",
+  "inputs": [
+    {
+      "id": "reference_image",
+      "name": "Reference Image",
+      "description": "Reference image for TRK processing",
+      "value-key": "[REFERENCE_IMAGE]",
+      "type": "File",
+      "command-line-flag": "-i",
+      "optional": false
+    },
+    {
+      "id": "input_trk",
+      "name": "Input TRK File",
+      "description": "Input TRK file to be processed",
+      "value-key": "[INPUT_TRK]",
+      "type": "File",
+      "command-line-flag": "-f",
+      "optional": false
+    },
+    {
+      "id": "output_trk",
+      "name": "Output TRK File",
+      "description": "Output TRK file",
+      "value-key": "[OUTPUT_TRK]",
+      "type": "String",
+      "command-line-flag": "-o",
+      "optional": true
+    },
+    {
+      "id": "output_image",
+      "name": "Output Image File",
+      "description": "Export TRK into an image",
+      "value-key": "[OUTPUT_IMAGE]",
+      "type": "String",
+      "command-line-flag": "-e",
+      "optional": true
+    },
+    {
+      "id": "update_header",
+      "name": "Update TRK Header",
+      "description": "Update TRK header with reference image",
+      "value-key": "[UPDATE_HEADER]",
+      "type": "Flag",
+      "command-line-flag": "-u",
+      "optional": true
+    },
+    {
+      "id": "output_vtk",
+      "name": "Output VTK File",
+      "description": "Output streamlines in VTK format",
+      "value-key": "[OUTPUT_VTK]",
+      "type": "String",
+      "command-line-flag": "-v",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "id": "trk_output_file",
+      "name": "TRK Output File",
+      "description": "The processed output TRK file",
+      "path-template": "[OUTPUT_TRK]",
+      "optional": true
+    },
+    {
+      "id": "image_output_file",
+      "name": "Image Output File",
+      "description": "Image exported from TRK file",
+      "path-template": "[OUTPUT_IMAGE]",
+      "optional": true
+    },
+    {
+      "id": "vtk_output_file",
+      "name": "VTK Output File",
+      "description": "VTK file containing streamlines",
+      "path-template": "[OUTPUT_VTK]",
+      "optional": true
+    }
+  ],
+  "schema-version": "0.5",
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

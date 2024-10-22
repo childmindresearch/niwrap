@@ -1,0 +1,111 @@
+{
+  "tool-version": "7.4.1",
+  "name": "tksurferfv",
+  "description": "A script that runs freeview with arguments similar to tksurfer.",
+  "author": "FreeSurfer Developers",
+  "command-line": "tksurferfv [SUBJECT] [HEMI] [SURFACE] [TKSURFER_FLAG] [ALL_FLAG] [VGL_FLAG] [NO_VGL_FLAG] [NO_OUTLINE_FLAG] [NEURO_FLAG] [ROTATE_AROUND_CURSOR_FLAG] [HEAT_SCALE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Subject identifier.",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "id": "subject",
+      "name": "Subject",
+      "optional": false
+    },
+    {
+      "description": "Hemisphere (e.g., lh or rh).",
+      "value-key": "[HEMI]",
+      "type": "String",
+      "id": "hemi",
+      "name": "Hemisphere",
+      "optional": false
+    },
+    {
+      "description": "Surface type.",
+      "value-key": "[SURFACE]",
+      "type": "String",
+      "id": "surface",
+      "name": "Surface",
+      "optional": false
+    },
+    {
+      "command-line-flag": "-tksurfer",
+      "description": "Use tksurfer instead of freeview.",
+      "value-key": "[TKSURFER_FLAG]",
+      "type": "Flag",
+      "id": "tksurfer",
+      "name": "Tksurfer Flag",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-all",
+      "description": "Load white, pial, and inflated surfaces.",
+      "value-key": "[ALL_FLAG]",
+      "type": "Flag",
+      "id": "all_surfaces",
+      "name": "All Surfaces Flag",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-vgl",
+      "description": "Run freeview with /usr/pubsw/bin/vglrun.",
+      "value-key": "[VGL_FLAG]",
+      "type": "Flag",
+      "id": "vgl",
+      "name": "VGL Flag",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-no-vgl",
+      "description": "Do not run freeview with /usr/pubsw/bin/vglrun.",
+      "value-key": "[NO_VGL_FLAG]",
+      "type": "Flag",
+      "id": "no_vgl",
+      "name": "No VGL Flag",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-no-outline",
+      "description": "Do not show annotations as outlines.",
+      "value-key": "[NO_OUTLINE_FLAG]",
+      "type": "Flag",
+      "id": "no_outline",
+      "name": "No Outline Flag",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-neuro",
+      "description": "Use neurological orientation instead of radiological.",
+      "value-key": "[NEURO_FLAG]",
+      "type": "Flag",
+      "id": "neuro_orientation",
+      "name": "Neuro Orientation Flag",
+      "optional": true
+    },
+    {
+      "command-line-flag": "-rca",
+      "description": "Rotate around cursor in 3D view.",
+      "value-key": "[ROTATE_AROUND_CURSOR_FLAG]",
+      "type": "Flag",
+      "id": "rotate_around_cursor",
+      "name": "Rotate Around Cursor Flag",
+      "optional": true
+    },
+    {
+      "description": "Overlay heat scale (options: linear, linearopaque, piecewise, min_to_max).",
+      "value-key": "[HEAT_SCALE]",
+      "type": "String",
+      "id": "heat_scale",
+      "name": "Heat Scale",
+      "optional": true,
+      "default-value": "min_to_max"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

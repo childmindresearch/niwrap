@@ -1,0 +1,87 @@
+{
+  "name": "mkxsubjreg",
+  "description": "Creates a new registration matrix that maps from the functional volume of the source subject to the orig of the target subject through the talairach transform.",
+  "command-line": "mkxsubjreg --srcreg [SRCREG] --targreg [TARGREG] [TARGET_SUBJECT] [TRANSFORM_NAME] [SUBJECTS_DIR] [FUNCTIONAL_VOLUME] [HELP_FLAG] [VERSION_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "id": "srcreg",
+      "name": "Source Registration",
+      "type": "File",
+      "description": "Path to the source registration file (srcreg.dat)",
+      "value-key": "[SRCREG]",
+      "optional": false,
+      "command-line-flag": "--srcreg"
+    },
+    {
+      "id": "targreg",
+      "name": "Target Registration",
+      "type": "File",
+      "description": "Path to the target registration file (targreg.dat)",
+      "value-key": "[TARGREG]",
+      "optional": false,
+      "command-line-flag": "--targreg"
+    },
+    {
+      "id": "targsubj",
+      "name": "Target Subject",
+      "type": "String",
+      "description": "Target subject ID; default is talairach",
+      "value-key": "[TARGET_SUBJECT]",
+      "optional": true,
+      "command-line-flag": "--targsubj"
+    },
+    {
+      "id": "xfm",
+      "name": "Transform Name",
+      "type": "String",
+      "description": "XFM file name relative to transforms",
+      "value-key": "[TRANSFORM_NAME]",
+      "optional": true,
+      "command-line-flag": "--xfm"
+    },
+    {
+      "id": "sd",
+      "name": "Subjects Directory",
+      "type": "String",
+      "description": "Directory containing subject data; default is env SUBJECTS_DIR",
+      "value-key": "[SUBJECTS_DIR]",
+      "optional": true,
+      "command-line-flag": "--sd"
+    },
+    {
+      "id": "fvol",
+      "name": "Functional Volume",
+      "type": "File",
+      "description": "Path to example functional volume",
+      "value-key": "[FUNCTIONAL_VOLUME]",
+      "optional": true,
+      "command-line-flag": "--fvol"
+    },
+    {
+      "id": "help",
+      "name": "Help Flag",
+      "type": "Flag",
+      "description": "Display help information",
+      "value-key": "[HELP_FLAG]",
+      "optional": true,
+      "command-line-flag": "--help"
+    },
+    {
+      "id": "version",
+      "name": "Version Flag",
+      "type": "Flag",
+      "description": "Display version information",
+      "value-key": "[VERSION_FLAG]",
+      "optional": true,
+      "command-line-flag": "--version"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

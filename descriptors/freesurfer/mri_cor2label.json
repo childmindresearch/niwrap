@@ -1,0 +1,142 @@
+{
+  "name": "mri_cor2label",
+  "tool-version": "7.4.1",
+  "description": "Converts values in a volume or surface overlay to a label. Designed to convert parcellation volumes stored in mri format.",
+  "command-line": "mri_cor2label --i [INPUT_FILE] --id [LABEL_ID] --l [LABEL_FILE] [THRESHOLD_FLAG] [VOLUME_FLAG] [SURFACE_FLAG] [SURFACE_PATH_FLAG] [OPTIMIZE_FLAG] [REMOVE_HOLES_ISLANDS_FLAG] [DILATE_FLAG] [ERODE_FLAG] [HELP_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Input volume or surface overlay file.",
+      "id": "input_file",
+      "name": "Input File",
+      "type": "File",
+      "value-key": "[INPUT_FILE]",
+      "optional": false
+    },
+    {
+      "description": "Value to match in the input data.",
+      "id": "label_id",
+      "name": "Label Identifier",
+      "type": "Number",
+      "value-key": "[LABEL_ID]",
+      "optional": false
+    },
+    {
+      "description": "Name of the output label file.",
+      "id": "label_file",
+      "name": "Output Label File",
+      "type": "String",
+      "value-key": "[LABEL_FILE]",
+      "optional": false
+    },
+    {
+      "command-line-flag": "--thresh",
+      "description": "Threshold the input to make label, e.g., input values must be greater than the threshold.",
+      "id": "threshold",
+      "name": "Threshold Value",
+      "type": "Number",
+      "value-key": "[THRESHOLD_FLAG]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--v",
+      "description": "Write the label volume to a file.",
+      "id": "volume_file",
+      "name": "Volume File",
+      "type": "String",
+      "value-key": "[VOLUME_FLAG]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--surf",
+      "description": "Interpret input as a surface overlay, specifying subject, hemisphere, and surface.",
+      "id": "surface_overlay",
+      "name": "Surface Overlay",
+      "type": "String",
+      "list": true,
+      "value-key": "[SURFACE_FLAG]",
+      "optional": true,
+      "min-list-entries": 3,
+      "max-list-entries": 3
+    },
+    {
+      "command-line-flag": "--surf-path",
+      "description": "Specify surface path rather than subject/hemisphere.",
+      "id": "surface_path",
+      "name": "Surface Path",
+      "type": "String",
+      "value-key": "[SURFACE_PATH_FLAG]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--opt",
+      "description": "Treat input as a probability map and optimize thresholding.",
+      "id": "optimize",
+      "name": "Optimize",
+      "type": "String",
+      "list": true,
+      "value-key": "[OPTIMIZE_FLAG]",
+      "optional": true,
+      "min-list-entries": 3,
+      "max-list-entries": 3
+    },
+    {
+      "command-line-flag": "--remove-holes-islands",
+      "description": "Remove holes in label and islands (only valid with --surf).",
+      "id": "remove_holes_islands",
+      "name": "Remove Holes and Islands",
+      "type": "Flag",
+      "value-key": "[REMOVE_HOLES_ISLANDS_FLAG]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--dilate",
+      "description": "Dilate label with specified number of dilations (only valid with --surf).",
+      "id": "dilate",
+      "name": "Dilate",
+      "type": "Number",
+      "value-key": "[DILATE_FLAG]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--erode",
+      "description": "Erode label with specified number of erosions (only valid with --surf).",
+      "id": "erode",
+      "name": "Erode",
+      "type": "Number",
+      "value-key": "[ERODE_FLAG]",
+      "optional": true
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Display help information.",
+      "id": "help",
+      "name": "Help",
+      "type": "Flag",
+      "value-key": "[HELP_FLAG]",
+      "optional": true
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[LABEL_FILE]",
+      "description": "Generated label file.",
+      "id": "output_label_file",
+      "name": "Output Label File",
+      "optional": false
+    },
+    {
+      "path-template": "[VOLUME_FLAG]",
+      "description": "Written volume label if specified.",
+      "id": "output_volume_file",
+      "name": "Output Volume File",
+      "optional": true
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "url": "https://github.com/freesurfer/freesurfer"
+}

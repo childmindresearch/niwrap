@@ -1,0 +1,49 @@
+{
+  "name": "mri_evaluate_morph",
+  "tool-version": "7.4.1",
+  "description": "This program computes the overlap of a set of segmentations for a given morph using an xform file.",
+  "command-line": "mri_evaluate_morph [OPTIONS] [XFORM_NAME] [SEGMENTATION_FILES] [OUTPUT_FILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Transformation file name.",
+      "value-key": "[XFORM_NAME]",
+      "type": "File",
+      "optional": false,
+      "id": "xform_name",
+      "name": "Xform Name"
+    },
+    {
+      "description": "Input segmentation files.",
+      "value-key": "[SEGMENTATION_FILES]",
+      "type": "File",
+      "optional": false,
+      "id": "segmentation_files",
+      "name": "Segmentation Files",
+      "list": true
+    },
+    {
+      "description": "Output file.",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "The output file containing overlap results.",
+      "optional": false,
+      "id": "output_overlap_file",
+      "name": "Output Overlap File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

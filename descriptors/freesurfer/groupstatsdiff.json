@@ -1,0 +1,192 @@
+{
+  "tool-version": "7.4.1",
+  "name": "groupstatsdiff",
+  "description": "Evaluate the differences between two groupstats outputs from recon-all analyses in Freesurfer.",
+  "command-line": "groupstatsdiff --g1 [GROUP1_DIR] --g2 [GROUP2_DIR] --o [OUTPUT_DIR] [NO_MAPS_FLAG] [OSGM_FLAG] [NO_COMMON_FLAG] [ALLOW_SUBJ_DIFF_FLAG] [NO_AREA_FLAG] [NO_VOLUME_FLAG] [NO_BA_FLAG] [NO_APARCSTATS_FLAG] [NO_ASEGSTATS_FLAG] [NO_WPARCSTATS_FLAG] [NO_STATS_FLAG] [NO_PRUNE_FLAG] [FWHM_VALUE] --sd1 [SUBJECTS_DIR1] --sd2 [SUBJECTS_DIR2] [NO_DICE_FLAG] [DICE_CTAB]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Output folder from groupstats for group 1",
+      "value-key": "[GROUP1_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "group1_dir",
+      "name": "Group1 Directory"
+    },
+    {
+      "description": "Output folder from groupstats for group 2",
+      "value-key": "[GROUP2_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "group2_dir",
+      "name": "Group2 Directory"
+    },
+    {
+      "description": "Output folder for the difference analysis",
+      "value-key": "[OUTPUT_DIR]",
+      "type": "String",
+      "optional": false,
+      "id": "output_dir",
+      "name": "Output Directory"
+    },
+    {
+      "command-line-flag": "--no-maps",
+      "description": "Only analyze ROI data, no maps",
+      "value-key": "[NO_MAPS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_maps",
+      "name": "No Maps Flag"
+    },
+    {
+      "command-line-flag": "--osgm",
+      "description": "Use OSGM instead of native FSGD",
+      "value-key": "[OSGM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "osgm",
+      "name": "OSGM Flag"
+    },
+    {
+      "command-line-flag": "--no-common",
+      "description": "Do not select common segments when running stattablediff",
+      "value-key": "[NO_COMMON_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_common",
+      "name": "No Common Flag"
+    },
+    {
+      "command-line-flag": "--allow-subj-diff",
+      "description": "Allow list of subjects to be different between the two analyses",
+      "value-key": "[ALLOW_SUBJ_DIFF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "allow_subj_diff",
+      "name": "Allow Subject Difference Flag"
+    },
+    {
+      "command-line-flag": "--no-area",
+      "description": "Do not compute area differences",
+      "value-key": "[NO_AREA_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_area",
+      "name": "No Area Flag"
+    },
+    {
+      "command-line-flag": "--no-volume",
+      "description": "Do not compute volume differences",
+      "value-key": "[NO_VOLUME_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_volume",
+      "name": "No Volume Flag"
+    },
+    {
+      "command-line-flag": "--no-ba",
+      "description": "Do not compute differences for BA labels",
+      "value-key": "[NO_BA_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_ba",
+      "name": "No BA Flag"
+    },
+    {
+      "command-line-flag": "--no-aparcstats",
+      "description": "Do not do aparcstats",
+      "value-key": "[NO_APARCSTATS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_aparcstats",
+      "name": "No Aparcstats Flag"
+    },
+    {
+      "command-line-flag": "--no-asegstats",
+      "description": "Do not do asegstats",
+      "value-key": "[NO_ASEGSTATS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_asegstats",
+      "name": "No Asegstats Flag"
+    },
+    {
+      "command-line-flag": "--no-wparcstats",
+      "description": "Do not do wmparcstats",
+      "value-key": "[NO_WPARCSTATS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_wparcstats",
+      "name": "No Wmparcstats Flag"
+    },
+    {
+      "command-line-flag": "--no-stats",
+      "description": "Do not do any ROI stats",
+      "value-key": "[NO_STATS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_stats",
+      "name": "No Stats Flag"
+    },
+    {
+      "command-line-flag": "--no-prune",
+      "description": "Do not prune when running mri_glmfit",
+      "value-key": "[NO_PRUNE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_prune",
+      "name": "No Prune Flag"
+    },
+    {
+      "command-line-flag": "--fwhm",
+      "description": "Override the FWHM from group analysis",
+      "value-key": "[FWHM_VALUE]",
+      "type": "Number",
+      "optional": true,
+      "id": "fwhm_value",
+      "name": "FWHM Value"
+    },
+    {
+      "command-line-flag": "--sd1",
+      "description": "Subjects directory 1 for computing dice (default is parent dir of groupdir)",
+      "value-key": "[SUBJECTS_DIR1]",
+      "type": "String",
+      "optional": true,
+      "id": "subjects_dir1",
+      "name": "Subjects Directory 1"
+    },
+    {
+      "command-line-flag": "--sd2",
+      "description": "Subjects directory 2 for computing dice (default is parent dir of groupdir)",
+      "value-key": "[SUBJECTS_DIR2]",
+      "type": "String",
+      "optional": true,
+      "id": "subjects_dir2",
+      "name": "Subjects Directory 2"
+    },
+    {
+      "command-line-flag": "--no-dice",
+      "description": "Do not compute dice",
+      "value-key": "[NO_DICE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_dice",
+      "name": "No Dice Flag"
+    },
+    {
+      "command-line-flag": "--dice-ctab",
+      "description": "CTAB to use for dice computation (default is /usr/local/freesurfer/ASegStatsLUT.txt)",
+      "value-key": "[DICE_CTAB]",
+      "type": "String",
+      "optional": true,
+      "id": "dice_ctab",
+      "name": "Dice CTAB"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

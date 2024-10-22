@@ -1,0 +1,315 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_diff",
+  "author": "FreeSurfer Developers",
+  "description": "Determines whether two volumes differ based on dimensions, resolutions, acquisition parameters, geometry, precision, and pixel data.",
+  "command-line": "/usr/local/freesurfer/bin/mri_diff [VOL1FILE] [VOL2FILE] [CHECK_RESOLUTION_FLAG] [CHECK_ACQUISITION_FLAG] [CHECK_GEOMETRY_FLAG] [CHECK_PRECISION_FLAG] [CHECK_PIXEL_FLAG] [CHECK_ORIENTATION_FLAG] [FILE_TYPE_DIFF_FLAG] [NO_EXIT_ON_DIFF_FLAG] [QA_FLAG] [PIX_ONLY_FLAG] [ABSDIFF_FLAG] [NO_ABSDIFF_FLAG] [DIFFABS_FLAG] [DIFFPCT_FLAG] [RSS_FLAG] [SSD_FLAG] [RMS_FLAG] [COUNT_FLAG] [THRESH] [COUNT_THRESH] [LOG] [DIFF] [SUSPICIOUS_DIFF_VOL] [SEGDIFF] [MERGE_EDITS] [AVG_DIFF] [DEBUG_FLAG] [VERBOSE_FLAG] [CHECKOPTS_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "First volume to compare (e.g., vol1.mgz)",
+      "value-key": "[VOL1FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "vol1file",
+      "name": "Volume 1 File"
+    },
+    {
+      "description": "Second volume to compare (e.g., vol2.mgz)",
+      "value-key": "[VOL2FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "vol2file",
+      "name": "Volume 2 File"
+    },
+    {
+      "command-line-flag": "--notallow-res",
+      "description": "Do not check for resolution differences.",
+      "value-key": "[CHECK_RESOLUTION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "resolution_check",
+      "name": "Check Resolution"
+    },
+    {
+      "command-line-flag": "--notallow-acq",
+      "description": "Do not check for acquisition parameter differences.",
+      "value-key": "[CHECK_ACQUISITION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "acquisition_param_check",
+      "name": "Check Acquisition Parameters"
+    },
+    {
+      "command-line-flag": "--notallow-geo",
+      "description": "Do not check for geometry differences.",
+      "value-key": "[CHECK_GEOMETRY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "geometry_check",
+      "name": "Check Geometry"
+    },
+    {
+      "command-line-flag": "--notallow-prec",
+      "description": "Do not check for precision differences.",
+      "value-key": "[CHECK_PRECISION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "precision_check",
+      "name": "Check Precision"
+    },
+    {
+      "command-line-flag": "--notallow-pix",
+      "description": "Do not check for pixel differences.",
+      "value-key": "[CHECK_PIXEL_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "pixel_check",
+      "name": "Check Pixel"
+    },
+    {
+      "command-line-flag": "--notallow-ori",
+      "description": "Do not check for orientation differences.",
+      "value-key": "[CHECK_ORIENTATION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "orientation_check",
+      "name": "Check Orientation"
+    },
+    {
+      "command-line-flag": "--notallow-type",
+      "description": "Do not check for file type differences.",
+      "value-key": "[FILE_TYPE_DIFF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "file_type_diff_check",
+      "name": "Check File Type"
+    },
+    {
+      "command-line-flag": "--no-exit-on-diff",
+      "description": "Do not exit on difference; run through everything.",
+      "value-key": "[NO_EXIT_ON_DIFF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_exit_on_diff",
+      "name": "No Exit on Difference"
+    },
+    {
+      "command-line-flag": "--qa",
+      "description": "Check resolution, acquisition, precision, and orientation only.",
+      "value-key": "[QA_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "quality_assurance",
+      "name": "Quality Assurance"
+    },
+    {
+      "command-line-flag": "--pix-only",
+      "description": "Only check pixel data.",
+      "value-key": "[PIX_ONLY_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "pixel_only",
+      "name": "Pixel Only"
+    },
+    {
+      "command-line-flag": "--absdiff",
+      "description": "Take absolute value of difference (default).",
+      "value-key": "[ABSDIFF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "abs_difference",
+      "name": "Absolute Difference"
+    },
+    {
+      "command-line-flag": "--no-absdiff",
+      "description": "Do not take absolute value of difference.",
+      "value-key": "[NO_ABSDIFF_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "no_abs_difference",
+      "name": "No Absolute Difference"
+    },
+    {
+      "command-line-flag": "--diffabs",
+      "description": "Take absolute value before computing difference.",
+      "value-key": "[DIFFABS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "difference_abs",
+      "name": "Difference Absolute Value"
+    },
+    {
+      "command-line-flag": "--diffpct",
+      "description": "Compute percentage difference: 100*(v1-v2)/((v1+v2)/2).",
+      "value-key": "[DIFFPCT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "percentage_difference",
+      "name": "Percentage Difference"
+    },
+    {
+      "command-line-flag": "--rss",
+      "description": "Save square root sum squares with --diff.",
+      "value-key": "[RSS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "rss_save",
+      "name": "RSS Save"
+    },
+    {
+      "command-line-flag": "--ssd",
+      "description": "Print sum squared differences over all voxels.",
+      "value-key": "[SSD_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "ssd_print",
+      "name": "SSD Print"
+    },
+    {
+      "command-line-flag": "--rms",
+      "description": "Print root mean squared difference over all non-zero voxels.",
+      "value-key": "[RMS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "rms_print",
+      "name": "RMS Print"
+    },
+    {
+      "command-line-flag": "--count",
+      "description": "Print number of differing voxels.",
+      "value-key": "[COUNT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "count_diff_voxels",
+      "name": "Count Differing Voxels"
+    },
+    {
+      "command-line-flag": "--thresh",
+      "description": "Pixel differences must be greater than this value to be considered different.",
+      "value-key": "[THRESH]",
+      "type": "Number",
+      "optional": true,
+      "id": "pixel_threshold",
+      "name": "Pixel Threshold"
+    },
+    {
+      "command-line-flag": "--count-thresh",
+      "description": "There must be at least this many voxels that are different.",
+      "value-key": "[COUNT_THRESH]",
+      "type": "Number",
+      "optional": true,
+      "id": "count_thresh_voxels",
+      "name": "Count Threshold Voxels"
+    },
+    {
+      "command-line-flag": "--log",
+      "description": "Store difference information in this log file.",
+      "value-key": "[LOG]",
+      "type": "String",
+      "optional": true,
+      "id": "log_file",
+      "name": "Log File"
+    },
+    {
+      "command-line-flag": "--diff",
+      "description": "Save difference image to specified volume.",
+      "value-key": "[DIFF]",
+      "type": "File",
+      "optional": true,
+      "id": "difference_image",
+      "name": "Difference Image"
+    },
+    {
+      "command-line-flag": "--diff_label_suspicious",
+      "description": "Differing voxels replaced with label SUSPICIOUS in the specified volume.",
+      "value-key": "[SUSPICIOUS_DIFF_VOL]",
+      "type": "File",
+      "optional": true,
+      "id": "suspicious_diff_volume",
+      "name": "Suspicious Difference Volume"
+    },
+    {
+      "command-line-flag": "--segdiff",
+      "description": "Perform diff on voxels with specific label index.",
+      "value-key": "[SEGDIFF]",
+      "type": "String",
+      "optional": true,
+      "id": "segmentation_diff",
+      "name": "Segmentation Difference"
+    },
+    {
+      "command-line-flag": "--merge-edits",
+      "description": "Merge edits from newauto, oldauto, and manedit volumes into merged volume.",
+      "value-key": "[MERGE_EDITS]",
+      "type": "String",
+      "optional": true,
+      "id": "merge_edits",
+      "name": "Merge Edits"
+    },
+    {
+      "command-line-flag": "--avg-diff",
+      "description": "Save average difference to specified file.",
+      "value-key": "[AVG_DIFF]",
+      "type": "String",
+      "optional": true,
+      "id": "average_difference",
+      "name": "Average Difference"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Enable debugging mode.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug_mode",
+      "name": "Debug Mode"
+    },
+    {
+      "command-line-flag": "--verbose",
+      "description": "Print information on all differences found.",
+      "value-key": "[VERBOSE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "verbose_mode",
+      "name": "Verbose Mode"
+    },
+    {
+      "command-line-flag": "--checkopts",
+      "description": "Check options and exit without running anything.",
+      "value-key": "[CHECKOPTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "check_options",
+      "name": "Check Options"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[LOG]",
+      "description": "Log file containing difference information.",
+      "optional": true,
+      "id": "log_output",
+      "name": "Log File Output"
+    },
+    {
+      "path-template": "[DIFF]",
+      "description": "Difference image output file.",
+      "optional": true,
+      "id": "difference_image_output",
+      "name": "Difference Image Output"
+    },
+    {
+      "path-template": "[SUSPICIOUS_DIFF_VOL]",
+      "description": "Volume with suspicious differences labeled.",
+      "optional": true,
+      "id": "suspicious_difference_output",
+      "name": "Suspicious Difference Output"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

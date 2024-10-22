@@ -1,0 +1,48 @@
+{
+  "name": "bugr",
+  "tool-version": "7.4.1",
+  "description": "Utility for generating and reporting FreeSurfer bugs",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/dev/utils/bugr",
+  "command-line": "bugr -subject [SUBJECT_NAME] -command [COMMAND_LINE] -error [ERROR_MESSAGE] -log [LOG_FILE]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Subject name to include in the bug report",
+      "value-key": "[SUBJECT_NAME]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_name",
+      "name": "Subject Name"
+    },
+    {
+      "description": "The entire command-line executed",
+      "value-key": "[COMMAND_LINE]",
+      "type": "String",
+      "optional": false,
+      "id": "command_line",
+      "name": "Command Line"
+    },
+    {
+      "description": "The error message generated",
+      "value-key": "[ERROR_MESSAGE]",
+      "type": "String",
+      "optional": false,
+      "id": "error_message",
+      "name": "Error Message"
+    },
+    {
+      "description": "Log file path of the subject's recon-all process",
+      "value-key": "[LOG_FILE]",
+      "type": "File",
+      "optional": true,
+      "id": "log_file",
+      "name": "Log File"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

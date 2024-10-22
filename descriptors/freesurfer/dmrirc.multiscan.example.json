@@ -1,0 +1,32 @@
+{
+  "tool-version": "7.4.1",
+  "name": "dmrirc.multiscan.example",
+  "author": "FreeSurfer Developers",
+  "description": "Example script for DWI processing with multiple scans.",
+  "command-line": "dmrirc.multiscan.example [SUBJECT_LIST]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "List of subjects for processing (e.g., \"huey huey dewey dewey louie louie\")",
+      "value-key": "[SUBJECT_LIST]",
+      "type": "String",
+      "optional": false,
+      "id": "subject_list",
+      "name": "Subject List"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "dmrirc_multiscan_output.txt",
+      "description": "Result of the multi-scan DWI processing.",
+      "optional": true,
+      "id": "output",
+      "name": "Output Log"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,310 @@
+{
+  "tool-version": "7.4.1",
+  "name": "tkmeditfv",
+  "author": "FreeSurfer Developers",
+  "description": "A wrapper script to run Freeview with arguments similar to tkmedit, providing both functionalities.",
+  "command-line": "tkmeditfv [SUBJECT] [MAINVOL] [AUX_VOL] [SEG_VOL] [OVERLAY] [TIMECORSE] [OVERLAYREG] [T2_FILE] [SURFACES] [EXTRA_VOLUMES] [CRS] [ZOOM_LEVEL] [ADDITIONAL_SEGS] [LOAD_WHITE] [LOAD_PIAL] [LOAD_ORIG] [LOAD_ORIG_NOFIX] [SMOOTNWM_NOFIX] [LOAD_WHITE_PREAPARC] [LOAD_INFLATED] [ANNOT] [APARC] [SURFEXT] [SEG_OUTLINE] [INTENSITY_MINMAX] [DEFECTS] [DEFECT_POINTSET] [TRILIN_FLAG] [NEURO_FLAG] [ROTATE_AROUND_CURSOR] [VGL] [TKMEDIT_FLAG] [APARC_ASEG_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "Subject's name",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": true,
+      "id": "subject",
+      "name": "Subject"
+    },
+    {
+      "description": "Main volume file path",
+      "value-key": "[MAINVOL]",
+      "type": "File",
+      "optional": false,
+      "id": "mainvol",
+      "name": "Main volume"
+    },
+    {
+      "command-line-flag": "-aux",
+      "description": "Auxiliary volume file path",
+      "value-key": "[AUX_VOL]",
+      "type": "File",
+      "optional": true,
+      "id": "aux_volume",
+      "name": "Auxiliary volume"
+    },
+    {
+      "command-line-flag": "-seg",
+      "description": "Segmentation volume file path",
+      "value-key": "[SEG_VOL]",
+      "type": "File",
+      "optional": true,
+      "id": "seg_volume",
+      "name": "Segmentation volume"
+    },
+    {
+      "command-line-flag": "-ov",
+      "description": "Overlay volume file path",
+      "value-key": "[OVERLAY]",
+      "type": "File",
+      "optional": true,
+      "id": "overlay",
+      "name": "Overlay volume"
+    },
+    {
+      "command-line-flag": "-t",
+      "description": "Timecourse for overlay",
+      "value-key": "[TIMECORSE]",
+      "type": "File",
+      "optional": true,
+      "id": "timecourse",
+      "name": "Timecourse"
+    },
+    {
+      "command-line-flag": "-reg",
+      "description": "Overlay timecourse registration file",
+      "value-key": "[OVERLAYREG]",
+      "type": "File",
+      "optional": true,
+      "id": "overlay_registration",
+      "name": "Overlay registration"
+    },
+    {
+      "command-line-flag": "-surf",
+      "description": "Load surface with optional color",
+      "value-key": "[SURFACES]",
+      "type": "String",
+      "optional": true,
+      "id": "surface",
+      "name": "Surface",
+      "list": true
+    },
+    {
+      "command-line-flag": "-vol",
+      "description": "Load extra volume(s)",
+      "value-key": "[EXTRA_VOLUMES]",
+      "type": "File",
+      "optional": true,
+      "id": "extra_volumes",
+      "name": "Extra volumes",
+      "list": true
+    },
+    {
+      "command-line-flag": "-crs",
+      "description": "Place cursor at given (col, row, slice) location",
+      "value-key": "[CRS]",
+      "type": "Number",
+      "list": true,
+      "min-list-entries": 3,
+      "max-list-entries": 3,
+      "optional": true,
+      "id": "crs_location",
+      "name": "Cursor location"
+    },
+    {
+      "command-line-flag": "-zoom",
+      "description": "Set zoom level",
+      "value-key": "[ZOOM_LEVEL]",
+      "type": "Number",
+      "optional": true,
+      "id": "zoom_level",
+      "name": "Zoom level"
+    },
+    {
+      "command-line-flag": "-seg2",
+      "description": "Add additional segmentations",
+      "value-key": "[ADDITIONAL_SEGS]",
+      "type": "File",
+      "optional": true,
+      "id": "additional_segments",
+      "name": "Additional segments",
+      "list": true
+    },
+    {
+      "command-line-flag": "-white",
+      "description": "Load lh and rh.white surfaces",
+      "value-key": "[LOAD_WHITE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_white",
+      "name": "Load white surfaces"
+    },
+    {
+      "command-line-flag": "-pial",
+      "description": "Load lh and rh.pial surfaces",
+      "value-key": "[LOAD_PIAL]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_pial",
+      "name": "Load pial surfaces"
+    },
+    {
+      "command-line-flag": "-orig",
+      "description": "Load lh and rh.orig surfaces",
+      "value-key": "[LOAD_ORIG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_orig",
+      "name": "Load orig surfaces"
+    },
+    {
+      "command-line-flag": "-orig.nofix",
+      "description": "Load lh and rh.orig.nofix surfaces",
+      "value-key": "[LOAD_ORIG_NOFIX]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_orig_nofix",
+      "name": "Load orig nofix surfaces"
+    },
+    {
+      "command-line-flag": "-smoothwm.nofix",
+      "description": "Load lh and rh.smoothwm.nofix surfaces",
+      "value-key": "[SMOOTNWM_NOFIX]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_smoothwm_nofix",
+      "name": "Load smoothwm nofix surfaces"
+    },
+    {
+      "command-line-flag": "-white.preaparc",
+      "description": "Load lh and rh.white.preaparc surfaces",
+      "value-key": "[LOAD_WHITE_PREAPARC]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_white_preaparc",
+      "name": "Load white preaparc surfaces"
+    },
+    {
+      "command-line-flag": "-inflated",
+      "description": "Load lh and rh.inflated surfaces",
+      "value-key": "[LOAD_INFLATED]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_inflated",
+      "name": "Load inflated surfaces"
+    },
+    {
+      "command-line-flag": "-annot",
+      "description": "Load annotation file",
+      "value-key": "[ANNOT]",
+      "type": "String",
+      "optional": true,
+      "id": "annot",
+      "name": "Annotation"
+    },
+    {
+      "command-line-flag": "-aparc",
+      "description": "Load aparc annotation",
+      "value-key": "[APARC]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_aparc",
+      "name": "Load aparc"
+    },
+    {
+      "command-line-flag": "-surfext",
+      "description": "Add extension to the name of the surface",
+      "value-key": "[SURFEXT]",
+      "type": "String",
+      "optional": true,
+      "id": "surfext",
+      "name": "Surface extension"
+    },
+    {
+      "command-line-flag": "-seg-outline",
+      "description": "Enable segmentation outline mode",
+      "value-key": "[SEG_OUTLINE]",
+      "type": "Flag",
+      "optional": true,
+      "id": "seg_outline",
+      "name": "Segmentation outline mode"
+    },
+    {
+      "command-line-flag": "-main-minmax",
+      "description": "Set intensity min and max on first volume",
+      "value-key": "[INTENSITY_MINMAX]",
+      "type": "Number",
+      "list": true,
+      "min-list-entries": 2,
+      "max-list-entries": 2,
+      "optional": true,
+      "id": "intensity_minmax",
+      "name": "Intensity min max"
+    },
+    {
+      "command-line-flag": "-defects",
+      "description": "Load info needed to evaluate defects",
+      "value-key": "[DEFECTS]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_defects",
+      "name": "Load defects"
+    },
+    {
+      "command-line-flag": "-defectps",
+      "description": "Load defect pointset",
+      "value-key": "[DEFECT_POINTSET]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_defect_pointset",
+      "name": "Load defect pointset"
+    },
+    {
+      "command-line-flag": "-trilin",
+      "description": "Use trilinear interpolation for volume overlays",
+      "value-key": "[TRILIN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "trilin_interpolation",
+      "name": "Trilinear interpolation"
+    },
+    {
+      "command-line-flag": "-neuro",
+      "description": "Use neurological orientation instead of radiological",
+      "value-key": "[NEURO_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "neurological_orientation",
+      "name": "Neurological orientation"
+    },
+    {
+      "command-line-flag": "-rotate-around-cursor",
+      "description": "Rotate around cursor in 3D view",
+      "value-key": "[ROTATE_AROUND_CURSOR]",
+      "type": "Flag",
+      "optional": true,
+      "id": "rotate_around_cursor",
+      "name": "Rotate around cursor"
+    },
+    {
+      "command-line-flag": "-vgl",
+      "description": "Set VGL_DISPLAY and run with vglrun",
+      "value-key": "[VGL]",
+      "type": "Flag",
+      "optional": true,
+      "id": "vgl_display",
+      "name": "VGL display"
+    },
+    {
+      "command-line-flag": "-tkmedit",
+      "description": "Use tkmedit instead of freeview",
+      "value-key": "[TKMEDIT_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "use_tkmedit",
+      "name": "Use tkmedit"
+    },
+    {
+      "command-line-flag": "-aparc+aseg",
+      "description": "Load aparc+aseg",
+      "value-key": "[APARC_ASEG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "load_aparc_aseg",
+      "name": "Load aparc+aseg"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

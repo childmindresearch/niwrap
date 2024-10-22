@@ -1,0 +1,57 @@
+{
+  "name": "mris_surface_to_vol_distances",
+  "description": "Tool from FreeSurfer to calculate surface-to-volume distances",
+  "command-line": "mris_surface_to_vol_distances [AVERAGE_SUBJECT] [HEMI] [SUBJECTS] [OUTPUT_PREFIX]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "The average subject.",
+      "value-key": "[AVERAGE_SUBJECT]",
+      "type": "String",
+      "optional": false,
+      "id": "average_subject",
+      "name": "Average Subject"
+    },
+    {
+      "description": "Hemisphere identifier (e.g., lh or rh).",
+      "value-key": "[HEMI]",
+      "type": "String",
+      "optional": false,
+      "id": "hemisphere",
+      "name": "Hemisphere"
+    },
+    {
+      "description": "List of subjects for distance calculation.",
+      "value-key": "[SUBJECTS]",
+      "type": "String",
+      "optional": false,
+      "list": true,
+      "id": "subjects",
+      "name": "Subjects"
+    },
+    {
+      "description": "Prefix for output files.",
+      "value-key": "[OUTPUT_PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "output_prefix",
+      "name": "Output Prefix"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_PREFIX]_distances.txt",
+      "description": "Output file containing surface-to-volume distances.",
+      "optional": true,
+      "id": "output_distances",
+      "name": "Output Distances File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "tool-version": "7.4.1",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

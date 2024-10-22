@@ -1,0 +1,24 @@
+{
+  "tool-version": "7.4.1",
+  "name": "xhemi-tal",
+  "description": "Computes the talairach.xfm for xhemi based on the original (unflipped) talairach.xfm",
+  "command-line": "xhemi-tal --s [SUBJECT]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--s",
+      "description": "Subject for which to compute the talairach.xfm",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": false,
+      "id": "subject",
+      "name": "Subject"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

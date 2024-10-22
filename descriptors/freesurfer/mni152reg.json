@@ -1,0 +1,75 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mni152reg",
+  "author": "FreeSurfer Developers",
+  "description": "Registers the FreeSurfer subject to the FSL MNI 152 brain to create a tkregister-style registration matrix.",
+  "command-line": "mni152reg --s [SUBJECT] [REGISTER_1MM_FLAG] [OUTPUT_FLAG] [SYMMETRIC_FLAG] [SAVE_VOLUME_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "FreeSurfer subject ID",
+      "value-key": "[SUBJECT]",
+      "type": "String",
+      "optional": false,
+      "id": "subject",
+      "name": "Subject"
+    },
+    {
+      "command-line-flag": "--1",
+      "description": "Register to 1mm target (instead of 2mm)",
+      "value-key": "[REGISTER_1MM_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "register_1mm",
+      "name": "Register 1mm flag"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Explicitly set output registration file",
+      "value-key": "[OUTPUT_FLAG]",
+      "type": "String",
+      "optional": true,
+      "id": "output",
+      "name": "Output registration file"
+    },
+    {
+      "command-line-flag": "--sym",
+      "description": "Register to FSL symmetric target",
+      "value-key": "[SYMMETRIC_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "symmetric",
+      "name": "Symmetric target flag"
+    },
+    {
+      "command-line-flag": "--save-vol",
+      "description": "Sample original to output space",
+      "value-key": "[SAVE_VOLUME_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "save_volume",
+      "name": "Save volume flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "$SUBJECTS_DIR/[SUBJECT]/mri/transforms/reg.mni152.2mm.dat",
+      "description": "Output registration matrix for standard 2mm target",
+      "optional": true,
+      "id": "reg_matrix_2mm",
+      "name": "Registration matrix 2mm"
+    },
+    {
+      "path-template": "$SUBJECTS_DIR/[SUBJECT]/mri/transforms/reg.mni152.1mm.dat",
+      "description": "Output registration matrix for 1mm target when --1 flag is used",
+      "optional": true,
+      "id": "reg_matrix_1mm",
+      "name": "Registration matrix 1mm"
+    }
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

@@ -1,0 +1,96 @@
+{
+  "name": "mris_warp",
+  "tool-version": "7.4.1",
+  "description": "This program will warp a surface using a specified deformation field.",
+  "command-line": "mris_warp [DEFORMVOL] [M3Z] [REGFILE] [SURF] [OUT] [ABS_FLAG] [HELP_FLAG] [VERSION_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--deformvol",
+      "description": "Volume containing deformation",
+      "value-key": "[DEFORMVOL]",
+      "type": "String",
+      "optional": true,
+      "id": "deformvol",
+      "name": "Deformation Volume"
+    },
+    {
+      "command-line-flag": "--m3z",
+      "description": "M3Z file containing deformation",
+      "value-key": "[M3Z]",
+      "type": "String",
+      "optional": true,
+      "id": "m3z",
+      "name": "M3Z Deformation File"
+    },
+    {
+      "command-line-flag": "--reg",
+      "description": "register.dat file between surface and volume",
+      "value-key": "[REGFILE]",
+      "type": "String",
+      "optional": true,
+      "id": "regfile",
+      "name": "Registration File"
+    },
+    {
+      "command-line-flag": "--surf",
+      "description": "Surface file to warp",
+      "value-key": "[SURF]",
+      "type": "String",
+      "optional": true,
+      "id": "surf",
+      "name": "Surface File"
+    },
+    {
+      "command-line-flag": "--out",
+      "description": "Name for output surface (if does not contain '/', outputs to same directory as input surface)",
+      "value-key": "[OUT]",
+      "type": "String",
+      "optional": true,
+      "id": "out",
+      "name": "Output Surface File"
+    },
+    {
+      "command-line-flag": "--abs",
+      "description": "Absolute coordinate displacement convention (default)",
+      "value-key": "[ABS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "abs",
+      "name": "Absolute Displacement Flag"
+    },
+    {
+      "command-line-flag": "--help",
+      "description": "Print out information on how to use this program",
+      "value-key": "[HELP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "help",
+      "name": "Help Flag"
+    },
+    {
+      "command-line-flag": "--version",
+      "description": "Print out version and exit",
+      "value-key": "[VERSION_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "version",
+      "name": "Version Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUT]",
+      "description": "Output surface file",
+      "optional": false,
+      "id": "output_surface",
+      "name": "Output Surface File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}

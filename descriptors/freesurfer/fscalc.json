@@ -1,0 +1,103 @@
+{
+  "tool-version": "7.4.1",
+  "name": "fscalc",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://surfer.nmr.mgh.harvard.edu",
+  "description": "A frontend tool to perform mathematical operations on volumes/surfaces of data using mris_calc.",
+  "command-line": "fscalc [INPUT_FILE1] [OPERATION] [INPUT_FILE2] --o [OUTPUT_FILE] [OUTPUT_DATA_TYPE] [DEBUG_FLAG] [TMP_DIR] [NO_CLEANUP_FLAG] [LOG_FILE]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "description": "First input image or constant.",
+      "value-key": "[INPUT_FILE1]",
+      "type": "String",
+      "optional": false,
+      "id": "input1",
+      "name": "Input file 1"
+    },
+    {
+      "description": "Operation to perform between input volumes.",
+      "value-key": "[OPERATION]",
+      "type": "String",
+      "optional": false,
+      "id": "operation",
+      "name": "Operation"
+    },
+    {
+      "description": "Second input image or constant. Optional for some unary operations.",
+      "value-key": "[INPUT_FILE2]",
+      "type": "String",
+      "optional": true,
+      "id": "input2",
+      "name": "Input file 2"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Output volume file.",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "--odt",
+      "description": "Specify output data type (uchar, short, int, float).",
+      "value-key": "[OUTPUT_DATA_TYPE]",
+      "type": "String",
+      "optional": true,
+      "id": "output_data_type",
+      "name": "Output data type"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Enable debug mode.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug flag"
+    },
+    {
+      "command-line-flag": "--tmpdir",
+      "description": "Temporary directory for processing.",
+      "value-key": "[TMP_DIR]",
+      "type": "String",
+      "optional": true,
+      "id": "tmpdir",
+      "name": "Temporary directory"
+    },
+    {
+      "command-line-flag": "--nocleanup",
+      "description": "Prevent cleanup of temporary files.",
+      "value-key": "[NO_CLEANUP_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "nocleanup",
+      "name": "No cleanup flag"
+    },
+    {
+      "command-line-flag": "--log",
+      "description": "Specify a log file for operation log.",
+      "value-key": "[LOG_FILE]",
+      "type": "String",
+      "optional": true,
+      "id": "log_file",
+      "name": "Log file"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Resulting output volume from the operations specified.",
+      "optional": false,
+      "id": "result_vol",
+      "name": "Resulting volume"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

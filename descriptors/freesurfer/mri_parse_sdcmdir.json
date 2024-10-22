@@ -1,0 +1,61 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_parse_sdcmdir",
+  "author": "FreeSurfer Developers",
+  "descriptor-url": "https://surfer.nmr.mgh.harvard.edu/fswiki/ParseSDCMdir",
+  "description": "This program parses the Siemens DICOM files in a given directory and prints out information about each file.",
+  "command-line": "mri_parse_sdcmdir [SDICOMDIR] [OUTFILE] [SORTBYRUN_FLAG] [SUMMARIZE_FLAG] [DWI_FLAG]",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--d",
+      "description": "Path to Siemens DICOM directory",
+      "value-key": "[SDICOMDIR]",
+      "type": "String",
+      "optional": false,
+      "id": "sdicomdir",
+      "name": "Siemens DICOM directory"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Name of a file to which the results will be printed. If unspecified, the results will be printed to stdout.",
+      "value-key": "[OUTFILE]",
+      "type": "String",
+      "optional": true,
+      "id": "outfile",
+      "name": "Output file"
+    },
+    {
+      "command-line-flag": "--sortbyrun",
+      "description": "Assign run numbers",
+      "value-key": "[SORTBYRUN_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "sortbyrun",
+      "name": "Sort by run flag"
+    },
+    {
+      "command-line-flag": "--summarize",
+      "description": "Only print out info for run leaders",
+      "value-key": "[SUMMARIZE_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "summarize",
+      "name": "Summarize flag"
+    },
+    {
+      "command-line-flag": "--dwi",
+      "description": "Try to read DWI params. Generally no need to.",
+      "value-key": "[DWI_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "dwi",
+      "name": "DWI flag"
+    }
+  ],
+  "url": "https://github.com/freesurfer/freesurfer"
+}

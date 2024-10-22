@@ -1,0 +1,69 @@
+{
+  "tool-version": "7.4.1",
+  "name": "mri_stats2seg",
+  "description": "A command-line tool for converting MRI statistical maps to segmented volume.",
+  "command-line": "/usr/local/freesurfer/bin/mri_stats2seg --stat [STAT_FILE] --seg [SEGMENTATION_VOLUME] --o [OUTPUT_FILE] [DEBUG_FLAG] [CHECKOPTS_FLAG]",
+  "schema-version": "0.5",
+  "inputs": [
+    {
+      "command-line-flag": "--stat",
+      "description": "Stat file in an MRI format.",
+      "value-key": "[STAT_FILE]",
+      "type": "File",
+      "optional": false,
+      "id": "stat_file",
+      "name": "Stat File"
+    },
+    {
+      "command-line-flag": "--seg",
+      "description": "Segmentation volume file.",
+      "value-key": "[SEGMENTATION_VOLUME]",
+      "type": "File",
+      "optional": false,
+      "id": "segmentation_volume",
+      "name": "Segmentation Volume"
+    },
+    {
+      "command-line-flag": "--o",
+      "description": "Output file.",
+      "value-key": "[OUTPUT_FILE]",
+      "type": "String",
+      "optional": false,
+      "id": "output_file",
+      "name": "Output File"
+    },
+    {
+      "command-line-flag": "--debug",
+      "description": "Turn on debugging.",
+      "value-key": "[DEBUG_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Flag"
+    },
+    {
+      "command-line-flag": "--checkopts",
+      "description": "Don't run anything, just check options and exit.",
+      "value-key": "[CHECKOPTS_FLAG]",
+      "type": "Flag",
+      "optional": true,
+      "id": "check_opts",
+      "name": "Check Options Flag"
+    }
+  ],
+  "output-files": [
+    {
+      "path-template": "[OUTPUT_FILE]",
+      "description": "Output segmented file.",
+      "optional": false,
+      "id": "segmented_output",
+      "name": "Segmented Output File"
+    }
+  ],
+  "author": "FreeSurfer Developers",
+  "container-image": {
+    "type": "docker",
+    "image": "freesurfer/freesurfer:7.4.1"
+  },
+  "url": "https://github.com/freesurfer/freesurfer"
+}
