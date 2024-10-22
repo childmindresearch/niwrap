@@ -1,5 +1,5 @@
 {
-  "name": "MCFLIRT",
+  "name": "mcflirt",
   "command-line": "mcflirt [IN_FILE] [BINS] [COST] [DOF] [INIT] [INTERPOLATION] [MEAN_VOL] [OUT_FILE] [REF_FILE] [REF_VOL] [ROTATION] [SAVE_MATS] [SAVE_PLOTS] [SAVE_RMS] [SCALING] [SMOOTH] [STAGES] [STATS_IMGS] [USE_CONTOUR] [USE_GRADIENT]",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "MCFLIRT is an intra-modal motion correction tool designed for use on fMRI time series and based on optimization and registration techniques used in FLIRT, a fully automated robust and accurate tool for linear (affine) inter- and inter-modal brain image registration.",
