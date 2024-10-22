@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@4Daverage",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Script for computing average 3D+time bricks using 3Dcalc",
   "command-line": "@4Daverage [OUTPUT_PREFIX] [INPUT_FILES...]",
   "inputs": [
@@ -25,8 +25,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@4Daverage.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

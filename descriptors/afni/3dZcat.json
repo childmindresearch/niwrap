@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dZcat",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Concatenates datasets in the slice (z) direction",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZcat.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dZcat [PREFIX] [DATUM] [FSCALE] [NSCALE] [VERB] [FRUGAL] [INPUT_FILES]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -27,7 +27,11 @@
       "optional": true,
       "id": "datum",
       "name": "Output Datum",
-      "value-choices": ["byte", "short", "float"]
+      "value-choices": [
+        "byte",
+        "short",
+        "float"
+      ]
     },
     {
       "description": "Force scaling of the output to the maximum integer range. This only has effect if the output datum is byte or short (either forced or defaulted). This option is sometimes necessary to eliminate unpleasant truncation artifacts.",

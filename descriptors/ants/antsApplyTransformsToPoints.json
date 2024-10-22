@@ -2,7 +2,7 @@
   "name": "antsApplyTransformsToPoints",
   "command-line": "antsApplyTransformsToPoints [DIMENSIONALITY] [PRECISION] [FORANTSR] [INPUT] [OUTPUT] [TRANSFORM]",
   "description": "antsApplyTransformsToPoints, applied to an input image, transforms it according to a reference image and a transform (or a set of transforms). It reads in a CSV file with the first D columns defining the spatial location where the spatial location is defined in physical coordinates. The CSV file should have a header row.",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
   "schema-version": "0.5",
@@ -18,7 +18,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [2, 3],
+      "value-choices": [
+        2,
+        3
+      ],
       "command-line-flag": "--dimensionality",
       "description": "This option forces the points to be treated as a specified-dimensionality."
     },
@@ -29,7 +32,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "--precision",
       "description": "Use double precision."
     },
@@ -40,7 +46,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "--forantsr",
       "description": "Set true for ANTsR IO."
     },

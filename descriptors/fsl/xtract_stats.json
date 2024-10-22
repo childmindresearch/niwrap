@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "xtract_stats",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Quantitative evaluation tool of XTRACT results in neuroimaging",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "xtract_stats -d <folder_basename> -xtract <XTRACT_dir> -w <xtract2diff> [reference] [output_file] [structures_file] [threshold] [measurements] [keep_temp_files]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

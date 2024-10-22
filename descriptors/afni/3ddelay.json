@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3ddelay",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Estimates the time delay between each voxel time series in a 3D+time dataset and a reference time series.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3ddelay.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3ddelay [INPUT_FILE] [REFERENCE_FILE] [SAMPLING_FREQ] [STIM_PERIOD] [PREFIX] [POLORT_ORDER] [NODTRND_FLAG] [UNITS_SECONDS] [UNITS_DEGREES] [UNITS_RADIANS] [PHZWRP_FLAG] [NOPHZWRP_FLAG] [PHZREVERSE_FLAG] [PHASE_SCALE] [BIAS_FLAG] [NOBIAS_FLAG] [DSAMP_FLAG] [NODSAMP_FLAG] [MASK_FILE] [FIRST_IMG] [LAST_IMG] [CCT] [OUTPUT_ASC] [OUTPUT_ASCTS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

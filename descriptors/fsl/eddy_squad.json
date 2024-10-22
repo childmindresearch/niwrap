@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "eddy_squad",
-  "author": "FMRIB Software Library (FSL)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Study-wise QC for dMRI data",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy/UsersGuide#EDDY_QC",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "eddy_squad [GROUPING] [GROUP_DB] [UPDATE] [OUTPUT_DIR] list",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

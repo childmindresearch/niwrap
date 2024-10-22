@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "neuro_deconvolve.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Generate a script to apply 3dTfitter to deconvolve an MRI signal (BOLD response curve) into a neuro response curve.",
   "command-line": "neuro_deconvolve.py [INPUT_FILE] [OUTPUT_PREFIX] [SCRIPT_NAME] [KERNEL] [KERNEL_FILE] [MASK_DSET] [OLD_STYLE] [TR] [TR_NUP] [VERBOSITY]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -121,5 +121,5 @@
       "name": "Kernel file output"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/neuro_deconvolve.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

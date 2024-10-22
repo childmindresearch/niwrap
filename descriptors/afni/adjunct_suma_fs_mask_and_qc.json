@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "adjunct_suma_fs_mask_and_qc",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Script for quickly making some QC images for the SUMA/ directory created by @SUMA_Make_Spec_FS after running FreeSurfer's recon-all.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_suma_fs_mask_and_qc.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "adjunct_suma_fs_mask_and_qc -sid [SUBJECT_ID] -suma_dir [SUMA_DIR] [NO_CLEAN] [HELP_FLAG] [HVIEW_FLAG] [VERSION_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

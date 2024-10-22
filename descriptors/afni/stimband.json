@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "stimband",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Determines frequency band covering at least 90% of the 'power' (|FFT|^2) of stimulus columns from X.nocensor.xmat.1D files.",
   "command-line": "stimband [VERBOSE_FLAG] [MATRIXFILES...] [ADDITIONAL_MATRIXFILES...] [MIN_FREQ] [MIN_BWIDTH] [MIN_POW]",
   "inputs": [
@@ -74,8 +74,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/stimband.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

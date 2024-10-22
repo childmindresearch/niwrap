@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "bedpostx_gpu",
-  "author": "FMRIB Software Library (FSL)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Probabilistic tractography and diffusion MRI fitting tool",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/Bedpostx",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "bedpostx [SUBJECT_DIRECTORY] [GPU_QUEUE] [NUM_JOBS] [NUM_FIBERS] [ARD_WEIGHT] [BURNIN_PERIOD] [NUM_JUMPS] [SAMPLE_EVERY] [DECONVOLUTION_MODEL] [GRAD_NONLINEAR]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

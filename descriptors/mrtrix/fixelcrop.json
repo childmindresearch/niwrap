@@ -1,7 +1,7 @@
 {
   "name": "fixelcrop",
   "description": "Crop/remove fixels from sparse fixel image using a binary fixel mask.\n\nThe mask must be input as a fixel data file the same dimensions as the fixel data file(s) to be cropped.\n\nReferences:\n\n",
-  "author": "David Raffelt (david.raffelt@florey.edu.au) & Rami Tabarra (rami.tabarra@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -140,5 +140,5 @@
       "description": "the output directory to store the cropped directions and data files"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcrop.html"
+  "url": "https://www.mrtrix.org/"
 }

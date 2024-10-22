@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "IsoSurface",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A program to perform isosurface extraction from a volume.",
   "command-line": "IsoSurface [INPUT_VOL] [SHAPE_SPEC] [ISOROIS] [ISOVAL] [ISORANGE] [ISOCMASK] [OUTPUT_PREFIX] [TSMOOTH] [DEBUG] [AUTOCROP] [REMESH] [XFORM] [NOVOLREG] [NOXFORM]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -163,5 +163,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/IsoSurface.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "3dAcost",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Allineate dataset to a base dataset",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAcost.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dAcost [INFILE] [BASEFILE] [OUTFILE] [ALL_COST]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

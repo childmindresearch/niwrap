@@ -1,7 +1,7 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dToyProg",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A program to illustrate dataset creation and manipulation in C using AFNI's API.",
   "command-line": "3dToyProg [INPUT_DATASET] [OUTPUT_PREFIX] [MASK_DATASET] [OUTPUT_DATUM]",
   "inputs": [
@@ -40,7 +40,10 @@
       "command-line-flag": "-datum",
       "id": "output_datum",
       "name": "Output datum type",
-      "value-choices": ["float", "short"]
+      "value-choices": [
+        "float",
+        "short"
+      ]
     },
     {
       "description": "Mini help, at time, same as -help in many cases.",
@@ -135,8 +138,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dToyProg.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

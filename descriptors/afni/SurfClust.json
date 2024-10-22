@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "SurfClust",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A program to perform clustering analysis surfaces",
   "command-line": "SurfClust [SPECFILE] [INPUT_SURFACE] [INPUT_SURF_NAME] [INPUT_DATASET] [RMM] [AMM2] [MIN_NODES] [PREFIX] [OUT_CLUSTERDSET] [OUT_ROIDSET] [OUT_FULLLIST] [SORT_NONE] [SORT_N_NODES] [SORT_AREA] [THRESH_COL] [THRESH] [ATHRESH] [IR_RANGE] [EX_RANGE] [PREPEND_NODE_INDEX] [UPDATE] [NO_CENT] [CENT] [NOVOLREG] [NOXFORM] [SET_ENV] [TRACE] [TRACE_EXTREME] [NO_MEMORY_TRACE] [YES_MEMORY_TRACE] [MINI_HELP] [HELP] [EXTREME_HELP] [VIEW_HELP] [WEB_HELP] [FIND_HELP] [RAW_HELP] [SPX_HELP] [ASPX_HELP]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -394,5 +394,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfClust.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "vecreg",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Vector Affine/NonLinear Transformation with Orientation Preservation",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "vecreg [INPUT_FILE] [OUTPUT_FILE] [REF_VOL] [TRANSFORM_FILE] [VERBOSE_FLAG] [HELP_FLAG] [SECONDARY_AFFINE] [SECONDARY_WARP] [INTERP_METHOD] [BRAIN_MASK] [REF_BRAIN_MASK]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

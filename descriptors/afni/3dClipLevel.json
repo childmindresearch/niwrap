@@ -1,9 +1,9 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dClipLevel",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Estimates the value at which to clip the anatomical dataset so that background regions are set to zero.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dClipLevel.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dClipLevel [options] [DATASET]",
   "schema-version": "0.5",
   "inputs": [
@@ -44,7 +44,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

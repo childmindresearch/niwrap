@@ -1,7 +1,7 @@
 {
   "name": "sh2response",
   "description": "Generate an appropriate response function from the image data for spherical deconvolution.\n\nThe spherical harmonic coefficients are stored according the conventions described the main documentation, which can be found at the following link: \nhttps://mrtrix.readthedocs.io/en/3.0.4/concepts/spherical_harmonics.html\n\nReferences:\n\n",
-  "author": "J-Donald Tournier (jdtournier@gmail.com)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -173,5 +173,5 @@
       "description": "dump the m=0 SH coefficients from all voxels in the mask to the output file, rather than their mean "
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2response.html"
+  "url": "https://www.mrtrix.org/"
 }

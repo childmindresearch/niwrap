@@ -1,7 +1,7 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dExtractGroupInCorr",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "This program breaks the collection of images from a GroupInCorr file back into individual AFNI 3D+time datasets.",
   "command-line": "3dExtractGroupInCorr [GROUP_IN_CORR_FILE] [PREFIX]",
   "inputs": [
@@ -34,8 +34,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dExtractGroupInCorr.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

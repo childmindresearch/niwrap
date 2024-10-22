@@ -1,9 +1,9 @@
 {
   "name": "3dTCorrelate",
   "command-line": "3dTCorrelate [XSET] [YSET] [PEARSON] [SPEARMAN] [QUADRANT] [KTAUB] [COVARIANCE] [PARTIAL] [YCOEF] [FISHER] [POLORT] [ORT] [AUTOCLIP] [AUTOMASK] [ZCENSOR] [PREFIX]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "3dTCorrelate. Computes the correlation coefficient between corresponding voxel time series in two input 3D+time datasets 'xset' and 'yset'.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorrelate.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "pearson",
@@ -76,7 +76,11 @@
       "command-line-flag": "-Fisher",
       "description": "Apply the Fisher (inverse hyperbolic tangent) transformation to correlation results. Does not make sense with ktaub, covariance, or ycoef.",
       "optional": true,
-      "disables-inputs": ["ktaub", "covariance", "ycoef"]
+      "disables-inputs": [
+        "ktaub",
+        "covariance",
+        "ycoef"
+      ]
     },
     {
       "id": "polort",
@@ -107,7 +111,9 @@
       "command-line-flag": "-autoclip",
       "description": "Clip off low-intensity regions in the two datasets, so that the correlation is only computed between high-intensity (presumably brain) voxels. The intensity level is determined the same way that 3dClipLevel works.",
       "optional": true,
-      "disables-inputs": ["automask"]
+      "disables-inputs": [
+        "automask"
+      ]
     },
     {
       "id": "automask",
@@ -117,7 +123,9 @@
       "command-line-flag": "-automask",
       "description": "Clip off low-intensity regions in the two datasets, so that the correlation is only computed between high-intensity (presumably brain) voxels. The intensity level is determined the same way that 3dClipLevel works.",
       "optional": true,
-      "disables-inputs": ["autoclip"]
+      "disables-inputs": [
+        "autoclip"
+      ]
     },
     {
       "id": "zcensor",
@@ -127,7 +135,10 @@
       "command-line-flag": "-zcensor",
       "description": "Omit (censor out) any time points where the xset volume is all zero OR where the yset volume is all zero (in mask). Please note that using -zcensor with any detrending is unlikely to be useful.",
       "optional": true,
-      "disables-inputs": ["ort", "polort"]
+      "disables-inputs": [
+        "ort",
+        "polort"
+      ]
     },
     {
       "id": "prefix",
@@ -164,11 +175,11 @@
       "path-template": "[PREFIX]"
     }
   ],
-  "tool-version": "24.1.04",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "1dAstrip",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Strips non-numeric characters from a file",
   "command-line": "1dAstrip [INFILE]",
   "inputs": [
@@ -29,8 +29,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dAstrip.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

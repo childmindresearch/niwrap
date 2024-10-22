@@ -1,14 +1,14 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dTnorm",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTnorm.html",
   "description": "Normalizes each voxel time series by multiplicative scaling",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTnorm.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dTnorm [PREFIX] [L2_NORM_FLAG] [SUM_SQUARES_NORM_FLAG] [L1_NORM_FLAG] [MAX_NORM_FLAG] [POLORT] [L1FIT_FLAG] [DATASET]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

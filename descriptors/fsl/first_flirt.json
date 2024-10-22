@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "first_flirt",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FLIRT-based image registration tool with additional options for brain extraction and weighting masks",
   "command-line": "first_flirt [INPUT_IMAGE] [OUTPUT_BASENAME] [ALREADY_BRAIN_EXTRACTED_FLAG] [DEBUG_FLAG] [INWEIGHT_FLAG] [STRUCWEIGHT_MASK] [CORT_FLAG] [COST_FUNCTION]",
   "container-image": {
@@ -118,5 +118,6 @@
       "id": "transformation_matrix",
       "name": "Transformation Matrix"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

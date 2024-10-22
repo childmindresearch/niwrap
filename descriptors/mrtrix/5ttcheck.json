@@ -1,7 +1,7 @@
 {
   "name": "5ttcheck",
   "description": "Thoroughly check that one or more images conform to the expected ACT five-tissue-type (5TT) format.\n\n\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -127,5 +127,5 @@
     }
   ],
   "output-files": [],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/5ttcheck.html"
+  "url": "https://www.mrtrix.org/"
 }

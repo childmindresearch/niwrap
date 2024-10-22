@@ -1,7 +1,7 @@
 {
   "name": "reg_resample",
-  "tool-version": "1.0",
-  "author": "Marc Modat",
+  "tool-version": "1.4.0",
+  "author": "NiftyReg Developers",
   "description": "Tool for resampling floating images to the reference image space using different transformations.",
   "url": "http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg",
   "command-line": "reg_resample [REFERENCE_IMAGE] [FLOATING_IMAGE] [TRANSFORMATION_OPTION] [OUTPUT_OPTIONS] [INTERPOLATION_OPTIONS]",
@@ -113,5 +113,9 @@
       "description": "File containing the resampled blank grid",
       "optional": true
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "vnmd/niftyreg_1.4.0:20220819"
+  }
 }

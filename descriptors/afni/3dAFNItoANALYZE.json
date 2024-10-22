@@ -1,12 +1,12 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dAFNItoANALYZE",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Writes AFNI dataset to ANALYZE 7.5 format .hdr/.img file pairs.",
   "command-line": "3dAFNItoANALYZE [4D_FLAG] [ORIENT_FLAG] [OUTPUT_NAME] [DSET]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -75,5 +75,5 @@
       "name": "Output 4D image file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoANALYZE.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "tbss_4_prestats",
-  "author": "FMRIB Software Library",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool for thresholding the Mean FA Skeleton in TBSS analysis",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "tbss_4_prestats [THRESHOLD]",
   "schema-version": "0.5",
   "container-image": {

@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "fslnvols",
-  "author": "FMRIB Centre, University of Oxford",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Retrieve the number of volumes in a 4D NIfTI file",
   "command-line": "fslnvols [INPUT_FILE]",
   "container-image": {
@@ -18,5 +18,6 @@
       "name": "Input file"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

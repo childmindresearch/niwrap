@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.21",
+  "tool-version": "24.2.06",
   "name": "adjunct_select_str.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A simple helper function for the fat_proc* scripts.",
   "command-line": "/opt/afni/src/../install/adjunct_select_str.py [INPUT_FILE] [NUM_BRICKS] [OUTPUT_FILE]",
   "inputs": [
@@ -32,8 +32,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_select_str.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

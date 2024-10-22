@@ -1,7 +1,7 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "ConvertSurface",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Reads in a surface and writes it out in another format. Only fields pertinent to SUMA are preserved.",
   "command-line": "ConvertSurface [INPUT_FILE] [OUTPUT_FILE] [SURFACE_VOLUME_OPTION] [TAL_OPTIONS] [MNI_OPTIONS] [AFFINE_TRANSFORM_OPTIONS] [CONFIG_OPTIONS]",
   "inputs": [
@@ -107,8 +107,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ConvertSurface.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

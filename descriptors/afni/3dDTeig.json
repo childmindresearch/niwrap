@@ -1,14 +1,14 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dDTeig",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://example.com/3dDTeig",
   "description": "Computes eigenvalues and eigenvectors for an input dataset of tensors",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDTeig.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dDTeig [INPUT_DATASET] [PREFIX] [DATUM] [SEP_DSETS] [UDDATA]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -36,7 +36,11 @@
       "optional": true,
       "id": "datum",
       "name": "Output Data Type",
-      "value-choices": ["byte", "short", "float"]
+      "value-choices": [
+        "byte",
+        "short",
+        "float"
+      ]
     },
     {
       "command-line-flag": "-sep_dsets",

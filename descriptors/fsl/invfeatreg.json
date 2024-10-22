@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "invfeatreg",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT/Examples",
   "description": "Inverse warp image using FNIRT",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "invwarp -w [WARP_FILE] -r [REFERENCE] -o [OUTPUT_FILE] [VERBOSE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -50,13 +50,19 @@
     {
       "description": "Main parameters for invwarp",
       "id": "main_params_group",
-      "members": ["warp_file", "reference", "output_file"],
+      "members": [
+        "warp_file",
+        "reference",
+        "output_file"
+      ],
       "name": "Main Parameters"
     },
     {
       "description": "Optional parameters for verbose output",
       "id": "optional_params_group",
-      "members": ["verbose_flag"],
+      "members": [
+        "verbose_flag"
+      ],
       "name": "Optional Parameters"
     }
   ],

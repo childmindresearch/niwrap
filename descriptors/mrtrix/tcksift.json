@@ -1,7 +1,7 @@
 {
   "name": "tcksift",
   "description": "Filter a whole-brain fibre-tracking data set such that the streamline densities match the FOD lobe integrals.\n\n\n\nReferences:\n\nSmith, R. E.; Tournier, J.-D.; Calamante, F. & Connelly, A. SIFT: Spherical-deconvolution informed filtering of tractograms. NeuroImage, 2013, 67, 298-312",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -309,5 +309,5 @@
       "description": "output a text file containing the binary selection of streamlines "
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/tcksift.html"
+  "url": "https://www.mrtrix.org/"
 }

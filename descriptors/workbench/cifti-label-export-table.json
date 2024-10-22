@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "cifti-label-export-table",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -cifti-label-export-table [LABEL_IN] [MAP] [TABLE_OUT]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Export label table from cifti as text.\n\nTakes the label table from the cifti label map, and writes it to a text format matching what is expected by -cifti-label-import.",
   "schema-version": "0.5",
@@ -35,5 +35,6 @@
       "value-key": "[TABLE_OUT]",
       "type": "String"
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

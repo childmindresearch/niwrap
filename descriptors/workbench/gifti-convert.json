@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "gifti-convert",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -gifti-convert [GIFTI_ENCODING] [INPUT_GIFTI_FILE] [OUTPUT_GIFTI_FILE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Convert a gifti file to a different encoding.\n\nThe value of <gifti-encoding> must be one of the following:\n\nASCII\nBASE64_BINARY\nGZIP_BASE64_BINARY\nEXTERNAL_FILE_BINARY",
   "schema-version": "0.5",
@@ -35,5 +35,6 @@
       "value-key": "[OUTPUT_GIFTI_FILE]",
       "type": "String"
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

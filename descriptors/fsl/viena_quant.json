@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "viena_quant",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Automated brain ventricle quantification tool",
   "command-line": "viena_quant [INPUT1] [INPUT2] [VENTRICLEMASK]",
   "container-image": {
@@ -43,5 +43,6 @@
       "id": "output_quantification",
       "name": "Output quantification result"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

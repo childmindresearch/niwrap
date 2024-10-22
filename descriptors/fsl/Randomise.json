@@ -1,7 +1,7 @@
 {
   "name": "Randomise",
   "command-line": "Randomise [IN_FILE] [BASE_NAME] [DESIGN_MAT] [TCON] [C_THRESH] [CM_THRESH] [DEMEAN] [F_C_THRESH] [F_CM_THRESH] [F_ONLY] [FCON] [MASK] [NUM_PERM] [ONE_SAMPLE_GROUP_MEAN] [OUTPUT_TYPE] [P_VEC_N_DIST_FILES] [RAW_STATS_IMGS] [SEED] [SHOW_INFO_PARALLEL_MODE] [SHOW_TOTAL_PERMS] [TFCE] [TFCE2D] [TFCE_C] [TFCE_E] [TFCE_H] [VAR_SMOOTH] [VOX_P_VALUES] [X_BLOCK_LABELS]",
-  "author": "Nipype (interface)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL Randomise: feeds the 4D projected FA data into GLM modelling and thresholding in order to find voxels which correlate with your model",
   "inputs": [
     {
@@ -130,7 +130,12 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "NIFTI_PAIR",
+        "NIFTI_GZ",
+        "NIFTI_PAIR_GZ"
+      ]
     },
     {
       "id": "p_vec_n_dist_files",
@@ -324,5 +329,6 @@
   "tags": {
     "domain": "neuroinformatics",
     "source": "nipype-interface"
-  }
+  },
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

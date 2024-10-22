@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "surface-curvature",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -surface-curvature [SURFACE] [OPT_MEAN] [MEAN_OUT] [OPT_GAUSS] [GAUSS_OUT]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Calculate curvature of surface.\n\nCompute the curvature of the surface, using the method from:\nInteractive Texture Mapping by J. Maillot, Yahia, and Verroust, 1993.\nACM-0-98791-601-8/93/008",
   "schema-version": "0.5",
@@ -69,5 +69,6 @@
       "description": "gaussian curvature metric",
       "optional": false
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

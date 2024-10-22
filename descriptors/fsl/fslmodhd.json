@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fslmodhd",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool for modifying header information of NIfTI images",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslmodhd [IMAGE] [KEYWORD] [VALUE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

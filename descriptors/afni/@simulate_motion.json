@@ -1,7 +1,7 @@
 {
-  "tool-version": "May, 2013",
+  "tool-version": "24.2.06",
   "name": "@simulate_motion",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Create simulated motion time series in an EPI dataset based on the provided motion parameters and an input volume.",
   "command-line": "@simulate_motion [EPI] [MOTION_FILE] [EPI_TIMING] [PREFIX] [SAVE_WORKDIR] [TEST] [VERB_LEVEL] [VR_BASE] [WARP_METHOD] [WARP_1D] [WARP_MASTER] [WSINC5] [HELP] [HIST] [TODO] [VER]",
   "inputs": [
@@ -161,8 +161,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@simulate_motion.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

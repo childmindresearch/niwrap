@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "possum_plot",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/fsl_possum_plot.json",
   "description": "Tool for plotting results from POSSUM simulations in FSL",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "/usr/local/fsl/bin/possum_plot.py [INPUT_FILE] [OUTPUT_BASENAME]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

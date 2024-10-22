@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "fdr",
-  "author": "University of Oxford (Mark Jenkinson)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "False Discovery Rate (FDR) correction tool from FSL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fdr -i [INPUT_FILE] [MASK_IMAGE] [Q_VALUE] [OUTPUT_ADJUSTED_IMAGE] [OUTPUT_THRESH_IMAGE] [OUTPUT_ORDER_VALUES] [ONE_MINUS_P_FLAG] [POSITIVE_CORR_FLAG] [INDEPENDENT_FLAG] [CONSERVATIVE_FLAG] [DEBUG_FLAG] [VERBOSE_FLAG]",
@@ -124,7 +124,9 @@
     {
       "description": "Compulsory argument group",
       "id": "compulsory_params_group",
-      "members": ["infile"],
+      "members": [
+        "infile"
+      ],
       "name": "Compulsory Parameters"
     },
     {

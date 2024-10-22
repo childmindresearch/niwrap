@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "afni_skeleton",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Skeleton of a basic python program example",
   "command-line": "afni_skeleton.py [INPUT_FILES] [HELP_FLAG] [HIST_FLAG] [VER_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -47,5 +47,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_skeleton.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

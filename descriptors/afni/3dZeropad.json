@@ -1,12 +1,12 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dZeropad",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Adds planes of zeros to a dataset (i.e., pads it out). Negative 'add' count means to cut a dataset down in size.",
   "command-line": "3dZeropad [DATASET] [I] [S] [A] [P] [L] [R] [Z] [RL] [AP] [IS] [PAD2EVEN] [MM_FLAG] [MASTER_DATASET] [PREFIX]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -161,5 +161,5 @@
       "name": "Output dataset HEAD"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dZeropad.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

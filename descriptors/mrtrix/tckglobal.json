@@ -1,7 +1,7 @@
 {
   "name": "tckglobal",
   "description": "Multi-Shell Multi-Tissue Global Tractography.\n\nThis command will reconstruct the global white matter fibre tractogram that best explains the input DWI data, using a multi-tissue spherical convolution model.\n\nExample use: \n\n $ tckglobal dwi.mif wmr.txt -riso csfr.txt -riso gmr.txt -mask mask.mif \n   -niter 1e9 -fod fod.mif -fiso fiso.mif tracks.tck \n\nin which dwi.mif is the input image, wmr.txt is an anisotropic, multi-shell response function for WM, and csfr.txt and gmr.txt are isotropic response functions for CSF and GM. The output tractogram is saved to tracks.tck. Optional output images fod.mif and fiso.mif contain the predicted WM fODF and isotropic tissue fractions of CSF and GM respectively, estimated as part of the global optimization and thus affected by spatial regularization.\n\nReferences:\n\nChristiaens, D.; Reisert, M.; Dhollander, T.; Sunaert, S.; Suetens, P. & Maes, F. Global tractography of multi-shell diffusion-weighted imaging data using a multi-tissue model. NeuroImage, 2015, 123, 89-101",
-  "author": "Daan Christiaens (daan.christiaens@kcl.ac.uk)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -383,5 +383,5 @@
       "description": "internal and external energy trend and cooling statistics. "
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/tckglobal.html"
+  "url": "https://www.mrtrix.org/"
 }

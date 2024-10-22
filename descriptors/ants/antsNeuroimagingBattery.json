@@ -1,7 +1,7 @@
 {
   "name": "antsNeuroimagingBattery",
   "command-line": "antsNeuroimagingBattery.pl [INPUT_DIRECTORY] [OUTPUT_DIRECTORY] [OUTPUT_NAME] [ANATOMICAL_IMAGE] [ANATOMICAL_MASK] [OPTIONAL_INPUTS]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "Align MR modalities to a common within-subject (and optional template) space.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",

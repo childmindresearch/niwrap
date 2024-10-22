@@ -1,7 +1,7 @@
 {
-  "tool-version": "0.1",
+  "tool-version": "24.2.06",
   "name": "3dEdu_01_scale",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Educational program to create a new AFNI program. Scales and masks dataset volumes.",
   "command-line": "3dEdu_01_scale [INPUT] [MASK] [MULT_FACTORS] [OPTION_FLAG]",
   "inputs": [
@@ -55,8 +55,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dEdu_01_scale.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

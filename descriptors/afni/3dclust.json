@@ -1,12 +1,12 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dclust",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Performs simple-minded cluster detection in 3D datasets",
   "command-line": "3dclust [RMM] [VMUL] [DATASETS] [NN1] [NN2] [NN3] [NOABS] [SUMMARIZE] [NOSUM] [VERB] [ONED_FORMAT] [NO_ONED_FORMAT] [QUIET] [MNI] [ISOVALUE] [ISOMERGE] [INMASK] [PREFIX] [SAVEMASK] [BINARY]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -205,5 +205,5 @@
       "name": "Ordered mask output dataset"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dclust.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

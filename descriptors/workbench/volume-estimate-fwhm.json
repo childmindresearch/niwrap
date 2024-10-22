@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "volume-estimate-fwhm",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -volume-estimate-fwhm [VOLUME] [OPT_ROI_ROIVOL] [OPT_SUBVOLUME_SUBVOL] [OPT_WHOLE_FILE] [OPT_DEMEAN]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Estimate fwhm smoothness of a volume.\n\nEstimates the smoothness of the input volume in X, Y, and Z directions separately, printing the estimates to standard output, in mm as FWHM.  If -subvolume or -whole-file are not specified, each subvolume is estimated and displayed separately.",
   "schema-version": "0.5",
@@ -55,5 +55,6 @@
       "optional": true,
       "value-key": "[OPT_DEMEAN]"
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

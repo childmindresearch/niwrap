@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fslchfiletype",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to change the file type of an image file or copy it to a new file.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#FSL_UTILITIES",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslchfiletype [FILETYPE] [FILENAME] [FILENAME2]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

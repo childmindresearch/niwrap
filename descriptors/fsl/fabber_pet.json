@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fabber_pet",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Fabber Bayesian Model Fitting Tool",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fabber",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fabber_pet [HELP_FLAG] [LIST_METHODS_FLAG] [LIST_MODELS_FLAG] [LIST_PARAMS_FLAG] [DESC_PARAMS_FLAG] [LIST_OUTPUTS_FLAG] [EVALUATE] [EVALUATE_PARAMS] [EVALUATE_NT] [SIMPLE_OUTPUT_FLAG] [OUTPUT] [OVERWRITE_FLAG] [LINK_TO_LATEST_FLAG] [METHOD] [MODEL] [LOADMODELS_FILE] [DATA] [DATA_N] [DATA_ORDER] [MASK] [MT_N] [SUPP_DATA] [DUMP_PARAM_NAMES_FLAG] [SAVE_MODEL_FIT_FLAG] [SAVE_RESIDUALS_FLAG] [SAVE_MODEL_EXTRAS_FLAG] [SAVE_MVN_FLAG] [SAVE_MEAN_FLAG] [SAVE_STD_FLAG] [SAVE_VAR_FLAG] [SAVE_ZSTAT_FLAG] [SAVE_NOISE_MEAN_FLAG] [SAVE_NOISE_STD_FLAG] [SAVE_FREE_ENERGY_FLAG] [OPTFILE_FLAG] [DEBUG_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -354,7 +354,11 @@
     {
       "description": "Options for model evaluation",
       "id": "evaluation_options",
-      "members": ["evaluate", "evaluate_params", "evaluate_nt"],
+      "members": [
+        "evaluate",
+        "evaluate_params",
+        "evaluate_nt"
+      ],
       "name": "Evaluation Options"
     },
     {
@@ -398,7 +402,11 @@
     {
       "description": "Miscellaneous options",
       "id": "miscellaneous_options",
-      "members": ["dump_param_names_flag", "optfile_flag", "debug_flag"],
+      "members": [
+        "dump_param_names_flag",
+        "optfile_flag",
+        "debug_flag"
+      ],
       "name": "Miscellaneous Options"
     }
   ],

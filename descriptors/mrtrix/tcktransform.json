@@ -1,7 +1,7 @@
 {
   "name": "tcktransform",
   "description": "Apply a spatial transformation to a tracks file.\n\n\n\nReferences:\n\n",
-  "author": "J-Donald Tournier (jdtournier@gmail.com)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -140,5 +140,5 @@
       "description": "the output track file"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/tcktransform.html"
+  "url": "https://www.mrtrix.org/"
 }

@@ -1,7 +1,7 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "SurfSmooth",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Tool for smoothing data on surfaces using various methods.",
   "command-line": "SurfSmooth [SURFACE] [METHOD] [INPUT_DATA] [TARGET_FWHM] [FWHM] [NUMBER_ITERATIONS] [OUTPUT_FILE] [BAND_PASS_FREQUENCY] [LAMBDA_MU] [INTERP_WEIGHTS] [NODE_MASK] [SURFACE_OUTPUT] [DBG_NODE] [USE_NEIGHBORS_OUTSIDE_MASK] [TALK_SUMA] [REFRESH_RATE]",
   "inputs": [
@@ -160,8 +160,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfSmooth.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

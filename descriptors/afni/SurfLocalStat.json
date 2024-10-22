@@ -1,9 +1,9 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "SurfLocalStat",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Compute local statistics on a surface mesh",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfLocalstat.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "SurfLocalstat [HOOD] [NBHD_RAD] [PREFIX] [STAT] [INPUT] [SURFACE]",
   "inputs": [
     {
@@ -41,7 +41,13 @@
       "optional": false,
       "id": "stat",
       "name": "Statistic to compute",
-      "value-choices": ["mean", "mode", "num", "FWHM", "ALL"]
+      "value-choices": [
+        "mean",
+        "mode",
+        "num",
+        "FWHM",
+        "ALL"
+      ]
     },
     {
       "command-line-flag": "-input",
@@ -73,7 +79,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

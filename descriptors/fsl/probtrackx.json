@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "probtrackx",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide/",
   "description": "Streamlines tracking algorithm for probabilistic tractography",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "probtrackx [SAMPLES] [MASK] [SEED] [OUT] [VERBOSE] [TARGETMASKS] [MASK2] [WAYPOINTS] [NETWORK] [MESH] [SEEDREF] [DIR] [FORCEDIR] [OPD] [PD] [OS2T] [AVOID] [STOP] [XFM] [INVXFM] [NSAMPLES] [NSTEPS] [DISTTHRESH] [CTHR] [FIBTHRESH] [SAMPVOX] [STEPLENGTH] [LOOPCHECK] [USEF] [RANDFIB] [FIBST] [MODEULER] [RSEED] [S2TASTTEXT]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -345,7 +345,12 @@
     {
       "description": "Optional miscellaneous parameters when running probtrackx",
       "id": "compulsory_params_group",
-      "members": ["samples", "mask", "seed", "out"],
+      "members": [
+        "samples",
+        "mask",
+        "seed",
+        "out"
+      ],
       "name": "Compulsory Arguments Group"
     },
     {

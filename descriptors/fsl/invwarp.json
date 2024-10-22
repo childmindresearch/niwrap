@@ -1,7 +1,7 @@
 {
   "name": "invwarp",
   "command-line": "invwarp [WARP] [OUT] [REF] [ABSOLUTE] [RELATIVE] [NO_CONSTRAINT] [JACOBIAN_MIN] [JACOBIAN_MAX] [DEBUG]",
-  "author": "Nipype (interface)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "\nUse FSL Invwarp to invert a FNIRT warp",
   "inputs": [
     {
@@ -105,7 +105,10 @@
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": ["absolute", "relative"],
+      "members": [
+        "absolute",
+        "relative"
+      ],
       "mutually-exclusive": true
     }
   ],
@@ -118,5 +121,6 @@
   "tags": {
     "domain": "neuroinformatics",
     "source": "nipype-interface"
-  }
+  },
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

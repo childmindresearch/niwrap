@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "GetAfniID",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Returns the unique identifier of a dataset.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniID.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "GetAfniID [DSET]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

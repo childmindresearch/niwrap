@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_anat",
-  "author": "FMRIB Software Library (FSL) developers",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://example.com/fsl_anat_descriptor.json",
   "description": "A wrapper for FSL tools to process anatomical scans.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/fsl_anat",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_anat [STRUCTURAL_IMAGE] [EXISTING_ANAT_DIR] [OUTPUT_DIR] [CLOBBER_FLAG] [STRONGBIAS_FLAG] [WEAKBIAS_FLAG] [NOREORIENT_FLAG] [NOCROP_FLAG] [NOBIAS_FLAG] [NOREG_FLAG] [NONONLINREG_FLAG] [NOSEG_FLAG] [NOSUBCORTSEG_FLAG] [BIAS_SMOOTHING] [IMAGE_TYPE] [NOSEARCH_FLAG] [BET_F_PARAM] [NOCLEANUP_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -179,7 +179,10 @@
     {
       "description": "Input options for specifying the structural image or existing anatomical directory",
       "id": "input_options",
-      "members": ["structural_image", "existing_anat_dir"],
+      "members": [
+        "structural_image",
+        "existing_anat_dir"
+      ],
       "name": "Input Options"
     },
     {

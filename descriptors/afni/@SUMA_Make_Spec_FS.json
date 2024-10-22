@@ -1,13 +1,13 @@
 {
-  "tool-version": "2.2.4",
+  "tool-version": "24.2.06",
   "name": "@SUMA_Make_Spec_FS",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Prepare for surface viewing in SUMA",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SUMA_Make_Spec_FS.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@SUMA_Make_Spec_FS [OPTIONS] -sid [SUBJECT_ID]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

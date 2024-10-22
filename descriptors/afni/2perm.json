@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "2perm",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Generates two random non-overlapping subsets of a given set of integers.",
   "command-line": "2perm [PREFIX] [COMMA_FLAG] [BOTTOM_INT] [TOP_INT] [SUBSET1_SIZE] [SUBSET2_SIZE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -77,5 +77,5 @@
       "name": "File B"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/2perm.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "immv",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Moves images from one file or directory to another.",
   "command-line": "immv [SOURCE_FILES] [DESTINATION]",
   "container-image": {
@@ -27,5 +27,6 @@
       "name": "Destination"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

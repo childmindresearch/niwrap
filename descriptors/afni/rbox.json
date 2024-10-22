@@ -1,5 +1,5 @@
 {
-  "tool-version": "2001/06/24",
+  "tool-version": "24.2.06",
   "name": "rbox",
   "description": "Generate various point distributions. Default is random in cube.",
   "command-line": "rbox [NUMBER_POINTS] [DIMENSION] [FLAGS] [BOUNDING_BOX] [OFFSET] [SEED] [POINTS]",
@@ -198,9 +198,9 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "author": "AFNI Team",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/rbox.html"
+  "author": "AFNI Developers",
+  "url": "https://afni.nimh.nih.gov/"
 }

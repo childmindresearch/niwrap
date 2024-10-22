@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@Center_Distance",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Tool to calculate the distance between the centers of two datasets",
   "command-line": "@Center_Distance -dset [DSET_1] [DSET_2]",
   "inputs": [
@@ -33,8 +33,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Center_Distance.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

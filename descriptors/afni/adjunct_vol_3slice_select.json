@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "adjunct_vol_3slice_select",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Helper script to convert (x, y, z) coordinates to (i, j, k) indices for a dataset. It will return an error if any indices are outside the dataset's matrix.",
   "command-line": "adjunct_vol_3slice_select [FILE] [COORDINATES_X] [COORDINATES_Y] [COORDINATES_Z]",
   "inputs": [
@@ -48,9 +48,9 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_vol_3slice_select.html",
+  "url": "https://afni.nimh.nih.gov/",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

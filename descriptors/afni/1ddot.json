@@ -1,13 +1,13 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "1ddot",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes the correlation matrix of the input 1D files and their inverse correlation matrix.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1ddot.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "1ddot [ONE] [DEM] [COV] [INN] [RANK] [TERSE] [OKZERO] [INPUT_FILES] > stdout.txt",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

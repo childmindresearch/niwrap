@@ -1,14 +1,14 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dIntracranial",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://github.com/afni/plugins",
   "description": "Performs automatic segmentation of intracranial region.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dIntracranial.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dIntracranial -anat [INPUT_FILE] -prefix [PREFIX] [MIN_VAL] [MAX_VAL] [MIN_CONN] [MAX_CONN] [NO_SMOOTH_FLAG] [MASK_FLAG] [QUIET_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

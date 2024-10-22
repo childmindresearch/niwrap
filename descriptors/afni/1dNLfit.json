@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "1dNLfit",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Program to fit a model to a vector of data. The model is given by a symbolic expression, with parameters to be estimated.",
   "command-line": "1dNLfit [EXPRESSION] [INDEPENDENT_VAR] [PARAMETERS] [DEPENDENT_DATA] [METHOD_FLAG]",
   "inputs": [
@@ -64,8 +64,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dNLfit.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

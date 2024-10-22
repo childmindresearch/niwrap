@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "siena",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://example.com/siena_descriptor.json",
   "description": "Structural Image Evaluation, using Normalization, of Atrophy tool for evaluating brain atrophy between two timepoints",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SIENA",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "siena [INPUT1] [INPUT2] [OUTPUT_DIR] [DEBUG_FLAG] [BETOPTS] [TWO_CLASS_SEG_FLAG] [T2_WEIGHTED_FLAG] [STANDARD_SPACE_MASK_FLAG] [UPPER_IGNORE] [LOWER_IGNORE] [SIENADIFFOPTS] [VENTRICLE_ANALYSIS_FLAG] [VENTRICLE_MASK]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

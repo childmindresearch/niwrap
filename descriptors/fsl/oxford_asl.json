@@ -2,9 +2,9 @@
   "command-line": "oxford_asl -i <asl_data> -o <output_dir_name> [options]",
   "tool-version": "6.0.5",
   "name": "oxford_asl",
-  "author": "FMRIB Centre, University of Oxford",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Calculate perfusion maps from ASL data",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/oxford_asl",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

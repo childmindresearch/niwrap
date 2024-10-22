@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "1dplot.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "This program is for making images to visualize columns of numbers from 1D text files. It uses Python, particularly matplotlib, to create plots.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dplot.py.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "1dplot.py [INFILES] [PREFIX] [HELP] [BOXPLOT_ON] [BPLOT_VIEW] [MARGIN_OFF] [SCALE] [XFILE] [XVALS] [YAXIS] [YLABELS] [YLABELS_MAXLEN] [LEGEND_ON] [LEGEND_LABELS] [LEGEND_LOCS] [XLABEL] [TITLE] [REVERSE_ORDER] [SEPSCL] [ONE_GRAPH] [DPI] [FIGSIZE] [FONTSIZE] [FONTFAMILY] [FONTSTYLES] [COLORS] [PATCHES] [CENSOR_TRS] [CENSOR_FILES] [CENSOR_HLINE] [CENSOR_RGB] [BKGD_COLOR]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

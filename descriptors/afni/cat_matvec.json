@@ -1,10 +1,10 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "cat_matvec",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "example.com",
   "description": "Catenates 3D rotation+shift matrix+vector transformations.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/cat_matvec.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "cat_matvec [OUTPUT_FORMAT] [MATVEC_SPEC]",
   "inputs": [
     {
@@ -46,7 +46,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

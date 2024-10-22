@@ -26,7 +26,10 @@
       "name": "Transform type",
       "value-key": "[TRANSFORM_TYPE]",
       "type": "String",
-      "value-choices": ["rigid", "affine"],
+      "value-choices": [
+        "rigid",
+        "affine"
+      ],
       "description": "Type of transform to compute: 'rigid' or 'affine'.",
       "optional": false
     },
@@ -47,7 +50,7 @@
       "path-template": "[OUTPUT_AFFINE]"
     }
   ],
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "url": "https://github.com/ANTsX/ANTs",
   "container-image": {
     "type": "docker",

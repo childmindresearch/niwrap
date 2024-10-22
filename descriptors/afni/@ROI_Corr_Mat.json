@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@ROI_Corr_Mat",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Script to produce an NxN ROI correlation matrix of N ROIs",
   "command-line": "@ROI_Corr_Mat [TimeSeriesVol] [ROIVol] [output] [ROISEL] [zval_flag] [OPT] [dirty_flag] [keep_tmp_flag] [echo_flag] [verb_flag]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -117,5 +117,5 @@
       "name": "Output BRIK Matrix"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ROI_Corr_Mat.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

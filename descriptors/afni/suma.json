@@ -1,14 +1,14 @@
 {
-  "tool-version": "Latest",
+  "tool-version": "24.2.06",
   "name": "suma",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://github.com/afni/afni/blob/master/src/suma1/SUMA.c",
   "description": "SUMA: Surface Mapper for visualization and analysis of brain data.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/suma.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "suma [SPEC_FILE] [SURF_VOL] [AFNI_HOST] [NIML] [NONIML] [SURFACE_FILE] [SURFACE_TYPE] [CIFTI_DATASET] [GRAPH_DATASET] [TRACTOGRAPHY_DATASET] [VOLUME] [ONESTATE] [ANATOMICAL] [LINEAR_DEPTH] [RECURSIVE_DEPTH] [NOVOLREG] [SETENV] [TRACE] [EXTREME_TRACE] [NOMALL] [YESMALL] [PORT_OFFSET] [PORT_OFFSET_BLOC] [DRIVE_COMMAND] [CLIPPING_PLANE_VERBOSE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

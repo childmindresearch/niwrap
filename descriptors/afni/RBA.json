@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.1.3",
+  "tool-version": "24.2.06",
   "name": "RBA",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Region-Based Analysis Program through Bayesian Multilevel Modeling",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/RBA.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "RBA [PREFIX] [DATA_TABLE] [CHAINS] [ITERATIONS] [MODEL] [EOI] [WCP] [TSTAT] [STDZ] [C_VARS] [Q_VARS] [DIST_ROI] [DIST_SUBJ] [DIST_Y] [RIDGE_PLOT] [ROI] [SUBJ] [SCALE] [SE] [PDP] [MEAN] [SIGMA] [DEBUG] [VERBOSE] [MD] [R2Z]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

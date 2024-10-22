@@ -2,7 +2,7 @@
   "tool-version": "6.0.5",
   "name": "siena_cal",
   "description": "SIENA is part of FSL (FMRIB Software Library), which performs a two-timepoint brain volume change analysis.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SIENA",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "siena_cal [INPUT1_FILE] [INPUT2_FILE] [SCALE] [SIENA_DIFF_OPTIONS]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -52,5 +52,6 @@
       "id": "output_dir",
       "name": "Output Directory"
     }
-  ]
+  ],
+  "author": "FMRIB Analysis Group, University of Oxford"
 }

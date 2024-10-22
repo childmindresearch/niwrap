@@ -1,7 +1,7 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "1dCorrelate",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "1dCorrelate calculates the correlation coefficients between columns of input 1D files along with confidence intervals via a bootstrap procedure.",
   "command-line": "1dCorrelate [METHOD] [BOOTSTRAP_REPLICATES] [CONFIDENCE_INTERVAL] [BLOCK_RESAMPLING] [INPUT_FILES]",
   "inputs": [
@@ -91,8 +91,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dCorrelate.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

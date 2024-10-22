@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "pngappend",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Append PNG files horizontally and/or vertically into a new PNG (or GIF) file",
   "command-line": "pngappend [INPUT_FILES_AND_OPTIONS] [OUTPUT_FILE]",
   "container-image": {
@@ -27,5 +27,6 @@
       "name": "Output file"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

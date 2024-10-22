@@ -1,9 +1,9 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@ANATICOR",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Script to produce a residual time series cleaned by ANATICOR model",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ANATICOR.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@ANATICOR [TIME_SERIES_VOL] [POLORT] [MOTION] [ASEG] [OUTPUT] [RADIUS] [VIEW] [NUISANCE] [NO_VENTRICLES] [RSQ_WME] [COVERAGE] [VERB] [DIRTY] [ECHO]",
   "inputs": [
     {
@@ -142,7 +142,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

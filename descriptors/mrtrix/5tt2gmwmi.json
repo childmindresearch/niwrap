@@ -1,7 +1,7 @@
 {
   "name": "5tt2gmwmi",
   "description": "Generate a mask image appropriate for seeding streamlines on the grey matter-white matter interface.\n\n\n\nReferences:\n\nSmith, R. E.; Tournier, J.-D.; Calamante, F. & Connelly, A. Anatomically-constrained tractography:Improved diffusion MRI streamlines tractography through effective use of anatomical information. NeuroImage, 2012, 62, 1924-1938",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -141,5 +141,5 @@
       "description": "the output mask image"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/5tt2gmwmi.html"
+  "url": "https://www.mrtrix.org/"
 }

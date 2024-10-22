@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "eddy_correct",
-  "author": "FMRIB",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/EDDY",
   "description": "Eddy current correction tool for FSL",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/EDDY",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "eddy_correct [4D_INPUT] [4D_OUTPUT] [REFERENCE_NO] [INTERP]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -45,7 +45,10 @@
       "id": "interp_method",
       "name": "Interpolation Method",
       "default-value": "trilinear",
-      "value-choices": ["trilinear", "spline"]
+      "value-choices": [
+        "trilinear",
+        "spline"
+      ]
     }
   ],
   "schema-version": "0.5",

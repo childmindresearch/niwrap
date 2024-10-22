@@ -1,7 +1,7 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "SurfPatch",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Creates a patch of surface formed by nodes in a nodefile and optionally calculates the volume between the same patch on two isotopic surfaces.",
   "command-line": "SurfPatch [SPEC_FILE] [SURF_A] [SURF_B] [NODEFILE] [INODE] [ILABEL] [PREFIX] [HITS] [MASKLABEL] [VOL] [VOL_ONLY] [PATCH2SURF] [COORD_GAIN] [CHECK_BOWTIE] [FIX_BOWTIE] [OK_BOWTIE] [ADJUST_CONTOUR] [DO_NOT_ADJUST_CONTOUR] [STITCHED_SURFACE] [FLIP_ORIENTATION] [VERBOSITY]",
   "inputs": [
@@ -194,8 +194,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "output-files": [
     {
@@ -220,5 +220,5 @@
       "name": "Stitched Surface"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfPatch.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

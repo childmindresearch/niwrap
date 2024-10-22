@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "gifti-label-add-prefix",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -gifti-label-add-prefix [LABEL_IN] [PREFIX] [LABEL_OUT]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Add prefix to all label names in a gifti label file.\n\nFor each label other than '???', prepend <prefix> to the label name.",
   "schema-version": "0.5",
@@ -44,5 +44,6 @@
       "description": "the output label file",
       "optional": false
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

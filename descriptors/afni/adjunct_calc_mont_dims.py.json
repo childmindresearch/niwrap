@@ -1,7 +1,7 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "adjunct_calc_mont_dims.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A helper function for the fat_proc* scripts",
   "command-line": "adjunct_calc_mont_dims.py [HELP_FLAG]",
   "inputs": [
@@ -17,8 +17,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_calc_mont_dims.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

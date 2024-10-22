@@ -1,7 +1,7 @@
 {
   "name": "PrintHeader",
   "command-line": "PrintHeader [IMAGE] [WHAT_INFORMATION]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "A utility to print header information from an image file.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -22,7 +22,13 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1, 2, 3, 4],
+      "value-choices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
       "description": "Specify the type of information to print: 0 for origin, 1 for spacing, 2 for size, 3 for index, 4 for direction."
     }
   ],

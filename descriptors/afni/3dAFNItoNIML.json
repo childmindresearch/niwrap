@@ -1,12 +1,12 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dAFNItoNIML",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Dumps AFNI dataset header information to stdout in NIML format. Mostly for debugging and testing purposes!",
   "command-line": "3dAFNItoNIML [OPTIONS] [DSET]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -46,5 +46,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoNIML.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

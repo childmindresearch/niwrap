@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "imstack",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Stacks up a set of 2D images into one big file (a la MGH).",
   "command-line": "imstack [IMAGE_FILES] [DATA_TYPE] [OUTPUT_PREFIX]",
   "inputs": [
@@ -22,7 +22,10 @@
       "optional": true,
       "id": "data_type",
       "name": "Output data type",
-      "value-choices": ["short", "float"]
+      "value-choices": [
+        "short",
+        "float"
+      ]
     },
     {
       "command-line-flag": "-prefix",
@@ -52,8 +55,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imstack.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

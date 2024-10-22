@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "possum_matrix",
-  "author": "University of Oxford (Ivana Drobnjak)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://example.com/path/to/possum_matrix_descriptor.json",
   "description": "Event matrix generator for POSSUM simulation in FSL",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "possum_matrix -p [PULSE_SEQUENCE] -m [MOTION_MATRIX] -o [OUTPUT_MATRIX] [VERBOSE_FLAG] [HELP_FLAG] [OLD_VERSION_FLAG] [SEGMENT_SIZE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -80,7 +80,11 @@
     {
       "description": "Compulsory arguments for running possum_matrix",
       "id": "compulsory_params_group",
-      "members": ["pulse_sequence", "motion_matrix", "output_matrix"],
+      "members": [
+        "pulse_sequence",
+        "motion_matrix",
+        "output_matrix"
+      ],
       "name": "Compulsory Parameters"
     },
     {

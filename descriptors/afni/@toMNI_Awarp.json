@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@toMNI_Awarp",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Transforms skull-stripped datasets to 1x1x1 mm MNI space using an affine transformation.",
   "command-line": "@toMNI_Awarp [DIRECTORY] [DATASETS]",
   "inputs": [
@@ -34,8 +34,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@toMNI_Awarp.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

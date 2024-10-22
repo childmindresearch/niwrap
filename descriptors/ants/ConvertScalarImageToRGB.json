@@ -1,7 +1,7 @@
 {
   "name": "ConvertScalarImageToRGB",
   "command-line": "ConvertScalarImageToRGB [IMAGE_DIMENSION] [INPUT_IMAGE] [OUTPUT_IMAGE] [MASK] [COLORMAP] [CUSTOM_COLORMAP_FILE] [MINIMUM_INPUT] [MAXIMUM_INPUT] [MINIMUM_RGB_OUTPUT] [MAXIMUM_RGB_OUTPUT] [VTK_LOOKUP_TABLE]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "Converts a scalar image to an RGB image using specified parameters. Supports multiple colormap options and customization.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",

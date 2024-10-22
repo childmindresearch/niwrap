@@ -13,7 +13,10 @@
       "type": "Number",
       "integer": true,
       "optional": false,
-      "value-choices": [3, 4],
+      "value-choices": [
+        3,
+        4
+      ],
       "description": "The dimensionality of the input images (3D or 4D)."
     },
     {
@@ -56,7 +59,10 @@
       "value-key": "[INTERPOLATION]",
       "type": "String",
       "optional": true,
-      "value-choices": ["NearestNeighbor", "BSpline"],
+      "value-choices": [
+        "NearestNeighbor",
+        "BSpline"
+      ],
       "description": "Specifies the type of interpolation to use: Nearest Neighbor or 3rd order B-Spline."
     }
   ],
@@ -68,7 +74,7 @@
       "description": "The transformed image that is saved as output."
     }
   ],
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "container-image": {
     "type": "docker",
     "image": "antsx/ants:v2.5.3"

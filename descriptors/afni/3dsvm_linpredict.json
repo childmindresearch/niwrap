@@ -1,7 +1,7 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dsvm_linpredict",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Linear prediction for weights from 3dsvm",
   "command-line": "3ddot [MASK] [w] [dset]",
   "inputs": [
@@ -42,8 +42,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dsvm_linpredict.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

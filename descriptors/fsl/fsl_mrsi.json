@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_mrsi",
-  "author": "FMRIB Centre",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL Magnetic Resonance Spectroscopy Imaging Wrapper Script",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_mrsi --data [DATA] --basis [BASIS] --mask [MASK] --output [OUTPUT] [ALGO] [IGNORE_METAB] [KEEP_METAB] [COMBINE_METAB] [PPMLIM] [H2O] [BASELINE_ORDER] [METAB_GROUPS] [ADD_MM] [LORENTZIAN] [IND_SCALE] [DISABLE_MH_PRIORS] [TE] [TR] [TISSUE_FRAC] [INTERNAL_REF] [WREF_METABOLITE] [REF_PROTONS] [REF_INT_LIMITS] [H2O_SCALE] [REPORT] [VERBOSE] [OVERWRITE] [SINGLE_PROC] [CONJ_FID] [NO_CONJ_FID] [CONJ_BASIS] [NO_CONJ_BASIS] [NO_RESCALE] [CONFIG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

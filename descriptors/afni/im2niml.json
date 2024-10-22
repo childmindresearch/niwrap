@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "im2niml",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Converts the input image(s) to a text-based NIML element and writes the result to stdout.",
   "command-line": "im2niml [INPUT_FILES]",
   "inputs": [
@@ -26,8 +26,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/im2niml.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

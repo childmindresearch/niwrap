@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@Install_FATCAT_DEMO2",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Installs the demo archive for Paul Taylor's tractography tools",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_FATCAT_DEMO2.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@Install_FATCAT_DEMO2 [DOWNLOAD_TOOL]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

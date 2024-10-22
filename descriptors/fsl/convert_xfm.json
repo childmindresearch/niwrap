@@ -1,9 +1,9 @@
 {
   "name": "convert_xfm",
   "command-line": "convert_xfm [IN_FILE] [INVERT_XFM] [CONCAT_XFM] [FIX_SCALE_SKEW] [OUT_FILE]",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "convert_xfm is a utility that is used to convert between different transformation file formats. It can read and write ascii 4x4 matrices. In addition, it can be used to concatenate two transforms (using -concat with the second transform) or to find the inverse transformation (using -inverse).",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/UserGuide#convert_xfm",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "inputs": [
     {
       "id": "concat_xfm",
@@ -63,7 +63,11 @@
     {
       "id": "operation_group",
       "name": "operation group",
-      "members": ["invert_xfm", "fix_scale_skew", "concat_xfm"],
+      "members": [
+        "invert_xfm",
+        "fix_scale_skew",
+        "concat_xfm"
+      ],
       "mutually-exclusive": true
     }
   ],

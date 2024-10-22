@@ -2,6 +2,7 @@
   "id": "mrtrix",
   "name": "MRTrix3",
   "url": "https://www.mrtrix.org/",
+  "author": "MRTrix3 Developers",
   "approach": "Source extraction",
   "status": "Testing",
   "container": "mrtrix3/mrtrix3:3.0.4",

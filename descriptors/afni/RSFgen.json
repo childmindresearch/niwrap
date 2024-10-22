@@ -133,12 +133,12 @@
       "name": "Output Files"
     }
   ],
-  "tool-version": "1.0",
-  "author": "AFNI Team",
+  "tool-version": "24.2.06",
+  "author": "AFNI Developers",
   "descriptor-url": "URL to this Boutiques descriptor",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/RSFgen.html",
+  "url": "https://afni.nimh.nih.gov/",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

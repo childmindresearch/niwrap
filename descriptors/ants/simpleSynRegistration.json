@@ -53,7 +53,7 @@
       "path-template": "[OUTPUT_PREFIX]Transform.mat"
     }
   ],
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "container-image": {
     "type": "docker",
     "image": "antsx/ants:v2.5.3"

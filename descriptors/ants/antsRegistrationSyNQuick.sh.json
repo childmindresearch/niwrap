@@ -16,7 +16,10 @@
       "type": "Number",
       "integer": true,
       "optional": false,
-      "value-choices": [2, 3],
+      "value-choices": [
+        2,
+        3
+      ],
       "command-line-flag": "-d",
       "description": "Dimensionality of the images (2 or 3)."
     },
@@ -53,7 +56,10 @@
       "value-key": "[TRANSFORM_TYPE]",
       "type": "String",
       "optional": true,
-      "value-choices": ["s", "b"],
+      "value-choices": [
+        "s",
+        "b"
+      ],
       "description": "Type of transform: 's' for SyN, 'b' for B-spline SyN. Default is 's'."
     }
   ],
@@ -85,6 +91,6 @@
       "description": "Warped moving image."
     }
   ],
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "url": "https://github.com/ANTsX/ANTs"
 }

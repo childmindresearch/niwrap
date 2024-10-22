@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@ScaleVolume",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A tool to scale the volume of datasets",
   "command-line": "@ScaleVolume [<-input DSET>] [<-prefix PREFIX>] [VAL_CLIP] [PERC_CLIP] [SCALE_BY_MEAN_FLAG] [SCALE_BY_MEDIAN_FLAG] [NORM_FLAG] [MASK]",
   "inputs": [
@@ -93,8 +93,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ScaleVolume.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

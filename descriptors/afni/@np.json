@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@np",
   "description": "Finds an appropriate new prefix to use, given the files you already have in your directory. It automatically creates a valid prefix when you are repeatedly running similar commands but do not want to delete previous output.",
   "command-line": "@np [PREFIX]",
@@ -24,9 +24,9 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "author": "AFNI Team",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@np.html"
+  "author": "AFNI Developers",
+  "url": "https://afni.nimh.nih.gov/"
 }

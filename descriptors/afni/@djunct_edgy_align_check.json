@@ -2,7 +2,7 @@
   "name": "@djunct_edgy_align_check",
   "description": "Helper script for various tasks, heavily modeled on RW Cox's '@snapshot_volreg' script",
   "command-line": "@djunct_edgy_align_check [ULAY] [OLAY] [PREFIX] [XX,YY,ZZ] [DSET_BFS] [MG] [MC] [CBAR] [FTYPE] [UF] [MX] [MY] [INTERP] [LM] [help_flag] [ver_flag] [echo_flag] [sharpen_ulay_off_flag] [mask_olay_edges_flag] [no_cor_flag] [no_sag_flag] [no_axi_flag] [no_clean_flag] [ULAY_RANGE] [ULAY_RANGE_NZ] [ULAY_RANGE_AM]",
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -236,9 +236,9 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "author": "AFNI Team",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_edgy_align_check.html"
+  "author": "AFNI Developers",
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@DriveSuma",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "http://example.com",
   "description": "A script to demonstrate how to drive suma from the command line.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DriveSuma.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@DriveSuma [GLOBAL_HELP_OPTION]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

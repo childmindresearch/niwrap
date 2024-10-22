@@ -1,9 +1,9 @@
 {
-  "tool-version": "Jun 30 2023",
+  "tool-version": "24.2.06",
   "name": "SurfInfo",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Tool to gather information about surface files.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfInfo.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "SurfInfo [options] [SURFACE] [SPECIFIED_PARAMS] [DEBUG_LEVEL] [DETAIL_LEVEL] [QUIET] [SEPARATOR] [INPUT_TYPE] [SPEC_STATE] [SV] [SPEC]",
   "inputs": [
     {
@@ -197,7 +197,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

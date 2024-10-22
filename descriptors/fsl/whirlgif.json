@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "whirlgif",
-  "author": "Hans Dinsen-Hansen, Kevin Kadow, Mark Podlipec",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "GIF animation tool",
-  "url": "http://members.aol.com/royalef/gifanim.htm",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "whirlgif [OUTFILE] [LOOP_COUNT] [DELAY_TIME] [DISP_FLAG] [LIST_FILE] [FILES]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -47,7 +47,12 @@
       "optional": true,
       "id": "disp_flag",
       "name": "Disposal method",
-      "value-choices": ["none", "back", "prev", "not"]
+      "value-choices": [
+        "none",
+        "back",
+        "prev",
+        "not"
+      ]
     },
     {
       "command-line-flag": "-i",

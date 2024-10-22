@@ -1,7 +1,7 @@
 {
   "name": "TimeSCCAN",
   "command-line": "TimeSCCAN [OUTPUT] [NUMBER_CONSECUTIVE_LABELS] [MINIMUM_REGION_SIZE] [ITERATIONS] [SPARSITY] [N_EIGENVECTORS] [ROBUSTIFY] [L1] [CLUSTER_THRESH] [RIDGE_CCA] [PARTIAL_SCCA_OPTION] [TIMESERIESIMAGE_TO_MATRIX] [LABELSIMAGE_TO_MATRIX] [NETWORK]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "A tool for sparse statistical analysis on connectivity within a subject.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -124,7 +124,12 @@
       "command-line-flag": "--partial-scca-option",
       "type": "String",
       "optional": true,
-      "value-choices": ["PQ", "PminusRQ", "PQminusR", "PminusRQminusR"],
+      "value-choices": [
+        "PQ",
+        "PminusRQ",
+        "PQminusR",
+        "PminusRQminusR"
+      ],
       "description": "Choices for partial SCCA: PQ, PminusRQ, PQminusR, PminusRQminusR."
     },
     {

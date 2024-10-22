@@ -1,7 +1,7 @@
 {
   "name": "CreateDTICohort",
   "command-line": "CreateDTICohort [IMAGE_DIMENSIONALITY] [DTI_ATLAS] [LABEL_MASK_IMAGE] [NOISE_SIGMA] [PATHOLOGY] [DWI_PARAMETERS] [REGISTERED_POPULATION] [OUTPUT]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "CreateDTICohort implements the work of Van Hecke et al. to create simulated DTI data sets. The only difference is that all registrations (both for the input population and for the output population) are assumed to take place outside of this program.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -18,7 +18,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [2, 3],
+      "value-choices": [
+        2,
+        3
+      ],
       "command-line-flag": "--image-dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, the program tries to infer the dimensionality from the input image."
     },

@@ -1,9 +1,9 @@
 {
-  "tool-version": "0.1",
+  "tool-version": "24.2.06",
   "name": "@auto_tlrc",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A script to transform an anatomical dataset to align with some standard space template and to apply the same TLRC transform obtained with @auto_tlrc in Usage 1 mode to other datasets.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@auto_tlrc.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@auto_tlrc [BASE_TEMPLATE] [INPUT_ANAT] [NO_SS] [WARP_ORIG_VOL] [DXYZ] [DX] [DY] [DZ] [PAD_BASE] [KEEP_TMP] [CLEAN] [XFORM] [NO_AVOID_EYES] [NCR] [ONEPASS] [TWOPASS] [MAXITE] [NOT_OK_MAXITE] [INWEIGHT] [RIGID_EQUIV] [INIT_XFORM] [NO_PRE] [OUT_SPACE] [3DALLINEATE] [3DALCOST] [OVERWRITE] [APAR] [INPUT_DATASET] [PAD_INPUT] [ONEWARP] [TWOWARP] [RMODE] [PREFIX] [SUFFIX] [KEEP_VIEW] [BASE_COPY] [BASE_LIST] [USE_GZ] [VERB]",
   "inputs": [
     {
@@ -376,7 +376,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

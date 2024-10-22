@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "surface-to-surface-3d-distance",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -surface-to-surface-3d-distance [SURFACE_COMP] [SURFACE_REF] [DISTS_OUT] [OPT_VECTORS] [VECTORS_OUT]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Compute distance between corresponding vertices.\n\nComputes the vector difference between the vertices of each surface with the same index, as (comp - ref), and output the magnitudes, and optionally the displacement vectors.",
   "schema-version": "0.5",
@@ -68,5 +68,6 @@
       "description": "the output vectors",
       "optional": false
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

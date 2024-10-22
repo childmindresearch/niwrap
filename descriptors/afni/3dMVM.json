@@ -1,14 +1,14 @@
 {
-  "tool-version": "4.1.4",
+  "tool-version": "24.2.06",
   "name": "3dMVM",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "#",
   "description": "AFNI Group Analysis Program with Multi-Variate Modeling Approach",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMVM.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dMVM [PARAM_FLAGS] -prefix [PREFIX] -jobs [JOBS] -mask [MASK] -bsVars [BSVARS] -wsVars [WSVARS] -qVars [QVARS] -qVarCenters [Q_VAR_CENTERS] -num_glt [NUM_GLT] -gltLabel [GLT_LABEL] -gltCode [GLT_CODE] -num_glf [NUM_GLF] -glfLabel [GLF_LABEL] -glfCode [GLF_CODE] -dataTable [DATA_TABLE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

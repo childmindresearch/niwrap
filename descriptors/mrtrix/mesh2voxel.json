@@ -1,7 +1,7 @@
 {
   "name": "mesh2voxel",
   "description": "Convert a mesh surface to a partial volume estimation image.\n\n\n\nReferences:\n\nSmith, R. E.; Tournier, J.-D.; Calamante, F. & Connelly, A. Anatomically-constrained tractography: Improved diffusion MRI streamlines tractography through effective use of anatomical information. NeuroImage, 2012, 62, 1924-1938",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -140,5 +140,5 @@
       "description": "the output image"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/mesh2voxel.html"
+  "url": "https://www.mrtrix.org/"
 }

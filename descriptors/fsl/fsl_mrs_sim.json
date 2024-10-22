@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_mrs_sim",
-  "author": "FSL",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/fsl_mrs",
   "description": "FSL Magnetic Resonance Spectroscopy Simulation Tool",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/fsl_mrs",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_mrs_sim [SEQUENCE] [METAB] [METAB_FILE] [CUSTOM_SPINSYS] [OUTPUT_FOLDER] [RAW_FLAG] [JMRUI_FLAG] [ADDREF_FLAG] [AUTOPHASE_PPM] [LCM_LOC] [MM_JSON] [OUTPUT_TE] [OVERWRITE_FLAG] [VERBOSE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -142,7 +142,11 @@
     {
       "description": "Specify required parameters for FSL MRS Simulation",
       "id": "required_params_group",
-      "members": ["metab", "metab_file", "custom_spinsys"],
+      "members": [
+        "metab",
+        "metab_file",
+        "custom_spinsys"
+      ],
       "name": "Required Parameters"
     },
     {

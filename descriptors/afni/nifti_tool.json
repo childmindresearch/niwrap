@@ -1,13 +1,13 @@
 {
-  "tool-version": "2.13",
+  "tool-version": "24.2.06",
   "name": "nifti_tool",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Display, modify, or compare nifti headers",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/nifti_tool.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "nifti_tool [ACTION] [INPUT_FILES] [FIELD] [MOD_FIELD] [PREFIX] [DEBUG] [OVERWRITE] [CONVERT2DTYPE] [CONVERT_FAIL_CHOICE] [CONVERT_VERIFY] [ADD_COMMENT_EXT] [RM_EXT]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

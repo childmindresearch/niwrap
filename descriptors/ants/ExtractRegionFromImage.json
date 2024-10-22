@@ -2,7 +2,7 @@
   "name": "ExtractRegionFromImage",
   "command-line": "ExtractRegionFromImage [IMAGE_DIMENSION] [INPUT_IMAGE] [OUTPUT_IMAGE] [REGION_SPECIFICATION]",
   "description": "ExtractRegionFromImage can be used to extract a specific region from a given image. The region can be specified via indices, label, or another domain image.",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "tool-version": "2.5.3",
   "schema-version": "0.5",
   "inputs": [

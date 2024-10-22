@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@chauffeur_afni",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Automated QC snapshots generator in AFNI",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@chauffeur_afni.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@chauffeur_afni [ULAY] [OLAY] -prefix [PREFIX] [options]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

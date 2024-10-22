@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "immask",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Masks the input image based on specified criteria and produces the output image",
   "command-line": "immask [THRESHOLD] [MASK_IMG] [POSITIVE_ONLY] [INPUT_IMG] [OUTPUT_IMG]",
   "inputs": [
@@ -60,8 +60,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/immask.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,14 +1,14 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "Surf2VolCoord",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://example.com/surf2volcoord.json",
   "description": "Relates node indices to coordinates given x y z coordinates and returns the nodes closest to them.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/Surf2VolCoord.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "Surf2VolCoord -i_TYPE [SURFACE] -grid_parent [GRID_VOL] [GRID_SUBBRICK] [SV] [ONE_NODE] [CLOSEST_NODES] [QUAL] [LPI_FLAG] [RAI_FLAG] [VERB_LEVEL] [PREFIX]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

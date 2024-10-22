@@ -1,7 +1,7 @@
 {
   "name": "tckedit",
   "description": "Perform various editing operations on track files.\n\nThis command can be used to perform various types of manipulations on track data. A range of such manipulations are demonstrated in the examples provided below.\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -422,5 +422,5 @@
       "description": "specify the path for an output text scalar file containing streamline weights "
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/tckedit.html"
+  "url": "https://www.mrtrix.org/"
 }

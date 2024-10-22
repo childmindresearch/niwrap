@@ -1,7 +1,7 @@
 {
-  "tool-version": "3.21",
+  "tool-version": "24.2.06",
   "name": "fat_proc_dwi_to_dt",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "This program fits tensors and DT parameters, as well as the uncertainty of DT parameters needed for tractography.",
   "command-line": "fat_proc_dwi_to_dt [IN_DWI] [IN_GRADMAT] [PREFIX] [IN_BVALS] [MASK] [MASK_FROM_STRUC] [IN_STRUC_RES] [IN_REF_ORIG] [PREFIX_DTI] [FLIP_X] [FLIP_Y] [FLIP_Z] [NO_FLIP] [NO_SCALE_OUT_1000] [NO_REWEIGHT] [NO_CUMULATIVE_WTS] [QC_FA_THR] [QC_FA_MAX] [QC_FA_UNC_MAX] [QC_V12_UNC_MAX] [QC_PREFIX] [NO_QC_VIEW] [NO_CMD_OUT] [WORKDIR] [NO_CLEAN] [UNCERT_OFF] [UNCERT_ITERS] [UNCERT_EXTRA_CMDS] [CHECK_ABS_MIN]",
   "inputs": [
@@ -277,8 +277,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_dwi_to_dt.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

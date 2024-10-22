@@ -1,7 +1,7 @@
 {
   "name": "sccan",
   "command-line": "sccan [OUTPUT] [N_PERMUTATIONS] [SMOOTHER] [ROW_SPARSENESS] [ITERATIONS] [N_EIGENVECTORS] [ROBUSTIFY] [COVERING] [USELONG] [L1] [PCLUSTERTHRESH] [QCLUSTERTHRESH] [RIDGE_CCA] [INITIALIZATION] [INITIALIZATION2] [MASK] [MASK2] [PARTIAL_SCCA_OPTION] [PRIOR_WEIGHT] [GET_SMALL] [VERBOSE] [IMAGES_TO_MATRIX] [TIMESERIES_IMAGE_TO_MATRIX] [VECTOR_TO_IMAGE] [IMAGES_PROJECTIONS] [SCCA] [SVD]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "A tool for sparse statistical analysis on images : scca, pscca (with options), mscca. Can also convert an imagelist/mask pair to a binary matrix image.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",

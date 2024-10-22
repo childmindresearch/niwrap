@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "featregapply",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Apply registration from FEAT analysis to other images",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "featregapply [FEAT_DIRECTORY] [FORCE_FLAG] [CLEANUP_FLAG] [UPSAMPLE_TRILINEAR] [UPSAMPLE_SPLINE] [STANDARD_SPACE_RES] [EXCLUDE_FILTERED_FUNC_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -78,7 +78,10 @@
     {
       "description": "Upsample options for featregapply",
       "id": "upsample_options_group",
-      "members": ["upsample_trilinear", "upsample_spline"],
+      "members": [
+        "upsample_trilinear",
+        "upsample_spline"
+      ],
       "name": "Upsample Options"
     }
   ],

@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "ttologp",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for computing logp",
   "command-line": "ttologp [VARSFILE] [CBSFILE] [DOF] [OUTPUTVOL] [HELP_FLAG]",
   "container-image": {
@@ -62,5 +62,6 @@
       "id": "output_logpvol",
       "name": "Logp Output Volume File"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

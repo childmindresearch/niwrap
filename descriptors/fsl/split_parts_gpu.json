@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "split_parts_gpu",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Splits parts of data for GPU processing",
   "command-line": "split_parts_gpu [DATAFILE] [MASKFILE] [BVALS_FILE] [BEVCS_FILE] [GRAD_FILE] [USE_GRAD_FILE] [TOTAL_NUM_PARTS] [OUTPUT_DIRECTORY]",
   "container-image": {
@@ -85,5 +85,6 @@
       "id": "output_parts",
       "name": "Output parts"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

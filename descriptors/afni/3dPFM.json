@@ -1,8 +1,8 @@
 {
   "name": "3dPFM",
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "description": "Program for identifying brief BOLD events in fMRI time series using Paradigm Free Mapping",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "command-line": "3dPFM [PARAMETERS]",
   "schema-version": "0.5",
   "inputs": [
@@ -354,8 +354,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPFM.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

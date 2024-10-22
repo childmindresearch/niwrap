@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fslcomplex",
-  "author": "FMRIB Analysis Group, Oxford University, UK",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for manipulating complex-valued MR data",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslcomplex [INPUT_FILE] [OUTPUT_FILE] [OUTPUT_TYPE] [START_VOL] [END_VOL]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -69,13 +69,20 @@
     {
       "description": "Specify the specific operation for FSL Complex",
       "id": "operations_group",
-      "members": ["input_file", "output_file", "output_type"],
+      "members": [
+        "input_file",
+        "output_file",
+        "output_type"
+      ],
       "name": "Main Operations Parameters"
     },
     {
       "description": "Optional parameters",
       "id": "optional_params_group",
-      "members": ["start_vol", "end_vol"],
+      "members": [
+        "start_vol",
+        "end_vol"
+      ],
       "name": "Optional Parameters"
     }
   ],

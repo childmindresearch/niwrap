@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "ftoz",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Convert F-statistics to Z-scores.",
   "command-line": "ftoz [INPUT_FILE] [DOF1] [DOF2] [OUTPUT_FILE]",
   "container-image": {
@@ -62,5 +62,6 @@
       "optional": true
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

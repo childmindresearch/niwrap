@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@Install_D99_macaque",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://sample-url-for-descriptor.com",
   "description": "Installs the D99 macaque version 2 atlases for subcortical regions in the macaque monkey.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_D99_macaque.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@Install_D99_macaque [WGET_FLAG] [CURL_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

@@ -1,9 +1,9 @@
 {
   "name": "p2dsetstat",
-  "tool-version": "1.3",
-  "author": "AFNI Team",
+  "tool-version": "24.2.06",
+  "author": "AFNI Developers",
   "description": "Convert a p-value to a statistic of choice with reference to a specific dataset.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/p2dsetstat.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "p2dsetstat -inset [DATASET] -pval [PVAL] [SIDEDNESS] [QUIET]",
   "inputs": [
     {
@@ -74,7 +74,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

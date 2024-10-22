@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fslvbm_1_bet",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Brain extraction for VBM using FSL BET",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslvbm_1_bet [BET_OPTION] [BET_PARAMETERS]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -43,7 +43,10 @@
       "description": "Mutually exclusive options for BET brain extraction",
       "mutually-exclusive": true,
       "id": "bet_option_group",
-      "members": ["default_bet", "increased_robustness"],
+      "members": [
+        "default_bet",
+        "increased_robustness"
+      ],
       "name": "BET Options"
     }
   ]

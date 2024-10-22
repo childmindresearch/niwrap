@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_sub_report",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL cluster job reporting tool",
   "command-line": "fsl_sub_report [JOB_ID] [SUBJOB_ID] [PARSEABLE_FLAG]",
   "container-image": {
@@ -36,5 +36,6 @@
       "name": "Parseable output flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

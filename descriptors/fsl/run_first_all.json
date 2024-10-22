@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "run_first_all",
-  "author": "FMRIB Software Library (FSL)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FIRST - FMRIB's Integrated Registration and Segmentation Tool for subcortical brain structures",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "run_first_all [METHOD] [BRAINEXTRACT_FLAG] [STRUCTURE] [AFFINE_MATRIX] [THREESTAGE_FLAG] [DEBUG_FLAG] [VERBOSE_FLAG] -i [INPUT_IMAGE] -o [OUTPUT_IMAGE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -34,7 +34,11 @@
       "optional": true,
       "id": "method",
       "name": "Method",
-      "value-choices": ["auto", "fast", "none"]
+      "value-choices": [
+        "auto",
+        "fast",
+        "none"
+      ]
     },
     {
       "command-line-flag": "-b",

@@ -7,7 +7,11 @@
     {
       "description": "Image type - one of 'whole_head' (the default), 'brain', or 'brain_mask'",
       "value-key": "[IMAGE_TYPE]",
-      "value-choices": ["whole_head", "brain", "brain_mask"],
+      "value-choices": [
+        "whole_head",
+        "brain",
+        "brain_mask"
+      ],
       "type": "String",
       "optional": false,
       "id": "image_type",
@@ -41,5 +45,11 @@
       "name": "Version"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "author": "FMRIB Analysis Group, University of Oxford",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
+  "container-image": {
+    "type": "docker",
+    "image": "mcin/fsl:6.0.5"
+  }
 }

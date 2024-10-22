@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "easythresh",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Cluster-based statistical thresholding tool from FSL",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Easythresh",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "easythresh [RAW_ZSTAT] [BRAIN_MASK] [CLUSTER_Z_THRESH] [CLUSTER_PROB_THRESH] [BACKGROUND_IMAGE] [OUTPUT_ROOT] [MM_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@DeblankFileNames",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A script to remove blanks and other annoying characters ([], ()) from filenames.",
   "command-line": "@DeblankFileNames [MOVE_FLAG] [NOBRAC_FLAG] [DEMO_SET_FLAG] [ECHO_FLAG] [HELP_FLAG] [FILES...]",
   "inputs": [
@@ -62,8 +62,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DeblankFileNames.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

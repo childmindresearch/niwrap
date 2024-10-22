@@ -1,13 +1,13 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dLocalPV",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes the Singular Value Decomposition (SVD) of the time series from a neighborhood of each voxel in a 3D+time dataset, which serves as a smoothing method for the dataset.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalPV.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dLocalPV [INPUT_DATASET] [MASK] [AUTOMASK] [PREFIX] [PREFIX2] [EVPREFIX] [NEIGHBORHOOD] [DESPIKE] [POLORT] [VNORM] [VPROJ]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

@@ -1,9 +1,9 @@
 {
-  "tool-version": "3.1",
+  "tool-version": "24.2.06",
   "name": "@GradFlipTest",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Script to test the correct flip for a data set when using 1dDW_Grad_o_Mat++.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GradFlipTest.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@GradFlipTest [DWI] [GRAD_FILE] [GRAD_FILE] [GRAD_FILE] [GRAD_FILE] [MASK] [BVALS] [THRESH_FA] [THRESH_LEN] [PREFIX] [CHECK_ABS_MIN] [SCALE_OUT_1000] [WDIR] [DO_CLEAN]",
   "inputs": [
     {
@@ -151,7 +151,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

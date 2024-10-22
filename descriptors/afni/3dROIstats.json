@@ -1,9 +1,9 @@
 {
   "name": "3dROIstats",
   "command-line": "3dROIstats [IN_FILE] [MASK] [OUT_FILE] [DEBUG] [FORMAT1D] [FORMAT1DR] [MASK_F2SHORT] [MASK_FILE] [NOBRIKLAB] [NOMEANOUT] [NUM_ROI] [QUIET] [ROISEL] [STAT] [ZEROFILL]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Display statistics over masked regions",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dROIstats.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "debug",
@@ -130,7 +130,9 @@
       "command-line-flag": "-zerofill",
       "description": "For roi labels not found, use the provided string instead of a '0' in the output file. only active if `num_roi` is enabled.",
       "optional": true,
-      "requires-inputs": ["num_roi"]
+      "requires-inputs": [
+        "num_roi"
+      ]
     }
   ],
   "output-files": [
@@ -151,11 +153,11 @@
       "description": "Output tab-separated values file."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

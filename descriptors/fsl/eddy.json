@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "eddy",
-  "author": "Jesper Andersson (University of Oxford)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool for correcting eddy currents and movements in diffusion data",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "eddy[IMPLEMENTATION] [IMAIN] [MASK] [INDEX] [ACQP] [BVECS] [BVALS] [OUT] [MB] [MB_OFFS] [SLSPEC] [JSON] [MPORDER] [S2V_LAMBDA] [TOPUP] [FIELD] [FIELD_MAT] [FLM] [SLM] [FWHM] [NITER] [S2V_NITER] [CNR_MAPS] [RESIDUALS] [FEP] [INTERP] [S2V_INTERP] [RESAMP] [NVOXHP] [INITRAND] [FF] [REPOL] [OL_NSTD] [OL_NVOX] [OL_TYPE] [OL_POS] [OL_SQR] [ESTIMATE_MOVE_BY_SUSCEPTIBILITY] [MBS_NITER] [MBS_LAMBDA] [MBS_KSP] [DONT_SEP_OFFS_MOVE] [DONT_PEAS] [DATA_IS_SHELLED] [VERBOSE]",
   "schema-version": "0.5",
   "container-image": {
@@ -197,7 +197,12 @@
       "command-line-flag-separator": "=",
       "value-key": "[FLM]",
       "description": "First level EC model (movement/linear/quadratic/cubic, default quadratic)",
-      "value-choices": ["movement", "linear", "quadratic", "cubic"],
+      "value-choices": [
+        "movement",
+        "linear",
+        "quadratic",
+        "cubic"
+      ],
       "type": "String",
       "optional": true
     },
@@ -208,7 +213,11 @@
       "command-line-flag-separator": "=",
       "value-key": "[SLM]",
       "description": "Second level EC model (none/linear/quadratic, default none)",
-      "value-choices": ["none", "linear", "quadratic"],
+      "value-choices": [
+        "none",
+        "linear",
+        "quadratic"
+      ],
       "type": "String",
       "optional": true
     },
@@ -276,7 +285,10 @@
       "command-line-flag-separator": "=",
       "value-key": "[INTERP]",
       "description": "Interpolation model for estimation step (spline/trilinear, default spline)",
-      "value-choices": ["spline", "trilinear"],
+      "value-choices": [
+        "spline",
+        "trilinear"
+      ],
       "type": "String",
       "optional": true
     },
@@ -287,7 +299,10 @@
       "command-line-flag-separator": "=",
       "value-key": "[S2V_INTERP]",
       "description": "Slice-to-vol interpolation model for estimation step (spline/trilinear, default trilinear)",
-      "value-choices": ["spline", "trilinear"],
+      "value-choices": [
+        "spline",
+        "trilinear"
+      ],
       "type": "String",
       "optional": true
     },
@@ -298,7 +313,10 @@
       "command-line-flag-separator": "=",
       "value-key": "[RESAMP]",
       "description": "Final resampling method (jac/lsr, default jac)",
-      "value-choices": ["jac", "lsr"],
+      "value-choices": [
+        "jac",
+        "lsr"
+      ],
       "type": "String",
       "optional": true
     },
@@ -368,7 +386,11 @@
       "command-line-flag-separator": "=",
       "value-key": "[OL_TYPE]",
       "description": "Type of outliers, slicewise (sw), groupwise (gw) or both (both). (default sw)",
-      "value-choices": ["sw", "gw", "both"],
+      "value-choices": [
+        "sw",
+        "gw",
+        "both"
+      ],
       "type": "String",
       "optional": true
     },

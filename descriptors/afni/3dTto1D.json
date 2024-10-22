@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.2",
+  "tool-version": "24.2.06",
   "name": "3dTto1D",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Collapse a 4D time series to a 1D time series",
   "command-line": "3dTto1D -input [INPUT_DATASET] -method [METHOD] [AUTOMASK_FLAG] [MASK] [PREFIX] [VERBOSE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -73,5 +73,5 @@
       "name": "Output File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTto1D.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

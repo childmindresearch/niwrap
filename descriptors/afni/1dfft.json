@@ -1,7 +1,7 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "1dfft",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Compute the absolute value of the FFT of input columns from an AFNI 1D file.",
   "command-line": "1dfft [INFILE] [OUTFILE] [IGNORE] [USE] [NFFT] [TOCX] [FROMCX] [HILBERT] [NODETREND]",
   "inputs": [
@@ -99,8 +99,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dfft.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

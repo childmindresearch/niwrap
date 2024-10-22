@@ -1,7 +1,7 @@
 {
-  "tool-version": "3.8",
+  "tool-version": "24.2.06",
   "name": "fat_proc_filter_dwis",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Filter out user-found and user-defined bad volumes from DWI data sets.",
   "command-line": "fat_proc_filter_dwis [INPUT_DWI] [INPUT_GRADIENT] [SELECT_STRING] [SELECT_FILE] [OUTPUT_PREFIX] [INPUT_BVALS] [UNIT_MAG_OUT] [QC_PREFIX] [NO_QC_VIEW] [NO_CMD_OUT] [DO_MOVIE]",
   "inputs": [
@@ -102,7 +102,10 @@
       "description": "Output a movie of the newly created dataset (AGIF or MPEG).",
       "command-line-flag": "-do_movie",
       "optional": true,
-      "value-choices": ["AGIF", "MPEG"],
+      "value-choices": [
+        "AGIF",
+        "MPEG"
+      ],
       "value-key": "[DO_MOVIE]"
     }
   ],
@@ -131,8 +134,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_filter_dwis.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

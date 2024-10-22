@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.4",
+  "tool-version": "24.2.06",
   "name": "fat_proc_connec_vis",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "This program is for visualizing the volumetric output of tracking, mainly for the '-dump_rois ...' from 3dTrackID. It creates surface-ized views of the separate white matter connection maps (WMCs) which can be viewed simultaneously in 3D with SUMA.",
   "command-line": "fat_proc_connec_vis [IN_ROIS] [PREFIX] [PREFIX_FILE] [TSMOO_KPB] [TSMOO_NITER] [ISO_OPT] [TRACKID_NO_OR] [OUTPUT_TCAT] [OUTPUT_TSTAT] [WDIR] [NO_CLEAN]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -131,5 +131,5 @@
       "name": "Output Tstat File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_connec_vis.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

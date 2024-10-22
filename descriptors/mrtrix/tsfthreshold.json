@@ -1,7 +1,7 @@
 {
   "name": "tsfthreshold",
   "description": "Threshold and invert track scalar files.\n\n\n\nReferences:\n\n",
-  "author": "David Raffelt (david.raffelt@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -150,5 +150,5 @@
       "description": "the binary output track scalar file"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfthreshold.html"
+  "url": "https://www.mrtrix.org/"
 }

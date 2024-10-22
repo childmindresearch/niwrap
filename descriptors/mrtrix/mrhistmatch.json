@@ -1,7 +1,7 @@
 {
   "name": "mrhistmatch",
   "description": "Modify the intensities of one image to match the histogram of another.\n\n\n\nReferences:\n\n* If using inverse contrast normalization for inter-modal (DWI - T1) registration:\nBhushan, C.; Haldar, J. P.; Choi, S.; Joshi, A. A.; Shattuck, D. W. & Leahy, R. M. Co-registration and distortion correction of diffusion and anatomical images based on inverse contrast normalization. NeuroImage, 2015, 115, 269-280",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -176,5 +176,5 @@
       "description": "the output image"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/mrhistmatch.html"
+  "url": "https://www.mrtrix.org/"
 }

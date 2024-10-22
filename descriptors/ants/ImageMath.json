@@ -1,7 +1,7 @@
 {
   "name": "ImageMath",
   "command-line": "ImageMath [ImageDimension] [OutputImage] [operations and inputs] [Image1] [Image2]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "A versatile tool for performing various mathematical and manipulation operations on images.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -18,7 +18,11 @@
       "type": "Number",
       "integer": true,
       "optional": false,
-      "value-choices": [2, 3, 4],
+      "value-choices": [
+        2,
+        3,
+        4
+      ],
       "description": "The dimensionality of the image. Use 2 or 3 for spatial images, and 4 for 4D images like time-series data."
     },
     {

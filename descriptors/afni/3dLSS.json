@@ -1,12 +1,12 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dLSS",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Least-Squares-Sum (LSS) estimation tool from a -stim_times_IM matrix for multivoxel pattern classification analyses.",
   "command-line": "3dLSS [OPTIONS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -99,5 +99,5 @@
       "name": "Estimator Vectors File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLSS.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

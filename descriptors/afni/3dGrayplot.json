@@ -1,12 +1,12 @@
 {
-  "tool-version": "Unknown",
+  "tool-version": "24.2.06",
   "name": "3dGrayplot",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Make a grayplot from a 3D+time dataset, like a carpet plot. Result is saved to a PNG image.",
   "command-line": "3dGrayplot [INPUT] [MASK] [PREFIX] [DIMENSIONS] [RESAMPLE_OLD] [POLORT] [FWHM] [PVORDER] [LJORDER] [PEELORDER] [IJKORDER] [RANGE] [PERCENT] [RAW_WITH_BOUNDS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -151,5 +151,5 @@
       "name": "Grayplot image"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGrayplot.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

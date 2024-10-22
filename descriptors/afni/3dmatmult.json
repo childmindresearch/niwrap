@@ -1,13 +1,13 @@
 {
-  "tool-version": "0.0",
+  "tool-version": "24.2.06",
   "name": "3dmatmult",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Multiply AFNI datasets slice-by-slice as matrices.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmatmult.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dmatmult [INPUT_A] [INPUT_B] [PREFIX] [DATUM] [VERB]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

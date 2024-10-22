@@ -1,7 +1,7 @@
 {
   "name": "dwi2response",
-  "description": "Estimate response function(s) for spherical deconvolution.\ndwi2response offers different algorithms for performing various types of response function estimation. The name of the algorithm must appear as the first argument on the command-line after ‘dwi2response’. The subsequent arguments and options depend on the particular algorithm being invoked.\nEach algorithm available has its own help page, including necessary references; e.g. to see the help page of the 'fa' algorithm, type 'dwi2response fa'.",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au) & Thijs Dhollander (thijs.dhollander@gmail.com)",
+  "description": "Estimate response function(s) for spherical deconvolution.\ndwi2response offers different algorithms for performing various types of response function estimation. The name of the algorithm must appear as the first argument on the command-line after \u00e2\u20ac\u02dcdwi2response\u00e2\u20ac\u2122. The subsequent arguments and options depend on the particular algorithm being invoked.\nEach algorithm available has its own help page, including necessary references; e.g. to see the help page of the 'fa' algorithm, type 'dwi2response fa'.",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -108,7 +108,11 @@
               "value-key": "[ALG_WM_ALGO]",
               "description": "Use external dwi2response algorithm for WM single-fibre voxel selection (options: fa, tax, tournier) (default: built-in Dhollander 2019)",
               "type": "String",
-              "value-choices": ["fa", "tax", "tournier"],
+              "value-choices": [
+                "fa",
+                "tax",
+                "tournier"
+              ],
               "optional": true
             }
           ],
@@ -323,7 +327,11 @@
               "value-key": "[ALG_WM_ALGO]",
               "description": "algorithm dwi2response algorithm to use for WM single-fibre voxel selection (options: fa, tax, tournier; default: tournier)",
               "type": "String",
-              "value-choices": ["fa", "tax", "tournier"],
+              "value-choices": [
+                "fa",
+                "tax",
+                "tournier"
+              ],
               "optional": true
             },
             {
@@ -699,5 +707,5 @@
       "optional": true
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/3.0.4/reference/commands/dwi2response.html"
+  "url": "https://www.mrtrix.org/"
 }

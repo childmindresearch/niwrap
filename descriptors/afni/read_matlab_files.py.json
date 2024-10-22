@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "read_matlab_files.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Describe or convert MATLAB files (.mat) to 1D format",
   "command-line": "read_matlab_files.py [INFILES] [PREFIX] [OVERWRITE] [HELP] [HISTORY] [VERSION]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -74,5 +74,5 @@
       "name": "Converted 1D file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/read_matlab_files.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

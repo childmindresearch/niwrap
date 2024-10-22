@@ -1,7 +1,7 @@
 {
   "name": "fixel2peaks",
   "description": "Convert data in the fixel directory format into a 4D image of 3-vectors.\n\nIf a fixel data file is provided as input, then the 3-vectors in the output image will be scaled based on the data in that file. If the input is instead the fixel directory, or the index or directions file, then all output 3-vectors will possess unit norm.\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -180,5 +180,5 @@
       "description": "the output peaks image"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/fixel2peaks.html"
+  "url": "https://www.mrtrix.org/"
 }

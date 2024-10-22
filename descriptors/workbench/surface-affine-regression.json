@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "surface-affine-regression",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -surface-affine-regression [SOURCE] [TARGET] [AFFINE_OUT]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Regress the affine transform between surfaces on the same mesh.\n\nUse linear regression to compute an affine that minimizes the sum of squares of the coordinate differences between the target surface and the warped source surface.  Note that this has a bias to shrink the surface that is being warped.  The output is written as a NIFTI 'world' matrix, see -convert-affine to convert it for use in other software.",
   "schema-version": "0.5",
@@ -35,5 +35,6 @@
       "value-key": "[AFFINE_OUT]",
       "type": "String"
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

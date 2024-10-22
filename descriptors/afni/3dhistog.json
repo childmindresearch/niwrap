@@ -1,10 +1,10 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dhistog",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dhistog.html",
   "description": "Compute histogram of a 3D dataset",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dhistog.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dhistog [DATASET] [NBIN] [DIND] [OMIT] [MASK] [ROI_MASK] [DOALL] [NOEMPTY] [NOTITLE] [LOG10] [PDF] [MIN] [MAX] [IGFAC] [INT] [FLOAT] [UNQ] [PREFIX]",
   "inputs": [
     {
@@ -181,8 +181,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "schema-version": "0.5"
 }

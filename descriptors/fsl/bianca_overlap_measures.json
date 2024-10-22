@@ -2,7 +2,7 @@
   "tool-version": "6.0.5",
   "name": "bianca_overlap_measures",
   "description": "BIANCA overlap measures script for FSL",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "command-line": "/usr/local/fsl/bin/bianca_overlap_measures [LESION_MASK] [MANUAL_MASK] [OUTPUT_DIR]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -92,5 +92,6 @@
       "id": "manualmask_idx_tp",
       "name": "Manual Mask Index True Positive"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "gen_ss_review_scripts",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Generate single subject analysis review scripts",
   "command-line": "gen_ss_review_scripts [SUBJECT_ID] [RM_TRS] [NUM_STIM] [MB_LEVEL] [SLICE_PATTERN] [MOTION_DSET] [OUTLIER_DSET] [ENORM_DSET] [MOT_LIMIT] [OUT_LIMIT] [XMAT_REGRESS] [XMAT_UNCENSORED] [STATS_DSET] [FINAL_ANAT] [FINAL_VIEW] [PREFIX] [VERBOSITY] [UVARS_JSON] [INIT_UVARS_JSON]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -205,5 +205,5 @@
       "name": "Driver commands script output"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_ss_review_scripts.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

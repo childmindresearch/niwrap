@@ -1,9 +1,9 @@
 {
   "name": "3dcalc",
   "command-line": "3dcalc [EXPR] [IN_FILE_A] [IN_FILE_B] [IN_FILE_C] [OTHER] [OVERWRITE] [SINGLE_IDX] [START_IDX] [STOP_IDX]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "AFNI's calculator program.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dcalc.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "expr",
@@ -74,7 +74,9 @@
       "value-key": "[START_IDX]",
       "description": "Start index for in_file_a.",
       "optional": true,
-      "requires-inputs": ["stop_idx"]
+      "requires-inputs": [
+        "stop_idx"
+      ]
     },
     {
       "id": "stop_idx",
@@ -84,7 +86,9 @@
       "value-key": "[STOP_IDX]",
       "description": "Stop index for in_file_a.",
       "optional": true,
-      "requires-inputs": ["start_idx"]
+      "requires-inputs": [
+        "start_idx"
+      ]
     }
   ],
   "output-files": [
@@ -98,11 +102,11 @@
       "command-line-flag": "-prefix"
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics"

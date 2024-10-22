@@ -1,9 +1,9 @@
 {
   "name": "ImageStats",
   "command-line": "ImageStats [SPLIT_4D] [INDEX_MASK_FILE] [IN_FILE] [OP_STRING] [MASK_FILE] [OUTPUT_TYPE]",
-  "author": "Nipype (interface)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Use FSL fslstats command to calculate stats from images",
-  "url": "http://www.fmrib.ox.ac.uk/fslcourse/lectures/practicals/intro/index.htm#fslutils",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "inputs": [
     {
       "id": "in_file",
@@ -45,7 +45,12 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "NIFTI_PAIR",
+        "NIFTI_GZ",
+        "NIFTI_PAIR_GZ"
+      ]
     },
     {
       "id": "split_4d",

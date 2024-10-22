@@ -1,7 +1,7 @@
 {
   "name": "antsLandmarkBasedTransformInitializer",
   "command-line": "antsLandmarkBasedTransformInitializer [DIMENSION] [FIXED_IMAGE] [MOVING_IMAGE] [TRANSFORM_TYPE] [OUTPUT_TRANSFORM] [MESH_SIZE] [NUMBER_OF_LEVELS] [ORDER] [ENFORCE_STATIONARY_BOUNDARIES] [LANDMARK_WEIGHTS]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "This tool initializes a transform between two images based on corresponding landmarks.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -42,7 +42,11 @@
       "value-key": "[TRANSFORM_TYPE]",
       "type": "String",
       "description": "The type of transform to initialize. Options are 'rigid', 'affine', or 'bspline'.",
-      "value-choices": ["rigid", "affine", "bspline"],
+      "value-choices": [
+        "rigid",
+        "affine",
+        "bspline"
+      ],
       "optional": false
     },
     {
@@ -86,7 +90,10 @@
       "type": "Number",
       "integer": true,
       "description": "Enforces stationary boundaries for the B-spline transform. Default is 1 (true).",
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "optional": true
     },
     {

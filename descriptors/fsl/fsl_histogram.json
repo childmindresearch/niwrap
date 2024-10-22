@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_histogram",
-  "author": "University of Oxford",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Histogram plotting tool for FSL",
   "command-line": "fsl_histogram [INPUT_FILE] [OUTPUT_FILE] [MASK_FILE] [GMMFIT_FILE] [PLOT_TITLE] [LEGEND_FILE] [XLABEL] [YLABEL] [PLOT_HEIGHT] [PLOT_WIDTH] [NUM_BINS] [ZOOM_FACTOR] [USE_GMM_FLAG]",
   "inputs": [
@@ -240,5 +240,10 @@
       "id": "png_file",
       "name": "PNG Output File"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
+  "container-image": {
+    "type": "docker",
+    "image": "mcin/fsl:6.0.5"
+  }
 }

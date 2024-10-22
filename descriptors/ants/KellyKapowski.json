@@ -1,7 +1,7 @@
 {
   "name": "KellyKapowski",
   "command-line": "KellyKapowski [IMAGE_DIMENSIONALITY] [SEGMENTATION_IMAGE] [GRAY_MATTER_PROBABILITY_IMAGE] [WHITE_MATTER_PROBABILITY_IMAGE] [CONVERGENCE] [THICKNESS_PRIOR_ESTIMATE] [THICKNESS_PRIOR_IMAGE] [GRADIENT_STEP] [SMOOTHING_VARIANCE] [SMOOTHING_VELOCITY_FIELD_PARAMETER] [USE_BSPLINE_SMOOTHING] [USE_MASKED_SMOOTHING] [TIME_POINTS] [RESTRICT_DEFORMATION] [NUMBER_OF_INTEGRATION_POINTS] [MAXIMUM_NUMBER_OF_INVERT_DISPLACEMENT_FIELD_ITERATIONS] [OUTPUT] [VERBOSE]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "DiReCT is a registration based estimate of cortical thickness. It was published in S. R. Das, B. B. Avants, M. Grossman, and J. C. Gee, Registration based cortical thickness measurement, Neuroimage 2009, 45:867--879.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -18,7 +18,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [2, 3],
+      "value-choices": [
+        2,
+        3
+      ],
       "command-line-flag": "--image-dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, DiReCT tries to infer the dimensionality from the input image."
     },
@@ -110,7 +113,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "--use-bspline-smoothing",
       "description": "Sets the option for B-spline smoothing of the velocity field. Default = false."
     },
@@ -121,7 +127,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "--use-masked-smoothing",
       "description": "Sets the option for masked-based smoothing of the velocity field. Default = false."
     },
@@ -141,7 +150,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "--restrict-deformation",
       "description": "Restrict the last dimension's deformation. Meant for use with multiple time points. Default = false."
     },
@@ -181,7 +193,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "--verbose",
       "description": "Verbose output."
     }

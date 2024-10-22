@@ -1,7 +1,7 @@
 {
   "name": "antsMotionCorrDiffusionDirection",
   "command-line": "antsMotionCorrDiffusionDirection [SCHEME] [BVEC] [PHYSICAL] [MOCO] [OUTPUT]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "This tool adjusts the diffusion scheme for motion correction.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",

@@ -1,9 +1,9 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dABoverlap",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Counts various metrics about how the automasks of datasets A and B overlap or don't overlap",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dABoverlap.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dABoverlap [DATASET_A] [DATASET_B] [NO_AUTOMASK] [QUIET] [VERBOSE]",
   "inputs": [
     {
@@ -52,7 +52,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

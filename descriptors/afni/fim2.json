@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "fim2",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://example.com/fim2_descriptor.json",
   "description": "Functional Imaging Mapping Tool",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fim2.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "fim2 [IMAGE_FILES] [PCNT] [PCTHRESH] [IM1] [NUM] [NON] [COEF] [ORT] [IDEAL] [POLREF] [FIMFILE] [CORR] [CORFILE] [CNRFILE] [SIGFILE] [FITFILE] [SUBORT] [FLIM] [CLEAN] [CLIP] [Q] [DFSPACE] [REGBASE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

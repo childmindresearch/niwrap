@@ -1,12 +1,12 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dTwotoComplex",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Converts 2 sub-bricks of input to a complex-valued dataset",
   "command-line": "3dTwotoComplex [DATASET1] [DATASET2] [PREFIX] [RI] [MP] [MASK]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -79,5 +79,5 @@
       "name": "Output HEAD file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTwotoComplex.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

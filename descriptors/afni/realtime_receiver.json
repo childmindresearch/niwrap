@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "realtime_receiver",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Program to receive and display real-time plugin data from AFNI.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/realtime_receiver.py.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "realtime_receiver.py [SHOW_DATA] [WRITE_TEXT_DATA] [DATA_CHOICE] [SERIAL_PORT] [SHOW_DEMO_GUI] [DC_PARAMS] [EXTRAS_ON_ONE_LINE] [SHOW_COMM_TIMES] [SHOW_DEMO_DATA] [SWAP] [TCP_PORT] [VERBOSITY_LEVEL]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -18,7 +18,10 @@
       "optional": true,
       "id": "show_data",
       "name": "Show Data",
-      "value-choices": ["yes", "no"]
+      "value-choices": [
+        "yes",
+        "no"
+      ]
     },
     {
       "command-line-flag": "-write_text_data",
@@ -37,7 +40,12 @@
       "optional": true,
       "id": "data_choice",
       "name": "Data Choice",
-      "value-choices": ["motion", "motion_norm", "all_extras", "diff_ratio"]
+      "value-choices": [
+        "motion",
+        "motion_norm",
+        "all_extras",
+        "diff_ratio"
+      ]
     },
     {
       "command-line-flag": "-serial_port",
@@ -56,7 +64,10 @@
       "optional": true,
       "id": "show_demo_gui",
       "name": "Show Demo GUI",
-      "value-choices": ["yes", "no"]
+      "value-choices": [
+        "yes",
+        "no"
+      ]
     },
     {
       "command-line-flag": "-dc_params",
@@ -76,7 +87,10 @@
       "optional": true,
       "id": "extras_on_one_line",
       "name": "Extras On One Line",
-      "value-choices": ["yes", "no"]
+      "value-choices": [
+        "yes",
+        "no"
+      ]
     },
     {
       "command-line-flag": "-show_comm_times",

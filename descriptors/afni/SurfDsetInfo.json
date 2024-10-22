@@ -1,7 +1,7 @@
 {
-  "tool-version": "Jun 30 2023",
+  "tool-version": "24.2.06",
   "name": "SurfDsetInfo",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Provides information about surface datasets (DSET).",
   "command-line": "SurfDsetInfo [INPUT_DSETS] [DEBUG_LEVEL] [NOVOLREG] [NOXFORM] [SETENV] [TRACE] [EXTREME_TRACE] [NOMALL] [YESMALL] [MINI_HELP] [HELP] [EXTREME_HELP] [HELP_VIEW] [HELP_WEB] [HELP_FIND] [HELP_RAW] [HELP_SPX] [HELP_ASPX] [ALL_OPTS]",
   "inputs": [
@@ -182,8 +182,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfDsetInfo.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

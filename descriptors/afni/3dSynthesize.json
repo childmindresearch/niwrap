@@ -1,7 +1,7 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dSynthesize",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Reads a '-cbucket' dataset and a '.xmat.1D' matrix from 3dDeconvolve, and synthesizes a fit dataset using selected sub-bricks and matrix columns.",
   "command-line": "3dSynthesize -cbucket [C_BUCKET] -matrix [MATRIX] -select [SELECT] -prefix [PREFIX] [DRY_FLAG] [TR] [CENFILL]",
   "inputs": [
@@ -63,13 +63,17 @@
       "optional": true,
       "id": "cenfill",
       "name": "Censor fill option",
-      "value-choices": ["zero", "nbhr", "none"]
+      "value-choices": [
+        "zero",
+        "nbhr",
+        "none"
+      ]
     }
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSynthesize.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

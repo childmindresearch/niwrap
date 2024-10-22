@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "eddy_quad",
-  "author": "FMRIB Software Library",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "QUality Assessment for DMRI",
   "command-line": "eddy_quad [EDDYBASE] [EDDYINDEX] [EDDYPARAMS] [MASK] [BVALS] [BVECS] [OUTPUT_DIR] [FIELD] [SLSPEC] [VERBOSE]",
   "container-image": {
@@ -108,5 +108,6 @@
       "path-template": "[OUTPUT_DIR]",
       "optional": true
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

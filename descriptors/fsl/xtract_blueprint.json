@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "xtract_blueprint",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Blueprint extraction tool using XTRACT and bedpostx folders",
-  "url": "https://fsl.fmrib.ox.ac.uk",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "xtract_blueprint [BPX_FOLDER] [OUT_FOLDER] [XTRACT_FOLDER] [SEEDS_LIST] [WARPS] [STAGE] [GPU_FLAG] [SAVE_TXT_FLAG] [PREFIX] [ROIS_LIST] [STOPS_FILE] [WTSTOPS_FILE] [TRACT_LIST] [THRESHOLD] [NSAMPLES] [RES] [PTX_OPTIONS]",
   "schema-version": "0.5",
   "container-image": {

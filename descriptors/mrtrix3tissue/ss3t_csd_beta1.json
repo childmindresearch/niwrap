@@ -1,7 +1,7 @@
 {
   "name": "ss3t_csd_beta1",
   "description": "SS3T-CSD: beta 1 implementation\n\n* Dhollander, T. & Connelly, A. A novel iterative approach to reap the benefits of multi-tissue CSD from just single-shell (+b=0) diffusion MRI data. Proc Intl Soc Mag Reson Med, 2016, 3010",
-  "author": "Thijs Dhollander (thijs.dhollander@gmail.com)",
+  "author": "MRTrix3Tissue Developers",
   "tool-version": "5.2.8",
   "schema-version": "0.5",
   "container-image": {
@@ -185,5 +185,5 @@
       "optional": true
     }
   ],
-  "url": "https://3tissue.github.io/doc/ss3t-csd.html"
+  "url": "https://3tissue.github.io/"
 }

@@ -18,7 +18,10 @@
       "name": "Displacement Field Type",
       "value-key": "[DISPLACEMENT_FIELD_TYPE]",
       "type": "String",
-      "value-choices": ["BSpline", "Exponential"],
+      "value-choices": [
+        "BSpline",
+        "Exponential"
+      ],
       "description": "Type of displacement field to simulate."
     },
     {
@@ -125,7 +128,7 @@
       "path-template": "[OUTPUT_FIELD]"
     }
   ],
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "url": "https://github.com/ANTsX/ANTs",
   "container-image": {
     "type": "docker",

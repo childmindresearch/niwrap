@@ -1,14 +1,14 @@
 {
-  "tool-version": "0.0.4",
+  "tool-version": "24.2.06",
   "name": "rPkgsInstall",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/gangchen_homepage",
   "description": "A tool for installing, checking, updating, or removing R packages for AFNI.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/rPkgsInstall.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "rPkgsInstall [PACKAGES] [SITE] [CHECK_FLAG] [UPDATE_FLAG] [REMOVE_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

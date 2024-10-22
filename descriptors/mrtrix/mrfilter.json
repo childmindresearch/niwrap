@@ -1,7 +1,7 @@
 {
   "name": "mrfilter",
   "description": "Perform filtering operations on 3D / 4D MR images.\n\nThe available filters are: fft, gradient, median, smooth, normalise, zclean.\n\nEach filter has its own unique set of optional parameters.\n\nFor 4D images, each 3D volume is processed independently.\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au), David Raffelt (david.raffelt@florey.edu.au) and J-Donald Tournier (jdtournier@gmail.com)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -360,5 +360,5 @@
       "description": "Output a refined mask based on a spatially coherent region with normal intensity range. "
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/mrfilter.html"
+  "url": "https://www.mrtrix.org/"
 }

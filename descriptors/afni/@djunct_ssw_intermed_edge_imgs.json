@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@djunct_ssw_intermed_edge_imgs",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Helper script to generate intermediate edge images for SSW-related processing.",
   "command-line": "@djunct_ssw_intermed_edge_imgs [OUTPUT_PREFIX] [UNDERLAY] [OVERLAY] [BOX_FOCUS_SLICES] [MONTGAP] [COLORBAR] [ULAY_RANGE] [MONTX] [MONTY] [HELP_VIEW] [HELP_FLAG] [VERSION_FLAG] [NO_CLEAN_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -128,5 +128,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_ssw_intermed_edge_imgs.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

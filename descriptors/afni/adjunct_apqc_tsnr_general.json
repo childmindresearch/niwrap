@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "adjunct_apqc_tsnr_general",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "An adjunct program for making TSNR plots for APQC.",
   "command-line": "adjunct_apqc_tsnr_general [MONTGAP] [MONTCOLOR] [MONTX] [MONTY] [OPACITY] [BLOWUP] [SAVE_FTYPE] [SET_DICOM_XYZ] [SET_IJK] [SET_SUBBRICKS] [OLAY_ALPHA] [OLAY_BOXED] [THR_OLAY] [ULAY_RANGE_NZ] [ULAY_RANGE] [DELTA_SLICES] [OLAY_DISC_HOT_RANGE] [OLAY_CONT_MAX] [CBAR_CONT] [NO_COR] [NO_SAG] [NO_AXI] [ECHO]",
   "inputs": [
@@ -229,8 +229,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_apqc_tsnr_general.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

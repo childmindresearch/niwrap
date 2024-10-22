@@ -1,7 +1,7 @@
 {
-  "tool-version": "2021.08",
+  "tool-version": "24.2.06",
   "name": "@radial_correlate",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Check datasets for correlation artifacts",
   "command-line": "@radial_correlate [INPUT_FILES] [RESULTS_DIR] [DO_CORR] [DO_CLUST] [MASK_DSET] [CTHRESH] [FRAC_LIMIT] [SPHERE_RAD] [USE_3DMERGE] [PERCENTILE] [MIN_THR] [NFIRST] [VER] [VERBOSE] [HELP] [HIST] [CORR_MASK] [DO_CLEAN] [POLORT] [MERGE_FRAD]",
   "inputs": [
@@ -197,8 +197,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@radial_correlate.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

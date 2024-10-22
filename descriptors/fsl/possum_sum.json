@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "possum_sum",
-  "author": "Ivana Drobnjak, University of Oxford",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Sum of output signals from multiple possum processors",
   "command-line": "possum_sum [INPUT_SIGNAL] [OUTPUT_SIGNAL] [NUM_PROCESSORS] [VERBOSE_FLAG]",
   "container-image": {
@@ -56,5 +56,6 @@
       "id": "output_file",
       "name": "Output file"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

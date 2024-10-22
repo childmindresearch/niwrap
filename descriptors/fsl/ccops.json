@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "ccops",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
   "description": "ccops - Clustering of Connectomes Using Probabilistic Tractography",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "ccops [basename] [infile] [tract_dir] [exclusion_mask] [reorder_seedspace] [reorder_tractspace] [tract_reord] [connexity_constraint] [binarise_val] [matrix_power] [brain_mask] [scheme] [nclusters] [--help]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

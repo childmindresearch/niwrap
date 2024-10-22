@@ -1,7 +1,7 @@
 {
   "name": "reg_average",
-  "tool-version": "1.0",
-  "author": "Marc Modat, Pankaj Daga",
+  "tool-version": "1.4.0",
+  "author": "NiftyReg Developers",
   "description": "Command line program to average either images or affine transformations",
   "url": "http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg",
   "command-line": "reg_average [OUTPUT_FILE] [INPUT_FILES]",
@@ -33,5 +33,9 @@
       "description": "The averaged output file (image or affine transformation)",
       "optional": false
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "vnmd/niftyreg_1.4.0:20220819"
+  }
 }

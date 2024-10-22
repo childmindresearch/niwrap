@@ -2,6 +2,7 @@
   "id": "mrtrix3tissue",
   "name": "MRTrix3Tissue",
   "url": "https://3tissue.github.io/",
+  "author": "MRTrix3Tissue Developers",
   "approach": "Source extraction",
   "status": "Testing",
   "container": "brainlife/3tissue:5.2.8",

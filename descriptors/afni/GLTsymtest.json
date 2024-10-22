@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "GLTsymtest",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A tool to test the validity of '-gltsym' strings for use with 3dDeconvolve or 3dREMLfit.",
   "command-line": "GLTsymtest [BADONLY_FLAG] [VARS] [EXPR]",
   "inputs": [
@@ -34,8 +34,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/GLTsymtest.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

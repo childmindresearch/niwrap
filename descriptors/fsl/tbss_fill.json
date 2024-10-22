@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "tbss_fill",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for filling skeletonized FA images in TBSS",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "tbss_fill [STATS_IMAGE] [THRESHOLD] [MEAN_FA] [OUTPUT] [INCLUDE_NEGATIVE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

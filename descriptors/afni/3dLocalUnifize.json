@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.1",
+  "tool-version": "24.2.06",
   "name": "3dLocalUnifize",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "This program generates a 'unifized' output volume by estimating the median in the local neighborhood of each voxel and using that to scale each voxel's brightness.",
   "command-line": "3dLocalUnifize [INPUT] [OUTPUT] [WORKING_DIR] [ECHO] [NO_CLEAN] [LOCAL_RAD] [LOCAL_PERC] [LOCAL_MASK] [FILTER_THR]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -100,5 +100,5 @@
       "name": "Output dataset file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalUnifize.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

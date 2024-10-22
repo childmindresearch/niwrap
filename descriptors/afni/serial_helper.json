@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "serial_helper",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Passes motion parameters from socket to serial port",
   "command-line": "serial_helper [SERIAL_PORT] [SOCK_NUM] [MP_MAX] [MP_MIN] [NUM_EXTRA] [DISP_ALL] [DEBUG] [SHOW_TIMES] [HELP] [HIST] [NO_SERIAL] [VERSION]",
   "inputs": [
@@ -116,8 +116,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/serial_helper.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

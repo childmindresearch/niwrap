@@ -1,9 +1,9 @@
 {
   "name": "3drefit",
   "command-line": "3drefit [ATRCOPY] [ATRFLOAT] [ATRINT] [ATRSTRING] [DEOBLIQUE] [DUPORIGIN_FILE] [IN_FILE] [NOSAVEATR] [SAVEATR] [SPACE] [XDEL] [XORIGIN] [XYZSCALE] [YDEL] [YORIGIN] [ZDEL] [ZORIGIN]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Changes some of the information inside a 3D dataset's header",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3drefit.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "atrcopy",
@@ -106,7 +106,11 @@
       "command-line-flag": "-space",
       "description": "'tlrc' or 'mni' or 'orig'. Associates the dataset with a specific template type, e.g. tlrc, mni, orig.",
       "optional": true,
-      "value-choices": ["TLRC", "MNI", "ORIG"]
+      "value-choices": [
+        "TLRC",
+        "MNI",
+        "ORIG"
+      ]
     },
     {
       "id": "xdel",
@@ -181,11 +185,11 @@
       "description": "Output file."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

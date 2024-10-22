@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dDiff",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A program to examine element-wise differences between two images.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDiff.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dDiff [DSET_1] [DSET_2] [TOLERANCE] [MASK] [QUIET_FLAG] [TABULAR_FLAG] [BRUTALIST_FLAG] [LONG_REPORT_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

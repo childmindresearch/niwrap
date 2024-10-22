@@ -1,9 +1,9 @@
 {
   "name": "3dTproject",
   "command-line": "3dTproject [TR] [AUTOMASK] [BANDPASS] [BLUR] [CENMODE] [CENSOR] [CENSORTR] [CONCAT] [DSORT] [IN_FILE] [MASK] [NOBLOCK] [NORM] [ORT] [POLORT] [STOPBAND]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "This program projects (detrends) out various 'nuisance' time series from each voxel in the input dataset.  Note that all the projections are done via linear regression, including the frequency-based options such as '-passband'.  In this way, you can bandpass time-censored data, and at the same time, remove other time series of no interest (e.g., physiological estimates, motion parameters).",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTproject.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "TR",
@@ -52,7 +52,11 @@
       "command-line-flag": "-cenmode",
       "description": "'kill' or 'zero' or 'ntrp'. Specifies how censored time points are treated in the output dataset:* mode = zero -- put zero values in their place; output dataset is same length as input* mode = kill -- remove those time points;  output dataset is shorter than input* mode = ntrp -- censored values are replaced by interpolated  neighboring (in time) non-censored values,  before any projections, and then the  analysis proceeds without actual removal  of any time points -- this feature is to  keep the spanish inquisition happy.* the default mode is kill !!!.",
       "optional": true,
-      "value-choices": ["KILL", "ZERO", "NTRP"]
+      "value-choices": [
+        "KILL",
+        "ZERO",
+        "NTRP"
+      ]
     },
     {
       "id": "censor",
@@ -171,11 +175,11 @@
       "description": "Output file."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics"

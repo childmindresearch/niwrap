@@ -1,12 +1,12 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dAnhist",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Tool to analyze histogram peaks in a T1-weighted high-res brain image dataset.",
   "command-line": "3dAnhist [DATASET] [QUIET_FLAG] [DUMP_HISTOGRAM_FLAG] [NO_SCURVE_FLAG] [WINSORIZE] [TOP_2PEAKS_FLAG] [LABEL] [FILENAME]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -98,5 +98,5 @@
       "name": "Output PS"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAnhist.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

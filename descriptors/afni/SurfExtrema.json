@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "SurfExtrema",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A program finding the local extrema in a dataset.",
   "command-line": "SurfExtrema [INPUT_FILE] [NEIGHBORHOOD] [THRESHOLD] [GRADIENT_THRESHOLD] [GRADIENT_SCALE] [EXTREME_TYPE] [PREFIX] [TABLE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -53,7 +53,11 @@
       "id": "gscale",
       "name": "Gradient Scale",
       "command-line-flag": "-gscale",
-      "value-choices": ["NONE", "LMEAN", "GMEAN"]
+      "value-choices": [
+        "NONE",
+        "LMEAN",
+        "GMEAN"
+      ]
     },
     {
       "description": "Find maxima, minima, or extrema. Options are MAX (default), MIN, ABS.",
@@ -63,7 +67,11 @@
       "id": "extype",
       "name": "Extrema Type",
       "command-line-flag": "-extype",
-      "value-choices": ["MAX", "MIN", "ABS"]
+      "value-choices": [
+        "MAX",
+        "MIN",
+        "ABS"
+      ]
     },
     {
       "description": "Prefix for the output datasets.",
@@ -101,5 +109,5 @@
       "name": "Extrema Nodes Output File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfExtrema.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,7 +1,7 @@
 {
   "name": "fixelconnectivity",
   "description": "Generate a fixel-fixel connectivity matrix.\n\nThis command will generate a directory containing three images, which encodes the fixel-fixel connectivity matrix. Documentation regarding this format and how to use it will come in the future.\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -169,5 +169,5 @@
       "description": "the output fixel-fixel connectivity matrix directory path"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelconnectivity.html"
+  "url": "https://www.mrtrix.org/"
 }

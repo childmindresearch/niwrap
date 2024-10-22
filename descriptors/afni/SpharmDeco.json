@@ -1,13 +1,13 @@
 {
-  "tool-version": "2023.6",
+  "tool-version": "24.2.06",
   "name": "SpharmDeco",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Spherical Harmonics Decomposition of a surface's coordinates or data",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SpharmDeco.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "SpharmDeco [<-i_TYPE S>] [<-unit_sph UNIT_SPH_LABEL>] [<-l L>] [<-i_TYPE SD>] [<-data D>] [-bases_prefix BASES] [-prefix PREFIX] [-o_TYPE SDR] [DBG] [s]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

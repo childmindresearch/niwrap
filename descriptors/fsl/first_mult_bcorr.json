@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "first_mult_bcorr",
-  "author": "University of Oxford (Mark Jenkinson)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Part of FSL (ID: 6.0.5:9e026117), first_mult_bcorr converts label images to an output image.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "first_mult_bcorr [INPUT_IMAGE] [CORRECTED_4D_LABELS] [UNCORRECTED_4D_LABELS] [OUTPUT_IMAGE] [VERBOSE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -81,7 +81,10 @@
     {
       "description": "Optional arguments (You may optionally specify one or more of)",
       "id": "optional_params_group",
-      "members": ["verbose_flag", "help_flag"],
+      "members": [
+        "verbose_flag",
+        "help_flag"
+      ],
       "name": "Optional Parameters"
     }
   ],

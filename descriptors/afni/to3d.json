@@ -1,12 +1,12 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "to3d",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Creates 3D datasets for use with AFNI from 2D image files",
   "command-line": "to3d [INPUT_FILES] [TYPE] [STATPAR] [PREFIX] [SESSION] [GEOMPARENT] [ANATPARENT] [NOSAVE_FLAG] [NOWRITEBRIK_FLAG] [VIEW] [TIME_ZT] [TIME_TZ] [TUNITS] [TORG] [XFOV] [YFOV] [ZFOV] [XSLAB] [YSLAB] [ZSLAB] [ZORIGIN] [DATA_TYPE] [GLOB_SCALE] [NOFLOATSCAN_FLAG] [IN1_FLAG] [ORIENT] [SKIP_OUTLIERS_FLAG] [TEXT_OUTLIERS_FLAG] [SAVE_OUTLIERS] [ASSUME_DICOM_MOSAIC_FLAG] [OBLIQUE_ORIGIN_FLAG] [REVERSE_LIST_FLAG] [USE_LAST_ELEM_FLAG] [USE_OLD_MOSAIC_CODE_FLAG] [USHORT2FLOAT_FLAG] [VERBOSE_FLAG] [GAMMA] [NCOLORS] [XTWARNS_FLAG] [QUIT_ON_ERR_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -125,7 +125,11 @@
       "optional": true,
       "id": "view",
       "name": "View Type",
-      "value-choices": ["orig", "acpc", "tlrc"]
+      "value-choices": [
+        "orig",
+        "acpc",
+        "tlrc"
+      ]
     },
     {
       "command-line-flag": "-time:zt",
@@ -155,7 +159,14 @@
       "optional": true,
       "id": "tr_units",
       "name": "TR Units",
-      "value-choices": ["ms", "msec", "s", "sec", "Hz", "Hertz"]
+      "value-choices": [
+        "ms",
+        "msec",
+        "s",
+        "sec",
+        "Hz",
+        "Hertz"
+      ]
     },
     {
       "command-line-flag": "-Torg",
@@ -237,7 +248,12 @@
       "optional": true,
       "id": "data_type",
       "name": "Data Type",
-      "value-choices": ["short", "float", "byte", "complex"]
+      "value-choices": [
+        "short",
+        "float",
+        "byte",
+        "complex"
+      ]
     },
     {
       "command-line-flag": "-gsfac",
@@ -426,5 +442,5 @@
       "name": "Outlier Count File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/to3d.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

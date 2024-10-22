@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@DiceMetric",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes Dice Metric between BASE and each of the DSET volumes",
   "command-line": "@DiceMetric [BASE] [DSET1] [MAX_ROI] [LTFILE] [LTFILE] [-echo] [-save_match] [-save_diff] [-do_not_mask_by_base] [-mask_by_base] [PREFIX] [-ignore_bad] [-keep_tmp]",
   "inputs": [
@@ -126,8 +126,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@DiceMetric.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

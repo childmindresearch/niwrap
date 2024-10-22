@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "halfcosbasis",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for handling half-cosine basis functions in FSL",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "halfcosbasis [HRF_PARAM_FILE] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_ON_FLAG] [LOG_DIR] [NUM_HRF_SAMPLES] [NUM_HRF_BASIS_FUNCS] [NUM_SECS] [TEMP_RES]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -174,7 +174,10 @@
     {
       "description": "Specify compulsory arguments for halfcosbasis",
       "id": "compulsory_group",
-      "members": ["hrf_param_file", "hrf_param_file_hf"],
+      "members": [
+        "hrf_param_file",
+        "hrf_param_file_hf"
+      ],
       "name": "Compulsory Arguments",
       "mutually-exclusive": true
     },

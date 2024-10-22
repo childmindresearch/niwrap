@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "count",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Numbered copies generator with custom format support and random sequence options",
   "command-line": "count [BOT] [TOP] [STEP] [SEED] [SSEED] [COLUMN] [DIGITS] [FORM] [ROOT] [SEP] [SUFFIX] [SCALE] [COMMA] [SKIPNMODM]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -134,5 +134,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/count.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

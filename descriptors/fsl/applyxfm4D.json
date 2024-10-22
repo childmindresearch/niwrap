@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "applyxfm4D",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Applies 4D transformation matrices to 4D volumes",
   "command-line": "applyxfm4D [INPUT_VOLUME] [REF_VOLUME] [OUTPUT_VOLUME] [TRANSFORMATION_MATRIX]",
   "container-image": {
@@ -88,5 +88,6 @@
       "id": "output_file",
       "name": "Output volume file"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

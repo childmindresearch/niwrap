@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "rmz",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Zeros out files before removing them",
   "command-line": "rmz [QUIET_FLAG] [HASH_FLAG] [KEEP_FLAG] [FILENAMES...]",
   "inputs": [
@@ -44,8 +44,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/rmz.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

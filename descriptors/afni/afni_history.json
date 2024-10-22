@@ -1,9 +1,9 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "afni_history",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Show AFNI updates per user, dates, or levels.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_history.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "afni_history [VERB_LEVEL] [CHECK_DATE] [HELP_FLAG] [HIST_FLAG] [LIST_AUTHORS_FLAG] [LIST_TYPES_FLAG] [VERSION_FLAG] [AUTHOR] [LEVEL] [MIN_LEVEL] [PROGRAM] [PAST_ENTRIES] [PAST_DAYS] [PAST_MONTHS] [PAST_YEARS] [TYPE] [HTML_FLAG] [DLINE_FLAG] [REVERSE_FLAG] [SHOW_FIELD] [SHOW_FIELD_NAMES_FLAG]",
   "schema-version": "0.5",
   "inputs": [
@@ -211,7 +211,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

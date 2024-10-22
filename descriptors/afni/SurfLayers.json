@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "SurfLayers",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Compute intermediate equi-distant surfaces between two boundary surfaces.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfLayers.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "SurfLayers [SPEC_DSET] [OUTDIR] [STATES] [HEMI] [N_INTERMED_SURFS] [SURF_A] [SURF_B] [SURF_INTERMED_PREF] [ECHO_FLAG] [NO_CLEAN_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

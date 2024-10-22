@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@GetAfniView",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/GetAfniView.json",
   "description": "A tool to retrieve the AFNI view of a given dataset name",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniView.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@GetAfniView [NAME]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

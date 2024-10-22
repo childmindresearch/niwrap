@@ -1,9 +1,9 @@
 {
   "command-line": "imdump [INPUT_IMAGE]",
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "imdump",
   "description": "Prints out nonzero pixels in an image",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "inputs": [
     {
       "id": "input_image",
@@ -25,8 +25,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imdump.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

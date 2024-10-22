@@ -1,7 +1,7 @@
 {
   "name": "dirmerge",
   "description": "Splice / merge multiple sets of directions in such a way as to maintain near-optimality upon truncation.\n\n\n\nReferences:\n\n",
-  "author": "J-Donald Tournier (jdtournier@gmail.com)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -152,5 +152,5 @@
       "description": "the output directions file, with each row listing the X Y Z gradient directions, the b-value, and an index representing the phase encode direction"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/dirmerge.html"
+  "url": "https://www.mrtrix.org/"
 }

@@ -1,7 +1,7 @@
 {
   "name": "@Install_APMULTI_Demo1_rest",
   "description": "This script fetches the demo data and scripts corresponding to AFNI's Demo #1 for processing multi-echo FMRI data (rest).",
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "command-line": "@Install_APMULTI_Demo1_rest [WGET_FLAG] [CURL_FLAG]",
   "inputs": [
     {
@@ -25,9 +25,9 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "author": "AFNI Team",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_APMULTI_Demo1_rest.html"
+  "author": "AFNI Developers",
+  "url": "https://afni.nimh.nih.gov/"
 }

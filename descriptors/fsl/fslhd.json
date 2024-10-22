@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "fslhd",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/fslhd.json",
   "description": "Display header information from a NIFTI file",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#FSLHD",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslhd [XML_FLAG] [INPUT_FILE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

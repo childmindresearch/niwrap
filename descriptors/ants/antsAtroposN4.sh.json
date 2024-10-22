@@ -1,7 +1,7 @@
 {
   "name": "antsAtroposN4.sh",
   "command-line": "antsAtroposN4.sh [IMAGE_DIMENSION] [INPUT_IMAGE] [MASK_IMAGE] [NUMBER_OF_CLASSES] [OUTPUT_PREFIX] [MAX_N4_ATROPOS_ITERATIONS] [MAX_ATROPOS_ITERATIONS] [SEGMENTATION_PRIORS] [MRF] [DENOISE_ANATOMICAL_IMAGES] [POSTERIOR_FORMULATION] [LABEL_PROPAGATION] [POSTERIOR_LABEL_FOR_N4_WEIGHT_MASK] [IMAGE_FILE_SUFFIX] [KEEP_TEMPORARY_FILES] [USE_RANDOM_SEEDING] [ATROPOS_SEGMENTATION_PRIOR_WEIGHT] [N4_CONVERGENCE] [N4_SHRINK_FACTOR] [N4_BSPLINE_PARAMS] [ATROPOS_SEGMENTATION_ICM] [ATROPOS_SEGMENTATION_USE_EUCLIDEAN_DISTANCE] [TEST_DEBUG_MODE]",
-  "author": "Advanced Normalization Tools (ANTs) Contributors",
+  "author": "ANTs Developers",
   "description": "antsAtroposN4.sh iterates between N4 <-> Atropos to improve segmentation results.",
   "tool-version": "2.5.3",
   "schema-version": "0.5",
@@ -18,7 +18,10 @@
       "description": "2 or 3, for 2- or 3-dimensional image.",
       "type": "Number",
       "integer": true,
-      "value-choices": [2, 3],
+      "value-choices": [
+        2,
+        3
+      ],
       "optional": false
     },
     {
@@ -129,7 +132,10 @@
       "description": "Denoise anatomical images (1) or not (0) (default = 1).",
       "type": "Number",
       "integer": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "optional": true
     },
     {
@@ -140,7 +146,10 @@
       "description": "Posterior formulation and whether or not to use mixture model proportions. e.g 'Socrates[ 1 ]' (default) or 'Aristotle[ 1 ]'.  Choose the latter if you want to use the distance priors, see also the -l option for label propagation control (default = 'Socrates[ 1 ]').",
       "type": "String",
       "optional": true,
-      "value-choices": ["Socrates[ 1 ]", "Aristotle[ 1 ]"]
+      "value-choices": [
+        "Socrates[ 1 ]",
+        "Aristotle[ 1 ]"
+      ]
     },
     {
       "id": "label_propagation",
@@ -177,7 +186,10 @@
       "description": "Keep temporary files on disk (1) or delete them (0) (default = 0).",
       "type": "Number",
       "integer": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "optional": true
     },
     {
@@ -188,7 +200,10 @@
       "description": "Use random number generated from system clock in Atropos (default = 1).",
       "type": "Number",
       "integer": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "optional": true
     },
     {
@@ -245,7 +260,10 @@
       "description": "Use euclidean distances in distance prior formulation (1) or not (0), see Atropos usage for details (default = 1).",
       "type": "Number",
       "integer": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "optional": true
     },
     {
@@ -281,5 +299,6 @@
       "path-template": "[OUTPUT_PREFIX]SegmentationPosteriors.[OUTPUT_SUFFIX]",
       "optional": false
     }
-  ]
+  ],
+  "url": "https://github.com/ANTsX/ANTs"
 }

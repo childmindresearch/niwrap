@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "FSread_annot",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Reads a FreeSurfer annotation file and outputs an equivalent ROI file and/or a colormap file for use with SUMA.",
   "command-line": "FSread_annot --input [INPUT_FILE] [HEMI] [FSCMAP] [FSCMAP_RANGE] [FSVERSION] [COL_1D] [ROI_1D] [CMAP_1D] [SHOW_FSCMAP] [DSET] [HELP]",
   "schema-version": "0.5",
@@ -139,8 +139,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/FSread_annot.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

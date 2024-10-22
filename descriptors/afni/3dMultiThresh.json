@@ -1,12 +1,12 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "3dMultiThresh",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Program to apply a multi-threshold (mthresh) dataset to an input dataset.",
   "command-line": "3dMultiThresh [MTHRESH_FILE] [INPUT_FILE] [INDEX] [SIGNED_FLAG] [POSITIVE_SIGN_FLAG] [NEGATIVE_SIGN_FLAG] [PREFIX] [MASK_ONLY_FLAG] [ALL_MASK] [NO_ZERO_FLAG] [QUIET_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -133,5 +133,5 @@
       "name": "All Mask Output File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMultiThresh.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

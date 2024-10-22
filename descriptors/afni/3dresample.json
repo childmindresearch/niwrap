@@ -1,9 +1,9 @@
 {
   "name": "3dresample",
   "command-line": "3dresample [IN_FILE] [MASTER] [ORIENTATION] [OUT_FILE] [OUTPUTTYPE] [RESAMPLE_MODE] [VOXEL_SIZE]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Resample or reorient an image using AFNI 3dresample command",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dresample.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "in_file",
@@ -97,7 +97,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "resample_mode",
@@ -107,7 +111,12 @@
       "command-line-flag": "-rmode",
       "description": "'nn' or 'li' or 'cu' or 'bk'. Resampling method from set {\"nn\", \"li\", \"cu\", \"bk\"}. these are for \"nearest neighbor\", \"linear\", \"cubic\" and \"blocky\"interpolation, respectively. default is nn.",
       "optional": true,
-      "value-choices": ["NN", "Li", "Cu", "Bk"]
+      "value-choices": [
+        "NN",
+        "Li",
+        "Cu",
+        "Bk"
+      ]
     },
     {
       "id": "voxel_size",
@@ -131,11 +140,11 @@
       "path-template": "[OUT_FILE]"
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

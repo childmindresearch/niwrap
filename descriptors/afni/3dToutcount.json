@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dToutcount",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Calculates the number of 'outliers' in a 3D+time dataset at each time point.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dToutcount.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dToutcount [INPUT_DATASET] [OUTPUT_PREFIX] [MASK_DATASET] [Q_THRESHOLD] [AUTOCLIP] [AUTOMASK] [FRACTION] [RANGE] [POLORT_ORDER] [LEGENDRE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

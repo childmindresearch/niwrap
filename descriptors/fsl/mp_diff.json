@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "mp_diff",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Generates a file with specific motion parameter calculations useful for accounting for 'spin history' effects and other variations not accounted for by motion correction.",
   "command-line": "mp_diff [REG_FILE] [DIFF_REG_FILE]",
   "container-image": {
@@ -35,5 +35,6 @@
       "id": "outfile",
       "name": "Output file"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

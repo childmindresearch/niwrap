@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "niml_feedme",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Sends volumes from the dataset to AFNI via the NIML socket interface.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/niml_feedme.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "niml_feedme [HOST] [INTERVAL] [VERBOSE_FLAG] [ACCUM_FLAG] [TARGET_DATASET] [DRIVE_CMDS] [DATASET]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

@@ -1,7 +1,7 @@
 {
   "name": "ANTSJacobian",
   "command-line": "ANTSJacobian [IMAGEDIM] [GWARP] [OUTFILE] [USELOG] [MASKFN] [NORMBYTOTALBOOL] [PROJECTIONVECTOR]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "Calculate the Jacobian determinant of a transformation using ANTs. WARNING: ANTSJacobian may not be working correctly; see CreateJacobianDeterminantImage for an alternative method.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",

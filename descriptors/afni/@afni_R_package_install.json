@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@afni_R_package_install",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Helper script to install R packages for various afni-ish purposes.",
   "command-line": "@afni_R_package_install [AFNI_FLAG] [SHINY_FLAG] [BAYES_VIEW_FLAG] [CIRCOS_FLAG] [CUSTOM_PACKAGES] [MIRROR] [HELP_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -83,5 +83,5 @@
       "name": "Installation Log"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_R_package_install.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

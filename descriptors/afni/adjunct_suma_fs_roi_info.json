@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "adjunct_suma_fs_roi_info",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Script for making ROI stats for the SUMA/ directory created by @SUMA_Make_Spec_FS after running FreeSurfer's recon-all.",
   "command-line": "adjunct_suma_fs_roi_info [SUBJ_ID] [SUMA_DIR] [HELP_FLAG] [HVIEW_FLAG] [VERSION_FLAG]",
   "inputs": [
@@ -83,8 +83,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_suma_fs_roi_info.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "mist_FA_reg",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for registering FA volumes to a reference T1 volume",
   "command-line": "mist_FA_reg [FA_VOLUME] [S0_VOLUME] [REFERENCE_T1_VOLUME] [OUTPUT_FILENAME]",
   "container-image": {
@@ -51,5 +51,6 @@
       "id": "output_file",
       "name": "Output file"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

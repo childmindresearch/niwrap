@@ -1,9 +1,9 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dErrtsCormat",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes the correlation matrix corresponding to the residual (or error) time series in 'dset'.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dErrtsCormat.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dErrtsCormat [DSET] [CONCAT] [INPUT] [MASK] [MAXLAG] [POLORT]",
   "inputs": [
     {
@@ -71,7 +71,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

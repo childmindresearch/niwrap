@@ -1,12 +1,12 @@
 {
   "name": "3dTsort",
-  "tool-version": "Unknown",
+  "tool-version": "24.2.06",
   "description": "Sorts each voxel in a dataset and produces a new dataset.",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "command-line": "3dTsort [INPUT_FILE] [PREFIX] [DIRECTION_FLAG] [RANK_FLAG] [INDEX_FLAG] [VALUE_FLAG] [RANDOM_FLAG] [RANFFT_FLAG] [RANDDFT_FLAG] [DATUM_TYPE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -118,5 +118,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTsort.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

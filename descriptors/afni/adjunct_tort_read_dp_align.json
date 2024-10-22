@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "adjunct_tort_read_dp_align",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Extract the 3 translation (in mm) and 3 rotation (in deg) parameters estimated by TORTOISE's DIFF_PREP tool during DWI processing.",
   "command-line": "adjunct_tort_read_mot_transforms.py [INPUT_FILE] [OUTPUT_FILE]",
   "inputs": [
@@ -33,8 +33,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_tort_read_dp_align.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

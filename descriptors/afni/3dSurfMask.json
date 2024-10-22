@@ -1,9 +1,9 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "3dSurfMask",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Creates volumetric datasets marking voxels based on their location relative to a surface",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSurfMask.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dSurfMask [SURFACE_TYPE] [SURFACE_FILE] [PREFIX] [GRID_PARENT] [FILL_METHOD] [SURFACE_VOLUME] [MASK_ONLY] [FLIP_ORIENTATION] [NO_DISTANCE]",
   "inputs": [
     {
@@ -102,7 +102,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

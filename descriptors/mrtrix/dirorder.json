@@ -1,7 +1,7 @@
 {
   "name": "dirorder",
   "description": "Reorder a set of directions to ensure near-uniformity upon truncation.\n\nThe intent of this command is to reorder a set of gradient directions such that if a scan is terminated prematurely, at any point, the acquired directions will still be close to optimally distributed on the half-sphere.\n\nReferences:\n\n",
-  "author": "J-Donald Tournier (jdtournier@gmail.com)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -141,5 +141,5 @@
       "description": "the output directions file"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/dirorder.html"
+  "url": "https://www.mrtrix.org/"
 }

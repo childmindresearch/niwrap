@@ -12,7 +12,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [2, 3],
+      "value-choices": [
+        2,
+        3
+      ],
       "command-line-flag": "--dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, antsWarp tries to infer the dimensionality from the input image."
     },
@@ -52,7 +55,7 @@
       "path-template": "[OUTPUT]"
     }
   ],
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "url": "https://github.com/ANTsX/ANTs",
   "container-image": {
     "type": "docker",

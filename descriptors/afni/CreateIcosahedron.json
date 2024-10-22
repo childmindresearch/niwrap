@@ -1,7 +1,7 @@
 {
-  "tool-version": "v1.0.0",
+  "tool-version": "24.2.06",
   "name": "CreateIcosahedron",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Tool to create an icosahedron with optional tessellation.",
   "command-line": "CreateIcosahedron [RAD] [RECURSIVE_DEPTH] [LINEAR_DEPTH] [MIN_NODES] [NUMS_FLAG] [NUMS_QUIET_FLAG] [CTR] [TOSPHERE_FLAG] [OUTPUT_PREFIX] [HELP_FLAG]",
   "inputs": [
@@ -101,8 +101,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/CreateIcosahedron.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

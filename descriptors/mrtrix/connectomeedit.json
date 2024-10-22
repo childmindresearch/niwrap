@@ -1,7 +1,7 @@
 {
   "name": "connectomeedit",
   "description": "Perform basic operations on a connectome.\n\n\n\nReferences:\n\n",
-  "author": "Matteo Frigo (matteo.frigo@inria.fr)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -133,5 +133,5 @@
     }
   ],
   "output-files": [],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/connectomeedit.html"
+  "url": "https://www.mrtrix.org/"
 }

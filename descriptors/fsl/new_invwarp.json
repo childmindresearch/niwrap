@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "new_invwarp",
-  "author": "University of Oxford (Jesper Andersson)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Inverse warp tool from FSL suite",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "invwarp -w [WARP_VOL] -o [OUT_VOL] -r [REF_VOL] [REL_FLAG] [ABS_FLAG] [NOCONSTRAINT_FLAG] [JMIN] [JMAX] [DEBUG_FLAG] [VERBOSE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

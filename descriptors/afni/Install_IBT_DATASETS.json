@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "Install_IBT_DATASETS",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://example.com/descriptors/afni_install_ibt_datasets.json",
   "description": "Installs the demo archive for AFNI's macaque-analysis demo.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_IBT_DATASETS.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "Install_IBT_DATASETS [WGET_FLAG] [CURL_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

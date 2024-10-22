@@ -3,7 +3,7 @@
   "description": "* At each voxel, assembles and solves a set of linear equations.\n ++ The matrix at each voxel may be the same or may be different.\n ++ This flexibility (for voxel-wise regressors) is one feature\n    that makes 3dTfitter different from 3dDeconvolve.\n ++ Another distinguishing feature is that 3dTfitter allows for\n    L2, L1, and L2+L1 (LASSO) regression solvers, and allows you\n    to impose sign constraints on the solution parameters.",
   "schema-version": "0.5",
   "name": "3dTfitter",
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "inputs": [
     {
       "id": "RHS",
@@ -176,8 +176,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "output-files": [
     {
@@ -202,6 +202,6 @@
       "optional": true
     }
   ],
-  "author": "AFNI Team",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTfitter.html"
+  "author": "AFNI Developers",
+  "url": "https://afni.nimh.nih.gov/"
 }

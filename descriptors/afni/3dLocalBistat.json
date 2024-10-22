@@ -1,12 +1,12 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dLocalBistat",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Compute statistics between 2 datasets at each voxel based on a local neighborhood.",
   "command-line": "3dLocalBistat [NBHD] [STATS] [MASK_FLAG] [AUTOMASK_FLAG] [WEIGHT] [PREFIX] [HISTPOW] [HISTBIN] [HCLIP1] [HCLIP2] [DATASET1] [DATASET2]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -140,5 +140,5 @@
       "name": "Output BRIK"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLocalBistat.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

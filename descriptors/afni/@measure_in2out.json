@@ -1,14 +1,14 @@
 {
-  "tool-version": "unknown",
+  "tool-version": "24.2.06",
   "name": "@measure_in2out",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "unknown",
   "description": "Compute thickness of mask using in2out method.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@measure_in2out.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@measure_in2out -maskset [MASKSET] -surfset [SURFSET] -outdir [OUTDIR] [RESAMPLE] [INCREMENT] [SURFSMOOTH] [MAXTHICK] [DEPTHSEARCH] [MASKINOUTVALS] [KEEP_TEMP_FILES] [SURFSMOOTH_METHOD] [FS_CORT_DIR]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "metadata-string-replace",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -metadata-string-replace [INPUT_FILE] [FIND_STRING] [REPLACE_STRING] [OUTPUT_FILE] [OPT_CASE_INSENSITIVE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Replace a string in all metadata of a file.\n\nReplaces all occurrences of <find-string> in the metadata and map names of <input-file> with <replace-string>.",
   "schema-version": "0.5",
@@ -52,5 +52,6 @@
       "optional": true,
       "value-key": "[OPT_CASE_INSENSITIVE]"
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

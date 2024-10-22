@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "surface-smoothing",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -surface-smoothing [SURFACE_IN] [SMOOTHING_STRENGTH] [SMOOTHING_ITERATIONS] [SURFACE_OUT]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Surface smoothing.\n\nSmooths a surface by averaging vertex coordinates with those of the neighboring vertices.",
   "schema-version": "0.5",
@@ -54,5 +54,6 @@
       "description": "output surface file",
       "optional": false
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

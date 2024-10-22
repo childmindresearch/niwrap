@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@GetAfniPrefix",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A tool to extract AFNI prefix from a given file path",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniPrefix.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@GetAfniPrefix [NAME] [SUFFIX]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

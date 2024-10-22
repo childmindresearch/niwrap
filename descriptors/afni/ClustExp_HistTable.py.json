@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "ClustExp_HistTable.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Script to extract the data table from history of datasets from 3dttest++, 3dMVM, or 3dLME.",
   "command-line": "ClustExp_HistTable.py [STATDSET] [PREFIX] [SESSION] [OVERWRITE]",
   "inputs": [
@@ -53,8 +53,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ClustExp_HistTable.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

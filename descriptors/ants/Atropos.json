@@ -1,7 +1,7 @@
 {
   "name": "Atropos",
   "command-line": "Atropos [IMAGE_DIMENSIONALITY] [INTENSITY_IMAGE] [BSPLINE] [INITIALIZATION] [PARTIAL_VOLUME_LABEL_SET] [USE_PARTIAL_VOLUME_LIKELIHOODS] [POSTERIOR_FORMULATION] [MASK_IMAGE] [CONVERGENCE] [LIKELIHOOD_MODEL] [MRF] [ICM] [USE_RANDOM_SEED] [OUTPUT] [MINIMIZE_MEMORY_USAGE] [WINSORIZE_OUTLIERS] [USE_EUCLIDEAN_DISTANCE] [LABEL_PROPAGATION] [VERBOSE]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "Atropos is a finite mixture modeling (FMM) segmentation approach that allows for prior constraints including a prior label image, prior probability images, and/or an MRF prior to enforce spatial smoothing of the labels.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -18,7 +18,11 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [2, 3, 4],
+      "value-choices": [
+        2,
+        3,
+        4
+      ],
       "command-line-flag": "--image-dimensionality",
       "description": "This option forces the image to be treated as a specified-dimensional image. If not specified, Atropos tries to infer the dimensionality from the first input image."
     },
@@ -65,7 +69,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "--use-partial-volume-likelihoods",
       "description": "Whether to use partial volume likelihoods. A value of 1 considers the partial volume class separate from tissue classes."
     },
@@ -130,7 +137,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "-r",
       "description": "Initialize with a random seed or a constant seed number."
     },
@@ -150,7 +160,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "-u",
       "description": "Minimize memory usage by calculating images on the fly and storing only non-negligible pixel values."
     },
@@ -170,7 +183,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "-e",
       "description": "Propagate labels throughout the mask using a distance transform."
     },
@@ -190,7 +206,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "-v",
       "description": "Verbose output."
     }

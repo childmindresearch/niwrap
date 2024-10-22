@@ -1,14 +1,14 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dNwarpCat",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpCat.html",
   "description": "Catenates (composes) 3D warps defined on a grid or via a matrix.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNwarpCat.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dNwarpCat [INTERPOLATION] [VERBOSITY] -prefix [OUTPUT_PREFIX] [SPACE_MARKER] -warp1 [WARP1] -warp2 [WARP2] [WARP_FILES] [INVERT_FINAL_WARP] [EXTRA_PADDING]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

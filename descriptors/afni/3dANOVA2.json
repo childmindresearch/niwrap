@@ -1,14 +1,14 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dANOVA2",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dANOVA2.html",
   "description": "This program performs a two-factor Analysis of Variance (ANOVA) on 3D datasets.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dANOVA2.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dANOVA2 [TYPE] [ALEVELS] [BLEVELS] [DSET] [VOXEL_NUM] [DISKSPACE_FLAG] [MASK] [FTR_PREFIX] [FA_PREFIX] [FB_PREFIX] [FAB_PREFIX] [AMEAN_PREFIX] [BMEAN_PREFIX] [XMEAN_PREFIX] [ADIFF_PREFIX] [BDIFF_PREFIX] [XDIFF_PREFIX] [ACONTR_PREFIX] [BCONTR_PREFIX] [XCONTR_PREFIX] [BUCKET_PREFIX] [OLD_METHOD_FLAG] [OK_FLAG] [ASSUME_SPH_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

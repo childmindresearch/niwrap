@@ -1,12 +1,12 @@
 {
   "name": "quickspecSL",
-  "tool-version": "1.0",
-  "author": "AFNI Team",
+  "tool-version": "24.2.06",
+  "author": "AFNI Developers",
   "description": "This program makes a *.spec file after a set of intermediate surfaces have been generated with SurfLayers. It can also make a *.spec file that relates inflated surfaces to anatomically-correct surfaces.",
   "command-line": "quickspecSL -surf_A [surf_A] -surf_B [surf_B] -surf_intermed_pref [surf_intermed_pref] -infl_surf_A [infl_surf_A] -infl_surf_B [infl_surf_B] -infl_surf_intermed_pref [infl_surf_intermed_pref] -both_lr [both_lr_flag] -out_spec [out_spec]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -90,5 +90,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/quickspecSL.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

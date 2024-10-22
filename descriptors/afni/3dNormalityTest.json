@@ -1,9 +1,9 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dNormalityTest",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "This program tests the input values at each voxel for normality using the Anderson-Darling method.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dNormalityTest.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dNormalityTest [INPUT] -prefix [PREFIX] [NOEXP] [PVAL]",
   "schema-version": "0.5",
   "inputs": [
@@ -53,7 +53,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

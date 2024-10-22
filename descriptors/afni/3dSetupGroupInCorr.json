@@ -1,12 +1,12 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dSetupGroupInCorr",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Pre-process a collection of AFNI 3D+time datasets for use with Group InstaCorr.",
   "command-line": "3dSetupGroupInCorr [DATASETS] [MASK_DATASET] [PREFIX] [SHORT_FLAG] [BYTE_FLAG] [LABELS_FILE] [DELETE_FLAG] [PREP_METHOD] [LR_PAIRS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -110,5 +110,5 @@
       "name": "Data file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSetupGroupInCorr.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

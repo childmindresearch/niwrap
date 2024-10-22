@@ -73,7 +73,7 @@
     }
   ],
   "tool-version": "2.5.3",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "url": "https://github.com/ANTsX/ANTs",
   "container-image": {
     "type": "docker",

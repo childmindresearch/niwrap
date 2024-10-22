@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "myget",
   "description": "A simple file downloader from a URL",
   "command-line": "myget [PROTOCOL_VERSION] [URL]",
@@ -10,7 +10,10 @@
       "description": "Specify protocol version. You can choose between -1 or -1.1",
       "type": "String",
       "command-line-flag": "",
-      "value-choices": ["-1", "-1.1"],
+      "value-choices": [
+        "-1",
+        "-1.1"
+      ],
       "optional": true,
       "value-key": "[PROTOCOL_VERSION]"
     },
@@ -35,9 +38,9 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "author": "AFNI Team",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/myget.html"
+  "author": "AFNI Developers",
+  "url": "https://afni.nimh.nih.gov/"
 }

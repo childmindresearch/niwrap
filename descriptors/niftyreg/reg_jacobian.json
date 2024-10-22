@@ -1,7 +1,7 @@
 {
   "name": "reg_jacobian",
-  "tool-version": "1.0",
-  "author": "Marc Modat",
+  "tool-version": "1.4.0",
+  "author": "NiftyReg Developers",
   "description": "Tool to compute the Jacobian determinant map from a deformation field or control point lattice.",
   "url": "http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg",
   "command-line": "reg_jacobian -ref [REFERENCE_IMAGE] [INPUT_TYPE] [OUTPUT_OPTIONS] [EXTRA_OPTIONS]",
@@ -93,5 +93,9 @@
       "description": "File containing the log of the Jacobian determinant map",
       "optional": true
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "vnmd/niftyreg_1.4.0:20220819"
+  }
 }

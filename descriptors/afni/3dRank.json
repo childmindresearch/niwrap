@@ -1,13 +1,13 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dRank",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Replaces voxel values by their rank in the set of values collected over all voxels in all input datasets.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRank.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dRank [DATASETS] [PREFIX] [VERSION_FLAG] [HELP_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

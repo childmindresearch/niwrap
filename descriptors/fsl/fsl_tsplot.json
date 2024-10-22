@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_tsplot",
-  "author": "University of Oxford (Christian F. Beckmann)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Timeseries plotting tool from FSL",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_tsplot [INPUT_FILES] [OUTPUT_FILE] [TITLE] [LEGEND_FILE] [LABELS] [YMIN] [YMAX] [XLABEL] [YLABEL] [HEIGHT] [WIDTH] [UNIT] [PRECISION] [SCI_FLAG] [START_COL] [END_COL]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

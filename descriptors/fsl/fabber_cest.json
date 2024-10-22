@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fabber_cest",
-  "author": "FMRIB Centre, University of Oxford",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Fabber Model-based Analysis",
-  "url": "https://fabber.gitlab.io",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fabber [--<option> | --<option>=<value> ...]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -320,7 +320,11 @@
     {
       "description": "Options to evaluate models",
       "id": "evaluation_options_group",
-      "members": ["evaluate", "evaluate_params", "evaluate_nt"],
+      "members": [
+        "evaluate",
+        "evaluate_params",
+        "evaluate_nt"
+      ],
       "name": "Evaluation Options"
     },
     {
@@ -359,7 +363,10 @@
     {
       "description": "Miscellaneous options for advanced usage",
       "id": "miscellaneous_options_group",
-      "members": ["optfile", "debug"],
+      "members": [
+        "optfile",
+        "debug"
+      ],
       "name": "Miscellaneous Options"
     }
   ],

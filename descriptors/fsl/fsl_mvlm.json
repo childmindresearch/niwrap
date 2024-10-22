@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_mvlm",
-  "author": "Christian F. Beckmann",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
   "description": "Multivariate Linear Model regression on time courses and/or 3D/4D images using SVD (PCA), PLS, normalised PLS, CVA, SVD-CVA or MLM",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_mvlm -i [INPUT_FILE] -o [BASENAME_OUTPUT_FILES] [ALGORITHM] [DESIGN_MATRIX] [MASK_IMAGE] [DESIGN_NORMALIZATION] [VN_PERFORM] [DEMEAN] [NMF_DIM] [NMF_ITT] [VERBOSE] [OUT_DATA] [OUT_VNSCALES]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -132,7 +132,10 @@
     {
       "description": "Compulsory arguments group",
       "id": "compulsory_arguments_group",
-      "members": ["input_file", "basename_output_files"],
+      "members": [
+        "input_file",
+        "basename_output_files"
+      ],
       "name": "Compulsory arguments"
     },
     {

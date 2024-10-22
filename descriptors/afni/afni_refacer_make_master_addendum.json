@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "afni_refacer_make_master_addendum",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Adjunct program for AFNI refacer, takes no command line arguments.",
   "command-line": "afni_refacer_make_master_addendum [HELP_FLAG] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -29,5 +29,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni_refacer_make_master_addendum.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

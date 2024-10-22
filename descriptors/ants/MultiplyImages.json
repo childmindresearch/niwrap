@@ -1,7 +1,7 @@
 {
   "name": "MultiplyImages",
   "command-line": "MultiplyImages [DIMENSION] [FIRST_INPUT] [SECOND_INPUT] [OUTPUT_PRODUCT_IMAGE] [NUM_THREADS]",
-  "author": "Advanced Normalization Tools (ANTs) Contributors",
+  "author": "ANTs Developers",
   "description": "Multiply 2 images; 2nd image file may also be floating point numerical value, and program will act accordingly -- i.e. read as a number. Program handles vector and tensor images as well",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -19,7 +19,10 @@
       "description": "3 or 2. Image dimension (2 or 3).",
       "optional": false,
       "integer": true,
-      "value-choices": [3, 2]
+      "value-choices": [
+        3,
+        2
+      ]
     },
     {
       "id": "first_input",
@@ -77,7 +80,10 @@
     {
       "id": "second_input_group",
       "name": "Second input group",
-      "members": ["second_input", "second_input_2"],
+      "members": [
+        "second_input",
+        "second_input_2"
+      ],
       "mutually-exclusive": true
     }
   ]

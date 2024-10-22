@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "feat",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "fMRI Expert Analysis Tool",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "feat [DESIGN_FSF]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

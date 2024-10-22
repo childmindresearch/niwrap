@@ -1,9 +1,9 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "gifti_tool",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Tool for creating, displaying, modifying, or comparing GIFTI datasets.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/gifti_tool.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "gifti_tool [INFILE] [NEW_NUMDA] [NEW_DTYPE] [NEW_INTENT] [NEW_NDIM] [NEW_DIMS] [WRITE_GIFTI] [SET_EXTERN_FILELIST] [MOD_ADD_DATA] [VERB] [SHOW_GIFTI] [READ_DAS] [MOD_GIM_ATR] [MOD_GIM_META] [MOD_DA_ATR] [MOD_DA_META] [MOD_DAS] [NEW_DSET] [COMPARE_GIFTI] [COMPARE_DATA] [COMPARE_VERB] [APPROX_GIFTI]",
   "inputs": [
     {
@@ -224,7 +224,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.11",
+  "tool-version": "24.2.06",
   "name": "SurfMeasures",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Compute measures from surface dataset(s)",
   "command-line": "SurfMeasures [SPEC_FILE] [SURF_A] [SURF_B] [OUT_1D] [OUT_DSET] [FUNC] [SURF_VOLUME] [CMASK] [DEBUG] [DNODE] [NODES_1D] [INFO_ALL] [INFO_AREA] [INFO_NORMS] [INFO_THICK] [INFO_VOL] [INFO_VOLG] [VER]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -193,5 +193,5 @@
       "name": "Output Dataset File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfMeasures.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

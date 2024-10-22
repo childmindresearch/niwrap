@@ -1,7 +1,7 @@
 {
   "name": "5tt2vis",
   "description": "Generate an image for visualisation purposes from an ACT 5TT segmented anatomical image.\n\n\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -192,5 +192,5 @@
       "description": "the output 3D image for visualisation"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/5tt2vis.html"
+  "url": "https://www.mrtrix.org/"
 }

@@ -1,7 +1,7 @@
 {
   "name": "antsMotionCorrStats",
   "command-line": "antsMotionCorrStats [MASK] [MOCO_PARAMS] [OUTPUT] [TRANSFORM_INDEX] [FRAMEWISE] [SPATIAL_MAP] [TIMESERIES_DISPLACEMENT]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "Create summary measures of the parameters that are output by antsMotionCorr. Currently only works for linear transforms. Outputs the mean and max displacements for the voxels within a provided mask, at each time point. By default the displacements are relative to the reference space, but the framewise option may be used to provide displacements between consecutive time points.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -55,7 +55,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "-f",
       "description": "Do framewise summary stats."
     },
@@ -84,7 +87,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "--help",
       "description": "Print the help menu. Short version with -h."
     }

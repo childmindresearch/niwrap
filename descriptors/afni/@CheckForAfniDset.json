@@ -1,12 +1,12 @@
 {
   "name": "@CheckForAfniDset",
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "description": "Check for the existence of AFNI datasets.",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "command-line": "@CheckForAfniDset [NAME]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -28,5 +28,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@CheckForAfniDset.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

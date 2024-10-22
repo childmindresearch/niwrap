@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@djunct_montage_coordinator",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Small program to calculate how to evenly space a certain number of slices within each view plane of a dataset.",
   "command-line": "@djunct_montage_coordinator [INPUT_FILE] [MONTX] [MONTY] [OUT_COORDS] [HELP_FLAG] [VERSION_FLAG]",
   "inputs": [
@@ -80,8 +80,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_montage_coordinator.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

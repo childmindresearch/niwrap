@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "adjunct_glue_imgs_vert",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "This script helps in gluing two images together vertically.",
   "command-line": "adjunct_glue_imgs_vert [VIEWER_FLAG] [HELP_FLAG] [VERSION_FLAG] [BOTTOM_IMAGE] [TOP_IMAGE] [OUTPUT_FILE]",
   "inputs": [
@@ -71,8 +71,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_glue_imgs_vert.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

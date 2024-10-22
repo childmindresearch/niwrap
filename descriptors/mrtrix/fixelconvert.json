@@ -1,7 +1,7 @@
 {
   "name": "fixelconvert",
   "description": "Convert between the old format fixel image (.msf / .msh) and the new fixel directory format.\n\n\n\nReferences:\n\n",
-  "author": "David Raffelt (david.raffelt@florey.edu.au) and Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -237,5 +237,5 @@
     }
   ],
   "output-files": [],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelconvert.html"
+  "url": "https://www.mrtrix.org/"
 }

@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "nifti-information",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -nifti-information [NIFTI_FILE] [OPT_PRINT_HEADER] [OPT_ALLOW_TRUNCATED] [OPT_PRINT_MATRIX] [OPT_PRINT_XML] [OPT_VERSION_VERSION]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Display information about a nifti/cifti file.\n\nYou must specify at least one -print-* option.",
   "schema-version": "0.5",
@@ -64,5 +64,6 @@
       "value-key": "[OPT_VERSION_VERSION]",
       "type": "String"
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

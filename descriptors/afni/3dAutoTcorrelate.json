@@ -1,12 +1,12 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dAutoTcorrelate",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes the correlation coefficient between the time series of each pair of voxels in the input dataset",
   "command-line": "3dAutoTcorrelate [INPUT_DATASET] [PEARSON] [ETA2] [POLORT] [AUTOCLIP] [AUTOMASK] [MASK] [MASK_ONLY_TARGETS] [MASK_SOURCE] [PREFIX] [OUT1D] [TIME] [MMAP]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -151,5 +151,5 @@
       "name": "Output 1D File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutoTcorrelate.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

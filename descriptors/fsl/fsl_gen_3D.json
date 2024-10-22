@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_gen_3D",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to generate a 3D snapshot of a structural image",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_gen_3D [INPUT_FILE] [OUTPUT_FILE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

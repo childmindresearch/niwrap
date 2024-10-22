@@ -1,12 +1,12 @@
 {
-  "tool-version": "0.1",
+  "tool-version": "24.2.06",
   "name": "3dCompareAffine",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Compares two (or more) affine spatial transformations on a dataset and outputs measurements of their differences in spatial displacements.",
   "command-line": "3dCompareAffine [MASK] [DSET] [AFFINE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -48,5 +48,5 @@
       "name": "Output Comparison File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCompareAffine.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

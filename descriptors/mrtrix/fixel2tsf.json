@@ -1,7 +1,7 @@
 {
   "name": "fixel2tsf",
   "description": "Map fixel values to a track scalar file based on an input tractogram.\n\nThis command is useful for visualising all brain fixels (e.g. the output from fixelcfestats) in 3D.\n\nReferences:\n\n",
-  "author": "David Raffelt (david.raffelt@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -150,5 +150,5 @@
       "description": "the output track scalar file"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/fixel2tsf.html"
+  "url": "https://www.mrtrix.org/"
 }

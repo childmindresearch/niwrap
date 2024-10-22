@@ -1,9 +1,9 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "3dDWItoDT",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes 6 principal direction tensors from multiple gradient vectors and corresponding DTI image volumes.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dDWItoDT.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dDWItoDT [OPTIONS] [GRADIENT_FILE] [DATASET]",
   "inputs": [
     {
@@ -249,8 +249,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "output-files": [
     {

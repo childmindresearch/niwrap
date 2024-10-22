@@ -1,7 +1,7 @@
 {
   "name": "mrsi_segment",
   "tool-version": "6.0.5",
-  "author": "FSL Team",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL Magnetic Resonance Spectroscopy - register fast segmentation to MRSI.",
   "command-line": "mrsi_segment [MRSI] [--t1] [--anat] [--output] [--filename]",
   "container-image": {
@@ -63,5 +63,6 @@
       "description": "Output file name",
       "optional": true
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

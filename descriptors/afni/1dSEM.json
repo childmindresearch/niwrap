@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "1dSEM",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/sscc/gangc/PathAna.html",
   "description": "Computes path coefficients for connection matrix in Structural Equation Modeling (SEM).",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dSEM.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "1dSEM -theta [THETA_FILE] -C [CORRELATION_MATRIX] -psi [RESIDUAL_VARIANCE] -DF [DEGREES_OF_FREEDOM] [OPTIONS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

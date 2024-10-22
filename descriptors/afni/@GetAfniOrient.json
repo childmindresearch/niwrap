@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@GetAfniOrient",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/",
   "description": "Returns the orient code of AFNI datasets",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@GetAfniOrient.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@GetAfniOrient [EXPLORATORY_FLAG] [INPUT_FILE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

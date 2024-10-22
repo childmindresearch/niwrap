@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "first_roi_slicesdir",
-  "author": "FMRIB Centre, Oxford University",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A utility for generating slice directories for FIRST-ROI.",
   "command-line": "first_roi_slicesdir [INPUT_T1_IMAGES] [INPUT_LABEL_IMAGES]",
   "container-image": {
@@ -42,5 +42,6 @@
       "id": "label_slicesdir",
       "name": "Label slices directory"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

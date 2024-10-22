@@ -1,9 +1,9 @@
 {
   "name": "antsRegistrationSyN.sh",
   "command-line": "antsRegistrationSyN.sh [IMAGE_DIMENSION] [FIXED_IMAGE] [MOVING_IMAGE] [OUTPUT_PREFIX] [THREADS] [[INITIAL_TRANSFORM]] [TRANSFORM_TYPE] [RADIUS] [SPLINE_DISTANCE] [GRADIENT_STEP] [MASKS] [PRECISION_TYPE] [USE_HISTOGRAM_MATCHING] [USE_REPRO_MODE] [COLLAPSE_OUTPUT_TRANSFORMS] [RANDOM_SEED]",
-  "author": "Brian B. Avants, Nick Tustison, and Gang Song",
+  "author": "ANTs Developers",
   "description": "Script for simplified symmetric image registration using ANTs.",
-  "url": "https://github.com/ANTsX/ANTs/",
+  "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
   "schema-version": "0.5",
   "container-image": {
@@ -18,7 +18,10 @@
       "type": "Number",
       "integer": true,
       "optional": false,
-      "value-choices": [2, 3],
+      "value-choices": [
+        2,
+        3
+      ],
       "command-line-flag": "-d",
       "description": "Image dimension: 2 or 3 (for 2 or 3-dimensional registration of a single volume)"
     },
@@ -76,7 +79,17 @@
       "value-key": "[TRANSFORM_TYPE]",
       "type": "String",
       "optional": true,
-      "value-choices": ["t", "r", "a", "s", "sr", "so", "b", "br", "bo"],
+      "value-choices": [
+        "t",
+        "r",
+        "a",
+        "s",
+        "sr",
+        "so",
+        "b",
+        "br",
+        "bo"
+      ],
       "command-line-flag": "-t",
       "description": "Transform type (default = 's'). Options:\n - t: translation (1 stage)\n - r: rigid (1 stage)\n - a: rigid + affine (2 stages)\n - s: rigid + affine + deformable syn (3 stages)\n - sr: rigid + deformable syn (2 stages)\n - so: deformable syn only (1 stage)\n - b: rigid + affine + deformable b-spline syn (3 stages)\n - br: rigid + deformable b-spline syn (2 stages)\n - bo: deformable b-spline syn only (1 stage)"
     },
@@ -124,7 +137,10 @@
       "value-key": "[PRECISION_TYPE]",
       "type": "String",
       "optional": true,
-      "value-choices": ["f", "d"],
+      "value-choices": [
+        "f",
+        "d"
+      ],
       "command-line-flag": "-p",
       "description": "Precision type (default = 'd'). Options:\n - f: float\n - d: double"
     },
@@ -135,7 +151,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "-j",
       "description": "Use histogram matching (default = 0). Options:\n - 0: false\n - 1: true"
     },
@@ -146,7 +165,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "-y",
       "description": "Use 'repro' mode for exact reproducibility of output. Uses GC metric for linear stages and a fixed random seed (default = 0). Options:\n - 0: false\n - 1: true"
     },
@@ -157,7 +179,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "-z",
       "description": "Collapse output transforms (default = 1). Options:\n - 0: false\n - 1: true"
     },

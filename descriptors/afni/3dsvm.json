@@ -1,14 +1,14 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "3dsvm",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://github.com/afni/afni",
   "description": "Support vector machine analysis of brain data using the SVM-light package",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dsvm.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dsvm [TRAIN_VOL] [TRAIN_LABELS] [MASK] [NO_MODEL_MASK] [MODEL] [ALPHA] [BUCKET] [TYPE] [C_VALUE] [EPSILON] [KERNEL] [D_VALUE] [GAMMA] [S_VALUE] [R_VALUE] [MAX_ITERATIONS] [WOUT] [TEST_VOL] [PREDICTIONS] [CLASSOUT] [NOPRED_CENSORED] [NODETREND] [NOPRED_SCALE] [TEST_LABELS] [MULTICLASS] [HELP] [VERSION]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -82,7 +82,10 @@
       "optional": true,
       "id": "type",
       "name": "Type",
-      "value-choices": ["classification", "regression"]
+      "value-choices": [
+        "classification",
+        "regression"
+      ]
     },
     {
       "command-line-flag": "-c",
@@ -110,7 +113,12 @@
       "optional": true,
       "id": "kernel",
       "name": "Kernel function",
-      "value-choices": ["linear", "polynomial", "rbf", "sigmoid"]
+      "value-choices": [
+        "linear",
+        "polynomial",
+        "rbf",
+        "sigmoid"
+      ]
     },
     {
       "command-line-flag": "-d",
@@ -237,7 +245,10 @@
       "optional": true,
       "id": "multiclass",
       "name": "Multiclass type",
-      "value-choices": ["DAG", "vote"]
+      "value-choices": [
+        "DAG",
+        "vote"
+      ]
     },
     {
       "command-line-flag": "-help",

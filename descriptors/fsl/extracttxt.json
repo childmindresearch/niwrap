@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "extracttxt",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Extracts text from a file based on a search word",
   "command-line": "/usr/local/fsl/bin/extracttxt [SEARCH_WORD] [FILE] [NUM_TRAILING_LINES] [RELATIVE_START]",
   "container-image": {
@@ -53,5 +53,6 @@
       "id": "output_file",
       "name": "Output File"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

@@ -1,7 +1,7 @@
 {
   "name": "tsfsmooth",
   "description": "Gaussian filter a track scalar file.\n\n\n\nReferences:\n\n",
-  "author": "David Raffelt (david.raffelt@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -142,5 +142,5 @@
       "description": "the output track scalar file"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/tsfsmooth.html"
+  "url": "https://www.mrtrix.org/"
 }

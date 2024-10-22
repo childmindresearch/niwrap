@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fsladd",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for adding or averaging multiple input volumes.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsladd [OUTPUT_FILE] [MEAN_FLAG] [SCALE_FLAG] [VOLUME_LIST]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

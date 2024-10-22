@@ -1,9 +1,9 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "1dplot",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Graphs the columns of a *.1D time series file to the X11 screen, or to an image file (.jpg or .png).",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dplot.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "1dplot [TSFILES] [INSTALL] [SEP] [ONE] [SEPSCL] [NOLINE] [NOLINE] [BOX] [HIST] [NORM2] [NORMX] [NORM1] [DEMEAN] [X] [XL10] [DX] [XZERO] [NOPUSH] [IGNORE] [USE] [XLABEL] [YLABEL] [PLABEL] [TITLE] [WINTITLE] [NAKED] [ASPECT] [STDIN] [PS] [JPG] [JPEG] [PNG] [PNM] [PNGS] [JPGS] [JPEGS] [PNMS] [YTRAN] [XTRAN] [XAXIS] [YAXIS] [YNAMES] [VOLREG] [THICK] [THICK] [DASHED] [SETENV] [CENSOR_RGB] [CENSOR] [CENSORTR] [CONCAT] [RBOX] [RBOX] [LINE]",
   "schema-version": "0.5",
   "inputs": [
@@ -497,7 +497,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

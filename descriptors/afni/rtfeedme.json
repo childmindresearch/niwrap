@@ -1,5 +1,5 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "rtfeedme",
   "description": "Test the real-time plugin by sending all the bricks in 'dataset' to AFNI.",
   "command-line": "rtfeedme [DATASETS] [HOST] [INTERVAL_MS] [SEND_3D] [BUFFER_MB] [VERBOSE] [SWAP_BYTES] [NZ_FAKE] [DRIVE_CMD] [NOTE] [YRANGE]",
@@ -108,9 +108,9 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "author": "AFNI Team",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/rtfeedme.html"
+  "author": "AFNI Developers",
+  "url": "https://afni.nimh.nih.gov/"
 }

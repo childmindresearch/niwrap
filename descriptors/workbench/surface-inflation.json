@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "surface-inflation",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -surface-inflation [ANATOMICAL_SURFACE_IN] [SURFACE_IN] [NUMBER_OF_SMOOTHING_CYCLES] [SMOOTHING_STRENGTH] [SMOOTHING_ITERATIONS] [INFLATION_FACTOR] [SURFACE_OUT]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Surface inflation.\n\nInflate a surface by performing cycles that consist of smoothing  followed by inflation (to correct shrinkage caused by smoothing).",
   "schema-version": "0.5",
@@ -80,5 +80,6 @@
       "description": "output surface file",
       "optional": false
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

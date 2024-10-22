@@ -1,9 +1,9 @@
 {
   "name": "3dTcorr1D",
   "command-line": "3dTcorr1D [KTAUB] [NUM_THREADS] [OUTPUTTYPE] [PEARSON] [QUADRANT] [SPEARMAN] [XSET] [Y_1D]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes the correlation coefficient between each voxel time series in the input 3D+time dataset.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "ktaub",
@@ -30,7 +30,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "pearson",
@@ -96,11 +100,11 @@
       "description": "Output file containing correlations."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

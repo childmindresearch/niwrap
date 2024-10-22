@@ -1,9 +1,9 @@
 {
   "name": "3dAutomask",
   "command-line": "3dAutomask [CLFRAC] [DILATE] [ERODE] [IN_FILE] [OUTPUTTYPE]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Create a brain-only mask of the image using AFNI 3dAutomask command.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAutomask.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "clfrac",
@@ -49,7 +49,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     }
   ],
   "output-files": [
@@ -86,11 +90,11 @@
       "description": "Mask file."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

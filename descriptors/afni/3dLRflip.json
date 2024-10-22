@@ -1,12 +1,12 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dLRflip",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Flips the rows of a dataset along one of the three axes to correct dataset direction labeling errors",
   "command-line": "3dLRflip [FLIP_OPTION] [PREFIX] [INPUT_DATASETS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -92,5 +92,5 @@
       "name": "Flipped Output"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dLRflip.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

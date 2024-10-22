@@ -1,7 +1,7 @@
 {
   "name": "mraverageheader",
   "description": "Calculate the average (unbiased) coordinate space of all input images.\n\n\n\nReferences:\n\n",
-  "author": "Maximilian Pietsch (maximilian.pietsch@kcl.ac.uk)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -170,5 +170,5 @@
       "description": "the output image"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/mraverageheader.html"
+  "url": "https://www.mrtrix.org/"
 }

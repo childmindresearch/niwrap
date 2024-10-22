@@ -1,9 +1,9 @@
 {
   "name": "FUGUE",
   "command-line": "FUGUE [ASYM_SE_TIME] [DESPIKE_2DFILTER] [DESPIKE_THRESHOLD] [DWELL_TIME] [DWELL_TO_ASYM_RATIO] [FMAP_IN_FILE] [FMAP_OUT_FILE] [FORWARD_WARPING] [FOURIER_ORDER] [ICORR] [ICORR_ONLY] [IN_FILE] [MASK_FILE] [MEDIAN_2DFILTER] [NO_EXTEND] [NO_GAP_FILL] [NOKSPACE] [OUTPUT_TYPE] [PAVA] [PHASE_CONJUGATE] [PHASEMAP_IN_FILE] [POLY_ORDER] [SAVE_FMAP] [SAVE_SHIFT] [SAVE_UNMASKED_FMAP] [SAVE_UNMASKED_SHIFT] [SHIFT_IN_FILE] [SHIFT_OUT_FILE] [SMOOTH2D] [SMOOTH3D] [UNWARP_DIRECTION] [UNWARPED_FILE] [WARPED_FILE]",
-  "author": "Nipype (interface)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL FUGUE set of tools for EPI distortion correction\n`FUGUE is, most generally, a set of tools for EPI distortion correction.\nDistortions may be corrected for 1. improving registration with non-distorted images (e.g. structurals), or 2. dealing with motion-dependent changes.\nFUGUE is designed to deal only with the first case - improving registration.",
-  "url": "http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "inputs": [
     {
       "id": "asym_se_time",
@@ -103,7 +103,9 @@
       "command-line-flag": "--icorr",
       "description": "Apply intensity correction to unwarping (pixel shift method only).",
       "optional": true,
-      "requires-inputs": ["shift_in_file"]
+      "requires-inputs": [
+        "shift_in_file"
+      ]
     },
     {
       "id": "icorr_only",
@@ -113,7 +115,9 @@
       "command-line-flag": "--icorronly",
       "description": "Apply intensity correction only.",
       "optional": true,
-      "requires-inputs": ["unwarped_file"]
+      "requires-inputs": [
+        "unwarped_file"
+      ]
     },
     {
       "id": "in_file",
@@ -178,7 +182,12 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "NIFTI_PAIR",
+        "NIFTI_GZ",
+        "NIFTI_PAIR_GZ"
+      ]
     },
     {
       "id": "pava",
@@ -304,7 +313,14 @@
       "command-line-flag-separator": "=",
       "description": "'x' or 'y' or 'z' or 'x-' or 'y-' or 'z-'. Specifies direction of warping (default y).",
       "optional": true,
-      "value-choices": ["x", "y", "z", "x-", "y-", "z-"]
+      "value-choices": [
+        "x",
+        "y",
+        "z",
+        "x-",
+        "y-",
+        "z-"
+      ]
     },
     {
       "id": "unwarped_file",
@@ -315,7 +331,9 @@
       "command-line-flag-separator": "=",
       "description": "Apply unwarping and save as filename.",
       "optional": true,
-      "requires-inputs": ["in_file"]
+      "requires-inputs": [
+        "in_file"
+      ]
     },
     {
       "id": "warped_file",
@@ -326,7 +344,9 @@
       "command-line-flag-separator": "=",
       "description": "Apply forward warping and save as filename.",
       "optional": true,
-      "requires-inputs": ["in_file"]
+      "requires-inputs": [
+        "in_file"
+      ]
     }
   ],
   "output-files": [
@@ -363,19 +383,28 @@
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": ["warped_file", "unwarped_file"],
+      "members": [
+        "warped_file",
+        "unwarped_file"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_2",
       "name": "Mutex group 2",
-      "members": ["save_unmasked_shift", "save_shift"],
+      "members": [
+        "save_unmasked_shift",
+        "save_shift"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_3",
       "name": "Mutex group 3",
-      "members": ["save_fmap", "save_unmasked_fmap"],
+      "members": [
+        "save_fmap",
+        "save_unmasked_fmap"
+      ],
       "mutually-exclusive": true
     }
   ],

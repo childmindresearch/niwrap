@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "build_afni.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Compile an AFNI package from the git repository.",
   "command-line": "build_afni.py -build_root [BUILD_ROOT] [CLEAN_ROOT_FLAG] [GIT_BRANCH] [GIT_TAG] [GIT_UPDATE_FLAG] [MAKE_TARGET] [MAKEFILE] [PACKAGE] [PREP_ONLY_FLAG] [RUN_CMAKE_FLAG] [RUN_MAKE_FLAG] [VERBOSE_LEVEL_FLAG] [TERMINAL_OPTION]",
   "schema-version": "0.5",
@@ -167,8 +167,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/build_afni.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

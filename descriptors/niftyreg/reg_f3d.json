@@ -1,7 +1,7 @@
 {
   "name": "reg_f3d",
-  "tool-version": "1.0",
-  "author": "Marc Modat",
+  "tool-version": "1.4.0",
+  "author": "NiftyReg Developers",
   "description": "Fast Free-Form Deformation algorithm for non-rigid registration based on Rueckert's 99 TMI work.",
   "url": "http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg",
   "command-line": "reg_f3d -ref [REFERENCE_IMAGE] -flo [FLOATING_IMAGE] [OPTIONS]",
@@ -384,5 +384,9 @@
       "description": "File containing the resampled image",
       "optional": true
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "vnmd/niftyreg_1.4.0:20220819"
+  }
 }

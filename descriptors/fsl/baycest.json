@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "baycest",
-  "author": "Bayesian Analysis Group",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Bayesian analysis for chemical exchange saturation transfer z-spectra",
   "command-line": "baycest --data=[DATA_FILE] --mask=[MASK_FILE] --output=[OUTPUT_DIR] --pools=[POOLS_FILE] --spec=[SPEC_FILE] --ptrain=[PTRAIN_FILE] [SPATIAL_FLAG] [T12PRIOR_FLAG]",
   "container-image": {
@@ -85,5 +85,6 @@
       "id": "output_file",
       "name": "Output file"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

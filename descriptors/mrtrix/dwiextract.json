@@ -1,7 +1,7 @@
 {
   "name": "dwiextract",
   "description": "Extract diffusion-weighted volumes, b=0 volumes, or certain shells from a DWI dataset.\n\n\n\nReferences:\n\n",
-  "author": "David Raffelt (david.raffelt@florey.edu.au) and Thijs Dhollander (thijs.dhollander@gmail.com) and Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -363,5 +363,5 @@
       "description": "export the diffusion-weighted gradient table to file in MRtrix format "
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/dwiextract.html"
+  "url": "https://www.mrtrix.org/"
 }

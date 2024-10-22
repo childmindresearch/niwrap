@@ -1,10 +1,10 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@AddEdge",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "URL not provided",
   "description": "A script to create composite edge-enhanced datasets and drive the AFNI interface to display the results",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@AddEdge.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@AddEdge [INPUT_FILES] [EXAMINE_LIST] [AX_MONTAGE] [AX_GEOM] [SAG_GEOM] [LAYOUT_FILE] [NO_LAYOUT_FLAG] [EDGE_PERCENTILE] [SINGLE_EDGE_FLAG] [OPACITY] [KEEP_TEMP_FLAG] [NO_DEOBLIQUE_FLAG] [AUTO_RECORD_FLAG] [AUTO_FLAG] [NO_AUTO_FLAG]",
   "inputs": [
     {
@@ -177,7 +177,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

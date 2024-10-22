@@ -1,10 +1,10 @@
 {
-  "tool-version": "2023-06-30",
+  "tool-version": "24.2.06",
   "name": "ROI2dataset",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://example.com/ROI2dataset-boutiques",
   "description": "Transforms a series of ROI files to a node dataset",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ROI2dataset.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "ROI2dataset -prefix [PREFIX] [INPUT_ROIS] [SEPARATE_FLAG] [NODELIST_FLAG] [NODELIST_NODUPS_FLAG] [NODELIST_WITH_ROI_FLAG] [LABEL_DSET] [OUTPUT_FORMAT] [DOMAIN_PARENT_ID] [PAD_TO_NODE] [PAD_LABEL]",
   "inputs": [
     {
@@ -108,7 +108,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

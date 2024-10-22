@@ -1,9 +1,9 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "from3d",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Extract 2D image files from a 3D AFNI dataset.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/from3d.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "from3d [VERBOSE] [NSIZE] [RAW_FLAG] [FLOAT_FLAG] [ZFIRST] [ZLAST] [TFIRST] [TLAST] -input [INPUT_FILE] -prefix [PREFIX]",
   "schema-version": "0.5",
   "inputs": [
@@ -108,7 +108,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

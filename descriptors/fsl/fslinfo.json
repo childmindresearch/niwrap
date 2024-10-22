@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fslinfo",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Display information about NIFTI-1 image file",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslinfo [FILENAME]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

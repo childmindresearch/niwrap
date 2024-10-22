@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "RetroTS.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Creates slice-based regressors for regressing out components of heart rate, respiration, and respiration volume per time using independent data files or BIDS formatted files.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/RetroTS.py.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "python RetroTS.py [RESP_FILE] [CARD_FILE] [PHYS_FS] [NUM_SLICES] [VOLUME_TR] [PHYS_FILE] [PHYS_JSON] [PREFIX] [RVT_SHIFTS] [RVT_OUT] [RESP_CUTOFF_FREQ] [CARDIAC_CUTOFF_FREQ] [CARDIAC_OUT] [RESP_OUT] [INTERP_STYLE] [FIR_ORDER] [QUIET] [DEMO] [SHOW_GRAPHS] [DEBUG] [SLICE_OFFSET] [SLICE_MAJOR] [SLICE_ORDER] [ZERO_PHASE_OFF] [LEGACY_TRANS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

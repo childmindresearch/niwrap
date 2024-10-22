@@ -2,6 +2,7 @@
   "id": "ants",
   "name": "ANTs",
   "url": "https://github.com/ANTsX/ANTs",
+  "author": "ANTs Developers",
   "approach": "Manual",
   "status": "In progress",
   "container": "antsx/ants:v2.5.3",

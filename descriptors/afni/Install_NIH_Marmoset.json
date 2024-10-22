@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "Install_NIH_Marmoset",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Installs the NIH marmoset template and atlases.",
   "command-line": "@Install_NIH_Marmoset [WGET_FLAG] [CURL_FLAG]",
   "inputs": [
@@ -26,8 +26,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Install_NIH_Marmoset.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@ClustExp_CatLab",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Helper script to concatenate and label a group of data sets.",
   "command-line": "@ClustExp_CatLab -prefix [PREFIX] -input [INPUT_FILE] [HELP_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -47,5 +47,5 @@
       "name": "Output file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@ClustExp_CatLab.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

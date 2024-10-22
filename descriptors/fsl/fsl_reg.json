@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_reg",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Image registration using FSL tools",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_reg [INPUT_FILE] [REFERENCE_FILE] [OUTPUT_FILE] [ESTIMATE_ONLY_FLAG] [AFFINE_ONLY_FLAG] [FNIRT_FA_CONFIG_FLAG] [FLIRT_OPTIONS] [FNIRT_OPTIONS]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -95,7 +95,10 @@
     {
       "description": "Options to pass to FLIRT and FNIRT",
       "id": "flirt_fnirt_options_group",
-      "members": ["flirt_options", "fnirt_options"],
+      "members": [
+        "flirt_options",
+        "fnirt_options"
+      ],
       "name": "FLIRT and FNIRT Options"
     }
   ],

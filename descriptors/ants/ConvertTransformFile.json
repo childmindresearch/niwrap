@@ -1,7 +1,7 @@
 {
   "name": "ConvertTransformFile",
   "command-line": "ConvertTransformFile [DIMENSIONS] [INPUT_TRANSFORM_FILE] [OUTPUT_TRANSFORM_FILE] [OPTIONS]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "Utility to read in a transform file (presumed to be in binary format) and output it in various formats. Default output is legacy human-readable text format. Without any options, the output filename extension must be .txt or .tfm to signify a text-formatted transform file.",
   "tool-version": "2.5.3",
   "schema-version": "0.5",

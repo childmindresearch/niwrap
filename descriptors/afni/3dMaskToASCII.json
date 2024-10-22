@@ -1,14 +1,14 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dMaskToASCII",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://github.com/afni/afni",
   "description": "Converts a byte-valued 0/1 dataset into an ASCII string, or vice versa.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMaskToASCII.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dMaskToASCII [TOKIN_FLAG] [DATASET] > [OUTPUTFILE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

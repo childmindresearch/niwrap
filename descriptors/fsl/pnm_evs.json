@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "pnm_evs",
-  "author": "University of Oxford (Mark Jenkinson)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "PNM EVs: Generates physiological noise regressors for fMRI data",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/PNM",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "pnm_evs [INPUT_FILE] [OUTPUT_FILE] [TR] [CARDIAC] [RESPIRATORY] [OC] [OR] [MULTC] [MULTR] [CSF_MASK] [RVT] [HEARTRATE] [RVTSMOOTH] [HEARTRATESMOOTH] [SLICE_DIR] [SLICE_ORDER] [SLICE_TIMING] [DEBUG_FLAG] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

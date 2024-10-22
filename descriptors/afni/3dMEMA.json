@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0.1",
+  "tool-version": "24.2.06",
   "name": "3dMEMA",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "3dMEMA is a program for performing Mixed Effects Meta Analysis at group level that models both within- and across-subjects variability.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMEMA.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dMEMA [OPTIONS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

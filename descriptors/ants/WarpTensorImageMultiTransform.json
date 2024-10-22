@@ -99,7 +99,7 @@
       "description": "The resultant transformed output image."
     }
   ],
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "container-image": {
     "type": "docker",
     "image": "antsx/ants:v2.5.3"

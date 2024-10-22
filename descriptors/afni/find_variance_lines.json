@@ -1,12 +1,12 @@
 {
-  "tool-version": "0.4",
+  "tool-version": "24.2.06",
   "name": "find_variance_lines",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Look for bars of high variance that might suggest scanner interference in EPI datasets.",
   "command-line": "find_variance_lines [INPUT_FILES] [MASK] [MIN_CVOX] [MIN_NT] [NERODE] [NFIRST] [PERCENTILE] [POLORT] [OUTPUT_DIR] [DO_CLEAN] [DO_IMG] [ECHO] [HELP] [HIST] [VER]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -189,5 +189,5 @@
       "name": "JPEG Images"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/find_variance_lines.tcsh.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

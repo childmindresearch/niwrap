@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fslsplit",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Split a 4D image into separate volumes or a 3D image into separate slices",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslsplit [INPUT_FILE] [OUTPUT_BASENAME] [SEPARATION_AXIS]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

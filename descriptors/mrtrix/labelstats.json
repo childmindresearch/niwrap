@@ -1,7 +1,7 @@
 {
   "name": "labelstats",
   "description": "Compute statistics of parcels within a label image.\n\n\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -135,5 +135,5 @@
     }
   ],
   "output-files": [],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/labelstats.html"
+  "url": "https://www.mrtrix.org/"
 }

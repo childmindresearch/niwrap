@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "ScaleToMap",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Tool to scale values to a color map",
   "command-line": "ScaleToMap [INPUT_FILE] [ICOL] [VCOL] [MAP_TYPE] [MAPFILE] [PALFILE] [FRF] [CLP_RANGE] [PERC_CLP_RANGE] [APR_RANGE] [ANR_RANGE] [INTERP] [NOINTERP] [DIRECT] [MSK_ZERO] [MSK_RANGE] [MSK_COLOR] [NOMSK_COL] [BRIGHT_FACT] [HELP] [VERBOSE] [SHOWMAP] [SHOWDB] [NOVOLREG] [NOXFORM] [SETENV] [TRACE] [TRACE] [NOMALL] [YESMALL]",
   "inputs": [
@@ -284,8 +284,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ScaleToMap.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

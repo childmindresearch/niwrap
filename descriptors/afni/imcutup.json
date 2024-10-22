@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "imcutup",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Breaks up larger images into smaller image files of user-defined size.",
   "command-line": "imcutup [PREFIX_FLAG] [XYNUM_FLAG] [YXNUM_FLAG] [X_YNUM_FLAG] [Y_XNUM_FLAG] [NX] [NY] [INPUT_FILE]",
   "inputs": [
@@ -88,8 +88,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imcutup.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

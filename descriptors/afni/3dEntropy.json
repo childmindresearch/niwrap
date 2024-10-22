@@ -1,9 +1,9 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dEntropy",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes entropy for a 3D dataset",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dEntropy.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dEntropy [ZSKIP_FLAG] [INPUT_FILE]",
   "inputs": [
     {
@@ -26,7 +26,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

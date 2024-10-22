@@ -1,13 +1,13 @@
 {
-  "tool-version": "AFNI_24.1.16",
+  "tool-version": "24.2.06",
   "name": "3dAFNItoNIFTI",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Converts an AFNI dataset to a NIfTI-1.1 file.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAFNItoNIFTI.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dAFNItoNIFTI [INPUT_DATASET] [PREFIX] [VERBOSE] [FORCE_FLOAT] [PURE] [DENOTE] [OLDID] [NEWID]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

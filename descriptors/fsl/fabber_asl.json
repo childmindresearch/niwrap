@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fabber_asl",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Fabber is a tool for automated model fitting of time series data.",
-  "url": "https://fabber_tool.website",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fabber_asl [--listmethods] [--listmodels] [--listparams] [--descparams] [--listoutputs] [--evaluate] [--evaluate-params] [--evaluate-nt] [--simple-output] [--output] [--overwrite] [--link-to-latest] [--method] [--model] [--loadmodels] [--data] [--mask] [--suppdata] [--dump-param-names] [--save-model-fit] [--save-residuals] [--save-model-extras] [--save-mvn] [--save-mean] [--save-std] [--save-var] [--save-zstat] [--save-noise-mean] [--save-noise-std] [--save-free-energy] [--optfile] [--debug]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -305,19 +305,31 @@
     {
       "description": "File management options for Fabber output, overwrite and link",
       "id": "file_mgmt_group",
-      "members": ["output", "overwrite", "link_to_latest"],
+      "members": [
+        "output",
+        "overwrite",
+        "link_to_latest"
+      ],
       "name": "File Management Options"
     },
     {
       "description": "Model and method selection options for Fabber",
       "id": "model_method_group",
-      "members": ["method", "model", "loadmodels"],
+      "members": [
+        "method",
+        "model",
+        "loadmodels"
+      ],
       "name": "Model and Method Selection"
     },
     {
       "description": "Data inputs for Fabber",
       "id": "data_inputs_group",
-      "members": ["data", "mask", "suppdata"],
+      "members": [
+        "data",
+        "mask",
+        "suppdata"
+      ],
       "name": "Data Inputs"
     },
     {

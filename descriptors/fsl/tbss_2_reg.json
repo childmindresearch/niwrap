@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "tbss_2_reg",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "TBSS utility for target selection and registration for Tract-Based Spatial Statistics (TBSS) analysis",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "tbss_2_reg [USE_FMRIB58_FA_1MM] [TARGET_IMAGE] [FIND_BEST_TARGET]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -44,7 +44,11 @@
       "description": "Choose one of the target-selection options",
       "mutually-exclusive": true,
       "id": "target_selection_group",
-      "members": ["use_fmrib58_fa_1mm", "target_image", "find_best_target"],
+      "members": [
+        "use_fmrib58_fa_1mm",
+        "target_image",
+        "find_best_target"
+      ],
       "name": "Target Selection Options"
     }
   ]

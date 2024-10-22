@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dTqual",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes a quality index for each sub-brick in a 3D+time dataset.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTqual.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dTqual [DATASET] [SPEARMAN] [QUADRANT] [AUTOCLIP] [AUTOMASK] [CLIP] [MASK] [RANGE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

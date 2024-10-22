@@ -1,9 +1,9 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@compute_gcor",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Compute GCOR, the global correlation",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@compute_gcor.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@compute_gcor [INPUT_FILE] [MASK] [CORR_VOL_PREF] [INITIAL_TRS] [NO_DEMEAN_FLAG] [SAVE_TMP_FLAG] [VERBOSE_LEVEL]",
   "inputs": [
     {
@@ -88,7 +88,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

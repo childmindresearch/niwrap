@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "afni_system_check.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Perform various system checks for figuring out AFNI installation issues.",
   "command-line": "afni_system_check.py [CHECK_ALL] [FIND_PROG] [EXACT] [DISP_NUM_CPU] [DISP_VER_MATPLOTLIB] [DOT_FILE_LIST] [DOT_FILE_SHOW] [DOT_FILE_PACK] [CASEMATCH] [DATA_ROOT]",
   "inputs": [
@@ -98,8 +98,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_system_check.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

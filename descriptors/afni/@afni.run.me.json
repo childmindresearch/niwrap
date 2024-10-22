@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@afni.run.me",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A tool to execute a specific command",
   "command-line": "@afni.run.me [GO_FLAG] [CURL_FLAG] [HELP_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -38,5 +38,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@afni.run.me.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

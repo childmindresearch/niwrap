@@ -1,7 +1,7 @@
 {
   "name": "tcksample",
   "description": "Sample values of an associated image along tracks.\n\nBy default, the value of the underlying image at each point along the track is written to either an ASCII file (with all values for each track on the same line), or a track scalar file (.tsf). Alternatively, some statistic can be taken from the values along each streamline and written to a vector file.\n\nReferences:\n\n* If using -precise option: Smith, R. E.; Tournier, J.-D.; Calamante, F. & Connelly, A. SIFT: Spherical-deconvolution informed filtering of tractograms. NeuroImage, 2013, 67, 298-312",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -176,5 +176,5 @@
       "description": "the output sampled values"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/tcksample.html"
+  "url": "https://www.mrtrix.org/"
 }

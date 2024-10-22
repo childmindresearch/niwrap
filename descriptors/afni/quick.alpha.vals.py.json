@@ -1,9 +1,9 @@
 {
   "name": "quick.alpha.vals.py",
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "description": "Generate an alpha table from slow_surf_clustsim.py results",
-  "author": "AFNI Team",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/quick.alpha.vals.py.html",
+  "author": "AFNI Developers",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "quick.alpha.vals.py [NITER] [MAX_FILE]",
   "inputs": [
     {
@@ -36,7 +36,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

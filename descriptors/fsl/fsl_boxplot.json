@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_boxplot",
-  "author": "University of Oxford (Christian F. Beckmann)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://example.com/fsl_boxplot.json",
   "description": "Tool for creating boxplot images from ASCII text matrices",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
@@ -100,7 +100,10 @@
     {
       "description": "Compulsory parameters for fsl_boxplot",
       "id": "compulsory_params_group",
-      "members": ["input_files", "output_image"],
+      "members": [
+        "input_files",
+        "output_image"
+      ],
       "name": "Compulsory Parameters"
     },
     {

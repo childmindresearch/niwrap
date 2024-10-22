@@ -55,7 +55,11 @@
     {
       "id": "optional_params_group",
       "name": "Optional Parameters",
-      "members": ["outfile", "overwrite", "conffile"]
+      "members": [
+        "outfile",
+        "overwrite",
+        "conffile"
+      ]
     }
   ],
   "output-files": [
@@ -69,7 +73,8 @@
   ],
   "container-image": {
     "type": "docker",
-    "image": "mcin/fsl:6.0.5",
-    "index": "index.docker.io"
-  }
+    "image": "mcin/fsl:6.0.5"
+  },
+  "author": "FMRIB Analysis Group, University of Oxford",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

@@ -1,9 +1,9 @@
 {
   "name": "fnirt",
   "command-line": "fnirt [AFFINE_FILE] [CONFIG_FILE] [FIELD_FILE] [FIELDCOEFF_FILE] [IN_FILE] [JACOBIAN_FILE] [LOG_FILE] [MODULATEDREF_FILE] [REF_FILE] [REFMASK_FILE] [WARPED_FILE]",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL non-linear registration",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "inputs": [
     {
       "id": "affine_file",
@@ -24,7 +24,10 @@
       "command-line-flag-separator": "=",
       "description": "'t1_2_mni152_2mm' or 'fa_2_fmrib58_1mm' or file or string. Name of config file specifying command line arguments.",
       "optional": true,
-      "value-choices": ["T1_2_MNI152_2mm", "FA_2_FMRIB58_1mm"]
+      "value-choices": [
+        "T1_2_MNI152_2mm",
+        "FA_2_FMRIB58_1mm"
+      ]
     },
     {
       "id": "field_file",

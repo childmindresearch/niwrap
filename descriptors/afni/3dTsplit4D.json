@@ -1,13 +1,13 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dTsplit4D",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Convert a 3D+time dataset into multiple 3D single-brick files.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTsplit4D.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dTsplit4D [PREFIX] [INPUT_FILE] [KEEP_DATUM_FLAG] [DIGITS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

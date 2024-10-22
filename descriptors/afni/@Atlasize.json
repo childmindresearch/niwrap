@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@Atlasize",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Script to turn a volumetric dataset into an AFNI atlas",
   "command-line": "@Atlasize [DSET] [SPACE] [LAB_FILE] [LAB_FILE_DELIM] [LONGNAMES] [LAST_LONGNAME_COL] [ATLAS_TYPE] [ATLAS_DESCRIPTION] [ATLAS_NAME] [AUTO_BACKUP] [CENTERS] [CENTERTYPE] [CENTERMASK] [SKIP_NOVOXELS] [H_WEB] [H_VIEW] [ALL_OPTS] [H_FIND_WORD]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -184,5 +184,5 @@
       "name": "NIML File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@Atlasize.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

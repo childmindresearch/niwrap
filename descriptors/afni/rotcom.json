@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "rotcom",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Prints to stdout the 4x3 transformation matrix+vector that would be applied by 3drotate to the given dataset.",
   "command-line": "rotcom [ROTATE_ASHIFT] [DATASET]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -36,5 +36,5 @@
       "name": "Transformation Matrix Output"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/rotcom.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@NoPound",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoPound.html",
   "description": "Replaces all # characters in AFNI filenames with a -.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoPound.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@NoPound [AFNI_FILES]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

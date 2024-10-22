@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fslreorient2std",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool for reorienting an image to match the approximate orientation of standard template images (MNI152).",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils#fslreorient2std",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslreorient2std [INPUT_IMAGE] [OUTPUT_IMAGE] [MATRIX_FILE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -45,7 +45,9 @@
       "optional": true,
       "id": "output_image",
       "name": "Output image",
-      "path-template-stripped-extensions": [".nii.gz"]
+      "path-template-stripped-extensions": [
+        ".nii.gz"
+      ]
     },
     {
       "path-template": "[MATRIX_FILE]",

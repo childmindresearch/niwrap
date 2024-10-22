@@ -1,7 +1,7 @@
 {
   "name": "TextureCooccurrenceFeatures",
   "command-line": "TextureCooccurrenceFeatures [IMAGE_DIMENSION] [INPUT_IMAGE] [NUMBER_OF_BINS_PER_AXIS] [MASK_IMAGE] [MASK_LABEL]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "Calculates texture co-occurrence features such as Energy, Entropy, Inverse Difference Moment, Inertia, Cluster Shade, and Cluster Prominence from an input image.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",

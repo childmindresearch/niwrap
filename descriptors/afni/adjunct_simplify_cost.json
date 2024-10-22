@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "adjunct_simplify_cost",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Simplifies a cost function name by removing the '+' and anything following it.",
   "command-line": "adjunct_simplify_cost.py [COST_FUNCTION]",
   "inputs": [
@@ -16,8 +16,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_simplify_cost.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

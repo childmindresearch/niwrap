@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fslfft",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool to compute the Fourier transform of an input volume and save the result in an output volume.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslfft [INPUT_VOLUME] [OUTPUT_VOLUME] [INVERSE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

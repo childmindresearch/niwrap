@@ -1,7 +1,7 @@
 {
   "name": "antsJointLabelFusion.sh",
   "command-line": "antsJointLabelFusion.sh [DIMENSIONALITY] [OUTPUT] [ATLAS_IMAGE_MRF] [ATLAS_SEGMENTATION_MRF] [RIGID_TRANSFORM] [SIMILARITY_METRIC] [OTHER_OPTIONS] [VERBOSE] -i [TARGET_IMAGE] -m [MASK_IMAGE] -g [RIGID_TRANSFORM_ADDITIONAL_OPTIONS] -x [SIMILARITY_METRIC_ADDITIONAL_OPTIONS]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "The antsJointLabelFusion script is used for performing label fusion using multiple atlases to improve segmentation accuracy.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -18,7 +18,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [2, 3],
+      "value-choices": [
+        2,
+        3
+      ],
       "command-line-flag": "-d",
       "description": "Image dimensionality (2 or 3)."
     },
@@ -83,7 +86,10 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0, 1],
+      "value-choices": [
+        0,
+        1
+      ],
       "command-line-flag": "-v",
       "description": "Verbose output."
     },

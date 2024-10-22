@@ -1,14 +1,14 @@
 {
-  "tool-version": "0.0.5",
+  "tool-version": "24.2.06",
   "name": "TRR",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/gangchen_homepage",
   "description": "Test-Retest Reliability Program through Bayesian Multilevel Modeling",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/TRR.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "TRR [PREFIX] [CHAINS] [ITERATIONS] [RESPONSE_VAR] [SUBJECT_VAR] [REPETITION_VAR] [CONDITION_VAR] [DATA_TABLE] [CATEGORICAL_VARS] [QUANTITATIVE_VARS] [DIST_Y] [MODEL] [PLOT_SIZE] [STANDARD_ERROR] [T_STAT] [WITHIN_CHAIN_PARA] [DEBUG] [VERBOSE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

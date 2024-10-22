@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_schurprod",
-  "author": "Christian F. Beckmann",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Generates element-wise matrix products or product of matrices against vectors from 4D data",
   "command-line": "fsl_schurprod -i [INPUT_FILE] -d [DESIGN_FILE] -o [OUTPUT_FILE] [REGRESSION_FLAG] [INDEX] [MASK_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
@@ -88,5 +88,6 @@
       "id": "output_matrix_product",
       "name": "Output matrix product file"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

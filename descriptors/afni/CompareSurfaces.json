@@ -1,14 +1,14 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "CompareSurfaces",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/SUMA/main_toc.html",
   "description": "Calculates distance at each node in Surface 1 (S1) to Surface 2 (S2) along the local surface normal at each node in S1. Superseded by SurfToSurf.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/CompareSurfaces.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "CompareSurfaces [SPEC_FILE] [HEMISPHERE] [SV1] [SV2] [FILE_PREFIX] [ONE_NODE] [NODE_RANGE] [NO_CONS] [NO_VOLREG] [NO_XFORM] [ENVIRONMENT_VAR] [TRACE] [EXTREME_TRACE] [NO_MEMORY_TRACE] [YES_MEMORY_TRACE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -28,7 +28,10 @@
       "optional": false,
       "id": "hemisphere",
       "name": "Hemisphere",
-      "value-choices": ["L", "R"]
+      "value-choices": [
+        "L",
+        "R"
+      ]
     },
     {
       "command-line-flag": "-sv1",

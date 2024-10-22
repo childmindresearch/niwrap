@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "help_format",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Formats text by converting URLs into HTML hyperlinks",
   "command-line": "help_format [STDIN]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -28,5 +28,5 @@
       "name": "Formatted Output"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/help_format.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

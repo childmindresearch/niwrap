@@ -1,13 +1,13 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "ROIMaker",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Create a labelled set of ROIs from input data, useful in combining functional and tractographic/structural data.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dROIMaker.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dROIMaker [INSET] [MINTHR] [PREFIX] [REFSET] [MINVOL] [N] [INFL] [TRIM_WM] [SKEL] [SKEL_THR] [SKEL_STOP] [SKEL_STOP_STRICT] [CSF_SK] [MASK] [NEIGH] [NIFTI] [PREINFLINSET] [PREINFLINFLATE] [DUMP_NO_LABTAB]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

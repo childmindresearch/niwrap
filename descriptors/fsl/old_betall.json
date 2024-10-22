@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "old_betall",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Automated brain extraction tool for FSL involving both T1 and T2 images",
   "command-line": "betall [T1_FILEROUT] [T2_FILEROUT]",
   "container-image": {
@@ -42,5 +42,6 @@
       "id": "output_t2",
       "name": "Output T2 File Root"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

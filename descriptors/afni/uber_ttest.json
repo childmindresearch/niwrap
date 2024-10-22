@@ -1,12 +1,12 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "uber_ttest",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "GUI for group t-test analysis",
   "command-line": "uber_ttest.py [QT_OPTS] [HELP] [HELP_GUI] [HIST] [SHOW_VALID_OPTS] [VER] [NO_GUI] [PROGRAM] [PRINT_SCRIPT] [SAVE_SCRIPT] [MASK] [SET_NAME_A] [SET_NAME_B] [DSETS_A] [DSETS_B] [BETA_A] [BETA_B] [TSTAT_A] [TSTAT_B] [RESULTS_DIR]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -199,5 +199,5 @@
       "name": "Output Script File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_ttest.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

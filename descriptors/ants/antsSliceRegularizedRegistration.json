@@ -1,7 +1,7 @@
 {
   "name": "antsSliceRegularizedRegistration",
   "command-line": "antsSliceRegularizedRegistration [POLYDEGREE] [OUTPUT] [METRIC] [TRANSFORM] [ITERATIONS] [SHRINK_FACTORS] [SMOOTHING_SIGMAS] [MASK] [INTERPOLATION] [VERBOSE]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "This program is a user-level application for slice-by-slice translation registration. Results are regularized in z using polynomial regression. The program is targeted at spinal cord MRI. Only one stage is supported where a stage consists of a transform; an image metric; and iterations, shrink factors, and smoothing sigmas for each level. Specialized for 3D data: fixed image is 3D, moving image is 3D. Registration is performed slice-by-slice then regularized in z. The parameter -p controls the polynomial degree. -p 0 means no regularization.",
   "tool-version": "2.5.3",
   "schema-version": "0.5",
@@ -107,7 +107,9 @@
       "type": "Number",
       "integer": true,
       "optional": true,
-      "value-choices": [0],
+      "value-choices": [
+        0
+      ],
       "command-line-flag": "-v",
       "description": "Verbose option."
     }

@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "SurfQual",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A program to check the quality of surfaces.",
   "command-line": "SurfQual [SPEC_FILE] [SURFACE_A] [SPHERE_FLAG] [SUMMARY_FLAG] [SELF_INTERSECT_FLAG] [OUTPUT_PREFIX]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -117,5 +117,5 @@
       "name": "Intersect Nodes Output File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfQual.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

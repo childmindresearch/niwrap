@@ -1,12 +1,12 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dpc",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Principal Component Analysis of 3D Datasets",
   "command-line": "3dpc [DATASETS] [DMEAN] [VMEAN] [VNORM] [NORMALIZE] [NSCALE] [PCSAVE] [REDUCE] [PREFIX] [DUMMY_LINES] [VERBOSE] [QUIET] [EIGONLY] [FLOAT] [MASK]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -187,5 +187,5 @@
       "name": "Individual eigen-timeseries file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dpc.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

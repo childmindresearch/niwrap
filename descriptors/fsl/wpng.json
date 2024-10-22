@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "wpng",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Simple PGM/PPM/PAM to PNG Converter",
   "command-line": "wpng [INPUT_FILE] [GAMMA] [BGCOLOR] [TEXT_FLAG] [TIME_FLAG] [INTERLACE_FLAG]",
   "container-image": {
@@ -73,5 +73,6 @@
       "id": "output_file",
       "name": "Output PNG file"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

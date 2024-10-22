@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "bianca_perivent_deep",
-  "author": "BIANCA Development Team",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Separates WMH into periventricular and deep WMH, saves two separate binary images, and calculates volume of total and separate WMHs.",
   "command-line": "bianca_perivent_deep [THRESH_BINARIZED_WMH_MAP] [VENTRICLES_MASK] [MINCLUSTERSIZE] [DO_STATS] [OUTPUTDIR]",
   "container-image": {
@@ -76,5 +76,6 @@
       "name": "WMH Volumes File"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

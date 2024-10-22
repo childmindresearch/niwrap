@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@fix_FSsphere",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Tool for fixing errors in FreeSurfer spherical surfaces",
   "command-line": "@fix_FSsphere [SPEC_FILE] [SPHERE_FILE] [NUM_ITERATIONS] [EXTENT_LIM] [PROJECT_FIRST] [KEEP_TEMP]",
   "inputs": [
@@ -72,8 +72,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@fix_FSsphere.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

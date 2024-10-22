@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "estnoise",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Estimate noise in 4D fMRI data.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "estnoise [4D_INPUT_DATA] [SPATIAL_SIGMA] [TEMP_HP_SIGMA] [TEMP_LP_SIGMA]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

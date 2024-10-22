@@ -32,7 +32,10 @@
       "name": "Method",
       "type": "String",
       "value-key": "[METHOD]",
-      "value-choices": ["PHYSICAL", "LOCAL"],
+      "value-choices": [
+        "PHYSICAL",
+        "LOCAL"
+      ],
       "description": "Method of rebasing the tensor image."
     },
     {
@@ -52,7 +55,7 @@
       "path-template": "[OUTFILE]"
     }
   ],
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "url": "https://github.com/ANTsX/ANTs",
   "container-image": {
     "type": "docker",

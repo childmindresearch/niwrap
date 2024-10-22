@@ -1,7 +1,7 @@
 {
   "name": "voxel2fixel",
   "description": "Map the scalar value in each voxel to all fixels within that voxel.\n\nThis command is designed to enable CFE-based statistical analysis to be performed on voxel-wise measures.\n\nReferences:\n\n",
-  "author": "David Raffelt (david.raffelt@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -141,5 +141,5 @@
     }
   ],
   "output-files": [],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/voxel2fixel.html"
+  "url": "https://www.mrtrix.org/"
 }

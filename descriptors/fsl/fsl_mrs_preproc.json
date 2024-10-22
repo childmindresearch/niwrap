@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_mrs_preproc",
-  "author": "FMRIB Analysis Group, Oxford University",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL Magnetic Resonance Spectroscopy - Complete non-edited SVS Preprocessing",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_mrs_preproc [DATA] [REFERENCE] [OUTPUT] [QUANT] [ECC] [NOAVERAGE] [HLSVD] [LEFTSHIFT] [T1] [VERBOSE] [CONJUGATE] [OVERWRITE] [REPORT] [CONFIG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -135,7 +135,11 @@
     {
       "description": "Required arguments for fsl_mrs_preproc",
       "id": "required_arguments_group",
-      "members": ["data", "reference", "output"],
+      "members": [
+        "data",
+        "reference",
+        "output"
+      ],
       "name": "Required Arguments"
     },
     {

@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "signal2image",
-  "author": "University of Oxford (Mark Jenkinson & Ivana Drobnjak)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool for converting MR signal data to images using specified k-space coordinates and pulse sequences.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "signal2image [PULSE_SEQUENCE] [INPUT_SIGNAL] [OUTPUT_IMAGE] [KSPACE_COORDINATES] [OUTPUT_KSPACE] [ABS_FLAG] [HOMODYNE_FLAG] [VERBOSE_FLAG] [APODIZE_FLAG] [CUTOFF] [ROLLOFF] [SAVE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -135,7 +135,9 @@
     {
       "description": "Compulsory arguments for running signal2image",
       "id": "compulsory_arguments_group",
-      "members": ["pulse_sequence"],
+      "members": [
+        "pulse_sequence"
+      ],
       "name": "Compulsory Arguments"
     },
     {

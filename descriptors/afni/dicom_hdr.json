@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "dicom_hdr",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A tool to print DICOM file information to stdout.",
   "command-line": "dicom_hdr [FILES] [HEX] [NONAME] [SEXINFO] [MULFRAM] [V_DUMP] [NO_LENGTH] [SLICE_TIMES] [SLICE_TIMES_VERB] [SIEMENS_CSA_DATA]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -101,5 +101,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/dicom_hdr.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

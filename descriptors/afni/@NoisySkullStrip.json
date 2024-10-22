@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@NoisySkullStrip",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Strips the skull of anatomical datasets with low SNR.",
   "command-line": "@NoisySkullStrip -input [ANAT] [KEEP_TMP_FLAG] [SKULLSTRIP_OPTS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -67,5 +67,5 @@
       "name": "Air Threshold Volume"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@NoisySkullStrip.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

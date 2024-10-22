@@ -1,9 +1,9 @@
 {
   "name": "Split",
   "command-line": "fslsplit [IN_FILE] out/[OUT_BASE_NAME] [DIMENSION]",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "split a 4D file into lots of 3D files (eg for inputting to SPM).",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "inputs": [
     {
       "id": "in_file",
@@ -31,7 +31,12 @@
       "description": "'t' or 'x' or 'y' or 'z'. Dimension to mean across.",
       "optional": false,
       "default-value": "t",
-      "value-choices": ["t", "x", "y", "z"]
+      "value-choices": [
+        "t",
+        "x",
+        "y",
+        "z"
+      ]
     }
   ],
   "output-files": [

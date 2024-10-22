@@ -3,7 +3,7 @@
   "tool-version": "6.0.5",
   "description": "FSL utility for image arithmetic, statistics, and mathematical operations",
   "command-line": "fslmaths [DATATYPE_INTERNAL] [INPUTS] [OPERATIONS] [OUTPUT] [OUTPUT_DATATYPE]",
-  "author": "FSL Team",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
@@ -16,7 +16,14 @@
       "type": "String",
       "optional": true,
       "description": "Datatype used internally for calculations",
-      "value-choices": ["char", "short", "int", "float", "double", "input"],
+      "value-choices": [
+        "char",
+        "short",
+        "int",
+        "float",
+        "double",
+        "input"
+      ],
       "value-key": "[DATATYPE_INTERNAL]",
       "command-line-flag": "-dt",
       "default-value": "float"
@@ -1111,7 +1118,14 @@
       "type": "String",
       "optional": true,
       "description": "Datatype used for the output image",
-      "value-choices": ["char", "short", "int", "float", "double", "input"],
+      "value-choices": [
+        "char",
+        "short",
+        "int",
+        "float",
+        "double",
+        "input"
+      ],
       "value-key": "[OUTPUT_DATATYPE]",
       "command-line-flag": "-odt"
     }
@@ -1124,5 +1138,6 @@
       "description": "The main output file produced by fslmaths",
       "optional": false
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "quickspec",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A quick and dirty way of loading a surface into SUMA or command line programs using a spec file.",
   "command-line": "quickspec [TN] [TSN] [TSNAD] [TSNADM] [TSNADL] [SPEC] [HELP]",
   "inputs": [
@@ -85,8 +85,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/quickspec.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

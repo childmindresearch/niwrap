@@ -1,9 +1,9 @@
 {
   "name": "reg_transform",
-  "tool-version": "1.0",
-  "author": "Marc Modat",
+  "tool-version": "1.4.0",
+  "author": "NiftyReg Developers",
   "description": "Tool for performing various transformation operations on medical images including control point to deformation conversion, composition of transformations, and converting between deformation and displacement fields.",
-  "url": "https://example.com/reg_transform_docs",
+  "url": "http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg",
   "command-line": "reg_transform -ref [REFERENCE_IMAGE] [OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
@@ -314,5 +314,9 @@
       "description": "File containing the composed affine matrix.",
       "optional": true
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "vnmd/niftyreg_1.4.0:20220819"
+  }
 }

@@ -1,9 +1,9 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dWinsor",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Apply a 3D 'Winsorizing' filter to a short-valued dataset.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dWinsor.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dWinsor [IRAD] [CBOT] [CTOP] [NREP] [KEEPZERO_FLAG] [CLIP] [PREFIX] [MASK] [DATASET]",
   "inputs": [
     {
@@ -105,7 +105,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

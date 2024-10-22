@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "img2stdcoord",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Transforms image coordinates using standard space transformations.",
   "command-line": "img2stdcoord [COORDINATE_FILE] [INPUT_IMAGE] [STANDARD_IMAGE] [AFFINE_TRANSFORM] [WARP_FIELD] [PREWARP_AFFINE_TRANSFORM] [VOXEL_FLAG] [MM_FLAG] [VERBOSE_FLAG_1] [VERBOSE_FLAG_2] [HELP_FLAG]",
   "container-image": {
@@ -108,5 +108,6 @@
       "name": "Help Flag"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

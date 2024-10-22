@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "imupsam",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Upsamples a 2D image by a specified factor",
   "command-line": "imupsam [ASCII_FLAG] [FACTOR] [INPUT_IMAGE] [OUTPUT_IMAGE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -56,5 +56,5 @@
       "name": "Output image file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imupsam.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,7 +1,7 @@
 {
   "name": "plugout_ijk",
-  "tool-version": "1.0",
-  "author": "AFNI Team",
+  "tool-version": "24.2.06",
+  "author": "AFNI Developers",
   "description": "Connects to AFNI and sends (i,j,k) dataset indices to control the viewpoint.",
   "command-line": "plugout_ijk [HOST] [VERBOSE] [PORT] [NAME] [PORT_OFFSET] [PORT_QUIET] [PORT_BLOC_OFFSET] [MAX_BLOC] [MAX_BLOC_QUIET] [NUM_ASSIGNED_PORTS] [NUM_ASSIGNED_PORTS_QUIET]",
   "schema-version": "0.5",
@@ -110,8 +110,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_ijk.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

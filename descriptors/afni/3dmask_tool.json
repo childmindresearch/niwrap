@@ -1,9 +1,9 @@
 {
   "name": "3dmask_tool",
   "command-line": "3dmask_tool [COUNT] [DATUM] [DILATE_INPUTS] [DILATE_RESULTS] [FILL_DIRS] [FILL_HOLES] [FRAC] [IN_FILE] [INTER] [NUM_THREADS] [OUTPUTTYPE] [UNION] [VERBOSE]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "3dmask_tool - for combining/dilating/eroding/filling masks",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dmask_tool.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "count",
@@ -22,7 +22,11 @@
       "command-line-flag": "-datum",
       "description": "'byte' or 'short' or 'float'. Specify data type for output.",
       "optional": true,
-      "value-choices": ["byte", "short", "float"]
+      "value-choices": [
+        "byte",
+        "short",
+        "float"
+      ]
     },
     {
       "id": "dilate_inputs",
@@ -50,7 +54,9 @@
       "command-line-flag": "-fill_dirs",
       "description": "Fill holes only in the given directions. this option is for use with -fill holes. should be a single string that specifies 1-3 of the axes using {x,y,z} labels (i.e. dataset axis order), or using the labels in {r,l,a,p,i,s}.",
       "optional": true,
-      "requires-inputs": ["fill_holes"]
+      "requires-inputs": [
+        "fill_holes"
+      ]
     },
     {
       "id": "fill_holes",
@@ -105,7 +111,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "union",
@@ -145,11 +155,11 @@
       "description": "Mask file."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

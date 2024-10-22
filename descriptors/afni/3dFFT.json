@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dFFT",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Performs the FFT of the input dataset in 3 directions (x, y, z) and produces the output dataset.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dFFT.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dFFT [DATASET] [ABS_FLAG] [PHASE_FLAG] [COMPLEX_FLAG] [INVERSE_FLAG] [X_LENGTH] [Y_LENGTH] [Z_LENGTH] [ALT_IN_FLAG] [ALT_OUT_FLAG] [INPUT_FILE] [PREFIX]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

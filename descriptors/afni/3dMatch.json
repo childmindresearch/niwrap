@@ -1,9 +1,9 @@
 {
-  "tool-version": "Nov 2012",
+  "tool-version": "24.2.06",
   "name": "3dMatch",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Find similar subbricks and rearrange order to ease comparison. Part of FATCAT in AFNI.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMatch.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dMatch [INSET] [REFSET] [MASK] [IN_MIN] [IN_MAX] [REF_MIN] [REF_MAX] [PREFIX] [ONLY_DICE_THR]",
   "inputs": [
     {
@@ -120,7 +120,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

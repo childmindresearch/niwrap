@@ -1,7 +1,7 @@
 {
   "name": "ANTSIntegrateVectorField",
   "command-line": "ANTSIntegrateVectorField [VECTOR_FIELD_INPUT] [ROI_MASK_INPUT] [FIBERS_OUTPUT] [LENGTH_IMAGE_OUTPUT]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "This tool integrates a vector field, where vectors are voxels, using a region of interest (ROI) mask. The ROI mask controls where the integration is performed and specifies the starting point region.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",

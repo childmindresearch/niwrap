@@ -26,5 +26,7 @@
       "id": "output_files",
       "name": "Output lookup table files"
     }
-  ]
+  ],
+  "author": "FMRIB Analysis Group, University of Oxford",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

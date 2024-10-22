@@ -1,7 +1,7 @@
 {
   "name": "meshconvert",
   "description": "Convert meshes between different formats, and apply transformations.\n\n\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -173,5 +173,5 @@
       "description": "the output mesh file"
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/meshconvert.html"
+  "url": "https://www.mrtrix.org/"
 }

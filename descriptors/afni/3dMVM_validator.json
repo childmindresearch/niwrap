@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "3dMVM_validator",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Launch the 3dMVM model validation shiny app in a web browser.",
   "command-line": "3dMVM_validator [DATATABLE] [SHINYFOLDER]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -37,5 +37,5 @@
       "name": "Temporary Folder"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMVM_validator.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

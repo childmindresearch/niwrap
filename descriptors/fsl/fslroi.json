@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fslroi",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Extracts a region of interest (ROI) from an image",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslroi [INPUT_FILE] [OUTPUT_FILE] [XMIN] [XSIZE] [YMIN] [YSIZE] [ZMIN] [ZSIZE] [TMIN] [TSIZE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -96,13 +96,23 @@
     {
       "description": "Specify parameters for the ROI extraction excluding the time dimension",
       "id": "spatial_roi_group",
-      "members": ["xmin", "xsize", "ymin", "ysize", "zmin", "zsize"],
+      "members": [
+        "xmin",
+        "xsize",
+        "ymin",
+        "ysize",
+        "zmin",
+        "zsize"
+      ],
       "name": "Spatial ROI Parameters"
     },
     {
       "description": "Specify parameters for the ROI extraction including the time dimension",
       "id": "temporal_roi_group",
-      "members": ["tmin", "tsize"],
+      "members": [
+        "tmin",
+        "tsize"
+      ],
       "name": "Temporal ROI Parameters"
     }
   ],

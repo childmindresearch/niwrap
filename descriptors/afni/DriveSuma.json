@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "DriveSuma",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A program to drive suma from the command line.",
   "command-line": "DriveSuma [COMMAND] [SURF_LABEL] [SURFACE_FILE] [SURF_STATE] [SURF_WINDING] [COORDINATES] [AUTORECORD] [BACKGROUND_COLOR] [VIEW_FILE] [DO_FILE] [DO_DRAW_MASK] [FIXED_DO] [MOBILE_DO] [KEY_PRESS] [VIEWER] [ANIM_DUP] [SAVE_AS] [SAVE_INDEX] [SAVE_RANGE] [SAVE_LAST] [SAVE_LAST_N] [SAVE_ALL] [ECHO_EDU] [ECHO_NEL_STDOUT] [ECHO_NEL_STDERR] [EXAMPLES] [HELP] [H] [HELP_NIDO] [C_DEMO] [VIEWER_CONT]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -289,5 +289,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/DriveSuma.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

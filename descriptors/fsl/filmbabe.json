@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "filmbabe",
-  "author": "FMRIB Analysis Group, Oxford University, UK",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FILM with MCMC-based Bayesian Analysis for fMRI",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "filmbabe [DATAFILE] [MASK] [DESIGNFILE] [FRF] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_ON_FLAG] [HELP_FLAG] [FLOBS_PRIOR_OFF_FLAG] [FLOBS_DIR] [PRIOR_COVAR_FILE] [PRIOR_MEAN_FILE] [LOG_DIR] [NUM_ITERATIONS] [TEMPORAL_AR_MRF_PREC] [TEMPORAL_AR_FLAG] [NUM_TRACE_SAMPLES] [TEMPORAL_AR_ORDER]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

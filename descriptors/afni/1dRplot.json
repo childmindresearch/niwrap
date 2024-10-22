@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "1dRplot",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Program for plotting a 1D file",
   "command-line": "1dRplot [INPUT] [OPTIONS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -65,7 +65,10 @@
       "optional": true,
       "id": "input_type",
       "name": "Input Type",
-      "value-choices": ["VOLREG", "XMAT"]
+      "value-choices": [
+        "VOLREG",
+        "XMAT"
+      ]
     },
     {
       "description": "Font size for legend text.",
@@ -210,5 +213,5 @@
       "name": "Output Plot File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dRplot.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

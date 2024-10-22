@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@SkullStrip_TouchUp",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Helper program to touch up failed skull stripping by resampling data, allowing manual edits, and outputting corrected data.",
   "command-line": "@SkullStrip_TouchUp -prefix [PREFIX] -brain [BRAIN_DATASET] -head [HEAD_DATASET] [MASK_OUT_FLAG] [ORIG_DIM_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -78,5 +78,5 @@
       "name": "Output Mask"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@SkullStrip_TouchUp.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

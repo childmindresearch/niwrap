@@ -1,7 +1,7 @@
 {
   "name": "iMath",
   "command-line": "iMath [IMAGEDIMENSION] [OUTPUT_IMAGE] [OPERATIONS] [IMAGE1] [IMAGE2]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "iMath is a tool for performing various image mathematical operations on medical images, specifically supporting operations on 2D, 3D, and 4D data.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -14,7 +14,11 @@
       "type": "Number",
       "integer": true,
       "description": "Dimensionality of the image, either 2, 3, or 4.",
-      "value-choices": [2, 3, 4]
+      "value-choices": [
+        2,
+        3,
+        4
+      ]
     },
     {
       "id": "output_image",
@@ -51,14 +55,18 @@
       "id": "largest_component_group",
       "name": "Get Largest Component",
       "description": "Get the single largest labeled object in an image.",
-      "members": ["operations"],
+      "members": [
+        "operations"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "morphological_operations_group",
       "name": "Morphological Operations",
       "description": "Perform morphological operations such as closing, dilation, etc.",
-      "members": ["operations"],
+      "members": [
+        "operations"
+      ],
       "mutually-exclusive": true
     }
   ],

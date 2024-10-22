@@ -1,12 +1,12 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dUpsample",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Upsamples a 3D+time dataset in the time direction by a specified factor.",
   "command-line": "3dUpsample [N] [DATASET] [LINEAR_FLAG] [PREFIX] [VERBOSE_FLAG] [DATATYPE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -84,5 +84,5 @@
       "name": "Output HEAD File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dUpsample.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "pvmfit",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Fits diffusion models to multishell DWI data",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "pvmfit -k [DATA_FILE] -m [MASK_FILE] -r [BVEC_FILE] -b [BVAL_FILE] [OUTPUT_BASENAME] [NUMBER_OF_FIBRES] [MODEL_TYPE] [FIT_ALL_MODELS] [CONSTRAINED_NONLINEAR] [CONSTRAINED_NONLINEAR_F] [GRID_SEARCH] [INCLUDE_NOISE_FLOOR] [SAVE_BIC] [VERBOSE] [HELP]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -150,7 +150,12 @@
     {
       "description": "Compulsory arguments for running pvmfit",
       "id": "compulsory_args",
-      "members": ["data_file", "mask_file", "bvec_file", "bval_file"],
+      "members": [
+        "data_file",
+        "mask_file",
+        "bvec_file",
+        "bval_file"
+      ],
       "name": "Compulsory Arguments"
     },
     {

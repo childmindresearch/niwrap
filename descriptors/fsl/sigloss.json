@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "sigloss",
-  "author": "University of Oxford (Mark Jenkinson)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Estimates signal loss from a field map (in rad/s)",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/sigloss",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "sigloss [INPUT_B0MAP] [OUTPUT_SIGLOSS] [MASK] [ECHO_TIME] [SLICE_DIRECTION] [VERBOSE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -54,7 +54,11 @@
       "optional": true,
       "id": "slice_direction",
       "name": "Slice direction",
-      "value-choices": ["x", "y", "z"]
+      "value-choices": [
+        "x",
+        "y",
+        "z"
+      ]
     },
     {
       "command-line-flag": "-v",

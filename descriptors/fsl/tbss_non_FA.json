@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "tbss_non_FA",
-  "author": "FMRIB, Oxford Centre for Functional MRI of the Brain",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "TBSS processing for non-FA images",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/TBSS/UserGuide",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslmerge [CONCATENATION_OPTION] [OUTPUT_FILE] [INPUT_FILES] [TR_VALUE] [VOLUME_NUMBER]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

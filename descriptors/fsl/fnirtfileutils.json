@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "fnirtfileutils",
-  "author": "University of Oxford (Jesper Andersson)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FNIRT file utilities for FSL - Converts FNIRT warp field coefficients to other formats",
   "command-line": "fnirtfileutils [INPUT_COEFS] [REFERENCE_MASK] [FIELD_OUTPUT] [OUTPUT_FORMAT] [WARP_RES] [KNOT_SPACE] [JACOBIAN_OUTPUT] [JACOBIAN_MATRIX] [WITH_AFF] [VERBOSE] [HELP]",
   "container-image": {
@@ -135,5 +135,6 @@
       "id": "jacobian_matrix_file",
       "name": "Full Jacobian Matrix File"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

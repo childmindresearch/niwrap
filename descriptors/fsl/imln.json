@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "imln",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Creates a link (called file2) to file1",
   "command-line": "/usr/local/fsl/bin/imln [INPUT_FILE] [LINK_NAME]",
   "container-image": {
@@ -35,5 +35,6 @@
       "id": "output_link",
       "name": "Output Link"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

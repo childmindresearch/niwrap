@@ -1,7 +1,7 @@
 {
   "name": "antsBrainExtraction.sh",
   "command-line": "antsBrainExtraction.sh -d [DIMENSION] -a [ANATOMICAL_IMAGE] -e [BRAIN_EXTRACTION_TEMPLATE] -m [BRAIN_EXTRACTION_PROBABILITY_MASK] [TISSUE_CLASSIFICATION] [BRAIN_EXTRACTION_REGISTRATION_MASK] [KEEP_TEMP] [SINGLE_FLOAT_PRECISION] [INITIAL_MOVING_TRANSFORM] [ROTATION_SEARCH] [IMAGE_SUFFIX] [TRANSLATION_SEARCH] [RANDOM_SEEDING] [DEBUG_MODE] -o [OUTPUT_PREFIX]",
-  "author": "Advanced Normalization Tools (ANTs) Contributors",
+  "author": "ANTs Developers",
   "description": "antsBrainExtraction.sh performs template-based brain extraction.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -166,6 +166,10 @@
     }
   ],
   "tags": {
-    "domain": ["neuroinformatics", "mri", "brain extraction"]
+    "domain": [
+      "neuroinformatics",
+      "mri",
+      "brain extraction"
+    ]
   }
 }

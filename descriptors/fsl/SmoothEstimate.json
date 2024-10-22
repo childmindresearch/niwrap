@@ -1,7 +1,7 @@
 {
   "name": "SmoothEstimate",
   "command-line": "smoothest [DOF] [MASK_FILE] [RESIDUAL_FIT_FILE] [ZSTAT_FILE]",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Estimates the smoothness of an image",
   "inputs": [
     {
@@ -66,14 +66,20 @@
     {
       "id": "mutex_group",
       "name": "Mutually exclusive arguments",
-      "members": ["zstat_file", "dof"],
+      "members": [
+        "zstat_file",
+        "dof"
+      ],
       "one-is-required": true,
       "mutually-exclusive": true
     },
     {
       "id": "grouped_args",
       "name": "Grouped arguments",
-      "members": ["dof", "residual_fit_file"],
+      "members": [
+        "dof",
+        "residual_fit_file"
+      ],
       "all-or-none": true
     }
   ],
@@ -85,5 +91,6 @@
   },
   "tags": {
     "domain": "neuroinformatics"
-  }
+  },
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

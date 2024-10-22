@@ -1,9 +1,9 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "3dtoXdataset",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Convert input datasets to the format needed for 3dClustSimX",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dtoXdataset.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dtoXdataset -prefix [PREFIX] [MASK] [INPUT_FILES]",
   "inputs": [
     {
@@ -43,7 +43,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

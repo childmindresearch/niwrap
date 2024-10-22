@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dXYZcat",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Catenates datasets spatially.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dXYZcat.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dXYZcat [DIRECTION] [PREFIX] [VERBOSE] [DATASET+]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

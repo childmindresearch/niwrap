@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_mrs_proc",
-  "author": "FMRIB Centre, University of Oxford",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL Magnetic Resonance Spectroscopy - Preprocessing",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_mrs_proc [VERSION_FLAG] [CONFIG_FILE] [SUBCOMMAND]",
   "schema-version": "0.5",
   "inputs": [
@@ -57,8 +57,15 @@
     {
       "id": "global_options",
       "name": "Global Options",
-      "members": ["version_flag", "config_file"],
+      "members": [
+        "version_flag",
+        "config_file"
+      ],
       "description": "Global options for FSL MRS Processing"
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "mcin/fsl:6.0.5"
+  }
 }

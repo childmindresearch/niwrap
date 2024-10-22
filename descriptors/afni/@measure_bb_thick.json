@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@measure_bb_thick",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Compute thickness of mask using ball and box method",
   "command-line": "@measure_bb_thick -maskset [MASKSET] -surfset [SURFSET] -outdir [OUTDIR] [RESAMPLE] [INCREMENT] [SURFSMOOTH] [SMOOTHMM] [MAXTHICK] [DEPTHSEARCH] [KEEP_TEMP_FILES] [BALLS_ONLY] [SURFSMOOTH_METHOD]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -181,5 +181,5 @@
       "name": "Output surface specification file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@measure_bb_thick.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

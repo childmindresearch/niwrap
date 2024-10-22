@@ -1,7 +1,7 @@
 {
   "name": "applywarp",
   "command-line": "applywarp [INTERP] [IN_FILE] [REF_FILE] [OUT_FILE] [RELWARP] [ABSWARP] [DATATYPE] [FIELD_FILE] [MASK_FILE] [OUTPUT_TYPE] [POSTMAT] [PREMAT] [SUPERLEVEL] [SUPERSAMPLE]",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Apply warps estimated by FNIRT (or some other software) to some image.",
   "inputs": [
     {
@@ -22,7 +22,13 @@
       "command-line-flag-separator": "=",
       "description": "'char' or 'short' or 'int' or 'float' or 'double'. Force output data type [char short int float double].",
       "optional": true,
-      "value-choices": ["char", "short", "int", "float", "double"]
+      "value-choices": [
+        "char",
+        "short",
+        "int",
+        "float",
+        "double"
+      ]
     },
     {
       "id": "field_file",
@@ -53,7 +59,12 @@
       "command-line-flag-separator": "=",
       "description": "'nn' or 'trilinear' or 'sinc' or 'spline'. Interpolation method.",
       "optional": true,
-      "value-choices": ["nn", "trilinear", "sinc", "spline"]
+      "value-choices": [
+        "nn",
+        "trilinear",
+        "sinc",
+        "spline"
+      ]
     },
     {
       "id": "mask_file",
@@ -82,7 +93,12 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "NIFTI_PAIR",
+        "NIFTI_GZ",
+        "NIFTI_PAIR_GZ"
+      ]
     },
     {
       "id": "postmat",
@@ -132,7 +148,9 @@
       "command-line-flag-separator": "=",
       "description": "'a' or an integer. Level of intermediary supersampling, a for 'automatic' or integer level. default = 2.",
       "optional": true,
-      "value-choices": ["a"]
+      "value-choices": [
+        "a"
+      ]
     },
     {
       "id": "superlevel_2",
@@ -168,13 +186,19 @@
     {
       "id": "superlevel_group",
       "name": "Superlevel group",
-      "members": ["superlevel", "superlevel_2"],
+      "members": [
+        "superlevel",
+        "superlevel_2"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": ["relwarp", "abswarp"],
+      "members": [
+        "relwarp",
+        "abswarp"
+      ],
       "mutually-exclusive": true
     }
   ],
@@ -186,5 +210,6 @@
   },
   "tags": {
     "domain": "neuroinformatics"
-  }
+  },
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

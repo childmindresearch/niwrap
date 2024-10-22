@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "adjunct_slice_space",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A tiny adjunct program for @chauffeur_afni to calculate how to evenly space a number of slices within each view plane of a dataset.",
   "command-line": "adjunct_slice_space [INPUT_FILE] [NUM_WINDOWS] [HELP_FLAG] [VERSION_FLAG]",
   "inputs": [
@@ -42,8 +42,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@djunct_slice_space.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

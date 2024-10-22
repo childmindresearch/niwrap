@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "bayes_view",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Launch a shiny app to visualize RBA output files. The files must have the .RData extension.",
   "command-line": "bayes_view [INPUT_FOLDER] [HELP_FLAG] [SHINY_FOLDER]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -37,5 +37,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/bayes_view.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

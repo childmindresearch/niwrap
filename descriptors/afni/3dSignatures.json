@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "3dSignatures",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "3dSignatures analysis tool for 3D genome organization",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dSignatures.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dSignatures [INPUT_FILE] [OUTPUT_FILE] [SEGMENTATION_FLAG] [FILTER_FLAG] [THRESHOLD] [SMOOTHING]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

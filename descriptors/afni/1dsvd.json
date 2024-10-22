@@ -1,7 +1,7 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "1dsvd",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes SVD of the matrix formed by the 1D file(s) and outputs the result on stdout.",
   "command-line": "1dsvd [ONE_FLAG] [VMEAN_FLAG] [VNORM_FLAG] [COND_FLAG] [SING_FLAG] [SORT_FLAG] [NOSORT_FLAG] [ASORT_FLAG] [LEFT_EIGENVECTORS_FLAG] [NUM_EIGENVECTORS] [INPUT_FILE]",
   "inputs": [
@@ -116,8 +116,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/1dsvd.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

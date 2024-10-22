@@ -1,14 +1,14 @@
 {
-  "tool-version": "0.0.3",
+  "tool-version": "24.2.06",
   "name": "PTA",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov",
   "description": "Program for Profile Tracking Analysis - estimates nonlinear trajectories through smoothing splines.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/PTA.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "PTA [PREFIX] [INPUT_FILE] [MODEL_FORMULA] [VT_FORMULATION] [PREDICTION_TABLE] [VERBOSITY_LEVEL] [RESPONSE_VAR] [DBG_ARGS]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

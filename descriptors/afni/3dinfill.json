@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "3dinfill",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://example.com/3dinfill_descriptor",
   "description": "A program to fill holes in volumes.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dinfill.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dinfill [INPUT] [PREFIX] [NITER] [BLEND] [MINHITS] [ED_VALUES] [MASK] [MASK_RANGE] [MRANGE] [CMASK]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -46,7 +46,13 @@
       "command-line-flag": "-blend",
       "id": "blend",
       "name": "Blend Method",
-      "value-choices": ["MODE", "AVG", "AUTO", "SOLID", "SOLID_CLEAN"]
+      "value-choices": [
+        "MODE",
+        "AVG",
+        "AUTO",
+        "SOLID",
+        "SOLID_CLEAN"
+      ]
     },
     {
       "description": "Criterion for considering a zero voxel to be a hole. Can only be used with -blend SOLID.",

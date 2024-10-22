@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3daxialize",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Read and write dataset as new dataset with data brick oriented as axial slices.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3daxialize.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3daxialize [INFILE] [PREFIX] [VERB] [SAGITTAL] [CORONAL] [AXIAL] [ORIENT_CODE] [FRUGAL]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

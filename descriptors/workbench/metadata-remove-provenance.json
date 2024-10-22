@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "metadata-remove-provenance",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -metadata-remove-provenance [INPUT_FILE] [OUTPUT_FILE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Remove provenance information from file metadata.\n\nRemoves the provenance metadata fields added by workbench during processing.",
   "schema-version": "0.5",
@@ -27,5 +27,6 @@
       "value-key": "[OUTPUT_FILE]",
       "type": "String"
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

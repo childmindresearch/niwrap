@@ -1,9 +1,9 @@
 {
   "name": "align_epi_anat",
-  "tool-version": "1.63",
+  "tool-version": "24.2.06",
   "description": "Align EPI to anatomical datasets or vice versa",
-  "author": "AFNI Team",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/align_epi_anat.py.html",
+  "author": "AFNI Developers",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "align_epi_anat [EPI] [ANAT] [EPI_BASE] [ANAT2EPI] [EPI2ANAT] [SUFFIX] [ADDEDGE] [BIG_MOVE] [GIANT_MOVE] [GINORMOUS_MOVE] [KEEP_RM_FILES] [PREP_ONLY] [ANA_HAS_SKULL] [EPI_STRIP] [VOLREG_METHOD] [EX_MODE] [OVERWRITE]",
   "schema-version": "0.5",
   "inputs": [
@@ -123,7 +123,10 @@
       "command-line-flag": "-anat_has_skull",
       "value-key": "[ANA_HAS_SKULL]",
       "optional": true,
-      "value-choices": ["yes", "no"]
+      "value-choices": [
+        "yes",
+        "no"
+      ]
     },
     {
       "id": "epi_strip",
@@ -133,7 +136,11 @@
       "command-line-flag": "-epi_strip",
       "value-key": "[EPI_STRIP]",
       "optional": true,
-      "value-choices": ["3dSkullStrip", "3dAutomask", "None"]
+      "value-choices": [
+        "3dSkullStrip",
+        "3dAutomask",
+        "None"
+      ]
     },
     {
       "id": "volreg_method",
@@ -143,7 +150,11 @@
       "command-line-flag": "-volreg_method",
       "value-key": "[VOLREG_METHOD]",
       "optional": true,
-      "value-choices": ["3dvolreg", "3dWarpDrive", "3dAllineate"]
+      "value-choices": [
+        "3dvolreg",
+        "3dWarpDrive",
+        "3dAllineate"
+      ]
     },
     {
       "id": "ex_mode",
@@ -153,7 +164,12 @@
       "command-line-flag": "-ex_mode",
       "value-key": "[EX_MODE]",
       "optional": true,
-      "value-choices": ["quiet", "echo", "dry_run", "script"]
+      "value-choices": [
+        "quiet",
+        "echo",
+        "dry_run",
+        "script"
+      ]
     },
     {
       "id": "overwrite",
@@ -182,7 +198,7 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

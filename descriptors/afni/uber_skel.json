@@ -1,12 +1,12 @@
 {
-  "tool-version": "0.2",
+  "tool-version": "24.2.06",
   "name": "uber_skel",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Sample uber processing program for initializing user and control variables, with options for both GUI and non-GUI modes.",
   "command-line": "uber_skel [QT_OPTIONS] [NO_GUI_FLAG] [PRINT_SCRIPT] [SAVE_SCRIPT] [USER_VAR] [HELP_HOWTO_PROGRAM] [HELP] [HELP_GUI] [HISTORY] [SHOW_VALID_OPTS] [VERSION]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -111,5 +111,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_skel.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

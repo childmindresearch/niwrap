@@ -1,7 +1,7 @@
 {
-  "tool-version": "2023.06.30",
+  "tool-version": "24.2.06",
   "name": "SurfaceMetrics",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Outputs information about a surface's mesh",
   "command-line": "SurfaceMetrics [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [METRIC] [SURF_1] [TLRC] [PREFIX]",
   "inputs": [
@@ -217,8 +217,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/SurfaceMetrics.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

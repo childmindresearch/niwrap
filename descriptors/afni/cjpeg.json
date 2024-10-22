@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "cjpeg",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Compresses an image file to a JPEG file",
   "command-line": "cjpeg [QUALITY] [GRAYSCALE] [OPTIMIZE] [BASENAME] [PROGRESSIVE] [OUTPUT_FILE] [INPUT_FILE]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -83,5 +83,5 @@
       "name": "Output file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/cjpeg.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

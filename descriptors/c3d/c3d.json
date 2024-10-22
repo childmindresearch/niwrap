@@ -1,7 +1,7 @@
 {
   "name": "c3d",
   "command-line": "c3d [INPUT] [OPERATIONS] [OUTPUT]",
-  "author": "ITK-Snap Team",
+  "author": "Convert3D Developers",
   "description": "C3D is a command-line tool for medical image processing.",
   "tool-version": "1.1.0",
   "schema-version": "0.5",
@@ -3090,5 +3090,6 @@
       ],
       "optional": false
     }
-  ]
+  ],
+  "url": "http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D"
 }

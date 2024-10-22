@@ -1,7 +1,7 @@
 {
   "name": "sh2peaks",
   "description": "Extract the peaks of a spherical harmonic function in each voxel.\n\nPeaks of the spherical harmonic function in each voxel are located by commencing a Newton search along each of a set of pre-specified directions\n\nThe spherical harmonic coefficients are stored according the conventions described the main documentation, which can be found at the following link: \nhttps://mrtrix.readthedocs.io/en/3.0.4/concepts/spherical_harmonics.html\n\nReferences:\n\nJeurissen, B.; Leemans, A.; Tournier, J.-D.; Jones, D.K.; Sijbers, J. Investigating the prevalence of complex fiber configurations in white matter tissue with diffusion magnetic resonance imaging. Human Brain Mapping, 2013, 34(11), 2747-2766",
-  "author": "J-Donald Tournier (jdtournier@gmail.com)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -223,5 +223,5 @@
       "description": "the output image. Each volume corresponds to the x, y & z component of each peak direction vector in turn."
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/sh2peaks.html"
+  "url": "https://www.mrtrix.org/"
 }

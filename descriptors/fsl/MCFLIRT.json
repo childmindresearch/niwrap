@@ -1,9 +1,9 @@
 {
   "name": "MCFLIRT",
   "command-line": "mcflirt [IN_FILE] [BINS] [COST] [DOF] [INIT] [INTERPOLATION] [MEAN_VOL] [OUT_FILE] [REF_FILE] [REF_VOL] [ROTATION] [SAVE_MATS] [SAVE_PLOTS] [SAVE_RMS] [SCALING] [SMOOTH] [STAGES] [STATS_IMGS] [USE_CONTOUR] [USE_GRADIENT]",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "MCFLIRT is an intra-modal motion correction tool designed for use on fMRI time series and based on optimization and registration techniques used in FLIRT, a fully automated robust and accurate tool for linear (affine) inter- and inter-modal brain image registration.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "inputs": [
     {
       "id": "bins",
@@ -69,7 +69,11 @@
       "command-line-flag-separator": "",
       "description": "'spline' or 'nn' or 'sinc'. Interpolation method for transformation.",
       "optional": true,
-      "value-choices": ["spline_final", "nn_final", "sinc_final"]
+      "value-choices": [
+        "spline_final",
+        "nn_final",
+        "sinc_final"
+      ]
     },
     {
       "id": "mean_vol",
@@ -261,6 +265,9 @@
     "type": "docker"
   },
   "tags": {
-    "domain": ["neuroinformatics", "mri"]
+    "domain": [
+      "neuroinformatics",
+      "mri"
+    ]
   }
 }

@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "fsl_motion_outliers",
-  "author": "FMRIB Analysis Group",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://example.com/fsl_motion_outliers_descriptor.json",
   "description": "FSL tool used to calculate motion outliers in 4D image data",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLMotionOutliers",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_motion_outliers -i [INPUT_4D_IMAGE] -o [OUTPUT_CONFOUND_FILE] [MASK_IMAGE] [SAVE_METRIC_FILE] [SAVE_METRIC_PLOT] [TEMP_PATH] [REFFRMS_FLAG] [DVARS_FLAG] [REFMSE_FLAG] [FD_FLAG] [FDRMS_FLAG] [ABS_THRESH] [NO_MOCO_FLAG] [DUMMY_SCANS] [VERBOSE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -169,7 +169,9 @@
     {
       "description": "Optional parameters for verbose output",
       "id": "miscellaneous_params_group",
-      "members": ["verbose_flag"],
+      "members": [
+        "verbose_flag"
+      ],
       "name": "Miscellaneous Parameters"
     }
   ],

@@ -1,9 +1,9 @@
 {
-  "tool-version": "AFNI_23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dbucket",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Concatenate sub-bricks from input datasets into one big bucket dataset.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dbucket.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dbucket [PREFIX] [SESSION] [GLUETO] [AGLUETO] [DRY] [VERBOSE] [FBUC] [ABUC] [INPUT_FILES]",
   "inputs": [
     {
@@ -99,7 +99,7 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   }
 }

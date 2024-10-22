@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.2",
+  "tool-version": "24.2.06",
   "name": "fat_mvm_scripter.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Automated tool to create command scripts for 3dMVM statistical modeling.",
   "command-line": "fat_mvm_scripter.py [PREFIX] [TABLE_FILE] [LOG_FILE] [VARS] [VAR_FILE] [PARS] [PAR_FILE] [ROIS] [ROI_FILE] [NO_POSTHOC] [NA_WARN_OFF] [SUBPR] [CAT_PAIR_OFF]",
   "inputs": [
@@ -141,8 +141,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mvm_scripter.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

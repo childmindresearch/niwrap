@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "flirt_average",
-  "author": "FMRIB Analysis Group, Oxford Centre for Functional MRI of the Brain",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
   "description": "Averages multiple input images after linear registration (FLIRT).",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "flirt_average [NINPUTS] [INPUT_FILE1] [INPUT_FILE2] ... [OUTPUT_FILE] [REFERENCE] [FLIRT_OPTIONS]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -76,7 +76,10 @@
     {
       "description": "FLIRT options group",
       "id": "flirt_options_group",
-      "members": ["reference_image", "flirt_options"],
+      "members": [
+        "reference_image",
+        "flirt_options"
+      ],
       "name": "FLIRT Options"
     }
   ],

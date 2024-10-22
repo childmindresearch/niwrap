@@ -1,7 +1,7 @@
 {
   "name": "dwi2adc",
   "description": "Convert mean dwi (trace-weighted) images to mean ADC maps.\n\n\n\nReferences:\n\n",
-  "author": "J-Donald Tournier (jdtournier@gmail.com)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -173,5 +173,5 @@
       "description": "the output image."
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2adc.html"
+  "url": "https://www.mrtrix.org/"
 }

@@ -1,7 +1,7 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "slow_surf_clustsim.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Generate a tcsh script to run clustsim on surface",
   "command-line": "slow_surf_clustsim.py [ON_SURFACE] [SAVE_SCRIPT] [PRINT_SCRIPT] [UVAR] [VERB] [HELP_FLAG] [HIST_FLAG] [SHOW_DEFAULT_CVARS_FLAG] [SHOW_DEFAULT_UVARS_FLAG] [SHOW_VALID_OPTS_FLAG] [VER_FLAG]",
   "inputs": [
@@ -108,8 +108,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/slow_surf_clustsim.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

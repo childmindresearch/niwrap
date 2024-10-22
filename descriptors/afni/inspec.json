@@ -1,7 +1,7 @@
 {
-  "tool-version": "Jun 30 2023",
+  "tool-version": "24.2.06",
   "name": "inspec",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Outputs information found from specfile.",
   "command-line": "inspec [SPEC_FILE] [NEW_SPEC_NAME] [DETAIL] [LEFT_SPEC] [RIGHT_SPEC] [STATE_RM] [HELP]",
   "inputs": [
@@ -73,8 +73,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/inspec.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

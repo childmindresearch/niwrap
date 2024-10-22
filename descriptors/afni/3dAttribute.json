@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dAttribute",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Prints the value of the attribute 'aname' from the header of the dataset 'dset'.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAttribute.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dAttribute [ALL_FLAG] [NAME_FLAG] [CENTER_FLAG] [SSEP] [SPREP] [QUOTE_FLAG] [ANAME] [DSET]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

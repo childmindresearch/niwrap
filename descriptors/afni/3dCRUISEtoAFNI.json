@@ -1,7 +1,7 @@
 {
-  "tool-version": "Jun 30 2023",
+  "tool-version": "24.2.06",
   "name": "3dCRUISEtoAFNI",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Converts a CRUISE dataset defined by a header in OpenDX format.",
   "command-line": "3dCRUISEtoAFNI [INPUT_FILE] [IGNORE_VOLREG_FLAG] [NO_XFORM_FLAG] [SETENV] [TRACE_FLAG] [TRACE_EXTREME_FLAG] [NO_MALL_FLAG] [YES_MALL_FLAG] [HELP_FLAG] [MINI_HELP]",
   "inputs": [
@@ -98,8 +98,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dCRUISEtoAFNI.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

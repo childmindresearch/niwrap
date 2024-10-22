@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@get.afni.version",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Downloads the source code for a specified AFNI version.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@get.afni.version.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@get.afni.version [VERSION]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

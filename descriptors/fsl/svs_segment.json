@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "svs_segment",
-  "author": "FSL Development Team",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL Magnetic Resonance Spectroscopy tool to construct mask in T1 space of an SVS voxel and generate a tissue segmentation file.",
   "command-line": "svs_segment [SVS] [T1] [ANAT] [OUTPUT] [FILENAME] [MASK_ONLY_FLAG] [NO_CLEAN_FLAG]",
   "container-image": {
@@ -78,7 +78,10 @@
       "description": "Specify T1 or anatomical directory",
       "mutually-exclusive": true,
       "id": "input_choice_group",
-      "members": ["t1_file", "anat_dir"],
+      "members": [
+        "t1_file",
+        "anat_dir"
+      ],
       "name": "Input choice"
     }
   ],
@@ -97,5 +100,6 @@
       "id": "segmentation_file",
       "name": "Segmentation file"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

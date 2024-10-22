@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "siena_diff",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "SIENA_diff: Analysis of longitudinal brain image differences.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/SIENA",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "siena_diff [INPUT1_BASENAME] [INPUT2_BASENAME] [DEBUG_FLAG] [NO_SEG_FLAG] [SELF_CORR_FACT] [IGNORE_Z_FLOW_FLAG] [APPLY_STD_MASK_FLAG] [SEGMENT_OPTIONS]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

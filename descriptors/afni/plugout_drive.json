@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "plugout_drive",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "This program connects to AFNI and sends commands that the user specifies interactively or on command line over to AFNI to be executed.",
   "command-line": "plugout_drive [HOST] [VERBOSE] [PORT] [MAXWAIT] [NAME] [COMMANDS] [QUIT]",
   "inputs": [
@@ -144,8 +144,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/plugout_drive.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

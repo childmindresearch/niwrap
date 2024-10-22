@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "std2imgcoord",
-  "author": "FMRIB Centre",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Convert standard space coordinates to image space coordinates",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Fslutils",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "std2imgcoord [FILENAME_COORDINATES] [STANDARD_IMAGE] [INPUT_IMAGE] [AFFINE_TRANSFORM] [WARP_FIELD] [PREWARP_AFFINE_TRANSFORM] [OUTPUT_MM] [OUTPUT_VOX] [VERBOSE] [MORE_VERBOSE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -105,7 +105,10 @@
     {
       "description": "Options related to output verbosity",
       "id": "verbosity_options",
-      "members": ["verbose", "more_verbose"],
+      "members": [
+        "verbose",
+        "more_verbose"
+      ],
       "name": "Verbosity Options"
     },
     {
@@ -122,7 +125,10 @@
     {
       "description": "Options for output format",
       "id": "output_format_options",
-      "members": ["output_mm", "output_vox"],
+      "members": [
+        "output_mm",
+        "output_vox"
+      ],
       "name": "Output Format Options"
     }
   ]

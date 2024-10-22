@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "msm",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MSM",
   "description": "MSM (Multimodal Surface Matching) is a tool for aligning brain surface scans based on their cortical folding patterns or functional/structural data",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MSM",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "msm [INPUT_MESH] --out [OUTPUT_BASENAME] [REFERENCE_MESH] [INPUT_DATA] [REFERENCE_DATA] [TRANSFORMED_SOURCE] [INPUT_MESH_REGISTER] [INPUT_WEIGHT] [REFERENCE_WEIGHT] [OUTPUT_FORMAT] [CONFIG_FILE] [RESOLUTION_LEVELS] [OUTPUT_SMOOTHING] [HELP_FLAG] [VERBOSE_FLAG] [PRINT_OPTIONS_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -159,7 +159,10 @@
     {
       "description": "Compulsory arguments for MSM",
       "id": "compulsory_args",
-      "members": ["inmesh", "out"],
+      "members": [
+        "inmesh",
+        "out"
+      ],
       "name": "Compulsory Arguments"
     },
     {

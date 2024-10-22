@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0.7",
+  "tool-version": "24.2.06",
   "name": "MBA",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://github.com/afni/mba_descriptor.json",
   "description": "Matrix-Based Analysis Program through Bayesian Multilevel Modeling",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/MBA.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "MBA [PREFIX] [CHAINS] [ITERATIONS] [MODEL] [EOI] [DATA_TABLE] [CVARS] [QVARS] [QCVAR] [STDZ] [WCP] [DISTY] [SE] [RPREFIX] [DBARGS] [HELP]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

@@ -1,13 +1,13 @@
 {
-  "tool-version": "3.2",
+  "tool-version": "24.2.06",
   "name": "@RenamePanga",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Creates AFNI bricks from RealTime GE EPI series.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@RenamePanga.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@RenamePanga [DIR_NUMBER] [FIRST_IMAGE_NUMBER] [NUM_SLICES] [NUM_REPS] [OUTPUT_ROOT] [KEEP_PREFIX_FLAG] [INTERACTIVE_FLAG] [OUTLIERS_CHECK_FLAG] [SLICE_PATTERN] [OUTPUT_DIRECTORY]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

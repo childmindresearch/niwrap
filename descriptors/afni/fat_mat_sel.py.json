@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "fat_mat_sel.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Perform simple matrix plotting operations from outputs of FATCAT programs 3dNetCorr and 3dTrackID.",
   "command-line": "fat_mat_sel.py [Pars] [MATR_FILES] [LIST] [out_ind_matr] [Out_ind_1ddset] [Hold_image] [ExternLabsNo] [TYPE] [DPI] [LX] [LY] [Tight_layout_on] [Fig_off] [S] [S2] [MIN] [MAX] [Cbar_off] [MAP] [N] [W] [STR] [Xtick_lab_off]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -241,5 +241,5 @@
       "name": "1D Dataset Files"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_mat_sel.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

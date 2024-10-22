@@ -1,12 +1,12 @@
 {
-  "tool-version": "0.3",
+  "tool-version": "24.2.06",
   "name": "ap_run_simple_rest",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Run a quick afni_proc.py analysis for QC",
   "command-line": "ap_run_simple_rest.tcsh [ANAT] -epi [EPI] [NT_RM] [RUN_AP] [RUN_PROC] [SUBJID] [TEMPLATE] [COMPRESSOR] [VERB] [ECHO]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -131,5 +131,5 @@
       "name": "Text Output Files"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ap_run_simple_rest.tcsh.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

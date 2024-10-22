@@ -1,7 +1,7 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dBrainSync",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "'Synchronizes' the -inset2 dataset to match the -inset1 dataset, using orthogonal or permutation transformation.",
   "command-line": "3dBrainSync [INSET1] [INSET2] [QPREFIX] [PPREFIX] [NORMALIZE] [MASK] [VERB]",
   "inputs": [
@@ -108,8 +108,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBrainSync.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

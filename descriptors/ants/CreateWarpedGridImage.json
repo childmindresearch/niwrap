@@ -1,7 +1,7 @@
 {
   "name": "CreateWarpedGridImage",
   "command-line": "CreateWarpedGridImage [IMAGE_DIMENSION] [DEFORMATION_FIELD] [OUTPUT_IMAGE] [DIRECTIONS] [GRID_SPACING] [GRID_SIGMA]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "Create a warped grid image based on the specified deformation field.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",

@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "basil_var",
-  "author": "FMRIB Software Library (FSL)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Variance calculator for BASIL",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BASIL",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "basil_var -d [RESULTS_DIR] -m [MASK_IMAGE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

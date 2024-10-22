@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@align_partial_oblique",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A script to align a full coverage T1 weighted non-oblique dataset to match a partial coverage T1 weighted non-oblique dataset. Alignment is done with a rotation and shift (6 parameters) transform only.",
   "command-line": "@align_partial_oblique [BASE] [INPUT] [SUFFIX] [KEEP_TMP_FLAG] [CLEAN_FLAG] [DXYZ] [DX] [DY] [DZ]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -105,5 +105,5 @@
       "name": "Aligned output file"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@align_partial_oblique.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

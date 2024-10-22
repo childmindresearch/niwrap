@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "gen_ss_review_table.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Generate a table from ss_review_basic output files",
   "command-line": "gen_ss_review_table.py [INPUT_FILES] [WRITE_TABLE] [WRITE_OUTLIERS] [OVERWRITE_FLAG] [EMPTY_IS_OUTLIER_FLAG] [OUTLIER_SEP] [SEPARATOR] [SHOWLABS_FLAG] [SHOW_INFILES_FLAG] [SHOW_KEEPERS_FLAG] [REPORT_OUTLIERS] [REPORT_OUTLIERS_FILL_STYLE] [SHOW_MISSING_FLAG] [VERB]",
   "inputs": [
@@ -152,8 +152,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/gen_ss_review_table.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

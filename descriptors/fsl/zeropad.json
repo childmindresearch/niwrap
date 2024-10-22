@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "zeropad",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for zero-padding numbers to a specified length",
-  "url": "Unknown",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "zeropad [INPUT_NUMBER] [LENGTH]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "fslpspec",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Estimate the power spectrum of 4D fMRI time series data",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslpspec [INFILE] [OUTFILE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

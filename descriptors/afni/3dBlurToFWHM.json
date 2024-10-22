@@ -1,9 +1,9 @@
 {
   "name": "3dBlurToFWHM",
   "command-line": "3dBlurToFWHM [AUTOMASK] [BLURMASTER] [FWHM] [FWHMXY] [IN_FILE] [MASK] [OUT_FILE] [OUTPUTTYPE]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Blurs a 'master' dataset until it reaches a specified FWHM smoothness (approximately).",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "automask",
@@ -66,7 +66,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     }
   ],
   "output-files": [
@@ -87,11 +91,11 @@
       "description": "Output file."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

@@ -1,12 +1,12 @@
 {
-  "tool-version": "latest",
+  "tool-version": "24.2.06",
   "name": "3dConformist",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Program to conform a collection of datasets to the same size by zero padding",
   "command-line": "3dConformist [INPUT_FILES]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -30,5 +30,5 @@
       "optional": false
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dConformist.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

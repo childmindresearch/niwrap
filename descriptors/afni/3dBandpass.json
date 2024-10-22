@@ -1,9 +1,9 @@
 {
   "name": "3dBandpass",
   "command-line": "3dBandpass [AUTOMASK] [BLUR] [DESPIKE] [HIGHPASS] [IN_FILE] [LOCALPV] [LOWPASS] [MASK] [NFFT] [NO_DETREND] [NORMALIZE] [NOTRANS] [ORTHOGONALIZE_DSET] [ORTHOGONALIZE_FILE] [OUTPUTTYPE] [TR]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Program to lowpass and/or highpass each voxel time series in a dataset, offering more/different options than Fourier.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBandpass.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "automask",
@@ -137,7 +137,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "tr",
@@ -167,11 +171,11 @@
       "description": "Output file."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

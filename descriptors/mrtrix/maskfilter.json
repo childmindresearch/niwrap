@@ -1,7 +1,7 @@
 {
   "name": "maskfilter",
   "description": "Perform filtering operations on 3D / 4D mask images.\n\nThe available filters are: clean, connect, dilate, erode, median.\n\nEach filter has its own unique set of optional parameters.\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au), David Raffelt (david.raffelt@florey.edu.au), Thijs Dhollander (thijs.dhollander@gmail.com) and J-Donald Tournier (jdtournier@gmail.com)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -240,5 +240,5 @@
       "description": "the output image."
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/maskfilter.html"
+  "url": "https://www.mrtrix.org/"
 }

@@ -1,11 +1,11 @@
 {
-  "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+  "tool-version": "1.5.0",
   "name": "set-map-names",
-  "author": "Washington University School of Medicin",
+  "author": "Connectome Workbench Developers",
   "command-line": "wb_command -set-map-names [DATA_FILE] [OPT_NAME_FILE_FILE] [OPT_FROM_DATA_FILE_FILE] [MAP]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
   },
   "description": "Set the name of one or more maps in a file.\n\nSets the name of one or more maps for metric, shape, label, volume, cifti scalar or cifti label files.  You must specify either -name-file, or -from-data-file, or at least one -map option.  The three option types are mutually exclusive.",
   "schema-version": "0.5",
@@ -70,5 +70,6 @@
       "value-key": "[MAP]",
       "list": true
     }
-  ]
+  ],
+  "url": "https://github.com/Washington-University/workbench"
 }

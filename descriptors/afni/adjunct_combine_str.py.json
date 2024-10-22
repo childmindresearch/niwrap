@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.21",
+  "tool-version": "24.2.06",
   "name": "adjunct_combine_str.py",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A simple helper function for fat_proc* scripts that processes string selectors and outputs a new string selector.",
   "command-line": "/opt/afni/src/../install/adjunct_combine_str.py [OUTPUT_FILE] [UPPER_INDEX] [STRING_SELECTORS]",
   "inputs": [
@@ -42,8 +42,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/adjunct_combine_str.py.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

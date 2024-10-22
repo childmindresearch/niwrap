@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "get_afni_model_PRF_6",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "A command to invoke AFNI's population receptive field (pRF) model",
   "command-line": "get_afni_model_PRF_6 [NT] [AMP] [X] [Y] [SIGMA] [SIGRAT] [THETA]",
   "inputs": [
@@ -64,8 +64,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/get_afni_model_PRF_6.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

@@ -51,5 +51,7 @@
       "id": "output_probability_map",
       "name": "Output Probability Map"
     }
-  ]
+  ],
+  "author": "FMRIB Analysis Group, University of Oxford",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "bet",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/fsl_bet.json",
   "description": "Automated brain extraction tool for FSL",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "bet [INPUT_FILE] [MASK] [FRACTIONAL_INTENSITY] [VERTICAL_GRADIENT] [CENTER_OF_GRAVITY] [OVERLAY_FLAG] [BINARY_MASK_FLAG] [APPROX_SKULL_FLAG] [NO_SEG_OUTPUT_FLAG] [VTK_VIEW_FLAG] [HEAD_RADIUS] [THRESHOLDING_FLAG] [ROBUST_ITERS_FLAG] [RES_OPTIC_CLEANUP_FLAG] [REDUCE_BIAS_FLAG] [SLICE_PADDING_FLAG] [MASK_WHOLE_SET_FLAG] [ADD_SURFACES_FLAG] [ADD_SURFACES_T2] [VERBOSE_FLAG] [DEBUG_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -246,7 +246,10 @@
     {
       "description": "Optional miscellaneous parameters when running BET",
       "id": "miscellaneous_params_group",
-      "members": ["verbose", "debug"],
+      "members": [
+        "verbose",
+        "debug"
+      ],
       "name": "Miscellaneous Parameters"
     }
   ],

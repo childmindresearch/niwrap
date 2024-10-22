@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "first",
-  "author": "Brian Patenaude, University of Oxford",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A command-line tool for segmenting subcortical structures in MRI images using models and transformations.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "first [INPUT_FILE] [OUTPUT_NAME] [INPUT_MODEL] [FLIRT_MATRIX] [VERBOSE] [HELP] [INPUT_MODEL2] [NMODES] [INTREF] [MULTI_IMAGE_INPUT] [BINARY_SURFACE_OUTPUT] [BMAP_NAME] [BVARS] [SHCOND] [LOADBVARS]",
   "inputs": [
     {
@@ -151,5 +151,9 @@
       "id": "segmented_output_image",
       "name": "Segmented output image file"
     }
-  ]
+  ],
+  "container-image": {
+    "type": "docker",
+    "image": "mcin/fsl:6.0.5"
+  }
 }

@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@MakeLabelTable",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/src/scripts_src/@MakeLabelTable",
   "description": "Script used to create, modify, and transform label tables",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@MakeLabelTable.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "@MakeLabelTable [LABELTABLE_FLAG] [ATLAS_POINTLIST_FLAG] [LAB_R_FLAG] [LAB_V_FLAG] [LAB_FILE_FLAG] [DSET_FLAG] [LONGNAMES_FLAG] [LAST_LONGNAME_COL_FLAG] [CENTERS_FLAG] [CENTERTYPE_FLAG] [CENTERMASK_FLAG] [SKIP_NOVOXELS_FLAG] [ALL_LABELS_FLAG] [ALL_KEYS_FLAG] [LKEYS_FLAG] [RKEYS_FLAG] [KLABEL_FLAG] [MATCH_LABEL_FLAG] [LABELTABLE_OF_DSET_FLAG] [WORD_LABEL_MATCH_FLAG] [QUIET_DEATH_FLAG] [LT_TO_ATLAS_PL_FLAG] [DSET_LT_TO_ATLAS_PL_FLAG] [LT_TO_CSV_FLAG] [ATLASIZE_LABELED_DSET_FLAG] [ATLAS_FILE_FLAG] [ATLAS_NAME_FLAG] [ATLAS_DESCRIPTION_FLAG] [REPLACE_FLAG] [ADD_ATLAS_DSET_FLAG] [H_WEB_FLAG] [H_VIEW_FLAG] [ALL_OPTS_FLAG] [H_FIND_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

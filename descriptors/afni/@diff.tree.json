@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@diff.tree",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Show file differences between 2 directories",
   "command-line": "@diff.tree [NEW_DIR] [OLD_DIR] [DIFF_OPTS] [IGNORE_APPEND] [IA] [IGNORE_LIST] [IL] [IGNORE_MISSING] [NO_DIFFS] [QUIET] [SAVE] [SHOW] [SHOW_LIST_COMP] [SKIP_DATA] [VERB] [DIFF_PROG] [XXDIFF] [X_OPTION]",
   "inputs": [
@@ -168,8 +168,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@diff.tree.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

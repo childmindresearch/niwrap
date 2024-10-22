@@ -1,7 +1,7 @@
 {
   "name": "maskdump",
   "description": "Print out the locations of all non-zero voxels in a mask image.\n\nIf no destination file is specified, the voxel locations will be printed to stdout.\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -132,5 +132,5 @@
       "description": "the (optional) output text file."
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/maskdump.html"
+  "url": "https://www.mrtrix.org/"
 }

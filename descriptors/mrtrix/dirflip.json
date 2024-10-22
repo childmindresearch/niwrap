@@ -1,7 +1,7 @@
 {
   "name": "dirflip",
   "description": "Invert the polarity of individual directions so as to optimise a unipolar electrostatic repulsion model.\n\nThe orientations themselves are not affected, only their polarity; this is necessary to ensure near-optimal distribution of DW directions for eddy-current correction.\n\nReferences:\n\n",
-  "author": "J-Donald Tournier (jdtournier@gmail.com)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -151,5 +151,5 @@
       "description": "the output files for the directions."
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/dirflip.html"
+  "url": "https://www.mrtrix.org/"
 }

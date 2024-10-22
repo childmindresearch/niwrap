@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "filmbabescript",
-  "author": "Author Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool/script for processing FEAT directories and FLOBs directories",
-  "url": "URL not provided",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "filmbabescript [FEAT_DIR] [FLOBS_DIR]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",

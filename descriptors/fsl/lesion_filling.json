@@ -1,9 +1,9 @@
 {
   "tool-version": "6.0.5",
   "name": "lesion_filling",
-  "author": "University of Oxford (Mark Jenkinson & Taylor Hanayik)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Lesion filling tool as part of FSL",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/LESION_FILLING",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "lesion_filling [INPUT_IMAGE] [OUTPUT_IMAGE] [LESION_MASK_IMAGE] [WHITE_MATTER_MASK_IMAGE] [VERBOSE_FLAG] [COMPONENTS_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -79,7 +79,12 @@
     {
       "description": "Optional arguments for lesion filling tool",
       "id": "optional_params_group",
-      "members": ["wmmask", "verbose_flag", "components_flag", "help_flag"],
+      "members": [
+        "wmmask",
+        "verbose_flag",
+        "components_flag",
+        "help_flag"
+      ],
       "name": "Optional Parameters"
     }
   ],

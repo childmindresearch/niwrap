@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "@extract_meica_ortvec",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Project good MEICA components out of bad ones",
   "command-line": "@extract_meica_ortvec [PREFIX] [MDIR] [VAL_REJECT_IGNORED] [VAL_REJECT_MIDK] [WDIR] [VERB]",
   "inputs": [
@@ -77,8 +77,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@extract_meica_ortvec.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

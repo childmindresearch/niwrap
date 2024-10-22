@@ -1,14 +1,14 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dExtrema",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dExtrema.html",
   "description": "Find local extrema (minima or maxima) in 3D datasets.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dExtrema.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dExtrema [INPUT_DATASET] [OUTPUT_PREFIX] [OUTPUT_SESSION] [QUIET_FLAG] [MASK_FILE] [MASK_THRESHOLD] [DATA_THRESHOLD] [N_BEST] [SEP_DISTANCE] [MINIMA_FLAG] [MAXIMA_FLAG] [STRICT_FLAG] [PARTIAL_FLAG] [INTERIOR_FLAG] [CLOSURE_FLAG] [SLICE_FLAG] [VOLUME_FLAG] [REMOVE_FLAG] [AVERAGE_FLAG] [WEIGHT_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

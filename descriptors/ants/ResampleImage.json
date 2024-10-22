@@ -1,7 +1,7 @@
 {
   "name": "ResampleImage",
   "command-line": "ResampleImage [IMAGE_DIMENSION] [INPUT_IMAGE] [OUTPUT_IMAGE] [SIZE_SPACING] [INTERPOLATE_TYPE] [PIXELTYPE]",
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "description": "ResampleImage is a tool used to resample images to specified sizes and spacings, using various interpolation methods and pixel types.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
@@ -42,7 +42,13 @@
       "value-key": "[INTERPOLATE_TYPE]",
       "type": "String",
       "optional": true,
-      "value-choices": ["0", "1", "2", "3", "4"],
+      "value-choices": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
       "description": "Specifies the interpolation type. 0: linear (default), 1: nearest-neighbor, 2: gaussian, 3: windowedSinc, 4: B-Spline."
     },
     {
@@ -51,7 +57,16 @@
       "value-key": "[PIXELTYPE]",
       "type": "String",
       "optional": true,
-      "value-choices": ["0", "1", "2", "3", "4", "5", "6", "7"],
+      "value-choices": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
       "description": "Specifies the pixel type of the output image. 0: char, 1: unsigned char, 2: short, 3: unsigned short, 4: int, 5: unsigned int, 6: float (default), 7: double."
     }
   ],

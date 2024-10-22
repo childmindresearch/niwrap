@@ -1,7 +1,7 @@
 {
   "name": "fixelcorrespondence",
   "description": "Obtain fixel-fixel correpondence between a subject fixel image and a template fixel mask.\n\nIt is assumed that the subject image has already been spatially normalised and is aligned with the template. The output fixel image will have the same fixels (and directions) of the template.\n\nReferences:\n\n",
-  "author": "David Raffelt (david.raffelt@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -151,5 +151,5 @@
     }
   ],
   "output-files": [],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/fixelcorrespondence.html"
+  "url": "https://www.mrtrix.org/"
 }

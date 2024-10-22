@@ -1,13 +1,13 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dMean",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Takes the voxel-by-voxel mean of all input datasets; designed to be faster than 3dcalc.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dMean.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dMean [INPUT_FILES] [VERBOSE_FLAG] [PREFIX] [DATUM] [FORCE_SCALE_FLAG] [GLOBAL_SCALE_FLAG] [NO_SCALE_FLAG] [NON_ZERO_FLAG] [STANDARD_DEVIATION_FLAG] [AVERAGE_SQUARES_FLAG] [SUM_FLAG] [COUNT_FLAG] [MAX_FLAG] [MIN_FLAG] [ABS_MAX_FLAG] [SIGNED_ABS_MAX_FLAG] [MASK_INTER_FLAG] [MASK_UNION_FLAG] [WEIGHTSET]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

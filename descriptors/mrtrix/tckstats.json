@@ -1,7 +1,7 @@
 {
   "name": "tckstats",
   "description": "Calculate statistics on streamlines lengths.\n\n\n\nReferences:\n\n",
-  "author": "Robert E. Smith (robert.smith@florey.edu.au)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -191,5 +191,5 @@
       "description": "dump the streamlines lengths to a text file "
     }
   ],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/tckstats.html"
+  "url": "https://www.mrtrix.org/"
 }

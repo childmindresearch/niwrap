@@ -1,7 +1,7 @@
 {
   "name": "dcminfo",
   "description": "Output DICOM fields in human-readable format.\n\n\n\nReferences:\n\n",
-  "author": "J-Donald Tournier (jdtournier@gmail.com)",
+  "author": "MRTrix3 Developers",
   "tool-version": "3.0.4",
   "schema-version": "0.5",
   "container-image": {
@@ -177,5 +177,5 @@
     }
   ],
   "output-files": [],
-  "url": "https://mrtrix.readthedocs.io/en/latest/reference/commands/dcminfo.html"
+  "url": "https://www.mrtrix.org/"
 }

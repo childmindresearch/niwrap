@@ -1,9 +1,9 @@
 {
   "name": "epi_reg",
   "command-line": "epi_reg [EPI] [T1_HEAD] [T1_BRAIN] [OUT_BASE_NAME] [ECHOSPACING] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [PEDIR] [WEIGHT_IMAGE] [WMSEG]",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Runs FSL epi_reg script for simultaneous coregistration and fieldmap unwarping.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/UserGuide#epi_reg",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "inputs": [
     {
       "id": "echospacing",
@@ -92,7 +92,14 @@
       "command-line-flag-separator": "=",
       "description": "'x' or 'y' or 'z' or '-x' or '-y' or '-z'. Phase encoding direction, dir = x/y/z/-x/-y/-z.",
       "optional": true,
-      "value-choices": ["x", "y", "z", "-x", "-y", "-z"]
+      "value-choices": [
+        "x",
+        "y",
+        "z",
+        "-x",
+        "-y",
+        "-z"
+      ]
     },
     {
       "id": "t1_brain",

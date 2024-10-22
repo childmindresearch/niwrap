@@ -1,14 +1,14 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "afni_open",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://github.com/afni/afni",
   "description": "A program to open various AFNI/SUMA files.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/afni_open.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "afni_open [FILES] [METHOD] [EDITOR] [DOWNLOADER] [EXAMINEXMAT] [BROWSER] [README] [AFNIWEB] [GLOBAL_HELP] [GOPTS_HELP] [HELP] [MINI_HELP] [EXTREME_HELP] [H_VIEW] [H_WEB]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

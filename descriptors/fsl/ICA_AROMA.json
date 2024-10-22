@@ -1,9 +1,9 @@
 {
   "name": "ICA_AROMA",
   "command-line": "ICA_AROMA [TR] [DENOISE_TYPE] [DIM] [FEAT_DIR] [FNIRT_WARP_FILE] [IN_FILE] [MASK] [MAT_FILE] [MELODIC_DIR] [MOTION_PARAMETERS] [OUT_DIR]",
-  "author": "Nipype (interface)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "\nInterface for the ICA_AROMA.py script.\nICA-AROMA (i.e. 'ICA-based Automatic Removal Of Motion Artifacts') concerns a data-driven method to identify and remove motion-related independent components from fMRI data. To that end it exploits a small, but robust set of theoretically motivated features, preventing the need for classifier re-training and therefore providing direct and easy applicability.",
-  "url": "https://github.com/rhr-pruim/ICA-AROMA",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "inputs": [
     {
       "id": "TR",
@@ -23,7 +23,12 @@
       "description": "'nonaggr' or 'aggr' or 'both' or 'no'. Type of denoising strategy:-no: only classification, no denoising-nonaggr (default): non-aggresssive denoising, i.e. partial component regression-aggr: aggressive denoising, i.e. full component regression-both: both aggressive and non-aggressive denoising (two outputs).",
       "optional": false,
       "default-value": "nonaggr",
-      "value-choices": ["nonaggr", "aggr", "both", "no"]
+      "value-choices": [
+        "nonaggr",
+        "aggr",
+        "both",
+        "no"
+      ]
     },
     {
       "id": "dim",
@@ -148,31 +153,46 @@
     {
       "id": "mutex_group_2",
       "name": "Mutex group 2",
-      "members": ["in_file", "feat_dir"],
+      "members": [
+        "in_file",
+        "feat_dir"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_3",
       "name": "Mutex group 3",
-      "members": ["mask", "feat_dir"],
+      "members": [
+        "mask",
+        "feat_dir"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_4",
       "name": "Mutex group 4",
-      "members": ["feat_dir", "mat_file"],
+      "members": [
+        "feat_dir",
+        "mat_file"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_5",
       "name": "Mutex group 5",
-      "members": ["fnirt_warp_file", "feat_dir"],
+      "members": [
+        "fnirt_warp_file",
+        "feat_dir"
+      ],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_6",
       "name": "Mutex group 6",
-      "members": ["feat_dir", "motion_parameters"],
+      "members": [
+        "feat_dir",
+        "motion_parameters"
+      ],
       "mutually-exclusive": true
     }
   ],

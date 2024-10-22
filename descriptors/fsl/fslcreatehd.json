@@ -1,10 +1,10 @@
 {
   "tool-version": "6.0.5",
   "name": "fslcreatehd",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/fslcreatehd.json",
   "description": "Tool to create a new NIfTI header.",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLUtils",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslcreatehd [XSIZE] [YSIZE] [ZSIZE] [TSIZE] [XVOXSIZE] [YVOXSIZE] [ZVOXSIZE] [TR] [XORIGIN] [YORIGIN] [ZORIGIN] [DATATYPE] [HEADERNAME] [XML_FILE]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
@@ -150,7 +150,9 @@
       "description": "Parameter for creating header from NIfTI XML file",
       "mutually-exclusive": true,
       "id": "nifti_xml_group",
-      "members": ["nifti_xml_file"],
+      "members": [
+        "nifti_xml_file"
+      ],
       "name": "NIfTI XML Parameter"
     }
   ],

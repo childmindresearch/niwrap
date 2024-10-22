@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "3dGenPriors",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "https://example.com/your_tool_descriptor.json",
   "description": "Produces classification priors based on voxel signatures.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dGenPriors.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dGenPriors -sig [SIGS] -tdist [TDIST] -cprefix [CPREFIX] -pprefix [PPREFIX] -labeltable [LTFILE] -do [WHAT] [PREFIX] [CMASK] [MASK] [MRANGE] [DEBUG] [VOX_DEBUG] [VOX_DEBUG_FILE] [UID] [USE_TMP] [NO_TMP] [PSET] [CSET] [REGROUP_CLASSES] [CLASSES] [FEATURES] [STRICT_FEATURE_MATCH] [FEATGROUPS] [SHOW_THIS_DIST] [FAST] [SLOW]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "ParseName",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Parses filename into components useful for AFNI",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/ParseName.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "ParseName [OPTIONAL_PARAMETERS] <FName>",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

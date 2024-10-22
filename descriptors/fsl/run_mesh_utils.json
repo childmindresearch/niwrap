@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "run_mesh_utils",
-  "author": "University of Oxford (Brian Patenaude)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool for various mesh operations as part of FSL.",
   "command-line": "run_mesh_utils [BASE_MESH] [OUTPUT_IMAGE] [INPUT_IMAGE] [SECOND_INPUT_IMAGE] [WEIGHTING_IMAGE_FORCE] [OPTIONAL_PARAMS...]",
   "container-image": {
@@ -171,5 +171,6 @@
       "name": "Output Image File"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

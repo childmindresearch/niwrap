@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "bedpostx_datacheck",
-  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Check the data directory for BEDPOSTX compatibility",
   "command-line": "/usr/local/fsl/bin/bedpostx_datacheck [DATA_DIR]",
   "container-image": {
@@ -18,5 +18,6 @@
       "name": "Data directory"
     }
   ],
-  "schema-version": "0.5"
+  "schema-version": "0.5",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

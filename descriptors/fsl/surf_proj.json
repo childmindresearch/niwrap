@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "surf_proj",
-  "author": "FMRIB Analysis Group, Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Projects data onto a surface mesh using specified parameters.",
   "command-line": "surf_proj --data [DATA] --surf [SURFACE] --out [OUTPUT_FILE] [SURFACE_REF] [TRANSFORM] [MESHSPACE] [STEP_SIZE] [DIRECTION] [OPERATION] [SURFACE_OUTPUT]",
   "inputs": [
@@ -109,5 +109,10 @@
       "id": "output_surface",
       "name": "Output surface file"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
+  "container-image": {
+    "type": "docker",
+    "image": "mcin/fsl:6.0.5"
+  }
 }

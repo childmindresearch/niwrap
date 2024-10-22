@@ -1,12 +1,12 @@
 {
-  "tool-version": "2.31",
+  "tool-version": "24.2.06",
   "name": "fat_proc_imit2w_from_t1w",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Process T1w anatomical images to generate an imitation T2w-contrast image",
   "command-line": "fat_proc_imit2w_from_t1w [T1_FILE] [PREFIX] [WORKDIR] [MASK] [SS_BLUR_FWHM] [NO_CLEAN] [NO_QC_VIEW] [QC_PREFIX]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -113,5 +113,5 @@
       "name": "QC Images"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/fat_proc_imit2w_from_t1w.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

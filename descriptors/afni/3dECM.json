@@ -1,9 +1,9 @@
 {
   "name": "3dECM",
   "command-line": "3dECM [IN_FILE] [AUTOCLIP] [AUTOMASK] [EPS] [FECM] [FULL] [MASK] [MAX_ITER] [MEMORY] [OUT_FILE] [OUTPUTTYPE] [POLORT] [SCALE] [SHIFT] [SPARSITY] [THRESH]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Performs degree centrality on a dataset using a given maskfile via the 3dECM command",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dECM.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "autoclip",
@@ -102,7 +102,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "polort",
@@ -169,11 +173,11 @@
       "description": "Output file."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

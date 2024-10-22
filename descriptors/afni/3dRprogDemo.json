@@ -1,14 +1,14 @@
 {
-  "tool-version": "1.0",
+  "tool-version": "24.2.06",
   "name": "3dRprogDemo",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "http://afni.nimh.nih.gov",
   "description": "Template program to help users write their own R processing routines on MRI volumes.",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dRprogDemo.html",
+  "url": "https://afni.nimh.nih.gov/",
   "command-line": "3dRprogDemo [INPUT_FILES] [MASK] [SCALE] [PREFIX] [H_ASPX_FLAG] [H_RAW_FLAG] [H_SPX_FLAG] [H_TXT_FLAG] [HELP_FLAG] [SHOW_ALLOWED_OPTIONS_FLAG] [VERBOSITY_LEVEL]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {

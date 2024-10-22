@@ -1,13 +1,13 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "MakeColorMap",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "descriptor-url": "none",
   "description": "Utility for creating and modifying colormaps with various formats and fiducial points",
   "command-line": "MakeColorMap [FIDUCIALS_NCOL] [FIDUCIALS] [NUM_COLORS] [STD_MAPNAME] [PALETTE_FILE] [CMAP_NAME] [FSCOLUT_LABELS] [FSCOLUT_FILE] [AFNI_HEX] [AFNI_HEX_COMPLETE] [SUMA_COLORMAP] [USER_COLUT_FILE] [SDSET] [SDSET_PREFIX] [FLIPUPDOWN] [SKIP_LAST] [SHOW_FSCOLUT] [HELP_FLAG] [HELP_FULL_FLAG] [FLIP_MAP_UPDSIDE_DOWN]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -211,5 +211,5 @@
       "name": "Example Palette File"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/MakeColorMap.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

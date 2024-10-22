@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "3dretroicor",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Performs Retrospective Image Correction for physiological motion effects using a modified RETROICOR algorithm",
   "command-line": "3dretroicor [IGNORE] [PREFIX] [CARD] [CARDPHASE] [THRESHOLD] [RESP] [RESPPHASE] [ORDER] [DATASET]",
   "inputs": [
@@ -111,8 +111,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dretroicor.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

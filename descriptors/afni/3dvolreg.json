@@ -1,9 +1,9 @@
 {
   "name": "3dvolreg",
   "command-line": "3dvolreg [BASEFILE] [COPYORIGIN] [IN_FILE] [IN_WEIGHT_VOLUME] [IN_WEIGHT_VOLUME_2] [INTERP] [NUM_THREADS] [OUTPUTTYPE] [TIMESHIFT] [VERBOSE] [ZPAD]",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Register input volumes to a base volume using AFNI 3dvolreg command",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dvolreg.html",
+  "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
       "id": "basefile",
@@ -58,7 +58,13 @@
       "command-line-flag": "-",
       "description": "'fourier' or 'cubic' or 'heptic' or 'quintic' or 'linear'. Spatial interpolation methods [default = heptic].",
       "optional": true,
-      "value-choices": ["Fourier", "cubic", "heptic", "quintic", "linear"]
+      "value-choices": [
+        "Fourier",
+        "cubic",
+        "heptic",
+        "quintic",
+        "linear"
+      ]
     },
     {
       "id": "num_threads",
@@ -76,7 +82,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "timeshift",
@@ -173,11 +183,11 @@
       "description": "Registered file."
     }
   ],
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "tags": {
     "domain": "neuroinformatics",

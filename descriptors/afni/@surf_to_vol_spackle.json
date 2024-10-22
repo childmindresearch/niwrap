@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "@surf_to_vol_spackle",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Project data from a surface dataset into a volume primarily using 3dSurf2Vol but then filling any holes with an iterative smoothing procedure.",
   "command-line": "@surf_to_vol_spackle [MASKSET] [SPEC] [SURFA] [SURFB] [SURFSET] [PREFIX] [NORMAL_VECTOR_LENGTH] [SEARCH_RADIUS] [NUM_STEPS] [KEEP_TEMP_FILES_FLAG] [MAX_ITERS] [USE_MODE_FLAG] [DATUM_TYPE] [IGNORE_UNKNOWN_OPTIONS_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -140,5 +140,5 @@
       "name": "Output Volume"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@surf_to_vol_spackle.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

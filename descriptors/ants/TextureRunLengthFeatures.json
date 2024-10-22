@@ -113,7 +113,7 @@
       "path-template": "long_run_high_grey_level_emphasis.csv"
     }
   ],
-  "author": "ANTs developers",
+  "author": "ANTs Developers",
   "url": "https://github.com/ANTsX/ANTs",
   "container-image": {
     "type": "docker",

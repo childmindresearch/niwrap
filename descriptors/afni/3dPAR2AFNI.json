@@ -1,12 +1,12 @@
 {
-  "tool-version": "2008/07/18 11:12",
+  "tool-version": "24.2.06",
   "name": "3dPAR2AFNI",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Convert Philips PAR/REC files to AFNI's BRIK/HEAD, NIfTI, or ANALYZE format",
   "command-line": "3dPAR2AFNI [INPUT_FILE] [OUTLIER_TEST_FLAG] [OUTPUT_FORMAT_FLAG] [OUTPUT_DIR] [VERBOSE_FLAG] [GZIP_FLAG] [BYTE_SWAP_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -109,5 +109,5 @@
       "name": "Converted Output Files"
     }
   ],
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dPAR2AFNI.pl.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

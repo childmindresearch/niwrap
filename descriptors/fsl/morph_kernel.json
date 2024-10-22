@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "morph_kernel",
-  "author": "Author Name",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to generate morphological kernels",
   "command-line": "morph_kernel [CUBE_SIDE_LENGTH] [SPHERE_RADIUS]",
   "container-image": {
@@ -35,5 +35,6 @@
       "id": "morph_kernel_output",
       "name": "Output kernel file"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

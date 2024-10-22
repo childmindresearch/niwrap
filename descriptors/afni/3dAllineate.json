@@ -1,11 +1,11 @@
 {
-  "tool-version": "23.1.10",
+  "tool-version": "24.2.06",
   "name": "3dAllineate",
   "description": "Program to align one dataset (the 'source') to a 'base' dataset using an affine (matrix) transformation of space.",
   "command-line": "3dAllineate [SOURCE] [BASE] [PREFIX] [PARAM_SAVE] [PARAM_APPLY] [MATRIX_SAVE] [MATRIX_APPLY] [COST] [INTERP] [FINAL] [NMATCH] [NOPAD] [VERBOSE] [QUIET]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -165,6 +165,6 @@
       "name": "Saved matrix file"
     }
   ],
-  "author": "AFNI Team",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dAllineate.html"
+  "author": "AFNI Developers",
+  "url": "https://afni.nimh.nih.gov/"
 }

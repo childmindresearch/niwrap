@@ -1,7 +1,7 @@
 {
-  "tool-version": "unknown",
+  "tool-version": "24.2.06",
   "name": "@IsoMasks",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Creates isosurfaces from isovolume envelopes.",
   "command-line": "@IsoMasks -mask [INPUT_DATASET] [ISOVALS]",
   "inputs": [
@@ -26,8 +26,8 @@
   ],
   "schema-version": "0.5",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@IsoMasks.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

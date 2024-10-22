@@ -1,12 +1,12 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "FATCAT_matplot",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Launch a shiny app to visualize .netcc and/or .grid files.",
   "command-line": "FATCAT_matplot [DIRECTORY] [SHINY_FOLDER_FLAG]",
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
   "inputs": [
     {
@@ -28,5 +28,5 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/FATCAT_matplot.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

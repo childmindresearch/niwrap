@@ -1,7 +1,7 @@
 {
-  "tool-version": "1.0.0",
+  "tool-version": "24.2.06",
   "name": "imaver",
-  "author": "AFNI Team",
+  "author": "AFNI Developers",
   "description": "Computes the mean and standard deviation, pixel-by-pixel, of a whole bunch of images.",
   "command-line": "imaver [OUT_AVE] [OUT_SIG] [INPUT_IMAGES]",
   "inputs": [
@@ -49,8 +49,8 @@
     }
   ],
   "container-image": {
-    "image": "fcpindi/c-pac:latest",
-    "type": "docker"
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
   },
-  "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/imaver.html"
+  "url": "https://afni.nimh.nih.gov/"
 }

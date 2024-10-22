@@ -1,7 +1,7 @@
 {
   "tool-version": "6.0.5",
   "name": "connectedcomp",
-  "author": "Unknown",
+  "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Connected component analysis tool",
   "command-line": "connectedcomp [INPUT_VOLUME] [OUTPUT_VOLUME] [NUM_CONNECT]",
   "inputs": [
@@ -40,5 +40,10 @@
       "id": "outfile",
       "name": "Output volume"
     }
-  ]
+  ],
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
+  "container-image": {
+    "type": "docker",
+    "image": "mcin/fsl:6.0.5"
+  }
 }
