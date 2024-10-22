@@ -201,12 +201,12 @@ def scene_capture_image(
     per inch. The resulting width is 1800 pixels. The resulting height of the
     image is a function of the width and the aspect ratio (height divided by
     width) of the window size saved in the scene.
-    wb_command -scene-capture-image myscene.scene 2 image21.jpg \
+    wb_command -scene-capture-image myscene.scene 2 image21.jpg \\
     -size-width 6 -units INCHES -resolution 300 PIXELS_PER_INCH
     
     Print information about the size of the output image for the second scene
     (no image file is created) using a width of 4.5 centimeters.
-    wb_command -scene-capture-image myscene.scene 2 test.jpg \
+    wb_command -scene-capture-image myscene.scene 2 test.jpg \\
     -size-width 4.5 -units CENTIMETERS -print-image-info
     
     

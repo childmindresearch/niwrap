@@ -41,7 +41,7 @@ def v__command_globb(
     
     Args:
         program_command: The entire command line for the program desired. The\
-            command is best put between single quotes, do not use the \ to break a\
+            command is best put between single quotes, do not use the \\ to break a\
             long line within the quotes.
         output_dir: The output directory where the results will be saved.
         brick_list: A list of bricks (or anything) on which the program command\

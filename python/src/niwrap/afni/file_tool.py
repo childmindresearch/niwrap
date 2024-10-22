@@ -100,8 +100,8 @@ def file_tool(
         mod_field: Specify a field and value(s) to modify.
         prefix: Specify an output filename.
         overwrite: Specify to overwrite the input file(s).
-        show_bad_all: Show lines with whitespace after '\'.
-        show_bad_backslash: Show lines with whitespace after '\'.
+        show_bad_all: Show lines with whitespace after '\\'.
+        show_bad_backslash: Show lines with whitespace after '\\'.
         show_bad_char: Show any non-printable characters.
         show_file_type: Print file type of UNIX, Mac or DOS.
         fix_rich_quotes: Replace rich-text quotes with ASCII.

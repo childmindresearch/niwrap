@@ -1123,9 +1123,9 @@ class C3dCoordinateMapVoxel:
     hemisphere segmentation and a right hemisphere segmentation (assuming the X
     coordinate corresponds to the right-left axis)
     
-    c3d seg.nii -as SEG -cmv -pop -pop -thresh 50% inf 1 0 -as MASK \
-    -push SEG -times -o seg_left.nii.gz \
-    -push MASK -replace 1 0 0 1 \
+    c3d seg.nii -as SEG -cmv -pop -pop -thresh 50% inf 1 0 -as MASK \\
+    -push SEG -times -o seg_left.nii.gz \\
+    -push MASK -replace 1 0 0 1 \\
     -push SEG -times -o seg_right.nii.gz.
     """
     coordinate_map_voxel: str
@@ -1143,9 +1143,9 @@ class C3dCoordinateMapVoxel:
     hemisphere segmentation and a right hemisphere segmentation (assuming the X
     coordinate corresponds to the right-left axis)
     
-    c3d seg.nii -as SEG -cmv -pop -pop -thresh 50% inf 1 0 -as MASK \
-    -push SEG -times -o seg_left.nii.gz \
-    -push MASK -replace 1 0 0 1 \
+    c3d seg.nii -as SEG -cmv -pop -pop -thresh 50% inf 1 0 -as MASK \\
+    -push SEG -times -o seg_left.nii.gz \\
+    -push MASK -replace 1 0 0 1 \\
     -push SEG -times -o seg_right.nii.gz"""
     
     def run(
@@ -2249,12 +2249,12 @@ class C3dGlm:
     Syntax: `-glm design_matrix_file contrast_vector_file`
     
     Applies voxel-wise general linear model to a set of images. More precisely,
-    the general linear model solves the following system: $Y = X \beta +
-    \epsilon$, where Y are the observations (a list of n images, where each
+    the general linear model solves the following system: $Y = X \\beta +
+    \\epsilon$, where Y are the observations (a list of n images, where each
     voxel is treated as an independent observation); X is the $n x k$ design
-    matrix, where $k$ is the number of factors; $\beta$ is a set of $k$ unknown
-    images (factors) and $\epsilon$ is the error term. The command will compute
-    the $\beta$ images and return a weighted sum of them, where the weights are
+    matrix, where $k$ is the number of factors; $\\beta$ is a set of $k$ unknown
+    images (factors) and $\\epsilon$ is the error term. The command will compute
+    the $\\beta$ images and return a weighted sum of them, where the weights are
     specified in the contrast vector. The design matrix and the contrast vector
     are passed in as files. The file format is just a space-separated list of
     numbers. For a good explanation of the general linear model, see [S. Kiebel
@@ -2277,12 +2277,12 @@ class C3dGlm:
     Syntax: `-glm design_matrix_file contrast_vector_file`
     
     Applies voxel-wise general linear model to a set of images. More precisely,
-    the general linear model solves the following system: $Y = X \beta +
-    \epsilon$, where Y are the observations (a list of n images, where each
+    the general linear model solves the following system: $Y = X \\beta +
+    \\epsilon$, where Y are the observations (a list of n images, where each
     voxel is treated as an independent observation); X is the $n x k$ design
-    matrix, where $k$ is the number of factors; $\beta$ is a set of $k$ unknown
-    images (factors) and $\epsilon$ is the error term. The command will compute
-    the $\beta$ images and return a weighted sum of them, where the weights are
+    matrix, where $k$ is the number of factors; $\\beta$ is a set of $k$ unknown
+    images (factors) and $\\epsilon$ is the error term. The command will compute
+    the $\\beta$ images and return a weighted sum of them, where the weights are
     specified in the contrast vector. The design matrix and the contrast vector
     are passed in as files. The file format is just a space-separated list of
     numbers. For a good explanation of the general linear model, see [S. Kiebel
@@ -3014,7 +3014,7 @@ class C3dLevelset:
     
     Syntax: `-levelset n_iter `
     
-    Perform level set segmentation for *n\_iter* iterations, like in ITK-SNAP.
+    Perform level set segmentation for *n\\_iter* iterations, like in ITK-SNAP.
     The last image on the stack is treated as the initialization image and the
     next-to-last image on the stack is the speed image. Both images should be in
     the range between -1 and 1. Here is how the signs of the different images
@@ -3034,8 +3034,8 @@ class C3dLevelset:
     seg_bubbles.nii.gz in this example is a binary image of the initialization
     seeds (1 inside the seeds, 0 outside).
     
-    c3d brain.nii.gz -erf 715 100 -scale -1 seg_bubbles.nii.gz \
-    -replace 0 1 1 -1 -levelset-curvature 0.2 -levelset 500 \
+    c3d brain.nii.gz -erf 715 100 -scale -1 seg_bubbles.nii.gz \\
+    -replace 0 1 1 -1 -levelset-curvature 0.2 -levelset 500 \\
     -thresh -inf 0 1 0 -o segmentation.nii.gz
     
     Another example of smoothing a binary image that is useful for cleaning up
@@ -3044,8 +3044,8 @@ class C3dLevelset:
     writes out both the level set image (whose 0-level set is the smoothed
     boundary of the binary object) and the smoothed binary object
     
-    c3d binary.img -threshold 1 inf 1 -1 -binary.img 1 inf 1 -1 \
-    -levelset-curvature 1.5 -levelset 100 -o levelset.img \
+    c3d binary.img -threshold 1 inf 1 -1 -binary.img 1 inf 1 -1 \\
+    -levelset-curvature 1.5 -levelset 100 -o levelset.img \\
     -thresh -inf 0 1 0 -o smoothed_binary.img.
     """
     levelset: str
@@ -3053,7 +3053,7 @@ class C3dLevelset:
     
     Syntax: `-levelset n_iter `
     
-    Perform level set segmentation for *n\_iter* iterations, like in ITK-SNAP.
+    Perform level set segmentation for *n\\_iter* iterations, like in ITK-SNAP.
     The last image on the stack is treated as the initialization image and the
     next-to-last image on the stack is the speed image. Both images should be in
     the range between -1 and 1. Here is how the signs of the different images
@@ -3073,8 +3073,8 @@ class C3dLevelset:
     seg_bubbles.nii.gz in this example is a binary image of the initialization
     seeds (1 inside the seeds, 0 outside).
     
-    c3d brain.nii.gz -erf 715 100 -scale -1 seg_bubbles.nii.gz \
-    -replace 0 1 1 -1 -levelset-curvature 0.2 -levelset 500 \
+    c3d brain.nii.gz -erf 715 100 -scale -1 seg_bubbles.nii.gz \\
+    -replace 0 1 1 -1 -levelset-curvature 0.2 -levelset 500 \\
     -thresh -inf 0 1 0 -o segmentation.nii.gz
     
     Another example of smoothing a binary image that is useful for cleaning up
@@ -3083,8 +3083,8 @@ class C3dLevelset:
     writes out both the level set image (whose 0-level set is the smoothed
     boundary of the binary object) and the smoothed binary object
     
-    c3d binary.img -threshold 1 inf 1 -1 -binary.img 1 inf 1 -1 \
-    -levelset-curvature 1.5 -levelset 100 -o levelset.img \
+    c3d binary.img -threshold 1 inf 1 -1 -binary.img 1 inf 1 -1 \\
+    -levelset-curvature 1.5 -levelset 100 -o levelset.img \\
     -thresh -inf 0 1 0 -o smoothed_binary.img"""
     
     def run(
@@ -5060,7 +5060,7 @@ class C3dOverlayLabelImage:
     This command takes a grayscale image and a label image (i.e. image with a
     set of discrete values) and produces red, green and blue components of a
     color image. The resulting color image is an overlay of the labels over the
-    grey image. The first parameter (*lookup\_table*) is a text file with
+    grey image. The first parameter (*lookup\\_table*) is a text file with
     entries in the format
     
     label_value red green blue alpha
@@ -5086,8 +5086,8 @@ class C3dOverlayLabelImage:
     overlay segmentation on the grayscale image; and save as a color PNG file.
     
     c3d seg.nii.gz -trim 20x20x0vox -as S gray.nii.gz -stretch 2% 98% 0 255
-    -clip 0 255 \\
-    -reslice-identity -push S -foreach -slice z 50% -flip xy -endfor \\
+    -clip 0 255 \\\\
+    -reslice-identity -push S -foreach -slice z 50% -flip xy -endfor \\\\
     -oli labels.txt 0.5 -type uchar -omc ovl.png.
     """
     overlay_label_image: str
@@ -5098,7 +5098,7 @@ class C3dOverlayLabelImage:
     This command takes a grayscale image and a label image (i.e. image with a
     set of discrete values) and produces red, green and blue components of a
     color image. The resulting color image is an overlay of the labels over the
-    grey image. The first parameter (*lookup\_table*) is a text file with
+    grey image. The first parameter (*lookup\\_table*) is a text file with
     entries in the format
     
     label_value red green blue alpha
@@ -5124,8 +5124,8 @@ class C3dOverlayLabelImage:
     overlay segmentation on the grayscale image; and save as a color PNG file.
     
     c3d seg.nii.gz -trim 20x20x0vox -as S gray.nii.gz -stretch 2% 98% 0 255
-    -clip 0 255 \\
-    -reslice-identity -push S -foreach -slice z 50% -flip xy -endfor \\
+    -clip 0 255 \\\\
+    -reslice-identity -push S -foreach -slice z 50% -flip xy -endfor \\\\
     -oli labels.txt 0.5 -type uchar -omc ovl.png"""
     
     def run(
@@ -5929,9 +5929,9 @@ class C3dRfTrain:
     and can be stacked into a 4-dimensional image. For example:
     
     # Train using MRI and segmentations from N subjects
-    c4d mri_subj*.nii -tile w -popas ALLMRI \
-    seg_subj*.nii -tile w -popas ALLSEG \
-    -rf-param-patch 2x2x2x0 \
+    c4d mri_subj*.nii -tile w -popas ALLMRI \\
+    seg_subj*.nii -tile w -popas ALLSEG \\
+    -rf-param-patch 2x2x2x0 \\
     -push ALLMRI -push ALLSEG -rf-train myforest.rf
     
     # Apply using single MRI
@@ -5974,9 +5974,9 @@ class C3dRfTrain:
     and can be stacked into a 4-dimensional image. For example:
     
     # Train using MRI and segmentations from N subjects
-    c4d mri_subj*.nii -tile w -popas ALLMRI \
-    seg_subj*.nii -tile w -popas ALLSEG \
-    -rf-param-patch 2x2x2x0 \
+    c4d mri_subj*.nii -tile w -popas ALLMRI \\
+    seg_subj*.nii -tile w -popas ALLSEG \\
+    -rf-param-patch 2x2x2x0 \\
     -push ALLMRI -push ALLSEG -rf-train myforest.rf
     
     # Apply using single MRI
@@ -6606,7 +6606,7 @@ class C3dRms:
     
     The equivalent of this command is
     
-    c3d img1.img img2.img img3.img img4.img -foreach -dup -times -endfor \
+    c3d img1.img img2.img img3.img img4.img -foreach -dup -times -endfor \\
     -accum -add -endaccum -sqrt -o rms.img.
     """
     rms: str
@@ -6623,7 +6623,7 @@ class C3dRms:
     
     The equivalent of this command is
     
-    c3d img1.img img2.img img3.img img4.img -foreach -dup -times -endfor \
+    c3d img1.img img2.img img3.img img4.img -foreach -dup -times -endfor \\
     -accum -add -endaccum -sqrt -o rms.img"""
     
     def run(
@@ -8285,8 +8285,8 @@ class C3dVoteMrf:
     mask. Voxels outside of the mask are first remapped to NaN (not a number)
     and thus excluded from the MRF optimization and given 0 label.
     
-    c3d lhood01.nii lhood02.nii lhood03.nii mask.nii -popas M \
-    -foreach -push M -replace 0 NaN -times -endfor \
+    c3d lhood01.nii lhood02.nii lhood03.nii mask.nii -popas M \\
+    -foreach -push M -replace 0 NaN -times -endfor \\
     -vote-mrf VA 0.2 -o result.nii.
     """
     vote_mrf: str
@@ -8356,8 +8356,8 @@ class C3dVoteMrf:
     mask. Voxels outside of the mask are first remapped to NaN (not a number)
     and thus excluded from the MRF optimization and given 0 label.
     
-    c3d lhood01.nii lhood02.nii lhood03.nii mask.nii -popas M \
-    -foreach -push M -replace 0 NaN -times -endfor \
+    c3d lhood01.nii lhood02.nii lhood03.nii mask.nii -popas M \\
+    -foreach -push M -replace 0 NaN -times -endfor \\
     -vote-mrf VA 0.2 -o result.nii"""
     
     def run(
@@ -8504,9 +8504,9 @@ class C3dVoxelwiseRegression:
     Syntax: `-voxreg regression_order `
     
     Perform regression between corresponding voxels in two images. This command
-    takes two images as input, X and Y. This command finds parameters b\_0,
-    b\_1, ..., b\_k, such that Y is best approximated by b\_0 + b\_1 * X + b\_2
-    * X^2 + ... + b_k * X^k. Here is an example of linear regression.
+    takes two images as input, X and Y. This command finds parameters b\\_0,
+    b\\_1, ..., b\\_k, such that Y is best approximated by b\\_0 + b\\_1 * X +
+    b\\_2 * X^2 + ... + b_k * X^k. Here is an example of linear regression.
     
     $ c3d Y.nii X.nii -voxreg 2
     REGCOEFF[0] = 5.56935
@@ -8522,9 +8522,9 @@ class C3dVoxelwiseRegression:
     Syntax: `-voxreg regression_order `
     
     Perform regression between corresponding voxels in two images. This command
-    takes two images as input, X and Y. This command finds parameters b\_0,
-    b\_1, ..., b\_k, such that Y is best approximated by b\_0 + b\_1 * X + b\_2
-    * X^2 + ... + b_k * X^k. Here is an example of linear regression.
+    takes two images as input, X and Y. This command finds parameters b\\_0,
+    b\\_1, ..., b\\_k, such that Y is best approximated by b\\_0 + b\\_1 * X +
+    b\\_2 * X^2 + ... + b_k * X^k. Here is an example of linear regression.
     
     $ c3d Y.nii X.nii -voxreg 2
     REGCOEFF[0] = 5.56935

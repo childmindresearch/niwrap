@@ -57,7 +57,7 @@ def v_3d_ecm(
         autoclip: Clip off low-intensity regions in the dataset.
         automask: Mask the dataset to target brain-only voxels.
         eps: Sets the stopping criterion for the power iteration;\
-            :math:`l2\|v_\text{old} - v_\text{new}\| < eps\|v_\text{old}\|`;\
+            :math:`l2\\|v_\\text{old} - v_\\text{new}\\| < eps\\|v_\\text{old}\\|`;\
             default = 0.001.
         fecm: Fast centrality method; substantial speed increase but cannot\
             accommodate thresholding; automatically selected if -thresh or\

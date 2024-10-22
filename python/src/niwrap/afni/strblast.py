@@ -45,8 +45,8 @@ def strblast(
         input_files: Input files to search for the target string.
         new_char: Replace TARGETSTRING with CHAR (repeated).
         new_string: Replace TARGETSTRING with STRING.
-        unescape: Parse TARGETSTRING for escaped characters (includes '\t',\
-            '\n', '\r').
+        unescape: Parse TARGETSTRING for escaped characters (includes '\\t',\
+            '\\n', '\\r').
         quiet: Do not report files with no strings found. Use -quiet -quiet to\
             avoid any reporting.
         help_: Show help message and exit.

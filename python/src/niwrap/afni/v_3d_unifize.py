@@ -74,7 +74,7 @@ def v_3d_unifize(
             fraction'. must be between 0.1 and 0.9. a small fraction means to make\
             the initial threshold for clipping (a la 3dcliplevel) smaller, which\
             will tend to make the mask larger. [default=0.1].
-        epi: Assume the input dataset is a t2 (or t2\*) weighted epi time\
+        epi: Assume the input dataset is a t2 (or t2\\*) weighted epi time\
             series. after computing the scaling, apply it to all volumes (trs) in\
             the input dataset. that is, a given voxel will be scaled by the same\
             factor at each tr. this option also implies '-noduplo' and '-t2'.this\
