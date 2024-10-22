@@ -936,8 +936,7 @@
       },
       {
         "target": "3dTcorrelate",
-        "status": "done",
-        "descriptor": "descriptors/afni/3dTcorrelate.json"
+        "status": "missing"
       },
       {
         "target": "3dTfilter",
@@ -2264,8 +2263,7 @@
       },
       {
         "target": "SurfLocalstat",
-        "status": "done",
-        "descriptor": "descriptors/afni/SurfLocalstat.json"
+        "status": "missing"
       },
       {
         "target": "SurfMeasures",
