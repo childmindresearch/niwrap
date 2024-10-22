@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">CREATE_WARPED_GRID_IMAGE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c10eb2efec61ddaec2e047a3e4c5da156b508d43.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;08920c0176c3ddba53a8ad386cb2b1c8cbcfc38f.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CreateWarpedGridImage&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;ants&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;antsx/ants:v2.5.3&quot;</span><span class="p">,</span>
@@ -108,60 +108,49 @@
 </span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CreateWarpedGridImageOutputs</span><span class="p">:</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    Advanced Normalization Tools (ANTs) is a C++ library available through the</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    command line that computes high-dimensional mappings to capture the statistics</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    of brain structure and function. It allows one to organize, visualize and</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    statistically explore large biomedical image sets. Additionally, it integrates</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    imaging modalities in space + time and works across species or organ systems</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    with minimal customization.</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    </span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    The ANTs library is considered a state-of-the-art medical image registration</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">    and segmentation toolkit which depends on the Insight ToolKit, a widely used</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">    medical image processing library to which ANTs developers contribute.</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">    ANTs-related tools have also won several international, unbiased</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">    competitions such as MICCAI, BRATS, and STACOM.</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">    </span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">    Author: ANTs developers</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">    </span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">    URL: https://github.com/ANTsX/ANTs</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">    </span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">    Args:</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">        image_dimension: The dimensionality of the input image.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        deformation_field: File containing the deformation field to be applied.</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">        output_image: The filename of the output warped grid image.</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">        directions: Directions for the grid warping, e.g., &#39;1x0x0&#39;.</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        grid_spacing: Spacing of the grid, e.g., &#39;10x10x10&#39;.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        grid_sigma: Sigma value for the grid smoothing, e.g., &#39;1x1x1&#39;.</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">    Returns:</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">        NamedTuple of outputs (described in `CreateWarpedGridImageOutputs`).</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CREATE_WARPED_GRID_IMAGE_METADATA</span><span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CreateWarpedGridImage&quot;</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">image_dimension</span><span class="p">))</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">deformation_field</span><span class="p">))</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">directions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">directions</span><span class="p">)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">grid_spacing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid_spacing</span><span class="p">)</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="k">if</span> <span class="n">grid_sigma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid_sigma</span><span class="p">)</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CreateWarpedGridImageOutputs</span><span class="p">(</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">warped_grid_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_image</span><span class="p">),</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="p">)</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>
-</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="s2">&quot;CREATE_WARPED_GRID_IMAGE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>    <span class="s2">&quot;CreateWarpedGridImageOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>    <span class="s2">&quot;create_warped_grid_image&quot;</span><span class="p">,</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a><span class="p">]</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">    Create a warped grid image based on the specified deformation field.</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    </span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">    Author: ANTs developers</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">    </span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    URL: https://github.com/ANTsX/ANTs</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">    </span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">    Args:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        image_dimension: The dimensionality of the input image.</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        deformation_field: File containing the deformation field to be applied.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        output_image: The filename of the output warped grid image.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        directions: Directions for the grid warping, e.g., &#39;1x0x0&#39;.</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        grid_spacing: Spacing of the grid, e.g., &#39;10x10x10&#39;.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        grid_sigma: Sigma value for the grid smoothing, e.g., &#39;1x1x1&#39;.</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">    Returns:</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        NamedTuple of outputs (described in `CreateWarpedGridImageOutputs`).</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CREATE_WARPED_GRID_IMAGE_METADATA</span><span class="p">)</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CreateWarpedGridImage&quot;</span><span class="p">)</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">image_dimension</span><span class="p">))</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">deformation_field</span><span class="p">))</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="k">if</span> <span class="n">directions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">directions</span><span class="p">)</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="k">if</span> <span class="n">grid_spacing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid_spacing</span><span class="p">)</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">grid_sigma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid_sigma</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CreateWarpedGridImageOutputs</span><span class="p">(</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">warped_grid_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_image</span><span class="p">),</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="s2">&quot;CREATE_WARPED_GRID_IMAGE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="s2">&quot;CreateWarpedGridImageOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="s2">&quot;create_warped_grid_image&quot;</span><span class="p">,</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -170,7 +159,7 @@
                     <div class="attr variable">
             <span class="name">CREATE_WARPED_GRID_IMAGE_METADATA</span>        =
 <input id="CREATE_WARPED_GRID_IMAGE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CREATE_WARPED_GRID_IMAGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;c10eb2efec61ddaec2e047a3e4c5da156b508d43.boutiques&#39;, name=&#39;CreateWarpedGridImage&#39;, package=&#39;ants&#39;, citations=None, container_image_tag=&#39;antsx/ants:v2.5.3&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CREATE_WARPED_GRID_IMAGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;08920c0176c3ddba53a8ad386cb2b1c8cbcfc38f.boutiques&#39;, name=&#39;CreateWarpedGridImage&#39;, package=&#39;ants&#39;, citations=None, container_image_tag=&#39;antsx/ants:v2.5.3&#39;)</span>
 
         
     </div>
@@ -267,68 +256,46 @@
 </span><span id="create_warped_grid_image-35"><a href="#create_warped_grid_image-35"><span class="linenos">35</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="create_warped_grid_image-36"><a href="#create_warped_grid_image-36"><span class="linenos">36</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CreateWarpedGridImageOutputs</span><span class="p">:</span>
 </span><span id="create_warped_grid_image-37"><a href="#create_warped_grid_image-37"><span class="linenos">37</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="create_warped_grid_image-38"><a href="#create_warped_grid_image-38"><span class="linenos">38</span></a><span class="sd">    Advanced Normalization Tools (ANTs) is a C++ library available through the</span>
-</span><span id="create_warped_grid_image-39"><a href="#create_warped_grid_image-39"><span class="linenos">39</span></a><span class="sd">    command line that computes high-dimensional mappings to capture the statistics</span>
-</span><span id="create_warped_grid_image-40"><a href="#create_warped_grid_image-40"><span class="linenos">40</span></a><span class="sd">    of brain structure and function. It allows one to organize, visualize and</span>
-</span><span id="create_warped_grid_image-41"><a href="#create_warped_grid_image-41"><span class="linenos">41</span></a><span class="sd">    statistically explore large biomedical image sets. Additionally, it integrates</span>
-</span><span id="create_warped_grid_image-42"><a href="#create_warped_grid_image-42"><span class="linenos">42</span></a><span class="sd">    imaging modalities in space + time and works across species or organ systems</span>
-</span><span id="create_warped_grid_image-43"><a href="#create_warped_grid_image-43"><span class="linenos">43</span></a><span class="sd">    with minimal customization.</span>
-</span><span id="create_warped_grid_image-44"><a href="#create_warped_grid_image-44"><span class="linenos">44</span></a><span class="sd">    </span>
-</span><span id="create_warped_grid_image-45"><a href="#create_warped_grid_image-45"><span class="linenos">45</span></a><span class="sd">    The ANTs library is considered a state-of-the-art medical image registration</span>
-</span><span id="create_warped_grid_image-46"><a href="#create_warped_grid_image-46"><span class="linenos">46</span></a><span class="sd">    and segmentation toolkit which depends on the Insight ToolKit, a widely used</span>
-</span><span id="create_warped_grid_image-47"><a href="#create_warped_grid_image-47"><span class="linenos">47</span></a><span class="sd">    medical image processing library to which ANTs developers contribute.</span>
-</span><span id="create_warped_grid_image-48"><a href="#create_warped_grid_image-48"><span class="linenos">48</span></a><span class="sd">    ANTs-related tools have also won several international, unbiased</span>
-</span><span id="create_warped_grid_image-49"><a href="#create_warped_grid_image-49"><span class="linenos">49</span></a><span class="sd">    competitions such as MICCAI, BRATS, and STACOM.</span>
-</span><span id="create_warped_grid_image-50"><a href="#create_warped_grid_image-50"><span class="linenos">50</span></a><span class="sd">    </span>
-</span><span id="create_warped_grid_image-51"><a href="#create_warped_grid_image-51"><span class="linenos">51</span></a><span class="sd">    Author: ANTs developers</span>
-</span><span id="create_warped_grid_image-52"><a href="#create_warped_grid_image-52"><span class="linenos">52</span></a><span class="sd">    </span>
-</span><span id="create_warped_grid_image-53"><a href="#create_warped_grid_image-53"><span class="linenos">53</span></a><span class="sd">    URL: https://github.com/ANTsX/ANTs</span>
-</span><span id="create_warped_grid_image-54"><a href="#create_warped_grid_image-54"><span class="linenos">54</span></a><span class="sd">    </span>
-</span><span id="create_warped_grid_image-55"><a href="#create_warped_grid_image-55"><span class="linenos">55</span></a><span class="sd">    Args:</span>
-</span><span id="create_warped_grid_image-56"><a href="#create_warped_grid_image-56"><span class="linenos">56</span></a><span class="sd">        image_dimension: The dimensionality of the input image.</span>
-</span><span id="create_warped_grid_image-57"><a href="#create_warped_grid_image-57"><span class="linenos">57</span></a><span class="sd">        deformation_field: File containing the deformation field to be applied.</span>
-</span><span id="create_warped_grid_image-58"><a href="#create_warped_grid_image-58"><span class="linenos">58</span></a><span class="sd">        output_image: The filename of the output warped grid image.</span>
-</span><span id="create_warped_grid_image-59"><a href="#create_warped_grid_image-59"><span class="linenos">59</span></a><span class="sd">        directions: Directions for the grid warping, e.g., &#39;1x0x0&#39;.</span>
-</span><span id="create_warped_grid_image-60"><a href="#create_warped_grid_image-60"><span class="linenos">60</span></a><span class="sd">        grid_spacing: Spacing of the grid, e.g., &#39;10x10x10&#39;.</span>
-</span><span id="create_warped_grid_image-61"><a href="#create_warped_grid_image-61"><span class="linenos">61</span></a><span class="sd">        grid_sigma: Sigma value for the grid smoothing, e.g., &#39;1x1x1&#39;.</span>
-</span><span id="create_warped_grid_image-62"><a href="#create_warped_grid_image-62"><span class="linenos">62</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="create_warped_grid_image-63"><a href="#create_warped_grid_image-63"><span class="linenos">63</span></a><span class="sd">    Returns:</span>
-</span><span id="create_warped_grid_image-64"><a href="#create_warped_grid_image-64"><span class="linenos">64</span></a><span class="sd">        NamedTuple of outputs (described in `CreateWarpedGridImageOutputs`).</span>
-</span><span id="create_warped_grid_image-65"><a href="#create_warped_grid_image-65"><span class="linenos">65</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="create_warped_grid_image-66"><a href="#create_warped_grid_image-66"><span class="linenos">66</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="create_warped_grid_image-67"><a href="#create_warped_grid_image-67"><span class="linenos">67</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CREATE_WARPED_GRID_IMAGE_METADATA</span><span class="p">)</span>
-</span><span id="create_warped_grid_image-68"><a href="#create_warped_grid_image-68"><span class="linenos">68</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="create_warped_grid_image-69"><a href="#create_warped_grid_image-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CreateWarpedGridImage&quot;</span><span class="p">)</span>
-</span><span id="create_warped_grid_image-70"><a href="#create_warped_grid_image-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">image_dimension</span><span class="p">))</span>
-</span><span id="create_warped_grid_image-71"><a href="#create_warped_grid_image-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">deformation_field</span><span class="p">))</span>
-</span><span id="create_warped_grid_image-72"><a href="#create_warped_grid_image-72"><span class="linenos">72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
-</span><span id="create_warped_grid_image-73"><a href="#create_warped_grid_image-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">directions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="create_warped_grid_image-74"><a href="#create_warped_grid_image-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">directions</span><span class="p">)</span>
-</span><span id="create_warped_grid_image-75"><a href="#create_warped_grid_image-75"><span class="linenos">75</span></a>    <span class="k">if</span> <span class="n">grid_spacing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="create_warped_grid_image-76"><a href="#create_warped_grid_image-76"><span class="linenos">76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid_spacing</span><span class="p">)</span>
-</span><span id="create_warped_grid_image-77"><a href="#create_warped_grid_image-77"><span class="linenos">77</span></a>    <span class="k">if</span> <span class="n">grid_sigma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="create_warped_grid_image-78"><a href="#create_warped_grid_image-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid_sigma</span><span class="p">)</span>
-</span><span id="create_warped_grid_image-79"><a href="#create_warped_grid_image-79"><span class="linenos">79</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CreateWarpedGridImageOutputs</span><span class="p">(</span>
-</span><span id="create_warped_grid_image-80"><a href="#create_warped_grid_image-80"><span class="linenos">80</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="create_warped_grid_image-81"><a href="#create_warped_grid_image-81"><span class="linenos">81</span></a>        <span class="n">warped_grid_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_image</span><span class="p">),</span>
-</span><span id="create_warped_grid_image-82"><a href="#create_warped_grid_image-82"><span class="linenos">82</span></a>    <span class="p">)</span>
-</span><span id="create_warped_grid_image-83"><a href="#create_warped_grid_image-83"><span class="linenos">83</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="create_warped_grid_image-84"><a href="#create_warped_grid_image-84"><span class="linenos">84</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="create_warped_grid_image-38"><a href="#create_warped_grid_image-38"><span class="linenos">38</span></a><span class="sd">    Create a warped grid image based on the specified deformation field.</span>
+</span><span id="create_warped_grid_image-39"><a href="#create_warped_grid_image-39"><span class="linenos">39</span></a><span class="sd">    </span>
+</span><span id="create_warped_grid_image-40"><a href="#create_warped_grid_image-40"><span class="linenos">40</span></a><span class="sd">    Author: ANTs developers</span>
+</span><span id="create_warped_grid_image-41"><a href="#create_warped_grid_image-41"><span class="linenos">41</span></a><span class="sd">    </span>
+</span><span id="create_warped_grid_image-42"><a href="#create_warped_grid_image-42"><span class="linenos">42</span></a><span class="sd">    URL: https://github.com/ANTsX/ANTs</span>
+</span><span id="create_warped_grid_image-43"><a href="#create_warped_grid_image-43"><span class="linenos">43</span></a><span class="sd">    </span>
+</span><span id="create_warped_grid_image-44"><a href="#create_warped_grid_image-44"><span class="linenos">44</span></a><span class="sd">    Args:</span>
+</span><span id="create_warped_grid_image-45"><a href="#create_warped_grid_image-45"><span class="linenos">45</span></a><span class="sd">        image_dimension: The dimensionality of the input image.</span>
+</span><span id="create_warped_grid_image-46"><a href="#create_warped_grid_image-46"><span class="linenos">46</span></a><span class="sd">        deformation_field: File containing the deformation field to be applied.</span>
+</span><span id="create_warped_grid_image-47"><a href="#create_warped_grid_image-47"><span class="linenos">47</span></a><span class="sd">        output_image: The filename of the output warped grid image.</span>
+</span><span id="create_warped_grid_image-48"><a href="#create_warped_grid_image-48"><span class="linenos">48</span></a><span class="sd">        directions: Directions for the grid warping, e.g., &#39;1x0x0&#39;.</span>
+</span><span id="create_warped_grid_image-49"><a href="#create_warped_grid_image-49"><span class="linenos">49</span></a><span class="sd">        grid_spacing: Spacing of the grid, e.g., &#39;10x10x10&#39;.</span>
+</span><span id="create_warped_grid_image-50"><a href="#create_warped_grid_image-50"><span class="linenos">50</span></a><span class="sd">        grid_sigma: Sigma value for the grid smoothing, e.g., &#39;1x1x1&#39;.</span>
+</span><span id="create_warped_grid_image-51"><a href="#create_warped_grid_image-51"><span class="linenos">51</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="create_warped_grid_image-52"><a href="#create_warped_grid_image-52"><span class="linenos">52</span></a><span class="sd">    Returns:</span>
+</span><span id="create_warped_grid_image-53"><a href="#create_warped_grid_image-53"><span class="linenos">53</span></a><span class="sd">        NamedTuple of outputs (described in `CreateWarpedGridImageOutputs`).</span>
+</span><span id="create_warped_grid_image-54"><a href="#create_warped_grid_image-54"><span class="linenos">54</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="create_warped_grid_image-55"><a href="#create_warped_grid_image-55"><span class="linenos">55</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="create_warped_grid_image-56"><a href="#create_warped_grid_image-56"><span class="linenos">56</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CREATE_WARPED_GRID_IMAGE_METADATA</span><span class="p">)</span>
+</span><span id="create_warped_grid_image-57"><a href="#create_warped_grid_image-57"><span class="linenos">57</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="create_warped_grid_image-58"><a href="#create_warped_grid_image-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;CreateWarpedGridImage&quot;</span><span class="p">)</span>
+</span><span id="create_warped_grid_image-59"><a href="#create_warped_grid_image-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">image_dimension</span><span class="p">))</span>
+</span><span id="create_warped_grid_image-60"><a href="#create_warped_grid_image-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">deformation_field</span><span class="p">))</span>
+</span><span id="create_warped_grid_image-61"><a href="#create_warped_grid_image-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
+</span><span id="create_warped_grid_image-62"><a href="#create_warped_grid_image-62"><span class="linenos">62</span></a>    <span class="k">if</span> <span class="n">directions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="create_warped_grid_image-63"><a href="#create_warped_grid_image-63"><span class="linenos">63</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">directions</span><span class="p">)</span>
+</span><span id="create_warped_grid_image-64"><a href="#create_warped_grid_image-64"><span class="linenos">64</span></a>    <span class="k">if</span> <span class="n">grid_spacing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="create_warped_grid_image-65"><a href="#create_warped_grid_image-65"><span class="linenos">65</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid_spacing</span><span class="p">)</span>
+</span><span id="create_warped_grid_image-66"><a href="#create_warped_grid_image-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">grid_sigma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="create_warped_grid_image-67"><a href="#create_warped_grid_image-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid_sigma</span><span class="p">)</span>
+</span><span id="create_warped_grid_image-68"><a href="#create_warped_grid_image-68"><span class="linenos">68</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">CreateWarpedGridImageOutputs</span><span class="p">(</span>
+</span><span id="create_warped_grid_image-69"><a href="#create_warped_grid_image-69"><span class="linenos">69</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="create_warped_grid_image-70"><a href="#create_warped_grid_image-70"><span class="linenos">70</span></a>        <span class="n">warped_grid_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_image</span><span class="p">),</span>
+</span><span id="create_warped_grid_image-71"><a href="#create_warped_grid_image-71"><span class="linenos">71</span></a>    <span class="p">)</span>
+</span><span id="create_warped_grid_image-72"><a href="#create_warped_grid_image-72"><span class="linenos">72</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="create_warped_grid_image-73"><a href="#create_warped_grid_image-73"><span class="linenos">73</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Advanced Normalization Tools (ANTs) is a C++ library available through the
-command line that computes high-dimensional mappings to capture the statistics
-of brain structure and function. It allows one to organize, visualize and
-statistically explore large biomedical image sets. Additionally, it integrates
-imaging modalities in space + time and works across species or organ systems
-with minimal customization.</p>
-
-<p>The ANTs library is considered a state-of-the-art medical image registration
-and segmentation toolkit which depends on the Insight ToolKit, a widely used
-medical image processing library to which ANTs developers contribute.
-ANTs-related tools have also won several international, unbiased
-competitions such as MICCAI, BRATS, and STACOM.</p>
+            <div class="docstring"><p>Create a warped grid image based on the specified deformation field.</p>
 
 <p>Author: ANTs developers</p>
 

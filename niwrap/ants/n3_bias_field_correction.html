@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">N3_BIAS_FIELD_CORRECTION_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;fd745cd8cbbe6bb510e5abcf6e5b6a6a079c43b8.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4e83de770b59bdbac2f2d60c407571d41cc394da.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;N3BiasFieldCorrection&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;ants&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;antsx/ants:v2.5.3&quot;</span><span class="p">,</span>
@@ -118,124 +118,119 @@
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">N3BiasFieldCorrectionOutputs</span><span class="p">:</span>
 </span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    Advanced Normalization Tools (ANTs) is a C++ library available through the</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    command line that computes high-dimensional mappings to capture the statistics</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    of brain structure and function. It allows one to organize, visualize and</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    statistically explore large biomedical image sets. Additionally, it integrates</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    imaging modalities in space + time and works across species or organ systems</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    with minimal customization.</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    </span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    The ANTs library is considered a state-of-the-art medical image registration</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    and segmentation toolkit which depends on the Insight ToolKit, a widely used</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    medical image processing library to which ANTs developers contribute.</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    ANTs-related tools have also won several international, unbiased</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    competitions such as MICCAI, BRATS, and STACOM.</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    Author: ANTs developers</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    </span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">    URL: https://github.com/ANTsX/ANTs</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    </span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    Args:</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        input_image: A scalar image is expected as input for bias correction.\</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            Since N3 log transforms the intensities, negative values or values\</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            close to zero should be processed prior to correction.</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        output: The bias-corrected version of the input image and optionally\</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            the estimated bias field.</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        image_dimensionality: This option forces the image to be treated as a\</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">            specified-dimensional image. If not specified, N3 tries to infer the\</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">            dimensionality from the input image.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        mask_image: If a mask image is specified, the final bias correction is\</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">            only performed in the mask region. If a mask image is not specified,\</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">            the entire image region will be used as the mask region. Note: this\</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">            differs from the original N3 implementation.</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        rescale_intensities: This option rescales the intensity range within\</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">            the user-specified mask to the original [min, max] range.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">        weight_image: The weight image allows the user to perform a relative\</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">            weighting of specific voxels during the B-spline fitting.</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        shrink_factor: Shrink factor to resample the input image. Commonly used\</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">            values are &lt;= 4.</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        convergence: Describes the convergence criteria with default value as\</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">            [50,0.0].</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        bspline_fitting: Describes the parameters for B-Spline fitting.\</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">            Defaults are [splineDistance,4,3].</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        histogram_sharpening: Describes histogram sharpening parameters;\</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">            defaults are [0.15,0.01,200].</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        verbose: Verbose output.</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    Returns:</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        NamedTuple of outputs (described in `N3BiasFieldCorrectionOutputs`).</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">N3_BIAS_FIELD_CORRECTION_METADATA</span><span class="p">)</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;N3BiasFieldCorrection&quot;</span><span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">image_dimensionality</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;--image-dimensionality&quot;</span><span class="p">,</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">image_dimensionality</span><span class="p">)</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="s2">&quot;--input-image&quot;</span><span class="p">,</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="p">])</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">mask_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">    This N3 is a variant of the popular N3 (nonparametric nonuniform normalization)</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">    retrospective bias correction algorithm. Based on the assumption that the</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">    corruption of the low frequency bias field can be modeled as a convolution of</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    the intensity histogram by a Gaussian, the basic algorithmic protocol is to</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    iterate between deconvolving the intensity histogram by a Gaussian, remapping</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    the intensities, and then spatially smoothing this result by a B-spline modeling</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    of the bias field itself.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    </span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    Author: ANTs developers</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">    </span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    URL: https://github.com/ANTsX/ANTs</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    </span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    Args:</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        input_image: A scalar image is expected as input for bias correction.\</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">            Since N3 log transforms the intensities, negative values or values\</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="sd">            close to zero should be processed prior to correction.</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        output: The bias-corrected version of the input image and optionally\</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">            the estimated bias field.</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        image_dimensionality: This option forces the image to be treated as a\</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            specified-dimensional image. If not specified, N3 tries to infer the\</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">            dimensionality from the input image.</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        mask_image: If a mask image is specified, the final bias correction is\</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">            only performed in the mask region. If a mask image is not specified,\</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">            the entire image region will be used as the mask region. Note: this\</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">            differs from the original N3 implementation.</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        rescale_intensities: This option rescales the intensity range within\</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">            the user-specified mask to the original [min, max] range.</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">        weight_image: The weight image allows the user to perform a relative\</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">            weighting of specific voxels during the B-spline fitting.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        shrink_factor: Shrink factor to resample the input image. Commonly used\</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">            values are &lt;= 4.</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        convergence: Describes the convergence criteria with default value as\</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">            [50,0.0].</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        bspline_fitting: Describes the parameters for B-Spline fitting.\</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">            Defaults are [splineDistance,4,3].</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        histogram_sharpening: Describes histogram sharpening parameters;\</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">            defaults are [0.15,0.01,200].</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">        verbose: Verbose output.</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    Returns:</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        NamedTuple of outputs (described in `N3BiasFieldCorrectionOutputs`).</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">N3_BIAS_FIELD_CORRECTION_METADATA</span><span class="p">)</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;N3BiasFieldCorrection&quot;</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">image_dimensionality</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="s2">&quot;--image-dimensionality&quot;</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">image_dimensionality</span><span class="p">)</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="s2">&quot;--input-image&quot;</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="p">])</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">mask_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="s2">&quot;--mask-image&quot;</span><span class="p">,</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_image</span><span class="p">)</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="p">])</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">rescale_intensities</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="s2">&quot;--mask-image&quot;</span><span class="p">,</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_image</span><span class="p">)</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="s2">&quot;--rescale-intensities&quot;</span><span class="p">,</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">rescale_intensities</span><span class="p">)</span>
 </span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="p">])</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">rescale_intensities</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">weight_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="s2">&quot;--rescale-intensities&quot;</span><span class="p">,</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">rescale_intensities</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="s2">&quot;--weight-image&quot;</span><span class="p">,</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">weight_image</span><span class="p">)</span>
 </span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="p">])</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">weight_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">shrink_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="s2">&quot;--weight-image&quot;</span><span class="p">,</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">weight_image</span><span class="p">)</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="s2">&quot;--shrink-factor&quot;</span><span class="p">,</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">shrink_factor</span><span class="p">)</span>
 </span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="p">])</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">shrink_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">convergence</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="s2">&quot;--shrink-factor&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">shrink_factor</span><span class="p">)</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="s2">&quot;--convergence&quot;</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="n">convergence</span>
 </span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">convergence</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">bspline_fitting</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="s2">&quot;--convergence&quot;</span><span class="p">,</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="n">convergence</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>            <span class="s2">&quot;--bspline-fitting&quot;</span><span class="p">,</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>            <span class="n">bspline_fitting</span>
 </span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="p">])</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">bspline_fitting</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="k">if</span> <span class="n">histogram_sharpening</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="s2">&quot;--bspline-fitting&quot;</span><span class="p">,</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="n">bspline_fitting</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="s2">&quot;--histogram-sharpening&quot;</span><span class="p">,</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="n">histogram_sharpening</span>
 </span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="p">])</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">histogram_sharpening</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="s2">&quot;--histogram-sharpening&quot;</span><span class="p">,</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>            <span class="n">histogram_sharpening</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="p">])</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="s2">&quot;--output&quot;</span><span class="p">,</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">output</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="p">])</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="p">])</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">N3BiasFieldCorrectionOutputs</span><span class="p">(</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>        <span class="n">corrected_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">bias_field</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[BIS_FIELD]&quot;</span><span class="p">),</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="p">)</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="s2">&quot;N3BiasFieldCorrectionOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="s2">&quot;N3_BIAS_FIELD_CORRECTION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="s2">&quot;n3_bias_field_correction&quot;</span><span class="p">,</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="p">]</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="s2">&quot;--output&quot;</span><span class="p">,</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">output</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="p">])</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="p">])</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">N3BiasFieldCorrectionOutputs</span><span class="p">(</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">corrected_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="n">bias_field</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[BIS_FIELD]&quot;</span><span class="p">),</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="s2">&quot;N3BiasFieldCorrectionOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="s2">&quot;N3_BIAS_FIELD_CORRECTION_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="s2">&quot;n3_bias_field_correction&quot;</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -326,7 +321,7 @@
                     <div class="attr variable">
             <span class="name">N3_BIAS_FIELD_CORRECTION_METADATA</span>        =
 <input id="N3_BIAS_FIELD_CORRECTION_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="N3_BIAS_FIELD_CORRECTION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;fd745cd8cbbe6bb510e5abcf6e5b6a6a079c43b8.boutiques&#39;, name=&#39;N3BiasFieldCorrection&#39;, package=&#39;ants&#39;, citations=None, container_image_tag=&#39;antsx/ants:v2.5.3&#39;)</span>
+            <label class="view-value-button pdoc-button" for="N3_BIAS_FIELD_CORRECTION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4e83de770b59bdbac2f2d60c407571d41cc394da.boutiques&#39;, name=&#39;N3BiasFieldCorrection&#39;, package=&#39;ants&#39;, citations=None, container_image_tag=&#39;antsx/ants:v2.5.3&#39;)</span>
 
         
     </div>
@@ -361,132 +356,122 @@
 </span><span id="n3_bias_field_correction-42"><a href="#n3_bias_field_correction-42"><span class="linenos"> 42</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="n3_bias_field_correction-43"><a href="#n3_bias_field_correction-43"><span class="linenos"> 43</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">N3BiasFieldCorrectionOutputs</span><span class="p">:</span>
 </span><span id="n3_bias_field_correction-44"><a href="#n3_bias_field_correction-44"><span class="linenos"> 44</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="n3_bias_field_correction-45"><a href="#n3_bias_field_correction-45"><span class="linenos"> 45</span></a><span class="sd">    Advanced Normalization Tools (ANTs) is a C++ library available through the</span>
-</span><span id="n3_bias_field_correction-46"><a href="#n3_bias_field_correction-46"><span class="linenos"> 46</span></a><span class="sd">    command line that computes high-dimensional mappings to capture the statistics</span>
-</span><span id="n3_bias_field_correction-47"><a href="#n3_bias_field_correction-47"><span class="linenos"> 47</span></a><span class="sd">    of brain structure and function. It allows one to organize, visualize and</span>
-</span><span id="n3_bias_field_correction-48"><a href="#n3_bias_field_correction-48"><span class="linenos"> 48</span></a><span class="sd">    statistically explore large biomedical image sets. Additionally, it integrates</span>
-</span><span id="n3_bias_field_correction-49"><a href="#n3_bias_field_correction-49"><span class="linenos"> 49</span></a><span class="sd">    imaging modalities in space + time and works across species or organ systems</span>
-</span><span id="n3_bias_field_correction-50"><a href="#n3_bias_field_correction-50"><span class="linenos"> 50</span></a><span class="sd">    with minimal customization.</span>
-</span><span id="n3_bias_field_correction-51"><a href="#n3_bias_field_correction-51"><span class="linenos"> 51</span></a><span class="sd">    </span>
-</span><span id="n3_bias_field_correction-52"><a href="#n3_bias_field_correction-52"><span class="linenos"> 52</span></a><span class="sd">    The ANTs library is considered a state-of-the-art medical image registration</span>
-</span><span id="n3_bias_field_correction-53"><a href="#n3_bias_field_correction-53"><span class="linenos"> 53</span></a><span class="sd">    and segmentation toolkit which depends on the Insight ToolKit, a widely used</span>
-</span><span id="n3_bias_field_correction-54"><a href="#n3_bias_field_correction-54"><span class="linenos"> 54</span></a><span class="sd">    medical image processing library to which ANTs developers contribute.</span>
-</span><span id="n3_bias_field_correction-55"><a href="#n3_bias_field_correction-55"><span class="linenos"> 55</span></a><span class="sd">    ANTs-related tools have also won several international, unbiased</span>
-</span><span id="n3_bias_field_correction-56"><a href="#n3_bias_field_correction-56"><span class="linenos"> 56</span></a><span class="sd">    competitions such as MICCAI, BRATS, and STACOM.</span>
-</span><span id="n3_bias_field_correction-57"><a href="#n3_bias_field_correction-57"><span class="linenos"> 57</span></a><span class="sd">    </span>
-</span><span id="n3_bias_field_correction-58"><a href="#n3_bias_field_correction-58"><span class="linenos"> 58</span></a><span class="sd">    Author: ANTs developers</span>
-</span><span id="n3_bias_field_correction-59"><a href="#n3_bias_field_correction-59"><span class="linenos"> 59</span></a><span class="sd">    </span>
-</span><span id="n3_bias_field_correction-60"><a href="#n3_bias_field_correction-60"><span class="linenos"> 60</span></a><span class="sd">    URL: https://github.com/ANTsX/ANTs</span>
-</span><span id="n3_bias_field_correction-61"><a href="#n3_bias_field_correction-61"><span class="linenos"> 61</span></a><span class="sd">    </span>
-</span><span id="n3_bias_field_correction-62"><a href="#n3_bias_field_correction-62"><span class="linenos"> 62</span></a><span class="sd">    Args:</span>
-</span><span id="n3_bias_field_correction-63"><a href="#n3_bias_field_correction-63"><span class="linenos"> 63</span></a><span class="sd">        input_image: A scalar image is expected as input for bias correction.\</span>
-</span><span id="n3_bias_field_correction-64"><a href="#n3_bias_field_correction-64"><span class="linenos"> 64</span></a><span class="sd">            Since N3 log transforms the intensities, negative values or values\</span>
-</span><span id="n3_bias_field_correction-65"><a href="#n3_bias_field_correction-65"><span class="linenos"> 65</span></a><span class="sd">            close to zero should be processed prior to correction.</span>
-</span><span id="n3_bias_field_correction-66"><a href="#n3_bias_field_correction-66"><span class="linenos"> 66</span></a><span class="sd">        output: The bias-corrected version of the input image and optionally\</span>
-</span><span id="n3_bias_field_correction-67"><a href="#n3_bias_field_correction-67"><span class="linenos"> 67</span></a><span class="sd">            the estimated bias field.</span>
-</span><span id="n3_bias_field_correction-68"><a href="#n3_bias_field_correction-68"><span class="linenos"> 68</span></a><span class="sd">        image_dimensionality: This option forces the image to be treated as a\</span>
-</span><span id="n3_bias_field_correction-69"><a href="#n3_bias_field_correction-69"><span class="linenos"> 69</span></a><span class="sd">            specified-dimensional image. If not specified, N3 tries to infer the\</span>
-</span><span id="n3_bias_field_correction-70"><a href="#n3_bias_field_correction-70"><span class="linenos"> 70</span></a><span class="sd">            dimensionality from the input image.</span>
-</span><span id="n3_bias_field_correction-71"><a href="#n3_bias_field_correction-71"><span class="linenos"> 71</span></a><span class="sd">        mask_image: If a mask image is specified, the final bias correction is\</span>
-</span><span id="n3_bias_field_correction-72"><a href="#n3_bias_field_correction-72"><span class="linenos"> 72</span></a><span class="sd">            only performed in the mask region. If a mask image is not specified,\</span>
-</span><span id="n3_bias_field_correction-73"><a href="#n3_bias_field_correction-73"><span class="linenos"> 73</span></a><span class="sd">            the entire image region will be used as the mask region. Note: this\</span>
-</span><span id="n3_bias_field_correction-74"><a href="#n3_bias_field_correction-74"><span class="linenos"> 74</span></a><span class="sd">            differs from the original N3 implementation.</span>
-</span><span id="n3_bias_field_correction-75"><a href="#n3_bias_field_correction-75"><span class="linenos"> 75</span></a><span class="sd">        rescale_intensities: This option rescales the intensity range within\</span>
-</span><span id="n3_bias_field_correction-76"><a href="#n3_bias_field_correction-76"><span class="linenos"> 76</span></a><span class="sd">            the user-specified mask to the original [min, max] range.</span>
-</span><span id="n3_bias_field_correction-77"><a href="#n3_bias_field_correction-77"><span class="linenos"> 77</span></a><span class="sd">        weight_image: The weight image allows the user to perform a relative\</span>
-</span><span id="n3_bias_field_correction-78"><a href="#n3_bias_field_correction-78"><span class="linenos"> 78</span></a><span class="sd">            weighting of specific voxels during the B-spline fitting.</span>
-</span><span id="n3_bias_field_correction-79"><a href="#n3_bias_field_correction-79"><span class="linenos"> 79</span></a><span class="sd">        shrink_factor: Shrink factor to resample the input image. Commonly used\</span>
-</span><span id="n3_bias_field_correction-80"><a href="#n3_bias_field_correction-80"><span class="linenos"> 80</span></a><span class="sd">            values are &lt;= 4.</span>
-</span><span id="n3_bias_field_correction-81"><a href="#n3_bias_field_correction-81"><span class="linenos"> 81</span></a><span class="sd">        convergence: Describes the convergence criteria with default value as\</span>
-</span><span id="n3_bias_field_correction-82"><a href="#n3_bias_field_correction-82"><span class="linenos"> 82</span></a><span class="sd">            [50,0.0].</span>
-</span><span id="n3_bias_field_correction-83"><a href="#n3_bias_field_correction-83"><span class="linenos"> 83</span></a><span class="sd">        bspline_fitting: Describes the parameters for B-Spline fitting.\</span>
-</span><span id="n3_bias_field_correction-84"><a href="#n3_bias_field_correction-84"><span class="linenos"> 84</span></a><span class="sd">            Defaults are [splineDistance,4,3].</span>
-</span><span id="n3_bias_field_correction-85"><a href="#n3_bias_field_correction-85"><span class="linenos"> 85</span></a><span class="sd">        histogram_sharpening: Describes histogram sharpening parameters;\</span>
-</span><span id="n3_bias_field_correction-86"><a href="#n3_bias_field_correction-86"><span class="linenos"> 86</span></a><span class="sd">            defaults are [0.15,0.01,200].</span>
-</span><span id="n3_bias_field_correction-87"><a href="#n3_bias_field_correction-87"><span class="linenos"> 87</span></a><span class="sd">        verbose: Verbose output.</span>
-</span><span id="n3_bias_field_correction-88"><a href="#n3_bias_field_correction-88"><span class="linenos"> 88</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="n3_bias_field_correction-89"><a href="#n3_bias_field_correction-89"><span class="linenos"> 89</span></a><span class="sd">    Returns:</span>
-</span><span id="n3_bias_field_correction-90"><a href="#n3_bias_field_correction-90"><span class="linenos"> 90</span></a><span class="sd">        NamedTuple of outputs (described in `N3BiasFieldCorrectionOutputs`).</span>
-</span><span id="n3_bias_field_correction-91"><a href="#n3_bias_field_correction-91"><span class="linenos"> 91</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="n3_bias_field_correction-92"><a href="#n3_bias_field_correction-92"><span class="linenos"> 92</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="n3_bias_field_correction-93"><a href="#n3_bias_field_correction-93"><span class="linenos"> 93</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">N3_BIAS_FIELD_CORRECTION_METADATA</span><span class="p">)</span>
-</span><span id="n3_bias_field_correction-94"><a href="#n3_bias_field_correction-94"><span class="linenos"> 94</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="n3_bias_field_correction-95"><a href="#n3_bias_field_correction-95"><span class="linenos"> 95</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;N3BiasFieldCorrection&quot;</span><span class="p">)</span>
-</span><span id="n3_bias_field_correction-96"><a href="#n3_bias_field_correction-96"><span class="linenos"> 96</span></a>    <span class="k">if</span> <span class="n">image_dimensionality</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="n3_bias_field_correction-97"><a href="#n3_bias_field_correction-97"><span class="linenos"> 97</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-98"><a href="#n3_bias_field_correction-98"><span class="linenos"> 98</span></a>            <span class="s2">&quot;--image-dimensionality&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-99"><a href="#n3_bias_field_correction-99"><span class="linenos"> 99</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">image_dimensionality</span><span class="p">)</span>
-</span><span id="n3_bias_field_correction-100"><a href="#n3_bias_field_correction-100"><span class="linenos">100</span></a>        <span class="p">])</span>
-</span><span id="n3_bias_field_correction-101"><a href="#n3_bias_field_correction-101"><span class="linenos">101</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-102"><a href="#n3_bias_field_correction-102"><span class="linenos">102</span></a>        <span class="s2">&quot;--input-image&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-103"><a href="#n3_bias_field_correction-103"><span class="linenos">103</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
-</span><span id="n3_bias_field_correction-104"><a href="#n3_bias_field_correction-104"><span class="linenos">104</span></a>    <span class="p">])</span>
-</span><span id="n3_bias_field_correction-105"><a href="#n3_bias_field_correction-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">mask_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="n3_bias_field_correction-45"><a href="#n3_bias_field_correction-45"><span class="linenos"> 45</span></a><span class="sd">    This N3 is a variant of the popular N3 (nonparametric nonuniform normalization)</span>
+</span><span id="n3_bias_field_correction-46"><a href="#n3_bias_field_correction-46"><span class="linenos"> 46</span></a><span class="sd">    retrospective bias correction algorithm. Based on the assumption that the</span>
+</span><span id="n3_bias_field_correction-47"><a href="#n3_bias_field_correction-47"><span class="linenos"> 47</span></a><span class="sd">    corruption of the low frequency bias field can be modeled as a convolution of</span>
+</span><span id="n3_bias_field_correction-48"><a href="#n3_bias_field_correction-48"><span class="linenos"> 48</span></a><span class="sd">    the intensity histogram by a Gaussian, the basic algorithmic protocol is to</span>
+</span><span id="n3_bias_field_correction-49"><a href="#n3_bias_field_correction-49"><span class="linenos"> 49</span></a><span class="sd">    iterate between deconvolving the intensity histogram by a Gaussian, remapping</span>
+</span><span id="n3_bias_field_correction-50"><a href="#n3_bias_field_correction-50"><span class="linenos"> 50</span></a><span class="sd">    the intensities, and then spatially smoothing this result by a B-spline modeling</span>
+</span><span id="n3_bias_field_correction-51"><a href="#n3_bias_field_correction-51"><span class="linenos"> 51</span></a><span class="sd">    of the bias field itself.</span>
+</span><span id="n3_bias_field_correction-52"><a href="#n3_bias_field_correction-52"><span class="linenos"> 52</span></a><span class="sd">    </span>
+</span><span id="n3_bias_field_correction-53"><a href="#n3_bias_field_correction-53"><span class="linenos"> 53</span></a><span class="sd">    Author: ANTs developers</span>
+</span><span id="n3_bias_field_correction-54"><a href="#n3_bias_field_correction-54"><span class="linenos"> 54</span></a><span class="sd">    </span>
+</span><span id="n3_bias_field_correction-55"><a href="#n3_bias_field_correction-55"><span class="linenos"> 55</span></a><span class="sd">    URL: https://github.com/ANTsX/ANTs</span>
+</span><span id="n3_bias_field_correction-56"><a href="#n3_bias_field_correction-56"><span class="linenos"> 56</span></a><span class="sd">    </span>
+</span><span id="n3_bias_field_correction-57"><a href="#n3_bias_field_correction-57"><span class="linenos"> 57</span></a><span class="sd">    Args:</span>
+</span><span id="n3_bias_field_correction-58"><a href="#n3_bias_field_correction-58"><span class="linenos"> 58</span></a><span class="sd">        input_image: A scalar image is expected as input for bias correction.\</span>
+</span><span id="n3_bias_field_correction-59"><a href="#n3_bias_field_correction-59"><span class="linenos"> 59</span></a><span class="sd">            Since N3 log transforms the intensities, negative values or values\</span>
+</span><span id="n3_bias_field_correction-60"><a href="#n3_bias_field_correction-60"><span class="linenos"> 60</span></a><span class="sd">            close to zero should be processed prior to correction.</span>
+</span><span id="n3_bias_field_correction-61"><a href="#n3_bias_field_correction-61"><span class="linenos"> 61</span></a><span class="sd">        output: The bias-corrected version of the input image and optionally\</span>
+</span><span id="n3_bias_field_correction-62"><a href="#n3_bias_field_correction-62"><span class="linenos"> 62</span></a><span class="sd">            the estimated bias field.</span>
+</span><span id="n3_bias_field_correction-63"><a href="#n3_bias_field_correction-63"><span class="linenos"> 63</span></a><span class="sd">        image_dimensionality: This option forces the image to be treated as a\</span>
+</span><span id="n3_bias_field_correction-64"><a href="#n3_bias_field_correction-64"><span class="linenos"> 64</span></a><span class="sd">            specified-dimensional image. If not specified, N3 tries to infer the\</span>
+</span><span id="n3_bias_field_correction-65"><a href="#n3_bias_field_correction-65"><span class="linenos"> 65</span></a><span class="sd">            dimensionality from the input image.</span>
+</span><span id="n3_bias_field_correction-66"><a href="#n3_bias_field_correction-66"><span class="linenos"> 66</span></a><span class="sd">        mask_image: If a mask image is specified, the final bias correction is\</span>
+</span><span id="n3_bias_field_correction-67"><a href="#n3_bias_field_correction-67"><span class="linenos"> 67</span></a><span class="sd">            only performed in the mask region. If a mask image is not specified,\</span>
+</span><span id="n3_bias_field_correction-68"><a href="#n3_bias_field_correction-68"><span class="linenos"> 68</span></a><span class="sd">            the entire image region will be used as the mask region. Note: this\</span>
+</span><span id="n3_bias_field_correction-69"><a href="#n3_bias_field_correction-69"><span class="linenos"> 69</span></a><span class="sd">            differs from the original N3 implementation.</span>
+</span><span id="n3_bias_field_correction-70"><a href="#n3_bias_field_correction-70"><span class="linenos"> 70</span></a><span class="sd">        rescale_intensities: This option rescales the intensity range within\</span>
+</span><span id="n3_bias_field_correction-71"><a href="#n3_bias_field_correction-71"><span class="linenos"> 71</span></a><span class="sd">            the user-specified mask to the original [min, max] range.</span>
+</span><span id="n3_bias_field_correction-72"><a href="#n3_bias_field_correction-72"><span class="linenos"> 72</span></a><span class="sd">        weight_image: The weight image allows the user to perform a relative\</span>
+</span><span id="n3_bias_field_correction-73"><a href="#n3_bias_field_correction-73"><span class="linenos"> 73</span></a><span class="sd">            weighting of specific voxels during the B-spline fitting.</span>
+</span><span id="n3_bias_field_correction-74"><a href="#n3_bias_field_correction-74"><span class="linenos"> 74</span></a><span class="sd">        shrink_factor: Shrink factor to resample the input image. Commonly used\</span>
+</span><span id="n3_bias_field_correction-75"><a href="#n3_bias_field_correction-75"><span class="linenos"> 75</span></a><span class="sd">            values are &lt;= 4.</span>
+</span><span id="n3_bias_field_correction-76"><a href="#n3_bias_field_correction-76"><span class="linenos"> 76</span></a><span class="sd">        convergence: Describes the convergence criteria with default value as\</span>
+</span><span id="n3_bias_field_correction-77"><a href="#n3_bias_field_correction-77"><span class="linenos"> 77</span></a><span class="sd">            [50,0.0].</span>
+</span><span id="n3_bias_field_correction-78"><a href="#n3_bias_field_correction-78"><span class="linenos"> 78</span></a><span class="sd">        bspline_fitting: Describes the parameters for B-Spline fitting.\</span>
+</span><span id="n3_bias_field_correction-79"><a href="#n3_bias_field_correction-79"><span class="linenos"> 79</span></a><span class="sd">            Defaults are [splineDistance,4,3].</span>
+</span><span id="n3_bias_field_correction-80"><a href="#n3_bias_field_correction-80"><span class="linenos"> 80</span></a><span class="sd">        histogram_sharpening: Describes histogram sharpening parameters;\</span>
+</span><span id="n3_bias_field_correction-81"><a href="#n3_bias_field_correction-81"><span class="linenos"> 81</span></a><span class="sd">            defaults are [0.15,0.01,200].</span>
+</span><span id="n3_bias_field_correction-82"><a href="#n3_bias_field_correction-82"><span class="linenos"> 82</span></a><span class="sd">        verbose: Verbose output.</span>
+</span><span id="n3_bias_field_correction-83"><a href="#n3_bias_field_correction-83"><span class="linenos"> 83</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="n3_bias_field_correction-84"><a href="#n3_bias_field_correction-84"><span class="linenos"> 84</span></a><span class="sd">    Returns:</span>
+</span><span id="n3_bias_field_correction-85"><a href="#n3_bias_field_correction-85"><span class="linenos"> 85</span></a><span class="sd">        NamedTuple of outputs (described in `N3BiasFieldCorrectionOutputs`).</span>
+</span><span id="n3_bias_field_correction-86"><a href="#n3_bias_field_correction-86"><span class="linenos"> 86</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="n3_bias_field_correction-87"><a href="#n3_bias_field_correction-87"><span class="linenos"> 87</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="n3_bias_field_correction-88"><a href="#n3_bias_field_correction-88"><span class="linenos"> 88</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">N3_BIAS_FIELD_CORRECTION_METADATA</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-89"><a href="#n3_bias_field_correction-89"><span class="linenos"> 89</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="n3_bias_field_correction-90"><a href="#n3_bias_field_correction-90"><span class="linenos"> 90</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;N3BiasFieldCorrection&quot;</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-91"><a href="#n3_bias_field_correction-91"><span class="linenos"> 91</span></a>    <span class="k">if</span> <span class="n">image_dimensionality</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="n3_bias_field_correction-92"><a href="#n3_bias_field_correction-92"><span class="linenos"> 92</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="n3_bias_field_correction-93"><a href="#n3_bias_field_correction-93"><span class="linenos"> 93</span></a>            <span class="s2">&quot;--image-dimensionality&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-94"><a href="#n3_bias_field_correction-94"><span class="linenos"> 94</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">image_dimensionality</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-95"><a href="#n3_bias_field_correction-95"><span class="linenos"> 95</span></a>        <span class="p">])</span>
+</span><span id="n3_bias_field_correction-96"><a href="#n3_bias_field_correction-96"><span class="linenos"> 96</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="n3_bias_field_correction-97"><a href="#n3_bias_field_correction-97"><span class="linenos"> 97</span></a>        <span class="s2">&quot;--input-image&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-98"><a href="#n3_bias_field_correction-98"><span class="linenos"> 98</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-99"><a href="#n3_bias_field_correction-99"><span class="linenos"> 99</span></a>    <span class="p">])</span>
+</span><span id="n3_bias_field_correction-100"><a href="#n3_bias_field_correction-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">mask_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="n3_bias_field_correction-101"><a href="#n3_bias_field_correction-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="n3_bias_field_correction-102"><a href="#n3_bias_field_correction-102"><span class="linenos">102</span></a>            <span class="s2">&quot;--mask-image&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-103"><a href="#n3_bias_field_correction-103"><span class="linenos">103</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_image</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-104"><a href="#n3_bias_field_correction-104"><span class="linenos">104</span></a>        <span class="p">])</span>
+</span><span id="n3_bias_field_correction-105"><a href="#n3_bias_field_correction-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">rescale_intensities</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="n3_bias_field_correction-106"><a href="#n3_bias_field_correction-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-107"><a href="#n3_bias_field_correction-107"><span class="linenos">107</span></a>            <span class="s2">&quot;--mask-image&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-108"><a href="#n3_bias_field_correction-108"><span class="linenos">108</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">mask_image</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-107"><a href="#n3_bias_field_correction-107"><span class="linenos">107</span></a>            <span class="s2">&quot;--rescale-intensities&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-108"><a href="#n3_bias_field_correction-108"><span class="linenos">108</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">rescale_intensities</span><span class="p">)</span>
 </span><span id="n3_bias_field_correction-109"><a href="#n3_bias_field_correction-109"><span class="linenos">109</span></a>        <span class="p">])</span>
-</span><span id="n3_bias_field_correction-110"><a href="#n3_bias_field_correction-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">rescale_intensities</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="n3_bias_field_correction-110"><a href="#n3_bias_field_correction-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">weight_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="n3_bias_field_correction-111"><a href="#n3_bias_field_correction-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-112"><a href="#n3_bias_field_correction-112"><span class="linenos">112</span></a>            <span class="s2">&quot;--rescale-intensities&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-113"><a href="#n3_bias_field_correction-113"><span class="linenos">113</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">rescale_intensities</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-112"><a href="#n3_bias_field_correction-112"><span class="linenos">112</span></a>            <span class="s2">&quot;--weight-image&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-113"><a href="#n3_bias_field_correction-113"><span class="linenos">113</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">weight_image</span><span class="p">)</span>
 </span><span id="n3_bias_field_correction-114"><a href="#n3_bias_field_correction-114"><span class="linenos">114</span></a>        <span class="p">])</span>
-</span><span id="n3_bias_field_correction-115"><a href="#n3_bias_field_correction-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">weight_image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="n3_bias_field_correction-115"><a href="#n3_bias_field_correction-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">shrink_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="n3_bias_field_correction-116"><a href="#n3_bias_field_correction-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-117"><a href="#n3_bias_field_correction-117"><span class="linenos">117</span></a>            <span class="s2">&quot;--weight-image&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-118"><a href="#n3_bias_field_correction-118"><span class="linenos">118</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">weight_image</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-117"><a href="#n3_bias_field_correction-117"><span class="linenos">117</span></a>            <span class="s2">&quot;--shrink-factor&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-118"><a href="#n3_bias_field_correction-118"><span class="linenos">118</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">shrink_factor</span><span class="p">)</span>
 </span><span id="n3_bias_field_correction-119"><a href="#n3_bias_field_correction-119"><span class="linenos">119</span></a>        <span class="p">])</span>
-</span><span id="n3_bias_field_correction-120"><a href="#n3_bias_field_correction-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">shrink_factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="n3_bias_field_correction-120"><a href="#n3_bias_field_correction-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">convergence</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="n3_bias_field_correction-121"><a href="#n3_bias_field_correction-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-122"><a href="#n3_bias_field_correction-122"><span class="linenos">122</span></a>            <span class="s2">&quot;--shrink-factor&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-123"><a href="#n3_bias_field_correction-123"><span class="linenos">123</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">shrink_factor</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-122"><a href="#n3_bias_field_correction-122"><span class="linenos">122</span></a>            <span class="s2">&quot;--convergence&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-123"><a href="#n3_bias_field_correction-123"><span class="linenos">123</span></a>            <span class="n">convergence</span>
 </span><span id="n3_bias_field_correction-124"><a href="#n3_bias_field_correction-124"><span class="linenos">124</span></a>        <span class="p">])</span>
-</span><span id="n3_bias_field_correction-125"><a href="#n3_bias_field_correction-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">convergence</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="n3_bias_field_correction-125"><a href="#n3_bias_field_correction-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">bspline_fitting</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="n3_bias_field_correction-126"><a href="#n3_bias_field_correction-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-127"><a href="#n3_bias_field_correction-127"><span class="linenos">127</span></a>            <span class="s2">&quot;--convergence&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-128"><a href="#n3_bias_field_correction-128"><span class="linenos">128</span></a>            <span class="n">convergence</span>
+</span><span id="n3_bias_field_correction-127"><a href="#n3_bias_field_correction-127"><span class="linenos">127</span></a>            <span class="s2">&quot;--bspline-fitting&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-128"><a href="#n3_bias_field_correction-128"><span class="linenos">128</span></a>            <span class="n">bspline_fitting</span>
 </span><span id="n3_bias_field_correction-129"><a href="#n3_bias_field_correction-129"><span class="linenos">129</span></a>        <span class="p">])</span>
-</span><span id="n3_bias_field_correction-130"><a href="#n3_bias_field_correction-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">bspline_fitting</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="n3_bias_field_correction-130"><a href="#n3_bias_field_correction-130"><span class="linenos">130</span></a>    <span class="k">if</span> <span class="n">histogram_sharpening</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="n3_bias_field_correction-131"><a href="#n3_bias_field_correction-131"><span class="linenos">131</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-132"><a href="#n3_bias_field_correction-132"><span class="linenos">132</span></a>            <span class="s2">&quot;--bspline-fitting&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-133"><a href="#n3_bias_field_correction-133"><span class="linenos">133</span></a>            <span class="n">bspline_fitting</span>
+</span><span id="n3_bias_field_correction-132"><a href="#n3_bias_field_correction-132"><span class="linenos">132</span></a>            <span class="s2">&quot;--histogram-sharpening&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-133"><a href="#n3_bias_field_correction-133"><span class="linenos">133</span></a>            <span class="n">histogram_sharpening</span>
 </span><span id="n3_bias_field_correction-134"><a href="#n3_bias_field_correction-134"><span class="linenos">134</span></a>        <span class="p">])</span>
-</span><span id="n3_bias_field_correction-135"><a href="#n3_bias_field_correction-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">histogram_sharpening</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="n3_bias_field_correction-136"><a href="#n3_bias_field_correction-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-137"><a href="#n3_bias_field_correction-137"><span class="linenos">137</span></a>            <span class="s2">&quot;--histogram-sharpening&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-138"><a href="#n3_bias_field_correction-138"><span class="linenos">138</span></a>            <span class="n">histogram_sharpening</span>
-</span><span id="n3_bias_field_correction-139"><a href="#n3_bias_field_correction-139"><span class="linenos">139</span></a>        <span class="p">])</span>
-</span><span id="n3_bias_field_correction-140"><a href="#n3_bias_field_correction-140"><span class="linenos">140</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-141"><a href="#n3_bias_field_correction-141"><span class="linenos">141</span></a>        <span class="s2">&quot;--output&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-142"><a href="#n3_bias_field_correction-142"><span class="linenos">142</span></a>        <span class="n">output</span>
-</span><span id="n3_bias_field_correction-143"><a href="#n3_bias_field_correction-143"><span class="linenos">143</span></a>    <span class="p">])</span>
-</span><span id="n3_bias_field_correction-144"><a href="#n3_bias_field_correction-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="n3_bias_field_correction-145"><a href="#n3_bias_field_correction-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="n3_bias_field_correction-146"><a href="#n3_bias_field_correction-146"><span class="linenos">146</span></a>            <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
-</span><span id="n3_bias_field_correction-147"><a href="#n3_bias_field_correction-147"><span class="linenos">147</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
-</span><span id="n3_bias_field_correction-148"><a href="#n3_bias_field_correction-148"><span class="linenos">148</span></a>        <span class="p">])</span>
-</span><span id="n3_bias_field_correction-149"><a href="#n3_bias_field_correction-149"><span class="linenos">149</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">N3BiasFieldCorrectionOutputs</span><span class="p">(</span>
-</span><span id="n3_bias_field_correction-150"><a href="#n3_bias_field_correction-150"><span class="linenos">150</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="n3_bias_field_correction-151"><a href="#n3_bias_field_correction-151"><span class="linenos">151</span></a>        <span class="n">corrected_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
-</span><span id="n3_bias_field_correction-152"><a href="#n3_bias_field_correction-152"><span class="linenos">152</span></a>        <span class="n">bias_field</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[BIS_FIELD]&quot;</span><span class="p">),</span>
-</span><span id="n3_bias_field_correction-153"><a href="#n3_bias_field_correction-153"><span class="linenos">153</span></a>    <span class="p">)</span>
-</span><span id="n3_bias_field_correction-154"><a href="#n3_bias_field_correction-154"><span class="linenos">154</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="n3_bias_field_correction-155"><a href="#n3_bias_field_correction-155"><span class="linenos">155</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="n3_bias_field_correction-135"><a href="#n3_bias_field_correction-135"><span class="linenos">135</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="n3_bias_field_correction-136"><a href="#n3_bias_field_correction-136"><span class="linenos">136</span></a>        <span class="s2">&quot;--output&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-137"><a href="#n3_bias_field_correction-137"><span class="linenos">137</span></a>        <span class="n">output</span>
+</span><span id="n3_bias_field_correction-138"><a href="#n3_bias_field_correction-138"><span class="linenos">138</span></a>    <span class="p">])</span>
+</span><span id="n3_bias_field_correction-139"><a href="#n3_bias_field_correction-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="n3_bias_field_correction-140"><a href="#n3_bias_field_correction-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="n3_bias_field_correction-141"><a href="#n3_bias_field_correction-141"><span class="linenos">141</span></a>            <span class="s2">&quot;--verbose&quot;</span><span class="p">,</span>
+</span><span id="n3_bias_field_correction-142"><a href="#n3_bias_field_correction-142"><span class="linenos">142</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-143"><a href="#n3_bias_field_correction-143"><span class="linenos">143</span></a>        <span class="p">])</span>
+</span><span id="n3_bias_field_correction-144"><a href="#n3_bias_field_correction-144"><span class="linenos">144</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">N3BiasFieldCorrectionOutputs</span><span class="p">(</span>
+</span><span id="n3_bias_field_correction-145"><a href="#n3_bias_field_correction-145"><span class="linenos">145</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="n3_bias_field_correction-146"><a href="#n3_bias_field_correction-146"><span class="linenos">146</span></a>        <span class="n">corrected_image</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output</span><span class="p">),</span>
+</span><span id="n3_bias_field_correction-147"><a href="#n3_bias_field_correction-147"><span class="linenos">147</span></a>        <span class="n">bias_field</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;[BIS_FIELD]&quot;</span><span class="p">),</span>
+</span><span id="n3_bias_field_correction-148"><a href="#n3_bias_field_correction-148"><span class="linenos">148</span></a>    <span class="p">)</span>
+</span><span id="n3_bias_field_correction-149"><a href="#n3_bias_field_correction-149"><span class="linenos">149</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="n3_bias_field_correction-150"><a href="#n3_bias_field_correction-150"><span class="linenos">150</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Advanced Normalization Tools (ANTs) is a C++ library available through the
-command line that computes high-dimensional mappings to capture the statistics
-of brain structure and function. It allows one to organize, visualize and
-statistically explore large biomedical image sets. Additionally, it integrates
-imaging modalities in space + time and works across species or organ systems
-with minimal customization.</p>
-
-<p>The ANTs library is considered a state-of-the-art medical image registration
-and segmentation toolkit which depends on the Insight ToolKit, a widely used
-medical image processing library to which ANTs developers contribute.
-ANTs-related tools have also won several international, unbiased
-competitions such as MICCAI, BRATS, and STACOM.</p>
+            <div class="docstring"><p>This N3 is a variant of the popular N3 (nonparametric nonuniform normalization)
+retrospective bias correction algorithm. Based on the assumption that the
+corruption of the low frequency bias field can be modeled as a convolution of
+the intensity histogram by a Gaussian, the basic algorithmic protocol is to
+iterate between deconvolving the intensity histogram by a Gaussian, remapping
+the intensities, and then spatially smoothing this result by a B-spline modeling
+of the bias field itself.</p>
 
 <p>Author: ANTs developers</p>
 
