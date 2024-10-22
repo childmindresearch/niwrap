@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AUTOMASK_METADATA = Metadata(
-    id="9ca5b0d76c62816d4beeca149e7b86fd6591865b.boutiques",
+    id="e1d89bf718dc8bc220181732ef85422c677bd613.boutiques",
     name="3dAutomask",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,18 +20,16 @@ class V3dAutomaskOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    brain_file: OutputPathType
+    brain_file: OutputPathType | None
     """Output file from 3dautomask."""
-    out_file: OutputPathType
+    mask_file: OutputPathType | None
     """Output image file name."""
-    brain_file_: OutputPathType
-    """Brain file (skull stripped)."""
-    out_file_: OutputPathType
-    """Mask file."""
 
 
 def v_3d_automask(
     in_file: InputPathType,
+    prefix: str | None = None,
+    apply_prefix: str | None = None,
     clfrac: float | None = None,
     dilate: int | None = None,
     erode: int | None = None,
@@ -47,6 +45,9 @@ def v_3d_automask(
     
     Args:
         in_file: Input file to 3dautomask.
+        prefix: Write mask into dataset with prefix 'ppp'. [Default ==\
+            'automask'].
+        apply_prefix: Apply mask to input dataset and save masked dataset.
         clfrac: Sets the clip level fraction (must be 0.1-0.9). a small value\
             will tend to make the mask larger [default = 0.5].
         dilate: Dilate the mask outwards.
@@ -60,6 +61,16 @@ def v_3d_automask(
     execution = runner.start_execution(V_3D_AUTOMASK_METADATA)
     cargs = []
     cargs.append("3dAutomask")
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if apply_prefix is not None:
+        cargs.extend([
+            "-apply_prefix",
+            apply_prefix
+        ])
     if clfrac is not None:
         cargs.extend([
             "-clfrac",
@@ -80,10 +91,8 @@ def v_3d_automask(
         cargs.append(outputtype)
     ret = V3dAutomaskOutputs(
         root=execution.output_file("."),
-        brain_file=execution.output_file(pathlib.Path(in_file).name + "_masked"),
-        out_file=execution.output_file(pathlib.Path(in_file).name + "_mask"),
-        brain_file_=execution.output_file("brain_file"),
-        out_file_=execution.output_file("out_file"),
+        brain_file=execution.output_file(apply_prefix) if (apply_prefix is not None) else None,
+        mask_file=execution.output_file(prefix) if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

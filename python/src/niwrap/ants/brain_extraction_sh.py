@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BRAIN_EXTRACTION_SH_METADATA = Metadata(
-    id="71f5f53f1bd6af174207b63fb6c2714bd1844de7.boutiques",
+    id="8d01c2bb5f513bd348e40c48b61a123882aff8ca.boutiques",
     name="brain_extraction_sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -129,9 +129,9 @@ def brain_extraction_sh(
         cargs.append(output_prefix)
     ret = BrainExtractionShOutputs(
         root=execution.output_file("."),
-        brain_extracted_image=execution.output_file(output_prefix + "BrainExtractionBrain.nii.gz") if (output_prefix is not None) else None,
-        brain_mask=execution.output_file(output_prefix + "BrainExtractionMask.nii.gz") if (output_prefix is not None) else None,
-        brain_probability_mask=execution.output_file(output_prefix + "BrainExtractionPrior0GenericAffine.mat") if (output_prefix is not None) else None,
+        brain_extracted_image=execution.output_file(output_prefix + "_BrainExtractionBrain.nii.gz") if (output_prefix is not None) else None,
+        brain_mask=execution.output_file(output_prefix + "_BrainExtractionMask.nii.gz") if (output_prefix is not None) else None,
+        brain_probability_mask=execution.output_file(output_prefix + "_BrainExtractionPrior0GenericAffine.mat") if (output_prefix is not None) else None,
     )
     execution.run(cargs)
     return ret
