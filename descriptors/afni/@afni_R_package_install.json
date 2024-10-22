@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0.0",
-  "name": "afni_R_package_install",
+  "name": "@afni_R_package_install",
   "author": "AFNI Team",
   "description": "Helper script to install R packages for various afni-ish purposes.",
   "command-line": "@afni_R_package_install [AFNI_FLAG] [SHINY_FLAG] [BAYES_VIEW_FLAG] [CIRCOS_FLAG] [CUSTOM_PACKAGES] [MIRROR] [HELP_FLAG]",

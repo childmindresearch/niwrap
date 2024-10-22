@@ -1,88 +1,88 @@
 {
   "tool-version": "6.0.5",
-  "name": "invwarp",
+  "name": "new_invwarp",
   "author": "University of Oxford (Jesper Andersson)",
-  "description": "Tool for inverting warp fields in FSL",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT/UserGuide#Using_invwarp",
-  "command-line": "invwarp --warp [WARP_FILE] --out [OUT_FILE] --ref [REF_FILE] [RELATIVE_WARP_FLAG] [ABSOLUTE_WARP_FLAG] [NO_CONSTRAINT_FLAG] [MIN_JACOBIAN] [MAX_JACOBIAN] [DEBUG_FLAG] [VERBOSE_FLAG]",
+  "description": "Inverse warp tool from FSL suite",
+  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT",
+  "command-line": "invwarp -w [WARP_VOL] -o [OUT_VOL] -r [REF_VOL] [REL_FLAG] [ABS_FLAG] [NOCONSTRAINT_FLAG] [JMIN] [JMAX] [DEBUG_FLAG] [VERBOSE_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"
   },
   "inputs": [
     {
-      "command-line-flag": "--warp",
+      "command-line-flag": "-w",
       "description": "Filename for warp/shiftmap transform (volume)",
-      "value-key": "[WARP_FILE]",
+      "value-key": "[WARP_VOL]",
       "type": "File",
       "optional": false,
-      "id": "warp_file",
-      "name": "Warp file"
+      "id": "warpvol",
+      "name": "Warp volume file"
     },
     {
-      "command-line-flag": "--out",
+      "command-line-flag": "-o",
       "description": "Filename for output (inverse warped) image",
-      "value-key": "[OUT_FILE]",
+      "value-key": "[OUT_VOL]",
       "type": "String",
       "optional": false,
-      "id": "out_file",
-      "name": "Output file"
+      "id": "outvol",
+      "name": "Output volume file"
     },
     {
-      "command-line-flag": "--ref",
+      "command-line-flag": "-r",
       "description": "Filename for new reference image, i.e., what was originally the input image (determines inverse warpvol's FOV and pixdims)",
-      "value-key": "[REF_FILE]",
+      "value-key": "[REF_VOL]",
       "type": "File",
       "optional": false,
-      "id": "ref_file",
-      "name": "Reference file"
+      "id": "refvol",
+      "name": "Reference volume file"
     },
     {
       "command-line-flag": "--rel",
       "description": "Use relative warp convention: x' = x + w(x)",
-      "value-key": "[RELATIVE_WARP_FLAG]",
+      "value-key": "[REL_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "relative_warp_flag",
-      "name": "Relative warp flag"
+      "id": "relflag",
+      "name": "Relative warp convention flag"
     },
     {
       "command-line-flag": "--abs",
       "description": "Use absolute warp convention (default): x' = w(x)",
-      "value-key": "[ABSOLUTE_WARP_FLAG]",
+      "value-key": "[ABS_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "absolute_warp_flag",
-      "name": "Absolute warp flag"
+      "id": "absflag",
+      "name": "Absolute warp convention flag"
     },
     {
       "command-line-flag": "--noconstraint",
       "description": "Do not apply the Jacobian constraint",
-      "value-key": "[NO_CONSTRAINT_FLAG]",
+      "value-key": "[NOCONSTRAINT_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "no_constraint_flag",
-      "name": "No constraint flag"
+      "id": "noconstraintflag",
+      "name": "No Jacobian constraint flag"
     },
     {
       "command-line-flag": "--jmin",
       "description": "Minimum acceptable Jacobian value for constraint (default 0.01)",
-      "value-key": "[MIN_JACOBIAN]",
+      "value-key": "[JMIN]",
       "type": "Number",
       "optional": true,
       "default-value": 0.01,
-      "id": "min_jacobian",
-      "name": "Minimum Jacobian constraint"
+      "id": "jmin",
+      "name": "Minimum Jacobian value"
     },
     {
       "command-line-flag": "--jmax",
       "description": "Maximum acceptable Jacobian value for constraint (default 100.0)",
-      "value-key": "[MAX_JACOBIAN]",
+      "value-key": "[JMAX]",
       "type": "Number",
       "optional": true,
       "default-value": 100.0,
-      "id": "max_jacobian",
-      "name": "Maximum Jacobian constraint"
+      "id": "jmax",
+      "name": "Maximum Jacobian value"
     },
     {
       "command-line-flag": "--debug",
@@ -90,27 +90,27 @@
       "value-key": "[DEBUG_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "debug_flag",
-      "name": "Debug flag"
+      "id": "debugflag",
+      "name": "Debugging flag"
     },
     {
-      "command-line-flag": "--verbose",
+      "command-line-flag": "-v",
       "description": "Switch on diagnostic messages",
       "value-key": "[VERBOSE_FLAG]",
       "type": "Flag",
       "optional": true,
-      "id": "verbose_flag",
+      "id": "verboseflag",
       "name": "Verbose flag"
     }
   ],
   "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUT_FILE]",
-      "description": "Output inverse warped image",
+      "path-template": "[OUT_VOL]",
+      "description": "Output inverse warped volume",
       "optional": false,
-      "id": "output_file",
-      "name": "Output file"
+      "id": "out_volume",
+      "name": "Output volume file"
     }
   ]
 }

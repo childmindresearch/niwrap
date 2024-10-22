@@ -4,7 +4,7 @@
   "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
   "description": "Structural lookup tool for FSL atlases.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlasquery",
-  "command-line": "atlasq ohi [DUMPATLASES_FLAG] [ATLAS] [COORD] [MASK] [VERBOSE_FLAG] [HELP_FLAG]",
+  "command-line": "atlasquery [DUMPATLASES_FLAG] [ATLAS] [COORD] [MASK] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
     "image": "mcin/fsl:6.0.5",
     "type": "docker"

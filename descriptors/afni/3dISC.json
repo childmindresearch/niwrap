@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0.4",
-  "name": "3dISC - Voxelwise Inter-Subject Correlation Analysis",
+  "name": "3dISC",
   "author": "AFNI Team",
   "descriptor-url": "https://example.com/3dISC_descriptor.json",
   "description": "Program for Voxelwise Inter-Subject Correlation (ISC) Analysis using linear mixed-effects modeling.",

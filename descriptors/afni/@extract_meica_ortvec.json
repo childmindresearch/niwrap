@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0",
-  "name": "extract_meica_ortvec",
+  "name": "@extract_meica_ortvec",
   "author": "AFNI Team",
   "description": "Project good MEICA components out of bad ones",
   "command-line": "@extract_meica_ortvec [PREFIX] [MDIR] [VAL_REJECT_IGNORED] [VAL_REJECT_MIDK] [WDIR] [VERB]",

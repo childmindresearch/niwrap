@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0",
-  "name": "ToRAI",
+  "name": "@ToRAI",
   "author": "AFNI Team",
   "description": "Tool to change the ORIENT coordinates to RAI",
   "command-line": "@ToRAI <-xyz X Y Z> <-or ORIENT>",

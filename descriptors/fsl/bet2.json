@@ -1,6 +1,6 @@
 {
   "tool-version": "6.0.5",
-  "name": "BET (Brain Extraction Tool)",
+  "name": "bet2",
   "author": "FMRIB Analysis Group, Oxford",
   "description": "Automated brain extraction tool for FSL",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET",

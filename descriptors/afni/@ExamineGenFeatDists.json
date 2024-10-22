@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0.0",
-  "name": "ExamineGenFeatDists",
+  "name": "@ExamineGenFeatDists",
   "author": "AFNI Team",
   "description": "Examine histograms produced by 3dGenFeatDists",
   "command-line": "@ExamineGenFeatDists -fdir [FEATURES_DIR] -fwild [WILDCARDS] -suffix [SUFFIX] -exfeat [EXCLUDE_FEATURES] -exclass [EXCLUDE_CLASSES] -odir [OUTPUT_DIR] -nx [NX] -echo [ECHO] -help [HELP]",

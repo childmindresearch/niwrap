@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0",
-  "name": "TimeDiff",
+  "name": "@TimeDiff",
   "author": "AFNI Team",
   "description": "A tool to compare the modification times of two files",
   "command-line": "@TimeDiff [FILE1] [FILE2]",

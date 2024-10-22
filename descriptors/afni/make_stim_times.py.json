@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0.0",
-  "name": "make_stim_times",
+  "name": "make_stim_times.py",
   "author": "AFNI Team",
   "descriptor-url": "https://example.com/make_stim_times/descriptor",
   "description": "Convert a set of 0/1 stim files into a set of stim_times files, or convert real-valued files into those for use with -stim_times_AM2.",

@@ -1,177 +1,190 @@
 {
-  "tool-version": "6.0.5",
   "name": "applywarp",
-  "author": "University of Oxford (Jesper Andersson)",
-  "description": "Apply a warp to an image using FSL's applywarp utility",
-  "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT/Applywarp",
-  "command-line": "applywarp -i [INPUT_FILE] -o [OUTPUT_FILE] -r [REFERENCE_FILE] -w [WARP_COEFF_FILE] --usesqform",
-  "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
-  },
+  "command-line": "applywarp [INTERP] [IN_FILE] [REF_FILE] [OUT_FILE] [RELWARP] [ABSWARP] [DATATYPE] [FIELD_FILE] [MASK_FILE] [OUTPUT_TYPE] [POSTMAT] [PREMAT] [SUPERLEVEL] [SUPERSAMPLE]",
+  "author": "Oxford Centre for Functional MRI of the Brain (FMRIB)",
+  "description": "Apply warps estimated by FNIRT (or some other software) to some image.",
   "inputs": [
     {
-      "id": "input_file",
-      "name": "Input file",
-      "description": "Filename of input image (to be warped)",
-      "type": "File",
-      "value-key": "[INPUT_FILE]",
-      "command-line-flag": "-i",
-      "optional": false
-    },
-    {
-      "id": "reference_file",
-      "name": "Reference file",
-      "description": "Filename for reference image",
-      "type": "File",
-      "value-key": "[REFERENCE_FILE]",
-      "command-line-flag": "-r",
-      "optional": false
-    },
-    {
-      "id": "output_file",
-      "name": "Output file",
-      "description": "Filename for output (warped) image",
-      "type": "String",
-      "value-key": "[OUTPUT_FILE]",
-      "command-line-flag": "-o",
-      "optional": false
-    },
-    {
-      "id": "warp_coeff_file",
-      "name": "Warp Coefficient file",
-      "description": "Filename for warp/coefficient (volume)",
-      "type": "File",
-      "value-key": "[WARP_COEFF_FILE]",
-      "command-line-flag": "-w",
-      "optional": true
-    },
-    {
-      "id": "absolute_warp",
-      "name": "Absolute warp field",
-      "description": "Treat warp field as absolute: x' = w(x)",
+      "id": "abswarp",
+      "name": "Abswarp",
       "type": "Flag",
-      "value-key": "[ABSOLUTE_WARP]",
+      "value-key": "[ABSWARP]",
       "command-line-flag": "--abs",
-      "optional": true
-    },
-    {
-      "id": "relative_warp",
-      "name": "Relative warp field",
-      "description": "Treat warp field as relative: x' = x + w(x)",
-      "type": "Flag",
-      "value-key": "[RELATIVE_WARP]",
-      "command-line-flag": "--rel",
+      "description": "Treat warp field as absolute: x' = w(x).",
       "optional": true
     },
     {
       "id": "datatype",
-      "name": "Output data type",
-      "description": "Force output data type [char short int float double]",
+      "name": "Datatype",
       "type": "String",
       "value-key": "[DATATYPE]",
-      "command-line-flag": "-d",
+      "command-line-flag": "--datatype",
+      "command-line-flag-separator": "=",
+      "description": "'char' or 'short' or 'int' or 'float' or 'double'. Force output data type [char short int float double].",
+      "optional": true,
+      "value-choices": ["char", "short", "int", "float", "double"]
+    },
+    {
+      "id": "field_file",
+      "name": "Field file",
+      "type": "File",
+      "value-key": "[FIELD_FILE]",
+      "command-line-flag": "--warp",
+      "command-line-flag-separator": "=",
+      "description": "File containing warp field.",
       "optional": true
     },
     {
-      "id": "supersampling",
-      "name": "Intermediary supersampling",
-      "description": "Intermediary supersampling of output, default is off",
+      "id": "in_file",
+      "name": "In file",
+      "type": "File",
+      "value-key": "[IN_FILE]",
+      "command-line-flag": "--in",
+      "command-line-flag-separator": "=",
+      "description": "Image to be warped.",
+      "optional": false
+    },
+    {
+      "id": "interp",
+      "name": "Interp",
+      "type": "String",
+      "value-key": "[INTERP]",
+      "command-line-flag": "--interp",
+      "command-line-flag-separator": "=",
+      "description": "'nn' or 'trilinear' or 'sinc' or 'spline'. Interpolation method.",
+      "optional": true,
+      "value-choices": ["nn", "trilinear", "sinc", "spline"]
+    },
+    {
+      "id": "mask_file",
+      "name": "Mask file",
+      "type": "File",
+      "value-key": "[MASK_FILE]",
+      "command-line-flag": "--mask",
+      "command-line-flag-separator": "=",
+      "description": "Filename for mask image (in reference space).",
+      "optional": true
+    },
+    {
+      "id": "out_file",
+      "name": "Out file",
+      "type": "File",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "--out",
+      "command-line-flag-separator": "=",
+      "description": "Output filename.",
+      "optional": true
+    },
+    {
+      "id": "output_type",
+      "name": "Output type",
+      "type": "String",
+      "value-key": "[OUTPUT_TYPE]",
+      "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+      "optional": true,
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
+    },
+    {
+      "id": "postmat",
+      "name": "Postmat",
+      "type": "File",
+      "value-key": "[POSTMAT]",
+      "command-line-flag": "--postmat",
+      "command-line-flag-separator": "=",
+      "description": "Filename for post-transform (affine matrix).",
+      "optional": true
+    },
+    {
+      "id": "premat",
+      "name": "Premat",
+      "type": "File",
+      "value-key": "[PREMAT]",
+      "command-line-flag": "--premat",
+      "command-line-flag-separator": "=",
+      "description": "Filename for pre-transform (affine matrix).",
+      "optional": true
+    },
+    {
+      "id": "ref_file",
+      "name": "Ref file",
+      "type": "File",
+      "value-key": "[REF_FILE]",
+      "command-line-flag": "--ref",
+      "command-line-flag-separator": "=",
+      "description": "Reference image.",
+      "optional": false
+    },
+    {
+      "id": "relwarp",
+      "name": "Relwarp",
       "type": "Flag",
-      "value-key": "[SUPERSAMPLING]",
-      "command-line-flag": "-s",
+      "value-key": "[RELWARP]",
+      "command-line-flag": "--rel",
+      "description": "Treat warp field as relative: x' = x + w(x).",
       "optional": true
     },
     {
       "id": "superlevel",
-      "name": "Supersampling level",
-      "description": "Level of intermediary supersampling, 'a' for automatic or integer level. Default = 2",
+      "name": "Superlevel",
       "type": "String",
       "value-key": "[SUPERLEVEL]",
       "command-line-flag": "--superlevel",
-      "optional": true
+      "command-line-flag-separator": "=",
+      "description": "'a' or an integer. Level of intermediary supersampling, a for 'automatic' or integer level. default = 2.",
+      "optional": true,
+      "value-choices": ["a"]
     },
     {
-      "id": "pre_transform",
-      "name": "Pre-transform matrix file",
-      "description": "Filename for pre-transform (affine matrix)",
-      "type": "File",
-      "value-key": "[PRE_TRANSFORM]",
-      "command-line-flag": "--premat",
-      "optional": true
-    },
-    {
-      "id": "post_transform",
-      "name": "Post-transform matrix file",
-      "description": "Filename for post-transform (affine matrix)",
-      "type": "File",
-      "value-key": "[POST_TRANSFORM]",
-      "command-line-flag": "--postmat",
-      "optional": true
-    },
-    {
-      "id": "mask",
-      "name": "Mask file",
-      "description": "Filename for mask image (in reference space)",
-      "type": "File",
-      "value-key": "[MASK]",
-      "command-line-flag": "-m",
-      "optional": true
-    },
-    {
-      "id": "interpolation",
-      "name": "Interpolation method",
-      "description": "Interpolation method {nn,trilinear,sinc,spline}",
-      "type": "String",
-      "value-key": "[INTERPOLATION]",
-      "command-line-flag": "--interp",
-      "optional": true
-    },
-    {
-      "id": "padding_size",
-      "name": "Padding size",
-      "description": "Extrapolates outside original volume by n voxels",
+      "id": "superlevel_2",
+      "name": "Superlevel",
       "type": "Number",
-      "value-key": "[PADDING_SIZE]",
-      "command-line-flag": "--paddingsize",
+      "integer": true,
+      "value-key": "[SUPERLEVEL]",
+      "command-line-flag": "--superlevel",
+      "command-line-flag-separator": "=",
+      "description": "'a' or an integer. Level of intermediary supersampling, a for 'automatic' or integer level. default = 2.",
       "optional": true
     },
     {
-      "id": "use_sqform",
-      "name": "Use s/q forms",
-      "description": "Use s/qforms of --ref and --in images",
+      "id": "supersample",
+      "name": "Supersample",
       "type": "Flag",
-      "value-key": "[USE_SQFORM]",
-      "command-line-flag": "--usesqform",
-      "optional": true
-    },
-    {
-      "id": "verbose_flag",
-      "name": "Verbose flag",
-      "description": "Switch on diagnostic messages",
-      "type": "Flag",
-      "value-key": "[VERBOSE_FLAG]",
-      "command-line-flag": "-v",
-      "optional": true
-    },
-    {
-      "id": "help_flag",
-      "name": "Help flag",
-      "description": "Display help message",
-      "type": "Flag",
-      "value-key": "[HELP_FLAG]",
-      "command-line-flag": "-h",
+      "value-key": "[SUPERSAMPLE]",
+      "command-line-flag": "--super",
+      "description": "Intermediary supersampling of output, default is off.",
       "optional": true
     }
   ],
-  "schema-version": "0.5",
   "output-files": [
     {
-      "path-template": "[OUTPUT_FILE].nii.gz",
-      "description": "Warped output image",
-      "optional": false,
-      "id": "warped_output_file",
-      "name": "Warped output file"
+      "name": "Out file",
+      "id": "out_file_outfile",
+      "path-template": "[OUT_FILE]",
+      "optional": true,
+      "description": "Warped output file."
     }
-  ]
+  ],
+  "groups": [
+    {
+      "id": "superlevel_group",
+      "name": "Superlevel group",
+      "members": ["superlevel", "superlevel_2"],
+      "mutually-exclusive": true
+    },
+    {
+      "id": "mutex_group",
+      "name": "Mutex group",
+      "members": ["relwarp", "abswarp"],
+      "mutually-exclusive": true
+    }
+  ],
+  "tool-version": "6.0.5",
+  "schema-version": "0.5",
+  "container-image": {
+    "image": "mcin/fsl:6.0.5",
+    "type": "docker"
+  },
+  "tags": {
+    "domain": "neuroinformatics"
+  }
 }

@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0",
-  "name": "FromRAI",
+  "name": "@FromRAI",
   "author": "AFNI Team",
   "description": "Changes the RAI coordinates to the specified orientation",
   "command-line": "@FromRAI [XYZ_COORDINATES] [ORIENTATION]",

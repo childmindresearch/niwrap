@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0.0",
-  "name": "measure_bb_thick",
+  "name": "@measure_bb_thick",
   "author": "AFNI Team",
   "description": "Compute thickness of mask using ball and box method",
   "command-line": "@measure_bb_thick -maskset [MASKSET] -surfset [SURFSET] -outdir [OUTDIR] [RESAMPLE] [INCREMENT] [SURFSMOOTH] [SMOOTHMM] [MAXTHICK] [DEPTHSEARCH] [KEEP_TEMP_FILES] [BALLS_ONLY] [SURFSMOOTH_METHOD]",

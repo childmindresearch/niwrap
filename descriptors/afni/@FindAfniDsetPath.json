@@ -1,6 +1,6 @@
 {
   "tool-version": "2018.10.15",
-  "name": "FindAfniDsetPath",
+  "name": "@FindAfniDsetPath",
   "author": "AFNI Team",
   "description": "Searches various AFNI directories for a specified dataset and returns its path.",
   "command-line": "@FindAfniDsetPath [DSETNAME] [APPEND_FILE] [FULL_PATH_FLAG] [HELP_FLAG]",

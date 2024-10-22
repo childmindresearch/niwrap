@@ -1,6 +1,6 @@
 {
   "tool-version": "latest",
-  "name": "update.afni.binaries",
+  "name": "@update.afni.binaries",
   "author": "AFNI Team",
   "description": "Install or update AFNI binaries.",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/@update.afni.binaries.html",

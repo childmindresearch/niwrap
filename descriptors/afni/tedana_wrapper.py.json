@@ -1,9 +1,9 @@
 {
   "tool-version": "1.0",
-  "name": "tedana_wrapper",
+  "name": "tedana_wrapper.py",
   "author": "AFNI Team",
   "description": "Internal wrapper to run tedana.py, typically used within afni_proc.py.",
-  "command-line": "/opt/afni/src/../install/tedana_wrapper.py [INPUT_FILES] [ECHO_TIMES] [MASK] [RESULTS_DIR] [PREFIX] [SAVE_ALL_FLAG] [PREP_ONLY_FLAG] [TEDANA_PROG] [TEDANA_IS_EXEC_FLAG] [TED_LABEL] [TEDANA_OPTS]",
+  "command-line": "tedana_wrapper.py [INPUT_FILES] [ECHO_TIMES] [MASK] [RESULTS_DIR] [PREFIX] [SAVE_ALL_FLAG] [PREP_ONLY_FLAG] [TEDANA_PROG] [TEDANA_IS_EXEC_FLAG] [TED_LABEL] [TEDANA_OPTS]",
   "container-image": {
     "image": "fcpindi/c-pac:latest",
     "type": "docker"

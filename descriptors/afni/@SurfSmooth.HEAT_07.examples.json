@@ -1,5 +1,5 @@
 {
-  "name": "SurfSmooth",
+  "name": "@SurfSmooth.HEAT_07.examples",
   "tool-version": "HEAT_07",
   "author": "AFNI Team",
   "description": "A script to illustrate controlled blurring of data on the surface.",

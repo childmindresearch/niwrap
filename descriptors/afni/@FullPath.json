@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0.0",
-  "name": "FullPath",
+  "name": "@FullPath",
   "description": "Changes relative path to absolute one.",
   "command-line": "@FullPath [FILE]",
   "inputs": [

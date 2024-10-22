@@ -1,5 +1,5 @@
 {
-  "name": "C3dAffineTool",
+  "name": "c3d_affine_tool",
   "command-line": "c3d_affine_tool [TRANSFORM_FILE] [REFERENCE_FILE] [SOURCE_FILE] [SFORM_FILE] [INV] [DET] [MULT] [SQRT] [ITK_TRANSFORM] [IRTK_TRANSFORM] [FSL2RAS] [RAS2FSL] [OUT_ITK_TRANSFORM] [OUT_IRTK_TRANSFORM] [OUT_MATFILE] [INFO] [INFO_FULL]",
   "author": "ITK-Snap Team",
   "description": "RAS affine transform tool",

@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0.0",
-  "name": "Surface FWHM Calculator",
+  "name": "SurfFWHM",
   "author": "AFNI Team",
   "description": "A program for calculating local and global FWHM.",
   "command-line": "SurfFWHM [INPUT_FILE] [MASK] [SURF_1] [SURF_SPHERE] [CLEAN] [DETREND] [DETPOLY] [DETPREFIX] [PREFIX] [VOX_SIZE] [NEIGBORHOOD] [OK_WARN] [EXAMPLES] [SLICE] [TALK_SUMA_OPTIONS] [NIML_OPTIONS] [DEBUG_OPTIONS] [HELP_OPTIONS]",

@@ -1,6 +1,6 @@
 {
   "tool-version": "0.1",
-  "name": "uber_proc",
+  "name": "uber_proc.py",
   "author": "AFNI Team",
   "description": "Uber processing tool - work in progress",
   "url": "https://afni.nimh.nih.gov/pub/dist/doc/program_help/uber_proc.py.html",

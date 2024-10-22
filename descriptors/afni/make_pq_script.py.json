@@ -1,6 +1,6 @@
 {
   "tool-version": "1.0.0",
-  "name": "make_pq_script",
+  "name": "make_pq_script.py",
   "author": "AFNI Team",
   "description": "Creates a script to compute p-value and q-value curves.",
   "command-line": "make_pq_script.py [DATASET] [BRICK_INDEX] [MASK] [OUT_SCRIPT]",
