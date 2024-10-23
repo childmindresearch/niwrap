@@ -2612,8 +2612,9 @@
         "status": "ignore"
       },
       {
-        "target": "epi_b0_correct.py",
-        "status": "missing"
+        "target": "epi_b0_correct",
+        "status": "done",
+        "descriptor": "descriptors/afni/epi_b0_correct.json"
       },
       {
         "target": "fat_mat2d_plot.py",
