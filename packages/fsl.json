@@ -58,7 +58,7 @@
       },
       {
         "target": "asl_gui",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "asl_mfree",
@@ -553,10 +553,6 @@
         "descriptor": "descriptors/fsl/fsl_mvlm.json"
       },
       {
-        "target": "fsl_mrs_preproc",
-        "status": "missing"
-      },
-      {
         "target": "fsl_prepare_fieldmap",
         "status": "done",
         "descriptor": "descriptors/fsl/fsl_prepare_fieldmap.json"
@@ -786,19 +782,19 @@
       },
       {
         "target": "fslview",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "fslview_bin",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "fslview_deprecated",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "fslwish",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "ftoz",
@@ -1199,7 +1195,7 @@
       },
       {
         "target": "remove_ext",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "renderhighres",
@@ -1455,7 +1451,7 @@
       },
       {
         "target": "tmpnam",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "toast",
