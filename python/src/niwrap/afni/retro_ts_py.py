@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RETRO_TS_PY_METADATA = Metadata(
-    id="4b4fd46f34f41420988b7752ca2ffee1afb20006.boutiques",
+    id="82462d0527ae23d487ce3dd58f42754940326375.boutiques",
     name="RetroTS.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -102,7 +102,6 @@ def retro_ts_py(
     runner = runner or get_global_runner()
     execution = runner.start_execution(RETRO_TS_PY_METADATA)
     cargs = []
-    cargs.append("python")
     cargs.append("RetroTS.py")
     if resp_file is not None:
         cargs.extend([

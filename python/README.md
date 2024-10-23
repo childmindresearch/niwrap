@@ -41,14 +41,14 @@ pip install -e "git+https://github.com/childmindresearch/niwrap.git/#egg=niwrap&
 
 | Package | Status | Version | API Coverage |
 | --- | --- | --- | --- |
-| [AFNI](https://afni.nimh.nih.gov/) | In progress | [`24.2.06`](https://hub.docker.com/r/afni/afni_make_build) | 532/658 (80.9%) |
+| [AFNI](https://afni.nimh.nih.gov/) | In progress | [`24.2.06`](https://hub.docker.com/r/afni/afni_make_build) | 565/611 (92.5%) |
 | [ANTs](https://github.com/ANTsX/ANTs) | In progress | [`2.5.3`](https://hub.docker.com/r/antsx/ants) | 71/113 (62.8%) |
 | [Connectome Workbench](https://github.com/Washington-University/workbench) | Testing | [`1.5.0`](https://hub.docker.com/r/brainlife/connectome_workbench) | 202/202 (100% 🎉) |
 | [Convert3D](http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D) | In progress | [`1.1.0`](https://hub.docker.com/r/pyushkevich/itksnap) | 2/4 (50.0%) |
 | [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) | In progress | [`6.0.5`](https://hub.docker.com/r/brainlife/fsl) | 241/312 (77.2%) |
 | [FreeSurfer](https://github.com/freesurfer/freesurfer) | In progress | [`7.4.1`](https://hub.docker.com/r/freesurfer/freesurfer) | 713/806 (88.5%) |
 | [Greedy](https://sites.google.com/view/greedyreg/about) | In progress | [`1.0.1`](https://hub.docker.com/r/pyushkevich/itksnap) | 1/1 (100% 🎉) |
-| [MRTrix3](https://www.mrtrix.org/) | Testing | [`3.0.4`](https://hub.docker.com/r/mrtrix3/mrtrix3) | 115/121 (95.0%) |
+| [MRTrix3](https://www.mrtrix.org/) | Testing | [`3.0.4`](https://hub.docker.com/r/mrtrix3/mrtrix3) | 117/123 (95.1%) |
 | [MRTrix3Tissue](https://3tissue.github.io/) | Testing | [`5.2.8`](https://hub.docker.com/r/brainlife/3tissue) | 1/1 (100% 🎉) |
 | [NiftyReg](http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg) | In progress | [`1.4.0`](https://hub.docker.com/r/vnmd/niftyreg_1.4.0) | 7/7 (100% 🎉) |
 

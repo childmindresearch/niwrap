@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIND_VARIANCE_LINES_METADATA = Metadata(
-    id="42c06cfd520ba57c9217cb9ca4881b1f7e5ccb80.boutiques",
+    id="400a7e1ff61116676091a1736a0b5ffb08f0a496.boutiques",
     name="find_variance_lines",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -85,7 +85,7 @@ def find_variance_lines(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FIND_VARIANCE_LINES_METADATA)
     cargs = []
-    cargs.append("find_variance_lines")
+    cargs.append("find_variance_lines.tcsh")
     cargs.extend([execution.input_file(f) for f in input_files])
     if mask is not None:
         cargs.extend([

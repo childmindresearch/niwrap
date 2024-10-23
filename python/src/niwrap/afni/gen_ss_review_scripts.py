@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GEN_SS_REVIEW_SCRIPTS_METADATA = Metadata(
-    id="ab7e530400ce4430e3ed11416d4b0595a3ca7bd5.boutiques",
+    id="0b2bced52ccd788df5199b4d3c54d3385072af7d.boutiques",
     name="gen_ss_review_scripts",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -84,7 +84,7 @@ def gen_ss_review_scripts(
     runner = runner or get_global_runner()
     execution = runner.start_execution(GEN_SS_REVIEW_SCRIPTS_METADATA)
     cargs = []
-    cargs.append("gen_ss_review_scripts")
+    cargs.append("gen_ss_review_scripts.py")
     if subject_id is not None:
         cargs.extend([
             "-subj",

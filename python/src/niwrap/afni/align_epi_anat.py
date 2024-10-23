@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ALIGN_EPI_ANAT_METADATA = Metadata(
-    id="6f2f314d27c0c8aed24a51761df0416bc12de9a1.boutiques",
+    id="8b0229305647603bf69640345954c0975124bb02.boutiques",
     name="align_epi_anat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -81,7 +81,7 @@ def align_epi_anat(
     runner = runner or get_global_runner()
     execution = runner.start_execution(ALIGN_EPI_ANAT_METADATA)
     cargs = []
-    cargs.append("align_epi_anat")
+    cargs.append("align_epi_anat.py")
     cargs.extend([
         "-epi",
         execution.input_file(epi)

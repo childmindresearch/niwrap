@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DSVM_LINPREDICT_METADATA = Metadata(
-    id="41d6146f64fde809082dbfe5904945de3b4fec01.boutiques",
+    id="14a78538db163a43a9541ef88dc8c18dcef61d1a.boutiques",
     name="3dsvm_linpredict",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -51,7 +51,7 @@ def v_3dsvm_linpredict(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3DSVM_LINPREDICT_METADATA)
     cargs = []
-    cargs.append("3ddot")
+    cargs.append("3dsvm_linpredict")
     if mask_dataset is not None:
         cargs.extend([
             "-mask",

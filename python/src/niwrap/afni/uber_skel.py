@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UBER_SKEL_METADATA = Metadata(
-    id="4eeab6ea6a3b8ac4136bb3e6f7d7957f9674c110.boutiques",
+    id="d77a80fc9ecd09ed285b440328c53e4f45eb7735.boutiques",
     name="uber_skel",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -63,7 +63,7 @@ def uber_skel(
     runner = runner or get_global_runner()
     execution = runner.start_execution(UBER_SKEL_METADATA)
     cargs = []
-    cargs.append("uber_skel")
+    cargs.append("uber_skel.py")
     if qt_options is not None:
         cargs.extend([
             "-qt_opts",

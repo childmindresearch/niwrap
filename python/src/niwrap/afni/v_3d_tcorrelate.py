@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TCORRELATE_METADATA = Metadata(
-    id="e35a4444ebb5f5f897c35530d7a2130f0b8193cd.boutiques",
-    name="3dTCorrelate",
+    id="2240f8304c0c2cc0d1686fc4d8af67efdb5198a4.boutiques",
+    name="3dTcorrelate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
 )
@@ -44,7 +44,7 @@ def v_3d_tcorrelate(
     runner: Runner | None = None,
 ) -> V3dTcorrelateOutputs:
     """
-    3dTCorrelate. Computes the correlation coefficient between corresponding voxel
+    3dTcorrelate. Computes the correlation coefficient between corresponding voxel
     time series in two input 3D+time datasets 'xset' and 'yset'.
     
     Author: AFNI Developers
@@ -97,7 +97,7 @@ def v_3d_tcorrelate(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_TCORRELATE_METADATA)
     cargs = []
-    cargs.append("3dTCorrelate")
+    cargs.append("3dTcorrelate")
     cargs.append(execution.input_file(xset))
     cargs.append(execution.input_file(yset))
     if pearson:

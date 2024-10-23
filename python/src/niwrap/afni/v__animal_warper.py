@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ANIMAL_WARPER_METADATA = Metadata(
-    id="fbfd5141036c3d4c34d77b297dba5dfe5ac37787.boutiques",
+    id="d579a65017cdc0a556b0c069e8808dbbad954c1f.boutiques",
     name="@animal_warper",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -134,7 +134,7 @@ def v__animal_warper(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__ANIMAL_WARPER_METADATA)
     cargs = []
-    cargs.append("animal_warper")
+    cargs.append("@animal_warper")
     cargs.append(execution.input_file(input_file))
     cargs.append(execution.input_file(base_template))
     cargs.append(output_dir)

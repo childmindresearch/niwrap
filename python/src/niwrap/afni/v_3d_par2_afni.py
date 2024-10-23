@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_PAR2_AFNI_METADATA = Metadata(
-    id="e92512bdf2e346ba0c9b1a7896712c24816e8dc7.boutiques",
+    id="14b6e5058913b8a8c4b8f823b3db88ce9943c685.boutiques",
     name="3dPAR2AFNI",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -61,7 +61,7 @@ def v_3d_par2_afni(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V_3D_PAR2_AFNI_METADATA)
     cargs = []
-    cargs.append("3dPAR2AFNI")
+    cargs.append("3dPAR2AFNI.pl")
     cargs.append(execution.input_file(input_file))
     if skip_outliers_test:
         cargs.append("-s")

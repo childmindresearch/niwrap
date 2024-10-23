@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MAT_TABLEIZE_METADATA = Metadata(
-    id="baa338d5cf5d41f07da4761e56ac490eac0fc6ad.boutiques",
+    id="174365e6a9d9950711c3103b78320ab05da8673e.boutiques",
     name="fat_mat_tableize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -72,7 +72,7 @@ def fat_mat_tableize(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_MAT_TABLEIZE_METADATA)
     cargs = []
-    cargs.append("fat_mat_tableize")
+    cargs.append("fat_mat_tableize.py")
     cargs.extend([
         "-in_mat",
         *input_matrices

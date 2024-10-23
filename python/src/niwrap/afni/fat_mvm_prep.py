@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_MVM_PREP_METADATA = Metadata(
-    id="5bf0c33d9c0b9125f8451128b5f455d6591d70aa.boutiques",
+    id="90f6bc657de16af423e425320b0789c1d1f1d2eb.boutiques",
     name="fat_mvm_prep",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -63,7 +63,7 @@ def fat_mvm_prep(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FAT_MVM_PREP_METADATA)
     cargs = []
-    cargs.append("fat_mvm_prep")
+    cargs.append("fat_mvm_prep.py")
     cargs.extend([
         "-p",
         prefix

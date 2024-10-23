@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ABIDS_TOOL_METADATA = Metadata(
-    id="98dc76918d7cdf3c8fc51ace8cb8e94abe757b0e.boutiques",
+    id="be4cc3dea9c1ff2c94a88b9126da6ad487f347ca.boutiques",
     name="abids_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -47,7 +47,7 @@ def abids_tool(
     runner = runner or get_global_runner()
     execution = runner.start_execution(ABIDS_TOOL_METADATA)
     cargs = []
-    cargs.append("abids_tool")
+    cargs.append("abids_tool.py")
     cargs.extend([execution.input_file(f) for f in input_files])
     if copy_prefix is not None:
         cargs.extend([
