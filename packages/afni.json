@@ -1676,7 +1676,8 @@
       },
       {
         "target": "@ScriptCheck",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@ScriptCheck.json"
       },
       {
         "target": "@Shift_Volume",

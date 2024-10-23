@@ -1,9 +1,9 @@
 {
   "tool-version": "24.2.06",
-  "name": "ScriptChecker",
+  "name": "ScriptCheck",
   "author": "AFNI Developers",
   "description": "Checks scripts for improperly terminated lines and optionally cleans them.",
-  "command-line": "ScriptChecker [CLEAN] [SUFFIX] [SCRIPTS]",
+  "command-line": "@ScriptCheck [CLEAN] [SUFFIX] [SCRIPTS]",
   "inputs": [
     {
       "command-line-flag": "-clean",
