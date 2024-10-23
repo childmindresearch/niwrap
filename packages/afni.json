@@ -2623,8 +2623,9 @@
         "descriptor": "descriptors/afni/fat_mat_sel.py.json"
       },
       {
-        "target": "fat_mat_tableize.py",
-        "status": "missing"
+        "target": "fat_mat_tableize",
+        "status": "done",
+        "descriptor": "descriptors/afni/fat_mat_tableize.json"
       },
       {
         "target": "fat_mvm_gridconv.py",

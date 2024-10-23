@@ -3,7 +3,7 @@
   "tool-version": "24.2.06",
   "description": "Make tables for AFNI group analysis programs from 3dNetCorr (*.netcc) and 3dTrackID (*.grid) outputs, with optional additional subject information from CSV files.",
   "author": "AFNI Developers",
-  "command-line": "fat_mat_tableize [INPUT_MATRICES] [INPUT_CSV] [INPUT_LIST] [OUTPUT_PREFIX] [PARAMETERS] [VER_FLAG] [DATE_FLAG] [HELP_FLAG] [H_FLAG] [HVIEW_FLAG]",
+  "command-line": "fat_mat_tableize.py [INPUT_MATRICES] [INPUT_CSV] [INPUT_LIST] [OUTPUT_PREFIX] [PARAMETERS] [VER_FLAG] [DATE_FLAG] [HELP_FLAG] [H_FLAG] [HVIEW_FLAG]",
   "inputs": [
     {
       "id": "input_matrices",
