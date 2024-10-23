@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SLICEANIMATE_METADATA = Metadata(
-    id="6ddd968c8f0c86e4bd48ca20420dd4f3010929dd.boutiques",
+    id="a5dc0ad37e3420fafebb47e2a2024aae36551c3a.boutiques",
     name="sliceanimate",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

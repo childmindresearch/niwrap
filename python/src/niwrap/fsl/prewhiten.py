@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 PREWHITEN_METADATA = Metadata(
-    id="d31a9a1e7ac35eb21c804d75c03d7fccb8b566c8.boutiques",
+    id="bca64e92a06eb35cfe2ed8a5e6ae21de657a53a5.boutiques",
     name="prewhiten",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

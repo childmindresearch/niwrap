@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MAKEROT_METADATA = Metadata(
-    id="50a219082fe22aa0bb97ef18740853d5f81b69d7.boutiques",
+    id="3d12153634875f6413e9e2cce389412bf29dc881.boutiques",
     name="makerot",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

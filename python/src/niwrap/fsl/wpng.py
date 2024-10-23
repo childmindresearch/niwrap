@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 WPNG_METADATA = Metadata(
-    id="ca21ffdb19e09a9507e79b0f6e8067c70b0e28f2.boutiques",
+    id="9f7e87936ac635b152a1994f0c233e862f1d6673.boutiques",
     name="wpng",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 QBOOT_METADATA = Metadata(
-    id="5e36ed0ed567e9bbeeaf01b15e9fc0ab7b2d4d26.boutiques",
+    id="f6f5aa5025de186ab421681b495b5261444b3e35.boutiques",
     name="qboot",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

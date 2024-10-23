@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BIANCA_OVERLAP_MEASURES_METADATA = Metadata(
-    id="313a4e82f2a26e442b04a690bd7c48b1522071a4.boutiques",
+    id="f2386cc226dd90f34e506452180224451ade6d05.boutiques",
     name="bianca_overlap_measures",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FABBER_QBOLD_METADATA = Metadata(
-    id="6bbed246485424cb176eb731f1489c7a89903d38.boutiques",
+    id="18f0ad8ed5e097544f525b0b38ce23d353340352.boutiques",
     name="fabber_qbold",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

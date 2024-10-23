@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BASIL_VAR_METADATA = Metadata(
-    id="430c88be51caa74718f63e1d1babdb28f5399cb8.boutiques",
+    id="3ffff376675964acc600ccf872fc8ce3f759687b.boutiques",
     name="basil_var",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

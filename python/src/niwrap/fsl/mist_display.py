@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MIST_DISPLAY_METADATA = Metadata(
-    id="36223b271b62afdca3dde0aa6e399e6006d5e2da.boutiques",
+    id="95b52cf541b919a9e72147bdc2f912c9d4412568.boutiques",
     name="mist_display",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

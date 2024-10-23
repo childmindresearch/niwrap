@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SPHARM_RM_METADATA = Metadata(
-    id="6fa8f88209c484aa648473ffee540c0fda59044c.boutiques",
+    id="2cb4a93630d30d1c869f3eec7649cd4b9033ad00.boutiques",
     name="spharm_rm",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

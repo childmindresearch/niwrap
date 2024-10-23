@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FEATREGAPPLY_METADATA = Metadata(
-    id="acc546fa729030324367fa579a95f284d71474b6.boutiques",
+    id="d070bef9cb7d612c735d9458d050c5538855b4ab.boutiques",
     name="featregapply",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 PVMFIT_METADATA = Metadata(
-    id="b8d0ef967be4d8b5cbc7c5cc5275de2fe4e76ca6.boutiques",
+    id="f76f85729fbdaa42139d2b09ed371559eea1c62b.boutiques",
     name="pvmfit",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FSL_MRS_PREPROC_METADATA = Metadata(
-    id="38847a7433a8945576a25be550a20785d6e26348.boutiques",
+    id="8f8fb825e21bc80df4cc2e525124cca225b3bfc5.boutiques",
     name="fsl_mrs_preproc",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

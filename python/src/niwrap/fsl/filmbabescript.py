@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FILMBABESCRIPT_METADATA = Metadata(
-    id="169e45446d6a4f44c7e969c501d8405dee3e0e62.boutiques",
+    id="4ded062594e57b22dc0f8c672ec43a287db8880a.boutiques",
     name="filmbabescript",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

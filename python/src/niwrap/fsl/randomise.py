@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 RANDOMISE_METADATA = Metadata(
-    id="838034b8c2314c7c20bba95cc45bfa9cfcbbaf47.boutiques",
+    id="8c2786cdf09d4e53816a16a0a1bcccbf0446fe89.boutiques",
     name="randomise",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

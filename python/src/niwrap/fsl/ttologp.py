@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 TTOLOGP_METADATA = Metadata(
-    id="3cd52f1b30649cc20df3124bb2a2415b137d1a4d.boutiques",
+    id="df6a41338c6c2e7be7a1d202eda877049516093f.boutiques",
     name="ttologp",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

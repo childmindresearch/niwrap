@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SIENA_CAL_METADATA = Metadata(
-    id="ad77313ae95f12b0565d492e1d2c0d0d2b4d901f.boutiques",
+    id="00aaff271ed721f078a1193f8f25d26d4ce0c6ca.boutiques",
     name="siena_cal",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SIGNAL2IMAGE_METADATA = Metadata(
-    id="4378b9595f20e3569e2b9d46f8bc2994669782ef.boutiques",
+    id="aeb6c6eed58f9872bb25944e0215f08b4d0f7f07.boutiques",
     name="signal2image",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

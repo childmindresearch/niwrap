@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FABBER_DWI_METADATA = Metadata(
-    id="48bc1dbed9c58992f58411ca4559975a0c16e090.boutiques",
+    id="b1bc98beb137ed53c6d02342af3accbfb30aaa77.boutiques",
     name="fabber_dwi",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

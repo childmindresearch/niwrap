@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ATLASQUERY_METADATA = Metadata(
-    id="4ca8afe20e458edf9236a565872d69c0c0c9b1bd.boutiques",
+    id="6d51b5a862a60775598a02cc7099e97e62cfafcd.boutiques",
     name="atlasquery",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

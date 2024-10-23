@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 PERFUSION_SUBTRACT_METADATA = Metadata(
-    id="269fbb4bbaaddd093b9ed276b0377ca7d130fbab.boutiques",
+    id="cd960f511b05f63f585720adb3f33c73da0541c6.boutiques",
     name="perfusion_subtract",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

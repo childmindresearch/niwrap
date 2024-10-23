@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 AFF2RIGID_METADATA = Metadata(
-    id="84088cc9ad46455087738bbb38853c7f02c1de28.boutiques",
+    id="cfdce16816cf612ff4eb9e1cabfa00e80da0d647.boutiques",
     name="aff2rigid",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

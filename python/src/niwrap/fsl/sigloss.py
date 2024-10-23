@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SIGLOSS_METADATA = Metadata(
-    id="d8727c906d42af8ef98b3bfe8945de45d9847bdd.boutiques",
+    id="eb9cd1da83bbad525452113275e921818605ae9d.boutiques",
     name="sigloss",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

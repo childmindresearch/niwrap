@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 TCALC_METADATA = Metadata(
-    id="4f715d8ae369dbd5af397c2b6c1f1329e72c0a1c.boutiques",
+    id="9b918f950f060bc9ed584bd802ed6dd8f7684c3e.boutiques",
     name="tcalc",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

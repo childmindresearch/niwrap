@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FSL_BOXPLOT_METADATA = Metadata(
-    id="035b49602b983eb3414c27e04cc2441ca81c874a.boutiques",
+    id="2c34af816b5fe5269c0bc1186e733a7b58689e51.boutiques",
     name="fsl_boxplot",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FNIRTFILEUTILS_METADATA = Metadata(
-    id="44b9c01f83a5825080519d917786cf4ae31dd12c.boutiques",
+    id="705d606901fc9656a191a1230ecf5993cbe28c8b.boutiques",
     name="fnirtfileutils",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

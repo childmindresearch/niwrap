@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MCCUTUP_METADATA = Metadata(
-    id="550fe345e830980221ec6194b0b0c8479f3cf793.boutiques",
+    id="68f81abb87426ba507ba988e4b4eda144fff6e24.boutiques",
     name="mccutup",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

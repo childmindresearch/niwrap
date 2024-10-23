@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CREATE_LUT_METADATA = Metadata(
-    id="f5c8f6c368b2d93f8314fb443bdc263294ea4108.boutiques",
+    id="ebd58344660d94b56d62f70d0fc8a8a7777c61f4.boutiques",
     name="create_lut",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

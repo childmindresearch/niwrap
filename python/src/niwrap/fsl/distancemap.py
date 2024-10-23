@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 DISTANCEMAP_METADATA = Metadata(
-    id="f3283b740af6cab9c785386d79f6d400fd840fdd.boutiques",
+    id="2d2edcd545dddd774341587fe617651e807ff605.boutiques",
     name="distancemap",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

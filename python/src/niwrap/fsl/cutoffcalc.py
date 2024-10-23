@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CUTOFFCALC_METADATA = Metadata(
-    id="0c0f2a7cca14577f16d26279115479b5a33b9897.boutiques",
+    id="c24a8e26beb0ead80bac24eccb9aa31a0dcd73c0.boutiques",
     name="cutoffcalc",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

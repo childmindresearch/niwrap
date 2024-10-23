@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MCFLIRT_METADATA = Metadata(
-    id="497209cad50a8f04e889a4810bd02106a487073c.boutiques",
+    id="6d3dacd46e1c95b52ef6d8f12779ffa4bd223c50.boutiques",
     name="mcflirt",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

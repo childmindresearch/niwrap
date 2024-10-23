@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 STD2IMGCOORD_METADATA = Metadata(
-    id="249cea33f0673f5b3a548a71376094e92bbe4ebf.boutiques",
+    id="3fd4d4c2aff2f50c8f2092972d2f7017a96ca644.boutiques",
     name="std2imgcoord",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FIND_THE_BIGGEST_METADATA = Metadata(
-    id="d42e690a2afd6d3557004a9b4c42dfd87e70847b.boutiques",
+    id="357738ee89e6388828ffa77299aae80c20a6dd78.boutiques",
     name="find_the_biggest",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ANATOMICAL_AVERAGE_METADATA = Metadata(
-    id="9af82ad00938d7d5dcc31655738f6a41b8027bed.boutiques",
+    id="6acbc6a994a751146a252b736f805d6220b865a5.boutiques",
     name="AnatomicalAverage",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

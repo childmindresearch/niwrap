@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BIANCA_PERIVENT_DEEP_METADATA = Metadata(
-    id="50c5d9d679a2cbf4bf90678603939c7bc8ca98c3.boutiques",
+    id="28a59b1b8385e39b2250e11e7c441b325f7a1767.boutiques",
     name="bianca_perivent_deep",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

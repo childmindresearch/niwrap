@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MIDTRANS_METADATA = Metadata(
-    id="a0139bf628c1027615d9cda20a08ebab2c29e712.boutiques",
+    id="2c37008174abe8b7e921cf3baa595a41ab455cbb.boutiques",
     name="midtrans",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

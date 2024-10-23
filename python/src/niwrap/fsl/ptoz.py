@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 PTOZ_METADATA = Metadata(
-    id="9ff6130a888c3654fa8d73ea02bbd6d0588a27b9.boutiques",
+    id="8f09f62350194a8e16a6c61d0e6d68f25f849419.boutiques",
     name="ptoz",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

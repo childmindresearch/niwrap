@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FILMBABE_METADATA = Metadata(
-    id="9bbcff9d9fe0e9c52df41372de3907bf80b01450.boutiques",
+    id="e3bb09805455c7751fc10b069acdbe9294345dba.boutiques",
     name="filmbabe",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SWAP_VOXELWISE_METADATA = Metadata(
-    id="05f789c598386ac6160bcda86def15193dd2c92e.boutiques",
+    id="f68ef327c86709bab99e91d4bd0493e96bf01a0a.boutiques",
     name="swap_voxelwise",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 XFIBRES_METADATA = Metadata(
-    id="2efa6e1a2bf6d99605a85d602a328e56c07e1dcd.boutiques",
+    id="19f7a9a8981a3db1bd87c5bfeba2cb6e80f96bb1.boutiques",
     name="xfibres",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

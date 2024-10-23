@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 RMSDIFF_METADATA = Metadata(
-    id="4c9ef3222cef730b6dcc1ef14f9c2fa6d48996a4.boutiques",
+    id="b70a15e666b3981b3c9d6cf24704aa03e583487f.boutiques",
     name="rmsdiff",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

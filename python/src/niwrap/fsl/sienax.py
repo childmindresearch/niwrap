@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 SIENAX_METADATA = Metadata(
-    id="6fc7cd42cc7b336227147d1a73cf60457a71e5c2.boutiques",
+    id="7c8a65c052306cea6f4dc67c411eb83cabc75a8d.boutiques",
     name="sienax",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

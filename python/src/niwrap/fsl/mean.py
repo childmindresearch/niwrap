@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 MEAN_METADATA = Metadata(
-    id="09e3e1188547068face0e4fd27b1d4d92387dc1f.boutiques",
+    id="969d012743519d84246fe4ee988597e301c8f0a7.boutiques",
     name="mean",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

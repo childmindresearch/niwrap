@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 ESTNOISE_METADATA = Metadata(
-    id="247bc904d1a615a10768ac4443a9384138e2eb9a.boutiques",
+    id="814e9ce4d2109946a714e1edc5ec217ad067e6ed.boutiques",
     name="estnoise",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 OXFORD_ASL_METADATA = Metadata(
-    id="3a874236118d6c333c7d91fd94b75bc41d3f5815.boutiques",
+    id="26a940a6741eb3475fde5bf33f138f7e1c706504.boutiques",
     name="oxford_asl",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

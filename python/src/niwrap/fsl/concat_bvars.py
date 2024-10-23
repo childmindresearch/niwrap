@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CONCAT_BVARS_METADATA = Metadata(
-    id="f357bfc28e3ab7f24fff72ec83769cc945a6b2e4.boutiques",
+    id="97666f1af37896f5829dee77482f4af806f27ca2.boutiques",
     name="concat_bvars",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

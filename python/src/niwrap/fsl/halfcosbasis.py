@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 HALFCOSBASIS_METADATA = Metadata(
-    id="37af6834e2787f96dc353ec76d4035fbb9eaad3d.boutiques",
+    id="7bb3683b7481800b8e3ecdaafbf80017315591f7.boutiques",
     name="halfcosbasis",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

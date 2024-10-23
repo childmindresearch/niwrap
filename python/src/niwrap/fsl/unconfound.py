@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 UNCONFOUND_METADATA = Metadata(
-    id="73dc2b6a0b2daca3ed1a6acc6b9d1b19b5af77e1.boutiques",
+    id="d7f012589ab401c1d878d9c811421b5b5aa88420.boutiques",
     name="unconfound",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

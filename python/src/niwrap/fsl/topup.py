@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 TOPUP_METADATA = Metadata(
-    id="838cc836a85c648c3cb3ec86450f96b407116377.boutiques",
+    id="07c29e75a2ff1e390f9ba8cdff8d2f66caf83831.boutiques",
     name="topup",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

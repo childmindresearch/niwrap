@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 XTRACT_BLUEPRINT_METADATA = Metadata(
-    id="27b55748f34876bdc8cdaef8c7f5e0a07b8fb32b.boutiques",
+    id="187e690c1b7404e249578c2c1baefcb0cb93c85d.boutiques",
     name="xtract_blueprint",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

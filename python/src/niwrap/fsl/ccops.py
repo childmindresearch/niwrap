@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 CCOPS_METADATA = Metadata(
-    id="02cadac1d2601928d606350802d28649e4f52a10.boutiques",
+    id="0b40882ccaabb12dce5bf4ccbfe0ff5f73c34ceb.boutiques",
     name="ccops",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

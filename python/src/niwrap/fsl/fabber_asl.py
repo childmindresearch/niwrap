@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FABBER_ASL_METADATA = Metadata(
-    id="03a103f125d1d2eee79cbee76f450d50f59fef74.boutiques",
+    id="0a45046f1a94aea4e0f9e060c9577a0da76acee0.boutiques",
     name="fabber_asl",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

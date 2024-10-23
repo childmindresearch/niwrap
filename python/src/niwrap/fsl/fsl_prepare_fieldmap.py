@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FSL_PREPARE_FIELDMAP_METADATA = Metadata(
-    id="3bf0b52185ef624d588b5e2f9b1ed89fb73508df.boutiques",
+    id="9954726343bae85db4f6d8d901d3b3e855af8ec3.boutiques",
     name="fsl_prepare_fieldmap",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

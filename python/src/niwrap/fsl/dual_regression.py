@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 DUAL_REGRESSION_METADATA = Metadata(
-    id="7af22bb9ad60d96cc2edeade6942b8786e2c77d2.boutiques",
+    id="4a6faeb1d7113a6d940242d22606ab11d87c4431.boutiques",
     name="dual_regression",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

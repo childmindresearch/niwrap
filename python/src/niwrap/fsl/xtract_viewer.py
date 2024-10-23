@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 XTRACT_VIEWER_METADATA = Metadata(
-    id="22fdff4741f6f5105c57bb770d3826d89812f155.boutiques",
+    id="b865f9bfa16a3e0222103d587d069bdb26fa0973.boutiques",
     name="xtract_viewer",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

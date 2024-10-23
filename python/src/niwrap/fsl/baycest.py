@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 BAYCEST_METADATA = Metadata(
-    id="b2b31c78e0d4e829ca2c94fb1da6a8c4890ade65.boutiques",
+    id="e5bee9c2aaec36f9d9e99cc7ef1564d6e0115b41.boutiques",
     name="baycest",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

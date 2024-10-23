@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 PAIRREG_METADATA = Metadata(
-    id="83d31bfa1313a4147fd8ae200f20bd0adc33ba17.boutiques",
+    id="ca0f5300012b0074b30d3e7bb1a9d03893794d68.boutiques",
     name="pairreg",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

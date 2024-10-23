@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 EPI_REG_METADATA = Metadata(
-    id="49c9bdcbc5854d3580fe7ce3e74411301d9a635f.boutiques",
+    id="30f3082dc81173671ea1f0bd45492decfd99469f.boutiques",
     name="epi_reg",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

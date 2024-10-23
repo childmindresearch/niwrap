@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FUGUE_METADATA = Metadata(
-    id="6f420f4e48114e62d493a0e92de4e88d1fa52520.boutiques",
+    id="5ae49096683d4a42ebcd5260f963b39570c0ef22.boutiques",
     name="fugue",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

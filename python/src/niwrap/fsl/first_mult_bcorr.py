@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FIRST_MULT_BCORR_METADATA = Metadata(
-    id="2ec010dcf028d280aba6d8e13a59a9ce1d83403c.boutiques",
+    id="5b4014aa1c62ecb1bc4eea76870e8550dc472b07.boutiques",
     name="first_mult_bcorr",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 

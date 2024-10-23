@@ -7,10 +7,10 @@ from styxdefs import *
 import dataclasses
 
 FSLREORIENT2STD_METADATA = Metadata(
-    id="b31bdf2dc4462cf0562bb44493472978d7722cb6.boutiques",
+    id="93cfb858ce2b85cb0aec457d7942e2490d54becb.boutiques",
     name="fslreorient2std",
     package="fsl",
-    container_image_tag="mcin/fsl:6.0.5",
+    container_image_tag="brainlife/fsl:6.0.4-patched2",
 )
 
 
