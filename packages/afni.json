@@ -2601,7 +2601,7 @@
       },
       {
         "target": "eg_main_chrono.py",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "epi_b0_correct.py",
