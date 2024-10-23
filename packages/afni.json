@@ -1450,7 +1450,8 @@
       },
       {
         "target": "@GetAfniID",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@GetAfniID.json"
       },
       {
         "target": "@GetAfniOrient",
