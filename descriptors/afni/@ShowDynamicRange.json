@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "ShowDynamicRange",
+  "name": "@ShowDynamicRange",
   "author": "AFNI Developers",
   "description": "The script checks the dynamic range of the time series data at locations inside the brain.",
   "command-line": "@ShowDynamicRange [INPUT_FILE]",

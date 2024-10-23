@@ -1691,7 +1691,8 @@
       },
       {
         "target": "@ShowDynamicRange",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@ShowDynamicRange.json"
       },
       {
         "target": "@SkullStrip_TouchUp",
