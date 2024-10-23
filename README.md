@@ -1,8 +1,6 @@
-
 # NiWrap <img src="logo.png" align="right" width="25%"/>
 
 🧠 Modern Python wrappers for neuroimaging tools
-
 
 ## 🚀 Features
 
@@ -15,22 +13,23 @@
 
 <!-- START_PACKAGES_TABLE -->
 
-| Package | Status | Version | API Coverage |
-| --- | --- | --- | --- |
-| [AFNI](https://afni.nimh.nih.gov/) | In progress | [`24.2.06`](https://hub.docker.com/r/afni/afni_make_build) | 532/658 (80.9%) |
-| [ANTs](https://github.com/ANTsX/ANTs) | In progress | [`2.5.3`](https://hub.docker.com/r/antsx/ants) | 71/113 (62.8%) |
-| [Connectome Workbench](https://github.com/Washington-University/workbench) | Testing | [`1.5.0`](https://hub.docker.com/r/brainlife/connectome_workbench) | 202/202 (100% 🎉) |
-| [Convert3D](http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D) | In progress | [`1.1.0`](https://hub.docker.com/r/pyushkevich/itksnap) | 2/4 (50.0%) |
-| [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) | In progress | [`6.0.5`](https://hub.docker.com/r/brainlife/fsl) | 254/338 (75.1%) |
-| [FreeSurfer](https://github.com/freesurfer/freesurfer) | In progress | [`7.4.1`](https://hub.docker.com/r/freesurfer/freesurfer) | 713/806 (88.5%) |
-| [Greedy](https://sites.google.com/view/greedyreg/about) | In progress | [`1.0.1`](https://hub.docker.com/r/pyushkevich/itksnap) | 1/1 (100% 🎉) |
-| [MRTrix3](https://www.mrtrix.org/) | Testing | [`3.0.4`](https://hub.docker.com/r/mrtrix3/mrtrix3) | 117/125 (93.6%) |
-| [MRTrix3Tissue](https://3tissue.github.io/) | Testing | [`5.2.8`](https://hub.docker.com/r/brainlife/3tissue) | 1/1 (100% 🎉) |
-| [NiftyReg](http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg) | In progress | [`1.4.0`](https://hub.docker.com/r/vnmd/niftyreg_1.4.0) | 7/7 (100% 🎉) |
+| Package                                                                     | Status      | Version                                                            | API Coverage      |
+| --------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------ | ----------------- |
+| [AFNI](https://afni.nimh.nih.gov/)                                          | In progress | [`24.2.06`](https://hub.docker.com/r/afni/afni_make_build)         | 532/658 (80.9%)   |
+| [ANTs](https://github.com/ANTsX/ANTs)                                       | In progress | [`2.5.3`](https://hub.docker.com/r/antsx/ants)                     | 71/113 (62.8%)    |
+| [Connectome Workbench](https://github.com/Washington-University/workbench)  | Testing     | [`1.5.0`](https://hub.docker.com/r/brainlife/connectome_workbench) | 202/202 (100% 🎉) |
+| [Convert3D](http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D) | In progress | [`1.1.0`](https://hub.docker.com/r/pyushkevich/itksnap)            | 2/4 (50.0%)       |
+| [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki)                               | In progress | [`6.0.4`](https://hub.docker.com/r/brainlife/fsl)                  | 241/312 (77.2%)   |
+| [FreeSurfer](https://github.com/freesurfer/freesurfer)                      | In progress | [`7.4.1`](https://hub.docker.com/r/freesurfer/freesurfer)          | 713/806 (88.5%)   |
+| [Greedy](https://sites.google.com/view/greedyreg/about)                     | In progress | [`1.0.1`](https://hub.docker.com/r/pyushkevich/itksnap)            | 1/1 (100% 🎉)     |
+| [MRTrix3](https://www.mrtrix.org/)                                          | Testing     | [`3.0.4`](https://hub.docker.com/r/mrtrix3/mrtrix3)                | 117/125 (93.6%)   |
+| [MRTrix3Tissue](https://3tissue.github.io/)                                 | Testing     | [`5.2.8`](https://hub.docker.com/r/brainlife/3tissue)              | 1/1 (100% 🎉)     |
+| [NiftyReg](http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg)             | In progress | [`1.4.0`](https://hub.docker.com/r/vnmd/niftyreg_1.4.0)            | 7/7 (100% 🎉)     |
 
 <!-- END_PACKAGES_TABLE -->
 
 > 📊 **API Coverage Explained**
+>
 > - Represents the percentage of tool binaries with available NiWrap descriptors
 > - Does not indicate descriptor completeness
 > - 100% coverage isn't always necessary (e.g., some FSL/AFNI utilities have Python stdlib equivalents)
@@ -62,7 +61,6 @@ See the [NiWrap Python package readme](https://github.com/childmindresearch/niwr
 ## 🤝 Contributing
 
 Contributions are welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for ways to get started.
-
 
 ## 📄 License
 

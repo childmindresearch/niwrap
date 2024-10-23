@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "find_the_biggest",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to find the largest volume or surface from a set of inputs",

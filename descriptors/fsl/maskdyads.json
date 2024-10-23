@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "maskdyads",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to mask dyads with threshold",

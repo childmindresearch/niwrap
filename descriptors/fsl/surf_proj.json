@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "surf_proj",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Projects data onto a surface mesh using specified parameters.",

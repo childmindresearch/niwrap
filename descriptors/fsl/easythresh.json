@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "easythresh",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Cluster-based statistical thresholding tool from FSL",

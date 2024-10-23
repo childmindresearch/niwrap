@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslchfiletype",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to change the file type of an image file or copy it to a new file.",

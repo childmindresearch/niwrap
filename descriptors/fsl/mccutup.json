@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "mccutup",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL mccutup tool",

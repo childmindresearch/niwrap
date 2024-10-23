@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "surface_fdr",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to calculate surface FDR correction for vertex analysis.",

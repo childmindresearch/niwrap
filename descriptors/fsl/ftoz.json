@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "ftoz",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Convert F-statistics to Z-scores.",

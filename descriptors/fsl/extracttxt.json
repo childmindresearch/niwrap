@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "extracttxt",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Extracts text from a file based on a search word",

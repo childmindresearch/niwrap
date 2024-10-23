@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslvbm_3_proc",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Pipeline for voxel-based morphometry analysis using FSL tools",

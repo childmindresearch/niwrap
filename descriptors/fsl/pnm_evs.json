@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "pnm_evs",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "PNM EVs: Generates physiological noise regressors for fMRI data",

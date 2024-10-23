@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "make_dyadic_vectors",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Generate dyadic vectors from theta and phi volumes.",

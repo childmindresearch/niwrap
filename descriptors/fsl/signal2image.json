@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "signal2image",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool for converting MR signal data to images using specified k-space coordinates and pulse sequences.",

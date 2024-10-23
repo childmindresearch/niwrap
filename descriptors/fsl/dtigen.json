@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "dtigen",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Generate diffusion data using tensor model",

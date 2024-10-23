@@ -1,6 +1,6 @@
 {
-  "name": "fsl-cluster",
-  "command-line": "fsl-cluster [CONNECTIVITY] [COPE_FILE] [DLH] [FIND_MIN] [FRACTIONAL] [IN_FILE] [MINCLUSTERSIZE] [NO_TABLE] [NUM_MAXIMA] [OUT_INDEX_FILE] [OUT_LOCALMAX_TXT_FILE] [OUT_LOCALMAX_VOL_FILE] [OUT_MAX_FILE] [OUT_MEAN_FILE] [OUT_PVAL_FILE] [OUT_SIZE_FILE] [OUT_THRESHOLD_FILE] [OUTPUT_TYPE] [PEAK_DISTANCE] [PTHRESHOLD] [STD_SPACE_FILE] [THRESHOLD] [USE_MM] [VOLUME] [WARPFIELD_FILE] [XFM_FILE]",
+  "name": "cluster",
+  "command-line": "cluster [CONNECTIVITY] [COPE_FILE] [DLH] [FIND_MIN] [FRACTIONAL] [IN_FILE] [MINCLUSTERSIZE] [NO_TABLE] [NUM_MAXIMA] [OUT_INDEX_FILE] [OUT_LOCALMAX_TXT_FILE] [OUT_LOCALMAX_VOL_FILE] [OUT_MAX_FILE] [OUT_MEAN_FILE] [OUT_PVAL_FILE] [OUT_SIZE_FILE] [OUT_THRESHOLD_FILE] [OUTPUT_TYPE] [PEAK_DISTANCE] [PTHRESHOLD] [STD_SPACE_FILE] [THRESHOLD] [USE_MM] [VOLUME] [WARPFIELD_FILE] [XFM_FILE]",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Uses FSL cluster to perform clustering on statistical output",
   "inputs": [
@@ -456,7 +456,7 @@
       "mutually-exclusive": true
     }
   ],
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "schema-version": "0.5",
   "container-image": {
     "type": "docker",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fsl_schurprod",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Generates element-wise matrix products or product of matrices against vectors from 4D data",

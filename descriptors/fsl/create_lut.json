@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "create_lut",
   "description": "A tool to create lookup tables",
   "command-line": "create_lut [OUTPUT_FILE_ROOT]",

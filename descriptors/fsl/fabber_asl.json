@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fabber_asl",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Fabber is a tool for automated model fitting of time series data.",

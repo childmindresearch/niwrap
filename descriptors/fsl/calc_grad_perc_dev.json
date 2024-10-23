@@ -1,6 +1,6 @@
 {
   "name": "calc_grad_perc_dev",
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "http://example.com/descriptor-url",
   "description": "Compute the gradient percent deviation based on a full warp image from gradient_unwarp.py",

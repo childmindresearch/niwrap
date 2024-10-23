@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "pngappend",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Append PNG files horizontally and/or vertically into a new PNG (or GIF) file",

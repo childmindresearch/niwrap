@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "slicesdir",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "slicesdir generates a directory containing orthogonal slices through a set of images.",

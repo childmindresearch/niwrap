@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "vecreg",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Vector Affine/NonLinear Transformation with Orientation Preservation",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "dual_regression",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Dual regression algorithm to investigate group-ICA results",

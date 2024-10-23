@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "basil_var",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Variance calculator for BASIL",

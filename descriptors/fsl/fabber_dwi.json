@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fabber_dwi",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Fabber diffusion-weighted imaging tool for model-based analysis using forward models and different inference methods.",

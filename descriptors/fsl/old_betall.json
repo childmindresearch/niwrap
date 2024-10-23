@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "old_betall",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Automated brain extraction tool for FSL involving both T1 and T2 images",

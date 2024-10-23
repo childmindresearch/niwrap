@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fdr",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "False Discovery Rate (FDR) correction tool from FSL",

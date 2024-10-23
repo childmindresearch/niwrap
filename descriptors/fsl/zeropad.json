@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "zeropad",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for zero-padding numbers to a specified length",

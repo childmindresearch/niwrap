@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "bedpostx_datacheck",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Check the data directory for BEDPOSTX compatibility",

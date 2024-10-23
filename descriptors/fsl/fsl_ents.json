@@ -1,6 +1,6 @@
 {
   "name": "fsl_ents",
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "description": "Extract component time series from a MELODIC .ica directory",
   "command-line": "fsl_ents [ICADIR] [COMPONENTS] [OUTFILE] [OVERWRITE] [CONFFILE] [-h]",
   "inputs": [

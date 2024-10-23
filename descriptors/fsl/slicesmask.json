@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "slicesmask",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for masking slices from an image using a mask",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "atlasquery",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Structural lookup tool for FSL atlases.",

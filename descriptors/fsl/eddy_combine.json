@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "eddy_combine",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Combines diffusion data sets with opposite phase encoding directions for use with FSL's EDDY.",

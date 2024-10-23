@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "qboot",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for computing q-ball ODFs using bootstrap samples",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslslice",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to extract all slices from a 3D volume and store as 2D images",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "proj_thresh",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool to apply a threshold to either volumes or surfaces.",

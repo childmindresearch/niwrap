@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "sliceanimate",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool for animating slices of an image using whirlgif",

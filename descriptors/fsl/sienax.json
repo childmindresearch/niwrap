@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "sienax",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool to estimate brain tissue volume from a single MR image and to compare it to an external standard.",

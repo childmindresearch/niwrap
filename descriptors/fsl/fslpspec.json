@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslpspec",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Estimate the power spectrum of 4D fMRI time series data",

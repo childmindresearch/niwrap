@@ -254,7 +254,7 @@
       "description": "Variance image."
     }
   ],
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "schema-version": "0.5",
   "container-image": {
     "type": "docker",

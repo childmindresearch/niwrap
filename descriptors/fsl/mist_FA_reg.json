@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "mist_FA_reg",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for registering FA volumes to a reference T1 volume",

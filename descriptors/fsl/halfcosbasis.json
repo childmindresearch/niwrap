@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "halfcosbasis",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool for handling half-cosine basis functions in FSL",
