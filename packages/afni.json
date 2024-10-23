@@ -2037,7 +2037,8 @@
       },
       {
         "target": "BayesianGroupAna.py",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/BayesianGroupAna.py.json"
       },
       {
         "target": "BrainSkin",
