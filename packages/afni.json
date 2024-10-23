@@ -783,7 +783,7 @@
         "descriptor": "descriptors/afni/3dREMLfit.json"
       },
       {
-        "target": "3dROIMaker",
+        "target": "3DROIMaker",
         "status": "missing"
       },
       {
