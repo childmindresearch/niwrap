@@ -181,7 +181,6 @@ from .mean import *
 from .medianfilter import *
 from .melodic import *
 from .midtrans import *
-from .mist_display import *
 from .mist_fa_reg import *
 from .mm import *
 from .morph_kernel import *
@@ -266,6 +265,5 @@ from .whirlgif import *
 from .wpng import *
 from .xfibres import *
 from .xtract_stats import *
-from .xtract_viewer import *
 from .zeropad import *
 from .ztop import *

@@ -80,7 +80,6 @@ from .mrregister import *
 from .mrstats import *
 from .mrthreshold import *
 from .mrtransform import *
-from .mrview import *
 from .mtnormalise import *
 from .peaks2amp import *
 from .peaks2fixel import *
@@ -91,7 +90,6 @@ from .sh2power import *
 from .sh2response import *
 from .shbasis import *
 from .shconv import *
-from .shview import *
 from .tck2connectome import *
 from .tck2fixel import *
 from .tckconvert import *
