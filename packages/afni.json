@@ -784,7 +784,8 @@
       },
       {
         "target": "3DROIMaker",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/3DROIMaker.json"
       },
       {
         "target": "3dROIstats",
@@ -1035,7 +1036,8 @@
       },
       {
         "target": "3dVecRGB_to_HSL",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/3dVecRGB_to_HSL.json"
       },
       {
         "target": "3dVol2Surf",
@@ -1473,101 +1475,95 @@
       },
       {
         "target": "@Install_3dPFM_Demo",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_APMULTI_Demo1_rest",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_APMULTI_Demo1_rest.json"
+        "status": "missing"
       },
       {
         "target": "@Install_APMULTI_Demo2_realtime",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_APMULTI_Demo2_realtime.json"
+        "status": "missing"
       },
       {
         "target": "@Install_AfniRetinoDemo",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_AfniRetinoDemo.json"
+        "status": "missing"
       },
       {
         "target": "@Install_ClustScat_Demo",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_D99_macaque",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_D99_macaque.json"
+        "status": "missing"
       },
       {
         "target": "@Install_DBSproc",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_FATCAT_DEMO",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_FATCAT_DEMO2",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_FATCAT_DEMO2.json"
+        "status": "missing"
       },
       {
         "target": "@Install_FATMVM_DEMO",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_IBT_DATASETS",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_InstaCorr_Demo",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_MACAQUE_DEMO",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_MACAQUE_DEMO_REST",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_MBM_Marmoset",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_MEICA_Demo",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_NIH_Marmoset",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_NMT",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_RAT_DEMO_REST",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_RSFMRI_Motion_Group_Demo",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_SAM_marmoset",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_SURFLAYERS_DEMO1",
-        "status": "done",
-        "descriptor": "descriptors/afni/@Install_SURFLAYERS_DEMO1.json"
+        "status": "missing"
       },
       {
         "target": "@Install_TSrestMovieDemo",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@IsoMasks",
@@ -1680,7 +1676,8 @@
       },
       {
         "target": "@Shift_Volume",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@Shift_Volume.json"
       },
       {
         "target": "@ShowDynamicRange",
