@@ -1787,7 +1787,8 @@
       },
       {
         "target": "@clip_volume",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@clip_volume.json"
       },
       {
         "target": "@compute_OC_weights",
