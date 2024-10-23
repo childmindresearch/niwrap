@@ -81,7 +81,7 @@
   ],
   "output-files": [
     {
-      "path-template": "[OUTPUT_BASENAME]????.nii.gz",
+      "path-template": "[OUTPUT_BASENAME].nii.gz",
       "description": "Output volumes/slices",
       "optional": false,
       "id": "outfiles",

@@ -1,6 +1,6 @@
 {
-  "name": "Cluster",
-  "command-line": "Cluster [CONNECTIVITY] [COPE_FILE] [DLH] [FIND_MIN] [FRACTIONAL] [IN_FILE] [MINCLUSTERSIZE] [NO_TABLE] [NUM_MAXIMA] [OUT_INDEX_FILE] [OUT_LOCALMAX_TXT_FILE] [OUT_LOCALMAX_VOL_FILE] [OUT_MAX_FILE] [OUT_MEAN_FILE] [OUT_PVAL_FILE] [OUT_SIZE_FILE] [OUT_THRESHOLD_FILE] [OUTPUT_TYPE] [PEAK_DISTANCE] [PTHRESHOLD] [STD_SPACE_FILE] [THRESHOLD] [USE_MM] [VOLUME] [WARPFIELD_FILE] [XFM_FILE]",
+  "name": "fsl-cluster",
+  "command-line": "fsl-cluster [CONNECTIVITY] [COPE_FILE] [DLH] [FIND_MIN] [FRACTIONAL] [IN_FILE] [MINCLUSTERSIZE] [NO_TABLE] [NUM_MAXIMA] [OUT_INDEX_FILE] [OUT_LOCALMAX_TXT_FILE] [OUT_LOCALMAX_VOL_FILE] [OUT_MAX_FILE] [OUT_MEAN_FILE] [OUT_PVAL_FILE] [OUT_SIZE_FILE] [OUT_THRESHOLD_FILE] [OUTPUT_TYPE] [PEAK_DISTANCE] [PTHRESHOLD] [STD_SPACE_FILE] [THRESHOLD] [USE_MM] [VOLUME] [WARPFIELD_FILE] [XFM_FILE]",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Uses FSL cluster to perform clustering on statistical output",
   "inputs": [
@@ -463,8 +463,7 @@
     "type": "docker"
   },
   "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
+    "domain": "neuroinformatics"
   },
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
 }

@@ -1,6 +1,6 @@
 {
   "tool-version": "6.0.5",
-  "name": "possum_plot",
+  "name": "possum_plot.py",
   "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/fsl_possum_plot.json",
   "description": "Tool for plotting results from POSSUM simulations in FSL",
