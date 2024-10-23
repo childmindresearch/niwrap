@@ -1,7 +1,7 @@
 {
-  "name": "ROI decluster",
+  "name": "@ROI_decluster",
   "description": "Script to remove small clusters or standalone voxels from an ROI/atlas dataset",
-  "command-line": "ROI decluster [INPUT_DSET] [OUTPUT_DIR] [NVOX_THRESH] [FRAC_THRESH] [PREFIX] [NEIGHBORHOOD_TYPE]",
+  "command-line": "@ROI_decluster [INPUT_DSET] [OUTPUT_DIR] [NVOX_THRESH] [FRAC_THRESH] [PREFIX] [NEIGHBORHOOD_TYPE]",
   "tool-version": "24.2.06",
   "schema-version": "0.5",
   "inputs": [

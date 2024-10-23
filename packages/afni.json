@@ -1611,7 +1611,8 @@
       },
       {
         "target": "@ROI_decluster",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@ROI_decluster.json"
       },
       {
         "target": "@ROI_modal_grow",
