@@ -1,7 +1,7 @@
 {
   "command-line": "@djunct_4d_imager [INPUT_FILE] [PREFIX] [MOVIE_TYPE] [NO_CLEAN_FLAG]",
   "tool-version": "24.2.06",
-  "name": "djunct_4d_imager",
+  "name": "@djunct_4d_imager",
   "author": "AFNI Developers",
   "description": "The program is useful for viewing the same slice across the 'time' dimension of a 4D data set.",
   "url": "https://afni.nimh.nih.gov/",
