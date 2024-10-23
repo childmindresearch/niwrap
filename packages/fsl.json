@@ -505,7 +505,7 @@
       },
       {
         "target": "fsl_abspath",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "fsl_anat",
@@ -641,7 +641,7 @@
       },
       {
         "target": "fslecho",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "fsledithd",
@@ -762,7 +762,7 @@
       },
       {
         "target": "fsltclsh",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "fslval",
