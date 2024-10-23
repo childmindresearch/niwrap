@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslnvols",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Retrieve the number of volumes in a 4D NIfTI file",

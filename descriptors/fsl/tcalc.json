@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "tcalc",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Resample a 4D phantom for theoretical calculations",

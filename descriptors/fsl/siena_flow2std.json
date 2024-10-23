@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "siena_flow2std",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Convert edge flow to standard space",

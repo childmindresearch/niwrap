@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "tbss_3_postreg",
   "author": "FMRIB Analysis Group, University of Oxford",
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/fsl_tbss_3_postreg.json",

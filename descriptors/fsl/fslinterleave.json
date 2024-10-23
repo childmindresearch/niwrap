@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslinterleave",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Interleaves two input images slice-by-slice to produce an output image.",

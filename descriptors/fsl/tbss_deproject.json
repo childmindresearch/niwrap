@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "tbss_deproject",
   "description": "Tool to deproject images from skeleton space to final space",
   "command-line": "tbss_deproject [SKELETON_SPACE_INPUT_IMAGE] [FINAL_SPACE] [INDEX_IMAGE_FLAG]",

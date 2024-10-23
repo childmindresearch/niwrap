@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "immv",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Moves images from one file or directory to another.",

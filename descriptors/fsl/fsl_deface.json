@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fsl_deface",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to deface a structural T1w image.",

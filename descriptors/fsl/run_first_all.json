@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "run_first_all",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FIRST - FMRIB's Integrated Registration and Segmentation Tool for subcortical brain structures",

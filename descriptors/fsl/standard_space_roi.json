@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "standard_space_roi",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Masks input and/or reduces its FOV based on a standard space image or mask, transformed into the space of the input image.",

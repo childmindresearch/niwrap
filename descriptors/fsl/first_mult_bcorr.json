@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "first_mult_bcorr",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Part of FSL (ID: 6.0.5:9e026117), first_mult_bcorr converts label images to an output image.",

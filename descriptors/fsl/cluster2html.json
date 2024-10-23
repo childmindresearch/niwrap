@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "cluster2html",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Generates an HTML report from cluster-based FEAT analysis",

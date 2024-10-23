@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslsplit",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Split a 4D image into separate volumes or a 3D image into separate slices",

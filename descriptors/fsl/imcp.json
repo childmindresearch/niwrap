@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "imcp",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Copy images from one location to another",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "img2stdcoord",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Transforms image coordinates using standard space transformations.",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fsl_gen_3D",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Tool to generate a 3D snapshot of a structural image",

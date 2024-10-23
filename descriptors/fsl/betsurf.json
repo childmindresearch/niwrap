@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "betsurf",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "BET Surface Finder to extract brain surfaces using T1 and T2 images",

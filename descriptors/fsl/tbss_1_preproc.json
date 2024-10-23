@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "tbss_1_preproc",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "TBSS (Tract-Based Spatial Statistics) - Step 1: Preprocessing",

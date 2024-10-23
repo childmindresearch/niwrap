@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "pointflirt",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool to align point coordinates between volumes and compute affine transformation matrices.",

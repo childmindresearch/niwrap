@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "film_gls",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "General Linear Model fitting with autocorrelation in FMRI",

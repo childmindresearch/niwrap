@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "asl_file",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "ASL data manipulation tool for FSL",

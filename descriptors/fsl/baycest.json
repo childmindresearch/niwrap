@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "baycest",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Bayesian analysis for chemical exchange saturation transfer z-spectra",

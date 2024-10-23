@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "applytopup",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "applytopup applies corrections to images using the field estimates produced by topup.",

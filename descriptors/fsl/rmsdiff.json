@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "rmsdiff",
   "description": "Outputs RMS deviation between matrices (in mm)",
   "command-line": "rmsdiff [MATRIXFILE1] [MATRIXFILE2] [REFVOL] [MASK]",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "ttoz",
   "description": "Tool to convert a T-statistic image to a Z-statistic image",
   "command-line": "ttoz [VARSFILE] [CBSFILE] [DOF] [OUTPUTVOL] [HELP_FLAG]",

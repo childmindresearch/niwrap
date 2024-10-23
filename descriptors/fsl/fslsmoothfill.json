@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslsmoothfill",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Smoothfill is a tool designed to fill in holes in images by smoothly interpolating the pixel values.",

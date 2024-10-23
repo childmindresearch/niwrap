@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslFixText",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Ensures standard UNIX line endings in the output text file",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fabber_dualecho",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FMRIB's Advanced Bayesian Estimation and Inference tool for FMRI analysis.",

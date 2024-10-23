@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslcpgeom",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL tool to copy image geometry from one file to another.",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fslfft",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool to compute the Fourier transform of an input volume and save the result in an output volume.",

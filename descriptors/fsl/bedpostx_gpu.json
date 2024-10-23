@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "bedpostx_gpu",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Probabilistic tractography and diffusion MRI fitting tool",

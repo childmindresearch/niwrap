@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fsl_sbca",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Performs seed-based correlation analysis on FMRI data using either a single seed coordinate or a seed mask",

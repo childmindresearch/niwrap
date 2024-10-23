@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "filmbabe",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FILM with MCMC-based Bayesian Analysis for fMRI",

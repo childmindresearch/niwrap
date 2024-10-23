@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "xfibres",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Part of FSL - estimates diffusion parameters for multiple fibres per voxel",

@@ -1,6 +1,6 @@
 {
   "name": "fslmaths",
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "description": "FSL utility for image arithmetic, statistics, and mathematical operations",
   "command-line": "fslmaths [DATATYPE_INTERNAL] [INPUTS] [OPERATIONS] [OUTPUT] [OUTPUT_DATATYPE]",
   "author": "FMRIB Analysis Group, University of Oxford",

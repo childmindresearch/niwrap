@@ -1,6 +1,6 @@
 {
   "command-line": "oxford_asl -i <asl_data> -o <output_dir_name> [options]",
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "oxford_asl",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Calculate perfusion maps from ASL data",

@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "spharm_rm",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Part of FSL - Spherical harmonics removal tool to process neuroimaging data",

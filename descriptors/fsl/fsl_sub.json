@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "fsl_sub",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FSL cluster submission tool",

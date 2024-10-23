@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "pulse",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Generates a pulse sequence matrix for a given digital brain image.",

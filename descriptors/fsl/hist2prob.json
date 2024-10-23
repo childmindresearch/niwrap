@@ -1,5 +1,5 @@
 {
-  "tool-version": "6.0.5",
+  "tool-version": "6.0.4",
   "name": "hist2prob",
   "description": "Converts a histogram image to a probability map based on specified thresholds",
   "command-line": "hist2prob [IMAGE] [SIZE] [LOW_THRESH] [HIGH_THRESH]",
