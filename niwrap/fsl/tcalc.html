@@ -84,7 +84,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">TCALC_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;969bb6585a0e4e1f36259285fc5062f473cc26bd.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4f715d8ae369dbd5af397c2b6c1f1329e72c0a1c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tcalc&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
@@ -154,7 +154,7 @@
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCALC_METADATA</span><span class="p">)</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;resample&quot;</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tcalc&quot;</span><span class="p">)</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="s2">&quot;--input&quot;</span><span class="p">,</span>
@@ -246,7 +246,7 @@
                     <div class="attr variable">
             <span class="name">TCALC_METADATA</span>        =
 <input id="TCALC_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="TCALC_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;969bb6585a0e4e1f36259285fc5062f473cc26bd.boutiques&#39;, name=&#39;tcalc&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
+            <label class="view-value-button pdoc-button" for="TCALC_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4f715d8ae369dbd5af397c2b6c1f1329e72c0a1c.boutiques&#39;, name=&#39;tcalc&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -399,7 +399,7 @@
 </span><span id="tcalc-78"><a href="#tcalc-78"><span class="linenos"> 78</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="tcalc-79"><a href="#tcalc-79"><span class="linenos"> 79</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">TCALC_METADATA</span><span class="p">)</span>
 </span><span id="tcalc-80"><a href="#tcalc-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="tcalc-81"><a href="#tcalc-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;resample&quot;</span><span class="p">)</span>
+</span><span id="tcalc-81"><a href="#tcalc-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tcalc&quot;</span><span class="p">)</span>
 </span><span id="tcalc-82"><a href="#tcalc-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
 </span><span id="tcalc-83"><a href="#tcalc-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="tcalc-84"><a href="#tcalc-84"><span class="linenos"> 84</span></a>        <span class="s2">&quot;--input&quot;</span><span class="p">,</span>

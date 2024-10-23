@@ -96,8 +96,8 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">RANDOMISE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;7c88f00870d28004baf9e29327e2f520942680d3.boutiques&quot;</span><span class="p">,</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Randomise&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;838034b8c2314c7c20bba95cc45bfa9cfcbbaf47.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;randomise&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;mcin/fsl:6.0.5&quot;</span><span class="p">,</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="p">)</span>
@@ -206,7 +206,7 @@
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RANDOMISE_METADATA</span><span class="p">)</span>
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Randomise&quot;</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;randomise&quot;</span><span class="p">)</span>
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
 </span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
@@ -327,7 +327,7 @@
                     <div class="attr variable">
             <span class="name">RANDOMISE_METADATA</span>        =
 <input id="RANDOMISE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="RANDOMISE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;7c88f00870d28004baf9e29327e2f520942680d3.boutiques&#39;, name=&#39;Randomise&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
+            <label class="view-value-button pdoc-button" for="RANDOMISE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;838034b8c2314c7c20bba95cc45bfa9cfcbbaf47.boutiques&#39;, name=&#39;randomise&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;mcin/fsl:6.0.5&#39;)</span>
 
         
     </div>
@@ -572,7 +572,7 @@
 </span><span id="randomise-118"><a href="#randomise-118"><span class="linenos">118</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="randomise-119"><a href="#randomise-119"><span class="linenos">119</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RANDOMISE_METADATA</span><span class="p">)</span>
 </span><span id="randomise-120"><a href="#randomise-120"><span class="linenos">120</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="randomise-121"><a href="#randomise-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Randomise&quot;</span><span class="p">)</span>
+</span><span id="randomise-121"><a href="#randomise-121"><span class="linenos">121</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;randomise&quot;</span><span class="p">)</span>
 </span><span id="randomise-122"><a href="#randomise-122"><span class="linenos">122</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="randomise-123"><a href="#randomise-123"><span class="linenos">123</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
 </span><span id="randomise-124"><a href="#randomise-124"><span class="linenos">124</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
