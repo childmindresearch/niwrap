@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">GEN_GROUP_COMMAND_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;84476d7f3e352594b93819bece78045452309dbd.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4fe3201bf131205f747bb9a5634cc52a3ce35255.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gen_group_command&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -142,7 +142,7 @@
 </span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GEN_GROUP_COMMAND_METADATA</span><span class="p">)</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;gen_group_command&quot;</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;gen_group_command.py&quot;</span><span class="p">)</span>
 </span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="s2">&quot;-command&quot;</span><span class="p">,</span>
 </span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="n">command_name</span>
@@ -222,7 +222,7 @@
                     <div class="attr variable">
             <span class="name">GEN_GROUP_COMMAND_METADATA</span>        =
 <input id="GEN_GROUP_COMMAND_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="GEN_GROUP_COMMAND_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;84476d7f3e352594b93819bece78045452309dbd.boutiques&#39;, name=&#39;gen_group_command&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="GEN_GROUP_COMMAND_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4fe3201bf131205f747bb9a5634cc52a3ce35255.boutiques&#39;, name=&#39;gen_group_command&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -353,7 +353,7 @@
 </span><span id="gen_group_command-69"><a href="#gen_group_command-69"><span class="linenos"> 69</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="gen_group_command-70"><a href="#gen_group_command-70"><span class="linenos"> 70</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">GEN_GROUP_COMMAND_METADATA</span><span class="p">)</span>
 </span><span id="gen_group_command-71"><a href="#gen_group_command-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="gen_group_command-72"><a href="#gen_group_command-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;gen_group_command&quot;</span><span class="p">)</span>
+</span><span id="gen_group_command-72"><a href="#gen_group_command-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;gen_group_command.py&quot;</span><span class="p">)</span>
 </span><span id="gen_group_command-73"><a href="#gen_group_command-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
 </span><span id="gen_group_command-74"><a href="#gen_group_command-74"><span class="linenos"> 74</span></a>        <span class="s2">&quot;-command&quot;</span><span class="p">,</span>
 </span><span id="gen_group_command-75"><a href="#gen_group_command-75"><span class="linenos"> 75</span></a>        <span class="n">command_name</span>

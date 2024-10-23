@@ -81,8 +81,8 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">V_3D_TCORRELATE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;e35a4444ebb5f5f897c35530d7a2130f0b8193cd.boutiques&quot;</span><span class="p">,</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dTCorrelate&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;2240f8304c0c2cc0d1686fc4d8af67efdb5198a4.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;3dTcorrelate&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a><span class="p">)</span>
@@ -118,7 +118,7 @@
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dTcorrelateOutputs</span><span class="p">:</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    3dTCorrelate. Computes the correlation coefficient between corresponding voxel</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">    3dTcorrelate. Computes the correlation coefficient between corresponding voxel</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="sd">    time series in two input 3D+time datasets &#39;xset&#39; and &#39;yset&#39;.</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    </span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    Author: AFNI Developers</span>
@@ -171,7 +171,7 @@
 </span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_TCORRELATE_METADATA</span><span class="p">)</span>
 </span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dTCorrelate&quot;</span><span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dTcorrelate&quot;</span><span class="p">)</span>
 </span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">xset</span><span class="p">))</span>
 </span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">yset</span><span class="p">))</span>
 </span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">pearson</span><span class="p">:</span>
@@ -302,7 +302,7 @@
                     <div class="attr variable">
             <span class="name">V_3D_TCORRELATE_METADATA</span>        =
 <input id="V_3D_TCORRELATE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V_3D_TCORRELATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;e35a4444ebb5f5f897c35530d7a2130f0b8193cd.boutiques&#39;, name=&#39;3dTCorrelate&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V_3D_TCORRELATE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;2240f8304c0c2cc0d1686fc4d8af67efdb5198a4.boutiques&#39;, name=&#39;3dTcorrelate&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -342,7 +342,7 @@
 </span><span id="v_3d_tcorrelate-45"><a href="#v_3d_tcorrelate-45"><span class="linenos"> 45</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="v_3d_tcorrelate-46"><a href="#v_3d_tcorrelate-46"><span class="linenos"> 46</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">V3dTcorrelateOutputs</span><span class="p">:</span>
 </span><span id="v_3d_tcorrelate-47"><a href="#v_3d_tcorrelate-47"><span class="linenos"> 47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="v_3d_tcorrelate-48"><a href="#v_3d_tcorrelate-48"><span class="linenos"> 48</span></a><span class="sd">    3dTCorrelate. Computes the correlation coefficient between corresponding voxel</span>
+</span><span id="v_3d_tcorrelate-48"><a href="#v_3d_tcorrelate-48"><span class="linenos"> 48</span></a><span class="sd">    3dTcorrelate. Computes the correlation coefficient between corresponding voxel</span>
 </span><span id="v_3d_tcorrelate-49"><a href="#v_3d_tcorrelate-49"><span class="linenos"> 49</span></a><span class="sd">    time series in two input 3D+time datasets &#39;xset&#39; and &#39;yset&#39;.</span>
 </span><span id="v_3d_tcorrelate-50"><a href="#v_3d_tcorrelate-50"><span class="linenos"> 50</span></a><span class="sd">    </span>
 </span><span id="v_3d_tcorrelate-51"><a href="#v_3d_tcorrelate-51"><span class="linenos"> 51</span></a><span class="sd">    Author: AFNI Developers</span>
@@ -395,7 +395,7 @@
 </span><span id="v_3d_tcorrelate-98"><a href="#v_3d_tcorrelate-98"><span class="linenos"> 98</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="v_3d_tcorrelate-99"><a href="#v_3d_tcorrelate-99"><span class="linenos"> 99</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">V_3D_TCORRELATE_METADATA</span><span class="p">)</span>
 </span><span id="v_3d_tcorrelate-100"><a href="#v_3d_tcorrelate-100"><span class="linenos">100</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="v_3d_tcorrelate-101"><a href="#v_3d_tcorrelate-101"><span class="linenos">101</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dTCorrelate&quot;</span><span class="p">)</span>
+</span><span id="v_3d_tcorrelate-101"><a href="#v_3d_tcorrelate-101"><span class="linenos">101</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;3dTcorrelate&quot;</span><span class="p">)</span>
 </span><span id="v_3d_tcorrelate-102"><a href="#v_3d_tcorrelate-102"><span class="linenos">102</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">xset</span><span class="p">))</span>
 </span><span id="v_3d_tcorrelate-103"><a href="#v_3d_tcorrelate-103"><span class="linenos">103</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">yset</span><span class="p">))</span>
 </span><span id="v_3d_tcorrelate-104"><a href="#v_3d_tcorrelate-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">pearson</span><span class="p">:</span>
@@ -447,7 +447,7 @@
 </span></pre></div>
 
 
-            <div class="docstring"><p>3dTCorrelate. Computes the correlation coefficient between corresponding voxel
+            <div class="docstring"><p>3dTcorrelate. Computes the correlation coefficient between corresponding voxel
 time series in two input 3D+time datasets 'xset' and 'yset'.</p>
 
 <p>Author: AFNI Developers</p>
