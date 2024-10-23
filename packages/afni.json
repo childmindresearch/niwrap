@@ -2682,8 +2682,9 @@
         "descriptor": "descriptors/afni/fat_proc_select_vols.json"
       },
       {
-        "target": "fat_roi_row.py",
-        "status": "missing"
+        "target": "fat_roi_row",
+        "status": "done",
+        "descriptor": "descriptors/afni/fat_roi_row.json"
       },
       {
         "target": "fdrval",
