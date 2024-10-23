@@ -4,7 +4,7 @@
   "description": "Align EPI to anatomical datasets or vice versa",
   "author": "AFNI Developers",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "align_epi_anat [EPI] [ANAT] [EPI_BASE] [ANAT2EPI] [EPI2ANAT] [SUFFIX] [ADDEDGE] [BIG_MOVE] [GIANT_MOVE] [GINORMOUS_MOVE] [KEEP_RM_FILES] [PREP_ONLY] [ANA_HAS_SKULL] [EPI_STRIP] [VOLREG_METHOD] [EX_MODE] [OVERWRITE]",
+  "command-line": "align_epi_anat.py [EPI] [ANAT] [EPI_BASE] [ANAT2EPI] [EPI2ANAT] [SUFFIX] [ADDEDGE] [BIG_MOVE] [GIANT_MOVE] [GINORMOUS_MOVE] [KEEP_RM_FILES] [PREP_ONLY] [ANA_HAS_SKULL] [EPI_STRIP] [VOLREG_METHOD] [EX_MODE] [OVERWRITE]",
   "schema-version": "0.5",
   "inputs": [
     {
