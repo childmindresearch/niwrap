@@ -1,9 +1,9 @@
 {
   "tool-version": "24.2.06",
-  "name": "2dwarper",
+  "name": "@2dwarper",
   "author": "AFNI Developers",
   "description": "2D image warping tool",
-  "command-line": "2dwarper [DATASET]",
+  "command-line": "@2dwarper [DATASET]",
   "inputs": [
     {
       "description": "Input dataset (e.g., image to be warped)",
