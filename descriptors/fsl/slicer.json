@@ -249,25 +249,37 @@
     {
       "id": "sagittal_slice_args",
       "name": "Arguments for sagittal slice output.",
-      "members": ["output_sagittal_slice", "output_sagittal_slice_fname"],
+      "members": [
+        "output_sagittal_slice",
+        "output_sagittal_slice_fname"
+      ],
       "all-or-none": true
     },
     {
       "id": "axial_slice_args",
       "name": "Arguments for axial slice output.",
-      "members": ["output_axial_slice", "output_axial_slice_fname"],
+      "members": [
+        "output_axial_slice",
+        "output_axial_slice_fname"
+      ],
       "all-or-none": true
     },
     {
       "id": "coronal_slice_args",
       "name": "Arguments for coronal slice output.",
-      "members": ["output_coronal_slice", "output_coronal_slice_fname"],
+      "members": [
+        "output_coronal_slice",
+        "output_coronal_slice_fname"
+      ],
       "all-or-none": true
     },
     {
       "id": "all_axial_slice_args",
       "name": "Arguments for all axial slice image",
-      "members": ["output_all_axial_slices", "output_all_axial_slices_fname"],
+      "members": [
+        "output_all_axial_slices",
+        "output_all_axial_slices_fname"
+      ],
       "all-or-none": true
     },
     {
@@ -302,8 +314,8 @@
   "tool-version": "6.0.5",
   "schema-version": "0.5",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "tags": {
     "domain": "neuroinformatics"

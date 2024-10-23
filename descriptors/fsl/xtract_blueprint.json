@@ -7,8 +7,8 @@
   "command-line": "xtract_blueprint [BPX_FOLDER] [OUT_FOLDER] [XTRACT_FOLDER] [SEEDS_LIST] [WARPS] [STAGE] [GPU_FLAG] [SAVE_TXT_FLAG] [PREFIX] [ROIS_LIST] [STOPS_FILE] [WTSTOPS_FILE] [TRACT_LIST] [THRESHOLD] [NSAMPLES] [RES] [PTX_OPTIONS]",
   "schema-version": "0.5",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

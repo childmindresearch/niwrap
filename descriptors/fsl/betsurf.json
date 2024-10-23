@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "betsurf [T1_IMAGE] [T2_IMAGE] [BET_MESH] [T1_TO_STANDARD_MAT] [OUTPUT_PREFIX] [HELP_FLAG] [VERBOSE_FLAG] [T1ONLY_FLAG] [OUTLINE_FLAG] [MASK_FLAG] [SKULL_MASK_FLAG] [INCREASED_PRECISION]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

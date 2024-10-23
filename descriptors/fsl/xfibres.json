@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "xfibres [DATA_FILE] [MASK_FILE] [BVECS_FILE] [BVALS_FILE] [LOG_DIR] [FORCEDIR_FLAG] [MAX_FIBRES] [MODEL] [FUDGE] [NUM_JUMPS] [NUM_BURNIN] [BURNIN_NO_AR] [NUM_SAMPLE_EVERY] [NUM_UPDATE_PROPOSAL_EVERY] [SEED] [NO_ARD] [ALL_ARD] [NO_SPAT] [NONLINEAR] [CONSTRAINED_NONLINEAR] [RICIAN] [ADD_F0] [ARD_F0] [R_MEAN] [R_STD] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -262,7 +262,12 @@
     {
       "description": "Compulsory arguments for running xfibres",
       "id": "compulsory_params_group",
-      "members": ["datafile", "maskfile", "bvecs", "bvals"],
+      "members": [
+        "datafile",
+        "maskfile",
+        "bvecs",
+        "bvals"
+      ],
       "name": "Compulsory Parameters"
     },
     {

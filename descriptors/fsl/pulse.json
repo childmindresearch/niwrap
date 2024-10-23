@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "pulse -i [INPUT_FILE] -o [OUTPUT_BASE] [SEQ] [ANGLE] [TE] [TR] [TRSLC] [NX] [NY] [DX] [DY] [MAXG] [RISET] [BW] [NUMVOL] [NUMSLC] [SLCTHK] [GAP] [ZSTART] [SLCDIR] [PHASEDIR] [READDIR] [VERBOSE_FLAG] [KCOORD_FLAG] [COVER]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -263,7 +263,10 @@
     {
       "description": "Compulsory arguments for pulse",
       "id": "compulsory_args_group",
-      "members": ["input_file", "output_base"],
+      "members": [
+        "input_file",
+        "output_base"
+      ],
       "name": "Compulsory Arguments"
     },
     {

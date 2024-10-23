@@ -5,8 +5,8 @@
   "description": "Retrieve the number of volumes in a 4D NIfTI file",
   "command-line": "fslnvols [INPUT_FILE]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

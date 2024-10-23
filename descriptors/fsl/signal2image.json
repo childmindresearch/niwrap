@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "signal2image [PULSE_SEQUENCE] [INPUT_SIGNAL] [OUTPUT_IMAGE] [KSPACE_COORDINATES] [OUTPUT_KSPACE] [ABS_FLAG] [HOMODYNE_FLAG] [VERBOSE_FLAG] [APODIZE_FLAG] [CUTOFF] [ROLLOFF] [SAVE_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -135,7 +135,9 @@
     {
       "description": "Compulsory arguments for running signal2image",
       "id": "compulsory_arguments_group",
-      "members": ["pulse_sequence"],
+      "members": [
+        "pulse_sequence"
+      ],
       "name": "Compulsory Arguments"
     },
     {

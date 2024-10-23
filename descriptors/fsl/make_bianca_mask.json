@@ -4,8 +4,8 @@
   "description": "A script for generating BIANCA masks",
   "command-line": "make_bianca_mask [INPUT_IMAGE] [OUTPUT_IMAGE] [OVERLAY_FLAG] [BINARY_MASK_FLAG] [APPROX_SKULL_FLAG] [NO_SEG_OUTPUT_FLAG] [FRACTIONAL_INTENSITY] [VG_FRACTIONAL_INTENSITY] [HEAD_RADIUS] [CENTER_OF_GRAVITY] [THRESHOLDING_FLAG] [VTK_MESH] [ROBUST_ITERS_FLAG] [RESIDUAL_OPTIC_CLEANUP_FLAG] [REDUCE_BIAS_FLAG] [SLICE_PADDING_FLAG] [WHOLE_SET_MASK_FLAG] [ADDITIONAL_SURFACES_FLAG] [ADDITIONAL_SURFACES_T2] [VERBOSE_FLAG] [DEBUG_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -248,7 +248,10 @@
     {
       "description": "Optional miscellaneous parameters when running make_bianca_mask",
       "id": "miscellaneous_params_group",
-      "members": ["verbose_flag", "debug_flag"],
+      "members": [
+        "verbose_flag",
+        "debug_flag"
+      ],
       "name": "Miscellaneous Parameters"
     }
   ],

@@ -5,8 +5,8 @@
   "description": "Tool to calculate surface FDR correction for vertex analysis.",
   "command-line": "surface_fdr [INPUT_VTK]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

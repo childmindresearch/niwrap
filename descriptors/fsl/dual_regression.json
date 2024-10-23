@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "dual_regression [GROUP_IC_MAPS] [DES_NORM] [DESIGN_MAT] [DESIGN_CON] [N_PERM] [THR_FLAG] [OUTPUT_DIRECTORY] [INPUT_FILES]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -96,7 +96,9 @@
     {
       "description": "Optional parameters for dual regression",
       "id": "optional_params_group",
-      "members": ["thr_flag"],
+      "members": [
+        "thr_flag"
+      ],
       "name": "Optional Parameters"
     }
   ],

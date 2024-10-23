@@ -4,8 +4,8 @@
   "description": "Tool to convert a T-statistic image to a Z-statistic image",
   "command-line": "ttoz [VARSFILE] [CBSFILE] [DOF] [OUTPUTVOL] [HELP_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

@@ -4,8 +4,8 @@
   "description": "Tool to deproject images from skeleton space to final space",
   "command-line": "tbss_deproject [SKELETON_SPACE_INPUT_IMAGE] [FINAL_SPACE] [INDEX_IMAGE_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

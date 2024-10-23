@@ -5,8 +5,8 @@
   "description": "Tool to swap the x, y, z axes dimensions of an image",
   "command-line": "fslswapdim_exe [INPUT_FILE] [AXIS_A] [AXIS_B] [AXIS_C] [OUTPUT_FILE] [CHECK_LR_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

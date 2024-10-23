@@ -5,8 +5,8 @@
   "description": "Tool for generating image lists with specific extensions.",
   "command-line": "imglob [EXTENSION_OPTION] [INPUT_LIST]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -42,7 +42,10 @@
     {
       "description": "Optional parameters for specifying extension options",
       "id": "optional_params_group",
-      "members": ["single_extension", "multiple_extensions"],
+      "members": [
+        "single_extension",
+        "multiple_extensions"
+      ],
       "name": "Extension Parameters",
       "mutually-exclusive": true
     }

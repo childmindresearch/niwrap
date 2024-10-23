@@ -5,8 +5,8 @@
   "description": "Convert p-values to z-values",
   "command-line": "ptoz [P_VALUE] [TAIL_FLAG] [GRF_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

@@ -5,8 +5,8 @@
   "description": "A tool to apply a threshold to either volumes or surfaces.",
   "command-line": "proj_thresh [INPUT_PATHS] [THRESHOLD]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

@@ -44,6 +44,6 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "container-image": {
     "type": "docker",
-    "image": "mcin/fsl:6.0.5"
+    "image": "brainlife/fsl:6.0.4-patched2"
   }
 }

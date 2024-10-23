@@ -5,8 +5,8 @@
   "description": "Simple PGM/PPM/PAM to PNG Converter",
   "command-line": "wpng [INPUT_FILE] [GAMMA] [BGCOLOR] [TEXT_FLAG] [TIME_FLAG] [INTERLACE_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

@@ -4,8 +4,8 @@
   "description": "Outputs RMS deviation between matrices (in mm)",
   "command-line": "rmsdiff [MATRIXFILE1] [MATRIXFILE2] [REFVOL] [MASK]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

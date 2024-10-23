@@ -7,8 +7,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "tbss_3_postreg [DERIVE_MEAN_FROM_STUDY] [USE_FMRIB58]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -36,7 +36,10 @@
       "description": "Mutually exclusive options for processing TBSS post-registration",
       "mutually-exclusive": true,
       "id": "processing_options_group",
-      "members": ["derive_mean_from_study", "use_fmrib58"],
+      "members": [
+        "derive_mean_from_study",
+        "use_fmrib58"
+      ],
       "name": "Processing Options"
     }
   ]

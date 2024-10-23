@@ -5,8 +5,8 @@
   "description": "Splits parts of data for GPU processing",
   "command-line": "split_parts_gpu [DATAFILE] [MASKFILE] [BVALS_FILE] [BEVCS_FILE] [GRAD_FILE] [USE_GRAD_FILE] [TOTAL_NUM_PARTS] [OUTPUT_DIRECTORY]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

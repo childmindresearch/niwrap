@@ -7,8 +7,8 @@
   "command-line": "xtract_viewer -dir [XTRACT_DIR] [SPECIES] [BRAIN] [STRUCTURES] [THRESHOLDS]",
   "schema-version": "0.5",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -28,7 +28,10 @@
       "optional": true,
       "id": "species",
       "name": "Species",
-      "value-choices": ["HUMAN", "MACAQUE"]
+      "value-choices": [
+        "HUMAN",
+        "MACAQUE"
+      ]
     },
     {
       "command-line-flag": "-brain",

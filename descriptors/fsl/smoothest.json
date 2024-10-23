@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "smoothest [DEGREES_OF_FREEDOM] [RES_FILE] [ZSTAT_FILE] [MASK] [VERBOSE_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -61,13 +61,20 @@
     {
       "description": "Compulsory arguments for smoothest tool",
       "id": "compulsory_params_group",
-      "members": ["dof", "residual_fit_image", "zstat_image", "mask"],
+      "members": [
+        "dof",
+        "residual_fit_image",
+        "zstat_image",
+        "mask"
+      ],
       "name": "Compulsory Parameters"
     },
     {
       "description": "Optional arguments for smoothest tool",
       "id": "optional_params_group",
-      "members": ["verbose_flag"],
+      "members": [
+        "verbose_flag"
+      ],
       "name": "Optional Parameters"
     }
   ]

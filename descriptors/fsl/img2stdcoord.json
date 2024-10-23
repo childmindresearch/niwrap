@@ -5,8 +5,8 @@
   "description": "Transforms image coordinates using standard space transformations.",
   "command-line": "img2stdcoord [COORDINATE_FILE] [INPUT_IMAGE] [STANDARD_IMAGE] [AFFINE_TRANSFORM] [WARP_FIELD] [PREWARP_AFFINE_TRANSFORM] [VOXEL_FLAG] [MM_FLAG] [VERBOSE_FLAG_1] [VERBOSE_FLAG_2] [HELP_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

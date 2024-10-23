@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fabber_cest [--<option> | --<option>=<value> ...]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -320,7 +320,11 @@
     {
       "description": "Options to evaluate models",
       "id": "evaluation_options_group",
-      "members": ["evaluate", "evaluate_params", "evaluate_nt"],
+      "members": [
+        "evaluate",
+        "evaluate_params",
+        "evaluate_nt"
+      ],
       "name": "Evaluation Options"
     },
     {
@@ -359,7 +363,10 @@
     {
       "description": "Miscellaneous options for advanced usage",
       "id": "miscellaneous_options_group",
-      "members": ["optfile", "debug"],
+      "members": [
+        "optfile",
+        "debug"
+      ],
       "name": "Miscellaneous Options"
     }
   ],

@@ -5,8 +5,8 @@
   "description": "Generates an HTML report from cluster-based FEAT analysis",
   "command-line": "cluster2html [FEATDIR] [INROOT] [STD_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

@@ -6,13 +6,17 @@
   "description": "Tool to show scalars on mesh",
   "command-line": "mist_display [MODE] [--help]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
       "description": "Mode for displaying scalars on mesh",
-      "value-choices": ["simple", "pvals", "noscalars"],
+      "value-choices": [
+        "simple",
+        "pvals",
+        "noscalars"
+      ],
       "value-key": "[MODE]",
       "type": "String",
       "optional": false,

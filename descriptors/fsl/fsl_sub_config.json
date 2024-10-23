@@ -5,13 +5,17 @@
   "description": "FSL cluster submission configuration examples",
   "command-line": "fsl_sub_config [CLUSTER_SYSTEM] [HELP_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
       "description": "Choice of cluster system configuration example to output. Options are 'shell', 'sge', or 'slurm'.",
-      "value-choices": ["shell", "sge", "slurm"],
+      "value-choices": [
+        "shell",
+        "sge",
+        "slurm"
+      ],
       "value-key": "[CLUSTER_SYSTEM]",
       "type": "String",
       "optional": false,

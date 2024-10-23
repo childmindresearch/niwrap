@@ -5,8 +5,8 @@
   "description": "Generates a file with specific motion parameter calculations useful for accounting for 'spin history' effects and other variations not accounted for by motion correction.",
   "command-line": "mp_diffpow.sh [REG_FILE] [DIFF_REG_FILE]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

@@ -4,8 +4,8 @@
   "description": "Calculate number of clusters and WMH volume in a BIANCA output map",
   "command-line": "bianca_cluster_stats [BIANCA_OUTPUT_MAP] [THRESHOLD] [MIN_CLUSTER_SIZE] [MASK]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "halfcosbasis [HRF_PARAM_FILE] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_ON_FLAG] [LOG_DIR] [NUM_HRF_SAMPLES] [NUM_HRF_BASIS_FUNCS] [NUM_SECS] [TEMP_RES]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -174,7 +174,10 @@
     {
       "description": "Specify compulsory arguments for halfcosbasis",
       "id": "compulsory_group",
-      "members": ["hrf_param_file", "hrf_param_file_hf"],
+      "members": [
+        "hrf_param_file",
+        "hrf_param_file_hf"
+      ],
       "name": "Compulsory Arguments",
       "mutually-exclusive": true
     },

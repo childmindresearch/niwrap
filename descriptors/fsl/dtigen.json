@@ -5,8 +5,8 @@
   "description": "Generate diffusion data using tensor model",
   "command-line": "dtigen [TENSOR] [S0] [OUTPUT_DATA] [BVECS] [BVALS] [BRAINMASK] [KURTOSIS] [HELP]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -87,13 +87,23 @@
     {
       "description": "Compulsory arguments for dtigen",
       "id": "compulsory_args",
-      "members": ["tensor", "s0", "output_data", "bvecs", "bvals", "brainmask"],
+      "members": [
+        "tensor",
+        "s0",
+        "output_data",
+        "bvecs",
+        "bvals",
+        "brainmask"
+      ],
       "name": "Compulsory Arguments"
     },
     {
       "description": "Optional arguments for dtigen",
       "id": "optional_args",
-      "members": ["kurtosis", "help"],
+      "members": [
+        "kurtosis",
+        "help"
+      ],
       "name": "Optional Arguments"
     }
   ],

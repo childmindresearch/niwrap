@@ -5,8 +5,8 @@
   "description": "Automated brain ventricle quantification tool",
   "command-line": "viena_quant [INPUT1] [INPUT2] [VENTRICLEMASK]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "pnm_evs [INPUT_FILE] [OUTPUT_FILE] [TR] [CARDIAC] [RESPIRATORY] [OC] [OR] [MULTC] [MULTR] [CSF_MASK] [RVT] [HEARTRATE] [RVTSMOOTH] [HEARTRATESMOOTH] [SLICE_DIR] [SLICE_ORDER] [SLICE_TIMING] [DEBUG_FLAG] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

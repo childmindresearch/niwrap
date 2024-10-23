@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "tbss_2_reg [USE_FMRIB58_FA_1MM] [TARGET_IMAGE] [FIND_BEST_TARGET]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -44,7 +44,11 @@
       "description": "Choose one of the target-selection options",
       "mutually-exclusive": true,
       "id": "target_selection_group",
-      "members": ["use_fmrib58_fa_1mm", "target_image", "find_best_target"],
+      "members": [
+        "use_fmrib58_fa_1mm",
+        "target_image",
+        "find_best_target"
+      ],
       "name": "Target Selection Options"
     }
   ]

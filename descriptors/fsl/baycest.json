@@ -5,8 +5,8 @@
   "description": "Bayesian analysis for chemical exchange saturation transfer z-spectra",
   "command-line": "baycest --data=[DATA_FILE] --mask=[MASK_FILE] --output=[OUTPUT_DIR] --pools=[POOLS_FILE] --spec=[SPEC_FILE] --ptrain=[PTRAIN_FILE] [SPATIAL_FLAG] [T12PRIOR_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

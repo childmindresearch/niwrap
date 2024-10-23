@@ -5,8 +5,8 @@
   "description": "Tool to deface a structural T1w image.",
   "command-line": "fsl_deface [INPUT_FILE] [OUTPUT_FILE] [CROPPED_DEFACING_FLAG] [DEFACING_MASK] [CROPPED_STRUC] [ORIG_TO_STD_MAT] [ORIG_TO_CROPPED_MAT] [CROPPED_TO_STD_MAT] [SHIFT_NUD] [FRACTIONAL_INTENSITY] [BIAS_CORRECT_FLAG] [CENTER_OF_GRAVITY] [QC_IMAGES]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

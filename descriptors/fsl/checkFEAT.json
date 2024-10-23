@@ -26,8 +26,8 @@
   "descriptor-url": "http://example.com/checkFEAT_descriptor.json",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "output-files": [
     {

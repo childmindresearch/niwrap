@@ -5,8 +5,8 @@
   "description": "Append PNG files horizontally and/or vertically into a new PNG (or GIF) file",
   "command-line": "pngappend [INPUT_FILES_AND_OPTIONS] [OUTPUT_FILE]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

@@ -5,8 +5,8 @@
   "description": "Tool to output the size of an image file in FSL",
   "command-line": "fslsize [INPUT_FILE] [SHORT_FORMAT_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

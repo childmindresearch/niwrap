@@ -5,8 +5,8 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "command-line": "bianca_overlap_measures [LESION_MASK] [MANUAL_MASK] [OUTPUT_DIR]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

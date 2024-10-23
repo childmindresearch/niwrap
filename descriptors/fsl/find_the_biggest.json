@@ -5,8 +5,8 @@
   "description": "Tool to find the largest volume or surface from a set of inputs",
   "command-line": "find_the_biggest [VOLUMES_SURFACES] [OUTPUT]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -33,7 +33,9 @@
       "description": "Specify either volumes or surfaces as input",
       "mutually-exclusive": true,
       "id": "input_type_group",
-      "members": ["volumes_surfaces"],
+      "members": [
+        "volumes_surfaces"
+      ],
       "name": "Input Types"
     }
   ],

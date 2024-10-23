@@ -5,8 +5,8 @@
   "description": "Conversions between surface formats and/or conventions",
   "command-line": "surf2surf -i [INPUT_SURFACE] -o [OUTPUT_SURFACE] [INPUT_CONVENTION] [OUTPUT_CONVENTION] [INPUT_REF_VOLUME] [OUTPUT_REF_VOLUME] [TRANSFORM] [OUTPUT_TYPE] [OUTPUT_VALUES]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

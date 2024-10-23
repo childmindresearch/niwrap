@@ -7,8 +7,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fslvbm_2_template [ARCH] [COPROCESSOR] [COPROCESSOR_MULTI] [COPROCESSOR_CLASS] [COPROCESSOR_TOOLKIT] [JOBHOLD] [ARRAY_HOLD] [LOGDIR] [MAILOPTIONS] [MAILTO] [NAME] [PRIORITY] [QUEUE] [RESOURCE] [DELETE_JOB] [MEMORY_GB] [PARALLEL_ENV] [ARRAY_TASK] [ARRAY_NATIVE] [NUM_TASKS] [COPROCESSOR_NAME] [PROJECT] [RUNTIME_LIMIT] [JOB_FILE]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

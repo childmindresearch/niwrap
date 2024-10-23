@@ -63,15 +63,19 @@
     {
       "id": "operation_group",
       "name": "operation group",
-      "members": ["invert_xfm", "fix_scale_skew", "concat_xfm"],
+      "members": [
+        "invert_xfm",
+        "fix_scale_skew",
+        "concat_xfm"
+      ],
       "mutually-exclusive": true
     }
   ],
   "tool-version": "6.0.5",
   "schema-version": "0.5",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "tags": {
     "domain": "neuroinformatics",

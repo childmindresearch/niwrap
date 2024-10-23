@@ -57,12 +57,15 @@
     {
       "id": "global_options",
       "name": "Global Options",
-      "members": ["version_flag", "config_file"],
+      "members": [
+        "version_flag",
+        "config_file"
+      ],
       "description": "Global options for FSL MRS Processing"
     }
   ],
   "container-image": {
     "type": "docker",
-    "image": "mcin/fsl:6.0.5"
+    "image": "brainlife/fsl:6.0.4-patched2"
   }
 }

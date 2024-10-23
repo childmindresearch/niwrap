@@ -4,8 +4,8 @@
   "description": "Converts a z-score to a p-value.",
   "command-line": "ztop [Z_SCORE] [TAIL_FLAG] [GRF_FLAG] [NUMBER_OF_RESELS]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -48,7 +48,11 @@
     {
       "description": "Optional parameters for z-score to p-value conversion",
       "id": "optional_params_group",
-      "members": ["tail_flag", "grf_flag", "number_of_resels"],
+      "members": [
+        "tail_flag",
+        "grf_flag",
+        "number_of_resels"
+      ],
       "name": "Optional Parameters"
     }
   ],

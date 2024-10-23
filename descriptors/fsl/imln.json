@@ -5,8 +5,8 @@
   "description": "Creates a link (called file2) to file1",
   "command-line": "imln [INPUT_FILE] [LINK_NAME]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

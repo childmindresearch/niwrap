@@ -5,8 +5,8 @@
   "description": "A utility for generating slice directories for FIRST-ROI.",
   "command-line": "first_roi_slicesdir [INPUT_T1_IMAGES] [INPUT_LABEL_IMAGES]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

@@ -5,8 +5,8 @@
   "description": "FSL Magnetic Resonance Spectroscopy - Merge HTML reports based on filename in directory.",
   "command-line": "merge_mrs_reports [INPUT_FILES] --description [DESCRIPTION] [OUTPUT_DIR] [OUTPUT_FILENAME] [DELETE_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -60,13 +60,20 @@
     {
       "description": "Required input description and list of files",
       "id": "required_params_group",
-      "members": ["input_files", "dataset_description"],
+      "members": [
+        "input_files",
+        "dataset_description"
+      ],
       "name": "Required Parameters"
     },
     {
       "description": "Optional output parameters",
       "id": "optional_output_params_group",
-      "members": ["output_folder", "output_filename", "delete_flag"],
+      "members": [
+        "output_folder",
+        "output_filename",
+        "delete_flag"
+      ],
       "name": "Optional Parameters"
     }
   ],

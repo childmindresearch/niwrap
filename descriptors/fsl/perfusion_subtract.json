@@ -4,8 +4,8 @@
   "description": "Subtract control images from tag images in 4D perfusion data.",
   "command-line": "perfusion_subtract [4D_INPUT] [4D_OUTPUT] [CONTROL_FIRST_FLAG]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

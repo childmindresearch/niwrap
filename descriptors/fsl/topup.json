@@ -5,8 +5,8 @@
   "description": "topup is part of FSL and is used to estimate and correct for susceptibility-induced distortions in echo planar imaging (EPI) data.",
   "command-line": "topup [IMAIN] [DATAIN] [OUT] [FOUT] [IOUT] [LOGOUT] [WARPres] [SUBSAMP] [FWHM] [CONFIG] [MITER] [LAMBDA] [SSQLAMBDA] [REGMOD] [ESTMOV] [MINMET] [SPLINEORDER] [NUMPREC] [INTERP] [SCALE] [REGRID] [NTHR] [VERBOSE]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -147,7 +147,10 @@
       "optional": true,
       "id": "regmod",
       "name": "Regularisation model",
-      "value-choices": ["membrane_energy", "bending_energy"]
+      "value-choices": [
+        "membrane_energy",
+        "bending_energy"
+      ]
     },
     {
       "command-line-flag": "--estmov",
@@ -168,7 +171,10 @@
       "integer": true,
       "id": "minmet",
       "name": "Minimisation method",
-      "value-choices": [0, 1]
+      "value-choices": [
+        0,
+        1
+      ]
     },
     {
       "command-line-flag": "--splineorder",
@@ -180,7 +186,10 @@
       "integer": true,
       "id": "splineorder",
       "name": "Spline order",
-      "value-choices": [2, 3]
+      "value-choices": [
+        2,
+        3
+      ]
     },
     {
       "command-line-flag": "--numprec",
@@ -191,7 +200,10 @@
       "optional": true,
       "id": "numprec",
       "name": "Numerical precision",
-      "value-choices": ["double", "float"]
+      "value-choices": [
+        "double",
+        "float"
+      ]
     },
     {
       "command-line-flag": "--interp",
@@ -202,7 +214,10 @@
       "optional": true,
       "id": "interp",
       "name": "Interpolation model",
-      "value-choices": ["linear", "spline"]
+      "value-choices": [
+        "linear",
+        "spline"
+      ]
     },
     {
       "command-line-flag": "--scale",

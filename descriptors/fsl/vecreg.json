@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "vecreg [INPUT_FILE] [OUTPUT_FILE] [REF_VOL] [TRANSFORM_FILE] [VERBOSE_FLAG] [HELP_FLAG] [SECONDARY_AFFINE] [SECONDARY_WARP] [INTERP_METHOD] [BRAIN_MASK] [REF_BRAIN_MASK]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

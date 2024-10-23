@@ -5,8 +5,8 @@
   "description": "Extracts text from a file based on a search word",
   "command-line": "extracttxt [SEARCH_WORD] [FILE] [NUM_TRAILING_LINES] [RELATIVE_START]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

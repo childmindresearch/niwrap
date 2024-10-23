@@ -7,8 +7,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "mm [SPATIAL_DATA_FILE] [MASK_FILE] [VERBOSE_FLAG] [DEBUG_LEVEL] [TIMING_FLAG] [EXAMPLE_EPI_FILE] [LOG_DIRECTORY] [NONSPATIAL_FLAG] [FIX_MRF_PREC_FLAG] [MRF_PREC_START] [MRF_PREC_MULTIPLIER] [INIT_MULTIPLIER] [NO_UPDATE_THETA_FLAG] [ZFSTAT_FLAG] [PHI] [NITERS] [THRESHOLD]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -170,7 +170,10 @@
     {
       "description": "Compulsory arguments for specifying input files.",
       "id": "compulsory_params_group",
-      "members": ["spatial_data_file", "mask_file"],
+      "members": [
+        "spatial_data_file",
+        "mask_file"
+      ],
       "name": "Compulsory Parameters"
     },
     {

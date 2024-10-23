@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "film_gls [INPUT_FILE] [AC_FLAG] [THRESHOLD] [AR_FLAG] [NOEST_FLAG] [OUTPUT_PW_FLAG] [PAVA_FLAG] [SA_FLAG] [VERBOSE_FLAG] [RESULTS_DIR] [MODE] [INPUT_SURFACE] [MEAN_FUNC_FILE] [MIN_TIMEPOINT_FILE] [PARADIGM_FILE] [T_CONTRASTS_FILE] [F_CONTRASTS_FILE] [EPITH] [MS] [TUKEY] [MT] [VEN] [VEF]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -224,7 +224,9 @@
     {
       "description": "Compulsory Input Parameters",
       "id": "compulsory_params_group",
-      "members": ["infile"],
+      "members": [
+        "infile"
+      ],
       "name": "Compulsory Input Parameters"
     },
     {

@@ -5,8 +5,8 @@
   "description": "applytopup applies corrections to images using the field estimates produced by topup.",
   "command-line": "applytopup [IMAIN] [DATAIN] [ININDEX] [TOPUP] [OUT] [METHOD] [INTERP] [DATATYPE] [VERBOSE]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -73,7 +73,10 @@
       "optional": true,
       "id": "method",
       "name": "Method",
-      "value-choices": ["jac", "lsr"]
+      "value-choices": [
+        "jac",
+        "lsr"
+      ]
     },
     {
       "command-line-flag": "--interp",
@@ -84,7 +87,10 @@
       "optional": true,
       "id": "interp",
       "name": "Interpolation method",
-      "value-choices": ["trilinear", "spline"]
+      "value-choices": [
+        "trilinear",
+        "spline"
+      ]
     },
     {
       "command-line-flag": "--datatype",
@@ -95,7 +101,13 @@
       "optional": true,
       "id": "datatype",
       "name": "Output data type",
-      "value-choices": ["char", "short", "int", "float", "double"]
+      "value-choices": [
+        "char",
+        "short",
+        "int",
+        "float",
+        "double"
+      ]
     },
     {
       "command-line-flag": "--verbose",

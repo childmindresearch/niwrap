@@ -5,8 +5,8 @@
   "description": "Concatenate multiple .bvars files into a single .bvars file",
   "command-line": "concat_bvars [OUTPUT_BVARS] [INPUT_BVARS...]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

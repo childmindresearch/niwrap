@@ -5,8 +5,8 @@
   "description": "Tool for masking slices from an image using a mask",
   "command-line": "slicesmask [IMAGE] [MASK] [OUTPUT]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

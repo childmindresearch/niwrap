@@ -5,8 +5,8 @@
   "command-line": "fslmaths [DATATYPE_INTERNAL] [INPUTS] [OPERATIONS] [OUTPUT] [OUTPUT_DATATYPE]",
   "author": "FMRIB Analysis Group, University of Oxford",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "schema-version": "0.5",
   "inputs": [
@@ -16,7 +16,14 @@
       "type": "String",
       "optional": true,
       "description": "Datatype used internally for calculations",
-      "value-choices": ["char", "short", "int", "float", "double", "input"],
+      "value-choices": [
+        "char",
+        "short",
+        "int",
+        "float",
+        "double",
+        "input"
+      ],
       "value-key": "[DATATYPE_INTERNAL]",
       "command-line-flag": "-dt",
       "default-value": "float"
@@ -1111,7 +1118,14 @@
       "type": "String",
       "optional": true,
       "description": "Datatype used for the output image",
-      "value-choices": ["char", "short", "int", "float", "double", "input"],
+      "value-choices": [
+        "char",
+        "short",
+        "int",
+        "float",
+        "double",
+        "input"
+      ],
       "value-key": "[OUTPUT_DATATYPE]",
       "command-line-flag": "-odt"
     }

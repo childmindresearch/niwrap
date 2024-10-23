@@ -105,15 +105,18 @@
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": ["absolute", "relative"],
+      "members": [
+        "absolute",
+        "relative"
+      ],
       "mutually-exclusive": true
     }
   ],
   "tool-version": "6.0.5",
   "schema-version": "0.5",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "tags": {
     "domain": "neuroinformatics",

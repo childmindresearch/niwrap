@@ -5,8 +5,8 @@
   "description": "Utilities for handling FIRST's input and output files",
   "command-line": "first_utils [INPUT_FILE] [OUTPUT_NAME] [NORM_FACTORS] [REFERENCE_IMAGE] [EXTRA_PATH] [FLIRT_MATRICES] [USE_SCALE] [DICE_OVERLAP] [INPUT_MESH] [USE_NORM] [SURFACE_OUT] [THRESHOLD] [MESH_LABEL] [USE_BVARS] [USE_RECON_MNI] [VERTEX_ANALYSIS] [USE_RECON_NATIVE] [USE_RIGID_ALIGN] [DESIGN_MATRIX] [RECON_MESH_FROM_BVARS] [READ_BVARS] [MESH_TO_VOL] [CENTRE_ORIGIN] [SAVE_VERTICES] [VERBOSE] [USE_PCA_FILTER] [NUM_MODES] [SINGLE_BOUNDARY_CORR] [DO_MVGLM] [CONCAT_BVARS] [DEBUG_MODE] [HELP]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -305,7 +305,10 @@
     {
       "description": "Compulsory arguments for running the tool",
       "id": "compulsory_args",
-      "members": ["input_file", "output_name"],
+      "members": [
+        "input_file",
+        "output_name"
+      ],
       "name": "Compulsory Arguments"
     },
     {

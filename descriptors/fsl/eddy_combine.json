@@ -5,8 +5,8 @@
   "description": "Combines diffusion data sets with opposite phase encoding directions for use with FSL's EDDY.",
   "command-line": "eddy_combine [PosData] [Posbvals] [Posbvecs] [Pos_SeriesVol] [NegData] [Negbvals] [Negbvecs] [Neg_SeriesVol] [outputpath] [onlymatched_flag]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

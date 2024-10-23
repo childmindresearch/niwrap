@@ -5,8 +5,8 @@
   "description": "Tool to create a rotation matrix for a given angle and axis of rotation.",
   "command-line": "makerot [AXIS] [COV] [CENTER] [OUTPUT_FILE] [VERBOSE_FLAG] [HELP_FLAG] [THETA]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

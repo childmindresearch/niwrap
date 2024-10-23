@@ -7,7 +7,11 @@
     {
       "description": "Image type - one of 'whole_head' (the default), 'brain', or 'brain_mask'",
       "value-key": "[IMAGE_TYPE]",
-      "value-choices": ["whole_head", "brain", "brain_mask"],
+      "value-choices": [
+        "whole_head",
+        "brain",
+        "brain_mask"
+      ],
       "type": "String",
       "optional": false,
       "id": "image_type",
@@ -46,6 +50,6 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "container-image": {
     "type": "docker",
-    "image": "mcin/fsl:6.0.5"
+    "image": "brainlife/fsl:6.0.4-patched2"
   }
 }

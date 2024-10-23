@@ -6,8 +6,8 @@
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
   "command-line": "fsl_regfilt -i [INPUT_FILE] -d [DESIGN_FILE] -o [OUTPUT_FILE] [MASK_FILE] [FILTER] [FREQ_FILTER_FLAG] [FREQ_IC_FLAG] [FREQ_IC_SMOOTH] [FTHRESH] [FTHRESH2] [VN_FLAG] [VERBOSE_FLAG] [AGGRESSIVE_FLAG] [HELP_FLAG] [OUT_DATA] [OUT_MIX] [OUT_VNSCALES]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
@@ -168,7 +168,11 @@
     {
       "description": "Specify main inputs and outputs",
       "id": "mandatory_params_group",
-      "members": ["infile", "outfile", "designfile"],
+      "members": [
+        "infile",
+        "outfile",
+        "designfile"
+      ],
       "name": "Main Inputs and Outputs"
     },
     {

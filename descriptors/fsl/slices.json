@@ -5,8 +5,8 @@
   "description": "Generate a set of slices from an image, possibly with some scaling and intensity range options, and save as a GIF.",
   "command-line": "slices [PRIMARY_INPUT] [SECONDARY_INPUT] [SCALE_FACTOR] [INTENSITY_RANGE] [OUTPUT_GIF]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

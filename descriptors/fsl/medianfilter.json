@@ -5,8 +5,8 @@
   "description": "A tool to perform 26 neighbourhood median filtering on an input image.",
   "command-line": "medianfilter [INPUT_FILE] [OUTPUT_FILE]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

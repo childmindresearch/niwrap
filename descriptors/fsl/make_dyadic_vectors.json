@@ -5,8 +5,8 @@
   "description": "Generate dyadic vectors from theta and phi volumes.",
   "command-line": "make_dyadic_vectors [THETA_VOL] [PHI_VOL] [MASK] [OUTPUT] [PERC]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

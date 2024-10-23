@@ -5,8 +5,8 @@
   "description": "Wrapper for FLIRT image registration within the SIENA framework.",
   "command-line": "siena_flirt [INPUT1_FILEROOT] [INPUT2_FILEROOT]",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {

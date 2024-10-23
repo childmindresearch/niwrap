@@ -4,8 +4,8 @@
   "command-line": "prewhiten [FEAT_DIRECTORY] [OUTPUT_DIRECTORY]",
   "description": "Prewhitening tool for FEAT directories",
   "container-image": {
-    "image": "mcin/fsl:6.0.5",
-    "type": "docker"
+    "type": "docker",
+    "image": "brainlife/fsl:6.0.4-patched2"
   },
   "inputs": [
     {
