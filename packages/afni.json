@@ -2625,8 +2625,9 @@
         "descriptor": "descriptors/afni/fat_mvm_gridconv.py.json"
       },
       {
-        "target": "fat_mvm_prep.py",
-        "status": "missing"
+        "target": "fat_mvm_prep",
+        "status": "done",
+        "descriptor": "descriptors/afni/fat_mvm_prep.json"
       },
       {
         "target": "fat_mvm_scripter.py",
