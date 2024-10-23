@@ -173,11 +173,6 @@
         "descriptor": "descriptors/fsl/bianca_overlap_measures.json"
       },
       {
-        "target": "bianca_perivent_deep",
-        "status": "done",
-        "descriptor": "descriptors/fsl/bianca_perivent_deep.json"
-      },
-      {
         "target": "calc_grad_perc_dev",
         "status": "done",
         "descriptor": "descriptors/fsl/calc_grad_perc_dev.json"
@@ -360,11 +355,6 @@
         "descriptor": "descriptors/fsl/fabber_dwi.json"
       },
       {
-        "target": "fabber_pet",
-        "status": "done",
-        "descriptor": "descriptors/fsl/fabber_pet.json"
-      },
-      {
         "target": "fabber_qbold",
         "status": "done",
         "descriptor": "descriptors/fsl/fabber_qbold.json"
@@ -543,11 +533,6 @@
         "descriptor": "descriptors/fsl/fsl_gen_3D.json"
       },
       {
-        "target": "fsl_get_standard",
-        "status": "done",
-        "descriptor": "descriptors/fsl/fsl_get_standard.json"
-      },
-      {
         "target": "fsl_glm",
         "status": "done",
         "descriptor": "descriptors/fsl/fsl_glm.json"
@@ -563,34 +548,13 @@
         "descriptor": "descriptors/fsl/fsl_motion_outliers.json"
       },
       {
-        "target": "fsl_mrs",
-        "status": "done",
-        "descriptor": "descriptors/fsl/fsl_mrs.json"
-      },
-      {
-        "target": "fsl_mrsi",
-        "status": "done",
-        "descriptor": "descriptors/fsl/fsl_mrsi.json"
-      },
-      {
-        "target": "fsl_mrs_proc",
-        "status": "done",
-        "descriptor": "descriptors/fsl/fsl_mrs_proc.json"
-      },
-      {
-        "target": "fsl_mrs_sim",
-        "status": "done",
-        "descriptor": "descriptors/fsl/fsl_mrs_sim.json"
-      },
-      {
         "target": "fsl_mvlm",
         "status": "done",
         "descriptor": "descriptors/fsl/fsl_mvlm.json"
       },
       {
         "target": "fsl_mrs_preproc",
-        "status": "done",
-        "descriptor": "descriptors/fsl/fsl_mrs_preproc.json"
+        "status": "missing"
       },
       {
         "target": "fsl_prepare_fieldmap",
@@ -621,16 +585,6 @@
         "target": "fsl_sub",
         "status": "done",
         "descriptor": "descriptors/fsl/fsl_sub.json"
-      },
-      {
-        "target": "fsl_sub_config",
-        "status": "done",
-        "descriptor": "descriptors/fsl/fsl_sub_config.json"
-      },
-      {
-        "target": "fsl_sub_report",
-        "status": "done",
-        "descriptor": "descriptors/fsl/fsl_sub_report.json"
       },
       {
         "target": "fsl_tsplot",
@@ -1005,11 +959,6 @@
         "descriptor": "descriptors/fsl/melodic.json"
       },
       {
-        "target": "merge_mrs_reports",
-        "status": "done",
-        "descriptor": "descriptors/fsl/merge_mrs_reports.json"
-      },
-      {
         "target": "merge_parts_gpu",
         "status": "missing"
       },
@@ -1058,11 +1007,6 @@
         "target": "mp_diffpow",
         "status": "done",
         "descriptor": "descriptors/fsl/mp_diffpow.json"
-      },
-      {
-        "target": "mrsi_segment",
-        "status": "done",
-        "descriptor": "descriptors/fsl/mrsi_segment.json"
       },
       {
         "target": "msm",
@@ -1435,11 +1379,6 @@
         "descriptor": "descriptors/fsl/susan.json"
       },
       {
-        "target": "svs_segment",
-        "status": "done",
-        "descriptor": "descriptors/fsl/svs_segment.json"
-      },
-      {
         "target": "swap_subjectwise",
         "status": "done",
         "descriptor": "descriptors/fsl/swap_subjectwise.json"
@@ -1590,11 +1529,6 @@
       {
         "target": "xtract",
         "status": "missing"
-      },
-      {
-        "target": "xtract_blueprint",
-        "status": "done",
-        "descriptor": "descriptors/fsl/xtract_blueprint.json"
       },
       {
         "target": "xtract_stats",
