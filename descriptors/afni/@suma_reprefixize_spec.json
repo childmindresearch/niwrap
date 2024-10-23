@@ -1,9 +1,9 @@
 {
   "tool-version": "24.2.06",
-  "name": "suma_reprefixize_spec",
+  "name": "@suma_reprefixize_spec",
   "author": "AFNI Developers",
   "description": "A tool for prefixing and working with SUMA specification files.",
-  "command-line": "suma_reprefixize_spec [INPUT_FILE] [PREFIX] [OUTPUT_DIR] [WORK_DIR] [NO_CLEAN_FLAG]",
+  "command-line": "@suma_reprefixize_spec [INPUT_FILE] [PREFIX] [OUTPUT_DIR] [WORK_DIR] [NO_CLEAN_FLAG]",
   "inputs": [
     {
       "description": "Input SUMA specification file",
