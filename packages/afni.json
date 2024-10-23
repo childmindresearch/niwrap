@@ -1650,7 +1650,8 @@
       },
       {
         "target": "@SUMA_FSvolToBRIK",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@SUMA_FSvolToBRIK.json"
       },
       {
         "target": "@SUMA_Make_Spec_Caret",

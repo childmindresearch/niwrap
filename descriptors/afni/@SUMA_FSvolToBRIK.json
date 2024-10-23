@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "SUMA_FSvolToBRIK",
+  "name": "@SUMA_FSvolToBRIK",
   "author": "AFNI Developers",
   "description": "A script to convert COR- or .mgz files from FreeSurfer to BRIK format",
   "command-line": "@SUMA_FSvolToBRIK [FSVOL] [PREFIX]",
