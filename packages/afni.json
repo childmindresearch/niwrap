@@ -2766,8 +2766,9 @@
         "descriptor": "descriptors/afni/gen_group_command.json"
       },
       {
-        "target": "gen_ss_review_scripts.py",
-        "status": "missing"
+        "target": "gen_ss_review_scripts",
+        "status": "done",
+        "descriptor": "descriptors/afni/gen_ss_review_scripts.json"
       },
       {
         "target": "gen_ss_review_table.py",
