@@ -1441,7 +1441,7 @@
       },
       {
         "target": "@GetAfniBin",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@GetAfniDims",
@@ -1484,15 +1484,15 @@
       },
       {
         "target": "@Install_APMULTI_Demo1_rest",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_APMULTI_Demo2_realtime",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_AfniRetinoDemo",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_ClustScat_Demo",
@@ -1500,7 +1500,7 @@
       },
       {
         "target": "@Install_D99_macaque",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_DBSproc",
@@ -1512,7 +1512,7 @@
       },
       {
         "target": "@Install_FATCAT_DEMO2",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_FATMVM_DEMO",
@@ -1564,7 +1564,7 @@
       },
       {
         "target": "@Install_SURFLAYERS_DEMO1",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@Install_TSrestMovieDemo",
@@ -1622,7 +1622,7 @@
       },
       {
         "target": "@R_funclist",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@RenamePanga",
@@ -1785,7 +1785,7 @@
       },
       {
         "target": "@clean_help_dir",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@clip_volume",
@@ -2135,7 +2135,7 @@
       },
       {
         "target": "HalloSuma",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "InstaTract",
@@ -2176,7 +2176,7 @@
       },
       {
         "target": "ParseName",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "RBA",
@@ -2214,7 +2214,7 @@
       },
       {
         "target": "SUMA_paperplane",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "SUMA_pixmap2eps",
@@ -2475,7 +2475,7 @@
       },
       {
         "target": "afni_vcheck",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "aiv",
@@ -2533,7 +2533,7 @@
       },
       {
         "target": "byteorder",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "cat_matvec",
@@ -2914,7 +2914,7 @@
       },
       {
         "target": "mycat",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "myget",
@@ -3115,7 +3115,7 @@
       },
       {
         "target": "suma",
-        "status": "done",
+        "status": "ignore",
         "descriptor": "descriptors/afni/suma.json"
       },
       {
@@ -3130,7 +3130,7 @@
       },
       {
         "target": "test_afni_prog_help.tcsh",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "tfim",
