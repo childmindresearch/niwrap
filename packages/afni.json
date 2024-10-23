@@ -2073,7 +2073,8 @@
       },
       {
         "target": "ConvexHull",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/ConvexHull.json"
       },
       {
         "target": "CreateIcosahedron",
