@@ -159,10 +159,7 @@
     {
       "description": "Compulsory arguments for MSM",
       "id": "compulsory_args",
-      "members": [
-        "inmesh",
-        "out"
-      ],
+      "members": ["inmesh", "out"],
       "name": "Compulsory Arguments"
     },
     {

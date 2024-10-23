@@ -78,12 +78,7 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": [
-        "NIFTI",
-        "NIFTI_PAIR",
-        "NIFTI_GZ",
-        "NIFTI_PAIR_GZ"
-      ]
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     },
     {
       "id": "postmat",
@@ -133,17 +128,8 @@
       "command-line-flag-separator": "=",
       "description": "'y-' or 'y' or 'x' or 'x-' or 'z' or 'z-'. Indicates the direction that the distortions from --shiftmap goes. it depends on the direction and polarity of the phase-encoding in the epi sequence.",
       "optional": true,
-      "requires-inputs": [
-        "shift_in_file"
-      ],
-      "value-choices": [
-        "y-",
-        "y",
-        "x",
-        "x-",
-        "z",
-        "z-"
-      ]
+      "requires-inputs": ["shift_in_file"],
+      "value-choices": ["y-", "y", "x", "x-", "z", "z-"]
     },
     {
       "id": "shift_in_file",
@@ -199,19 +185,13 @@
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": [
-        "relwarp",
-        "abswarp"
-      ],
+      "members": ["relwarp", "abswarp"],
       "mutually-exclusive": true
     },
     {
       "id": "mutex_group_2",
       "name": "Mutex group 2",
-      "members": [
-        "out_abswarp",
-        "out_relwarp"
-      ],
+      "members": ["out_abswarp", "out_relwarp"],
       "mutually-exclusive": true
     }
   ],

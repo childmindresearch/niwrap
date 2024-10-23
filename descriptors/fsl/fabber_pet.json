@@ -354,11 +354,7 @@
     {
       "description": "Options for model evaluation",
       "id": "evaluation_options",
-      "members": [
-        "evaluate",
-        "evaluate_params",
-        "evaluate_nt"
-      ],
+      "members": ["evaluate", "evaluate_params", "evaluate_nt"],
       "name": "Evaluation Options"
     },
     {
@@ -402,11 +398,7 @@
     {
       "description": "Miscellaneous options",
       "id": "miscellaneous_options",
-      "members": [
-        "dump_param_names_flag",
-        "optfile_flag",
-        "debug_flag"
-      ],
+      "members": ["dump_param_names_flag", "optfile_flag", "debug_flag"],
       "name": "Miscellaneous Options"
     }
   ],

@@ -45,9 +45,7 @@
       "optional": true,
       "id": "output_image",
       "name": "Output image",
-      "path-template-stripped-extensions": [
-        ".nii.gz"
-      ]
+      "path-template-stripped-extensions": [".nii.gz"]
     },
     {
       "path-template": "[MATRIX_FILE]",

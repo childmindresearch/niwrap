@@ -90,9 +90,7 @@
       "optional": true,
       "id": "output_roi_volume",
       "name": "Output ROI volume",
-      "path-template-stripped-extensions": [
-        ".nii.gz"
-      ]
+      "path-template-stripped-extensions": [".nii.gz"]
     },
     {
       "path-template": "[MATRIX_OUTPUT].txt",

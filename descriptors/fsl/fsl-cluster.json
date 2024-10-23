@@ -263,12 +263,7 @@
       "value-key": "[OUTPUT_TYPE]",
       "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
       "optional": true,
-      "value-choices": [
-        "NIFTI",
-        "NIFTI_PAIR",
-        "NIFTI_GZ",
-        "NIFTI_PAIR_GZ"
-      ]
+      "value-choices": ["NIFTI", "NIFTI_PAIR", "NIFTI_GZ", "NIFTI_PAIR_GZ"]
     },
     {
       "id": "peak_distance",
@@ -289,10 +284,7 @@
       "command-line-flag-separator": "=",
       "description": "P-threshold for clusters.",
       "optional": true,
-      "requires-inputs": [
-        "dlh",
-        "volume"
-      ]
+      "requires-inputs": ["dlh", "volume"]
     },
     {
       "id": "std_space_file",
@@ -418,73 +410,49 @@
     {
       "id": "out_index_file_group",
       "name": "Out index file group",
-      "members": [
-        "out_index_file",
-        "out_index_file_2"
-      ],
+      "members": ["out_index_file", "out_index_file_2"],
       "mutually-exclusive": true
     },
     {
       "id": "out_localmax_txt_file_group",
       "name": "Out localmax txt file group",
-      "members": [
-        "out_localmax_txt_file",
-        "out_localmax_txt_file_2"
-      ],
+      "members": ["out_localmax_txt_file", "out_localmax_txt_file_2"],
       "mutually-exclusive": true
     },
     {
       "id": "out_localmax_vol_file_group",
       "name": "Out localmax vol file group",
-      "members": [
-        "out_localmax_vol_file",
-        "out_localmax_vol_file_2"
-      ],
+      "members": ["out_localmax_vol_file", "out_localmax_vol_file_2"],
       "mutually-exclusive": true
     },
     {
       "id": "out_max_file_group",
       "name": "Out max file group",
-      "members": [
-        "out_max_file",
-        "out_max_file_2"
-      ],
+      "members": ["out_max_file", "out_max_file_2"],
       "mutually-exclusive": true
     },
     {
       "id": "out_mean_file_group",
       "name": "Out mean file group",
-      "members": [
-        "out_mean_file",
-        "out_mean_file_2"
-      ],
+      "members": ["out_mean_file", "out_mean_file_2"],
       "mutually-exclusive": true
     },
     {
       "id": "out_pval_file_group",
       "name": "Out pval file group",
-      "members": [
-        "out_pval_file",
-        "out_pval_file_2"
-      ],
+      "members": ["out_pval_file", "out_pval_file_2"],
       "mutually-exclusive": true
     },
     {
       "id": "out_size_file_group",
       "name": "Out size file group",
-      "members": [
-        "out_size_file",
-        "out_size_file_2"
-      ],
+      "members": ["out_size_file", "out_size_file_2"],
       "mutually-exclusive": true
     },
     {
       "id": "out_threshold_file_group",
       "name": "Out threshold file group",
-      "members": [
-        "out_threshold_file",
-        "out_threshold_file_2"
-      ],
+      "members": ["out_threshold_file", "out_threshold_file_2"],
       "mutually-exclusive": true
     }
   ],

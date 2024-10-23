@@ -73,10 +73,7 @@
       "optional": true,
       "id": "method",
       "name": "Method",
-      "value-choices": [
-        "jac",
-        "lsr"
-      ]
+      "value-choices": ["jac", "lsr"]
     },
     {
       "command-line-flag": "--interp",
@@ -87,10 +84,7 @@
       "optional": true,
       "id": "interp",
       "name": "Interpolation method",
-      "value-choices": [
-        "trilinear",
-        "spline"
-      ]
+      "value-choices": ["trilinear", "spline"]
     },
     {
       "command-line-flag": "--datatype",
@@ -101,13 +95,7 @@
       "optional": true,
       "id": "datatype",
       "name": "Output data type",
-      "value-choices": [
-        "char",
-        "short",
-        "int",
-        "float",
-        "double"
-      ]
+      "value-choices": ["char", "short", "int", "float", "double"]
     },
     {
       "command-line-flag": "--verbose",

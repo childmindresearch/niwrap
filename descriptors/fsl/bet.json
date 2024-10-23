@@ -246,10 +246,7 @@
     {
       "description": "Optional miscellaneous parameters when running BET",
       "id": "miscellaneous_params_group",
-      "members": [
-        "verbose",
-        "debug"
-      ],
+      "members": ["verbose", "debug"],
       "name": "Miscellaneous Parameters"
     }
   ],

@@ -24,10 +24,7 @@
       "command-line-flag-separator": "=",
       "description": "'t1_2_mni152_2mm' or 'fa_2_fmrib58_1mm' or file or string. Name of config file specifying command line arguments.",
       "optional": true,
-      "value-choices": [
-        "T1_2_MNI152_2mm",
-        "FA_2_FMRIB58_1mm"
-      ]
+      "value-choices": ["T1_2_MNI152_2mm", "FA_2_FMRIB58_1mm"]
     },
     {
       "id": "field_file",

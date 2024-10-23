@@ -7,11 +7,7 @@
     {
       "description": "Image type - one of 'whole_head' (the default), 'brain', or 'brain_mask'",
       "value-key": "[IMAGE_TYPE]",
-      "value-choices": [
-        "whole_head",
-        "brain",
-        "brain_mask"
-      ],
+      "value-choices": ["whole_head", "brain", "brain_mask"],
       "type": "String",
       "optional": false,
       "id": "image_type",

@@ -47,12 +47,7 @@
       "optional": true,
       "id": "disp_flag",
       "name": "Disposal method",
-      "value-choices": [
-        "none",
-        "back",
-        "prev",
-        "not"
-      ]
+      "value-choices": ["none", "back", "prev", "not"]
     },
     {
       "command-line-flag": "-i",

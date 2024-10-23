@@ -262,12 +262,7 @@
     {
       "description": "Compulsory arguments for running xfibres",
       "id": "compulsory_params_group",
-      "members": [
-        "datafile",
-        "maskfile",
-        "bvecs",
-        "bvals"
-      ],
+      "members": ["datafile", "maskfile", "bvecs", "bvals"],
       "name": "Compulsory Parameters"
     },
     {

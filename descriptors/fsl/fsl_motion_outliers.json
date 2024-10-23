@@ -169,9 +169,7 @@
     {
       "description": "Optional parameters for verbose output",
       "id": "miscellaneous_params_group",
-      "members": [
-        "verbose_flag"
-      ],
+      "members": ["verbose_flag"],
       "name": "Miscellaneous Parameters"
     }
   ],

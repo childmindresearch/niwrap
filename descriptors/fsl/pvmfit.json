@@ -150,12 +150,7 @@
     {
       "description": "Compulsory arguments for running pvmfit",
       "id": "compulsory_args",
-      "members": [
-        "data_file",
-        "mask_file",
-        "bvec_file",
-        "bval_file"
-      ],
+      "members": ["data_file", "mask_file", "bvec_file", "bval_file"],
       "name": "Compulsory Arguments"
     },
     {

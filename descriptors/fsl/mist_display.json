@@ -12,11 +12,7 @@
   "inputs": [
     {
       "description": "Mode for displaying scalars on mesh",
-      "value-choices": [
-        "simple",
-        "pvals",
-        "noscalars"
-      ],
+      "value-choices": ["simple", "pvals", "noscalars"],
       "value-key": "[MODE]",
       "type": "String",
       "optional": false,

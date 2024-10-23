@@ -95,10 +95,7 @@
     {
       "description": "Options to pass to FLIRT and FNIRT",
       "id": "flirt_fnirt_options_group",
-      "members": [
-        "flirt_options",
-        "fnirt_options"
-      ],
+      "members": ["flirt_options", "fnirt_options"],
       "name": "FLIRT and FNIRT Options"
     }
   ],

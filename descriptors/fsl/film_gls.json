@@ -224,9 +224,7 @@
     {
       "description": "Compulsory Input Parameters",
       "id": "compulsory_params_group",
-      "members": [
-        "infile"
-      ],
+      "members": ["infile"],
       "name": "Compulsory Input Parameters"
     },
     {

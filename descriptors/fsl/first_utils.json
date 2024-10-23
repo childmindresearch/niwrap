@@ -305,10 +305,7 @@
     {
       "description": "Compulsory arguments for running the tool",
       "id": "compulsory_args",
-      "members": [
-        "input_file",
-        "output_name"
-      ],
+      "members": ["input_file", "output_name"],
       "name": "Compulsory Arguments"
     },
     {

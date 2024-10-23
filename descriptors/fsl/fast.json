@@ -46,11 +46,7 @@
       "command-line-flag": "-t",
       "optional": true,
       "integer": true,
-      "value-choices": [
-        1,
-        2,
-        3
-      ]
+      "value-choices": [1, 2, 3]
     },
     {
       "name": "Init seg smooth",
@@ -144,9 +140,7 @@
       "description": "Use priors throughout.",
       "command-line-flag": "-P",
       "optional": true,
-      "requires-inputs": [
-        "init_transform"
-      ]
+      "requires-inputs": ["init_transform"]
     },
     {
       "name": "No pve",

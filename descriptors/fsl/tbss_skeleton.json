@@ -83,9 +83,7 @@
     {
       "description": "Compulsory arguments for tbss_skeleton",
       "id": "compulsory_arguments",
-      "members": [
-        "input_image"
-      ],
+      "members": ["input_image"],
       "name": "Compulsory Arguments"
     },
     {
