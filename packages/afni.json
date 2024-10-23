@@ -2972,7 +2972,7 @@
       },
       {
         "target": "python_module_test.py",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "qdelaunay",
