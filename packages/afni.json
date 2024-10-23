@@ -1343,7 +1343,8 @@
       },
       {
         "target": "@AfniOrientSign",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@AfniOrientSign.json"
       },
       {
         "target": "@Align_Centers",

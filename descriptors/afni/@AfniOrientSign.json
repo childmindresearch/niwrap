@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "AfniOrientSign",
+  "name": "@AfniOrientSign",
   "author": "AFNI Developers",
   "description": "A tool within the AFNI suite to determine the orientation signs of datasets",
   "url": "https://afni.nimh.nih.gov/",
