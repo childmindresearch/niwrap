@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "SurfLocalStat",
+  "name": "SurfLocalstat",
   "author": "AFNI Developers",
   "description": "Compute local statistics on a surface mesh",
   "url": "https://afni.nimh.nih.gov/",
