@@ -1397,12 +1397,11 @@
       },
       {
         "target": "@DriveAfni",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@DriveSuma",
-        "status": "done",
-        "descriptor": "descriptors/afni/@DriveSuma.json"
+        "status": "ignore"
       },
       {
         "target": "@ElectroGrid",
