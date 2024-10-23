@@ -2481,8 +2481,9 @@
         "descriptor": "descriptors/afni/align_epi_anat.json"
       },
       {
-        "target": "ap_run_simple_rest.tcsh",
-        "status": "missing"
+        "target": "ap_run_simple_rest",
+        "status": "done",
+        "descriptor": "descriptors/afni/ap_run_simple_rest.json"
       },
       {
         "target": "ap_run_simple_rest_me.tcsh",
