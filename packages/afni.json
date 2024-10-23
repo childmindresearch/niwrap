@@ -1307,7 +1307,8 @@
       },
       {
         "target": "@2dwarper",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@2dwarper.json"
       },
       {
         "target": "@2dwarper.Allin",
@@ -1977,7 +1978,8 @@
       },
       {
         "target": "@suma_acknowledge",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@suma_acknowledge.json"
       },
       {
         "target": "@suma_reprefixize_spec",
@@ -2262,7 +2264,8 @@
       },
       {
         "target": "SurfLocalstat",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/SurfLocalstat.json"
       },
       {
         "target": "SurfMeasures",
