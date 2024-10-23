@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_PLOT_METADATA = Metadata(
-    id="b6bd3f946ed978713314b5a79d64bfd9de6e5732.boutiques",
+    id="8ed3fa6e50d07f3853fcec9ca53f667a78d048a0.boutiques",
     name="possum_plot",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

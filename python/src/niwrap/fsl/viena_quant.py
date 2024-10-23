@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VIENA_QUANT_METADATA = Metadata(
-    id="7c14a1165b0faeec54393ef8287a2c37f9375e89.boutiques",
+    id="be5ccb370e94ceff692127ef6ed3070bd69ee280.boutiques",
     name="viena_quant",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

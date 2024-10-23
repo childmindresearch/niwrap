@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIENA_FLOW2STD_METADATA = Metadata(
-    id="1088eab03af2d0193408671c9ef4a153a37c1cf3.boutiques",
+    id="e7e2d37449be16bf1d6e0b3da01e4c5de1ec5d0f.boutiques",
     name="siena_flow2std",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

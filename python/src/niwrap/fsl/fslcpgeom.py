@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLCPGEOM_METADATA = Metadata(
-    id="085c334d03ef7e72e2a43d110846584da3128243.boutiques",
+    id="abfea41c33a7487bc5c6fba058aaad8f45e8d06a.boutiques",
     name="fslcpgeom",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

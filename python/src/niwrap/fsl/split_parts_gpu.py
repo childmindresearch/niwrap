@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPLIT_PARTS_GPU_METADATA = Metadata(
-    id="150b1769476d6393c43c9e219c862e1a469f559b.boutiques",
+    id="4b5f1bb34f65de904db97e0d3a73b06a48644f35.boutiques",
     name="split_parts_gpu",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

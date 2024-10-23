@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FEATQUERY_METADATA = Metadata(
-    id="f7b644ac5a371e79ccbc396c69677df6d8c34014.boutiques",
+    id="5ff5323accbacce93cf460d169df3ce0ee7ee6f0.boutiques",
     name="featquery",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFMATHS_METADATA = Metadata(
-    id="3dda270a975f280424a913687652e8106eafcc97.boutiques",
+    id="3fb64dc8a05d264e95b0869695c3ad8acebe30d6.boutiques",
     name="surfmaths",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

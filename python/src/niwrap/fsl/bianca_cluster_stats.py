@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BIANCA_CLUSTER_STATS_METADATA = Metadata(
-    id="acdd9a457a55d1f724769df0bd1b7bff5fd4a54e.boutiques",
+    id="7bb9fbd0c4cce5e06e0aa8bae75dec0c569b1f20.boutiques",
     name="bianca_cluster_stats",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

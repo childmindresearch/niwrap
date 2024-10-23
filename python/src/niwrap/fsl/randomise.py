@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RANDOMISE_METADATA = Metadata(
-    id="8c2786cdf09d4e53816a16a0a1bcccbf0446fe89.boutiques",
+    id="bc4f29c0e8e3ba06b91986766e56970227697e9c.boutiques",
     name="randomise",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

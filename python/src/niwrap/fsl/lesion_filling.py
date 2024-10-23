@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LESION_FILLING_METADATA = Metadata(
-    id="46e4f05a27097c19b525ee7c62f42260c05073a6.boutiques",
+    id="fa4ce204c80d9d08126a2809318fb1f6f654f80b.boutiques",
     name="lesion_filling",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

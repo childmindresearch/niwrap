@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INVFEATREG_METADATA = Metadata(
-    id="387420ef445b5f2092474ee6eac4b6aa627acaca.boutiques",
+    id="dfd93a0e3c77ac7d8350f0e55ba782b5705b1969.boutiques",
     name="invfeatreg",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

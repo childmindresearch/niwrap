@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ASL_MFREE_METADATA = Metadata(
-    id="ca59e11c04ece3abf1c9cd940d46b72264d477ed.boutiques",
+    id="bce9ead0162a00a94e5c94ac75bd854d18c895f9.boutiques",
     name="asl_mfree",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

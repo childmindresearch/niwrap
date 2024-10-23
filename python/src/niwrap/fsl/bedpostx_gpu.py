@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BEDPOSTX_GPU_METADATA = Metadata(
-    id="2de7a9bb82e202dc64adabae04cb2b79cd6c9b61.boutiques",
+    id="077d0510f689fe02e3c8040ba0dbfe948820f829.boutiques",
     name="bedpostx_gpu",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

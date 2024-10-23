@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_SKELETON_METADATA = Metadata(
-    id="92d202a1e252472f70d70edb63bc110360f65349.boutiques",
+    id="25571f737489a24f1ca40f7027b3aa2c256d8dc2.boutiques",
     name="tbss_skeleton",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

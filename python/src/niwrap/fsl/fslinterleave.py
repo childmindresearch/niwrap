@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLINTERLEAVE_METADATA = Metadata(
-    id="4feb3dce934f60b25df6f16fcb9e852a3fe297ec.boutiques",
+    id="81664bf9535c37ba0485f9a84b1dc7b328fb4fb2.boutiques",
     name="fslinterleave",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

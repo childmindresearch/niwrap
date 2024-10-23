@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CLUSTER2HTML_METADATA = Metadata(
-    id="852e37e8d482b843ac211e49dea08ae2ac38ee6f.boutiques",
+    id="4888986f4fd601e816d92a86dd71f10fc36d506a.boutiques",
     name="cluster2html",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

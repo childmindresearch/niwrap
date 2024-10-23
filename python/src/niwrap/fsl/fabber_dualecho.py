@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_DUALECHO_METADATA = Metadata(
-    id="b8340733f996673a706e993ac5fc779a8aa7c2b8.boutiques",
+    id="7ce563f3bbd8d8f4a029c4e7afb31002e1a90135.boutiques",
     name="fabber_dualecho",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

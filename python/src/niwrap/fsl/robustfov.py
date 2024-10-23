@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ROBUSTFOV_METADATA = Metadata(
-    id="7580ec98599d3cf65e9f838d8c24ba23fff4c639.boutiques",
+    id="fe07b11b244bac46a02d5373b67ae5b1735d6731.boutiques",
     name="robustfov",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

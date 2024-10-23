@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ZEROPAD_METADATA = Metadata(
-    id="693707e11680ebf1fc3e0c063abe41ab0c7f9521.boutiques",
+    id="5de787e1565bc90c56c65890ec3c94c7df977810.boutiques",
     name="zeropad",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

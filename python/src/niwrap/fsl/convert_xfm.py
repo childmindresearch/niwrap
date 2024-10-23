@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_XFM_METADATA = Metadata(
-    id="1aa02fdf87667e67affbe05d302a88a1a4229d76.boutiques",
+    id="dc13d20f61ff07c9049c8ab25011f07a0e772561.boutiques",
     name="convert_xfm",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

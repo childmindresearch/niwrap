@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MATCH_SMOOTHING_METADATA = Metadata(
-    id="549ae1af3123faadeaa1b861a1af9cd52e6efece.boutiques",
+    id="23191f43dbc64f93862c92dc9a3648209a02e814.boutiques",
     name="match_smoothing",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

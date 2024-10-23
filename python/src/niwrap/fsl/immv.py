@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMMV_METADATA = Metadata(
-    id="9ddab0d873f192eefd9c95ff5715523f91b74b5a.boutiques",
+    id="44ec8b1b3324cc2a5621203b5bcc839d1c6cbcd8.boutiques",
     name="immv",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

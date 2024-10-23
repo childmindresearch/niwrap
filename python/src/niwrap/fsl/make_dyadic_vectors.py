@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_DYADIC_VECTORS_METADATA = Metadata(
-    id="b9f911f06b88167c54a8a212c75444b81662d634.boutiques",
+    id="0ee2428d543d257f22c959327d85ce191f76e480.boutiques",
     name="make_dyadic_vectors",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VECREG_METADATA = Metadata(
-    id="9fd3c9541d854085af5c8b7097a904e8a3586156.boutiques",
+    id="2f770792e1519a4ec4a70e78e32c562d6e911542.boutiques",
     name="vecreg",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_CORRECT_METADATA = Metadata(
-    id="d970e9da550f3d5522860912d456492ec3139578.boutiques",
+    id="b3db82860cab20dc3434db50628877de4771c002.boutiques",
     name="eddy_correct",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

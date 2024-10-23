@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMLN_METADATA = Metadata(
-    id="75d6b341d81c698317c2a4ed445005a225ecdb63.boutiques",
+    id="d0faec21127d5bd05d5bd3723b5049bbb3a2e2fb.boutiques",
     name="imln",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

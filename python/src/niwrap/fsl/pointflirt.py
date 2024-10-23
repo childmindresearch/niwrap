@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POINTFLIRT_METADATA = Metadata(
-    id="188d574f15fd670eb48164b8b466346427a67220.boutiques",
+    id="370ef90004e5abc020f984c2ad1661a83126d4e0.boutiques",
     name="pointflirt",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

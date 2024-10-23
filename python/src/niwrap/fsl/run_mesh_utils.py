@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RUN_MESH_UTILS_METADATA = Metadata(
-    id="928bb71ecb6e515efcbd6d311345d04f122e0856.boutiques",
+    id="f37cf2d8f5013ba6fbfc7ef807691e24ce397261.boutiques",
     name="run_mesh_utils",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

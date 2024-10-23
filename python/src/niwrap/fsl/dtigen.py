@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DTIGEN_METADATA = Metadata(
-    id="5ce6d772bcc00a637795fc2c6e97a565d0c46086.boutiques",
+    id="1693c829ac7f8ececf6dc63605144e179c65163b.boutiques",
     name="dtigen",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

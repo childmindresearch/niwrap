@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PNGAPPEND_METADATA = Metadata(
-    id="ea21bc6d90c49e2b30a80f043fc74dfc55283f47.boutiques",
+    id="99f67fe0688b60f25c052763d14f04c8c451c98b.boutiques",
     name="pngappend",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

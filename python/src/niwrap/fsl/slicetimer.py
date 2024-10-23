@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICETIMER_METADATA = Metadata(
-    id="feec511f9eb1e97338cc6df8fd22df4c82d5a60f.boutiques",
+    id="6e359db73103f442a98acae715e552635226d725.boutiques",
     name="slicetimer",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

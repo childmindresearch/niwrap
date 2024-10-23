@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL2SURF_METADATA = Metadata(
-    id="85aa5e7695800a297de3775df547220680e287ff.boutiques",
+    id="2033554ec1dbe598794a55d2348e7d29f7364ba9.boutiques",
     name="label2surf",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

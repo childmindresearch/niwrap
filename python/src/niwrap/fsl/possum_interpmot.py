@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_INTERPMOT_METADATA = Metadata(
-    id="1fcad69bb8c5d55898c41ca213940f5c1c42944a.boutiques",
+    id="8ab9d694fafa3b09d7acaca8ca43d500f9c7675b.boutiques",
     name="possum_interpmot",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

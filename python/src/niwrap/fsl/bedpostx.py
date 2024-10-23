@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BEDPOSTX_METADATA = Metadata(
-    id="4095d848b1112bc53d06ba5ad2c38be2c996edf7.boutiques",
+    id="8d827db247c8140fd0612e8c4f7db7d170cfc43e.boutiques",
     name="bedpostx",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

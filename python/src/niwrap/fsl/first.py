@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIRST_METADATA = Metadata(
-    id="c159c113885cd532f64aba262d4bf74c694a226a.boutiques",
+    id="c4a03ae0d22afadc00267f860cc2f855e085bed1.boutiques",
     name="first",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIRST_ROI_SLICESDIR_METADATA = Metadata(
-    id="07ed981bc3f644205a69a431d2e971d35a09fcb3.boutiques",
+    id="d99cc0c205b74580499089f0d5d96083d3a77854.boutiques",
     name="first_roi_slicesdir",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

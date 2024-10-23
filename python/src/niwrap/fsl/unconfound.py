@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UNCONFOUND_METADATA = Metadata(
-    id="d7f012589ab401c1d878d9c811421b5b5aa88420.boutiques",
+    id="2ccf7c410e301ebdd239b6f4684654f07d566038.boutiques",
     name="unconfound",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

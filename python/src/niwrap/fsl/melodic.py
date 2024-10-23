@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MELODIC_METADATA = Metadata(
-    id="a389d9757bf438c42af0ebdcbd940c261ace9f47.boutiques",
+    id="676ecf3f7a3e52a01972f67049800329276421c8.boutiques",
     name="melodic",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

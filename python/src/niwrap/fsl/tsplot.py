@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TSPLOT_METADATA = Metadata(
-    id="b36318f42eca5d91162f0699b94c2f01ea41325a.boutiques",
+    id="cbc10eaa8d497c661991699af648c2805c89bfe3.boutiques",
     name="tsplot",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

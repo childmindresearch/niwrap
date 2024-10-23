@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMRM_METADATA = Metadata(
-    id="236c0a6cba66b890c228973fbf3e4a2cd1eed2c2.boutiques",
+    id="2912eb712fa3a6125fef5aa4f51d0229fb833f90.boutiques",
     name="imrm",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

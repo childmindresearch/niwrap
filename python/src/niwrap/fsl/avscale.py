@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 AVSCALE_METADATA = Metadata(
-    id="f9731cbf1340c42aadd7d5c848f973f234fb2c9f.boutiques",
+    id="b4cf2ddb954800b4fff52e3094c8131c12e16602.boutiques",
     name="avscale",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

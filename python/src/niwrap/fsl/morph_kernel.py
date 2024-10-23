@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MORPH_KERNEL_METADATA = Metadata(
-    id="5b8becd0d0732bad9a581040e0915f48fd41b1b2.boutiques",
+    id="68541ec7748d8d13f5c268560fc3b05f625b4dae.boutiques",
     name="morph_kernel",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

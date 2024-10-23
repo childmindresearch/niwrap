@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MEDIANFILTER_METADATA = Metadata(
-    id="4976ffadd67bad2c5c5c48e9bba48757157b1cef.boutiques",
+    id="78b38d971dc71365ed3894d5bb7f83c2dee92ce5.boutiques",
     name="medianfilter",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ZTOP_METADATA = Metadata(
-    id="3bbac4eb44f1c51180f2ecfac30be72f66c03f0b.boutiques",
+    id="aaa21f331bdaf4f959165aeb5f8d7c495a9d8f9d.boutiques",
     name="ztop",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

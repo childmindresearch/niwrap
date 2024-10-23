@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_DEFACE_METADATA = Metadata(
-    id="18b26279d12a0299674b6a0a205c49c651998680.boutiques",
+    id="4fb8a8564de7146602b9596a59dacaa826f83b4b.boutiques",
     name="fsl_deface",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

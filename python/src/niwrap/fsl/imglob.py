@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IMGLOB_METADATA = Metadata(
-    id="82dcf15d7563404031a24e6a339d3ab9eda8499d.boutiques",
+    id="6e5c82a9d3dd63f4eac19fe2fbdd54c436e3cf8f.boutiques",
     name="imglob",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

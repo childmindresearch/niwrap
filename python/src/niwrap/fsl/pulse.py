@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PULSE_METADATA = Metadata(
-    id="aa3d01e1192d987637dd3b825786f4eea855f76b.boutiques",
+    id="1aecd553ce31be0280bf3f0ab59bd2c6f0bd2be6.boutiques",
     name="pulse",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

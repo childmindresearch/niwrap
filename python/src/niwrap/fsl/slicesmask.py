@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SLICESMASK_METADATA = Metadata(
-    id="74ef108c3855450b547006d32a9ebaeca2ad89a0.boutiques",
+    id="b50fb9a07494c1adb31f1e2e4a874ca203db96da.boutiques",
     name="slicesmask",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

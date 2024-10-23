@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MP_DIFFPOW_METADATA = Metadata(
-    id="6acea0d905dbf058cf44a24b0d348cd30fdb5711.boutiques",
+    id="5d6f81008119f2f4a31e758201b79a4cc2a55918.boutiques",
     name="mp_diffpow",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

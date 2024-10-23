@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SIENA_FLIRT_METADATA = Metadata(
-    id="7eb9fcd5ccf6ce62e9d9803bca28c747d96af2c6.boutiques",
+    id="5849d878e5b18b6832cde274764cb89a8b0fa71a.boutiques",
     name="siena_flirt",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

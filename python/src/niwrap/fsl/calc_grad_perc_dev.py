@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CALC_GRAD_PERC_DEV_METADATA = Metadata(
-    id="39b88392552200b9d8743a7287f01d4a45f2fb0e.boutiques",
+    id="76e8d6c21efe0b0e70c7144ea3347d4476e917aa.boutiques",
     name="calc_grad_perc_dev",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

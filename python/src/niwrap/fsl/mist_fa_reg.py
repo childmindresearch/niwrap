@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MIST_FA_REG_METADATA = Metadata(
-    id="97121717dc610812f071b60f26ae5baecd8c3863.boutiques",
+    id="45a9d3529b9890b437032ed4b1edac4f90d4e0ac.boutiques",
     name="mist_FA_reg",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

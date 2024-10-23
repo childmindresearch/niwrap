@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSMOOTHFILL_METADATA = Metadata(
-    id="dc0de5f33d91a027b4d5bcdab633efae954d5586.boutiques",
+    id="decfe9aa72638e1ec65326903fe3b064f1752e01.boutiques",
     name="fslsmoothfill",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

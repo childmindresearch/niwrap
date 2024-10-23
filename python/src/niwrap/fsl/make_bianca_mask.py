@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_BIANCA_MASK_METADATA = Metadata(
-    id="d1f512a58aca64ecafdd6d50b66b7df89fe17e94.boutiques",
+    id="4c86228a8220f5a60129cb20c88b1a58d64d06a2.boutiques",
     name="make_bianca_mask",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

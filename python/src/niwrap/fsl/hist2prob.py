@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 HIST2PROB_METADATA = Metadata(
-    id="3ca6768fb1f78dc7f8201cc3d5971266cecf283e.boutiques",
+    id="0f4b00c4567581e75de2672a9240e227a0125d6d.boutiques",
     name="hist2prob",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
