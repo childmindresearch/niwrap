@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "convert_cdiflist_to_grads",
+  "name": "convert_cdiflist_to_grads.py",
   "author": "AFNI Developers",
   "description": "This program reads in a GE cdiflist and outputs gradient file and file of bvalues for subsequent processing.",
   "command-line": "convert_cdiflist_to_grads.py -cdiflist [CDIFLIST] -bval_max [BVAL_MAX] -prefix [PREFIX] [VER_FLAG] [DATE_FLAG] [HELP_FLAG] [HVIEW_FLAG]",

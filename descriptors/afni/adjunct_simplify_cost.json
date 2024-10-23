@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "adjunct_simplify_cost",
+  "name": "adjunct_simplify_cost.py",
   "author": "AFNI Developers",
   "description": "Simplifies a cost function name by removing the '+' and anything following it.",
   "command-line": "adjunct_simplify_cost.py [COST_FUNCTION]",

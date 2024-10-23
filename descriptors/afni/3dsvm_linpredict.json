@@ -3,7 +3,7 @@
   "name": "3dsvm_linpredict",
   "author": "AFNI Developers",
   "description": "Linear prediction for weights from 3dsvm",
-  "command-line": "3ddot [MASK] [w] [dset]",
+  "command-line": "3dsvm_linpredict [MASK] [w] [dset]",
   "inputs": [
     {
       "description": "Weight vector dataset",

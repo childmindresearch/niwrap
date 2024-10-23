@@ -1,5 +1,5 @@
 {
-  "name": "align_epi_anat",
+  "name": "align_epi_anat.py",
   "tool-version": "24.2.06",
   "description": "Align EPI to anatomical datasets or vice versa",
   "author": "AFNI Developers",

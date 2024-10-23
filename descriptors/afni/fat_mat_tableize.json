@@ -1,5 +1,5 @@
 {
-  "name": "fat_mat_tableize",
+  "name": "fat_mat_tableize.py",
   "tool-version": "24.2.06",
   "description": "Make tables for AFNI group analysis programs from 3dNetCorr (*.netcc) and 3dTrackID (*.grid) outputs, with optional additional subject information from CSV files.",
   "author": "AFNI Developers",

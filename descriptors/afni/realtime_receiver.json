@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "realtime_receiver",
+  "name": "realtime_receiver.py",
   "author": "AFNI Developers",
   "description": "Program to receive and display real-time plugin data from AFNI.",
   "url": "https://afni.nimh.nih.gov/",

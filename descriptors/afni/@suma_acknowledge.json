@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "suma_acknowledge",
+  "name": "@suma_acknowledge",
   "author": "AFNI Developers",
   "description": "Demo script to create a graph dataset to show names of individuals and groups, potentially useful for acknowledgements in a talk.",
   "url": "https://afni.nimh.nih.gov/",
