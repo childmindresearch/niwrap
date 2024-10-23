@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TBSS_NON_FA_METADATA = Metadata(
-    id="25a202049724dfb96895b8d09b466399e59d631a.boutiques",
+    id="e3deff7b1548ab755ef7d3c14ce05813bcb0aebd.boutiques",
     name="tbss_non_FA",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -55,7 +55,7 @@ def tbss_non_fa(
     runner = runner or get_global_runner()
     execution = runner.start_execution(TBSS_NON_FA_METADATA)
     cargs = []
-    cargs.append("fslmerge")
+    cargs.append("tbss_non_FA")
     if concat_auto:
         cargs.append("-a")
     cargs.append(output_file)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BEDPOSTX_GPU_METADATA = Metadata(
-    id="d60189eb2c838a8f20c913057b4048995c48717b.boutiques",
+    id="83a0518d5ffffd67118e4b625dc6bc61d4434fb5.boutiques",
     name="bedpostx_gpu",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -65,7 +65,7 @@ def bedpostx_gpu(
     runner = runner or get_global_runner()
     execution = runner.start_execution(BEDPOSTX_GPU_METADATA)
     cargs = []
-    cargs.append("bedpostx")
+    cargs.append("bedpostx_gpu")
     cargs.append(subject_dir)
     if gpu_queue is not None:
         cargs.extend([

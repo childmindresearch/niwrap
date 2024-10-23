@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TCALC_METADATA = Metadata(
-    id="969bb6585a0e4e1f36259285fc5062f473cc26bd.boutiques",
+    id="4f715d8ae369dbd5af397c2b6c1f1329e72c0a1c.boutiques",
     name="tcalc",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -77,7 +77,7 @@ def tcalc(
     runner = runner or get_global_runner()
     execution = runner.start_execution(TCALC_METADATA)
     cargs = []
-    cargs.append("resample")
+    cargs.append("tcalc")
     cargs.append("-i")
     cargs.extend([
         "--input",

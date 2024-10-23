@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 FUGUE_METADATA = Metadata(
-    id="0d5e56a1480fef260425c99248ccd24a15460f59.boutiques",
-    name="FUGUE",
+    id="6f420f4e48114e62d493a0e92de4e88d1fa52520.boutiques",
+    name="fugue",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )
@@ -67,12 +67,7 @@ def fugue(
     runner: Runner | None = None,
 ) -> FugueOutputs:
     """
-    FSL FUGUE set of tools for EPI distortion correction
-    `FUGUE is, most generally, a set of tools for EPI distortion correction.
-    Distortions may be corrected for 1. improving registration with
-    non-distorted images (e.g. structurals), or 2. dealing with motion-dependent
-    changes.
-    FUGUE is designed to deal only with the first case - improving registration.
+    FMRIB's Utility for Geometric Unwarping of EPIs.
     
     Author: FMRIB Analysis Group, University of Oxford
     
@@ -124,7 +119,7 @@ def fugue(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FUGUE_METADATA)
     cargs = []
-    cargs.append("FUGUE")
+    cargs.append("fugue")
     if asym_se_time is not None:
         cargs.append("--asym=" + str(asym_se_time))
     if despike_2dfilter:

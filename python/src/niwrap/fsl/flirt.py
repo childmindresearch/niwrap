@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 FLIRT_METADATA = Metadata(
-    id="3c4cc6103732c2c7c75152692aba3304b679ec12.boutiques",
-    name="FLIRT",
+    id="701cc7916c9fbe19b327316b3642bf3afa65f796.boutiques",
+    name="flirt",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )
@@ -139,7 +139,7 @@ def flirt(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FLIRT_METADATA)
     cargs = []
-    cargs.append("FLIRT")
+    cargs.append("flirt")
     cargs.extend([
         "-in",
         execution.input_file(in_file)

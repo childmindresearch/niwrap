@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_CEST_METADATA = Metadata(
-    id="d0c794144f9c1291cd815f24506dde4e858126c8.boutiques",
+    id="374490b74072462a0f7bc775872ab2602e258e08.boutiques",
     name="fabber_cest",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -64,7 +64,7 @@ def fabber_cest(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FABBER_CEST_METADATA)
     cargs = []
-    cargs.append("fabber")
+    cargs.append("fabber_cest")
     cargs.append("[--<option>")
     cargs.append("|")
     cargs.append("--<option>=<value>")

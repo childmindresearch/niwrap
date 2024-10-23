@@ -6,23 +6,23 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-FIRT_UTILS_METADATA = Metadata(
-    id="3c43f5cc948b4f787c5323e740b175c124303e95.boutiques",
-    name="firt_utils",
+FIRST_UTILS_METADATA = Metadata(
+    id="03494d2992922de039ece96bc44fca27d725ff4b.boutiques",
+    name="first_utils",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )
 
 
-class FirtUtilsOutputs(typing.NamedTuple):
+class FirstUtilsOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `firt_utils(...)`.
+    Output object returned when calling `first_utils(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
 
 
-def firt_utils(
+def first_utils(
     input_file: InputPathType,
     output_name: str,
     norm_factors: InputPathType | None = None,
@@ -56,7 +56,7 @@ def firt_utils(
     debug_mode: bool = False,
     help_: bool = False,
     runner: Runner | None = None,
-) -> FirtUtilsOutputs:
+) -> FirstUtilsOutputs:
     """
     Utilities for handling FIRST's input and output files.
     
@@ -101,16 +101,16 @@ def firt_utils(
         help_: Display help message.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `FirtUtilsOutputs`).
+        NamedTuple of outputs (described in `FirstUtilsOutputs`).
     """
     if threshold is not None and not (0 <= threshold): 
         raise ValueError(f"'threshold' must be greater than 0 <= x but was {threshold}")
     if num_modes is not None and not (0 <= num_modes): 
         raise ValueError(f"'num_modes' must be greater than 0 <= x but was {num_modes}")
     runner = runner or get_global_runner()
-    execution = runner.start_execution(FIRT_UTILS_METADATA)
+    execution = runner.start_execution(FIRST_UTILS_METADATA)
     cargs = []
-    cargs.append("firt_utils")
+    cargs.append("first_utils")
     cargs.extend([
         "-i",
         execution.input_file(input_file)
@@ -209,7 +209,7 @@ def firt_utils(
         cargs.append("--debug")
     if help_:
         cargs.append("-h")
-    ret = FirtUtilsOutputs(
+    ret = FirstUtilsOutputs(
         root=execution.output_file("."),
     )
     execution.run(cargs)
@@ -217,7 +217,7 @@ def firt_utils(
 
 
 __all__ = [
-    "FIRT_UTILS_METADATA",
-    "FirtUtilsOutputs",
-    "firt_utils",
+    "FIRST_UTILS_METADATA",
+    "FirstUtilsOutputs",
+    "first_utils",
 ]

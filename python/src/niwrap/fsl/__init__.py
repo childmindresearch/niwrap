@@ -53,7 +53,6 @@ from .bianca_perivent_deep import *
 from .calc_grad_perc_dev import *
 from .ccops import *
 from .check_feat import *
-from .cluster import *
 from .cluster2html import *
 from .concat_bvars import *
 from .connectedcomp import *
@@ -100,7 +99,7 @@ from .first import *
 from .first_flirt import *
 from .first_mult_bcorr import *
 from .first_roi_slicesdir import *
-from .firt_utils import *
+from .first_utils import *
 from .flirt import *
 from .flirt_average import *
 from .fnirt import *
@@ -108,6 +107,7 @@ from .fnirtfileutils import *
 from .fsl2ascii import *
 from .fsl_anat import *
 from .fsl_boxplot import *
+from .fsl_cluster import *
 from .fsl_deface import *
 from .fsl_ents import *
 from .fsl_fix_text import *
@@ -166,12 +166,9 @@ from .fslvbm_2_template import *
 from .fslvbm_3_proc import *
 from .ftoz import *
 from .fugue import *
-from .glm import *
 from .gps import *
 from .halfcosbasis import *
 from .hist2prob import *
-from .ica_aroma import *
-from .image_stats import *
 from .imcp import *
 from .img2imgcoord import *
 from .img2stdcoord import *
@@ -193,17 +190,15 @@ from .mcflirt import *
 from .mean import *
 from .medianfilter import *
 from .melodic import *
-from .merge import *
 from .merge_mrs_reports import *
 from .midtrans import *
 from .mist_display import *
 from .mist_fa_reg import *
 from .mm import *
 from .morph_kernel import *
-from .mp_diff import *
+from .mp_diffpow import *
 from .mrsi_segment import *
 from .msm import *
-from .new_invwarp import *
 from .old_betall import *
 from .overlay import *
 from .oxford_asl import *
@@ -219,7 +214,6 @@ from .possum_matrix import *
 from .possum_plot import *
 from .possum_sum import *
 from .prelude import *
-from .prepare_fieldmap import *
 from .prewhiten import *
 from .probtrackx import *
 from .proj_thresh import *
@@ -241,7 +235,6 @@ from .siena_flow2std import *
 from .sienax import *
 from .sigloss import *
 from .signal2image import *
-from .slice import *
 from .sliceanimate import *
 from .slicer import *
 from .slices import *
@@ -249,10 +242,8 @@ from .slices_summary import *
 from .slicesdir import *
 from .slicesmask import *
 from .slicetimer import *
-from .smooth_estimate import *
 from .smoothest import *
 from .spharm_rm import *
-from .split import *
 from .split_parts_gpu import *
 from .standard_space_roi import *
 from .std2imgcoord import *
@@ -262,7 +253,6 @@ from .surface_fdr import *
 from .surfmaths import *
 from .susan import *
 from .svs_segment import *
-from .swap_dimensions import *
 from .swap_subjectwise import *
 from .swap_voxelwise import *
 from .swe import *

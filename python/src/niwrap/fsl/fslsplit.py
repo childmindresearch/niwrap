@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSPLIT_METADATA = Metadata(
-    id="11f8b49545c1d11011272305368ed7bd5f50f1f0.boutiques",
+    id="1ad527bbff22e0bcf10478ef7d18f122e9c5bb45.boutiques",
     name="fslsplit",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -56,7 +56,7 @@ def fslsplit(
         cargs.append("-z")
     ret = FslsplitOutputs(
         root=execution.output_file("."),
-        outfiles=execution.output_file(output_basename + "????.nii.gz") if (output_basename is not None) else None,
+        outfiles=execution.output_file(output_basename + ".nii.gz") if (output_basename is not None) else None,
     )
     execution.run(cargs)
     return ret

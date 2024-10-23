@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 OVERLAY_METADATA = Metadata(
-    id="941f4186a659ea9e59d587524908bacf26b7c613.boutiques",
-    name="Overlay",
+    id="aece53ed3600407081126a33435263f96938ce16.boutiques",
+    name="overlay",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )
@@ -71,7 +71,7 @@ def overlay(
     runner = runner or get_global_runner()
     execution = runner.start_execution(OVERLAY_METADATA)
     cargs = []
-    cargs.append("Overlay")
+    cargs.append("overlay")
     if auto_thresh_bg:
         cargs.append("-a")
     cargs.append(execution.input_file(background_image))

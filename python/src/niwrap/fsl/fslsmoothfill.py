@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSMOOTHFILL_METADATA = Metadata(
-    id="6bed9d1a53792627a501c6aba8464e9c8c8c71ee.boutiques",
+    id="3788c78b958ff1c5e43994598c4983d960eeecd9.boutiques",
     name="fslsmoothfill",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -53,7 +53,7 @@ def fslsmoothfill(
     runner = runner or get_global_runner()
     execution = runner.start_execution(FSLSMOOTHFILL_METADATA)
     cargs = []
-    cargs.append("smoothfill")
+    cargs.append("fslsmoothfill")
     cargs.append("-i")
     cargs.extend([
         "--in",

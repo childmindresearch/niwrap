@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OLD_BETALL_METADATA = Metadata(
-    id="f799591c8ef735951976e2fe3efdccaf8a088ec1.boutiques",
+    id="0b60d4dbdee33e67b424e06e3da5ed0dade470ba.boutiques",
     name="old_betall",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -48,7 +48,7 @@ def old_betall(
     runner = runner or get_global_runner()
     execution = runner.start_execution(OLD_BETALL_METADATA)
     cargs = []
-    cargs.append("betall")
+    cargs.append("old_betall")
     cargs.append(t1_filerout)
     cargs.append(t2_filerout)
     ret = OldBetallOutputs(

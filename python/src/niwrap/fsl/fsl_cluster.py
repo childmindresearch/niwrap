@@ -6,17 +6,17 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-CLUSTER_METADATA = Metadata(
-    id="fd2ff77c066ff8af6a520d9b94d3a02680241060.boutiques",
-    name="Cluster",
+FSL_CLUSTER_METADATA = Metadata(
+    id="b6defcfbdacf0096fd3370a8dfcff0868da61474.boutiques",
+    name="fsl-cluster",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )
 
 
-class ClusterOutputs(typing.NamedTuple):
+class FslClusterOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `cluster(...)`.
+    Output object returned when calling `fsl_cluster(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -38,7 +38,7 @@ class ClusterOutputs(typing.NamedTuple):
     """Thresholded image."""
 
 
-def cluster(
+def fsl_cluster(
     in_file: InputPathType,
     threshold: float,
     connectivity: int | None = None,
@@ -66,7 +66,7 @@ def cluster(
     warpfield_file: InputPathType | None = None,
     xfm_file: InputPathType | None = None,
     runner: Runner | None = None,
-) -> ClusterOutputs:
+) -> FslClusterOutputs:
     """
     Uses FSL cluster to perform clustering on statistical output.
     
@@ -109,12 +109,12 @@ def cluster(
             non-linear: input->highres transform.
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `ClusterOutputs`).
+        NamedTuple of outputs (described in `FslClusterOutputs`).
     """
     runner = runner or get_global_runner()
-    execution = runner.start_execution(CLUSTER_METADATA)
+    execution = runner.start_execution(FSL_CLUSTER_METADATA)
     cargs = []
-    cargs.append("Cluster")
+    cargs.append("fsl-cluster")
     if connectivity is not None:
         cargs.append("--connectivity=" + str(connectivity))
     if cope_file is not None:
@@ -165,7 +165,7 @@ def cluster(
         cargs.append("--warpvol=" + execution.input_file(warpfield_file))
     if xfm_file is not None:
         cargs.append("--xfm=" + execution.input_file(xfm_file))
-    ret = ClusterOutputs(
+    ret = FslClusterOutputs(
         root=execution.output_file("."),
         index_file=execution.output_file("index_file"),
         localmax_txt_file=execution.output_file("localmax_txt_file"),
@@ -181,7 +181,7 @@ def cluster(
 
 
 __all__ = [
-    "CLUSTER_METADATA",
-    "ClusterOutputs",
-    "cluster",
+    "FSL_CLUSTER_METADATA",
+    "FslClusterOutputs",
+    "fsl_cluster",
 ]

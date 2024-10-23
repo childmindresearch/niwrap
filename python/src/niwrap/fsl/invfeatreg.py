@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INVFEATREG_METADATA = Metadata(
-    id="9378320ffd8a0ac424c55b2728e87a7b5b8d8475.boutiques",
+    id="9791021be34b4481a5fc7e637f7174f1c7d93729.boutiques",
     name="invfeatreg",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
@@ -20,15 +20,10 @@ class InvfeatregOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    inverted_warp_file: OutputPathType
-    """Inverted warp file"""
 
 
 def invfeatreg(
-    warp_file: InputPathType,
-    reference: InputPathType,
-    output_file: str,
-    verbose_flag: bool = False,
+    feat_directory: str,
     runner: Runner | None = None,
 ) -> InvfeatregOutputs:
     """
@@ -39,11 +34,7 @@ def invfeatreg(
     URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
     
     Args:
-        warp_file: Input warp file (e.g., highres2standard_warp).
-        reference: Reference image (e.g., highres.nii.gz).
-        output_file: Output filename for the inverted warp file (e.g.,\
-            standard2highres_warp).
-        verbose_flag: Verbose (switch on diagnostic messages).
+        feat_directory: FEAT Directory.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `InvfeatregOutputs`).
@@ -51,18 +42,10 @@ def invfeatreg(
     runner = runner or get_global_runner()
     execution = runner.start_execution(INVFEATREG_METADATA)
     cargs = []
-    cargs.append("invwarp")
-    cargs.append("-w")
-    cargs.append(execution.input_file(warp_file))
-    cargs.append("-r")
-    cargs.append(execution.input_file(reference))
-    cargs.append("-o")
-    cargs.append(output_file)
-    if verbose_flag:
-        cargs.append("-v")
+    cargs.append("invfeatreg")
+    cargs.append(feat_directory)
     ret = InvfeatregOutputs(
         root=execution.output_file("."),
-        inverted_warp_file=execution.output_file(output_file),
     )
     execution.run(cargs)
     return ret

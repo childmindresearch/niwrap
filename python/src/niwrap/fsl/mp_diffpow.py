@@ -6,17 +6,17 @@ import pathlib
 from styxdefs import *
 import dataclasses
 
-MP_DIFF_METADATA = Metadata(
-    id="884cfc5d90c21df0b9ccd0897c4e4923aeae8673.boutiques",
-    name="mp_diff",
+MP_DIFFPOW_METADATA = Metadata(
+    id="91d2ea4e2862c66eefad1a882917dd841db8ad1d.boutiques",
+    name="mp_diffpow",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )
 
 
-class MpDiffOutputs(typing.NamedTuple):
+class MpDiffpowOutputs(typing.NamedTuple):
     """
-    Output object returned when calling `mp_diff(...)`.
+    Output object returned when calling `mp_diffpow(...)`.
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
@@ -25,11 +25,11 @@ class MpDiffOutputs(typing.NamedTuple):
     parameters, and squared differenced values."""
 
 
-def mp_diff(
+def mp_diffpow(
     reg_file: InputPathType,
     diff_reg_file: str,
     runner: Runner | None = None,
-) -> MpDiffOutputs:
+) -> MpDiffpowOutputs:
     """
     Generates a file with specific motion parameter calculations useful for
     accounting for 'spin history' effects and other variations not accounted for by
@@ -46,15 +46,15 @@ def mp_diff(
             (e.g., diffregparam.dat).
         runner: Command runner.
     Returns:
-        NamedTuple of outputs (described in `MpDiffOutputs`).
+        NamedTuple of outputs (described in `MpDiffpowOutputs`).
     """
     runner = runner or get_global_runner()
-    execution = runner.start_execution(MP_DIFF_METADATA)
+    execution = runner.start_execution(MP_DIFFPOW_METADATA)
     cargs = []
-    cargs.append("mp_diff")
+    cargs.append("mp_diffpow.sh")
     cargs.append(execution.input_file(reg_file))
     cargs.append(diff_reg_file)
-    ret = MpDiffOutputs(
+    ret = MpDiffpowOutputs(
         root=execution.output_file("."),
         outfile=execution.output_file(diff_reg_file),
     )
@@ -63,7 +63,7 @@ def mp_diff(
 
 
 __all__ = [
-    "MP_DIFF_METADATA",
-    "MpDiffOutputs",
-    "mp_diff",
+    "MP_DIFFPOW_METADATA",
+    "MpDiffpowOutputs",
+    "mp_diffpow",
 ]

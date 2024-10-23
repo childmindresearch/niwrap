@@ -7,8 +7,8 @@ from styxdefs import *
 import dataclasses
 
 RANDOMISE_METADATA = Metadata(
-    id="7c88f00870d28004baf9e29327e2f520942680d3.boutiques",
-    name="Randomise",
+    id="838034b8c2314c7c20bba95cc45bfa9cfcbbaf47.boutiques",
+    name="randomise",
     package="fsl",
     container_image_tag="mcin/fsl:6.0.5",
 )
@@ -117,7 +117,7 @@ def randomise(
     runner = runner or get_global_runner()
     execution = runner.start_execution(RANDOMISE_METADATA)
     cargs = []
-    cargs.append("Randomise")
+    cargs.append("randomise")
     cargs.extend([
         "-i",
         execution.input_file(in_file)
