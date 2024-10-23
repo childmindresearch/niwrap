@@ -1845,7 +1845,8 @@
       },
       {
         "target": "@djunct_modal_smoothing_with_rep",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@djunct_modal_smoothing_with_rep.json"
       },
       {
         "target": "@djunct_montage_coordinator",
