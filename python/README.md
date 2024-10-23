@@ -48,7 +48,7 @@ pip install -e "git+https://github.com/childmindresearch/niwrap.git/#egg=niwrap&
 | [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki) | In progress | [`6.0.5`](https://hub.docker.com/r/brainlife/fsl) | 241/312 (77.2%) |
 | [FreeSurfer](https://github.com/freesurfer/freesurfer) | In progress | [`7.4.1`](https://hub.docker.com/r/freesurfer/freesurfer) | 713/806 (88.5%) |
 | [Greedy](https://sites.google.com/view/greedyreg/about) | In progress | [`1.0.1`](https://hub.docker.com/r/pyushkevich/itksnap) | 1/1 (100% 🎉) |
-| [MRTrix3](https://www.mrtrix.org/) | Testing | [`3.0.4`](https://hub.docker.com/r/mrtrix3/mrtrix3) | 117/125 (93.6%) |
+| [MRTrix3](https://www.mrtrix.org/) | Testing | [`3.0.4`](https://hub.docker.com/r/mrtrix3/mrtrix3) | 115/121 (95.0%) |
 | [MRTrix3Tissue](https://3tissue.github.io/) | Testing | [`5.2.8`](https://hub.docker.com/r/brainlife/3tissue) | 1/1 (100% 🎉) |
 | [NiftyReg](http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg) | In progress | [`1.4.0`](https://hub.docker.com/r/vnmd/niftyreg_1.4.0) | 7/7 (100% 🎉) |
 
