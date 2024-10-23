@@ -2343,8 +2343,9 @@
         "descriptor": "descriptors/afni/abids_json_tool.py.json"
       },
       {
-        "target": "abids_tool.py",
-        "status": "missing"
+        "target": "abids_tool",
+        "status": "done",
+        "descriptor": "descriptors/afni/abids_tool.json"
       },
       {
         "target": "adjunct_apqc_tsnr_general",
