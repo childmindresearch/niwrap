@@ -1982,7 +1982,8 @@
       },
       {
         "target": "@statauxcode",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@statauxcode.json"
       },
       {
         "target": "@suma_acknowledge",

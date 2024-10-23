@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "statauxcode",
+  "name": "@statauxcode",
   "author": "AFNI Developers",
   "description": "Returns the name or number of a statistics code based on specified mappings.",
   "command-line": "@statauxcode [CODE]",
