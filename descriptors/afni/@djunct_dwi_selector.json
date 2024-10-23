@@ -1,5 +1,5 @@
 {
-  "name": "@djunct_dwi_selector",
+  "name": "@djunct_dwi_selector.tcsh",
   "tool-version": "24.2.06",
   "description": "Selects DWI data and creates a representative image.",
   "command-line": "@djunct_dwi_selector.tcsh [DWI] [PNG] [OUTFILE]",

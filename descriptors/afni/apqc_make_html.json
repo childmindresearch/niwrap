@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "apqc_make_html",
+  "name": "apqc_make_html.py",
   "description": "Tool to generate HTML reports",
   "command-line": "apqc_make_html.py -qc_dir [QC_DIR]",
   "inputs": [

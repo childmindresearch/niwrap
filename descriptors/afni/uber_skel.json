@@ -1,9 +1,9 @@
 {
   "tool-version": "24.2.06",
-  "name": "uber_skel",
+  "name": "uber_skel.py",
   "author": "AFNI Developers",
   "description": "Sample uber processing program for initializing user and control variables, with options for both GUI and non-GUI modes.",
-  "command-line": "uber_skel [QT_OPTIONS] [NO_GUI_FLAG] [PRINT_SCRIPT] [SAVE_SCRIPT] [USER_VAR] [HELP_HOWTO_PROGRAM] [HELP] [HELP_GUI] [HISTORY] [SHOW_VALID_OPTS] [VERSION]",
+  "command-line": "uber_skel.py [QT_OPTIONS] [NO_GUI_FLAG] [PRINT_SCRIPT] [SAVE_SCRIPT] [USER_VAR] [HELP_HOWTO_PROGRAM] [HELP] [HELP_GUI] [HISTORY] [SHOW_VALID_OPTS] [VERSION]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"

@@ -1,0 +1,93 @@
+{
+  "tool-version": "24.2.06",
+  "name": "SpharmReco",
+  "author": "AFNI Developers",
+  "description": "Spherical Harmonics Reconstruction from a set of harmonics and their corresponding coefficients.",
+  "command-line": "SpharmReco [SURF] [L] [BASES_PREFIX] [COEF] [PREFIX] [SDR] [DBG] [s]",
+  "inputs": [
+    {
+      "command-line-flag": "-i_TYPE",
+      "description": "Surface that provides the topology of the mesh (nodes' connections). TYPE specifies the input surface type.",
+      "value-key": "[SURF]",
+      "type": "String",
+      "optional": false,
+      "id": "input_surface",
+      "name": "Input Surface"
+    },
+    {
+      "command-line-flag": "-l",
+      "description": "Decomposition order",
+      "value-key": "[L]",
+      "type": "Number",
+      "optional": false,
+      "id": "decomposition_order",
+      "name": "Decomposition Order"
+    },
+    {
+      "command-line-flag": "-bases_prefix",
+      "description": "Prefix of files containing the bases functions (spherical harmonics). These files are generated with SpharmDeco.",
+      "value-key": "[BASES_PREFIX]",
+      "type": "String",
+      "optional": false,
+      "id": "bases_prefix",
+      "name": "Bases Prefix"
+    },
+    {
+      "command-line-flag": "-coef",
+      "description": "Coefficients files used to recompose data columns. Multiple coefficient files can be specified by repeating the option.",
+      "value-key": "[COEF]",
+      "type": "File",
+      "optional": false,
+      "list": true,
+      "min-list-entries": 1,
+      "id": "coefficients",
+      "name": "Coefficient Files"
+    },
+    {
+      "command-line-flag": "-prefix",
+      "description": "Write out the reconstructed data into dataset PREFIX. The output contains N columns; one for each COEF file.",
+      "value-key": "[PREFIX]",
+      "type": "String",
+      "optional": true,
+      "id": "output_prefix",
+      "name": "Output Prefix"
+    },
+    {
+      "command-line-flag": "-o_TYPE",
+      "description": "Write out a new surface with reconstructed coordinates. Requires N to be a multiple of 3.",
+      "value-key": "[SDR]",
+      "type": "String",
+      "optional": true,
+      "list": true,
+      "id": "output_surface",
+      "name": "Output Surface"
+    },
+    {
+      "command-line-flag": "-debug",
+      "description": "Debug levels (1-3)",
+      "value-key": "[DBG]",
+      "type": "Number",
+      "optional": true,
+      "id": "debug",
+      "name": "Debug Level"
+    },
+    {
+      "command-line-flag": "-sigma",
+      "description": "Smoothing parameter (0 .. 0.001) weighing the contribution of higher order harmonics",
+      "value-key": "[s]",
+      "type": "Number",
+      "minimum": 0,
+      "maximum": 0.001,
+      "integer": false,
+      "optional": true,
+      "id": "smoothing",
+      "name": "Smoothing Parameter"
+    }
+  ],
+  "schema-version": "0.5",
+  "container-image": {
+    "type": "docker",
+    "image": "afni/afni_make_build:AFNI_24.2.06"
+  },
+  "url": "https://afni.nimh.nih.gov/"
+}

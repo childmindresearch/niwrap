@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "epi_b0_correct",
+  "name": "epi_b0_correct.py",
   "author": "AFNI Developers",
   "description": "B0 distortion correction tool using an acquired frequency (phase) image.",
   "url": "https://afni.nimh.nih.gov/",
