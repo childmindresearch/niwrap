@@ -188,9 +188,9 @@
         "descriptor": "descriptors/fsl/checkFEAT.json"
       },
       {
-        "target": "fsl-cluster",
+        "target": "cluster",
         "status": "done",
-        "descriptor": "descriptors/fsl/fsl-cluster.json"
+        "descriptor": "descriptors/fsl/cluster.json"
       },
       {
         "target": "cluster2html",
