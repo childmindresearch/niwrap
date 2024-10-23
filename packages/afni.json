@@ -2398,8 +2398,9 @@
         "descriptor": "descriptors/afni/adjunct_select_str.py.json"
       },
       {
-        "target": "adjunct_simplify_cost.py",
-        "status": "missing"
+        "target": "adjunct_simplify_cost",
+        "status": "done",
+        "descriptor": "descriptors/afni/adjunct_simplify_cost.json"
       },
       {
         "target": "adjunct_suma_fs_mask_and_qc",
