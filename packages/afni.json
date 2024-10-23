@@ -1828,8 +1828,9 @@
         "descriptor": "descriptors/afni/@djunct_anonymize.json"
       },
       {
-        "target": "@djunct_dwi_selector.tcsh",
-        "status": "missing"
+        "target": "@djunct_dwi_selector",
+        "status": "done",
+        "descriptor": "descriptors/afni/@djunct_dwi_selector.json"
       },
       {
         "target": "@djunct_edgy_align_check",
