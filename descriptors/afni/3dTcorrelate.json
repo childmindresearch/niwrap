@@ -1,8 +1,8 @@
 {
-  "name": "3dTCorrelate",
-  "command-line": "3dTCorrelate [XSET] [YSET] [PEARSON] [SPEARMAN] [QUADRANT] [KTAUB] [COVARIANCE] [PARTIAL] [YCOEF] [FISHER] [POLORT] [ORT] [AUTOCLIP] [AUTOMASK] [ZCENSOR] [PREFIX]",
+  "name": "3dTcorrelate",
+  "command-line": "3dTcorrelate [XSET] [YSET] [PEARSON] [SPEARMAN] [QUADRANT] [KTAUB] [COVARIANCE] [PARTIAL] [YCOEF] [FISHER] [POLORT] [ORT] [AUTOCLIP] [AUTOMASK] [ZCENSOR] [PREFIX]",
   "author": "AFNI Developers",
-  "description": "3dTCorrelate. Computes the correlation coefficient between corresponding voxel time series in two input 3D+time datasets 'xset' and 'yset'.",
+  "description": "3dTcorrelate. Computes the correlation coefficient between corresponding voxel time series in two input 3D+time datasets 'xset' and 'yset'.",
   "url": "https://afni.nimh.nih.gov/",
   "inputs": [
     {
