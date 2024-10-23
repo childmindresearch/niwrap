@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "ROI_modal_grow",
+  "name": "@ROI_modal_grow",
   "author": "AFNI Developers",
   "description": "Script to grow a set of regions in a volumetric dataset using modal smoothing.",
   "command-line": "@ROI_modal_grow -input [INPUT_DATASET] -niters [NUM_ITERATIONS] -outdir [OUTPUT_DIR] -mask [MASK_DATASET] -prefix [OUTPUT_PREFIX] -NN [NEIGHBORHOOD_TYPE]",

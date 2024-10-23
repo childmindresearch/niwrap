@@ -1616,7 +1616,8 @@
       },
       {
         "target": "@ROI_modal_grow",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@ROI_modal_grow.json"
       },
       {
         "target": "@R_funclist",
