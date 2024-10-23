@@ -233,7 +233,7 @@
       },
       {
         "target": "for_each",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "label2colour",
@@ -396,11 +396,11 @@
       },
       {
         "target": "mrtrix_cleanup",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "mrview",
-        "status": "done",
+        "status": "ignore",
         "descriptor": "descriptors/mrtrix/mrview.json"
       },
       {
@@ -459,7 +459,7 @@
       },
       {
         "target": "shview",
-        "status": "done",
+        "status": "ignore",
         "descriptor": "descriptors/mrtrix/shview.json"
       },
       {
