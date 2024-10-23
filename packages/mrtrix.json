@@ -400,8 +400,7 @@
       },
       {
         "target": "mrview",
-        "status": "done",
-        "descriptor": "descriptors/mrtrix/mrview.json"
+        "status": "ignore"
       },
       {
         "target": "mtnormalise",
@@ -459,8 +458,7 @@
       },
       {
         "target": "shview",
-        "status": "done",
-        "descriptor": "descriptors/mrtrix/shview.json"
+        "status": "ignore"
       },
       {
         "target": "tck2connectome",
