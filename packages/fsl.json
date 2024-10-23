@@ -1031,7 +1031,8 @@
       },
       {
         "target": "new_invwarp",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/fsl/new_invwarp.json"
       },
       {
         "target": "old_betall",
