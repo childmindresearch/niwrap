@@ -2486,8 +2486,9 @@
         "status": "missing"
       },
       {
-        "target": "apqc_make_html.py",
-        "status": "missing"
+        "target": "apqc_make_html",
+        "status": "done",
+        "descriptor": "descriptors/afni/apqc_make_html.json"
       },
       {
         "target": "apqc_make_tcsh.py",
