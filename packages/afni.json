@@ -3032,8 +3032,9 @@
         "descriptor": "descriptors/afni/read_matlab_files.py.json"
       },
       {
-        "target": "realtime_receiver.py",
-        "status": "missing"
+        "target": "realtime_receiver",
+        "status": "done",
+        "descriptor": "descriptors/afni/realtime_receiver.json"
       },
       {
         "target": "rmz",
