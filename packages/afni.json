@@ -1444,7 +1444,8 @@
       },
       {
         "target": "@GetAfniDims",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/@GetAfniDims.json"
       },
       {
         "target": "@GetAfniID",

@@ -1,9 +1,9 @@
 {
   "tool-version": "24.2.06",
-  "name": "GetAfniDims",
+  "name": "@GetAfniDims",
   "author": "AFNI Developers",
   "description": "A utility tool to return dimensions of AFNI dataset",
-  "command-line": "GetAfniDims [DSET]",
+  "command-line": "@GetAfniDims [DSET]",
   "inputs": [
     {
       "description": "Input AFNI dataset",
