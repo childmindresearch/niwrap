@@ -982,8 +982,7 @@
       },
       {
         "target": "mist_display",
-        "status": "done",
-        "descriptor": "descriptors/fsl/mist_display.json"
+        "status": "ignore"
       },
       {
         "target": "mist_mesh_utils",
@@ -1534,8 +1533,7 @@
       },
       {
         "target": "xtract_viewer",
-        "status": "done",
-        "descriptor": "descriptors/fsl/xtract_viewer.json"
+        "status": "ignore"
       },
       {
         "target": "zeropad",
