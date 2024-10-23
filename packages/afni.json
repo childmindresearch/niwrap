@@ -2441,7 +2441,7 @@
       },
       {
         "target": "afni_python_wrapper.py",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "afni_run_R",
