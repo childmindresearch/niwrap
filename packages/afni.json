@@ -744,8 +744,9 @@
         "descriptor": "descriptors/afni/3dOverlap.json"
       },
       {
-        "target": "3dPAR2AFNI.pl",
-        "status": "missing"
+        "target": "3dPAR2AFNI",
+        "status": "done",
+        "descriptor": "descriptors/afni/3dPAR2AFNI.json"
       },
       {
         "target": "3dPFM",
