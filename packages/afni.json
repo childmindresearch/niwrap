@@ -1433,7 +1433,7 @@
       },
       {
         "target": "@FullPath",
-        "status": "done",
+        "status": "ignore",
         "descriptor": "descriptors/afni/@FullPath.json"
       },
       {
@@ -1951,7 +1951,7 @@
       },
       {
         "target": "@parse_name",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "@radial_correlate",
@@ -2154,8 +2154,7 @@
       },
       {
         "target": "ParseName",
-        "status": "done",
-        "descriptor": "descriptors/afni/ParseName.json"
+        "status": "missing"
       },
       {
         "target": "RBA",
