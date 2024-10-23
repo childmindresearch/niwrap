@@ -3145,8 +3145,9 @@
         "descriptor": "descriptors/afni/uber_proc.py.json"
       },
       {
-        "target": "uber_skel.py",
-        "status": "missing"
+        "target": "uber_skel",
+        "status": "done",
+        "descriptor": "descriptors/afni/uber_skel.json"
       },
       {
         "target": "uber_subject.py",
