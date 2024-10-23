@@ -1,6 +1,6 @@
 {
   "tool-version": "24.2.06",
-  "name": "Spherical Harmonics Reconstruction",
+  "name": "SpharmReco",
   "author": "AFNI Developers",
   "description": "Spherical Harmonics Reconstruction from a set of harmonics and their corresponding coefficients.",
   "command-line": "SpharmReco [SURF] [L] [BASES_PREFIX] [COEF] [PREFIX] [SDR] [DBG] [s]",

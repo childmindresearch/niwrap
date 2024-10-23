@@ -2234,7 +2234,8 @@
       },
       {
         "target": "SpharmReco",
-        "status": "missing"
+        "status": "done",
+        "descriptor": "descriptors/afni/SpharmReco.json"
       },
       {
         "target": "Surf2VolCoord",
