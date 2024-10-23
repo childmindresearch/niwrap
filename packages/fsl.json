@@ -17,7 +17,7 @@
       },
       {
         "target": "Runtcl",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "Text2Vest",
@@ -209,7 +209,7 @@
       },
       {
         "target": "contrast_mgr",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "convert_xfm",
