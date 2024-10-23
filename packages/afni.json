@@ -2399,8 +2399,9 @@
         "descriptor": "descriptors/afni/adjunct_tort_plot_dp_align.json"
       },
       {
-        "target": "adjunct_tort_read_dp_align.py",
-        "status": "missing"
+        "target": "adjunct_tort_read_dp_align",
+        "status": "done",
+        "descriptor": "descriptors/afni/adjunct_tort_read_dp_align.json"
       },
       {
         "target": "adwarp",
