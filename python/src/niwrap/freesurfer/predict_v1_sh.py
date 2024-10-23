@@ -66,7 +66,7 @@ def predict_v1_sh(
         ])
     if print_mode_flag:
         cargs.append("-p")
-    cargs.append(" ".join(subjects) + "...")
+    cargs.append("".join(subjects) + "...")
     ret = PredictV1ShOutputs(
         root=execution.output_file("."),
     )

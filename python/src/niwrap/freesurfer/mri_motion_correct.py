@@ -48,7 +48,7 @@ def mri_motion_correct(
     cargs = []
     cargs.append("mri_motion_correct")
     cargs.append(outfile)
-    cargs.append(" ".join([execution.input_file(f) for f in infiles]) + "...")
+    cargs.append("".join([execution.input_file(f) for f in infiles]) + "...")
     ret = MriMotionCorrectOutputs(
         root=execution.output_file("."),
         corrected_outfile=execution.output_file(outfile),

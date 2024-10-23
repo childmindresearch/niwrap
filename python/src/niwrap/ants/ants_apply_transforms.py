@@ -250,8 +250,8 @@ class AntsApplyTransformsMultiLabel:
             Command line arguments
         """
         cargs = []
-        if self.sigma is not None and self.alpha is not None:
-            cargs.append("MultiLabel[" + "sigma=" + str(self.sigma) + ",alpha=" + str(self.alpha) + "]")
+        if self.sigma is not None or self.alpha is not None:
+            cargs.append("MultiLabel[" + "sigma=" + (str(self.sigma) if self.sigma is not None else "") + ",alpha=" + (str(self.alpha) if self.alpha is not None else "") + "]")
         return cargs
 
 
@@ -278,8 +278,8 @@ class AntsApplyTransformsGaussian:
             Command line arguments
         """
         cargs = []
-        if self.sigma is not None and self.alpha is not None:
-            cargs.append("Gaussian[" + "sigma=" + str(self.sigma) + ",alpha=" + str(self.alpha) + "]")
+        if self.sigma is not None or self.alpha is not None:
+            cargs.append("Gaussian[" + "sigma=" + (str(self.sigma) if self.sigma is not None else "") + ",alpha=" + (str(self.alpha) if self.alpha is not None else "") + "]")
         return cargs
 
 

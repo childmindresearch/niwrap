@@ -254,8 +254,8 @@ class AntsRegistrationTransformBsplineDisplacementField:
             Command line arguments
         """
         cargs = []
-        if self.total_field_mesh_size_at_base_level is not None and self.spline_order is not None:
-            cargs.append("BSplineDisplacementField[" + str(self.gradient_step) + "," + str(self.update_field_mesh_size_at_base_level) + "," + str(self.total_field_mesh_size_at_base_level) + str(self.spline_order) + "]")
+        if self.total_field_mesh_size_at_base_level is not None or self.spline_order is not None:
+            cargs.append("BSplineDisplacementField[" + str(self.gradient_step) + "," + str(self.update_field_mesh_size_at_base_level) + "," + (str(self.total_field_mesh_size_at_base_level) if self.total_field_mesh_size_at_base_level is not None else "") + (str(self.spline_order) if self.spline_order is not None else "") + "]")
         return cargs
 
 
@@ -305,8 +305,8 @@ class AntsRegistrationTransformTimeVaryingBsplineVelocityField:
             Command line arguments
         """
         cargs = []
-        if self.number_of_time_point_samples is not None and self.spline_order is not None:
-            cargs.append("TimeVaryingBSplineVelocityField[" + str(self.gradient_step) + "," + str(self.velocity_field_mesh_size) + "," + str(self.number_of_time_point_samples) + "," + str(self.spline_order) + "]")
+        if self.number_of_time_point_samples is not None or self.spline_order is not None:
+            cargs.append("TimeVaryingBSplineVelocityField[" + str(self.gradient_step) + "," + str(self.velocity_field_mesh_size) + "," + (str(self.number_of_time_point_samples) if self.number_of_time_point_samples is not None else "") + "," + (str(self.spline_order) if self.spline_order is not None else "") + "]")
         return cargs
 
 
@@ -353,8 +353,8 @@ class AntsRegistrationTransformBsplineSyn:
             Command line arguments
         """
         cargs = []
-        if self.total_field_mesh_size_at_base_level is not None and self.spline_order is not None:
-            cargs.append("BSplineSyN[" + str(self.gradient_step) + "," + str(self.update_field_mesh_size_at_base_level) + "," + str(self.total_field_mesh_size_at_base_level) + "," + str(self.spline_order) + "]")
+        if self.total_field_mesh_size_at_base_level is not None or self.spline_order is not None:
+            cargs.append("BSplineSyN[" + str(self.gradient_step) + "," + str(self.update_field_mesh_size_at_base_level) + "," + (str(self.total_field_mesh_size_at_base_level) if self.total_field_mesh_size_at_base_level is not None else "") + "," + (str(self.spline_order) if self.spline_order is not None else "") + "]")
         return cargs
 
 
@@ -403,8 +403,8 @@ class AntsRegistrationTransformBsplineExponential:
             Command line arguments
         """
         cargs = []
-        if self.velocity_field_mesh_size_at_base_level is not None and self.number_of_integration_steps is not None and self.spline_order is not None:
-            cargs.append("BSplineExponential[" + str(self.gradient_step) + "," + str(self.update_field_mesh_size_at_base_level) + "," + str(self.velocity_field_mesh_size_at_base_level) + "," + str(self.number_of_integration_steps) + "," + str(self.spline_order) + "]")
+        if self.velocity_field_mesh_size_at_base_level is not None or self.number_of_integration_steps is not None or self.spline_order is not None:
+            cargs.append("BSplineExponential[" + str(self.gradient_step) + "," + str(self.update_field_mesh_size_at_base_level) + "," + (str(self.velocity_field_mesh_size_at_base_level) if self.velocity_field_mesh_size_at_base_level is not None else "") + "," + (str(self.number_of_integration_steps) if self.number_of_integration_steps is not None else "") + "," + (str(self.spline_order) if self.spline_order is not None else "") + "]")
         return cargs
 
 
@@ -433,8 +433,8 @@ class AntsRegistrationMetricAntsNeighbourhoodCrossCorrelation:
         if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
             raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
-        if self.radius is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
-            cargs.append("CC[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.radius) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
+        if self.radius is not None or self.sampling_strategy is not None or self.sampling_percentage is not None or self.use_gradient_filter is not None:
+            cargs.append("CC[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + (str(self.radius) if self.radius is not None else "") + "," + (self.sampling_strategy if self.sampling_strategy is not None else "") + "," + (str(self.sampling_percentage) if self.sampling_percentage is not None else "") + "," + (self.use_gradient_filter if self.use_gradient_filter is not None else "") + "]")
         return cargs
 
 
@@ -463,8 +463,8 @@ class AntsRegistrationMetricMutualInformation:
         if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
             raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
-        if self.number_of_bins is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
-            cargs.append("MI[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.number_of_bins) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
+        if self.number_of_bins is not None or self.sampling_strategy is not None or self.sampling_percentage is not None or self.use_gradient_filter is not None:
+            cargs.append("MI[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + (str(self.number_of_bins) if self.number_of_bins is not None else "") + "," + (self.sampling_strategy if self.sampling_strategy is not None else "") + "," + (str(self.sampling_percentage) if self.sampling_percentage is not None else "") + "," + (self.use_gradient_filter if self.use_gradient_filter is not None else "") + "]")
         return cargs
 
 
@@ -493,8 +493,8 @@ class AntsRegistrationMetricMattes:
         if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
             raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
-        if self.number_of_bins is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
-            cargs.append("Mattes[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.number_of_bins) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
+        if self.number_of_bins is not None or self.sampling_strategy is not None or self.sampling_percentage is not None or self.use_gradient_filter is not None:
+            cargs.append("Mattes[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + (str(self.number_of_bins) if self.number_of_bins is not None else "") + "," + (self.sampling_strategy if self.sampling_strategy is not None else "") + "," + (str(self.sampling_percentage) if self.sampling_percentage is not None else "") + "," + (self.use_gradient_filter if self.use_gradient_filter is not None else "") + "]")
         return cargs
 
 
@@ -523,8 +523,8 @@ class AntsRegistrationMetricMeanSquares:
         if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
             raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
-        if self.radius is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
-            cargs.append("MeanSquares[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.radius) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
+        if self.radius is not None or self.sampling_strategy is not None or self.sampling_percentage is not None or self.use_gradient_filter is not None:
+            cargs.append("MeanSquares[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + (str(self.radius) if self.radius is not None else "") + "," + (self.sampling_strategy if self.sampling_strategy is not None else "") + "," + (str(self.sampling_percentage) if self.sampling_percentage is not None else "") + "," + (self.use_gradient_filter if self.use_gradient_filter is not None else "") + "]")
         return cargs
 
 
@@ -553,8 +553,8 @@ class AntsRegistrationMetricDemons:
         if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
             raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
-        if self.number_of_bins is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
-            cargs.append("Demons[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.number_of_bins) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
+        if self.number_of_bins is not None or self.sampling_strategy is not None or self.sampling_percentage is not None or self.use_gradient_filter is not None:
+            cargs.append("Demons[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + (str(self.number_of_bins) if self.number_of_bins is not None else "") + "," + (self.sampling_strategy if self.sampling_strategy is not None else "") + "," + (str(self.sampling_percentage) if self.sampling_percentage is not None else "") + "," + (self.use_gradient_filter if self.use_gradient_filter is not None else "") + "]")
         return cargs
 
 
@@ -583,8 +583,8 @@ class AntsRegistrationMetricGlobalCorrelation:
         if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
             raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
-        if self.radius is not None and self.sampling_strategy is not None and self.sampling_percentage is not None and self.use_gradient_filter is not None:
-            cargs.append("GC[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + str(self.radius) + "," + self.sampling_strategy + "," + str(self.sampling_percentage) + "," + self.use_gradient_filter + "]")
+        if self.radius is not None or self.sampling_strategy is not None or self.sampling_percentage is not None or self.use_gradient_filter is not None:
+            cargs.append("GC[" + self.fixed_image + "," + self.moving_image + "," + str(self.metric_weight) + "," + (str(self.radius) if self.radius is not None else "") + "," + (self.sampling_strategy if self.sampling_strategy is not None else "") + "," + (str(self.sampling_percentage) if self.sampling_percentage is not None else "") + "," + (self.use_gradient_filter if self.use_gradient_filter is not None else "") + "]")
         return cargs
 
 
@@ -611,8 +611,8 @@ class AntsRegistrationMetricEuclideanIcp:
         if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
             raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
-        if self.sampling_percentage is not None and self.boundary_points_only is not None:
-            cargs.append("ICP[" + self.fixed_point_set + "," + self.moving_point_set + "," + str(self.metric_weight) + "," + str(self.sampling_percentage) + "," + self.boundary_points_only + "]")
+        if self.sampling_percentage is not None or self.boundary_points_only is not None:
+            cargs.append("ICP[" + self.fixed_point_set + "," + self.moving_point_set + "," + str(self.metric_weight) + "," + (str(self.sampling_percentage) if self.sampling_percentage is not None else "") + "," + (self.boundary_points_only if self.boundary_points_only is not None else "") + "]")
         return cargs
 
 
@@ -637,8 +637,8 @@ class AntsRegistrationMetricPointSetExpectation:
         if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
             raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
-        if self.point_set_sigma is not None and self.sampling_percentage is not None:
-            cargs.append("PSE[[FIXED_IMAGE],[MOVING_IMAGE]," + str(self.metric_weight) + "," + "," + str(self.point_set_sigma) + "[SAMPLING_STRATEGY]" + "," + str(self.sampling_percentage) + "[USE_GRADIENT_FILTER]]")
+        if self.point_set_sigma is not None or self.sampling_percentage is not None:
+            cargs.append("PSE[[FIXED_IMAGE],[MOVING_IMAGE]," + str(self.metric_weight) + "," + "," + (str(self.point_set_sigma) if self.point_set_sigma is not None else "") + "[SAMPLING_STRATEGY]" + "," + (str(self.sampling_percentage) if self.sampling_percentage is not None else "") + "[USE_GRADIENT_FILTER]]")
         return cargs
 
 
@@ -667,8 +667,8 @@ class AntsRegistrationMetricJensenHavrdaCharvetTsallis:
         if sampling_percentage is not None and not (0 <= sampling_percentage <= 1): 
             raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
-        if self.sampling_percentage is not None and self.boundary_points_only is not None and self.point_set_sigma is not None and self.k_neighborhood is not None:
-            cargs.append("JHCT[" + self.fixed_point_set + "," + self.moving_point_set + "," + str(self.metric_weight) + "," + str(self.sampling_percentage) + "," + self.boundary_points_only + "," + str(self.point_set_sigma) + "," + str(self.k_neighborhood) + "]")
+        if self.sampling_percentage is not None or self.boundary_points_only is not None or self.point_set_sigma is not None or self.k_neighborhood is not None:
+            cargs.append("JHCT[" + self.fixed_point_set + "," + self.moving_point_set + "," + str(self.metric_weight) + "," + (str(self.sampling_percentage) if self.sampling_percentage is not None else "") + "," + (self.boundary_points_only if self.boundary_points_only is not None else "") + "," + (str(self.point_set_sigma) if self.point_set_sigma is not None else "") + "," + (str(self.k_neighborhood) if self.k_neighborhood is not None else "") + "]")
         return cargs
 
 
@@ -855,8 +855,8 @@ class AntsRegistrationMasks:
             Command line arguments
         """
         cargs = []
-        if self.fixed_mask is not None and self.moving_mask is not None:
-            cargs.append("[" + self.fixed_mask + self.moving_mask + "]")
+        if self.fixed_mask is not None or self.moving_mask is not None:
+            cargs.append("[" + (self.fixed_mask if self.fixed_mask is not None else "") + (self.moving_mask if self.moving_mask is not None else "") + "]")
         return cargs
 
 

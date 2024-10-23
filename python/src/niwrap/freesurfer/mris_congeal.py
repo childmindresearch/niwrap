@@ -82,7 +82,7 @@ def mris_congeal(
     cargs.append("mris_congeal")
     cargs.append(input_surface_name)
     cargs.append(hemi)
-    cargs.append(" ".join(subjects) + "...")
+    cargs.append("".join(subjects) + "...")
     cargs.append(output_surface_name)
     if subjects_dir is not None:
         cargs.extend([
