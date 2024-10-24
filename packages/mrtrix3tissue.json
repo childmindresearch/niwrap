@@ -4,7 +4,7 @@
   "url": "https://3tissue.github.io/",
   "author": "MRTrix3Tissue Developers",
   "approach": "Source extraction",
-  "status": "Testing",
+  "status": "Well tested",
   "container": "brainlife/3tissue:5.2.8",
   "version": "5.2.8",
   "description": "MRtrix3Tissue is a fork of the MRtrix3 project. It aims to add capabilities for 3-Tissue CSD modelling and analysis to a complete version of the MRtrix3 software.",
