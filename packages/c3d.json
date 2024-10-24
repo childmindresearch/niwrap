@@ -12,7 +12,7 @@
     "endpoints": [
       {
         "target": "c2d",
-        "status": "missing"
+        "status": "ignore"
       },
       {
         "target": "c3d",
@@ -30,7 +30,7 @@
       },
       {
         "target": "c4d",
-        "status": "missing"
+        "status": "ignore"
       }
     ]
   }
