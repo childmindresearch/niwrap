@@ -70,13 +70,17 @@ def compile_wrappers():
 def update_styxdefs_version():
     import re
     file_path = PATH_OUTPUT / "../../pyproject.toml"
-    new_version = styxdefs_compat()
+    styxdefs_version = styxdefs_compat()
+    with open("VERSION", 'r', encoding="utf-8") as file:
+        package_version = file.read().strip()
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
     pattern = r'(styxdefs\s*=\s*")[^"]+"'
-    updated_content = re.sub(pattern, f'\\1{new_version}"', content)
+    content = re.sub(pattern, f'\\g<1>{styxdefs_version}"', content)
+    pattern = r'(version\s*=\s*")[^"]+"'
+    content = re.sub(pattern, f'\\g<1>{package_version}"', content)
     with open(file_path, 'w') as file:
-        file.write(updated_content)
+        file.write(content)
 
 
 def update_python_metadata():
@@ -232,7 +236,7 @@ if __name__ == "__main__":
     assert PATH_DESCRIPTORS.exists() and PATH_PACKAGES.exists()
 
     print("=== COMPILE WRAPPERS ===")
-    compile_wrappers()
+    #compile_wrappers()
 
     print("=== UPDATE PYTHON METADATA ===")
     update_python_metadata()
