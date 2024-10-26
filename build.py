@@ -231,6 +231,63 @@ def update_readme():
     )
 
 
+# =============================================================================
+# |                           VALIDATE BUILD                                  |
+# =============================================================================
+
+
+def validate_build():
+    print("Validating build...")
+
+    # Check if the output directory exists
+    if not PATH_OUTPUT.exists():
+        raise ValueError(f"Output directory {PATH_OUTPUT} does not exist.")
+
+    # Check if there are Python files in the output directory
+    python_files = [f for f in PATH_OUTPUT.glob("**/*.py") if f.name != "__init__.py"]
+    if not python_files:
+        raise ValueError(f"No Python files found in {PATH_OUTPUT}")
+
+    # Check if the number of Python files matches the number of descriptors
+    descriptor_count = sum(1 for _ in Path(PATH_DESCRIPTORS).glob("**/*.json"))
+    if len(python_files) != descriptor_count:
+        raise ValueError(f"Mismatch in number of Python files ({len(python_files)}) and descriptors ({descriptor_count})")
+
+    # Check if __init__.py exists in the output directory
+    if not (PATH_OUTPUT / "__init__.py").exists():
+        raise ValueError(f"__init__.py not found in {PATH_OUTPUT}")
+
+    # Check if README.md has been updated
+    with open("README.md", "r", encoding="utf-8") as f:
+        readme_content = f.read()
+        if "<!-- START_PACKAGES_TABLE -->" not in readme_content or "<!-- END_PACKAGES_TABLE -->" not in readme_content:
+            raise ValueError("README.md does not contain the expected package table markers")
+
+    # Check if pyproject.toml has been updated
+    with open(PATH_OUTPUT / "../../pyproject.toml", "r", encoding="utf-8") as f:
+        pyproject_content = f.read()
+        if "styxdefs =" not in pyproject_content or "version =" not in pyproject_content:
+            raise ValueError("pyproject.toml does not contain expected version information")
+
+    # Check if all packages have at least one descriptor
+    for package_file in PATH_PACKAGES.glob("*.json"):
+        with open(package_file, "r", encoding="utf-8") as f:
+            package_data = json.load(f)
+            package_id = package_data.get("id")
+            if not package_id:
+                raise ValueError(f"Package {package_file.name} is missing 'id' field")
+            package_descriptors = list((PATH_DESCRIPTORS / package_id).glob("**/*.json"))
+            if not package_descriptors:
+                raise ValueError(f"No descriptors found for package {package_id}")
+
+    print("Build validation completed successfully.")
+
+
+# =============================================================================
+# |                                BUILD                                      |
+# =============================================================================
+
+
 if __name__ == "__main__":
     os.chdir(Path(__file__).parent)
     assert PATH_DESCRIPTORS.exists() and PATH_PACKAGES.exists()
@@ -243,3 +300,6 @@ if __name__ == "__main__":
 
     print("=== UPDATE README ===")
     update_readme()
+
+    print("=== VALIDATE BUILD ===")
+    validate_build()
