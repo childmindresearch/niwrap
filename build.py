@@ -236,7 +236,7 @@ if __name__ == "__main__":
     assert PATH_DESCRIPTORS.exists() and PATH_PACKAGES.exists()
 
     print("=== COMPILE WRAPPERS ===")
-    #compile_wrappers()
+    compile_wrappers()
 
     print("=== UPDATE PYTHON METADATA ===")
     update_python_metadata()
