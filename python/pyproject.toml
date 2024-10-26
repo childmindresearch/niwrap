@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "niwrap"
-version = "0.3.0"
+version = "0.3.1"
 description = "Neuroimaging Python wrappers."
 authors = ["Child Mind Institute <cmi-dair@childmind.org>"]
 license = "LGPL-2.1"
