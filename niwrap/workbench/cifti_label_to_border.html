@@ -187,7 +187,7 @@
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">border</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">CiftiLabelToBorderBorderOutputs</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">border</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiLabelToBorderBorderOutputs</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outputs from `CiftiLabelToBorderBorder`.This is a list of outputs with</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    the same length and order as the inputs.&quot;&quot;&quot;</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
@@ -553,7 +553,7 @@
 </span><span id="CiftiLabelToBorderOutputs-78"><a href="#CiftiLabelToBorderOutputs-78"><span class="linenos">78</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="CiftiLabelToBorderOutputs-79"><a href="#CiftiLabelToBorderOutputs-79"><span class="linenos">79</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="CiftiLabelToBorderOutputs-80"><a href="#CiftiLabelToBorderOutputs-80"><span class="linenos">80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="CiftiLabelToBorderOutputs-81"><a href="#CiftiLabelToBorderOutputs-81"><span class="linenos">81</span></a>    <span class="n">border</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">CiftiLabelToBorderBorderOutputs</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="CiftiLabelToBorderOutputs-81"><a href="#CiftiLabelToBorderOutputs-81"><span class="linenos">81</span></a>    <span class="n">border</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">CiftiLabelToBorderBorderOutputs</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="CiftiLabelToBorderOutputs-82"><a href="#CiftiLabelToBorderOutputs-82"><span class="linenos">82</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outputs from `CiftiLabelToBorderBorder`.This is a list of outputs with</span>
 </span><span id="CiftiLabelToBorderOutputs-83"><a href="#CiftiLabelToBorderOutputs-83"><span class="linenos">83</span></a><span class="sd">    the same length and order as the inputs.&quot;&quot;&quot;</span>
 </span></pre></div>
@@ -566,7 +566,7 @@
                             <div id="CiftiLabelToBorderOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">CiftiLabelToBorderOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">border</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n"><a href="#CiftiLabelToBorderBorderOutputs">CiftiLabelToBorderBorderOutputs</a></span><span class="p">]]</span></span>)</span>
+        <span class="name">CiftiLabelToBorderOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">border</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#CiftiLabelToBorderBorderOutputs">CiftiLabelToBorderBorderOutputs</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
@@ -592,7 +592,7 @@
                             </div>
                             <div id="CiftiLabelToBorderOutputs.border" class="classattr">
                                 <div class="attr variable">
-            <span class="name">border</span><span class="annotation">: Optional[List[<a href="#CiftiLabelToBorderBorderOutputs">CiftiLabelToBorderBorderOutputs</a>]]</span>
+            <span class="name">border</span><span class="annotation">: list[<a href="#CiftiLabelToBorderBorderOutputs">CiftiLabelToBorderBorderOutputs</a>] | None</span>
 
         
     </div>

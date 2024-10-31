@@ -368,7 +368,7 @@
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="n">predicted_signal</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output the predicted dwi image. &quot;&quot;&quot;</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">response_odf</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">Dwi2fodResponseOdfOutputs</span><span class="p">]</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="n">response_odf</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dwi2fodResponseOdfOutputs</span><span class="p">]</span>
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outputs from `Dwi2fodResponseOdf`.This is a list of outputs with the same</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a><span class="sd">    length and order as the inputs.&quot;&quot;&quot;</span>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>
@@ -945,7 +945,7 @@ used.</p>
 </span><span id="Dwi2fodOutputs-190"><a href="#Dwi2fodOutputs-190"><span class="linenos">190</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="Dwi2fodOutputs-191"><a href="#Dwi2fodOutputs-191"><span class="linenos">191</span></a>    <span class="n">predicted_signal</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="Dwi2fodOutputs-192"><a href="#Dwi2fodOutputs-192"><span class="linenos">192</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output the predicted dwi image. &quot;&quot;&quot;</span>
-</span><span id="Dwi2fodOutputs-193"><a href="#Dwi2fodOutputs-193"><span class="linenos">193</span></a>    <span class="n">response_odf</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">Dwi2fodResponseOdfOutputs</span><span class="p">]</span>
+</span><span id="Dwi2fodOutputs-193"><a href="#Dwi2fodOutputs-193"><span class="linenos">193</span></a>    <span class="n">response_odf</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Dwi2fodResponseOdfOutputs</span><span class="p">]</span>
 </span><span id="Dwi2fodOutputs-194"><a href="#Dwi2fodOutputs-194"><span class="linenos">194</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outputs from `Dwi2fodResponseOdf`.This is a list of outputs with the same</span>
 </span><span id="Dwi2fodOutputs-195"><a href="#Dwi2fodOutputs-195"><span class="linenos">195</span></a><span class="sd">    length and order as the inputs.&quot;&quot;&quot;</span>
 </span></pre></div>
@@ -958,7 +958,7 @@ used.</p>
                             <div id="Dwi2fodOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">Dwi2fodOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">predicted_signal</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">response_odf</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n"><a href="#Dwi2fodResponseOdfOutputs">Dwi2fodResponseOdfOutputs</a></span><span class="p">]</span></span>)</span>
+        <span class="name">Dwi2fodOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">predicted_signal</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">response_odf</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#Dwi2fodResponseOdfOutputs">Dwi2fodResponseOdfOutputs</a></span><span class="p">]</span></span>)</span>
 
         
     </div>
@@ -997,7 +997,7 @@ used.</p>
                             </div>
                             <div id="Dwi2fodOutputs.response_odf" class="classattr">
                                 <div class="attr variable">
-            <span class="name">response_odf</span><span class="annotation">: List[<a href="#Dwi2fodResponseOdfOutputs">Dwi2fodResponseOdfOutputs</a>]</span>
+            <span class="name">response_odf</span><span class="annotation">: list[<a href="#Dwi2fodResponseOdfOutputs">Dwi2fodResponseOdfOutputs</a>]</span>
 
         
     </div>

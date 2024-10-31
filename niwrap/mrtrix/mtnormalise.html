@@ -250,7 +250,7 @@
 </span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    excludes regions identified as outliers by the optimisation process. &quot;&quot;&quot;</span>
 </span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">check_factors</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output the tissue balance factors computed during normalisation. &quot;&quot;&quot;</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">input_output</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">MtnormaliseInputOutputOutputs</span><span class="p">]</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">input_output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MtnormaliseInputOutputOutputs</span><span class="p">]</span>
 </span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outputs from `MtnormaliseInputOutput`.This is a list of outputs with the</span>
 </span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    same length and order as the inputs.&quot;&quot;&quot;</span>
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>
@@ -872,7 +872,7 @@
 </span><span id="MtnormaliseOutputs-114"><a href="#MtnormaliseOutputs-114"><span class="linenos">114</span></a><span class="sd">    excludes regions identified as outliers by the optimisation process. &quot;&quot;&quot;</span>
 </span><span id="MtnormaliseOutputs-115"><a href="#MtnormaliseOutputs-115"><span class="linenos">115</span></a>    <span class="n">check_factors</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="MtnormaliseOutputs-116"><a href="#MtnormaliseOutputs-116"><span class="linenos">116</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output the tissue balance factors computed during normalisation. &quot;&quot;&quot;</span>
-</span><span id="MtnormaliseOutputs-117"><a href="#MtnormaliseOutputs-117"><span class="linenos">117</span></a>    <span class="n">input_output</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">MtnormaliseInputOutputOutputs</span><span class="p">]</span>
+</span><span id="MtnormaliseOutputs-117"><a href="#MtnormaliseOutputs-117"><span class="linenos">117</span></a>    <span class="n">input_output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">MtnormaliseInputOutputOutputs</span><span class="p">]</span>
 </span><span id="MtnormaliseOutputs-118"><a href="#MtnormaliseOutputs-118"><span class="linenos">118</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outputs from `MtnormaliseInputOutput`.This is a list of outputs with the</span>
 </span><span id="MtnormaliseOutputs-119"><a href="#MtnormaliseOutputs-119"><span class="linenos">119</span></a><span class="sd">    same length and order as the inputs.&quot;&quot;&quot;</span>
 </span></pre></div>
@@ -885,7 +885,7 @@
                             <div id="MtnormaliseOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">MtnormaliseOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">check_norm</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_factors</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_output</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n"><a href="#MtnormaliseInputOutputOutputs">MtnormaliseInputOutputOutputs</a></span><span class="p">]</span></span>)</span>
+        <span class="name">MtnormaliseOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">check_norm</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_mask</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">check_factors</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">input_output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#MtnormaliseInputOutputOutputs">MtnormaliseInputOutputOutputs</a></span><span class="p">]</span></span>)</span>
 
         
     </div>
@@ -952,7 +952,7 @@ excludes regions identified as outliers by the optimisation process.</p>
                             </div>
                             <div id="MtnormaliseOutputs.input_output" class="classattr">
                                 <div class="attr variable">
-            <span class="name">input_output</span><span class="annotation">: List[<a href="#MtnormaliseInputOutputOutputs">MtnormaliseInputOutputOutputs</a>]</span>
+            <span class="name">input_output</span><span class="annotation">: list[<a href="#MtnormaliseInputOutputOutputs">MtnormaliseInputOutputOutputs</a>]</span>
 
         
     </div>
