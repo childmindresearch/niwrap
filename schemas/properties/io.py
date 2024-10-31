@@ -50,8 +50,10 @@ class IOModel(BaseModel):
 
     @model_validator(mode="before")
     def validate_dependencies(cls, values):
-        if values.get("command_line_flag_separator") and not values.get(
-            "command_line_flag"
+        if (
+            values
+            and values.get("command_line_flag_separator")
+            and not values.get("command_line_flag")
         ):
             raise ValueError(
                 "Field 'command_line_flag_separator' requires 'command_line_flag' to be set."
@@ -219,12 +221,6 @@ class BoutiquesInput(IOModel):
 BoutiquesInput.model_rebuild()
 
 
-class Inputs(BaseModel):
-    inputs: list[BoutiquesInput] = Field(
-        description="An array of input objects.", min_length=1
-    )
-
-
 class PathProperty(BaseModel):
     propertyNames: Annotated[
         str, StringConstraints(pattern=r"^[A-Za-z0-9_><=!)( ]*$")
@@ -270,13 +266,13 @@ class OutputFile(IOModel):
         # 'anyOf' condition
         file_template = values.get("file_template")
         list_value = values.get("list")
-        if (
+        if not file_template:
+            return values
+        elif (
             isinstance(file_template, list)
             and len(file_template) >= 1
             and list_value is False
         ):
-            return values
-        elif file_template is False:
             return values
         raise ValueError(
             'Either "file-template" should be a non-empty list of strings and "list" should be False, '
