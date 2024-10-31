@@ -3,7 +3,8 @@ import os
 from pathlib import Path
 from shutil import rmtree
 
-from styx.backend.python import to_python, styxdefs_compat
+from styx.backend.generic.core import compile_language 
+from styx.backend.python.languageprovider import PythonLanguageProvider 
 from styx.frontend.boutiques import from_boutiques
 from styx.ir.core import Documentation
 
@@ -56,7 +57,7 @@ def stream_descriptors():
 def compile_wrappers():
     rmtree(PATH_OUTPUT, ignore_errors=True)
 
-    for py, module_path in to_python(stream_descriptors()):
+    for py, module_path in compile_language(PythonLanguageProvider(), stream_descriptors()):
         path_out = Path(str(PATH_OUTPUT / "/".join(module_path)) + ".py")
         path_out.parent.mkdir(parents=True, exist_ok=True)
         path_out.write_text(py, encoding="utf8")
@@ -70,7 +71,7 @@ def compile_wrappers():
 def update_styxdefs_version():
     import re
     file_path = PATH_OUTPUT / "../../pyproject.toml"
-    styxdefs_version = styxdefs_compat()
+    styxdefs_version = PythonLanguageProvider.styxdefs_compat()
     with open("VERSION", 'r', encoding="utf-8") as file:
         package_version = file.read().strip()
     with open(file_path, 'r', encoding="utf-8") as file:
