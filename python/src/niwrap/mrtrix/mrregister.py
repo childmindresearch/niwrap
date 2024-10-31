@@ -288,10 +288,10 @@ class MrregisterOutputs(typing.NamedTuple):
     header, and therefore the entire linear and non-linear transform can be
     applied (in either direction) using this output warp file with mrtransform
     """
-    transformed: typing.List[MrregisterTransformedOutputs] | None
+    transformed: list[MrregisterTransformedOutputs] | None
     """Outputs from `MrregisterTransformed`.This is a list of outputs with the
     same length and order as the inputs."""
-    transformed_midway: typing.List[MrregisterTransformedMidwayOutputs] | None
+    transformed_midway: list[MrregisterTransformedMidwayOutputs] | None
     """Outputs from `MrregisterTransformedMidway`.This is a list of outputs with
     the same length and order as the inputs."""
     nl_warp: MrregisterNlWarpOutputs | None

@@ -8790,7 +8790,7 @@ class C3dOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    operations: typing.List[typing.Union[C3dOutputOutputs]]
+    operations: list[typing.Union[C3dOutputOutputs]]
     """Outputs from `C3dOutput`.This is a list of outputs with the same length
     and order as the inputs."""
 

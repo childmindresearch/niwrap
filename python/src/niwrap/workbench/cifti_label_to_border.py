@@ -77,7 +77,7 @@ class CiftiLabelToBorderOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    border: typing.List[CiftiLabelToBorderBorderOutputs] | None
+    border: list[CiftiLabelToBorderBorderOutputs] | None
     """Outputs from `CiftiLabelToBorderBorder`.This is a list of outputs with
     the same length and order as the inputs."""
 

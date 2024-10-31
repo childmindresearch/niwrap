@@ -42,7 +42,7 @@ class AntsAtroposN4ShSegmentationPriors:
         """
         cargs = []
         if self.segmentation_priors_pattern is not None or self.segmentation_priors_folder is not None:
-            cargs.append((self.segmentation_priors_pattern if self.segmentation_priors_pattern is not None else "") + "/" + (execution.input_file(self.segmentation_priors_folder) if self.segmentation_priors_folder is not None else ""))
+            cargs.append((self.segmentation_priors_pattern if (self.segmentation_priors_pattern is not None) else "") + "/" + (execution.input_file(self.segmentation_priors_folder) if (self.segmentation_priors_folder is not None) else ""))
         return cargs
 
 

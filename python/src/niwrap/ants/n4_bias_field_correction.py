@@ -108,7 +108,7 @@ class N4BiasFieldCorrectionHistogramSharpening:
         """
         cargs = []
         if self.fwhm is not None or self.wiener_noise is not None or self.number_of_histogram_bins is not None:
-            cargs.append("[" + (str(self.fwhm) if self.fwhm is not None else "") + "," + (str(self.wiener_noise) if self.wiener_noise is not None else "") + "," + (str(self.number_of_histogram_bins) if self.number_of_histogram_bins is not None else "") + "]")
+            cargs.append("[" + (str(self.fwhm) if (self.fwhm is not None) else "") + "," + (str(self.wiener_noise) if (self.wiener_noise is not None) else "") + "," + (str(self.number_of_histogram_bins) if (self.number_of_histogram_bins is not None) else "") + "]")
         return cargs
 
 

@@ -307,13 +307,13 @@ class CiftiSeparateOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_all: CiftiSeparateVolumeAllOutputs | None
     """Outputs from `CiftiSeparateVolumeAll`."""
-    label: typing.List[CiftiSeparateLabelOutputs] | None
+    label: list[CiftiSeparateLabelOutputs] | None
     """Outputs from `CiftiSeparateLabel`.This is a list of outputs with the same
     length and order as the inputs."""
-    metric: typing.List[CiftiSeparateMetricOutputs] | None
+    metric: list[CiftiSeparateMetricOutputs] | None
     """Outputs from `CiftiSeparateMetric`.This is a list of outputs with the
     same length and order as the inputs."""
-    volume: typing.List[CiftiSeparateVolumeOutputs] | None
+    volume: list[CiftiSeparateVolumeOutputs] | None
     """Outputs from `CiftiSeparateVolume`.This is a list of outputs with the
     same length and order as the inputs."""
 

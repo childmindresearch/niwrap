@@ -113,7 +113,7 @@ class MtnormaliseOutputs(typing.NamedTuple):
     excludes regions identified as outliers by the optimisation process. """
     check_factors: OutputPathType | None
     """output the tissue balance factors computed during normalisation. """
-    input_output: typing.List[MtnormaliseInputOutputOutputs]
+    input_output: list[MtnormaliseInputOutputOutputs]
     """Outputs from `MtnormaliseInputOutput`.This is a list of outputs with the
     same length and order as the inputs."""
 

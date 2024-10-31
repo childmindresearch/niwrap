@@ -105,7 +105,7 @@ class Ss3tCsdBeta1Outputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    response_odf: typing.List[Ss3tCsdBeta1ResponseOdfOutputs]
+    response_odf: list[Ss3tCsdBeta1ResponseOdfOutputs]
     """Outputs from `Ss3tCsdBeta1ResponseOdf`.This is a list of outputs with the
     same length and order as the inputs."""
 

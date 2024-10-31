@@ -189,7 +189,7 @@ class Dwi2fodOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     predicted_signal: OutputPathType | None
     """output the predicted dwi image. """
-    response_odf: typing.List[Dwi2fodResponseOdfOutputs]
+    response_odf: list[Dwi2fodResponseOdfOutputs]
     """Outputs from `Dwi2fodResponseOdf`.This is a list of outputs with the same
     length and order as the inputs."""
 
