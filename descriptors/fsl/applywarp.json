@@ -68,7 +68,7 @@
     {
       "id": "out_file",
       "name": "Out file",
-      "type": "File",
+      "type": "String",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "--out",
       "command-line-flag-separator": "=",
