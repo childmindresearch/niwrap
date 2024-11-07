@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 APPLYWARP_METADATA = Metadata(
-    id="3a42c71fc093027584749175f59981ccbf696f57.boutiques",
+    id="7779671f1c701e22fbd85f528859cf6ccf6ee7c6.boutiques",
     name="applywarp",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -28,7 +28,7 @@ def applywarp(
     in_file: InputPathType,
     ref_file: InputPathType,
     interp: typing.Literal["nn", "trilinear", "sinc", "spline"] | None = None,
-    out_file: InputPathType | None = None,
+    out_file: str | None = None,
     relwarp: bool = False,
     abswarp: bool = False,
     datatype: typing.Literal["char", "short", "int", "float", "double"] | None = None,
@@ -80,7 +80,7 @@ def applywarp(
     cargs.append("--in=" + execution.input_file(in_file))
     cargs.append("--ref=" + execution.input_file(ref_file))
     if out_file is not None:
-        cargs.append("--out=" + execution.input_file(out_file))
+        cargs.append("--out=" + out_file)
     if relwarp:
         cargs.append("--rel")
     if abswarp:
@@ -103,7 +103,7 @@ def applywarp(
         cargs.append("--super")
     ret = ApplywarpOutputs(
         root=execution.output_file("."),
-        out_file_outfile=execution.output_file(pathlib.Path(out_file).name) if (out_file is not None) else None,
+        out_file_outfile=execution.output_file(out_file) if (out_file is not None) else None,
     )
     execution.run(cargs)
     return ret
