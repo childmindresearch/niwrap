@@ -46,10 +46,10 @@
                                 <a class="variable" href="#SurfaceAverageOutputs.surface_out">surface_out</a>
                         </li>
                         <li>
-                                <a class="variable" href="#SurfaceAverageOutputs.stddev_metric_out">stddev_metric_out</a>
+                                <a class="variable" href="#SurfaceAverageOutputs.opt_stddev_stddev_metric_out">opt_stddev_stddev_metric_out</a>
                         </li>
                         <li>
-                                <a class="variable" href="#SurfaceAverageOutputs.uncert_metric_out">uncert_metric_out</a>
+                                <a class="variable" href="#SurfaceAverageOutputs.opt_uncertainty_uncert_metric_out">opt_uncertainty_uncert_metric_out</a>
                         </li>
                 </ul>
 
@@ -105,7 +105,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SURFACE_AVERAGE_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8366d26b27cba64a73e6f9e401479f653cb07e95.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3b697ec9d066eb6331c1c0d2493fde3fb7d1c343.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;surface-average&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -153,78 +153,81 @@
 </span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>    <span class="n">surface_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output averaged surface&quot;&quot;&quot;</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">stddev_metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output metric for 3D sample standard deviation&quot;&quot;&quot;</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">uncert_metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output metric for uncertainty&quot;&quot;&quot;</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">opt_stddev_stddev_metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;compute 3D sample standard deviation: the output metric for 3D sample</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    standard deviation&quot;&quot;&quot;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">opt_uncertainty_uncert_metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;compute caret5 &#39;uncertainty&#39;: the output metric for uncertainty&quot;&quot;&quot;</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="k">def</span> <span class="nf">surface_average</span><span class="p">(</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">surface_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">stddev_metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">uncert_metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">opt_stddev</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">opt_uncertainty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">surf</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SurfaceAverageSurf</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfaceAverageOutputs</span><span class="p">:</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    Average surface files together.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    </span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    The 3D sample standard deviation is computed as &#39;sqrt(sum(squaredlength(xyz</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    - mean(xyz)))/(n - 1))&#39;.</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    </span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    Uncertainty is a legacy measure used in caret5, and is computed as</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    &#39;sum(length(xyz - mean(xyz)))/n&#39;.</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    </span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    When weights are used, the 3D sample standard deviation treats them as</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    reliability weights.</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    </span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    </span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    Args:</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        surface_out: the output averaged surface.</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        stddev_metric_out: the output metric for 3D sample standard deviation.</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        uncert_metric_out: the output metric for uncertainty.</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        opt_stddev: compute 3D sample standard deviation.</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        opt_uncertainty: compute caret5 &#39;uncertainty&#39;.</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        surf: specify a surface to include in the average.</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">    Returns:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceAverageOutputs`).</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_AVERAGE_METADATA</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-average&quot;</span><span class="p">)</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface_out</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">opt_stddev</span><span class="p">:</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stddev&quot;</span><span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stddev_metric_out</span><span class="p">)</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">opt_uncertainty</span><span class="p">:</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-uncertainty&quot;</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">uncert_metric_out</span><span class="p">)</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">surf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">surf</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceAverageOutputs</span><span class="p">(</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">surface_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">surface_out</span><span class="p">),</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="n">stddev_metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">stddev_metric_out</span><span class="p">),</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">uncert_metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">uncert_metric_out</span><span class="p">),</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="p">)</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="s2">&quot;SURFACE_AVERAGE_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="s2">&quot;SurfaceAverageOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="s2">&quot;SurfaceAverageSurf&quot;</span><span class="p">,</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="s2">&quot;surface_average&quot;</span><span class="p">,</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="p">]</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="k">def</span> <span class="nf">surface_average</span><span class="p">(</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">surface_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">opt_stddev_stddev_metric_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">opt_uncertainty_uncert_metric_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">surf</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SurfaceAverageSurf</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfaceAverageOutputs</span><span class="p">:</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">    Average surface files together.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    </span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    The 3D sample standard deviation is computed as &#39;sqrt(sum(squaredlength(xyz</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    - mean(xyz)))/(n - 1))&#39;.</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    </span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    Uncertainty is a legacy measure used in caret5, and is computed as</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    &#39;sum(length(xyz - mean(xyz)))/n&#39;.</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    </span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    When weights are used, the 3D sample standard deviation treats them as</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    reliability weights.</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    </span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    </span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    Args:</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        surface_out: the output averaged surface.</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        opt_stddev_stddev_metric_out: compute 3D sample standard deviation: the\</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">            output metric for 3D sample standard deviation.</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        opt_uncertainty_uncert_metric_out: compute caret5 &#39;uncertainty&#39;: the\</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">            output metric for uncertainty.</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        surf: specify a surface to include in the average.</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    Returns:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceAverageOutputs`).</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_AVERAGE_METADATA</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-average&quot;</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface_out</span><span class="p">)</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">opt_stddev_stddev_metric_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="s2">&quot;-stddev&quot;</span><span class="p">,</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="n">opt_stddev_stddev_metric_out</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="p">])</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">opt_uncertainty_uncert_metric_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="s2">&quot;-uncertainty&quot;</span><span class="p">,</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="n">opt_uncertainty_uncert_metric_out</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="p">])</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">surf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">surf</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceAverageOutputs</span><span class="p">(</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">surface_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">surface_out</span><span class="p">),</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">opt_stddev_stddev_metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">opt_stddev_stddev_metric_out</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">opt_stddev_stddev_metric_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>        <span class="n">opt_uncertainty_uncert_metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">opt_uncertainty_uncert_metric_out</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">opt_uncertainty_uncert_metric_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="p">)</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="s2">&quot;SURFACE_AVERAGE_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="s2">&quot;SurfaceAverageOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="s2">&quot;SurfaceAverageSurf&quot;</span><span class="p">,</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="s2">&quot;surface_average&quot;</span><span class="p">,</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -233,7 +236,7 @@
                     <div class="attr variable">
             <span class="name">SURFACE_AVERAGE_METADATA</span>        =
 <input id="SURFACE_AVERAGE_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SURFACE_AVERAGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8366d26b27cba64a73e6f9e401479f653cb07e95.boutiques&#39;, name=&#39;surface-average&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SURFACE_AVERAGE_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3b697ec9d066eb6331c1c0d2493fde3fb7d1c343.boutiques&#39;, name=&#39;surface-average&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -261,10 +264,11 @@
 </span><span id="SurfaceAverageOutputs-56"><a href="#SurfaceAverageOutputs-56"><span class="linenos">56</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="SurfaceAverageOutputs-57"><a href="#SurfaceAverageOutputs-57"><span class="linenos">57</span></a>    <span class="n">surface_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="SurfaceAverageOutputs-58"><a href="#SurfaceAverageOutputs-58"><span class="linenos">58</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output averaged surface&quot;&quot;&quot;</span>
-</span><span id="SurfaceAverageOutputs-59"><a href="#SurfaceAverageOutputs-59"><span class="linenos">59</span></a>    <span class="n">stddev_metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="SurfaceAverageOutputs-60"><a href="#SurfaceAverageOutputs-60"><span class="linenos">60</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output metric for 3D sample standard deviation&quot;&quot;&quot;</span>
-</span><span id="SurfaceAverageOutputs-61"><a href="#SurfaceAverageOutputs-61"><span class="linenos">61</span></a>    <span class="n">uncert_metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="SurfaceAverageOutputs-62"><a href="#SurfaceAverageOutputs-62"><span class="linenos">62</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output metric for uncertainty&quot;&quot;&quot;</span>
+</span><span id="SurfaceAverageOutputs-59"><a href="#SurfaceAverageOutputs-59"><span class="linenos">59</span></a>    <span class="n">opt_stddev_stddev_metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="SurfaceAverageOutputs-60"><a href="#SurfaceAverageOutputs-60"><span class="linenos">60</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;compute 3D sample standard deviation: the output metric for 3D sample</span>
+</span><span id="SurfaceAverageOutputs-61"><a href="#SurfaceAverageOutputs-61"><span class="linenos">61</span></a><span class="sd">    standard deviation&quot;&quot;&quot;</span>
+</span><span id="SurfaceAverageOutputs-62"><a href="#SurfaceAverageOutputs-62"><span class="linenos">62</span></a>    <span class="n">opt_uncertainty_uncert_metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="SurfaceAverageOutputs-63"><a href="#SurfaceAverageOutputs-63"><span class="linenos">63</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;compute caret5 &#39;uncertainty&#39;: the output metric for uncertainty&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -275,13 +279,13 @@
                             <div id="SurfaceAverageOutputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">SurfaceAverageOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">surface_out</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">stddev_metric_out</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">uncert_metric_out</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span></span>)</span>
+        <span class="name">SurfaceAverageOutputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">surface_out</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">opt_stddev_stddev_metric_out</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_uncertainty_uncert_metric_out</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#SurfaceAverageOutputs.__init__"></a>
     
-            <div class="docstring"><p>Create new instance of SurfaceAverageOutputs(root, surface_out, stddev_metric_out, uncert_metric_out)</p>
+            <div class="docstring"><p>Create new instance of SurfaceAverageOutputs(root, surface_out, opt_stddev_stddev_metric_out, opt_uncertainty_uncert_metric_out)</p>
 </div>
 
 
@@ -312,28 +316,29 @@
 
 
                             </div>
-                            <div id="SurfaceAverageOutputs.stddev_metric_out" class="classattr">
+                            <div id="SurfaceAverageOutputs.opt_stddev_stddev_metric_out" class="classattr">
                                 <div class="attr variable">
-            <span class="name">stddev_metric_out</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">opt_stddev_stddev_metric_out</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
-    <a class="headerlink" href="#SurfaceAverageOutputs.stddev_metric_out"></a>
+    <a class="headerlink" href="#SurfaceAverageOutputs.opt_stddev_stddev_metric_out"></a>
     
-            <div class="docstring"><p>the output metric for 3D sample standard deviation</p>
+            <div class="docstring"><p>compute 3D sample standard deviation: the output metric for 3D sample
+standard deviation</p>
 </div>
 
 
                             </div>
-                            <div id="SurfaceAverageOutputs.uncert_metric_out" class="classattr">
+                            <div id="SurfaceAverageOutputs.opt_uncertainty_uncert_metric_out" class="classattr">
                                 <div class="attr variable">
-            <span class="name">uncert_metric_out</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">opt_uncertainty_uncert_metric_out</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
-    <a class="headerlink" href="#SurfaceAverageOutputs.uncert_metric_out"></a>
+    <a class="headerlink" href="#SurfaceAverageOutputs.opt_uncertainty_uncert_metric_out"></a>
     
-            <div class="docstring"><p>the output metric for uncertainty</p>
+            <div class="docstring"><p>compute caret5 'uncertainty': the output metric for uncertainty</p>
 </div>
 
 
@@ -486,70 +491,72 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">surface_average</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">stddev_metric_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">uncert_metric_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_stddev</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_uncertainty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">surf</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SurfaceAverageSurf">SurfaceAverageSurf</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SurfaceAverageOutputs">SurfaceAverageOutputs</a></span>:</span></span>
+        <span class="name">surface_average</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_stddev_stddev_metric_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_uncertainty_uncert_metric_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">surf</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n"><a href="#SurfaceAverageSurf">SurfaceAverageSurf</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SurfaceAverageOutputs">SurfaceAverageOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="surface_average-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#surface_average"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="surface_average-65"><a href="#surface_average-65"><span class="linenos"> 65</span></a><span class="k">def</span> <span class="nf">surface_average</span><span class="p">(</span>
-</span><span id="surface_average-66"><a href="#surface_average-66"><span class="linenos"> 66</span></a>    <span class="n">surface_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="surface_average-67"><a href="#surface_average-67"><span class="linenos"> 67</span></a>    <span class="n">stddev_metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="surface_average-68"><a href="#surface_average-68"><span class="linenos"> 68</span></a>    <span class="n">uncert_metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="surface_average-69"><a href="#surface_average-69"><span class="linenos"> 69</span></a>    <span class="n">opt_stddev</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="surface_average-70"><a href="#surface_average-70"><span class="linenos"> 70</span></a>    <span class="n">opt_uncertainty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="surface_average-71"><a href="#surface_average-71"><span class="linenos"> 71</span></a>    <span class="n">surf</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SurfaceAverageSurf</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="surface_average-72"><a href="#surface_average-72"><span class="linenos"> 72</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="surface_average-73"><a href="#surface_average-73"><span class="linenos"> 73</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfaceAverageOutputs</span><span class="p">:</span>
-</span><span id="surface_average-74"><a href="#surface_average-74"><span class="linenos"> 74</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="surface_average-75"><a href="#surface_average-75"><span class="linenos"> 75</span></a><span class="sd">    Average surface files together.</span>
-</span><span id="surface_average-76"><a href="#surface_average-76"><span class="linenos"> 76</span></a><span class="sd">    </span>
-</span><span id="surface_average-77"><a href="#surface_average-77"><span class="linenos"> 77</span></a><span class="sd">    The 3D sample standard deviation is computed as &#39;sqrt(sum(squaredlength(xyz</span>
-</span><span id="surface_average-78"><a href="#surface_average-78"><span class="linenos"> 78</span></a><span class="sd">    - mean(xyz)))/(n - 1))&#39;.</span>
-</span><span id="surface_average-79"><a href="#surface_average-79"><span class="linenos"> 79</span></a><span class="sd">    </span>
-</span><span id="surface_average-80"><a href="#surface_average-80"><span class="linenos"> 80</span></a><span class="sd">    Uncertainty is a legacy measure used in caret5, and is computed as</span>
-</span><span id="surface_average-81"><a href="#surface_average-81"><span class="linenos"> 81</span></a><span class="sd">    &#39;sum(length(xyz - mean(xyz)))/n&#39;.</span>
-</span><span id="surface_average-82"><a href="#surface_average-82"><span class="linenos"> 82</span></a><span class="sd">    </span>
-</span><span id="surface_average-83"><a href="#surface_average-83"><span class="linenos"> 83</span></a><span class="sd">    When weights are used, the 3D sample standard deviation treats them as</span>
-</span><span id="surface_average-84"><a href="#surface_average-84"><span class="linenos"> 84</span></a><span class="sd">    reliability weights.</span>
-</span><span id="surface_average-85"><a href="#surface_average-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
-</span><span id="surface_average-86"><a href="#surface_average-86"><span class="linenos"> 86</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="surface_average-87"><a href="#surface_average-87"><span class="linenos"> 87</span></a><span class="sd">    </span>
-</span><span id="surface_average-88"><a href="#surface_average-88"><span class="linenos"> 88</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="surface_average-89"><a href="#surface_average-89"><span class="linenos"> 89</span></a><span class="sd">    </span>
-</span><span id="surface_average-90"><a href="#surface_average-90"><span class="linenos"> 90</span></a><span class="sd">    Args:</span>
-</span><span id="surface_average-91"><a href="#surface_average-91"><span class="linenos"> 91</span></a><span class="sd">        surface_out: the output averaged surface.</span>
-</span><span id="surface_average-92"><a href="#surface_average-92"><span class="linenos"> 92</span></a><span class="sd">        stddev_metric_out: the output metric for 3D sample standard deviation.</span>
-</span><span id="surface_average-93"><a href="#surface_average-93"><span class="linenos"> 93</span></a><span class="sd">        uncert_metric_out: the output metric for uncertainty.</span>
-</span><span id="surface_average-94"><a href="#surface_average-94"><span class="linenos"> 94</span></a><span class="sd">        opt_stddev: compute 3D sample standard deviation.</span>
-</span><span id="surface_average-95"><a href="#surface_average-95"><span class="linenos"> 95</span></a><span class="sd">        opt_uncertainty: compute caret5 &#39;uncertainty&#39;.</span>
-</span><span id="surface_average-96"><a href="#surface_average-96"><span class="linenos"> 96</span></a><span class="sd">        surf: specify a surface to include in the average.</span>
-</span><span id="surface_average-97"><a href="#surface_average-97"><span class="linenos"> 97</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="surface_average-98"><a href="#surface_average-98"><span class="linenos"> 98</span></a><span class="sd">    Returns:</span>
-</span><span id="surface_average-99"><a href="#surface_average-99"><span class="linenos"> 99</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceAverageOutputs`).</span>
-</span><span id="surface_average-100"><a href="#surface_average-100"><span class="linenos">100</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="surface_average-101"><a href="#surface_average-101"><span class="linenos">101</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="surface_average-102"><a href="#surface_average-102"><span class="linenos">102</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_AVERAGE_METADATA</span><span class="p">)</span>
-</span><span id="surface_average-103"><a href="#surface_average-103"><span class="linenos">103</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="surface_average-104"><a href="#surface_average-104"><span class="linenos">104</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="surface_average-105"><a href="#surface_average-105"><span class="linenos">105</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-average&quot;</span><span class="p">)</span>
-</span><span id="surface_average-106"><a href="#surface_average-106"><span class="linenos">106</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface_out</span><span class="p">)</span>
-</span><span id="surface_average-107"><a href="#surface_average-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">opt_stddev</span><span class="p">:</span>
-</span><span id="surface_average-108"><a href="#surface_average-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stddev&quot;</span><span class="p">)</span>
-</span><span id="surface_average-109"><a href="#surface_average-109"><span class="linenos">109</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stddev_metric_out</span><span class="p">)</span>
-</span><span id="surface_average-110"><a href="#surface_average-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">opt_uncertainty</span><span class="p">:</span>
-</span><span id="surface_average-111"><a href="#surface_average-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-uncertainty&quot;</span><span class="p">)</span>
-</span><span id="surface_average-112"><a href="#surface_average-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">uncert_metric_out</span><span class="p">)</span>
-</span><span id="surface_average-113"><a href="#surface_average-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">surf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surface_average-114"><a href="#surface_average-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">surf</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
-</span><span id="surface_average-115"><a href="#surface_average-115"><span class="linenos">115</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceAverageOutputs</span><span class="p">(</span>
-</span><span id="surface_average-116"><a href="#surface_average-116"><span class="linenos">116</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="surface_average-117"><a href="#surface_average-117"><span class="linenos">117</span></a>        <span class="n">surface_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">surface_out</span><span class="p">),</span>
-</span><span id="surface_average-118"><a href="#surface_average-118"><span class="linenos">118</span></a>        <span class="n">stddev_metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">stddev_metric_out</span><span class="p">),</span>
-</span><span id="surface_average-119"><a href="#surface_average-119"><span class="linenos">119</span></a>        <span class="n">uncert_metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">uncert_metric_out</span><span class="p">),</span>
-</span><span id="surface_average-120"><a href="#surface_average-120"><span class="linenos">120</span></a>    <span class="p">)</span>
-</span><span id="surface_average-121"><a href="#surface_average-121"><span class="linenos">121</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="surface_average-122"><a href="#surface_average-122"><span class="linenos">122</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="surface_average-66"><a href="#surface_average-66"><span class="linenos"> 66</span></a><span class="k">def</span> <span class="nf">surface_average</span><span class="p">(</span>
+</span><span id="surface_average-67"><a href="#surface_average-67"><span class="linenos"> 67</span></a>    <span class="n">surface_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="surface_average-68"><a href="#surface_average-68"><span class="linenos"> 68</span></a>    <span class="n">opt_stddev_stddev_metric_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_average-69"><a href="#surface_average-69"><span class="linenos"> 69</span></a>    <span class="n">opt_uncertainty_uncert_metric_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_average-70"><a href="#surface_average-70"><span class="linenos"> 70</span></a>    <span class="n">surf</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SurfaceAverageSurf</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_average-71"><a href="#surface_average-71"><span class="linenos"> 71</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_average-72"><a href="#surface_average-72"><span class="linenos"> 72</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfaceAverageOutputs</span><span class="p">:</span>
+</span><span id="surface_average-73"><a href="#surface_average-73"><span class="linenos"> 73</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="surface_average-74"><a href="#surface_average-74"><span class="linenos"> 74</span></a><span class="sd">    Average surface files together.</span>
+</span><span id="surface_average-75"><a href="#surface_average-75"><span class="linenos"> 75</span></a><span class="sd">    </span>
+</span><span id="surface_average-76"><a href="#surface_average-76"><span class="linenos"> 76</span></a><span class="sd">    The 3D sample standard deviation is computed as &#39;sqrt(sum(squaredlength(xyz</span>
+</span><span id="surface_average-77"><a href="#surface_average-77"><span class="linenos"> 77</span></a><span class="sd">    - mean(xyz)))/(n - 1))&#39;.</span>
+</span><span id="surface_average-78"><a href="#surface_average-78"><span class="linenos"> 78</span></a><span class="sd">    </span>
+</span><span id="surface_average-79"><a href="#surface_average-79"><span class="linenos"> 79</span></a><span class="sd">    Uncertainty is a legacy measure used in caret5, and is computed as</span>
+</span><span id="surface_average-80"><a href="#surface_average-80"><span class="linenos"> 80</span></a><span class="sd">    &#39;sum(length(xyz - mean(xyz)))/n&#39;.</span>
+</span><span id="surface_average-81"><a href="#surface_average-81"><span class="linenos"> 81</span></a><span class="sd">    </span>
+</span><span id="surface_average-82"><a href="#surface_average-82"><span class="linenos"> 82</span></a><span class="sd">    When weights are used, the 3D sample standard deviation treats them as</span>
+</span><span id="surface_average-83"><a href="#surface_average-83"><span class="linenos"> 83</span></a><span class="sd">    reliability weights.</span>
+</span><span id="surface_average-84"><a href="#surface_average-84"><span class="linenos"> 84</span></a><span class="sd">    </span>
+</span><span id="surface_average-85"><a href="#surface_average-85"><span class="linenos"> 85</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="surface_average-86"><a href="#surface_average-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
+</span><span id="surface_average-87"><a href="#surface_average-87"><span class="linenos"> 87</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="surface_average-88"><a href="#surface_average-88"><span class="linenos"> 88</span></a><span class="sd">    </span>
+</span><span id="surface_average-89"><a href="#surface_average-89"><span class="linenos"> 89</span></a><span class="sd">    Args:</span>
+</span><span id="surface_average-90"><a href="#surface_average-90"><span class="linenos"> 90</span></a><span class="sd">        surface_out: the output averaged surface.</span>
+</span><span id="surface_average-91"><a href="#surface_average-91"><span class="linenos"> 91</span></a><span class="sd">        opt_stddev_stddev_metric_out: compute 3D sample standard deviation: the\</span>
+</span><span id="surface_average-92"><a href="#surface_average-92"><span class="linenos"> 92</span></a><span class="sd">            output metric for 3D sample standard deviation.</span>
+</span><span id="surface_average-93"><a href="#surface_average-93"><span class="linenos"> 93</span></a><span class="sd">        opt_uncertainty_uncert_metric_out: compute caret5 &#39;uncertainty&#39;: the\</span>
+</span><span id="surface_average-94"><a href="#surface_average-94"><span class="linenos"> 94</span></a><span class="sd">            output metric for uncertainty.</span>
+</span><span id="surface_average-95"><a href="#surface_average-95"><span class="linenos"> 95</span></a><span class="sd">        surf: specify a surface to include in the average.</span>
+</span><span id="surface_average-96"><a href="#surface_average-96"><span class="linenos"> 96</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="surface_average-97"><a href="#surface_average-97"><span class="linenos"> 97</span></a><span class="sd">    Returns:</span>
+</span><span id="surface_average-98"><a href="#surface_average-98"><span class="linenos"> 98</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceAverageOutputs`).</span>
+</span><span id="surface_average-99"><a href="#surface_average-99"><span class="linenos"> 99</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="surface_average-100"><a href="#surface_average-100"><span class="linenos">100</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="surface_average-101"><a href="#surface_average-101"><span class="linenos">101</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_AVERAGE_METADATA</span><span class="p">)</span>
+</span><span id="surface_average-102"><a href="#surface_average-102"><span class="linenos">102</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="surface_average-103"><a href="#surface_average-103"><span class="linenos">103</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="surface_average-104"><a href="#surface_average-104"><span class="linenos">104</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-average&quot;</span><span class="p">)</span>
+</span><span id="surface_average-105"><a href="#surface_average-105"><span class="linenos">105</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">surface_out</span><span class="p">)</span>
+</span><span id="surface_average-106"><a href="#surface_average-106"><span class="linenos">106</span></a>    <span class="k">if</span> <span class="n">opt_stddev_stddev_metric_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surface_average-107"><a href="#surface_average-107"><span class="linenos">107</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surface_average-108"><a href="#surface_average-108"><span class="linenos">108</span></a>            <span class="s2">&quot;-stddev&quot;</span><span class="p">,</span>
+</span><span id="surface_average-109"><a href="#surface_average-109"><span class="linenos">109</span></a>            <span class="n">opt_stddev_stddev_metric_out</span>
+</span><span id="surface_average-110"><a href="#surface_average-110"><span class="linenos">110</span></a>        <span class="p">])</span>
+</span><span id="surface_average-111"><a href="#surface_average-111"><span class="linenos">111</span></a>    <span class="k">if</span> <span class="n">opt_uncertainty_uncert_metric_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surface_average-112"><a href="#surface_average-112"><span class="linenos">112</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="surface_average-113"><a href="#surface_average-113"><span class="linenos">113</span></a>            <span class="s2">&quot;-uncertainty&quot;</span><span class="p">,</span>
+</span><span id="surface_average-114"><a href="#surface_average-114"><span class="linenos">114</span></a>            <span class="n">opt_uncertainty_uncert_metric_out</span>
+</span><span id="surface_average-115"><a href="#surface_average-115"><span class="linenos">115</span></a>        <span class="p">])</span>
+</span><span id="surface_average-116"><a href="#surface_average-116"><span class="linenos">116</span></a>    <span class="k">if</span> <span class="n">surf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surface_average-117"><a href="#surface_average-117"><span class="linenos">117</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">surf</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+</span><span id="surface_average-118"><a href="#surface_average-118"><span class="linenos">118</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceAverageOutputs</span><span class="p">(</span>
+</span><span id="surface_average-119"><a href="#surface_average-119"><span class="linenos">119</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="surface_average-120"><a href="#surface_average-120"><span class="linenos">120</span></a>        <span class="n">surface_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">surface_out</span><span class="p">),</span>
+</span><span id="surface_average-121"><a href="#surface_average-121"><span class="linenos">121</span></a>        <span class="n">opt_stddev_stddev_metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">opt_stddev_stddev_metric_out</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">opt_stddev_stddev_metric_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_average-122"><a href="#surface_average-122"><span class="linenos">122</span></a>        <span class="n">opt_uncertainty_uncert_metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">opt_uncertainty_uncert_metric_out</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">opt_uncertainty_uncert_metric_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_average-123"><a href="#surface_average-123"><span class="linenos">123</span></a>    <span class="p">)</span>
+</span><span id="surface_average-124"><a href="#surface_average-124"><span class="linenos">124</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="surface_average-125"><a href="#surface_average-125"><span class="linenos">125</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -575,10 +582,8 @@ reliability weights.</p>
 
 <ul>
 <li><strong>surface_out:</strong>  the output averaged surface.</li>
-<li><strong>stddev_metric_out:</strong>  the output metric for 3D sample standard deviation.</li>
-<li><strong>uncert_metric_out:</strong>  the output metric for uncertainty.</li>
-<li><strong>opt_stddev:</strong>  compute 3D sample standard deviation.</li>
-<li><strong>opt_uncertainty:</strong>  compute caret5 'uncertainty'.</li>
+<li><strong>opt_stddev_stddev_metric_out:</strong>  compute 3D sample standard deviation: the            output metric for 3D sample standard deviation.</li>
+<li><strong>opt_uncertainty_uncert_metric_out:</strong>  compute caret5 'uncertainty': the            output metric for uncertainty.</li>
 <li><strong>surf:</strong>  specify a surface to include in the average.</li>
 <li><strong>runner:</strong>  Command runner.</li>
 </ul>

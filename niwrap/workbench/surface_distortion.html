@@ -34,6 +34,21 @@
                     <a class="variable" href="#SURFACE_DISTORTION_METADATA">SURFACE_DISTORTION_METADATA</a>
             </li>
             <li>
+                    <a class="class" href="#SurfaceDistortionLocalAffineMethod">SurfaceDistortionLocalAffineMethod</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#SurfaceDistortionLocalAffineMethod.__init__">SurfaceDistortionLocalAffineMethod</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#SurfaceDistortionLocalAffineMethod.opt_log2">opt_log2</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#SurfaceDistortionLocalAffineMethod.run">run</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#SurfaceDistortionOutputs">SurfaceDistortionOutputs</a>
                             <ul class="memberlist">
                         <li>
@@ -99,7 +114,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">SURFACE_DISTORTION_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;adabb3446affb9f9a83b9e8ab8fa3c3f422fdf26.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;ca3fe449cd09f27e78b2a89048f89e54b60ab30b.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;surface-distortion&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -136,100 +151,124 @@
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="k">class</span> <span class="nc">SurfaceDistortionOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">    Output object returned when calling `surface_distortion(...)`.</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output distortion metric&quot;&quot;&quot;</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="k">def</span> <span class="nf">surface_distortion</span><span class="p">(</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="n">surface_reference</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>    <span class="n">surface_distorted</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>    <span class="n">smooth</span><span class="p">:</span> <span class="n">SurfaceDistortionSmooth</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>    <span class="n">opt_caret5_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>    <span class="n">opt_edge_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">opt_local_affine_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">opt_log2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfaceDistortionOutputs</span><span class="p">:</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    Measure distortion between surfaces.</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    </span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="sd">    This command, when not using -caret5-method, -edge-method, or</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    -local-affine-method, is equivalent to using -surface-vertex-areas on each</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">    surface, smoothing both output metrics with the GEO_GAUSS_EQUAL method on</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    the surface they came from if -smooth is specified, and then using the</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    formula &#39;ln(distorted/reference)/ln(2)&#39; on the smoothed results.</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    </span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    When using -caret5-method, it uses the surface distortion method from</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    caret5, which takes the base 2 log of the ratio of tile areas, then averages</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    those results at each vertex, and then smooths the result on the reference</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    surface.</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    </span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    When using -edge-method, the -smooth option is ignored, and the output at</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    each vertex is the average of &#39;abs(ln(refEdge/distortEdge)/ln(2))&#39; over all</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    edges connected to the vertex.</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    </span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    When using -local-affine-method, the -smooth option is ignored. The output</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    is two columns, the first is the area distortion ratio, and the second is</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    anisotropic strain. These are calculated by an affine transform between</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    matching triangles, and then averaged across the triangles of a vertex.</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    </span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">    </span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">    </span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    Args:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        surface_reference: the reference surface.</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">        surface_distorted: the distorted surface.</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        metric_out: the output distortion metric.</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">        smooth: smooth the area data.</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">        opt_caret5_method: use the surface distortion method from caret5.</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">        opt_edge_method: calculate distortion of edge lengths rather than areas.</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">        opt_local_affine_method: calculate distortion by the local affines\</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">            between triangles.</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">        opt_log2: apply base-2 log transform.</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    Returns:</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceDistortionOutputs`).</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_DISTORTION_METADATA</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-distortion&quot;</span><span class="p">)</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_reference</span><span class="p">))</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_distorted</span><span class="p">))</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">smooth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">opt_caret5_method</span><span class="p">:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-caret5-method&quot;</span><span class="p">)</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">opt_edge_method</span><span class="p">:</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-edge-method&quot;</span><span class="p">)</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="k">if</span> <span class="n">opt_local_affine_method</span><span class="p">:</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-local-affine-method&quot;</span><span class="p">)</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">opt_log2</span><span class="p">:</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-log2&quot;</span><span class="p">)</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceDistortionOutputs</span><span class="p">(</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">),</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="p">)</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="s2">&quot;SURFACE_DISTORTION_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="s2">&quot;SurfaceDistortionOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="s2">&quot;SurfaceDistortionSmooth&quot;</span><span class="p">,</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="s2">&quot;surface_distortion&quot;</span><span class="p">,</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="p">]</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="k">class</span> <span class="nc">SurfaceDistortionLocalAffineMethod</span><span class="p">:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">    calculate distortion by the local affines between triangles.</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>    <span class="n">opt_log2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;apply base-2 log transform&quot;&quot;&quot;</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>    
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        </span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        Args:</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        Returns:</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">            Command line arguments</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-local-affine-method&quot;</span><span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_log2</span><span class="p">:</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-log2&quot;</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="k">class</span> <span class="nc">SurfaceDistortionOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="sd">    Output object returned when calling `surface_distortion(...)`.</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output distortion metric&quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="k">def</span> <span class="nf">surface_distortion</span><span class="p">(</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="n">surface_reference</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="n">surface_distorted</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">smooth</span><span class="p">:</span> <span class="n">SurfaceDistortionSmooth</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">opt_caret5_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">opt_edge_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">local_affine_method</span><span class="p">:</span> <span class="n">SurfaceDistortionLocalAffineMethod</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfaceDistortionOutputs</span><span class="p">:</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">    Measure distortion between surfaces.</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">    </span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">    This command, when not using -caret5-method, -edge-method, or</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">    -local-affine-method, is equivalent to using -surface-vertex-areas on each</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">    surface, smoothing both output metrics with the GEO_GAUSS_EQUAL method on</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="sd">    the surface they came from if -smooth is specified, and then using the</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    formula &#39;ln(distorted/reference)/ln(2)&#39; on the smoothed results.</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">    </span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    When using -caret5-method, it uses the surface distortion method from</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    caret5, which takes the base 2 log of the ratio of tile areas, then averages</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    those results at each vertex, and then smooths the result on the reference</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    surface.</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    </span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    When using -edge-method, the -smooth option is ignored, and the output at</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    each vertex is the average of &#39;abs(ln(refEdge/distortEdge)/ln(2))&#39; over all</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    edges connected to the vertex.</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    </span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    When using -local-affine-method, the -smooth option is ignored. The output</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    is two columns, the first is the area distortion ratio, and the second is</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    anisotropic strain. These are calculated by an affine transform between</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    matching triangles, and then averaged across the triangles of a vertex.</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    </span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    </span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">    </span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">    Args:</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        surface_reference: the reference surface.</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        surface_distorted: the distorted surface.</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        metric_out: the output distortion metric.</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        smooth: smooth the area data.</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        opt_caret5_method: use the surface distortion method from caret5.</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">        opt_edge_method: calculate distortion of edge lengths rather than areas.</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        local_affine_method: calculate distortion by the local affines between\</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">            triangles.</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    Returns:</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceDistortionOutputs`).</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_DISTORTION_METADATA</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-distortion&quot;</span><span class="p">)</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_reference</span><span class="p">))</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_distorted</span><span class="p">))</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">smooth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">opt_caret5_method</span><span class="p">:</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-caret5-method&quot;</span><span class="p">)</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="k">if</span> <span class="n">opt_edge_method</span><span class="p">:</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-edge-method&quot;</span><span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">local_affine_method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">local_affine_method</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceDistortionOutputs</span><span class="p">(</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">),</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="p">)</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="s2">&quot;SURFACE_DISTORTION_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="s2">&quot;SurfaceDistortionLocalAffineMethod&quot;</span><span class="p">,</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="s2">&quot;SurfaceDistortionOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="s2">&quot;SurfaceDistortionSmooth&quot;</span><span class="p">,</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="s2">&quot;surface_distortion&quot;</span><span class="p">,</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -238,7 +277,7 @@
                     <div class="attr variable">
             <span class="name">SURFACE_DISTORTION_METADATA</span>        =
 <input id="SURFACE_DISTORTION_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="SURFACE_DISTORTION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;adabb3446affb9f9a83b9e8ab8fa3c3f422fdf26.boutiques&#39;, name=&#39;surface-distortion&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="SURFACE_DISTORTION_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;ca3fe449cd09f27e78b2a89048f89e54b60ab30b.boutiques&#39;, name=&#39;surface-distortion&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -246,6 +285,125 @@
     
     
 
+                </section>
+                <section id="SurfaceDistortionLocalAffineMethod">
+                            <input id="SurfaceDistortionLocalAffineMethod-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+                    <div class="decorator decorator-dataclasses.dataclass">@dataclasses.dataclass</div>
+
+    <span class="def">class</span>
+    <span class="name">SurfaceDistortionLocalAffineMethod</span>:
+
+                <label class="view-source-button" for="SurfaceDistortionLocalAffineMethod-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SurfaceDistortionLocalAffineMethod"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SurfaceDistortionLocalAffineMethod-48"><a href="#SurfaceDistortionLocalAffineMethod-48"><span class="linenos">48</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-49"><a href="#SurfaceDistortionLocalAffineMethod-49"><span class="linenos">49</span></a><span class="k">class</span> <span class="nc">SurfaceDistortionLocalAffineMethod</span><span class="p">:</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-50"><a href="#SurfaceDistortionLocalAffineMethod-50"><span class="linenos">50</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-51"><a href="#SurfaceDistortionLocalAffineMethod-51"><span class="linenos">51</span></a><span class="sd">    calculate distortion by the local affines between triangles.</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-52"><a href="#SurfaceDistortionLocalAffineMethod-52"><span class="linenos">52</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-53"><a href="#SurfaceDistortionLocalAffineMethod-53"><span class="linenos">53</span></a>    <span class="n">opt_log2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-54"><a href="#SurfaceDistortionLocalAffineMethod-54"><span class="linenos">54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;apply base-2 log transform&quot;&quot;&quot;</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-55"><a href="#SurfaceDistortionLocalAffineMethod-55"><span class="linenos">55</span></a>    
+</span><span id="SurfaceDistortionLocalAffineMethod-56"><a href="#SurfaceDistortionLocalAffineMethod-56"><span class="linenos">56</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-57"><a href="#SurfaceDistortionLocalAffineMethod-57"><span class="linenos">57</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-58"><a href="#SurfaceDistortionLocalAffineMethod-58"><span class="linenos">58</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-59"><a href="#SurfaceDistortionLocalAffineMethod-59"><span class="linenos">59</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-60"><a href="#SurfaceDistortionLocalAffineMethod-60"><span class="linenos">60</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-61"><a href="#SurfaceDistortionLocalAffineMethod-61"><span class="linenos">61</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-62"><a href="#SurfaceDistortionLocalAffineMethod-62"><span class="linenos">62</span></a><span class="sd">        </span>
+</span><span id="SurfaceDistortionLocalAffineMethod-63"><a href="#SurfaceDistortionLocalAffineMethod-63"><span class="linenos">63</span></a><span class="sd">        Args:</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-64"><a href="#SurfaceDistortionLocalAffineMethod-64"><span class="linenos">64</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-65"><a href="#SurfaceDistortionLocalAffineMethod-65"><span class="linenos">65</span></a><span class="sd">        Returns:</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-66"><a href="#SurfaceDistortionLocalAffineMethod-66"><span class="linenos">66</span></a><span class="sd">            Command line arguments</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-67"><a href="#SurfaceDistortionLocalAffineMethod-67"><span class="linenos">67</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-68"><a href="#SurfaceDistortionLocalAffineMethod-68"><span class="linenos">68</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-69"><a href="#SurfaceDistortionLocalAffineMethod-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-local-affine-method&quot;</span><span class="p">)</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-70"><a href="#SurfaceDistortionLocalAffineMethod-70"><span class="linenos">70</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_log2</span><span class="p">:</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-71"><a href="#SurfaceDistortionLocalAffineMethod-71"><span class="linenos">71</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-log2&quot;</span><span class="p">)</span>
+</span><span id="SurfaceDistortionLocalAffineMethod-72"><a href="#SurfaceDistortionLocalAffineMethod-72"><span class="linenos">72</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>calculate distortion by the local affines between triangles.</p>
+</div>
+
+
+                            <div id="SurfaceDistortionLocalAffineMethod.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">SurfaceDistortionLocalAffineMethod</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">opt_log2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfaceDistortionLocalAffineMethod.__init__"></a>
+    
+    
+
+                            </div>
+                            <div id="SurfaceDistortionLocalAffineMethod.opt_log2" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_log2</span><span class="annotation">: bool</span>        =
+<span class="default_value">False</span>
+
+        
+    </div>
+    <a class="headerlink" href="#SurfaceDistortionLocalAffineMethod.opt_log2"></a>
+    
+            <div class="docstring"><p>apply base-2 log transform</p>
+</div>
+
+
+                            </div>
+                            <div id="SurfaceDistortionLocalAffineMethod.run" class="classattr">
+                                        <input id="SurfaceDistortionLocalAffineMethod.run-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">run</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">execution</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Execution</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
+
+                <label class="view-source-button" for="SurfaceDistortionLocalAffineMethod.run-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SurfaceDistortionLocalAffineMethod.run"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SurfaceDistortionLocalAffineMethod.run-56"><a href="#SurfaceDistortionLocalAffineMethod.run-56"><span class="linenos">56</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-57"><a href="#SurfaceDistortionLocalAffineMethod.run-57"><span class="linenos">57</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-58"><a href="#SurfaceDistortionLocalAffineMethod.run-58"><span class="linenos">58</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-59"><a href="#SurfaceDistortionLocalAffineMethod.run-59"><span class="linenos">59</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-60"><a href="#SurfaceDistortionLocalAffineMethod.run-60"><span class="linenos">60</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-61"><a href="#SurfaceDistortionLocalAffineMethod.run-61"><span class="linenos">61</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-62"><a href="#SurfaceDistortionLocalAffineMethod.run-62"><span class="linenos">62</span></a><span class="sd">        </span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-63"><a href="#SurfaceDistortionLocalAffineMethod.run-63"><span class="linenos">63</span></a><span class="sd">        Args:</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-64"><a href="#SurfaceDistortionLocalAffineMethod.run-64"><span class="linenos">64</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-65"><a href="#SurfaceDistortionLocalAffineMethod.run-65"><span class="linenos">65</span></a><span class="sd">        Returns:</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-66"><a href="#SurfaceDistortionLocalAffineMethod.run-66"><span class="linenos">66</span></a><span class="sd">            Command line arguments</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-67"><a href="#SurfaceDistortionLocalAffineMethod.run-67"><span class="linenos">67</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-68"><a href="#SurfaceDistortionLocalAffineMethod.run-68"><span class="linenos">68</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-69"><a href="#SurfaceDistortionLocalAffineMethod.run-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-local-affine-method&quot;</span><span class="p">)</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-70"><a href="#SurfaceDistortionLocalAffineMethod.run-70"><span class="linenos">70</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_log2</span><span class="p">:</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-71"><a href="#SurfaceDistortionLocalAffineMethod.run-71"><span class="linenos">71</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-log2&quot;</span><span class="p">)</span>
+</span><span id="SurfaceDistortionLocalAffineMethod.run-72"><a href="#SurfaceDistortionLocalAffineMethod.run-72"><span class="linenos">72</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build command line arguments. This method is called by the main command.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>execution:</strong>  The execution object.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Command line arguments</p>
+</blockquote>
+</div>
+
+
+                            </div>
                 </section>
                 <section id="SurfaceDistortionOutputs">
                             <input id="SurfaceDistortionOutputs-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -258,14 +416,14 @@
 
     </div>
     <a class="headerlink" href="#SurfaceDistortionOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SurfaceDistortionOutputs-48"><a href="#SurfaceDistortionOutputs-48"><span class="linenos">48</span></a><span class="k">class</span> <span class="nc">SurfaceDistortionOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="SurfaceDistortionOutputs-49"><a href="#SurfaceDistortionOutputs-49"><span class="linenos">49</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SurfaceDistortionOutputs-50"><a href="#SurfaceDistortionOutputs-50"><span class="linenos">50</span></a><span class="sd">    Output object returned when calling `surface_distortion(...)`.</span>
-</span><span id="SurfaceDistortionOutputs-51"><a href="#SurfaceDistortionOutputs-51"><span class="linenos">51</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="SurfaceDistortionOutputs-52"><a href="#SurfaceDistortionOutputs-52"><span class="linenos">52</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="SurfaceDistortionOutputs-53"><a href="#SurfaceDistortionOutputs-53"><span class="linenos">53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="SurfaceDistortionOutputs-54"><a href="#SurfaceDistortionOutputs-54"><span class="linenos">54</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="SurfaceDistortionOutputs-55"><a href="#SurfaceDistortionOutputs-55"><span class="linenos">55</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output distortion metric&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SurfaceDistortionOutputs-75"><a href="#SurfaceDistortionOutputs-75"><span class="linenos">75</span></a><span class="k">class</span> <span class="nc">SurfaceDistortionOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="SurfaceDistortionOutputs-76"><a href="#SurfaceDistortionOutputs-76"><span class="linenos">76</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SurfaceDistortionOutputs-77"><a href="#SurfaceDistortionOutputs-77"><span class="linenos">77</span></a><span class="sd">    Output object returned when calling `surface_distortion(...)`.</span>
+</span><span id="SurfaceDistortionOutputs-78"><a href="#SurfaceDistortionOutputs-78"><span class="linenos">78</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="SurfaceDistortionOutputs-79"><a href="#SurfaceDistortionOutputs-79"><span class="linenos">79</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="SurfaceDistortionOutputs-80"><a href="#SurfaceDistortionOutputs-80"><span class="linenos">80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="SurfaceDistortionOutputs-81"><a href="#SurfaceDistortionOutputs-81"><span class="linenos">81</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="SurfaceDistortionOutputs-82"><a href="#SurfaceDistortionOutputs-82"><span class="linenos">82</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the output distortion metric&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -455,88 +613,84 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">surface_distortion</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface_reference</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_distorted</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">smooth</span><span class="p">:</span> <span class="n"><a href="#SurfaceDistortionSmooth">SurfaceDistortionSmooth</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_caret5_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_edge_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_local_affine_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_log2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SurfaceDistortionOutputs">SurfaceDistortionOutputs</a></span>:</span></span>
+        <span class="name">surface_distortion</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">surface_reference</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">surface_distorted</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">smooth</span><span class="p">:</span> <span class="n"><a href="#SurfaceDistortionSmooth">SurfaceDistortionSmooth</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_caret5_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_edge_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">local_affine_method</span><span class="p">:</span> <span class="n"><a href="#SurfaceDistortionLocalAffineMethod">SurfaceDistortionLocalAffineMethod</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#SurfaceDistortionOutputs">SurfaceDistortionOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="surface_distortion-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#surface_distortion"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="surface_distortion-58"><a href="#surface_distortion-58"><span class="linenos"> 58</span></a><span class="k">def</span> <span class="nf">surface_distortion</span><span class="p">(</span>
-</span><span id="surface_distortion-59"><a href="#surface_distortion-59"><span class="linenos"> 59</span></a>    <span class="n">surface_reference</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="surface_distortion-60"><a href="#surface_distortion-60"><span class="linenos"> 60</span></a>    <span class="n">surface_distorted</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="surface_distortion-61"><a href="#surface_distortion-61"><span class="linenos"> 61</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="surface_distortion-62"><a href="#surface_distortion-62"><span class="linenos"> 62</span></a>    <span class="n">smooth</span><span class="p">:</span> <span class="n">SurfaceDistortionSmooth</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="surface_distortion-63"><a href="#surface_distortion-63"><span class="linenos"> 63</span></a>    <span class="n">opt_caret5_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="surface_distortion-64"><a href="#surface_distortion-64"><span class="linenos"> 64</span></a>    <span class="n">opt_edge_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="surface_distortion-65"><a href="#surface_distortion-65"><span class="linenos"> 65</span></a>    <span class="n">opt_local_affine_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="surface_distortion-66"><a href="#surface_distortion-66"><span class="linenos"> 66</span></a>    <span class="n">opt_log2</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="surface_distortion-67"><a href="#surface_distortion-67"><span class="linenos"> 67</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="surface_distortion-68"><a href="#surface_distortion-68"><span class="linenos"> 68</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfaceDistortionOutputs</span><span class="p">:</span>
-</span><span id="surface_distortion-69"><a href="#surface_distortion-69"><span class="linenos"> 69</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="surface_distortion-70"><a href="#surface_distortion-70"><span class="linenos"> 70</span></a><span class="sd">    Measure distortion between surfaces.</span>
-</span><span id="surface_distortion-71"><a href="#surface_distortion-71"><span class="linenos"> 71</span></a><span class="sd">    </span>
-</span><span id="surface_distortion-72"><a href="#surface_distortion-72"><span class="linenos"> 72</span></a><span class="sd">    This command, when not using -caret5-method, -edge-method, or</span>
-</span><span id="surface_distortion-73"><a href="#surface_distortion-73"><span class="linenos"> 73</span></a><span class="sd">    -local-affine-method, is equivalent to using -surface-vertex-areas on each</span>
-</span><span id="surface_distortion-74"><a href="#surface_distortion-74"><span class="linenos"> 74</span></a><span class="sd">    surface, smoothing both output metrics with the GEO_GAUSS_EQUAL method on</span>
-</span><span id="surface_distortion-75"><a href="#surface_distortion-75"><span class="linenos"> 75</span></a><span class="sd">    the surface they came from if -smooth is specified, and then using the</span>
-</span><span id="surface_distortion-76"><a href="#surface_distortion-76"><span class="linenos"> 76</span></a><span class="sd">    formula &#39;ln(distorted/reference)/ln(2)&#39; on the smoothed results.</span>
-</span><span id="surface_distortion-77"><a href="#surface_distortion-77"><span class="linenos"> 77</span></a><span class="sd">    </span>
-</span><span id="surface_distortion-78"><a href="#surface_distortion-78"><span class="linenos"> 78</span></a><span class="sd">    When using -caret5-method, it uses the surface distortion method from</span>
-</span><span id="surface_distortion-79"><a href="#surface_distortion-79"><span class="linenos"> 79</span></a><span class="sd">    caret5, which takes the base 2 log of the ratio of tile areas, then averages</span>
-</span><span id="surface_distortion-80"><a href="#surface_distortion-80"><span class="linenos"> 80</span></a><span class="sd">    those results at each vertex, and then smooths the result on the reference</span>
-</span><span id="surface_distortion-81"><a href="#surface_distortion-81"><span class="linenos"> 81</span></a><span class="sd">    surface.</span>
-</span><span id="surface_distortion-82"><a href="#surface_distortion-82"><span class="linenos"> 82</span></a><span class="sd">    </span>
-</span><span id="surface_distortion-83"><a href="#surface_distortion-83"><span class="linenos"> 83</span></a><span class="sd">    When using -edge-method, the -smooth option is ignored, and the output at</span>
-</span><span id="surface_distortion-84"><a href="#surface_distortion-84"><span class="linenos"> 84</span></a><span class="sd">    each vertex is the average of &#39;abs(ln(refEdge/distortEdge)/ln(2))&#39; over all</span>
-</span><span id="surface_distortion-85"><a href="#surface_distortion-85"><span class="linenos"> 85</span></a><span class="sd">    edges connected to the vertex.</span>
-</span><span id="surface_distortion-86"><a href="#surface_distortion-86"><span class="linenos"> 86</span></a><span class="sd">    </span>
-</span><span id="surface_distortion-87"><a href="#surface_distortion-87"><span class="linenos"> 87</span></a><span class="sd">    When using -local-affine-method, the -smooth option is ignored. The output</span>
-</span><span id="surface_distortion-88"><a href="#surface_distortion-88"><span class="linenos"> 88</span></a><span class="sd">    is two columns, the first is the area distortion ratio, and the second is</span>
-</span><span id="surface_distortion-89"><a href="#surface_distortion-89"><span class="linenos"> 89</span></a><span class="sd">    anisotropic strain. These are calculated by an affine transform between</span>
-</span><span id="surface_distortion-90"><a href="#surface_distortion-90"><span class="linenos"> 90</span></a><span class="sd">    matching triangles, and then averaged across the triangles of a vertex.</span>
-</span><span id="surface_distortion-91"><a href="#surface_distortion-91"><span class="linenos"> 91</span></a><span class="sd">    </span>
-</span><span id="surface_distortion-92"><a href="#surface_distortion-92"><span class="linenos"> 92</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="surface_distortion-93"><a href="#surface_distortion-93"><span class="linenos"> 93</span></a><span class="sd">    </span>
-</span><span id="surface_distortion-94"><a href="#surface_distortion-94"><span class="linenos"> 94</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="surface_distortion-95"><a href="#surface_distortion-95"><span class="linenos"> 95</span></a><span class="sd">    </span>
-</span><span id="surface_distortion-96"><a href="#surface_distortion-96"><span class="linenos"> 96</span></a><span class="sd">    Args:</span>
-</span><span id="surface_distortion-97"><a href="#surface_distortion-97"><span class="linenos"> 97</span></a><span class="sd">        surface_reference: the reference surface.</span>
-</span><span id="surface_distortion-98"><a href="#surface_distortion-98"><span class="linenos"> 98</span></a><span class="sd">        surface_distorted: the distorted surface.</span>
-</span><span id="surface_distortion-99"><a href="#surface_distortion-99"><span class="linenos"> 99</span></a><span class="sd">        metric_out: the output distortion metric.</span>
-</span><span id="surface_distortion-100"><a href="#surface_distortion-100"><span class="linenos">100</span></a><span class="sd">        smooth: smooth the area data.</span>
-</span><span id="surface_distortion-101"><a href="#surface_distortion-101"><span class="linenos">101</span></a><span class="sd">        opt_caret5_method: use the surface distortion method from caret5.</span>
-</span><span id="surface_distortion-102"><a href="#surface_distortion-102"><span class="linenos">102</span></a><span class="sd">        opt_edge_method: calculate distortion of edge lengths rather than areas.</span>
-</span><span id="surface_distortion-103"><a href="#surface_distortion-103"><span class="linenos">103</span></a><span class="sd">        opt_local_affine_method: calculate distortion by the local affines\</span>
-</span><span id="surface_distortion-104"><a href="#surface_distortion-104"><span class="linenos">104</span></a><span class="sd">            between triangles.</span>
-</span><span id="surface_distortion-105"><a href="#surface_distortion-105"><span class="linenos">105</span></a><span class="sd">        opt_log2: apply base-2 log transform.</span>
-</span><span id="surface_distortion-106"><a href="#surface_distortion-106"><span class="linenos">106</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="surface_distortion-107"><a href="#surface_distortion-107"><span class="linenos">107</span></a><span class="sd">    Returns:</span>
-</span><span id="surface_distortion-108"><a href="#surface_distortion-108"><span class="linenos">108</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceDistortionOutputs`).</span>
-</span><span id="surface_distortion-109"><a href="#surface_distortion-109"><span class="linenos">109</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="surface_distortion-110"><a href="#surface_distortion-110"><span class="linenos">110</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="surface_distortion-111"><a href="#surface_distortion-111"><span class="linenos">111</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_DISTORTION_METADATA</span><span class="p">)</span>
-</span><span id="surface_distortion-112"><a href="#surface_distortion-112"><span class="linenos">112</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="surface_distortion-113"><a href="#surface_distortion-113"><span class="linenos">113</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="surface_distortion-114"><a href="#surface_distortion-114"><span class="linenos">114</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-distortion&quot;</span><span class="p">)</span>
-</span><span id="surface_distortion-115"><a href="#surface_distortion-115"><span class="linenos">115</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_reference</span><span class="p">))</span>
-</span><span id="surface_distortion-116"><a href="#surface_distortion-116"><span class="linenos">116</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_distorted</span><span class="p">))</span>
-</span><span id="surface_distortion-117"><a href="#surface_distortion-117"><span class="linenos">117</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span>
-</span><span id="surface_distortion-118"><a href="#surface_distortion-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">smooth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="surface_distortion-119"><a href="#surface_distortion-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="surface_distortion-120"><a href="#surface_distortion-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">opt_caret5_method</span><span class="p">:</span>
-</span><span id="surface_distortion-121"><a href="#surface_distortion-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-caret5-method&quot;</span><span class="p">)</span>
-</span><span id="surface_distortion-122"><a href="#surface_distortion-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">opt_edge_method</span><span class="p">:</span>
-</span><span id="surface_distortion-123"><a href="#surface_distortion-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-edge-method&quot;</span><span class="p">)</span>
-</span><span id="surface_distortion-124"><a href="#surface_distortion-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">opt_local_affine_method</span><span class="p">:</span>
-</span><span id="surface_distortion-125"><a href="#surface_distortion-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-local-affine-method&quot;</span><span class="p">)</span>
-</span><span id="surface_distortion-126"><a href="#surface_distortion-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">opt_log2</span><span class="p">:</span>
-</span><span id="surface_distortion-127"><a href="#surface_distortion-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-log2&quot;</span><span class="p">)</span>
-</span><span id="surface_distortion-128"><a href="#surface_distortion-128"><span class="linenos">128</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceDistortionOutputs</span><span class="p">(</span>
-</span><span id="surface_distortion-129"><a href="#surface_distortion-129"><span class="linenos">129</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="surface_distortion-130"><a href="#surface_distortion-130"><span class="linenos">130</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">),</span>
-</span><span id="surface_distortion-131"><a href="#surface_distortion-131"><span class="linenos">131</span></a>    <span class="p">)</span>
-</span><span id="surface_distortion-132"><a href="#surface_distortion-132"><span class="linenos">132</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="surface_distortion-133"><a href="#surface_distortion-133"><span class="linenos">133</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="surface_distortion-85"><a href="#surface_distortion-85"><span class="linenos"> 85</span></a><span class="k">def</span> <span class="nf">surface_distortion</span><span class="p">(</span>
+</span><span id="surface_distortion-86"><a href="#surface_distortion-86"><span class="linenos"> 86</span></a>    <span class="n">surface_reference</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="surface_distortion-87"><a href="#surface_distortion-87"><span class="linenos"> 87</span></a>    <span class="n">surface_distorted</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="surface_distortion-88"><a href="#surface_distortion-88"><span class="linenos"> 88</span></a>    <span class="n">metric_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="surface_distortion-89"><a href="#surface_distortion-89"><span class="linenos"> 89</span></a>    <span class="n">smooth</span><span class="p">:</span> <span class="n">SurfaceDistortionSmooth</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_distortion-90"><a href="#surface_distortion-90"><span class="linenos"> 90</span></a>    <span class="n">opt_caret5_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="surface_distortion-91"><a href="#surface_distortion-91"><span class="linenos"> 91</span></a>    <span class="n">opt_edge_method</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="surface_distortion-92"><a href="#surface_distortion-92"><span class="linenos"> 92</span></a>    <span class="n">local_affine_method</span><span class="p">:</span> <span class="n">SurfaceDistortionLocalAffineMethod</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_distortion-93"><a href="#surface_distortion-93"><span class="linenos"> 93</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="surface_distortion-94"><a href="#surface_distortion-94"><span class="linenos"> 94</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurfaceDistortionOutputs</span><span class="p">:</span>
+</span><span id="surface_distortion-95"><a href="#surface_distortion-95"><span class="linenos"> 95</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="surface_distortion-96"><a href="#surface_distortion-96"><span class="linenos"> 96</span></a><span class="sd">    Measure distortion between surfaces.</span>
+</span><span id="surface_distortion-97"><a href="#surface_distortion-97"><span class="linenos"> 97</span></a><span class="sd">    </span>
+</span><span id="surface_distortion-98"><a href="#surface_distortion-98"><span class="linenos"> 98</span></a><span class="sd">    This command, when not using -caret5-method, -edge-method, or</span>
+</span><span id="surface_distortion-99"><a href="#surface_distortion-99"><span class="linenos"> 99</span></a><span class="sd">    -local-affine-method, is equivalent to using -surface-vertex-areas on each</span>
+</span><span id="surface_distortion-100"><a href="#surface_distortion-100"><span class="linenos">100</span></a><span class="sd">    surface, smoothing both output metrics with the GEO_GAUSS_EQUAL method on</span>
+</span><span id="surface_distortion-101"><a href="#surface_distortion-101"><span class="linenos">101</span></a><span class="sd">    the surface they came from if -smooth is specified, and then using the</span>
+</span><span id="surface_distortion-102"><a href="#surface_distortion-102"><span class="linenos">102</span></a><span class="sd">    formula &#39;ln(distorted/reference)/ln(2)&#39; on the smoothed results.</span>
+</span><span id="surface_distortion-103"><a href="#surface_distortion-103"><span class="linenos">103</span></a><span class="sd">    </span>
+</span><span id="surface_distortion-104"><a href="#surface_distortion-104"><span class="linenos">104</span></a><span class="sd">    When using -caret5-method, it uses the surface distortion method from</span>
+</span><span id="surface_distortion-105"><a href="#surface_distortion-105"><span class="linenos">105</span></a><span class="sd">    caret5, which takes the base 2 log of the ratio of tile areas, then averages</span>
+</span><span id="surface_distortion-106"><a href="#surface_distortion-106"><span class="linenos">106</span></a><span class="sd">    those results at each vertex, and then smooths the result on the reference</span>
+</span><span id="surface_distortion-107"><a href="#surface_distortion-107"><span class="linenos">107</span></a><span class="sd">    surface.</span>
+</span><span id="surface_distortion-108"><a href="#surface_distortion-108"><span class="linenos">108</span></a><span class="sd">    </span>
+</span><span id="surface_distortion-109"><a href="#surface_distortion-109"><span class="linenos">109</span></a><span class="sd">    When using -edge-method, the -smooth option is ignored, and the output at</span>
+</span><span id="surface_distortion-110"><a href="#surface_distortion-110"><span class="linenos">110</span></a><span class="sd">    each vertex is the average of &#39;abs(ln(refEdge/distortEdge)/ln(2))&#39; over all</span>
+</span><span id="surface_distortion-111"><a href="#surface_distortion-111"><span class="linenos">111</span></a><span class="sd">    edges connected to the vertex.</span>
+</span><span id="surface_distortion-112"><a href="#surface_distortion-112"><span class="linenos">112</span></a><span class="sd">    </span>
+</span><span id="surface_distortion-113"><a href="#surface_distortion-113"><span class="linenos">113</span></a><span class="sd">    When using -local-affine-method, the -smooth option is ignored. The output</span>
+</span><span id="surface_distortion-114"><a href="#surface_distortion-114"><span class="linenos">114</span></a><span class="sd">    is two columns, the first is the area distortion ratio, and the second is</span>
+</span><span id="surface_distortion-115"><a href="#surface_distortion-115"><span class="linenos">115</span></a><span class="sd">    anisotropic strain. These are calculated by an affine transform between</span>
+</span><span id="surface_distortion-116"><a href="#surface_distortion-116"><span class="linenos">116</span></a><span class="sd">    matching triangles, and then averaged across the triangles of a vertex.</span>
+</span><span id="surface_distortion-117"><a href="#surface_distortion-117"><span class="linenos">117</span></a><span class="sd">    </span>
+</span><span id="surface_distortion-118"><a href="#surface_distortion-118"><span class="linenos">118</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="surface_distortion-119"><a href="#surface_distortion-119"><span class="linenos">119</span></a><span class="sd">    </span>
+</span><span id="surface_distortion-120"><a href="#surface_distortion-120"><span class="linenos">120</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="surface_distortion-121"><a href="#surface_distortion-121"><span class="linenos">121</span></a><span class="sd">    </span>
+</span><span id="surface_distortion-122"><a href="#surface_distortion-122"><span class="linenos">122</span></a><span class="sd">    Args:</span>
+</span><span id="surface_distortion-123"><a href="#surface_distortion-123"><span class="linenos">123</span></a><span class="sd">        surface_reference: the reference surface.</span>
+</span><span id="surface_distortion-124"><a href="#surface_distortion-124"><span class="linenos">124</span></a><span class="sd">        surface_distorted: the distorted surface.</span>
+</span><span id="surface_distortion-125"><a href="#surface_distortion-125"><span class="linenos">125</span></a><span class="sd">        metric_out: the output distortion metric.</span>
+</span><span id="surface_distortion-126"><a href="#surface_distortion-126"><span class="linenos">126</span></a><span class="sd">        smooth: smooth the area data.</span>
+</span><span id="surface_distortion-127"><a href="#surface_distortion-127"><span class="linenos">127</span></a><span class="sd">        opt_caret5_method: use the surface distortion method from caret5.</span>
+</span><span id="surface_distortion-128"><a href="#surface_distortion-128"><span class="linenos">128</span></a><span class="sd">        opt_edge_method: calculate distortion of edge lengths rather than areas.</span>
+</span><span id="surface_distortion-129"><a href="#surface_distortion-129"><span class="linenos">129</span></a><span class="sd">        local_affine_method: calculate distortion by the local affines between\</span>
+</span><span id="surface_distortion-130"><a href="#surface_distortion-130"><span class="linenos">130</span></a><span class="sd">            triangles.</span>
+</span><span id="surface_distortion-131"><a href="#surface_distortion-131"><span class="linenos">131</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="surface_distortion-132"><a href="#surface_distortion-132"><span class="linenos">132</span></a><span class="sd">    Returns:</span>
+</span><span id="surface_distortion-133"><a href="#surface_distortion-133"><span class="linenos">133</span></a><span class="sd">        NamedTuple of outputs (described in `SurfaceDistortionOutputs`).</span>
+</span><span id="surface_distortion-134"><a href="#surface_distortion-134"><span class="linenos">134</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="surface_distortion-135"><a href="#surface_distortion-135"><span class="linenos">135</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="surface_distortion-136"><a href="#surface_distortion-136"><span class="linenos">136</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">SURFACE_DISTORTION_METADATA</span><span class="p">)</span>
+</span><span id="surface_distortion-137"><a href="#surface_distortion-137"><span class="linenos">137</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="surface_distortion-138"><a href="#surface_distortion-138"><span class="linenos">138</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="surface_distortion-139"><a href="#surface_distortion-139"><span class="linenos">139</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-surface-distortion&quot;</span><span class="p">)</span>
+</span><span id="surface_distortion-140"><a href="#surface_distortion-140"><span class="linenos">140</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_reference</span><span class="p">))</span>
+</span><span id="surface_distortion-141"><a href="#surface_distortion-141"><span class="linenos">141</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">surface_distorted</span><span class="p">))</span>
+</span><span id="surface_distortion-142"><a href="#surface_distortion-142"><span class="linenos">142</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric_out</span><span class="p">)</span>
+</span><span id="surface_distortion-143"><a href="#surface_distortion-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">smooth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surface_distortion-144"><a href="#surface_distortion-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">smooth</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="surface_distortion-145"><a href="#surface_distortion-145"><span class="linenos">145</span></a>    <span class="k">if</span> <span class="n">opt_caret5_method</span><span class="p">:</span>
+</span><span id="surface_distortion-146"><a href="#surface_distortion-146"><span class="linenos">146</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-caret5-method&quot;</span><span class="p">)</span>
+</span><span id="surface_distortion-147"><a href="#surface_distortion-147"><span class="linenos">147</span></a>    <span class="k">if</span> <span class="n">opt_edge_method</span><span class="p">:</span>
+</span><span id="surface_distortion-148"><a href="#surface_distortion-148"><span class="linenos">148</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-edge-method&quot;</span><span class="p">)</span>
+</span><span id="surface_distortion-149"><a href="#surface_distortion-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">local_affine_method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="surface_distortion-150"><a href="#surface_distortion-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">local_affine_method</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="surface_distortion-151"><a href="#surface_distortion-151"><span class="linenos">151</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">SurfaceDistortionOutputs</span><span class="p">(</span>
+</span><span id="surface_distortion-152"><a href="#surface_distortion-152"><span class="linenos">152</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="surface_distortion-153"><a href="#surface_distortion-153"><span class="linenos">153</span></a>        <span class="n">metric_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">metric_out</span><span class="p">),</span>
+</span><span id="surface_distortion-154"><a href="#surface_distortion-154"><span class="linenos">154</span></a>    <span class="p">)</span>
+</span><span id="surface_distortion-155"><a href="#surface_distortion-155"><span class="linenos">155</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="surface_distortion-156"><a href="#surface_distortion-156"><span class="linenos">156</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -575,8 +729,7 @@ matching triangles, and then averaged across the triangles of a vertex.</p>
 <li><strong>smooth:</strong>  smooth the area data.</li>
 <li><strong>opt_caret5_method:</strong>  use the surface distortion method from caret5.</li>
 <li><strong>opt_edge_method:</strong>  calculate distortion of edge lengths rather than areas.</li>
-<li><strong>opt_local_affine_method:</strong>  calculate distortion by the local affines            between triangles.</li>
-<li><strong>opt_log2:</strong>  apply base-2 log transform.</li>
+<li><strong>local_affine_method:</strong>  calculate distortion by the local affines between            triangles.</li>
 <li><strong>runner:</strong>  Command runner.</li>
 </ul>
 

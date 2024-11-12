@@ -91,7 +91,7 @@
                                 <a class="variable" href="#ConvertMatrix4ToMatrix2Outputs.counts_out">counts_out</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ConvertMatrix4ToMatrix2Outputs.distance_out">distance_out</a>
+                                <a class="variable" href="#ConvertMatrix4ToMatrix2Outputs.opt_distances_distance_out">opt_distances_distance_out</a>
                         </li>
                         <li>
                                 <a class="variable" href="#ConvertMatrix4ToMatrix2Outputs.individual_fibers">individual_fibers</a>
@@ -132,7 +132,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">CONVERT_MATRIX4_TO_MATRIX2_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;aafdb1925827a58e699fa2c5b92de5075402b4a9.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;5fb80f2f8d7238009d940ea8255d132ee6d8e0fd.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;convert-matrix4-to-matrix2&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -213,8 +213,8 @@
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">counts_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the total fiber counts, as a cifti file&quot;&quot;&quot;</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">distance_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the distances, as a cifti file&quot;&quot;&quot;</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">opt_distances_distance_out</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output average trajectory distance: the distances, as a cifti file&quot;&quot;&quot;</span>
 </span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">individual_fibers</span><span class="p">:</span> <span class="n">ConvertMatrix4ToMatrix2IndividualFibersOutputs</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outputs from `ConvertMatrix4ToMatrix2IndividualFibers`.&quot;&quot;&quot;</span>
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>
@@ -222,63 +222,64 @@
 </span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="k">def</span> <span class="nf">convert_matrix4_to_matrix2</span><span class="p">(</span>
 </span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="n">matrix4_wbsparse</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="n">counts_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">distance_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">opt_distances</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">individual_fibers</span><span class="p">:</span> <span class="n">ConvertMatrix4ToMatrix2IndividualFibers</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConvertMatrix4ToMatrix2Outputs</span><span class="p">:</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    Generates a matrix2 cifti from matrix4 wbsparse.</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    </span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    This command makes a cifti file from the fiber counts in a matrix4 wbsparse</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    file, and optionally a second cifti file from the distances. Note that while</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    the total count is stored exactly, the per-fiber counts are stored as</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    approximate fractions, so the output of -individual-fibers will contain</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    nonintegers.</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    </span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    </span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    </span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Args:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        matrix4_wbsparse: a wbsparse matrix4 file.</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">        counts_out: the total fiber counts, as a cifti file.</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">        distance_out: the distances, as a cifti file.</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        opt_distances: output average trajectory distance.</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        individual_fibers: output files for each fiber direction.</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">    Returns:</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertMatrix4ToMatrix2Outputs`).</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_MATRIX4_TO_MATRIX2_METADATA</span><span class="p">)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-matrix4-to-matrix2&quot;</span><span class="p">)</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrix4_wbsparse</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counts_out</span><span class="p">)</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">opt_distances</span><span class="p">:</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-distances&quot;</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance_out</span><span class="p">)</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">individual_fibers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">individual_fibers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertMatrix4ToMatrix2Outputs</span><span class="p">(</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">counts_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">counts_out</span><span class="p">),</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">distance_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">distance_out</span><span class="p">),</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">individual_fibers</span><span class="o">=</span><span class="n">individual_fibers</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">individual_fibers</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>    <span class="p">)</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="n">opt_distances_distance_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">individual_fibers</span><span class="p">:</span> <span class="n">ConvertMatrix4ToMatrix2IndividualFibers</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConvertMatrix4ToMatrix2Outputs</span><span class="p">:</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    Generates a matrix2 cifti from matrix4 wbsparse.</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    </span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    This command makes a cifti file from the fiber counts in a matrix4 wbsparse</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    file, and optionally a second cifti file from the distances. Note that while</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    the total count is stored exactly, the per-fiber counts are stored as</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    approximate fractions, so the output of -individual-fibers will contain</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    nonintegers.</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    </span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    </span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    </span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    Args:</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">        matrix4_wbsparse: a wbsparse matrix4 file.</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        counts_out: the total fiber counts, as a cifti file.</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">        opt_distances_distance_out: output average trajectory distance: the\</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">            distances, as a cifti file.</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">        individual_fibers: output files for each fiber direction.</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">    Returns:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertMatrix4ToMatrix2Outputs`).</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_MATRIX4_TO_MATRIX2_METADATA</span><span class="p">)</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-matrix4-to-matrix2&quot;</span><span class="p">)</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrix4_wbsparse</span><span class="p">)</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counts_out</span><span class="p">)</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">if</span> <span class="n">opt_distances_distance_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="s2">&quot;-distances&quot;</span><span class="p">,</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>            <span class="n">opt_distances_distance_out</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>        <span class="p">])</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">individual_fibers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">individual_fibers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertMatrix4ToMatrix2Outputs</span><span class="p">(</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="n">counts_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">counts_out</span><span class="p">),</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">opt_distances_distance_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">opt_distances_distance_out</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">opt_distances_distance_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>        <span class="n">individual_fibers</span><span class="o">=</span><span class="n">individual_fibers</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">individual_fibers</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>    <span class="p">)</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="s2">&quot;CONVERT_MATRIX4_TO_MATRIX2_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2IndividualFibers&quot;</span><span class="p">,</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2IndividualFibersOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2Outputs&quot;</span><span class="p">,</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="s2">&quot;convert_matrix4_to_matrix2&quot;</span><span class="p">,</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="p">]</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="s2">&quot;CONVERT_MATRIX4_TO_MATRIX2_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2IndividualFibers&quot;</span><span class="p">,</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2IndividualFibersOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="s2">&quot;ConvertMatrix4ToMatrix2Outputs&quot;</span><span class="p">,</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="s2">&quot;convert_matrix4_to_matrix2&quot;</span><span class="p">,</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -287,7 +288,7 @@
                     <div class="attr variable">
             <span class="name">CONVERT_MATRIX4_TO_MATRIX2_METADATA</span>        =
 <input id="CONVERT_MATRIX4_TO_MATRIX2_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="CONVERT_MATRIX4_TO_MATRIX2_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;aafdb1925827a58e699fa2c5b92de5075402b4a9.boutiques&#39;, name=&#39;convert-matrix4-to-matrix2&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="CONVERT_MATRIX4_TO_MATRIX2_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;5fb80f2f8d7238009d940ea8255d132ee6d8e0fd.boutiques&#39;, name=&#39;convert-matrix4-to-matrix2&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -632,8 +633,8 @@
 </span><span id="ConvertMatrix4ToMatrix2Outputs-89"><a href="#ConvertMatrix4ToMatrix2Outputs-89"><span class="linenos">89</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span><span id="ConvertMatrix4ToMatrix2Outputs-90"><a href="#ConvertMatrix4ToMatrix2Outputs-90"><span class="linenos">90</span></a>    <span class="n">counts_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
 </span><span id="ConvertMatrix4ToMatrix2Outputs-91"><a href="#ConvertMatrix4ToMatrix2Outputs-91"><span class="linenos">91</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the total fiber counts, as a cifti file&quot;&quot;&quot;</span>
-</span><span id="ConvertMatrix4ToMatrix2Outputs-92"><a href="#ConvertMatrix4ToMatrix2Outputs-92"><span class="linenos">92</span></a>    <span class="n">distance_out</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="ConvertMatrix4ToMatrix2Outputs-93"><a href="#ConvertMatrix4ToMatrix2Outputs-93"><span class="linenos">93</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;the distances, as a cifti file&quot;&quot;&quot;</span>
+</span><span id="ConvertMatrix4ToMatrix2Outputs-92"><a href="#ConvertMatrix4ToMatrix2Outputs-92"><span class="linenos">92</span></a>    <span class="n">opt_distances_distance_out</span><span class="p">:</span> <span class="n">OutputPathType</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span id="ConvertMatrix4ToMatrix2Outputs-93"><a href="#ConvertMatrix4ToMatrix2Outputs-93"><span class="linenos">93</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;output average trajectory distance: the distances, as a cifti file&quot;&quot;&quot;</span>
 </span><span id="ConvertMatrix4ToMatrix2Outputs-94"><a href="#ConvertMatrix4ToMatrix2Outputs-94"><span class="linenos">94</span></a>    <span class="n">individual_fibers</span><span class="p">:</span> <span class="n">ConvertMatrix4ToMatrix2IndividualFibersOutputs</span> <span class="o">|</span> <span class="kc">None</span>
 </span><span id="ConvertMatrix4ToMatrix2Outputs-95"><a href="#ConvertMatrix4ToMatrix2Outputs-95"><span class="linenos">95</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outputs from `ConvertMatrix4ToMatrix2IndividualFibers`.&quot;&quot;&quot;</span>
 </span></pre></div>
@@ -646,13 +647,13 @@
                             <div id="ConvertMatrix4ToMatrix2Outputs.__init__" class="classattr">
                                 <div class="attr function">
             
-        <span class="name">ConvertMatrix4ToMatrix2Outputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">counts_out</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">distance_out</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">individual_fibers</span><span class="p">:</span> <span class="n"><a href="#ConvertMatrix4ToMatrix2IndividualFibersOutputs">ConvertMatrix4ToMatrix2IndividualFibersOutputs</a></span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
+        <span class="name">ConvertMatrix4ToMatrix2Outputs</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">root</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">counts_out</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>,</span><span class="param">	<span class="n">opt_distances_distance_out</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">individual_fibers</span><span class="p">:</span> <span class="n"><a href="#ConvertMatrix4ToMatrix2IndividualFibersOutputs">ConvertMatrix4ToMatrix2IndividualFibersOutputs</a></span> <span class="o">|</span> <span class="kc">None</span></span>)</span>
 
         
     </div>
     <a class="headerlink" href="#ConvertMatrix4ToMatrix2Outputs.__init__"></a>
     
-            <div class="docstring"><p>Create new instance of ConvertMatrix4ToMatrix2Outputs(root, counts_out, distance_out, individual_fibers)</p>
+            <div class="docstring"><p>Create new instance of ConvertMatrix4ToMatrix2Outputs(root, counts_out, opt_distances_distance_out, individual_fibers)</p>
 </div>
 
 
@@ -683,15 +684,15 @@
 
 
                             </div>
-                            <div id="ConvertMatrix4ToMatrix2Outputs.distance_out" class="classattr">
+                            <div id="ConvertMatrix4ToMatrix2Outputs.opt_distances_distance_out" class="classattr">
                                 <div class="attr variable">
-            <span class="name">distance_out</span><span class="annotation">: pathlib.Path</span>
+            <span class="name">opt_distances_distance_out</span><span class="annotation">: pathlib.Path | None</span>
 
         
     </div>
-    <a class="headerlink" href="#ConvertMatrix4ToMatrix2Outputs.distance_out"></a>
+    <a class="headerlink" href="#ConvertMatrix4ToMatrix2Outputs.opt_distances_distance_out"></a>
     
-            <div class="docstring"><p>the distances, as a cifti file</p>
+            <div class="docstring"><p>output average trajectory distance: the distances, as a cifti file</p>
 </div>
 
 
@@ -715,7 +716,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">convert_matrix4_to_matrix2</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix4_wbsparse</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">counts_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">distance_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_distances</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">individual_fibers</span><span class="p">:</span> <span class="n"><a href="#ConvertMatrix4ToMatrix2IndividualFibers">ConvertMatrix4ToMatrix2IndividualFibers</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertMatrix4ToMatrix2Outputs">ConvertMatrix4ToMatrix2Outputs</a></span>:</span></span>
+        <span class="name">convert_matrix4_to_matrix2</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">matrix4_wbsparse</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">counts_out</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">opt_distances_distance_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">individual_fibers</span><span class="p">:</span> <span class="n"><a href="#ConvertMatrix4ToMatrix2IndividualFibers">ConvertMatrix4ToMatrix2IndividualFibers</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#ConvertMatrix4ToMatrix2Outputs">ConvertMatrix4ToMatrix2Outputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="convert_matrix4_to_matrix2-view-source"><span>View Source</span></label>
 
@@ -724,54 +725,55 @@
             <div class="pdoc-code codehilite"><pre><span></span><span id="convert_matrix4_to_matrix2-98"><a href="#convert_matrix4_to_matrix2-98"><span class="linenos"> 98</span></a><span class="k">def</span> <span class="nf">convert_matrix4_to_matrix2</span><span class="p">(</span>
 </span><span id="convert_matrix4_to_matrix2-99"><a href="#convert_matrix4_to_matrix2-99"><span class="linenos"> 99</span></a>    <span class="n">matrix4_wbsparse</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="convert_matrix4_to_matrix2-100"><a href="#convert_matrix4_to_matrix2-100"><span class="linenos">100</span></a>    <span class="n">counts_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="convert_matrix4_to_matrix2-101"><a href="#convert_matrix4_to_matrix2-101"><span class="linenos">101</span></a>    <span class="n">distance_out</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="convert_matrix4_to_matrix2-102"><a href="#convert_matrix4_to_matrix2-102"><span class="linenos">102</span></a>    <span class="n">opt_distances</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="convert_matrix4_to_matrix2-103"><a href="#convert_matrix4_to_matrix2-103"><span class="linenos">103</span></a>    <span class="n">individual_fibers</span><span class="p">:</span> <span class="n">ConvertMatrix4ToMatrix2IndividualFibers</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="convert_matrix4_to_matrix2-104"><a href="#convert_matrix4_to_matrix2-104"><span class="linenos">104</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="convert_matrix4_to_matrix2-105"><a href="#convert_matrix4_to_matrix2-105"><span class="linenos">105</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConvertMatrix4ToMatrix2Outputs</span><span class="p">:</span>
-</span><span id="convert_matrix4_to_matrix2-106"><a href="#convert_matrix4_to_matrix2-106"><span class="linenos">106</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="convert_matrix4_to_matrix2-107"><a href="#convert_matrix4_to_matrix2-107"><span class="linenos">107</span></a><span class="sd">    Generates a matrix2 cifti from matrix4 wbsparse.</span>
-</span><span id="convert_matrix4_to_matrix2-108"><a href="#convert_matrix4_to_matrix2-108"><span class="linenos">108</span></a><span class="sd">    </span>
-</span><span id="convert_matrix4_to_matrix2-109"><a href="#convert_matrix4_to_matrix2-109"><span class="linenos">109</span></a><span class="sd">    This command makes a cifti file from the fiber counts in a matrix4 wbsparse</span>
-</span><span id="convert_matrix4_to_matrix2-110"><a href="#convert_matrix4_to_matrix2-110"><span class="linenos">110</span></a><span class="sd">    file, and optionally a second cifti file from the distances. Note that while</span>
-</span><span id="convert_matrix4_to_matrix2-111"><a href="#convert_matrix4_to_matrix2-111"><span class="linenos">111</span></a><span class="sd">    the total count is stored exactly, the per-fiber counts are stored as</span>
-</span><span id="convert_matrix4_to_matrix2-112"><a href="#convert_matrix4_to_matrix2-112"><span class="linenos">112</span></a><span class="sd">    approximate fractions, so the output of -individual-fibers will contain</span>
-</span><span id="convert_matrix4_to_matrix2-113"><a href="#convert_matrix4_to_matrix2-113"><span class="linenos">113</span></a><span class="sd">    nonintegers.</span>
-</span><span id="convert_matrix4_to_matrix2-114"><a href="#convert_matrix4_to_matrix2-114"><span class="linenos">114</span></a><span class="sd">    </span>
-</span><span id="convert_matrix4_to_matrix2-115"><a href="#convert_matrix4_to_matrix2-115"><span class="linenos">115</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="convert_matrix4_to_matrix2-116"><a href="#convert_matrix4_to_matrix2-116"><span class="linenos">116</span></a><span class="sd">    </span>
-</span><span id="convert_matrix4_to_matrix2-117"><a href="#convert_matrix4_to_matrix2-117"><span class="linenos">117</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="convert_matrix4_to_matrix2-118"><a href="#convert_matrix4_to_matrix2-118"><span class="linenos">118</span></a><span class="sd">    </span>
-</span><span id="convert_matrix4_to_matrix2-119"><a href="#convert_matrix4_to_matrix2-119"><span class="linenos">119</span></a><span class="sd">    Args:</span>
-</span><span id="convert_matrix4_to_matrix2-120"><a href="#convert_matrix4_to_matrix2-120"><span class="linenos">120</span></a><span class="sd">        matrix4_wbsparse: a wbsparse matrix4 file.</span>
-</span><span id="convert_matrix4_to_matrix2-121"><a href="#convert_matrix4_to_matrix2-121"><span class="linenos">121</span></a><span class="sd">        counts_out: the total fiber counts, as a cifti file.</span>
-</span><span id="convert_matrix4_to_matrix2-122"><a href="#convert_matrix4_to_matrix2-122"><span class="linenos">122</span></a><span class="sd">        distance_out: the distances, as a cifti file.</span>
-</span><span id="convert_matrix4_to_matrix2-123"><a href="#convert_matrix4_to_matrix2-123"><span class="linenos">123</span></a><span class="sd">        opt_distances: output average trajectory distance.</span>
-</span><span id="convert_matrix4_to_matrix2-124"><a href="#convert_matrix4_to_matrix2-124"><span class="linenos">124</span></a><span class="sd">        individual_fibers: output files for each fiber direction.</span>
-</span><span id="convert_matrix4_to_matrix2-125"><a href="#convert_matrix4_to_matrix2-125"><span class="linenos">125</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="convert_matrix4_to_matrix2-126"><a href="#convert_matrix4_to_matrix2-126"><span class="linenos">126</span></a><span class="sd">    Returns:</span>
-</span><span id="convert_matrix4_to_matrix2-127"><a href="#convert_matrix4_to_matrix2-127"><span class="linenos">127</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertMatrix4ToMatrix2Outputs`).</span>
-</span><span id="convert_matrix4_to_matrix2-128"><a href="#convert_matrix4_to_matrix2-128"><span class="linenos">128</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="convert_matrix4_to_matrix2-129"><a href="#convert_matrix4_to_matrix2-129"><span class="linenos">129</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="convert_matrix4_to_matrix2-130"><a href="#convert_matrix4_to_matrix2-130"><span class="linenos">130</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_MATRIX4_TO_MATRIX2_METADATA</span><span class="p">)</span>
-</span><span id="convert_matrix4_to_matrix2-131"><a href="#convert_matrix4_to_matrix2-131"><span class="linenos">131</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="convert_matrix4_to_matrix2-132"><a href="#convert_matrix4_to_matrix2-132"><span class="linenos">132</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="convert_matrix4_to_matrix2-133"><a href="#convert_matrix4_to_matrix2-133"><span class="linenos">133</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-matrix4-to-matrix2&quot;</span><span class="p">)</span>
-</span><span id="convert_matrix4_to_matrix2-134"><a href="#convert_matrix4_to_matrix2-134"><span class="linenos">134</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrix4_wbsparse</span><span class="p">)</span>
-</span><span id="convert_matrix4_to_matrix2-135"><a href="#convert_matrix4_to_matrix2-135"><span class="linenos">135</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counts_out</span><span class="p">)</span>
-</span><span id="convert_matrix4_to_matrix2-136"><a href="#convert_matrix4_to_matrix2-136"><span class="linenos">136</span></a>    <span class="k">if</span> <span class="n">opt_distances</span><span class="p">:</span>
-</span><span id="convert_matrix4_to_matrix2-137"><a href="#convert_matrix4_to_matrix2-137"><span class="linenos">137</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-distances&quot;</span><span class="p">)</span>
-</span><span id="convert_matrix4_to_matrix2-138"><a href="#convert_matrix4_to_matrix2-138"><span class="linenos">138</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance_out</span><span class="p">)</span>
-</span><span id="convert_matrix4_to_matrix2-139"><a href="#convert_matrix4_to_matrix2-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="n">individual_fibers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="convert_matrix4_to_matrix2-140"><a href="#convert_matrix4_to_matrix2-140"><span class="linenos">140</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">individual_fibers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="convert_matrix4_to_matrix2-141"><a href="#convert_matrix4_to_matrix2-141"><span class="linenos">141</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertMatrix4ToMatrix2Outputs</span><span class="p">(</span>
-</span><span id="convert_matrix4_to_matrix2-142"><a href="#convert_matrix4_to_matrix2-142"><span class="linenos">142</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="convert_matrix4_to_matrix2-143"><a href="#convert_matrix4_to_matrix2-143"><span class="linenos">143</span></a>        <span class="n">counts_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">counts_out</span><span class="p">),</span>
-</span><span id="convert_matrix4_to_matrix2-144"><a href="#convert_matrix4_to_matrix2-144"><span class="linenos">144</span></a>        <span class="n">distance_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">distance_out</span><span class="p">),</span>
-</span><span id="convert_matrix4_to_matrix2-145"><a href="#convert_matrix4_to_matrix2-145"><span class="linenos">145</span></a>        <span class="n">individual_fibers</span><span class="o">=</span><span class="n">individual_fibers</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">individual_fibers</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="convert_matrix4_to_matrix2-146"><a href="#convert_matrix4_to_matrix2-146"><span class="linenos">146</span></a>    <span class="p">)</span>
-</span><span id="convert_matrix4_to_matrix2-147"><a href="#convert_matrix4_to_matrix2-147"><span class="linenos">147</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="convert_matrix4_to_matrix2-148"><a href="#convert_matrix4_to_matrix2-148"><span class="linenos">148</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="convert_matrix4_to_matrix2-101"><a href="#convert_matrix4_to_matrix2-101"><span class="linenos">101</span></a>    <span class="n">opt_distances_distance_out</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_matrix4_to_matrix2-102"><a href="#convert_matrix4_to_matrix2-102"><span class="linenos">102</span></a>    <span class="n">individual_fibers</span><span class="p">:</span> <span class="n">ConvertMatrix4ToMatrix2IndividualFibers</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_matrix4_to_matrix2-103"><a href="#convert_matrix4_to_matrix2-103"><span class="linenos">103</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_matrix4_to_matrix2-104"><a href="#convert_matrix4_to_matrix2-104"><span class="linenos">104</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConvertMatrix4ToMatrix2Outputs</span><span class="p">:</span>
+</span><span id="convert_matrix4_to_matrix2-105"><a href="#convert_matrix4_to_matrix2-105"><span class="linenos">105</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="convert_matrix4_to_matrix2-106"><a href="#convert_matrix4_to_matrix2-106"><span class="linenos">106</span></a><span class="sd">    Generates a matrix2 cifti from matrix4 wbsparse.</span>
+</span><span id="convert_matrix4_to_matrix2-107"><a href="#convert_matrix4_to_matrix2-107"><span class="linenos">107</span></a><span class="sd">    </span>
+</span><span id="convert_matrix4_to_matrix2-108"><a href="#convert_matrix4_to_matrix2-108"><span class="linenos">108</span></a><span class="sd">    This command makes a cifti file from the fiber counts in a matrix4 wbsparse</span>
+</span><span id="convert_matrix4_to_matrix2-109"><a href="#convert_matrix4_to_matrix2-109"><span class="linenos">109</span></a><span class="sd">    file, and optionally a second cifti file from the distances. Note that while</span>
+</span><span id="convert_matrix4_to_matrix2-110"><a href="#convert_matrix4_to_matrix2-110"><span class="linenos">110</span></a><span class="sd">    the total count is stored exactly, the per-fiber counts are stored as</span>
+</span><span id="convert_matrix4_to_matrix2-111"><a href="#convert_matrix4_to_matrix2-111"><span class="linenos">111</span></a><span class="sd">    approximate fractions, so the output of -individual-fibers will contain</span>
+</span><span id="convert_matrix4_to_matrix2-112"><a href="#convert_matrix4_to_matrix2-112"><span class="linenos">112</span></a><span class="sd">    nonintegers.</span>
+</span><span id="convert_matrix4_to_matrix2-113"><a href="#convert_matrix4_to_matrix2-113"><span class="linenos">113</span></a><span class="sd">    </span>
+</span><span id="convert_matrix4_to_matrix2-114"><a href="#convert_matrix4_to_matrix2-114"><span class="linenos">114</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="convert_matrix4_to_matrix2-115"><a href="#convert_matrix4_to_matrix2-115"><span class="linenos">115</span></a><span class="sd">    </span>
+</span><span id="convert_matrix4_to_matrix2-116"><a href="#convert_matrix4_to_matrix2-116"><span class="linenos">116</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="convert_matrix4_to_matrix2-117"><a href="#convert_matrix4_to_matrix2-117"><span class="linenos">117</span></a><span class="sd">    </span>
+</span><span id="convert_matrix4_to_matrix2-118"><a href="#convert_matrix4_to_matrix2-118"><span class="linenos">118</span></a><span class="sd">    Args:</span>
+</span><span id="convert_matrix4_to_matrix2-119"><a href="#convert_matrix4_to_matrix2-119"><span class="linenos">119</span></a><span class="sd">        matrix4_wbsparse: a wbsparse matrix4 file.</span>
+</span><span id="convert_matrix4_to_matrix2-120"><a href="#convert_matrix4_to_matrix2-120"><span class="linenos">120</span></a><span class="sd">        counts_out: the total fiber counts, as a cifti file.</span>
+</span><span id="convert_matrix4_to_matrix2-121"><a href="#convert_matrix4_to_matrix2-121"><span class="linenos">121</span></a><span class="sd">        opt_distances_distance_out: output average trajectory distance: the\</span>
+</span><span id="convert_matrix4_to_matrix2-122"><a href="#convert_matrix4_to_matrix2-122"><span class="linenos">122</span></a><span class="sd">            distances, as a cifti file.</span>
+</span><span id="convert_matrix4_to_matrix2-123"><a href="#convert_matrix4_to_matrix2-123"><span class="linenos">123</span></a><span class="sd">        individual_fibers: output files for each fiber direction.</span>
+</span><span id="convert_matrix4_to_matrix2-124"><a href="#convert_matrix4_to_matrix2-124"><span class="linenos">124</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="convert_matrix4_to_matrix2-125"><a href="#convert_matrix4_to_matrix2-125"><span class="linenos">125</span></a><span class="sd">    Returns:</span>
+</span><span id="convert_matrix4_to_matrix2-126"><a href="#convert_matrix4_to_matrix2-126"><span class="linenos">126</span></a><span class="sd">        NamedTuple of outputs (described in `ConvertMatrix4ToMatrix2Outputs`).</span>
+</span><span id="convert_matrix4_to_matrix2-127"><a href="#convert_matrix4_to_matrix2-127"><span class="linenos">127</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="convert_matrix4_to_matrix2-128"><a href="#convert_matrix4_to_matrix2-128"><span class="linenos">128</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="convert_matrix4_to_matrix2-129"><a href="#convert_matrix4_to_matrix2-129"><span class="linenos">129</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">CONVERT_MATRIX4_TO_MATRIX2_METADATA</span><span class="p">)</span>
+</span><span id="convert_matrix4_to_matrix2-130"><a href="#convert_matrix4_to_matrix2-130"><span class="linenos">130</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="convert_matrix4_to_matrix2-131"><a href="#convert_matrix4_to_matrix2-131"><span class="linenos">131</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="convert_matrix4_to_matrix2-132"><a href="#convert_matrix4_to_matrix2-132"><span class="linenos">132</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-convert-matrix4-to-matrix2&quot;</span><span class="p">)</span>
+</span><span id="convert_matrix4_to_matrix2-133"><a href="#convert_matrix4_to_matrix2-133"><span class="linenos">133</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrix4_wbsparse</span><span class="p">)</span>
+</span><span id="convert_matrix4_to_matrix2-134"><a href="#convert_matrix4_to_matrix2-134"><span class="linenos">134</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counts_out</span><span class="p">)</span>
+</span><span id="convert_matrix4_to_matrix2-135"><a href="#convert_matrix4_to_matrix2-135"><span class="linenos">135</span></a>    <span class="k">if</span> <span class="n">opt_distances_distance_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="convert_matrix4_to_matrix2-136"><a href="#convert_matrix4_to_matrix2-136"><span class="linenos">136</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="convert_matrix4_to_matrix2-137"><a href="#convert_matrix4_to_matrix2-137"><span class="linenos">137</span></a>            <span class="s2">&quot;-distances&quot;</span><span class="p">,</span>
+</span><span id="convert_matrix4_to_matrix2-138"><a href="#convert_matrix4_to_matrix2-138"><span class="linenos">138</span></a>            <span class="n">opt_distances_distance_out</span>
+</span><span id="convert_matrix4_to_matrix2-139"><a href="#convert_matrix4_to_matrix2-139"><span class="linenos">139</span></a>        <span class="p">])</span>
+</span><span id="convert_matrix4_to_matrix2-140"><a href="#convert_matrix4_to_matrix2-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="n">individual_fibers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="convert_matrix4_to_matrix2-141"><a href="#convert_matrix4_to_matrix2-141"><span class="linenos">141</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">individual_fibers</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="convert_matrix4_to_matrix2-142"><a href="#convert_matrix4_to_matrix2-142"><span class="linenos">142</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ConvertMatrix4ToMatrix2Outputs</span><span class="p">(</span>
+</span><span id="convert_matrix4_to_matrix2-143"><a href="#convert_matrix4_to_matrix2-143"><span class="linenos">143</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="convert_matrix4_to_matrix2-144"><a href="#convert_matrix4_to_matrix2-144"><span class="linenos">144</span></a>        <span class="n">counts_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">counts_out</span><span class="p">),</span>
+</span><span id="convert_matrix4_to_matrix2-145"><a href="#convert_matrix4_to_matrix2-145"><span class="linenos">145</span></a>        <span class="n">opt_distances_distance_out</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">opt_distances_distance_out</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">opt_distances_distance_out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_matrix4_to_matrix2-146"><a href="#convert_matrix4_to_matrix2-146"><span class="linenos">146</span></a>        <span class="n">individual_fibers</span><span class="o">=</span><span class="n">individual_fibers</span><span class="o">.</span><span class="n">outputs</span><span class="p">(</span><span class="n">execution</span><span class="p">)</span> <span class="k">if</span> <span class="n">individual_fibers</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="convert_matrix4_to_matrix2-147"><a href="#convert_matrix4_to_matrix2-147"><span class="linenos">147</span></a>    <span class="p">)</span>
+</span><span id="convert_matrix4_to_matrix2-148"><a href="#convert_matrix4_to_matrix2-148"><span class="linenos">148</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="convert_matrix4_to_matrix2-149"><a href="#convert_matrix4_to_matrix2-149"><span class="linenos">149</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -792,8 +794,7 @@ nonintegers.</p>
 <ul>
 <li><strong>matrix4_wbsparse:</strong>  a wbsparse matrix4 file.</li>
 <li><strong>counts_out:</strong>  the total fiber counts, as a cifti file.</li>
-<li><strong>distance_out:</strong>  the distances, as a cifti file.</li>
-<li><strong>opt_distances:</strong>  output average trajectory distance.</li>
+<li><strong>opt_distances_distance_out:</strong>  output average trajectory distance: the            distances, as a cifti file.</li>
 <li><strong>individual_fibers:</strong>  output files for each fiber direction.</li>
 <li><strong>runner:</strong>  Command runner.</li>
 </ul>

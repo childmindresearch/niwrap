@@ -64,6 +64,21 @@
 
             </li>
             <li>
+                    <a class="class" href="#VolumeWeightedStatsStdev">VolumeWeightedStatsStdev</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#VolumeWeightedStatsStdev.__init__">VolumeWeightedStatsStdev</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#VolumeWeightedStatsStdev.opt_sample">opt_sample</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#VolumeWeightedStatsStdev.run">run</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="class" href="#VolumeWeightedStatsWeightVolume">VolumeWeightedStatsWeightVolume</a>
                             <ul class="memberlist">
                         <li>
@@ -114,7 +129,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">VOLUME_WEIGHTED_STATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;583ea5db0d7c2050d6bdc18334caa1a662a04dc2.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1d13f9a9e12e5526b74fe5089fe5073d0bc7ee6c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;volume-weighted-stats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;workbench&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/connectome_workbench:1.5.0-freesurfer-update&quot;</span><span class="p">,</span>
@@ -183,106 +198,130 @@
 </span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="k">return</span> <span class="n">cargs</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="k">class</span> <span class="nc">VolumeWeightedStatsOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="sd">    Output object returned when calling `volume_weighted_stats(...)`.</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="k">def</span> <span class="nf">volume_weighted_stats</span><span class="p">(</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="n">weight_volume</span><span class="p">:</span> <span class="n">VolumeWeightedStatsWeightVolume</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">roi</span><span class="p">:</span> <span class="n">VolumeWeightedStatsRoi</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="n">opt_stdev</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="n">opt_sample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWeightedStatsOutputs</span><span class="p">:</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    Weighted spatial statistics on a volume file.</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="sd">    </span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    For each subvolume of the input, a line of text is printed, resulting from</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    the specified operation. If -weight-volume is not specified, each voxel&#39;s</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    volume is used. Use -subvolume to only give output for a single subvolume.</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    If the -roi option is used without -match-maps, then each line will contain</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    as many numbers as there are maps in the ROI file, separated by tab</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    characters. Exactly one of -mean, -stdev, -percentile or -sum must be</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    specified.</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="sd">    </span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">    Using -sum without -weight-volume is equivalent to integrating with respect</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a><span class="sd">    to volume.</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">    </span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">    </span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">    </span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">    Args:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">        volume_in: the input volume.</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">        weight_volume: use weights from a volume file.</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">        opt_subvolume_subvolume: only display output for one subvolume: the\</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">            subvolume number or name.</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        roi: only consider data inside an roi.</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        opt_stdev: compute weighted standard deviation.</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        opt_sample: estimate population stdev from the sample.</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">            find, must be between 0 and 100.</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    Returns:</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeWeightedStatsOutputs`).</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-weighted-stats&quot;</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_in</span><span class="p">))</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="k">if</span> <span class="n">weight_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">weight_volume</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvolume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>            <span class="n">opt_subvolume_subvolume</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>        <span class="p">])</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="n">opt_stdev</span><span class="p">:</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="k">if</span> <span class="n">opt_sample</span><span class="p">:</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>        <span class="p">])</span>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeWeightedStatsOutputs</span><span class="p">(</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>    <span class="p">)</span>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="s2">&quot;VOLUME_WEIGHTED_STATS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>    <span class="s2">&quot;VolumeWeightedStatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="s2">&quot;VolumeWeightedStatsRoi&quot;</span><span class="p">,</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>    <span class="s2">&quot;VolumeWeightedStatsWeightVolume&quot;</span><span class="p">,</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="s2">&quot;volume_weighted_stats&quot;</span><span class="p">,</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="p">]</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="k">class</span> <span class="nc">VolumeWeightedStatsStdev</span><span class="p">:</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    compute weighted standard deviation.</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="n">opt_sample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;estimate population stdev from the sample&quot;&quot;&quot;</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="sd">        </span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        Args:</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="sd">        Returns:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a><span class="sd">            Command line arguments</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_sample</span><span class="p">:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="k">class</span> <span class="nc">VolumeWeightedStatsOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="sd">    Output object returned when calling `volume_weighted_stats(...)`.</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="k">def</span> <span class="nf">volume_weighted_stats</span><span class="p">(</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>    <span class="n">weight_volume</span><span class="p">:</span> <span class="n">VolumeWeightedStatsWeightVolume</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="n">roi</span><span class="p">:</span> <span class="n">VolumeWeightedStatsRoi</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="n">stdev</span><span class="p">:</span> <span class="n">VolumeWeightedStatsStdev</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWeightedStatsOutputs</span><span class="p">:</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">    Weighted spatial statistics on a volume file.</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">    </span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="sd">    For each subvolume of the input, a line of text is printed, resulting from</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">    the specified operation. If -weight-volume is not specified, each voxel&#39;s</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    volume is used. Use -subvolume to only give output for a single subvolume.</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    If the -roi option is used without -match-maps, then each line will contain</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    as many numbers as there are maps in the ROI file, separated by tab</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    characters. Exactly one of -mean, -stdev, -percentile or -sum must be</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    specified.</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    </span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    Using -sum without -weight-volume is equivalent to integrating with respect</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="sd">    to volume.</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="sd">    </span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">    </span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">    </span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">    Args:</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">        volume_in: the input volume.</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">        weight_volume: use weights from a volume file.</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">        opt_subvolume_subvolume: only display output for one subvolume: the\</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">            subvolume number or name.</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        roi: only consider data inside an roi.</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        stdev: compute weighted standard deviation.</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">            find, must be between 0 and 100.</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a><span class="sd">    Returns:</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeWeightedStatsOutputs`).</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-weighted-stats&quot;</span><span class="p">)</span>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_in</span><span class="p">))</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">if</span> <span class="n">weight_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">weight_volume</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvolume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>            <span class="n">opt_subvolume_subvolume</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a>        <span class="p">])</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>    <span class="k">if</span> <span class="n">stdev</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">stdev</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="p">])</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeWeightedStatsOutputs</span><span class="p">(</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="p">)</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>    <span class="s2">&quot;VOLUME_WEIGHTED_STATS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>    <span class="s2">&quot;VolumeWeightedStatsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="s2">&quot;VolumeWeightedStatsRoi&quot;</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>    <span class="s2">&quot;VolumeWeightedStatsStdev&quot;</span><span class="p">,</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="s2">&quot;VolumeWeightedStatsWeightVolume&quot;</span><span class="p">,</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>    <span class="s2">&quot;volume_weighted_stats&quot;</span><span class="p">,</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -291,7 +330,7 @@
                     <div class="attr variable">
             <span class="name">VOLUME_WEIGHTED_STATS_METADATA</span>        =
 <input id="VOLUME_WEIGHTED_STATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="VOLUME_WEIGHTED_STATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;583ea5db0d7c2050d6bdc18334caa1a662a04dc2.boutiques&#39;, name=&#39;volume-weighted-stats&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
+            <label class="view-value-button pdoc-button" for="VOLUME_WEIGHTED_STATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1d13f9a9e12e5526b74fe5089fe5073d0bc7ee6c.boutiques&#39;, name=&#39;volume-weighted-stats&#39;, package=&#39;workbench&#39;, citations=None, container_image_tag=&#39;brainlife/connectome_workbench:1.5.0-freesurfer-update&#39;)</span>
 
         
     </div>
@@ -311,12 +350,12 @@
 
     </div>
     <a class="headerlink" href="#VolumeWeightedStatsOutputs"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeWeightedStatsOutputs-80"><a href="#VolumeWeightedStatsOutputs-80"><span class="linenos">80</span></a><span class="k">class</span> <span class="nc">VolumeWeightedStatsOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
-</span><span id="VolumeWeightedStatsOutputs-81"><a href="#VolumeWeightedStatsOutputs-81"><span class="linenos">81</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="VolumeWeightedStatsOutputs-82"><a href="#VolumeWeightedStatsOutputs-82"><span class="linenos">82</span></a><span class="sd">    Output object returned when calling `volume_weighted_stats(...)`.</span>
-</span><span id="VolumeWeightedStatsOutputs-83"><a href="#VolumeWeightedStatsOutputs-83"><span class="linenos">83</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="VolumeWeightedStatsOutputs-84"><a href="#VolumeWeightedStatsOutputs-84"><span class="linenos">84</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
-</span><span id="VolumeWeightedStatsOutputs-85"><a href="#VolumeWeightedStatsOutputs-85"><span class="linenos">85</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeWeightedStatsOutputs-107"><a href="#VolumeWeightedStatsOutputs-107"><span class="linenos">107</span></a><span class="k">class</span> <span class="nc">VolumeWeightedStatsOutputs</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">NamedTuple</span><span class="p">):</span>
+</span><span id="VolumeWeightedStatsOutputs-108"><a href="#VolumeWeightedStatsOutputs-108"><span class="linenos">108</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeWeightedStatsOutputs-109"><a href="#VolumeWeightedStatsOutputs-109"><span class="linenos">109</span></a><span class="sd">    Output object returned when calling `volume_weighted_stats(...)`.</span>
+</span><span id="VolumeWeightedStatsOutputs-110"><a href="#VolumeWeightedStatsOutputs-110"><span class="linenos">110</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="VolumeWeightedStatsOutputs-111"><a href="#VolumeWeightedStatsOutputs-111"><span class="linenos">111</span></a>    <span class="n">root</span><span class="p">:</span> <span class="n">OutputPathType</span>
+</span><span id="VolumeWeightedStatsOutputs-112"><a href="#VolumeWeightedStatsOutputs-112"><span class="linenos">112</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output root folder. This is the root folder for all outputs.&quot;&quot;&quot;</span>
 </span></pre></div>
 
 
@@ -490,6 +529,125 @@ file</p>
 
                             </div>
                 </section>
+                <section id="VolumeWeightedStatsStdev">
+                            <input id="VolumeWeightedStatsStdev-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+                    <div class="decorator decorator-dataclasses.dataclass">@dataclasses.dataclass</div>
+
+    <span class="def">class</span>
+    <span class="name">VolumeWeightedStatsStdev</span>:
+
+                <label class="view-source-button" for="VolumeWeightedStatsStdev-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsStdev"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeWeightedStatsStdev-80"><a href="#VolumeWeightedStatsStdev-80"><span class="linenos"> 80</span></a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span id="VolumeWeightedStatsStdev-81"><a href="#VolumeWeightedStatsStdev-81"><span class="linenos"> 81</span></a><span class="k">class</span> <span class="nc">VolumeWeightedStatsStdev</span><span class="p">:</span>
+</span><span id="VolumeWeightedStatsStdev-82"><a href="#VolumeWeightedStatsStdev-82"><span class="linenos"> 82</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeWeightedStatsStdev-83"><a href="#VolumeWeightedStatsStdev-83"><span class="linenos"> 83</span></a><span class="sd">    compute weighted standard deviation.</span>
+</span><span id="VolumeWeightedStatsStdev-84"><a href="#VolumeWeightedStatsStdev-84"><span class="linenos"> 84</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="VolumeWeightedStatsStdev-85"><a href="#VolumeWeightedStatsStdev-85"><span class="linenos"> 85</span></a>    <span class="n">opt_sample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="VolumeWeightedStatsStdev-86"><a href="#VolumeWeightedStatsStdev-86"><span class="linenos"> 86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;estimate population stdev from the sample&quot;&quot;&quot;</span>
+</span><span id="VolumeWeightedStatsStdev-87"><a href="#VolumeWeightedStatsStdev-87"><span class="linenos"> 87</span></a>    
+</span><span id="VolumeWeightedStatsStdev-88"><a href="#VolumeWeightedStatsStdev-88"><span class="linenos"> 88</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="VolumeWeightedStatsStdev-89"><a href="#VolumeWeightedStatsStdev-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="VolumeWeightedStatsStdev-90"><a href="#VolumeWeightedStatsStdev-90"><span class="linenos"> 90</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="VolumeWeightedStatsStdev-91"><a href="#VolumeWeightedStatsStdev-91"><span class="linenos"> 91</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="VolumeWeightedStatsStdev-92"><a href="#VolumeWeightedStatsStdev-92"><span class="linenos"> 92</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeWeightedStatsStdev-93"><a href="#VolumeWeightedStatsStdev-93"><span class="linenos"> 93</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="VolumeWeightedStatsStdev-94"><a href="#VolumeWeightedStatsStdev-94"><span class="linenos"> 94</span></a><span class="sd">        </span>
+</span><span id="VolumeWeightedStatsStdev-95"><a href="#VolumeWeightedStatsStdev-95"><span class="linenos"> 95</span></a><span class="sd">        Args:</span>
+</span><span id="VolumeWeightedStatsStdev-96"><a href="#VolumeWeightedStatsStdev-96"><span class="linenos"> 96</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="VolumeWeightedStatsStdev-97"><a href="#VolumeWeightedStatsStdev-97"><span class="linenos"> 97</span></a><span class="sd">        Returns:</span>
+</span><span id="VolumeWeightedStatsStdev-98"><a href="#VolumeWeightedStatsStdev-98"><span class="linenos"> 98</span></a><span class="sd">            Command line arguments</span>
+</span><span id="VolumeWeightedStatsStdev-99"><a href="#VolumeWeightedStatsStdev-99"><span class="linenos"> 99</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="VolumeWeightedStatsStdev-100"><a href="#VolumeWeightedStatsStdev-100"><span class="linenos">100</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="VolumeWeightedStatsStdev-101"><a href="#VolumeWeightedStatsStdev-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
+</span><span id="VolumeWeightedStatsStdev-102"><a href="#VolumeWeightedStatsStdev-102"><span class="linenos">102</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_sample</span><span class="p">:</span>
+</span><span id="VolumeWeightedStatsStdev-103"><a href="#VolumeWeightedStatsStdev-103"><span class="linenos">103</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
+</span><span id="VolumeWeightedStatsStdev-104"><a href="#VolumeWeightedStatsStdev-104"><span class="linenos">104</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>compute weighted standard deviation.</p>
+</div>
+
+
+                            <div id="VolumeWeightedStatsStdev.__init__" class="classattr">
+                                <div class="attr function">
+            
+        <span class="name">VolumeWeightedStatsStdev</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">opt_sample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span>)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsStdev.__init__"></a>
+    
+    
+
+                            </div>
+                            <div id="VolumeWeightedStatsStdev.opt_sample" class="classattr">
+                                <div class="attr variable">
+            <span class="name">opt_sample</span><span class="annotation">: bool</span>        =
+<span class="default_value">False</span>
+
+        
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsStdev.opt_sample"></a>
+    
+            <div class="docstring"><p>estimate population stdev from the sample</p>
+</div>
+
+
+                            </div>
+                            <div id="VolumeWeightedStatsStdev.run" class="classattr">
+                                        <input id="VolumeWeightedStatsStdev.run-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">run</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">execution</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Execution</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>:</span></span>
+
+                <label class="view-source-button" for="VolumeWeightedStatsStdev.run-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#VolumeWeightedStatsStdev.run"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="VolumeWeightedStatsStdev.run-88"><a href="#VolumeWeightedStatsStdev.run-88"><span class="linenos"> 88</span></a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+</span><span id="VolumeWeightedStatsStdev.run-89"><a href="#VolumeWeightedStatsStdev.run-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="VolumeWeightedStatsStdev.run-90"><a href="#VolumeWeightedStatsStdev.run-90"><span class="linenos"> 90</span></a>        <span class="n">execution</span><span class="p">:</span> <span class="n">Execution</span><span class="p">,</span>
+</span><span id="VolumeWeightedStatsStdev.run-91"><a href="#VolumeWeightedStatsStdev.run-91"><span class="linenos"> 91</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span id="VolumeWeightedStatsStdev.run-92"><a href="#VolumeWeightedStatsStdev.run-92"><span class="linenos"> 92</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="VolumeWeightedStatsStdev.run-93"><a href="#VolumeWeightedStatsStdev.run-93"><span class="linenos"> 93</span></a><span class="sd">        Build command line arguments. This method is called by the main command.</span>
+</span><span id="VolumeWeightedStatsStdev.run-94"><a href="#VolumeWeightedStatsStdev.run-94"><span class="linenos"> 94</span></a><span class="sd">        </span>
+</span><span id="VolumeWeightedStatsStdev.run-95"><a href="#VolumeWeightedStatsStdev.run-95"><span class="linenos"> 95</span></a><span class="sd">        Args:</span>
+</span><span id="VolumeWeightedStatsStdev.run-96"><a href="#VolumeWeightedStatsStdev.run-96"><span class="linenos"> 96</span></a><span class="sd">            execution: The execution object.</span>
+</span><span id="VolumeWeightedStatsStdev.run-97"><a href="#VolumeWeightedStatsStdev.run-97"><span class="linenos"> 97</span></a><span class="sd">        Returns:</span>
+</span><span id="VolumeWeightedStatsStdev.run-98"><a href="#VolumeWeightedStatsStdev.run-98"><span class="linenos"> 98</span></a><span class="sd">            Command line arguments</span>
+</span><span id="VolumeWeightedStatsStdev.run-99"><a href="#VolumeWeightedStatsStdev.run-99"><span class="linenos"> 99</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="VolumeWeightedStatsStdev.run-100"><a href="#VolumeWeightedStatsStdev.run-100"><span class="linenos">100</span></a>        <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="VolumeWeightedStatsStdev.run-101"><a href="#VolumeWeightedStatsStdev.run-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
+</span><span id="VolumeWeightedStatsStdev.run-102"><a href="#VolumeWeightedStatsStdev.run-102"><span class="linenos">102</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_sample</span><span class="p">:</span>
+</span><span id="VolumeWeightedStatsStdev.run-103"><a href="#VolumeWeightedStatsStdev.run-103"><span class="linenos">103</span></a>            <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
+</span><span id="VolumeWeightedStatsStdev.run-104"><a href="#VolumeWeightedStatsStdev.run-104"><span class="linenos">104</span></a>        <span class="k">return</span> <span class="n">cargs</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Build command line arguments. This method is called by the main command.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>execution:</strong>  The execution object.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Command line arguments</p>
+</blockquote>
+</div>
+
+
+                            </div>
+                </section>
                 <section id="VolumeWeightedStatsWeightVolume">
                             <input id="VolumeWeightedStatsWeightVolume-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -633,95 +791,91 @@ file</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">volume_weighted_stats</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">weight_volume</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsWeightVolume">VolumeWeightedStatsWeightVolume</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsRoi">VolumeWeightedStatsRoi</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_stdev</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_sample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWeightedStatsOutputs">VolumeWeightedStatsOutputs</a></span>:</span></span>
+        <span class="name">volume_weighted_stats</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">volume_in</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">weight_volume</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsWeightVolume">VolumeWeightedStatsWeightVolume</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">roi</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsRoi">VolumeWeightedStatsRoi</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">stdev</span><span class="p">:</span> <span class="n"><a href="#VolumeWeightedStatsStdev">VolumeWeightedStatsStdev</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">runner</span><span class="p">:</span> <span class="n">styxdefs</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n"><a href="#VolumeWeightedStatsOutputs">VolumeWeightedStatsOutputs</a></span>:</span></span>
 
                 <label class="view-source-button" for="volume_weighted_stats-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#volume_weighted_stats"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_weighted_stats-88"><a href="#volume_weighted_stats-88"><span class="linenos"> 88</span></a><span class="k">def</span> <span class="nf">volume_weighted_stats</span><span class="p">(</span>
-</span><span id="volume_weighted_stats-89"><a href="#volume_weighted_stats-89"><span class="linenos"> 89</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-90"><a href="#volume_weighted_stats-90"><span class="linenos"> 90</span></a>    <span class="n">weight_volume</span><span class="p">:</span> <span class="n">VolumeWeightedStatsWeightVolume</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-91"><a href="#volume_weighted_stats-91"><span class="linenos"> 91</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-92"><a href="#volume_weighted_stats-92"><span class="linenos"> 92</span></a>    <span class="n">roi</span><span class="p">:</span> <span class="n">VolumeWeightedStatsRoi</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-93"><a href="#volume_weighted_stats-93"><span class="linenos"> 93</span></a>    <span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-94"><a href="#volume_weighted_stats-94"><span class="linenos"> 94</span></a>    <span class="n">opt_stdev</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-95"><a href="#volume_weighted_stats-95"><span class="linenos"> 95</span></a>    <span class="n">opt_sample</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-96"><a href="#volume_weighted_stats-96"><span class="linenos"> 96</span></a>    <span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-97"><a href="#volume_weighted_stats-97"><span class="linenos"> 97</span></a>    <span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-98"><a href="#volume_weighted_stats-98"><span class="linenos"> 98</span></a>    <span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-99"><a href="#volume_weighted_stats-99"><span class="linenos"> 99</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-100"><a href="#volume_weighted_stats-100"><span class="linenos">100</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWeightedStatsOutputs</span><span class="p">:</span>
-</span><span id="volume_weighted_stats-101"><a href="#volume_weighted_stats-101"><span class="linenos">101</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="volume_weighted_stats-102"><a href="#volume_weighted_stats-102"><span class="linenos">102</span></a><span class="sd">    Weighted spatial statistics on a volume file.</span>
-</span><span id="volume_weighted_stats-103"><a href="#volume_weighted_stats-103"><span class="linenos">103</span></a><span class="sd">    </span>
-</span><span id="volume_weighted_stats-104"><a href="#volume_weighted_stats-104"><span class="linenos">104</span></a><span class="sd">    For each subvolume of the input, a line of text is printed, resulting from</span>
-</span><span id="volume_weighted_stats-105"><a href="#volume_weighted_stats-105"><span class="linenos">105</span></a><span class="sd">    the specified operation. If -weight-volume is not specified, each voxel&#39;s</span>
-</span><span id="volume_weighted_stats-106"><a href="#volume_weighted_stats-106"><span class="linenos">106</span></a><span class="sd">    volume is used. Use -subvolume to only give output for a single subvolume.</span>
-</span><span id="volume_weighted_stats-107"><a href="#volume_weighted_stats-107"><span class="linenos">107</span></a><span class="sd">    If the -roi option is used without -match-maps, then each line will contain</span>
-</span><span id="volume_weighted_stats-108"><a href="#volume_weighted_stats-108"><span class="linenos">108</span></a><span class="sd">    as many numbers as there are maps in the ROI file, separated by tab</span>
-</span><span id="volume_weighted_stats-109"><a href="#volume_weighted_stats-109"><span class="linenos">109</span></a><span class="sd">    characters. Exactly one of -mean, -stdev, -percentile or -sum must be</span>
-</span><span id="volume_weighted_stats-110"><a href="#volume_weighted_stats-110"><span class="linenos">110</span></a><span class="sd">    specified.</span>
-</span><span id="volume_weighted_stats-111"><a href="#volume_weighted_stats-111"><span class="linenos">111</span></a><span class="sd">    </span>
-</span><span id="volume_weighted_stats-112"><a href="#volume_weighted_stats-112"><span class="linenos">112</span></a><span class="sd">    Using -sum without -weight-volume is equivalent to integrating with respect</span>
-</span><span id="volume_weighted_stats-113"><a href="#volume_weighted_stats-113"><span class="linenos">113</span></a><span class="sd">    to volume.</span>
-</span><span id="volume_weighted_stats-114"><a href="#volume_weighted_stats-114"><span class="linenos">114</span></a><span class="sd">    </span>
-</span><span id="volume_weighted_stats-115"><a href="#volume_weighted_stats-115"><span class="linenos">115</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
-</span><span id="volume_weighted_stats-116"><a href="#volume_weighted_stats-116"><span class="linenos">116</span></a><span class="sd">    </span>
-</span><span id="volume_weighted_stats-117"><a href="#volume_weighted_stats-117"><span class="linenos">117</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
-</span><span id="volume_weighted_stats-118"><a href="#volume_weighted_stats-118"><span class="linenos">118</span></a><span class="sd">    </span>
-</span><span id="volume_weighted_stats-119"><a href="#volume_weighted_stats-119"><span class="linenos">119</span></a><span class="sd">    Args:</span>
-</span><span id="volume_weighted_stats-120"><a href="#volume_weighted_stats-120"><span class="linenos">120</span></a><span class="sd">        volume_in: the input volume.</span>
-</span><span id="volume_weighted_stats-121"><a href="#volume_weighted_stats-121"><span class="linenos">121</span></a><span class="sd">        weight_volume: use weights from a volume file.</span>
-</span><span id="volume_weighted_stats-122"><a href="#volume_weighted_stats-122"><span class="linenos">122</span></a><span class="sd">        opt_subvolume_subvolume: only display output for one subvolume: the\</span>
-</span><span id="volume_weighted_stats-123"><a href="#volume_weighted_stats-123"><span class="linenos">123</span></a><span class="sd">            subvolume number or name.</span>
-</span><span id="volume_weighted_stats-124"><a href="#volume_weighted_stats-124"><span class="linenos">124</span></a><span class="sd">        roi: only consider data inside an roi.</span>
-</span><span id="volume_weighted_stats-125"><a href="#volume_weighted_stats-125"><span class="linenos">125</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
-</span><span id="volume_weighted_stats-126"><a href="#volume_weighted_stats-126"><span class="linenos">126</span></a><span class="sd">        opt_stdev: compute weighted standard deviation.</span>
-</span><span id="volume_weighted_stats-127"><a href="#volume_weighted_stats-127"><span class="linenos">127</span></a><span class="sd">        opt_sample: estimate population stdev from the sample.</span>
-</span><span id="volume_weighted_stats-128"><a href="#volume_weighted_stats-128"><span class="linenos">128</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
-</span><span id="volume_weighted_stats-129"><a href="#volume_weighted_stats-129"><span class="linenos">129</span></a><span class="sd">            find, must be between 0 and 100.</span>
-</span><span id="volume_weighted_stats-130"><a href="#volume_weighted_stats-130"><span class="linenos">130</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
-</span><span id="volume_weighted_stats-131"><a href="#volume_weighted_stats-131"><span class="linenos">131</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
-</span><span id="volume_weighted_stats-132"><a href="#volume_weighted_stats-132"><span class="linenos">132</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="volume_weighted_stats-133"><a href="#volume_weighted_stats-133"><span class="linenos">133</span></a><span class="sd">    Returns:</span>
-</span><span id="volume_weighted_stats-134"><a href="#volume_weighted_stats-134"><span class="linenos">134</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeWeightedStatsOutputs`).</span>
-</span><span id="volume_weighted_stats-135"><a href="#volume_weighted_stats-135"><span class="linenos">135</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="volume_weighted_stats-136"><a href="#volume_weighted_stats-136"><span class="linenos">136</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="volume_weighted_stats-137"><a href="#volume_weighted_stats-137"><span class="linenos">137</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
-</span><span id="volume_weighted_stats-138"><a href="#volume_weighted_stats-138"><span class="linenos">138</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="volume_weighted_stats-139"><a href="#volume_weighted_stats-139"><span class="linenos">139</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
-</span><span id="volume_weighted_stats-140"><a href="#volume_weighted_stats-140"><span class="linenos">140</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-weighted-stats&quot;</span><span class="p">)</span>
-</span><span id="volume_weighted_stats-141"><a href="#volume_weighted_stats-141"><span class="linenos">141</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_in</span><span class="p">))</span>
-</span><span id="volume_weighted_stats-142"><a href="#volume_weighted_stats-142"><span class="linenos">142</span></a>    <span class="k">if</span> <span class="n">weight_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_weighted_stats-143"><a href="#volume_weighted_stats-143"><span class="linenos">143</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">weight_volume</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="volume_weighted_stats-144"><a href="#volume_weighted_stats-144"><span class="linenos">144</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvolume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_weighted_stats-145"><a href="#volume_weighted_stats-145"><span class="linenos">145</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="volume_weighted_stats-146"><a href="#volume_weighted_stats-146"><span class="linenos">146</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-147"><a href="#volume_weighted_stats-147"><span class="linenos">147</span></a>            <span class="n">opt_subvolume_subvolume</span>
-</span><span id="volume_weighted_stats-148"><a href="#volume_weighted_stats-148"><span class="linenos">148</span></a>        <span class="p">])</span>
-</span><span id="volume_weighted_stats-149"><a href="#volume_weighted_stats-149"><span class="linenos">149</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_weighted_stats-150"><a href="#volume_weighted_stats-150"><span class="linenos">150</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
-</span><span id="volume_weighted_stats-151"><a href="#volume_weighted_stats-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
-</span><span id="volume_weighted_stats-152"><a href="#volume_weighted_stats-152"><span class="linenos">152</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
-</span><span id="volume_weighted_stats-153"><a href="#volume_weighted_stats-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="n">opt_stdev</span><span class="p">:</span>
-</span><span id="volume_weighted_stats-154"><a href="#volume_weighted_stats-154"><span class="linenos">154</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-stdev&quot;</span><span class="p">)</span>
-</span><span id="volume_weighted_stats-155"><a href="#volume_weighted_stats-155"><span class="linenos">155</span></a>    <span class="k">if</span> <span class="n">opt_sample</span><span class="p">:</span>
-</span><span id="volume_weighted_stats-156"><a href="#volume_weighted_stats-156"><span class="linenos">156</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sample&quot;</span><span class="p">)</span>
-</span><span id="volume_weighted_stats-157"><a href="#volume_weighted_stats-157"><span class="linenos">157</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="volume_weighted_stats-158"><a href="#volume_weighted_stats-158"><span class="linenos">158</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="volume_weighted_stats-159"><a href="#volume_weighted_stats-159"><span class="linenos">159</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
-</span><span id="volume_weighted_stats-160"><a href="#volume_weighted_stats-160"><span class="linenos">160</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
-</span><span id="volume_weighted_stats-161"><a href="#volume_weighted_stats-161"><span class="linenos">161</span></a>        <span class="p">])</span>
-</span><span id="volume_weighted_stats-162"><a href="#volume_weighted_stats-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
-</span><span id="volume_weighted_stats-163"><a href="#volume_weighted_stats-163"><span class="linenos">163</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
-</span><span id="volume_weighted_stats-164"><a href="#volume_weighted_stats-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
-</span><span id="volume_weighted_stats-165"><a href="#volume_weighted_stats-165"><span class="linenos">165</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
-</span><span id="volume_weighted_stats-166"><a href="#volume_weighted_stats-166"><span class="linenos">166</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeWeightedStatsOutputs</span><span class="p">(</span>
-</span><span id="volume_weighted_stats-167"><a href="#volume_weighted_stats-167"><span class="linenos">167</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="volume_weighted_stats-168"><a href="#volume_weighted_stats-168"><span class="linenos">168</span></a>    <span class="p">)</span>
-</span><span id="volume_weighted_stats-169"><a href="#volume_weighted_stats-169"><span class="linenos">169</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="volume_weighted_stats-170"><a href="#volume_weighted_stats-170"><span class="linenos">170</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="volume_weighted_stats-115"><a href="#volume_weighted_stats-115"><span class="linenos">115</span></a><span class="k">def</span> <span class="nf">volume_weighted_stats</span><span class="p">(</span>
+</span><span id="volume_weighted_stats-116"><a href="#volume_weighted_stats-116"><span class="linenos">116</span></a>    <span class="n">volume_in</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-117"><a href="#volume_weighted_stats-117"><span class="linenos">117</span></a>    <span class="n">weight_volume</span><span class="p">:</span> <span class="n">VolumeWeightedStatsWeightVolume</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-118"><a href="#volume_weighted_stats-118"><span class="linenos">118</span></a>    <span class="n">opt_subvolume_subvolume</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-119"><a href="#volume_weighted_stats-119"><span class="linenos">119</span></a>    <span class="n">roi</span><span class="p">:</span> <span class="n">VolumeWeightedStatsRoi</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-120"><a href="#volume_weighted_stats-120"><span class="linenos">120</span></a>    <span class="n">opt_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-121"><a href="#volume_weighted_stats-121"><span class="linenos">121</span></a>    <span class="n">stdev</span><span class="p">:</span> <span class="n">VolumeWeightedStatsStdev</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-122"><a href="#volume_weighted_stats-122"><span class="linenos">122</span></a>    <span class="n">opt_percentile_percent</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-123"><a href="#volume_weighted_stats-123"><span class="linenos">123</span></a>    <span class="n">opt_sum</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-124"><a href="#volume_weighted_stats-124"><span class="linenos">124</span></a>    <span class="n">opt_show_map_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-125"><a href="#volume_weighted_stats-125"><span class="linenos">125</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-126"><a href="#volume_weighted_stats-126"><span class="linenos">126</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VolumeWeightedStatsOutputs</span><span class="p">:</span>
+</span><span id="volume_weighted_stats-127"><a href="#volume_weighted_stats-127"><span class="linenos">127</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="volume_weighted_stats-128"><a href="#volume_weighted_stats-128"><span class="linenos">128</span></a><span class="sd">    Weighted spatial statistics on a volume file.</span>
+</span><span id="volume_weighted_stats-129"><a href="#volume_weighted_stats-129"><span class="linenos">129</span></a><span class="sd">    </span>
+</span><span id="volume_weighted_stats-130"><a href="#volume_weighted_stats-130"><span class="linenos">130</span></a><span class="sd">    For each subvolume of the input, a line of text is printed, resulting from</span>
+</span><span id="volume_weighted_stats-131"><a href="#volume_weighted_stats-131"><span class="linenos">131</span></a><span class="sd">    the specified operation. If -weight-volume is not specified, each voxel&#39;s</span>
+</span><span id="volume_weighted_stats-132"><a href="#volume_weighted_stats-132"><span class="linenos">132</span></a><span class="sd">    volume is used. Use -subvolume to only give output for a single subvolume.</span>
+</span><span id="volume_weighted_stats-133"><a href="#volume_weighted_stats-133"><span class="linenos">133</span></a><span class="sd">    If the -roi option is used without -match-maps, then each line will contain</span>
+</span><span id="volume_weighted_stats-134"><a href="#volume_weighted_stats-134"><span class="linenos">134</span></a><span class="sd">    as many numbers as there are maps in the ROI file, separated by tab</span>
+</span><span id="volume_weighted_stats-135"><a href="#volume_weighted_stats-135"><span class="linenos">135</span></a><span class="sd">    characters. Exactly one of -mean, -stdev, -percentile or -sum must be</span>
+</span><span id="volume_weighted_stats-136"><a href="#volume_weighted_stats-136"><span class="linenos">136</span></a><span class="sd">    specified.</span>
+</span><span id="volume_weighted_stats-137"><a href="#volume_weighted_stats-137"><span class="linenos">137</span></a><span class="sd">    </span>
+</span><span id="volume_weighted_stats-138"><a href="#volume_weighted_stats-138"><span class="linenos">138</span></a><span class="sd">    Using -sum without -weight-volume is equivalent to integrating with respect</span>
+</span><span id="volume_weighted_stats-139"><a href="#volume_weighted_stats-139"><span class="linenos">139</span></a><span class="sd">    to volume.</span>
+</span><span id="volume_weighted_stats-140"><a href="#volume_weighted_stats-140"><span class="linenos">140</span></a><span class="sd">    </span>
+</span><span id="volume_weighted_stats-141"><a href="#volume_weighted_stats-141"><span class="linenos">141</span></a><span class="sd">    Author: Connectome Workbench Developers</span>
+</span><span id="volume_weighted_stats-142"><a href="#volume_weighted_stats-142"><span class="linenos">142</span></a><span class="sd">    </span>
+</span><span id="volume_weighted_stats-143"><a href="#volume_weighted_stats-143"><span class="linenos">143</span></a><span class="sd">    URL: https://github.com/Washington-University/workbench</span>
+</span><span id="volume_weighted_stats-144"><a href="#volume_weighted_stats-144"><span class="linenos">144</span></a><span class="sd">    </span>
+</span><span id="volume_weighted_stats-145"><a href="#volume_weighted_stats-145"><span class="linenos">145</span></a><span class="sd">    Args:</span>
+</span><span id="volume_weighted_stats-146"><a href="#volume_weighted_stats-146"><span class="linenos">146</span></a><span class="sd">        volume_in: the input volume.</span>
+</span><span id="volume_weighted_stats-147"><a href="#volume_weighted_stats-147"><span class="linenos">147</span></a><span class="sd">        weight_volume: use weights from a volume file.</span>
+</span><span id="volume_weighted_stats-148"><a href="#volume_weighted_stats-148"><span class="linenos">148</span></a><span class="sd">        opt_subvolume_subvolume: only display output for one subvolume: the\</span>
+</span><span id="volume_weighted_stats-149"><a href="#volume_weighted_stats-149"><span class="linenos">149</span></a><span class="sd">            subvolume number or name.</span>
+</span><span id="volume_weighted_stats-150"><a href="#volume_weighted_stats-150"><span class="linenos">150</span></a><span class="sd">        roi: only consider data inside an roi.</span>
+</span><span id="volume_weighted_stats-151"><a href="#volume_weighted_stats-151"><span class="linenos">151</span></a><span class="sd">        opt_mean: compute weighted mean.</span>
+</span><span id="volume_weighted_stats-152"><a href="#volume_weighted_stats-152"><span class="linenos">152</span></a><span class="sd">        stdev: compute weighted standard deviation.</span>
+</span><span id="volume_weighted_stats-153"><a href="#volume_weighted_stats-153"><span class="linenos">153</span></a><span class="sd">        opt_percentile_percent: compute weighted percentile: the percentile to\</span>
+</span><span id="volume_weighted_stats-154"><a href="#volume_weighted_stats-154"><span class="linenos">154</span></a><span class="sd">            find, must be between 0 and 100.</span>
+</span><span id="volume_weighted_stats-155"><a href="#volume_weighted_stats-155"><span class="linenos">155</span></a><span class="sd">        opt_sum: compute weighted sum.</span>
+</span><span id="volume_weighted_stats-156"><a href="#volume_weighted_stats-156"><span class="linenos">156</span></a><span class="sd">        opt_show_map_name: print map index and name before each output.</span>
+</span><span id="volume_weighted_stats-157"><a href="#volume_weighted_stats-157"><span class="linenos">157</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="volume_weighted_stats-158"><a href="#volume_weighted_stats-158"><span class="linenos">158</span></a><span class="sd">    Returns:</span>
+</span><span id="volume_weighted_stats-159"><a href="#volume_weighted_stats-159"><span class="linenos">159</span></a><span class="sd">        NamedTuple of outputs (described in `VolumeWeightedStatsOutputs`).</span>
+</span><span id="volume_weighted_stats-160"><a href="#volume_weighted_stats-160"><span class="linenos">160</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="volume_weighted_stats-161"><a href="#volume_weighted_stats-161"><span class="linenos">161</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="volume_weighted_stats-162"><a href="#volume_weighted_stats-162"><span class="linenos">162</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">VOLUME_WEIGHTED_STATS_METADATA</span><span class="p">)</span>
+</span><span id="volume_weighted_stats-163"><a href="#volume_weighted_stats-163"><span class="linenos">163</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="volume_weighted_stats-164"><a href="#volume_weighted_stats-164"><span class="linenos">164</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;wb_command&quot;</span><span class="p">)</span>
+</span><span id="volume_weighted_stats-165"><a href="#volume_weighted_stats-165"><span class="linenos">165</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-volume-weighted-stats&quot;</span><span class="p">)</span>
+</span><span id="volume_weighted_stats-166"><a href="#volume_weighted_stats-166"><span class="linenos">166</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">volume_in</span><span class="p">))</span>
+</span><span id="volume_weighted_stats-167"><a href="#volume_weighted_stats-167"><span class="linenos">167</span></a>    <span class="k">if</span> <span class="n">weight_volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_weighted_stats-168"><a href="#volume_weighted_stats-168"><span class="linenos">168</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">weight_volume</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="volume_weighted_stats-169"><a href="#volume_weighted_stats-169"><span class="linenos">169</span></a>    <span class="k">if</span> <span class="n">opt_subvolume_subvolume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_weighted_stats-170"><a href="#volume_weighted_stats-170"><span class="linenos">170</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="volume_weighted_stats-171"><a href="#volume_weighted_stats-171"><span class="linenos">171</span></a>            <span class="s2">&quot;-subvolume&quot;</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-172"><a href="#volume_weighted_stats-172"><span class="linenos">172</span></a>            <span class="n">opt_subvolume_subvolume</span>
+</span><span id="volume_weighted_stats-173"><a href="#volume_weighted_stats-173"><span class="linenos">173</span></a>        <span class="p">])</span>
+</span><span id="volume_weighted_stats-174"><a href="#volume_weighted_stats-174"><span class="linenos">174</span></a>    <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_weighted_stats-175"><a href="#volume_weighted_stats-175"><span class="linenos">175</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="volume_weighted_stats-176"><a href="#volume_weighted_stats-176"><span class="linenos">176</span></a>    <span class="k">if</span> <span class="n">opt_mean</span><span class="p">:</span>
+</span><span id="volume_weighted_stats-177"><a href="#volume_weighted_stats-177"><span class="linenos">177</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-mean&quot;</span><span class="p">)</span>
+</span><span id="volume_weighted_stats-178"><a href="#volume_weighted_stats-178"><span class="linenos">178</span></a>    <span class="k">if</span> <span class="n">stdev</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_weighted_stats-179"><a href="#volume_weighted_stats-179"><span class="linenos">179</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">stdev</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">execution</span><span class="p">))</span>
+</span><span id="volume_weighted_stats-180"><a href="#volume_weighted_stats-180"><span class="linenos">180</span></a>    <span class="k">if</span> <span class="n">opt_percentile_percent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="volume_weighted_stats-181"><a href="#volume_weighted_stats-181"><span class="linenos">181</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="volume_weighted_stats-182"><a href="#volume_weighted_stats-182"><span class="linenos">182</span></a>            <span class="s2">&quot;-percentile&quot;</span><span class="p">,</span>
+</span><span id="volume_weighted_stats-183"><a href="#volume_weighted_stats-183"><span class="linenos">183</span></a>            <span class="nb">str</span><span class="p">(</span><span class="n">opt_percentile_percent</span><span class="p">)</span>
+</span><span id="volume_weighted_stats-184"><a href="#volume_weighted_stats-184"><span class="linenos">184</span></a>        <span class="p">])</span>
+</span><span id="volume_weighted_stats-185"><a href="#volume_weighted_stats-185"><span class="linenos">185</span></a>    <span class="k">if</span> <span class="n">opt_sum</span><span class="p">:</span>
+</span><span id="volume_weighted_stats-186"><a href="#volume_weighted_stats-186"><span class="linenos">186</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-sum&quot;</span><span class="p">)</span>
+</span><span id="volume_weighted_stats-187"><a href="#volume_weighted_stats-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">opt_show_map_name</span><span class="p">:</span>
+</span><span id="volume_weighted_stats-188"><a href="#volume_weighted_stats-188"><span class="linenos">188</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show-map-name&quot;</span><span class="p">)</span>
+</span><span id="volume_weighted_stats-189"><a href="#volume_weighted_stats-189"><span class="linenos">189</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VolumeWeightedStatsOutputs</span><span class="p">(</span>
+</span><span id="volume_weighted_stats-190"><a href="#volume_weighted_stats-190"><span class="linenos">190</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="volume_weighted_stats-191"><a href="#volume_weighted_stats-191"><span class="linenos">191</span></a>    <span class="p">)</span>
+</span><span id="volume_weighted_stats-192"><a href="#volume_weighted_stats-192"><span class="linenos">192</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="volume_weighted_stats-193"><a href="#volume_weighted_stats-193"><span class="linenos">193</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -750,8 +904,7 @@ to volume.</p>
 <li><strong>opt_subvolume_subvolume:</strong>  only display output for one subvolume: the            subvolume number or name.</li>
 <li><strong>roi:</strong>  only consider data inside an roi.</li>
 <li><strong>opt_mean:</strong>  compute weighted mean.</li>
-<li><strong>opt_stdev:</strong>  compute weighted standard deviation.</li>
-<li><strong>opt_sample:</strong>  estimate population stdev from the sample.</li>
+<li><strong>stdev:</strong>  compute weighted standard deviation.</li>
 <li><strong>opt_percentile_percent:</strong>  compute weighted percentile: the percentile to            find, must be between 0 and 100.</li>
 <li><strong>opt_sum:</strong>  compute weighted sum.</li>
 <li><strong>opt_show_map_name:</strong>  print map index and name before each output.</li>
