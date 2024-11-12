@@ -7,6 +7,7 @@ from styx.backend.generic.core import compile_language
 from styx.backend.python.languageprovider import PythonLanguageProvider 
 from styx.frontend.boutiques import from_boutiques
 from styx.ir.core import Documentation
+from styx.ir.optimize import optimize
 
 PATH_PACKAGES = Path("packages")
 PATH_DESCRIPTORS = Path("descriptors")
@@ -57,7 +58,7 @@ def stream_descriptors():
 def compile_wrappers():
     rmtree(PATH_OUTPUT, ignore_errors=True)
 
-    for py, module_path in compile_language(PythonLanguageProvider(), stream_descriptors()):
+    for py, module_path in compile_language(PythonLanguageProvider(), (optimize(d) for d in stream_descriptors())):
         path_out = Path(str(PATH_OUTPUT / "/".join(module_path)) + ".py")
         path_out.parent.mkdir(parents=True, exist_ok=True)
         path_out.write_text(py, encoding="utf8")
