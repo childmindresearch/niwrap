@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_PARCELLATE_METADATA = Metadata(
-    id="b960075732e728abfd0133d029cf4d46ab8a10d6.boutiques",
+    id="2999d86a8e465421fc30d084412630308e90a7ac.boutiques",
     name="cifti-parcellate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -123,8 +123,9 @@ class CiftiParcellateOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """output cifti file"""
-    mask_out: OutputPathType
-    """the output mask file"""
+    opt_nonempty_mask_out_mask_out: OutputPathType | None
+    """output a matching pscalar file that has 0s in empty parcels, and 1s
+    elsewhere: the output mask file"""
 
 
 def cifti_parcellate(
@@ -132,14 +133,13 @@ def cifti_parcellate(
     cifti_label: InputPathType,
     direction: str,
     cifti_out: str,
-    mask_out: str,
     spatial_weights: CiftiParcellateSpatialWeights | None = None,
     opt_cifti_weights_weight_cifti: InputPathType | None = None,
     opt_method_method: str | None = None,
     exclude_outliers: CiftiParcellateExcludeOutliers | None = None,
     opt_only_numeric: bool = False,
     opt_fill_value_value: float | None = None,
-    opt_nonempty_mask_out: bool = False,
+    opt_nonempty_mask_out_mask_out: str | None = None,
     opt_legacy_mode: bool = False,
     opt_include_empty: bool = False,
     runner: Runner | None = None,
@@ -192,7 +192,6 @@ def cifti_parcellate(
         cifti_label: a cifti label file to use for the parcellation.
         direction: which mapping to parcellate (integer, ROW, or COLUMN).
         cifti_out: output cifti file.
-        mask_out: the output mask file.
         spatial_weights: use voxel volume and either vertex areas or metric\
             files as weights.
         opt_cifti_weights_weight_cifti: use a cifti file containing weights:\
@@ -205,8 +204,8 @@ def cifti_parcellate(
         opt_only_numeric: exclude non-numeric values.
         opt_fill_value_value: specify value to use in empty parcels (default\
             0): the value to fill empty parcels with.
-        opt_nonempty_mask_out: output a matching pscalar file that has 0s in\
-            empty parcels, and 1s elsewhere.
+        opt_nonempty_mask_out_mask_out: output a matching pscalar file that has\
+            0s in empty parcels, and 1s elsewhere: the output mask file.
         opt_legacy_mode: use the old behavior, parcels are defined by the\
             intersection between labels and valid data, and empty parcels are\
             discarded.
@@ -245,9 +244,11 @@ def cifti_parcellate(
             "-fill-value",
             str(opt_fill_value_value)
         ])
-    if opt_nonempty_mask_out:
-        cargs.append("-nonempty-mask-out")
-    cargs.append(mask_out)
+    if opt_nonempty_mask_out_mask_out is not None:
+        cargs.extend([
+            "-nonempty-mask-out",
+            opt_nonempty_mask_out_mask_out
+        ])
     if opt_legacy_mode:
         cargs.append("-legacy-mode")
     if opt_include_empty:
@@ -255,7 +256,7 @@ def cifti_parcellate(
     ret = CiftiParcellateOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(cifti_out),
-        mask_out=execution.output_file(mask_out),
+        opt_nonempty_mask_out_mask_out=execution.output_file(opt_nonempty_mask_out_mask_out) if (opt_nonempty_mask_out_mask_out is not None) else None,
     )
     execution.run(cargs)
     return ret

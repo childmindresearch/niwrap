@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_MATRIX4_TO_MATRIX2_METADATA = Metadata(
-    id="aafdb1925827a58e699fa2c5b92de5075402b4a9.boutiques",
+    id="5fb80f2f8d7238009d940ea8255d132ee6d8e0fd.boutiques",
     name="convert-matrix4-to-matrix2",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -88,8 +88,8 @@ class ConvertMatrix4ToMatrix2Outputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     counts_out: OutputPathType
     """the total fiber counts, as a cifti file"""
-    distance_out: OutputPathType
-    """the distances, as a cifti file"""
+    opt_distances_distance_out: OutputPathType | None
+    """output average trajectory distance: the distances, as a cifti file"""
     individual_fibers: ConvertMatrix4ToMatrix2IndividualFibersOutputs | None
     """Outputs from `ConvertMatrix4ToMatrix2IndividualFibers`."""
 
@@ -97,8 +97,7 @@ class ConvertMatrix4ToMatrix2Outputs(typing.NamedTuple):
 def convert_matrix4_to_matrix2(
     matrix4_wbsparse: str,
     counts_out: str,
-    distance_out: str,
-    opt_distances: bool = False,
+    opt_distances_distance_out: str | None = None,
     individual_fibers: ConvertMatrix4ToMatrix2IndividualFibers | None = None,
     runner: Runner | None = None,
 ) -> ConvertMatrix4ToMatrix2Outputs:
@@ -118,8 +117,8 @@ def convert_matrix4_to_matrix2(
     Args:
         matrix4_wbsparse: a wbsparse matrix4 file.
         counts_out: the total fiber counts, as a cifti file.
-        distance_out: the distances, as a cifti file.
-        opt_distances: output average trajectory distance.
+        opt_distances_distance_out: output average trajectory distance: the\
+            distances, as a cifti file.
         individual_fibers: output files for each fiber direction.
         runner: Command runner.
     Returns:
@@ -132,15 +131,17 @@ def convert_matrix4_to_matrix2(
     cargs.append("-convert-matrix4-to-matrix2")
     cargs.append(matrix4_wbsparse)
     cargs.append(counts_out)
-    if opt_distances:
-        cargs.append("-distances")
-    cargs.append(distance_out)
+    if opt_distances_distance_out is not None:
+        cargs.extend([
+            "-distances",
+            opt_distances_distance_out
+        ])
     if individual_fibers is not None:
         cargs.extend(individual_fibers.run(execution))
     ret = ConvertMatrix4ToMatrix2Outputs(
         root=execution.output_file("."),
         counts_out=execution.output_file(counts_out),
-        distance_out=execution.output_file(distance_out),
+        opt_distances_distance_out=execution.output_file(opt_distances_distance_out) if (opt_distances_distance_out is not None) else None,
         individual_fibers=individual_fibers.outputs(execution) if individual_fibers else None,
     )
     execution.run(cargs)

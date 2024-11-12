@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_GRADIENT_METADATA = Metadata(
-    id="be502063183585fe8d5a2e2109e4755ca9821f9c.boutiques",
+    id="d5b6a82ebcaa70767bfb3636ac482b1273441436.boutiques",
     name="cifti-gradient",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -124,15 +124,14 @@ class CiftiGradientOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     cifti_out: OutputPathType
     """the output cifti"""
-    vectors_out: OutputPathType
-    """the vectors, as a dscalar file"""
+    opt_vectors_vectors_out: OutputPathType | None
+    """output gradient vectors: the vectors, as a dscalar file"""
 
 
 def cifti_gradient(
     cifti: InputPathType,
     direction: str,
     cifti_out: str,
-    vectors_out: str,
     left_surface: CiftiGradientLeftSurface | None = None,
     right_surface: CiftiGradientRightSurface | None = None,
     cerebellum_surface: CiftiGradientCerebellumSurface | None = None,
@@ -140,7 +139,7 @@ def cifti_gradient(
     opt_volume_presmooth_volume_kernel: float | None = None,
     opt_presmooth_fwhm: bool = False,
     opt_average_output: bool = False,
-    opt_vectors: bool = False,
+    opt_vectors_vectors_out: str | None = None,
     runner: Runner | None = None,
 ) -> CiftiGradientOutputs:
     """
@@ -161,7 +160,6 @@ def cifti_gradient(
         cifti: the input cifti.
         direction: which dimension to take the gradient along, ROW or COLUMN.
         cifti_out: the output cifti.
-        vectors_out: the vectors, as a dscalar file.
         left_surface: specify the left surface to use.
         right_surface: specify the right surface to use.
         cerebellum_surface: specify the cerebellum surface to use.
@@ -174,7 +172,8 @@ def cifti_gradient(
         opt_presmooth_fwhm: smoothing kernel sizes are FWHM, not sigma.
         opt_average_output: output the average of the gradient magnitude maps\
             instead of each gradient map separately.
-        opt_vectors: output gradient vectors.
+        opt_vectors_vectors_out: output gradient vectors: the vectors, as a\
+            dscalar file.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `CiftiGradientOutputs`).
@@ -207,13 +206,15 @@ def cifti_gradient(
         cargs.append("-presmooth-fwhm")
     if opt_average_output:
         cargs.append("-average-output")
-    if opt_vectors:
-        cargs.append("-vectors")
-    cargs.append(vectors_out)
+    if opt_vectors_vectors_out is not None:
+        cargs.extend([
+            "-vectors",
+            opt_vectors_vectors_out
+        ])
     ret = CiftiGradientOutputs(
         root=execution.output_file("."),
         cifti_out=execution.output_file(cifti_out),
-        vectors_out=execution.output_file(vectors_out),
+        opt_vectors_vectors_out=execution.output_file(opt_vectors_vectors_out) if (opt_vectors_vectors_out is not None) else None,
     )
     execution.run(cargs)
     return ret

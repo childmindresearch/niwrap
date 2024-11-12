@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CORTEX_LAYER_METADATA = Metadata(
-    id="65eabda37d8acfd1a597307c0bc9c6c7bef14ae4.boutiques",
+    id="12c526584eecbd429b869a5cfca163cd51aae720.boutiques",
     name="surface-cortex-layer",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -22,8 +22,9 @@ class SurfaceCortexLayerOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     out_surface: OutputPathType
     """the output surface"""
-    placement_metric: OutputPathType
-    """output metric"""
+    opt_placement_out_placement_metric: OutputPathType | None
+    """output the placement as a volume fraction from pial to white: output
+    metric"""
 
 
 def surface_cortex_layer(
@@ -31,8 +32,7 @@ def surface_cortex_layer(
     pial_surface: InputPathType,
     location: float,
     out_surface: str,
-    placement_metric: str,
-    opt_placement_out: bool = False,
+    opt_placement_out_placement_metric: str | None = None,
     runner: Runner | None = None,
 ) -> SurfaceCortexLayerOutputs:
     """
@@ -54,9 +54,8 @@ def surface_cortex_layer(
         pial_surface: the pial surface.
         location: what volume fraction to place the layer at.
         out_surface: the output surface.
-        placement_metric: output metric.
-        opt_placement_out: output the placement as a volume fraction from pial\
-            to white.
+        opt_placement_out_placement_metric: output the placement as a volume\
+            fraction from pial to white: output metric.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceCortexLayerOutputs`).
@@ -70,13 +69,15 @@ def surface_cortex_layer(
     cargs.append(execution.input_file(pial_surface))
     cargs.append(str(location))
     cargs.append(out_surface)
-    if opt_placement_out:
-        cargs.append("-placement-out")
-    cargs.append(placement_metric)
+    if opt_placement_out_placement_metric is not None:
+        cargs.extend([
+            "-placement-out",
+            opt_placement_out_placement_metric
+        ])
     ret = SurfaceCortexLayerOutputs(
         root=execution.output_file("."),
         out_surface=execution.output_file(out_surface),
-        placement_metric=execution.output_file(placement_metric),
+        opt_placement_out_placement_metric=execution.output_file(opt_placement_out_placement_metric) if (opt_placement_out_placement_metric is not None) else None,
     )
     execution.run(cargs)
     return ret

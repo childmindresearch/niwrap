@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_RESAMPLE_METADATA = Metadata(
-    id="f77fedd915dc4d7b3146090ed4d10cff2d7532ac.boutiques",
+    id="c0e9d5a876a0eec10684433606b4697acea320b1.boutiques",
     name="label-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -80,8 +80,9 @@ class LabelResampleOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     label_out: OutputPathType
     """the output label file"""
-    roi_out: OutputPathType
-    """the output roi as a metric"""
+    opt_valid_roi_out_roi_out: OutputPathType | None
+    """output the ROI of vertices that got data from valid source vertices: the
+    output roi as a metric"""
 
 
 def label_resample(
@@ -90,11 +91,10 @@ def label_resample(
     new_sphere: InputPathType,
     method: str,
     label_out: str,
-    roi_out: str,
     area_surfs: LabelResampleAreaSurfs | None = None,
     area_metrics: LabelResampleAreaMetrics | None = None,
     opt_current_roi_roi_metric: InputPathType | None = None,
-    opt_valid_roi_out: bool = False,
+    opt_valid_roi_out_roi_out: str | None = None,
     opt_largest: bool = False,
     opt_bypass_sphere_check: bool = False,
     runner: Runner | None = None,
@@ -136,14 +136,13 @@ def label_resample(
             and has the desired output mesh.
         method: the method name.
         label_out: the output label file.
-        roi_out: the output roi as a metric.
         area_surfs: specify surfaces to do vertex area correction based on.
         area_metrics: specify vertex area metrics to do area correction based\
             on.
         opt_current_roi_roi_metric: use an input roi on the current mesh to\
             exclude non-data vertices: the roi, as a metric file.
-        opt_valid_roi_out: output the ROI of vertices that got data from valid\
-            source vertices.
+        opt_valid_roi_out_roi_out: output the ROI of vertices that got data\
+            from valid source vertices: the output roi as a metric.
         opt_largest: use only the label of the vertex with the largest weight.
         opt_bypass_sphere_check: ADVANCED: allow the current and new 'spheres'\
             to have arbitrary shape as long as they follow the same contour.
@@ -170,9 +169,11 @@ def label_resample(
             "-current-roi",
             execution.input_file(opt_current_roi_roi_metric)
         ])
-    if opt_valid_roi_out:
-        cargs.append("-valid-roi-out")
-    cargs.append(roi_out)
+    if opt_valid_roi_out_roi_out is not None:
+        cargs.extend([
+            "-valid-roi-out",
+            opt_valid_roi_out_roi_out
+        ])
     if opt_largest:
         cargs.append("-largest")
     if opt_bypass_sphere_check:
@@ -180,7 +181,7 @@ def label_resample(
     ret = LabelResampleOutputs(
         root=execution.output_file("."),
         label_out=execution.output_file(label_out),
-        roi_out=execution.output_file(roi_out),
+        opt_valid_roi_out_roi_out=execution.output_file(opt_valid_roi_out_roi_out) if (opt_valid_roi_out_roi_out is not None) else None,
     )
     execution.run(cargs)
     return ret

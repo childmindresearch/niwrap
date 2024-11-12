@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_WEIGHTED_STATS_METADATA = Metadata(
-    id="583ea5db0d7c2050d6bdc18334caa1a662a04dc2.boutiques",
+    id="1d13f9a9e12e5526b74fe5089fe5073d0bc7ee6c.boutiques",
     name="volume-weighted-stats",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -76,6 +76,33 @@ class VolumeWeightedStatsRoi:
         return cargs
 
 
+@dataclasses.dataclass
+class VolumeWeightedStatsStdev:
+    """
+    compute weighted standard deviation.
+    """
+    opt_sample: bool = False
+    """estimate population stdev from the sample"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-stdev")
+        if self.opt_sample:
+            cargs.append("-sample")
+        return cargs
+
+
 class VolumeWeightedStatsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_weighted_stats(...)`.
@@ -90,8 +117,7 @@ def volume_weighted_stats(
     opt_subvolume_subvolume: str | None = None,
     roi: VolumeWeightedStatsRoi | None = None,
     opt_mean: bool = False,
-    opt_stdev: bool = False,
-    opt_sample: bool = False,
+    stdev: VolumeWeightedStatsStdev | None = None,
     opt_percentile_percent: float | None = None,
     opt_sum: bool = False,
     opt_show_map_name: bool = False,
@@ -122,8 +148,7 @@ def volume_weighted_stats(
             subvolume number or name.
         roi: only consider data inside an roi.
         opt_mean: compute weighted mean.
-        opt_stdev: compute weighted standard deviation.
-        opt_sample: estimate population stdev from the sample.
+        stdev: compute weighted standard deviation.
         opt_percentile_percent: compute weighted percentile: the percentile to\
             find, must be between 0 and 100.
         opt_sum: compute weighted sum.
@@ -149,10 +174,8 @@ def volume_weighted_stats(
         cargs.extend(roi.run(execution))
     if opt_mean:
         cargs.append("-mean")
-    if opt_stdev:
-        cargs.append("-stdev")
-    if opt_sample:
-        cargs.append("-sample")
+    if stdev is not None:
+        cargs.extend(stdev.run(execution))
     if opt_percentile_percent is not None:
         cargs.extend([
             "-percentile",
@@ -173,6 +196,7 @@ __all__ = [
     "VOLUME_WEIGHTED_STATS_METADATA",
     "VolumeWeightedStatsOutputs",
     "VolumeWeightedStatsRoi",
+    "VolumeWeightedStatsStdev",
     "VolumeWeightedStatsWeightVolume",
     "volume_weighted_stats",
 ]

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_DISTORTION_METADATA = Metadata(
-    id="adabb3446affb9f9a83b9e8ab8fa3c3f422fdf26.boutiques",
+    id="ca3fe449cd09f27e78b2a89048f89e54b60ab30b.boutiques",
     name="surface-distortion",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -44,6 +44,33 @@ class SurfaceDistortionSmooth:
         return cargs
 
 
+@dataclasses.dataclass
+class SurfaceDistortionLocalAffineMethod:
+    """
+    calculate distortion by the local affines between triangles.
+    """
+    opt_log2: bool = False
+    """apply base-2 log transform"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-local-affine-method")
+        if self.opt_log2:
+            cargs.append("-log2")
+        return cargs
+
+
 class SurfaceDistortionOutputs(typing.NamedTuple):
     """
     Output object returned when calling `surface_distortion(...)`.
@@ -61,8 +88,7 @@ def surface_distortion(
     smooth: SurfaceDistortionSmooth | None = None,
     opt_caret5_method: bool = False,
     opt_edge_method: bool = False,
-    opt_local_affine_method: bool = False,
-    opt_log2: bool = False,
+    local_affine_method: SurfaceDistortionLocalAffineMethod | None = None,
     runner: Runner | None = None,
 ) -> SurfaceDistortionOutputs:
     """
@@ -99,9 +125,8 @@ def surface_distortion(
         smooth: smooth the area data.
         opt_caret5_method: use the surface distortion method from caret5.
         opt_edge_method: calculate distortion of edge lengths rather than areas.
-        opt_local_affine_method: calculate distortion by the local affines\
-            between triangles.
-        opt_log2: apply base-2 log transform.
+        local_affine_method: calculate distortion by the local affines between\
+            triangles.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceDistortionOutputs`).
@@ -120,10 +145,8 @@ def surface_distortion(
         cargs.append("-caret5-method")
     if opt_edge_method:
         cargs.append("-edge-method")
-    if opt_local_affine_method:
-        cargs.append("-local-affine-method")
-    if opt_log2:
-        cargs.append("-log2")
+    if local_affine_method is not None:
+        cargs.extend(local_affine_method.run(execution))
     ret = SurfaceDistortionOutputs(
         root=execution.output_file("."),
         metric_out=execution.output_file(metric_out),
@@ -134,6 +157,7 @@ def surface_distortion(
 
 __all__ = [
     "SURFACE_DISTORTION_METADATA",
+    "SurfaceDistortionLocalAffineMethod",
     "SurfaceDistortionOutputs",
     "SurfaceDistortionSmooth",
     "surface_distortion",

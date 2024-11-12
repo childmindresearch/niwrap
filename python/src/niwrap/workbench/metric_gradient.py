@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_GRADIENT_METADATA = Metadata(
-    id="d8cd368fb944447435a02d10e0ed11ef43d78535.boutiques",
+    id="9e6fc1332bc0d7e9617b730f5793f336d285fc1d.boutiques",
     name="metric-gradient",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -82,18 +82,17 @@ class MetricGradientOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the magnitude of the gradient"""
-    vector_metric_out: OutputPathType
-    """the vectors as a metric file"""
+    opt_vectors_vector_metric_out: OutputPathType | None
+    """output gradient vectors: the vectors as a metric file"""
 
 
 def metric_gradient(
     surface: InputPathType,
     metric_in: InputPathType,
     metric_out: str,
-    vector_metric_out: str,
     presmooth: MetricGradientPresmooth | None = None,
     roi: MetricGradientRoi | None = None,
-    opt_vectors: bool = False,
+    opt_vectors_vector_metric_out: str | None = None,
     opt_column_column: str | None = None,
     opt_corrected_areas_area_metric: InputPathType | None = None,
     opt_average_normals: bool = False,
@@ -138,10 +137,10 @@ def metric_gradient(
         surface: the surface to compute the gradient on.
         metric_in: the metric to compute the gradient of.
         metric_out: the magnitude of the gradient.
-        vector_metric_out: the vectors as a metric file.
         presmooth: smooth the metric before computing the gradient.
         roi: select a region of interest to take the gradient of.
-        opt_vectors: output gradient vectors.
+        opt_vectors_vector_metric_out: output gradient vectors: the vectors as\
+            a metric file.
         opt_column_column: select a single column to compute the gradient of:\
             the column number or name.
         opt_corrected_areas_area_metric: vertex areas to use instead of\
@@ -165,9 +164,11 @@ def metric_gradient(
         cargs.extend(presmooth.run(execution))
     if roi is not None:
         cargs.extend(roi.run(execution))
-    if opt_vectors:
-        cargs.append("-vectors")
-    cargs.append(vector_metric_out)
+    if opt_vectors_vector_metric_out is not None:
+        cargs.extend([
+            "-vectors",
+            opt_vectors_vector_metric_out
+        ])
     if opt_column_column is not None:
         cargs.extend([
             "-column",
@@ -183,7 +184,7 @@ def metric_gradient(
     ret = MetricGradientOutputs(
         root=execution.output_file("."),
         metric_out=execution.output_file(metric_out),
-        vector_metric_out=execution.output_file(vector_metric_out),
+        opt_vectors_vector_metric_out=execution.output_file(opt_vectors_vector_metric_out) if (opt_vectors_vector_metric_out is not None) else None,
     )
     execution.run(cargs)
     return ret

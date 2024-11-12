@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_SEPARATE_METADATA = Metadata(
-    id="d48eb6023a350c94c0312c6ec01021513db3d25f.boutiques",
+    id="44724b5837f3cdcd3ff0d82a36ae5d8788e1a956.boutiques",
     name="cifti-separate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -22,10 +22,11 @@ class CiftiSeparateVolumeAllOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume"""
-    roi_out: OutputPathType
-    """the roi output volume"""
-    label_out: OutputPathType
-    """the label output volume"""
+    opt_roi_roi_out: OutputPathType | None
+    """also output the roi of which voxels have data: the roi output volume"""
+    opt_label_label_out: OutputPathType | None
+    """output a volume label file indicating the location of structures: the
+    label output volume"""
 
 
 @dataclasses.dataclass
@@ -35,14 +36,11 @@ class CiftiSeparateVolumeAll:
     """
     volume_out: str
     """the output volume"""
-    roi_out: str
-    """the roi output volume"""
-    label_out: str
-    """the label output volume"""
-    opt_roi: bool = False
-    """also output the roi of which voxels have data"""
-    opt_label: bool = False
-    """output a volume label file indicating the location of structures"""
+    opt_roi_roi_out: str | None = None
+    """also output the roi of which voxels have data: the roi output volume"""
+    opt_label_label_out: str | None = None
+    """output a volume label file indicating the location of structures: the
+    label output volume"""
     opt_crop: bool = False
     """crop volume to the size of the data rather than using the original volume
     size"""
@@ -62,12 +60,16 @@ class CiftiSeparateVolumeAll:
         cargs = []
         cargs.append("-volume-all")
         cargs.append(self.volume_out)
-        if self.opt_roi:
-            cargs.append("-roi")
-        cargs.append(self.roi_out)
-        if self.opt_label:
-            cargs.append("-label")
-        cargs.append(self.label_out)
+        if self.opt_roi_roi_out is not None:
+            cargs.extend([
+                "-roi",
+                self.opt_roi_roi_out
+            ])
+        if self.opt_label_label_out is not None:
+            cargs.extend([
+                "-label",
+                self.opt_label_label_out
+            ])
         if self.opt_crop:
             cargs.append("-crop")
         return cargs
@@ -87,8 +89,8 @@ class CiftiSeparateVolumeAll:
         ret = CiftiSeparateVolumeAllOutputs(
             root=execution.output_file("."),
             volume_out=execution.output_file(self.volume_out),
-            roi_out=execution.output_file(self.roi_out),
-            label_out=execution.output_file(self.label_out),
+            opt_roi_roi_out=execution.output_file(self.opt_roi_roi_out) if (opt_roi_roi_out is not None) else None,
+            opt_label_label_out=execution.output_file(self.opt_label_label_out) if (opt_label_label_out is not None) else None,
         )
         return ret
 
@@ -101,8 +103,8 @@ class CiftiSeparateLabelOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     label_out: OutputPathType
     """the output label file"""
-    roi_out: OutputPathType
-    """the roi output metric"""
+    opt_roi_roi_out: OutputPathType | None
+    """also output the roi of which vertices have data: the roi output metric"""
 
 
 @dataclasses.dataclass
@@ -114,10 +116,8 @@ class CiftiSeparateLabel:
     """the structure to output"""
     label_out: str
     """the output label file"""
-    roi_out: str
-    """the roi output metric"""
-    opt_roi: bool = False
-    """also output the roi of which vertices have data"""
+    opt_roi_roi_out: str | None = None
+    """also output the roi of which vertices have data: the roi output metric"""
     
     def run(
         self,
@@ -135,9 +135,11 @@ class CiftiSeparateLabel:
         cargs.append("-label")
         cargs.append(self.structure)
         cargs.append(self.label_out)
-        if self.opt_roi:
-            cargs.append("-roi")
-        cargs.append(self.roi_out)
+        if self.opt_roi_roi_out is not None:
+            cargs.extend([
+                "-roi",
+                self.opt_roi_roi_out
+            ])
         return cargs
     
     def outputs(
@@ -155,7 +157,7 @@ class CiftiSeparateLabel:
         ret = CiftiSeparateLabelOutputs(
             root=execution.output_file("."),
             label_out=execution.output_file(self.label_out),
-            roi_out=execution.output_file(self.roi_out),
+            opt_roi_roi_out=execution.output_file(self.opt_roi_roi_out) if (opt_roi_roi_out is not None) else None,
         )
         return ret
 
@@ -168,8 +170,8 @@ class CiftiSeparateMetricOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     metric_out: OutputPathType
     """the output metric"""
-    roi_out: OutputPathType
-    """the roi output metric"""
+    opt_roi_roi_out: OutputPathType | None
+    """also output the roi of which vertices have data: the roi output metric"""
 
 
 @dataclasses.dataclass
@@ -181,10 +183,8 @@ class CiftiSeparateMetric:
     """the structure to output"""
     metric_out: str
     """the output metric"""
-    roi_out: str
-    """the roi output metric"""
-    opt_roi: bool = False
-    """also output the roi of which vertices have data"""
+    opt_roi_roi_out: str | None = None
+    """also output the roi of which vertices have data: the roi output metric"""
     
     def run(
         self,
@@ -202,9 +202,11 @@ class CiftiSeparateMetric:
         cargs.append("-metric")
         cargs.append(self.structure)
         cargs.append(self.metric_out)
-        if self.opt_roi:
-            cargs.append("-roi")
-        cargs.append(self.roi_out)
+        if self.opt_roi_roi_out is not None:
+            cargs.extend([
+                "-roi",
+                self.opt_roi_roi_out
+            ])
         return cargs
     
     def outputs(
@@ -222,7 +224,7 @@ class CiftiSeparateMetric:
         ret = CiftiSeparateMetricOutputs(
             root=execution.output_file("."),
             metric_out=execution.output_file(self.metric_out),
-            roi_out=execution.output_file(self.roi_out),
+            opt_roi_roi_out=execution.output_file(self.opt_roi_roi_out) if (opt_roi_roi_out is not None) else None,
         )
         return ret
 
@@ -235,8 +237,8 @@ class CiftiSeparateVolumeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output volume"""
-    roi_out: OutputPathType
-    """the roi output volume"""
+    opt_roi_roi_out: OutputPathType | None
+    """also output the roi of which voxels have data: the roi output volume"""
 
 
 @dataclasses.dataclass
@@ -248,10 +250,8 @@ class CiftiSeparateVolume:
     """the structure to output"""
     volume_out: str
     """the output volume"""
-    roi_out: str
-    """the roi output volume"""
-    opt_roi: bool = False
-    """also output the roi of which voxels have data"""
+    opt_roi_roi_out: str | None = None
+    """also output the roi of which voxels have data: the roi output volume"""
     opt_crop: bool = False
     """crop volume to the size of the component rather than using the original
     volume size"""
@@ -272,9 +272,11 @@ class CiftiSeparateVolume:
         cargs.append("-volume")
         cargs.append(self.structure)
         cargs.append(self.volume_out)
-        if self.opt_roi:
-            cargs.append("-roi")
-        cargs.append(self.roi_out)
+        if self.opt_roi_roi_out is not None:
+            cargs.extend([
+                "-roi",
+                self.opt_roi_roi_out
+            ])
         if self.opt_crop:
             cargs.append("-crop")
         return cargs
@@ -294,7 +296,7 @@ class CiftiSeparateVolume:
         ret = CiftiSeparateVolumeOutputs(
             root=execution.output_file("."),
             volume_out=execution.output_file(self.volume_out),
-            roi_out=execution.output_file(self.roi_out),
+            opt_roi_roi_out=execution.output_file(self.opt_roi_roi_out) if (opt_roi_roi_out is not None) else None,
         )
         return ret
 

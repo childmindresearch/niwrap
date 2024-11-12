@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CURVATURE_METADATA = Metadata(
-    id="692b4b3494445fb3298c99e4ea875d6763542149.boutiques",
+    id="b6835a080bc5ebcbcfc3da83cb01c8762893baa9.boutiques",
     name="surface-curvature",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -20,18 +20,16 @@ class SurfaceCurvatureOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    mean_out: OutputPathType
-    """mean curvature metric"""
-    gauss_out: OutputPathType
-    """gaussian curvature metric"""
+    opt_mean_mean_out: OutputPathType | None
+    """output mean curvature: mean curvature metric"""
+    opt_gauss_gauss_out: OutputPathType | None
+    """output gaussian curvature: gaussian curvature metric"""
 
 
 def surface_curvature(
     surface: InputPathType,
-    mean_out: str,
-    gauss_out: str,
-    opt_mean: bool = False,
-    opt_gauss: bool = False,
+    opt_mean_mean_out: str | None = None,
+    opt_gauss_gauss_out: str | None = None,
     runner: Runner | None = None,
 ) -> SurfaceCurvatureOutputs:
     """
@@ -47,10 +45,9 @@ def surface_curvature(
     
     Args:
         surface: the surface to compute the curvature of.
-        mean_out: mean curvature metric.
-        gauss_out: gaussian curvature metric.
-        opt_mean: output mean curvature.
-        opt_gauss: output gaussian curvature.
+        opt_mean_mean_out: output mean curvature: mean curvature metric.
+        opt_gauss_gauss_out: output gaussian curvature: gaussian curvature\
+            metric.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceCurvatureOutputs`).
@@ -61,16 +58,20 @@ def surface_curvature(
     cargs.append("wb_command")
     cargs.append("-surface-curvature")
     cargs.append(execution.input_file(surface))
-    if opt_mean:
-        cargs.append("-mean")
-    cargs.append(mean_out)
-    if opt_gauss:
-        cargs.append("-gauss")
-    cargs.append(gauss_out)
+    if opt_mean_mean_out is not None:
+        cargs.extend([
+            "-mean",
+            opt_mean_mean_out
+        ])
+    if opt_gauss_gauss_out is not None:
+        cargs.extend([
+            "-gauss",
+            opt_gauss_gauss_out
+        ])
     ret = SurfaceCurvatureOutputs(
         root=execution.output_file("."),
-        mean_out=execution.output_file(mean_out),
-        gauss_out=execution.output_file(gauss_out),
+        opt_mean_mean_out=execution.output_file(opt_mean_mean_out) if (opt_mean_mean_out is not None) else None,
+        opt_gauss_gauss_out=execution.output_file(opt_gauss_gauss_out) if (opt_gauss_gauss_out is not None) else None,
     )
     execution.run(cargs)
     return ret

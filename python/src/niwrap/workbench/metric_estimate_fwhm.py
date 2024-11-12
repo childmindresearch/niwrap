@@ -7,11 +7,38 @@ from styxdefs import *
 import dataclasses
 
 METRIC_ESTIMATE_FWHM_METADATA = Metadata(
-    id="76907803c2f1aed8ab98dc0e854e6d8c507004d4.boutiques",
+    id="98391d1cb04e49b24e8f08022b16cc21f8347190.boutiques",
     name="metric-estimate-fwhm",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
+@dataclasses.dataclass
+class MetricEstimateFwhmWholeFile:
+    """
+    estimate for the whole file at once, not each column separately.
+    """
+    opt_demean: bool = False
+    """subtract the mean image before estimating smoothness"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-whole-file")
+        if self.opt_demean:
+            cargs.append("-demean")
+        return cargs
 
 
 class MetricEstimateFwhmOutputs(typing.NamedTuple):
@@ -27,8 +54,7 @@ def metric_estimate_fwhm(
     metric_in: InputPathType,
     opt_roi_roi_metric: InputPathType | None = None,
     opt_column_column: str | None = None,
-    opt_whole_file: bool = False,
-    opt_demean: bool = False,
+    whole_file: MetricEstimateFwhmWholeFile | None = None,
     runner: Runner | None = None,
 ) -> MetricEstimateFwhmOutputs:
     """
@@ -48,9 +74,8 @@ def metric_estimate_fwhm(
             as an ROI.
         opt_column_column: select a single column to estimate smoothness of:\
             the column number or name.
-        opt_whole_file: estimate for the whole file at once, not each column\
+        whole_file: estimate for the whole file at once, not each column\
             separately.
-        opt_demean: subtract the mean image before estimating smoothness.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `MetricEstimateFwhmOutputs`).
@@ -72,10 +97,8 @@ def metric_estimate_fwhm(
             "-column",
             opt_column_column
         ])
-    if opt_whole_file:
-        cargs.append("-whole-file")
-    if opt_demean:
-        cargs.append("-demean")
+    if whole_file is not None:
+        cargs.extend(whole_file.run(execution))
     ret = MetricEstimateFwhmOutputs(
         root=execution.output_file("."),
     )
@@ -86,5 +109,6 @@ def metric_estimate_fwhm(
 __all__ = [
     "METRIC_ESTIMATE_FWHM_METADATA",
     "MetricEstimateFwhmOutputs",
+    "MetricEstimateFwhmWholeFile",
     "metric_estimate_fwhm",
 ]

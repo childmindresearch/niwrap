@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_AVERAGE_METADATA = Metadata(
-    id="8366d26b27cba64a73e6f9e401479f653cb07e95.boutiques",
+    id="3b697ec9d066eb6331c1c0d2493fde3fb7d1c343.boutiques",
     name="surface-average",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -55,18 +55,17 @@ class SurfaceAverageOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     surface_out: OutputPathType
     """the output averaged surface"""
-    stddev_metric_out: OutputPathType
-    """the output metric for 3D sample standard deviation"""
-    uncert_metric_out: OutputPathType
-    """the output metric for uncertainty"""
+    opt_stddev_stddev_metric_out: OutputPathType | None
+    """compute 3D sample standard deviation: the output metric for 3D sample
+    standard deviation"""
+    opt_uncertainty_uncert_metric_out: OutputPathType | None
+    """compute caret5 'uncertainty': the output metric for uncertainty"""
 
 
 def surface_average(
     surface_out: str,
-    stddev_metric_out: str,
-    uncert_metric_out: str,
-    opt_stddev: bool = False,
-    opt_uncertainty: bool = False,
+    opt_stddev_stddev_metric_out: str | None = None,
+    opt_uncertainty_uncert_metric_out: str | None = None,
     surf: list[SurfaceAverageSurf] | None = None,
     runner: Runner | None = None,
 ) -> SurfaceAverageOutputs:
@@ -88,10 +87,10 @@ def surface_average(
     
     Args:
         surface_out: the output averaged surface.
-        stddev_metric_out: the output metric for 3D sample standard deviation.
-        uncert_metric_out: the output metric for uncertainty.
-        opt_stddev: compute 3D sample standard deviation.
-        opt_uncertainty: compute caret5 'uncertainty'.
+        opt_stddev_stddev_metric_out: compute 3D sample standard deviation: the\
+            output metric for 3D sample standard deviation.
+        opt_uncertainty_uncert_metric_out: compute caret5 'uncertainty': the\
+            output metric for uncertainty.
         surf: specify a surface to include in the average.
         runner: Command runner.
     Returns:
@@ -103,19 +102,23 @@ def surface_average(
     cargs.append("wb_command")
     cargs.append("-surface-average")
     cargs.append(surface_out)
-    if opt_stddev:
-        cargs.append("-stddev")
-    cargs.append(stddev_metric_out)
-    if opt_uncertainty:
-        cargs.append("-uncertainty")
-    cargs.append(uncert_metric_out)
+    if opt_stddev_stddev_metric_out is not None:
+        cargs.extend([
+            "-stddev",
+            opt_stddev_stddev_metric_out
+        ])
+    if opt_uncertainty_uncert_metric_out is not None:
+        cargs.extend([
+            "-uncertainty",
+            opt_uncertainty_uncert_metric_out
+        ])
     if surf is not None:
         cargs.extend([a for c in [s.run(execution) for s in surf] for a in c])
     ret = SurfaceAverageOutputs(
         root=execution.output_file("."),
         surface_out=execution.output_file(surface_out),
-        stddev_metric_out=execution.output_file(stddev_metric_out),
-        uncert_metric_out=execution.output_file(uncert_metric_out),
+        opt_stddev_stddev_metric_out=execution.output_file(opt_stddev_stddev_metric_out) if (opt_stddev_stddev_metric_out is not None) else None,
+        opt_uncertainty_uncert_metric_out=execution.output_file(opt_uncertainty_uncert_metric_out) if (opt_uncertainty_uncert_metric_out is not None) else None,
     )
     execution.run(cargs)
     return ret

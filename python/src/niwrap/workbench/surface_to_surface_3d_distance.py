@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_TO_SURFACE_3D_DISTANCE_METADATA = Metadata(
-    id="1d9c92578d5199ba4ce6b7913f70bfe12ae30bbd.boutiques",
+    id="c0303a1bd224efddc7ff05f196dc54467bf7b575.boutiques",
     name="surface-to-surface-3d-distance",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -22,16 +22,15 @@ class SurfaceToSurface3dDistanceOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     dists_out: OutputPathType
     """the output distances"""
-    vectors_out: OutputPathType
-    """the output vectors"""
+    opt_vectors_vectors_out: OutputPathType | None
+    """output the displacement vectors: the output vectors"""
 
 
 def surface_to_surface_3d_distance(
     surface_comp: InputPathType,
     surface_ref: InputPathType,
     dists_out: str,
-    vectors_out: str,
-    opt_vectors: bool = False,
+    opt_vectors_vectors_out: str | None = None,
     runner: Runner | None = None,
 ) -> SurfaceToSurface3dDistanceOutputs:
     """
@@ -49,8 +48,8 @@ def surface_to_surface_3d_distance(
         surface_comp: the surface to compare to the reference.
         surface_ref: the surface to use as the reference.
         dists_out: the output distances.
-        vectors_out: the output vectors.
-        opt_vectors: output the displacement vectors.
+        opt_vectors_vectors_out: output the displacement vectors: the output\
+            vectors.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `SurfaceToSurface3dDistanceOutputs`).
@@ -63,13 +62,15 @@ def surface_to_surface_3d_distance(
     cargs.append(execution.input_file(surface_comp))
     cargs.append(execution.input_file(surface_ref))
     cargs.append(dists_out)
-    if opt_vectors:
-        cargs.append("-vectors")
-    cargs.append(vectors_out)
+    if opt_vectors_vectors_out is not None:
+        cargs.extend([
+            "-vectors",
+            opt_vectors_vectors_out
+        ])
     ret = SurfaceToSurface3dDistanceOutputs(
         root=execution.output_file("."),
         dists_out=execution.output_file(dists_out),
-        vectors_out=execution.output_file(vectors_out),
+        opt_vectors_vectors_out=execution.output_file(opt_vectors_vectors_out) if (opt_vectors_vectors_out is not None) else None,
     )
     execution.run(cargs)
     return ret

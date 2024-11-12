@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_GRADIENT_METADATA = Metadata(
-    id="43deb44789ab9ad9e655d3e64c90650d2035d044.boutiques",
+    id="fcf767cce723cb8ecc69f16f32e4ba74ae66e7c4.boutiques",
     name="volume-gradient",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -52,17 +52,16 @@ class VolumeGradientOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     volume_out: OutputPathType
     """the output gradient magnitude volume"""
-    vector_volume_out: OutputPathType
-    """the vectors as a volume file"""
+    opt_vectors_vector_volume_out: OutputPathType | None
+    """output vectors: the vectors as a volume file"""
 
 
 def volume_gradient(
     volume_in: InputPathType,
     volume_out: str,
-    vector_volume_out: str,
     presmooth: VolumeGradientPresmooth | None = None,
     opt_roi_roi_volume: InputPathType | None = None,
-    opt_vectors: bool = False,
+    opt_vectors_vector_volume_out: str | None = None,
     opt_subvolume_subvol: str | None = None,
     runner: Runner | None = None,
 ) -> VolumeGradientOutputs:
@@ -83,11 +82,11 @@ def volume_gradient(
     Args:
         volume_in: the input volume.
         volume_out: the output gradient magnitude volume.
-        vector_volume_out: the vectors as a volume file.
         presmooth: smooth the volume before computing the gradient.
         opt_roi_roi_volume: select a region of interest to take the gradient\
             of: the region to take the gradient within.
-        opt_vectors: output vectors.
+        opt_vectors_vector_volume_out: output vectors: the vectors as a volume\
+            file.
         opt_subvolume_subvol: select a single subvolume to take the gradient\
             of: the subvolume number or name.
         runner: Command runner.
@@ -108,9 +107,11 @@ def volume_gradient(
             "-roi",
             execution.input_file(opt_roi_roi_volume)
         ])
-    if opt_vectors:
-        cargs.append("-vectors")
-    cargs.append(vector_volume_out)
+    if opt_vectors_vector_volume_out is not None:
+        cargs.extend([
+            "-vectors",
+            opt_vectors_vector_volume_out
+        ])
     if opt_subvolume_subvol is not None:
         cargs.extend([
             "-subvolume",
@@ -119,7 +120,7 @@ def volume_gradient(
     ret = VolumeGradientOutputs(
         root=execution.output_file("."),
         volume_out=execution.output_file(volume_out),
-        vector_volume_out=execution.output_file(vector_volume_out),
+        opt_vectors_vector_volume_out=execution.output_file(opt_vectors_vector_volume_out) if (opt_vectors_vector_volume_out is not None) else None,
     )
     execution.run(cargs)
     return ret

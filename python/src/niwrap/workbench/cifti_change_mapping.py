@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CHANGE_MAPPING_METADATA = Metadata(
-    id="dd4ff188aebb35e73ec802d22b51a17671d9f3f2.boutiques",
+    id="310db3dfdbf8684f3ba9b05e9ba0352e4e17c3fe.boutiques",
     name="cifti-change-mapping",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -46,6 +46,37 @@ class CiftiChangeMappingSeries:
             cargs.extend([
                 "-unit",
                 self.opt_unit_unit
+            ])
+        return cargs
+
+
+@dataclasses.dataclass
+class CiftiChangeMappingScalar:
+    """
+    set the mapping to scalar.
+    """
+    opt_name_file_file: str | None = None
+    """specify names for the maps: text file containing map names, one per
+    line"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-scalar")
+        if self.opt_name_file_file is not None:
+            cargs.extend([
+                "-name-file",
+                self.opt_name_file_file
             ])
         return cargs
 
@@ -94,8 +125,7 @@ def cifti_change_mapping(
     direction: str,
     cifti_out: str,
     series: CiftiChangeMappingSeries | None = None,
-    opt_scalar: bool = False,
-    opt_name_file_file: str | None = None,
+    scalar: CiftiChangeMappingScalar | None = None,
     from_cifti: CiftiChangeMappingFromCifti | None = None,
     runner: Runner | None = None,
 ) -> CiftiChangeMappingOutputs:
@@ -122,9 +152,7 @@ def cifti_change_mapping(
         direction: which direction on <data-cifti> to replace the mapping.
         cifti_out: the output cifti file.
         series: set the mapping to series.
-        opt_scalar: set the mapping to scalar.
-        opt_name_file_file: specify names for the maps: text file containing\
-            map names, one per line.
+        scalar: set the mapping to scalar.
         from_cifti: copy mapping from another cifti file.
         runner: Command runner.
     Returns:
@@ -140,13 +168,8 @@ def cifti_change_mapping(
     cargs.append(cifti_out)
     if series is not None:
         cargs.extend(series.run(execution))
-    if opt_scalar:
-        cargs.append("-scalar")
-    if opt_name_file_file is not None:
-        cargs.extend([
-            "-name-file",
-            opt_name_file_file
-        ])
+    if scalar is not None:
+        cargs.extend(scalar.run(execution))
     if from_cifti is not None:
         cargs.extend(from_cifti.run(execution))
     ret = CiftiChangeMappingOutputs(
@@ -161,6 +184,7 @@ __all__ = [
     "CIFTI_CHANGE_MAPPING_METADATA",
     "CiftiChangeMappingFromCifti",
     "CiftiChangeMappingOutputs",
+    "CiftiChangeMappingScalar",
     "CiftiChangeMappingSeries",
     "cifti_change_mapping",
 ]

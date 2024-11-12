@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_SIGNED_DISTANCE_VOLUME_METADATA = Metadata(
-    id="2530d1efe6350c2b71222045d5059db4d156917f.boutiques",
+    id="0f95bdf560a316dc210e2473943ccafd57539a95.boutiques",
     name="create-signed-distance-volume",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -22,16 +22,16 @@ class CreateSignedDistanceVolumeOutputs(typing.NamedTuple):
     """Output root folder. This is the root folder for all outputs."""
     outvol: OutputPathType
     """the output volume"""
-    roi_vol: OutputPathType
-    """the output roi volume"""
+    opt_roi_out_roi_vol: OutputPathType | None
+    """output an roi volume of where the output has a computed value: the output
+    roi volume"""
 
 
 def create_signed_distance_volume(
     surface: InputPathType,
     refspace: str,
     outvol: str,
-    roi_vol: str,
-    opt_roi_out: bool = False,
+    opt_roi_out_roi_vol: str | None = None,
     opt_fill_value_value: float | None = None,
     opt_exact_limit_dist: float | None = None,
     opt_approx_limit_dist: float | None = None,
@@ -69,9 +69,8 @@ def create_signed_distance_volume(
         surface: the input surface.
         refspace: a volume in the desired output space (dims, spacing, origin).
         outvol: the output volume.
-        roi_vol: the output roi volume.
-        opt_roi_out: output an roi volume of where the output has a computed\
-            value.
+        opt_roi_out_roi_vol: output an roi volume of where the output has a\
+            computed value: the output roi volume.
         opt_fill_value_value: specify a value to put in all voxels that don't\
             get assigned a distance: value to fill with (default 0).
         opt_exact_limit_dist: specify distance for exact output: distance in mm\
@@ -95,9 +94,11 @@ def create_signed_distance_volume(
     cargs.append(execution.input_file(surface))
     cargs.append(refspace)
     cargs.append(outvol)
-    if opt_roi_out:
-        cargs.append("-roi-out")
-    cargs.append(roi_vol)
+    if opt_roi_out_roi_vol is not None:
+        cargs.extend([
+            "-roi-out",
+            opt_roi_out_roi_vol
+        ])
     if opt_fill_value_value is not None:
         cargs.extend([
             "-fill-value",
@@ -126,7 +127,7 @@ def create_signed_distance_volume(
     ret = CreateSignedDistanceVolumeOutputs(
         root=execution.output_file("."),
         outvol=execution.output_file(outvol),
-        roi_vol=execution.output_file(roi_vol),
+        opt_roi_out_roi_vol=execution.output_file(opt_roi_out_roi_vol) if (opt_roi_out_roi_vol is not None) else None,
     )
     execution.run(cargs)
     return ret

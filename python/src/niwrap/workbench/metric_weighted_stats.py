@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_WEIGHTED_STATS_METADATA = Metadata(
-    id="220f94c0250172e4ed4a65e6476cbe2eb805b411.boutiques",
+    id="29e546058d69fdb7c18bd199e35ad9b03e04fcb2.boutiques",
     name="metric-weighted-stats",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -44,6 +44,33 @@ class MetricWeightedStatsRoi:
         return cargs
 
 
+@dataclasses.dataclass
+class MetricWeightedStatsStdev:
+    """
+    compute weighted standard deviation.
+    """
+    opt_sample: bool = False
+    """estimate population stdev from the sample"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-stdev")
+        if self.opt_sample:
+            cargs.append("-sample")
+        return cargs
+
+
 class MetricWeightedStatsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `metric_weighted_stats(...)`.
@@ -59,8 +86,7 @@ def metric_weighted_stats(
     opt_column_column: str | None = None,
     roi: MetricWeightedStatsRoi | None = None,
     opt_mean: bool = False,
-    opt_stdev: bool = False,
-    opt_sample: bool = False,
+    stdev: MetricWeightedStatsStdev | None = None,
     opt_percentile_percent: float | None = None,
     opt_sum: bool = False,
     opt_show_map_name: bool = False,
@@ -97,8 +123,7 @@ def metric_weighted_stats(
             number or name.
         roi: only consider data inside an roi.
         opt_mean: compute weighted mean.
-        opt_stdev: compute weighted standard deviation.
-        opt_sample: estimate population stdev from the sample.
+        stdev: compute weighted standard deviation.
         opt_percentile_percent: compute weighted percentile: the percentile to\
             find, must be between 0 and 100.
         opt_sum: compute weighted sum.
@@ -132,10 +157,8 @@ def metric_weighted_stats(
         cargs.extend(roi.run(execution))
     if opt_mean:
         cargs.append("-mean")
-    if opt_stdev:
-        cargs.append("-stdev")
-    if opt_sample:
-        cargs.append("-sample")
+    if stdev is not None:
+        cargs.extend(stdev.run(execution))
     if opt_percentile_percent is not None:
         cargs.extend([
             "-percentile",
@@ -156,5 +179,6 @@ __all__ = [
     "METRIC_WEIGHTED_STATS_METADATA",
     "MetricWeightedStatsOutputs",
     "MetricWeightedStatsRoi",
+    "MetricWeightedStatsStdev",
     "metric_weighted_stats",
 ]

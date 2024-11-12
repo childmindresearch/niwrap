@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_TO_SURFACE_MAPPING_METADATA = Metadata(
-    id="d90ba68bb19444c770492330fa89f81a3feba7b9.boutiques",
+    id="fff7052eb2719d97b5a3f0e216582ff7e809fe05.boutiques",
     name="volume-to-surface-mapping",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -120,8 +120,6 @@ class VolumeToSurfaceMappingRibbonConstrained:
     """the inner surface of the ribbon"""
     outer_surf: InputPathType
     """the outer surface of the ribbon"""
-    roi_out: str
-    """the output metric file of vertices that have no data"""
     volume_roi: VolumeToSurfaceMappingVolumeRoi | None = None
     """use a volume roi"""
     opt_voxel_subdiv_subdiv_num: int | None = None
@@ -136,8 +134,9 @@ class VolumeToSurfaceMappingRibbonConstrained:
     """instead of a weighted average of voxels, interpolate at subpoints inside
     the ribbon: interpolation method, must be CUBIC, ENCLOSING_VOXEL, or
     TRILINEAR"""
-    opt_bad_vertices_out: bool = False
-    """output an ROI of which vertices didn't intersect any valid voxels"""
+    opt_bad_vertices_out_roi_out: str | None = None
+    """output an ROI of which vertices didn't intersect any valid voxels: the
+    output metric file of vertices that have no data"""
     output_weights: VolumeToSurfaceMappingOutputWeights | None = None
     """write the voxel weights for a vertex to a volume file"""
     opt_output_weights_text_text_out: str | None = None
@@ -179,9 +178,11 @@ class VolumeToSurfaceMappingRibbonConstrained:
                 "-interpolate",
                 self.opt_interpolate_method
             ])
-        if self.opt_bad_vertices_out:
-            cargs.append("-bad-vertices-out")
-        cargs.append(self.roi_out)
+        if self.opt_bad_vertices_out_roi_out is not None:
+            cargs.extend([
+                "-bad-vertices-out",
+                self.opt_bad_vertices_out_roi_out
+            ])
         if self.output_weights is not None:
             cargs.extend(self.output_weights.run(execution))
         if self.opt_output_weights_text_text_out is not None:

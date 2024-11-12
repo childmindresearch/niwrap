@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_WEIGHTED_STATS_METADATA = Metadata(
-    id="edeab170e531d01e9aebad488e0d30cf55eb5085.boutiques",
+    id="2282f58ed325fc9ff02eb454026d4575ade30e60.boutiques",
     name="cifti-weighted-stats",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -115,6 +115,33 @@ class CiftiWeightedStatsRoi:
         return cargs
 
 
+@dataclasses.dataclass
+class CiftiWeightedStatsStdev:
+    """
+    compute weighted standard deviation.
+    """
+    opt_sample: bool = False
+    """estimate population stdev from the sample"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-stdev")
+        if self.opt_sample:
+            cargs.append("-sample")
+        return cargs
+
+
 class CiftiWeightedStatsOutputs(typing.NamedTuple):
     """
     Output object returned when calling `cifti_weighted_stats(...)`.
@@ -130,8 +157,7 @@ def cifti_weighted_stats(
     opt_column_column: int | None = None,
     roi: CiftiWeightedStatsRoi | None = None,
     opt_mean: bool = False,
-    opt_stdev: bool = False,
-    opt_sample: bool = False,
+    stdev: CiftiWeightedStatsStdev | None = None,
     opt_percentile_percent: float | None = None,
     opt_sum: bool = False,
     opt_show_map_name: bool = False,
@@ -168,8 +194,7 @@ def cifti_weighted_stats(
             use (1-based).
         roi: only consider data inside an roi.
         opt_mean: compute weighted mean.
-        opt_stdev: compute weighted standard deviation.
-        opt_sample: estimate population stdev from the sample.
+        stdev: compute weighted standard deviation.
         opt_percentile_percent: compute weighted percentile: the percentile to\
             find, must be between 0 and 100.
         opt_sum: compute weighted sum.
@@ -200,10 +225,8 @@ def cifti_weighted_stats(
         cargs.extend(roi.run(execution))
     if opt_mean:
         cargs.append("-mean")
-    if opt_stdev:
-        cargs.append("-stdev")
-    if opt_sample:
-        cargs.append("-sample")
+    if stdev is not None:
+        cargs.extend(stdev.run(execution))
     if opt_percentile_percent is not None:
         cargs.extend([
             "-percentile",
@@ -225,5 +248,6 @@ __all__ = [
     "CiftiWeightedStatsOutputs",
     "CiftiWeightedStatsRoi",
     "CiftiWeightedStatsSpatialWeights",
+    "CiftiWeightedStatsStdev",
     "cifti_weighted_stats",
 ]

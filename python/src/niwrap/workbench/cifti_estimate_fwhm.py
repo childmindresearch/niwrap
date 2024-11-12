@@ -7,11 +7,38 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_ESTIMATE_FWHM_METADATA = Metadata(
-    id="d8860b9f3e0c5246015f448b033cee0e5f302945.boutiques",
+    id="dcfd47dfdd57ad42ebcf18aba7a5da1b0a09f811.boutiques",
     name="cifti-estimate-fwhm",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
+@dataclasses.dataclass
+class CiftiEstimateFwhmWholeFile:
+    """
+    estimate for the whole file at once, not each column separately.
+    """
+    opt_demean: bool = False
+    """subtract the mean image before estimating smoothness"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-whole-file")
+        if self.opt_demean:
+            cargs.append("-demean")
+        return cargs
 
 
 @dataclasses.dataclass
@@ -55,8 +82,7 @@ def cifti_estimate_fwhm(
     cifti: InputPathType,
     opt_merged_volume: bool = False,
     opt_column_column: int | None = None,
-    opt_whole_file: bool = False,
-    opt_demean: bool = False,
+    whole_file: CiftiEstimateFwhmWholeFile | None = None,
     surface: list[CiftiEstimateFwhmSurface] | None = None,
     runner: Runner | None = None,
 ) -> CiftiEstimateFwhmOutputs:
@@ -113,9 +139,8 @@ def cifti_estimate_fwhm(
             component.
         opt_column_column: only output estimates for one column: the column\
             number.
-        opt_whole_file: estimate for the whole file at once, not each column\
+        whole_file: estimate for the whole file at once, not each column\
             separately.
-        opt_demean: subtract the mean image before estimating smoothness.
         surface: specify an input surface.
         runner: Command runner.
     Returns:
@@ -134,10 +159,8 @@ def cifti_estimate_fwhm(
             "-column",
             str(opt_column_column)
         ])
-    if opt_whole_file:
-        cargs.append("-whole-file")
-    if opt_demean:
-        cargs.append("-demean")
+    if whole_file is not None:
+        cargs.extend(whole_file.run(execution))
     if surface is not None:
         cargs.extend([a for c in [s.run(execution) for s in surface] for a in c])
     ret = CiftiEstimateFwhmOutputs(
@@ -151,5 +174,6 @@ __all__ = [
     "CIFTI_ESTIMATE_FWHM_METADATA",
     "CiftiEstimateFwhmOutputs",
     "CiftiEstimateFwhmSurface",
+    "CiftiEstimateFwhmWholeFile",
     "cifti_estimate_fwhm",
 ]

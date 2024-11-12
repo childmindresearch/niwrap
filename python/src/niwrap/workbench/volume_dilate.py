@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_DILATE_METADATA = Metadata(
-    id="8dd62945250935d06e5be37046dda0c87c95479e.boutiques",
+    id="a20024eb27572d95748bba294d86b405fef1fe19.boutiques",
     name="volume-dilate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
@@ -44,6 +44,34 @@ class VolumeDilatePresmooth:
         return cargs
 
 
+@dataclasses.dataclass
+class VolumeDilateGradExtrapolate:
+    """
+    additionally use the gradient to extrapolate, intended to be used with
+    WEIGHTED.
+    """
+    presmooth: VolumeDilatePresmooth | None = None
+    """apply presmoothing before computing gradient vectors, not recommended"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-grad-extrapolate")
+        if self.presmooth is not None:
+            cargs.extend(self.presmooth.run(execution))
+        return cargs
+
+
 class VolumeDilateOutputs(typing.NamedTuple):
     """
     Output object returned when calling `volume_dilate(...)`.
@@ -64,8 +92,7 @@ def volume_dilate(
     opt_data_roi_roi_volume: InputPathType | None = None,
     opt_subvolume_subvol: str | None = None,
     opt_legacy_cutoff: bool = False,
-    opt_grad_extrapolate: bool = False,
-    presmooth: VolumeDilatePresmooth | None = None,
+    grad_extrapolate: VolumeDilateGradExtrapolate | None = None,
     runner: Runner | None = None,
 ) -> VolumeDilateOutputs:
     """
@@ -110,10 +137,8 @@ def volume_dilate(
             subvolume number or name.
         opt_legacy_cutoff: use the v1.3.2 method of excluding voxels further\
             than the dilation distance when calculating the dilated value.
-        opt_grad_extrapolate: additionally use the gradient to extrapolate,\
+        grad_extrapolate: additionally use the gradient to extrapolate,\
             intended to be used with WEIGHTED.
-        presmooth: apply presmoothing before computing gradient vectors, not\
-            recommended.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeDilateOutputs`).
@@ -149,10 +174,8 @@ def volume_dilate(
         ])
     if opt_legacy_cutoff:
         cargs.append("-legacy-cutoff")
-    if opt_grad_extrapolate:
-        cargs.append("-grad-extrapolate")
-    if presmooth is not None:
-        cargs.extend(presmooth.run(execution))
+    if grad_extrapolate is not None:
+        cargs.extend(grad_extrapolate.run(execution))
     ret = VolumeDilateOutputs(
         root=execution.output_file("."),
         volume_out=execution.output_file(volume_out),
@@ -163,6 +186,7 @@ def volume_dilate(
 
 __all__ = [
     "VOLUME_DILATE_METADATA",
+    "VolumeDilateGradExtrapolate",
     "VolumeDilateOutputs",
     "VolumeDilatePresmooth",
     "volume_dilate",

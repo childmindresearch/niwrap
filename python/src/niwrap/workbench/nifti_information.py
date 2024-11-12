@@ -7,11 +7,69 @@ from styxdefs import *
 import dataclasses
 
 NIFTI_INFORMATION_METADATA = Metadata(
-    id="c5f70fe530c3400e36ca5e05e7b163ec18a1a149.boutiques",
+    id="9b960da777d489bde19f100de6c96622af37944c.boutiques",
     name="nifti-information",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
+@dataclasses.dataclass
+class NiftiInformationPrintHeader:
+    """
+    display the header contents.
+    """
+    opt_allow_truncated: bool = False
+    """print the header even if the data is truncated"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-print-header")
+        if self.opt_allow_truncated:
+            cargs.append("-allow-truncated")
+        return cargs
+
+
+@dataclasses.dataclass
+class NiftiInformationPrintXml:
+    """
+    print the cifti XML (cifti only).
+    """
+    opt_version_version: str | None = None
+    """convert the XML to a specific CIFTI version (default is the file's cifti
+    version): the CIFTI version to use"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-print-xml")
+        if self.opt_version_version is not None:
+            cargs.extend([
+                "-version",
+                self.opt_version_version
+            ])
+        return cargs
 
 
 class NiftiInformationOutputs(typing.NamedTuple):
@@ -24,11 +82,9 @@ class NiftiInformationOutputs(typing.NamedTuple):
 
 def nifti_information(
     nifti_file: str,
-    opt_print_header: bool = False,
-    opt_allow_truncated: bool = False,
+    print_header: NiftiInformationPrintHeader | None = None,
     opt_print_matrix: bool = False,
-    opt_print_xml: bool = False,
-    opt_version_version: str | None = None,
+    print_xml: NiftiInformationPrintXml | None = None,
     runner: Runner | None = None,
 ) -> NiftiInformationOutputs:
     """
@@ -42,12 +98,9 @@ def nifti_information(
     
     Args:
         nifti_file: the nifti/cifti file to examine.
-        opt_print_header: display the header contents.
-        opt_allow_truncated: print the header even if the data is truncated.
+        print_header: display the header contents.
         opt_print_matrix: output the values in the matrix (cifti only).
-        opt_print_xml: print the cifti XML (cifti only).
-        opt_version_version: convert the XML to a specific CIFTI version\
-            (default is the file's cifti version): the CIFTI version to use.
+        print_xml: print the cifti XML (cifti only).
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `NiftiInformationOutputs`).
@@ -58,19 +111,12 @@ def nifti_information(
     cargs.append("wb_command")
     cargs.append("-nifti-information")
     cargs.append(nifti_file)
-    if opt_print_header:
-        cargs.append("-print-header")
-    if opt_allow_truncated:
-        cargs.append("-allow-truncated")
+    if print_header is not None:
+        cargs.extend(print_header.run(execution))
     if opt_print_matrix:
         cargs.append("-print-matrix")
-    if opt_print_xml:
-        cargs.append("-print-xml")
-    if opt_version_version is not None:
-        cargs.extend([
-            "-version",
-            opt_version_version
-        ])
+    if print_xml is not None:
+        cargs.extend(print_xml.run(execution))
     ret = NiftiInformationOutputs(
         root=execution.output_file("."),
     )
@@ -81,5 +127,7 @@ def nifti_information(
 __all__ = [
     "NIFTI_INFORMATION_METADATA",
     "NiftiInformationOutputs",
+    "NiftiInformationPrintHeader",
+    "NiftiInformationPrintXml",
     "nifti_information",
 ]

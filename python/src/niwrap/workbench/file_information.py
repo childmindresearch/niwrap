@@ -7,11 +7,42 @@ from styxdefs import *
 import dataclasses
 
 FILE_INFORMATION_METADATA = Metadata(
-    id="4f3efe631f7525173d2f9ead98a75886c062437a.boutiques",
+    id="6b54a0cba185d2ba52801988d81de8251dc829bc.boutiques",
     name="file-information",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
+@dataclasses.dataclass
+class FileInformationOnlyMetadata:
+    """
+    suppress normal output, print file metadata.
+    """
+    opt_key_key: str | None = None
+    """only print the metadata for one key, with no formatting: the metadata
+    key"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-only-metadata")
+        if self.opt_key_key is not None:
+            cargs.extend([
+                "-key",
+                self.opt_key_key
+            ])
+        return cargs
 
 
 class FileInformationOutputs(typing.NamedTuple):
@@ -28,8 +59,7 @@ def file_information(
     opt_only_step_interval: bool = False,
     opt_only_number_of_maps: bool = False,
     opt_only_map_names: bool = False,
-    opt_only_metadata: bool = False,
-    opt_key_key: str | None = None,
+    only_metadata: FileInformationOnlyMetadata | None = None,
     opt_only_cifti_xml: bool = False,
     opt_czi: bool = False,
     opt_czi_all_sub_blocks: bool = False,
@@ -95,9 +125,7 @@ def file_information(
         opt_only_number_of_maps: suppress normal output, print the number of\
             maps.
         opt_only_map_names: suppress normal output, print the names of all maps.
-        opt_only_metadata: suppress normal output, print file metadata.
-        opt_key_key: only print the metadata for one key, with no formatting:\
-            the metadata key.
+        only_metadata: suppress normal output, print file metadata.
         opt_only_cifti_xml: suppress normal output, print the cifti xml if the\
             file type has it.
         opt_czi: For a CZI file, show information from the libCZI Info Command\
@@ -123,13 +151,8 @@ def file_information(
         cargs.append("-only-number-of-maps")
     if opt_only_map_names:
         cargs.append("-only-map-names")
-    if opt_only_metadata:
-        cargs.append("-only-metadata")
-    if opt_key_key is not None:
-        cargs.extend([
-            "-key",
-            opt_key_key
-        ])
+    if only_metadata is not None:
+        cargs.extend(only_metadata.run(execution))
     if opt_only_cifti_xml:
         cargs.append("-only-cifti-xml")
     if opt_czi:
@@ -147,6 +170,7 @@ def file_information(
 
 __all__ = [
     "FILE_INFORMATION_METADATA",
+    "FileInformationOnlyMetadata",
     "FileInformationOutputs",
     "file_information",
 ]

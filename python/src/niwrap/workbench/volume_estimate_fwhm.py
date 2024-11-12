@@ -7,11 +7,38 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_ESTIMATE_FWHM_METADATA = Metadata(
-    id="fd00905a81ea0512b8490658b794b006a8adab56.boutiques",
+    id="1fca165f5d2b7f049e090d2daa1844443cd25c65.boutiques",
     name="volume-estimate-fwhm",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
 )
+
+
+@dataclasses.dataclass
+class VolumeEstimateFwhmWholeFile:
+    """
+    estimate for the whole file at once, not each subvolume separately.
+    """
+    opt_demean: bool = False
+    """subtract the mean image before estimating smoothness"""
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("-whole-file")
+        if self.opt_demean:
+            cargs.append("-demean")
+        return cargs
 
 
 class VolumeEstimateFwhmOutputs(typing.NamedTuple):
@@ -26,8 +53,7 @@ def volume_estimate_fwhm(
     volume: InputPathType,
     opt_roi_roivol: InputPathType | None = None,
     opt_subvolume_subvol: str | None = None,
-    opt_whole_file: bool = False,
-    opt_demean: bool = False,
+    whole_file: VolumeEstimateFwhmWholeFile | None = None,
     runner: Runner | None = None,
 ) -> VolumeEstimateFwhmOutputs:
     """
@@ -48,9 +74,8 @@ def volume_estimate_fwhm(
             ROI.
         opt_subvolume_subvol: select a single subvolume to estimate smoothness\
             of: the subvolume number or name.
-        opt_whole_file: estimate for the whole file at once, not each subvolume\
+        whole_file: estimate for the whole file at once, not each subvolume\
             separately.
-        opt_demean: subtract the mean image before estimating smoothness.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `VolumeEstimateFwhmOutputs`).
@@ -71,10 +96,8 @@ def volume_estimate_fwhm(
             "-subvolume",
             opt_subvolume_subvol
         ])
-    if opt_whole_file:
-        cargs.append("-whole-file")
-    if opt_demean:
-        cargs.append("-demean")
+    if whole_file is not None:
+        cargs.extend(whole_file.run(execution))
     ret = VolumeEstimateFwhmOutputs(
         root=execution.output_file("."),
     )
@@ -85,5 +108,6 @@ def volume_estimate_fwhm(
 __all__ = [
     "VOLUME_ESTIMATE_FWHM_METADATA",
     "VolumeEstimateFwhmOutputs",
+    "VolumeEstimateFwhmWholeFile",
     "volume_estimate_fwhm",
 ]
