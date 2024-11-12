@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "label-resample",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -label-resample [LABEL_IN] [CURRENT_SPHERE] [NEW_SPHERE] [METHOD] [LABEL_OUT] [AREA_SURFS] [AREA_METRICS] [OPT_CURRENT_ROI_ROI_METRIC] [OPT_VALID_ROI_OUT] [ROI_OUT] [OPT_LARGEST] [OPT_BYPASS_SPHERE_CHECK]",
+  "command-line": "wb_command -label-resample [LABEL_IN] [CURRENT_SPHERE] [NEW_SPHERE] [METHOD] [LABEL_OUT] [AREA_SURFS] [AREA_METRICS] [OPT_CURRENT_ROI_ROI_METRIC] [OPT_VALID_ROI_OUT_ROI_OUT] [OPT_LARGEST] [OPT_BYPASS_SPHERE_CHECK]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -125,21 +125,13 @@
       "type": "File"
     },
     {
-      "id": "opt_valid_roi_out",
-      "name": "opt_valid_roi_out",
+      "id": "opt_valid_roi_out_roi_out",
+      "name": "opt_valid_roi_out_roi_out",
       "command-line-flag": "-valid-roi-out",
-      "description": "output the ROI of vertices that got data from valid source vertices",
-      "type": "Flag",
+      "description": "output the ROI of vertices that got data from valid source vertices: the output roi as a metric",
       "optional": true,
-      "value-key": "[OPT_VALID_ROI_OUT]"
-    },
-    {
-      "id": "roi_out",
-      "name": "roi_out",
-      "type": "String",
-      "description": "the output roi as a metric",
-      "optional": false,
-      "value-key": "[ROI_OUT]"
+      "value-key": "[OPT_VALID_ROI_OUT_ROI_OUT]",
+      "type": "String"
     },
     {
       "id": "opt_largest",
@@ -169,10 +161,10 @@
       "optional": false
     },
     {
-      "id": "roi_out",
-      "name": "roi_out",
-      "path-template": "[ROI_OUT]",
-      "description": "the output roi as a metric",
+      "id": "opt_valid_roi_out_roi_out",
+      "name": "opt_valid_roi_out_roi_out",
+      "path-template": "[OPT_VALID_ROI_OUT_ROI_OUT]",
+      "description": "output the ROI of vertices that got data from valid source vertices: the output roi as a metric",
       "optional": false
     }
   ],

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "surface-to-surface-3d-distance",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -surface-to-surface-3d-distance [SURFACE_COMP] [SURFACE_REF] [DISTS_OUT] [OPT_VECTORS] [VECTORS_OUT]",
+  "command-line": "wb_command -surface-to-surface-3d-distance [SURFACE_COMP] [SURFACE_REF] [DISTS_OUT] [OPT_VECTORS_VECTORS_OUT]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -36,21 +36,13 @@
       "value-key": "[DISTS_OUT]"
     },
     {
-      "id": "opt_vectors",
-      "name": "opt_vectors",
+      "id": "opt_vectors_vectors_out",
+      "name": "opt_vectors_vectors_out",
       "command-line-flag": "-vectors",
-      "description": "output the displacement vectors",
-      "type": "Flag",
+      "description": "output the displacement vectors: the output vectors",
       "optional": true,
-      "value-key": "[OPT_VECTORS]"
-    },
-    {
-      "id": "vectors_out",
-      "name": "vectors_out",
-      "type": "String",
-      "description": "the output vectors",
-      "optional": false,
-      "value-key": "[VECTORS_OUT]"
+      "value-key": "[OPT_VECTORS_VECTORS_OUT]",
+      "type": "String"
     }
   ],
   "output-files": [
@@ -62,10 +54,10 @@
       "optional": false
     },
     {
-      "id": "vectors_out",
-      "name": "vectors_out",
-      "path-template": "[VECTORS_OUT]",
-      "description": "the output vectors",
+      "id": "opt_vectors_vectors_out",
+      "name": "opt_vectors_vectors_out",
+      "path-template": "[OPT_VECTORS_VECTORS_OUT]",
+      "description": "output the displacement vectors: the output vectors",
       "optional": false
     }
   ],

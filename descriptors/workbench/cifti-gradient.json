@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "cifti-gradient",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -cifti-gradient [CIFTI] [DIRECTION] [CIFTI_OUT] [LEFT_SURFACE] [RIGHT_SURFACE] [CEREBELLUM_SURFACE] [OPT_SURFACE_PRESMOOTH_SURFACE_KERNEL] [OPT_VOLUME_PRESMOOTH_VOLUME_KERNEL] [OPT_PRESMOOTH_FWHM] [OPT_AVERAGE_OUTPUT] [OPT_VECTORS] [VECTORS_OUT]",
+  "command-line": "wb_command -cifti-gradient [CIFTI] [DIRECTION] [CIFTI_OUT] [LEFT_SURFACE] [RIGHT_SURFACE] [CEREBELLUM_SURFACE] [OPT_SURFACE_PRESMOOTH_SURFACE_KERNEL] [OPT_VOLUME_PRESMOOTH_VOLUME_KERNEL] [OPT_PRESMOOTH_FWHM] [OPT_AVERAGE_OUTPUT] [OPT_VECTORS_VECTORS_OUT]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -173,21 +173,13 @@
       "value-key": "[OPT_AVERAGE_OUTPUT]"
     },
     {
-      "id": "opt_vectors",
-      "name": "opt_vectors",
+      "id": "opt_vectors_vectors_out",
+      "name": "opt_vectors_vectors_out",
       "command-line-flag": "-vectors",
-      "description": "output gradient vectors",
-      "type": "Flag",
+      "description": "output gradient vectors: the vectors, as a dscalar file",
       "optional": true,
-      "value-key": "[OPT_VECTORS]"
-    },
-    {
-      "id": "vectors_out",
-      "name": "vectors_out",
-      "type": "String",
-      "description": "the vectors, as a dscalar file",
-      "optional": false,
-      "value-key": "[VECTORS_OUT]"
+      "value-key": "[OPT_VECTORS_VECTORS_OUT]",
+      "type": "String"
     }
   ],
   "output-files": [
@@ -199,10 +191,10 @@
       "optional": false
     },
     {
-      "id": "vectors_out",
-      "name": "vectors_out",
-      "path-template": "[VECTORS_OUT]",
-      "description": "the vectors, as a dscalar file",
+      "id": "opt_vectors_vectors_out",
+      "name": "opt_vectors_vectors_out",
+      "path-template": "[OPT_VECTORS_VECTORS_OUT]",
+      "description": "output gradient vectors: the vectors, as a dscalar file",
       "optional": false
     }
   ],

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "create-signed-distance-volume",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -create-signed-distance-volume [SURFACE] [REFSPACE] [OUTVOL] [OPT_ROI_OUT] [ROI_VOL] [OPT_FILL_VALUE_VALUE] [OPT_EXACT_LIMIT_DIST] [OPT_APPROX_LIMIT_DIST] [OPT_APPROX_NEIGHBORHOOD_NUM] [OPT_WINDING_METHOD]",
+  "command-line": "wb_command -create-signed-distance-volume [SURFACE] [REFSPACE] [OUTVOL] [OPT_ROI_OUT_ROI_VOL] [OPT_FILL_VALUE_VALUE] [OPT_EXACT_LIMIT_DIST] [OPT_APPROX_LIMIT_DIST] [OPT_APPROX_NEIGHBORHOOD_NUM] [OPT_WINDING_METHOD]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -36,21 +36,13 @@
       "value-key": "[OUTVOL]"
     },
     {
-      "id": "opt_roi_out",
-      "name": "opt_roi_out",
+      "id": "opt_roi_out_roi_vol",
+      "name": "opt_roi_out_roi_vol",
       "command-line-flag": "-roi-out",
-      "description": "output an roi volume of where the output has a computed value",
-      "type": "Flag",
+      "description": "output an roi volume of where the output has a computed value: the output roi volume",
       "optional": true,
-      "value-key": "[OPT_ROI_OUT]"
-    },
-    {
-      "id": "roi_vol",
-      "name": "roi_vol",
-      "type": "String",
-      "description": "the output roi volume",
-      "optional": false,
-      "value-key": "[ROI_VOL]"
+      "value-key": "[OPT_ROI_OUT_ROI_VOL]",
+      "type": "String"
     },
     {
       "id": "opt_fill_value_value",
@@ -111,10 +103,10 @@
       "optional": false
     },
     {
-      "id": "roi_vol",
-      "name": "roi_vol",
-      "path-template": "[ROI_VOL]",
-      "description": "the output roi volume",
+      "id": "opt_roi_out_roi_vol",
+      "name": "opt_roi_out_roi_vol",
+      "path-template": "[OPT_ROI_OUT_ROI_VOL]",
+      "description": "output an roi volume of where the output has a computed value: the output roi volume",
       "optional": false
     }
   ],

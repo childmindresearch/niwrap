@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "volume-estimate-fwhm",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -volume-estimate-fwhm [VOLUME] [OPT_ROI_ROIVOL] [OPT_SUBVOLUME_SUBVOL] [OPT_WHOLE_FILE] [OPT_DEMEAN]",
+  "command-line": "wb_command -volume-estimate-fwhm [VOLUME] [OPT_ROI_ROIVOL] [OPT_SUBVOLUME_SUBVOL] [WHOLE_FILE]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -38,22 +38,29 @@
       "type": "String"
     },
     {
-      "id": "opt_whole_file",
-      "name": "opt_whole_file",
-      "command-line-flag": "-whole-file",
+      "id": "whole_file",
+      "name": "whole_file",
       "description": "estimate for the whole file at once, not each subvolume separately",
-      "type": "Flag",
+      "type": {
+        "id": "whole_file",
+        "name": "whole_file",
+        "description": "estimate for the whole file at once, not each subvolume separately",
+        "command-line": "-whole-file [OPT_DEMEAN]",
+        "inputs": [
+          {
+            "id": "opt_demean",
+            "name": "opt_demean",
+            "command-line-flag": "-demean",
+            "description": "subtract the mean image before estimating smoothness",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_DEMEAN]"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_WHOLE_FILE]"
-    },
-    {
-      "id": "opt_demean",
-      "name": "opt_demean",
-      "command-line-flag": "-demean",
-      "description": "subtract the mean image before estimating smoothness",
-      "type": "Flag",
-      "optional": true,
-      "value-key": "[OPT_DEMEAN]"
+      "value-key": "[WHOLE_FILE]",
+      "list": false
     }
   ],
   "url": "https://github.com/Washington-University/workbench"

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "cifti-estimate-fwhm",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -cifti-estimate-fwhm [CIFTI] [OPT_MERGED_VOLUME] [OPT_COLUMN_COLUMN] [OPT_WHOLE_FILE] [OPT_DEMEAN] [SURFACE]",
+  "command-line": "wb_command -cifti-estimate-fwhm [CIFTI] [OPT_MERGED_VOLUME] [OPT_COLUMN_COLUMN] [WHOLE_FILE] [SURFACE]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -39,22 +39,29 @@
       "integer": true
     },
     {
-      "id": "opt_whole_file",
-      "name": "opt_whole_file",
-      "command-line-flag": "-whole-file",
+      "id": "whole_file",
+      "name": "whole_file",
       "description": "estimate for the whole file at once, not each column separately",
-      "type": "Flag",
+      "type": {
+        "id": "whole_file",
+        "name": "whole_file",
+        "description": "estimate for the whole file at once, not each column separately",
+        "command-line": "-whole-file [OPT_DEMEAN]",
+        "inputs": [
+          {
+            "id": "opt_demean",
+            "name": "opt_demean",
+            "command-line-flag": "-demean",
+            "description": "subtract the mean image before estimating smoothness",
+            "type": "Flag",
+            "optional": true,
+            "value-key": "[OPT_DEMEAN]"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_WHOLE_FILE]"
-    },
-    {
-      "id": "opt_demean",
-      "name": "opt_demean",
-      "command-line-flag": "-demean",
-      "description": "subtract the mean image before estimating smoothness",
-      "type": "Flag",
-      "optional": true,
-      "value-key": "[OPT_DEMEAN]"
+      "value-key": "[WHOLE_FILE]",
+      "list": false
     },
     {
       "id": "surface",

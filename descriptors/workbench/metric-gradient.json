@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "metric-gradient",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -metric-gradient [SURFACE] [METRIC_IN] [METRIC_OUT] [PRESMOOTH] [ROI] [OPT_VECTORS] [VECTOR_METRIC_OUT] [OPT_COLUMN_COLUMN] [OPT_CORRECTED_AREAS_AREA_METRIC] [OPT_AVERAGE_NORMALS]",
+  "command-line": "wb_command -metric-gradient [SURFACE] [METRIC_IN] [METRIC_OUT] [PRESMOOTH] [ROI] [OPT_VECTORS_VECTOR_METRIC_OUT] [OPT_COLUMN_COLUMN] [OPT_CORRECTED_AREAS_AREA_METRIC] [OPT_AVERAGE_NORMALS]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -103,21 +103,13 @@
       "list": false
     },
     {
-      "id": "opt_vectors",
-      "name": "opt_vectors",
+      "id": "opt_vectors_vector_metric_out",
+      "name": "opt_vectors_vector_metric_out",
       "command-line-flag": "-vectors",
-      "description": "output gradient vectors",
-      "type": "Flag",
+      "description": "output gradient vectors: the vectors as a metric file",
       "optional": true,
-      "value-key": "[OPT_VECTORS]"
-    },
-    {
-      "id": "vector_metric_out",
-      "name": "vector_metric_out",
-      "type": "String",
-      "description": "the vectors as a metric file",
-      "optional": false,
-      "value-key": "[VECTOR_METRIC_OUT]"
+      "value-key": "[OPT_VECTORS_VECTOR_METRIC_OUT]",
+      "type": "String"
     },
     {
       "id": "opt_column_column",
@@ -156,10 +148,10 @@
       "optional": false
     },
     {
-      "id": "vector_metric_out",
-      "name": "vector_metric_out",
-      "path-template": "[VECTOR_METRIC_OUT]",
-      "description": "the vectors as a metric file",
+      "id": "opt_vectors_vector_metric_out",
+      "name": "opt_vectors_vector_metric_out",
+      "path-template": "[OPT_VECTORS_VECTOR_METRIC_OUT]",
+      "description": "output gradient vectors: the vectors as a metric file",
       "optional": false
     }
   ],

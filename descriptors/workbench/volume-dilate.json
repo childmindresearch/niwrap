@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "volume-dilate",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -volume-dilate [VOLUME] [DISTANCE] [METHOD] [VOLUME_OUT] [OPT_EXPONENT_EXPONENT] [OPT_BAD_VOXEL_ROI_ROI_VOLUME] [OPT_DATA_ROI_ROI_VOLUME] [OPT_SUBVOLUME_SUBVOL] [OPT_LEGACY_CUTOFF] [OPT_GRAD_EXTRAPOLATE] [PRESMOOTH]",
+  "command-line": "wb_command -volume-dilate [VOLUME] [DISTANCE] [METHOD] [VOLUME_OUT] [OPT_EXPONENT_EXPONENT] [OPT_BAD_VOXEL_ROI_ROI_VOLUME] [OPT_DATA_ROI_ROI_VOLUME] [OPT_SUBVOLUME_SUBVOL] [OPT_LEGACY_CUTOFF] [GRAD_EXTRAPOLATE]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -91,46 +91,53 @@
       "value-key": "[OPT_LEGACY_CUTOFF]"
     },
     {
-      "id": "opt_grad_extrapolate",
-      "name": "opt_grad_extrapolate",
-      "command-line-flag": "-grad-extrapolate",
+      "id": "grad_extrapolate",
+      "name": "grad_extrapolate",
       "description": "additionally use the gradient to extrapolate, intended to be used with WEIGHTED",
-      "type": "Flag",
-      "optional": true,
-      "value-key": "[OPT_GRAD_EXTRAPOLATE]"
-    },
-    {
-      "id": "presmooth",
-      "name": "presmooth",
-      "description": "apply presmoothing before computing gradient vectors, not recommended",
       "type": {
-        "id": "presmooth",
-        "name": "presmooth",
-        "description": "apply presmoothing before computing gradient vectors, not recommended",
-        "command-line": "-presmooth [KERNEL] [OPT_FWHM]",
+        "id": "grad_extrapolate",
+        "name": "grad_extrapolate",
+        "description": "additionally use the gradient to extrapolate, intended to be used with WEIGHTED",
+        "command-line": "-grad-extrapolate [PRESMOOTH]",
         "inputs": [
           {
-            "id": "kernel",
-            "name": "kernel",
-            "description": "the size of gaussian smoothing kernel in mm, as sigma by default",
-            "optional": false,
-            "value-key": "[KERNEL]",
-            "type": "Number",
-            "integer": false
-          },
-          {
-            "id": "opt_fwhm",
-            "name": "opt_fwhm",
-            "command-line-flag": "-fwhm",
-            "description": "kernel size is FWHM, not sigma",
-            "type": "Flag",
+            "id": "presmooth",
+            "name": "presmooth",
+            "description": "apply presmoothing before computing gradient vectors, not recommended",
+            "type": {
+              "id": "presmooth",
+              "name": "presmooth",
+              "description": "apply presmoothing before computing gradient vectors, not recommended",
+              "command-line": "-presmooth [KERNEL] [OPT_FWHM]",
+              "inputs": [
+                {
+                  "id": "kernel",
+                  "name": "kernel",
+                  "description": "the size of gaussian smoothing kernel in mm, as sigma by default",
+                  "optional": false,
+                  "value-key": "[KERNEL]",
+                  "type": "Number",
+                  "integer": false
+                },
+                {
+                  "id": "opt_fwhm",
+                  "name": "opt_fwhm",
+                  "command-line-flag": "-fwhm",
+                  "description": "kernel size is FWHM, not sigma",
+                  "type": "Flag",
+                  "optional": true,
+                  "value-key": "[OPT_FWHM]"
+                }
+              ]
+            },
             "optional": true,
-            "value-key": "[OPT_FWHM]"
+            "value-key": "[PRESMOOTH]",
+            "list": false
           }
         ]
       },
       "optional": true,
-      "value-key": "[PRESMOOTH]",
+      "value-key": "[GRAD_EXTRAPOLATE]",
       "list": false
     }
   ],

@@ -70,7 +70,7 @@
         "id": "ribbon_constrained",
         "name": "ribbon_constrained",
         "description": "use ribbon constrained mapping algorithm",
-        "command-line": "-ribbon-constrained [INNER_SURF] [OUTER_SURF] [VOLUME_ROI] [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_THIN_COLUMNS] [OPT_GAUSSIAN_SCALE] [OPT_INTERPOLATE_METHOD] [OPT_BAD_VERTICES_OUT] [ROI_OUT] [OUTPUT_WEIGHTS] [OPT_OUTPUT_WEIGHTS_TEXT_TEXT_OUT]",
+        "command-line": "-ribbon-constrained [INNER_SURF] [OUTER_SURF] [VOLUME_ROI] [OPT_VOXEL_SUBDIV_SUBDIV_NUM] [OPT_THIN_COLUMNS] [OPT_GAUSSIAN_SCALE] [OPT_INTERPOLATE_METHOD] [OPT_BAD_VERTICES_OUT_ROI_OUT] [OUTPUT_WEIGHTS] [OPT_OUTPUT_WEIGHTS_TEXT_TEXT_OUT]",
         "inputs": [
           {
             "id": "inner_surf",
@@ -160,21 +160,13 @@
             "type": "String"
           },
           {
-            "id": "opt_bad_vertices_out",
-            "name": "opt_bad_vertices_out",
+            "id": "opt_bad_vertices_out_roi_out",
+            "name": "opt_bad_vertices_out_roi_out",
             "command-line-flag": "-bad-vertices-out",
-            "description": "output an ROI of which vertices didn't intersect any valid voxels",
-            "type": "Flag",
+            "description": "output an ROI of which vertices didn't intersect any valid voxels: the output metric file of vertices that have no data",
             "optional": true,
-            "value-key": "[OPT_BAD_VERTICES_OUT]"
-          },
-          {
-            "id": "roi_out",
-            "name": "roi_out",
-            "type": "String",
-            "description": "the output metric file of vertices that have no data",
-            "optional": false,
-            "value-key": "[ROI_OUT]"
+            "value-key": "[OPT_BAD_VERTICES_OUT_ROI_OUT]",
+            "type": "String"
           },
           {
             "id": "output_weights",

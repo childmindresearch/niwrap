@@ -35,7 +35,7 @@
         "id": "volume_all",
         "name": "volume_all",
         "description": "separate all volume structures into a volume file",
-        "command-line": "-volume-all [VOLUME_OUT] [OPT_ROI] [ROI_OUT] [OPT_LABEL] [LABEL_OUT] [OPT_CROP]",
+        "command-line": "-volume-all [VOLUME_OUT] [OPT_ROI_ROI_OUT] [OPT_LABEL_LABEL_OUT] [OPT_CROP]",
         "inputs": [
           {
             "id": "volume_out",
@@ -46,38 +46,22 @@
             "value-key": "[VOLUME_OUT]"
           },
           {
-            "id": "opt_roi",
-            "name": "opt_roi",
+            "id": "opt_roi_roi_out",
+            "name": "opt_roi_roi_out",
             "command-line-flag": "-roi",
-            "description": "also output the roi of which voxels have data",
-            "type": "Flag",
+            "description": "also output the roi of which voxels have data: the roi output volume",
             "optional": true,
-            "value-key": "[OPT_ROI]"
+            "value-key": "[OPT_ROI_ROI_OUT]",
+            "type": "String"
           },
           {
-            "id": "roi_out",
-            "name": "roi_out",
-            "type": "String",
-            "description": "the roi output volume",
-            "optional": false,
-            "value-key": "[ROI_OUT]"
-          },
-          {
-            "id": "opt_label",
-            "name": "opt_label",
+            "id": "opt_label_label_out",
+            "name": "opt_label_label_out",
             "command-line-flag": "-label",
-            "description": "output a volume label file indicating the location of structures",
-            "type": "Flag",
+            "description": "output a volume label file indicating the location of structures: the label output volume",
             "optional": true,
-            "value-key": "[OPT_LABEL]"
-          },
-          {
-            "id": "label_out",
-            "name": "label_out",
-            "type": "String",
-            "description": "the label output volume",
-            "optional": false,
-            "value-key": "[LABEL_OUT]"
+            "value-key": "[OPT_LABEL_LABEL_OUT]",
+            "type": "String"
           },
           {
             "id": "opt_crop",
@@ -98,17 +82,17 @@
             "optional": false
           },
           {
-            "id": "roi_out",
-            "name": "roi_out",
-            "path-template": "[ROI_OUT]",
-            "description": "the roi output volume",
+            "id": "opt_roi_roi_out",
+            "name": "opt_roi_roi_out",
+            "path-template": "[OPT_ROI_ROI_OUT]",
+            "description": "also output the roi of which voxels have data: the roi output volume",
             "optional": false
           },
           {
-            "id": "label_out",
-            "name": "label_out",
-            "path-template": "[LABEL_OUT]",
-            "description": "the label output volume",
+            "id": "opt_label_label_out",
+            "name": "opt_label_label_out",
+            "path-template": "[OPT_LABEL_LABEL_OUT]",
+            "description": "output a volume label file indicating the location of structures: the label output volume",
             "optional": false
           }
         ]
@@ -125,7 +109,7 @@
         "id": "label",
         "name": "label",
         "description": "separate a surface model into a surface label file",
-        "command-line": "-label [STRUCTURE] [LABEL_OUT] [OPT_ROI] [ROI_OUT]",
+        "command-line": "-label [STRUCTURE] [LABEL_OUT] [OPT_ROI_ROI_OUT]",
         "inputs": [
           {
             "id": "structure",
@@ -144,21 +128,13 @@
             "value-key": "[LABEL_OUT]"
           },
           {
-            "id": "opt_roi",
-            "name": "opt_roi",
+            "id": "opt_roi_roi_out",
+            "name": "opt_roi_roi_out",
             "command-line-flag": "-roi",
-            "description": "also output the roi of which vertices have data",
-            "type": "Flag",
+            "description": "also output the roi of which vertices have data: the roi output metric",
             "optional": true,
-            "value-key": "[OPT_ROI]"
-          },
-          {
-            "id": "roi_out",
-            "name": "roi_out",
-            "type": "String",
-            "description": "the roi output metric",
-            "optional": false,
-            "value-key": "[ROI_OUT]"
+            "value-key": "[OPT_ROI_ROI_OUT]",
+            "type": "String"
           }
         ],
         "output-files": [
@@ -170,10 +146,10 @@
             "optional": false
           },
           {
-            "id": "roi_out",
-            "name": "roi_out",
-            "path-template": "[ROI_OUT]",
-            "description": "the roi output metric",
+            "id": "opt_roi_roi_out",
+            "name": "opt_roi_roi_out",
+            "path-template": "[OPT_ROI_ROI_OUT]",
+            "description": "also output the roi of which vertices have data: the roi output metric",
             "optional": false
           }
         ]
@@ -190,7 +166,7 @@
         "id": "metric",
         "name": "metric",
         "description": "separate a surface model into a metric file",
-        "command-line": "-metric [STRUCTURE] [METRIC_OUT] [OPT_ROI] [ROI_OUT]",
+        "command-line": "-metric [STRUCTURE] [METRIC_OUT] [OPT_ROI_ROI_OUT]",
         "inputs": [
           {
             "id": "structure",
@@ -209,21 +185,13 @@
             "value-key": "[METRIC_OUT]"
           },
           {
-            "id": "opt_roi",
-            "name": "opt_roi",
+            "id": "opt_roi_roi_out",
+            "name": "opt_roi_roi_out",
             "command-line-flag": "-roi",
-            "description": "also output the roi of which vertices have data",
-            "type": "Flag",
+            "description": "also output the roi of which vertices have data: the roi output metric",
             "optional": true,
-            "value-key": "[OPT_ROI]"
-          },
-          {
-            "id": "roi_out",
-            "name": "roi_out",
-            "type": "String",
-            "description": "the roi output metric",
-            "optional": false,
-            "value-key": "[ROI_OUT]"
+            "value-key": "[OPT_ROI_ROI_OUT]",
+            "type": "String"
           }
         ],
         "output-files": [
@@ -235,10 +203,10 @@
             "optional": false
           },
           {
-            "id": "roi_out",
-            "name": "roi_out",
-            "path-template": "[ROI_OUT]",
-            "description": "the roi output metric",
+            "id": "opt_roi_roi_out",
+            "name": "opt_roi_roi_out",
+            "path-template": "[OPT_ROI_ROI_OUT]",
+            "description": "also output the roi of which vertices have data: the roi output metric",
             "optional": false
           }
         ]
@@ -255,7 +223,7 @@
         "id": "volume",
         "name": "volume",
         "description": "separate a volume structure into a volume file",
-        "command-line": "-volume [STRUCTURE] [VOLUME_OUT] [OPT_ROI] [ROI_OUT] [OPT_CROP]",
+        "command-line": "-volume [STRUCTURE] [VOLUME_OUT] [OPT_ROI_ROI_OUT] [OPT_CROP]",
         "inputs": [
           {
             "id": "structure",
@@ -274,21 +242,13 @@
             "value-key": "[VOLUME_OUT]"
           },
           {
-            "id": "opt_roi",
-            "name": "opt_roi",
+            "id": "opt_roi_roi_out",
+            "name": "opt_roi_roi_out",
             "command-line-flag": "-roi",
-            "description": "also output the roi of which voxels have data",
-            "type": "Flag",
+            "description": "also output the roi of which voxels have data: the roi output volume",
             "optional": true,
-            "value-key": "[OPT_ROI]"
-          },
-          {
-            "id": "roi_out",
-            "name": "roi_out",
-            "type": "String",
-            "description": "the roi output volume",
-            "optional": false,
-            "value-key": "[ROI_OUT]"
+            "value-key": "[OPT_ROI_ROI_OUT]",
+            "type": "String"
           },
           {
             "id": "opt_crop",
@@ -309,10 +269,10 @@
             "optional": false
           },
           {
-            "id": "roi_out",
-            "name": "roi_out",
-            "path-template": "[ROI_OUT]",
-            "description": "the roi output volume",
+            "id": "opt_roi_roi_out",
+            "name": "opt_roi_roi_out",
+            "path-template": "[OPT_ROI_ROI_OUT]",
+            "description": "also output the roi of which voxels have data: the roi output volume",
             "optional": false
           }
         ]
