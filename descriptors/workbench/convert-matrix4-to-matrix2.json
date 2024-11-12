@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "convert-matrix4-to-matrix2",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -convert-matrix4-to-matrix2 [MATRIX4_WBSPARSE] [COUNTS_OUT] [OPT_DISTANCES] [DISTANCE_OUT] [INDIVIDUAL_FIBERS]",
+  "command-line": "wb_command -convert-matrix4-to-matrix2 [MATRIX4_WBSPARSE] [COUNTS_OUT] [OPT_DISTANCES_DISTANCE_OUT] [INDIVIDUAL_FIBERS]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -28,21 +28,13 @@
       "value-key": "[COUNTS_OUT]"
     },
     {
-      "id": "opt_distances",
-      "name": "opt_distances",
+      "id": "opt_distances_distance_out",
+      "name": "opt_distances_distance_out",
       "command-line-flag": "-distances",
-      "description": "output average trajectory distance",
-      "type": "Flag",
+      "description": "output average trajectory distance: the distances, as a cifti file",
       "optional": true,
-      "value-key": "[OPT_DISTANCES]"
-    },
-    {
-      "id": "distance_out",
-      "name": "distance_out",
-      "type": "String",
-      "description": "the distances, as a cifti file",
-      "optional": false,
-      "value-key": "[DISTANCE_OUT]"
+      "value-key": "[OPT_DISTANCES_DISTANCE_OUT]",
+      "type": "String"
     },
     {
       "id": "individual_fibers",
@@ -117,10 +109,10 @@
       "optional": false
     },
     {
-      "id": "distance_out",
-      "name": "distance_out",
-      "path-template": "[DISTANCE_OUT]",
-      "description": "the distances, as a cifti file",
+      "id": "opt_distances_distance_out",
+      "name": "opt_distances_distance_out",
+      "path-template": "[OPT_DISTANCES_DISTANCE_OUT]",
+      "description": "output average trajectory distance: the distances, as a cifti file",
       "optional": false
     }
   ],

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "cifti-change-mapping",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -cifti-change-mapping [DATA_CIFTI] [DIRECTION] [CIFTI_OUT] [SERIES] [OPT_SCALAR] [OPT_NAME_FILE_FILE] [FROM_CIFTI]",
+  "command-line": "wb_command -cifti-change-mapping [DATA_CIFTI] [DIRECTION] [CIFTI_OUT] [SERIES] [SCALAR] [FROM_CIFTI]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -79,22 +79,29 @@
       "list": false
     },
     {
-      "id": "opt_scalar",
-      "name": "opt_scalar",
-      "command-line-flag": "-scalar",
+      "id": "scalar",
+      "name": "scalar",
       "description": "set the mapping to scalar",
-      "type": "Flag",
+      "type": {
+        "id": "scalar",
+        "name": "scalar",
+        "description": "set the mapping to scalar",
+        "command-line": "-scalar [OPT_NAME_FILE_FILE]",
+        "inputs": [
+          {
+            "id": "opt_name_file_file",
+            "name": "opt_name_file_file",
+            "command-line-flag": "-name-file",
+            "description": "specify names for the maps: text file containing map names, one per line",
+            "optional": true,
+            "value-key": "[OPT_NAME_FILE_FILE]",
+            "type": "String"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_SCALAR]"
-    },
-    {
-      "id": "opt_name_file_file",
-      "name": "opt_name_file_file",
-      "command-line-flag": "-name-file",
-      "description": "specify names for the maps: text file containing map names, one per line",
-      "optional": true,
-      "value-key": "[OPT_NAME_FILE_FILE]",
-      "type": "String"
+      "value-key": "[SCALAR]",
+      "list": false
     },
     {
       "id": "from_cifti",

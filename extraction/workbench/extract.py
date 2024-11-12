@@ -3,11 +3,14 @@ import json
 import re
 
 
+PATH_PROJECT_ROOT = pathlib.Path(__file__).parent.parent.parent
 PATH_WB_DUMP = pathlib.Path(__file__).parent / "outs"
-PATH_WB_BOUTIQUES = pathlib.Path(__file__).parent.parent.parent / "descriptors" / "workbench"
+PATH_WB_BOUTIQUES = PATH_PROJECT_ROOT / "descriptors" / "workbench"
+PATH_WB_PACKAGE_JSON = PATH_PROJECT_ROOT / "packages\workbench.json"
 
 assert PATH_WB_DUMP.exists(), "Workbench dump not found."
 assert PATH_WB_BOUTIQUES.exists(), "Boutiques directory not found."
+assert PATH_WB_PACKAGE_JSON.exists(), "Workbench package metadata not found."
 
 
 
@@ -115,8 +118,9 @@ def make_poor(opt, bt_inputs, bt_outputs, bt_descriptor, repeatable=False):
     assert "option_switch" in opt
     assert "key" in opt
 
-    
-    if repeatable or (len(opt["params"]) + len(opt["outputs"]) + len(opt["options"]) + len(opt["repeatable_options"])) > 1:
+    num_params = len(opt["params"]) + len(opt["outputs"])
+    num_options = len(opt["options"]) + len(opt["repeatable_options"])
+    if repeatable or (num_params > 1) or (num_options > 0):
         # subcommand needed
         input_id = as_bt_id(opt["option_switch"])
         value_key = as_value_key(opt["option_switch"])
@@ -145,8 +149,10 @@ def make_poor(opt, bt_inputs, bt_outputs, bt_descriptor, repeatable=False):
 
         for param in opt["params"]:
             make_param(param, bt_inputs, bt_descriptor)
+        for out in opt["outputs"]:
+            make_output(out, bt_inputs, bt_outputs, bt_descriptor)
 
-    elif len(opt["params"]) == 0:
+    elif num_params == 0:
         # command line flag
 
         input_id = as_bt_id("opt"+opt["option_switch"])
@@ -162,8 +168,11 @@ def make_poor(opt, bt_inputs, bt_outputs, bt_descriptor, repeatable=False):
         })
         bt_descriptor["command-line"] += f" {value_key}"
 
-    elif len(opt["params"]) == 1:
-        param = opt["params"][0]
+    elif num_params == 1:
+        if len(opt["params"]) == 1:
+            param = opt["params"][0]
+        elif len(opt["outputs"]) == 1:
+            param = opt["outputs"][0]
 
         input_id = as_bt_id(f"opt{opt['option_switch']}-{param['short_name']}")
         value_key = as_value_key(input_id)
@@ -175,13 +184,24 @@ def make_poor(opt, bt_inputs, bt_outputs, bt_descriptor, repeatable=False):
             "optional": True,
             "value-key": value_key
         }))
+
+        if len(opt["outputs"]):
+            bt_inputs[-1]["type"] = "String"
+            bt_outputs.append({
+                "id": input_id,
+                "name": input_id,
+                "path-template": value_key,
+                "description": opt["description"] + ": " + param["description"],
+                "optional": False
+            })
+
         bt_descriptor["command-line"] += f" {value_key}"
     else:
         for param in opt["params"]:
             make_param(param, bt_inputs, bt_descriptor)
 
-    for out in opt["outputs"]:
-        make_output(out, bt_inputs, bt_outputs, bt_descriptor)
+        for out in opt["outputs"]:
+            make_output(out, bt_inputs, bt_outputs, bt_descriptor)
 
     for sub_opt in opt["options"]:
         make_poor(sub_opt, bt_inputs, bt_outputs, bt_descriptor, repeatable=False)
@@ -199,21 +219,20 @@ def make_poor(opt, bt_inputs, bt_outputs, bt_descriptor, repeatable=False):
 
 
 
-def make_descriptor(j):
+def make_descriptor(j, workbench_package_metadata):
 
     inputs = []
     output_files = []
     groups = []
 
     bt_descriptor = {
-        "tool-version": "1.5.0 2e663bdff57597d5d1fb251dc4740d14d9cf11dd",
+        "tool-version": workbench_package_metadata["version"],
         "name": j["command"][1:],
-        "author": "Washington University School of Medicin",
-        #"descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/fsl_bet.json",
+        "author": workbench_package_metadata["author"],
         "command-line": f"wb_command {j['command']}",
         "container-image": {
-            "image": "fcpindi/c-pac:latest",
-            "type": "docker"
+            "type": "docker",
+            "image": workbench_package_metadata["container"]
         },
         "description": unallcaps(j["short_description"]) + ".\n\n" + j["help_text"],
         "schema-version": "0.5",
@@ -221,6 +240,7 @@ def make_descriptor(j):
         "inputs": inputs,
         "output-files": output_files,
         "groups": groups,
+        "url": workbench_package_metadata["url"],
     }
 
     for i in j["params"]:
@@ -246,6 +266,8 @@ def make_descriptor(j):
     return bt_descriptor
 
 def main():
+    with open(PATH_WB_PACKAGE_JSON, "r") as f:
+            workbench_package_metadata = json.load(f)
 
     for idx_p, p in enumerate(PATH_WB_DUMP.glob("*_output.txt")):
         if p.stem in [
@@ -279,7 +301,7 @@ def main():
             print(txt)
             raise e
 
-        descriptor = make_descriptor(j)
+        descriptor = make_descriptor(j, workbench_package_metadata)
 
         # write to file
         out_path = pathlib.Path("descriptors/workbench") / (descriptor["name"] + ".json")

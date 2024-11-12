@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "volume-gradient",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -volume-gradient [VOLUME_IN] [VOLUME_OUT] [PRESMOOTH] [OPT_ROI_ROI_VOLUME] [OPT_VECTORS] [VECTOR_VOLUME_OUT] [OPT_SUBVOLUME_SUBVOL]",
+  "command-line": "wb_command -volume-gradient [VOLUME_IN] [VOLUME_OUT] [PRESMOOTH] [OPT_ROI_ROI_VOLUME] [OPT_VECTORS_VECTOR_VOLUME_OUT] [OPT_SUBVOLUME_SUBVOL]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -71,21 +71,13 @@
       "type": "File"
     },
     {
-      "id": "opt_vectors",
-      "name": "opt_vectors",
+      "id": "opt_vectors_vector_volume_out",
+      "name": "opt_vectors_vector_volume_out",
       "command-line-flag": "-vectors",
-      "description": "output vectors",
-      "type": "Flag",
+      "description": "output vectors: the vectors as a volume file",
       "optional": true,
-      "value-key": "[OPT_VECTORS]"
-    },
-    {
-      "id": "vector_volume_out",
-      "name": "vector_volume_out",
-      "type": "String",
-      "description": "the vectors as a volume file",
-      "optional": false,
-      "value-key": "[VECTOR_VOLUME_OUT]"
+      "value-key": "[OPT_VECTORS_VECTOR_VOLUME_OUT]",
+      "type": "String"
     },
     {
       "id": "opt_subvolume_subvol",
@@ -106,10 +98,10 @@
       "optional": false
     },
     {
-      "id": "vector_volume_out",
-      "name": "vector_volume_out",
-      "path-template": "[VECTOR_VOLUME_OUT]",
-      "description": "the vectors as a volume file",
+      "id": "opt_vectors_vector_volume_out",
+      "name": "opt_vectors_vector_volume_out",
+      "path-template": "[OPT_VECTORS_VECTOR_VOLUME_OUT]",
+      "description": "output vectors: the vectors as a volume file",
       "optional": false
     }
   ],

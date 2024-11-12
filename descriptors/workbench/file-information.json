@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "file-information",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -file-information [DATA_FILE] [OPT_NO_MAP_INFO] [OPT_ONLY_STEP_INTERVAL] [OPT_ONLY_NUMBER_OF_MAPS] [OPT_ONLY_MAP_NAMES] [OPT_ONLY_METADATA] [OPT_KEY_KEY] [OPT_ONLY_CIFTI_XML] [OPT_CZI] [OPT_CZI_ALL_SUB_BLOCKS] [OPT_CZI_XML]",
+  "command-line": "wb_command -file-information [DATA_FILE] [OPT_NO_MAP_INFO] [OPT_ONLY_STEP_INTERVAL] [OPT_ONLY_NUMBER_OF_MAPS] [OPT_ONLY_MAP_NAMES] [ONLY_METADATA] [OPT_ONLY_CIFTI_XML] [OPT_CZI] [OPT_CZI_ALL_SUB_BLOCKS] [OPT_CZI_XML]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -56,22 +56,29 @@
       "value-key": "[OPT_ONLY_MAP_NAMES]"
     },
     {
-      "id": "opt_only_metadata",
-      "name": "opt_only_metadata",
-      "command-line-flag": "-only-metadata",
+      "id": "only_metadata",
+      "name": "only_metadata",
       "description": "suppress normal output, print file metadata",
-      "type": "Flag",
+      "type": {
+        "id": "only_metadata",
+        "name": "only_metadata",
+        "description": "suppress normal output, print file metadata",
+        "command-line": "-only-metadata [OPT_KEY_KEY]",
+        "inputs": [
+          {
+            "id": "opt_key_key",
+            "name": "opt_key_key",
+            "command-line-flag": "-key",
+            "description": "only print the metadata for one key, with no formatting: the metadata key",
+            "optional": true,
+            "value-key": "[OPT_KEY_KEY]",
+            "type": "String"
+          }
+        ]
+      },
       "optional": true,
-      "value-key": "[OPT_ONLY_METADATA]"
-    },
-    {
-      "id": "opt_key_key",
-      "name": "opt_key_key",
-      "command-line-flag": "-key",
-      "description": "only print the metadata for one key, with no formatting: the metadata key",
-      "optional": true,
-      "value-key": "[OPT_KEY_KEY]",
-      "type": "String"
+      "value-key": "[ONLY_METADATA]",
+      "list": false
     },
     {
       "id": "opt_only_cifti_xml",

@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "cifti-parcellate",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -cifti-parcellate [CIFTI_IN] [CIFTI_LABEL] [DIRECTION] [CIFTI_OUT] [SPATIAL_WEIGHTS] [OPT_CIFTI_WEIGHTS_WEIGHT_CIFTI] [OPT_METHOD_METHOD] [EXCLUDE_OUTLIERS] [OPT_ONLY_NUMERIC] [OPT_FILL_VALUE_VALUE] [OPT_NONEMPTY_MASK_OUT] [MASK_OUT] [OPT_LEGACY_MODE] [OPT_INCLUDE_EMPTY]",
+  "command-line": "wb_command -cifti-parcellate [CIFTI_IN] [CIFTI_LABEL] [DIRECTION] [CIFTI_OUT] [SPATIAL_WEIGHTS] [OPT_CIFTI_WEIGHTS_WEIGHT_CIFTI] [OPT_METHOD_METHOD] [EXCLUDE_OUTLIERS] [OPT_ONLY_NUMERIC] [OPT_FILL_VALUE_VALUE] [OPT_NONEMPTY_MASK_OUT_MASK_OUT] [OPT_LEGACY_MODE] [OPT_INCLUDE_EMPTY]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -185,21 +185,13 @@
       "integer": false
     },
     {
-      "id": "opt_nonempty_mask_out",
-      "name": "opt_nonempty_mask_out",
+      "id": "opt_nonempty_mask_out_mask_out",
+      "name": "opt_nonempty_mask_out_mask_out",
       "command-line-flag": "-nonempty-mask-out",
-      "description": "output a matching pscalar file that has 0s in empty parcels, and 1s elsewhere",
-      "type": "Flag",
+      "description": "output a matching pscalar file that has 0s in empty parcels, and 1s elsewhere: the output mask file",
       "optional": true,
-      "value-key": "[OPT_NONEMPTY_MASK_OUT]"
-    },
-    {
-      "id": "mask_out",
-      "name": "mask_out",
-      "type": "String",
-      "description": "the output mask file",
-      "optional": false,
-      "value-key": "[MASK_OUT]"
+      "value-key": "[OPT_NONEMPTY_MASK_OUT_MASK_OUT]",
+      "type": "String"
     },
     {
       "id": "opt_legacy_mode",
@@ -229,10 +221,10 @@
       "optional": false
     },
     {
-      "id": "mask_out",
-      "name": "mask_out",
-      "path-template": "[MASK_OUT]",
-      "description": "the output mask file",
+      "id": "opt_nonempty_mask_out_mask_out",
+      "name": "opt_nonempty_mask_out_mask_out",
+      "path-template": "[OPT_NONEMPTY_MASK_OUT_MASK_OUT]",
+      "description": "output a matching pscalar file that has 0s in empty parcels, and 1s elsewhere: the output mask file",
       "optional": false
     }
   ],

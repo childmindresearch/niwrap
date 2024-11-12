@@ -2,7 +2,7 @@
   "tool-version": "1.5.0",
   "name": "surface-cortex-layer",
   "author": "Connectome Workbench Developers",
-  "command-line": "wb_command -surface-cortex-layer [WHITE_SURFACE] [PIAL_SURFACE] [LOCATION] [OUT_SURFACE] [OPT_PLACEMENT_OUT] [PLACEMENT_METRIC]",
+  "command-line": "wb_command -surface-cortex-layer [WHITE_SURFACE] [PIAL_SURFACE] [LOCATION] [OUT_SURFACE] [OPT_PLACEMENT_OUT_PLACEMENT_METRIC]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/connectome_workbench:1.5.0-freesurfer-update"
@@ -45,21 +45,13 @@
       "value-key": "[OUT_SURFACE]"
     },
     {
-      "id": "opt_placement_out",
-      "name": "opt_placement_out",
+      "id": "opt_placement_out_placement_metric",
+      "name": "opt_placement_out_placement_metric",
       "command-line-flag": "-placement-out",
-      "description": "output the placement as a volume fraction from pial to white",
-      "type": "Flag",
+      "description": "output the placement as a volume fraction from pial to white: output metric",
       "optional": true,
-      "value-key": "[OPT_PLACEMENT_OUT]"
-    },
-    {
-      "id": "placement_metric",
-      "name": "placement_metric",
-      "type": "String",
-      "description": "output metric",
-      "optional": false,
-      "value-key": "[PLACEMENT_METRIC]"
+      "value-key": "[OPT_PLACEMENT_OUT_PLACEMENT_METRIC]",
+      "type": "String"
     }
   ],
   "output-files": [
@@ -71,10 +63,10 @@
       "optional": false
     },
     {
-      "id": "placement_metric",
-      "name": "placement_metric",
-      "path-template": "[PLACEMENT_METRIC]",
-      "description": "output metric",
+      "id": "opt_placement_out_placement_metric",
+      "name": "opt_placement_out_placement_metric",
+      "path-template": "[OPT_PLACEMENT_OUT_PLACEMENT_METRIC]",
+      "description": "output the placement as a volume fraction from pial to white: output metric",
       "optional": false
     }
   ],
