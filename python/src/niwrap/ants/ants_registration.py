@@ -638,7 +638,7 @@ class AntsRegistrationMetricPointSetExpectation:
             raise ValueError(f"'sampling_percentage' must be between 0 <= x <= 1 but was {sampling_percentage}")
         cargs = []
         if self.point_set_sigma is not None or self.sampling_percentage is not None:
-            cargs.append("PSE[[FIXED_IMAGE],[MOVING_IMAGE]," + str(self.metric_weight) + "," + "," + (str(self.point_set_sigma) if (self.point_set_sigma is not None) else "") + "[SAMPLING_STRATEGY]" + "," + (str(self.sampling_percentage) if (self.sampling_percentage is not None) else "") + "[USE_GRADIENT_FILTER]]")
+            cargs.append("PSE[[FIXED_IMAGE],[MOVING_IMAGE]," + str(self.metric_weight) + ",," + (str(self.point_set_sigma) if (self.point_set_sigma is not None) else "") + "[SAMPLING_STRATEGY]," + (str(self.sampling_percentage) if (self.sampling_percentage is not None) else "") + "[USE_GRADIENT_FILTER]]")
         return cargs
 
 

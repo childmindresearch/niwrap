@@ -251,7 +251,7 @@ class AntsApplyTransformsMultiLabel:
         """
         cargs = []
         if self.sigma is not None or self.alpha is not None:
-            cargs.append("MultiLabel[" + "sigma=" + (str(self.sigma) if (self.sigma is not None) else "") + ",alpha=" + (str(self.alpha) if (self.alpha is not None) else "") + "]")
+            cargs.append("MultiLabel[sigma=" + (str(self.sigma) if (self.sigma is not None) else "") + ",alpha=" + (str(self.alpha) if (self.alpha is not None) else "") + "]")
         return cargs
 
 
@@ -279,7 +279,7 @@ class AntsApplyTransformsGaussian:
         """
         cargs = []
         if self.sigma is not None or self.alpha is not None:
-            cargs.append("Gaussian[" + "sigma=" + (str(self.sigma) if (self.sigma is not None) else "") + ",alpha=" + (str(self.alpha) if (self.alpha is not None) else "") + "]")
+            cargs.append("Gaussian[sigma=" + (str(self.sigma) if (self.sigma is not None) else "") + ",alpha=" + (str(self.alpha) if (self.alpha is not None) else "") + "]")
         return cargs
 
 
@@ -305,7 +305,7 @@ class AntsApplyTransformsBspline:
         """
         cargs = []
         if self.order is not None:
-            cargs.append("BSpline[" + "order=" + str(self.order) + "]")
+            cargs.append("BSpline[order=" + str(self.order) + "]")
         return cargs
 
 
@@ -423,7 +423,7 @@ class AntsApplyTransformsGenericLabel:
         """
         cargs = []
         if self.interpolator is not None:
-            cargs.append("GenericLabel[" + "interpolator=" + self.interpolator + "]")
+            cargs.append("GenericLabel[interpolator=" + self.interpolator + "]")
         return cargs
 
 
