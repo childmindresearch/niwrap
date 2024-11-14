@@ -46,11 +46,7 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": [
-        "NIFTI",
-        "AFNI",
-        "NIFTI_GZ"
-      ]
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
     },
     {
       "id": "sum",
