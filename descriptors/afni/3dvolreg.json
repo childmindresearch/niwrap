@@ -59,7 +59,7 @@
       "description": "'fourier' or 'cubic' or 'heptic' or 'quintic' or 'linear'. Spatial interpolation methods [default = heptic].",
       "optional": true,
       "value-choices": [
-        "Fourier",
+        "fourier",
         "cubic",
         "heptic",
         "quintic",
