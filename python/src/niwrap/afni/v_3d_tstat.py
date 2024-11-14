@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSTAT_METADATA = Metadata(
-    id="a4a735ff0a0504c29b4133276ff755cc4b6eaa8f.boutiques",
+    id="e33b0f1c25425f9293761876e36af1d90dc328e9.boutiques",
     name="3dTstat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,17 +20,70 @@ class V3dTstatOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType
+    out_file: OutputPathType | None
     """Output image file name."""
-    out_file_: OutputPathType
-    """Output file."""
 
 
 def v_3d_tstat(
     in_file: InputPathType,
     mask: InputPathType | None = None,
     num_threads: int | None = None,
-    options: str | None = None,
+    sum_: bool = False,
+    abssum: bool = False,
+    sos: bool = False,
+    l2norm: bool = False,
+    mean: bool = False,
+    slope: bool = False,
+    stdev: bool = False,
+    stdev_nod: bool = False,
+    cvar: bool = False,
+    cvar_nod: bool = False,
+    cvarinv: bool = False,
+    cvarinv_nod: bool = False,
+    tsnr: bool = False,
+    mad: bool = False,
+    dw: bool = False,
+    median: bool = False,
+    nzmedian: bool = False,
+    nzstdev: bool = False,
+    bmv: bool = False,
+    mssd: bool = False,
+    mssdsqrt: bool = False,
+    masdx: bool = False,
+    min_: bool = False,
+    max_: bool = False,
+    absmax: bool = False,
+    signed_absmax: bool = False,
+    percentile: bool = False,
+    argmin: bool = False,
+    argmin1: bool = False,
+    argmax: bool = False,
+    argmax1: bool = False,
+    argabsmax: bool = False,
+    argabsmax1: bool = False,
+    duration: bool = False,
+    onset: bool = False,
+    offset: bool = False,
+    centroid: bool = False,
+    centduration: bool = False,
+    nzmean: bool = False,
+    zcount: bool = False,
+    nzcount: bool = False,
+    autocorr: bool = False,
+    autoreg: bool = False,
+    accumulate: bool = False,
+    centromean: bool = False,
+    skewness: bool = False,
+    kurtosis: bool = False,
+    firstvalue: bool = False,
+    tdiff: bool = False,
+    prefix: str | None = None,
+    datum: str | None = None,
+    nscale: bool = False,
+    basepercent: float | None = None,
+    mask_mset: InputPathType | None = None,
+    mrange: str | None = None,
+    cmask: str | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
     runner: Runner | None = None,
 ) -> V3dTstatOutputs:
@@ -45,7 +98,79 @@ def v_3d_tstat(
         in_file: Input file to 3dtstat.
         mask: Mask file.
         num_threads: Set number of threads.
-        options: Selected statistical output.
+        sum_: Compute sum of input voxels.
+        abssum: Compute absolute sum of input voxels.
+        sos: Compute sum of squares.
+        l2norm: Compute L2 norm (sqrt(sum squares)).
+        mean: Compute mean of input voxels.
+        slope: Compute the slope of input voxels vs. time.
+        stdev: Compute standard deviation of input voxels.
+        stdev_nod: Compute standard deviation of input voxels without\
+            detrending.
+        cvar: Compute coefficient of variation of input voxels.
+        cvar_nod: Compute coefficient of variation of input voxels without\
+            detrending.
+        cvarinv: Compute inverse coefficient of variation of input voxels.
+        cvarinv_nod: Compute inverse coefficient of variation of input voxels\
+            without detrending.
+        tsnr: Compute temporal signal to noise ratio.
+        mad: Compute median absolute deviation of input voxels.
+        dw: Compute Durbin-Watson Statistic of input voxels.
+        median: Compute median of input voxels.
+        nzmedian: Compute median of non-zero input voxels.
+        nzstdev: Compute standard deviation of non-zero input voxels.
+        bmv: Compute biweight midvariance of input voxels.
+        mssd: Compute mean of successive squared differences of input voxels.
+        mssdsqrt: Compute square root of mean of successive squared differences\
+            of input voxels.
+        masdx: Compute median of absolute values of first time differences of\
+            input voxels.
+        min_: Compute minimum of input voxels.
+        max_: Compute maximum of input voxels.
+        absmax: Compute absolute maximum of input voxels.
+        signed_absmax: Compute signed absolute maximum of input voxels.
+        percentile: Compute the P-th percentile point of the data in each voxel\
+            time series.
+        argmin: Compute index of minimum of input voxels.
+        argmin1: Compute index + 1 of minimum of input voxels.
+        argmax: Compute index of maximum of input voxels.
+        argmax1: Compute index + 1 of maximum of input voxels.
+        argabsmax: Compute index of absolute maximum of input voxels.
+        argabsmax1: Compute index + 1 of absolute maximum of input voxels.
+        duration: Compute number of points around max above a threshold.
+        onset: Compute beginning of duration around max where value exceeds\
+            basepercent.
+        offset: Compute end of duration around max where value exceeds\
+            basepercent.
+        centroid: Compute centroid of data time curves.
+        centduration: Compute duration using centroid's index as center.
+        nzmean: Compute mean of non-zero voxels.
+        zcount: Count number of zero values at each voxel.
+        nzcount: Count number of non-zero values at each voxel.
+        autocorr: Compute autocorrelation function and return first n\
+            coefficients.
+        autoreg: Compute autoregression coefficients and return first n\
+            coefficients.
+        accumulate: Accumulate time series values (partial sums).
+        centromean: Compute mean of middle 50% of voxel values.
+        skewness: Measure of asymmetry in distribution.
+        kurtosis: Measure of the 'tailedness' of the probability distribution.
+        firstvalue: First value in dataset.
+        tdiff: Take the first difference of each time series before further\
+            processing.
+        prefix: Use string 'p' for the prefix of the output dataset [DEFAULT =\
+            'stat'].
+        datum: Use data type 'd' for the type of storage of the output, where\
+            'd' is one of 'byte', 'short', or 'float' [DEFAULT=float].
+        nscale: Do not scale output values when datum is byte or short. Scaling\
+            is done by default.
+        basepercent: Percentage of maximum for duration calculation.
+        mask_mset: Use the dataset 'mset' as a mask. Only voxels with nonzero\
+            values in 'mset' will be printed from 'dataset'.
+        mrange: Further restrict the voxels from 'mset' so that only those mask\
+            values between 'a' and 'b' (inclusive) will be used.
+        cmask: Execute the options enclosed in single quotes as a 3dcalc-like\
+            program, and produce a mask from the resulting 3D brick.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
         runner: Command runner.
     Returns:
@@ -55,7 +180,6 @@ def v_3d_tstat(
     execution = runner.start_execution(V_3D_TSTAT_METADATA)
     cargs = []
     cargs.append("3dTstat")
-    cargs.append(execution.input_file(in_file))
     if mask is not None:
         cargs.extend([
             "-mask",
@@ -63,14 +187,142 @@ def v_3d_tstat(
         ])
     if num_threads is not None:
         cargs.append(str(num_threads))
-    if options is not None:
-        cargs.append(options)
+    if sum_:
+        cargs.append("-sum")
+    if abssum:
+        cargs.append("-abssum")
+    if sos:
+        cargs.append("-sos")
+    if l2norm:
+        cargs.append("-l2norm")
+    if mean:
+        cargs.append("-mean")
+    if slope:
+        cargs.append("-slope")
+    if stdev:
+        cargs.append("-stdev")
+    if stdev_nod:
+        cargs.append("-stdevNOD")
+    if cvar:
+        cargs.append("-cvar")
+    if cvar_nod:
+        cargs.append("-cvarNOD")
+    if cvarinv:
+        cargs.append("-cvarinv")
+    if cvarinv_nod:
+        cargs.append("-cvarinvNOD")
+    if tsnr:
+        cargs.append("-tsnr")
+    if mad:
+        cargs.append("-MAD")
+    if dw:
+        cargs.append("-DW")
+    if median:
+        cargs.append("-median")
+    if nzmedian:
+        cargs.append("-nzmedian")
+    if nzstdev:
+        cargs.append("-nzstdev")
+    if bmv:
+        cargs.append("-bmv")
+    if mssd:
+        cargs.append("-MSSD")
+    if mssdsqrt:
+        cargs.append("-MSSDsqrt")
+    if masdx:
+        cargs.append("-MASDx")
+    if min_:
+        cargs.append("-min")
+    if max_:
+        cargs.append("-max")
+    if absmax:
+        cargs.append("-absmax")
+    if signed_absmax:
+        cargs.append("-signed_absmax")
+    if percentile:
+        cargs.append("-percentile")
+    if argmin:
+        cargs.append("-argmin")
+    if argmin1:
+        cargs.append("-argmin1")
+    if argmax:
+        cargs.append("-argmax")
+    if argmax1:
+        cargs.append("-argmax1")
+    if argabsmax:
+        cargs.append("-argabsmax")
+    if argabsmax1:
+        cargs.append("-argabsmax1")
+    if duration:
+        cargs.append("-duration")
+    if onset:
+        cargs.append("-onset")
+    if offset:
+        cargs.append("-offset")
+    if centroid:
+        cargs.append("-centroid")
+    if centduration:
+        cargs.append("-centduration")
+    if nzmean:
+        cargs.append("-nzmean")
+    if zcount:
+        cargs.append("-zcount")
+    if nzcount:
+        cargs.append("-nzcount")
+    if autocorr:
+        cargs.append("-autocorr")
+    if autoreg:
+        cargs.append("-autoreg")
+    if accumulate:
+        cargs.append("-accumulate")
+    if centromean:
+        cargs.append("-centromean")
+    if skewness:
+        cargs.append("-skewness")
+    if kurtosis:
+        cargs.append("-kurtosis")
+    if firstvalue:
+        cargs.append("-firstvalue")
+    if tdiff:
+        cargs.append("-tdiff")
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
+    if datum is not None:
+        cargs.extend([
+            "-datum",
+            datum
+        ])
+    if nscale:
+        cargs.append("-nscale")
+    if basepercent is not None:
+        cargs.extend([
+            "-basepercent",
+            str(basepercent)
+        ])
+    if mask_mset is not None:
+        cargs.extend([
+            "-mask",
+            execution.input_file(mask_mset)
+        ])
+    if mrange is not None:
+        cargs.extend([
+            "-mrange",
+            mrange
+        ])
+    if cmask is not None:
+        cargs.extend([
+            "-cmask",
+            cmask
+        ])
     if outputtype is not None:
         cargs.append(outputtype)
+    cargs.append(execution.input_file(in_file))
     ret = V3dTstatOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file).name + "_tstat"),
-        out_file_=execution.output_file("out_file"),
+        out_file=execution.output_file(prefix) if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret
