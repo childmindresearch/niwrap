@@ -1,10 +1,28 @@
 {
   "name": "3dAutomask",
-  "command-line": "3dAutomask [CLFRAC] [DILATE] [ERODE] [IN_FILE] [OUTPUTTYPE]",
+  "command-line": "3dAutomask [PREFIX] [APPLY_PREFIX] [CLFRAC] [DILATE] [ERODE] [OUTPUTTYPE] [IN_FILE]",
   "author": "AFNI Developers",
   "description": "Create a brain-only mask of the image using AFNI 3dAutomask command.",
   "url": "https://afni.nimh.nih.gov/",
   "inputs": [
+    {
+      "id": "prefix",
+      "name": "Prefix",
+      "type": "String",
+      "value-key": "[PREFIX]",
+      "command-line-flag": "-prefix",
+      "description": "Write mask into dataset with prefix 'ppp'. [Default == 'automask']",
+      "optional": true
+    },
+    {
+      "id": "apply_prefix",
+      "name": "Apply Prefix",
+      "type": "String",
+      "value-key": "[APPLY_PREFIX]",
+      "command-line-flag": "-apply_prefix",
+      "description": "Apply mask to input dataset and save masked dataset.",
+      "optional": true
+    },
     {
       "id": "clfrac",
       "name": "Clfrac",
@@ -49,7 +67,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     }
   ],
   "output-files": [
@@ -58,32 +80,18 @@
       "id": "brain_file",
       "optional": true,
       "description": "Output file from 3dautomask.",
-      "path-template": "[IN_FILE]_masked",
+      "path-template": "[APPLY_PREFIX]",
       "value-key": "[BRAIN_FILE]",
       "command-line-flag": "-apply_prefix"
     },
     {
-      "name": "Out file",
-      "id": "out_file",
+      "name": "Mask file",
+      "id": "mask_file",
       "optional": true,
       "description": "Output image file name.",
-      "path-template": "[IN_FILE]_mask",
-      "value-key": "[OUT_FILE]",
+      "path-template": "[PREFIX]",
+      "value-key": "[MASK_FILE]",
       "command-line-flag": "-prefix"
-    },
-    {
-      "name": "Brain file",
-      "id": "brain_file",
-      "path-template": "brain_file",
-      "optional": true,
-      "description": "Brain file (skull stripped)."
-    },
-    {
-      "name": "Out file",
-      "id": "out_file",
-      "path-template": "out_file",
-      "optional": true,
-      "description": "Mask file."
     }
   ],
   "tool-version": "24.2.06",
