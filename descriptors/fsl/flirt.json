@@ -1,6 +1,15 @@
 {
+<<<<<<< HEAD:descriptors/fsl/flirt.json
   "name": "flirt",
   "command-line": "flirt [IN_FILE] [REFERENCE] [OUT_FILE] [OUT_MATRIX_FILE] [ANGLE_REP] [APPLY_ISOXFM] [APPLY_XFM] [BBRSLOPE] [BBRTYPE] [BGVALUE] [BINS] [COARSE_SEARCH] [COST] [COST_FUNC] [DATATYPE] [DISPLAY_INIT] [DOF] [ECHOSPACING] [FIELDMAP] [FIELDMAPMASK] [FINE_SEARCH] [FORCE_SCALING] [IN_MATRIX_FILE] [IN_WEIGHT] [INTERP] [MIN_SAMPLING] [NO_CLAMP] [NO_RESAMPLE] [NO_RESAMPLE_BLUR] [NO_SEARCH] [PADDING_SIZE] [PEDIR] [REF_WEIGHT] [RIGID2D] [SCHEDULE] [SEARCHR_X] [SEARCHR_Y] [SEARCHR_Z] [SINC_WIDTH] [SINC_WINDOW] [USES_QFORM] [VERBOSE] [WM_SEG] [WMCOORDS] [WMNORMS]",
+=======
+  "name": "FLIRT",
+<<<<<<< HEAD
+  "command-line": "flirt [IN_FILE] [REFERENCE] [OUT_FILE] [OUT_MATRIX_FILE] [ANGLE_REP] [APPLY_ISOXFM] [APPLY_XFM] [BBRSLOPE] [BBRTYPE] [BGVALUE] [BINS] [COARSE_SEARCH] [COST] [COST_FUNC] [DATATYPE] [DISPLAY_INIT] [DOF] [ECHOSPACING] [FIELDMAP] [FIELDMAPMASK] [FINE_SEARCH] [FORCE_SCALING] [IN_MATRIX_FILE] [IN_WEIGHT] [INTERP] [MIN_SAMPLING] [NO_CLAMP] [NO_RESAMPLE] [NO_RESAMPLE_BLUR] [NO_SEARCH] [PADDING_SIZE] [PEDIR] [REF_WEIGHT] [RIGID2D] [SCHEDULE] [SEARCHR_X] [SEARCHR_Y] [SEARCHR_Z] [SINC_WIDTH] [SINC_WINDOW] [USES_QFORM] [VERBOSE] [WM_SEG] [WMCOORDS] [WMNORMS] ",
+>>>>>>> 2460cfd9 (flirt):descriptors/fsl/FLIRT.json
+=======
+  "command-line": "flirt [REFERENCE] [IN_FILE] [OUT_FILE] [OUT_MATRIX_FILE] [COST] [DOF] [INTERP] ",
+>>>>>>> 8ca92d96 (FLIRT)
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FLIRT (FMRIB's Linear Image Registration Tool) is a fully automated robust and accurate tool for linear (affine) intra- and inter-modal brain image registration.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
@@ -14,7 +23,10 @@
       "command-line-flag": "-anglerep",
       "description": "'quaternion' or 'euler'. Representation of rotation angles.",
       "optional": true,
-      "value-choices": ["quaternion", "euler"]
+      "value-choices": [
+        "quaternion",
+        "euler"
+      ]
     },
     {
       "id": "apply_isoxfm",
@@ -52,7 +64,11 @@
       "command-line-flag": "-bbrtype",
       "description": "'signed' or 'global_abs' or 'local_abs'. Type of bbr cost function: signed [default], global_abs, local_abs.",
       "optional": true,
-      "value-choices": ["signed", "global_abs", "local_abs"]
+      "value-choices": [
+        "signed",
+        "global_abs",
+        "local_abs"
+      ]
     },
     {
       "id": "bgvalue",
@@ -130,7 +146,13 @@
       "command-line-flag": "-datatype",
       "description": "'char' or 'short' or 'int' or 'float' or 'double'. Force output data type.",
       "optional": true,
-      "value-choices": ["char", "short", "int", "float", "double"]
+      "value-choices": [
+        "char",
+        "short",
+        "int",
+        "float",
+        "double"
+      ]
     },
     {
       "id": "display_init",
@@ -235,7 +257,12 @@
       "command-line-flag": "-interp",
       "description": "'trilinear' or 'nearestneighbour' or 'sinc' or 'spline'. Final interpolation method used in reslicing.",
       "optional": true,
-      "value-choices": ["trilinear", "nearestneighbour", "sinc", "spline"]
+      "value-choices": [
+        "trilinear",
+        "nearestneighbour",
+        "sinc",
+        "spline"
+      ]
     },
     {
       "id": "min_sampling",
@@ -396,7 +423,11 @@
       "command-line-flag": "-sincwindow",
       "description": "'rectangular' or 'hanning' or 'blackman'. Sinc window.",
       "optional": true,
-      "value-choices": ["rectangular", "hanning", "blackman"]
+      "value-choices": [
+        "rectangular",
+        "hanning",
+        "blackman"
+      ]
     },
     {
       "id": "uses_qform",
@@ -444,35 +475,48 @@
       "command-line-flag": "-wmnorms",
       "description": "White matter boundary normals for bbr cost function.",
       "optional": true
+    },
+    {
+      "id": "out_file",
+      "name": "Out file",
+      "type": "File",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-out",
+      "description": "Registered output file."
+    },
+    {
+      "id": "out_matrix_file",
+      "name": "Out matrix file",
+      "type": "File",
+      "value-key": "[OUT_MATRIX_FILE]",
+      "command-line-flag": "-omat",
+      "description": "Output affine matrix in 4x4 asciii format."
     }
   ],
   "output-files": [
     {
       "name": "Out file",
       "id": "out_file",
-      "optional": true,
       "description": "Registered output file.",
-      "path-template": "[IN_FILE]_flirt.nii",
-      "path-template-stripped-extensions": [".nii.gz", ".nii"],
       "value-key": "[OUT_FILE]",
-      "command-line-flag": "-out"
+      "path-template": "[OUT_FILE]"
     },
     {
       "name": "Out matrix file",
       "id": "out_matrix_file",
-      "optional": true,
       "description": "Output affine matrix in 4x4 asciii format.",
-      "path-template": "[IN_FILE]_flirt.mat",
-      "path-template-stripped-extensions": [".nii.gz", ".nii"],
       "value-key": "[OUT_MATRIX_FILE]",
-      "command-line-flag": "-omat"
+      "path-template": "[OUT_MATRIX_FILE]"
     }
   ],
   "groups": [
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": ["apply_xfm", "apply_isoxfm"],
+      "members": [
+        "apply_xfm",
+        "apply_isoxfm"
+      ],
       "mutually-exclusive": true
     }
   ],
