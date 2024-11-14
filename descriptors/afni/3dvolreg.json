@@ -58,13 +58,7 @@
       "command-line-flag": "-",
       "description": "'fourier' or 'cubic' or 'heptic' or 'quintic' or 'linear'. Spatial interpolation methods [default = heptic].",
       "optional": true,
-      "value-choices": [
-        "fourier",
-        "cubic",
-        "heptic",
-        "quintic",
-        "linear"
-      ]
+      "value-choices": ["fourier", "cubic", "heptic", "quintic", "linear"]
     },
     {
       "id": "num_threads",
@@ -82,11 +76,7 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": [
-        "NIFTI",
-        "AFNI",
-        "NIFTI_GZ"
-      ]
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
     },
     {
       "id": "timeshift",
