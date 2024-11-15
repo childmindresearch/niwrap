@@ -75,9 +75,7 @@
       "value-key": "[START_IDX]",
       "description": "Start index for in_file_a.",
       "optional": true,
-      "requires-inputs": [
-        "stop_idx"
-      ]
+      "requires-inputs": ["stop_idx"]
     },
     {
       "id": "stop_idx",
@@ -87,9 +85,7 @@
       "value-key": "[STOP_IDX]",
       "description": "Stop index for in_file_a.",
       "optional": true,
-      "requires-inputs": [
-        "start_idx"
-      ]
+      "requires-inputs": ["start_idx"]
     },
     {
       "id": "prefix",
