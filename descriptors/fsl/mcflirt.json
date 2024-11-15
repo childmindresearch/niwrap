@@ -1,6 +1,6 @@
 {
   "name": "mcflirt",
-  "command-line": "mcflirt [IN_FILE] [BINS] [COST] [DOF] [INIT] [INTERPOLATION] [MEAN_VOL] [OUT_FILE] [REF_FILE] [REF_VOL] [ROTATION] [SAVE_MATS] [SAVE_PLOTS] [SAVE_RMS] [SCALING] [SMOOTH] [STAGES] [STATS_IMGS] [USE_CONTOUR] [USE_GRADIENT]",
+  "command-line": "mcflirt [IN_FILE] [BINS] [COST] [DOF] [INIT] [INTERPOLATION] [MEAN_VOL] [OUT_FILE] [REF_FILE] [REF_VOL] [ROTATION] [SAVE_MATS] [SAVE_PLOTS] [SAVE_RMSABS] [SAVE_RMSREL] [SCALING] [SMOOTH] [STAGES] [STATS_IMGS] [USE_CONTOUR] [USE_GRADIENT]",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "MCFLIRT is an intra-modal motion correction tool designed for use on fMRI time series and based on optimization and registration techniques used in FLIRT, a fully automated robust and accurate tool for linear (affine) inter- and inter-modal brain image registration.",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
@@ -69,7 +69,11 @@
       "command-line-flag-separator": "",
       "description": "'spline' or 'nn' or 'sinc'. Interpolation method for transformation.",
       "optional": true,
-      "value-choices": ["spline_final", "nn_final", "sinc_final"]
+      "value-choices": [
+        "spline_final",
+        "nn_final",
+        "sinc_final"
+      ]
     },
     {
       "id": "mean_vol",
@@ -83,7 +87,7 @@
     {
       "id": "out_file",
       "name": "Out file",
-      "type": "File",
+      "type": "String",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-out",
       "description": "File to write.",
@@ -137,12 +141,21 @@
       "optional": true
     },
     {
-      "id": "save_rms",
-      "name": "Save rms",
+      "id": "save_rmsabs",
+      "name": "Save rmsabs",
       "type": "Flag",
-      "value-key": "[SAVE_RMS]",
-      "command-line-flag": "-rmsabs -rmsrel",
+      "value-key": "[SAVE_RMSABS]",
+      "command-line-flag": "-rmsabs",
       "description": "Save rms displacement parameters.",
+      "optional": true
+    },
+    {
+      "id": "save_rmsrel",
+      "name": "Save rmsrel",
+      "type": "Flag",
+      "value-key": "[SAVE_RMSREL]",
+      "command-line-flag": "-rmsrel",
+      "description": "Save relative rms displacement parameters.",
       "optional": true
     },
     {
@@ -214,12 +227,13 @@
       "name": "Mean img",
       "id": "mean_img",
       "path-template": "[OUT_FILE]_mean_reg.ext",
+      "strip-ext": true,
       "optional": true,
       "description": "Mean timeseries image (if mean_vol=true)."
     },
     {
       "name": "Out file",
-      "id": "out_file_outfile",
+      "id": "out_file",
       "path-template": "[OUT_FILE]",
       "optional": true,
       "description": "Motion-corrected timeseries."
@@ -228,21 +242,33 @@
       "name": "Par file",
       "id": "par_file",
       "path-template": "[OUT_FILE].par",
+      "strip-ext": true,
       "optional": true,
       "description": "Text-file with motion parameters."
     },
     {
-      "name": "Rms files",
-      "id": "rms_files",
-      "path-template": "[OUT_FILE]_*.rms",
+      "name": "Rmsabs files",
+      "id": "rmsabs_files",
+      "path-template": "[OUT_FILE]_abs.rms",
+      "strip-ext": true,
       "optional": true,
-      "description": "A list of items which are an existing file name. Absolute and relative displacement parameters.",
+      "description": "A list of items which are an existing file name. Absolute displacement parameters.",
+      "list": true
+    },
+    {
+      "name": "Rmsrel files",
+      "id": "rmsrel_files",
+      "path-template": "[OUT_FILE]_rel.rms",
+      "strip-ext": true,
+      "optional": true,
+      "description": "A list of items which are an existing file name. Relative displacement parameters.",
       "list": true
     },
     {
       "name": "Std img",
       "id": "std_img",
       "path-template": "[OUT_FILE]_sigma.ext",
+      "strip-ext": true,
       "optional": true,
       "description": "Standard deviation image."
     },
@@ -250,6 +276,7 @@
       "name": "Variance img",
       "id": "variance_img",
       "path-template": "[OUT_FILE]_variance.ext",
+      "strip-ext": true,
       "optional": true,
       "description": "Variance image."
     }
@@ -261,6 +288,9 @@
     "image": "brainlife/fsl:6.0.4-patched2"
   },
   "tags": {
-    "domain": ["neuroinformatics", "mri"]
+    "domain": [
+      "neuroinformatics",
+      "mri"
+    ]
   }
 }
