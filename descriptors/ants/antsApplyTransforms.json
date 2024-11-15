@@ -175,6 +175,12 @@
           "description": "Nearest neighbor interpolation."
         },
         {
+          "id": "multiLabelnoparams",
+          "name": "Multi label no params",
+          "command-line": "MultiLabel",
+          "description": "Multi label interpolation."
+        },
+        {
           "id": "multiLabel",
           "name": "Multi label",
           "command-line": "MultiLabel[PARAMS]",
