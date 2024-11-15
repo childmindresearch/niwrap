@@ -177,28 +177,58 @@
         {
           "id": "multiLabel",
           "name": "Multi label",
-          "command-line": "MultiLabel[[SIGMA][ALPHA]]",
+          "command-line": "MultiLabel[PARAMS]",
           "description": "Multi label interpolation.",
           "inputs": [
             {
-              "id": "sigma",
-              "name": "Sigma",
-              "type": "Number",
-              "command-line-flag": "sigma=",
-              "command-line-flag-separator": "",
-              "value-key": "[SIGMA]",
-              "description": "Sigma value.",
-              "optional": true
-            },
-            {
-              "id": "alpha",
-              "name": "Alpha",
-              "type": "Number",
-              "command-line-flag": ",alpha=",
-              "command-line-flag-separator": "",
-              "value-key": "[ALPHA]",
-              "description": "Alpha value.",
-              "optional": true
+              "id": "params",
+              "name": "Params",
+              "value-key": "[PARAMS]",
+              "type": {
+                "command-line": "[[PARAM]]",
+                "id": "param",
+                "inputs": [
+                  {
+                    "id": "params",
+                    "name": "Params",
+                    "value-key": "[PARAM]",
+                    "list": true,
+                    "list-separator": ",",
+                    "type": [
+                      {
+                        "id": "sigma",
+                        "command-line": "sigma=[SIGMA]",
+                        "description": "Sigma value.",
+                        "inputs": [
+                          {
+                            "id": "sigma",
+                            "name": "Sigma",
+                            "type": "Number",
+                            "value-key": "[SIGMA]",
+                            "description": "Sigma value.",
+                            "optional": false
+                          }
+                        ]
+                      },
+                      {
+                        "id": "alpha",
+                        "command-line": "alpha=[ALPHA]",
+                        "description": "Alpha value.",
+                        "inputs": [
+                          {
+                            "id": "alpha",
+                            "name": "Alpha",
+                            "type": "Number",
+                            "value-key": "[ALPHA]",
+                            "description": "Alpha value.",
+                            "optional": false
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
