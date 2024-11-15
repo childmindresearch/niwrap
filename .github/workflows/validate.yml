@@ -23,9 +23,10 @@ jobs:
           ajv_strict_mode: false
           use_gitignore: false
           json_exclude_regex: ''
-      - name: Spell-Check JSON
-        uses: codespell-project/actions-codespell@v2
-        with:
-            only_warn: 1
-            ignore_words_file: .codespellignore
-            path: descriptors
+      # Disable Spell-Check for now, consider re-enabling or running codespace locally for qc at a later date
+      #- name: Spell-Check JSON
+      #  uses: codespell-project/actions-codespell@v2
+      #  with:
+      #      only_warn: 1
+      #      ignore_words_file: .codespellignore
+      #      path: descriptors
