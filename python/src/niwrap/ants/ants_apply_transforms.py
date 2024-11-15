@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
-    id="1e2c5690e55a56e5a6fd164d9abf7d68ef0554d2.boutiques",
+    id="84800d70a4619489f4cd962873674d0233d3976b.boutiques",
     name="antsApplyTransforms",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -228,13 +228,36 @@ class AntsApplyTransformsNearestNeighbor:
 
 
 @dataclasses.dataclass
-class AntsApplyTransformsMultiLabel:
+class AntsApplyTransformsSigma:
     """
-    Multi label interpolation.
+    Sigma value.
     """
-    sigma: float | None = None
+    sigma: float
     """Sigma value."""
-    alpha: float | None = None
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("sigma=" + str(self.sigma))
+        return cargs
+
+
+@dataclasses.dataclass
+class AntsApplyTransformsAlpha:
+    """
+    Alpha value.
+    """
+    alpha: float
     """Alpha value."""
     
     def run(
@@ -250,8 +273,52 @@ class AntsApplyTransformsMultiLabel:
             Command line arguments
         """
         cargs = []
-        if self.sigma is not None or self.alpha is not None:
-            cargs.append("MultiLabel[sigma=" + (str(self.sigma) if (self.sigma is not None) else "") + ",alpha=" + (str(self.alpha) if (self.alpha is not None) else "") + "]")
+        cargs.append("alpha=" + str(self.alpha))
+        return cargs
+
+
+@dataclasses.dataclass
+class AntsApplyTransformsParam:
+    params: list[typing.Union[AntsApplyTransformsSigma, AntsApplyTransformsAlpha]]
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("[" + ",".join([a for c in [s.run(execution) for s in self.params] for a in c]) + "]")
+        return cargs
+
+
+@dataclasses.dataclass
+class AntsApplyTransformsMultiLabel:
+    """
+    Multi label interpolation.
+    """
+    params: AntsApplyTransformsParam
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("MultiLabel" + "".join(self.params.run(execution)))
         return cargs
 
 
@@ -633,6 +700,7 @@ def ants_apply_transforms(
 
 __all__ = [
     "ANTS_APPLY_TRANSFORMS_METADATA",
+    "AntsApplyTransformsAlpha",
     "AntsApplyTransformsBspline",
     "AntsApplyTransformsCompositeDisplacementFieldOutput",
     "AntsApplyTransformsCompositeDisplacementFieldOutputOutputs",
@@ -647,6 +715,8 @@ __all__ = [
     "AntsApplyTransformsMultiLabel",
     "AntsApplyTransformsNearestNeighbor",
     "AntsApplyTransformsOutputs",
+    "AntsApplyTransformsParam",
+    "AntsApplyTransformsSigma",
     "AntsApplyTransformsTransformFileName",
     "AntsApplyTransformsUseInverse",
     "AntsApplyTransformsWarpedOutput",
