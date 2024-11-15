@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DCALC_METADATA = Metadata(
-    id="66f28a66a111cc3612e13fb86d7e368e7be0a5a2.boutiques",
+    id="f5920a7aeb8d11c3fc7da3fd2f8b59f05d574b09.boutiques",
     name="3dcalc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,13 +20,13 @@ class V3dcalcOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType
+    out_file: OutputPathType | None
     """Output image file name."""
 
 
 def v_3dcalc(
-    expr: str,
     in_file_a: InputPathType,
+    expr: str,
     in_file_b: InputPathType | None = None,
     in_file_c: InputPathType | None = None,
     other: InputPathType | None = None,
@@ -34,6 +34,7 @@ def v_3dcalc(
     single_idx: int | None = None,
     start_idx: int | None = None,
     stop_idx: int | None = None,
+    prefix: str | None = None,
     runner: Runner | None = None,
 ) -> V3dcalcOutputs:
     """
@@ -44,8 +45,8 @@ def v_3dcalc(
     URL: https://afni.nimh.nih.gov/
     
     Args:
-        expr: Expr.
         in_file_a: Input file to 3dcalc.
+        expr: Expr.
         in_file_b: Operand file to 3dcalc.
         in_file_c: Operand file to 3dcalc.
         other: Other options.
@@ -53,6 +54,7 @@ def v_3dcalc(
         single_idx: Volume index for in_file_a.
         start_idx: Start index for in_file_a.
         stop_idx: Stop index for in_file_a.
+        prefix: Output image file name.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dcalcOutputs`).
@@ -61,7 +63,6 @@ def v_3dcalc(
     execution = runner.start_execution(V_3DCALC_METADATA)
     cargs = []
     cargs.append("3dcalc")
-    cargs.append(expr)
     cargs.extend([
         "-a",
         execution.input_file(in_file_a)
@@ -86,9 +87,18 @@ def v_3dcalc(
         cargs.append(str(start_idx))
     if stop_idx is not None:
         cargs.append(str(stop_idx))
+    cargs.extend([
+        "-expr",
+        expr
+    ])
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
     ret = V3dcalcOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file_a).name),
+        out_file=execution.output_file(prefix) if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret

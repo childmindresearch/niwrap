@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_APPLY_TRANSFORMS_METADATA = Metadata(
-    id="84800d70a4619489f4cd962873674d0233d3976b.boutiques",
+    id="51e7058afdec76cc8dda4686e9c908617a912917.boutiques",
     name="antsApplyTransforms",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -224,6 +224,29 @@ class AntsApplyTransformsNearestNeighbor:
         """
         cargs = []
         cargs.append("NearestNeighbor")
+        return cargs
+
+
+@dataclasses.dataclass
+class AntsApplyTransformsMultiLabelnoparams:
+    """
+    Multi label interpolation.
+    """
+    
+    def run(
+        self,
+        execution: Execution,
+    ) -> list[str]:
+        """
+        Build command line arguments. This method is called by the main command.
+        
+        Args:
+            execution: The execution object.
+        Returns:
+            Command line arguments
+        """
+        cargs = []
+        cargs.append("MultiLabel")
         return cargs
 
 
@@ -562,7 +585,7 @@ def ants_apply_transforms(
     output: typing.Union[AntsApplyTransformsWarpedOutput, AntsApplyTransformsCompositeDisplacementFieldOutput, AntsApplyTransformsGenericAffineTransformOutput],
     dimensionality: typing.Literal[2, 3, 4] | None = None,
     input_image_type: typing.Literal[0, 1, 2, 3, 4, 5] | None = None,
-    interpolation: typing.Union[AntsApplyTransformsLinear, AntsApplyTransformsNearestNeighbor, AntsApplyTransformsMultiLabel, AntsApplyTransformsGaussian, AntsApplyTransformsBspline, AntsApplyTransformsCosineWindowedSinc, AntsApplyTransformsWelchWindowedSinc, AntsApplyTransformsHammingWindowedSinc, AntsApplyTransformsLanczosWindowedSinc, AntsApplyTransformsGenericLabel] | None = None,
+    interpolation: typing.Union[AntsApplyTransformsLinear, AntsApplyTransformsNearestNeighbor, AntsApplyTransformsMultiLabelnoparams, AntsApplyTransformsMultiLabel, AntsApplyTransformsGaussian, AntsApplyTransformsBspline, AntsApplyTransformsCosineWindowedSinc, AntsApplyTransformsWelchWindowedSinc, AntsApplyTransformsHammingWindowedSinc, AntsApplyTransformsLanczosWindowedSinc, AntsApplyTransformsGenericLabel] | None = None,
     output_data_type: typing.Literal["char", "uchar", "short", "int", "float", "double", "default"] | None = None,
     transform: list[typing.Union[AntsApplyTransformsTransformFileName, AntsApplyTransformsUseInverse]] | None = None,
     default_value: float | None = None,
@@ -713,6 +736,7 @@ __all__ = [
     "AntsApplyTransformsLanczosWindowedSinc",
     "AntsApplyTransformsLinear",
     "AntsApplyTransformsMultiLabel",
+    "AntsApplyTransformsMultiLabelnoparams",
     "AntsApplyTransformsNearestNeighbor",
     "AntsApplyTransformsOutputs",
     "AntsApplyTransformsParam",
