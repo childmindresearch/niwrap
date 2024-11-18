@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MCFLIRT_METADATA = Metadata(
-    id="81af7754f2901752dc58eea5fcb1faa1d2639841.boutiques",
+    id="e699b65a3f7f86dabc9d04569b3ad5b98484586a.boutiques",
     name="mcflirt",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -25,13 +25,16 @@ class McflirtOutputs(typing.NamedTuple):
     matrices."""
     mean_img: OutputPathType | None
     """Mean timeseries image (if mean_vol=true)."""
-    out_file_outfile: OutputPathType | None
+    out_file: OutputPathType | None
     """Motion-corrected timeseries."""
     par_file: OutputPathType | None
     """Text-file with motion parameters."""
-    rms_files: OutputPathType | None
-    """A list of items which are an existing file name. Absolute and relative
-    displacement parameters."""
+    rmsabs_files: OutputPathType | None
+    """A list of items which are an existing file name. Absolute displacement
+    parameters."""
+    rmsrel_files: OutputPathType | None
+    """A list of items which are an existing file name. Relative displacement
+    parameters."""
     std_img: OutputPathType | None
     """Standard deviation image."""
     variance_img: OutputPathType | None
@@ -46,13 +49,14 @@ def mcflirt(
     init: InputPathType | None = None,
     interpolation: typing.Literal["spline_final", "nn_final", "sinc_final"] | None = None,
     mean_vol: bool = False,
-    out_file: InputPathType | None = None,
+    out_file: str | None = None,
     ref_file: InputPathType | None = None,
     ref_vol: int | None = None,
     rotation: int | None = None,
     save_mats: bool = False,
     save_plots: bool = False,
-    save_rms: bool = False,
+    save_rmsabs: bool = False,
+    save_rmsrel: bool = False,
     scaling: float | None = None,
     smooth: float | None = None,
     stages: int | None = None,
@@ -87,7 +91,8 @@ def mcflirt(
         rotation: Scaling factor for rotation tolerances.
         save_mats: Save transformation matrices.
         save_plots: Save transformation parameters.
-        save_rms: Save rms displacement parameters.
+        save_rmsabs: Save rms displacement parameters.
+        save_rmsrel: Save relative rms displacement parameters.
         scaling: Scaling factor to use.
         smooth: Smoothing factor for the cost function.
         stages: Stages (if 4, perform final search with sinc interpolation.
@@ -133,7 +138,7 @@ def mcflirt(
     if out_file is not None:
         cargs.extend([
             "-out",
-            execution.input_file(out_file)
+            out_file
         ])
     if ref_file is not None:
         cargs.extend([
@@ -154,8 +159,10 @@ def mcflirt(
         cargs.append("-mats")
     if save_plots:
         cargs.append("-plots")
-    if save_rms:
-        cargs.append("-rmsabs -rmsrel")
+    if save_rmsabs:
+        cargs.append("-rmsabs")
+    if save_rmsrel:
+        cargs.append("-rmsrel")
     if scaling is not None:
         cargs.extend([
             "-scaling",
@@ -180,12 +187,13 @@ def mcflirt(
     ret = McflirtOutputs(
         root=execution.output_file("."),
         mat_file=execution.output_file("MAT_*"),
-        mean_img=execution.output_file(pathlib.Path(out_file).name + "_mean_reg.ext") if (out_file is not None) else None,
-        out_file_outfile=execution.output_file(pathlib.Path(out_file).name) if (out_file is not None) else None,
-        par_file=execution.output_file(pathlib.Path(out_file).name + ".par") if (out_file is not None) else None,
-        rms_files=execution.output_file(pathlib.Path(out_file).name + "_*.rms") if (out_file is not None) else None,
-        std_img=execution.output_file(pathlib.Path(out_file).name + "_sigma.ext") if (out_file is not None) else None,
-        variance_img=execution.output_file(pathlib.Path(out_file).name + "_variance.ext") if (out_file is not None) else None,
+        mean_img=execution.output_file(out_file + "_mean_reg.ext") if (out_file is not None) else None,
+        out_file=execution.output_file(out_file) if (out_file is not None) else None,
+        par_file=execution.output_file(out_file + ".par") if (out_file is not None) else None,
+        rmsabs_files=execution.output_file(out_file + "_abs.rms") if (out_file is not None) else None,
+        rmsrel_files=execution.output_file(out_file + "_rel.rms") if (out_file is not None) else None,
+        std_img=execution.output_file(out_file + "_sigma.ext") if (out_file is not None) else None,
+        variance_img=execution.output_file(out_file + "_variance.ext") if (out_file is not None) else None,
     )
     execution.run(cargs)
     return ret
