@@ -8,13 +8,15 @@
     {
       "id": "angle_rep",
       "name": "Angle rep",
-      "default-value": "euler",
       "type": "String",
       "value-key": "[ANGLE_REP]",
       "command-line-flag": "-anglerep",
       "description": "'quaternion' or 'euler'. Representation of rotation angles.",
       "optional": true,
-      "value-choices": ["quaternion", "euler"]
+      "value-choices": [
+        "quaternion",
+        "euler"
+      ]
     },
     {
       "id": "apply_isoxfm",
@@ -47,12 +49,15 @@
       "id": "bbrtype",
       "name": "Bbrtype",
       "type": "String",
-      "default-value": "signed",
       "value-key": "[BBRTYPE]",
       "command-line-flag": "-bbrtype",
       "description": "'signed' or 'global_abs' or 'local_abs'. Type of bbr cost function: signed [default], global_abs, local_abs.",
       "optional": true,
-      "value-choices": ["signed", "global_abs", "local_abs"]
+      "value-choices": [
+        "signed",
+        "global_abs",
+        "local_abs"
+      ]
     },
     {
       "id": "bgvalue",
@@ -77,7 +82,6 @@
       "id": "coarse_search",
       "name": "Coarse search",
       "type": "Number",
-      "default-value": 60,
       "integer": true,
       "value-key": "[COARSE_SEARCH]",
       "command-line-flag": "-coarsesearch",
@@ -130,7 +134,13 @@
       "command-line-flag": "-datatype",
       "description": "'char' or 'short' or 'int' or 'float' or 'double'. Force output data type.",
       "optional": true,
-      "value-choices": ["char", "short", "int", "float", "double"]
+      "value-choices": [
+        "char",
+        "short",
+        "int",
+        "float",
+        "double"
+      ]
     },
     {
       "id": "display_init",
@@ -183,7 +193,6 @@
       "id": "fine_search",
       "name": "Fine search",
       "type": "Number",
-      "default-value": 18,
       "integer": true,
       "value-key": "[FINE_SEARCH]",
       "command-line-flag": "-finesearch",
@@ -235,7 +244,12 @@
       "command-line-flag": "-interp",
       "description": "'trilinear' or 'nearestneighbour' or 'sinc' or 'spline'. Final interpolation method used in reslicing.",
       "optional": true,
-      "value-choices": ["trilinear", "nearestneighbour", "sinc", "spline"]
+      "value-choices": [
+        "trilinear",
+        "nearestneighbour",
+        "sinc",
+        "spline"
+      ]
     },
     {
       "id": "min_sampling",
@@ -382,7 +396,6 @@
       "name": "Sinc width",
       "type": "Number",
       "integer": true,
-      "default-value": 7,
       "value-key": "[SINC_WIDTH]",
       "command-line-flag": "-sincwidth",
       "description": "Full-width in voxels.",
@@ -396,7 +409,11 @@
       "command-line-flag": "-sincwindow",
       "description": "'rectangular' or 'hanning' or 'blackman'. Sinc window.",
       "optional": true,
-      "value-choices": ["rectangular", "hanning", "blackman"]
+      "value-choices": [
+        "rectangular",
+        "hanning",
+        "blackman"
+      ]
     },
     {
       "id": "uses_qform",
@@ -411,7 +428,6 @@
       "id": "verbose",
       "name": "Verbose",
       "type": "Number",
-      "default-value": 0,
       "integer": true,
       "value-key": "[VERBOSE]",
       "command-line-flag": "-verbose",
@@ -444,35 +460,48 @@
       "command-line-flag": "-wmnorms",
       "description": "White matter boundary normals for bbr cost function.",
       "optional": true
+    },
+    {
+      "id": "out_file",
+      "name": "Out file",
+      "type": "String",
+      "value-key": "[OUT_FILE]",
+      "command-line-flag": "-out",
+      "description": "Registered output file."
+    },
+    {
+      "id": "out_matrix_file",
+      "name": "Out matrix file",
+      "type": "String",
+      "value-key": "[OUT_MATRIX_FILE]",
+      "command-line-flag": "-omat",
+      "description": "Output affine matrix in 4x4 asciii format."
     }
   ],
   "output-files": [
     {
       "name": "Out file",
       "id": "out_file",
-      "optional": true,
       "description": "Registered output file.",
-      "path-template": "[IN_FILE]_flirt.nii",
-      "path-template-stripped-extensions": [".nii.gz", ".nii"],
       "value-key": "[OUT_FILE]",
-      "command-line-flag": "-out"
+      "path-template": "[OUT_FILE]"
     },
     {
       "name": "Out matrix file",
       "id": "out_matrix_file",
-      "optional": true,
       "description": "Output affine matrix in 4x4 asciii format.",
-      "path-template": "[IN_FILE]_flirt.mat",
-      "path-template-stripped-extensions": [".nii.gz", ".nii"],
       "value-key": "[OUT_MATRIX_FILE]",
-      "command-line-flag": "-omat"
+      "path-template": "[OUT_MATRIX_FILE]"
     }
   ],
   "groups": [
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": ["apply_xfm", "apply_isoxfm"],
+      "members": [
+        "apply_xfm",
+        "apply_isoxfm"
+      ],
       "mutually-exclusive": true
     }
   ],
