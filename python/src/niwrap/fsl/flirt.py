@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FLIRT_METADATA = Metadata(
-    id="620fbf907dd33c4068a9efe1445a02c861f896fa.boutiques",
+    id="7a1c7a6961b57d8c3f26c6936b9a173ec7d64674.boutiques",
     name="flirt",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -29,14 +29,16 @@ class FlirtOutputs(typing.NamedTuple):
 def flirt(
     in_file: InputPathType,
     reference: InputPathType,
-    angle_rep: typing.Literal["quaternion", "euler"] | None = "euler",
+    out_file: str,
+    out_matrix_file: str,
+    angle_rep: typing.Literal["quaternion", "euler"] | None = None,
     apply_isoxfm: float | None = None,
     apply_xfm: bool = False,
     bbrslope: float | None = None,
-    bbrtype: typing.Literal["signed", "global_abs", "local_abs"] | None = "signed",
+    bbrtype: typing.Literal["signed", "global_abs", "local_abs"] | None = None,
     bgvalue: float | None = None,
     bins: int | None = None,
-    coarse_search: int | None = 60,
+    coarse_search: int | None = None,
     cost: typing.Literal["mutualinfo", "corratio", "normcorr", "normmi", "leastsq", "labeldiff", "bbr"] | None = "corratio",
     cost_func: typing.Literal["mutualinfo", "corratio", "normcorr", "normmi", "leastsq", "labeldiff", "bbr"] | None = "corratio",
     datatype: typing.Literal["char", "short", "int", "float", "double"] | None = None,
@@ -45,7 +47,7 @@ def flirt(
     echospacing: float | None = None,
     fieldmap: InputPathType | None = None,
     fieldmapmask: InputPathType | None = None,
-    fine_search: int | None = 18,
+    fine_search: int | None = None,
     force_scaling: bool = False,
     in_matrix_file: InputPathType | None = None,
     in_weight: InputPathType | None = None,
@@ -63,10 +65,10 @@ def flirt(
     searchr_x: list[int] | None = None,
     searchr_y: list[int] | None = None,
     searchr_z: list[int] | None = None,
-    sinc_width: int | None = 7,
+    sinc_width: int | None = None,
     sinc_window: typing.Literal["rectangular", "hanning", "blackman"] | None = None,
     uses_qform: bool = False,
-    verbose: int | None = 0,
+    verbose: int | None = None,
     wm_seg: InputPathType | None = None,
     wmcoords: InputPathType | None = None,
     wmnorms: InputPathType | None = None,
@@ -84,6 +86,8 @@ def flirt(
     Args:
         in_file: Input file.
         reference: Reference file.
+        out_file: Registered output file.
+        out_matrix_file: Output affine matrix in 4x4 asciii format.
         angle_rep: 'quaternion' or 'euler'. Representation of rotation angles.
         apply_isoxfm: As applyxfm but forces isotropic resampling.
         apply_xfm: Apply transformation supplied by in_matrix_file or\
@@ -148,8 +152,14 @@ def flirt(
         "-ref",
         execution.input_file(reference)
     ])
-    cargs.append("[OUT_FILE]")
-    cargs.append("[OUT_MATRIX_FILE]")
+    cargs.extend([
+        "-out",
+        out_file
+    ])
+    cargs.extend([
+        "-omat",
+        out_matrix_file
+    ])
     if angle_rep is not None:
         cargs.extend([
             "-anglerep",
@@ -330,8 +340,8 @@ def flirt(
         ])
     ret = FlirtOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file).name.removesuffix(".nii.gz").removesuffix(".nii") + "_flirt.nii"),
-        out_matrix_file=execution.output_file(pathlib.Path(in_file).name.removesuffix(".nii.gz").removesuffix(".nii") + "_flirt.mat"),
+        out_file=execution.output_file(out_file),
+        out_matrix_file=execution.output_file(out_matrix_file),
     )
     execution.run(cargs)
     return ret
