@@ -470,7 +470,7 @@
     {
       "id": "out_file",
       "name": "Out file",
-      "type": "File",
+      "type": "String",
       "value-key": "[OUT_FILE]",
       "command-line-flag": "-out",
       "description": "Registered output file."
@@ -478,7 +478,7 @@
     {
       "id": "out_matrix_file",
       "name": "Out matrix file",
-      "type": "File",
+      "type": "String",
       "value-key": "[OUT_MATRIX_FILE]",
       "command-line-flag": "-omat",
       "description": "Output affine matrix in 4x4 asciii format."
