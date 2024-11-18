@@ -13,10 +13,7 @@
       "command-line-flag": "-anglerep",
       "description": "'quaternion' or 'euler'. Representation of rotation angles.",
       "optional": true,
-      "value-choices": [
-        "quaternion",
-        "euler"
-      ]
+      "value-choices": ["quaternion", "euler"]
     },
     {
       "id": "apply_isoxfm",
@@ -53,11 +50,7 @@
       "command-line-flag": "-bbrtype",
       "description": "'signed' or 'global_abs' or 'local_abs'. Type of bbr cost function: signed [default], global_abs, local_abs.",
       "optional": true,
-      "value-choices": [
-        "signed",
-        "global_abs",
-        "local_abs"
-      ]
+      "value-choices": ["signed", "global_abs", "local_abs"]
     },
     {
       "id": "bgvalue",
@@ -134,13 +127,7 @@
       "command-line-flag": "-datatype",
       "description": "'char' or 'short' or 'int' or 'float' or 'double'. Force output data type.",
       "optional": true,
-      "value-choices": [
-        "char",
-        "short",
-        "int",
-        "float",
-        "double"
-      ]
+      "value-choices": ["char", "short", "int", "float", "double"]
     },
     {
       "id": "display_init",
@@ -244,12 +231,7 @@
       "command-line-flag": "-interp",
       "description": "'trilinear' or 'nearestneighbour' or 'sinc' or 'spline'. Final interpolation method used in reslicing.",
       "optional": true,
-      "value-choices": [
-        "trilinear",
-        "nearestneighbour",
-        "sinc",
-        "spline"
-      ]
+      "value-choices": ["trilinear", "nearestneighbour", "sinc", "spline"]
     },
     {
       "id": "min_sampling",
@@ -409,11 +391,7 @@
       "command-line-flag": "-sincwindow",
       "description": "'rectangular' or 'hanning' or 'blackman'. Sinc window.",
       "optional": true,
-      "value-choices": [
-        "rectangular",
-        "hanning",
-        "blackman"
-      ]
+      "value-choices": ["rectangular", "hanning", "blackman"]
     },
     {
       "id": "uses_qform",
@@ -498,10 +476,7 @@
     {
       "id": "mutex_group",
       "name": "Mutex group",
-      "members": [
-        "apply_xfm",
-        "apply_isoxfm"
-      ],
+      "members": ["apply_xfm", "apply_isoxfm"],
       "mutually-exclusive": true
     }
   ],
