@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TPROJECT_METADATA = Metadata(
-    id="9de8d2fa7cd54923a6ee13c1f64cf49bd6c80920.boutiques",
+    id="9a18908c9e055352a16ad8480a1bf72641953770.boutiques",
     name="3dTproject",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -26,11 +26,12 @@ class V3dTprojectOutputs(typing.NamedTuple):
 
 def v_3d_tproject(
     in_file: InputPathType,
+    prefix: str,
     tr: float | None = None,
     automask: bool = False,
     bandpass: list[float] | None = None,
     blur: float | None = None,
-    cenmode: typing.Literal["KILL", "ZERO", "NTRP"] | None = None,
+    cenmode: typing.Literal["kill", "zero", "ntrp"] | None = None,
     censor: InputPathType | None = None,
     censortr: list[str] | None = None,
     concat: InputPathType | None = None,
@@ -56,6 +57,7 @@ def v_3d_tproject(
     
     Args:
         in_file: Input file to 3dtproject.
+        prefix: Output file prefix.
         tr: Use time step dd for the frequency calculations,rather than the\
             value stored in the dataset header.
         automask: Generate a mask automatically.
@@ -196,9 +198,13 @@ def v_3d_tproject(
             "-stopband",
             *map(str, stopband)
         ])
+    cargs.extend([
+        "-prefix",
+        prefix
+    ])
     ret = V3dTprojectOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file).name),
+        out_file=execution.output_file(prefix),
     )
     execution.run(cargs)
     return ret
