@@ -1,6 +1,6 @@
 {
   "name": "3dTproject",
-  "command-line": "3dTproject [TR] [AUTOMASK] [BANDPASS] [BLUR] [CENMODE] [CENSOR] [CENSORTR] [CONCAT] [DSORT] [IN_FILE] [MASK] [NOBLOCK] [NORM] [ORT] [POLORT] [STOPBAND]",
+  "command-line": "3dTproject [TR] [AUTOMASK] [BANDPASS] [BLUR] [CENMODE] [CENSOR] [CENSORTR] [CONCAT] [DSORT] [IN_FILE] [MASK] [NOBLOCK] [NORM] [ORT] [POLORT] [STOPBAND] [PREFIX]",
   "author": "AFNI Developers",
   "description": "This program projects (detrends) out various 'nuisance' time series from each voxel in the input dataset.  Note that all the projections are done via linear regression, including the frequency-based options such as '-passband'.  In this way, you can bandpass time-censored data, and at the same time, remove other time series of no interest (e.g., physiological estimates, motion parameters).",
   "url": "https://afni.nimh.nih.gov/",
@@ -52,7 +52,11 @@
       "command-line-flag": "-cenmode",
       "description": "'kill' or 'zero' or 'ntrp'. Specifies how censored time points are treated in the output dataset:* mode = zero -- put zero values in their place; output dataset is same length as input* mode = kill -- remove those time points;  output dataset is shorter than input* mode = ntrp -- censored values are replaced by interpolated  neighboring (in time) non-censored values,  before any projections, and then the  analysis proceeds without actual removal  of any time points -- this feature is to  keep the spanish inquisition happy.* the default mode is kill !!!.",
       "optional": true,
-      "value-choices": ["KILL", "ZERO", "NTRP"]
+      "value-choices": [
+        "KILL",
+        "ZERO",
+        "NTRP"
+      ]
     },
     {
       "id": "censor",
@@ -158,15 +162,23 @@
       "command-line-flag": "-stopband",
       "description": "(a float, a float). Remove all frequencies in the range.",
       "optional": true
+    },
+    {
+      "id": "prefix",
+      "name": "Prefix",
+      "type": "String",
+      "value-key": "[PREFIX]",
+      "command-line-flag": "-prefix",
+      "description": "Output file prefix.",
+      "optional": false
     }
   ],
   "output-files": [
     {
       "name": "Out file",
       "id": "out_file",
-      "path-template": "[IN_FILE]",
-      "value-key": "[OUT_FILE]",
-      "command-line-flag": "-prefix",
+      "path-template": "[PREFIX]",
+      "value-key": "[PREFIX]",
       "optional": true,
       "description": "Output file."
     }
