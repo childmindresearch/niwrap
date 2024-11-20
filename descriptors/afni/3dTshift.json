@@ -1,10 +1,19 @@
 {
   "name": "3dTshift",
-  "command-line": "3dTshift [IGNORE] [IN_FILE] [INTERP] [NUM_THREADS] [OUTPUTTYPE] [RLT] [RLTPLUS] [SLICE_ENCODING_DIRECTION] [SLICE_TIMING] [SLICE_TIMING_2] [TPATTERN] [TPATTERN_2] [TR] [TSLICE] [TZERO]",
+  "command-line": "3dTshift [PREFIX] [IGNORE] [IN_FILE] [INTERP] [NUM_THREADS] [OUTPUTTYPE] [RLT] [RLTPLUS] [SLICE_ENCODING_DIRECTION] [SLICE_TIMING] [SLICE_TIMING_2] [TPATTERN] [TPATTERN_2] [TR] [TSLICE] [TZERO]",
   "author": "AFNI Developers",
   "description": "Shifts voxel time series from input so that separate slices are aligned to the same temporal origin.",
   "url": "https://afni.nimh.nih.gov/",
   "inputs": [
+    {
+      "id": "prefix",
+      "name": "Prefix",
+      "type": "String",
+      "value-key": "[PREFIX]",
+      "command-line-flag": "-prefix",
+      "description": "Prefix for output image file name.",
+      "optional": true
+    },
     {
       "id": "ignore",
       "name": "Ignore",
@@ -31,7 +40,13 @@
       "command-line-flag": "-",
       "description": "'fourier' or 'linear' or 'cubic' or 'quintic' or 'heptic'. Different interpolation methods (see 3dtshift for details) default = fourier.",
       "optional": true,
-      "value-choices": ["Fourier", "linear", "cubic", "quintic", "heptic"]
+      "value-choices": [
+        "Fourier",
+        "linear",
+        "cubic",
+        "quintic",
+        "heptic"
+      ]
     },
     {
       "id": "num_threads",
@@ -49,7 +64,11 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
+      "value-choices": [
+        "NIFTI",
+        "AFNI",
+        "NIFTI_GZ"
+      ]
     },
     {
       "id": "rlt",
@@ -76,7 +95,10 @@
       "value-key": "[SLICE_ENCODING_DIRECTION]",
       "description": "'k' or 'k-'. Direction in which slice_timing is specified (default: k). if negative,slice_timing is defined in reverse order, that is, the first entry corresponds to the slice with the largest index, and the final entry corresponds to slice index zero. only in effect when slice_timing is passed as list, not when it is passed as file.",
       "optional": true,
-      "value-choices": ["k", "k-"]
+      "value-choices": [
+        "k",
+        "k-"
+      ]
     },
     {
       "id": "slice_timing",
@@ -130,7 +152,7 @@
     {
       "id": "tr",
       "name": "Tr",
-      "type": "String",
+      "type": "Number",
       "value-key": "[TR]",
       "command-line-flag": "-TR",
       "description": "Manually set the tr. you can attach suffix \"s\" for seconds or \"ms\" for milliseconds.",
@@ -162,16 +184,8 @@
       "id": "out_file",
       "optional": true,
       "description": "Output image file name.",
-      "path-template": "[IN_FILE]_tshift",
-      "value-key": "[OUT_FILE]",
-      "command-line-flag": "-prefix"
-    },
-    {
-      "name": "Out file",
-      "id": "out_file",
-      "path-template": "out_file",
-      "optional": true,
-      "description": "Output file."
+      "path-template": "[PREFIX]",
+      "value-key": "[PREFIX]"
     },
     {
       "name": "Timing file",
