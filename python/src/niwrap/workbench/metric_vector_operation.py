@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_VECTOR_OPERATION_METADATA = Metadata(
-    id="c5d403c9f523b66a11653a3c174e7e585250458a.boutiques",
+    id="a16a3d5eebe016ff6fd5576142114de6719372bd.boutiques",
     name="metric-vector-operation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

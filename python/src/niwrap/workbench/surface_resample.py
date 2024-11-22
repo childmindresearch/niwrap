@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_RESAMPLE_METADATA = Metadata(
-    id="4168972491f06e1a32e3a77db8ca8f8d951f800f.boutiques",
+    id="d969759c0a9b6cf50715a3f792dc5b6638eb9982.boutiques",
     name="surface-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

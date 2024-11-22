@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_LABEL_PROBABILITY_METADATA = Metadata(
-    id="21bac59981e45fafa0ef214f9423542efcda1726.boutiques",
+    id="0eb4968bb2e8b9aea5b76afc92179fafd1396a41.boutiques",
     name="volume-label-probability",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

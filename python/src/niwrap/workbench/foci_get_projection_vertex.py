@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FOCI_GET_PROJECTION_VERTEX_METADATA = Metadata(
-    id="0b9aa06c5f3cd3836136b51e3565cfc937c6fa94.boutiques",
+    id="7a851fbc13b146fb391d13bedfc2eac4da52237a.boutiques",
     name="foci-get-projection-vertex",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

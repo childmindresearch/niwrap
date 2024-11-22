@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_ADJACENCY_METADATA = Metadata(
-    id="0a86602f8ddd7d1d7f0f827f292b34148b3b7f3d.boutiques",
+    id="d3c94d964daacbf8ae0c2ceed6d693aee86e0ca6.boutiques",
     name="cifti-label-adjacency",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

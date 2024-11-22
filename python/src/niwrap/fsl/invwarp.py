@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 INVWARP_METADATA = Metadata(
-    id="177979f2fd2137ca3230e63034a462b0750a8ded.boutiques",
+    id="c254eb0d223330fb60703f7b17a1d6c1ed4acb7b.boutiques",
     name="invwarp",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

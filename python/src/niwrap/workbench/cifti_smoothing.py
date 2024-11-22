@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_SMOOTHING_METADATA = Metadata(
-    id="46a2853381943b0cd19dca6241961ce6d9ed36a5.boutiques",
+    id="1b524a1db58071d5c0268261da59a7ef3efc97d7.boutiques",
     name="cifti-smoothing",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

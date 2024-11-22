@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_LABEL_TO_ROI_METADATA = Metadata(
-    id="f0412920e3408ebd4a5291f640a2eab1dcdfc450.boutiques",
+    id="b3cda0fa9bc982ba11f500591ea9473a5a0a4fc2.boutiques",
     name="volume-label-to-roi",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

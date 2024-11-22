@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METADATA_REMOVE_PROVENANCE_METADATA = Metadata(
-    id="ed3e4c11d87ffd187f88153cb41cf0961e3cd8ff.boutiques",
+    id="477bbc80e00e51f900e75625d9c13d64da765e46.boutiques",
     name="metadata-remove-provenance",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

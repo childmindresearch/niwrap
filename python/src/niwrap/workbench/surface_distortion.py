@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_DISTORTION_METADATA = Metadata(
-    id="ca3fe449cd09f27e78b2a89048f89e54b60ab30b.boutiques",
+    id="33d31d751f5d7af166ba1ff32d6fbd091f53f5e8.boutiques",
     name="surface-distortion",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

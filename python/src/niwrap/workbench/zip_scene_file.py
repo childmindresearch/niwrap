@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ZIP_SCENE_FILE_METADATA = Metadata(
-    id="6891f26ec6ffa567471a2a53f493d27c444b8a4c.boutiques",
+    id="9da95fbe632d10dacb4c060224ca406ac914b355.boutiques",
     name="zip-scene-file",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

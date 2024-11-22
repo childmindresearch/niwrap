@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_CREATE_METADATA = Metadata(
-    id="f8cc4765bcdbff21d356e59b4422607a10cf1c6d.boutiques",
+    id="ae422f4e56594a807daeeede3f3f8be904fa1b31.boutiques",
     name="volume-create",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

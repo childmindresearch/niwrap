@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_COMPONENTS_TO_FRAMES_METADATA = Metadata(
-    id="c1ef45215817d43b9b5d3a47c8896f1d66dc2617.boutiques",
+    id="ada7a00c2444c2cdda91b6587672b293db9d33c4.boutiques",
     name="volume-components-to-frames",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

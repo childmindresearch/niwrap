@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_MATCH_METADATA = Metadata(
-    id="1adbf7641d223b6c453cc098b76dada2164d90a8.boutiques",
+    id="7d679c04784ea9862b5def825b069decfde8f8d4.boutiques",
     name="surface-match",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

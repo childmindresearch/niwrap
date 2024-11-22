@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CREATE_SPHERE_METADATA = Metadata(
-    id="6c5e3be2b2a9fec8ba27221cfebfe665f91a6471.boutiques",
+    id="4f2f655e81d545740a448403ba6bbaff1b89f0a6.boutiques",
     name="surface-create-sphere",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_GEODESIC_ROIS_METADATA = Metadata(
-    id="9cf06e2ba1e176d35fb90dbd3ef3e83aff71c2fe.boutiques",
+    id="e84a10dd4b7742d06a2cc82bdf785c2ce3993f10.boutiques",
     name="surface-geodesic-rois",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

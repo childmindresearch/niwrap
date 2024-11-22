@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GIFTI_LABEL_ADD_PREFIX_METADATA = Metadata(
-    id="1a432385b763865b11adac0ed783854f99adce10.boutiques",
+    id="3d379a6c755dab747292a0a91f754e423ff73eca.boutiques",
     name="gifti-label-add-prefix",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_SKULL_STRIP_METADATA = Metadata(
-    id="9ff59b0414e6f85087ff55c31a85f270361e0af9.boutiques",
+    id="df6efe15ce597ef9d7e30605580718458f380555.boutiques",
     name="3dSkullStrip",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

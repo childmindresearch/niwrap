@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_GRADIENT_METADATA = Metadata(
-    id="9e6fc1332bc0d7e9617b730f5793f336d285fc1d.boutiques",
+    id="f4530e09758cb38a6a09de62a78168104a151cfb.boutiques",
     name="metric-gradient",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

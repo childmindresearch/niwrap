@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FILE_INFORMATION_METADATA = Metadata(
-    id="6b54a0cba185d2ba52801988d81de8251dc829bc.boutiques",
+    id="12389474c2f36cd256667daa74a103d07ac49064.boutiques",
     name="file-information",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

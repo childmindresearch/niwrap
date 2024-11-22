@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BORDER_RESAMPLE_METADATA = Metadata(
-    id="28f367c98e72b0b1b6839c0ea8bd5b00307928a4.boutiques",
+    id="d357466427d16b11843a0546984cb79a3677dbe1.boutiques",
     name="border-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

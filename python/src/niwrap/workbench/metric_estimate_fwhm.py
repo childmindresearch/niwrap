@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_ESTIMATE_FWHM_METADATA = Metadata(
-    id="98391d1cb04e49b24e8f08022b16cc21f8347190.boutiques",
+    id="93d4c4a8c6da0ee8cc2cc4c3da48da105c37ad7e.boutiques",
     name="metric-estimate-fwhm",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

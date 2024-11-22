@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_MODIFY_SPHERE_METADATA = Metadata(
-    id="f50da339a4a1828c4f0604a430147caa4919515a.boutiques",
+    id="7ba7bdfa9f75a3f280b0446651d5074e673b22aa.boutiques",
     name="surface-modify-sphere",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

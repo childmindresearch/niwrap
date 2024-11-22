@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_MATH_METADATA = Metadata(
-    id="af8ddf7bb2855f0ea327237e490e7633e24cf303.boutiques",
+    id="acb213441c239a987f5bfdea4c09dd572401ef60.boutiques",
     name="cifti-math",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DENOISE_IMAGE_METADATA = Metadata(
-    id="9cd7501fd7ace5efdaa42362d19437b6007309ac.boutiques",
+    id="ace766ba7fc341845b33f3cdf5059c634845bf41.boutiques",
     name="DenoiseImage",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",

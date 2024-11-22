@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CORTEX_LAYER_METADATA = Metadata(
-    id="12c526584eecbd429b869a5cfca163cd51aae720.boutiques",
+    id="1fb2598f6c40246e1cd4406b005c1caba798780a.boutiques",
     name="surface-cortex-layer",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

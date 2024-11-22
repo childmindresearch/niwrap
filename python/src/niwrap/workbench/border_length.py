@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BORDER_LENGTH_METADATA = Metadata(
-    id="4341a16a7b71616f3b737a9a269e239c561d9e83.boutiques",
+    id="46facc8762c676e8a92694d6a55a4530d64500dd.boutiques",
     name="border-length",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

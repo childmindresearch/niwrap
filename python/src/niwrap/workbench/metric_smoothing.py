@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_SMOOTHING_METADATA = Metadata(
-    id="f15c510506565633546827912633f27a02a2a791.boutiques",
+    id="cf0a4d82cf3614e87a43e9e033bd71df5e871ba3.boutiques",
     name="metric-smoothing",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

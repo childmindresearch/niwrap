@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_MATRIX4_TO_MATRIX2_METADATA = Metadata(
-    id="5fb80f2f8d7238009d940ea8255d132ee6d8e0fd.boutiques",
+    id="48a77936cf53d052fce7b98678ac0929264dbd4c.boutiques",
     name="convert-matrix4-to-matrix2",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

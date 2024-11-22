@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_MERGE_METADATA = Metadata(
-    id="f9925036d88ed1fe2ec6f57eef8564ae297bd2a1.boutiques",
+    id="23abeff64ad6c7ec293da11e92c329b37b1711f7.boutiques",
     name="label-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

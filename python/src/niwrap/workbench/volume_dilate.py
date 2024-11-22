@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_DILATE_METADATA = Metadata(
-    id="a20024eb27572d95748bba294d86b405fef1fe19.boutiques",
+    id="eee6fb1b034a411630172b233ac3916b4fe3befe.boutiques",
     name="volume-dilate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

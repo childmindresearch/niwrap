@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_SCALAR_SERIES_METADATA = Metadata(
-    id="9bc9fb4ed8ef764f72136d7a868abc7b9f44c9bd.boutiques",
+    id="baeec4f19b77cff9ac7b9fbc51ea7e84c97983f3.boutiques",
     name="cifti-create-scalar-series",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

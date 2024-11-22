@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_PROBABILITY_METADATA = Metadata(
-    id="8baf0d48a9f3424d3a2160cf5a39202f29b7da5f.boutiques",
+    id="fb93f8ce53e22b6efd862837588951005975ba93.boutiques",
     name="cifti-label-probability",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

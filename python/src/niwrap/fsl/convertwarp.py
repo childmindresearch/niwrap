@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERTWARP_METADATA = Metadata(
-    id="bf36a54c2d31bbb3915843a892d4b1c9df4605d6.boutiques",
+    id="cd7b2e6bda3ae320e54128fba7348ed3eb91d604.boutiques",
     name="convertwarp",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

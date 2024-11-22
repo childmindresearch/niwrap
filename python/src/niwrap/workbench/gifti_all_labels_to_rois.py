@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GIFTI_ALL_LABELS_TO_ROIS_METADATA = Metadata(
-    id="60eaa9acb356ea705224e792500bef28fa47cb0a.boutiques",
+    id="c161705a58523c71238aee0100d0a0020c221135.boutiques",
     name="gifti-all-labels-to-rois",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

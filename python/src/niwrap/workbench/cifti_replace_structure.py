@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_REPLACE_STRUCTURE_METADATA = Metadata(
-    id="5fd15b7aa78dbd1773492e8a06c96bb7c7919177.boutiques",
+    id="9c3e18b84a0136395940d5ee50cb45c790ea3cbb.boutiques",
     name="cifti-replace-structure",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

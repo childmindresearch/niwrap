@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_REDUCE_METADATA = Metadata(
-    id="e7a44bfc39b9bc01b1af1d8176f8d65d22178740.boutiques",
+    id="8f69a9fb5fec167f808d9feb0478740e661cda26.boutiques",
     name="metric-reduce",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

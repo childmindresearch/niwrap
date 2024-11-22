@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SCENE_FILE_MERGE_METADATA = Metadata(
-    id="1069d56cdf4e0f25ceaf721f9d160e75c0033c31.boutiques",
+    id="682d92959d5b639ad450c25e7395cfcdbb3c5643.boutiques",
     name="scene-file-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

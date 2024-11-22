@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DVOLREG_METADATA = Metadata(
-    id="a4456cd1116526c461e737919cd2d763fc09977a.boutiques",
+    id="c46b5b6b0476664b007efa7fc17a0ef89b83a78a.boutiques",
     name="3dvolreg",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

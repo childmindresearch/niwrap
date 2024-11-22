@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SPEC_FILE_RELOCATE_METADATA = Metadata(
-    id="c50b381a094ead7a9084b9a3a76bdd8bc66b346c.boutiques",
+    id="2d2973acdec95aaa23b607a3339fa38ce965c8dd.boutiques",
     name="spec-file-relocate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

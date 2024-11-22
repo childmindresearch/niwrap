@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 OVERLAY_METADATA = Metadata(
-    id="3339a8b4ab6b0f8e42be23c66632cc2955865428.boutiques",
+    id="a83ce117857ce937c01cd3dee49afc5f2d588adc.boutiques",
     name="overlay",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

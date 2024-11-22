@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_TO_BORDER_METADATA = Metadata(
-    id="1a229df2c262a83cd706992f1fd9759f39fb10c2.boutiques",
+    id="857759c9b572b7d74e3d73a701d7e698c1933481.boutiques",
     name="label-to-border",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_MASK_METADATA = Metadata(
-    id="3f4a5cd83b237eea67e276c2fdf10505fa6d29a9.boutiques",
+    id="9721caf9d03d14647aaf84c23443a619965ddcc9.boutiques",
     name="metric-mask",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

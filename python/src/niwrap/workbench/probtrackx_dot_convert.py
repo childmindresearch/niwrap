@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PROBTRACKX_DOT_CONVERT_METADATA = Metadata(
-    id="33c9ec58b6dce1ed0e9cf2a04405bc0e985b082e.boutiques",
+    id="a166bee9e05b7717d215d29b5221c732cd06e6fb.boutiques",
     name="probtrackx-dot-convert",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

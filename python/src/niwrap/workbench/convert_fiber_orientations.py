@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_FIBER_ORIENTATIONS_METADATA = Metadata(
-    id="6600ad75d90523bfc9a521774dc1537ecc3e45c5.boutiques",
+    id="83932f9e32b874b47a5a87d2605029dbebc92a5c.boutiques",
     name="convert-fiber-orientations",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

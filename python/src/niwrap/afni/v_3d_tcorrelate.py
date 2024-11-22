@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TCORRELATE_METADATA = Metadata(
-    id="2240f8304c0c2cc0d1686fc4d8af67efdb5198a4.boutiques",
+    id="a874b3865df8702baf89b243d1e11b051abda5bf.boutiques",
     name="3dTcorrelate",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

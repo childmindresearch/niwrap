@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CURVATURE_METADATA = Metadata(
-    id="b6835a080bc5ebcbcfc3da83cb01c8762893baa9.boutiques",
+    id="42563206ac34cec769150b6b51e5edd19c49be9c.boutiques",
     name="surface-curvature",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

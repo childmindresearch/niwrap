@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_AFFINE_METADATA = Metadata(
-    id="4491ff10b3f39e57dcb42052a9a8a1ad2e550313.boutiques",
+    id="3b8860ef222f898c6a65c82c6ffa70dc64abc45b.boutiques",
     name="convert-affine",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

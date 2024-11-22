@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ESTIMATE_FIBER_BINGHAMS_METADATA = Metadata(
-    id="8a6835ea2f55b0899fb311ae48506db1025bafdb.boutiques",
+    id="0cdc134d5bffcca430de60ceed43049ba2d52103.boutiques",
     name="estimate-fiber-binghams",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

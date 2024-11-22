@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_ESTIMATE_FWHM_METADATA = Metadata(
-    id="dcfd47dfdd57ad42ebcf18aba7a5da1b0a09f811.boutiques",
+    id="5a208f16e948f98d42112e2bc0a3ea2e8dd7f5ff.boutiques",
     name="cifti-estimate-fwhm",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

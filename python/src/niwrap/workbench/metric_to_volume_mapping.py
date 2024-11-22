@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_TO_VOLUME_MAPPING_METADATA = Metadata(
-    id="81cf1a86ff7c9a49ab254ec0fe8316e4455f1b46.boutiques",
+    id="50b010826c816a4be693bed1b82570665f9ffd49.boutiques",
     name="metric-to-volume-mapping",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

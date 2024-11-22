@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_ERODE_METADATA = Metadata(
-    id="96698eee814cdf47c6a1793175ac7e31e942a69d.boutiques",
+    id="d61ae2acb345083e76990bfa8a4104ae10b7c74b.boutiques",
     name="label-erode",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

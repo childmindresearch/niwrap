@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_AVERAGE_ROI_CORRELATION_METADATA = Metadata(
-    id="a8b48d29dcfaeeb1d9fb721d93d523b9c3fef2be.boutiques",
+    id="7b5902af5aa6e0d4082fef7ea4ef3c5534e86ad4.boutiques",
     name="cifti-average-roi-correlation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

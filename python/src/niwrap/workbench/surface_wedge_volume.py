@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_WEDGE_VOLUME_METADATA = Metadata(
-    id="f7bf6fac859764e2acb2113e16dd2bedba55acaf.boutiques",
+    id="3cafae7f1a23ea378f609241b488970ec71c2b15.boutiques",
     name="surface-wedge-volume",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

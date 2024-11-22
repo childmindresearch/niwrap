@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_ERODE_METADATA = Metadata(
-    id="36301e41e341104e27f3c26b137016f734f38118.boutiques",
+    id="2f5afe4b3fb0a139ace3b55625e6f2e66890c6b8.boutiques",
     name="volume-erode",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

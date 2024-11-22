@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_PALETTE_METADATA = Metadata(
-    id="e32ba7bc157286501ab1957a9029105612746560.boutiques",
+    id="a0edce5c96b3bd1fbd6749de6e28e5cd8461794e.boutiques",
     name="volume-palette",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

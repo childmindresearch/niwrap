@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_FALSE_CORRELATION_METADATA = Metadata(
-    id="85c619c95ad0c5562adbfcea7150c6ceffdf04d6.boutiques",
+    id="1caaae17d3f0c5a13c0d0ecb9b74ca6b5a6dc29b.boutiques",
     name="metric-false-correlation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

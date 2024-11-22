@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_CREATE_LABEL_METADATA = Metadata(
-    id="5664afbf0dbdcf06bdcc7098d037ed907b858b6b.boutiques",
+    id="2de4152aa98a5a2ba317600135a0292a6a69deee.boutiques",
     name="cifti-create-label",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

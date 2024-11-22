@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_PAIRWISE_CORRELATION_METADATA = Metadata(
-    id="1554d8d704a76819fecfa21dcfcf250489741702.boutiques",
+    id="b915f6d8b944ba1576e9632affc392ecdfd65dfe.boutiques",
     name="cifti-pairwise-correlation",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

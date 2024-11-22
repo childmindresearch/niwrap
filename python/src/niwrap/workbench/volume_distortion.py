@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_DISTORTION_METADATA = Metadata(
-    id="cc3333cf6865ebf0c4fdb6f911a5c17fc423856f.boutiques",
+    id="f464c64c99492f4d9a2eb716c6ec4b3129d243aa.boutiques",
     name="volume-distortion",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

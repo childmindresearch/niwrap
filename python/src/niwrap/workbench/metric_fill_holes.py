@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_FILL_HOLES_METADATA = Metadata(
-    id="a7ef76aef9bd4a00aef3290f4b43815537d65bbc.boutiques",
+    id="96ff203654f51b0fbf464f9740941d18d8533b77.boutiques",
     name="metric-fill-holes",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

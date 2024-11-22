@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BANDPASS_METADATA = Metadata(
-    id="c411bed68642a28de02059c05daf1e8275470fca.boutiques",
+    id="c70317bd402feee3b10b4b0a4bdd6a544f0ec629.boutiques",
     name="3dBandpass",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

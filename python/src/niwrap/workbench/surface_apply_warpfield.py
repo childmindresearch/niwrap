@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_APPLY_WARPFIELD_METADATA = Metadata(
-    id="0f1859354559b220fdab8cac315b3df2803ebaa2.boutiques",
+    id="62d776ef4770f80788d15439d0c09cdb0b85568a.boutiques",
     name="surface-apply-warpfield",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

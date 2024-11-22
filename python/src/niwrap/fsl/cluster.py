@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CLUSTER_METADATA = Metadata(
-    id="29697f7fdc5c845a362e80aa4abbdf8899170580.boutiques",
+    id="64e7edb13ea03adbabfb9ea4437ae94ad525e966.boutiques",
     name="cluster",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",

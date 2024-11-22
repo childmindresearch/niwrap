@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_MERGE_METADATA = Metadata(
-    id="dd8d3d3b23815c48239913b689934f4e90fe57bb.boutiques",
+    id="5efa0672fc1bec7baa7e42b9ac635bebfd02f4d8.boutiques",
     name="metric-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

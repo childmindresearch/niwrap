@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_FIND_CLUSTERS_METADATA = Metadata(
-    id="60cb1388cc67924e2b9c32ccfce573e0661d5add.boutiques",
+    id="ec09ad8d9895aef68f1fee0d0addc56178d358ce.boutiques",
     name="volume-find-clusters",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

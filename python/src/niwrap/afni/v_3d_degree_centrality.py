@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DEGREE_CENTRALITY_METADATA = Metadata(
-    id="1a5722d6aac4349ec026c10e117c0cc27e3fcea9.boutiques",
+    id="b52b7e118f9973ad723c05506b8d75f114f296f2.boutiques",
     name="3dDegreeCentrality",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

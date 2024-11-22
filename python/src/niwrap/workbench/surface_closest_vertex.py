@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_CLOSEST_VERTEX_METADATA = Metadata(
-    id="cbc6a68b8607b5bde36b161793287a20f7544603.boutiques",
+    id="b247f4f20d018925392cfcdef99f6eaa3f24d896.boutiques",
     name="surface-closest-vertex",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

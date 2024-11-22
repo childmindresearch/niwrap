@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_COORDINATES_TO_METRIC_METADATA = Metadata(
-    id="3cc68c4335af3e1f6f59a9bcb7fcf07acdca4680.boutiques",
+    id="0f7e2511cce185227bdef48e1289a112b38532ef.boutiques",
     name="surface-coordinates-to-metric",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

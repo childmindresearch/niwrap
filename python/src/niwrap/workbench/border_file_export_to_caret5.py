@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BORDER_FILE_EXPORT_TO_CARET5_METADATA = Metadata(
-    id="b3d3242dff6c74222d893494d40c2c367153290f.boutiques",
+    id="c6222e815dc12e3246ef1e271032f35ed2201092.boutiques",
     name="border-file-export-to-caret5",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

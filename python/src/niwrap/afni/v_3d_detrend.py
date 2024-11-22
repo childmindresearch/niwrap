@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DETREND_METADATA = Metadata(
-    id="60647b5333bef9ee86bcc873fe7fe2fe2f22589e.boutiques",
+    id="e1acbbed353dee123a530befb4df733e98383a20.boutiques",
     name="3dDetrend",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

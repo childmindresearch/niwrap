@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_GEODESIC_DISTANCE_METADATA = Metadata(
-    id="56dcec8111c3113e7a99ad05b54eb0e01027d791.boutiques",
+    id="ed6ff5cde669a2d85c0c8b429448c5425d4354ad.boutiques",
     name="surface-geodesic-distance",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

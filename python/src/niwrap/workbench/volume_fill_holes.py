@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_FILL_HOLES_METADATA = Metadata(
-    id="278f9aea77ede4c32b8a60e5b93fad04b1fb9ba9.boutiques",
+    id="38d91cd88583667f26e3c3c5a803f7aabc4c2228.boutiques",
     name="volume-fill-holes",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

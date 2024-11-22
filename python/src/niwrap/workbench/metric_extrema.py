@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_EXTREMA_METADATA = Metadata(
-    id="e4bbeab2b543258cb2affc5b8c0aa5a736ec951c.boutiques",
+    id="a2f46a01c07390207099bf087477bc693bc124ec.boutiques",
     name="metric-extrema",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

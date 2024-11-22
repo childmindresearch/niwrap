@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_ROIS_TO_BORDER_METADATA = Metadata(
-    id="2e203685c08f322e892f2ac0edec363a2f646c26.boutiques",
+    id="7055195b90d96406ade3173df1aa38a66c4c45c1.boutiques",
     name="metric-rois-to-border",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

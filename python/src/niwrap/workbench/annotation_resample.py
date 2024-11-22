@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANNOTATION_RESAMPLE_METADATA = Metadata(
-    id="ec8dab8bfc7b347eca133ddede8bb1571a0de02f.boutiques",
+    id="2c6cadad264ac128829e478e77f82b0c84d405b7.boutiques",
     name="annotation-resample",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

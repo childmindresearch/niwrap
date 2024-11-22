@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_WEIGHTED_STATS_METADATA = Metadata(
-    id="29e546058d69fdb7c18bd199e35ad9b03e04fcb2.boutiques",
+    id="18f091ded19df25622a8ba5fd28dcde188252609.boutiques",
     name="metric-weighted-stats",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

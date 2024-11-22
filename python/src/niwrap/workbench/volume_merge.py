@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_MERGE_METADATA = Metadata(
-    id="e3c64a5ec248eee2d5906b756a02002ee2e6c991.boutiques",
+    id="a2867c9f1f554b53baadf738fb0efbb3a6746715.boutiques",
     name="volume-merge",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 C3D_AFFINE_TOOL_METADATA = Metadata(
-    id="6b866352e9b556eb1381835bc90e95b78d4328de.boutiques",
+    id="6533f53c1616d7852305d42e307c1f37a1fc017e.boutiques",
     name="c3d_affine_tool",
     package="c3d",
     container_image_tag="pyushkevich/itksnap:v3.8.2",

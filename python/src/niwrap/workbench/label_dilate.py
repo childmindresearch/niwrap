@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_DILATE_METADATA = Metadata(
-    id="6aa2da85bf2298655baa1e302491d37e0c0f6583.boutiques",
+    id="f636c722a86c2948ae67646d52f753fe26a10b28.boutiques",
     name="label-dilate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

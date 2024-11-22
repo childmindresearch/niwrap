@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_UNIFIZE_METADATA = Metadata(
-    id="4939198692fcd53c992cee61612265ccd7c9ddca.boutiques",
+    id="276f427e83c08d7c9c7cacb63c3a6a2de1b3abd4.boutiques",
     name="3dUnifize",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",

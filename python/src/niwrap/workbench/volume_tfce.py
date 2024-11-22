@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_TFCE_METADATA = Metadata(
-    id="7f8022ebd9d2224cc981277bcaf5fb760fad7d78.boutiques",
+    id="b519f30208d2856f0e97cae1316462a8bf1aa7b9.boutiques",
     name="volume-tfce",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

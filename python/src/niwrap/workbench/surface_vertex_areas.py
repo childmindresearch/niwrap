@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_VERTEX_AREAS_METADATA = Metadata(
-    id="ac71ad99b7c50792380048b77c5c4040375fc8be.boutiques",
+    id="e736f9e335364be2945a738405dcb99e76c0e26b.boutiques",
     name="surface-vertex-areas",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

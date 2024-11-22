@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_LABEL_TO_ROI_METADATA = Metadata(
-    id="0136a0a56ee9198541386a0c0217ddbdf540dd5a.boutiques",
+    id="7d0a4d44a23a06b958d1db2ec31e6a2d4d70a01c.boutiques",
     name="cifti-label-to-roi",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

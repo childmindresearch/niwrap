@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_EXTREMA_METADATA = Metadata(
-    id="20477f65355e9f632c945ddf952641fdf056a370.boutiques",
+    id="eb5e28d060e46506bf7d2f474eaa01ce1fdbeac0.boutiques",
     name="cifti-extrema",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

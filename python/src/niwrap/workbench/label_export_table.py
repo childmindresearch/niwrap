@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL_EXPORT_TABLE_METADATA = Metadata(
-    id="ea755047191df649f2ed70988c280b361932d59c.boutiques",
+    id="aa538a6947b1a8c4309745c17b03fe0e989c4686.boutiques",
     name="label-export-table",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

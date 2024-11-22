@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_DILATE_METADATA = Metadata(
-    id="bee1a95949f25431b46be253b21cb6f6454d0b2a.boutiques",
+    id="16a60eaa16b7e968287d378bf5944be258df0be0.boutiques",
     name="metric-dilate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

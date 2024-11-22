@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_VECTOR_TOWARD_ROI_METADATA = Metadata(
-    id="b62b15accb75a619c6112b0fe3506548b92021ce.boutiques",
+    id="82ce3915240934b58fb359f7a47c43413230f75c.boutiques",
     name="metric-vector-toward-roi",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

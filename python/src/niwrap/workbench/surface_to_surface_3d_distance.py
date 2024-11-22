@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_TO_SURFACE_3D_DISTANCE_METADATA = Metadata(
-    id="c0303a1bd224efddc7ff05f196dc54467bf7b575.boutiques",
+    id="3e1ed73b05c8f75edd593f55956978e0e76c8051.boutiques",
     name="surface-to-surface-3d-distance",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

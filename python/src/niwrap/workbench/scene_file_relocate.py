@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SCENE_FILE_RELOCATE_METADATA = Metadata(
-    id="73a7d3e349a9cb752986630b6f3184263c08e4ec.boutiques",
+    id="4d5785c213ba8c43cc0d1cb433a896970dc23e80.boutiques",
     name="scene-file-relocate",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

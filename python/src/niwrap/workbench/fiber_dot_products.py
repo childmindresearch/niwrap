@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FIBER_DOT_PRODUCTS_METADATA = Metadata(
-    id="0622e8031d320756f7b6813054c9b81da3a5504f.boutiques",
+    id="3aa47399b8a8bcc86a9191cbbb2b9fa4ddbd8bfd.boutiques",
     name="fiber-dot-products",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

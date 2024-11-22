@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURFACE_SPHERE_TRIANGULAR_PATCHES_METADATA = Metadata(
-    id="cf5e1de7b6567680a60ad682a310a3d86b617588.boutiques",
+    id="0041e957f3f86307d53f30986bba8e52c79c3ab8.boutiques",
     name="surface-sphere-triangular-patches",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

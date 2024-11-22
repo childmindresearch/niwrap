@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 METRIC_TFCE_METADATA = Metadata(
-    id="e8323f7101ef5224b4143a5f87536e7600870d30.boutiques",
+    id="9baf4e0d50cc6f0f392ab929c38e08f04f8b352f.boutiques",
     name="metric-tfce",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",

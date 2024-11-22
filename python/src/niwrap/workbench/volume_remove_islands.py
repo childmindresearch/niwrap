@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOLUME_REMOVE_ISLANDS_METADATA = Metadata(
-    id="2280490d5511475f92da4664c5d1d511533b9e59.boutiques",
+    id="a915b7fc618e0a145c90d97ad0abe25a3af42c2f.boutiques",
     name="volume-remove-islands",
     package="workbench",
     container_image_tag="brainlife/connectome_workbench:1.5.0-freesurfer-update",
