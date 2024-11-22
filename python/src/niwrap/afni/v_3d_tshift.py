@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TSHIFT_METADATA = Metadata(
-    id="da659a82f35577017cc02e2a49aea005b4e38e2f.boutiques",
+    id="fb7c0bd2238dbd28dce35b62286361303d733d0f.boutiques",
     name="3dTshift",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,16 +20,15 @@ class V3dTshiftOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType
+    out_file: OutputPathType | None
     """Output image file name."""
-    out_file_: OutputPathType
-    """Output file."""
     timing_file: OutputPathType
     """Afni formatted timing file, if ``slice_timing`` is a list."""
 
 
 def v_3d_tshift(
     in_file: InputPathType,
+    prefix: str | None = None,
     ignore: int | None = None,
     interp: typing.Literal["Fourier", "linear", "cubic", "quintic", "heptic"] | None = None,
     num_threads: int | None = None,
@@ -37,11 +36,8 @@ def v_3d_tshift(
     rlt: bool = False,
     rltplus: bool = False,
     slice_encoding_direction: typing.Literal["k", "k-"] | None = None,
-    slice_timing: InputPathType | None = None,
-    slice_timing_2: list[float] | None = None,
     tpattern: typing.Literal["alt+z", "altplus", "alt+z2", "alt-z", "altminus", "alt-z2", "seq+z", "seqplus", "seq-z", "seqminus"] | None = None,
-    tpattern_2: str | None = None,
-    tr: str | None = None,
+    tr: float | None = None,
     tslice: int | None = None,
     tzero: float | None = None,
     runner: Runner | None = None,
@@ -56,6 +52,7 @@ def v_3d_tshift(
     
     Args:
         in_file: Input file to 3dtshift.
+        prefix: Prefix for output image file name.
         ignore: Ignore the first set of points specified.
         interp: 'fourier' or 'linear' or 'cubic' or 'quintic' or 'heptic'.\
             Different interpolation methods (see 3dtshift for details) default =\
@@ -71,16 +68,9 @@ def v_3d_tshift(
             the largest index, and the final entry corresponds to slice index zero.\
             only in effect when slice_timing is passed as list, not when it is\
             passed as file.
-        slice_timing: file or string or a list of items which are a float. Time\
-            offsets from the volume acquisition onset for each slice.
-        slice_timing_2: file or string or a list of items which are a float.\
-            Time offsets from the volume acquisition onset for each slice.
         tpattern: 'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or\
             'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string.\
             Use specified slice time pattern rather than one in header.
-        tpattern_2: 'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus'\
-            or 'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a\
-            string. Use specified slice time pattern rather than one in header.
         tr: Manually set the tr. you can attach suffix "s" for seconds or "ms"\
             for milliseconds.
         tslice: Align each slice to time offset of given slice.
@@ -93,6 +83,11 @@ def v_3d_tshift(
     execution = runner.start_execution(V_3D_TSHIFT_METADATA)
     cargs = []
     cargs.append("3dTshift")
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
     if ignore is not None:
         cargs.extend([
             "-ignore",
@@ -114,30 +109,15 @@ def v_3d_tshift(
         cargs.append("-rlt+")
     if slice_encoding_direction is not None:
         cargs.append(slice_encoding_direction)
-    if slice_timing is not None:
-        cargs.extend([
-            "-tpattern @",
-            execution.input_file(slice_timing)
-        ])
-    if slice_timing_2 is not None:
-        cargs.extend([
-            "-tpattern @",
-            *map(str, slice_timing_2)
-        ])
     if tpattern is not None:
         cargs.extend([
             "-tpattern",
             tpattern
         ])
-    if tpattern_2 is not None:
-        cargs.extend([
-            "-tpattern",
-            tpattern_2
-        ])
     if tr is not None:
         cargs.extend([
             "-TR",
-            tr
+            str(tr)
         ])
     if tslice is not None:
         cargs.extend([
@@ -151,8 +131,7 @@ def v_3d_tshift(
         ])
     ret = V3dTshiftOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file).name + "_tshift"),
-        out_file_=execution.output_file("out_file"),
+        out_file=execution.output_file(prefix) if (prefix is not None) else None,
         timing_file=execution.output_file("timing_file"),
     )
     execution.run(cargs)
