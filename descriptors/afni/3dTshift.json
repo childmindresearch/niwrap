@@ -1,6 +1,6 @@
 {
   "name": "3dTshift",
-  "command-line": "3dTshift [PREFIX] [IGNORE] [IN_FILE] [INTERP] [NUM_THREADS] [OUTPUTTYPE] [RLT] [RLTPLUS] [SLICE_ENCODING_DIRECTION] [SLICE_TIMING] [SLICE_TIMING_2] [TPATTERN] [TPATTERN_2] [TR] [TSLICE] [TZERO]",
+  "command-line": "3dTshift [PREFIX] [IGNORE] [IN_FILE] [INTERP] [NUM_THREADS] [OUTPUTTYPE] [RLT] [RLTPLUS] [SLICE_ENCODING_DIRECTION] [TPATTERN] [TR] [TSLICE] [TZERO]",
   "author": "AFNI Developers",
   "description": "Shifts voxel time series from input so that separate slices are aligned to the same temporal origin.",
   "url": "https://afni.nimh.nih.gov/",
@@ -101,25 +101,6 @@
       ]
     },
     {
-      "id": "slice_timing",
-      "name": "Slice timing",
-      "type": "File",
-      "value-key": "[SLICE_TIMING]",
-      "command-line-flag": "-tpattern @",
-      "description": "file or string or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
-      "optional": true
-    },
-    {
-      "id": "slice_timing_2",
-      "name": "Slice timing",
-      "type": "Number",
-      "list": true,
-      "value-key": "[SLICE_TIMING_2]",
-      "command-line-flag": "-tpattern @",
-      "description": "file or string or a list of items which are a float. Time offsets from the volume acquisition onset for each slice.",
-      "optional": true
-    },
-    {
       "id": "tpattern",
       "name": "Tpattern",
       "type": "String",
@@ -139,15 +120,6 @@
         "seq-z",
         "seqminus"
       ]
-    },
-    {
-      "id": "tpattern_2",
-      "name": "Tpattern",
-      "type": "String",
-      "value-key": "[TPATTERN_2]",
-      "command-line-flag": "-tpattern",
-      "description": "'alt+z' or 'altplus' or 'alt+z2' or 'alt-z' or 'altminus' or 'alt-z2' or 'seq+z' or 'seqplus' or 'seq-z' or 'seqminus' or a string. Use specified slice time pattern rather than one in header.",
-      "optional": true
     },
     {
       "id": "tr",
