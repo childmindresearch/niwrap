@@ -40,13 +40,7 @@
       "command-line-flag": "-",
       "description": "'fourier' or 'linear' or 'cubic' or 'quintic' or 'heptic'. Different interpolation methods (see 3dtshift for details) default = fourier.",
       "optional": true,
-      "value-choices": [
-        "Fourier",
-        "linear",
-        "cubic",
-        "quintic",
-        "heptic"
-      ]
+      "value-choices": ["Fourier", "linear", "cubic", "quintic", "heptic"]
     },
     {
       "id": "num_threads",
@@ -64,11 +58,7 @@
       "value-key": "[OUTPUTTYPE]",
       "description": "'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.",
       "optional": true,
-      "value-choices": [
-        "NIFTI",
-        "AFNI",
-        "NIFTI_GZ"
-      ]
+      "value-choices": ["NIFTI", "AFNI", "NIFTI_GZ"]
     },
     {
       "id": "rlt",
@@ -95,10 +85,7 @@
       "value-key": "[SLICE_ENCODING_DIRECTION]",
       "description": "'k' or 'k-'. Direction in which slice_timing is specified (default: k). if negative,slice_timing is defined in reverse order, that is, the first entry corresponds to the slice with the largest index, and the final entry corresponds to slice index zero. only in effect when slice_timing is passed as list, not when it is passed as file.",
       "optional": true,
-      "value-choices": [
-        "k",
-        "k-"
-      ]
+      "value-choices": ["k", "k-"]
     },
     {
       "id": "tpattern",
