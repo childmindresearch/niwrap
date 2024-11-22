@@ -9,7 +9,6 @@
   },
   "description": "Change version of file format.\n\nYou may only specify one top-level option.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "border_version_convert",

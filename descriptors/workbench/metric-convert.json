@@ -9,7 +9,6 @@
   },
   "description": "Convert metric file to fake nifti.\n\nThe purpose of this command is to convert between metric files and nifti1 so that gifti-unaware programs can operate on the data.  You must specify exactly one of the options.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "to_nifti",

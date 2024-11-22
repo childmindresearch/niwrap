@@ -159,9 +159,5 @@
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
-  },
-  "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
   }
 }

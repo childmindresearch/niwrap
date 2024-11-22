@@ -9,7 +9,6 @@
   },
   "description": "Remove islands from an roi metric.\n\nFinds all connected areas in the ROI, and zeros out all but the largest one, in terms of surface area.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "surface",

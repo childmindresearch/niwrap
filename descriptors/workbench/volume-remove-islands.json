@@ -9,7 +9,6 @@
   },
   "description": "Remove islands from an roi volume.\n\nFinds all face-connected parts of the ROI, and zeros out all but the largest one.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "volume_in",

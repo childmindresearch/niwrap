@@ -9,7 +9,6 @@
   },
   "description": "Get projection vertex for foci.\n\nFor each focus, a column is created in <metric-out>, and the vertex with the most influence on its projection is assigned a value of 1 in that column, with all other vertices 0.  If -name is used, only one focus will be used.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "foci",

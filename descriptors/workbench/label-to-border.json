@@ -9,7 +9,6 @@
   },
   "description": "Draw borders around labels.\n\nFor each label, finds all edges on the mesh that cross the boundary of the label, and draws borders through them.  By default, this is done on all columns in the input file, using the map name as the class name for the border.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "surface",

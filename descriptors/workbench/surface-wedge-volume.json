@@ -9,7 +9,6 @@
   },
   "description": "Measure per-vertex volume between surfaces.\n\nCompute the volume of each vertex's area from one surface to another.  The surfaces must have vertex correspondence, and have consistent triangle orientation.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "inner_surface",

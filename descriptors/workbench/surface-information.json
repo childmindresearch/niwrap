@@ -9,7 +9,6 @@
   },
   "description": "Display information about a surface.\n\nInformation about surface is displayed including vertices, \ntriangles, bounding box, and spacing.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "surface_file",

@@ -9,7 +9,6 @@
   },
   "description": "Output foci coordinates in a text file.\n\nOutput the coordinates for every focus in the foci file, and optionally the focus names in a second text file.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "foci_file",

@@ -9,7 +9,6 @@
   },
   "description": "Merge cifti files along parcels dimension.\n\nThe input cifti files must have matching mappings along the direction not specified, and the mapping along the specified direction must be parcels.  The direction can be either an integer starting from 1, or the strings 'ROW' or 'COLUMN'.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "direction",

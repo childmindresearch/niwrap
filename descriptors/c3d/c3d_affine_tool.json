@@ -186,8 +186,5 @@
       "description": "Write output matrix."
     }
   ],
-  "tags": {
-    "domain": "neuroinformatics"
-  },
   "url": "http://www.itksnap.org/pmwiki/pmwiki.php?n=Convert3D.Convert3D"
 }

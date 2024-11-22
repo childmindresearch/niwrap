@@ -9,7 +9,6 @@
   },
   "description": "Import series data into cifti.\n\nConvert a text file containing series of equal length into a cifti file.  The text file should have lines made up of numbers separated by whitespace, with no extra newlines between lines.\n\nThe <unit> argument must be one of the following:\n\nSECOND\nHERTZ\nMETER\nRADIAN",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "input",

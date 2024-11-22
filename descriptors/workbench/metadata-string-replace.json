@@ -9,7 +9,6 @@
   },
   "description": "Replace a string in all metadata of a file.\n\nReplaces all occurrences of <find-string> in the metadata and map names of <input-file> with <replace-string>.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "input_file",

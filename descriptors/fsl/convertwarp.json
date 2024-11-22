@@ -200,9 +200,5 @@
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
-  },
-  "tags": {
-    "domain": "neuroinformatics",
-    "source": "nipype-interface"
   }
 }

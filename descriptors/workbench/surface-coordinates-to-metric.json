@@ -9,7 +9,6 @@
   },
   "description": "Make metric file of surface coordinates.\n\nPuts the coordinates of the surface into a 3-map metric file, as x, y, z.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "surface",

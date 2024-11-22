@@ -9,7 +9,6 @@
   },
   "description": "Erode a metric file.\n\nAround each vertex with a value of zero, set surrounding vertices to zero.  The surrounding vertices are all immediate neighbors and all vertices within the specified distance.\n\nNote that the -corrected-areas option uses an approximate correction for distance along the surface.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "metric",

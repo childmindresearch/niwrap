@@ -9,7 +9,6 @@
   },
   "description": "Convert a 3-file matrix4 to a workbench sparse file.\n\nConverts the matrix 4 output of probtrackx to workbench sparse file format.  Exactly one of -surface-seeds and -volume-seeds must be specified.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "matrix4_1",

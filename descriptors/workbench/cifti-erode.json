@@ -9,7 +9,6 @@
   },
   "description": "Erode a cifti file.\n\nFor all data values that are empty (for label data, unlabeled, for other data, zero), set the surrounding values to empty.  The surrounding values are defined as the immediate neighbors and all values in the same structure within the specified distance (-merged-volume treats all voxels as one structure).\n\nThe -*-corrected-areas options are intended for eroding on group average surfaces, but it is only an approximate correction.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "cifti_in",

@@ -9,7 +9,6 @@
   },
   "description": "Surface inflation.\n\nInflate a surface by performing cycles that consist of smoothing  followed by inflation (to correct shrinkage caused by smoothing).",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "anatomical_surface_in",

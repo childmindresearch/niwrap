@@ -9,7 +9,6 @@
   },
   "description": "Calculate curvature of surface.\n\nCompute the curvature of the surface, using the method from:\nInteractive Texture Mapping by J. Maillot, Yahia, and Verroust, 1993.\nACM-0-98791-601-8/93/008",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "surface",

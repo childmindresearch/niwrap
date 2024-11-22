@@ -9,7 +9,6 @@
   },
   "description": "Remove provenance information from file metadata.\n\nRemoves the provenance metadata fields added by workbench during processing.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "input_file",

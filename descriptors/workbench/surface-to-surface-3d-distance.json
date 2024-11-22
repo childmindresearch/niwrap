@@ -9,7 +9,6 @@
   },
   "description": "Compute distance between corresponding vertices.\n\nComputes the vector difference between the vertices of each surface with the same index, as (comp - ref), and output the magnitudes, and optionally the displacement vectors.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "surface_comp",

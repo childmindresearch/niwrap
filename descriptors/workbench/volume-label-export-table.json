@@ -9,7 +9,6 @@
   },
   "description": "Export label table from volume as text.\n\nTakes the label table from the volume label map, and writes it to a text format matching what is expected by -volume-label-import.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "label_in",

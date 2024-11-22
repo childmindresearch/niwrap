@@ -9,7 +9,6 @@
   },
   "description": "Correlate paired rows between two cifti files.\n\nFor each row in <cifti-a>, correlate it with the same row in <cifti-b>, and put the result in the same row of <cifti-out>, which has only one column.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "cifti_a",

@@ -9,7 +9,6 @@
   },
   "description": "Output vertex normals as metric file.\n\nComputes the normal vectors of the surface file, and outputs them as a 3 column metric file.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "surface",

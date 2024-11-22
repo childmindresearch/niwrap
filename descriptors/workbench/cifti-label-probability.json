@@ -9,7 +9,6 @@
   },
   "description": "Find frequency of cifti labels.\n\nThis command outputs a set of soft ROIs, one for each label in the input, where the value is how many of the input maps had that label at that vertex/voxel, divided by the number of input maps.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "label_maps",

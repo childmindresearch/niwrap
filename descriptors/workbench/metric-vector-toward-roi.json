@@ -9,7 +9,6 @@
   },
   "description": "Find if vectors point toward an roi.\n\nAt each vertex, compute the vector along the start of the shortest path to the ROI.",
   "schema-version": "0.5",
-  "tags": {},
   "inputs": [
     {
       "id": "surface",
