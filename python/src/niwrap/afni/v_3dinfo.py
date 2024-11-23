@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DINFO_METADATA = Metadata(
-    id="616677dc5c795aa5868596f1b7559dd21a0f20c6.boutiques",
+    id="c0b7ae1e6ddb0557936952320119fb7853d0bfcd.boutiques",
     name="3dinfo",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,6 +20,8 @@ class V3dinfoOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
+    info: list[str]
+    """Sort-of-useful information from a 3D dataset's header"""
 
 
 def v_3dinfo(
@@ -544,8 +546,9 @@ def v_3dinfo(
     cargs.extend([execution.input_file(f) for f in dataset])
     ret = V3dinfoOutputs(
         root=execution.output_file("."),
+        info=[],
     )
-    execution.run(cargs)
+    execution.run(cargs, handle_stdout=lambda s: ret.info.append(s))
     return ret
 
 
