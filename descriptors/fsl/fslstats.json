@@ -268,10 +268,7 @@
     {
       "description": "Preoptions",
       "id": "preoptions_group",
-      "members": [
-        "index_mask",
-        "timeseries_flag"
-      ],
+      "members": ["index_mask", "timeseries_flag"],
       "name": "Preoptions"
     },
     {
