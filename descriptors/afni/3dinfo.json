@@ -1037,5 +1037,9 @@
     }
   ],
   "schema-version": "0.5",
-  "url": "https://afni.nimh.nih.gov/"
+  "url": "https://afni.nimh.nih.gov/",
+  "stdout-output": {
+    "id": "info",
+    "description": "Sort-of-useful information from a 3D dataset's header"
+  }
 }
