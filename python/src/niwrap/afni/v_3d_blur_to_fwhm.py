@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_BLUR_TO_FWHM_METADATA = Metadata(
-    id="45e54e599b08faf23872063e403b45e4ebc6e21c.boutiques",
+    id="f4b40fc76ce4b806bbbbfa509356f57bb656233d.boutiques",
     name="3dBlurToFWHM",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -20,10 +20,8 @@ class V3dBlurToFwhmOutputs(typing.NamedTuple):
     """
     root: OutputPathType
     """Output root folder. This is the root folder for all outputs."""
-    out_file: OutputPathType
+    out_file: OutputPathType | None
     """Output image file name."""
-    out_file_: OutputPathType
-    """Output file."""
 
 
 def v_3d_blur_to_fwhm(
@@ -34,6 +32,7 @@ def v_3d_blur_to_fwhm(
     fwhmxy: float | None = None,
     mask: InputPathType | None = None,
     outputtype: typing.Literal["NIFTI", "AFNI", "NIFTI_GZ"] | None = None,
+    prefix: str | None = None,
     runner: Runner | None = None,
 ) -> V3dBlurToFwhmOutputs:
     """
@@ -53,6 +52,7 @@ def v_3d_blur_to_fwhm(
         mask: Mask dataset, if desired. voxels not in mask will be set to zero\
             in output.
         outputtype: 'nifti' or 'afni' or 'nifti_gz'. Afni output filetype.
+        prefix: Prefix for output dataset.
         runner: Command runner.
     Returns:
         NamedTuple of outputs (described in `V3dBlurToFwhmOutputs`).
@@ -87,13 +87,16 @@ def v_3d_blur_to_fwhm(
             "-mask",
             execution.input_file(mask)
         ])
-    cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)
+    if prefix is not None:
+        cargs.extend([
+            "-prefix",
+            prefix
+        ])
     ret = V3dBlurToFwhmOutputs(
         root=execution.output_file("."),
-        out_file=execution.output_file(pathlib.Path(in_file).name + "_afni"),
-        out_file_=execution.output_file("out_file"),
+        out_file=execution.output_file(prefix) if (prefix is not None) else None,
     )
     execution.run(cargs)
     return ret
