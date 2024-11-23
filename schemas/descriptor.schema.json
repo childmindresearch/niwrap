@@ -856,6 +856,50 @@
             "minItems": 1,
             "uniqueItems": true
         },
+        "stdout-output": {
+            "type": "object",
+            "description": "If present the stdout will be treated as a (string) output itself.",
+            "properties": {
+                "id": {
+                    "minLength": 1,
+                    "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"my_output\"",
+                    "pattern": "^[0-9,_,a-z,A-Z]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human-readable output name. Example: 'My output'",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Output description.",
+                    "type": "string"
+                }
+            },
+            "required": ["id"]
+        },
+        "stderr-output": {
+            "type": "object",
+            "description": "If present the stderr will be treated as a (string) output itself.",
+            "properties": {
+                "id": {
+                    "minLength": 1,
+                    "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"my_output\"",
+                    "pattern": "^[0-9,_,a-z,A-Z]*$",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A human-readable output name. Example: 'My output'",
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Output description.",
+                    "type": "string"
+                }
+            },
+            "required": ["id"]
+        },
         "invocation-schema": {
             "$id": "http://github.com/boutiques/boutiques-schema/invocation-schema",
             "type": "object"
