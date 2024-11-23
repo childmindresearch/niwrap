@@ -20,7 +20,7 @@
       "name": "Input file"
     },
     {
-      "command-line-flag": "-K",
+      "command-line-flag": "-k",
       "description": "Generate separate n submasks from indexMask, for indexvalues 1..n where n is the maximum index value in indexMask, and generate statistics for each submask",
       "value-key": "[INDEX_MASK]",
       "type": "File",
@@ -268,7 +268,10 @@
     {
       "description": "Preoptions",
       "id": "preoptions_group",
-      "members": ["index_mask", "timeseries_flag"],
+      "members": [
+        "index_mask",
+        "timeseries_flag"
+      ],
       "name": "Preoptions"
     },
     {
