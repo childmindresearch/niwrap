@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLSTATS_METADATA = Metadata(
-    id="e4b8f6716d0f8fcd967f034af7d7bcbb682ff68e.boutiques",
+    id="c81a361a55a157923aa804164f6e93ae5f94ecdf.boutiques",
     name="fslstats",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -110,7 +110,7 @@ def fslstats(
     cargs.append(execution.input_file(input_file))
     if index_mask is not None:
         cargs.extend([
-            "-K",
+            "-k",
             execution.input_file(index_mask)
         ])
     if lower_threshold is not None:
