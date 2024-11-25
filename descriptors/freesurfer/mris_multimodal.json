@@ -1,7 +1,7 @@
 {
   "name": "mris_multimodal",
   "description": "A FreeSurfer tool for processing multimodal surface data.",
-  "command-line": "mris_multimodal -i [INPUT_SURFACE] -t [TARGET_SURFACE] -o [OUTPUT_SURFACE] [FILL_HOLES_FLAG] [CURVATURE_FLAG] [THICKNESS_FLAG] [ANNOTATION_OUTPUT] [OVERLAY_OUTPUT] [CSV_OUTPUT] [VTK_FLAG]",
+  "command-line": "mris_multimodal [INPUT_SURFACE] [TARGET_SURFACE] [OUTPUT_SURFACE] [FILL_HOLES_FLAG] [CURVATURE_FLAG] [THICKNESS_FLAG] [ANNOTATION_OUTPUT] [OVERLAY_OUTPUT] [CSV_OUTPUT] [VTK_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -10,7 +10,8 @@
       "type": "File",
       "optional": false,
       "id": "input_surface",
-      "name": "Input Surface"
+      "name": "Input Surface",
+      "command-line-flag": "-i"
     },
     {
       "description": "Target surface file.",
@@ -18,7 +19,8 @@
       "type": "File",
       "optional": false,
       "id": "target_surface",
-      "name": "Target Surface"
+      "name": "Target Surface",
+      "command-line-flag": "-t"
     },
     {
       "description": "Output surface file.",
@@ -26,7 +28,8 @@
       "type": "File",
       "optional": false,
       "id": "output_surface",
-      "name": "Output Surface"
+      "name": "Output Surface",
+      "command-line-flag": "-o"
     },
     {
       "command-line-flag": "-fillHoles",

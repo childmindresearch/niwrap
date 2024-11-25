@@ -5,7 +5,7 @@
   "descriptor-url": "local",
   "description": "Program to take a script with some special markup and turn it into both an RST page and a script for the online Sphinx documentation.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "adjunct_make_script_and_rst.py --input [INPUT_SCRIPT] [PREFIX_RST] [PREFIX_SCRIPT] [REFLINK] [EXECUTE_SCRIPT_FLAG]",
+  "command-line": "adjunct_make_script_and_rst.py -[INPUT_SCRIPT] [PREFIX_RST] [PREFIX_SCRIPT] [REFLINK] [EXECUTE_SCRIPT_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "input_script",
-      "name": "Input script"
+      "name": "Input script",
+      "command-line-flag": "-input"
     },
     {
       "command-line-flag": "--prefix_rst",

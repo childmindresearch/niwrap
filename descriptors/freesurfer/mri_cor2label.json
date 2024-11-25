@@ -2,7 +2,7 @@
   "name": "mri_cor2label",
   "tool-version": "7.4.1",
   "description": "Converts values in a volume or surface overlay to a label. Designed to convert parcellation volumes stored in mri format.",
-  "command-line": "mri_cor2label --i [INPUT_FILE] --id [LABEL_ID] --l [LABEL_FILE] [THRESHOLD_FLAG] [VOLUME_FLAG] [SURFACE_FLAG] [SURFACE_PATH_FLAG] [OPTIMIZE_FLAG] [REMOVE_HOLES_ISLANDS_FLAG] [DILATE_FLAG] [ERODE_FLAG] [HELP_FLAG]",
+  "command-line": "mri_cor2label -[INPUT_FILE] -[LABEL_ID] -[LABEL_FILE] [THRESHOLD_FLAG] [VOLUME_FLAG] [SURFACE_FLAG] [SURFACE_PATH_FLAG] [OPTIMIZE_FLAG] [REMOVE_HOLES_ISLANDS_FLAG] [DILATE_FLAG] [ERODE_FLAG] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -15,7 +15,8 @@
       "name": "Input File",
       "type": "File",
       "value-key": "[INPUT_FILE]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-i"
     },
     {
       "description": "Value to match in the input data.",
@@ -23,7 +24,8 @@
       "name": "Label Identifier",
       "type": "Number",
       "value-key": "[LABEL_ID]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-id"
     },
     {
       "description": "Name of the output label file.",
@@ -31,7 +33,8 @@
       "name": "Output Label File",
       "type": "String",
       "value-key": "[LABEL_FILE]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-l"
     },
     {
       "command-line-flag": "--thresh",

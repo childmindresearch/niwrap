@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu/",
   "description": "Morphological analysis tool for left hemisphere in Freesurfer",
-  "command-line": "morph_tables-lh [INPUT_FILE] [OPTIONS]",
+  "command-line": "morph_tables[INPUT_FILE] [OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "input_file",
-      "name": "Input file for morph_tables-lh"
+      "name": "Input file for morph_tables-lh",
+      "command-line-flag": "-lh"
     },
     {
       "command-line-flag": "--some-flag",

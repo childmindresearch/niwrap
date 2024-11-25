@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MSM",
   "description": "MSM (Multimodal Surface Matching) is a tool for aligning brain surface scans based on their cortical folding patterns or functional/structural data",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "msm [INPUT_MESH] --out [OUTPUT_BASENAME] [REFERENCE_MESH] [INPUT_DATA] [REFERENCE_DATA] [TRANSFORMED_SOURCE] [INPUT_MESH_REGISTER] [INPUT_WEIGHT] [REFERENCE_WEIGHT] [OUTPUT_FORMAT] [CONFIG_FILE] [RESOLUTION_LEVELS] [OUTPUT_SMOOTHING] [HELP_FLAG] [VERBOSE_FLAG] [PRINT_OPTIONS_FLAG]",
+  "command-line": "msm [INPUT_MESH] -[OUTPUT_BASENAME] [REFERENCE_MESH] [INPUT_DATA] [REFERENCE_DATA] [TRANSFORMED_SOURCE] [INPUT_MESH_REGISTER] [INPUT_WEIGHT] [REFERENCE_WEIGHT] [OUTPUT_FORMAT] [CONFIG_FILE] [RESOLUTION_LEVELS] [OUTPUT_SMOOTHING] [HELP_FLAG] [VERBOSE_FLAG] [PRINT_OPTIONS_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -25,7 +25,8 @@
       "type": "String",
       "optional": false,
       "id": "out",
-      "name": "Output basename"
+      "name": "Output basename",
+      "command-line-flag": "-out"
     },
     {
       "command-line-flag": "--refmesh",

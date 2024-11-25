@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "FIRST - FMRIB's Integrated Registration and Segmentation Tool for subcortical brain structures",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "run_first_all [METHOD] [BRAINEXTRACT_FLAG] [STRUCTURE] [AFFINE_MATRIX] [THREESTAGE_FLAG] [DEBUG_FLAG] [VERBOSE_FLAG] -i [INPUT_IMAGE] -o [OUTPUT_IMAGE]",
+  "command-line": "run_first_all [METHOD] [BRAINEXTRACT_FLAG] [STRUCTURE] [AFFINE_MATRIX] [THREESTAGE_FLAG] [DEBUG_FLAG] [VERBOSE_FLAG] [INPUT_IMAGE] [OUTPUT_IMAGE]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -16,7 +16,8 @@
       "type": "File",
       "optional": false,
       "id": "input_image",
-      "name": "Input Image"
+      "name": "Input Image",
+      "command-line-flag": "-i"
     },
     {
       "description": "Output image file",
@@ -24,7 +25,8 @@
       "type": "String",
       "optional": false,
       "id": "output_image",
-      "name": "Output Image"
+      "name": "Output Image",
+      "command-line-flag": "-o"
     },
     {
       "command-line-flag": "-m",

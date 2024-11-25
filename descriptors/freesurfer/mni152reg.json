@@ -3,7 +3,7 @@
   "name": "mni152reg",
   "author": "FreeSurfer Developers",
   "description": "Registers the FreeSurfer subject to the FSL MNI 152 brain to create a tkregister-style registration matrix.",
-  "command-line": "mni152reg --s [SUBJECT] [REGISTER_1MM_FLAG] [OUTPUT_FLAG] [SYMMETRIC_FLAG] [SAVE_VOLUME_FLAG]",
+  "command-line": "mni152reg -[SUBJECT] [REGISTER_1MM_FLAG] [OUTPUT_FLAG] [SYMMETRIC_FLAG] [SAVE_VOLUME_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,8 @@
       "type": "String",
       "optional": false,
       "id": "subject",
-      "name": "Subject"
+      "name": "Subject",
+      "command-line-flag": "-s"
     },
     {
       "command-line-flag": "--1",

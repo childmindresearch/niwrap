@@ -5,7 +5,7 @@
   "descriptor-url": "unknown",
   "description": "Compute thickness of mask using in2out method.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "@measure_in2out -maskset [MASKSET] -surfset [SURFSET] -outdir [OUTDIR] [RESAMPLE] [INCREMENT] [SURFSMOOTH] [MAXTHICK] [DEPTHSEARCH] [MASKINOUTVALS] [KEEP_TEMP_FILES] [SURFSMOOTH_METHOD] [FS_CORT_DIR]",
+  "command-line": "@measure_in2out [MASKSET] [SURFSET] [OUTDIR] [RESAMPLE] [INCREMENT] [SURFSMOOTH] [MAXTHICK] [DEPTHSEARCH] [MASKINOUTVALS] [KEEP_TEMP_FILES] [SURFSMOOTH_METHOD] [FS_CORT_DIR]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "maskset",
-      "name": "Input mask dataset"
+      "name": "Input mask dataset",
+      "command-line-flag": "-maskset"
     },
     {
       "description": "Surface dataset onto which to map thickness (probably a pial/gray matter surface).",
@@ -25,7 +26,8 @@
       "type": "File",
       "optional": false,
       "id": "surfset",
-      "name": "Surface dataset"
+      "name": "Surface dataset",
+      "command-line-flag": "-surfset"
     },
     {
       "description": "Output directory. If not specified, in2out_thickdir is used.",
@@ -33,7 +35,8 @@
       "type": "String",
       "optional": false,
       "id": "outdir",
-      "name": "Output directory"
+      "name": "Output directory",
+      "command-line-flag": "-outdir"
     },
     {
       "command-line-flag": "-resample",

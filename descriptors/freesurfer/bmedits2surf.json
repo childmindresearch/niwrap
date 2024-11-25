@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "bmedits2surf",
   "description": "Computes a binary map of surface locations where the brainmask.mgz has been edited.",
-  "command-line": "bmedits2surf --s [SUBJECT] [SELF_FLAG] [OVERWRITE_FLAG] [TMP_DIR] [CLEANUP_FLAG] [NO_CLEANUP_FLAG] [DEBUG_FLAG] [LH_FLAG] [RH_FLAG] [NO_SURFS_FLAG]",
+  "command-line": "bmedits2surf -[SUBJECT] [SELF_FLAG] [OVERWRITE_FLAG] [TMP_DIR] [CLEANUP_FLAG] [NO_CLEANUP_FLAG] [DEBUG_FLAG] [LH_FLAG] [RH_FLAG] [NO_SURFS_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -11,7 +11,8 @@
       "type": "String",
       "optional": false,
       "id": "subject",
-      "name": "Subject"
+      "name": "Subject",
+      "command-line-flag": "-s"
     },
     {
       "command-line-flag": "--self",

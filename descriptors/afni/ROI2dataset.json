@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/ROI2dataset-boutiques",
   "description": "Transforms a series of ROI files to a node dataset",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "ROI2dataset -prefix [PREFIX] [INPUT_ROIS] [SEPARATE_FLAG] [NODELIST_FLAG] [NODELIST_NODUPS_FLAG] [NODELIST_WITH_ROI_FLAG] [LABEL_DSET] [OUTPUT_FORMAT] [DOMAIN_PARENT_ID] [PAD_TO_NODE] [PAD_LABEL]",
+  "command-line": "ROI2dataset [PREFIX] [INPUT_ROIS] [SEPARATE_FLAG] [NODELIST_FLAG] [NODELIST_NODUPS_FLAG] [NODELIST_WITH_ROI_FLAG] [LABEL_DSET] [OUTPUT_FORMAT] [DOMAIN_PARENT_ID] [PAD_TO_NODE] [PAD_LABEL]",
   "inputs": [
     {
       "description": "Prefix of output dataset.",
@@ -13,7 +13,8 @@
       "type": "String",
       "optional": false,
       "id": "prefix",
-      "name": "Prefix"
+      "name": "Prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "description": "ROI files to turn into a data set (space-separated list). This parameter MUST be the last one on command line.",

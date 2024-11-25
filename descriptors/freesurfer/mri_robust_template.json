@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu",
   "description": "Constructs an unbiased robust template for longitudinal volumes using an iterative method.",
-  "command-line": "mri_robust_template --mov [MOV_FILES] --template [TEMPLATE_FILE] [SENSITIVITY_OPTION] [LTA_FILES] [MAPMOV_FILES] [MAPMOVHDR_FILES] [WEIGHTS_FILES] [OPTIONS]",
+  "command-line": "mri_robust_template -[MOV_FILES] -[TEMPLATE_FILE] [SENSITIVITY_OPTION] [LTA_FILES] [MAPMOV_FILES] [MAPMOVHDR_FILES] [WEIGHTS_FILES] [OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -18,7 +18,8 @@
       "list": true,
       "optional": false,
       "id": "mov_files",
-      "name": "Movable volumes"
+      "name": "Movable volumes",
+      "command-line-flag": "-mov"
     },
     {
       "description": "Output template volume (final mean/median image).",
@@ -26,7 +27,8 @@
       "type": "String",
       "optional": false,
       "id": "template_file",
-      "name": "Template file"
+      "name": "Template file",
+      "command-line-flag": "-template"
     },
     {
       "command-line-flag": "--sat",

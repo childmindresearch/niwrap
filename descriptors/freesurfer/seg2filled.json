@@ -2,7 +2,7 @@
   "name": "seg2filled",
   "tool-version": "7.4.1",
   "description": "Creates a filled.mgz from an aseg-style segmentation using SAMSEG segmentation.",
-  "command-line": "seg2filled --seg [SEG_FILE] --norm [NORM_FILE] --o [OUTPUT_FILE] [DILATION_FLAG] [CAVITY_FLAG] [SURF_NAME] [SURF_DIR]",
+  "command-line": "seg2filled -[SEG_FILE] -[NORM_FILE] -[OUTPUT_FILE] [DILATION_FLAG] [CAVITY_FLAG] [SURF_NAME] [SURF_DIR]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -11,7 +11,8 @@
       "type": "File",
       "value-key": "[SEG_FILE]",
       "description": "Input aseg-style segmentation file (e.g., seg.mgz)",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-seg"
     },
     {
       "id": "norm_file",
@@ -19,7 +20,8 @@
       "type": "File",
       "value-key": "[NORM_FILE]",
       "description": "Normalization file (e.g., norm.mgz)",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-norm"
     },
     {
       "id": "output_file",
@@ -27,7 +29,8 @@
       "type": "String",
       "value-key": "[OUTPUT_FILE]",
       "description": "Filled output file (e.g., filled.mgz)",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-o"
     },
     {
       "command-line-flag": "--ndil",

@@ -3,7 +3,7 @@
   "name": "segpons",
   "author": "FreeSurfer Developers",
   "description": "Approximate segmentation of pons using MNI152 space registration.",
-  "command-line": "segpons --s [SUBJECT] [ASEG_FLAG] [APAS_FLAG] [SEG_FILE] [NO_REFINE_FLAG] [PONS152_MASK]",
+  "command-line": "segpons -[SUBJECT] [ASEG_FLAG] [APAS_FLAG] [SEG_FILE] [NO_REFINE_FLAG] [PONS152_MASK]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,8 @@
       "type": "String",
       "optional": false,
       "id": "subject",
-      "name": "Subject"
+      "name": "Subject",
+      "command-line-flag": "-s"
     },
     {
       "command-line-flag": "--aseg",

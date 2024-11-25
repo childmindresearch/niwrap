@@ -3,7 +3,7 @@
   "name": "3dICC",
   "author": "AFNI Developers",
   "description": "AFNI Program for IntraClass Correlatin (ICC) Analysis",
-  "command-line": "3dICC [MODEL] -prefix [PREFIX] -mask [MASK] -dataTable [DATA_TABLE] [OPTIONS]",
+  "command-line": "3dICC [MODEL] [PREFIX] [MASK] [DATA_TABLE] [OPTIONS]",
   "inputs": [
     {
       "description": "Name of output file. For AFNI format, provide prefix only, with no view+suffix needed. Filename for NIfTI format should have .nii attached, while file name for surface data is expected to end with .niml.dset.",
@@ -11,7 +11,8 @@
       "type": "String",
       "optional": false,
       "id": "prefix",
-      "name": "Output file name"
+      "name": "Output file name",
+      "command-line-flag": "-prefix"
     },
     {
       "description": "Path to mask file. Only process voxels inside this mask.",
@@ -19,7 +20,8 @@
       "type": "File",
       "optional": true,
       "id": "mask",
-      "name": "Mask file"
+      "name": "Mask file",
+      "command-line-flag": "-mask"
     },
     {
       "description": "Model structure for all the variables. The expression FORMULA with more than one variable has to be surrounded within quotes. Variable names should be consistent with the ones used in the header of -dataTable.",
@@ -35,7 +37,8 @@
       "type": "String",
       "optional": false,
       "id": "data_table",
-      "name": "Data table"
+      "name": "Data table",
+      "command-line-flag": "-dataTable"
     },
     {
       "command-line-flag": "-bounds",

@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Replaces voxel values using a mapping file with specified columns",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dExchange [PREFIX] -input [DATASET] -map [MAPCOLS_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
+  "command-line": "3dExchange [PREFIX] [DATASET] [MAPCOLS_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -16,7 +16,8 @@
       "type": "File",
       "optional": false,
       "id": "infile",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-input"
     },
     {
       "description": "Mapping columns. Input values in the first column, output values in the second column",
@@ -24,7 +25,8 @@
       "type": "File",
       "optional": false,
       "id": "mapfile",
-      "name": "Mapping file"
+      "name": "Mapping file",
+      "command-line-flag": "-map"
     },
     {
       "command-line-flag": "-prefix",

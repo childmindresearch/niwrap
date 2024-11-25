@@ -3,7 +3,7 @@
   "name": "mri_robust_register",
   "author": "FreeSurfer Developers",
   "description": "Inverse consistent registration of two volumes using robust and standard cost functions.",
-  "command-line": "mri_robust_register --mov [MOVABLE_VOLUME] --dst [TARGET_VOLUME] --lta [OUTPUT_REGISTRATION] [OUTLIER_SENSITIVITY_OPTION] [OPTIONS]",
+  "command-line": "mri_robust_register -[MOVABLE_VOLUME] -[TARGET_VOLUME] -[OUTPUT_REGISTRATION] [OUTLIER_SENSITIVITY_OPTION] [OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,8 @@
       "type": "File",
       "optional": false,
       "id": "movable_volume",
-      "name": "Movable Volume"
+      "name": "Movable Volume",
+      "command-line-flag": "-mov"
     },
     {
       "description": "Input target volume.",
@@ -20,7 +21,8 @@
       "type": "File",
       "optional": false,
       "id": "target_volume",
-      "name": "Target Volume"
+      "name": "Target Volume",
+      "command-line-flag": "-dst"
     },
     {
       "description": "Output registration (transform from mov to dst).",
@@ -28,7 +30,8 @@
       "type": "String",
       "optional": false,
       "id": "output_registration",
-      "name": "Output Registration"
+      "name": "Output Registration",
+      "command-line-flag": "-lta"
     },
     {
       "command-line-flag": "--sat",

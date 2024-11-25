@@ -5,7 +5,7 @@
   "descriptor-url": "https://example.com/descriptors/fsl_swe.json",
   "description": "SwE (summary statistics and voxelwise statistical analyses tool for FSL)",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "swe -i [INPUT_FILE] -o [OUTPUT_ROOT] -d [DESIGN_MAT] -t [DESIGN_CON] -s [DESIGN_SUB] [MASK] [FCON] [MODIFIED] [WB] [LOGP] [NBOOT] [CORRP] [FONLY] [TFCE] [TFCE2] [CLUSTER_T] [CLUSTER_T_MASS] [CLUSTER_F] [CLUSTER_F_MASS] [QUIET] [RAW] [EQUIV] [DOF] [UNCORR_P] [NULL_DIST] [NO_RC_MASK] [SEED] [TFCE_HEIGHT] [TFCE_DELTA] [TFCE_EXTENT] [TFCE_CONN] [VOXELWISE_EV] [VOXELWISE_EVS] [GLM_OUTPUT]",
+  "command-line": "swe [INPUT_FILE] [OUTPUT_ROOT] [DESIGN_MAT] [DESIGN_CON] [DESIGN_SUB] [MASK] [FCON] [MODIFIED] [WB] [LOGP] [NBOOT] [CORRP] [FONLY] [TFCE] [TFCE2] [CLUSTER_T] [CLUSTER_T_MASS] [CLUSTER_F] [CLUSTER_F_MASS] [QUIET] [RAW] [EQUIV] [DOF] [UNCORR_P] [NULL_DIST] [NO_RC_MASK] [SEED] [TFCE_HEIGHT] [TFCE_DELTA] [TFCE_EXTENT] [TFCE_CONN] [VOXELWISE_EV] [VOXELWISE_EVS] [GLM_OUTPUT]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "input_file",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-i"
     },
     {
       "description": "Output file root name",
@@ -25,7 +26,8 @@
       "type": "String",
       "optional": false,
       "id": "output_root",
-      "name": "Output root"
+      "name": "Output root",
+      "command-line-flag": "-o"
     },
     {
       "description": "Design matrix file",
@@ -33,7 +35,8 @@
       "type": "File",
       "optional": false,
       "id": "design_mat",
-      "name": "Design matrix"
+      "name": "Design matrix",
+      "command-line-flag": "-d"
     },
     {
       "description": "T contrasts file",
@@ -41,7 +44,8 @@
       "type": "File",
       "optional": false,
       "id": "design_con",
-      "name": "Design contrasts"
+      "name": "Design contrasts",
+      "command-line-flag": "-t"
     },
     {
       "description": "Subjects file",
@@ -49,7 +53,8 @@
       "type": "File",
       "optional": false,
       "id": "design_sub",
-      "name": "Design subjects"
+      "name": "Design subjects",
+      "command-line-flag": "-s"
     },
     {
       "command-line-flag": "-m",

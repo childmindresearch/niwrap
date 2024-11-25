@@ -3,7 +3,7 @@
   "name": "ap_run_simple_rest.tcsh",
   "author": "AFNI Developers",
   "description": "Run a quick afni_proc.py analysis for QC",
-  "command-line": "ap_run_simple_rest.tcsh [ANAT] -epi [EPI] [NT_RM] [RUN_AP] [RUN_PROC] [SUBJID] [TEMPLATE] [COMPRESSOR] [VERB] [ECHO]",
+  "command-line": "ap_run_simple_rest.tcsh [ANAT] [EPI] [NT_RM] [RUN_AP] [RUN_PROC] [SUBJID] [TEMPLATE] [COMPRESSOR] [VERB] [ECHO]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -16,7 +16,8 @@
       "list": true,
       "optional": false,
       "id": "epi",
-      "name": "EPI Datasets"
+      "name": "EPI Datasets",
+      "command-line-flag": "-epi"
     },
     {
       "command-line-flag": "-anat",

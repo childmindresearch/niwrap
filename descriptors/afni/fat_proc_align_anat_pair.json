@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "A tool for aligning a T1w anatomical image to a T2w anatomical image using solid-body parameters (translation and rotation)",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "fat_proc_align_anat_pair -in_t1w [INPUT_T1W] -in_t2w [INPUT_T2W] -prefix [OUTPUT_PREFIX] [OUTPUT_GRID] [MASK_T2W] [SS_TMP_T1W] [AFFINE_WAR] [PREMADE_MATRIX] [WORKING_DIR] [NO_CMD_OUT] [NO_CLEAN]",
+  "command-line": "fat_proc_align_anat_pair [INPUT_T1W] [INPUT_T2W] [OUTPUT_PREFIX] [OUTPUT_GRID] [MASK_T2W] [SS_TMP_T1W] [AFFINE_WAR] [PREMADE_MATRIX] [WORKING_DIR] [NO_CMD_OUT] [NO_CLEAN]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -16,7 +16,8 @@
       "type": "File",
       "optional": false,
       "id": "input_t1w",
-      "name": "Input T1W file"
+      "name": "Input T1W file",
+      "command-line-flag": "-in_t1w"
     },
     {
       "description": "T2-weighted volume",
@@ -24,7 +25,8 @@
       "type": "File",
       "optional": false,
       "id": "input_t2w",
-      "name": "Input T2W file"
+      "name": "Input T2W file",
+      "command-line-flag": "-in_t2w"
     },
     {
       "description": "Output prefix for files and snapshots",
@@ -32,7 +34,8 @@
       "type": "String",
       "optional": false,
       "id": "output_prefix",
-      "name": "Output prefix"
+      "name": "Output prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "command-line-flag": "-newgrid",

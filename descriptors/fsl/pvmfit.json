@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Fits diffusion models to multishell DWI data",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "pvmfit -k [DATA_FILE] -m [MASK_FILE] -r [BVEC_FILE] -b [BVAL_FILE] [OUTPUT_BASENAME] [NUMBER_OF_FIBRES] [MODEL_TYPE] [FIT_ALL_MODELS] [CONSTRAINED_NONLINEAR] [CONSTRAINED_NONLINEAR_F] [GRID_SEARCH] [INCLUDE_NOISE_FLOOR] [SAVE_BIC] [VERBOSE] [HELP]",
+  "command-line": "pvmfit [DATA_FILE] [MASK_FILE] [BVEC_FILE] [BVAL_FILE] [OUTPUT_BASENAME] [NUMBER_OF_FIBRES] [MODEL_TYPE] [FIT_ALL_MODELS] [CONSTRAINED_NONLINEAR] [CONSTRAINED_NONLINEAR_F] [GRID_SEARCH] [INCLUDE_NOISE_FLOOR] [SAVE_BIC] [VERBOSE] [HELP]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -16,7 +16,8 @@
       "type": "File",
       "optional": false,
       "id": "data_file",
-      "name": "Data file"
+      "name": "Data file",
+      "command-line-flag": "-k"
     },
     {
       "description": "Mask file",
@@ -24,7 +25,8 @@
       "type": "File",
       "optional": false,
       "id": "mask_file",
-      "name": "Mask file"
+      "name": "Mask file",
+      "command-line-flag": "-m"
     },
     {
       "description": "B vectors file",
@@ -32,7 +34,8 @@
       "type": "File",
       "optional": false,
       "id": "bvec_file",
-      "name": "B vectors file"
+      "name": "B vectors file",
+      "command-line-flag": "-r"
     },
     {
       "description": "B values file",
@@ -40,7 +43,8 @@
       "type": "File",
       "optional": false,
       "id": "bval_file",
-      "name": "B values file"
+      "name": "B values file",
+      "command-line-flag": "-b"
     },
     {
       "command-line-flag": "-o",

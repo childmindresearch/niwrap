@@ -3,7 +3,7 @@
   "name": "@NoisySkullStrip",
   "author": "AFNI Developers",
   "description": "Strips the skull of anatomical datasets with low SNR.",
-  "command-line": "@NoisySkullStrip -input [ANAT] [KEEP_TMP_FLAG] [SKULLSTRIP_OPTS]",
+  "command-line": "@NoisySkullStrip [ANAT] [KEEP_TMP_FLAG] [SKULLSTRIP_OPTS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -15,7 +15,8 @@
       "type": "File",
       "optional": false,
       "id": "input_file",
-      "name": "Input File"
+      "name": "Input File",
+      "command-line-flag": "-input"
     },
     {
       "command-line-flag": "-keep_tmp",

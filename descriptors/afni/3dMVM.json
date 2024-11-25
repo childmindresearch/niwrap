@@ -5,7 +5,7 @@
   "descriptor-url": "#",
   "description": "AFNI Group Analysis Program with Multi-Variate Modeling Approach",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dMVM [PARAM_FLAGS] -prefix [PREFIX] -jobs [JOBS] -mask [MASK] -bsVars [BSVARS] -wsVars [WSVARS] -qVars [QVARS] -qVarCenters [Q_VAR_CENTERS] -num_glt [NUM_GLT] -gltLabel [GLT_LABEL] -gltCode [GLT_CODE] -num_glf [NUM_GLF] -glfLabel [GLF_LABEL] -glfCode [GLF_CODE] -dataTable [DATA_TABLE]",
+  "command-line": "3dMVM [PARAM_FLAGS] [PREFIX] [JOBS] [MASK] [BSVARS] [WSVARS] [QVARS] [Q_VAR_CENTERS] [NUM_GLT] [GLT_LABEL] [GLT_CODE] [NUM_GLF] [GLF_LABEL] [GLF_CODE] [DATA_TABLE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -17,7 +17,8 @@
       "type": "String",
       "optional": false,
       "id": "prefix",
-      "name": "Output prefix"
+      "name": "Output prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "description": "Number of jobs for parallel processing",
@@ -26,7 +27,8 @@
       "optional": true,
       "integer": true,
       "id": "jobs",
-      "name": "Number of jobs"
+      "name": "Number of jobs",
+      "command-line-flag": "-jobs"
     },
     {
       "description": "Only process voxels inside this mask",
@@ -34,7 +36,8 @@
       "type": "File",
       "optional": true,
       "id": "mask",
-      "name": "Mask file"
+      "name": "Mask file",
+      "command-line-flag": "-mask"
     },
     {
       "description": "Formula for between-subjects variables",
@@ -42,7 +45,8 @@
       "type": "String",
       "optional": false,
       "id": "bsVars",
-      "name": "Between-subjects variables"
+      "name": "Between-subjects variables",
+      "command-line-flag": "-bsVars"
     },
     {
       "description": "Formula for within-subjects variables",
@@ -50,7 +54,8 @@
       "type": "String",
       "optional": true,
       "id": "wsVars",
-      "name": "Within-subjects variables"
+      "name": "Within-subjects variables",
+      "command-line-flag": "-wsVars"
     },
     {
       "description": "Comma-separated list of quantitative variables (covariates)",
@@ -58,7 +63,8 @@
       "type": "String",
       "optional": true,
       "id": "qVars",
-      "name": "Quantitative variables"
+      "name": "Quantitative variables",
+      "command-line-flag": "-qVars"
     },
     {
       "description": "Comma-separated centering values for quantitative variables",
@@ -66,7 +72,8 @@
       "type": "String",
       "optional": true,
       "id": "qVarCenters",
-      "name": "Quantitative variable centers"
+      "name": "Quantitative variable centers",
+      "command-line-flag": "-qVarCenters"
     },
     {
       "description": "Number of general linear t-tests (GLTs)",
@@ -75,7 +82,8 @@
       "optional": true,
       "integer": true,
       "id": "num_glt",
-      "name": "Number of GLTs"
+      "name": "Number of GLTs",
+      "command-line-flag": "-num_glt"
     },
     {
       "description": "Label for each general linear t-test (GLT)",
@@ -83,7 +91,8 @@
       "type": "String",
       "optional": true,
       "id": "gltLabel",
-      "name": "GLT Label"
+      "name": "GLT Label",
+      "command-line-flag": "-gltLabel"
     },
     {
       "description": "Coding for each general linear t-test (GLT)",
@@ -91,7 +100,8 @@
       "type": "String",
       "optional": true,
       "id": "gltCode",
-      "name": "GLT Code"
+      "name": "GLT Code",
+      "command-line-flag": "-gltCode"
     },
     {
       "description": "Number of general linear F-tests (GLFs)",
@@ -100,7 +110,8 @@
       "optional": true,
       "integer": true,
       "id": "num_glf",
-      "name": "Number of GLFs"
+      "name": "Number of GLFs",
+      "command-line-flag": "-num_glf"
     },
     {
       "description": "Label for each general linear F-test (GLF)",
@@ -108,7 +119,8 @@
       "type": "String",
       "optional": true,
       "id": "glfLabel",
-      "name": "GLF Label"
+      "name": "GLF Label",
+      "command-line-flag": "-glfLabel"
     },
     {
       "description": "Coding for each general linear F-test (GLF)",
@@ -116,7 +128,8 @@
       "type": "String",
       "optional": true,
       "id": "glfCode",
-      "name": "GLF Code"
+      "name": "GLF Code",
+      "command-line-flag": "-glfCode"
     },
     {
       "description": "Data table for analysis",
@@ -124,7 +137,8 @@
       "type": "String",
       "optional": false,
       "id": "dataTable",
-      "name": "Data table"
+      "name": "Data table",
+      "command-line-flag": "-dataTable"
     },
     {
       "description": "Enable R to save parameters in a file for debugging",

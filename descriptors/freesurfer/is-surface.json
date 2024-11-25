@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "is-surface",
   "description": "Determines whether a file is a volume-encoded surface file by examining its dimensions.",
-  "command-line": "is-surface [INPUT_FILE]",
+  "command-line": "is[INPUT_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -11,7 +11,8 @@
       "type": "File",
       "optional": false,
       "id": "infile",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-surface"
     }
   ],
   "author": "FreeSurfer Developers",

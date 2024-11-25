@@ -3,7 +3,7 @@
   "name": "surf_proj",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Projects data onto a surface mesh using specified parameters.",
-  "command-line": "surf_proj --data [DATA] --surf [SURFACE] --out [OUTPUT_FILE] [SURFACE_REF] [TRANSFORM] [MESHSPACE] [STEP_SIZE] [DIRECTION] [OPERATION] [SURFACE_OUTPUT]",
+  "command-line": "surf_proj -[DATA] -[SURFACE] -[OUTPUT_FILE] [SURFACE_REF] [TRANSFORM] [MESHSPACE] [STEP_SIZE] [DIRECTION] [OPERATION] [SURFACE_OUTPUT]",
   "inputs": [
     {
       "description": "Data to project onto surface",
@@ -11,7 +11,8 @@
       "type": "File",
       "optional": false,
       "id": "data",
-      "name": "Data file"
+      "name": "Data file",
+      "command-line-flag": "-data"
     },
     {
       "description": "Surface file",
@@ -19,7 +20,8 @@
       "type": "File",
       "optional": false,
       "id": "surface",
-      "name": "Surface file"
+      "name": "Surface file",
+      "command-line-flag": "-surf"
     },
     {
       "description": "Output file",
@@ -27,7 +29,8 @@
       "type": "String",
       "optional": false,
       "id": "output_file",
-      "name": "Output file"
+      "name": "Output file",
+      "command-line-flag": "-out"
     },
     {
       "command-line-flag": "--meshref",

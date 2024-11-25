@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Convert input datasets to the format needed for 3dClustSimX",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dtoXdataset -prefix [PREFIX] [MASK] [INPUT_FILES]",
+  "command-line": "3dtoXdataset [PREFIX] [MASK] [INPUT_FILES]",
   "inputs": [
     {
       "description": "Prefix for the output file.",
@@ -12,7 +12,8 @@
       "type": "String",
       "optional": false,
       "id": "prefix",
-      "name": "Prefix"
+      "name": "Prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "description": "Mask dataset file.",

@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Quantitative evaluation tool of XTRACT results in neuroimaging",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "xtract_stats -d <folder_basename> -xtract <XTRACT_dir> -w <xtract2diff> [reference] [output_file] [structures_file] [threshold] [measurements] [keep_temp_files]",
+  "command-line": "xtract_stats <folder_basename> <XTRACT_dir> <xtract2diff> [reference] [output_file] [structures_file] [threshold] [measurements] [keep_temp_files]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -16,7 +16,8 @@
       "type": "String",
       "optional": false,
       "id": "folder_basename",
-      "name": "Folder Basename"
+      "name": "Folder Basename",
+      "command-line-flag": "-d"
     },
     {
       "description": "Path to XTRACT output folder",
@@ -24,7 +25,8 @@
       "type": "String",
       "optional": false,
       "id": "XTRACT_dir",
-      "name": "XTRACT Output Directory"
+      "name": "XTRACT Output Directory",
+      "command-line-flag": "-xtract"
     },
     {
       "description": "EITHER XTRACT results to diffusion space transform OR 'native' if tracts are already in diffusion space",
@@ -32,7 +34,8 @@
       "type": "String",
       "optional": false,
       "id": "xtract2diff",
-      "name": "Xtract to Diffusion Transform"
+      "name": "Xtract to Diffusion Transform",
+      "command-line-flag": "-w"
     },
     {
       "command-line-flag": "-r",

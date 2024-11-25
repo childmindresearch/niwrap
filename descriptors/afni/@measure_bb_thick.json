@@ -3,7 +3,7 @@
   "name": "@measure_bb_thick",
   "author": "AFNI Developers",
   "description": "Compute thickness of mask using ball and box method",
-  "command-line": "@measure_bb_thick -maskset [MASKSET] -surfset [SURFSET] -outdir [OUTDIR] [RESAMPLE] [INCREMENT] [SURFSMOOTH] [SMOOTHMM] [MAXTHICK] [DEPTHSEARCH] [KEEP_TEMP_FILES] [BALLS_ONLY] [SURFSMOOTH_METHOD]",
+  "command-line": "@measure_bb_thick [MASKSET] [SURFSET] [OUTDIR] [RESAMPLE] [INCREMENT] [SURFSMOOTH] [SMOOTHMM] [MAXTHICK] [DEPTHSEARCH] [KEEP_TEMP_FILES] [BALLS_ONLY] [SURFSMOOTH_METHOD]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -15,7 +15,8 @@
       "type": "File",
       "optional": false,
       "id": "maskset",
-      "name": "Mask dataset"
+      "name": "Mask dataset",
+      "command-line-flag": "-maskset"
     },
     {
       "description": "Surface dataset onto which to map thickness (e.g., pial/gray matter surface)",
@@ -23,7 +24,8 @@
       "type": "File",
       "optional": false,
       "id": "surfset",
-      "name": "Surface dataset"
+      "name": "Surface dataset",
+      "command-line-flag": "-surfset"
     },
     {
       "description": "Output directory",
@@ -31,7 +33,8 @@
       "type": "String",
       "optional": true,
       "id": "outdir",
-      "name": "Output directory"
+      "name": "Output directory",
+      "command-line-flag": "-outdir"
     },
     {
       "command-line-flag": "-resample",

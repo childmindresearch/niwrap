@@ -2,7 +2,7 @@
   "tool-version": "24.2.06",
   "name": "@thickness_master",
   "description": "Compute cortical thickness using mask and surface datasets",
-  "command-line": "@thickness_master -maskset [MASKSET] -surfset [SURFSET] -outdir [OUTDIR]",
+  "command-line": "@thickness_master [MASKSET] [SURFSET] [OUTDIR]",
   "inputs": [
     {
       "description": "Mask dataset to find thickness",
@@ -10,7 +10,8 @@
       "type": "File",
       "optional": false,
       "id": "maskset",
-      "name": "Mask set"
+      "name": "Mask set",
+      "command-line-flag": "-maskset"
     },
     {
       "description": "Surface dataset to use for normals into the volume",
@@ -18,7 +19,8 @@
       "type": "File",
       "optional": false,
       "id": "surfset",
-      "name": "Surface set"
+      "name": "Surface set",
+      "command-line-flag": "-surfset"
     },
     {
       "description": "Output directory base name. The output will be placed in a directory with thick_base in its name (e.g., mmmm_bb, mmmm_erode, mmmm_in2out)",
@@ -26,7 +28,8 @@
       "type": "String",
       "optional": true,
       "id": "outdir",
-      "name": "Output directory base"
+      "name": "Output directory base",
+      "command-line-flag": "-outdir"
     }
   ],
   "output-files": [

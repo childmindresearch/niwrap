@@ -2,7 +2,7 @@
   "name": "dicom-rename",
   "description": "Copies dicom file(s) to new path with more meaningful names",
   "schema-version": "0.5",
-  "command-line": "dicom-rename [INPUT_FILES] [OUTBASE]",
+  "command-line": "dicom[INPUT_FILES] [OUTBASE]",
   "inputs": [
     {
       "id": "input_files",
@@ -11,7 +11,8 @@
       "list": true,
       "description": "Input DICOM files to be renamed.",
       "optional": false,
-      "value-key": "[INPUT_FILES]"
+      "value-key": "[INPUT_FILES]",
+      "command-line-flag": "-rename"
     },
     {
       "id": "output_base",

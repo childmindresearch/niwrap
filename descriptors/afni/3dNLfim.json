@@ -5,7 +5,7 @@
   "descriptor-url": "N/A",
   "description": "Nonlinear regression for each voxel of the input AFNI 3d+time data set",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dNLfim -input [INPUT_FILE] -signal [SIGNAL_MODEL] -noise [NOISE_MODEL] [ADDITIONAL_OPTIONS]",
+  "command-line": "3dNLfim [INPUT_FILE] [SIGNAL_MODEL] [NOISE_MODEL] [ADDITIONAL_OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "input_file",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-input"
     },
     {
       "description": "Name of the nonlinear signal model",
@@ -25,7 +26,8 @@
       "type": "String",
       "optional": false,
       "id": "signal_model",
-      "name": "Signal model"
+      "name": "Signal model",
+      "command-line-flag": "-signal"
     },
     {
       "description": "Name of the linear noise model",
@@ -33,7 +35,8 @@
       "type": "String",
       "optional": false,
       "id": "noise_model",
-      "name": "Noise model"
+      "name": "Noise model",
+      "command-line-flag": "-noise"
     },
     {
       "command-line-flag": "-mask",

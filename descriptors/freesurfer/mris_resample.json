@@ -2,7 +2,7 @@
   "name": "mris_resample",
   "tool-version": "7.4.1",
   "description": "Resample cortical surfaces in FreeSurfer",
-  "command-line": "mris_resample --atlas_reg [ATLAS_REG] --subject_reg [SUBJECT_REG] --subject_surf [SUBJECT_SURF] --out [OUTPUT] [ANNOT_IN] [ANNOT_OUT]",
+  "command-line": "mris_resample -[ATLAS_REG] -[SUBJECT_REG] -[SUBJECT_SURF] -[OUTPUT] [ANNOT_IN] [ANNOT_OUT]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -11,7 +11,8 @@
       "type": "File",
       "description": "Atlas spherical registration file.",
       "value-key": "[ATLAS_REG]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-atlas_reg"
     },
     {
       "id": "subject_reg",
@@ -19,7 +20,8 @@
       "type": "File",
       "description": "Subject spherical registration file.",
       "value-key": "[SUBJECT_REG]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-subject_reg"
     },
     {
       "id": "subject_surf",
@@ -27,7 +29,8 @@
       "type": "File",
       "description": "Subject actual surface.",
       "value-key": "[SUBJECT_SURF]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-subject_surf"
     },
     {
       "id": "output",
@@ -35,7 +38,8 @@
       "type": "File",
       "description": "Output resampled surface.",
       "value-key": "[OUTPUT]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-out"
     },
     {
       "command-line-flag": "--annot_in",

@@ -3,7 +3,7 @@
   "name": "@xyz_to_ijk",
   "author": "AFNI Developers",
   "description": "Helper script to convert (x, y, z) coordinates to (i, j, k) indices for a volumetric dataset.",
-  "command-line": "@xyz_to_ijk -inset [VOLUME] -xyz [X] [Y] [Z] [PREFIX]",
+  "command-line": "@xyz_to_ijk [VOLUME] [X] [Y] [Z] [PREFIX]",
   "inputs": [
     {
       "description": "Volumetric file name (e.g. FILE.nii.gz)",
@@ -11,7 +11,8 @@
       "type": "File",
       "optional": false,
       "id": "inset",
-      "name": "Volumetric file"
+      "name": "Volumetric file",
+      "command-line-flag": "-inset"
     },
     {
       "description": "Three coordinates (in units of the dataset, like mm)",
@@ -19,7 +20,8 @@
       "type": "Number",
       "optional": false,
       "id": "x_coord",
-      "name": "X coordinate"
+      "name": "X coordinate",
+      "command-line-flag": "-xyz"
     },
     {
       "description": "Three coordinates (in units of the dataset, like mm)",

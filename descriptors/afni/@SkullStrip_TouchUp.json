@@ -3,7 +3,7 @@
   "name": "@SkullStrip_TouchUp",
   "author": "AFNI Developers",
   "description": "Helper program to touch up failed skull stripping by resampling data, allowing manual edits, and outputting corrected data.",
-  "command-line": "@SkullStrip_TouchUp -prefix [PREFIX] -brain [BRAIN_DATASET] -head [HEAD_DATASET] [MASK_OUT_FLAG] [ORIG_DIM_FLAG]",
+  "command-line": "@SkullStrip_TouchUp [PREFIX] [BRAIN_DATASET] [HEAD_DATASET] [MASK_OUT_FLAG] [ORIG_DIM_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -15,7 +15,8 @@
       "type": "String",
       "optional": false,
       "id": "prefix",
-      "name": "Prefix"
+      "name": "Prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "description": "Skull stripped data set to touch up",
@@ -23,7 +24,8 @@
       "type": "File",
       "optional": false,
       "id": "brain_dataset",
-      "name": "Brain Dataset"
+      "name": "Brain Dataset",
+      "command-line-flag": "-brain"
     },
     {
       "description": "Whole head anatomical data set",
@@ -31,7 +33,8 @@
       "type": "File",
       "optional": false,
       "id": "head_dataset",
-      "name": "Head Dataset"
+      "name": "Head Dataset",
+      "command-line-flag": "-head"
     },
     {
       "command-line-flag": "-mask_out",

@@ -3,7 +3,7 @@
   "name": "post-recon-all",
   "author": "FreeSurfer Developers",
   "description": "Post-processing script typically run after recon-all in FreeSurfer",
-  "command-line": "post-recon-all [SUBJECT] [SUBFIELDS_FLAG] [SUBREGIONS_FLAG] [CVS_FLAG] [QCACHE_FLAG] [SCLIMBIC_FLAG] [HTHSU_FLAG] [SYNTHSTRIP_FLAG] [SYNTHSEG_FLAG] [QASTATS_FLAG] [SAMSEG_FLAG] [XHEMI_FLAG] [COS7_FLAG] [THREADS] [FORCE_FLAG] [EXIT_ON_ERROR_FLAG]",
+  "command-line": "post-recon[SUBJECT] [SUBFIELDS_FLAG] [SUBREGIONS_FLAG] [CVS_FLAG] [QCACHE_FLAG] [SCLIMBIC_FLAG] [HTHSU_FLAG] [SYNTHSTRIP_FLAG] [SYNTHSEG_FLAG] [QASTATS_FLAG] [SAMSEG_FLAG] [XHEMI_FLAG] [COS7_FLAG] [THREADS] [FORCE_FLAG] [EXIT_ON_ERROR_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,8 @@
       "type": "String",
       "optional": false,
       "id": "subject",
-      "name": "Subject"
+      "name": "Subject",
+      "command-line-flag": "-all"
     },
     {
       "command-line-flag": "--subfields",

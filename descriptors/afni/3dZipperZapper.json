@@ -3,7 +3,7 @@
   "name": "3dZipperZapper",
   "author": "AFNI Developers",
   "description": "A basic program to highlight problematic volumes in data sets, especially EPI/DWI data sets with interleaved acquisition.",
-  "command-line": "3dZipperZapper -input [INPUT_FILE] -prefix [OUTPUT_PREFIX] [MASK] [MIN_SLICE_NVOX] [MIN_STREAK_LEN] [DO_OUT_SLICE_PARAM_FLAG] [NO_OUT_BAD_MASK_FLAG] [NO_OUT_TEXT_VALS_FLAG] [DONT_USE_STREAK_FLAG] [DONT_USE_DROP_FLAG] [DONT_USE_CORR_FLAG] [MIN_STREAK_VAL] [MIN_DROP_FRAC] [MIN_DROP_DIFF] [MIN_CORR_LEN] [MIN_CORR_CORR]",
+  "command-line": "3dZipperZapper [INPUT_FILE] [OUTPUT_PREFIX] [MASK] [MIN_SLICE_NVOX] [MIN_STREAK_LEN] [DO_OUT_SLICE_PARAM_FLAG] [NO_OUT_BAD_MASK_FLAG] [NO_OUT_TEXT_VALS_FLAG] [DONT_USE_STREAK_FLAG] [DONT_USE_DROP_FLAG] [DONT_USE_CORR_FLAG] [MIN_STREAK_VAL] [MIN_DROP_FRAC] [MIN_DROP_DIFF] [MIN_CORR_LEN] [MIN_CORR_CORR]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -15,7 +15,8 @@
       "type": "File",
       "optional": false,
       "id": "input_file",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-input"
     },
     {
       "description": "Prefix for output file name.",
@@ -23,7 +24,8 @@
       "type": "String",
       "optional": false,
       "id": "output_prefix",
-      "name": "Output prefix"
+      "name": "Output prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "command-line-flag": "-mask",

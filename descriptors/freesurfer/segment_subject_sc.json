@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://freesurfer.net/fswiki/segment_subject_sc",
   "description": "Front-end for MINC's mritotal. Computes the Talairach transform for mapping the input volume to the MNI305 space.",
-  "command-line": "mri_nu_correct.mni --i [INPUT_VOLUME] --xfm [OUTPUT_XFM] [LOG_FILE] [DEBUG_FLAG]",
+  "command-line": "mri_nu_correct.mni -[INPUT_VOLUME] -[OUTPUT_XFM] [LOG_FILE] [DEBUG_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "invol",
-      "name": "Input Volume"
+      "name": "Input Volume",
+      "command-line-flag": "-i"
     },
     {
       "description": "Output xfm file",
@@ -25,7 +26,8 @@
       "type": "File",
       "optional": false,
       "id": "outxfm",
-      "name": "Output XFM File"
+      "name": "Output XFM File",
+      "command-line-flag": "-xfm"
     },
     {
       "command-line-flag": "--log",

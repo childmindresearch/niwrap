@@ -1,12 +1,15 @@
 {
   "name": "antsBrainExtraction.sh",
-  "command-line": "antsBrainExtraction.sh -d [DIMENSION] -a [ANATOMICAL_IMAGE] -e [BRAIN_EXTRACTION_TEMPLATE] -m [BRAIN_EXTRACTION_PROBABILITY_MASK] [TISSUE_CLASSIFICATION] [BRAIN_EXTRACTION_REGISTRATION_MASK] [KEEP_TEMP] [SINGLE_FLOAT_PRECISION] [INITIAL_MOVING_TRANSFORM] [ROTATION_SEARCH] [IMAGE_SUFFIX] [TRANSLATION_SEARCH] [RANDOM_SEEDING] [DEBUG_MODE] -o [OUTPUT_PREFIX]",
+  "command-line": "antsBrainExtraction.sh [DIMENSION] [ANATOMICAL_IMAGE] [BRAIN_EXTRACTION_TEMPLATE] [BRAIN_EXTRACTION_PROBABILITY_MASK] [TISSUE_CLASSIFICATION] [BRAIN_EXTRACTION_REGISTRATION_MASK] [KEEP_TEMP] [SINGLE_FLOAT_PRECISION] [INITIAL_MOVING_TRANSFORM] [ROTATION_SEARCH] [IMAGE_SUFFIX] [TRANSLATION_SEARCH] [RANDOM_SEEDING] [DEBUG_MODE] [OUTPUT_PREFIX]",
   "author": "ANTs Developers",
   "description": "antsBrainExtraction.sh performs template-based brain extraction.",
   "url": "https://github.com/ANTsX/ANTs",
   "tool-version": "2.5.3",
   "schema-version": "0.5",
-  "container-image": { "type": "docker", "image": "antsx/ants:v2.5.3" },
+  "container-image": {
+    "type": "docker",
+    "image": "antsx/ants:v2.5.3"
+  },
   "inputs": [
     {
       "description": "Output prefix",
@@ -15,7 +18,8 @@
       "optional": true,
       "id": "output_prefix",
       "name": "Output Prefix",
-      "default-value": "output"
+      "default-value": "output",
+      "command-line-flag": "-o"
     },
     {
       "description": "Image dimension (2 or 3)",
@@ -25,7 +29,8 @@
       "id": "image_dimension",
       "name": "Image Dimension",
       "default-value": 3,
-      "integer": true
+      "integer": true,
+      "command-line-flag": "-d"
     },
     {
       "description": "Anatomical image (Structural image, typically T1)",
@@ -33,7 +38,8 @@
       "type": "File",
       "optional": false,
       "id": "anatomical_image",
-      "name": "Anatomical Image"
+      "name": "Anatomical Image",
+      "command-line-flag": "-a"
     },
     {
       "description": "Brain extraction template (Anatomical template)",
@@ -41,7 +47,8 @@
       "type": "File",
       "optional": false,
       "id": "template",
-      "name": "Brain Extraction Template"
+      "name": "Brain Extraction Template",
+      "command-line-flag": "-e"
     },
     {
       "description": "Brain extraction probability mask",
@@ -49,7 +56,8 @@
       "type": "File",
       "optional": false,
       "id": "probability_mask",
-      "name": "Brain Extraction Probability Mask"
+      "name": "Brain Extraction Probability Mask",
+      "command-line-flag": "-m"
     },
     {
       "command-line-flag": "-c",

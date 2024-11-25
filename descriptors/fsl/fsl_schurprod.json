@@ -3,7 +3,7 @@
   "name": "fsl_schurprod",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "Generates element-wise matrix products or product of matrices against vectors from 4D data",
-  "command-line": "fsl_schurprod -i [INPUT_FILE] -d [DESIGN_FILE] -o [OUTPUT_FILE] [REGRESSION_FLAG] [INDEX] [MASK_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
+  "command-line": "fsl_schurprod [INPUT_FILE] [DESIGN_FILE] [OUTPUT_FILE] [REGRESSION_FLAG] [INDEX] [MASK_FILE] [VERBOSE_FLAG] [HELP_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -15,7 +15,8 @@
       "type": "File",
       "optional": false,
       "id": "input_file",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-i"
     },
     {
       "description": "ASCII text matrix of time series to be correlated",
@@ -23,7 +24,8 @@
       "type": "File",
       "optional": false,
       "id": "design_file",
-      "name": "Design file"
+      "name": "Design file",
+      "command-line-flag": "-d"
     },
     {
       "description": "Output file base name",
@@ -31,7 +33,8 @@
       "type": "String",
       "optional": false,
       "id": "output_file",
-      "name": "Output file"
+      "name": "Output file",
+      "command-line-flag": "-o"
     },
     {
       "command-line-flag": "-r",

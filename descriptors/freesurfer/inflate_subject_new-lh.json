@@ -3,7 +3,7 @@
   "name": "inflate_subject_new-lh",
   "author": "FreeSurfer Developers",
   "description": "Tool for inflating the left hemisphere of a subject in FreeSurfer.",
-  "command-line": "inflate_subject_new-lh [SUBJECT_DIR] [OPTIONS]",
+  "command-line": "inflate_subject_new[SUBJECT_DIR] [OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -16,7 +16,8 @@
       "type": "String",
       "optional": false,
       "id": "subject_dir",
-      "name": "Subject Directory"
+      "name": "Subject Directory",
+      "command-line-flag": "-lh"
     }
   ],
   "output-files": [

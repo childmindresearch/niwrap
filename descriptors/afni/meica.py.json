@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Multi-Echo Independent Component Analysis for fMRI denoising",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "meica.py -d [INPUT_FILE] -e [ECHOTIMES] -a [AFFINE] -o [OUTPUT_DIRECTORY] [COMPONENTS_FLAG] [TLRC_FLAG] [THRESHOLD] [DEBUG_FLAG]",
+  "command-line": "meica.py [INPUT_FILE] [ECHOTIMES] [AFFINE] [OUTPUT_DIRECTORY] [COMPONENTS_FLAG] [TLRC_FLAG] [THRESHOLD] [DEBUG_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -16,7 +16,8 @@
       "type": "File",
       "optional": false,
       "id": "infile",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-d"
     },
     {
       "description": "Echo times (e.g. 15.0,30.0,45.0)",
@@ -24,7 +25,8 @@
       "type": "String",
       "optional": false,
       "id": "echo_times",
-      "name": "Echo times"
+      "name": "Echo times",
+      "command-line-flag": "-e"
     },
     {
       "description": "Affine registration matrix",
@@ -32,7 +34,8 @@
       "type": "String",
       "optional": false,
       "id": "affine",
-      "name": "Affine registration matrix"
+      "name": "Affine registration matrix",
+      "command-line-flag": "-a"
     },
     {
       "description": "Output directory",
@@ -40,7 +43,8 @@
       "type": "String",
       "optional": false,
       "id": "output_directory",
-      "name": "Output directory"
+      "name": "Output directory",
+      "command-line-flag": "-o"
     },
     {
       "command-line-flag": "-c",

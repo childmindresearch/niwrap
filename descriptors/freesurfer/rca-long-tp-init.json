@@ -3,7 +3,7 @@
   "name": "rca-long-tp-init",
   "author": "FreeSurfer Developers",
   "description": "Initialize long timepoint subject for recon-all processing.",
-  "command-line": "rca-long-tp-init -long [TP] [BASE] [USE_LONG_BASE_CTRL_VOL] [HEMISPHERE] [EXPERT_OPTS_FILE] [SUBJECT]",
+  "command-line": "rca-long-tp-init [TP] [BASE] [USE_LONG_BASE_CTRL_VOL] [HEMISPHERE] [EXPERT_OPTS_FILE] [SUBJECT]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,8 @@
       "type": "String",
       "optional": false,
       "id": "timepoint",
-      "name": "Timepoint"
+      "name": "Timepoint",
+      "command-line-flag": "-long"
     },
     {
       "description": "Base identifier",

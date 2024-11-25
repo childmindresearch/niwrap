@@ -3,7 +3,7 @@
   "name": "FSread_annot",
   "author": "AFNI Developers",
   "description": "Reads a FreeSurfer annotation file and outputs an equivalent ROI file and/or a colormap file for use with SUMA.",
-  "command-line": "FSread_annot --input [INPUT_FILE] [HEMI] [FSCMAP] [FSCMAP_RANGE] [FSVERSION] [COL_1D] [ROI_1D] [CMAP_1D] [SHOW_FSCMAP] [DSET] [HELP]",
+  "command-line": "FSread_annot -[INPUT_FILE] [HEMI] [FSCMAP] [FSCMAP_RANGE] [FSVERSION] [COL_1D] [ROI_1D] [CMAP_1D] [SHOW_FSCMAP] [DSET] [HELP]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,8 @@
       "type": "File",
       "optional": false,
       "id": "infile",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-input"
     },
     {
       "command-line-flag": "-hemi",

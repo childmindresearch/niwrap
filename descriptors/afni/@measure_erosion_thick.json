@@ -3,7 +3,7 @@
   "name": "@measure_erosion_thick",
   "author": "AFNI Developers",
   "description": "Compute thickness of mask using erosion method.",
-  "command-line": "@measure_erosion_thick -maskset [MASKSET] -surfset [SURFSET] -outdir [OUTDIR] [RESAMPLE] [SURF_SMOOTH] [VOLUME_SMOOTH] [MAX_THICK] [DEPTH_SEARCH] [KEEP_TEMP] [SURF_SMOOTH_METHOD]",
+  "command-line": "@measure_erosion_thick [MASKSET] [SURFSET] [OUTDIR] [RESAMPLE] [SURF_SMOOTH] [VOLUME_SMOOTH] [MAX_THICK] [DEPTH_SEARCH] [KEEP_TEMP] [SURF_SMOOTH_METHOD]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,8 @@
       "type": "File",
       "optional": false,
       "id": "maskset",
-      "name": "Maskset"
+      "name": "Maskset",
+      "command-line-flag": "-maskset"
     },
     {
       "description": "Surface dataset onto which to map thickness (probably a pial/gray matter surface).",
@@ -20,7 +21,8 @@
       "type": "File",
       "optional": false,
       "id": "surfset",
-      "name": "Surfset"
+      "name": "Surfset",
+      "command-line-flag": "-surfset"
     },
     {
       "description": "Output directory. If not specified, erosion_thickdir is used.",
@@ -28,7 +30,8 @@
       "type": "String",
       "optional": true,
       "id": "outdir",
-      "name": "Output Directory"
+      "name": "Output Directory",
+      "command-line-flag": "-outdir"
     },
     {
       "command-line-flag": "-resample",

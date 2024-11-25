@@ -2,7 +2,7 @@
   "name": "segment_subject_old_skull_strip",
   "description": "Front-end for MINCs mritotal for computing the talairach transform that maps the input volume to the MNI305.",
   "tool-version": "7.4.1",
-  "command-line": "mri_nu_correct.mni --i [INPUT_VOLUME] --xfm [OUTPUT_XFM] [LOG_FILE] [HELP_FLAG] [DEBUG_FLAG] [VERSION_FLAG]",
+  "command-line": "mri_nu_correct.mni -[INPUT_VOLUME] -[OUTPUT_XFM] [LOG_FILE] [HELP_FLAG] [DEBUG_FLAG] [VERSION_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -15,7 +15,8 @@
       "description": "Input volume file",
       "type": "File",
       "value-key": "[INPUT_VOLUME]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-i"
     },
     {
       "id": "output_xfm",
@@ -23,7 +24,8 @@
       "description": "Output xfm file",
       "type": "String",
       "value-key": "[OUTPUT_XFM]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-xfm"
     },
     {
       "id": "log_file",

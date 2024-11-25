@@ -4,7 +4,7 @@
   "description": "AFNI Group Analysis Program with Linear Mixed-Effects Modeling Approach",
   "author": "AFNI Developers",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dLME -prefix [PREFIX] -model [MODEL] -dataTable [DATA_TABLE] -bounds [BOUNDS] [CIO_FLAG] -corStr [COR_STR] -cutoff [CUTOFF] [DBG_ARGS_FLAG] -jobs [JOBS] -gltCode [GLT_CODE] -gltLabel [GLT_LABEL] -glfLabel [GLF_LABEL] -glfCode [GLF_CODE] [ICC_FLAG] [ICCB_FLAG] [LOG_LIK_FLAG] [LOGIT_FLAG] -ml [ML_FLAG] -qVarsCenters [QVARS_CENTERS] -qVars [QVARS] -ranEff [RANEFF] -mask [MASK] -num_glf [NUM_GLF] -num_glt [NUM_GLT] -resid [RESID] -RE [RE] -REprefix [REPREFIX] -RIO [RIO_FLAG] [SHOW_OPTIONS_FLAG] -SS_type [SS_TYPE]",
+  "command-line": "3dLME [PREFIX] [MODEL] [DATA_TABLE] [BOUNDS] [CIO_FLAG] [COR_STR] [CUTOFF] [DBG_ARGS_FLAG] [JOBS] [GLT_CODE] [GLT_LABEL] [GLF_LABEL] [GLF_CODE] [ICC_FLAG] [ICCB_FLAG] [LOG_LIK_FLAG] [LOGIT_FLAG] -ml [ML_FLAG] [QVARS_CENTERS] [QVARS] [RANEFF] [MASK] [NUM_GLF] [NUM_GLT] [RESID] [RE] [REPREFIX] -RIO [RIO_FLAG] [SHOW_OPTIONS_FLAG] [SS_TYPE]",
   "inputs": [
     {
       "description": "Prefix for output files",
@@ -12,7 +12,8 @@
       "name": "Output Prefix",
       "type": "String",
       "value-key": "[PREFIX]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-prefix"
     },
     {
       "description": "Model formula describing the fixed effects",
@@ -20,7 +21,8 @@
       "name": "Model Formula",
       "type": "String",
       "value-key": "[MODEL]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-model"
     },
     {
       "description": "Data table description",
@@ -28,7 +30,8 @@
       "name": "Data Table",
       "type": "String",
       "value-key": "[DATA_TABLE]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-dataTable"
     },
     {
       "description": "Lower and upper bounds for outlier removal",
@@ -39,7 +42,8 @@
       "max-list-entries": 2,
       "list": true,
       "value-key": "[BOUNDS]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-bounds"
     },
     {
       "description": "Use AFNI's C io functions (default) or R's io functions with -Rio",
@@ -56,7 +60,8 @@
       "name": "Correlation Structure",
       "type": "String",
       "value-key": "[COR_STR]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-corStr"
     },
     {
       "description": "Specify the cutoff value for accuracy in logistic regression analysis",
@@ -64,7 +69,8 @@
       "name": "Cutoff Value",
       "type": "Number",
       "value-key": "[CUTOFF]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-cutoff"
     },
     {
       "description": "Enable saving parameters for debugging",
@@ -81,7 +87,8 @@
       "name": "Number of Jobs",
       "type": "Number",
       "value-key": "[JOBS]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-jobs"
     },
     {
       "description": "General linear test coding",
@@ -89,7 +96,8 @@
       "name": "GLT Code",
       "type": "String",
       "value-key": "[GLT_CODE]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-gltCode"
     },
     {
       "description": "Label for general linear test",
@@ -97,7 +105,8 @@
       "name": "GLT Label",
       "type": "String",
       "value-key": "[GLT_LABEL]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-gltLabel"
     },
     {
       "description": "Label for general linear F-test",
@@ -105,7 +114,8 @@
       "name": "GLF Label",
       "type": "String",
       "value-key": "[GLF_LABEL]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-glfLabel"
     },
     {
       "description": "General linear F-test coding",
@@ -113,7 +123,8 @@
       "name": "GLF Code",
       "type": "String",
       "value-key": "[GLF_CODE]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-glfCode"
     },
     {
       "description": "Compute voxel-wise intra-class correlation",
@@ -166,7 +177,8 @@
       "name": "QVars Centers",
       "type": "String",
       "value-key": "[QVARS_CENTERS]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-qVarsCenters"
     },
     {
       "description": "Identify quantitative variables (or covariates)",
@@ -174,7 +186,8 @@
       "name": "Quantitative Variables",
       "type": "String",
       "value-key": "[QVARS]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-qVars"
     },
     {
       "description": "Specify the random effects",
@@ -182,7 +195,8 @@
       "name": "Random Effects",
       "type": "String",
       "value-key": "[RANEFF]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-ranEff"
     },
     {
       "description": "Mask file for voxel processing",
@@ -190,7 +204,8 @@
       "name": "Mask File",
       "type": "File",
       "value-key": "[MASK]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-mask"
     },
     {
       "description": "Number of general linear F-tests",
@@ -198,7 +213,8 @@
       "name": "Number of GLFs",
       "type": "Number",
       "value-key": "[NUM_GLF]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-num_glf"
     },
     {
       "description": "Number of general linear t-tests",
@@ -206,7 +222,8 @@
       "name": "Number of GLTs",
       "type": "Number",
       "value-key": "[NUM_GLT]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-num_glt"
     },
     {
       "description": "Prefix for residuals output file",
@@ -214,7 +231,8 @@
       "name": "Residuals Prefix",
       "type": "String",
       "value-key": "[RESID]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-resid"
     },
     {
       "description": "List of variables whose random effects are saved in the output",
@@ -222,7 +240,8 @@
       "name": "Random Effects Variables",
       "type": "String",
       "value-key": "[RE]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-RE"
     },
     {
       "description": "Prefix for random effects output file",
@@ -230,7 +249,8 @@
       "name": "Random Effects Prefix",
       "type": "String",
       "value-key": "[REPREFIX]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-REprefix"
     },
     {
       "description": "Use R's io functions instead of AFNI's C io functions",
@@ -256,7 +276,8 @@
       "name": "Sums of Squares Type",
       "type": "Number",
       "value-key": "[SS_TYPE]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-SS_type"
     }
   ],
   "output-files": [

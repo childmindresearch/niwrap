@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "N/A",
   "description": "Converts a set of surface labels to an annotation file.",
-  "command-line": "mris_label2annot --s [SUBJECT] --h [HEMI] --ctab [CTABFILE] --a [ANNOTNAME] [OPTIONAL_ARGS]",
+  "command-line": "mris_label2annot -[SUBJECT] -[HEMI] -[CTABFILE] -[ANNOTNAME] [OPTIONAL_ARGS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -13,7 +13,8 @@
       "type": "String",
       "optional": false,
       "id": "subject",
-      "name": "Subject"
+      "name": "Subject",
+      "command-line-flag": "-s"
     },
     {
       "description": "Hemisphere (lh or rh)",
@@ -21,7 +22,8 @@
       "type": "String",
       "optional": false,
       "id": "hemi",
-      "name": "Hemisphere"
+      "name": "Hemisphere",
+      "command-line-flag": "-h"
     },
     {
       "description": "Colortable file (like FreeSurferColorLUT.txt)",
@@ -29,7 +31,8 @@
       "type": "File",
       "optional": false,
       "id": "ctabfile",
-      "name": "Colortable File"
+      "name": "Colortable File",
+      "command-line-flag": "-ctab"
     },
     {
       "description": "Output annotation name",
@@ -37,7 +40,8 @@
       "type": "String",
       "optional": false,
       "id": "annotname",
-      "name": "Annotation Name"
+      "name": "Annotation Name",
+      "command-line-flag": "-a"
     },
     {
       "command-line-flag": "--offset",

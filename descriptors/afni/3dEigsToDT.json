@@ -4,7 +4,7 @@
   "author": "AFNI Developers",
   "description": "Convert set of DTI eigenvectors and eigenvalues to a diffusion tensor, with optional value-scaling and vector-flipping.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dEigsToDT -eig_vals [EIG_VALS] -eig_vecs [EIG_VECS] -prefix [PREFIX] [MASK] [FLIP_X] [FLIP_Y] [FLIP_Z] [SCALE_EIGS]",
+  "command-line": "3dEigsToDT [EIG_VALS] [EIG_VECS] [PREFIX] [MASK] [FLIP_X] [FLIP_Y] [FLIP_Z] [SCALE_EIGS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -16,7 +16,8 @@
       "type": "String",
       "optional": false,
       "id": "eig_vals",
-      "name": "Eigenvalue Files Descriptor"
+      "name": "Eigenvalue Files Descriptor",
+      "command-line-flag": "-eig_vals"
     },
     {
       "description": "Searchable descriptor for finding all three required eigenvector files. It should list all three eigenvector files in order matching the eigenvalue files.",
@@ -24,7 +25,8 @@
       "type": "String",
       "optional": false,
       "id": "eig_vecs",
-      "name": "Eigenvector Files Descriptor"
+      "name": "Eigenvector Files Descriptor",
+      "command-line-flag": "-eig_vecs"
     },
     {
       "description": "Prefix for the output file name. It is recommended to include a 'DT' label in it.",
@@ -32,7 +34,8 @@
       "type": "String",
       "optional": false,
       "id": "prefix",
-      "name": "Output File Prefix"
+      "name": "Output File Prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "command-line-flag": "-mask",

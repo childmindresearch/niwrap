@@ -5,7 +5,7 @@
   "descriptor-url": "https://afni.nimh.nih.gov/3dSliceNDice",
   "description": "Calculates the Dice coefficient between two volumes on a slice-by-slice basis.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dSliceNDice -insetA [INPUT_FILE_A] -insetB [INPUT_FILE_B] -prefix [OUTPUT_PREFIX] [OUT_DOMAIN_FLAG] [NO_CMD_ECHO_FLAG]",
+  "command-line": "3dSliceNDice [INPUT_FILE_A] [INPUT_FILE_B] [OUTPUT_PREFIX] [OUT_DOMAIN_FLAG] [NO_CMD_ECHO_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "infile_a",
-      "name": "Input file A"
+      "name": "Input file A",
+      "command-line-flag": "-insetA"
     },
     {
       "description": "Input dataset B (e.g. mask_2.nii.gz)",
@@ -25,7 +26,8 @@
       "type": "File",
       "optional": false,
       "id": "infile_b",
-      "name": "Input file B"
+      "name": "Input file B",
+      "command-line-flag": "-insetB"
     },
     {
       "description": "Prefix for output files (e.g. result_prefix)",
@@ -33,7 +35,8 @@
       "type": "String",
       "optional": false,
       "id": "output_prefix",
-      "name": "Output prefix"
+      "name": "Output prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "command-line-flag": "-out_domain",

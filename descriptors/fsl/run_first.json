@@ -4,7 +4,7 @@
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool to run FSL's FIRST for subcortical segmentation",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "run_first -i [INPUT_IMAGE] -t [TRANSFORMATION_MATRIX] -n [N_MODES] -o [OUTPUT_BASENAME] -m [MODEL_NAME] [VERBOSE] [INTREF] [LOADBVARS] [MULTIPLE_IMAGES]",
+  "command-line": "run_first [INPUT_IMAGE] [TRANSFORMATION_MATRIX] [N_MODES] [OUTPUT_BASENAME] [MODEL_NAME] [VERBOSE] [INTREF] [LOADBVARS] [MULTIPLE_IMAGES]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -16,7 +16,8 @@
       "type": "File",
       "optional": false,
       "id": "input_image",
-      "name": "Input Image"
+      "name": "Input Image",
+      "command-line-flag": "-i"
     },
     {
       "description": "Input transformation matrix file (e.g. input_to_mni.mat)",
@@ -24,7 +25,8 @@
       "type": "File",
       "optional": false,
       "id": "transformation_matrix",
-      "name": "Transformation Matrix"
+      "name": "Transformation Matrix",
+      "command-line-flag": "-t"
     },
     {
       "description": "Number of modes",
@@ -32,7 +34,8 @@
       "type": "Number",
       "optional": false,
       "id": "n_modes",
-      "name": "Number of Modes"
+      "name": "Number of Modes",
+      "command-line-flag": "-n"
     },
     {
       "description": "Output basename",
@@ -40,7 +43,8 @@
       "type": "String",
       "optional": false,
       "id": "output_basename",
-      "name": "Output Basename"
+      "name": "Output Basename",
+      "command-line-flag": "-o"
     },
     {
       "description": "Model name",
@@ -48,7 +52,8 @@
       "type": "File",
       "optional": false,
       "id": "model_name",
-      "name": "Model Name"
+      "name": "Model Name",
+      "command-line-flag": "-m"
     },
     {
       "command-line-flag": "-v",

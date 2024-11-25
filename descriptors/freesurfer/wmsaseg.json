@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://surfer.nmr.mgh.harvard.edu/",
   "description": "White Matter Hyperintensity Segmentation Tool",
-  "command-line": "wmsaseg --s [SUBJECT] [SOURCE_ORIG] [SOURCE_LONG] [OUTPUT_SUB_DIR] [GCA_FILE] [NO_REG_FLAG] [NO_CANORM_FLAG] [INIT_SPM_FLAG] [REG_ONLY_FLAG] [HALO1_FLAG] [HALO2_FLAG]",
+  "command-line": "wmsaseg -[SUBJECT] [SOURCE_ORIG] [SOURCE_LONG] [OUTPUT_SUB_DIR] [GCA_FILE] [NO_REG_FLAG] [NO_CANORM_FLAG] [INIT_SPM_FLAG] [REG_ONLY_FLAG] [HALO1_FLAG] [HALO2_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -17,7 +17,8 @@
       "type": "String",
       "optional": false,
       "id": "subject",
-      "name": "Subject"
+      "name": "Subject",
+      "command-line-flag": "-s"
     },
     {
       "command-line-flag": "--s+orig",

@@ -3,7 +3,7 @@
   "tool-version": "24.2.06",
   "description": "Maps the track file (*.trk) output of 3dTrackID to another space using the 1Dmatrix_save info of 3dAllineate.",
   "author": "AFNI Developers",
-  "command-line": "map_TrackID -prefix [PREFIX] -in_trk [IN_TRK] -in_map [IN_MAP] -ref [REFERENCE] [VERBOSE_FLAG] [ORIG_ZERO_FLAG] [LINE_ONLY_NUM_FLAG] [ALREADY_INV_FLAG]",
+  "command-line": "map_TrackID [PREFIX] [IN_TRK] [IN_MAP] [REFERENCE] [VERBOSE_FLAG] [ORIG_ZERO_FLAG] [LINE_ONLY_NUM_FLAG] [ALREADY_INV_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -15,7 +15,8 @@
       "description": "Prefix for the output track file.",
       "type": "String",
       "value-key": "[PREFIX]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-prefix"
     },
     {
       "id": "in_trk",
@@ -23,7 +24,8 @@
       "description": "The name of the *.trk file to be mapped.",
       "type": "File",
       "value-key": "[IN_TRK]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-in_trk"
     },
     {
       "id": "in_map",
@@ -31,7 +33,8 @@
       "description": "Single line of matrix values for the transformation.",
       "type": "File",
       "value-key": "[IN_MAP]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-in_map"
     },
     {
       "id": "reference",
@@ -39,7 +42,8 @@
       "description": "3D data set in the space to which the TRK file is being mapped.",
       "type": "File",
       "value-key": "[REFERENCE]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-ref"
     },
     {
       "id": "verbose",

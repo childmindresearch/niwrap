@@ -3,7 +3,7 @@
   "name": "3dSynthesize",
   "author": "AFNI Developers",
   "description": "Reads a '-cbucket' dataset and a '.xmat.1D' matrix from 3dDeconvolve, and synthesizes a fit dataset using selected sub-bricks and matrix columns.",
-  "command-line": "3dSynthesize -cbucket [C_BUCKET] -matrix [MATRIX] -select [SELECT] -prefix [PREFIX] [DRY_FLAG] [TR] [CENFILL]",
+  "command-line": "3dSynthesize [C_BUCKET] [MATRIX] [SELECT] [PREFIX] [DRY_FLAG] [TR] [CENFILL]",
   "inputs": [
     {
       "description": "Input dataset from 3dDeconvolve via the '-cbucket' option.",
@@ -11,7 +11,8 @@
       "type": "File",
       "optional": false,
       "id": "c_bucket",
-      "name": "Cbucket dataset"
+      "name": "Cbucket dataset",
+      "command-line-flag": "-cbucket"
     },
     {
       "description": "Matrix file from 3dDeconvolve via the '-x1D' option.",
@@ -19,7 +20,8 @@
       "type": "File",
       "optional": false,
       "id": "matrix",
-      "name": "Matrix file"
+      "name": "Matrix file",
+      "command-line-flag": "-matrix"
     },
     {
       "description": "Output result into dataset with the specified name.",
@@ -27,7 +29,8 @@
       "type": "String",
       "optional": false,
       "id": "prefix",
-      "name": "Output prefix"
+      "name": "Output prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "description": "Select columns from the matrix and corresponding sub-bricks from the cbucket. Can use forms like 'baseline', 'polort', 'allfunc', 'allstim', 'all', 'something', or numbers/ranges.",
@@ -35,7 +38,8 @@
       "type": "String",
       "optional": false,
       "id": "select",
-      "name": "Select columns"
+      "name": "Select columns",
+      "command-line-flag": "-select"
     },
     {
       "command-line-flag": "-dry",

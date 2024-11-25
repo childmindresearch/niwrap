@@ -3,7 +3,7 @@
   "name": "map_central_sulcus",
   "author": "FreeSurfer Developers",
   "description": "Performs all, or any part of, the FreeSurfer cortical reconstruction process.",
-  "command-line": "recon-all -subjid [SUBJID] [PROCESS_DIRECTIVE] [HEMI_PROCESS_FLAG] [EXPERT_PREFS_FILE] [EXPERT_OPTS_USE_FLAG] [EXPERT_OPTS_CLEAN_FLAG] [EXPERT_OPTS_OVERWRITE_FLAG] [WATERSHED_CMD] [XMASK_FILE] [WSLESS_FLAG] [WSMORE_FLAG] [WSATLAS_FLAG] [NO_WS_ATLAS_FLAG] [NO_WS_GCAATLAS_FLAG] [WSTHRESH] [WSSEED] [NORM3DITERS] [NORMMAXGRAD] [NORM1_B] [NORM2_B] [NORM1_N] [NORM2_N] [CM_FLAG] [NO_FIX_WITH_GA_FLAG] [FIX_DIAG_ONLY_FLAG] [SEG_WLO] [SEG_GHI] [NOTHICKEN_FLAG] [NO_CA_ALIGN_AFTER_FLAG] [NO_CA_ALIGN_FLAG] [DEFACE_FLAG] [MPRAGE_FLAG] [WASHU_MPRAGE_FLAG] [SCHWARTZYA3T_ATLAS_FLAG] [MAIL_USERNAME] [THREADS]",
+  "command-line": "recon-all [SUBJID] [PROCESS_DIRECTIVE] [HEMI_PROCESS_FLAG] [EXPERT_PREFS_FILE] [EXPERT_OPTS_USE_FLAG] [EXPERT_OPTS_CLEAN_FLAG] [EXPERT_OPTS_OVERWRITE_FLAG] [WATERSHED_CMD] [XMASK_FILE] [WSLESS_FLAG] [WSMORE_FLAG] [WSATLAS_FLAG] [NO_WS_ATLAS_FLAG] [NO_WS_GCAATLAS_FLAG] [WSTHRESH] [WSSEED] [NORM3DITERS] [NORMMAXGRAD] [NORM1_B] [NORM2_B] [NORM1_N] [NORM2_N] [CM_FLAG] [NO_FIX_WITH_GA_FLAG] [FIX_DIAG_ONLY_FLAG] [SEG_WLO] [SEG_GHI] [NOTHICKEN_FLAG] [NO_CA_ALIGN_AFTER_FLAG] [NO_CA_ALIGN_FLAG] [DEFACE_FLAG] [MPRAGE_FLAG] [WASHU_MPRAGE_FLAG] [SCHWARTZYA3T_ATLAS_FLAG] [MAIL_USERNAME] [THREADS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -16,7 +16,8 @@
       "type": "String",
       "optional": false,
       "id": "subjid",
-      "name": "Subject ID"
+      "name": "Subject ID",
+      "command-line-flag": "-subjid"
     },
     {
       "description": "Process directive for recon-all (e.g. -all, -autorecon-all, -autorecon1)",

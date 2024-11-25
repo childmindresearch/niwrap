@@ -5,7 +5,7 @@
   "descriptor-url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/",
   "description": "Multivariate Linear Model regression on time courses and/or 3D/4D images using SVD (PCA), PLS, normalised PLS, CVA, SVD-CVA or MLM",
   "url": "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki",
-  "command-line": "fsl_mvlm -i [INPUT_FILE] -o [BASENAME_OUTPUT_FILES] [ALGORITHM] [DESIGN_MATRIX] [MASK_IMAGE] [DESIGN_NORMALIZATION] [VN_PERFORM] [DEMEAN] [NMF_DIM] [NMF_ITT] [VERBOSE] [OUT_DATA] [OUT_VNSCALES]",
+  "command-line": "fsl_mvlm [INPUT_FILE] [BASENAME_OUTPUT_FILES] [ALGORITHM] [DESIGN_MATRIX] [MASK_IMAGE] [DESIGN_NORMALIZATION] [VN_PERFORM] [DEMEAN] [NMF_DIM] [NMF_ITT] [VERBOSE] [OUT_DATA] [OUT_VNSCALES]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "input_file",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-i"
     },
     {
       "description": "Basename for output files",
@@ -25,7 +26,8 @@
       "type": "String",
       "optional": false,
       "id": "basename_output_files",
-      "name": "Output basename"
+      "name": "Output basename",
+      "command-line-flag": "-o"
     },
     {
       "command-line-flag": "-a",

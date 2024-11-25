@@ -3,7 +3,7 @@
   "name": "mri_defacer",
   "author": "FreeSurfer Developers",
   "description": "Tool for defacing MRI images to remove facial features",
-  "command-line": "mri_defacer --i [INPUT_VOL] --hm [HEADMASK] --ts [TEMPSURF] [TEMPLABEL] [WATERMARK] --o [DEFACED_VOL] [FACEMASK] [CONST_IN] [CONST_OUT] [XMASK] [OPTIONS]",
+  "command-line": "mri_defacer -[INPUT_VOL] -[HEADMASK] -[TEMPSURF] [TEMPLABEL] [WATERMARK] -[DEFACED_VOL] [FACEMASK] [CONST_IN] [CONST_OUT] [XMASK] [OPTIONS]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,8 @@
       "type": "File",
       "optional": false,
       "id": "input_volume",
-      "name": "Input Volume"
+      "name": "Input Volume",
+      "command-line-flag": "-i"
     },
     {
       "description": "Head mask volume",
@@ -20,7 +21,8 @@
       "type": "File",
       "optional": false,
       "id": "headmask",
-      "name": "Head Mask"
+      "name": "Head Mask",
+      "command-line-flag": "-hm"
     },
     {
       "description": "Template surface file",
@@ -28,7 +30,8 @@
       "type": "File",
       "optional": false,
       "id": "tempsurf",
-      "name": "Template Surface"
+      "name": "Template Surface",
+      "command-line-flag": "-ts"
     },
     {
       "command-line-flag": "--l",
@@ -55,7 +58,8 @@
       "type": "String",
       "optional": false,
       "id": "defaced_volume",
-      "name": "Defaced Volume"
+      "name": "Defaced Volume",
+      "command-line-flag": "-o"
     },
     {
       "command-line-flag": "--m",

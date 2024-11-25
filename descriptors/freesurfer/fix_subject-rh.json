@@ -1,6 +1,6 @@
 {
   "name": "fix_subject-rh",
-  "command-line": "fix_subject-rh [INPUT_DIRECTORY] [FLAG]",
+  "command-line": "fix_subject[INPUT_DIRECTORY] [FLAG]",
   "description": "A tool from FreeSurfer that performs operations on the right hemisphere data within a specified directory.",
   "inputs": [
     {
@@ -9,7 +9,8 @@
       "type": "String",
       "description": "Directory where the subject's right hemisphere data is located.",
       "value-key": "[INPUT_DIRECTORY]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-rh"
     },
     {
       "command-line-flag": "--help",

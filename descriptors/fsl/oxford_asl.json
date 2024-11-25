@@ -1,5 +1,5 @@
 {
-  "command-line": "oxford_asl -i <asl_data> -o <output_dir_name> [options]",
+  "command-line": "oxford_asl <asl_data> <output_dir_name> [options]",
   "tool-version": "6.0.4",
   "name": "oxford_asl",
   "author": "FMRIB Analysis Group, University of Oxford",
@@ -16,7 +16,8 @@
       "type": "File",
       "value-key": "<asl_data>",
       "description": "Input ASL data",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-i"
     },
     {
       "id": "output_dir_name",
@@ -24,7 +25,8 @@
       "type": "String",
       "value-key": "<output_dir_name>",
       "description": "Output directory name",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-o"
     },
     {
       "id": "mask",

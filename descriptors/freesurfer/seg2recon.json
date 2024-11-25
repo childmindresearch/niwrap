@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "seg2recon",
   "description": "Creates and populates a subjects directory from an input image and segmentation suitable for running recon-all.",
-  "command-line": "seg2recon --s [SUBJECT] --seg [SEGVOL] --i [INPUTVOL] --ctab [CTAB] [NDILATE] [THREADS] [FORCE_UPDATE_FLAG] [NO_CC_FLAG] [MASK] [HEADMASK] [THRESH] [EXPERT] [RCA_FLAG] [NO_BIAS_FIELD_COR_FLAG]",
+  "command-line": "seg2recon -[SUBJECT] -[SEGVOL] -[INPUTVOL] -[CTAB] [NDILATE] [THREADS] [FORCE_UPDATE_FLAG] [NO_CC_FLAG] [MASK] [HEADMASK] [THRESH] [EXPERT] [RCA_FLAG] [NO_BIAS_FIELD_COR_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -11,7 +11,8 @@
       "optional": false,
       "id": "subject",
       "name": "Subject ID",
-      "description": "Output subject directory name."
+      "description": "Output subject directory name.",
+      "command-line-flag": "-s"
     },
     {
       "value-key": "[SEGVOL]",
@@ -19,7 +20,8 @@
       "optional": false,
       "id": "segvol",
       "name": "Segmentation volume",
-      "description": "Aseg-type volume, e.g., from synthseg, fastsurfer, psacnn, samseg, or aseg."
+      "description": "Aseg-type volume, e.g., from synthseg, fastsurfer, psacnn, samseg, or aseg.",
+      "command-line-flag": "-seg"
     },
     {
       "value-key": "[INPUTVOL]",
@@ -27,7 +29,8 @@
       "optional": false,
       "id": "inputvol",
       "name": "Input volume",
-      "description": "Input volume as would be passed to recon-all."
+      "description": "Input volume as would be passed to recon-all.",
+      "command-line-flag": "-i"
     },
     {
       "value-key": "[CTAB]",
@@ -35,7 +38,8 @@
       "optional": true,
       "id": "ctab",
       "name": "Color table",
-      "description": "Color table for the segmentation. Uses embedded table if available, or FreeSurferColorLUT.txt if not specified."
+      "description": "Color table for the segmentation. Uses embedded table if available, or FreeSurferColorLUT.txt if not specified.",
+      "command-line-flag": "-ctab"
     },
     {
       "command-line-flag": "--ndilate",

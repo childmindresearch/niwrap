@@ -3,7 +3,7 @@
   "name": "abids_json_tool.py",
   "author": "AFNI Developers",
   "description": "This script helps to manipulate json files in various ways.",
-  "command-line": "abids_json_tool.py -input [INPUT_FILE] -prefix [PREFIX] [TASK] [OPTIONS]",
+  "command-line": "abids_json_tool.py [INPUT_FILE] [PREFIX] [TASK] [OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -15,7 +15,8 @@
       "type": "File",
       "optional": false,
       "id": "input_file",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-input"
     },
     {
       "description": "Output file name.",
@@ -23,7 +24,8 @@
       "type": "String",
       "optional": false,
       "id": "prefix",
-      "name": "Prefix"
+      "name": "Prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "command-line-flag": "-txt2json",

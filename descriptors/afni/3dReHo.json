@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/afni/blob/master/src/3dReHo.c",
   "description": "3dReHo calculates Kendall's W per voxel using neighborhood voxels from 4D time series data set.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dReHo -prefix [PREFIX] -inset [INSET] [NNEIGH] [CHI_SQ] [MASK] [NEIGH_RAD] [NEIGH_X] [NEIGH_Y] [NEIGH_Z] [BOX_RAD] [BOX_X] [BOX_Y] [BOX_Z] [IN_ROIS]",
+  "command-line": "3dReHo [PREFIX] [INSET] [NNEIGH] [CHI_SQ] [MASK] [NEIGH_RAD] [NEIGH_X] [NEIGH_Y] [NEIGH_Z] [BOX_RAD] [BOX_X] [BOX_Y] [BOX_Z] [IN_ROIS]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -17,7 +17,8 @@
       "type": "String",
       "optional": false,
       "id": "prefix",
-      "name": "Prefix"
+      "name": "Prefix",
+      "command-line-flag": "-prefix"
     },
     {
       "description": "Time series input file.",
@@ -25,7 +26,8 @@
       "type": "File",
       "optional": false,
       "id": "inset",
-      "name": "Input Time Series File"
+      "name": "Input Time Series File",
+      "command-line-flag": "-inset"
     },
     {
       "command-line-flag": "-chi_sq",

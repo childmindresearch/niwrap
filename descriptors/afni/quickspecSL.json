@@ -3,7 +3,7 @@
   "tool-version": "24.2.06",
   "author": "AFNI Developers",
   "description": "This program makes a *.spec file after a set of intermediate surfaces have been generated with SurfLayers. It can also make a *.spec file that relates inflated surfaces to anatomically-correct surfaces.",
-  "command-line": "quickspecSL -surf_A [surf_A] -surf_B [surf_B] [surf_intermed_pref] [infl_surf_A] [infl_surf_B] [infl_surf_intermed_pref] [both_lr_flag] [out_spec]",
+  "command-line": "quickspecSL [surf_A] [surf_B] [surf_intermed_pref] [infl_surf_A] [infl_surf_B] [infl_surf_intermed_pref] [both_lr_flag] [out_spec]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -15,7 +15,8 @@
       "type": "File",
       "optional": false,
       "id": "surf_A",
-      "name": "Surface A"
+      "name": "Surface A",
+      "command-line-flag": "-surf_A"
     },
     {
       "description": "Outer (anatomically-correct) boundary surface dataset (e.g. pial.gii)",
@@ -23,7 +24,8 @@
       "type": "File",
       "optional": false,
       "id": "surf_B",
-      "name": "Surface B"
+      "name": "Surface B",
+      "command-line-flag": "-surf_B"
     },
     {
       "command-line-flag": "-surf_intermed_pref",

@@ -3,7 +3,7 @@
   "name": "film_cifti",
   "author": "FMRIB Analysis Group, University of Oxford",
   "description": "A tool for statistical analysis of CIFTI files using FILM.",
-  "command-line": "film_cifti -i [INPUT_FILENAME] -o [BASENAME] -l [LEFT_SURFACE] -r [RIGHT_SURFACE] [SUSAN_THRESHOLD] [SUSAN_EXTENT] [SURFACE_SIGMA] [SURFACE_EXTENT] [FILM_OPTIONS]",
+  "command-line": "film_cifti [INPUT_FILENAME] [BASENAME] [LEFT_SURFACE] [RIGHT_SURFACE] [SUSAN_THRESHOLD] [SUSAN_EXTENT] [SURFACE_SIGMA] [SURFACE_EXTENT] [FILM_OPTIONS]",
   "container-image": {
     "type": "docker",
     "image": "brainlife/fsl:6.0.4-patched2"
@@ -15,7 +15,8 @@
       "type": "File",
       "optional": false,
       "id": "input_filename",
-      "name": "Input file"
+      "name": "Input file",
+      "command-line-flag": "-i"
     },
     {
       "description": "Output basename",
@@ -23,7 +24,8 @@
       "type": "String",
       "optional": false,
       "id": "basename",
-      "name": "Output basename"
+      "name": "Output basename",
+      "command-line-flag": "-o"
     },
     {
       "description": "Geometry for left cortex",
@@ -31,7 +33,8 @@
       "type": "File",
       "optional": false,
       "id": "left_surface",
-      "name": "Left cortex surface geometry"
+      "name": "Left cortex surface geometry",
+      "command-line-flag": "-l"
     },
     {
       "description": "Geometry for right cortex",
@@ -39,7 +42,8 @@
       "type": "File",
       "optional": false,
       "id": "right_surface",
-      "name": "Right cortex surface geometry"
+      "name": "Right cortex surface geometry",
+      "command-line-flag": "-r"
     },
     {
       "command-line-flag": "--st",

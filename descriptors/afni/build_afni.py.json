@@ -3,7 +3,7 @@
   "name": "build_afni.py",
   "author": "AFNI Developers",
   "description": "Compile an AFNI package from the git repository.",
-  "command-line": "build_afni.py -build_root [BUILD_ROOT] [CLEAN_ROOT_FLAG] [GIT_BRANCH] [GIT_TAG] [GIT_UPDATE_FLAG] [MAKE_TARGET] [MAKEFILE] [PACKAGE] [PREP_ONLY_FLAG] [RUN_CMAKE_FLAG] [RUN_MAKE_FLAG] [VERBOSE_LEVEL_FLAG] [TERMINAL_OPTION]",
+  "command-line": "build_afni.py [BUILD_ROOT] [CLEAN_ROOT_FLAG] [GIT_BRANCH] [GIT_TAG] [GIT_UPDATE_FLAG] [MAKE_TARGET] [MAKEFILE] [PACKAGE] [PREP_ONLY_FLAG] [RUN_CMAKE_FLAG] [RUN_MAKE_FLAG] [VERBOSE_LEVEL_FLAG] [TERMINAL_OPTION]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,8 @@
       "type": "String",
       "optional": false,
       "id": "build_root",
-      "name": "Build Root"
+      "name": "Build Root",
+      "command-line-flag": "-build_root"
     },
     {
       "command-line-flag": "-clean_root",

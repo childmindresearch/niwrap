@@ -3,7 +3,7 @@
   "name": "longmc",
   "author": "FreeSurfer Developers",
   "description": "Perform motion correction for the longitudinal recon-all stream when creating the longitudinal timepoint of a subject.",
-  "command-line": "longmc -long [CROSS_TP_NAME] [BASE_NAME] [CONFORM_TO_HIRES_FLAG] [SUBJECTS_DIR] [SUBJECT_NAME] [FORCE_UPDATE_FLAG]",
+  "command-line": "longmc [CROSS_TP_NAME] [BASE_NAME] [CONFORM_TO_HIRES_FLAG] [SUBJECTS_DIR] [SUBJECT_NAME] [FORCE_UPDATE_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -12,7 +12,8 @@
       "type": "String",
       "optional": false,
       "id": "cross_tp_name",
-      "name": "Cross Time Point Name"
+      "name": "Cross Time Point Name",
+      "command-line-flag": "-long"
     },
     {
       "description": "Base name for the longitudinal analysis",

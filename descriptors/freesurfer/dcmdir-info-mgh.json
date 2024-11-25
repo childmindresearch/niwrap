@@ -1,7 +1,7 @@
 {
   "name": "dcmdir-info-mgh",
   "description": "Scans a DICOM directory and extracts information about each series.",
-  "command-line": "dcmdir-info-mgh [DICOMDIR] [UNPACKDIR] [VERSION_FLAG] [HELP_FLAG] [NOPRE_FLAG]",
+  "command-line": "dcmdir-info[DICOMDIR] [UNPACKDIR] [VERSION_FLAG] [HELP_FLAG] [NOPRE_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -10,7 +10,8 @@
       "type": "String",
       "optional": false,
       "id": "dicomdir",
-      "name": "DICOM Directory"
+      "name": "DICOM Directory",
+      "command-line-flag": "-mgh"
     },
     {
       "description": "Directory where the unpacked data will be stored (optional). If specified, DICOM files are converted to MGZ format.",

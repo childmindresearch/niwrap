@@ -4,7 +4,7 @@
   "description": "Utility for generating and reporting FreeSurfer bugs",
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer/blob/dev/utils/bugr",
-  "command-line": "bugr -subject [SUBJECT_NAME] -command [COMMAND_LINE] -error [ERROR_MESSAGE] -log [LOG_FILE]",
+  "command-line": "bugr [SUBJECT_NAME] [COMMAND_LINE] [ERROR_MESSAGE] [LOG_FILE]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -13,7 +13,8 @@
       "type": "String",
       "optional": false,
       "id": "subject_name",
-      "name": "Subject Name"
+      "name": "Subject Name",
+      "command-line-flag": "-subject"
     },
     {
       "description": "The entire command-line executed",
@@ -21,7 +22,8 @@
       "type": "String",
       "optional": false,
       "id": "command_line",
-      "name": "Command Line"
+      "name": "Command Line",
+      "command-line-flag": "-command"
     },
     {
       "description": "The error message generated",
@@ -29,7 +31,8 @@
       "type": "String",
       "optional": false,
       "id": "error_message",
-      "name": "Error Message"
+      "name": "Error Message",
+      "command-line-flag": "-error"
     },
     {
       "description": "Log file path of the subject's recon-all process",
@@ -37,7 +40,8 @@
       "type": "File",
       "optional": true,
       "id": "log_file",
-      "name": "Log File"
+      "name": "Log File",
+      "command-line-flag": "-log"
     }
   ],
   "container-image": {

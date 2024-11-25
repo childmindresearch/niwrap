@@ -3,7 +3,7 @@
   "name": "fat_proc_select_vols",
   "author": "AFNI Developers",
   "description": "Tool for building a selector string for AFNI subbricks and/or 1D text files",
-  "command-line": "fat_proc_select_vols -in_dwi [DWI_INPUT] -in_img [IMG_INPUT] -prefix [OUTPUT_PREFIX] [IN_BADS] [APPLY_TO_VOLS] [DO_MOVIE] [WORKDIR] [NO_CMD_OUT]",
+  "command-line": "fat_proc_select_vols [DWI_INPUT] [IMG_INPUT] [OUTPUT_PREFIX] [IN_BADS] [APPLY_TO_VOLS] [DO_MOVIE] [WORKDIR] [NO_CMD_OUT]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -15,7 +15,8 @@
       "type": "File",
       "description": "Input DWI dataset",
       "value-key": "[DWI_INPUT]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-in_dwi"
     },
     {
       "id": "img_input",
@@ -23,7 +24,8 @@
       "type": "File",
       "description": "2D image of the DWI dataset",
       "value-key": "[IMG_INPUT]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-in_img"
     },
     {
       "id": "prefix",
@@ -31,7 +33,8 @@
       "type": "String",
       "description": "Output prefix for files",
       "value-key": "[OUTPUT_PREFIX]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-prefix"
     },
     {
       "id": "in_bads",

@@ -2,7 +2,7 @@
   "tool-version": "7.4.1",
   "name": "mris_volsmooth",
   "description": "Performs surface-based smoothing inside a volume by sampling a volume to a surface, smoothing on the surface, then replacing the surface voxels in the volume with values that were smoothed.",
-  "command-line": "mris_volsmooth --i [INPUT_VOLUME] --o [OUTPUT_VOLUME] --reg [REGISTRATION] [PROJFRAC] [PROJFRAC_AVG] [FILL_RIBBON_FLAG] [SURF_OUT] [FWHM] [NITERS] [VOL_FWHM] [LOG] [NOCLEANUP_FLAG] [DEBUG_FLAG]",
+  "command-line": "mris_volsmooth -[INPUT_VOLUME] -[OUTPUT_VOLUME] -[REGISTRATION] [PROJFRAC] [PROJFRAC_AVG] [FILL_RIBBON_FLAG] [SURF_OUT] [FWHM] [NITERS] [VOL_FWHM] [LOG] [NOCLEANUP_FLAG] [DEBUG_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -15,7 +15,8 @@
       "type": "File",
       "optional": false,
       "id": "input_volume",
-      "name": "Input Volume"
+      "name": "Input Volume",
+      "command-line-flag": "-i"
     },
     {
       "description": "Output volume.",
@@ -23,7 +24,8 @@
       "type": "String",
       "optional": false,
       "id": "output_volume",
-      "name": "Output Volume"
+      "name": "Output Volume",
+      "command-line-flag": "-o"
     },
     {
       "description": "TKRegister-style registration matrix that maps between the input/output volumes and the FreeSurfer surface anatomical.",
@@ -31,7 +33,8 @@
       "type": "File",
       "optional": false,
       "id": "registration",
-      "name": "Registration"
+      "name": "Registration",
+      "command-line-flag": "-reg"
     },
     {
       "command-line-flag": "--projfrac",

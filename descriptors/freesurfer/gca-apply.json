@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://example.com/gca-apply.json",
   "description": "Applies a GCA, performing the steps of mri_em_register, mri_ca_normalize, mri_ca_register, and mri_ca_label. This script replicates the stages in recon-all without overwriting files.",
-  "command-line": "gca-apply [GCAFILE] [SUBJECT] [NTHREADS] [BASE] [NO_SEGSTATS_FLAG] [SD] [DICE_SEG] [DICE_FILE] [LTA] [NORM] [INPUT] [BRAINMASK] [OUTPUT_DIR] [NO_V6LABOPTS_FLAG] [M3Z_FILE] [GCA_RB_2016_FLAG] [FORCE_UPDATE_FLAG] [GCAREG_ITERS]",
+  "command-line": "gca[GCAFILE] [SUBJECT] [NTHREADS] [BASE] [NO_SEGSTATS_FLAG] [SD] [DICE_SEG] [DICE_FILE] [LTA] [NORM] [INPUT] [BRAINMASK] [OUTPUT_DIR] [NO_V6LABOPTS_FLAG] [M3Z_FILE] [GCA_RB_2016_FLAG] [FORCE_UPDATE_FLAG] [GCAREG_ITERS]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "gcafile",
-      "name": "GCA file"
+      "name": "GCA file",
+      "command-line-flag": "-apply"
     },
     {
       "description": "Subject",

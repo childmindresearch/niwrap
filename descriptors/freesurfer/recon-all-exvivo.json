@@ -1,7 +1,7 @@
 {
   "name": "recon-all-exvivo",
   "description": "A script to perform an ex vivo reconstruction with FreeSurfer.",
-  "command-line": "recon-all-exvivo -s [SUBJECT] [HEMISPHERE_FLAG] [NOCEREBELLUM_FLAG]",
+  "command-line": "recon-all-exvivo [SUBJECT] [HEMISPHERE_FLAG] [NOCEREBELLUM_FLAG]",
   "schema-version": "0.5",
   "inputs": [
     {
@@ -10,7 +10,8 @@
       "type": "String",
       "optional": false,
       "id": "subject_id",
-      "name": "Subject ID"
+      "name": "Subject ID",
+      "command-line-flag": "-s"
     },
     {
       "command-line-flag": "-[lr]h",

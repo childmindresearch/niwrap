@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/freesurfer/freesurfer",
   "description": "Tool for processing spherical representations in FreeSurfer",
-  "command-line": "sphere_subject-lh [LICENSE]",
+  "command-line": "sphere_subject[LICENSE]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -18,7 +18,8 @@
       "optional": false,
       "id": "license_file",
       "name": "License file",
-      "default-value": "/usr/local/freesurfer/.license"
+      "default-value": "/usr/local/freesurfer/.license",
+      "command-line-flag": "-lh"
     }
   ],
   "url": "https://github.com/freesurfer/freesurfer"

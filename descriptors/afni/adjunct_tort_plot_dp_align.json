@@ -3,7 +3,7 @@
   "name": "adjunct_tort_plot_dp_align",
   "author": "AFNI Developers",
   "description": "Tool to display the rigid-body alignment parameters from TORTOISE's DIFFPREP, useful for analyzing subject motion in DWI data.",
-  "command-line": "adjunct_tort_plot_dp_align -input [INPUT_FILE] -prefix [OUTPUT_PREFIX] -enorm_max [ENORM_MAX] -enorm_hline [ENORM_HLINE] [NO_SVG_FLAG]",
+  "command-line": "adjunct_tort_plot_dp_align [INPUT_FILE] [OUTPUT_PREFIX] [ENORM_MAX] [ENORM_HLINE] [NO_SVG_FLAG]",
   "inputs": [
     {
       "id": "input_file",
@@ -11,7 +11,8 @@
       "type": "File",
       "description": "Name of DIFFPREP-produced file to parse, probably ending in '_transformations.txt'.",
       "value-key": "[INPUT_FILE]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-input"
     },
     {
       "id": "output_prefix",
@@ -19,7 +20,8 @@
       "type": "String",
       "description": "Base of output files; can contain path information. Should *not* include any extension.",
       "value-key": "[OUTPUT_PREFIX]",
-      "optional": false
+      "optional": false,
+      "command-line-flag": "-prefix"
     },
     {
       "id": "enorm_max",
@@ -27,7 +29,8 @@
       "type": "Number",
       "description": "Specify max value of y-axis of enorm plot in SVG image. Useful for having a constant value across a study.",
       "value-key": "[ENORM_MAX]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-enorm_max"
     },
     {
       "id": "enorm_hline",
@@ -35,7 +38,8 @@
       "type": "Number",
       "description": "Specify value of a horizontal, dotted, bright cyan line for the enorm plot in SVG image. Can help with visualization.",
       "value-key": "[ENORM_HLINE]",
-      "optional": true
+      "optional": true,
+      "command-line-flag": "-enorm_hline"
     },
     {
       "id": "no_svg",

@@ -4,7 +4,7 @@
   "author": "FreeSurfer Developers",
   "descriptor-url": "https://github.com/aces/cbrain-plugins-neuro/blob/master/cbrain_task_descriptors/minc_talairach.json",
   "description": "Front-end for MINC's mritotal to compute the Talairach transform mapping the input volume to the MNI305.",
-  "command-line": "mri_nu_correct.mni --i [INPUT_VOLUME] --xfm [OUTPUT_XFM] [LOG_FLAG] [DEBUG_FLAG]",
+  "command-line": "mri_nu_correct.mni -[INPUT_VOLUME] -[OUTPUT_XFM] [LOG_FLAG] [DEBUG_FLAG]",
   "container-image": {
     "type": "docker",
     "image": "freesurfer/freesurfer:7.4.1"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "input_volume",
-      "name": "Input Volume"
+      "name": "Input Volume",
+      "command-line-flag": "-i"
     },
     {
       "description": "Output transform file (xfm).",
@@ -25,7 +26,8 @@
       "type": "String",
       "optional": false,
       "id": "output_transform",
-      "name": "Output Transform File"
+      "name": "Output Transform File",
+      "command-line-flag": "-xfm"
     },
     {
       "command-line-flag": "--log",

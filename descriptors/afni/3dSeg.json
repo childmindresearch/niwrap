@@ -5,7 +5,7 @@
   "descriptor-url": "https://github.com/afni/3dSeg",
   "description": "Segments brain volumes into tissue classes with optional global and voxelwise priors.",
   "url": "https://afni.nimh.nih.gov/",
-  "command-line": "3dSeg -anat [ANAT] -mask [MASK] [BLUR_METH] [BIAS_FWHM] [CLASSES] [BMRF] [BIAS_CLASSES] [PREFIX] [OVERWRITE] [DEBUG] [MIXFRAC] [MIXFLOOR] [GOLD] [GOLD_BIAS] [MAIN_N] [CSET] [LABEL_TABLE] [VOX_DEBUG] [VOX_DEBUG_FILE]",
+  "command-line": "3dSeg [ANAT] [MASK] [BLUR_METH] [BIAS_FWHM] [CLASSES] [BMRF] [BIAS_CLASSES] [PREFIX] [OVERWRITE] [DEBUG] [MIXFRAC] [MIXFLOOR] [GOLD] [GOLD_BIAS] [MAIN_N] [CSET] [LABEL_TABLE] [VOX_DEBUG] [VOX_DEBUG_FILE]",
   "container-image": {
     "type": "docker",
     "image": "afni/afni_make_build:AFNI_24.2.06"
@@ -17,7 +17,8 @@
       "type": "File",
       "optional": false,
       "id": "anat",
-      "name": "Anatomical Image"
+      "name": "Anatomical Image",
+      "command-line-flag": "-anat"
     },
     {
       "description": "Mask of the volume to be segmented. Can be a dataset or 'AUTO' to use AFNI's automask function.",
@@ -25,7 +26,8 @@
       "type": "String",
       "optional": true,
       "id": "mask",
-      "name": "Mask"
+      "name": "Mask",
+      "command-line-flag": "-mask"
     },
     {
       "command-line-flag": "-blur_meth",
