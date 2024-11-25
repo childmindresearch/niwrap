@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">MRI_RELABEL_NONWM_HYPOS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;f4d3c2e26fe40380f1d54108e2c51f3bf49837c2.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1cc7b46473097a60baa45f3b766a22abb0dbdb86.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mri_relabel_nonwm_hypos&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -131,34 +131,38 @@
 </span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_RELABEL_NONWM_HYPOS_METADATA</span><span class="p">)</span>
 </span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mri_relabel_nonwm_hypos&quot;</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--i&quot;</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">inputseg</span><span class="p">))</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--o&quot;</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outputseg</span><span class="p">)</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="k">if</span> <span class="n">segments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>            <span class="o">*</span><span class="n">segments</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="p">])</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">seg_default</span><span class="p">:</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--seg-default&quot;</span><span class="p">)</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">checkopts</span><span class="p">:</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--checkopts&quot;</span><span class="p">)</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriRelabelNonwmHyposOutputs</span><span class="p">(</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>        <span class="n">out_segmentation</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outputseg</span><span class="p">),</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="p">)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="s2">&quot;MRI_RELABEL_NONWM_HYPOS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="s2">&quot;MriRelabelNonwmHyposOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="s2">&quot;mri_relabel_nonwm_hypos&quot;</span><span class="p">,</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a><span class="p">]</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">inputseg</span><span class="p">)</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="p">])</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">outputseg</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="p">])</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">segments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>            <span class="o">*</span><span class="n">segments</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="p">])</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="k">if</span> <span class="n">seg_default</span><span class="p">:</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--seg-default&quot;</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="k">if</span> <span class="n">checkopts</span><span class="p">:</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--checkopts&quot;</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriRelabelNonwmHyposOutputs</span><span class="p">(</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>        <span class="n">out_segmentation</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outputseg</span><span class="p">),</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>    <span class="s2">&quot;MRI_RELABEL_NONWM_HYPOS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>    <span class="s2">&quot;MriRelabelNonwmHyposOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="s2">&quot;mri_relabel_nonwm_hypos&quot;</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -167,7 +171,7 @@
                     <div class="attr variable">
             <span class="name">MRI_RELABEL_NONWM_HYPOS_METADATA</span>        =
 <input id="MRI_RELABEL_NONWM_HYPOS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="MRI_RELABEL_NONWM_HYPOS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;f4d3c2e26fe40380f1d54108e2c51f3bf49837c2.boutiques&#39;, name=&#39;mri_relabel_nonwm_hypos&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="MRI_RELABEL_NONWM_HYPOS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1cc7b46473097a60baa45f3b766a22abb0dbdb86.boutiques&#39;, name=&#39;mri_relabel_nonwm_hypos&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -287,27 +291,31 @@
 </span><span id="mri_relabel_nonwm_hypos-58"><a href="#mri_relabel_nonwm_hypos-58"><span class="linenos">58</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">MRI_RELABEL_NONWM_HYPOS_METADATA</span><span class="p">)</span>
 </span><span id="mri_relabel_nonwm_hypos-59"><a href="#mri_relabel_nonwm_hypos-59"><span class="linenos">59</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="mri_relabel_nonwm_hypos-60"><a href="#mri_relabel_nonwm_hypos-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mri_relabel_nonwm_hypos&quot;</span><span class="p">)</span>
-</span><span id="mri_relabel_nonwm_hypos-61"><a href="#mri_relabel_nonwm_hypos-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--i&quot;</span><span class="p">)</span>
-</span><span id="mri_relabel_nonwm_hypos-62"><a href="#mri_relabel_nonwm_hypos-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">inputseg</span><span class="p">))</span>
-</span><span id="mri_relabel_nonwm_hypos-63"><a href="#mri_relabel_nonwm_hypos-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--o&quot;</span><span class="p">)</span>
-</span><span id="mri_relabel_nonwm_hypos-64"><a href="#mri_relabel_nonwm_hypos-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outputseg</span><span class="p">)</span>
-</span><span id="mri_relabel_nonwm_hypos-65"><a href="#mri_relabel_nonwm_hypos-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">segments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="mri_relabel_nonwm_hypos-66"><a href="#mri_relabel_nonwm_hypos-66"><span class="linenos">66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="mri_relabel_nonwm_hypos-67"><a href="#mri_relabel_nonwm_hypos-67"><span class="linenos">67</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
-</span><span id="mri_relabel_nonwm_hypos-68"><a href="#mri_relabel_nonwm_hypos-68"><span class="linenos">68</span></a>            <span class="o">*</span><span class="n">segments</span>
-</span><span id="mri_relabel_nonwm_hypos-69"><a href="#mri_relabel_nonwm_hypos-69"><span class="linenos">69</span></a>        <span class="p">])</span>
-</span><span id="mri_relabel_nonwm_hypos-70"><a href="#mri_relabel_nonwm_hypos-70"><span class="linenos">70</span></a>    <span class="k">if</span> <span class="n">seg_default</span><span class="p">:</span>
-</span><span id="mri_relabel_nonwm_hypos-71"><a href="#mri_relabel_nonwm_hypos-71"><span class="linenos">71</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--seg-default&quot;</span><span class="p">)</span>
-</span><span id="mri_relabel_nonwm_hypos-72"><a href="#mri_relabel_nonwm_hypos-72"><span class="linenos">72</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-</span><span id="mri_relabel_nonwm_hypos-73"><a href="#mri_relabel_nonwm_hypos-73"><span class="linenos">73</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
-</span><span id="mri_relabel_nonwm_hypos-74"><a href="#mri_relabel_nonwm_hypos-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">checkopts</span><span class="p">:</span>
-</span><span id="mri_relabel_nonwm_hypos-75"><a href="#mri_relabel_nonwm_hypos-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--checkopts&quot;</span><span class="p">)</span>
-</span><span id="mri_relabel_nonwm_hypos-76"><a href="#mri_relabel_nonwm_hypos-76"><span class="linenos">76</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriRelabelNonwmHyposOutputs</span><span class="p">(</span>
-</span><span id="mri_relabel_nonwm_hypos-77"><a href="#mri_relabel_nonwm_hypos-77"><span class="linenos">77</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="mri_relabel_nonwm_hypos-78"><a href="#mri_relabel_nonwm_hypos-78"><span class="linenos">78</span></a>        <span class="n">out_segmentation</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outputseg</span><span class="p">),</span>
-</span><span id="mri_relabel_nonwm_hypos-79"><a href="#mri_relabel_nonwm_hypos-79"><span class="linenos">79</span></a>    <span class="p">)</span>
-</span><span id="mri_relabel_nonwm_hypos-80"><a href="#mri_relabel_nonwm_hypos-80"><span class="linenos">80</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="mri_relabel_nonwm_hypos-81"><a href="#mri_relabel_nonwm_hypos-81"><span class="linenos">81</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="mri_relabel_nonwm_hypos-61"><a href="#mri_relabel_nonwm_hypos-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_relabel_nonwm_hypos-62"><a href="#mri_relabel_nonwm_hypos-62"><span class="linenos">62</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
+</span><span id="mri_relabel_nonwm_hypos-63"><a href="#mri_relabel_nonwm_hypos-63"><span class="linenos">63</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">inputseg</span><span class="p">)</span>
+</span><span id="mri_relabel_nonwm_hypos-64"><a href="#mri_relabel_nonwm_hypos-64"><span class="linenos">64</span></a>    <span class="p">])</span>
+</span><span id="mri_relabel_nonwm_hypos-65"><a href="#mri_relabel_nonwm_hypos-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_relabel_nonwm_hypos-66"><a href="#mri_relabel_nonwm_hypos-66"><span class="linenos">66</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="mri_relabel_nonwm_hypos-67"><a href="#mri_relabel_nonwm_hypos-67"><span class="linenos">67</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">outputseg</span>
+</span><span id="mri_relabel_nonwm_hypos-68"><a href="#mri_relabel_nonwm_hypos-68"><span class="linenos">68</span></a>    <span class="p">])</span>
+</span><span id="mri_relabel_nonwm_hypos-69"><a href="#mri_relabel_nonwm_hypos-69"><span class="linenos">69</span></a>    <span class="k">if</span> <span class="n">segments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="mri_relabel_nonwm_hypos-70"><a href="#mri_relabel_nonwm_hypos-70"><span class="linenos">70</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="mri_relabel_nonwm_hypos-71"><a href="#mri_relabel_nonwm_hypos-71"><span class="linenos">71</span></a>            <span class="s2">&quot;--seg&quot;</span><span class="p">,</span>
+</span><span id="mri_relabel_nonwm_hypos-72"><a href="#mri_relabel_nonwm_hypos-72"><span class="linenos">72</span></a>            <span class="o">*</span><span class="n">segments</span>
+</span><span id="mri_relabel_nonwm_hypos-73"><a href="#mri_relabel_nonwm_hypos-73"><span class="linenos">73</span></a>        <span class="p">])</span>
+</span><span id="mri_relabel_nonwm_hypos-74"><a href="#mri_relabel_nonwm_hypos-74"><span class="linenos">74</span></a>    <span class="k">if</span> <span class="n">seg_default</span><span class="p">:</span>
+</span><span id="mri_relabel_nonwm_hypos-75"><a href="#mri_relabel_nonwm_hypos-75"><span class="linenos">75</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--seg-default&quot;</span><span class="p">)</span>
+</span><span id="mri_relabel_nonwm_hypos-76"><a href="#mri_relabel_nonwm_hypos-76"><span class="linenos">76</span></a>    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+</span><span id="mri_relabel_nonwm_hypos-77"><a href="#mri_relabel_nonwm_hypos-77"><span class="linenos">77</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">)</span>
+</span><span id="mri_relabel_nonwm_hypos-78"><a href="#mri_relabel_nonwm_hypos-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">checkopts</span><span class="p">:</span>
+</span><span id="mri_relabel_nonwm_hypos-79"><a href="#mri_relabel_nonwm_hypos-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--checkopts&quot;</span><span class="p">)</span>
+</span><span id="mri_relabel_nonwm_hypos-80"><a href="#mri_relabel_nonwm_hypos-80"><span class="linenos">80</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">MriRelabelNonwmHyposOutputs</span><span class="p">(</span>
+</span><span id="mri_relabel_nonwm_hypos-81"><a href="#mri_relabel_nonwm_hypos-81"><span class="linenos">81</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="mri_relabel_nonwm_hypos-82"><a href="#mri_relabel_nonwm_hypos-82"><span class="linenos">82</span></a>        <span class="n">out_segmentation</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">outputseg</span><span class="p">),</span>
+</span><span id="mri_relabel_nonwm_hypos-83"><a href="#mri_relabel_nonwm_hypos-83"><span class="linenos">83</span></a>    <span class="p">)</span>
+</span><span id="mri_relabel_nonwm_hypos-84"><a href="#mri_relabel_nonwm_hypos-84"><span class="linenos">84</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="mri_relabel_nonwm_hypos-85"><a href="#mri_relabel_nonwm_hypos-85"><span class="linenos">85</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

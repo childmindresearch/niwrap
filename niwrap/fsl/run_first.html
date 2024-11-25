@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">RUN_FIRST_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;1cc38ed357eab3f3dba004e9e8636152088bc178.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;9c36642e60a73765cd9d2b8e529767ad4bc7800c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;run_first&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/fsl:6.0.4-patched2&quot;</span><span class="p">,</span>
@@ -138,43 +138,53 @@
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RUN_FIRST_METADATA</span><span class="p">)</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;run_first&quot;</span><span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">))</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-t&quot;</span><span class="p">)</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transformation_matrix</span><span class="p">))</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-n&quot;</span><span class="p">)</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n_modes</span><span class="p">))</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_basename</span><span class="p">)</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">)</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">model_name</span><span class="p">))</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="k">if</span> <span class="n">intref_model_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>            <span class="s2">&quot;-intref&quot;</span><span class="p">,</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>            <span class="n">intref_model_name</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="p">])</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">load_bvars</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="s2">&quot;-loadBvars&quot;</span><span class="p">,</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">load_bvars</span><span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="p">])</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">multiple_images_flag</span><span class="p">:</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-multipleImages&quot;</span><span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RunFirstOutputs</span><span class="p">(</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_basename</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">),</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="s2">&quot;RUN_FIRST_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="s2">&quot;RunFirstOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="s2">&quot;run_first&quot;</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="p">]</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="p">])</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>        <span class="s2">&quot;-t&quot;</span><span class="p">,</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transformation_matrix</span><span class="p">)</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="p">])</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="s2">&quot;-n&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">n_modes</span><span class="p">)</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="p">])</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="n">output_basename</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="p">])</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>    <span class="p">])</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">intref_model_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;-intref&quot;</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="n">intref_model_name</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">load_bvars</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;-loadBvars&quot;</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">load_bvars</span><span class="p">)</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">multiple_images_flag</span><span class="p">:</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-multipleImages&quot;</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RunFirstOutputs</span><span class="p">(</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_basename</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">),</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="p">)</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="s2">&quot;RUN_FIRST_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="s2">&quot;RunFirstOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="s2">&quot;run_first&quot;</span><span class="p">,</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -183,7 +193,7 @@
                     <div class="attr variable">
             <span class="name">RUN_FIRST_METADATA</span>        =
 <input id="RUN_FIRST_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="RUN_FIRST_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;1cc38ed357eab3f3dba004e9e8636152088bc178.boutiques&#39;, name=&#39;run_first&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
+            <label class="view-value-button pdoc-button" for="RUN_FIRST_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;9c36642e60a73765cd9d2b8e529767ad4bc7800c.boutiques&#39;, name=&#39;run_first&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
 
         
     </div>
@@ -270,76 +280,86 @@
 
     </div>
     <a class="headerlink" href="#run_first"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="run_first-28"><a href="#run_first-28"><span class="linenos">28</span></a><span class="k">def</span> <span class="nf">run_first</span><span class="p">(</span>
-</span><span id="run_first-29"><a href="#run_first-29"><span class="linenos">29</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="run_first-30"><a href="#run_first-30"><span class="linenos">30</span></a>    <span class="n">transformation_matrix</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="run_first-31"><a href="#run_first-31"><span class="linenos">31</span></a>    <span class="n">n_modes</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-</span><span id="run_first-32"><a href="#run_first-32"><span class="linenos">32</span></a>    <span class="n">output_basename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="run_first-33"><a href="#run_first-33"><span class="linenos">33</span></a>    <span class="n">model_name</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
-</span><span id="run_first-34"><a href="#run_first-34"><span class="linenos">34</span></a>    <span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="run_first-35"><a href="#run_first-35"><span class="linenos">35</span></a>    <span class="n">intref_model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="run_first-36"><a href="#run_first-36"><span class="linenos">36</span></a>    <span class="n">load_bvars</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="run_first-37"><a href="#run_first-37"><span class="linenos">37</span></a>    <span class="n">multiple_images_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="run_first-38"><a href="#run_first-38"><span class="linenos">38</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="run_first-39"><a href="#run_first-39"><span class="linenos">39</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RunFirstOutputs</span><span class="p">:</span>
-</span><span id="run_first-40"><a href="#run_first-40"><span class="linenos">40</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="run_first-41"><a href="#run_first-41"><span class="linenos">41</span></a><span class="sd">    A tool to run FSL&#39;s FIRST for subcortical segmentation.</span>
-</span><span id="run_first-42"><a href="#run_first-42"><span class="linenos">42</span></a><span class="sd">    </span>
-</span><span id="run_first-43"><a href="#run_first-43"><span class="linenos">43</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
-</span><span id="run_first-44"><a href="#run_first-44"><span class="linenos">44</span></a><span class="sd">    </span>
-</span><span id="run_first-45"><a href="#run_first-45"><span class="linenos">45</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
-</span><span id="run_first-46"><a href="#run_first-46"><span class="linenos">46</span></a><span class="sd">    </span>
-</span><span id="run_first-47"><a href="#run_first-47"><span class="linenos">47</span></a><span class="sd">    Args:</span>
-</span><span id="run_first-48"><a href="#run_first-48"><span class="linenos">48</span></a><span class="sd">        input_image: Input image file (e.g. img.nii.gz).</span>
-</span><span id="run_first-49"><a href="#run_first-49"><span class="linenos">49</span></a><span class="sd">        transformation_matrix: Input transformation matrix file (e.g.\</span>
-</span><span id="run_first-50"><a href="#run_first-50"><span class="linenos">50</span></a><span class="sd">            input_to_mni.mat).</span>
-</span><span id="run_first-51"><a href="#run_first-51"><span class="linenos">51</span></a><span class="sd">        n_modes: Number of modes.</span>
-</span><span id="run_first-52"><a href="#run_first-52"><span class="linenos">52</span></a><span class="sd">        output_basename: Output basename.</span>
-</span><span id="run_first-53"><a href="#run_first-53"><span class="linenos">53</span></a><span class="sd">        model_name: Model name.</span>
-</span><span id="run_first-54"><a href="#run_first-54"><span class="linenos">54</span></a><span class="sd">        verbose_flag: Verbose mode.</span>
-</span><span id="run_first-55"><a href="#run_first-55"><span class="linenos">55</span></a><span class="sd">        intref_model_name: Reference structure for the local intensity\</span>
-</span><span id="run_first-56"><a href="#run_first-56"><span class="linenos">56</span></a><span class="sd">            normalization.</span>
-</span><span id="run_first-57"><a href="#run_first-57"><span class="linenos">57</span></a><span class="sd">        load_bvars: Initializes FIRST with a previous estimate of the structure.</span>
-</span><span id="run_first-58"><a href="#run_first-58"><span class="linenos">58</span></a><span class="sd">        multiple_images_flag: Run FIRST on multiple images; provide a list of\</span>
-</span><span id="run_first-59"><a href="#run_first-59"><span class="linenos">59</span></a><span class="sd">            images, transformation matrices, and output names.</span>
-</span><span id="run_first-60"><a href="#run_first-60"><span class="linenos">60</span></a><span class="sd">        runner: Command runner.</span>
-</span><span id="run_first-61"><a href="#run_first-61"><span class="linenos">61</span></a><span class="sd">    Returns:</span>
-</span><span id="run_first-62"><a href="#run_first-62"><span class="linenos">62</span></a><span class="sd">        NamedTuple of outputs (described in `RunFirstOutputs`).</span>
-</span><span id="run_first-63"><a href="#run_first-63"><span class="linenos">63</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="run_first-64"><a href="#run_first-64"><span class="linenos">64</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
-</span><span id="run_first-65"><a href="#run_first-65"><span class="linenos">65</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RUN_FIRST_METADATA</span><span class="p">)</span>
-</span><span id="run_first-66"><a href="#run_first-66"><span class="linenos">66</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="run_first-67"><a href="#run_first-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;run_first&quot;</span><span class="p">)</span>
-</span><span id="run_first-68"><a href="#run_first-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">)</span>
-</span><span id="run_first-69"><a href="#run_first-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">))</span>
-</span><span id="run_first-70"><a href="#run_first-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-t&quot;</span><span class="p">)</span>
-</span><span id="run_first-71"><a href="#run_first-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transformation_matrix</span><span class="p">))</span>
-</span><span id="run_first-72"><a href="#run_first-72"><span class="linenos">72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-n&quot;</span><span class="p">)</span>
-</span><span id="run_first-73"><a href="#run_first-73"><span class="linenos">73</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n_modes</span><span class="p">))</span>
-</span><span id="run_first-74"><a href="#run_first-74"><span class="linenos">74</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">)</span>
-</span><span id="run_first-75"><a href="#run_first-75"><span class="linenos">75</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_basename</span><span class="p">)</span>
-</span><span id="run_first-76"><a href="#run_first-76"><span class="linenos">76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">)</span>
-</span><span id="run_first-77"><a href="#run_first-77"><span class="linenos">77</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">model_name</span><span class="p">))</span>
-</span><span id="run_first-78"><a href="#run_first-78"><span class="linenos">78</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
-</span><span id="run_first-79"><a href="#run_first-79"><span class="linenos">79</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
-</span><span id="run_first-80"><a href="#run_first-80"><span class="linenos">80</span></a>    <span class="k">if</span> <span class="n">intref_model_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="run_first-81"><a href="#run_first-81"><span class="linenos">81</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="run_first-82"><a href="#run_first-82"><span class="linenos">82</span></a>            <span class="s2">&quot;-intref&quot;</span><span class="p">,</span>
-</span><span id="run_first-83"><a href="#run_first-83"><span class="linenos">83</span></a>            <span class="n">intref_model_name</span>
-</span><span id="run_first-84"><a href="#run_first-84"><span class="linenos">84</span></a>        <span class="p">])</span>
-</span><span id="run_first-85"><a href="#run_first-85"><span class="linenos">85</span></a>    <span class="k">if</span> <span class="n">load_bvars</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="run_first-86"><a href="#run_first-86"><span class="linenos">86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="run_first-87"><a href="#run_first-87"><span class="linenos">87</span></a>            <span class="s2">&quot;-loadBvars&quot;</span><span class="p">,</span>
-</span><span id="run_first-88"><a href="#run_first-88"><span class="linenos">88</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">load_bvars</span><span class="p">)</span>
-</span><span id="run_first-89"><a href="#run_first-89"><span class="linenos">89</span></a>        <span class="p">])</span>
-</span><span id="run_first-90"><a href="#run_first-90"><span class="linenos">90</span></a>    <span class="k">if</span> <span class="n">multiple_images_flag</span><span class="p">:</span>
-</span><span id="run_first-91"><a href="#run_first-91"><span class="linenos">91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-multipleImages&quot;</span><span class="p">)</span>
-</span><span id="run_first-92"><a href="#run_first-92"><span class="linenos">92</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RunFirstOutputs</span><span class="p">(</span>
-</span><span id="run_first-93"><a href="#run_first-93"><span class="linenos">93</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="run_first-94"><a href="#run_first-94"><span class="linenos">94</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_basename</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">),</span>
-</span><span id="run_first-95"><a href="#run_first-95"><span class="linenos">95</span></a>    <span class="p">)</span>
-</span><span id="run_first-96"><a href="#run_first-96"><span class="linenos">96</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="run_first-97"><a href="#run_first-97"><span class="linenos">97</span></a>    <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="run_first-28"><a href="#run_first-28"><span class="linenos"> 28</span></a><span class="k">def</span> <span class="nf">run_first</span><span class="p">(</span>
+</span><span id="run_first-29"><a href="#run_first-29"><span class="linenos"> 29</span></a>    <span class="n">input_image</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="run_first-30"><a href="#run_first-30"><span class="linenos"> 30</span></a>    <span class="n">transformation_matrix</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="run_first-31"><a href="#run_first-31"><span class="linenos"> 31</span></a>    <span class="n">n_modes</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span id="run_first-32"><a href="#run_first-32"><span class="linenos"> 32</span></a>    <span class="n">output_basename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="run_first-33"><a href="#run_first-33"><span class="linenos"> 33</span></a>    <span class="n">model_name</span><span class="p">:</span> <span class="n">InputPathType</span><span class="p">,</span>
+</span><span id="run_first-34"><a href="#run_first-34"><span class="linenos"> 34</span></a>    <span class="n">verbose_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="run_first-35"><a href="#run_first-35"><span class="linenos"> 35</span></a>    <span class="n">intref_model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="run_first-36"><a href="#run_first-36"><span class="linenos"> 36</span></a>    <span class="n">load_bvars</span><span class="p">:</span> <span class="n">InputPathType</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="run_first-37"><a href="#run_first-37"><span class="linenos"> 37</span></a>    <span class="n">multiple_images_flag</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="run_first-38"><a href="#run_first-38"><span class="linenos"> 38</span></a>    <span class="n">runner</span><span class="p">:</span> <span class="n">Runner</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="run_first-39"><a href="#run_first-39"><span class="linenos"> 39</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RunFirstOutputs</span><span class="p">:</span>
+</span><span id="run_first-40"><a href="#run_first-40"><span class="linenos"> 40</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="run_first-41"><a href="#run_first-41"><span class="linenos"> 41</span></a><span class="sd">    A tool to run FSL&#39;s FIRST for subcortical segmentation.</span>
+</span><span id="run_first-42"><a href="#run_first-42"><span class="linenos"> 42</span></a><span class="sd">    </span>
+</span><span id="run_first-43"><a href="#run_first-43"><span class="linenos"> 43</span></a><span class="sd">    Author: FMRIB Analysis Group, University of Oxford</span>
+</span><span id="run_first-44"><a href="#run_first-44"><span class="linenos"> 44</span></a><span class="sd">    </span>
+</span><span id="run_first-45"><a href="#run_first-45"><span class="linenos"> 45</span></a><span class="sd">    URL: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki</span>
+</span><span id="run_first-46"><a href="#run_first-46"><span class="linenos"> 46</span></a><span class="sd">    </span>
+</span><span id="run_first-47"><a href="#run_first-47"><span class="linenos"> 47</span></a><span class="sd">    Args:</span>
+</span><span id="run_first-48"><a href="#run_first-48"><span class="linenos"> 48</span></a><span class="sd">        input_image: Input image file (e.g. img.nii.gz).</span>
+</span><span id="run_first-49"><a href="#run_first-49"><span class="linenos"> 49</span></a><span class="sd">        transformation_matrix: Input transformation matrix file (e.g.\</span>
+</span><span id="run_first-50"><a href="#run_first-50"><span class="linenos"> 50</span></a><span class="sd">            input_to_mni.mat).</span>
+</span><span id="run_first-51"><a href="#run_first-51"><span class="linenos"> 51</span></a><span class="sd">        n_modes: Number of modes.</span>
+</span><span id="run_first-52"><a href="#run_first-52"><span class="linenos"> 52</span></a><span class="sd">        output_basename: Output basename.</span>
+</span><span id="run_first-53"><a href="#run_first-53"><span class="linenos"> 53</span></a><span class="sd">        model_name: Model name.</span>
+</span><span id="run_first-54"><a href="#run_first-54"><span class="linenos"> 54</span></a><span class="sd">        verbose_flag: Verbose mode.</span>
+</span><span id="run_first-55"><a href="#run_first-55"><span class="linenos"> 55</span></a><span class="sd">        intref_model_name: Reference structure for the local intensity\</span>
+</span><span id="run_first-56"><a href="#run_first-56"><span class="linenos"> 56</span></a><span class="sd">            normalization.</span>
+</span><span id="run_first-57"><a href="#run_first-57"><span class="linenos"> 57</span></a><span class="sd">        load_bvars: Initializes FIRST with a previous estimate of the structure.</span>
+</span><span id="run_first-58"><a href="#run_first-58"><span class="linenos"> 58</span></a><span class="sd">        multiple_images_flag: Run FIRST on multiple images; provide a list of\</span>
+</span><span id="run_first-59"><a href="#run_first-59"><span class="linenos"> 59</span></a><span class="sd">            images, transformation matrices, and output names.</span>
+</span><span id="run_first-60"><a href="#run_first-60"><span class="linenos"> 60</span></a><span class="sd">        runner: Command runner.</span>
+</span><span id="run_first-61"><a href="#run_first-61"><span class="linenos"> 61</span></a><span class="sd">    Returns:</span>
+</span><span id="run_first-62"><a href="#run_first-62"><span class="linenos"> 62</span></a><span class="sd">        NamedTuple of outputs (described in `RunFirstOutputs`).</span>
+</span><span id="run_first-63"><a href="#run_first-63"><span class="linenos"> 63</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="run_first-64"><a href="#run_first-64"><span class="linenos"> 64</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
+</span><span id="run_first-65"><a href="#run_first-65"><span class="linenos"> 65</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RUN_FIRST_METADATA</span><span class="p">)</span>
+</span><span id="run_first-66"><a href="#run_first-66"><span class="linenos"> 66</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="run_first-67"><a href="#run_first-67"><span class="linenos"> 67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;run_first&quot;</span><span class="p">)</span>
+</span><span id="run_first-68"><a href="#run_first-68"><span class="linenos"> 68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="run_first-69"><a href="#run_first-69"><span class="linenos"> 69</span></a>        <span class="s2">&quot;-i&quot;</span><span class="p">,</span>
+</span><span id="run_first-70"><a href="#run_first-70"><span class="linenos"> 70</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
+</span><span id="run_first-71"><a href="#run_first-71"><span class="linenos"> 71</span></a>    <span class="p">])</span>
+</span><span id="run_first-72"><a href="#run_first-72"><span class="linenos"> 72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="run_first-73"><a href="#run_first-73"><span class="linenos"> 73</span></a>        <span class="s2">&quot;-t&quot;</span><span class="p">,</span>
+</span><span id="run_first-74"><a href="#run_first-74"><span class="linenos"> 74</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">transformation_matrix</span><span class="p">)</span>
+</span><span id="run_first-75"><a href="#run_first-75"><span class="linenos"> 75</span></a>    <span class="p">])</span>
+</span><span id="run_first-76"><a href="#run_first-76"><span class="linenos"> 76</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="run_first-77"><a href="#run_first-77"><span class="linenos"> 77</span></a>        <span class="s2">&quot;-n&quot;</span><span class="p">,</span>
+</span><span id="run_first-78"><a href="#run_first-78"><span class="linenos"> 78</span></a>        <span class="nb">str</span><span class="p">(</span><span class="n">n_modes</span><span class="p">)</span>
+</span><span id="run_first-79"><a href="#run_first-79"><span class="linenos"> 79</span></a>    <span class="p">])</span>
+</span><span id="run_first-80"><a href="#run_first-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="run_first-81"><a href="#run_first-81"><span class="linenos"> 81</span></a>        <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+</span><span id="run_first-82"><a href="#run_first-82"><span class="linenos"> 82</span></a>        <span class="n">output_basename</span>
+</span><span id="run_first-83"><a href="#run_first-83"><span class="linenos"> 83</span></a>    <span class="p">])</span>
+</span><span id="run_first-84"><a href="#run_first-84"><span class="linenos"> 84</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="run_first-85"><a href="#run_first-85"><span class="linenos"> 85</span></a>        <span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+</span><span id="run_first-86"><a href="#run_first-86"><span class="linenos"> 86</span></a>        <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+</span><span id="run_first-87"><a href="#run_first-87"><span class="linenos"> 87</span></a>    <span class="p">])</span>
+</span><span id="run_first-88"><a href="#run_first-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">verbose_flag</span><span class="p">:</span>
+</span><span id="run_first-89"><a href="#run_first-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">)</span>
+</span><span id="run_first-90"><a href="#run_first-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">intref_model_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="run_first-91"><a href="#run_first-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="run_first-92"><a href="#run_first-92"><span class="linenos"> 92</span></a>            <span class="s2">&quot;-intref&quot;</span><span class="p">,</span>
+</span><span id="run_first-93"><a href="#run_first-93"><span class="linenos"> 93</span></a>            <span class="n">intref_model_name</span>
+</span><span id="run_first-94"><a href="#run_first-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
+</span><span id="run_first-95"><a href="#run_first-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">load_bvars</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="run_first-96"><a href="#run_first-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="run_first-97"><a href="#run_first-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;-loadBvars&quot;</span><span class="p">,</span>
+</span><span id="run_first-98"><a href="#run_first-98"><span class="linenos"> 98</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">load_bvars</span><span class="p">)</span>
+</span><span id="run_first-99"><a href="#run_first-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
+</span><span id="run_first-100"><a href="#run_first-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">multiple_images_flag</span><span class="p">:</span>
+</span><span id="run_first-101"><a href="#run_first-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-multipleImages&quot;</span><span class="p">)</span>
+</span><span id="run_first-102"><a href="#run_first-102"><span class="linenos">102</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RunFirstOutputs</span><span class="p">(</span>
+</span><span id="run_first-103"><a href="#run_first-103"><span class="linenos">103</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="run_first-104"><a href="#run_first-104"><span class="linenos">104</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_basename</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span><span class="p">),</span>
+</span><span id="run_first-105"><a href="#run_first-105"><span class="linenos">105</span></a>    <span class="p">)</span>
+</span><span id="run_first-106"><a href="#run_first-106"><span class="linenos">106</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="run_first-107"><a href="#run_first-107"><span class="linenos">107</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">V__COMMAND_GLOBB_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3fcaa2b9f57f4c3a8e88b6f2a4841a766c684dcf.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;c2faf81a08e05a3e16060acc326e418fbdfeaad0.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;@CommandGlobb&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -138,21 +138,23 @@
 </span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-newxt&quot;</span><span class="p">)</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="k">if</span> <span class="n">extension</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">extension</span><span class="p">)</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-list&quot;</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">brick_list</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VCommandGlobbOutputs</span><span class="p">(</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_dir</span> <span class="o">+</span> <span class="s2">&quot;/*&quot;</span><span class="p">),</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="p">)</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="s2">&quot;VCommandGlobbOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="s2">&quot;V__COMMAND_GLOBB_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="s2">&quot;v__command_globb&quot;</span><span class="p">,</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a><span class="p">]</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="s2">&quot;-list&quot;</span><span class="p">,</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="o">*</span><span class="n">brick_list</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="p">])</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VCommandGlobbOutputs</span><span class="p">(</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_dir</span> <span class="o">+</span> <span class="s2">&quot;/*&quot;</span><span class="p">),</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="s2">&quot;VCommandGlobbOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="s2">&quot;V__COMMAND_GLOBB_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="s2">&quot;v__command_globb&quot;</span><span class="p">,</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -228,7 +230,7 @@
                     <div class="attr variable">
             <span class="name">V__COMMAND_GLOBB_METADATA</span>        =
 <input id="V__COMMAND_GLOBB_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="V__COMMAND_GLOBB_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;3fcaa2b9f57f4c3a8e88b6f2a4841a766c684dcf.boutiques&#39;, name=&#39;@CommandGlobb&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="V__COMMAND_GLOBB_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;c2faf81a08e05a3e16060acc326e418fbdfeaad0.boutiques&#39;, name=&#39;@CommandGlobb&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -288,14 +290,16 @@
 </span><span id="v__command_globb-65"><a href="#v__command_globb-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-newxt&quot;</span><span class="p">)</span>
 </span><span id="v__command_globb-66"><a href="#v__command_globb-66"><span class="linenos">66</span></a>    <span class="k">if</span> <span class="n">extension</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="v__command_globb-67"><a href="#v__command_globb-67"><span class="linenos">67</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">extension</span><span class="p">)</span>
-</span><span id="v__command_globb-68"><a href="#v__command_globb-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-list&quot;</span><span class="p">)</span>
-</span><span id="v__command_globb-69"><a href="#v__command_globb-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">brick_list</span><span class="p">)</span>
-</span><span id="v__command_globb-70"><a href="#v__command_globb-70"><span class="linenos">70</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VCommandGlobbOutputs</span><span class="p">(</span>
-</span><span id="v__command_globb-71"><a href="#v__command_globb-71"><span class="linenos">71</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="v__command_globb-72"><a href="#v__command_globb-72"><span class="linenos">72</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_dir</span> <span class="o">+</span> <span class="s2">&quot;/*&quot;</span><span class="p">),</span>
-</span><span id="v__command_globb-73"><a href="#v__command_globb-73"><span class="linenos">73</span></a>    <span class="p">)</span>
-</span><span id="v__command_globb-74"><a href="#v__command_globb-74"><span class="linenos">74</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="v__command_globb-75"><a href="#v__command_globb-75"><span class="linenos">75</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="v__command_globb-68"><a href="#v__command_globb-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="v__command_globb-69"><a href="#v__command_globb-69"><span class="linenos">69</span></a>        <span class="s2">&quot;-list&quot;</span><span class="p">,</span>
+</span><span id="v__command_globb-70"><a href="#v__command_globb-70"><span class="linenos">70</span></a>        <span class="o">*</span><span class="n">brick_list</span>
+</span><span id="v__command_globb-71"><a href="#v__command_globb-71"><span class="linenos">71</span></a>    <span class="p">])</span>
+</span><span id="v__command_globb-72"><a href="#v__command_globb-72"><span class="linenos">72</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">VCommandGlobbOutputs</span><span class="p">(</span>
+</span><span id="v__command_globb-73"><a href="#v__command_globb-73"><span class="linenos">73</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="v__command_globb-74"><a href="#v__command_globb-74"><span class="linenos">74</span></a>        <span class="n">output_files</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="n">output_dir</span> <span class="o">+</span> <span class="s2">&quot;/*&quot;</span><span class="p">),</span>
+</span><span id="v__command_globb-75"><a href="#v__command_globb-75"><span class="linenos">75</span></a>    <span class="p">)</span>
+</span><span id="v__command_globb-76"><a href="#v__command_globb-76"><span class="linenos">76</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="v__command_globb-77"><a href="#v__command_globb-77"><span class="linenos">77</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

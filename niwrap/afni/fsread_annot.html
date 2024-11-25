@@ -90,7 +90,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="n">FSREAD_ANNOT_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;d6cd0f7bce55789b13d629787f5523d58b155de7.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;0e294e2ffa5abb5fca3f6e46a0f6e9df87196481.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;FSread_annot&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;afni&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;afni/afni_make_build:AFNI_24.2.06&quot;</span><span class="p">,</span>
@@ -160,68 +160,70 @@
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSREAD_ANNOT_METADATA</span><span class="p">)</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;FSread_annot&quot;</span><span class="p">)</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--input&quot;</span><span class="p">)</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">))</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>    <span class="k">if</span> <span class="n">hemi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>            <span class="s2">&quot;-hemi&quot;</span><span class="p">,</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="n">hemi</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="p">])</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">if</span> <span class="n">fscmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="s2">&quot;-FScmap&quot;</span><span class="p">,</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fscmap</span><span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="p">])</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">if</span> <span class="n">fscmap_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="s2">&quot;-FScmaprange&quot;</span><span class="p">,</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">fscmap_range</span><span class="p">)</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="p">])</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">if</span> <span class="n">fsversion</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="s2">&quot;-FSversion&quot;</span><span class="p">,</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="n">fsversion</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="p">])</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>    <span class="k">if</span> <span class="n">col_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="s2">&quot;-col_1D&quot;</span><span class="p">,</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="n">col_1d</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="p">])</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>    <span class="k">if</span> <span class="n">roi_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="s2">&quot;-roi_1D&quot;</span><span class="p">,</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="n">roi_1d</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="p">])</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">if</span> <span class="n">cmap_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="s2">&quot;-cmap_1D&quot;</span><span class="p">,</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="n">cmap_1d</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>        <span class="p">])</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">if</span> <span class="n">show_fscmap</span><span class="p">:</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_FScmap&quot;</span><span class="p">)</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>            <span class="s2">&quot;-dset&quot;</span><span class="p">,</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>            <span class="n">dset</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>        <span class="p">])</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FsreadAnnotOutputs</span><span class="p">(</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="n">out_col_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.col&quot;</span><span class="p">),</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">out_roi_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.roi&quot;</span><span class="p">),</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">out_niml_dset</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.niml.dset&quot;</span><span class="p">),</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">out_cmap_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.cmap&quot;</span><span class="p">),</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>    <span class="p">)</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="s2">&quot;FSREAD_ANNOT_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="s2">&quot;FsreadAnnotOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="s2">&quot;fsread_annot&quot;</span><span class="p">,</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="p">]</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="p">])</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>    <span class="k">if</span> <span class="n">hemi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="s2">&quot;-hemi&quot;</span><span class="p">,</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="n">hemi</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>        <span class="p">])</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">if</span> <span class="n">fscmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="s2">&quot;-FScmap&quot;</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fscmap</span><span class="p">)</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="p">])</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>    <span class="k">if</span> <span class="n">fscmap_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="s2">&quot;-FScmaprange&quot;</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">fscmap_range</span><span class="p">)</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="p">])</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>    <span class="k">if</span> <span class="n">fsversion</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="s2">&quot;-FSversion&quot;</span><span class="p">,</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="n">fsversion</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="p">])</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">if</span> <span class="n">col_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="s2">&quot;-col_1D&quot;</span><span class="p">,</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="n">col_1d</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="p">])</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="n">roi_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="s2">&quot;-roi_1D&quot;</span><span class="p">,</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="n">roi_1d</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="p">])</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>    <span class="k">if</span> <span class="n">cmap_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="s2">&quot;-cmap_1D&quot;</span><span class="p">,</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>            <span class="n">cmap_1d</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="p">])</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>    <span class="k">if</span> <span class="n">show_fscmap</span><span class="p">:</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_FScmap&quot;</span><span class="p">)</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="k">if</span> <span class="n">dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>            <span class="s2">&quot;-dset&quot;</span><span class="p">,</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>            <span class="n">dset</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>        <span class="p">])</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FsreadAnnotOutputs</span><span class="p">(</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">out_col_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.col&quot;</span><span class="p">),</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>        <span class="n">out_roi_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.roi&quot;</span><span class="p">),</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>        <span class="n">out_niml_dset</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.niml.dset&quot;</span><span class="p">),</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="n">out_cmap_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.cmap&quot;</span><span class="p">),</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>    <span class="p">)</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>    <span class="s2">&quot;FSREAD_ANNOT_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>    <span class="s2">&quot;FsreadAnnotOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>    <span class="s2">&quot;fsread_annot&quot;</span><span class="p">,</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -230,7 +232,7 @@
                     <div class="attr variable">
             <span class="name">FSREAD_ANNOT_METADATA</span>        =
 <input id="FSREAD_ANNOT_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="FSREAD_ANNOT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;d6cd0f7bce55789b13d629787f5523d58b155de7.boutiques&#39;, name=&#39;FSread_annot&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
+            <label class="view-value-button pdoc-button" for="FSREAD_ANNOT_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;0e294e2ffa5abb5fca3f6e46a0f6e9df87196481.boutiques&#39;, name=&#39;FSread_annot&#39;, package=&#39;afni&#39;, citations=None, container_image_tag=&#39;afni/afni_make_build:AFNI_24.2.06&#39;)</span>
 
         
     </div>
@@ -409,61 +411,63 @@
 </span><span id="fsread_annot-78"><a href="#fsread_annot-78"><span class="linenos"> 78</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">FSREAD_ANNOT_METADATA</span><span class="p">)</span>
 </span><span id="fsread_annot-79"><a href="#fsread_annot-79"><span class="linenos"> 79</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="fsread_annot-80"><a href="#fsread_annot-80"><span class="linenos"> 80</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;FSread_annot&quot;</span><span class="p">)</span>
-</span><span id="fsread_annot-81"><a href="#fsread_annot-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--input&quot;</span><span class="p">)</span>
-</span><span id="fsread_annot-82"><a href="#fsread_annot-82"><span class="linenos"> 82</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">))</span>
-</span><span id="fsread_annot-83"><a href="#fsread_annot-83"><span class="linenos"> 83</span></a>    <span class="k">if</span> <span class="n">hemi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fsread_annot-84"><a href="#fsread_annot-84"><span class="linenos"> 84</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fsread_annot-85"><a href="#fsread_annot-85"><span class="linenos"> 85</span></a>            <span class="s2">&quot;-hemi&quot;</span><span class="p">,</span>
-</span><span id="fsread_annot-86"><a href="#fsread_annot-86"><span class="linenos"> 86</span></a>            <span class="n">hemi</span>
-</span><span id="fsread_annot-87"><a href="#fsread_annot-87"><span class="linenos"> 87</span></a>        <span class="p">])</span>
-</span><span id="fsread_annot-88"><a href="#fsread_annot-88"><span class="linenos"> 88</span></a>    <span class="k">if</span> <span class="n">fscmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fsread_annot-89"><a href="#fsread_annot-89"><span class="linenos"> 89</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fsread_annot-90"><a href="#fsread_annot-90"><span class="linenos"> 90</span></a>            <span class="s2">&quot;-FScmap&quot;</span><span class="p">,</span>
-</span><span id="fsread_annot-91"><a href="#fsread_annot-91"><span class="linenos"> 91</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fscmap</span><span class="p">)</span>
-</span><span id="fsread_annot-92"><a href="#fsread_annot-92"><span class="linenos"> 92</span></a>        <span class="p">])</span>
-</span><span id="fsread_annot-93"><a href="#fsread_annot-93"><span class="linenos"> 93</span></a>    <span class="k">if</span> <span class="n">fscmap_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fsread_annot-94"><a href="#fsread_annot-94"><span class="linenos"> 94</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fsread_annot-95"><a href="#fsread_annot-95"><span class="linenos"> 95</span></a>            <span class="s2">&quot;-FScmaprange&quot;</span><span class="p">,</span>
-</span><span id="fsread_annot-96"><a href="#fsread_annot-96"><span class="linenos"> 96</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">fscmap_range</span><span class="p">)</span>
-</span><span id="fsread_annot-97"><a href="#fsread_annot-97"><span class="linenos"> 97</span></a>        <span class="p">])</span>
-</span><span id="fsread_annot-98"><a href="#fsread_annot-98"><span class="linenos"> 98</span></a>    <span class="k">if</span> <span class="n">fsversion</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fsread_annot-99"><a href="#fsread_annot-99"><span class="linenos"> 99</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fsread_annot-100"><a href="#fsread_annot-100"><span class="linenos">100</span></a>            <span class="s2">&quot;-FSversion&quot;</span><span class="p">,</span>
-</span><span id="fsread_annot-101"><a href="#fsread_annot-101"><span class="linenos">101</span></a>            <span class="n">fsversion</span>
-</span><span id="fsread_annot-102"><a href="#fsread_annot-102"><span class="linenos">102</span></a>        <span class="p">])</span>
-</span><span id="fsread_annot-103"><a href="#fsread_annot-103"><span class="linenos">103</span></a>    <span class="k">if</span> <span class="n">col_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fsread_annot-104"><a href="#fsread_annot-104"><span class="linenos">104</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fsread_annot-105"><a href="#fsread_annot-105"><span class="linenos">105</span></a>            <span class="s2">&quot;-col_1D&quot;</span><span class="p">,</span>
-</span><span id="fsread_annot-106"><a href="#fsread_annot-106"><span class="linenos">106</span></a>            <span class="n">col_1d</span>
-</span><span id="fsread_annot-107"><a href="#fsread_annot-107"><span class="linenos">107</span></a>        <span class="p">])</span>
-</span><span id="fsread_annot-108"><a href="#fsread_annot-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="n">roi_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fsread_annot-109"><a href="#fsread_annot-109"><span class="linenos">109</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fsread_annot-110"><a href="#fsread_annot-110"><span class="linenos">110</span></a>            <span class="s2">&quot;-roi_1D&quot;</span><span class="p">,</span>
-</span><span id="fsread_annot-111"><a href="#fsread_annot-111"><span class="linenos">111</span></a>            <span class="n">roi_1d</span>
-</span><span id="fsread_annot-112"><a href="#fsread_annot-112"><span class="linenos">112</span></a>        <span class="p">])</span>
-</span><span id="fsread_annot-113"><a href="#fsread_annot-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">cmap_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fsread_annot-114"><a href="#fsread_annot-114"><span class="linenos">114</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fsread_annot-115"><a href="#fsread_annot-115"><span class="linenos">115</span></a>            <span class="s2">&quot;-cmap_1D&quot;</span><span class="p">,</span>
-</span><span id="fsread_annot-116"><a href="#fsread_annot-116"><span class="linenos">116</span></a>            <span class="n">cmap_1d</span>
-</span><span id="fsread_annot-117"><a href="#fsread_annot-117"><span class="linenos">117</span></a>        <span class="p">])</span>
-</span><span id="fsread_annot-118"><a href="#fsread_annot-118"><span class="linenos">118</span></a>    <span class="k">if</span> <span class="n">show_fscmap</span><span class="p">:</span>
-</span><span id="fsread_annot-119"><a href="#fsread_annot-119"><span class="linenos">119</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_FScmap&quot;</span><span class="p">)</span>
-</span><span id="fsread_annot-120"><a href="#fsread_annot-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="fsread_annot-121"><a href="#fsread_annot-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
-</span><span id="fsread_annot-122"><a href="#fsread_annot-122"><span class="linenos">122</span></a>            <span class="s2">&quot;-dset&quot;</span><span class="p">,</span>
-</span><span id="fsread_annot-123"><a href="#fsread_annot-123"><span class="linenos">123</span></a>            <span class="n">dset</span>
-</span><span id="fsread_annot-124"><a href="#fsread_annot-124"><span class="linenos">124</span></a>        <span class="p">])</span>
-</span><span id="fsread_annot-125"><a href="#fsread_annot-125"><span class="linenos">125</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
-</span><span id="fsread_annot-126"><a href="#fsread_annot-126"><span class="linenos">126</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
-</span><span id="fsread_annot-127"><a href="#fsread_annot-127"><span class="linenos">127</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FsreadAnnotOutputs</span><span class="p">(</span>
-</span><span id="fsread_annot-128"><a href="#fsread_annot-128"><span class="linenos">128</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="fsread_annot-129"><a href="#fsread_annot-129"><span class="linenos">129</span></a>        <span class="n">out_col_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.col&quot;</span><span class="p">),</span>
-</span><span id="fsread_annot-130"><a href="#fsread_annot-130"><span class="linenos">130</span></a>        <span class="n">out_roi_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.roi&quot;</span><span class="p">),</span>
-</span><span id="fsread_annot-131"><a href="#fsread_annot-131"><span class="linenos">131</span></a>        <span class="n">out_niml_dset</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.niml.dset&quot;</span><span class="p">),</span>
-</span><span id="fsread_annot-132"><a href="#fsread_annot-132"><span class="linenos">132</span></a>        <span class="n">out_cmap_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.cmap&quot;</span><span class="p">),</span>
-</span><span id="fsread_annot-133"><a href="#fsread_annot-133"><span class="linenos">133</span></a>    <span class="p">)</span>
-</span><span id="fsread_annot-134"><a href="#fsread_annot-134"><span class="linenos">134</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="fsread_annot-135"><a href="#fsread_annot-135"><span class="linenos">135</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="fsread_annot-81"><a href="#fsread_annot-81"><span class="linenos"> 81</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fsread_annot-82"><a href="#fsread_annot-82"><span class="linenos"> 82</span></a>        <span class="s2">&quot;-input&quot;</span><span class="p">,</span>
+</span><span id="fsread_annot-83"><a href="#fsread_annot-83"><span class="linenos"> 83</span></a>        <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+</span><span id="fsread_annot-84"><a href="#fsread_annot-84"><span class="linenos"> 84</span></a>    <span class="p">])</span>
+</span><span id="fsread_annot-85"><a href="#fsread_annot-85"><span class="linenos"> 85</span></a>    <span class="k">if</span> <span class="n">hemi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fsread_annot-86"><a href="#fsread_annot-86"><span class="linenos"> 86</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fsread_annot-87"><a href="#fsread_annot-87"><span class="linenos"> 87</span></a>            <span class="s2">&quot;-hemi&quot;</span><span class="p">,</span>
+</span><span id="fsread_annot-88"><a href="#fsread_annot-88"><span class="linenos"> 88</span></a>            <span class="n">hemi</span>
+</span><span id="fsread_annot-89"><a href="#fsread_annot-89"><span class="linenos"> 89</span></a>        <span class="p">])</span>
+</span><span id="fsread_annot-90"><a href="#fsread_annot-90"><span class="linenos"> 90</span></a>    <span class="k">if</span> <span class="n">fscmap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fsread_annot-91"><a href="#fsread_annot-91"><span class="linenos"> 91</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fsread_annot-92"><a href="#fsread_annot-92"><span class="linenos"> 92</span></a>            <span class="s2">&quot;-FScmap&quot;</span><span class="p">,</span>
+</span><span id="fsread_annot-93"><a href="#fsread_annot-93"><span class="linenos"> 93</span></a>            <span class="n">execution</span><span class="o">.</span><span class="n">input_file</span><span class="p">(</span><span class="n">fscmap</span><span class="p">)</span>
+</span><span id="fsread_annot-94"><a href="#fsread_annot-94"><span class="linenos"> 94</span></a>        <span class="p">])</span>
+</span><span id="fsread_annot-95"><a href="#fsread_annot-95"><span class="linenos"> 95</span></a>    <span class="k">if</span> <span class="n">fscmap_range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fsread_annot-96"><a href="#fsread_annot-96"><span class="linenos"> 96</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fsread_annot-97"><a href="#fsread_annot-97"><span class="linenos"> 97</span></a>            <span class="s2">&quot;-FScmaprange&quot;</span><span class="p">,</span>
+</span><span id="fsread_annot-98"><a href="#fsread_annot-98"><span class="linenos"> 98</span></a>            <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">fscmap_range</span><span class="p">)</span>
+</span><span id="fsread_annot-99"><a href="#fsread_annot-99"><span class="linenos"> 99</span></a>        <span class="p">])</span>
+</span><span id="fsread_annot-100"><a href="#fsread_annot-100"><span class="linenos">100</span></a>    <span class="k">if</span> <span class="n">fsversion</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fsread_annot-101"><a href="#fsread_annot-101"><span class="linenos">101</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fsread_annot-102"><a href="#fsread_annot-102"><span class="linenos">102</span></a>            <span class="s2">&quot;-FSversion&quot;</span><span class="p">,</span>
+</span><span id="fsread_annot-103"><a href="#fsread_annot-103"><span class="linenos">103</span></a>            <span class="n">fsversion</span>
+</span><span id="fsread_annot-104"><a href="#fsread_annot-104"><span class="linenos">104</span></a>        <span class="p">])</span>
+</span><span id="fsread_annot-105"><a href="#fsread_annot-105"><span class="linenos">105</span></a>    <span class="k">if</span> <span class="n">col_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fsread_annot-106"><a href="#fsread_annot-106"><span class="linenos">106</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fsread_annot-107"><a href="#fsread_annot-107"><span class="linenos">107</span></a>            <span class="s2">&quot;-col_1D&quot;</span><span class="p">,</span>
+</span><span id="fsread_annot-108"><a href="#fsread_annot-108"><span class="linenos">108</span></a>            <span class="n">col_1d</span>
+</span><span id="fsread_annot-109"><a href="#fsread_annot-109"><span class="linenos">109</span></a>        <span class="p">])</span>
+</span><span id="fsread_annot-110"><a href="#fsread_annot-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="n">roi_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fsread_annot-111"><a href="#fsread_annot-111"><span class="linenos">111</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fsread_annot-112"><a href="#fsread_annot-112"><span class="linenos">112</span></a>            <span class="s2">&quot;-roi_1D&quot;</span><span class="p">,</span>
+</span><span id="fsread_annot-113"><a href="#fsread_annot-113"><span class="linenos">113</span></a>            <span class="n">roi_1d</span>
+</span><span id="fsread_annot-114"><a href="#fsread_annot-114"><span class="linenos">114</span></a>        <span class="p">])</span>
+</span><span id="fsread_annot-115"><a href="#fsread_annot-115"><span class="linenos">115</span></a>    <span class="k">if</span> <span class="n">cmap_1d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fsread_annot-116"><a href="#fsread_annot-116"><span class="linenos">116</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fsread_annot-117"><a href="#fsread_annot-117"><span class="linenos">117</span></a>            <span class="s2">&quot;-cmap_1D&quot;</span><span class="p">,</span>
+</span><span id="fsread_annot-118"><a href="#fsread_annot-118"><span class="linenos">118</span></a>            <span class="n">cmap_1d</span>
+</span><span id="fsread_annot-119"><a href="#fsread_annot-119"><span class="linenos">119</span></a>        <span class="p">])</span>
+</span><span id="fsread_annot-120"><a href="#fsread_annot-120"><span class="linenos">120</span></a>    <span class="k">if</span> <span class="n">show_fscmap</span><span class="p">:</span>
+</span><span id="fsread_annot-121"><a href="#fsread_annot-121"><span class="linenos">121</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-show_FScmap&quot;</span><span class="p">)</span>
+</span><span id="fsread_annot-122"><a href="#fsread_annot-122"><span class="linenos">122</span></a>    <span class="k">if</span> <span class="n">dset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="fsread_annot-123"><a href="#fsread_annot-123"><span class="linenos">123</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="fsread_annot-124"><a href="#fsread_annot-124"><span class="linenos">124</span></a>            <span class="s2">&quot;-dset&quot;</span><span class="p">,</span>
+</span><span id="fsread_annot-125"><a href="#fsread_annot-125"><span class="linenos">125</span></a>            <span class="n">dset</span>
+</span><span id="fsread_annot-126"><a href="#fsread_annot-126"><span class="linenos">126</span></a>        <span class="p">])</span>
+</span><span id="fsread_annot-127"><a href="#fsread_annot-127"><span class="linenos">127</span></a>    <span class="k">if</span> <span class="n">help_</span><span class="p">:</span>
+</span><span id="fsread_annot-128"><a href="#fsread_annot-128"><span class="linenos">128</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-help&quot;</span><span class="p">)</span>
+</span><span id="fsread_annot-129"><a href="#fsread_annot-129"><span class="linenos">129</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">FsreadAnnotOutputs</span><span class="p">(</span>
+</span><span id="fsread_annot-130"><a href="#fsread_annot-130"><span class="linenos">130</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="fsread_annot-131"><a href="#fsread_annot-131"><span class="linenos">131</span></a>        <span class="n">out_col_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.col&quot;</span><span class="p">),</span>
+</span><span id="fsread_annot-132"><a href="#fsread_annot-132"><span class="linenos">132</span></a>        <span class="n">out_roi_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.roi&quot;</span><span class="p">),</span>
+</span><span id="fsread_annot-133"><a href="#fsread_annot-133"><span class="linenos">133</span></a>        <span class="n">out_niml_dset</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.niml.dset&quot;</span><span class="p">),</span>
+</span><span id="fsread_annot-134"><a href="#fsread_annot-134"><span class="linenos">134</span></a>        <span class="n">out_cmap_1d</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;annot.1D.cmap&quot;</span><span class="p">),</span>
+</span><span id="fsread_annot-135"><a href="#fsread_annot-135"><span class="linenos">135</span></a>    <span class="p">)</span>
+</span><span id="fsread_annot-136"><a href="#fsread_annot-136"><span class="linenos">136</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="fsread_annot-137"><a href="#fsread_annot-137"><span class="linenos">137</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

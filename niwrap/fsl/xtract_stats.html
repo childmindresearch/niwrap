@@ -81,7 +81,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">XTRACT_STATS_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;8c6b45f906d7c0e1e820d4a588c291c551f45d9a.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;249f8989b29896820a47b1028e9f74d171d4927e.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;xtract_stats&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;fsl&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;brainlife/fsl:6.0.4-patched2&quot;</span><span class="p">,</span>
@@ -125,31 +125,37 @@
 </span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">XTRACT_STATS_METADATA</span><span class="p">)</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;xtract_stats&quot;</span><span class="p">)</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-d&quot;</span><span class="p">)</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">folder_basename</span><span class="p">)</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-xtract&quot;</span><span class="p">)</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xtract_dir</span><span class="p">)</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-w&quot;</span><span class="p">)</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xtract2diff</span><span class="p">)</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[reference]&quot;</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[output_file]&quot;</span><span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[structures_file]&quot;</span><span class="p">)</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[threshold]&quot;</span><span class="p">)</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[measurements]&quot;</span><span class="p">)</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[keep_temp_files]&quot;</span><span class="p">)</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">XtractStatsOutputs</span><span class="p">(</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="n">csv_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;&lt;output_file&gt;&quot;</span><span class="p">),</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="p">)</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="s2">&quot;XTRACT_STATS_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="s2">&quot;XtractStatsOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="s2">&quot;xtract_stats&quot;</span><span class="p">,</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a><span class="p">]</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>        <span class="s2">&quot;-d&quot;</span><span class="p">,</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>        <span class="n">folder_basename</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="p">])</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="s2">&quot;-xtract&quot;</span><span class="p">,</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>        <span class="n">xtract_dir</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="p">])</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="s2">&quot;-w&quot;</span><span class="p">,</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>        <span class="n">xtract2diff</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="p">])</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[reference]&quot;</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[output_file]&quot;</span><span class="p">)</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[structures_file]&quot;</span><span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[threshold]&quot;</span><span class="p">)</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[measurements]&quot;</span><span class="p">)</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[keep_temp_files]&quot;</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">XtractStatsOutputs</span><span class="p">(</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>        <span class="n">csv_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;&lt;output_file&gt;&quot;</span><span class="p">),</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="s2">&quot;XTRACT_STATS_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>    <span class="s2">&quot;XtractStatsOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>    <span class="s2">&quot;xtract_stats&quot;</span><span class="p">,</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -158,7 +164,7 @@
                     <div class="attr variable">
             <span class="name">XTRACT_STATS_METADATA</span>        =
 <input id="XTRACT_STATS_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="XTRACT_STATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;8c6b45f906d7c0e1e820d4a588c291c551f45d9a.boutiques&#39;, name=&#39;xtract_stats&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
+            <label class="view-value-button pdoc-button" for="XTRACT_STATS_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;249f8989b29896820a47b1028e9f74d171d4927e.boutiques&#39;, name=&#39;xtract_stats&#39;, package=&#39;fsl&#39;, citations=None, container_image_tag=&#39;brainlife/fsl:6.0.4-patched2&#39;)</span>
 
         
     </div>
@@ -272,24 +278,30 @@
 </span><span id="xtract_stats-52"><a href="#xtract_stats-52"><span class="linenos">52</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">XTRACT_STATS_METADATA</span><span class="p">)</span>
 </span><span id="xtract_stats-53"><a href="#xtract_stats-53"><span class="linenos">53</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="xtract_stats-54"><a href="#xtract_stats-54"><span class="linenos">54</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;xtract_stats&quot;</span><span class="p">)</span>
-</span><span id="xtract_stats-55"><a href="#xtract_stats-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-d&quot;</span><span class="p">)</span>
-</span><span id="xtract_stats-56"><a href="#xtract_stats-56"><span class="linenos">56</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">folder_basename</span><span class="p">)</span>
-</span><span id="xtract_stats-57"><a href="#xtract_stats-57"><span class="linenos">57</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-xtract&quot;</span><span class="p">)</span>
-</span><span id="xtract_stats-58"><a href="#xtract_stats-58"><span class="linenos">58</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xtract_dir</span><span class="p">)</span>
-</span><span id="xtract_stats-59"><a href="#xtract_stats-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-w&quot;</span><span class="p">)</span>
-</span><span id="xtract_stats-60"><a href="#xtract_stats-60"><span class="linenos">60</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xtract2diff</span><span class="p">)</span>
-</span><span id="xtract_stats-61"><a href="#xtract_stats-61"><span class="linenos">61</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[reference]&quot;</span><span class="p">)</span>
-</span><span id="xtract_stats-62"><a href="#xtract_stats-62"><span class="linenos">62</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[output_file]&quot;</span><span class="p">)</span>
-</span><span id="xtract_stats-63"><a href="#xtract_stats-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[structures_file]&quot;</span><span class="p">)</span>
-</span><span id="xtract_stats-64"><a href="#xtract_stats-64"><span class="linenos">64</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[threshold]&quot;</span><span class="p">)</span>
-</span><span id="xtract_stats-65"><a href="#xtract_stats-65"><span class="linenos">65</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[measurements]&quot;</span><span class="p">)</span>
-</span><span id="xtract_stats-66"><a href="#xtract_stats-66"><span class="linenos">66</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[keep_temp_files]&quot;</span><span class="p">)</span>
-</span><span id="xtract_stats-67"><a href="#xtract_stats-67"><span class="linenos">67</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">XtractStatsOutputs</span><span class="p">(</span>
-</span><span id="xtract_stats-68"><a href="#xtract_stats-68"><span class="linenos">68</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="xtract_stats-69"><a href="#xtract_stats-69"><span class="linenos">69</span></a>        <span class="n">csv_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;&lt;output_file&gt;&quot;</span><span class="p">),</span>
-</span><span id="xtract_stats-70"><a href="#xtract_stats-70"><span class="linenos">70</span></a>    <span class="p">)</span>
-</span><span id="xtract_stats-71"><a href="#xtract_stats-71"><span class="linenos">71</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="xtract_stats-72"><a href="#xtract_stats-72"><span class="linenos">72</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="xtract_stats-55"><a href="#xtract_stats-55"><span class="linenos">55</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="xtract_stats-56"><a href="#xtract_stats-56"><span class="linenos">56</span></a>        <span class="s2">&quot;-d&quot;</span><span class="p">,</span>
+</span><span id="xtract_stats-57"><a href="#xtract_stats-57"><span class="linenos">57</span></a>        <span class="n">folder_basename</span>
+</span><span id="xtract_stats-58"><a href="#xtract_stats-58"><span class="linenos">58</span></a>    <span class="p">])</span>
+</span><span id="xtract_stats-59"><a href="#xtract_stats-59"><span class="linenos">59</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="xtract_stats-60"><a href="#xtract_stats-60"><span class="linenos">60</span></a>        <span class="s2">&quot;-xtract&quot;</span><span class="p">,</span>
+</span><span id="xtract_stats-61"><a href="#xtract_stats-61"><span class="linenos">61</span></a>        <span class="n">xtract_dir</span>
+</span><span id="xtract_stats-62"><a href="#xtract_stats-62"><span class="linenos">62</span></a>    <span class="p">])</span>
+</span><span id="xtract_stats-63"><a href="#xtract_stats-63"><span class="linenos">63</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="xtract_stats-64"><a href="#xtract_stats-64"><span class="linenos">64</span></a>        <span class="s2">&quot;-w&quot;</span><span class="p">,</span>
+</span><span id="xtract_stats-65"><a href="#xtract_stats-65"><span class="linenos">65</span></a>        <span class="n">xtract2diff</span>
+</span><span id="xtract_stats-66"><a href="#xtract_stats-66"><span class="linenos">66</span></a>    <span class="p">])</span>
+</span><span id="xtract_stats-67"><a href="#xtract_stats-67"><span class="linenos">67</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[reference]&quot;</span><span class="p">)</span>
+</span><span id="xtract_stats-68"><a href="#xtract_stats-68"><span class="linenos">68</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[output_file]&quot;</span><span class="p">)</span>
+</span><span id="xtract_stats-69"><a href="#xtract_stats-69"><span class="linenos">69</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[structures_file]&quot;</span><span class="p">)</span>
+</span><span id="xtract_stats-70"><a href="#xtract_stats-70"><span class="linenos">70</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[threshold]&quot;</span><span class="p">)</span>
+</span><span id="xtract_stats-71"><a href="#xtract_stats-71"><span class="linenos">71</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[measurements]&quot;</span><span class="p">)</span>
+</span><span id="xtract_stats-72"><a href="#xtract_stats-72"><span class="linenos">72</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;[keep_temp_files]&quot;</span><span class="p">)</span>
+</span><span id="xtract_stats-73"><a href="#xtract_stats-73"><span class="linenos">73</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">XtractStatsOutputs</span><span class="p">(</span>
+</span><span id="xtract_stats-74"><a href="#xtract_stats-74"><span class="linenos">74</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="xtract_stats-75"><a href="#xtract_stats-75"><span class="linenos">75</span></a>        <span class="n">csv_output</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;&lt;output_file&gt;&quot;</span><span class="p">),</span>
+</span><span id="xtract_stats-76"><a href="#xtract_stats-76"><span class="linenos">76</span></a>    <span class="p">)</span>
+</span><span id="xtract_stats-77"><a href="#xtract_stats-77"><span class="linenos">77</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="xtract_stats-78"><a href="#xtract_stats-78"><span class="linenos">78</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">RUN_QDEC_GLM_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;a88ac0587f0f6fccb4e2e53192e6ac3ec7342484.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;4f2eed57743006c12b9800229fab017b4a60e025.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;run-qdec-glm&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -113,20 +113,22 @@
 </span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RUN_QDEC_GLM_METADATA</span><span class="p">)</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;run-qdec-glm&quot;</span><span class="p">)</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qdec_directory</span><span class="p">)</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RunQdecGlmOutputs</span><span class="p">(</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="p">)</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="s2">&quot;RUN_QDEC_GLM_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="s2">&quot;RunQdecGlmOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="s2">&quot;run_qdec_glm&quot;</span><span class="p">,</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="p">]</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>        <span class="s2">&quot;-glm&quot;</span><span class="p">,</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>        <span class="s2">&quot;run-qdec&quot;</span> <span class="o">+</span> <span class="n">qdec_directory</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="p">])</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RunQdecGlmOutputs</span><span class="p">(</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="p">)</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="s2">&quot;RUN_QDEC_GLM_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="s2">&quot;RunQdecGlmOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="s2">&quot;run_qdec_glm&quot;</span><span class="p">,</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -135,7 +137,7 @@
                     <div class="attr variable">
             <span class="name">RUN_QDEC_GLM_METADATA</span>        =
 <input id="RUN_QDEC_GLM_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="RUN_QDEC_GLM_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;a88ac0587f0f6fccb4e2e53192e6ac3ec7342484.boutiques&#39;, name=&#39;run-qdec-glm&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="RUN_QDEC_GLM_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;4f2eed57743006c12b9800229fab017b4a60e025.boutiques&#39;, name=&#39;run-qdec-glm&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -227,13 +229,15 @@
 </span><span id="run_qdec_glm-43"><a href="#run_qdec_glm-43"><span class="linenos">43</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="run_qdec_glm-44"><a href="#run_qdec_glm-44"><span class="linenos">44</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">RUN_QDEC_GLM_METADATA</span><span class="p">)</span>
 </span><span id="run_qdec_glm-45"><a href="#run_qdec_glm-45"><span class="linenos">45</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="run_qdec_glm-46"><a href="#run_qdec_glm-46"><span class="linenos">46</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;run-qdec-glm&quot;</span><span class="p">)</span>
-</span><span id="run_qdec_glm-47"><a href="#run_qdec_glm-47"><span class="linenos">47</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qdec_directory</span><span class="p">)</span>
-</span><span id="run_qdec_glm-48"><a href="#run_qdec_glm-48"><span class="linenos">48</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RunQdecGlmOutputs</span><span class="p">(</span>
-</span><span id="run_qdec_glm-49"><a href="#run_qdec_glm-49"><span class="linenos">49</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="run_qdec_glm-50"><a href="#run_qdec_glm-50"><span class="linenos">50</span></a>    <span class="p">)</span>
-</span><span id="run_qdec_glm-51"><a href="#run_qdec_glm-51"><span class="linenos">51</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="run_qdec_glm-52"><a href="#run_qdec_glm-52"><span class="linenos">52</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="run_qdec_glm-46"><a href="#run_qdec_glm-46"><span class="linenos">46</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="run_qdec_glm-47"><a href="#run_qdec_glm-47"><span class="linenos">47</span></a>        <span class="s2">&quot;-glm&quot;</span><span class="p">,</span>
+</span><span id="run_qdec_glm-48"><a href="#run_qdec_glm-48"><span class="linenos">48</span></a>        <span class="s2">&quot;run-qdec&quot;</span> <span class="o">+</span> <span class="n">qdec_directory</span>
+</span><span id="run_qdec_glm-49"><a href="#run_qdec_glm-49"><span class="linenos">49</span></a>    <span class="p">])</span>
+</span><span id="run_qdec_glm-50"><a href="#run_qdec_glm-50"><span class="linenos">50</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">RunQdecGlmOutputs</span><span class="p">(</span>
+</span><span id="run_qdec_glm-51"><a href="#run_qdec_glm-51"><span class="linenos">51</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="run_qdec_glm-52"><a href="#run_qdec_glm-52"><span class="linenos">52</span></a>    <span class="p">)</span>
+</span><span id="run_qdec_glm-53"><a href="#run_qdec_glm-53"><span class="linenos">53</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="run_qdec_glm-54"><a href="#run_qdec_glm-54"><span class="linenos">54</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 

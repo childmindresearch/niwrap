@@ -78,7 +78,7 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">dataclasses</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">REINFLATE_SUBJECT_RH_METADATA</span> <span class="o">=</span> <span class="n">Metadata</span><span class="p">(</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;540bde89fe45baa657d26fcfdea3dd14ef5a0717.boutiques&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;46c17d80d09536f705ed323c939acc704434405c.boutiques&quot;</span><span class="p">,</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;reinflate_subject-rh&quot;</span><span class="p">,</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;freesurfer&quot;</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">container_image_tag</span><span class="o">=</span><span class="s2">&quot;freesurfer/freesurfer:7.4.1&quot;</span><span class="p">,</span>
@@ -117,22 +117,24 @@
 </span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">REINFLATE_SUBJECT_RH_METADATA</span><span class="p">)</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;reinflate_subject-rh&quot;</span><span class="p">)</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subject_dir</span><span class="p">)</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="k">if</span> <span class="n">additional_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">additional_options</span><span class="p">)</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ReinflateSubjectRhOutputs</span><span class="p">(</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="p">)</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="k">return</span> <span class="n">ret</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>    <span class="s2">&quot;REINFLATE_SUBJECT_RH_METADATA&quot;</span><span class="p">,</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>    <span class="s2">&quot;ReinflateSubjectRhOutputs&quot;</span><span class="p">,</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="s2">&quot;reinflate_subject_rh&quot;</span><span class="p">,</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="p">]</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>        <span class="s2">&quot;-rh&quot;</span><span class="p">,</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>        <span class="s2">&quot;reinflate_subject&quot;</span> <span class="o">+</span> <span class="n">subject_dir</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="p">])</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>    <span class="k">if</span> <span class="n">additional_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">additional_options</span><span class="p">)</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ReinflateSubjectRhOutputs</span><span class="p">(</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="p">)</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>    <span class="s2">&quot;REINFLATE_SUBJECT_RH_METADATA&quot;</span><span class="p">,</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>    <span class="s2">&quot;ReinflateSubjectRhOutputs&quot;</span><span class="p">,</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="s2">&quot;reinflate_subject_rh&quot;</span><span class="p">,</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -141,7 +143,7 @@
                     <div class="attr variable">
             <span class="name">REINFLATE_SUBJECT_RH_METADATA</span>        =
 <input id="REINFLATE_SUBJECT_RH_METADATA-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="REINFLATE_SUBJECT_RH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;540bde89fe45baa657d26fcfdea3dd14ef5a0717.boutiques&#39;, name=&#39;reinflate_subject-rh&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
+            <label class="view-value-button pdoc-button" for="REINFLATE_SUBJECT_RH_METADATA-view-value"></label><span class="default_value">Metadata(id=&#39;46c17d80d09536f705ed323c939acc704434405c.boutiques&#39;, name=&#39;reinflate_subject-rh&#39;, package=&#39;freesurfer&#39;, citations=None, container_image_tag=&#39;freesurfer/freesurfer:7.4.1&#39;)</span>
 
         
     </div>
@@ -237,15 +239,17 @@
 </span><span id="reinflate_subject_rh-47"><a href="#reinflate_subject_rh-47"><span class="linenos">47</span></a>    <span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span> <span class="ow">or</span> <span class="n">get_global_runner</span><span class="p">()</span>
 </span><span id="reinflate_subject_rh-48"><a href="#reinflate_subject_rh-48"><span class="linenos">48</span></a>    <span class="n">execution</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">start_execution</span><span class="p">(</span><span class="n">REINFLATE_SUBJECT_RH_METADATA</span><span class="p">)</span>
 </span><span id="reinflate_subject_rh-49"><a href="#reinflate_subject_rh-49"><span class="linenos">49</span></a>    <span class="n">cargs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="reinflate_subject_rh-50"><a href="#reinflate_subject_rh-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;reinflate_subject-rh&quot;</span><span class="p">)</span>
-</span><span id="reinflate_subject_rh-51"><a href="#reinflate_subject_rh-51"><span class="linenos">51</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subject_dir</span><span class="p">)</span>
-</span><span id="reinflate_subject_rh-52"><a href="#reinflate_subject_rh-52"><span class="linenos">52</span></a>    <span class="k">if</span> <span class="n">additional_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="reinflate_subject_rh-53"><a href="#reinflate_subject_rh-53"><span class="linenos">53</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">additional_options</span><span class="p">)</span>
-</span><span id="reinflate_subject_rh-54"><a href="#reinflate_subject_rh-54"><span class="linenos">54</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ReinflateSubjectRhOutputs</span><span class="p">(</span>
-</span><span id="reinflate_subject_rh-55"><a href="#reinflate_subject_rh-55"><span class="linenos">55</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
-</span><span id="reinflate_subject_rh-56"><a href="#reinflate_subject_rh-56"><span class="linenos">56</span></a>    <span class="p">)</span>
-</span><span id="reinflate_subject_rh-57"><a href="#reinflate_subject_rh-57"><span class="linenos">57</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
-</span><span id="reinflate_subject_rh-58"><a href="#reinflate_subject_rh-58"><span class="linenos">58</span></a>    <span class="k">return</span> <span class="n">ret</span>
+</span><span id="reinflate_subject_rh-50"><a href="#reinflate_subject_rh-50"><span class="linenos">50</span></a>    <span class="n">cargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span><span id="reinflate_subject_rh-51"><a href="#reinflate_subject_rh-51"><span class="linenos">51</span></a>        <span class="s2">&quot;-rh&quot;</span><span class="p">,</span>
+</span><span id="reinflate_subject_rh-52"><a href="#reinflate_subject_rh-52"><span class="linenos">52</span></a>        <span class="s2">&quot;reinflate_subject&quot;</span> <span class="o">+</span> <span class="n">subject_dir</span>
+</span><span id="reinflate_subject_rh-53"><a href="#reinflate_subject_rh-53"><span class="linenos">53</span></a>    <span class="p">])</span>
+</span><span id="reinflate_subject_rh-54"><a href="#reinflate_subject_rh-54"><span class="linenos">54</span></a>    <span class="k">if</span> <span class="n">additional_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="reinflate_subject_rh-55"><a href="#reinflate_subject_rh-55"><span class="linenos">55</span></a>        <span class="n">cargs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">additional_options</span><span class="p">)</span>
+</span><span id="reinflate_subject_rh-56"><a href="#reinflate_subject_rh-56"><span class="linenos">56</span></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">ReinflateSubjectRhOutputs</span><span class="p">(</span>
+</span><span id="reinflate_subject_rh-57"><a href="#reinflate_subject_rh-57"><span class="linenos">57</span></a>        <span class="n">root</span><span class="o">=</span><span class="n">execution</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span>
+</span><span id="reinflate_subject_rh-58"><a href="#reinflate_subject_rh-58"><span class="linenos">58</span></a>    <span class="p">)</span>
+</span><span id="reinflate_subject_rh-59"><a href="#reinflate_subject_rh-59"><span class="linenos">59</span></a>    <span class="n">execution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cargs</span><span class="p">)</span>
+</span><span id="reinflate_subject_rh-60"><a href="#reinflate_subject_rh-60"><span class="linenos">60</span></a>    <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
