@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_FIT_BIAS_METADATA = Metadata(
-    id="cf8d10003f869e3e7ca124a53deaebc1f5c089d0.boutiques",
+    id="f53894f5614df0390ec8d6bd35f7bf80846f4057.boutiques",
     name="mri_fit_bias",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -71,56 +71,46 @@ def mri_fit_bias(
     execution = runner.start_execution(MRI_FIT_BIAS_METADATA)
     cargs = []
     cargs.append("mri_fit_bias")
-    cargs.append("--i")
     cargs.extend([
         "--i",
         execution.input_file(inputvol)
     ])
-    cargs.append("--cutoff")
     if lpf_cutoff is not None:
         cargs.extend([
             "--cutoff",
             str(lpf_cutoff)
         ])
-    cargs.append("--seg")
     cargs.extend([
         "--seg",
         execution.input_file(segvol)
     ])
-    cargs.append("--mask")
     cargs.extend([
         "--mask",
         execution.input_file(maskvol)
     ])
-    cargs.append("--o")
     cargs.extend([
         "--o",
         outvol
     ])
-    cargs.append("--bias")
     cargs.extend([
         "--bias",
         biasfield
     ])
-    cargs.append("--dct")
     if dctvol is not None:
         cargs.extend([
             "--dct",
             dctvol
         ])
-    cargs.append("--thresh")
     if threshold is not None:
         cargs.extend([
             "--thresh",
             str(threshold)
         ])
-    cargs.append("--erode")
     if nerode is not None:
         cargs.extend([
             "--erode",
             str(nerode)
         ])
-    cargs.append("--threads")
     if nthreads is not None:
         cargs.extend([
             "--threads",

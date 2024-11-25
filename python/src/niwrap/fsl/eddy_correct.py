@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EDDY_CORRECT_METADATA = Metadata(
-    id="b3db82860cab20dc3434db50628877de4771c002.boutiques",
+    id="4212fa6213491ea7872fd3f4964fc34cd6f59634.boutiques",
     name="eddy_correct",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -53,9 +53,8 @@ def eddy_correct(
     cargs.append("eddy_correct")
     cargs.append(execution.input_file(v_4d_input))
     cargs.append(v_4d_output)
-    cargs.append(str(reference_no))
     if interp_method is not None:
-        cargs.append(interp_method)
+        cargs.append(str(reference_no) + interp_method)
     ret = EddyCorrectOutputs(
         root=execution.output_file("."),
         corrected_4d_output=execution.output_file(v_4d_output + ".nii.gz"),

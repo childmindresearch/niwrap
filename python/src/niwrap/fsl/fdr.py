@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FDR_METADATA = Metadata(
-    id="ea93d9d11cf7eaf3a176c5c2347196ba66b4cc6f.boutiques",
+    id="7f0d717912ad535e94523a0e999bf8e7b77d883e.boutiques",
     name="fdr",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -73,7 +73,6 @@ def fdr(
     execution = runner.start_execution(FDR_METADATA)
     cargs = []
     cargs.append("fdr")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(infile)

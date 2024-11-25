@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__AFNI_REFACER_RUN_METADATA = Metadata(
-    id="468955e38481aae9c781599f1f8a7945f4d29bc2.boutiques",
+    id="4ee9555d5ee6d28747d308ccee867a38164f416a.boutiques",
     name="@afni_refacer_run",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -86,7 +86,6 @@ def v__afni_refacer_run(
     cargs.append(execution.input_file(input_file))
     if mode_all:
         cargs.append("-mode_all")
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix

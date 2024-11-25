@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_DIFF_METADATA = Metadata(
-    id="e7d88abf911ebb20a2e2fb8c10db03afa4c74c47.boutiques",
+    id="12d83a81fff1fd5eab012469e9ec689622875cb8.boutiques",
     name="mris_diff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -57,29 +57,24 @@ def mris_diff(
     cargs.append("mris_diff")
     cargs.append(execution.input_file(surface1))
     cargs.append(execution.input_file(surface2))
-    cargs.append("--s1")
     cargs.extend([
         "--s1",
         subject1
     ])
-    cargs.append("--s2")
     cargs.extend([
         "--s2",
         subject2
     ])
-    cargs.append("--sd1")
     if subj_dir1 is not None:
         cargs.extend([
             "--sd1",
             subj_dir1
         ])
-    cargs.append("--sd2")
     if subj_dir2 is not None:
         cargs.extend([
             "--sd2",
             subj_dir2
         ])
-    cargs.append("--hemi")
     cargs.extend([
         "--hemi",
         hemisphere

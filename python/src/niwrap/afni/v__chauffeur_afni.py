@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__CHAUFFEUR_AFNI_METADATA = Metadata(
-    id="1c876be7c5930cd8b1fe92c47fded0de8c44feca.boutiques",
+    id="7bd1968eb762331f9eaee48a7484852a7e447634.boutiques",
     name="@chauffeur_afni",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,7 +56,6 @@ def v__chauffeur_afni(
     cargs.append(execution.input_file(ulay))
     if olay is not None:
         cargs.append(execution.input_file(olay))
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix

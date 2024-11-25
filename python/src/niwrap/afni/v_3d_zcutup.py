@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ZCUTUP_METADATA = Metadata(
-    id="8c920bae16b4f66fede4e699038867e56e5e2b1d.boutiques",
+    id="9f4c5ae0e2d25b35b3ce4085901c813b8cd03916.boutiques",
     name="3dZcutup",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -54,12 +54,10 @@ def v_3d_zcutup(
     execution = runner.start_execution(V_3D_ZCUTUP_METADATA)
     cargs = []
     cargs.append("3dZcutup")
-    cargs.append("-keep")
     cargs.extend([
         "-keep",
         keep_slices
     ])
-    cargs.append("-prefix")
     if prefix is not None:
         cargs.extend([
             "-prefix",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MAPS2CSD_METADATA = Metadata(
-    id="8a404352cf44ac824086159e9e98a24615ea6fb7.boutiques",
+    id="3d4b1c71234be8a2a3800a55a4687d60bf9f71d1.boutiques",
     name="mri_maps2csd",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -64,42 +64,35 @@ def mri_maps2csd(
     execution = runner.start_execution(MRI_MAPS2CSD_METADATA)
     cargs = []
     cargs.append("mri_maps2csd")
-    cargs.append("--i")
     cargs.extend([
         "--i",
         *input_files
     ])
-    cargs.append("--csd")
     if csd_file is not None:
         cargs.extend([
             "--csd",
             csd_file
         ])
-    cargs.append("--pdf")
     if pdf_file is not None:
         cargs.extend([
             "--pdf",
             pdf_file
         ])
-    cargs.append("--s")
     if subject_hemi_surf is not None:
         cargs.extend([
             "--s",
             subject_hemi_surf
         ])
-    cargs.append("--thresh")
     if thresh is not None:
         cargs.extend([
             "--thresh",
             str(thresh)
         ])
-    cargs.append("--sign")
     if sign is not None:
         cargs.extend([
             "--sign",
             sign
         ])
-    cargs.append("--csd-apply")
     if csd_apply_file is not None:
         cargs.extend([
             "--csd-apply",
@@ -107,7 +100,6 @@ def mri_maps2csd(
         ])
     if apply_out is not None:
         cargs.append(apply_out)
-    cargs.append("--sd")
     if subjects_dir is not None:
         cargs.extend([
             "--sd",

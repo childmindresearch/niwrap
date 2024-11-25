@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TRFIX_METADATA = Metadata(
-    id="63787e0b442f5bc7d31aadfce8d88397d77c286e.boutiques",
+    id="a34882bc067ee157a81c8d48c065fa3edac1cdc8.boutiques",
     name="3dTRfix",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -56,29 +56,24 @@ def v_3d_trfix(
     execution = runner.start_execution(V_3D_TRFIX_METADATA)
     cargs = []
     cargs.append("3dTRfix")
-    cargs.append("-input")
     cargs.extend([
         "-input",
         execution.input_file(input_file)
     ])
-    cargs.append("-TRlist")
     if tr_list is not None:
         cargs.extend([
             "-TRlist",
             execution.input_file(tr_list)
         ])
-    cargs.append("-TIMElist")
     if time_list is not None:
         cargs.extend([
             "-TIMElist",
             execution.input_file(time_list)
         ])
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix
     ])
-    cargs.append("-TRout")
     if output_tr is not None:
         cargs.extend([
             "-TRout",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_VIOLIN_PLOTS_METADATA = Metadata(
-    id="102770028df8c449a97f32be58fc483d373f19e7.boutiques",
+    id="a193f3c5d1fcce153b59c31f2df32aafdf44cb45.boutiques",
     name="dmri_violinPlots",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -47,17 +47,14 @@ def dmri_violin_plots(
     execution = runner.start_execution(DMRI_VIOLIN_PLOTS_METADATA)
     cargs = []
     cargs.append("dmri_violinPlots")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         input_directory
     ])
-    cargs.append("-l")
     cargs.extend([
         "-l",
         execution.input_file(labels)
     ])
-    cargs.append("-s")
     cargs.extend([
         "-s",
         structure

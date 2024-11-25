@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_INTRODUCTION_SH_METADATA = Metadata(
-    id="d2cd2290031399860c753b700fceb3b68d1916e4.boutiques",
+    id="ea6433a22b9e7d78a34c893edf721a839a07cf99.boutiques",
     name="antsIntroduction.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -67,17 +67,14 @@ def ants_introduction_sh(
     execution = runner.start_execution(ANTS_INTRODUCTION_SH_METADATA)
     cargs = []
     cargs.append("antsIntroduction.sh")
-    cargs.append("-d")
     cargs.extend([
         "-d",
         str(image_dimension)
     ])
-    cargs.append("-r")
     cargs.extend([
         "-r",
         execution.input_file(reference_image)
     ])
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(input_image)

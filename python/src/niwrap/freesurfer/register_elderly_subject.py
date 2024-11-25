@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REGISTER_ELDERLY_SUBJECT_METADATA = Metadata(
-    id="82af39db5649e23118a5b8ca9ab333895878f5b7.boutiques",
+    id="537220baa60ce5febcf14be16d4b791c3cbbebb9.boutiques",
     name="register_elderly_subject",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -61,18 +61,15 @@ def register_elderly_subject(
     execution = runner.start_execution(REGISTER_ELDERLY_SUBJECT_METADATA)
     cargs = []
     cargs.append("mri_em_register")
-    cargs.append("-p")
     if sampling_percentage is not None:
         cargs.extend([
             "-p",
             str(sampling_percentage)
         ])
-    cargs.append("-fsamples")
     cargs.extend([
         "-fsamples",
         output_fsamples
     ])
-    cargs.append("-norm")
     cargs.extend([
         "-norm",
         output_norm

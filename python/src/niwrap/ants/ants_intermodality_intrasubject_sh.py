@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_INTERMODALITY_INTRASUBJECT_SH_METADATA = Metadata(
-    id="a6448dff8e3e5a29418463f13e74dadaaf6941ee.boutiques",
+    id="e4f43efff74611f07e60c00f682c377a411a79c7.boutiques",
     name="antsIntermodalityIntrasubject.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -81,38 +81,31 @@ def ants_intermodality_intrasubject_sh(
         "-d",
         str(dimension)
     ])
-    cargs.append("-r")
     cargs.extend([
         "-r",
         execution.input_file(anatomical_t1_image)
     ])
-    cargs.append("-R")
     if anatomical_reference_image is not None:
         cargs.extend([
             "-R",
             execution.input_file(anatomical_reference_image)
         ])
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(scalar_image_to_match)
     ])
-    cargs.append("-x")
     cargs.extend([
         "-x",
         execution.input_file(anatomical_t1brainmask)
     ])
-    cargs.append("-t")
     cargs.extend([
         "-t",
         str(transform_type)
     ])
-    cargs.append("-w")
     cargs.extend([
         "-w",
         t1_to_template_prefix
     ])
-    cargs.append("-T")
     if template_space is not None:
         cargs.extend([
             "-T",

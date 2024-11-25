@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MC_METADATA = Metadata(
-    id="b1eaf830759543ecdd0462a79e611c3bb82c5e2f.boutiques",
+    id="60a4e6264f565573c6fbb9368b3b82aa19a0f230.boutiques",
     name="mri_mc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -55,9 +55,8 @@ def mri_mc(
     cargs.append("mri_mc")
     cargs.append(execution.input_file(input_volume))
     cargs.append(str(label_value))
-    cargs.append(output_surface)
     if connectivity is not None:
-        cargs.append(str(connectivity))
+        cargs.append(output_surface + str(connectivity))
     ret = MriMcOutputs(
         root=execution.output_file("."),
         extracted_surface=execution.output_file(output_surface),

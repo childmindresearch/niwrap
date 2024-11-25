@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GEMS_COMPUTE_ATLAS_PROBS_METADATA = Metadata(
-    id="fd270cddfc24a5158c44a5af1de886baac9c024a.boutiques",
+    id="e932a709186d19d5d262bfa542f169f3d595741e.boutiques",
     name="gems_compute_atlas_probs",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -75,17 +75,14 @@ def gems_compute_atlas_probs(
     execution = runner.start_execution(GEMS_COMPUTE_ATLAS_PROBS_METADATA)
     cargs = []
     cargs.append("gems_compute_atlas_probs")
-    cargs.append("--subjects-dir")
     cargs.extend([
         "--subjects-dir",
         subjects_dir
     ])
-    cargs.append("--mesh-collections")
     cargs.extend([
         "--mesh-collections",
         *mesh_collections
     ])
-    cargs.append("--out-dir")
     cargs.extend([
         "--out-dir",
         out_dir

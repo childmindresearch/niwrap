@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_ANATOMI_CUTS_METADATA = Metadata(
-    id="dbe848e2f3320cf638cebef16bcbb3621a9b6ce0.boutiques",
+    id="b3ae6660625cd9a73409943ca03518bf3c1e8760.boutiques",
     name="dmri_AnatomiCuts",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -58,37 +58,30 @@ def dmri_anatomi_cuts(
     execution = runner.start_execution(DMRI_ANATOMI_CUTS_METADATA)
     cargs = []
     cargs.append("dmri_AnatomiCuts")
-    cargs.append("-s")
     cargs.extend([
         "-s",
         execution.input_file(segmentation_file)
     ])
-    cargs.append("-f")
     cargs.extend([
         "-f",
         execution.input_file(fiber_file)
     ])
-    cargs.append("-c")
     cargs.extend([
         "-c",
         str(clusters)
     ])
-    cargs.append("-n")
     cargs.extend([
         "-n",
         str(points)
     ])
-    cargs.append("-e")
     cargs.extend([
         "-e",
         str(fibers_eigen)
     ])
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_folder
     ])
-    cargs.append("-d")
     cargs.extend([
         "-d",
         direction_flag

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MKXSUBJREG_METADATA = Metadata(
-    id="ab187ac74b2d24f53b43d3e5c33de4581e0f1a74.boutiques",
+    id="cc6bcfac019d7fa72e4882f11c688ce7ad928d6e.boutiques",
     name="mkxsubjreg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -59,12 +59,10 @@ def mkxsubjreg(
     execution = runner.start_execution(MKXSUBJREG_METADATA)
     cargs = []
     cargs.append("mkxsubjreg")
-    cargs.append("--srcreg")
     cargs.extend([
         "--srcreg",
         execution.input_file(srcreg)
     ])
-    cargs.append("--targreg")
     cargs.extend([
         "--targreg",
         execution.input_file(targreg)

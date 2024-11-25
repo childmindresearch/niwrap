@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TKREGISTERFV_METADATA = Metadata(
-    id="2e6cf34bff587fcec0717d7fe0f45a7f48a683bd.boutiques",
+    id="5ebc1a63857c8578925dcc917e8e3ae5ac3c4e9b.boutiques",
     name="tkregisterfv",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -108,24 +108,20 @@ def tkregisterfv(
     execution = runner.start_execution(TKREGISTERFV_METADATA)
     cargs = []
     cargs.append("tkregisterfv")
-    cargs.append("--mov")
     if mov is not None:
         cargs.extend([
             "--mov",
             execution.input_file(mov)
         ])
-    cargs.append("--targ")
     if targ is not None:
         cargs.extend([
             "--targ",
             execution.input_file(targ)
         ])
-    cargs.append("--reg")
     cargs.extend([
         "--reg",
         execution.input_file(reg)
     ])
-    cargs.append("--s")
     if subject is not None:
         cargs.extend([
             "--s",

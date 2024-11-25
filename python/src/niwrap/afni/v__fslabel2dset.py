@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__FSLABEL2DSET_METADATA = Metadata(
-    id="d0c250b2d9ce4006072d80b03d43f73189a4ea50.boutiques",
+    id="0a20d4c58cd9ad690928488e00aca48f5beff08a.boutiques",
     name="@FSlabel2dset",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,12 +52,10 @@ def v__fslabel2dset(
     execution = runner.start_execution(V__FSLABEL2DSET_METADATA)
     cargs = []
     cargs.append("@FSlabel2dset")
-    cargs.append("-fs")
     cargs.extend([
         "-fs",
         execution.input_file(fs_label_file)
     ])
-    cargs.append("-val")
     if val is not None:
         cargs.extend([
             "-val",

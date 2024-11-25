@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSCALC_METADATA = Metadata(
-    id="923685969b5d00f3c6177f0d972181c3460dff26.boutiques",
+    id="b62b8cdb57de65d989d87ea0affddfbc6868c7fd.boutiques",
     name="fscalc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -67,7 +67,6 @@ def fscalc(
     cargs.append(operation)
     if input2 is not None:
         cargs.append(input2)
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_file

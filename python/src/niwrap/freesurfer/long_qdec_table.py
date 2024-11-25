@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LONG_QDEC_TABLE_METADATA = Metadata(
-    id="1ceeb56ee88158c5e84c5739090fd3cc3b6e1a14.boutiques",
+    id="3e490486cd37e1e7aa6f857009bf74cde0ba7251.boutiques",
     name="long_qdec_table",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -54,7 +54,6 @@ def long_qdec_table(
     execution = runner.start_execution(LONG_QDEC_TABLE_METADATA)
     cargs = []
     cargs.append("long_qdec_table")
-    cargs.append("--qdec")
     cargs.extend([
         "--qdec",
         execution.input_file(qdec_table)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_STATS_AC_METADATA = Metadata(
-    id="8749be8529197e92f4a1469a97a7aa71e210882f.boutiques",
+    id="4bb501f42e946abde325bf18956648552280d71b.boutiques",
     name="dmri_stats_ac",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -53,17 +53,14 @@ def dmri_stats_ac(
     execution = runner.start_execution(DMRI_STATS_AC_METADATA)
     cargs = []
     cargs.append("dmri_stats_ac")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         anatomicuts_folder
     ])
-    cargs.append("-n")
     cargs.extend([
         "-n",
         str(num_clusters)
     ])
-    cargs.append("-c")
     cargs.extend([
         "-c",
         correspondence_file
@@ -74,7 +71,6 @@ def dmri_stats_ac(
         "-m",
         *measures
     ])
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_file

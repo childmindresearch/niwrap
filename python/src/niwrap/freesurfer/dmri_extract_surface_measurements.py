@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_EXTRACT_SURFACE_MEASUREMENTS_METADATA = Metadata(
-    id="5c3e47585ef0378e96fbd04709e50c8b784ef061.boutiques",
+    id="1571ae7852c5d0ff3bb69988315d8db4d363f2a7.boutiques",
     name="dmri_extractSurfaceMeasurements",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -69,42 +69,34 @@ def dmri_extract_surface_measurements(
     execution = runner.start_execution(DMRI_EXTRACT_SURFACE_MEASUREMENTS_METADATA)
     cargs = []
     cargs.append("dmri_extractSurfaceMeasurements")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(streamline_file)
     ])
-    cargs.append("-sl")
     cargs.extend([
         "-sl",
         execution.input_file(lh_surface_file)
     ])
-    cargs.append("-tl")
     cargs.extend([
         "-tl",
         execution.input_file(lh_thickness_overlay)
     ])
-    cargs.append("-cl")
     cargs.extend([
         "-cl",
         execution.input_file(lh_curvature_overlay)
     ])
-    cargs.append("-sr")
     cargs.extend([
         "-sr",
         execution.input_file(rh_surface_file)
     ])
-    cargs.append("-tr")
     cargs.extend([
         "-tr",
         execution.input_file(rh_thickness_overlay)
     ])
-    cargs.append("-cr")
     cargs.extend([
         "-cr",
         execution.input_file(rh_curvature_overlay)
     ])
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_directory

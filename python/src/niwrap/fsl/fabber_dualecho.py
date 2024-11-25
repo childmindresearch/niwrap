@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FABBER_DUALECHO_METADATA = Metadata(
-    id="7ce563f3bbd8d8f4a029c4e7afb31002e1a90135.boutiques",
+    id="3b814c58103c730b38e41b1c598b309b06d4ea6b.boutiques",
     name="fabber_dualecho",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -138,17 +138,14 @@ def fabber_dualecho(
     cargs = []
     cargs.append("fabber_dualecho")
     cargs.append(output_directory)
-    cargs.append("--method")
     cargs.extend([
         "--method",
         method
     ])
-    cargs.append("--model")
     cargs.extend([
         "--model",
         model
     ])
-    cargs.append("--data")
     cargs.extend([
         "--data",
         execution.input_file(data)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLREGISTER_METADATA = Metadata(
-    id="0601e6dd8fcbca9c72182d658cd9dd3ef5daab58.boutiques",
+    id="385a2a600cd9af0368eb6eb02a84773b379061b6.boutiques",
     name="fslregister",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -113,17 +113,14 @@ def fslregister(
     execution = runner.start_execution(FSLREGISTER_METADATA)
     cargs = []
     cargs.append("fslregister")
-    cargs.append("--s")
     cargs.extend([
         "--s",
         subjid
     ])
-    cargs.append("--mov")
     cargs.extend([
         "--mov",
         mov_vol
     ])
-    cargs.append("--reg")
     cargs.extend([
         "--reg",
         reg_file

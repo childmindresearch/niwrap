@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SEG2RECON_METADATA = Metadata(
-    id="aa3e686587638c9d8c5430587e36b6edff11023f.boutiques",
+    id="7d36fe3d23f166f77f51fd253a5eca43905c42f5.boutiques",
     name="seg2recon",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -89,13 +89,11 @@ def seg2recon(
     cargs.append("--ctab")
     if ctab is not None:
         cargs.append(execution.input_file(ctab))
-    cargs.append("--ndilate")
     if ndilate is not None:
         cargs.extend([
             "--ndilate",
             str(ndilate)
         ])
-    cargs.append("--threads")
     if threads is not None:
         cargs.extend([
             "--threads",
@@ -105,25 +103,21 @@ def seg2recon(
         cargs.append("--force-update")
     if no_cc:
         cargs.append("--no-cc")
-    cargs.append("--m")
     if mask is not None:
         cargs.extend([
             "--m",
             execution.input_file(mask)
         ])
-    cargs.append("--h")
     if headmask is not None:
         cargs.extend([
             "--h",
             execution.input_file(headmask)
         ])
-    cargs.append("--thresh")
     if thresh is not None:
         cargs.extend([
             "--thresh",
             str(thresh)
         ])
-    cargs.append("--expert")
     if expert is not None:
         cargs.extend([
             "--expert",

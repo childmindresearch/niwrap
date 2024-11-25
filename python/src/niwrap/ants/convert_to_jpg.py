@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_TO_JPG_METADATA = Metadata(
-    id="31b6355945c3546a7d864a64fbe9afa58d72247b.boutiques",
+    id="5bc8a9ac227d992d762dc5365725a949c90f5c17.boutiques",
     name="ConvertToJpg",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -46,9 +46,7 @@ def convert_to_jpg(
     runner = runner or get_global_runner()
     execution = runner.start_execution(CONVERT_TO_JPG_METADATA)
     cargs = []
-    cargs.append("ConvertToJpg")
-    cargs.append(execution.input_file(infile))
-    cargs.append(outfile)
+    cargs.append("ConvertToJpg" + execution.input_file(infile) + outfile)
     ret = ConvertToJpgOutputs(
         root=execution.output_file("."),
         output_jpg=execution.output_file(outfile),

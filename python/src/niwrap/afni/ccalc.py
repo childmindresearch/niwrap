@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CCALC_METADATA = Metadata(
-    id="e76d49ddb6fb2569c3e43954471845bd902d1d58.boutiques",
+    id="858c935b6b57b9962c3e64fe8202799fde8e6c22.boutiques",
     name="ccalc",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -52,7 +52,6 @@ def ccalc(
             "-form",
             format_
         ])
-    cargs.append("-eval")
     cargs.extend([
         "-eval",
         expr

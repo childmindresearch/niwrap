@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 RCA_FIX_ENTO_METADATA = Metadata(
-    id="1a825797ff55d480f6bab0d6b5a0de0f92f17231.boutiques",
+    id="f7912d5163f0f49099d68d37f999ee5042c7ee7c.boutiques",
     name="rca-fix-ento",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -62,7 +62,6 @@ def rca_fix_ento(
     cargs.append("rca-fix-ento")
     cargs.append("--s")
     cargs.append(subject)
-    cargs.append("--threads")
     if threads is not None:
         cargs.extend([
             "--threads",
@@ -70,7 +69,6 @@ def rca_fix_ento(
         ])
     if submit:
         cargs.append("--submit")
-    cargs.append("--account")
     if account is not None:
         cargs.extend([
             "--account",

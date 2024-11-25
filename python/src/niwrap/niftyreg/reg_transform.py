@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_TRANSFORM_METADATA = Metadata(
-    id="b16a633cb3977926bda4e2d62bda15bc648e14be.boutiques",
+    id="ddabbbe3bc51c15b180593a6f3f6221e3e012919.boutiques",
     name="reg_transform",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -71,7 +71,6 @@ def reg_transform(
     execution = runner.start_execution(REG_TRANSFORM_METADATA)
     cargs = []
     cargs.append("reg_transform")
-    cargs.append("-ref")
     cargs.extend([
         "-ref",
         execution.input_file(reference_image)

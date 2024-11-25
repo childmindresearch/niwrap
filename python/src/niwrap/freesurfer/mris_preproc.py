@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_PREPROC_METADATA = Metadata(
-    id="2bb4886135fce5b3651f3050a69d2251f17b9700.boutiques",
+    id="dd5edb4541571b929ce3905d2cb09807c8f4d850.boutiques",
     name="mris_preproc",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -149,17 +149,14 @@ def mris_preproc(
     execution = runner.start_execution(MRIS_PREPROC_METADATA)
     cargs = []
     cargs.append("mris_preproc")
-    cargs.append("--out")
     cargs.extend([
         "--out",
         outfile
     ])
-    cargs.append("--target")
     cargs.extend([
         "--target",
         target_subject
     ])
-    cargs.append("--hemi")
     cargs.extend([
         "--hemi",
         hemi

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BASIL_VAR_METADATA = Metadata(
-    id="acb770b732297a75923c840823de0137e25a4c9f.boutiques",
+    id="ef2d05e150b63d8d6121c52d86fea7583edc0338.boutiques",
     name="basil_var",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -45,12 +45,10 @@ def basil_var(
     execution = runner.start_execution(BASIL_VAR_METADATA)
     cargs = []
     cargs.append("basil_var")
-    cargs.append("-d")
     cargs.extend([
         "-d",
         results_dir
     ])
-    cargs.append("-m")
     cargs.extend([
         "-m",
         execution.input_file(mask_image)

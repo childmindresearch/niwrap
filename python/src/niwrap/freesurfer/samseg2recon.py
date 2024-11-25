@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SAMSEG2RECON_METADATA = Metadata(
-    id="ef8108989f4cbbd09cc37a4e906425ab19fd4b04.boutiques",
+    id="048d40320d037b3297ee8dde5bb23cf254ed2c03.boutiques",
     name="samseg2recon",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -75,12 +75,10 @@ def samseg2recon(
     execution = runner.start_execution(SAMSEG2RECON_METADATA)
     cargs = []
     cargs.append("samseg2recon")
-    cargs.append("--s")
     cargs.extend([
         "--s",
         subject
     ])
-    cargs.append("--samseg")
     if samseg_dir is not None:
         cargs.extend([
             "--samseg",

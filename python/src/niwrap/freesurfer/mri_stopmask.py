@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_STOPMASK_METADATA = Metadata(
-    id="a27e100dd3f657eb539000f33ca51119962175fa.boutiques",
+    id="d85c421f23ee85e0f64bc702b8e8cb596b27c637.boutiques",
     name="mri_stopmask",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -70,15 +70,12 @@ def mri_stopmask(
     execution = runner.start_execution(MRI_STOPMASK_METADATA)
     cargs = []
     cargs.append("mri_stopmask")
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_mask
     ])
-    cargs.append("--filled")
     cargs.append("[FILLED_AUTO_MGZ]")
     cargs.append("[FILLED_MGZ]")
-    cargs.append("--aseg")
     cargs.extend([
         "--aseg",
         execution.input_file(aseg_presurf)

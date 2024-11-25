@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VOL2SYMSURF_METADATA = Metadata(
-    id="82fd48b01b2e6f74bfe01e68b002605d2f274e05.boutiques",
+    id="980a04944058c0937c4905d1272b68939943fcd5.boutiques",
     name="vol2symsurf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -66,34 +66,28 @@ def vol2symsurf(
     execution = runner.start_execution(VOL2SYMSURF_METADATA)
     cargs = []
     cargs.append("vol2symsurf")
-    cargs.append("--reg")
     cargs.extend([
         "--reg",
         execution.input_file(registration_file)
     ])
-    cargs.append("--i")
     cargs.extend([
         "--i",
         execution.input_file(input_volume)
     ])
-    cargs.append("--fwhm")
     cargs.extend([
         "--fwhm",
         str(fwhm)
     ])
-    cargs.append("--o")
     if output_stem is not None:
         cargs.extend([
             "--o",
             output_stem
         ])
-    cargs.append("--regheader")
     if regheader is not None:
         cargs.extend([
             "--regheader",
             regheader
         ])
-    cargs.append("--projfrac")
     if projection_fraction is not None:
         cargs.extend([
             "--projfrac",

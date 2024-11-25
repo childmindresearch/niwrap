@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_DEFACER_METADATA = Metadata(
-    id="b7a1aaf9b5947804211cdf0360ab244cd298666a.boutiques",
+    id="7a5bbf5b8c2c58461c7967b9a5ef249770dc28e7.boutiques",
     name="mri_defacer",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -63,13 +63,11 @@ def mri_defacer(
     cargs.append(execution.input_file(headmask))
     cargs.append("--ts")
     cargs.append(execution.input_file(tempsurf))
-    cargs.append("--l")
     if templabel is not None:
         cargs.extend([
             "--l",
             *[execution.input_file(f) for f in templabel]
         ])
-    cargs.append("--w")
     if watermark is not None:
         cargs.extend([
             "--w",
@@ -77,16 +75,13 @@ def mri_defacer(
         ])
     cargs.append("--o")
     cargs.append(defaced_volume)
-    cargs.append("--m")
     if facemask is not None:
         cargs.extend([
             "--m",
             facemask
         ])
-    cargs.append("--fill-const")
     cargs.append("[CONST_IN]")
     cargs.append("[CONST_OUT]")
-    cargs.append("--xmask")
     if exclude_mask is not None:
         cargs.extend([
             "--xmask",

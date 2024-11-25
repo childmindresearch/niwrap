@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRAC_PATHS_METADATA = Metadata(
-    id="1019e9359a6b1e6ea9517dc72ebbcf7cad68c175.boutiques",
+    id="606d036afda0a3c3ca3845e4f881824a7e5bacd2.boutiques",
     name="trac-paths",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -70,7 +70,6 @@ def trac_paths(
     execution = runner.start_execution(TRAC_PATHS_METADATA)
     cargs = []
     cargs.append("trac-paths")
-    cargs.append("-c")
     cargs.extend([
         "-c",
         execution.input_file(dmrirc_file)

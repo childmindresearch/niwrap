@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ASEGSTATSDIFF_METADATA = Metadata(
-    id="b85f771b8a52a90553e8bce1169e07b377232aa6.boutiques",
+    id="10487227e273c61c9beadcb9b38d15804d6724e3.boutiques",
     name="asegstatsdiff",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,9 +52,8 @@ def asegstatsdiff(
     cargs = []
     cargs.append("asegstatsdiff")
     cargs.append(subject1)
-    cargs.append(subject2)
     if outdir is not None:
-        cargs.append(outdir)
+        cargs.append(subject2 + outdir)
     ret = AsegstatsdiffOutputs(
         root=execution.output_file("."),
         asegstats_output=execution.output_file(outdir + "/asegstats.txt") if (outdir is not None) else None,

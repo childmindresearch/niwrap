@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MEANVAL_METADATA = Metadata(
-    id="961fc92b8f191c36882be7b7fc3b6c9449a25c44.boutiques",
+    id="abff5f1715da97f4e48f1b5b12b06bbfdebcd6e0.boutiques",
     name="meanval",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -51,17 +51,14 @@ def meanval(
     execution = runner.start_execution(MEANVAL_METADATA)
     cargs = []
     cargs.append("meanval")
-    cargs.append("--i")
     cargs.extend([
         "--i",
         execution.input_file(input_file)
     ])
-    cargs.append("--m")
     cargs.extend([
         "--m",
         execution.input_file(mask_file)
     ])
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_file

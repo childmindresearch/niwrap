@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_HISTOG_METADATA = Metadata(
-    id="99e523db7c9f0a8693eaccdee82264a6659dc278.boutiques",
+    id="5376ceceb91425a5fc47c5a9ad6c343ce47d0b7d.boutiques",
     name="3dLocalHistog",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -71,7 +71,6 @@ def v_3d_local_histog(
             "-nbhd",
             nbhd_option
         ])
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix

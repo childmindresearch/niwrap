@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSR_COREG_METADATA = Metadata(
-    id="0db7d273024849f574cecf1dc48bd9ff97800d41.boutiques",
+    id="f7ce052295ee7434c51f0c52a401aed2e5d22d1b.boutiques",
     name="fsr-coreg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -58,17 +58,14 @@ def fsr_coreg(
     execution = runner.start_execution(FSR_COREG_METADATA)
     cargs = []
     cargs.append("fsr-coreg")
-    cargs.append("--i")
     cargs.extend([
         "--i",
         import_dir
     ])
-    cargs.append("--ref")
     cargs.extend([
         "--ref",
         reference_mode
     ])
-    cargs.append("--threads")
     if num_threads is not None:
         cargs.extend([
             "--threads",
@@ -76,13 +73,11 @@ def fsr_coreg(
         ])
     if force_update:
         cargs.append("--force-update")
-    cargs.append("--o")
     if output_dir is not None:
         cargs.extend([
             "--o",
             output_dir
         ])
-    cargs.append("--expert")
     if expert_options is not None:
         cargs.extend([
             "--expert",

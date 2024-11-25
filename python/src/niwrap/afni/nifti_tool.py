@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 NIFTI_TOOL_METADATA = Metadata(
-    id="38a2d9449adee7d6233168e977d87d95385ebe37.boutiques",
+    id="3d62871ad5a6df5a56027e145232bf726b83d960.boutiques",
     name="nifti_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -66,8 +66,7 @@ def nifti_tool(
     runner = runner or get_global_runner()
     execution = runner.start_execution(NIFTI_TOOL_METADATA)
     cargs = []
-    cargs.append("nifti_tool")
-    cargs.append(action)
+    cargs.append("nifti_tool" + action)
     if input_files is not None:
         cargs.extend([
             "-infiles",

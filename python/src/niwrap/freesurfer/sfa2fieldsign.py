@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SFA2FIELDSIGN_METADATA = Metadata(
-    id="97a6f1c0c8462807af0201c034120e8bbbcbe28e.boutiques",
+    id="d31978a93db5246f9852d1afa32e6a94aca64bac.boutiques",
     name="sfa2fieldsign",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -74,12 +74,10 @@ def sfa2fieldsign(
     execution = runner.start_execution(SFA2FIELDSIGN_METADATA)
     cargs = []
     cargs.append("sfa2fieldsign")
-    cargs.append("--sfa")
     cargs.extend([
         "--sfa",
         sfadir
     ])
-    cargs.append("--reg")
     cargs.extend([
         "--reg",
         register_dat

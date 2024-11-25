@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__EXAMINE_GEN_FEAT_DISTS_METADATA = Metadata(
-    id="6b3d157756489370507f007809e7269fb611df4b.boutiques",
+    id="48ce3a5d6c5403479fccf8d702bacc4d574f1921.boutiques",
     name="@ExamineGenFeatDists",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -62,51 +62,42 @@ def v__examine_gen_feat_dists(
     execution = runner.start_execution(V__EXAMINE_GEN_FEAT_DISTS_METADATA)
     cargs = []
     cargs.append("@ExamineGenFeatDists")
-    cargs.append("-fdir")
     cargs.extend([
         "-fdir",
         features_dir
     ])
-    cargs.append("-fwild")
     if wildcards is not None:
         cargs.extend([
             "-fwild",
             *wildcards
         ])
-    cargs.append("-suffix")
     if output_suffix is not None:
         cargs.extend([
             "-suffix",
             output_suffix
         ])
-    cargs.append("-exfeat")
     if exclude_features is not None:
         cargs.extend([
             "-exfeat",
             *exclude_features
         ])
-    cargs.append("-exclass")
     if exclude_classes is not None:
         cargs.extend([
             "-exclass",
             *exclude_classes
         ])
-    cargs.append("-odir")
     if output_dir is not None:
         cargs.extend([
             "-odir",
             output_dir
         ])
-    cargs.append("-nx")
     if panels_horizontal is not None:
         cargs.extend([
             "-nx",
             str(panels_horizontal)
         ])
-    cargs.append("-echo")
     if echo:
         cargs.append("-echo")
-    cargs.append("-help")
     if help_:
         cargs.append("-help")
     ret = VExamineGenFeatDistsOutputs(

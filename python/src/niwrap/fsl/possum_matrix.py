@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 POSSUM_MATRIX_METADATA = Metadata(
-    id="96d2335f3fd0859dbc24836d4c6db4cc23744725.boutiques",
+    id="fa85069abab27bcef89ca742061925304633bdad.boutiques",
     name="possum_matrix",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -63,17 +63,14 @@ def possum_matrix(
     execution = runner.start_execution(POSSUM_MATRIX_METADATA)
     cargs = []
     cargs.append("possum_matrix")
-    cargs.append("-p")
     cargs.extend([
         "-p",
         pulse_sequence
     ])
-    cargs.append("-m")
     cargs.extend([
         "-m",
         motion_matrix
     ])
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_matrix

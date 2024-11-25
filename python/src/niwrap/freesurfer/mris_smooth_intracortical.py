@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_SMOOTH_INTRACORTICAL_METADATA = Metadata(
-    id="fa51e46d7070ae7b9edd61c08dae2845a41a7d81.boutiques",
+    id="2d913141d3a964703c9f9e1365f71235771f5c17.boutiques",
     name="mris_smooth_intracortical",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -72,61 +72,51 @@ def mris_smooth_intracortical(
     execution = runner.start_execution(MRIS_SMOOTH_INTRACORTICAL_METADATA)
     cargs = []
     cargs.append("mris_smooth_intracortical")
-    cargs.append("--surf_dir")
     cargs.extend([
         "--surf_dir",
         surf_dir
     ])
-    cargs.append("--surf_name")
     cargs.extend([
         "--surf_name",
         surf_name
     ])
-    cargs.append("--overlay_dir")
     cargs.extend([
         "--overlay_dir",
         overlay_dir
     ])
-    cargs.append("--overlay_name")
     cargs.extend([
         "--overlay_name",
         overlay_name
     ])
-    cargs.append("[--output_dir")
     if output_dir is not None:
         cargs.extend([
             "--output_dir",
-            output_dir + "]"
+            "[" + output_dir + "]"
         ])
-    cargs.append("[--output_name")
     if output_name is not None:
         cargs.extend([
             "--output_name",
-            output_name + "]"
+            "[" + output_name + "]"
         ])
-    cargs.append("[--tan-size")
     if tan_size is not None:
         cargs.extend([
             "--tan-size",
-            str(tan_size) + "]"
+            "[" + str(tan_size) + "]"
         ])
-    cargs.append("[--rad-size")
     if rad_size is not None:
         cargs.extend([
             "--rad-size",
-            str(rad_size) + "]"
+            "[" + str(rad_size) + "]"
         ])
-    cargs.append("[--rad-start")
     if rad_start is not None:
         cargs.extend([
             "--rad-start",
-            str(rad_start) + "]"
+            "[" + str(rad_start) + "]"
         ])
-    cargs.append("[--tan-weights")
     if tan_weights is not None:
         cargs.extend([
             "--tan-weights",
-            tan_weights + "]"
+            "[" + tan_weights + "]"
         ])
     ret = MrisSmoothIntracorticalOutputs(
         root=execution.output_file("."),

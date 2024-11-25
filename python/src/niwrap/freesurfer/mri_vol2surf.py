@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_VOL2SURF_METADATA = Metadata(
-    id="1dd8763c66bf8a6ebcef3a0b6d70ec9136bc02f3.boutiques",
+    id="e5d8639cf9b9f730b0828fdeda81c44ccc8ec6f2.boutiques",
     name="mri_vol2surf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -52,17 +52,14 @@ def mri_vol2surf(
     execution = runner.start_execution(MRI_VOL2SURF_METADATA)
     cargs = []
     cargs.append("mri_vol2surf")
-    cargs.append("--mov")
     cargs.extend([
         "--mov",
         execution.input_file(input_volume)
     ])
-    cargs.append("--reg")
     cargs.extend([
         "--reg",
         execution.input_file(registration_file)
     ])
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_path

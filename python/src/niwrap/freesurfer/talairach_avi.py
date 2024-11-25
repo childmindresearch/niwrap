@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TALAIRACH_AVI_METADATA = Metadata(
-    id="9a815f890e84334c2e0300c65ebfd70378c8493e.boutiques",
+    id="1dbadba2e86a11425d27beb758722c54eec8864d.boutiques",
     name="talairach_avi",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -54,12 +54,10 @@ def talairach_avi(
     execution = runner.start_execution(TALAIRACH_AVI_METADATA)
     cargs = []
     cargs.append("talairach_avi")
-    cargs.append("--i")
     cargs.extend([
         "--i",
         execution.input_file(input_file)
     ])
-    cargs.append("--xfm")
     cargs.extend([
         "--xfm",
         output_xfm

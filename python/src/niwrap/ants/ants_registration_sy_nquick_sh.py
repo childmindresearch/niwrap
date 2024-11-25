@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_REGISTRATION_SY_NQUICK_SH_METADATA = Metadata(
-    id="535407e1c874099f70bf4e9fb2487258a6d8d0ad.boutiques",
+    id="95f42ebdf9e80a10a0b738811253de777466a830.boutiques",
     name="antsRegistrationSyNQuick.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -61,22 +61,18 @@ def ants_registration_sy_nquick_sh(
     execution = runner.start_execution(ANTS_REGISTRATION_SY_NQUICK_SH_METADATA)
     cargs = []
     cargs.append("antsRegistrationSyNQuick.sh")
-    cargs.append("-d")
     cargs.extend([
         "-d",
         str(dimensionality)
     ])
-    cargs.append("-f")
     cargs.extend([
         "-f",
         execution.input_file(fixed_image)
     ])
-    cargs.append("-m")
     cargs.extend([
         "-m",
         execution.input_file(moving_image)
     ])
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_prefix

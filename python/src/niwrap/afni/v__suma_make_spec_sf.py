@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__SUMA_MAKE_SPEC_SF_METADATA = Metadata(
-    id="90885679016acaa65216974003bd8aae196276f4.boutiques",
+    id="e84849d3eeb33bb18d791b3e555fb699941d3809.boutiques",
     name="@SUMA_Make_Spec_SF",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -62,7 +62,6 @@ def v__suma_make_spec_sf(
             "-sfpath",
             surface_path
         ])
-    cargs.append("-sid")
     cargs.extend([
         "-sid",
         subject_id

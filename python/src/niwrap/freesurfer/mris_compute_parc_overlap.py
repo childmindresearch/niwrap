@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_COMPUTE_PARC_OVERLAP_METADATA = Metadata(
-    id="f9fe1f5a82b6fbc6774600e358f5bdfacc751018.boutiques",
+    id="d598ee06b2c8bac2b0e66dc28fd526ceb983bfbd.boutiques",
     name="mris_compute_parc_overlap",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -76,12 +76,10 @@ def mris_compute_parc_overlap(
     execution = runner.start_execution(MRIS_COMPUTE_PARC_OVERLAP_METADATA)
     cargs = []
     cargs.append("mris_compute_parc_overlap")
-    cargs.append("--s")
     cargs.extend([
         "--s",
         subject
     ])
-    cargs.append("--hemi")
     cargs.extend([
         "--hemi",
         hemi

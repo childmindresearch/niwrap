@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_ANOVA3_METADATA = Metadata(
-    id="6d54bc36377a2a039a659783b44df3ecbd6b1534.boutiques",
+    id="302573e8584a1b48dc3d4863712e09b349d5f284.boutiques",
     name="3dANOVA3",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -82,22 +82,18 @@ def v_3d_anova3(
     execution = runner.start_execution(V_3D_ANOVA3_METADATA)
     cargs = []
     cargs.append("3dANOVA3")
-    cargs.append("-type")
     cargs.extend([
         "-type",
         str(type_)
     ])
-    cargs.append("-alevels")
     cargs.extend([
         "-alevels",
         str(alevels)
     ])
-    cargs.append("-blevels")
     cargs.extend([
         "-blevels",
         str(blevels)
     ])
-    cargs.append("-clevels")
     cargs.extend([
         "-clevels",
         str(clevels)

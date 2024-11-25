@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_FUNCVITS_METADATA = Metadata(
-    id="bcd420d48a7b0ee6cb09cd6897f325f002858ad9.boutiques",
+    id="9cfb73122d8eb472c516074466aed91faefc40a5.boutiques",
     name="mri-funcvits",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -65,12 +65,10 @@ def mri_funcvits(
     execution = runner.start_execution(MRI_FUNCVITS_METADATA)
     cargs = []
     cargs.append("mri-funcvits")
-    cargs.append("--stem")
     cargs.extend([
         "--stem",
         stem
     ])
-    cargs.append("--outdir")
     cargs.extend([
         "--outdir",
         outdir

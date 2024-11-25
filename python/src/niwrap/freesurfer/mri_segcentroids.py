@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SEGCENTROIDS_METADATA = Metadata(
-    id="a4e1accaf6ffa63a2e3a9e3ab9d8d40bbc16c5e7.boutiques",
+    id="60e55d3e62c17ddebe1721176cd1445c815b5c8c.boutiques",
     name="mri_segcentroids",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -57,12 +57,10 @@ def mri_segcentroids(
     execution = runner.start_execution(MRI_SEGCENTROIDS_METADATA)
     cargs = []
     cargs.append("mri_segcentroids")
-    cargs.append("--i")
     cargs.extend([
         "--i",
         execution.input_file(input_segmentation)
     ])
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_file

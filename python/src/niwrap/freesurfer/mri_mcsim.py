@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_MCSIM_METADATA = Metadata(
-    id="c593b644bdd83854dab4cb3be5d2d048b0dc5ee7.boutiques",
+    id="23db092b90d7bb3365063241ec2389a18212ee4e.boutiques",
     name="mri_mcsim",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -93,17 +93,14 @@ def mri_mcsim(
     execution = runner.start_execution(MRI_MCSIM_METADATA)
     cargs = []
     cargs.append("mri_mcsim")
-    cargs.append("--o")
     cargs.extend([
         "--o",
         top_output_dir
     ])
-    cargs.append("--base")
     cargs.extend([
         "--base",
         base_name
     ])
-    cargs.append("--surface")
     cargs.append("[SUBJECTNAME]")
     cargs.append("[HEMISPHERE]")
     cargs.extend([

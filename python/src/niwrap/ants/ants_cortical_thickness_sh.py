@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_CORTICAL_THICKNESS_SH_METADATA = Metadata(
-    id="a3debb9e7548d8b061c55b2110e40e13a1ee68ec.boutiques",
+    id="927ff3d34dcb64b2fcbc355449b1223268e7ab32.boutiques",
     name="antsCorticalThickness.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -67,33 +67,27 @@ def ants_cortical_thickness_sh(
     execution = runner.start_execution(ANTS_CORTICAL_THICKNESS_SH_METADATA)
     cargs = []
     cargs.append("antsCorticalThickness.sh")
-    cargs.append("-d")
     cargs.extend([
         "-d",
         str(image_dimension)
     ])
-    cargs.append("-a")
     cargs.extend([
         "-a",
         execution.input_file(anatomical_image)
     ])
-    cargs.append("-e")
     cargs.extend([
         "-e",
         execution.input_file(brain_template)
     ])
-    cargs.append("-m")
     cargs.extend([
         "-m",
         execution.input_file(brain_extraction_probability_mask)
     ])
-    cargs.append("-p")
     cargs.extend([
         "-p",
         brain_segmentation_priors
     ])
     cargs.append("[ADDITIONAL_PARAMETERS]")
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_prefix

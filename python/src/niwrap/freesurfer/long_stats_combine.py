@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LONG_STATS_COMBINE_METADATA = Metadata(
-    id="644b8942f058ac01f4359e0e72cfab817e39e898.boutiques",
+    id="fa3f6aca79691c143a3615be4d95f0c42b59b9df.boutiques",
     name="long_stats_combine",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -65,22 +65,18 @@ def long_stats_combine(
     execution = runner.start_execution(LONG_STATS_COMBINE_METADATA)
     cargs = []
     cargs.append("long_stats_combine")
-    cargs.append("--qdec")
     cargs.extend([
         "--qdec",
         execution.input_file(qdec)
     ])
-    cargs.append("--stats")
     cargs.extend([
         "--stats",
         stats
     ])
-    cargs.append("--meas")
     cargs.extend([
         "--meas",
         measure
     ])
-    cargs.append("--sd")
     cargs.extend([
         "--sd",
         subject_dir

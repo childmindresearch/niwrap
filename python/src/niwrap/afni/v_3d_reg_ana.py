@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_REG_ANA_METADATA = Metadata(
-    id="8af9eec0649daeefe16e2e2f175d5a50fcc2daf0.boutiques",
+    id="1631118904756d1061212c150565890bf979dbc0.boutiques",
     name="3dRegAna",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -88,12 +88,10 @@ def v_3d_reg_ana(
     execution = runner.start_execution(V_3D_REG_ANA_METADATA)
     cargs = []
     cargs.append("3dRegAna")
-    cargs.append("-rows")
     cargs.extend([
         "-rows",
         str(rows)
     ])
-    cargs.append("-cols")
     cargs.extend([
         "-cols",
         str(cols)

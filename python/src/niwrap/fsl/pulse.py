@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 PULSE_METADATA = Metadata(
-    id="1aecd553ce31be0280bf3f0ab59bd2c6f0bd2be6.boutiques",
+    id="9d77ff6fd1076f545b6660ae20968e6ff549f4fa.boutiques",
     name="pulse",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -103,12 +103,10 @@ def pulse(
     execution = runner.start_execution(PULSE_METADATA)
     cargs = []
     cargs.append("pulse")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(input_file)
     ])
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_base

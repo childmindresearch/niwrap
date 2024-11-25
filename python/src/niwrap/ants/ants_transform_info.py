@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_TRANSFORM_INFO_METADATA = Metadata(
-    id="86ecedc218eb7fb64f3c1c30b997395d9f5005ca.boutiques",
+    id="db110d69e8361c7a0293d1d70937a09c146e535a.boutiques",
     name="antsTransformInfo",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -46,7 +46,6 @@ def ants_transform_info(
     execution = runner.start_execution(ANTS_TRANSFORM_INFO_METADATA)
     cargs = []
     cargs.append("antsTransformInfo")
-    cargs.append("--file")
     cargs.extend([
         "--file",
         execution.input_file(transform_file)

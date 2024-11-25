@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_VOL2LABEL_METADATA = Metadata(
-    id="bcab966f1de6a06d8fe875c4cab580bdeaafabb3.boutiques",
+    id="86c7b230c869f18eb1a87cb71f7b0fc2f60e0a30.boutiques",
     name="mri_vol2label",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -73,62 +73,51 @@ def mri_vol2label(
     execution = runner.start_execution(MRI_VOL2LABEL_METADATA)
     cargs = []
     cargs.append("mri_vol2label")
-    cargs.append("--i")
     cargs.extend([
         "--i",
         execution.input_file(input_)
     ])
-    cargs.append("--id")
     if label_id is not None:
         cargs.extend([
             "--id",
             str(label_id)
         ])
-    cargs.append("--thresh")
     if threshold is not None:
         cargs.extend([
             "--thresh",
             str(threshold)
         ])
-    cargs.append("--l")
     cargs.extend([
         "--l",
         label_file
     ])
-    cargs.append("--v")
     if vol_file is not None:
         cargs.extend([
             "--v",
             vol_file
         ])
-    cargs.append("--surf")
     if surf_subject_hemi is not None:
         cargs.extend([
             "--surf",
             surf_subject_hemi
         ])
-    cargs.append("--surf-path")
     if surf_path is not None:
         cargs.extend([
             "--surf-path",
             surf_path
         ])
-    cargs.append("--opt")
     if opt_params is not None:
         cargs.extend([
             "--opt",
             opt_params
         ])
-    cargs.append("--remove-holes-islands")
     if remove_holes:
         cargs.append("--remove-holes-islands")
-    cargs.append("--dilate")
     if dilations is not None:
         cargs.extend([
             "--dilate",
             str(dilations)
         ])
-    cargs.append("--erode")
     if erosions is not None:
         cargs.extend([
             "--erode",

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CREATE_MORPH_METADATA = Metadata(
-    id="8cba18fd5b505fa11922bd1a37c7f895415746f0.boutiques",
+    id="27324e933d293e8e2b120cd3ed20c35684ee8e7e.boutiques",
     name="createMorph",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -55,12 +55,10 @@ def create_morph(
     execution = runner.start_execution(CREATE_MORPH_METADATA)
     cargs = []
     cargs.append("createMorph")
-    cargs.append("--in")
     cargs.extend([
         "--in",
         *input_transforms
     ])
-    cargs.append("--out")
     cargs.extend([
         "--out",
         execution.input_file(output_transform)

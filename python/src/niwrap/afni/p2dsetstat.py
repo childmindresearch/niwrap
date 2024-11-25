@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 P2DSETSTAT_METADATA = Metadata(
-    id="eb69978f59a4e2eaa05a7732b02e79f2ba3725b2.boutiques",
+    id="4d7576c08db7388c4f3378a47dd0db10e2a8b131.boutiques",
     name="p2dsetstat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -57,12 +57,10 @@ def p2dsetstat(
     execution = runner.start_execution(P2DSETSTAT_METADATA)
     cargs = []
     cargs.append("p2dsetstat")
-    cargs.append("-inset")
     cargs.extend([
         "-inset",
         dataset
     ])
-    cargs.append("-pval")
     cargs.extend([
         "-pval",
         str(pvalue)

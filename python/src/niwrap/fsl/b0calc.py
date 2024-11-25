@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 B0CALC_METADATA = Metadata(
-    id="c99de0d0c5743d921554358cf3bb5be7103ded00.boutiques",
+    id="327bbff7f12ab07ebfd36e73f5f6e8c5d9ba0cf0.boutiques",
     name="b0calc",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -81,12 +81,10 @@ def b0calc(
     execution = runner.start_execution(B0CALC_METADATA)
     cargs = []
     cargs.append("b0calc")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(input_file)
     ])
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_file

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 TRK_TOOLS_METADATA = Metadata(
-    id="12b9e887db3a9de8e1d42d67b5b8940fee9cc306.boutiques",
+    id="4dc371140c0aeb4d9bc3aacbdf63d35a219d2dd8.boutiques",
     name="trk_tools",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -59,12 +59,10 @@ def trk_tools(
     execution = runner.start_execution(TRK_TOOLS_METADATA)
     cargs = []
     cargs.append("trk_tools")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(reference_image)
     ])
-    cargs.append("-f")
     cargs.extend([
         "-f",
         execution.input_file(input_trk)

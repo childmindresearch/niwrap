@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NORMALITY_TEST_METADATA = Metadata(
-    id="4b9b077168b2f91f1b97f263797faaf18f2fa6ec.boutiques",
+    id="25ece735fc7f7a81d4c52176a3e16fdc401aa190.boutiques",
     name="3dNormalityTest",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -54,7 +54,6 @@ def v_3d_normality_test(
     cargs = []
     cargs.append("3dNormalityTest")
     cargs.append(execution.input_file(input_))
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix

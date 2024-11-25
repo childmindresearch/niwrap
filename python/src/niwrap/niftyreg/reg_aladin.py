@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 REG_ALADIN_METADATA = Metadata(
-    id="68d08c449f4515e60a9e0fff1ea1167acecf02b3.boutiques",
+    id="0cdcd5294ca36b2c6f5e68cc4ee34d2019bd8f9f.boutiques",
     name="reg_aladin",
     package="niftyreg",
     container_image_tag="vnmd/niftyreg_1.4.0:20220819",
@@ -71,12 +71,10 @@ def reg_aladin(
     execution = runner.start_execution(REG_ALADIN_METADATA)
     cargs = []
     cargs.append("reg_aladin")
-    cargs.append("-ref")
     cargs.extend([
         "-ref",
         execution.input_file(reference_image)
     ])
-    cargs.append("-flo")
     cargs.extend([
         "-flo",
         execution.input_file(floating_image)

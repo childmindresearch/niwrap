@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WARP_TIME_SERIES_IMAGE_MULTI_TRANSFORM_METADATA = Metadata(
-    id="4bc360e4981268f29e28fda77231c303fd363337.boutiques",
+    id="6ce7851c544e610fc5a77e4703824ad332c7d885.boutiques",
     name="WarpTimeSeriesImageMultiTransform",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -65,7 +65,6 @@ def warp_time_series_image_multi_transform(
     cargs.append(str(image_dimension))
     cargs.append(execution.input_file(moving_image))
     cargs.append(execution.input_file(output_image))
-    cargs.append("-R")
     cargs.extend([
         "-R",
         execution.input_file(reference_image)

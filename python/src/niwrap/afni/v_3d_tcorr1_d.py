@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TCORR1_D_METADATA = Metadata(
-    id="7072191224b8380179db389fa5129325d1bc0ed8.boutiques",
+    id="db33094375d3e7131beda2ef599c6bd0761a7d75.boutiques",
     name="3dTcorr1D",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -73,9 +73,7 @@ def v_3d_tcorr1_d(
     if quadrant:
         cargs.append("-quadrant")
     if spearman:
-        cargs.append("-spearman")
-    cargs.append(execution.input_file(xset))
-    cargs.append(execution.input_file(y_1d))
+        cargs.append("-spearman" + execution.input_file(xset) + execution.input_file(y_1d))
     ret = V3dTcorr1DOutputs(
         root=execution.output_file("."),
         out_file=execution.output_file(pathlib.Path(xset).name + "_correlation.nii.gz"),

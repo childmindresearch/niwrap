@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSLMEANTS_METADATA = Metadata(
-    id="a52d81594bb1fa45fcea94b97caff16fbd4b6884.boutiques",
+    id="7b05c026a04ddafe300bfdbade0f1df672996443.boutiques",
     name="fslmeants",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -75,7 +75,6 @@ def fslmeants(
     execution = runner.start_execution(FSLMEANTS_METADATA)
     cargs = []
     cargs.append("fslmeants")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(input_image)

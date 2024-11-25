@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DCMSPLIT_METADATA = Metadata(
-    id="357196005b81cc53c5d38ef9d59371c9cb2b4e3a.boutiques",
+    id="f046018ddea679128421620bdf07a7b65b6644fe.boutiques",
     name="dcmsplit",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -61,12 +61,10 @@ def dcmsplit(
     execution = runner.start_execution(DCMSPLIT_METADATA)
     cargs = []
     cargs.append("dcmsplit")
-    cargs.append("--dcm")
     cargs.extend([
         "--dcm",
         dcm_dir
     ])
-    cargs.append("--o")
     cargs.extend([
         "--o",
         out_dir

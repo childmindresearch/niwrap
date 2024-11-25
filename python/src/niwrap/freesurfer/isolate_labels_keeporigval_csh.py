@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ISOLATE_LABELS_KEEPORIGVAL_CSH_METADATA = Metadata(
-    id="6feb5e5bb20cc74c2d8708554651a3dbef953d64.boutiques",
+    id="1444ca5e26a52286a0036f427334d4d5393eeb4d.boutiques",
     name="isolate_labels_keeporigval.csh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -55,12 +55,10 @@ def isolate_labels_keeporigval_csh(
     execution = runner.start_execution(ISOLATE_LABELS_KEEPORIGVAL_CSH_METADATA)
     cargs = []
     cargs.append("isolate_labels_keeporigval.csh")
-    cargs.append("--vol")
     cargs.extend([
         "--vol",
         execution.input_file(vol)
     ])
-    cargs.append("--outprefix")
     cargs.extend([
         "--outprefix",
         outprefix

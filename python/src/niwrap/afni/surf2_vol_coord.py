@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SURF2_VOL_COORD_METADATA = Metadata(
-    id="10021b8805c4eb1593a3c873a3dc81eb8ed6a6d1.boutiques",
+    id="fdbc208369adf8981929329946fa50b1c86903b3.boutiques",
     name="Surf2VolCoord",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -70,12 +70,10 @@ def surf2_vol_coord(
     execution = runner.start_execution(SURF2_VOL_COORD_METADATA)
     cargs = []
     cargs.append("Surf2VolCoord")
-    cargs.append("-i_TYPE")
     cargs.extend([
         "-i_TYPE",
         surface
     ])
-    cargs.append("-grid_parent")
     cargs.extend([
         "-grid_parent",
         execution.input_file(grid_vol)

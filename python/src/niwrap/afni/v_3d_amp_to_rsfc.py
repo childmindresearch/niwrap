@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_AMP_TO_RSFC_METADATA = Metadata(
-    id="8f1035f559364c8aba66040e805e441ea060e9fe.boutiques",
+    id="1b972d09397cc07e89b2326e9fbee9d199f7bbee.boutiques",
     name="3dAmpToRSFC",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -67,30 +67,25 @@ def v_3d_amp_to_rsfc(
     cargs = []
     cargs.append("3dAmpToRSFC")
     cargs.append("{")
-    cargs.append("-in_amp")
     if in_amp is not None:
         cargs.extend([
             "-in_amp",
             execution.input_file(in_amp)
         ])
     cargs.append("|")
-    cargs.append("-in_pow")
     if in_pow is not None:
         cargs.extend([
             "-in_pow",
             execution.input_file(in_pow)
         ])
     cargs.append("}")
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix
     ])
-    cargs.append("-band")
     cargs.append("[FBOT]")
     cargs.append("[FTOP]")
     cargs.append("{")
-    cargs.append("-mask")
     if mask is not None:
         cargs.extend([
             "-mask",

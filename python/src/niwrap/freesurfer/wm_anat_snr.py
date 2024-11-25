@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WM_ANAT_SNR_METADATA = Metadata(
-    id="b83cfde0c278109c7b02a176eb4ecbdce4736a1b.boutiques",
+    id="bc76bbfe5bc73f815ba252ba2ec1d2b82838940c.boutiques",
     name="wm-anat-snr",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -58,12 +58,10 @@ def wm_anat_snr(
     execution = runner.start_execution(WM_ANAT_SNR_METADATA)
     cargs = []
     cargs.append("wm-anat-snr")
-    cargs.append("--s")
     cargs.extend([
         "--s",
         subject
     ])
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_file

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XHEMI_TAL_METADATA = Metadata(
-    id="bc30c34e1ebc79ae0d807f2cf3a4be8d10e1fa6a.boutiques",
+    id="75297464bbd5b47449915f4f1464c80da7860766.boutiques",
     name="xhemi-tal",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -44,7 +44,6 @@ def xhemi_tal(
     execution = runner.start_execution(XHEMI_TAL_METADATA)
     cargs = []
     cargs.append("xhemi-tal")
-    cargs.append("--s")
     cargs.extend([
         "--s",
         subject

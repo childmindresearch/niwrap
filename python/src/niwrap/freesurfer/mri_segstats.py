@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SEGSTATS_METADATA = Metadata(
-    id="e53ccdb0705f871bb909f3221428e56e784b7341.boutiques",
+    id="8b0beadf5bf66cf63e623f92792c7f78eee97153.boutiques",
     name="mri_segstats",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -195,12 +195,10 @@ def mri_segstats(
     execution = runner.start_execution(MRI_SEGSTATS_METADATA)
     cargs = []
     cargs.append("mri_segstats")
-    cargs.append("--seg")
     cargs.extend([
         "--seg",
         execution.input_file(segvol)
     ])
-    cargs.append("--annot")
     if annot_subject is not None:
         cargs.extend([
             "--annot",
@@ -210,7 +208,6 @@ def mri_segstats(
         cargs.append(annot_hemisphere)
     if annot_parcellation is not None:
         cargs.append(annot_parcellation)
-    cargs.append("--slabel")
     if slabel_subject is not None:
         cargs.extend([
             "--slabel",
@@ -220,7 +217,6 @@ def mri_segstats(
         cargs.append(slabel_hemisphere)
     if slabel_label is not None:
         cargs.append(execution.input_file(slabel_label))
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_file

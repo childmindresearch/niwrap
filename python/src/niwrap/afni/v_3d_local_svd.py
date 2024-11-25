@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LOCAL_SVD_METADATA = Metadata(
-    id="aa9242eacfb8563948c633af4cce28ff22487e6c.boutiques",
+    id="df03ecf9b4836f00f741d76bea167e7316c57057.boutiques",
     name="3dLocalSVD",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -60,7 +60,6 @@ def v_3d_local_svd(
     cargs.append("3dLocalSVD")
     if auto_mask:
         cargs.append("-automask")
-    cargs.append("-input")
     cargs.extend([
         "-input",
         execution.input_file(input_file)
@@ -70,7 +69,6 @@ def v_3d_local_svd(
             "-mask",
             execution.input_file(mask_file)
         ])
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         output_file

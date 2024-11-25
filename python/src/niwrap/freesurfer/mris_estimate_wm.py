@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_ESTIMATE_WM_METADATA = Metadata(
-    id="ec30b010be6957ed57d908b5be805a2570d158c4.boutiques",
+    id="189a6033ceae645a2c67e30a7b73d732e85f6276.boutiques",
     name="mris_estimate_wm",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -64,7 +64,6 @@ def mris_estimate_wm(
         "-s",
         *subjs
     ])
-    cargs.append("--hemi")
     cargs.extend([
         "--hemi",
         hemi

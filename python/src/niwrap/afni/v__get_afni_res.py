@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__GET_AFNI_RES_METADATA = Metadata(
-    id="7f4762e356d51415e08e98ceebe347dba4909961.boutiques",
+    id="67b38b64ef0cc4ead694a65a5b65c68aebe6707a.boutiques",
     name="@GetAfniRes",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,9 +45,8 @@ def v__get_afni_res(
     runner = runner or get_global_runner()
     execution = runner.start_execution(V__GET_AFNI_RES_METADATA)
     cargs = []
-    cargs.append("@GetAfniRes")
     if output_type is not None:
-        cargs.append(output_type)
+        cargs.append("@GetAfniRes" + output_type)
     cargs.append(execution.input_file(input_dataset))
     ret = VGetAfniResOutputs(
         root=execution.output_file("."),

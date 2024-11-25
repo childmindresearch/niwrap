@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_SPLINE_METADATA = Metadata(
-    id="af3dc29fc0f60175d085662514f5caef235f333d.boutiques",
+    id="f8766ca333b5d765f63b2eea5261064b5df86d4b.boutiques",
     name="dmri_spline",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -70,12 +70,10 @@ def dmri_spline(
     execution = runner.start_execution(DMRI_SPLINE_METADATA)
     cargs = []
     cargs.append("dmri_spline")
-    cargs.append("--cpts")
     cargs.extend([
         "--cpts",
         execution.input_file(control_points_file)
     ])
-    cargs.append("--mask")
     cargs.extend([
         "--mask",
         execution.input_file(mask_volume)

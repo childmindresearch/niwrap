@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SAMSEGMESH2SURF_METADATA = Metadata(
-    id="4bfb2a17032b55c80252c7b21f77c717d6d385df.boutiques",
+    id="95337678c313925cd0f46f6148b92720d481109d.boutiques",
     name="samsegmesh2surf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -58,7 +58,6 @@ def samsegmesh2surf(
     execution = runner.start_execution(SAMSEGMESH2SURF_METADATA)
     cargs = []
     cargs.append("samsegmesh2surf")
-    cargs.append("--atlasmesh")
     cargs.extend([
         "--atlasmesh",
         execution.input_file(atlas_mesh)

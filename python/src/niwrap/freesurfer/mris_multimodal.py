@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_MULTIMODAL_METADATA = Metadata(
-    id="5ea3bb028d4f416812a4635db5e70c0c093edcbb.boutiques",
+    id="682fa8c0ec2e0dc9c4af3e5eade956ef974e2229.boutiques",
     name="mris_multimodal",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -81,17 +81,14 @@ def mris_multimodal(
         cargs.append("--curvature")
     if thickness:
         cargs.append("--thickness")
-    cargs.append("-a")
     cargs.extend([
         "-a",
         execution.input_file(annotation_output)
     ])
-    cargs.append("-v")
     cargs.extend([
         "-v",
         execution.input_file(overlay_output)
     ])
-    cargs.append("-c")
     cargs.extend([
         "-c",
         execution.input_file(csv_output)

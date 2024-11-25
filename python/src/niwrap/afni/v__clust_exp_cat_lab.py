@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__CLUST_EXP_CAT_LAB_METADATA = Metadata(
-    id="e7f57e6679bc4f1f5b1d6785c2f9a75f5472a1b4.boutiques",
+    id="23bc26f3cf9eb92908f7e8df25d5664e611da513.boutiques",
     name="@ClustExp_CatLab",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -50,12 +50,10 @@ def v__clust_exp_cat_lab(
     execution = runner.start_execution(V__CLUST_EXP_CAT_LAB_METADATA)
     cargs = []
     cargs.append("@ClustExp_CatLab")
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix
     ])
-    cargs.append("-input")
     cargs.extend([
         "-input",
         execution.input_file(input_file)

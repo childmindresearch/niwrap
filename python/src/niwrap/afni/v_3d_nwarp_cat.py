@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_NWARP_CAT_METADATA = Metadata(
-    id="e3b5978ed235b04f0d1559137f70db255a2b539c.boutiques",
+    id="03863fc659106069c5c267eab2e44b49b086f3e3.boutiques",
     name="3dNwarpCat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -73,7 +73,6 @@ def v_3d_nwarp_cat(
         ])
     if verbosity:
         cargs.append("-verb")
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         output_prefix
@@ -83,12 +82,10 @@ def v_3d_nwarp_cat(
             "-space",
             space_marker
         ])
-    cargs.append("-warp1")
     cargs.extend([
         "-warp1",
         execution.input_file(warp1)
     ])
-    cargs.append("-warp2")
     cargs.extend([
         "-warp2",
         execution.input_file(warp2)

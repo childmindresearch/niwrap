@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 WMEDITS2SURF_METADATA = Metadata(
-    id="caffb547a20af28fe04a7dd3c6ef8c2fa5a415b7.boutiques",
+    id="96b1528718db0d82b5e8a12fdda61f9e86dac15e.boutiques",
     name="wmedits2surf",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -73,7 +73,6 @@ def wmedits2surf(
     execution = runner.start_execution(WMEDITS2SURF_METADATA)
     cargs = []
     cargs.append("wmedits2surf")
-    cargs.append("--s")
     cargs.extend([
         "--s",
         subject

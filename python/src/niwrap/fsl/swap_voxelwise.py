@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SWAP_VOXELWISE_METADATA = Metadata(
-    id="c3c09686247fba731935bdd5a08f3692ab926cf1.boutiques",
+    id="4d3f862f263904d851a583fa7d717c4e6949c262.boutiques",
     name="swap_voxelwise",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -59,41 +59,34 @@ def swap_voxelwise(
     execution = runner.start_execution(SWAP_VOXELWISE_METADATA)
     cargs = []
     cargs.append("swap_voxelwise")
-    cargs.append("-v")
     cargs.extend([
         "-v",
         execution.input_file(vectors_file_list)
     ])
-    cargs.append("-s")
     if scalars_file_list is not None:
         cargs.extend([
             "-s",
             execution.input_file(scalars_file_list)
         ])
-    cargs.append("-m")
     cargs.extend([
         "-m",
         execution.input_file(mask)
     ])
-    cargs.append("-b")
     if output_base_name is not None:
         cargs.extend([
             "-b",
             output_base_name
         ])
-    cargs.append("--mode")
     if reorder_mode is not None:
         cargs.extend([
             "--mode",
             reorder_mode
         ])
-    cargs.append("--initmask")
     if init_mask is not None:
         cargs.extend([
             "--initmask",
             execution.input_file(init_mask)
         ])
-    cargs.append("--xthresh")
     if crossing_thresh is not None:
         cargs.extend([
             "--xthresh",

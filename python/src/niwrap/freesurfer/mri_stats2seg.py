@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_STATS2SEG_METADATA = Metadata(
-    id="236e7b62048530381f4a8663a82ee18cb02c54b4.boutiques",
+    id="83b4e2f5dc0eaaecb42c01a8b0c0e61a7d9aa7dd.boutiques",
     name="mri_stats2seg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -53,17 +53,14 @@ def mri_stats2seg(
     execution = runner.start_execution(MRI_STATS2SEG_METADATA)
     cargs = []
     cargs.append("mri_stats2seg")
-    cargs.append("--stat")
     cargs.extend([
         "--stat",
         execution.input_file(stat_file)
     ])
-    cargs.append("--seg")
     cargs.extend([
         "--seg",
         execution.input_file(segmentation_volume)
     ])
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_file

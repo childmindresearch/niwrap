@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ANTS_JOINT_LABEL_FUSION_SH_METADATA = Metadata(
-    id="6ba42b66044013522b649e617a637341a1022d80.boutiques",
+    id="247a29d0e6dd59cbbad0a89af0ca5b7e052f7e73.boutiques",
     name="antsJointLabelFusion.sh",
     package="ants",
     container_image_tag="antsx/ants:v2.5.3",
@@ -111,23 +111,19 @@ def ants_joint_label_fusion_sh(
             "-v",
             str(verbose)
         ])
-    cargs.append("-i")
     cargs.extend([
         "-i",
         target_image
     ])
-    cargs.append("-m")
     cargs.extend([
         "-m",
         mask_image
     ])
-    cargs.append("-g")
     if rigid_transform_additional_options is not None:
         cargs.extend([
             "-g",
             rigid_transform_additional_options
         ])
-    cargs.append("-x")
     if similarity_metric_additional_options is not None:
         cargs.extend([
             "-x",

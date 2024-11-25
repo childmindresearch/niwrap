@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 LABEL2SURF_METADATA = Metadata(
-    id="2033554ec1dbe598794a55d2348e7d29f7364ba9.boutiques",
+    id="cd63394affbc5928ed92ba87251a2f8b6f4f20e0.boutiques",
     name="label2surf",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -53,17 +53,14 @@ def label2surf(
     execution = runner.start_execution(LABEL2SURF_METADATA)
     cargs = []
     cargs.append("label2surf")
-    cargs.append("--surf")
     cargs.extend([
         "--surf",
         execution.input_file(input_surface)
     ])
-    cargs.append("--out")
     cargs.extend([
         "--out",
         output_surface
     ])
-    cargs.append("--labels")
     cargs.extend([
         "--labels",
         execution.input_file(labels)

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_PROJECT_END_POINTS_METADATA = Metadata(
-    id="821333d9d36610f0777858cc1db5121bb1eccb7d.boutiques",
+    id="93cde90208fae7700f6f02d3a5122b37ae3a77f6.boutiques",
     name="dmri_projectEndPoints",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -60,32 +60,26 @@ def dmri_project_end_points(
     execution = runner.start_execution(DMRI_PROJECT_END_POINTS_METADATA)
     cargs = []
     cargs.append("dmri_projectEndPoints")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(streamline_file)
     ])
-    cargs.append("-sl")
     cargs.extend([
         "-sl",
         execution.input_file(left_surface_file)
     ])
-    cargs.append("-sr")
     cargs.extend([
         "-sr",
         execution.input_file(right_surface_file)
     ])
-    cargs.append("-ol")
     cargs.extend([
         "-ol",
         left_overlay_file
     ])
-    cargs.append("-or")
     cargs.extend([
         "-or",
         right_overlay_file
     ])
-    cargs.append("-ri")
     cargs.extend([
         "-ri",
         execution.input_file(reference_image)

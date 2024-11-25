@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V__ISO_MASKS_METADATA = Metadata(
-    id="b73304663d5c985016c46fca12dbb67249f9bdf2.boutiques",
+    id="efb13b19016645aff7a7273058c6f68edcfc682d.boutiques",
     name="@IsoMasks",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -45,7 +45,6 @@ def v__iso_masks(
     execution = runner.start_execution(V__ISO_MASKS_METADATA)
     cargs = []
     cargs.append("@IsoMasks")
-    cargs.append("-mask")
     cargs.extend([
         "-mask",
         execution.input_file(input_dataset)

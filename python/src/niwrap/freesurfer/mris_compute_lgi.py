@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_COMPUTE_LGI_METADATA = Metadata(
-    id="cbef465a3c30daaa7af0d0a0588885f4eb7c5dd3.boutiques",
+    id="32977f058874a603d7bcd6c46f969f5814a4f53c.boutiques",
     name="mris_compute_lgi",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -59,7 +59,6 @@ def mris_compute_lgi(
     execution = runner.start_execution(MRIS_COMPUTE_LGI_METADATA)
     cargs = []
     cargs.append("mris_compute_lgi")
-    cargs.append("--i")
     cargs.extend([
         "--i",
         execution.input_file(input_surface)

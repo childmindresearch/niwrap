@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FSL_GLM_METADATA = Metadata(
-    id="767613656776d8e993f327c57d39f7636b7ad18b.boutiques",
+    id="8925400855341d346d1fb96ca644c8aaa7967a1b.boutiques",
     name="fsl_glm",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -124,17 +124,14 @@ def fsl_glm(
     execution = runner.start_execution(FSL_GLM_METADATA)
     cargs = []
     cargs.append("fsl_glm")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(input_file)
     ])
-    cargs.append("-d")
     cargs.extend([
         "-d",
         execution.input_file(design_matrix)
     ])
-    cargs.append("-o")
     if output_file is not None:
         cargs.extend([
             "-o",

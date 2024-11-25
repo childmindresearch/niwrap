@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 XCEREBRALSEG_METADATA = Metadata(
-    id="0db7952abb260cea02ba6a62a17a841866661f2c.boutiques",
+    id="8185c238aec4ffe8f3eb70e8bcbb83f8e7a0af6b.boutiques",
     name="xcerebralseg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -67,30 +67,25 @@ def xcerebralseg(
     execution = runner.start_execution(XCEREBRALSEG_METADATA)
     cargs = []
     cargs.append("xcerebralseg")
-    cargs.append("--s")
     cargs.extend([
         "--s",
         subject
     ])
-    cargs.append("--o")
     if output_volume is not None:
         cargs.extend([
             "--o",
             output_volume
         ])
-    cargs.append("--atlas")
     if atlas is not None:
         cargs.extend([
             "--atlas",
             atlas
         ])
-    cargs.append("--m")
     if mergevol is not None:
         cargs.extend([
             "--m",
             mergevol
         ])
-    cargs.append("--srcvol")
     if source_volume is not None:
         cargs.extend([
             "--srcvol",
@@ -98,7 +93,6 @@ def xcerebralseg(
         ])
     if no_stats:
         cargs.append("--no-stats")
-    cargs.append("--seg1")
     if seg1_name is not None:
         cargs.extend([
             "--seg1",
@@ -108,7 +102,6 @@ def xcerebralseg(
         cargs.append("--no-pons")
     if no_vermis:
         cargs.append("--no-vermis")
-    cargs.append("--threads")
     if threads is not None:
         cargs.extend([
             "--threads",

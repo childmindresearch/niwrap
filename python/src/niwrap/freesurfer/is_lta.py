@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 IS_LTA_METADATA = Metadata(
-    id="9edc4e30392f8a6b85029f4a306654ef20bf2fce.boutiques",
+    id="566d24838e7313b28a22f432de359c9b90571b0e.boutiques",
     name="IsLTA",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -48,12 +48,10 @@ def is_lta(
     execution = runner.start_execution(IS_LTA_METADATA)
     cargs = []
     cargs.append("IsLTA")
-    cargs.append("--r")
     cargs.extend([
         "--r",
         execution.input_file(candidate_file)
     ])
-    cargs.append("--o")
     cargs.extend([
         "--o",
         outfile

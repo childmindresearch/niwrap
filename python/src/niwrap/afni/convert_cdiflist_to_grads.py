@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CONVERT_CDIFLIST_TO_GRADS_METADATA = Metadata(
-    id="ea130b033404a9cbd6779270e1ab5a04fbc1255c.boutiques",
+    id="7dd02ef78661ef57b9335ca13b5db27feb6a19d8.boutiques",
     name="convert_cdiflist_to_grads",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -65,17 +65,14 @@ def convert_cdiflist_to_grads(
     execution = runner.start_execution(CONVERT_CDIFLIST_TO_GRADS_METADATA)
     cargs = []
     cargs.append("convert_cdiflist_to_grads.py")
-    cargs.append("-cdiflist")
     cargs.extend([
         "-cdiflist",
         execution.input_file(cdiflist)
     ])
-    cargs.append("-bval_max")
     cargs.extend([
         "-bval_max",
         str(bval_max)
     ])
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix

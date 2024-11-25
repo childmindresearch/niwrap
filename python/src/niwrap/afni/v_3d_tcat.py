@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_TCAT_METADATA = Metadata(
-    id="c05e20b665cf3eb42a3c768866354126d44c653a.boutiques",
+    id="857f0c4b1d6c6ff7212eb0f219b0756a253e1817.boutiques",
     name="3dTcat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -62,9 +62,8 @@ def v_3d_tcat(
     if rlt is not None:
         cargs.extend([
             "-rlt",
-            rlt
+            rlt + execution.input_file(in_files)
         ])
-    cargs.append(execution.input_file(in_files))
     cargs.append("[OUT_FILE]")
     if outputtype is not None:
         cargs.append(outputtype)

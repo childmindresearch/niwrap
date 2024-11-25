@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DICOM_RENAME_METADATA = Metadata(
-    id="7693b27684e2186e53d5e92eef42f7fd24d34b86.boutiques",
+    id="6f7993b97f288acebb7ccfe5c5b9da4f33f05304.boutiques",
     name="dicom-rename",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -49,7 +49,6 @@ def dicom_rename(
     cargs = []
     cargs.append("dicom-rename")
     cargs.extend([execution.input_file(f) for f in input_files])
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_base

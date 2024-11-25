@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 UN_WARP_EPI_PY_METADATA = Metadata(
-    id="64490c716682191e7b0bb31a5b8428c65b5c5a38.boutiques",
+    id="45f3e9cf1ba969b0db55afc25cbfbe3d3f34f2bd.boutiques",
     name="unWarpEPI.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -55,27 +55,22 @@ def un_warp_epi_py(
     execution = runner.start_execution(UN_WARP_EPI_PY_METADATA)
     cargs = []
     cargs.append("unWarpEPI.py")
-    cargs.append("-f")
     cargs.extend([
         "-f",
         execution.input_file(forward)
     ])
-    cargs.append("-r")
     cargs.extend([
         "-r",
         execution.input_file(reverse)
     ])
-    cargs.append("-a")
     cargs.extend([
         "-a",
         execution.input_file(anat4warp)
     ])
-    cargs.append("-d")
     cargs.extend([
         "-d",
         data
     ])
-    cargs.append("-s")
     cargs.extend([
         "-s",
         subj_id

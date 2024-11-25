@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MAKE_AVERAGE_SUBCORT_METADATA = Metadata(
-    id="c4fd6dcc242d3c50d0135f57fe46dbe542f4d134.boutiques",
+    id="0c9ffded4567106d920f42e12c804ae17630eddc.boutiques",
     name="make_average_subcort",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -49,7 +49,6 @@ def make_average_subcort(
     cargs = []
     cargs.append("make_average_subcort")
     cargs.extend(subjects)
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_volume

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_SYNTHSTRIP_METADATA = Metadata(
-    id="db013dafdfd94df70d7e7d500b15ac5adac454dd.boutiques",
+    id="a3e46af4690b18c95daf964ac99735b6aa4b42a6.boutiques",
     name="mri_synthstrip",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -59,40 +59,33 @@ def mri_synthstrip(
     execution = runner.start_execution(MRI_SYNTHSTRIP_METADATA)
     cargs = []
     cargs.append("mri_synthstrip")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(image)
     ])
-    cargs.append("[-o")
     if output_image is not None:
         cargs.extend([
             "-o",
-            execution.input_file(output_image) + "]"
+            "[" + execution.input_file(output_image) + "]"
         ])
-    cargs.append("[-m")
     if mask is not None:
         cargs.extend([
             "-m",
-            execution.input_file(mask) + "]"
+            "[" + execution.input_file(mask) + "]"
         ])
-    cargs.append("[-g")
     if gpu:
-        cargs.append("-g" + "]")
-    cargs.append("[-b")
+        cargs.append("[" + "-g" + "]")
     if border is not None:
         cargs.extend([
             "-b",
-            str(border) + "]"
+            "[" + str(border) + "]"
         ])
-    cargs.append("[--no-csf")
     if exclude_csf:
-        cargs.append("--no-csf" + "]")
-    cargs.append("[--model")
+        cargs.append("[" + "--no-csf" + "]")
     if model_weights is not None:
         cargs.extend([
             "--model",
-            execution.input_file(model_weights) + "]"
+            "[" + execution.input_file(model_weights) + "]"
         ])
     ret = MriSynthstripOutputs(
         root=execution.output_file("."),

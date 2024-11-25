@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3DDOT_BETA_METADATA = Metadata(
-    id="150f193e49f2c831ea62fc4bf529ec24ba411853.boutiques",
+    id="c3a8c7eb7a338ef8ecd642e85e31996e168ad63d.boutiques",
     name="3ddot_beta",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -54,7 +54,6 @@ def v_3ddot_beta(
     cargs.append("3ddot_beta")
     cargs.append("-input")
     cargs.append(execution.input_file(input_file))
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_CONVERT_DCM_ANAT_METADATA = Metadata(
-    id="0177f4c891bb01f1d16cc7a255fd2d69587e47e9.boutiques",
+    id="78ebf336e1ff63740332c2c2dd0209701bae6164.boutiques",
     name="fat_proc_convert_dcm_anat",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -74,7 +74,6 @@ def fat_proc_convert_dcm_anat(
             "-innii",
             execution.input_file(nifti_input)
         ])
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_DEFECTS_POINTSET_METADATA = Metadata(
-    id="2f59a6a7d254b5c2f7ce5151835d99a342d61cff.boutiques",
+    id="83e333d1259fc372d991cc353b27693763bfdd37.boutiques",
     name="mris_defects_pointset",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -54,17 +54,14 @@ def mris_defects_pointset(
     execution = runner.start_execution(MRIS_DEFECTS_POINTSET_METADATA)
     cargs = []
     cargs.append("mris_defects_pointset")
-    cargs.append("--surf")
     cargs.extend([
         "--surf",
         execution.input_file(surface)
     ])
-    cargs.append("--defects")
     cargs.extend([
         "--defects",
         execution.input_file(defects)
     ])
-    cargs.append("--out")
     cargs.extend([
         "--out",
         execution.input_file(out)

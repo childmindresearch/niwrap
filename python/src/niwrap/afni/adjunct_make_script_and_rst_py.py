@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 ADJUNCT_MAKE_SCRIPT_AND_RST_PY_METADATA = Metadata(
-    id="daadacfd82293995379763ced20e0264a0572dbb.boutiques",
+    id="31c33a4af534292502b71342782645e0cb0ac41e.boutiques",
     name="adjunct_make_script_and_rst.py",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -64,17 +64,14 @@ def adjunct_make_script_and_rst_py(
     cargs.append("adjunct_make_script_and_rst.py")
     cargs.append("--input")
     cargs.append(execution.input_file(input_script))
-    cargs.append("--prefix_rst")
     cargs.extend([
         "--prefix_rst",
         prefix_rst
     ])
-    cargs.append("--prefix_script")
     cargs.extend([
         "--prefix_script",
         prefix_script
     ])
-    cargs.append("--reflink")
     cargs.extend([
         "--reflink",
         reflink

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FROM3D_METADATA = Metadata(
-    id="f1fd9173af972349aa65df96d4aeba216307ee59.boutiques",
+    id="e74a40ffe48bb62b1922051d53c1f76c0e73e296.boutiques",
     name="from3d",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -98,12 +98,10 @@ def from3d(
             "-tlast",
             str(tlast)
         ])
-    cargs.append("-input")
     cargs.extend([
         "-input",
         execution.input_file(input_)
     ])
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix

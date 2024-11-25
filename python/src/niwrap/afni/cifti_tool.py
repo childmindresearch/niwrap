@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 CIFTI_TOOL_METADATA = Metadata(
-    id="fc2e3e53992537d6ba3769a1e46c322268b0206f.boutiques",
+    id="77214442b88074d62c5f3f8eb023c5b9db1c9954.boutiques",
     name="cifti_tool",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -61,7 +61,6 @@ def cifti_tool(
     execution = runner.start_execution(CIFTI_TOOL_METADATA)
     cargs = []
     cargs.append("cifti_tool")
-    cargs.append("-input")
     cargs.extend([
         "-input",
         execution.input_file(input_file)
@@ -77,7 +76,6 @@ def cifti_tool(
             "-eval_type",
             eval_type
         ])
-    cargs.append("-output")
     if output_file is not None:
         cargs.extend([
             "-output",

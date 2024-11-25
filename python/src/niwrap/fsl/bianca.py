@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 BIANCA_METADATA = Metadata(
-    id="ff01d93b1182abe954b33f5dc87d3378d211707d.boutiques",
+    id="faece12893f9764ba2ed673c9b5a6791f2ed9a43.boutiques",
     name="bianca",
     package="fsl",
     container_image_tag="brainlife/fsl:6.0.4-patched2",
@@ -132,7 +132,6 @@ def bianca(
         ])
     if verbose_flag:
         cargs.append("-v")
-    cargs.append("-o")
     if out_name is not None:
         cargs.extend([
             "-o",

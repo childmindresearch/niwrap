@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_SAVE_HISTOGRAMS_METADATA = Metadata(
-    id="3c720eab00085915010bfb62fee18223548813ff.boutiques",
+    id="ee8d1ca09c1b2241dc168157801f106029c44920.boutiques",
     name="dmri_saveHistograms",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -53,18 +53,15 @@ def dmri_save_histograms(
     execution = runner.start_execution(DMRI_SAVE_HISTOGRAMS_METADATA)
     cargs = []
     cargs.append("dmri_saveHistograms")
-    cargs.append("-p")
     cargs.extend([
         "-p",
         execution.input_file(parcellation)
     ])
-    cargs.append("-f")
     cargs.extend([
         "-f",
         str(number_of_bundles)
     ])
     cargs.extend([execution.input_file(f) for f in vtk_bundle_list])
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output_csv

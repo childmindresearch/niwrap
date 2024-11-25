@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 SAMSEG_LONG_METADATA = Metadata(
-    id="b9c5b0582bd4c4d11bd0577fbe712557de91b6f1.boutiques",
+    id="eac8108ca1e4e277b6a40dca5a0e7aaee302877f.boutiques",
     name="samseg-long",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -59,7 +59,6 @@ def samseg_long(
     execution = runner.start_execution(SAMSEG_LONG_METADATA)
     cargs = []
     cargs.append("samseg-long")
-    cargs.append("--o")
     cargs.extend([
         "--o",
         output_dir

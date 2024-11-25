@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_ROI_ROW_METADATA = Metadata(
-    id="f5083921ef214a1b40041c4bf19809f2f02371e8.boutiques",
+    id="16b9b25c27c3263898f9bad59140377ddfe387a8.boutiques",
     name="fat_roi_row",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -59,27 +59,23 @@ def fat_roi_row(
     execution = runner.start_execution(FAT_ROI_ROW_METADATA)
     cargs = []
     cargs.append("fat_roi_row.py")
-    cargs.append("-r")
     cargs.extend([
         "-r",
         roi
     ])
     cargs.append("{")
-    cargs.append("-m")
     if matrix_files is not None:
         cargs.extend([
             "-m",
             matrix_files
         ])
     cargs.append("|")
-    cargs.append("-l")
     if list_file is not None:
         cargs.extend([
             "-l",
             execution.input_file(list_file)
         ])
     cargs.append("}")
-    cargs.append("-E")
     if extern_labs_no:
         cargs.append("-E")
     ret = FatRoiRowOutputs(

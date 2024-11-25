@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_1DEVAL_METADATA = Metadata(
-    id="b5dd462ea1c62542686cd5c2108f06b5f28820b2.boutiques",
+    id="da64e5acb6bc6cd359ef137e00f938392ac2b5e3.boutiques",
     name="1deval",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -90,7 +90,6 @@ def v_1deval(
             "-a",
             *[execution.input_file(f) for f in symbols]
         ])
-    cargs.append("-expr")
     cargs.extend([
         "-expr",
         expression

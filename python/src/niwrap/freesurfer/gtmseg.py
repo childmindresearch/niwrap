@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 GTMSEG_METADATA = Metadata(
-    id="56850d99783753956f9eec863186d1d63f175108.boutiques",
+    id="9b6f7181c5beb8781cb3df8a1cad8c5f58cdb324.boutiques",
     name="gtmseg",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -84,7 +84,6 @@ def gtmseg(
     execution = runner.start_execution(GTMSEG_METADATA)
     cargs = []
     cargs.append("gtmseg")
-    cargs.append("--s")
     cargs.extend([
         "--s",
         subject

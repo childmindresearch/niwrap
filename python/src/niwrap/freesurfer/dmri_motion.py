@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_MOTION_METADATA = Metadata(
-    id="b03bf7fc63abb4529fa2c610d5f6d6cba2404c0d.boutiques",
+    id="e4e3f3c86352739f602bc72ec495f7919e215248.boutiques",
     name="dmri_motion",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -67,7 +67,6 @@ def dmri_motion(
     execution = runner.start_execution(DMRI_MOTION_METADATA)
     cargs = []
     cargs.append("dmri_motion")
-    cargs.append("--out")
     cargs.extend([
         "--out",
         execution.input_file(outfile)

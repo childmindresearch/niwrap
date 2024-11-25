@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRIS_EXTRACT_VALUES_METADATA = Metadata(
-    id="3edced7712f17a3510b7552a3f85062ef04f50cb.boutiques",
+    id="d71ebcb707ea3a328def8029909fffc5889d56d6.boutiques",
     name="mris_extract_values",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -56,27 +56,22 @@ def mris_extract_values(
     execution = runner.start_execution(MRIS_EXTRACT_VALUES_METADATA)
     cargs = []
     cargs.append("mris_extract_values")
-    cargs.append("-i")
     cargs.extend([
         "-i",
         execution.input_file(surface)
     ])
-    cargs.append("-v")
     cargs.extend([
         "-v",
         execution.input_file(overlay)
     ])
-    cargs.append("-a")
     cargs.extend([
         "-a",
         execution.input_file(annotation)
     ])
-    cargs.append("-o")
     cargs.extend([
         "-o",
         csvfile
     ])
-    cargs.append("-m")
     cargs.extend([
         "-m",
         str(num_images)

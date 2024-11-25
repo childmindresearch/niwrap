@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_LME_METADATA = Metadata(
-    id="55c6778eace87b7e1ae56e342faa35268707bee1.boutiques",
+    id="bd1787f97e2eb52763c81321ed328dfec07d234d.boutiques",
     name="3dLME",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -115,7 +115,6 @@ def v_3d_lme(
     cargs.append("-bounds")
     if bounds is not None:
         cargs.extend(map(str, bounds))
-    cargs.append("-cio")
     if cio_flag:
         cargs.append("-cio")
     cargs.append("-corStr")
@@ -124,7 +123,6 @@ def v_3d_lme(
     cargs.append("-cutoff")
     if cutoff is not None:
         cargs.append(str(cutoff))
-    cargs.append("-dbgArgs")
     if dbg_args_flag:
         cargs.append("-dbgArgs")
     cargs.append("-jobs")
@@ -142,16 +140,12 @@ def v_3d_lme(
     cargs.append("-glfCode")
     if glf_code is not None:
         cargs.append(glf_code)
-    cargs.append("-ICC")
     if icc_flag:
         cargs.append("-ICC")
-    cargs.append("-ICCb")
     if iccb_flag:
         cargs.append("-ICCb")
-    cargs.append("-logLik")
     if log_lik_flag:
         cargs.append("-logLik")
-    cargs.append("-LOGIT")
     if logit_flag:
         cargs.append("-LOGIT")
     cargs.append("-ml")
@@ -187,7 +181,6 @@ def v_3d_lme(
     cargs.append("-RIO")
     if rio_flag:
         cargs.append("-Rio")
-    cargs.append("-show_allowed_options")
     if show_options_flag:
         cargs.append("-show_allowed_options")
     cargs.append("-SS_type")

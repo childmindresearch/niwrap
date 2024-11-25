@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 VERTEXVOL_METADATA = Metadata(
-    id="97e0bfdb4958bd3197e264d3dcb1e3d5d47664e6.boutiques",
+    id="2e5fab9eeec85c3372c55b5443b9170250c9e581.boutiques",
     name="vertexvol",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -51,7 +51,6 @@ def vertexvol(
     execution = runner.start_execution(VERTEXVOL_METADATA)
     cargs = []
     cargs.append("vertexvol")
-    cargs.append("--s")
     cargs.extend([
         "--s",
         subject

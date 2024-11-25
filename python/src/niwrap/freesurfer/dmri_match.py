@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 DMRI_MATCH_METADATA = Metadata(
-    id="f1a5fe1edf2082de0817d00373a356ec2b8bb8e5.boutiques",
+    id="8e5727e39c301c8bec4e8fc53cfd10e91de3c8f0.boutiques",
     name="dmri_match",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -67,27 +67,22 @@ def dmri_match(
     execution = runner.start_execution(DMRI_MATCH_METADATA)
     cargs = []
     cargs.append("dmri_match")
-    cargs.append("-s1")
     cargs.extend([
         "-s1",
         execution.input_file(parcellation1)
     ])
-    cargs.append("-s2")
     cargs.extend([
         "-s2",
         execution.input_file(parcellation2)
     ])
-    cargs.append("-c")
     cargs.extend([
         "-c",
         str(num_clusters)
     ])
-    cargs.append("-h1")
     cargs.extend([
         "-h1",
         execution.input_file(clustering_path1)
     ])
-    cargs.append("-h2")
     cargs.extend([
         "-h2",
         execution.input_file(clustering_path2)
@@ -102,7 +97,6 @@ def dmri_match(
         cargs.append("-sym")
     if inter_hemi_ratio_removal is not None:
         cargs.append(inter_hemi_ratio_removal)
-    cargs.append("-o")
     cargs.extend([
         "-o",
         output

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 MRI_PROBE_IMA_METADATA = Metadata(
-    id="18584d90b4496e803d7fee551923ca13a88acf1a.boutiques",
+    id="86666f50fcaa353bd3b56e9401264bb4fda8074b.boutiques",
     name="mri_probe_ima",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -60,7 +60,6 @@ def mri_probe_ima(
     execution = runner.start_execution(MRI_PROBE_IMA_METADATA)
     cargs = []
     cargs.append("mri_probe_ima")
-    cargs.append("--i")
     cargs.extend([
         "--i",
         execution.input_file(ima_file)

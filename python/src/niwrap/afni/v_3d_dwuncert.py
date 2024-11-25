@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 V_3D_DWUNCERT_METADATA = Metadata(
-    id="e5435aa32b153e592fc54fcb544b034d7d4ed2ac.boutiques",
+    id="6fbb3ff131a04268011a6fd9922b73a4008e2be1.boutiques",
     name="3dDWUncert",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -75,25 +75,21 @@ def v_3d_dwuncert(
     cargs.append("-bmatrix_FULL")
     if bmatrix_file is not None:
         cargs.append(execution.input_file(bmatrix_file))
-    cargs.append("-iters")
     if num_iters is not None:
         cargs.extend([
             "-iters",
             str(num_iters)
         ])
-    cargs.append("-mask")
     if mask_file is not None:
         cargs.extend([
             "-mask",
             execution.input_file(mask_file)
         ])
-    cargs.append("-calc_thr_FA")
     if calc_thr_fa is not None:
         cargs.extend([
             "-calc_thr_FA",
             str(calc_thr_fa)
         ])
-    cargs.append("-csf_fa")
     if csf_fa is not None:
         cargs.extend([
             "-csf_fa",

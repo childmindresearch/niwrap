@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 EXPORT_GCAM_METADATA = Metadata(
-    id="cf2f76f5294282af972be86d686391b17fa20f20.boutiques",
+    id="9cf2f88c411f4d3534896a3d95eb47d2af74b6f4.boutiques",
     name="exportGcam",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -62,22 +62,18 @@ def export_gcam(
     execution = runner.start_execution(EXPORT_GCAM_METADATA)
     cargs = []
     cargs.append("exportGcam")
-    cargs.append("--fixed")
     cargs.extend([
         "--fixed",
         execution.input_file(fixed)
     ])
-    cargs.append("--moving")
     cargs.extend([
         "--moving",
         execution.input_file(moving)
     ])
-    cargs.append("--morph")
     cargs.extend([
         "--morph",
         execution.input_file(morph)
     ])
-    cargs.append("--out_gcam")
     cargs.extend([
         "--out_gcam",
         execution.input_file(out_gcam)

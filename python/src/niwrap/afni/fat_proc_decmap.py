@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 FAT_PROC_DECMAP_METADATA = Metadata(
-    id="5d4b32a54bdd18b7bea855a52f4b838de1b32088.boutiques",
+    id="78b17420b78903b89d5e46d874d55fd366c638ef.boutiques",
     name="fat_proc_decmap",
     package="afni",
     container_image_tag="afni/afni_make_build:AFNI_24.2.06",
@@ -87,7 +87,6 @@ def fat_proc_decmap(
     cargs.append(execution.input_file(in_fa))
     cargs.append("-in_v1")
     cargs.append(execution.input_file(in_v1))
-    cargs.append("-prefix")
     cargs.extend([
         "-prefix",
         prefix

@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 QATOOLS_PY_METADATA = Metadata(
-    id="efc47b0f6cabee79eee44ec13fd5de606b89dbe1.boutiques",
+    id="4d18f6a5ac40096b70dbf7ebf5df96bcffd4d1fe.boutiques",
     name="qatools.py",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -62,12 +62,10 @@ def qatools_py(
     execution = runner.start_execution(QATOOLS_PY_METADATA)
     cargs = []
     cargs.append("qatools.py")
-    cargs.append("--subjects_dir")
     cargs.extend([
         "--subjects_dir",
         subjects_dir
     ])
-    cargs.append("--output_dir")
     cargs.extend([
         "--output_dir",
         output_dir

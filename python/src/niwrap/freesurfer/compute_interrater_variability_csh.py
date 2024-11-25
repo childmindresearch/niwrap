@@ -7,7 +7,7 @@ from styxdefs import *
 import dataclasses
 
 COMPUTE_INTERRATER_VARIABILITY_CSH_METADATA = Metadata(
-    id="7de8fa40a7749dafc1239646d03c80801e6cc231.boutiques",
+    id="d85f89519ecdd6db050cf20b230dd279bab615ca.boutiques",
     name="compute_interrater_variability.csh",
     package="freesurfer",
     container_image_tag="freesurfer/freesurfer:7.4.1",
@@ -56,17 +56,14 @@ def compute_interrater_variability_csh(
     execution = runner.start_execution(COMPUTE_INTERRATER_VARIABILITY_CSH_METADATA)
     cargs = []
     cargs.append("compute_interrater_variability")
-    cargs.append("--vol1")
     cargs.extend([
         "--vol1",
         execution.input_file(label_vol1)
     ])
-    cargs.append("--vol2")
     cargs.extend([
         "--vol2",
         execution.input_file(label_vol2)
     ])
-    cargs.append("--out")
     cargs.extend([
         "--out",
         output_prefix
